@@ -9,6 +9,12 @@
    - Makes no third-party requests and sends nothing anywhere.
    Built from design/options/{common,optionA,optionD} — do not edit by hand.
    ============================================================ */
+/* Skip list: protocols that keep today's layout (no protocol UI at all). One slug per entry. */
+var PROTOCOL_UI_SKIP = [];
+(function(){
+  var m = location.pathname.match(/([^\/]+?)(?:\.html)?$/);
+  if(m && PROTOCOL_UI_SKIP.indexOf(m[1]) >= 0) window.PROTOCOL_UI_NO_BOOT = true;
+})();
 (function(){
   'use strict';
   if(window.__protocolUiLayout) return; window.__protocolUiLayout = true;
@@ -428,6 +434,7 @@ PX.ready(function(){
      1 Copy to notes          4 One urgency colour scheme (tokens + labelled badges)
      2 "Updated" badge        5 Give to patient (curated leaflets as QR / link / share)
      3 Search in protocol     6 Collapsible drug boxes
+     7 "Red flags" step name (the protocol's red-flag / emergency step)
    (A 7th add-on, per-section feedback, was removed at the owner's request.)
    Library functions (no side effects) are exposed as window.ProtocolUI.
    ============================================================ */
@@ -1162,6 +1169,75 @@ PX.ready(function(){
   }
 
   /* =========================================================
+     7. RED FLAGS STEP — name the protocol's red-flag / emergency step "Red flags"
+        At most one step. The original title stays visible as a subtitle and in print.
+     ========================================================= */
+  var RF_ALREADY = /^red[ -]?flags?\b/i;
+  /* "severe" is deliberately not a start word ("Severe forms…" is disease severity, not red flags);
+     it counts only through the section id "severe" (e.g. hypertension "Severe BP"). */
+  var RF_START = /^(red[ -]flag|emergenc|urgent|same[- ]day|999|alarm|danger|limb threat|admit now|unstable)/i;
+  var RF_MAX_STEP = 6;   /* the red-flag step sits early: steps 01–06 only */
+  var RF_IDS = /^(severe|emergency|emergencies|urgent|redflags|red-flags|flags|danger|alarm)$/i;
+  var RF_WORDS = /(red[ -]?flag|emergenc|severe|urgent|same[- ]day|\b999\b|alarm|danger)/i;
+  var RF_NEVER = /^(quick|pathway|refer|referral|sca|loop|monitor|workup|confirm|diagnose|exam|treat|ladder|lifestyle|evidence|evidence-legacy|provenance|history|coverage)$/i;
+  var RF_ACTION = /(\b999\b|same[- ]day|A&E|emergency|immediate|admit|urgent|today)/i;
+  function bareTitle(s){
+    var h = s.querySelector(':scope > .mg-sec-h h2'); if(!h) return '';
+    var x = h.cloneNode(true); $$('.pxa-chrome, .px-chrome, .pa-prev, .pc-prev', x).forEach(function(n){ n.remove(); });
+    return squash(x.textContent);
+  }
+  function decideRedFlags(){
+    var secs = sections().filter(function(s){ return !isRefs(s) && !s.closest('.px-refs'); });
+    var info = {renamed: false, n: '', title: '', nav: '', reason: ''};
+    var already = secs.filter(function(s){ return RF_ALREADY.test(bareTitle(s)) || RF_ALREADY.test(secNav(s)); })[0];
+    if(already){
+      info.n = sectionNum(already); info.title = bareTitle(already); info.nav = secNav(already); info.el = already;
+      info.reason = 'already labelled Red flags (' + (RF_ALREADY.test(bareTitle(already)) ? 'step title' : 'rail label') + ') — left as it is';
+      return info;
+    }
+    var cands = secs.filter(function(s){
+      if(RF_NEVER.test(s.id || '')) return false;
+      var num = parseInt(sectionNum(s), 10); if(!(num <= RF_MAX_STEP)) return false;
+      var t = bareTitle(s), n = secNav(s), first = t.split(/\s+[—–-]\s+|,\s+/)[0];
+      /* an id match needs the keyword in the rail label or the title's first clause — never a passing mention */
+      var hit = RF_START.test(t) || RF_START.test(n) || (RF_IDS.test(s.id || '') && RF_WORDS.test(n + ' ' + first));
+      if(!hit) return false;
+      var body = secBody(s).textContent || '';
+      return RF_ACTION.test(body);
+    });
+    if(cands.length !== 1){
+      info.reason = cands.length ? 'ambiguous: ' + cands.length + ' steps qualify (' + cands.map(function(s){ return sectionNum(s) + ' ' + (secNav(s) || bareTitle(s)); }).join('; ') + ') — none renamed' : 'no step clearly qualifies — none renamed';
+      return info;
+    }
+    var s = cands[0], t = bareTitle(s), n = secNav(s);
+    info.el = s; info.n = sectionNum(s); info.title = t; info.nav = n; info.renamed = true;
+    info.reason = RF_START.test(t) ? 'step title starts with "' + t.match(RF_START)[0] + '"' : RF_START.test(n) ? 'rail label starts with "' + n.match(RF_START)[0] + '"' : 'section id "' + s.id + '" + rail label / first title clause says "' + (n + ' ' + t.split(/\s+[—–-]\s+|,\s+/)[0]).match(RF_WORDS)[0] + '"';
+    info.reason += '; step holds urgent-action wording';
+    return info;
+  }
+  function sectionNum(s){ var n = s.querySelector(':scope > .mg-sec-h .mg-sec-n'); return n ? squash(n.textContent) : ''; }
+  function applyRedFlags(){
+    var info = decideRedFlags(); API.redFlags = {renamed: info.renamed, n: info.n, title: info.title, nav: info.nav, reason: info.reason, id: info.el ? info.el.id : ''};
+    if(info.el && W.PX){ var target = info.el; W.PX.redFlagTarget = function(){ return target; }; }
+    if(!info.renamed) return;
+    var s = info.el, h2 = s.querySelector(':scope > .mg-sec-h h2');
+    /* header: "Red flags" + the original title as a subtitle (the original nodes are kept, not copied) */
+    var orig = D.createElement('span'); orig.className = 'pxa-rf-orig';
+    while(h2.firstChild) orig.appendChild(h2.firstChild);
+    var lab = el('<span class="pxa-rf-name pxa-chrome">Red flags</span>');
+    h2.appendChild(lab); h2.appendChild(orig); h2.classList.add('pxa-rf-h');
+    s.classList.add('pxa-rf-step');
+    /* rail / phone chips */
+    if(s.id) $$('a[href="#' + s.id + '"]').forEach(function(a){
+      var l = a.querySelector('.pa-l'); if(!l) return;
+      var short = (info.nav || info.title);
+      l.innerHTML = ''; l.appendChild(D.createTextNode('Red flags'));
+      var sm = D.createElement('small'); sm.className = 'pxa-rf-sub'; sm.textContent = short; l.appendChild(sm);
+      a.setAttribute('aria-label', 'Red flags: ' + short);
+    });
+  }
+
+  /* =========================================================
      START — after the layout (A/B/C/D) has run, if any
      ========================================================= */
   function start(){
@@ -1169,7 +1245,7 @@ PX.ready(function(){
     if(!sections().length) return;
     API._started = true;
     D.documentElement.classList.add('pxa');
-    var steps = [addUrgency, addDrugBoxes, addCopy, addGive, addSearch, addBadge];
+    var steps = [applyRedFlags, addUrgency, addDrugBoxes, addCopy, addGive, addSearch, addBadge];
     steps.forEach(function(fn){ try{ fn(); }catch(e){ if(W.console) console.warn('protocol add-on skipped:', fn.name, e); } });
   }
   API.start = start;

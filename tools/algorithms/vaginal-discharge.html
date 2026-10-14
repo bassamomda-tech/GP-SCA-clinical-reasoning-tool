@@ -107,70 +107,15 @@ body{font-family:'DM Sans',sans-serif;background:#f1f5f9;color:var(--ink);min-he
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — most discharge is physiological or infective: treat the common infections, screen for STIs, treat PID early and don't miss cervical pathology; then advise on prevention and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Vaginal discharge</span><div class="body"><b>Colour, consistency, odour, itch</b>, pain, intermenstrual/postcoital bleeding, <b>sexual history</b>, pregnancy, contraception. Examine; <b>speculum + swabs</b> (vulvovaginal <b>NAAT</b> for chlamydia/gonorrhoea; vaginal pH/microscopy; culture for recurrent Candida or suspected gonorrhoea) where indicated and acceptable. Discharge features are suggestive, not diagnostic.</div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — PID, pregnancy &amp; cervical red flags</span><span class="ttl">Anything sinister?</span><div class="body"><ul>
-      <li><b>PID</b> — pelvic/lower-abdominal pain with cervical motion, uterine or adnexal tenderness (exclude ectopic/surgical causes)</li>
-      <li><b>Suspected sepsis</b> (NEWS2), instability or peritonism</li>
-      <li><b>Pregnancy</b> with pain, bleeding, fever, uterine tenderness, suspected ruptured membranes or fetal concern</li>
-      <li><b>Blood-stained discharge or a suspicious cervix</b> (mass, contact bleeding)</li>
-      <li><b>Retained tampon / toxic shock</b> features</li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Treat / Suspected cancer / emergency</span><div class="body"><b>PID → prompt empirical antibiotics</b> (+ swabs, partner notification). Suspicious cervix → urgent suspected-cancer referral; age 55+ with unexplained discharge → consider urgent direct-access USS (NICE NG12). Pregnant with concerning features → prompt maternity assessment. Sepsis/peritonism → local sepsis pathway / 999.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — characterise</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">By pattern + swabs</span><div class="body">Often clinical; NAAT if STI risk; vaginal pH/microscopy; culture if recurrent or treatment failure; pregnancy test where status is uncertain and management would change. Ensure cervical screening is up to date.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · which cause?</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Candida</div><div class="box ix"><span class="ttl">Common</span><div class="body"><b>Itch + thick white "cottage cheese" discharge</b>, vulval soreness, no odour; pH &lt;4.5.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Bacterial vaginosis</div><div class="box ix"><span class="ttl">Common</span><div class="body"><b>Fishy odour, thin grey discharge</b>, pH &gt;4.5, clue cells; not an STI but linked to preterm birth.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">STI</div><div class="box ix"><span class="ttl">Screen</span><div class="body"><b>Chlamydia/gonorrhoea</b> (NAAT) — often asymptomatic; <b>trichomonas</b> (frothy yellow-green, strawberry cervix).</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · treat by cause</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — cause-directed</span><span class="ttl">Treat infection, protect fertility</span><div class="body"><ul>
-      <li><b>Candida:</b> intravaginal clotrimazole (± external cream) or oral fluconazole 150 mg; pregnancy: topical imidazole for 7 days, avoid oral fluconazole.</li>
-      <li><b>Bacterial vaginosis:</b> metronidazole 400 mg BD 5–7 days, or metronidazole gel / clindamycin cream (GM antimicrobial guidance); no routine partner treatment.</li>
-      <li><b>Chlamydia:</b> doxycycline 100 mg BD 7 days; <b>gonorrhoea:</b> ceftriaxone 1 g IM, specialist-led via sexual health — both with <b>partner notification</b>; doxycycline not in pregnancy.</li>
-      <li><b>Trichomonas:</b> metronidazole + partner treatment. <b>PID:</b> early empirical therapy (BASHH/GM regimen) to protect fertility; review at 72 hours.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-purple">Suspected cancer · NICE NG12 (updated April 2026)</span> suspicious cervical lesion → urgent referral; unexplained postmenopausal bleeding → suspected cancer pathway; age 55+ unexplained discharge (first presentation, or with thrombocytosis or haematuria) → consider urgent direct-access USS.</li>
-      <li><span class="pill pill-purple">Sexual health (GUM)</span> confirmed/suspected STI for full screen + contact tracing; recurrent or treatment-resistant infection.</li>
-      <li><span class="pill pill-red">Gynaecology</span> PID with sepsis/systemic illness, severe pain/peritonism, suspected tubo-ovarian abscess, pregnancy, diagnostic uncertainty, unable to take oral treatment or no improvement at 72 h; pregnancy concerns → maternity services.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · prevention &amp; self-care</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Prevention &amp; self-care</span><span class="ttl">Reduce recurrence &amp; risk</span><div class="body"><b>Avoid douching, soaps and over-washing</b> (disturbs vaginal flora — worsens BV/candida) · avoid irritants (cotton underwear as comfort advice only) · <b>safer sex / barrier contraception</b> and regular STI screening · partner notification &amp; treatment for STIs · ensure <b>cervical screening up to date</b>; manage recurrent candida (blood glucose, triggers).</div></div>
-    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Same-day</b> if pelvic pain + fever (PID), pregnant with pain/bleeding, feeling systemically unwell, vomiting/unable to take medication, or no improvement 72 hours into PID treatment. <b>Return</b> if discharge persists/recurs despite treatment, becomes blood-stained, or new postcoital/intermenstrual bleeding develops → cervical examination. Chase swab results and ensure partner notification for STIs.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>Treat PID early and empirically:</b> delay risks tubal infertility and ectopic pregnancy — and any blood-stained or persistent discharge needs a cervical examination to exclude malignancy.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/vaginal-discharge.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/vaginal-discharge.html">⬇ Download PDF</button><a class="sum-open" href="one-page/vaginal-discharge.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/vaginal-discharge.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -189,7 +134,8 @@ body{font-family:'DM Sans',sans-serif;background:#f1f5f9;color:var(--ink);min-he
     <p><b>Scope:</b> primary-care summary for adults aged ≥16 years; children and young people require separate pathways. Local sexual-health, microbiology, safeguarding and obstetric guidance takes precedence.</p>
     <p>Vaginal discharge is usually benign, but these presentations require urgent action before routine management.</p>
     <div class="rfgrid">
-      <div class="rftile"><b>Sepsis features</b> Suspected sepsis (assess with NEWS2), haemodynamic instability, altered mental state, poor perfusion, severe systemic illness or peritonism → <strong>follow the local sepsis pathway; emergency hospital assessment / 999 where indicated</strong> (e.g. septic abortion, post-procedure infection)</div>
+      <div class="rftile"><b>Sepsis features</b> Suspected sepsis (assess with NEWS2), haemodynamic instability, altered mental state, poor perfusion, severe systemic illness or peritonism → <strong>follow the local sepsis pathway (NICE NG253); emergency hospital assessment / 999 where indicated</strong> (e.g. septic abortion, post-procedure infection)</div>
+      <div class="rftile"><b>Retained tampon / toxic shock features</b> Fever, rash, vomiting or diarrhoea, hypotension, dizziness or confusion with a tampon, menstrual cup or other foreign body in place, or after recent use → <strong>remove it if easily accessible; 999 / emergency hospital assessment</strong> (toxic shock syndrome is a medical emergency).</div>
       <div class="rftile"><b>Pelvic inflammatory disease (PID)</b> Consider and treat empirically with pelvic/lower abdominal pain plus cervical motion, uterine or adnexal tenderness, after excluding ectopic pregnancy and other important differentials. → <strong>Admission / same-day gynaecology</strong> if sepsis or significant systemic illness, severe pain/peritonism or suspected tubo-ovarian abscess, pregnancy, diagnostic uncertainty/possible surgical abdomen, inability to tolerate or adhere to oral treatment, or no improvement after 72 hours of outpatient therapy.</div>
       <div class="rftile"><b>Post-surgical / post-procedure</b> Discharge after hysteroscopy, IUD insertion, caesarean section, termination → Retained products? Endometritis? → <strong>Same-day gynae</strong></div>
       <div class="rftile"><b>Pregnancy with concerning features</b> Assess gestation, rupture of membranes, bleeding, contractions, fever, uterine tenderness and fetal concerns → <strong>discuss promptly with maternity services</strong> if suspected intra-amniotic infection, PPROM, significant bleeding or maternal/fetal compromise (999 if unstable)</div>
@@ -201,7 +147,7 @@ body{font-family:'DM Sans',sans-serif;background:#f1f5f9;color:var(--ink);min-he
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">PID affects approximately 1 in 50 women annually in the UK — 25% of cases result in long-term sequelae (infertility, ectopic pregnancy, chronic pelvic pain) if inadequately treated. Chorioamnionitis is associated with 25% of preterm births and significant neonatal morbidity. Prepubertal vaginal discharge has different aetiology (physiological vs infection vs foreign body vs abuse) and requires a completely different approach — vaginal candidiasis is rare before puberty, and its presence in a child should prompt safeguarding consideration.</div>
+    <div class="why-drawer">Delayed or inadequately treated PID increases the risk of long-term sequelae (infertility, ectopic pregnancy, chronic pelvic pain). Intra-amniotic infection is an important cause of preterm birth and neonatal morbidity. Prepubertal vaginal discharge has different aetiology (physiological vs infection vs foreign body vs abuse) and requires a completely different approach — vaginal candidiasis is rare before puberty, and its presence in a child should prompt safeguarding consideration.</div>
   </div>
 </div>
 <div class="connector"></div>
@@ -334,7 +280,7 @@ body{font-family:'DM Sans',sans-serif;background:#f1f5f9;color:var(--ink);min-he
   </div>
   <div class="node-body">
     <div class="kv">
-      <div><span class="pill pill-red">999 / A&amp;E</span></div><div>Suspected sepsis with instability (NEWS2 / local sepsis pathway). Haemodynamically unstable. Suspected ruptured TOA (tubo-ovarian abscess). Peritonism.</div>
+      <div><span class="pill pill-red">999 / A&amp;E</span></div><div>Suspected sepsis with instability (NEWS2 / local sepsis pathway). Haemodynamically unstable. Suspected ruptured TOA (tubo-ovarian abscess). Peritonism. Suspected toxic shock syndrome (retained tampon or foreign body).</div>
       <div><span class="pill pill-red">Same-day Gynae</span></div><div>PID with sepsis/significant systemic illness, severe pain or peritonism, suspected TOA, pregnancy, diagnostic uncertainty/possible surgical abdomen, inability to tolerate or adhere to oral treatment, or no improvement after 72 hours. Post-procedure discharge + fever. Pregnancy with concerning features → maternity services. Suspected foreign body in child → local paediatric pathway.</div>
       <div><span class="pill pill-purple">Suspected cancer: Gynaecology</span></div><div>Unexplained postmenopausal bleeding → suspected cancer pathway. Suspicious cervical lesion → urgent gynaecology/cervical-cancer referral. Discharge alone is not automatically a suspected-cancer referral. · <b>NICE NG12 (updated April 2026):</b> age 55 and over with unexplained vaginal discharge that is a first presentation, or with thrombocytosis, or with reported haematuria → consider urgent direct-access ultrasound (endometrial)</div>
       <div>Sexual Health Clinic</div><div>Confirmed gonorrhoea (specialist management, contact tracing, culture sensitivity). Recurrent BV/candidiasis not responding. Possible LGV, syphilis, Mycoplasma genitalium. Partner tracing services.</div>
@@ -394,8 +340,8 @@ body{font-family:'DM Sans',sans-serif;background:#f1f5f9;color:var(--ink);min-he
     </div>
     <p style="margin-top:.75rem"><strong>Special situations:</strong></p>
     <div class="kv">
-      <div>Recurrent BV (&gt;3/year)</div><div>Confirm the diagnosis rather than repeatedly treating symptoms; review intravaginal irritants and reinfection risk. Suppressive metronidazole 0.75% vaginal gel (e.g. twice weekly × 16 weeks, BASHH BV 2012) only with counselling and local/specialist guidance. Probiotics/lactic acid products are not established treatments. Boric acid is not for routine primary care — toxic if ingested, not for use in pregnancy, variable quality and licensing; specialist sexual-health/gynaecology supervision and local protocol only.</div>
-      <div>Recurrent Candida (&gt;4/year)</div><div>Confirm the diagnosis (culture; speciation and susceptibility if treatment failure); exclude pregnancy; review medication interactions, liver disease and QT risk where relevant. Induction fluconazole 150mg every 72hr × 3 doses, then 150mg weekly × 6 months. Specialist advice for non-albicans or azole-resistant infection. Consider HbA1c; HIV per risk. Treat partner only if symptomatic.</div>
+      <div>Recurrent BV (≥3/year; no agreed threshold)</div><div>Confirm the diagnosis rather than repeatedly treating symptoms; review intravaginal irritants and reinfection risk. Suppressive metronidazole 0.75% vaginal gel (e.g. twice weekly × 16 weeks, BASHH BV 2012) only with counselling and local/specialist guidance. Probiotics/lactic acid products are not established treatments. Boric acid is not for routine primary care — toxic if ingested, not for use in pregnancy, variable quality and licensing; specialist sexual-health/gynaecology supervision and local protocol only.</div>
+      <div>Recurrent Candida (≥4/year)</div><div>Confirm the diagnosis (culture; speciation and susceptibility if treatment failure); exclude pregnancy; review medication interactions, liver disease and QT risk where relevant. Induction fluconazole 150mg every 72hr × 3 doses, then 150mg weekly × 6 months. Specialist advice for non-albicans or azole-resistant infection. Consider HbA1c; HIV per risk. Treat partner only if symptomatic.</div>
       <div>Atrophic vaginitis</div><div>Vagifem pessary 10µg OD × 2 weeks → twice weekly long-term. Or Ovestin cream. Safe long-term. Lubricants (Replens) for symptomatic relief.</div>
     </div>
   </div>
@@ -422,6 +368,7 @@ body{font-family:'DM Sans',sans-serif;background:#f1f5f9;color:var(--ink);min-he
       <div class="lstile"><b>Condom use</b> Consistent condom use reduces STI transmission and also reduces BV recurrence rates (protective against semen alkalinisation of vaginal pH). Discuss dual protection — contraception + condoms.</div>
       <div class="lstile"><b>Underwear and clothing</b> Breathable cotton underwear and avoiding tight clothing may be offered as comfort advice — low-evidence and not proven to prevent Candida.</div>
       <div class="lstile"><b>Antibiotic stewardship</b> Broad-spectrum antibiotics for non-vaginal indications cause candida recurrence. Avoid unnecessary broad-spectrum antibiotics. If recurrent antibiotic-associated VVC is clearly documented, consider an individualised plan after confirming the diagnosis and reviewing risk factors — no routine fluconazole prophylaxis (interactions, hepatotoxicity, QT effects, resistance, pregnancy).</div>
+      <div class="lstile"><b>Cervical screening</b> Check cervical screening is up to date; screening is not a diagnostic test — blood-stained or persistent discharge, a suspicious cervix or postcoital/intermenstrual bleeding needs a cervical examination whatever the last result.</div>
       <div class="lstile"><b>Partner treatment for STIs</b> Contact tracing and partner treatment is essential for chlamydia, gonorrhoea, and trichomonas. Re-infection is the main driver of recurrence. Sexual Health clinics provide partner notification services. Expedited partner therapy (EPT) where appropriate.</div>
       <div class="lstile"><b>Probiotics</b> Probiotics are not first-line treatment; evidence for prevention of recurrent BV or VVC is limited and inconsistent, and products are not equivalent.</div>
       <div class="lstile"><b>Glucose control in diabetes</b> Elevated blood glucose → altered vaginal glycogen → Candida proliferation. Optimise glycaemic control against an individualised target according to diabetes treatment and risk profile.</div>
@@ -430,7 +377,7 @@ body{font-family:'DM Sans',sans-serif;background:#f1f5f9;color:var(--ink);min-he
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">Vaginal douching is the single most modifiable risk factor for recurrent BV — studies show women who douche have 2× higher BV prevalence. This advice is counterintuitive to many patients (who associate cleanliness with douching) and requires emphatic, non-judgmental communication. Partner treatment for trichomonas reduces re-infection rates from 36% to &lt;10% — it is clinically essential, not optional. Glucose control (with individualised targets) is part of managing recurrent vulvovaginal candidiasis in people with diabetes.</div>
+    <div class="why-drawer">Vaginal douching is the single most modifiable risk factor for recurrent BV — douching is consistently associated with BV. This advice is counterintuitive to many patients (who associate cleanliness with douching) and requires emphatic, non-judgmental communication. Partner treatment for trichomonas prevents re-infection — it is clinically essential, not optional. Glucose control (with individualised targets) is part of managing recurrent vulvovaginal candidiasis in people with diabetes.</div>
   </div>
 </div>
 <div class="connector"></div>
@@ -447,25 +394,25 @@ body{font-family:'DM Sans',sans-serif;background:#f1f5f9;color:var(--ink);min-he
   </div>
   <div class="node-body">
     <div class="kv">
-      <div>BV / Candida</div><div>No routine follow-up needed if symptoms resolve. Retest if symptoms recur. If recurrent (&gt;3/year): scheduled review at 3 and 6 months. Culture to identify non-albicans Candida species if treatment failure.</div>
-      <div>Chlamydia TOC</div><div>Test of cure is not routine in non-pregnant adults. Consider it in pregnancy, persistent symptoms, suspected non-adherence, rectal infection, azithromycin treatment, treatment failure or re-exposure; avoid testing too early because of residual nucleic acid. Retest for reinfection at about 3 months.</div>
+      <div>BV / Candida</div><div>No routine follow-up needed if symptoms resolve. Retest if symptoms recur. If recurrent (BV ≥3/year; candida ≥4/year): scheduled review at 3 and 6 months. Culture to identify non-albicans Candida species if treatment failure.</div>
+      <div>Chlamydia TOC</div><div>Test of cure is not routine in non-pregnant adults. In pregnancy, a test of cure is needed no earlier than 3 weeks after finishing treatment. Consider it with persistent symptoms, suspected non-adherence, rectal infection, azithromycin treatment, treatment failure or re-exposure; avoid testing too early because of residual nucleic acid. Retest for reinfection at about 3 months.</div>
       <div>Gonorrhoea TOC</div><div><span class="pill pill-amber">Sexual-health follow-up</span> — specialist sexual-health follow-up is required; the service determines the test-of-cure strategy based on site, treatment, symptoms and local resistance advice (not a GP-managed NAAT at 2 weeks).</div>
       <div>Trichomonas TOC</div><div>No universal test of cure — retest if symptoms persist or recur, or where required by specialist/local policy. Confirm partner treatment.</div>
       <div>PID review</div><div>Review at 72 hours — assess response. If no improvement: consider IV antibiotics (admit), repeat swabs for resistance. Full 14-day course mandatory. Further review for symptom resolution, adherence, partner management and complications (fertility counselling if severe). Persistent pain after treatment → consider tubo-ovarian abscess, alternative diagnosis, resistant infection or incorrect diagnosis.</div>
-      <div><span class="pill pill-red">999 safety-net</span></div><div>Worsening fever + pelvic pain after starting antibiotics (TOA? Sepsis?). Haemodynamic compromise. Severe abdominal pain / peritonism.</div>
-      <div><span class="pill pill-amber">Same-day safety-net</span></div><div>No improvement in PID at 72 hours. New fever developing on oral antibiotics for BV/discharge. Blood-stained discharge developing. Any concern re: pregnancy complication. Vomiting or inability to take medication. New bleeding. Persistent/recurrent discharge despite treatment → reassess.</div>
+      <div><span class="pill pill-red">999 safety-net</span></div><div>Worsening fever + pelvic pain after starting antibiotics (TOA? Sepsis?). Haemodynamic compromise. Severe abdominal pain / peritonism. Swelling of the face, lips or tongue, difficulty breathing or a severe rash after treatment (anaphylaxis). Fever, rash, vomiting or feeling faint with a tampon or other item in the vagina (toxic shock).</div>
+      <div><span class="pill pill-amber">Same-day safety-net</span></div><div>Pelvic or lower abdominal pain with fever. Feeling systemically unwell. No improvement in PID at 72 hours. New fever developing on oral antibiotics for BV/discharge. Blood-stained discharge developing. Any concern re: pregnancy complication. Vomiting or inability to take medication. New bleeding. Persistent/recurrent discharge despite treatment → reassess.</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">Test of cure for gonorrhoea is directed by sexual-health services — multi-drug resistant gonorrhoea (MDRNG) is increasing in the UK (UKHSA annual gonorrhoea surveillance shows increasing ceftriaxone MIC creep) and treatment failure must be identified promptly to prevent onward transmission. BASHH 2019 moved away from routine chlamydia TOC in uncomplicated cases because NAAT remains positive for up to 3 weeks post-treatment due to residual DNA — premature testing leads to false positives and unnecessary re-treatment. PID 72-hour review is evidence-based — clinical trials show 15% of outpatient PID cases require IV therapy escalation at 72 hours.</div>
+    <div class="why-drawer">Test of cure for gonorrhoea is directed by sexual-health services — multi-drug resistant gonorrhoea (MDRNG) is increasing in the UK (UKHSA annual gonorrhoea surveillance shows increasing ceftriaxone MIC creep) and treatment failure must be identified promptly to prevent onward transmission. BASHH 2019 moved away from routine chlamydia TOC in uncomplicated cases because NAAT remains positive for up to 3 weeks post-treatment due to residual DNA — premature testing leads to false positives and unnecessary re-treatment. PID 72-hour review (BASHH) identifies the women who have not improved on oral treatment and need IV therapy or admission.</div>
   </div>
 </div>
 
 </div>
 
 <div class="alg-foot">
-  <strong>Educational use only.</strong> Primary-care summary; local sexual-health, microbiology, safeguarding and obstetric guidance takes precedence. Pathway based on: IUSTI/BASHH European guideline on vaginal discharge (2018, minor revision 2023); <a href="https://www.bashh.org/guidelines">BASHH guidelines</a> — STI testing summary guidance 2023, BV 2012, vulvovaginal candidiasis 2019, Trichomonas vaginalis 2021, PID 2019 interim update, chlamydia 2018, gonorrhoea 2019; <a href="https://gmmmg.nhs.uk/">Greater Manchester Antimicrobial Guidelines (current local version — principal prescribing reference)</a>; <a href="https://www.nice.org.uk/guidance/ng12">NICE NG12 Suspected cancer</a>; <a href="https://www.nice.org.uk/guidance/ng201">NICE NG201 Antenatal care</a>; <a href="https://www.gov.uk/drug-safety-update">MHRA fluoroquinolone safety update (January 2024)</a>; UKHSA STI surveillance and guidance; NICE NG23 (menopause — urogenital atrophy only); current SPCs for medicines listed. Always adapt to local resistance patterns and formulary.
+  <strong>Educational use only.</strong> Primary-care summary; local sexual-health, microbiology, safeguarding and obstetric guidance takes precedence. Pathway based on: IUSTI/BASHH European guideline on vaginal discharge (2018, minor revision 2023); <a href="https://www.bashh.org/guidelines">BASHH guidelines</a> — STI testing summary guidance 2023, BV 2012, vulvovaginal candidiasis 2019, Trichomonas vaginalis 2021, PID 2019 interim update, chlamydia 2026, gonorrhoea 2019; NICE NG253 Suspected sepsis; <a href="https://gmmmg.nhs.uk/">Greater Manchester Antimicrobial Guidelines (current local version — principal prescribing reference)</a>; <a href="https://www.nice.org.uk/guidance/ng12">NICE NG12 Suspected cancer</a>; <a href="https://www.nice.org.uk/guidance/ng201">NICE NG201 Antenatal care</a>; <a href="https://www.gov.uk/drug-safety-update">MHRA fluoroquinolone safety update (January 2024)</a>; UKHSA STI surveillance and guidance; NICE NG23 (menopause — urogenital atrophy only); current SPCs for medicines listed. Always adapt to local resistance patterns and formulary.
 </div>
 
 <script>

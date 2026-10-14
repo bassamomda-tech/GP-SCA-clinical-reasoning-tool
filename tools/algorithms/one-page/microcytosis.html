@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Microcytosis in adults — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/algorithms/microcytosis.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/microcytosis.html">
+<style>
+/* ==== Reasoning GP · Algorithm 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md, algorithm section):
+   0 Stop · 1 Triage · 2 Screen · 3 Assess · 4 Classify · 5 Treat today · 6 Refer · 7 Never reassure by · 8 Safety-net · ✓ Safe-to-leave check
+   Shares the protocol summary's CSS and colour meanings. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.tri td:first-child{font-weight:700;white-space:nowrap}
+.k{font-weight:700}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../microcytosis.html">← Full microcytosis algorithm</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Algorithm · 1-page summary</div>
+      <h1>Microcytosis (low MCV) in adults</h1>
+      <div class="scope"><b>For:</b> adults with an MCV &lt;80 fL, including the results inbox. <b>Not for:</b> children (paediatric guidance). Pregnancy goes to block 2 and the maternity pathway; anaemia with a normal or high MCV → anaemia algorithm.</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG12</span><span>BSG 2021</span><span>BSH 2021</span><span>BSH haemoglobinopathies</span><span>NG24</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> ferritin is the pivot. Low ferritin = iron deficiency: <b>find the source</b> — in a man or post-menopausal woman that means GI investigation, never iron alone. Normal ferritin with a low MCV is usually not iron deficiency: think thalassaemia trait or chronic disease, and do not give iron.</div>
+
+  <div class="grid">
+
+    <!-- 0 STOP -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Stop — emergency now <small>— on seeing the result or the patient</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Collapse, haemodynamic instability or major active bleeding</b> (haematemesis, melaena, heavy rectal bleeding) → <span class="when w999">999</span></li>
+          <li><b>Severe anaemia with</b> chest pain, breathlessness at rest, syncope or heart failure, or other active significant GI bleeding → <span class="when wsd">Same-day hospital</span></li>
+          <li><b>Transfusion</b> is a hospital decision on symptoms, haemodynamics and comorbidity, not Hb alone. Identify and control the bleeding source; iron is still needed afterwards.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 TRIAGE -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Triage by ferritin <small>— read with CRP and TSAT</small></h2>
+        <div class="body">
+          <table class="tri">
+            <tr><th>Ferritin</th><th>Means → next</th></tr>
+            <tr><td>&lt;15 µg/L</td><td>Absent stores: iron deficiency → treat and find the source</td></tr>
+            <tr><td>&lt;30 µg/L</td><td>Generally supports iron deficiency → as above</td></tr>
+            <tr><td>Normal/high,<br>inflammation</td><td>May be falsely normal: TSAT &lt;20% supports iron deficiency (around 45 µg/L more sensitive) → mixed or chronic disease</td></tr>
+            <tr><td>Normal, no<br>inflammation</td><td>Persistent microcytosis → haemoglobin analysis/HPLC (thalassaemia trait). No iron.</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 SCREEN -->
+      <section class="blk red">
+        <h2><span class="n">2</span>Screen <small>— one row is enough</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>IDA in a man of any age or a post-menopausal woman</b> (even without GI symptoms) → <span class="when wurg">Urgent GI investigation</span>, usually OGD + colonoscopy. Offer FIT; ≥10 µg Hb/g → <span class="when wurg">Suspected cancer pathway</span>.</li>
+            <li><b>New GI symptoms on iron</b> → <span class="when wurg">OGD or colonoscopy within 2 weeks</span></li>
+            <li><b>Very low Hb, marked microcytosis and/or splenomegaly</b> (thalassaemia major/intermedia) → <span class="when wurg">Urgent haematology</span></li>
+            <li><b>Other cytopenias or abnormal film</b>; lead, alcohol or isoniazid (sideroblastic, MDS); iron overload after transfusions → haematology.</li>
+            <li><b>Pregnancy:</b> Hb &lt;110 g/L (1st trimester), &lt;105 (later); severe, late, unresponsive or intolerant → obstetrics/haematology. <b>Both partners carriers + pregnant</b> → <span class="when wurg">Urgent genetics + obstetrics</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 ASSESS -->
+      <section class="blk blue">
+        <h2><span class="n">3</span>Assess <small>— before prescribing iron</small></h2>
+        <div class="body">
+          <p>☐ FBC: MCV, MCH, RDW, film &nbsp;☐ Ferritin; CRP/ESR if inflammation suspected; TSAT where ferritin may mislead; reticulocyte Hb if available &nbsp;☐ Renal function, coeliac serology (tTG-IgA + total IgA), urine dipstick &nbsp;☐ Family origin, periods, NSAIDs, diet</p>
+          <p>Not routine: serum iron alone, sTfR, zinc protoporphyrin, hepcidin, Mentzer index.</p>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 4 CLASSIFY -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Classify <small>— only if the screen is negative</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Iron deficiency</b> — low ferritin. Blood loss (GI; periods if premenopausal), malabsorption (coeliac, H. pylori, IBD), demand, intake → iron + treat the cause.</li>
+            <li><b>Thalassaemia trait</b> — persistent low MCV, normal ferritin, Hb normal or mildly low → HPLC: beta HbA2 usually ≥3.5% (iron deficiency lowers it); alpha often normal (DNA testing lab-led).</li>
+            <li><b>Chronic disease</b> — normal/high ferritin, raised CRP; usually borderline MCV → treat the condition; check TSAT for co-existing deficiency.</li>
+            <li><b>Sideroblastic / MDS</b> — iron-loaded pattern, other cytopenias → haematology.</li>
+            <li><b>Uncertain</b> — unexplained persistent microcytosis, normal ferritin → haematology.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5 TREAT TODAY -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat today <small>— only these</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Iron deficiency:</b> ferrous sulphate 200 mg once daily (65 mg elemental); alternate days if not tolerated. <b>Alongside</b> GI investigation and FIT, never instead. Continue about 3 months after Hb normalises.</li>
+            <li><b>IV iron</b> — consider if oral fails, is not tolerated or absorbed, or rapid repletion is needed → local pathway.</li>
+            <li><b>The cause:</b> heavy periods (NG88); H. pylori test and treat; coeliac → gluten-free diet; stop NSAIDs if possible.</li>
+            <li><b>Thalassaemia trait:</b> no iron unless deficiency is confirmed. Doses per BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">6</span>Refer routinely <small>— and follow up</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>FBC at about 4 weeks</b> (expect Hb up ~10 g/L by 2 weeks). No rise → check adherence, ongoing loss, diagnosis, malabsorption, inflammation, renal disease; then haematology.</li>
+            <li>IDA persisting or recurring after good-quality negative endoscopy → gastroenterology (small bowel, renal tract).</li>
+            <li><b>Carrier:</b> document; partner testing (NHS screening programme) if pregnancy planned or ongoing; both carriers → specialist counselling.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 7 NEVER REASSURE BY -->
+    <section class="blk slate span">
+      <h2><span class="n">7</span>Never reassure by</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>A good Hb response to iron in a man or post-menopausal woman.</li>
+          <li>A FIT &lt;10 µg Hb/g, or a FIT not returned, against strong clinical concern.</li>
+          <li>A normal ferritin with inflammation, infection, liver disease or cancer.</li>
+          <li>"Dietary" iron deficiency without investigation.</li>
+          <li>One end of the gut only: oesophagitis on OGD does not clear the colon.</li>
+          <li>A Mentzer index, to diagnose or exclude thalassaemia trait.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">8</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Call 999 or go to A&amp;E if you vomit blood, pass a lot of blood or black tarry stools, feel faint or collapse, or have chest pain or severe breathlessness.”</span>
+        <b>Same day:</b> <span class="say">“Contact us today for bloody stools, difficulty swallowing, worse tummy pain, weight loss or worsening breathlessness. Iron turns stools black; tarry, sticky, smelly stools are different.”</span></p>
+        <p><b>Close the loop:</b> action FIT and endoscopy results and confirm the referral was received. If investigation is declined, document the cancer risk explained and the safety-net given.</p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE TO LEAVE -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe to manage in primary care only if <small>— all five, documented</small></h2>
+      <div class="body check">
+        <span>No block 0–2 row applies</span>
+        <span>Ferritin read with CRP (± TSAT) before any iron</span>
+        <span>Source sought: GI investigation + FIT if man or post-menopausal woman; coeliac, urine</span>
+        <span>Carrier status recorded; partner testing advised</span>
+        <span>FBC at ~4 weeks booked; safety-net given</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../microcytosis.html">Reasoning GP microcytosis algorithm</a>, which holds the detail, iron-study patterns, thalassaemia management and evidence. Sources: NICE NG12 (updated April 2026), NG24, NG88, NG20; BSG 2021 iron deficiency anaemia; BSH 2021 laboratory diagnosis of iron deficiency; BSH haemoglobinopathies 2023 and the NHS Sickle Cell and Thalassaemia Screening Programme; BSH iron deficiency in pregnancy; MHRA; BNF; GMMMG formulary. Clinical decision support — follow local acute-transfer, GI and haematology pathways and check doses in the current BNF.</div>
+
+</main>
+</body>
+</html>

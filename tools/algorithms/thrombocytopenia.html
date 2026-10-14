@@ -253,45 +253,15 @@ body {
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — exclude EDTA pseudothrombocytopenia first, then read the film (isolated vs other cytopenias vs a haemolytic/TTP picture), treat the cause, refer, modify factors, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Low platelet count</span><div class="body">Review previous counts and the lab comment. If unexpected and the patient is well with no bleeding, repeat FBC with blood film; if clumping is reported or suspected, request a citrate (or lab-advised) sample. Don't delay urgent referral for symptoms, bleeding, other cytopenias or an abnormal film.</div></div>
-    <div class="arrow"></div>
-    <div class="box dec"><span class="lbl">Step 1 · Safety — bleeding / very low / TTP</span><span class="ttl">Bleeding, very low, or TTP picture?</span><div class="body">Major or clinically significant bleeding · MAHA picture (schistocytes, raised LDH, low haptoglobin) ± neurological, renal, cardiac or GI features · DIC · suspected HIT · pregnancy with suspected HELLP · platelets &lt;20 or falling rapidly · blasts / pancytopenia.</div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Admit</span><span class="ttl">Same-day haematology / 999</span><div class="body">Major bleeding, suspected TTP/TMA (immediate discussion with haematology/regional TTP service — don't wait for the full pentad or ADAMTS13), DIC with instability, pregnancy with suspected HELLP/eclampsia → emergency. Platelets &lt;20, clinically significant bleeding, schistocytes/blasts or pancytopenia → same-day haematology.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">Citrate repeat + film</span><div class="body">Repeat FBC + film; review Hb, WCC and red-cell indices; clotting, LFT, B12/folate; review drugs, alcohol and recent infection. Suspected ITP: HIV, hepatitis B/C and other secondary causes according to clinical context.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · what does the film show?</span></div>
-    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Isolated + well</div><div class="box ix"><span class="ttl">Often ITP</span><div class="body"><b>ITP</b> (diagnosis of exclusion), drugs (heparin/HIT, quinine, valproate), alcohol, viral, gestational.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">With other cytopenias</div><div class="box ix"><span class="ttl">Marrow</span><div class="body">MDS, leukaemia, aplasia, hypersplenism, B12/folate deficiency.</div></div></div>
-      <div class="col"><div class="blabel">With haemolysis</div><div class="box ix"><span class="ttl">Emergency</span><div class="body"><b>TTP / HUS / DIC</b> — fragments on film, deranged clotting. Emergency / same-day haematology.</div></div></div>
-    </div></div>
-    <div class="arrow"></div>
-    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> major bleeding, TTP/TMA, DIC with instability, HELLP/eclampsia. <span class="pill pill-red">Same-day haematology</span> platelets &lt;20 (especially if falling), clinically significant bleeding, schistocytes/blasts, pancytopenia, unexplained &lt;50, suspected drug-induced immune thrombocytopenia, concerning pregnancy-related thrombocytopenia. <span class="pill pill-blue">Discuss / refer per local pathway</span> &lt;100, persistent or falling counts, or suspected ITP.</div></div>
-    <div class="arrow"><span class="tag">Step 8 · modifiable factors &amp; precautions</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Modifiable factors &amp; precautions</span><span class="ttl">Remove drivers, reduce bleeding risk</span><div class="body"><b>Review suspected culprit drugs</b> (heparin → HIT needs a non-heparin anticoagulant, not just cessation; quinine, valproate, some antibiotics) — don't stop essential medicines without considering alternatives; <b>reduce alcohol</b> (marrow suppression). While platelets are low, <b>avoid NSAIDs/aspirin</b> when significant thrombocytopenia or bleeding is present unless haematology advises, individualise sport advice, <b>don't stop anticoagulants/antiplatelets automatically</b> (discuss with haematology), and counsel on bleeding precautions. Treat reversible causes (B12/folate, viral, hypersplenism). Replace deficiencies.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Recheck &amp; when to escalate</span><div class="body"><b>Repeat FBC + film</b> to confirm trend; monitor stable mild thrombocytopenia per the local laboratory/haematology pathway. <b>999 / same-day</b> for spontaneous bruising/petechiae, mucosal or GI bleeding, severe headache (intracranial bleed), or a TTP picture (haemolysis with neurological, renal, cardiac or GI features). New <b>other cytopenias or blasts</b> on film → urgent haematology.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>Unexpected low count in a well patient?</b> Check the film for clumping and repeat (citrate or lab-advised sample) — but never delay urgent referral for bleeding, other cytopenias or an abnormal film.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/thrombocytopenia.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/thrombocytopenia.html">⬇ Download PDF</button><a class="sum-open" href="one-page/thrombocytopenia.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/thrombocytopenia.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -309,7 +279,7 @@ body {
       <div class="rftile"><b>Platelets <20 × 10⁹/L or falling rapidly</b> Urgent same-day haematology assessment, even without bleeding (especially below 10). Treatment depends on the cause; no routine prophylactic platelets in ITP, HIT or TTP (NICE NG24)</div>
       <div class="rftile"><b>Active major bleeding</b> GI bleed, haematuria, haemoptysis, ICH, retinal haemorrhage → 999 / emergency at any platelet count (bleeding risk is not set by the count alone)</div>
       <div class="rftile"><b>TTP / TMA</b> Thrombocytopenia with microangiopathic haemolytic anaemia (schistocytes, raised LDH, low haptoglobin, indirect hyperbilirubinaemia, reticulocytosis), particularly with neurological, renal, cardiac or GI features → emergency: immediate discussion with the regional TTP/haematology service. Do not wait for the full pentad or an ADAMTS13 result</div>
-      <div class="rftile"><b>Purpuric rash</b> Non-blanching petechiae, extensive purpura, mucosal bleeding (gums, nose) → same-day FBC/film and haematology discussion</div>
+      <div class="rftile"><b>Purpuric rash</b> Non-blanching petechiae, extensive purpura, mucosal bleeding (gums, nose) → same-day FBC/film and haematology discussion. With fever or if unwell → 999 (suspected meningococcal disease or sepsis with DIC; NICE NG240, NG253)</div>
       <div class="rftile"><b>DIC features</b> Bleeding from multiple sites, oozing IV sites, hypotension, confusion → 999 (e.g. sepsis-, trauma- or obstetric-related DIC)</div>
       <div class="rftile"><b>Pregnancy</b> Thrombocytopenia with hypertension, headache, visual changes or epigastric pain → emergency obstetric assessment (pre-eclampsia/HELLP — HELLP also requires haemolysis and elevated liver enzymes)</div>
       <div class="rftile"><b>New drug or heparin exposure</b> Recent heparin, quinine, antibiotics, chemotherapy + platelet fall → same-day haematology (drug-induced immune thrombocytopenia or HIT; emergency if HIT with thrombosis or severe concern). Suspected HIT: stop all heparin, 4Ts score, non-heparin anticoagulant per specialist protocol</div>
@@ -424,7 +394,7 @@ body {
     <p>Examine for signs of bleeding, organomegaly, and underlying conditions causing thrombocytopenia.</p>
     <div class="kv">
       <div>Vital signs</div>
-      <div>Fever + thrombocytopenia → sepsis (DIC), TTP, viral infection. Hypotension + tachycardia → active bleeding (GI, retroperitoneal). BP >140/90 in pregnancy → pre-eclampsia/HELLP.</div>
+      <div>Fever + thrombocytopenia → sepsis (DIC), TTP, viral infection. Hypotension + tachycardia → active bleeding (GI, retroperitoneal). BP ≥140/90 in pregnancy → pre-eclampsia/HELLP (NICE NG133).</div>
       
       <div>Skin and mucosa</div>
       <div>Inspect skin for <b>petechiae</b> (pinpoint haemorrhages, non-blanching), <b>purpura</b> (larger bruises >3 mm), <b>ecchymoses</b> (large bruises >1 cm). Check oral mucosa, conjunctivae for bleeding.</div>
@@ -514,7 +484,7 @@ body {
     <p>Refer based on severity, bleeding risk, mechanism, and pregnancy status. Severe thrombocytopenia requires same-day haematology.</p>
     <div class="kv">
       <div><span class="pill pill-red">999 Emergency</span></div>
-      <div>Major bleeding (GI, ICH, haemoptysis). Suspected TTP/TMA (thrombocytopenia + MAHA, especially with neurological, renal, cardiac or GI features — do not wait for the full pentad). DIC with instability or significant bleeding. Suspected HIT with thrombosis or severe clinical concern. Pregnancy with suspected HELLP/eclampsia. Reduced consciousness or suspected intracranial haemorrhage.</div>
+      <div>Major bleeding (GI, ICH, haemoptysis). Suspected TTP/TMA (thrombocytopenia + MAHA, especially with neurological, renal, cardiac or GI features — do not wait for the full pentad). DIC with instability or significant bleeding. Suspected HIT with thrombosis or severe clinical concern. Pregnancy with suspected HELLP/eclampsia. Reduced consciousness or suspected intracranial haemorrhage. Non-blanching rash with fever or signs of sepsis (suspected meningococcal disease or sepsis with DIC; NICE NG240, NG253).</div>
       
       <div><span class="pill pill-red">Same-day haematology</span></div>
       <div>Platelets <20 × 10⁹/L, particularly if falling. Clinically significant bleeding. Schistocytes or blasts on film. Pancytopenia. Significant unexplained thrombocytopenia <50. Suspected drug-induced immune thrombocytopenia or HIT. Concerning pregnancy-related thrombocytopenia. A rapid fall — urgency is greater than the absolute count suggests.</div>
@@ -629,11 +599,11 @@ body {
       
       <div class="lstile"><b>Menstrual management</b> Heavy periods common in thrombocytopenia. Tranexamic acid can help menstrual or mucosal bleeding, but avoid or seek specialist advice with haematuria, DIC, significant thrombotic risk, certain renal impairment, or suspected TTP/HIT. Mirena coil or COCP suppresses menstruation. Iron supplementation if anaemic (ferrous sulfate 200 mg OD).</div>
       
-      <div class="lstile"><b>Shaving safety</b> Use electric razor (not wet shave). Apply pressure if cut. Avoid waxing/threading (trauma). Epistaxis: pinch nose for 20 minutes, ice pack, lean forward (not back).</div>
+      <div class="lstile"><b>Shaving safety</b> Use electric razor (not wet shave). Apply pressure if cut. Avoid waxing/threading (trauma). Epistaxis: lean forward (not back) and pinch the soft part of the nose for 10–15 minutes; ice pack may help.</div>
       
-      <div class="lstile"><b>IM injections and procedures</b> Agree thresholds for IM injections and other procedures with haematology (or dentistry, obstetrics, anaesthesia); NICE NG24 suggests considering platelets above 50 × 10⁹/L for invasive procedures and higher for high-risk or critical-site surgery, but the cause and procedure matter. Warn healthcare staff. Avoid acupuncture, tattoos, piercings. Blood draws: apply firm pressure for 10 minutes post-venepuncture.</div>
+      <div class="lstile"><b>IM injections and procedures</b> Agree thresholds for IM injections and other procedures with haematology (or dentistry, obstetrics, anaesthesia); NICE NG24 suggests considering platelets above 50 × 10⁹/L for invasive procedures and higher for high-risk or critical-site surgery, but the cause and procedure matter. Warn healthcare staff. Avoid acupuncture, tattoos, piercings. Blood draws: apply firm pressure after venepuncture.</div>
       
-      <div class="lstile"><b>Recognise serious bleeding</b> Seek emergency help for: severe headache (ICH), vomiting blood, black stools (GI bleed), haematuria, breathlessness (pulmonary haemorrhage), sudden vision loss (retinal bleed). Teach patient warning signs.</div>
+      <div class="lstile"><b>Recognise serious bleeding</b> Call 999 for: severe headache, weakness, a fit or confusion (ICH), vomiting blood, black stools (GI bleed), heavy blood in the urine, coughing blood or breathlessness (pulmonary haemorrhage), sudden vision loss (retinal bleed). Teach patient warning signs.</div>
     </div>
   </div>
   <div class="why-row">
@@ -672,10 +642,10 @@ body {
       <div>Long-term haematology follow-up; monitoring frequency and any change or step-down of therapy are haematology decisions.</div>
       
       <div><span class="pill pill-red">Safety-net 999</span></div>
-      <div>Severe headache, vomiting, confusion (ICH). Vomiting blood, black stools (GI bleed). Haemoptysis (pulmonary haemorrhage). Sudden vision loss (retinal haemorrhage). Severe dyspnoea (pulmonary bleed).</div>
+      <div>Severe headache, vomiting, confusion (ICH). Weakness of the face, arm or leg, or a fit (ICH, TTP). Vomiting blood, black stools (GI bleed). Haemoptysis (pulmonary haemorrhage). Sudden vision loss (retinal haemorrhage). Severe dyspnoea (pulmonary bleed). Bleeding from several places at once (DIC). A rash that does not fade under pressure with fever or feeling very unwell. Heavy blood in the urine or feeling faint with bleeding. In pregnancy: severe headache, vision changes or upper abdominal pain (emergency maternity assessment).</div>
       
       <div><span class="pill pill-red">Safety-net same-day</span></div>
-      <div>Extensive new purpura or petechiae. Uncontrolled epistaxis >20 min. Heavy vaginal bleeding (soaking pads hourly). Haematuria. Gum bleeding not stopping with pressure. Any bleeding in platelets <20.</div>
+      <div>Extensive new purpura or petechiae. Nosebleed not stopping after 10–15 minutes of firm pressure (go to A&amp;E). Heavy vaginal bleeding (soaking pads hourly). Blood in the urine (heavy, or feeling faint → 999). Gum bleeding not stopping with pressure. Any bleeding in platelets <20.</div>
       
       <div>Re-referral criteria</div>
       <div>Platelets falling despite treatment. New bleeding on stable platelet count. Platelet count <20 × 10⁹/L (ICH risk). Patient requires a procedure (surgery, dental, neuraxial anaesthesia) — agree procedure-specific thresholds with haematology/anaesthesia. Pregnancy planning (pre-conception counselling).</div>

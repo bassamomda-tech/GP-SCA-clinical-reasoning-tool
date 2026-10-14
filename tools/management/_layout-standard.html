@@ -26,7 +26,7 @@ MG.render({
     {t:"One renderer \u00b7 management-engine.js ?v=5"},
     {t:"One stylesheet \u00b7 management.css ?v=4"},
     {t:"Numbering is automatic 01\u219215"},
-    {t:"2WW pill where NG12 applies", tone:"tw"},
+    {t:"Suspected cancer pill where NG12 applies", tone:"tw"},
     {t:"Approve before rollout", tone:"ok"}
   ],
   lead:'<div class="mg-layers"><a href="hypertension.html"><b>Hypertension v3.0</b><small>the reference implementation \u2192</small></a><a href="gout.html"><b>Gout v2.0</b><small>to be aligned \u2192</small></a><a href="menieres.html"><b>M\u00e9ni\u00e8re\u2019s v2.0</b><small>to be aligned \u2192</small></a></div>',
@@ -76,7 +76,7 @@ MG.render({
        {b:"cards", items:[
          {tone:"plain", h:"Baseline", html:"The tests everyone gets, grouped (urine, bloods, imaging, risk score)."},
          {tone:"plain", h:"Consider, selectively", html:"Named test + the trigger that justifies it \u2014 never a bare \u201cconsider\u201d."},
-         {tone:"purple", h:"NG12 slot", html:"Where a direct-access cancer test applies (FIT, CA-125, CXR, PSA, urgent FBC), it appears here <em>and</em> is restated in Refer with the <span class='tw'>2WW</span> pill and the qualifying age.", src:"mandatory per house rules"}
+         {tone:"purple", h:"NG12 slot", html:"Where a direct-access cancer test applies (FIT, CA-125, CXR, PSA, urgent FBC), it appears here <em>and</em> is restated in Refer with the <span class='tw'>Suspected cancer</span> pill and the qualifying age.", src:"mandatory per house rules"}
        ]}
      ]},
     {id:"treat", nav:"Who to treat", title:"Who gets treatment?", sub:"Required. The threshold, and the shared decision where the threshold is soft.",
@@ -116,11 +116,11 @@ MG.render({
        ]},
        {b:"say", html:"<b>Component \u00b7 patient script</b> A teal script block giving the explanation in plain speech \u2014 what the treatment does, what to expect, and the one instruction that determines success. Every protocol carries at least one."}
      ]},
-    {id:"refer", nav:"Refer", title:"Refer \u2014 when to step beyond primary care", sub:"Required. Same-day, 2WW, urgent and routine, each with the explicit trigger \u2014 plus what primary care keeps.",
+    {id:"refer", nav:"Refer", title:"Refer \u2014 when to step beyond primary care", sub:"Required. Same-day, suspected cancer, urgent and routine, each with the explicit trigger \u2014 plus what primary care keeps.",
      blocks:[
        {b:"cards", items:[
          {tone:"red", h:"Same-day / emergency", html:"The named list."},
-         {tone:"purple", h:"Urgent suspected cancer <span class='tw'>2WW</span> \u00b7 NICE NG12 (updated April 2026)", html:"The precise threshold restated \u2014 age, modifying feature, and action (USC referral, direct-access test, or 48-hour referral). If the condition has <em>no</em> NG12 criterion, the page says so explicitly rather than inventing one.", src:"house rule"},
+         {tone:"purple", h:"Urgent suspected cancer referral <span class='tw'>Suspected cancer</span> \u00b7 NICE NG12 (updated April 2026)", html:"The precise threshold restated \u2014 age, modifying feature, and action (USC referral, direct-access test, or 48-hour referral). If the condition has <em>no</em> NG12 criterion, the page says so explicitly rather than inventing one.", src:"house rule"},
          {tone:"plain", h:"Routine + what we keep", html:"Specialist input triggers, and the explicit statement of what stays in primary care."}
        ]},
        {b:"say", html:"<b>Referral script</b> The sentence to say to the patient, and the sentence to put in the referral."}

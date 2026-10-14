@@ -92,68 +92,14 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
     <small>Risk-stratified assessment — cancer, organic disease, malnutrition and psychosocial causes</small>
   </div>
 </div>
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — unintentional weight loss needs balanced assessment for cancer, organic disease, malnutrition and psychosocial causes: quantify it, screen localising red flags, investigate selectively guided by history and examination, sort malignant / organic / psychosocial, act on findings and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Unintentional weight loss</span><div class="body"><b>Quantify</b> (around 5% or more over 6–12 months is clinically significant; use documented weights, or a strong clinical history — belt/clothing size change, family observations — if none). Appetite, GI/systemic symptoms, mood, drugs, social circumstances. <b>Examine</b> — nutritional status, lymph nodes, thyroid, chest, abdomen/masses, oral/dental; rectal, breast, pelvic or testicular examination where clinically indicated.</div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — localising cancer red flags</span><span class="ttl">Any site-specific feature?</span><div class="body"><ul>
-      <li><b>GI</b> — dysphagia, rectal bleeding, change in bowel habit, abdominal mass, jaundice</li>
-      <li><b>Respiratory</b> — haemoptysis, persistent cough, chest signs</li>
-      <li><b>Haematological</b> — lymphadenopathy, bruising, night sweats, bone pain</li>
-      <li><b>Urological/gynae</b> — haematuria, postmenopausal bleeding, pelvic mass</li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — localising flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Site-specific suspected cancer</span><div class="body">Direct to the relevant urgent suspected-cancer pathway based on the localising feature (lung/colorectal/upper-GI/haematology/urology, etc.).</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO localising feature</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">Targeted first-line tests</span><div class="body"><b>FBC, U&amp;E/eGFR, LFTs/albumin, calcium, CRP/ESR, HbA1c, TFTs, urine dipstick</b>, guided by history and examination; add selectively <b>ferritin, B12/folate, coeliac serology, HIV, CXR, FIT, myeloma screen, PSA</b> according to symptoms and NG12 criteria.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · which category?</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Malignancy</div><div class="box ix"><span class="ttl">Consider</span><div class="body">GI, lung, haematological (lymphoma/myeloma), renal, pancreatic, ovarian/prostate — especially in older adults and with alarm features.</div></div></div>
-      <div class="col"><div class="blabel">Organic non-cancer</div><div class="box ix"><span class="ttl">Systemic</span><div class="body"><b>Hyperthyroidism, uncontrolled diabetes</b>, chronic infection (<b>TB, HIV</b>), organ failure (cardiac/renal/COPD), IBD/coeliac/malabsorption.</div></div></div>
-      <div class="col"><div class="blabel">Psychosocial</div><div class="box ix"><span class="ttl">Common &amp; treatable</span><div class="body"><b>Depression, dementia, eating disorder</b>, social isolation/poverty (food insecurity), alcohol/substance use, polypharmacy.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · act on findings</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — treat the cause + support</span><span class="ttl">Cause-directed, nutrition alongside</span><div class="body"><ul>
-      <li><b>Abnormal results → relevant pathway</b> (suspected cancer pathway, endocrine, gastro, ID/TB-HIV).</li>
-      <li><b>Nutritional support:</b> MUST-guided individual nutrition plan; consider dietitian for high risk; supplements only where clinically indicated (local formulary/ACBS); treat reversible causes of poor intake (oral health, swallowing, nausea).</li>
-      <li><b>Psychosocial:</b> treat depression, dementia support, eating-disorder pathway, social prescribing/food support, alcohol services.</li>
-      <li><b>Medication review</b> — culprit drugs (metformin, SSRIs, stimulants) and appetite-affecting agents.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer — <span class="pill pill-purple">Suspected cancer · NICE NG12 (updated April 2026)</span></span><span class="ttl">Don't sit on it</span><div class="body"><ul>
-      <li>NG12 (rec 1.13.2, amended April 2026) supports <b>urgent investigation, suspected cancer or non-specific symptoms pathway referral for unexplained weight loss (over 5% in 6 months, age 60 and over), guided by other features</b> — low threshold for imaging and site-specific pathways.</li>
-      <li><b>Investigate selectively, guided by history and examination</b>; if tests are normal but loss continues or concern persists, reassess clinically and use the local <b>non-specific symptoms / rapid diagnostic pathway</b> (imaging such as CT per local pathway).</li>
-      <li>Refer per the abnormal result (haematology for paraprotein/cytopenia, gastro, endocrine, etc.).</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · nutrition &amp; modifiable factors</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Nutrition &amp; support</span><span class="ttl">Address intake &amp; circumstances</span><div class="body"><b>Food-first fortification</b> and regular meals/snacks · dietitian for high malnutrition risk; supplements only where clinically indicated · address dentition, dysphagia, nausea and social factors (shopping/cooking, finances, isolation) · alcohol reduction · optimise diabetes/thyroid; review appetite-suppressing drugs.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · monitor &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">When to come back</span><div class="body"><b>Monitor weight objectively</b> and review within 2–4 weeks if loss is continuing, tests are abnormal or pending, concern persists, nutritional risk is significant, or there is frailty/social vulnerability. <b>If weight loss continues despite normal tests, reassess clinically and escalate via the non-specific symptoms pathway</b> — do not reassure on normal initial bloods alone. Return sooner for rapid deterioration, inability to eat/drink, bleeding, jaundice, new alarm symptoms (dysphagia, lumps), severe malnutrition or physiological instability.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>Assess in a balanced, risk-stratified way:</b> most unintentional weight loss is not cancer, but cancer risk rises with age, alarm features and examination findings — investigate selectively, follow NG12 criteria, and if tests are normal but the weight keeps falling, reassess and use the non-specific symptoms pathway rather than reassure.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/weight-loss.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/weight-loss.html">⬇ Download PDF</button><a class="sum-open" href="one-page/weight-loss.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/weight-loss.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -187,7 +133,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
   <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div>Quantify weight loss</div><div>Weigh patient now — compare to recorded weights; calculate percentage loss and time course. Around 5% or more over 6–12 months is clinically significant (NICE NG12 cancer criterion: &gt;5% within 6 months, age 60+). If no previous weights, a strong clinical history (belt/clothing size change, family observations) is useful. Assess BMI, frailty and muscle loss. &gt;10% in 6 months = severe (urgent investigation regardless of cause)</div>
+      <div>Quantify weight loss</div><div>Weigh patient now — compare to recorded weights; calculate percentage loss and time course. Around 5% or more over 6–12 months is clinically significant (NICE NG12 cancer criterion: &gt;5% within 6 months, age 60+). If no previous weights, a strong clinical history (belt/clothing size change, family observations) is useful. Assess BMI, frailty and muscle loss. Unintentional loss &gt;10% within 3–6 months, or &gt;5% with BMI &lt;20, meets the NICE malnutrition criteria (CG32) — complete MUST and act on it</div>
       <div>Intentional or not?</div><div>Dietary change, increased exercise, GLP-1 agonists, new medication — confirm unintentional before investigating. If intentional + disordered pattern → eating disorder screen</div>
       <div>Appetite</div><div>Preserved appetite + weight loss → malabsorption (coeliac, IBD, pancreatic insufficiency), diabetes, hyperthyroidism. Reduced appetite → depression, malignancy, infection</div>
       <div>GI symptoms</div><div>Dysphagia, vomiting, diarrhoea, steatorrhoea (pale, floating, offensive stool = malabsorption), PR bleeding, change in bowel habit</div>
@@ -228,7 +174,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
   <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div>Weight &amp; BMI</div><div>Weigh and calculate BMI. Document BMI — if &lt;17.5 with distorted body image → anorexia nervosa. Assess muscle mass (MUAC) if frail.</div>
+      <div>Weight &amp; BMI</div><div>Weigh and calculate BMI. Document BMI — low weight with fear of weight gain or distorted body image → assess for an eating disorder; do not use BMI alone to diagnose or decide on referral (NICE NG69). Assess muscle mass (MUAC) if frail.</div>
       <div>General appearance</div><div>Cachexia (muscle wasting + fat loss), lymphadenopathy, jaundice, pallor, clubbing, oedema</div>
       <div>Thyroid</div><div>Goitre, tremor, lid lag, warm peripheries, AF — hyperthyroidism. Weight loss with preserved appetite + palpitations → TFTs urgently</div>
       <div>Abdominal exam</div><div>Hepatomegaly (metastases, cirrhosis, haematological), splenomegaly (haematological malignancy, portal hypertension), masses, ascites, PR examination</div>
@@ -271,12 +217,12 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
   <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div><span class="pill pill-red">999 / same-day</span></div><div>Severe malnutrition or physiological instability (do not rely on BMI alone), inability to eat/drink, haemodynamic instability from GI bleeding, sepsis with weight loss, acute decompensation</div>
-      <div><span class="pill pill-purple">Suspected cancer: upper GI</span></div><div>NICE NG12 (updated April 2026): dysphagia (any age), or age ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway referral; upper abdominal mass consistent with stomach cancer → suspected cancer pathway.</div>
+      <div><span class="pill pill-red">999 / same-day</span></div><div><b>999:</b> physiological instability, haemodynamic instability from GI bleeding, suspected sepsis (NICE NG253) or acute decompensation. <b>Same-day medical assessment:</b> severe malnutrition (do not rely on BMI alone) or inability to eat/drink.</div>
+      <div><span class="pill pill-purple">Suspected cancer: upper GI</span></div><div>NICE NG12 (updated April 2026): dysphagia (any age), or age ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway referral; upper abdominal mass consistent with stomach cancer → consider a suspected cancer pathway referral.</div>
       <div><span class="pill pill-purple">Suspected cancer: colorectal</span></div><div>NICE NG12 (updated April 2026) referral criteria: FIT ≥10 µg Hb/g faeces in adults with an abdominal mass, change in bowel habit, iron-deficiency anaemia, age 40+ with unexplained weight loss and abdominal pain, under 50 with rectal bleeding plus abdominal pain or weight loss, or 50+ with rectal bleeding, abdominal pain or weight loss → suspected cancer pathway. Rectal or abdominal mass, significant concern or no sample → refer directly. FIT &lt;10 does not exclude cancer — safety-net</div>
       <div><span class="pill pill-purple">Suspected cancer: lung</span></div><div>NICE NG12: age ≥40 with unexplained haemoptysis, or CXR suggesting lung cancer → suspected cancer pathway. Separately, offer an urgent CXR (performed within 2 weeks) to adults aged 40 and over with 2 or more unexplained symptoms from cough, fatigue, shortness of breath, chest pain, weight loss and appetite loss — or 1 or more if they have ever smoked. Unexplained weight loss alone in an ever-smoker aged 40 and over therefore meets the NG12 threshold for an urgent CXR</div>
       <div><span class="pill pill-purple">Suspected cancer: haematology</span></div><div>Lymphadenopathy with concerning features (size, site, supraclavicular/generalised, persistence, B-symptoms, abnormal FBC/LDH/film) per local lymphoma/haematology criteria. Myeloma: abnormal myeloma screen or paraprotein</div>
-      <div><span class="pill pill-purple">Other NG12 pathways</span></div><div>Age 60+ with weight loss plus pancreatic-associated symptoms → urgent direct-access CT (or ultrasound). Visible haematuria (age 45+, unexplained or persisting after UTI treatment) → urology. Jaundice → urgent hepatobiliary assessment. Postmenopausal bleeding → gynaecology pathway. Age 60+ with unexplained weight loss &gt;5% in 6 months and no site-specific feature → urgent investigation or non-specific symptoms pathway</div>
+      <div><span class="pill pill-purple">Other NG12 pathways</span></div><div>Age 60+ with weight loss plus pancreatic-associated symptoms → consider urgent direct-access CT (or ultrasound). Visible haematuria (age 45+, unexplained or persisting after UTI treatment) → urology. Jaundice at age 40+ → suspected cancer pathway referral (pancreatic) with urgent LFTs / USS abdomen. Postmenopausal bleeding → gynaecology pathway. Ascites or a pelvic or abdominal mass (not obviously uterine fibroids) → gynaecology suspected cancer pathway (ovarian). Unexplained bruising, bleeding or petechiae, pallor or hepatosplenomegaly → very urgent FBC (within 48 hours) to assess for leukaemia. Age 60+ with unexplained weight loss &gt;5% in 6 months and no site-specific feature → urgent investigation or non-specific symptoms pathway</div>
       <div>Eating disorders</div><div>Suspected anorexia nervosa, ARFID or bulimia requires specialist eating-disorder assessment. Arrange same-day medical assessment where there is physiological instability, severe electrolyte abnormality, dehydration, syncope, severe bradycardia, hypotension/postural drop, hypothermia, ECG abnormality, rapid weight loss, purging, severe malnutrition or high suicide risk (RCPsych MEED 2022). Do not rely on BMI alone. Refer stable cases to the community eating disorder service (NICE NG69) and signpost the BEAT charity. Do NOT manage alone in primary care.</div>
       <div>Dietitian</div><div>Complete MUST (Malnutrition Universal Screening Tool) where appropriate and act on the score. A score of 2 or more indicates high risk and should prompt an individualised nutrition plan, review of reversible causes, consideration of dietetic referral and monitoring. Prescribe oral nutritional supplements only when clinically indicated and consistent with local formulary/ACBS requirements</div>
     </div>
@@ -331,7 +277,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
       <div class="lstile"><b>Social eating</b> Encourage meals with family, friends, or community dining. Refer to local community meals service if socially isolated elderly patient.</div>
       <div class="lstile"><b>Appetite stimulation</b> Small portions, favourite foods, timing meals with social occasion. Megestrol acetate (appetite stimulant) in cancer cachexia — specialist use only. Mirtazapine may be selected for a patient with depression and poor appetite where clinically appropriate, but should not be used solely as an appetite stimulant.</div>
       <div class="lstile"><b>Exercise (preserve muscle)</b> Resistance exercise preserves muscle mass during weight loss. Even light walking + gentle strength training prevents sarcopaenia. Physiotherapy referral if severely deconditioned.</div>
-      <div class="lstile"><b>Alcohol review</b> Alcohol displaces nutrition (empty calories + poor absorption). AUDIT-C. Alcohol dependence → alcohol specialist service referral. B1 (thiamine) supplementation if alcohol excess (Pabrinex in clinic if deficiency suspected).</div>
+      <div class="lstile"><b>Alcohol review</b> Alcohol displaces nutrition (empty calories + poor absorption). AUDIT-C. Alcohol dependence → alcohol specialist service referral. Oral thiamine for harmful or dependent drinkers who are malnourished or at risk of malnutrition (NICE CG100). Suspected Wernicke's encephalopathy (confusion, ataxia, eye-movement signs) → same-day hospital assessment for parenteral thiamine.</div>
       <div class="lstile"><b>Food insecurity</b> Assess practical barriers — finances, ability to shop/cook, dentition (poor teeth = reduced intake). Signpost to local food banks, social prescribing, Meals on Wheels, community care.</div>
       <div class="lstile"><b>Dental review</b> Poor dentition is a major underdiagnosed cause of weight loss in elderly — pain on chewing reduces intake. Urgent dental referral if significant dental disease.</div>
       <div class="lstile"><b>MUST monitoring</b> Repeat MUST score monthly in patients with active weight loss. Weight trend chart — GP clinical system weight record is an underused resource for monitoring.</div>
@@ -360,7 +306,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">"No cause found" is not a reassuring endpoint if weight loss persists — it requires clinical reassessment and, where suspicion persists, the non-specific symptoms pathway, rather than routine repeat tests or passive surveillance. In anorexia nervosa, bradycardia (&lt;50 bpm) and QTc prolongation are the most life-threatening signs — ECG is a key monitoring tool and QTc prolongation (e.g. above 450 ms) needs same-day medical assessment (RCPsych MEED 2022). The SCOFF questionnaire is a 5-question screen for possible eating disorders; the SUSS test assesses muscle strength as a physical risk marker.</div>
+    <div class="why-drawer">"No cause found" is not a reassuring endpoint if weight loss persists — it requires clinical reassessment and, where suspicion persists, the non-specific symptoms pathway, rather than routine repeat tests or passive surveillance. In anorexia nervosa, bradycardia (&lt;50 bpm) and QTc prolongation are the most life-threatening signs — ECG is a key monitoring tool and QTc prolongation (MEED red: above 450 ms in females, above 430 ms in males) needs same-day medical assessment (RCPsych MEED 2022). The SCOFF questionnaire is a 5-question screen for possible eating disorders; the SUSS test assesses muscle strength as a physical risk marker.</div>
   </div>
 </div>
 

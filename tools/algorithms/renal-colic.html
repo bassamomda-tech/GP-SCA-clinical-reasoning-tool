@@ -111,43 +111,15 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — confirm with CT-KUB and control pain, but act fast on the infected obstructed kidney (a urological emergency). Manage the stone, prevent recurrence, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Renal / ureteric colic</span><div class="body">Loin-to-groin pain, colicky, nausea, haematuria. Obs, urinalysis, U&amp;E; pregnancy test. <b>Low-dose non-contrast CT</b> within 24 hours (ultrasound in pregnancy and children).</div></div>
-    <div class="arrow"></div>
-    <div class="box dec"><span class="lbl">Step 1 · Safety — infected obstruction / AKI</span><span class="ttl">Infected obstruction or AKI?</span><div class="body">Fever/sepsis + obstructing stone (infected obstructed kidney) → emergency decompression. Bilateral obstruction or single kidney with AKI. Uncontrolled pain/vomiting.</div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency urology</span><div class="body">Infected obstruction → emergency drainage (nephrostomy/stent) + antibiotics. AKI/anuria → urgent.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination localise the cause.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · common causes &amp; management</span></div>
-    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Small stone</div><div class="box act"><span class="ttl">Manage</span><div class="body">Smaller distal stones more likely to pass; NSAID (first-line analgesia), normal hydration, consider off-label alpha-blocker for distal stones &lt;10mm; strain urine; review.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Larger / persistent</div><div class="box ix"><span class="ttl">Refer</span><div class="body">&gt;5–10mm, not passing, or persistent pain → urology for intervention (ESWL/ureteroscopy).</div></div></div><div class="col"><div class="blabel">Metabolic work-up</div><div class="box ix"><span class="ttl">Prevent</span><div class="body">Recurrent stones → stone analysis, calcium, urate; dietary/fluid advice.</div></div></div>
-    </div></div>
-    <div class="arrow"></div>
-    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> infected obstructed kidney / AKI. <span class="pill pill-purple">Urology</span> large/non-passing stones, recurrent stones; analgesia with an NSAID first-line.</div></div>
-    <div class="arrow"><span class="tag">Step 8 · prevention &amp; modifiable factors</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Prevention &amp; modifiable factors</span><span class="ttl">Reduce recurrence</span><div class="body">After the acute episode, <b>enough fluid to produce ~2–2.5 L urine/day</b> (adjusted for climate, activity, renal function and heart failure) is the key measure — do not force fluids during acute colic; <b>reduce salt</b> and excessive animal protein; normal dietary calcium (don't restrict). Tailor diet to stone composition and metabolic results; urate-lowering or alkalinisation via a specialist stone pathway. <b>Strain urine</b> to catch the stone for analysis; weight management.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">When to return urgently</span><div class="body"><b>999 / same-day</b> for <b>fever or rigors with the pain</b> (infected obstructed kidney — emergency decompression), uncontrolled pain/vomiting, or reduced urine output (AKI/single kidney). <b>Review</b> small stones expected to pass; if not passed in ~4 weeks or pain persists → urology. <b>Stone analysis</b> when a stone is retrieved; serum calcium for all; refer recurrent/high-risk stone disease for metabolic assessment.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution crit">⚠️ <b>Fever plus an obstructing stone is a urological emergency:</b> an infected obstructed kidney needs same-day decompression and antibiotics — it can rapidly cause sepsis and kidney loss.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/renal-colic.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/renal-colic.html">⬇ Download PDF</button><a class="sum-open" href="one-page/renal-colic.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/renal-colic.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -162,8 +134,8 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
   <div class="node-body">
     <p>Infected obstruction (stone + sepsis) is a urological emergency with high mortality. Always exclude before managing conservatively.</p>
     <div class="rfgrid">
-      <div class="rftile"><b>Suspected infected obstructed system</b> Renal colic or obstruction with systemic illness, fever, rigors, hypotension, tachycardia, confusion, oliguria/anuria or AKI (fever may be absent) → <span class="pill pill-red">Immediate emergency hospital assessment</span> — IV antibiotics per local sepsis policy, urgent imaging and urological decompression; do not manage conservatively</div>
-      <div class="rftile"><b>Septic shock features</b> HR &gt;100, BP &lt;90 systolic, altered consciousness, rigors → <span class="pill pill-red">999 Emergency</span> — sepsis 6 protocol + urology</div>
+      <div class="rftile"><b>Suspected infected obstructed system</b> Renal colic or obstruction with systemic illness, fever, rigors, hypotension, tachycardia, confusion, oliguria/anuria or AKI (fever may be absent) → <span class="pill pill-red">999 — immediate emergency hospital assessment</span> — IV antibiotics per local sepsis policy, urgent imaging and urological decompression; do not manage conservatively</div>
+      <div class="rftile"><b>High-risk sepsis features (NICE NG253)</b> Systolic ≤90 (or &gt;40 below baseline), HR &gt;130, RR ≥25, SpO₂ &lt;92% on air, new altered mental state, no urine for 18 hours, mottled or ashen skin, non-blanching rash → <span class="pill pill-red">999 Emergency</span> — sepsis 6 protocol + urology</div>
       <div class="rftile"><b>Bilateral obstruction / solitary kidney</b> Suspected obstruction in a solitary functioning kidney, bilateral obstruction, anuria, AKI or deteriorating renal function → <span class="pill pill-red">Same-day urgent urology</span> — emergency transfer if unstable, septic, anuric or rapidly deteriorating</div>
       <div class="rftile"><b>Uncontrolled pain</b> Severe pain not responding to home analgesia → <span class="pill pill-red">Same-day A&amp;E</span> — IV analgesia, imaging required</div>
       <div class="rftile"><b>Pregnancy + renal colic</b> Severe or persistent pain, obstruction, infection or renal impairment → <span class="pill pill-red">Same-day obstetrics/urology discussion</span> — ultrasound not CT (non-gadolinium MRI by specialists if inconclusive); no routine NSAIDs; tamsulosin only on specialist advice. Not automatically 999 if stable</div>
@@ -291,9 +263,9 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
   <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div><span class="pill pill-red">999 Emergency</span></div><div>Suspected infected obstruction or sepsis. Haemodynamic instability. AAA suspected. Bilateral or solitary-kidney obstruction / anuria if unstable, septic or rapidly deteriorating</div>
-      <div><span class="pill pill-red">Same-day A&amp;E</span></div><div>Uncontrolled pain at home (IV paracetamol ± opioid). Stable obstruction in a solitary kidney, bilateral obstruction or AKI (urgent urology). Renal colic + rigor without fever (early sepsis). Persistent vomiting / unable to tolerate oral fluids. Pregnancy with significant pain, obstruction, infection or renal impairment (obstetrics/urology)</div>
-      <div><span class="pill pill-amber">Urgent urology (within days)</span></div><div>Ongoing intolerable pain or stone unlikely to pass (NICE NG118: surgical treatment within 48 hours). Stone not passed at planned reassessment. Worsening renal function. Failed medical expulsive therapy. Recurrent episodes same stone</div>
+      <div><span class="pill pill-red">999 Emergency</span></div><div>Suspected infected obstruction or sepsis, including rigors or systemic illness without a measured fever. Haemodynamic instability. AAA suspected. Bilateral or solitary-kidney obstruction / anuria if unstable, septic or rapidly deteriorating</div>
+      <div><span class="pill pill-red">Same-day A&amp;E</span></div><div>Uncontrolled pain at home (IV paracetamol ± opioid). Stable obstruction in a solitary kidney, bilateral obstruction or AKI (urgent urology). Persistent vomiting / unable to tolerate oral fluids. Pregnancy with significant pain, obstruction, infection or renal impairment (obstetrics/urology)</div>
+      <div><span class="pill pill-amber">Urgent urology (within 48 hours)</span></div><div>Ongoing pain not tolerated or stone unlikely to pass → surgical treatment within 48 hours of diagnosis (NICE NG118); uncontrolled pain → same-day A&amp;E. Stone not passed at planned reassessment. Worsening renal function. Failed medical expulsive therapy. Recurrent episodes same stone</div>
       <div><span class="pill pill-blue">Routine urology</span></div><div>Recurrent or high-risk stone disease for metabolic prevention: recurrent, bilateral/multiple, young-onset, family history, cystine/uric-acid/struvite/calcium-phosphate stones, solitary kidney, CKD, or stones needing intervention. Staghorn calculus. Cystinuria / uric acid stones requiring specialist management</div>
       <div>Primary care manage</div><div>Uncomplicated first or recurrent episode. Small distal ureteric stone. Pain controlled. Able to drink. No AKI, anuria, bilateral or solitary-kidney obstruction. No fever/systemic illness. Imaging and follow-up arranged. Advise stone passage confirmation</div>
     </div>
@@ -333,7 +305,7 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
     </div>
     <div class="ladder" style="margin-top:14px;">
       <div class="rung"><span class="rn">Uric acid stones</span><span class="rt"><b>Specialist stone pathway:</b> confirm composition or strong biochemical suspicion before dissolution therapy. Potassium citrate (caution in CKD, hyperkalaemia and interactions; over-alkalinisation may promote calcium phosphate stones) and allopurinol (depends on recurrence, persistent hyperuricosuria, gout and response) are specialist-initiated, with monitoring of urine pH, renal function and electrolytes</span></div>
-      <div class="rung"><span class="rn">Calcium stones (1st line prevention)</span><span class="rt"><b>Adequate fluid intake</b> after the acute episode: aim for ~2–2.5L urine/day. Maintain normal dietary calcium (with meals) — do NOT restrict. Reduce salt and avoid excessive animal protein. Tailor diet to stone composition and metabolic results, ideally via a stone-prevention service or renal dietitian</span></div>
+      <div class="rung"><span class="rn">Calcium stones (1st line prevention)</span><span class="rt"><b>Adequate fluid intake</b> after the acute episode: 2.5–3 L of water a day, spread through the day (NICE NG118), adjusted for heart failure, renal function and any fluid restriction; add fresh lemon juice; avoid fizzy drinks. Maintain normal dietary calcium (with meals) — do NOT restrict. Reduce salt and avoid excessive animal protein. Tailor diet to stone composition and metabolic results, ideally via a stone-prevention service or renal dietitian</span></div>
       <div class="rung"><span class="rn">Calcium stones (2nd line)</span><span class="rt">Specialist-directed after metabolic assessment: <b>thiazide diuretics</b> if hypercalciuria confirmed: Bendroflumethiazide 2.5mg OD. <b>Potassium citrate</b> if hypocitraturia. Allopurinol if hyperuricosuria with calcium oxalate stones</span></div>
       <div class="rung"><span class="rn">Anti-emetics</span><span class="rt"><b>Metoclopramide</b> 10mg PO/IM — short-term only (max 5 days; neurological adverse effects); avoid if obstruction/perforation suspected; caution in renal impairment. Or ondansetron 4–8mg — QT prolongation risk; check electrolytes and interacting medicines. If unable to retain fluids, arrange assessment rather than relying on antiemetics</span></div>
     </div>
@@ -354,7 +326,7 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
   <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="lsgrid">
-      <div class="lstile"><b>Fluid intake</b> After the acute episode: enough fluid to produce ~2–2.5L urine/day, adjusted for climate, activity, renal function and heart failure. Plain water best. Pale yellow urine target. During acute colic: normal hydration only — do not force large volumes</div>
+      <div class="lstile"><b>Fluid intake</b> After the acute episode: 2.5–3 L of water a day, spread through the day (NICE NG118), adjusted for heart failure, renal function and any fluid restriction. Add fresh lemon juice; avoid fizzy drinks. Plain water best. Pale yellow urine target. During acute colic: normal hydration only — do not force large volumes</div>
       <div class="lstile"><b>Dietary calcium — DO NOT RESTRICT</b> Normal calcium intake, taken with meals. Low calcium diet paradoxically INCREASES oxalate absorption → more stones. Dairy is NOT the enemy</div>
       <div class="lstile"><b>Dietary oxalate</b> Tailor to stone composition — no blanket avoidance. If calcium oxalate stones: moderate very oxalate-rich foods (spinach, rhubarb, nuts, chocolate, beetroot) and take calcium with meals</div>
       <div class="lstile"><b>Reduce salt intake</b> High dietary sodium increases urinary calcium. Target &lt;6g/day salt. Reduces calciuria → fewer calcium stones</div>
@@ -366,7 +338,7 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
-    <div class="why-drawer">Fluid intake is the single most impactful secondary prevention intervention — reducing recurrence in RCTs. After the acute episode, advise a urine output of around 2–2.5L/day, adjusted for climate, activity, renal function and heart failure. The calcium restriction myth is clinically important to correct actively — patients often self-restrict dairy based on a logical but incorrect assumption, which worsens their stone disease. The dietary calcium binds oxalate in the gut, reducing intestinal oxalate absorption. Straining urine to collect stones for composition analysis is free, non-invasive, and provides actionable information that guides targeted prevention — it should be recommended to every stone patient.</div>
+    <div class="why-drawer">Fluid intake is the single most impactful secondary prevention intervention — reducing recurrence in RCTs. After the acute episode, advise 2.5–3 L of water a day spread through the day (NICE NG118), adjusted for heart failure, renal function and any fluid restriction. The calcium restriction myth is clinically important to correct actively — patients often self-restrict dairy based on a logical but incorrect assumption, which worsens their stone disease. The dietary calcium binds oxalate in the gut, reducing intestinal oxalate absorption. Straining urine to collect stones for composition analysis is free, non-invasive, and provides actionable information that guides targeted prevention — it should be recommended to every stone patient.</div>
   </div>
 </div>
 <div class="connector"></div>
@@ -384,8 +356,8 @@ h3 { font-family: 'Source Serif 4', serif; font-size: 1.15rem; font-weight: 600;
       <div>4-week review</div><div>Has stone passed? Confirm with patient (stone in strainer / UTI ruled out). If not passed, pain persists, renal function worsens or the stone is unlikely to pass → refer urology. Review tamsulosin — stop if stone passed</div>
       <div>6-week review (post-A&amp;E)</div><div>U&amp;Es, BP. Imaging result reviewed. Urology follow-up arranged if stone not passed or intervention required</div>
       <div>3–6 months (recurrent)</div><div>Recurrent/high-risk stone formers: metabolic assessment and prevention via urology/renal stone service; GP supports monitoring as directed. Diet diary review</div>
-      <div>Safety-net 999</div><div>Fever + loin pain returning (infected obstruction). Collapse/hypotension. Anuria. Unable to pass urine at all</div>
-      <div>Safety-net same-day</div><div>Vomiting preventing oral analgesia/fluids. Severe uncontrolled pain. Haematuria with clots. Fever without loin pain (early sepsis)</div>
+      <div>Safety-net 999</div><div>Fever, shivering or rigors, with or without loin pain, before the stone is known to have passed (infected obstruction). Collapse/hypotension. Anuria. Unable to pass urine at all</div>
+      <div>Safety-net same-day</div><div>Vomiting preventing oral analgesia/fluids. Severe uncontrolled pain. Haematuria with clots</div>
       <div>Haematuria follow-up</div><div>Macroscopic haematuria that persists after stone passage → MSU, then suspected cancer pathway referral if aged 45 or over with unexplained visible haematuria (NICE NG12, updated April 2026); otherwise urology (exclude bladder/renal cancer)</div>
       <div>Annual review</div><div>Recurrent stone formers: U&amp;Es, serum calcium, uric acid. Monitor eGFR — chronic stone disease can cause CKD. USS/imaging for silent stones per urology guidance</div>
     </div>

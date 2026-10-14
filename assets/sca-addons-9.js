@@ -8284,7 +8284,7 @@
     },
     {
      "dom": "gs",
-     "fail": "Jargon: “We’ll do a FIT and a 2WW for a colonoscopy.”",
+     "fail": "Jargon: “We’ll do a FIT and a suspected cancer referral (2WW) for a colonoscopy.”",
      "why": "Language not pitched to the patient. Danny cannot take part in decisions he cannot follow.",
      "fix": "“A poo test that looks for blood. Then a camera test at the hospital, with Maria there.” Check with teach-back."
     }

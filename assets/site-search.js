@@ -185,7 +185,7 @@
         }
       }
       if (best !== null){
-        concepts.push({ alts: SYN[best].map(function(a){ return a.slice(); }), syn: true, label: seq.slice(i, i + bestLen).map(function(x){ return x.w; }).join(' ') });
+        concepts.push({ alts: SYN[best].map(function(a){ return a.slice(); }), syn: true, label: seq.slice(i, i + bestLen).map(function(x){ return x.w; }).join(' '), last: bestLen === 1 && seq[i].last });
         i += bestLen;
       } else {
         concepts.push({ alts: [[seq[i].t]], label: seq[i].w, last: seq[i].last });

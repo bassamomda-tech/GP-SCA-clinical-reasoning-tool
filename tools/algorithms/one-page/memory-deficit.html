@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Memory deficit in adults — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/algorithms/memory-deficit.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/memory-deficit.html">
+<style>
+/* ==== Reasoning GP · Algorithm 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md, algorithm section):
+   0 Stop · 1 Triage · 2 Screen · 3 Assess · 4 Classify · 5 Treat today · 6 Refer · 7 Never reassure by · 8 Safety-net · ✓ Safe-to-leave check
+   Shares the protocol summary's CSS and colour meanings. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+.tri td:first-child{font-weight:700;white-space:nowrap}
+.k{font-weight:700}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../memory-deficit.html">← Full memory deficit algorithm</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Algorithm · 1-page summary</div>
+      <h1>Memory deficit in adults</h1>
+      <div class="scope"><b>For:</b> adults with a new memory or cognitive concern, raised by them or by family or carers. <b>Not for:</b> children. Acute or fluctuating confusion: delirium first (block 1).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG97</span><span>CG103</span><span>TA217</span><span>NG128</span><span>NG12</span><span>DVLA</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> the time course decides the route; acute or fluctuating change is delirium until assessed. Treatable causes may coexist with dementia: treat and reassess, but never delay dementia assessment when decline is progressive, or diagnose from a score alone.</div>
+
+  <div class="grid">
+
+    <!-- 0 STOP -->
+    <section class="blk red span">
+      <h2><span class="n">0</span>Stop — act now <small>— before the memory work-up</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>Sudden new focal neurological signs still present</b> (suspected stroke) → <span class="when w999">999</span>. Symptoms resolved (suspected TIA) → TIA service, seen <span class="when wsd">within 24 h</span>; no ABCD² to set urgency.</li>
+          <li><b>Danger to self or others</b> → <span class="when w999">999</span> if immediate; otherwise acute mental health (crisis) team <span class="when wsd">Same-day</span>.</li>
+          <li><b>Papilloedema, new seizures, recent head injury or suspected subdural haematoma</b> → <span class="when wsd">Same-day emergency assessment</span>. SDH or NPH on CT → neurosurgery <span class="when wsd">Same-day</span>.</li>
+          <li><b>Suspected autoimmune encephalitis</b> → discuss with neurology <span class="when wsd">Same-day</span>; with seizures, altered consciousness or fever → <span class="when wsd">Same-day emergency assessment</span>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <!-- 1 TRIAGE -->
+      <section class="blk amber">
+        <h2><span class="n">1</span>Triage by time course <small>— collateral history decides</small></h2>
+        <div class="body">
+          <table class="tri">
+            <tr><th>Course</th><th>Action</th></tr>
+            <tr><td>Hours–days, fluctuating</td><td><b>Delirium until assessed</b> (CG103). Treat the precipitant: infection, hypoxia, dehydration, constipation, retention, pain, medicines, metabolic, withdrawal. <span class="when wsd">Same-day</span> if significantly unwell, unsafe, not assessable in the community or serious precipitant.</td></tr>
+            <tr><td>Weeks–months, rapid</td><td>CJD, autoimmune encephalitis → <span class="when wurg">Urgent neurology</span> with CSF access (NG97).</td></tr>
+            <tr><td>Weeks–months, mood-led</td><td>Treat depression, then reassess. Do not postpone dementia assessment if progressive.</td></tr>
+            <tr><td>Months–years, insidious</td><td>Dementia work-up (block 3) → memory assessment service.</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- 2 SCREEN -->
+      <section class="blk red">
+        <h2><span class="n">2</span>Screen <small>— serious and treatable causes</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Progressive focal signs, significant headache, rapid decline</b> → <span class="when wurg">Urgent imaging</span>. Adults with progressive, sub-acute loss of central neurological function → consider direct-access MRI brain <span class="when wurg">within 2 weeks</span> (NG12).</li>
+            <li><b>Young-onset (&lt;65) or atypical</b> → <span class="when wurg">Urgent</span> specialist / neurology referral.</li>
+            <li><b>Contributing:</b> depression, hypothyroidism, low B12/folate, anticholinergics, benzodiazepines, opioids, alcohol, hearing or vision loss. Recovery may be incomplete.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 ASSESS -->
+      <section class="blk blue">
+        <h2><span class="n">3</span>Assess <small>— once blocks 0–2 are answered</small></h2>
+        <div class="body">
+          <p>☐ Collateral history from someone who knows them well, including instrumental ADLs &nbsp;☐ Medicines and anticholinergic burden, alcohol, mood, sleep, hearing, vision &nbsp;☐ Neurological, cardiovascular and general examination &nbsp;☐ Validated tool (6CIT, Mini-Cog, 10-CS, MIS, TYM, MoCA), noting education, language, senses &nbsp;☐ FBC, U&amp;E, calcium, LFTs, TFTs, B12 and folate, HbA1c or glucose</p>
+          <p>Urine only if urinary symptoms, delirium or infection suspected; HIV and syphilis if risk factors, young-onset or atypical. Imaging by the local route.</p>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <!-- 4 CLASSIFY -->
+      <section class="blk teal">
+        <h2><span class="n">4</span>Classify <small>— only if the screen is negative</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Normal ageing</b> — slower recall, better with prompting, not progressive. <b>MCI</b> — objective impairment, function preserved → memory clinic for monitoring.</li>
+            <li><b>Dementia</b> — with functional decline. Alzheimer's: insidious, memory-led. Vascular: stepwise, focal signs. Frontotemporal: behaviour or language first.</li>
+            <li><b>Lewy body</b> — fluctuating cognition, visual hallucinations, parkinsonism, REM sleep behaviour disorder → avoid antipsychotics; record neuroleptic sensitivity prominently.</li>
+            <li><b>Depression</b> — low mood, early waking, anhedonia → treat and reassess; may coexist.</li>
+            <li><b>Uncertain</b> — say so. Treat delirium first; refer suspected dementia rather than wait.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 5 TREAT TODAY -->
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat today <small>— only these</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Review medicines</b> (anticholinergic burden, sedatives, opioids); treat depression, B12/folate and thyroid, then reassess.</li>
+            <li><b>Cholinesterase inhibitors and memantine:</b> start on the advice of a clinician with appropriate expertise. Check pulse; ECG if bradycardia, syncope or conduction disease. Doses per BNF and local formulary.</li>
+            <li><b>Distress or agitation:</b> look for pain, delirium, constipation, retention, infection, medicines first. Antipsychotics only if risk of harm or severe distress, with old age psychiatry input; review at least every 6 weeks.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6 REFER -->
+      <section class="blk amber">
+        <h2><span class="n">6</span>Refer routinely</h2>
+        <div class="body">
+          <ul>
+            <li>Suspected dementia, after initial assessment → memory assessment service (NG97). Hearing loss → audiology.</li>
+            <li>Marked or unexpected decline; new agitation or psychosis → old age psychiatry; carer cannot cope safely → urgent social services and Admiral Nurse: all <span class="when w7">≤7 days</span>.</li>
+            <li>Carer: register, Carer's Assessment. LPA and advance care planning while capacity remains. Advise the duty to notify DVLA; document it.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- 7 NEVER REASSURE BY -->
+    <section class="blk slate span">
+      <h2><span class="n">7</span>Never reassure by</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>A normal cognitive score, or the patient's own account without a collateral history.</li>
+          <li>Calling acute confusion "worse dementia" without looking for delirium.</li>
+          <li>Treating depression, B12 or thyroid and assuming full reversal.</li>
+          <li>Bacteriuria on a urine dip without urinary symptoms as the whole explanation.</li>
+          <li>A CT or MRI as proof that it is not Alzheimer's disease.</li>
+          <li>Giving an antipsychotic before Lewy body dementia is considered.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 8 SAFETY-NET -->
+    <section class="blk green span">
+      <h2><span class="n">8</span>Safety-net <small>— say it to the patient and carer, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Call 999 for sudden weakness, face, speech or vision problems, or if they are an immediate danger to themselves or others.”</span>
+        <b>Same day:</b> <span class="say">“Sudden worsening, confusion that comes and goes, drowsiness, a fever, a fit, or a severe new headache — contact us today.”</span></p>
+        <p><b>Within a week:</b> <span class="say">“A big change in memory or coping, new agitation or hallucinations, or you can no longer cope safely as a carer — book to see us this week.”</span> Reassess cognition after any delirium once it has resolved.</p>
+      </div>
+    </section>
+
+    <!-- ✓ SAFE TO LEAVE -->
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe to leave primary care only if <small>— all five, documented</small></h2>
+      <div class="body check">
+        <span>No block 0–2 row applies; delirium excluded or treated</span>
+        <span>Collateral history and function recorded</span>
+        <span>Bloods, medicines, mood, hearing and vision checked</span>
+        <span>Memory service referral or review owner and date set</span>
+        <span>DVLA, carer, capacity and safeguarding addressed; safety-net given</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../memory-deficit.html">Reasoning GP memory deficit algorithm</a>, which holds the detail, subtypes, prescribing, carer support and evidence. Sources: NICE NG97, CG103, TA217, NG128, NG12 (updated April 2026); DVLA Assessing fitness to drive; GMC confidentiality guidance; Lancet Commission 2024; BNF. Clinical decision support — follow local memory-service pathways and check doses in the current BNF.</div>
+
+</main>
+</body>
+</html>

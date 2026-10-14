@@ -4,8 +4,8 @@
    confidence: 'exact' = same slug, or the protocol name equals the leaflet's name or synonym;
                'clear' = same key words, or a reviewed manual match (reason in the review CSV).
    Uncertain matches are deliberately left out — a protocol with no entry shows no
-   "Give to patient" button. Generated 2026-10-13 by design/toolsD/plmap.js;
-   review list: design/out2/protocol-leaflets-review.csv. 133 of 211 protocols mapped. */
+   "Give to patient" button. Generated 2026-10-14 by design/toolsD/plmap.js;
+   review list: protocol-leaflets-review.csv (design/out3). 133 of 210 protocols mapped. */
 window.RGP_PROTOCOL_LEAFLETS = {
   'achilles-tendinopathy': [['tendinopathy','clear']],
   'acne': [['acne','exact']],

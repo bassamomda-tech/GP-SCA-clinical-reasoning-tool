@@ -610,5 +610,31 @@
     reveal();
   }
 
+  /* ---- Shared protocol UI (October 2026) ----
+     Every engine-rendered protocol page loads the shared protocol UI from this
+     script's own folder (assets/): protocol-ui.css, protocol-leaflets.js and
+     protocol-ui.js. protocol-ui.js lazy-loads qrcode-generator.js, leaflets-data.js
+     and updates-nice-archive.js itself, from the same folder.
+     - Never on the -print.html copies, so print and PDF stay exactly as they are.
+     - Skipped for any file a page already loads itself (the hypertension trial), and
+       protocol-ui.js also guards against running twice.
+     - Per-page opt-out: the PROTOCOL_UI_SKIP list at the top of protocol-ui.js. */
+  (function loadProtocolUI(){
+    var me = document.currentScript && document.currentScript.src;
+    if(!me) return;
+    if(document.querySelector('meta[name="omelette-print-source"]') || /-print\.html$/i.test(location.pathname)) return;
+    var base = me.replace(/[^\/]*$/, ''), V = '?v=2';
+    var head = document.head || document.documentElement;
+    if(!document.querySelector('link[href*="protocol-ui.css"]')){
+      var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = base + 'protocol-ui.css' + V; head.appendChild(l);
+    }
+    function add(name){
+      if(document.querySelector('script[src*="' + name + '"]')) return;
+      var s = document.createElement('script'); s.src = base + name + V; s.async = false; head.appendChild(s);
+    }
+    add('protocol-leaflets.js');
+    add('protocol-ui.js');
+  })();
+
   window.MG = { render: render };
 })();

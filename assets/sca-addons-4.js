@@ -7256,7 +7256,7 @@
     },
     {
      "dom": "tasks",
-     "fail": "Referring on symptoms alone without FIT, or quoting the old symptom-only two-week-wait criteria.",
+     "fail": "Referring on symptoms alone without FIT, or quoting the old symptom-only suspected cancer referral criteria.",
      "why": "NICE NG12 (updated April 2026) makes FIT at least 10 µg Hb/g the referral trigger for most colorectal presentations; examiners expect the current pathway and the threshold stated.",
      "fix": "“The stool test decides the urgent referral — above 10 and you’re on the suspected cancer pathway. If I feel a lump on examination, I refer straight away.”"
     },

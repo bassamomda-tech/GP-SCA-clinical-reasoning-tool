@@ -85,7 +85,7 @@
     },
     checkpoints:[
       { dom:'tasks', text:'Gives the result plainly and early — a number, what the test measures, and that 47 with his symptoms needs urgent investigation; does NOT bury it in small talk' },
-      { dom:'tasks', text:'Recognises that FIT 47 µg Hb/g (threshold ≥10) meets NICE NG12 (updated April 2026) for a suspected cancer pathway (urgent, still called "two-week wait") lower-GI referral — his bowel-habit change, weight loss and iron-deficiency anaemia are why FIT was the right test (NICE HTG690) — and arranges the referral on this call' },
+      { dom:'tasks', text:'Recognises that FIT 47 µg Hb/g (threshold ≥10) meets NICE NG12 (updated April 2026) for a suspected cancer pathway (urgent) lower-GI referral — his bowel-habit change, weight loss and iron-deficiency anaemia are why FIT was the right test (NICE HTG690) — and arranges the referral on this call' },
       { dom:'tasks', text:'Does not allow the piles explanation to stand: haemorrhoids do not cause weight loss, iron deficiency or 8 weeks of looser stools — says so clearly but kindly' },
       { dom:'tasks', text:'Explains colonoscopy honestly — what it involves, sedation, that most FIT-positive patients do NOT have cancer, and that finding things early is the entire point' },
       { dom:'rto',   text:'Finds Raymond — and lets the real fear ("diagnosed late, opened and closed") be said out loud before countering it' },
@@ -101,7 +101,7 @@
       { lbl:'The work objection',     txt:'"It’s one morning, with sedation, likely within the next few weeks. Your firm can survive a morning. The other road — the one Raymond took — costs a lot more than a morning."' },
       { lbl:'Safety-net',             txt:'"The hospital should be in touch quickly — the aim is an answer within four weeks. If you’ve heard nothing in a week, ring me, don’t sit on it. Heavy bleeding, can\u2019t open your bowels with pain and bloating, or vomiting — that\u2019s A&E, today. And I\u2019m ringing you after the scope either way."' },
     ],
-    learning:'NICE NG12 (updated April 2026): FIT ≥10 µg Hb/g warrants a suspected cancer pathway (urgent, formerly "2WW") lower-GI referral. His weight loss and iron-deficiency anaemia are why FIT was offered (NICE HTG690) and add to the urgency — under current NG12 they lead to FIT rather than to referral on their own. The consultation skill is the reframe: the brother\u2019s late diagnosis is the reason FOR the colonoscopy, not against it. Letting "it\u2019s just piles" stand, or softening the urgency to spare his feelings, is how this station is failed.',
+    learning:'NICE NG12 (updated April 2026): FIT ≥10 µg Hb/g warrants a suspected cancer pathway (urgent) lower-GI referral. His weight loss and iron-deficiency anaemia are why FIT was offered (NICE HTG690) and add to the urgency — under current NG12 they lead to FIT rather than to referral on their own. The consultation skill is the reframe: the brother\u2019s late diagnosis is the reason FOR the colonoscopy, not against it. Letting "it\u2019s just piles" stand, or softening the urgency to spare his feelings, is how this station is failed.',
     knowledge:{
       guideline:'NICE NG12 (updated April 2026) — suspected colorectal cancer · NICE HTG690 (formerly DG56) — FIT in primary care · BSG iron deficiency anaemia guideline (2021)',
       points:[

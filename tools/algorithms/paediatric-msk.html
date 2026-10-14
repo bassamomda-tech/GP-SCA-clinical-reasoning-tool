@@ -550,43 +550,15 @@ body {
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — use pGALS to screen, separate mechanical/growing pains from inflammatory or sinister causes, and never miss septic arthritis, malignancy or safeguarding. Support recovery, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Paediatric MSK problem</span><div class="body">Pain pattern (mechanical vs inflammatory), swelling, function, systemic features, trauma. pGALS screen; examine joints + gait.</div></div>
-    <div class="arrow"></div>
-    <div class="box dec"><span class="lbl">Step 1 · Safety — septic / malignancy / NAI</span><span class="ttl">Red flags?</span><div class="body">Fever + hot swollen joint, non-use or inability to weight-bear (septic arthritis/osteomyelitis) · bone pain/night pain/systemic features + cytopenias (malignancy) · inconsistent history (NAI) · persistent joint swelling (JIA).</div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency / urgent</span><div class="body">Suspected septic arthritis/osteomyelitis or SUFE → same-day hospital assessment (999 if physiologically unstable). Suspected malignancy → urgent. NAI → safeguarding.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination guide management.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
-    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Mechanical / growing pains</div><div class="box act"><span class="ttl">Common</span><div class="body">Bilateral leg pains, evenings, normal exam/function; reassure, safety-net.</div></div></div><div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Inflammatory (JIA)</div><div class="box ix"><span class="ttl">Refer</span><div class="body">Persistent joint swelling, inflammatory morning stiffness or loss of function → paediatric/rheumatology referral (no need to wait 6 weeks).</div></div></div><div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">Sinister</div><div class="box ix"><span class="ttl">Red flag</span><div class="body">Septic arthritis, leukaemia/bone tumour, NAI.</div></div></div>
-    </div></div>
-    <div class="arrow"></div>
-    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Same-day</span> suspected septic arthritis/osteomyelitis / SUFE / NAI / systemically unwell. <span class="pill pill-purple">Urgent</span> suspected malignancy. <span class="pill pill-purple">Paediatric rheumatology</span> persistent joint swelling, inflammatory stiffness or loss of function (JIA); reassure typical growing pains.</div></div>
-    <div class="arrow"><span class="tag">Step 8 · support &amp; modifiable factors</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Support &amp; modifiable factors</span><span class="ttl">Reassure and rehabilitate</span><div class="body"><b>Reassure growing pains</b> (benign, evening bilateral leg pains with a normal exam) — massage, simple analgesia, stretching. Encourage activity and physiotherapy for mechanical/overuse problems; address footwear, load and training in sport. For JIA, support school, mobility aids, and the MDT plan. Promote healthy weight and bone health.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Reassess &amp; urgent return advice</span><div class="body"><b>Same-day hospital assessment</b> for a hot, swollen, immobile joint with fever (septic arthritis/osteomyelitis — don't delay), or a limping/refusing-to-weight-bear child who is systemically unwell; <b>999</b> if physiologically unstable. <b>Urgent FBC + film, plus U&amp;E, LFTs and LDH</b>, and referral for bone/night pain with pallor/bruising/systemic features (leukaemia). <b>NICE NG12 (updated April 2026): a suspected bone sarcoma needs a very urgent direct-access X-ray within 48 hours</b>; treat a systemically unwell child as <b>sepsis</b>, and an inconsistent history as a <b>child protection</b> concern. <b>Refer suspected JIA</b> for persistent joint swelling, inflammatory morning stiffness or loss of function (without waiting 6 weeks) — and note that <b>JIA needs ophthalmology screening for asymptomatic anterior uveitis</b>, which is silent and sight-threatening, arranged at diagnosis regardless of eye symptoms. Safety-net any inconsistent/unexplained injury via the safeguarding pathway; review if pain changes pattern or fails to settle.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>Persistent or focal night pain and systemic features point away from growing pains:</b> persistent bone pain with cytopenias can be leukaemia — check an FBC and film, and refer urgently.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/paediatric-msk.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/paediatric-msk.html">⬇ Download PDF</button><a class="sum-open" href="one-page/paediatric-msk.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/paediatric-msk.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -604,7 +576,7 @@ body {
     <div class="rfgrid">
       <div class="rftile"><b>Acute limp + fever</b> A child with fever who is acutely unwell, unable to weight-bear, has a hot swollen joint, limb swelling, non-use of an extremity, severe pain on passive movement or suspected sepsis → <span class="pill pill-red">Same-day</span> hospital assessment; <span class="pill pill-red">999</span> if physiological instability, altered consciousness, shock, severe respiratory compromise or rapid deterioration (NICE NG254). Consider septic arthritis, osteomyelitis, discitis, pyomyositis or other infection. Do not rely on a low-grade fever, normal inflammatory markers, a normal X-ray or the child being briefly able to walk.</div>
       <div class="rftile"><b>Non-accidental injury features</b> Bruising in a non-mobile child, multiple bruises in protected areas, inconsistent history, delayed presentation, patterned injuries or injuries incompatible with developmental stage (bruising in a mobile child may be accidental; absence of an injury history does not prove abuse; do not rely on a single feature) → <span class="pill pill-red">Same-day</span> follow local safeguarding procedures and contact the designated safeguarding professional or children's social care where indicated</div>
-      <div class="rftile"><b>Night pain / bone pain</b> Persistent or unexplained night pain, especially if focal, progressive or with swelling, limp, weight loss, pallor, bruising or fatigue → <span class="pill pill-purple">Urgent</span> full examination; very urgent FBC when leukaemia is possible; X-ray when bone pain or swelling is present (NG12: very urgent direct-access X-ray within 48 hours for unexplained bone swelling or pain); discuss urgently with paediatrics if concern persists. Normal FBC or inflammatory markers do not exclude malignancy (leukaemia, bone tumour — NICE NG12, updated April 2026)</div>
+      <div class="rftile"><b>Night pain / bone pain</b> Persistent or unexplained night pain, especially if focal, progressive or with swelling, limp, weight loss, pallor, bruising or fatigue → <span class="pill pill-purple">Urgent</span> full examination; very urgent FBC when leukaemia is possible; X-ray when bone pain or swelling is present (NG12: consider a very urgent direct-access X-ray within 48 hours for unexplained bone swelling or pain); discuss urgently with paediatrics if concern persists. Normal FBC or inflammatory markers do not exclude malignancy (leukaemia, bone tumour — NICE NG12, updated April 2026)</div>
       <div class="rftile"><b>Systemically unwell</b> Unexplained petechiae or hepatosplenomegaly → <span class="pill pill-purple">Immediate</span> specialist assessment (leukaemia — NICE NG12, updated April 2026). Unexplained fever, pallor, persistent fatigue, recurrent/persistent infection, generalised lymphadenopathy, persistent unexplained bone pain, bruising or bleeding → very urgent FBC within 48 hours and urgent paediatrics (malignancy, systemic JIA)</div>
       <div class="rftile"><b>Adolescent hip pain</b> Any adolescent (often around 10–16 years, not absolute) with hip, groin, thigh or referred knee pain, limp or reduced hip internal rotation — consider SUFE until excluded, including lean adolescents and those with endocrine or renal disease or previous radiotherapy → keep non-weight-bearing; <span class="pill pill-red">Same-day</span> orthopaedic assessment and imaging (SUFE — slipped upper femoral epiphysis). Do not encourage walking to imaging or repeat provocative tests.</div>
       <div class="rftile"><b>Age <3 years with limp</b> Low threshold — limp in a child under 3 requires careful <span class="pill pill-red">Same-day</span> assessment if unexplained, persistent, associated with fever, reduced movement, non-weight-bearing, abnormal examination, safeguarding concern or diagnostic uncertainty (DDH, septic arthritis, toddler fracture, malignancy). A well child with a clearly observed minor injury, normal examination and function, and reliable follow-up may be managed per local paediatric/urgent-care pathways. Do not diagnose growing pains in this age group.</div>
@@ -754,7 +726,7 @@ body {
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p><b>GALS screen</b> detects 96% of significant MSK abnormalities in 2 minutes. Quick screening tool before focused examination. Normal GALS screen makes serious pathology unlikely (high negative predictive value).</p>
+      <p><b>pGALS screen</b> is a quick, validated screen that finds abnormal joints before a focused examination. A normal screen does not exclude infection, malignancy or non-accidental injury — act on the red flags in Step 1.</p>
       <p><b>Hip pathology commonly presents as knee pain</b> in children (referred pain via obturator nerve). Always examine hip in child with knee pain, especially if knee examination normal. Missing SUFE because you only examined the knee is a medicolegal disaster.</p>
       <p><b>Refusal to weight-bear</b> is never normal. Even with transient synovitis, children can weight-bear with pain. Complete refusal = septic arthritis, fracture, malignancy, or severe Perthes until proven otherwise.</p>
     </div>
@@ -796,7 +768,7 @@ body {
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p><b>X-rays in children = radiation</b> — effective dose matters. Pelvis X-ray = 0.6 mSv (equivalent to 3 months background radiation). Only X-ray if result will change management. Normal X-ray does NOT exclude serious pathology (early Perthes, bone tumours, osteomyelitis may have normal X-rays initially).</p>
+      <p><b>X-rays in children = radiation</b> — effective dose matters. Only X-ray if result will change management. Normal X-ray does NOT exclude serious pathology (early Perthes, bone tumours, osteomyelitis may have normal X-rays initially).</p>
       <p><b>Inflammatory markers help distinguish</b> septic arthritis from transient synovitis but are not 100% sensitive/specific. Normal results do not exclude early septic arthritis, osteomyelitis or <i>Kingella kingae</i> infection. Clinical suspicion overrides bloods — if in doubt, refer for same-day specialist assessment.</p>
       <p><b>MRI is gold standard</b> for early Perthes, osteomyelitis, bone tumours, stress fractures, soft tissue masses. Avoid radiation. Arranged by specialists, not primary care. Do not delay referral waiting for MRI availability.</p>
     </div>
@@ -823,10 +795,10 @@ body {
       <div><b>Unexplained night pain.</b> <b>Persistent unexplained limp.</b> <b>Abnormal examination.</b> <b>Suspected malignancy.</b> <b>Persistent fever.</b> <b>Unexplained bruising or pallor.</b> <b>Hepatosplenomegaly or lymphadenopathy</b> (unexplained petechiae or hepatosplenomegaly: immediate specialist assessment). <b>Multiple joint swelling.</b> <b>Back pain with neurological or systemic features.</b> Urgency depends on examination, age, trauma, systemic symptoms and weight-bearing rather than a fixed time threshold.</div>
       
       <div><span class="pill pill-blue">Urgent orthopaedics</span></div>
-      <div><b>Perthes disease</b> on X-ray or suspected despite normal X-ray (commonly age 4-10, hip/thigh/knee pain, limp, restricted abduction/internal rotation, Trendelenburg gait). <b>Persistent limp + abnormal X-ray</b> (fracture, bone lesion). <b>DDH suspected</b> (clunk, asymmetric skin creases, leg length discrepancy). <b>Severe Osgood-Schlatter</b> unresponsive to rest.</div>
+      <div><b>Perthes disease</b> on X-ray or suspected despite normal X-ray (commonly age 4-10, hip/thigh/knee pain, limp, restricted abduction/internal rotation, Trendelenburg gait). <b>Persistent limp + abnormal X-ray</b> (fracture, bone lesion). <b>DDH suspected</b> (clunk, asymmetric skin creases, leg length discrepancy).</div>
       
       <div><span class="pill pill-blue">Routine paediatrics</span></div>
-      <div><b>Suspected JIA:</b> Persistent joint swelling, inflammatory morning stiffness or loss of function — do not wait 6 weeks; refer more urgently to paediatric rheumatology with multiple joints, systemic symptoms or eye symptoms. <b>Hypermobility + significant functional impairment.</b> <b>Growing pains</b> atypical or severe (for reassurance + physiotherapy).</div>
+      <div><b>Suspected JIA:</b> Persistent joint swelling, inflammatory morning stiffness or loss of function — do not wait 6 weeks; refer more urgently to paediatric rheumatology with multiple joints, systemic symptoms or eye symptoms. Once JIA is diagnosed, ophthalmology screening for asymptomatic anterior uveitis is needed regardless of eye symptoms (BSPAR/RCOphth). <b>Osgood-Schlatter</b> persisting despite appropriate load management, or diagnostic uncertainty → routine paediatric MSK/orthopaedics (local pathway). <b>Hypermobility + significant functional impairment.</b> <b>Growing pains</b> atypical or severe (for reassurance + physiotherapy).</div>
       
       <div><span class="pill pill-green">Primary care</span></div>
       <div><b>Typical growing pains</b> (bilateral, evening, normal exam). <b>Transient synovitis</b> improving at 48 hrs. <b>Minor sports injuries</b> (Sever's, Osgood-Schlatter mild). <b>Hypermobility</b> mild. Manage with reassurance, analgesia, physiotherapy referral.</div>
@@ -863,7 +835,7 @@ body {
       <div class="b-card">
         <div class="b-cond">Transient synovitis (improving)</div>
         <div class="b-drug">Analgesia + relative activity restriction <span class="pill pill-teal">First-line</span></div>
-        <div class="b-note">Use age/weight-appropriate analgesia (BNFC) and relative activity restriction — complete non-weight-bearing is not routinely required; the child should gradually resume weight-bearing as pain improves. Reassess within 24–48 hours if the diagnosis is uncertain or symptoms are not improving. Self-limiting 1-2 weeks.</div>
+        <div class="b-note">Use age/weight-appropriate analgesia (BNFC) and relative activity restriction — complete non-weight-bearing is not routinely required; the child should gradually resume weight-bearing as pain improves. Review within 24–48 hours (sooner if worsening); not fully resolved by 1 week → X-ray hip and paediatric orthopaedic/rheumatology referral. Self-limiting 1-2 weeks.</div>
       </div>
       <div class="b-card">
         <div class="b-cond">Osgood-Schlatter / Sever's</div>
@@ -876,18 +848,18 @@ body {
       <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Paracetamol</b> — weight-based dose per BNFC/local formulary (no universal maximum for all children) PRN for mild pain (growing pains, minor trauma). Avoid regular dosing unless moderate-severe pain.</span></div>
       <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Ibuprofen</b> — age/weight-appropriate dose per BNFC for inflammatory conditions (transient synovitis, Osgood-Schlatter, soft tissue injury). Give with food. Avoid in dehydration, renal impairment, NSAID-sensitive asthma, gastrointestinal bleeding and some infections. Reassess if regular dosing is needed beyond a short course.</span></div>
       <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Paracetamol + Ibuprofen</b> may be used together or sequentially in selected circumstances for moderate-severe pain; routine alternating increases dosing errors — give a clear written schedule if both are advised. Review in 48 hours — if not improving, reassess.</span></div>
-      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Refer if:</b> Analgesia ineffective, pain worsening, persistent >1 week, red flags emerge. Codeine or tramadol are not routine treatment for benign limb pain; any use requires age, weight, respiratory and contraindication checks.</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Reassess (and refer if no benign cause is clear) if:</b> Analgesia ineffective, pain worsening, not improving as expected, red flags emerge. Codeine or tramadol are not routine treatment for benign limb pain; any use requires age, weight, respiratory and contraindication checks.</span></div>
     </div>
     
     <div class="kv" style="margin-top: 20px;">
       <div>Activity modification</div>
-      <div><b>Osgood-Schlatter / Sever's:</b> Reduce running, jumping sports. Swimming, cycling OK. Stretching exercises (quadriceps, hamstrings, gastrocnemius). Ice after activity 15 minutes. <b>Duration:</b> 3-6 months until growth spurt complete.</div>
+      <div><b>Osgood-Schlatter / Sever's:</b> Reduce running, jumping sports. Swimming, cycling OK. Stretching exercises (quadriceps, hamstrings, gastrocnemius). Ice after activity 15 minutes. <b>Duration:</b> often several months; usually settles as the growth plate matures.</div>
       
       <div>Physiotherapy referral</div>
       <div><b>Indications:</b> Hypermobility with functional impairment, recurrent sports injuries, persistent pain >4 weeks, muscle weakness (post-Perthes, post-fracture). <b>Focus:</b> Core strengthening, proprioception, gait retraining.</div>
       
       <div>Safety-netting</div>
-      <div>Return if: pain worsening, new systemic symptoms (fever, weight loss), unable to weight-bear, night pain develops. <b>Growing pains:</b> If persisting or worsening, becoming unilateral, focal, daytime or causing limp → reassess.</div>
+      <div><b>999</b> if collapsed, very drowsy, struggling to breathe or rapidly getting worse, or new leg weakness or bladder/bowel problems. <b>Same day</b> for fever with limp or joint pain, unable or refusing to weight-bear, a hot swollen joint, a systemically unwell child, persistent, focal or progressive night pain, or severe pain not eased by painkillers. <b>Book a review</b> if pain is worsening or not improving as expected, or new weight loss. <b>Growing pains:</b> If persisting or worsening, becoming unilateral, focal, daytime or causing limp → reassess.</div>
     </div>
   </div>
   <div class="why-row">
@@ -914,7 +886,7 @@ body {
     
     <div class="lsgrid">
       <div class="lstile"><b>Growing pains reassurance</b> Explain benign nature. Not harmful to bones/joints. Self-limiting, usually settling in later childhood. No long-term consequences. Massage and heat may provide comfort; evidence for pharmacological benefit is limited.</div>
-      <div class="lstile"><b>Red flag education</b> Teach parents when to seek urgent care: fever + limp, refusing to weight-bear, night pain waking child, systemically unwell, persistent >1 week.</div>
+      <div class="lstile"><b>Red flag education</b> Teach parents when to seek help: <b>999</b> if collapsed, very drowsy, struggling to breathe or rapidly getting worse, or new leg weakness or bladder/bowel problems; <b>same day</b> for fever with limp, refusing to weight-bear, a hot swollen joint, a systemically unwell child, or persistent, focal or progressive night pain; <b>book a GP review</b> if not improving as expected.</div>
       <div class="lstile"><b>Activity balance</b> Encourage diverse physical activity. Mix high-impact (running) with low-impact (swimming, cycling). Rest days essential — growth plates need recovery time.</div>
       <div class="lstile"><b>Warm-up and stretching</b> 5-10 minutes warm-up before sport. Stretching after activity (quadriceps, hamstrings, calves).</div>
       <div class="lstile"><b>Appropriate footwear</b> Supportive, well-fitting trainers for running sports; check fit as feet grow. Avoid worn-out shoes (increase injury risk).</div>
@@ -928,7 +900,7 @@ body {
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p><b>Parental anxiety drives consultations</b> — 80% of paediatric MSK consultations are benign (growing pains, transient synovitis, minor trauma). Reassurance is therapeutic. Clear explanation of red flags empowers parents to self-manage safely while seeking help when needed.</p>
+      <p><b>Parental anxiety drives consultations</b> — most paediatric MSK consultations are benign (growing pains, transient synovitis, minor trauma). Reassurance is therapeutic. Clear explanation of red flags empowers parents to self-manage safely while seeking help when needed.</p>
       <p><b>Varied activity</b> may be a reasonable suggestion in selected sports settings but is not a universal clinical standard. Growth plates are vulnerable to repetitive stress. Diverse activity reduces single-muscle-group overload and prevents burnout.</p>
       <p><b>Vitamin D deficiency</b> is more likely with dark skin and limited outdoor play and increases rickets risk. Supplementation advice should follow current national vitamin D guidance for the child's age and risk group.</p>
     </div>
@@ -949,7 +921,7 @@ body {
     
     <div class="kv">
       <div>48 hours</div>
-      <div><b>Transient synovitis:</b> Reassess within 24–48 hours if the diagnosis is uncertain or symptoms are not improving. If improving (reduced pain, walking better) → continue analgesia, review 1 week. If worsening or fever → same-day assessment (septic arthritis). <b>Acute limp post-trauma:</b> Review if not improving — consider X-ray.</div>
+      <div><b>Transient synovitis:</b> Review every child within 24–48 hours. If improving (reduced pain, walking better) → continue analgesia, review at 1 week; worse or not fully resolved by 1 week → X-ray hip and paediatric orthopaedic/rheumatology referral (urgency by clinical judgement). If worsening or fever → same-day assessment (septic arthritis). <b>Acute limp post-trauma:</b> Review if not improving — consider X-ray.</div>
       
       <div>1 week</div>
       <div><b>Growing pains, minor injuries:</b> Check symptom resolution. If persisting → examine, consider X-ray. <b>Osgood-Schlatter / Sever's:</b> Assess response to activity modification. Reinforce rest from high-impact sport.</div>

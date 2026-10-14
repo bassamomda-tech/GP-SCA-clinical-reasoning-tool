@@ -131,70 +131,15 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — resuscitate major bleeds, examine (PR where appropriate in a stable patient), let age + FIT drive the NICE NG12 colorectal-cancer decision, then treat benign anorectal causes while never attributing bleeding to piles without investigation.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Rectal bleeding</span><div class="body">Colour (bright on paper vs dark mixed vs melaena), relation to stool, pain on defaecation, mucus, tenesmus, change in bowel habit, weight loss, NSAIDs/anticoagulants. <b>Abdominal exam + PR (stable, consented) ± proctoscopy</b> — a visible haemorrhoid does not exclude other disease.</div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — major bleed or obstruction?</span><span class="ttl">Haemodynamically significant?</span><div class="body"><ul>
-      <li><b>Instability</b> — clinical instability (shock index &gt;1, hypotension, syncope)</li>
-      <li><b>Large-volume / continuing bleeding</b> (diverticular, angiodysplasia)</li>
-      <li><b>Melaena</b> — black tarry stool → usually upper-GI source</li>
-      <li><b>Obstruction / peritonism</b>, or anticoagulated with a significant bleed</li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — major</div><div class="box stop"><span class="lbl">Stop · admit</span><span class="ttl">Emergency admission</span><div class="body">999/hospital; do not delay transfer. Melaena → urgent hospital assessment. Large lower-GI bleed → acute surgical/medical take.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — stable</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">FBC · FIT · exam</span><div class="body">FBC + ferritin if persistent or anaemia suspected; CRP only if IBD/infection suspected. <b>FIT</b> first to guide the suspected cancer pathway referral decision (NG12 / HTG690); faecal calprotectin if IBD suspected; proctoscopy for internal haemorrhoids. <b>Do not repeat FIT to get a "normal".</b></div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · benign vs sinister</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Anorectal (benign)</div><div class="box ix"><span class="ttl">Bright, on paper</span><div class="body"><b>Haemorrhoids</b> (painless, prolapse), <b>anal fissure</b> (pain on defaecation, sentinel tag), fistula, prolapse. No change in habit.</div></div></div>
-      <div class="col"><div class="blabel">Colonic — benign</div><div class="box ix"><span class="ttl">Diverticular / colitis</span><div class="body">Diverticular bleed (sudden, large-volume, older), angiodysplasia (elderly, recurrent), infective/ischaemic colitis.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Red-flag</div><div class="box ix"><span class="ttl">Cancer / IBD</span><div class="body">Dark blood mixed with stool, change in habit ≥6 wks, weight loss, mass, anaemia, tenesmus → <b>colorectal cancer</b>; bloody diarrhoea + systemic features, age &lt;40 → IBD.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · treat the benign cause</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — treat benign causes (after excluding cancer)</span><span class="ttl">Fibre + topical + escalate</span><div class="body"><ul>
-      <li><b>Haemorrhoids (grade I–II):</b> high-fibre diet + hydration, avoid straining; short course of one topical preparation (about 5–7 days). Grade II–III → rubber-band ligation; grade IV/refractory → surgery.</li>
-      <li><b>Anal fissure:</b> stool softener + fibre; <b>topical GTN 0.4% (licensed) or diltiazem 2% (unlicensed) BD for 8 weeks</b> if persistent (warn of GTN headache); chronic/refractory → surgical (botulinum, sphincterotomy).</li>
-      <li><b>IBD flare (mild UC):</b> established UC per the specialist plan — do not treat undiagnosed bleeding as UC.</li>
-      <li><b>Diverticular/infective:</b> supportive; treat infection; review anticoagulation/NSAIDs.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · cancer pathway &amp; escalation</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer — <span class="pill pill-purple">Suspected cancer · NICE NG12</span></span><span class="ttl">Colorectal cancer thresholds</span><div class="body"><ul>
-      <li><b>NICE NG12 (updated April 2026) — offer FIT</b> to adults with: rectal bleeding at <b>≥50</b>; rectal bleeding <b>under 50</b> with unexplained abdominal pain or weight loss; a change in bowel habit, an abdominal mass or iron-deficiency anaemia at any adult age; <b>≥40</b> with unexplained weight loss and abdominal pain; <b>≥60</b> with anaemia even without iron deficiency (the older fixed age thresholds for direct suspected cancer pathway referral were replaced by FIT-first).</li>
-      <li><b>FIT-first (NG12 / HTG690):</b> offer FIT to guide referral in symptomatic patients — <b>FIT ≥10 µg Hb/g → suspected cancer pathway referral</b>. Refer <b>without waiting for FIT</b> only for rectal/anal mass or unexplained anal ulceration. FIT &lt;10: not routinely referred — safety-net, and still refer if strong ongoing concern (e.g. IDA, persistent symptoms).</li>
-      <li><span class="pill pill-purple">Urgent gastro</span> suspected new IBD (raised calprotectin), ischaemic/radiation colitis, recurrent diverticular bleeding.</li>
-      <li><span class="pill pill-grey">Routine</span> grade III–IV haemorrhoids, chronic fissure, complex fistula, prolapse. <span class="pill pill-grey">GUM</span> rectal STI.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · modify &amp; prevent</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; bowel habit</span><span class="ttl">Reduce recurrence</span><div class="body"><b>Adequate fibre</b> + adequate hydration to soften stool and avoid straining · regular toileting without prolonged sitting · weight management · review NSAIDs/anticoagulants contributing to bleeding · treat constipation. Encourage uptake of <b>NHS bowel-cancer screening</b> (FIT every 2 years, age 50–74).</div></div>
-    <div class="arrow"><span class="tag">Step 9 · safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">When to come back</span><div class="body"><b>999</b> if large-volume bleeding, black tarry stools, faintness or collapse. <b>Return</b> if bleeding persists ≥6 weeks despite treatment, new change in bowel habit, weight loss, or anaemia symptoms — <b>re-investigate, don't re-reassure</b>. Chase suspected cancer pathway referral/colonoscopy outcomes; review fissure/haemorrhoid response at 8 weeks.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>Don't attribute it all to piles:</b> visible haemorrhoids do not exclude a proximal cancer. Apply the NG12 age/FIT thresholds before reassuring, do the PR where appropriate, and re-investigate persistent bleeding even with an obvious benign finding.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/rectal-bleeding.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/rectal-bleeding.html">⬇ Download PDF</button><a class="sum-open" href="one-page/rectal-bleeding.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/rectal-bleeding.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -213,21 +158,21 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
     <span>Do not assume benign cause. Rectal bleeding is common and usually benign, but colorectal cancer, IBD and significant anorectal disease must not be missed — risk rises with age, persistent bleeding, altered bowel habit, IDA, weight loss, a mass or a positive FIT.</span>
     <div class="rfgrid">
       <div class="rftile"><b>Haemodynamic shock</b> Instability judged clinically (shock index HR/SBP &gt;1 suggests it — BSG), pallor, cold extremities, confusion, syncope → 999 (major lower GI haemorrhage, aortoenteric fistula). Do not delay for PR, FIT or bloods</div>
-      <div class="rftile"><b>Melaena</b> Usually upper GI (occasionally small bowel or right colon); brisk upper GI bleeding can also present as fresh PR blood → urgent hospital assessment, 999 if unstable; the hospital team risk-stratifies and arranges endoscopy</div>
+      <div class="rftile"><b>Melaena</b> Usually upper GI (occasionally small bowel or right colon); brisk upper GI bleeding can also present as fresh PR blood → same-day hospital (A&amp;E) assessment, 999 if unstable; the hospital team risk-stratifies and arranges endoscopy</div>
       <div class="rftile"><b>Haematochezia with shock</b> Profuse fresh rectal bleeding + haemodynamic instability → 999 (massive lower GI bleed, Meckel's, ischaemic colitis)</div>
       <div class="rftile"><b>Age ≥50 unexplained rectal bleeding</b> With or without change in bowel habit → offer FIT; FIT ≥10 µg Hb/g → suspected cancer pathway referral (NICE NG12, updated April 2026)</div>
       <div class="rftile"><b>Change in bowel habit (any adult age), or under 50 with bleeding plus abdominal pain or weight loss</b> → offer FIT; ≥10 µg Hb/g → suspected cancer pathway (NG12/HTG690). FIT is triage: a low result with persistent or concerning bleeding still needs a colorectal pathway (ACPGBI/BSG)</div>
       <div class="rftile"><b>Iron-deficiency anaemia + rectal bleeding</b> Confirm with iron studies; FIT helps prioritise (≥10 → suspected cancer pathway) but a low FIT does not exclude investigation — men and post-menopausal women generally need upper and lower GI assessment (BSG 2021; BSG/ACPGBI 2025)</div>
-      <div class="rftile"><b>Palpable rectal or abdominal mass</b> On examination → rectal mass: colorectal suspected cancer pathway referral without FIT; abdominal mass: FIT first (NICE NG12 / HTG690) and the site-specific NG12 route</div>
-      <div class="rftile"><b>Unintentional weight loss + rectal bleeding</b> &gt;5% body weight in 6 months → offer FIT (NG12: under 50 with rectal bleeding and weight loss; 40 and over with weight loss and abdominal pain). FBC and ferritin; other bloods by indication (CEA is not a diagnostic test)</div>
-      <div class="rftile"><b>Persistent rectal bleeding ≥6 weeks</b> Despite apparent benign explanation (e.g. haemorrhoids) in any age → investigate further before attributing to benign cause</div>
+      <div class="rftile"><b>Palpable rectal or abdominal mass</b> On examination → rectal mass, unexplained anal mass or unexplained anal ulceration: consider a suspected cancer pathway referral without waiting for FIT (NICE NG12); abdominal mass: FIT first (NICE NG12 / HTG690) and the site-specific NG12 route</div>
+      <div class="rftile"><b>Unexplained weight loss + rectal bleeding</b> Any unexplained weight loss → offer FIT (NG12: under 50 with rectal bleeding and weight loss; 40 and over with weight loss and abdominal pain). FBC and ferritin; other bloods by indication (CEA is not a diagnostic test)</div>
+      <div class="rftile"><b>Persistent or recurrent rectal bleeding</b> Despite an apparent benign explanation (e.g. haemorrhoids), at any age → investigate further before attributing it to a benign cause</div>
       <div class="rftile"><b>Family history colorectal cancer</b> Document number, ages and cancer types (including endometrial/Lynch-spectrum) → local hereditary CRC/genetics criteria; it lowers the threshold for colonoscopy but does not replace examination and the symptomatic FIT pathway</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      Colorectal cancer is the 4th most common cancer in the UK (~43,000/year) and the 2nd most common cause of cancer death. NICE NG12 sets its referral thresholds at a positive predictive value of 3% or more, so most people referred will not have cancer — but the threshold is deliberately low. Critically, haemorrhoids are very common — the dangerous error is attributing bleeding to haemorrhoids without excluding more serious pathology. Upper GI bleeding presenting as melaena can be fatal — hospital risk-stratification (Glasgow-Blatchford score) drives urgency). Never assume bright red blood = haemorrhoids alone without appropriate assessment.
+      Colorectal cancer is the 4th most common cancer in the UK and the 2nd most common cause of cancer death. NICE NG12 sets its referral thresholds at a positive predictive value of 3% or more, so most people referred will not have cancer — but the threshold is deliberately low. Critically, haemorrhoids are very common — the dangerous error is attributing bleeding to haemorrhoids without excluding more serious pathology. Upper GI bleeding presenting as melaena can be fatal — hospital risk-stratification (Glasgow-Blatchford score) drives urgency). Never assume bright red blood = haemorrhoids alone without appropriate assessment.
     </div>
   </div>
 </div>
@@ -286,7 +231,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      Diverticular bleeding is the most common cause of significant lower GI haemorrhage in adults over 50, accounting for 30–40% of hospitalised LGI bleeds. It is almost always painless and usually stops spontaneously — but requires hospital assessment for transfusion and colonoscopy. Aortoenteric fistula is rare but uniformly fatal without immediate surgery — any patient with prior AAA repair presenting with GI bleeding must be treated as this until excluded. IBD first presentation in primary care is frequently delayed by an average of 2 years — think of it in any young adult with bloody diarrhoea.
+      Diverticular bleeding is the most common cause of significant lower GI haemorrhage in adults over 50. It is almost always painless and usually stops spontaneously — but requires hospital assessment and risk stratification (BSG 2019: shock index, Oakland score); the specialist team decides on transfusion and investigation. Aortoenteric fistula is rare but uniformly fatal without immediate surgery — any patient with prior AAA repair presenting with GI bleeding must be treated as this until excluded. IBD first presentation in primary care is frequently delayed — think of it in any young adult with bloody diarrhoea.
     </div>
   </div>
 </div>
@@ -335,7 +280,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
     <div class="kv">
       <div>By indication</div><div><span class="pill pill-blue">FBC</span> (persistent/recurrent or significant bleeding, suspected anaemia) <span class="pill pill-blue">Ferritin</span> (if anaemia/iron deficiency suspected) <span class="pill pill-blue">U&amp;E</span> (significant bleed, dehydration) <span class="pill pill-blue">LFTs + coagulation</span> (liver disease, anticoagulation) <span class="pill pill-blue">CRP</span> (suspected IBD/infection — not routine in isolated bright-red bleeding)</div>
       <div>FIT Test (faecal immunochemical test)</div><div><span class="pill pill-blue">FIT ≥10 µg/g</span> → colorectal suspected cancer pathway referral. Quantitative FIT (not the same as FOBT) · NICE NG12 / HTG690 (2023 update): <b>FIT-first</b> now guides referral for nearly all suspected-colorectal-cancer presentations, including rectal bleeding · FIT &lt;10 does not exclude cancer — safety-net and re-refer if symptoms persist or IDA develops</div>
-      <div>Suspected cancer criteria met</div><div><span class="pill pill-purple">Colorectal suspected cancer pathway referral</span> — FIT-first: use the FIT result to guide referral. Refer <b>without</b> FIT only for rectal/anal mass or unexplained anal ulceration; clinical judgement can still override a negative FIT where concern remains strong</div>
+      <div>Suspected cancer criteria met</div><div><span class="pill pill-purple">Colorectal suspected cancer pathway referral</span> — FIT-first: use the FIT result to guide referral. Do <b>not</b> wait for FIT with a rectal mass, unexplained anal mass or unexplained anal ulceration — consider a suspected cancer pathway referral directly; clinical judgement can still override a negative FIT where concern remains strong</div>
       <div>If IBD suspected</div><div><span class="pill pill-blue">Faecal calprotectin</span> (when IBD suspected after considering infection — interpret per local assay and pathway; not diagnostic) <span class="pill pill-blue">Stool culture/PCR</span> (acute bloody diarrhoea, fever, travel, immunosuppression) <span class="pill pill-blue">Coeliac screen</span></div>
       <div>If STI possible</div><div><span class="pill pill-blue">GUM screen</span> including gonorrhoea / chlamydia rectal swabs, syphilis serology, HIV</div>
       <div>Upper GI bleed screen</div><div><span class="pill pill-blue">Group and save</span> (if significant bleed) <span class="pill pill-blue">H. pylori</span> (breath test or stool antigen — if melaena, do after endoscopy) <span class="pill pill-blue">OGD</span> (urgent — via A&amp;E for haemodynamically significant or melaena)</div>
@@ -345,7 +290,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <b>FIT (faecal immunochemical test)</b> has replaced FOBT (faecal occult blood test) as the preferred primary care investigation. FIT is more sensitive and specific — it detects human haemoglobin, not animal blood in food. NICE HTG690 recommends FIT to guide colonoscopy need in symptomatic patients. Under the FIT-first pathway, people with rectal bleeding are offered FIT too; only a rectal or anal mass or unexplained anal ulceration is referred without waiting for FIT — and a negative FIT does NOT fully exclude CRC, so persistent symptoms still need safety-netting and review. Faecal calprotectin helps when IBD is suspected (interpret per local pathway; NICE DG11).
+      <b>FIT (faecal immunochemical test)</b> has replaced FOBT (faecal occult blood test) as the preferred primary care investigation. FIT is more sensitive and specific — it detects human haemoglobin, not animal blood in food. NICE HTG690 recommends FIT to guide colonoscopy need in symptomatic patients. Under the FIT-first pathway, people with rectal bleeding are offered FIT too; only a rectal mass, unexplained anal mass or unexplained anal ulceration skips FIT (NG12: consider a suspected cancer pathway referral directly) — and a negative FIT does NOT fully exclude CRC, so persistent symptoms still need safety-netting and review. Faecal calprotectin helps when IBD is suspected (interpret per local pathway; NICE DG11).
     </div>
   </div>
 </div>
@@ -365,7 +310,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
     <div class="kv">
       <div><span class="pill pill-red">999</span> Emergency</div><div>Haemodynamic instability (shock) · Massive PR haemorrhage · Melaena with haemodynamic compromise · Suspected aortoenteric fistula (post-AAA repair). Call 999 and do not transfer independently</div>
       <div><span class="pill pill-red">Same-day A&amp;E</span></div><div>Stable melaena (hospital risk-stratifies and arranges endoscopy) · Major or ongoing fresh PR bleed · Significant bleed with major comorbidity or anticoagulation · Acute bleed with significant anaemia. Stable minor self-terminating bleeds: Oakland score (≤8 may suit an urgent outpatient pathway, with other factors considered — BSG)</div>
-      <div><span class="pill pill-purple">Suspected cancer: colorectal</span></div><div>NICE NG12: PR bleeding at 50+ · PR bleeding under 50 with abdominal pain or weight loss · change in bowel habit or IDA at any age · abdominal mass · anaemia at 60+ → offer FIT (≥10 → suspected cancer pathway) · rectal mass, anal mass or unexplained anal ulceration → refer without FIT · <b>FIT-first (NG12 / HTG690):</b> these symptomatic groups are offered FIT to guide the referral (≥10 µg/g → suspected cancer pathway referral); mass or anal ulceration → refer without FIT</div>
+      <div><span class="pill pill-purple">Suspected cancer: colorectal</span></div><div>NICE NG12: unexplained PR bleeding at 50+ · PR bleeding under 50 with abdominal pain or weight loss · change in bowel habit or IDA at any age · abdominal mass · anaemia at 60+ → offer FIT (≥10 → suspected cancer pathway) · rectal mass, unexplained anal mass or unexplained anal ulceration → consider a suspected cancer pathway referral without FIT · <b>FIT-first (NG12 / HTG690):</b> these symptomatic groups are offered FIT to guide the referral (≥10 µg/g → suspected cancer pathway referral); rectal mass, unexplained anal mass or anal ulceration → consider referral without waiting for FIT</div>
       <div>Urgent gastroenterology</div><div>Suspected new IBD (bloody diarrhoea, systemic symptoms, elevated calprotectin) · Recurrent significant diverticular bleeding · Ischaemic colitis · Radiation proctitis requiring treatment</div>
       <div>Routine colorectal / surgical</div><div>Grade III–IV haemorrhoids for banding/surgery · Chronic anal fissure not responding to medical treatment · Fistula-in-ano (complex) · Rectal prolapse requiring surgical repair</div>
       <div>GUM clinic</div><div>Rectal STI (gonorrhoea, chlamydia, syphilis, herpes proctitis, warts) — refer to sexual health</div>
@@ -404,7 +349,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
         <div class="b-note">Acute: stool softening, fibre, fluids, analgesia, short topical anaesthetic. Persistent/chronic: GTN 0.4% (licensed; headache; not with PDE-5 inhibitors or hypotension) or diltiazem 2% (unlicensed — document consent) for about 8 weeks</div>
       </div>
       <div class="b-card">
-        <div class="b-cond">Established UC</div><div class="b-drug">Follow the specialist plan <span class="pill pill-teal">Under specialist</span></div><div class="b-note">Do not treat undiagnosed bleeding as UC. Flares per the shared-care plan and NICE (topical 5-ASA first for proctitis; escalation including time-limited steroids is clinician-led). Bloody diarrhoea with fever, tachycardia, anaemia, raised CRP, dehydration or severe pain → urgent gastroenterology; acute severe UC → admission</div>
+        <div class="b-cond">Established UC</div><div class="b-drug">Follow the specialist plan <span class="pill pill-teal">Under specialist</span></div><div class="b-note">Do not treat undiagnosed bleeding as UC. Flares per the shared-care plan and NICE (topical 5-ASA first for proctitis; escalation including time-limited steroids is clinician-led). Acute severe UC (Truelove and Witts: ≥6 bloody stools a day plus temperature &gt;37.8°C, HR &gt;90, Hb &lt;105 g/L or ESR &gt;30 mm/h) → same-day hospital admission; other flares with systemic upset, dehydration or severe pain → urgent gastroenterology advice</div>
       </div>
     </div>
     <div class="ladder">
@@ -412,7 +357,7 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
       <div class="rung"><span class="rn">Haemorrhoids Step 2</span><span class="rt"><b>Refer for rubber band ligation</b> (Grade II) for selected internal haemorrhoids. Or injection sclerotherapy (5% phenol in oil). Both performed in outpatient setting without GA</span></div>
       <div class="rung"><span class="rn">Anal fissure Step 1</span><span class="rt"><b>GTN 0.4% ointment</b> BD to anal margin (not into anal canal) × 8 weeks.  Warn: headache common (reduces over 1–2 weeks). Alternatively: <b>Diltiazem 2% cream</b> BD × 8 weeks (unlicensed; fewer headaches). Recurrent, atypical, lateral, multiple or non-healing → reassess for Crohn's, malignancy, infection or trauma</span></div>
       <div class="rung"><span class="rn">Anal fissure Step 2</span><span class="rt">Failed medical treatment → <b>Refer surgical</b> for botulinum toxin or lateral internal sphincterotomy (specialist discussion of benefits and incontinence risk)</span></div>
-      <div class="rung"><span class="rn">Diverticular bleed</span><span class="rt">Majority self-terminate. <b>Hospital management:</b> IV access, FBC/group &amp; save, colonoscopy when stable (within 24–48h). Do not use FIT to judge the severity or source of an acute diverticular bleed — follow the acute LGIB pathway (CT angiography if unstable/actively bleeding). After stabilisation, arrange colorectal investigation by age, severity, anaemia, recurrence and cancer risk. Review NSAIDs and antithrombotics</span></div>
+      <div class="rung"><span class="rn">Diverticular bleed</span><span class="rt">Majority self-terminate. <b>Hospital management:</b> IV access, FBC/group &amp; save; risk stratification (shock index; Oakland score — BSG 2019), with investigation and its timing per the specialist team. Do not use FIT to judge the severity or source of an acute diverticular bleed — follow the acute LGIB pathway (CT angiography if unstable/actively bleeding). After stabilisation, arrange colorectal investigation by age, severity, anaemia, recurrence and cancer risk. Review NSAIDs and antithrombotics</span></div>
       <div class="rung"><span class="rn">Anticoagulated patient</span><span class="rt">Do not withhold anticoagulation without specialist advice — thrombotic risk may exceed bleeding risk. Discuss with anticoagulation clinic / cardiologist. Manage bleed urgency as per clinical status. Refer to A&amp;E if significant bleeding</span></div>
     </div>
   </div>
@@ -474,15 +419,15 @@ body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-si
       <div>8 weeks</div><div>End of fissure treatment course: document healing. If incomplete → refer surgical. Haemorrhoid: reassess symptom control — refer if Grade III/IV</div>
       <div>Post-colonoscopy</div><div>Review results letter. Post-polypectomy surveillance per BSG/ACPGBI/PHE 2020 guidelines (high risk — ≥2 premalignant polyps including ≥1 advanced, or ≥5 premalignant polyps: one-off colonoscopy at 3 years; low risk: no surveillance — return to screening). Communicate results clearly to patient</div>
       <div>IBD follow-up</div><div>Shared care with gastroenterology. FBC + LFTs 3-monthly on immunomodulators. Surveillance colonoscopy per NICE CG118 (UC beyond proctitis, or Crohn's colitis in more than one segment), timed by disease duration and risk. Drug monitoring per the shared-care protocol</div>
-      <div><span class="pill pill-red">999</span> Safety-net</div><div>Return of haemorrhagic shock · Heavy PR haemorrhage · Collapse · Haematemesis · Severe abdominal pain with bleeding</div>
-      <div><span class="pill pill-amber">Same-day GP</span> Safety-net</div><div>Any return of significant PR bleeding · New melaena · New weight loss or systemic symptoms · Bleeding not settling after 48–72h · Failure to receive a suspected cancer appointment (per local pathway)</div>
+      <div><span class="pill pill-red">999</span> Safety-net</div><div>Return of haemorrhagic shock · Heavy PR haemorrhage · Collapse, or feeling faint or dizzy with bleeding · Haematemesis · Severe abdominal pain with bleeding</div>
+      <div><span class="pill pill-amber">Same-day GP</span> Safety-net</div><div>New black, tarry stools (melaena) → same-day A&amp;E, 999 if faint or collapsing · Any return of significant PR bleeding · New weight loss or systemic symptoms · Bleeding not settling after 48–72h · Failure to receive a suspected cancer appointment (per local pathway)</div>
       <div>NHS Bowel Screening</div><div>Confirm patient enrolled. If previously declined — re-offer. Document screening status in records. Patients with CRC family history may need earlier surveillance — check eligibility criteria</div>
     </div>
   </div>
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      Patients with adenomas found on colonoscopy have a 3–5× increased risk of future CRC — surveillance intervals (BSG/ACPGBI/PHE 2020 post-polypectomy guidelines) are evidence-based and must be communicated clearly and followed up. IBD patients with extensive colitis have a raised CRC risk that grows with disease duration — surveillance colonoscopy at risk-based intervals (1, 3 or 5 years; NICE CG118, BSG 2019) must be kept on track. Patients who do not receive their suspected cancer referral appointment confirmation within 14 days should be followed up proactively — system failures occur, and the patient cannot always advocate for themselves. A documented safety-net discussion is an RCGP SCA examination competency requirement.
+      Patients with adenomas found on colonoscopy have an increased risk of future CRC — surveillance intervals (BSG/ACPGBI/PHE 2020 post-polypectomy guidelines) are evidence-based and must be communicated clearly and followed up. IBD patients with extensive colitis have a raised CRC risk that grows with disease duration — surveillance colonoscopy at risk-based intervals (1, 3 or 5 years; NICE CG118, BSG 2019) must be kept on track. Patients who do not receive their suspected cancer referral appointment confirmation within 14 days should be followed up proactively — system failures occur, and the patient cannot always advocate for themselves. A documented safety-net discussion is an RCGP SCA examination competency requirement.
     </div>
   </div>
 </div>

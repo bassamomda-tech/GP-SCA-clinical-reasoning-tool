@@ -494,7 +494,7 @@
 <!-- ══════════════════════════════════════
      PROGRESS
 ══════════════════════════════════════ -->
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
@@ -504,63 +504,8 @@
 <!-- ══════════════════════════════════════
      ALGORITHM FLOW
 ══════════════════════════════════════ -->
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — capture the rhythm on paper, screen the dangerous arrhythmia/structural red flags, classify by ECG pattern to a named rhythm, then anticoagulate &amp; rate-control AF, treat SVT/ectopics, modify triggers and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Palpitations</span><div class="body">Character (fast/slow, regular/irregular, tap it out), onset/offset, triggers, duration; associated syncope, chest pain, breathlessness; caffeine/alcohol/stimulants; <b>family history of sudden cardiac death</b>. Get a 12-lead ECG.</div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — screen the dangerous causes</span><span class="ttl">Acutely unwell or high-risk features?</span><div class="body"><ul>
-      <li><b>Haemodynamic compromise</b> — fast AF/SVT/VT with hypotension, heart failure, chest pain, syncope</li>
-      <li><b>Syncope during exertion or palpitations</b> — possible VT / structural disease</li>
-      <li><b>Family history of sudden cardiac death &lt;40</b>, or known structural/inherited heart disease</li>
-      <li><b>ECG danger signs</b> — WPW (short PR + delta wave), long QTc, Brugada, epsilon waves (ARVC), broad-complex tachycardia</li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — red flag</div><div class="box stop"><span class="lbl">Stop · escalate</span><span class="ttl">Admit / urgent cardiology / 999</span><div class="body">Unstable tachyarrhythmia / broad-complex VT → 999. Decompensated fast AF → admit. Exertional syncope, FH sudden death, WPW/long-QT/ARVC on ECG → <b>urgent cardiology</b> (avoid AV-nodal blockers in pre-excited AF).</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — stable</div><div class="box ix"><span class="lbl">Step 2 · Investigate</span><span class="ttl">ECG + ambulatory monitor</span><div class="body">12-lead ECG; <b>ambulatory monitor</b> (24h–7d Holter or event/patch recorder matched to symptom frequency) to capture the rhythm. Bloods: FBC, U&amp;E; <b>TFTs</b> if indicated and in all new AF; glucose, calcium/magnesium as indicated. Echo if structural disease, murmur, confirmed AF where it changes management or cardioversion is considered, frequent/complex PVCs, or abnormal ECG.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · classify the rhythm</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Irregularly irregular</div><div class="box ix"><span class="ttl">AF / atrial flutter</span><div class="body">Absent P waves, irregular R-R (AF) or sawtooth flutter. Think <b>"AC for AF"</b> — Anticoagulate by stroke risk, then Control rate/rhythm.</div></div></div>
-      <div class="col"><div class="blabel">Regular fast</div><div class="box ix"><span class="ttl">SVT vs sinus tachy</span><div class="body"><b>SVT</b> — sudden on/off, narrow-complex ~150–220 (AVNRT/AVRT). <b>Sinus tachycardia</b> — gradual, look for driver (anxiety, fever, anaemia, thyroid, pain, hypovolaemia).</div></div></div>
-      <div class="col"><div class="blabel">Brief skips / thuds</div><div class="box ix"><span class="ttl">Ectopics (PVC/PAC)</span><div class="body">Isolated "missed beats", worse at rest, settle on exertion. Benign with a structurally normal heart — but quantify burden if frequent.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · treat the confirmed rhythm</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — rhythm-specific treatment</span><span class="ttl">Anticoagulate · rate/rhythm · reassure</span><div class="body"><ul>
-      <li><b>AF (NICE NG196) — anticoagulate first:</b> CHA₂DS₂-VASc (<b>offer if ≥2 — same threshold in women as in men</b>; consider if 1 in men) weighed against <b>ORBIT</b> bleeding risk. <b>ECG-confirm first</b>; <b>DOAC first-line</b> dosed by Cockcroft–Gault CrCl; warfarin where a VKA is required. If &gt;48 h, no elective cardioversion without ≥3 weeks anticoagulation or TOE. Falls/age alone are not reasons to withhold.</li>
-      <li><b>AF rate control:</b> first-line beta-blocker (bisoprolol) <b>or</b> rate-limiting CCB (diltiazem/verapamil — not in HFrEF); digoxin only if sedentary. Rhythm control (refer) if reversible cause, HF, or persistent symptoms.</li>
-      <li><b>SVT:</b> acute (stable) — ECG then modified <b>Valsalva</b>, then urgent emergency assessment; prevention — beta-blocker/verapamil; ablation is curative → cardiology.</li>
-      <li><b>Ectopics:</b> reassure, reduce caffeine/alcohol/stimulants, correct electrolytes; low-dose beta-blocker only if very symptomatic; refer if ambulatory burden about ≥10%, complex/exertional ectopy, or PVC cardiomyopathy.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-red">999</span> broad-complex or unstable tachyarrhythmia, ongoing syncope or instability, decompensated fast AF. Resolved syncope with palpitations → urgent same-day assessment (CG109).</li>
-      <li><span class="pill pill-purple">Urgent cardiology</span> WPW/pre-excitation, long QTc, ARVC/Brugada pattern, exertional syncope, family history of sudden cardiac death (inherited-arrhythmia clinic).</li>
-      <li><span class="pill pill-purple">Cardiology (routine ≤4 wks)</span> new paroxysmal AF for rhythm-control/ablation planning, recurrent SVT for ablation, high-burden ectopics, structural heart disease on echo.</li>
-      <li>Treat reversible drivers in parallel — <b>thyroid disease, anaemia, electrolytes, alcohol, stimulant/medication triggers</b>.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · modify triggers</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle — trigger &amp; risk modification</span><span class="ttl">Reduce burden and stroke risk</span><div class="body"><b>Reduce caffeine, alcohol and stimulants</b> · stop smoking · treat OSA (a major AF driver) · weight loss and regular activity (lowers AF burden) · BP and diabetes control · address anxiety/panic (CBT) for benign palpitations · medication review (decongestants, salbutamol, thyroxine).</div></div>
-    <div class="arrow"><span class="tag">Step 9 · safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net &amp; follow-up</span><span class="ttl">When to come back</span><div class="body"><b>Call 999</b> if palpitations with blackout/collapse, chest pain, severe breathlessness, or they don't stop. <b>Same-day</b> if sustained fast palpitations or new breathlessness/swelling. <b>Review:</b> ambulatory-monitor results, annual AF review (anticoagulation need + ORBIT, DOAC dose by renal function, warfarin TTR ≥65%), thyroid/anaemia results; safety-net the patient awaiting monitoring to record symptom timing.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>Get the rhythm on paper:</b> a normal resting ECG between episodes is common — ambulatory monitoring during symptoms is what makes the diagnosis. And never give AV-nodal blockers (adenosine, verapamil, diltiazem, beta-blockers, digoxin) in pre-excited AF (WPW).</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/palpitations.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/palpitations.html">⬇ Download PDF</button><a class="sum-open" href="one-page/palpitations.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/palpitations.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -597,7 +542,7 @@
         </div>
         <div class="rftile">
           <b>Known structural heart disease</b>
-          HCM, dilated CM, prior MI, valvular disease with sustained, exertional, poorly tolerated or unexplained palpitations → <span class="pill pill-red">urgent assessment</span>; stable isolated ectopy → cardiology per local pathway
+          HCM, dilated CM, prior MI, valvular disease with sustained, exertional, poorly tolerated or unexplained palpitations → <span class="pill pill-red">Same-day assessment</span>; stable isolated ectopy → cardiology per local pathway
         </div>
         <div class="rftile">
           <b>Personal or family history of sudden cardiac death</b>
@@ -605,7 +550,7 @@
         </div>
         <div class="rftile">
           <b>Palpitations during exertion</b>
-          Reproducibly triggered by exercise — not relieved by rest → <span class="pill pill-red">Same-day</span> Exercise-induced VT; warrants urgent holter + echo
+          Triggered by exercise → <span class="pill pill-red">Same-day</span> Exercise-induced VT; warrants urgent holter + echo
         </div>
         <div class="rftile">
           <b>Sudden-onset, sudden-offset regular palpitations</b> Suggest paroxysmal SVT (perceived rate is not diagnostic) → <span class="pill pill-amber">ECG during symptoms or ambulatory monitoring</span>
@@ -616,7 +561,7 @@
         </div>
         <div class="rftile">
           <b>Palpitations in pregnancy</b>
-          Do not assume physiological: assess vitals, ECG, anaemia, thyroid. Syncope, sustained tachycardia, chest pain, hypoxia or heart-failure symptoms → <span class="pill pill-red">urgent obstetric/medical assessment</span>. Specialist advice before antiarrhythmics or anticoagulants (DOACs generally avoided)
+          Do not assume physiological: assess vitals, ECG, anaemia, thyroid. Syncope, sustained tachycardia, chest pain, hypoxia or heart-failure symptoms → <span class="pill pill-red">Same-day obstetric/medical assessment</span> (unstable → 999). Specialist advice before antiarrhythmics or anticoagulants (DOACs generally avoided)
         </div>
       </div>
     </div>
@@ -705,13 +650,13 @@
       <div class="kv">
         <div>If in arrhythmia during ECG</div>
         <div>
-          <b>Narrow complex regular tachycardia</b> → likely SVT — try vagal manoeuvres, refer if persistent<br>
+          <b>Narrow complex regular tachycardia</b> → likely SVT — if stable, try modified Valsalva; if it persists → urgent emergency assessment; unstable → 999<br>
           <b>Narrow complex irregular</b> → possible AF — confirm on ECG before any long-term AF treatment (not from pulse or smartwatch alone)<br>
           <b>Broad complex tachycardia</b> → <span class="pill pill-red">999</span> Treat as VT until proven otherwise. Never assume SVT with aberrancy
         </div>
 
         <div>Delta waves</div>
-        <div><b>Short PR + slurred QRS upstroke</b> → WPW pre-excitation → <span class="pill pill-purple">Urgent cardiology</span> — avoid AV nodal blockers if AF occurs</div>
+        <div><b>Short PR + slurred QRS upstroke</b> → WPW pre-excitation → <span class="pill pill-red">Same-day</span> if symptomatic or with AF; well and asymptomatic → <span class="pill pill-purple">Urgent cardiology</span> — avoid AV nodal blockers if AF occurs</div>
 
         <div>QTc interval</div>
         <div>QTc &gt;450 ms needs competent ECG review (CG109) — not a diagnosis of LQTS by itself (formula, rate, drugs and repeats matter). <b>Markedly prolonged (≥500 ms)</b>, or with syncope, ventricular arrhythmia, FH sudden death or QT drugs → correct reversible causes, review medicines, <span class="pill pill-red">urgent cardiology discussion</span></div>
@@ -877,7 +822,7 @@
 
         <div><span class="pill pill-red">Same-day</span></div>
         <div>
-          Resolved syncope/presyncope with palpitations (CG109 features within 24 h)<br>Exertional palpitations, especially with presyncope<br>Abnormal ECG (pre-excitation, conduction disease, long/short QT, Brugada, ventricular arrhythmia, new LBBB)<br>Structural heart disease with sustained or poorly tolerated palpitations<br>FH sudden death &lt;40 or inherited arrhythmia/cardiomyopathy<br>New AF with heart failure, severe symptoms or rapid rate; persistent SVT/AF poorly controlled
+          Resolved syncope/presyncope with palpitations (CG109 features within 24 h)<br>Exertional palpitations, especially with presyncope<br>Abnormal ECG (symptomatic pre-excitation, conduction disease, long/short QT, Brugada, ventricular arrhythmia, new LBBB)<br>Structural heart disease with sustained or poorly tolerated palpitations<br>FH sudden death &lt;40 or inherited arrhythmia/cardiomyopathy<br>New AF with heart failure, severe symptoms or rapid rate; persistent SVT/AF poorly controlled
         </div>
 
         <div><span class="pill pill-amber">Urgent cardiology</span></div>
@@ -989,7 +934,7 @@
 
       <div class="section-label mt8">Sinus Tachycardia — Treat the Underlying Cause</div>
       <div class="ladder">
-        <div class="rung"><span class="rn">Anaemia</span><span class="rt">Oral iron if IDA: <b>Ferrous sulfate 200 mg once daily</b> (alternate days if not tolerated — BSG 2021; take with vitamin C, away from food). Recheck FBC in 4–6 weeks</span></div>
+        <div class="rung"><span class="rn">Anaemia</span><span class="rt">Oral iron if IDA: <b>Ferrous sulfate 200 mg once daily</b> (alternate days if not tolerated — BSG 2021). Recheck Hb at 2–4 weeks</span></div>
         <div class="rung"><span class="rn">Thyrotoxicosis</span><span class="rt">Confirm biochemically; endocrinology advice. Beta-blocker for symptoms where appropriate. <b>Carbimazole may be started</b> in selected confirmed hyperthyroidism while awaiting specialist assessment per local advice (NG145) — check pregnancy potential, baseline FBC/LFTs; not for thyroiditis. Warn: fever, sore throat, mouth ulcers → stop and urgent FBC; jaundice/dark urine → urgent help</span></div>
         <div class="rung"><span class="rn">Anxiety/panic</span><span class="rt">Only once diagnosed after appropriate assessment: CBT and/or an SSRI per CG113 (e.g. sertraline for GAD). Beta-blockers are not routine for panic disorder. Avoid benzodiazepines</span></div>
         <div class="rung"><span class="rn">Medication-induced</span><span class="rt">Review salbutamol overuse, levothyroxine dose, decongestants, stimulants. Reduce/switch where possible</span></div>
@@ -1035,7 +980,7 @@
         </div>
         <div class="lstile">
           <b>Blood pressure control</b>
-          Hypertension is a leading modifiable AF risk factor. Target BP &lt;130/80 in AF patients (or &lt;140/90 if older). Review antihypertensives
+          Hypertension is a leading modifiable AF risk factor. Clinic BP target per NICE NG136: &lt;140/90 under 80, &lt;150/90 aged 80 and over. Review antihypertensives
         </div>
         <div class="lstile">
           <b>Regular aerobic exercise</b>
@@ -1116,7 +1061,7 @@
         <div>Monitoring — anticoagulation</div>
         <div>
           <b>DOACs</b> (SPS): at least annually FBC, LFTs, U&amp;Es and <b>Cockcroft–Gault CrCl</b>; adherence, bleeding, anaemia, thromboembolic symptoms and interactions (NSAIDs, antiplatelets, SSRIs, antimicrobials, inducers); more often if older/frail, intercurrent illness or CrCl &lt;60<br>
-          <b>Warfarin</b>: INR 2–3, check frequency per stability (typically 4–8 weekly once stable)
+          <b>Warfarin</b>: INR 2–3, check frequency per stability (typically 4–8 weekly once stable); reassess anticoagulation if time in therapeutic range &lt;65% (NG196)
         </div>
 
         <div><span class="pill pill-red">Safety-net 999</span></div>
@@ -1125,15 +1070,14 @@
           Palpitations + chest pain at same time<br>
           Palpitations + acute breathlessness / inability to speak in sentences<br>
           Palpitations + sudden severe headache<br>
-          Sustained or recurrent palpitations with dizziness or near-collapse; new neurological symptoms
+          Sustained or recurrent palpitations with dizziness or near-collapse; new neurological symptoms; face drooping, arm weakness or speech problems (stroke or TIA), even if they go away
         </div>
 
         <div><span class="pill pill-red">Safety-net same-day GP</span></div>
         <div>
-          New onset irregular pulse felt persistently for &gt;1 hour; persistent resting tachycardia; palpitations during exercise or when supine; bleeding or unexplained bruising on anticoagulation; fever, sore throat or mouth ulcers on carbimazole; worsening breathlessness, orthopnoea or rapid weight gain<br>
+          New irregular pulse that persists; persistent resting tachycardia; palpitations during exercise or when supine; bleeding or unexplained bruising on anticoagulation; fever, sore throat or mouth ulcers on carbimazole; worsening breathlessness, orthopnoea or rapid weight gain<br>
           Palpitations now associated with new near-fainting episodes<br>
-          New or worsening ankle swelling + palpitations<br>
-          Any symptoms of TIA / stroke in patient with known or suspected AF (face droop, arm weakness, speech change → 999)
+          New or worsening ankle swelling + palpitations
         </div>
 
         <div>Re-refer criteria</div>

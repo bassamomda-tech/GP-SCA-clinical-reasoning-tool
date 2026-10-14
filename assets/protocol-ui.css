@@ -199,6 +199,18 @@
 @media (max-width:760px){ .pc-copy{width:100%;justify-content:center} .pc-copy-btns{width:100%} }
 }
 @media print{ .pc-bar,.pc-copybar{display:none!important} }
+
+/* ---- roll-out hardening (shared, no per-page rules) ----
+   - Some protocol data leave a <b> unclosed, so the browser wraps the NEXT section header
+     in <b>; display:contents keeps the header's flex layout (and its bold) intact.
+   - Long URLs and nowrap citation pills must not widen a phone screen inside step cards. */
+@media screen{
+  .pa .mg-sec-h > b{display:contents}
+  .pa .pa-main a{overflow-wrap:anywhere}
+  @media (max-width:760px){
+    .pa .pa-main .mg-src,.pa .pa-main .src{white-space:normal}
+  }
+}
 /* ============================================================
    PROTOCOL ADD-ONS (6) — styles. Self-contained; all chrome hidden in print.
    ============================================================ */
@@ -341,9 +353,20 @@ li > .pxa-drug{margin:2px 0 4px}
 
 }
 
+/* ---- 7. "Red flags" step name ---- */
+@media screen{
+  .pxa-rf-h .pxa-rf-name{display:block}
+  .pxa-rf-h .pxa-rf-orig{display:block;margin-top:2px;font-family:'DM Sans',system-ui,sans-serif;font-size:13.5px;font-weight:600;line-height:1.35;color:var(--muted,#6b7280);letter-spacing:0}
+  .pxa-rf-step > .mg-sec-h .mg-sec-n{background:var(--u-same-day,#b3261e)!important;color:#fff!important}
+  .pa-l .pxa-rf-sub{display:block;font-size:11.5px;font-weight:600;color:var(--muted,#6b7280);line-height:1.2;margin-top:1px}
+  .pa-l .pxa-rf-sub::before{content:"· "}
+  @media (max-width:900px){ .pa-l .pxa-rf-sub{display:none} }
+}
+
 /* ---- print: today's print layout, no add-on chrome ---- */
 @media print{
   .pxa-chrome,.pxa-toast,.pxa-sheet,.pxa-dock,.pxa-qr,.u-badge{display:none!important}
+  .pxa-rf-h .pxa-rf-orig{display:inline;font:inherit;color:inherit}
   .pxa-drug{border:0;background:none;margin:0;padding:0}
   .pxa-drug > .pxa-drug-body{display:block!important;padding:0}
   p.pxa-drug-body{display:block!important}

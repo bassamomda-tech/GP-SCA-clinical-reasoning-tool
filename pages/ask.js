@@ -118,7 +118,7 @@
   /* ---------- minimal markdown -> html ---------- */
   function inline(s){
     s = esc(s);
-    s = s.replace(/\[\[2WW\]\]\s*/g, '<span class="pill-2ww">⚑ 2WW · NICE NG12</span> ');
+    s = s.replace(/\[\[2WW\]\]\s*/g, '<span class="pill-2ww">⚑ Suspected cancer · NICE NG12</span> ');
     s = s.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
     s = s.replace(/(^|[^*])\*(?!\*)(.+?)\*(?!\*)/g, '$1<em>$2</em>');
     s = s.replace(/_(.+?)_/g, '<em>$1</em>');
@@ -268,7 +268,7 @@
       return;
     }
     // 👎 → ask what was wrong before sending (optional free text)
-    row.innerHTML = `<span class="fb-l">What was wrong or missing?</span><input type="text" class="fb-in" placeholder="e.g. dose out of date, missed the 2WW criterion (optional)"><button type="button" class="fb-send">Send</button>`;
+    row.innerHTML = `<span class="fb-l">What was wrong or missing?</span><input type="text" class="fb-in" placeholder="e.g. dose out of date, missed the suspected cancer criterion (optional)"><button type="button" class="fb-send">Send</button>`;
     const inp = row.querySelector('.fb-in'); inp.focus();
     const send = ()=>{
       m.fb='down'; save();

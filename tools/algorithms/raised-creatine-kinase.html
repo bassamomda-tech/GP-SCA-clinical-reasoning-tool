@@ -43,111 +43,12 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
 <link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head><body>
 <div class="stem-banner"><div class="sb-icon">💪</div><div><b>Raised Creatine Kinase (CK) &mdash; Investigation &amp; Management</b><small>ULN multiples &middot; rhabdomyolysis &middot; statin myopathy &middot; pigmenturia &middot; immune-mediated necrotising myopathy &middot; secondary causes</small></div></div>
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div><span>Progress</span><span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span><div class="pbar"><div class="pbar-fill" id="pFill"></div></div><button class="reset" id="resetBtn">Reset</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div><span>Progress</span><span class="pcount"><span id="pDone">0</span>&nbsp;/&nbsp;<span id="pTotal">9</span></span><div class="pbar"><div class="pbar-fill" id="pFill"></div></div><button class="reset" id="resetBtn">Reset</button></div>
 
 <!-- ════════ DIAGRAM (FLOWCHART) VIEW ════════ -->
-<div id="viewDiagram">
-  <div class="dg-legend">
-    <span>The full reasoning pathway — triage by multiples of the upper limit of normal (ULN); CK varies between labs and sexes, and most mild rises are physiological (exercise) — but exclude rhabdomyolysis, a clinical and biochemical diagnosis that CK alone does not define. Find the cause, treat, modify factors, and safety-net.</span>
-    <span class="legend">
-      <span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span>
-    </span>
-  </div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start">
-      <span class="lbl">Presentation</span>
-      <span class="ttl">Raised CK (with or without symptoms)</span>
-      <div class="body">Check CK if muscle pain, tenderness or weakness; this pathway also applies if CK is raised incidentally. Express the result as a <b>multiple of the ULN</b> (ULN varies by lab and sex). Also check <b>renal function, potassium + urine dipstick</b>; look for precipitants, especially drugs (e.g. statin).</div>
-    </div>
-    <div class="arrow"></div>
-
-    <div class="box dec">
-      <span class="lbl">Step 1 · Safety — rhabdomyolysis</span>
-      <span class="ttl">Rhabdomyolysis red flags, or CK ≥10× ULN?</span>
-      <div class="body">Suspect rhabdomyolysis when raised CK occurs with compatible symptoms or a precipitant — muscle pain/swelling, weakness, <b>dark urine, reduced urine output, AKI, hyperkalaemia</b> or systemic illness. CK magnitude helps assess severity but does not replace clinical assessment. Dipstick blood with few or no red cells supports pigmenturia but is not diagnostic — do not wait for microscopy or urine myoglobin.</div>
-    </div>
-
-    <div class="split">
-      <div class="stem"></div>
-      <div class="bar" style="width:84%;"></div>
-      <div class="cols">
-        <div class="col">
-          <div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">Red flags (any CK)</div>
-          <div class="box stop"><span class="lbl">Stop · Admit</span><span class="ttl">Admit same day</span><div class="body">Stop any causative drugs. Same-day hospital assessment/admission for AKI, oliguria/anuria, hyperkalaemia, ECG changes, severe pain or weakness, dark urine, compartment-syndrome features, systemic illness, ongoing muscle injury or inability to maintain oral intake. <b>999</b> for shock, severe hyperkalaemia/ECG changes, compartment syndrome, altered consciousness or rapid deterioration.</div></div>
-        </div>
-        <div class="col">
-          <div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">≥10× ULN (≈ ≥5,000 IU/L), no red flags</div>
-          <div class="box ix"><span class="lbl">Investigate · Caution</span><span class="ttl">Urgent same-day clinical assessment</span><div class="body"><b>Treat as significant muscle injury/rhabdomyolysis until assessed</b>, particularly if symptomatic, dehydrated or after ongoing exertion/trauma: renal function, K⁺, calcium, phosphate, bicarbonate, urine; ECG if K⁺ abnormal or unwell. Very high, rapidly rising or &gt;50× ULN → urgent hospital/specialist assessment is generally appropriate (disposition by whole picture and local protocol). Stop causative drugs; on a statin → statin-intolerance pathway.</div></div>
-        </div>
-        <div class="col">
-          <div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">&lt;10× ULN &amp; well, no red flags</div>
-          <div class="box ix"><span class="lbl">Investigate · Primary care</span><span class="ttl">Manage in primary care</span><div class="body">Assess symptoms and look for an underlying cause (split below by &lt;4× vs 4–10×).</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="arrow"><span class="tag">&lt;10× ULN — sub-classify</span></div>
-
-    <div class="split">
-      <div class="bar" style="width:62%;"></div>
-      <div class="cols two">
-        <div class="col">
-          <div class="blabel">&lt;4× ULN</div>
-          <div class="box act"><span class="lbl">Action · Usually transient</span><span class="ttl">Often physiological / exercise</span><div class="body">If well, with no weakness, dark urine, oliguria, renal impairment or electrolyte disturbance, and recent strenuous exercise is plausible: avoid strenuous exercise for ~7 days and <b>repeat CK</b>. Review alcohol, medication, personal/family history of muscle disease. A mild, stable elevation with normal examination and a clear benign explanation may be observed — document the decision; <b>no absolute CK cut-off</b> (e.g. &lt;500 IU/L) for stopping investigation.</div></div>
-        </div>
-        <div class="col">
-          <div class="blabel" style="background:#eef5fc;border-color:#7ba7d7;color:#2b6cb0;">4–10× ULN, no red flags</div>
-          <div class="box ix"><span class="lbl">Investigate · Secondary cause</span><span class="ttl">More likely a secondary cause</span><div class="body">Repeat CK; check renal function, potassium and urine; stop/review a causative drug where appropriate. Select further bloods by history and examination — commonly <b>U&amp;Es/eGFR, K⁺, calcium, phosphate, magnesium, glucose, LFTs, TSH</b>; add vitamin D, inflammatory markers, autoimmune or viral tests only where indicated. Autoimmune causes are commoner in those &gt;50 with symptoms — rheumatology referral may help.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="arrow"><span class="tag">Step 3 · look for the cause</span></div>
-
-    <div class="box ix" style="max-width:680px;">
-      <span class="lbl">Investigate · Causes</span>
-      <span class="ttl">Often multifactorial — physiological / drugs commonest</span>
-      <div class="body">
-        <b>Muscle insult:</b> exercise (resistance/extreme), trauma, seizures, surgery, systemic illness ·
-        <b>Substances:</b> alcohol excess (+ thiamine deficiency), cocaine, MDMA ·
-        <b>Drugs:</b> statins/fibrates (esp. with CYP3A4 interactions), antipsychotics, hydroxychloroquine, colchicine, systemic retinoids, antiretrovirals, some cancer drugs ·
-        <b>Endocrine:</b> thyroid disease, hyperparathyroidism, Cushing's, acromegaly ·
-        <b>Autoimmune:</b> RA, SLE, coeliac, dermatomyositis, polymyositis ·
-        <b>Hereditary myopathies:</b> glycogen storage disease, muscular dystrophy.
-      </div>
-    </div>
-    <div class="arrow"></div>
-
-    <div class="box refer" style="max-width:680px;">
-      <span class="lbl">Refer</span>
-      <span class="ttl">Escalation</span>
-      <div class="body"><span class="pill pill-red">Same-day hospital</span> any CK with AKI, oliguria, hyperkalaemia, dark urine, severe pain/weakness or systemic illness; urgent same-day assessment for CK ≥10× ULN (≈ ≥5,000). <span class="pill pill-red">999</span> shock, severe hyperkalaemia/ECG changes, altered consciousness, rapid deterioration. <span class="pill pill-red">Surgical emergency</span> suspected compartment syndrome. <span class="pill pill-purple">Statin pathway</span> new muscle aches or raised CK on starting/up-titrating a statin → statin-intolerance pathway. <span class="pill pill-purple">Rheumatology</span> suspected inflammatory myopathy (esp. &gt;50 with symptoms) or unexplained persistent elevation. <span class="pill pill-purple">Neurology / metabolic clinic</span> suspected hereditary myopathy, exertional symptoms, recurrent rhabdomyolysis or family history. <span class="pill pill-purple">Lipid clinic</span> persistent statin intolerance.</div>
-    </div>
-    <div class="arrow"><span class="tag">Step 8 · modifiable factors</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:680px;border-color:#a9c6b3;">
-      <span class="lbl">Step 8 · Lifestyle &amp; modifiable factors</span>
-      <span class="ttl">Remove the muscle insult</span>
-      <div class="body"><b>Rest from intense/eccentric exercise</b> and hydrate before rechecking (exercise is the commonest cause); <b>reduce alcohol</b> and avoid stimulant drugs (cocaine/MDMA). Review <b>statins/fibrates</b> and CYP3A4-interacting drugs; treat thyroid disease and correct vitamin D deficiency if found. Advise gradual return to activity once CK normalises.</div>
-    </div>
-    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;">
-      <span class="lbl">Step 9 · Monitoring &amp; safety-net</span>
-      <span class="ttl">Recheck &amp; when to escalate</span>
-      <div class="body"><b>Repeat CK after ~7 days</b> without strenuous exercise if well; persistent unexplained elevation → secondary-cause work-up ± rheumatology/neurology. <b>Same-day hospital assessment</b> for <b>dark (cola) urine, reduced urine output, severe muscle pain/weakness</b> (rhabdomyolysis → AKI); <b>999</b> for collapse, confusion or rapid deterioration. Urgent specialist review for objective progressive weakness despite stopping a statin (?immune-mediated necrotising myopathy).</div>
-    </div>
-
-  </div><!-- /flow -->
-  </div><!-- /chart -->
-  <div class="band">
-    <div class="caution crit">⚠️ <b>Rhabdomyolysis is the can't-miss:</b> it is a clinical diagnosis, not a CK number. CK ≥10× ULN (≈ ≥5,000) needs urgent same-day assessment, and any CK with AKI, oliguria, hyperkalaemia, dark urine, severe pain/weakness or systemic illness needs same-day hospital assessment. Suspect <b>immune-mediated necrotising myopathy</b> (rare) if objective progressive proximal weakness and a substantially raised CK persist after stopping a statin.</div>
-  </div>
-</div><!-- /viewDiagram -->
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/raised-creatine-kinase.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/raised-creatine-kinase.html">⬇ Download PDF</button><a class="sum-open" href="one-page/raised-creatine-kinase.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/raised-creatine-kinase.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
+</div>
 
 <div class="alg-flow" id="flow">
 
@@ -163,7 +64,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
       <div class="rftile"><b>Objective progressive proximal weakness with substantially raised CK that persists or progresses despite stopping a statin</b> Consider immune-mediated necrotising myopathy (e.g. anti-HMGCR) — rare but very significant. Needs urgent specialist (rheumatology/neurology) assessment; diagnosis usually includes myositis antibodies, EMG, MRI and/or muscle biopsy as appropriate. Muscle pain alone, or a CK that falls after stopping the statin, is more consistent with other statin-associated muscle syndromes.</div>
       <div class="rftile"><b>Crush injury, prolonged immobility, seizures, extreme exertion or hyperthermia</b> High rhabdomyolysis risk — check CK, renal function, potassium and urine; treat the precipitant; same-day assessment if CK ≥10× ULN, AKI or other red flags. CK may still be rising early after the injury.</div>
       <div class="rftile"><b>New muscle aches or raised CK after starting / up-titrating a statin</b> Go to the statin-intolerance pathway. Stop the statin if symptoms are severe or intolerable, or CK is ≥5× ULN, and reassess (NICE NG238).</div>
-      <div class="rftile"><b>Hyperkalaemia or AKI with a raised CK</b> Potassium ≥6.0 mmol/L or a rising creatinine → same-day admission; severe hyperkalaemia or ECG changes → 999; treat as rhabdomyolysis until proven otherwise.</div>
+      <div class="rftile"><b>Hyperkalaemia or AKI with a raised CK</b> Any hyperkalaemia or a rising creatinine → same-day admission; severe hyperkalaemia or ECG changes → 999; treat as rhabdomyolysis until proven otherwise.</div>
       <div class="rftile"><b>Tense, painful limb after crush, prolonged lie or injection-drug use</b> Possible compartment syndrome — pain out of proportion, pain on passive stretch → emergency surgical assessment. Suspected compartment syndrome is a surgical emergency. Do not delay for CK, MRI or compartment-pressure testing if the clinical picture is convincing.</div>
       <div class="rftile"><b>Chest pain with a raised CK</b> CK also rises with myocardial injury — if the story is cardiac, manage as acute coronary syndrome (troponin, not CK, is the diagnostic test).</div>
       <div class="rftile"><b>Weakness with breathing or swallowing difficulty</b> Inflammatory myopathy or neuromuscular disease involving respiratory or bulbar muscles → same-day specialist assessment.</div>
@@ -180,7 +81,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
   <div class="node-body">
     <div class="kv">
       <div>When to check</div><div>Check CK if any significant symptoms: <b>muscle pain, tenderness or weakness</b>. This pathway also applies if CK is found raised for any other reason (incidental). New muscle symptoms on a statin → use the statin-intolerance pathway.</div>
-      <div>Express as multiples of ULN</div><div>CK reference ranges vary <b>lab to lab and between the sexes</b> — always interpret as a multiple of the local ULN, not the absolute number. An absolute value such as 500 IU/L can be more than 4× ULN in some laboratories, so do not use fixed absolute cut-offs; a CK of approximately ≥5,000 IU/L is often used as a practical rhabdomyolysis risk threshold.</div>
+      <div>Express as multiples of ULN</div><div>CK reference ranges vary <b>lab to lab and between the sexes</b> — always interpret as a multiple of the local ULN, not the absolute number. An absolute value such as 500 IU/L can be more than 4× ULN in some laboratories, so do not use fixed absolute cut-offs; a CK of approximately ≥5,000 IU/L (about 30× a typical ULN) is often used as a practical rhabdomyolysis risk threshold, but the ≥10× ULN band is reached well below it — use 10× ULN, not 5,000 IU/L, to trigger same-day assessment.</div>
       <div>Other tests at the same time</div><div>Check <b>renal function, potassium</b> and a <b>urine dipstick</b>; send microscopy/culture when infection or haematuria is part of the differential. In suspected significant rhabdomyolysis also check <b>calcium, phosphate, bicarbonate/acid-base status</b>, and an <b>ECG</b> if potassium is abnormal or the patient is unwell. Look actively for precipitating causes — especially drugs (statins/fibrates).</div>
       <div>Confirm &amp; recheck</div><div>A transient rise (e.g. after exercise) settles. If the patient is well, has no weakness, dark urine, oliguria, renal impairment or electrolyte disturbance, and recent strenuous exercise is a plausible explanation, avoid strenuous exercise for approximately 7 days and repeat CK. CK may normalise within several days after ordinary exertion, but extreme or eccentric exercise can cause a longer elevation. Do not delay hospital assessment in suspected rhabdomyolysis.</div>
       <div>Recheck conditions</div><div>Ask the patient to avoid strenuous exercise, intramuscular injections and heavy alcohol for about a week before the repeat test, so that the result reflects the resting level.</div>
@@ -222,7 +123,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
   <div class="node-body">
     <div class="kv">
       <div><span class="pill pill-red">Any CK + red flags</span></div><div>AKI, oliguria, hyperkalaemia, dark urine, severe pain/weakness or systemic illness → same-day hospital assessment/admission; stop causative drugs. 999 for shock, severe hyperkalaemia/ECG changes, compartment syndrome, altered consciousness or rapid deterioration — not for a CK value alone in a clinically stable patient.</div>
-      <div><span class="pill pill-amber">≥10× ULN (or ≈ ≥5,000 IU/L)</span></div><div>Urgent same-day clinical assessment; consider rhabdomyolysis, especially with symptoms or ongoing injury. Stop causative drugs; on a statin → statin-intolerance pathway. Very high, rapidly rising or &gt;50× ULN: urgent hospital/specialist assessment is generally appropriate — final disposition by the complete clinical picture and local protocol.</div>
+      <div><span class="pill pill-amber">≥10× ULN (or ≥5,000 IU/L)</span></div><div>Urgent same-day clinical assessment; consider rhabdomyolysis, especially with symptoms or ongoing injury. Stop causative drugs; on a statin → statin-intolerance pathway. Very high, rapidly rising or &gt;50× ULN: urgent hospital/specialist assessment is generally appropriate — final disposition by the complete clinical picture and local protocol.</div>
       <div><span class="pill pill-blue">4–10× ULN, no red flags</span></div><div>More likely a secondary cause. Repeat CK and check renal function, potassium, urine and secondary causes (step 5); stop/review a causative drug where appropriate. CK ≥5× ULN with statin symptoms: stop the statin; assess renal function, potassium, urine and symptoms; follow the statin-intolerance pathway.</div>
       <div><span class="pill pill-green">&lt;4× ULN, well</span></div><div>Usually incidental / transient (e.g. exercise). If recent strenuous exercise, normal examination and renal function: stop strenuous exercise, review drugs/precipitants, repeat CK after approximately 7 days.</div><div><span class="pill pill-purple">Persistent + weakness / not falling</span></div><div>Persistent CK elevation with objective weakness, or CK not falling after stopping an implicated drug → urgent rheumatology/neurology assessment.</div><div><span class="pill pill-green">Persistent mild, asymptomatic</span></div><div>Individualised observation or non-urgent specialist advice; do not use an absolute &lt;500 IU/L rule. The decision not to investigate further should be documented.</div>
       <div>What overrides the band</div><div>Weakness, dark urine, AKI, hyperkalaemia or systemic illness move a patient up a band regardless of the number. Conversely, a very high CK in a fit athlete 24 hours after an ultra-endurance event, with normal renal function and clear urine, may need only close review — but that judgement belongs to the admitting team, not a phone call.</div>
@@ -280,7 +181,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
   <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div><span class="pill pill-red">Admit same day</span></div><div>Any CK with AKI, oliguria/anuria, hyperkalaemia, ECG changes, severe pain or weakness, dark urine, compartment-syndrome features, systemic illness, ongoing muscle injury or inability to maintain oral intake. Urgent same-day assessment for CK ≥10× ULN (≈ ≥5,000 IU/L); very high, rapidly rising or &gt;50× ULN usually needs hospital/specialist assessment, decided on the whole clinical picture and local protocol. 999 for shock, severe hyperkalaemia/ECG changes, compartment syndrome, altered consciousness or rapid deterioration. Stop causative drugs.</div>
+      <div><span class="pill pill-red">Admit same day</span></div><div>Any CK with AKI, oliguria/anuria, hyperkalaemia, ECG changes, severe pain or weakness, dark urine, compartment-syndrome features, systemic illness, ongoing muscle injury or inability to maintain oral intake. Urgent same-day assessment for CK ≥10× ULN (or ≥5,000 IU/L); very high, rapidly rising or &gt;50× ULN usually needs hospital/specialist assessment, decided on the whole clinical picture and local protocol. 999 for shock, severe hyperkalaemia/ECG changes, compartment syndrome, altered consciousness or rapid deterioration. Stop causative drugs.</div>
       <div><span class="pill pill-purple">Rheumatology</span></div><div>Suspected inflammatory myopathy — inflammatory or progressive weakness, persistent unexplained elevation, or CK not falling after stopping an implicated drug, especially in those &gt;50 with symptoms.</div>
       <div><span class="pill pill-purple">Neurology</span></div><div>Neurology/metabolic clinic: suspected hereditary myopathy (e.g. young patient, family history, exertional symptoms, recurrent rhabdomyolysis) or unexplained progressive weakness.</div>
       <div><span class="pill pill-purple">Lipid clinic</span></div>
@@ -290,7 +191,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
       <div><span class="pill pill-red">Surgical emergency</span></div>
 <div>Suspected compartment syndrome — do not delay for CK, MRI or compartment-pressure testing if the clinical picture is convincing.</div>
       <div>Statin pathway</div><div>New muscle aches or raised CK on starting/up-titrating a statin → lipids &amp; statins (statin-intolerance) pathway.</div>
-      <div>Urgency</div><div><b>Urgent (days):</b> progressive proximal weakness, rash of dermatomyositis, weakness persisting after stopping a statin, dysphagia. <b>Specialist assessment:</b> persistent unexplained CK elevation above approximately 3–5× ULN, particularly with objective weakness or abnormal examination. Also consider referral for persistent CK above approximately 1.5–2× ULN without explanation, progressive elevation, abnormal neurological examination, family history, recurrent exertional rhabdomyolysis, dysphagia or respiratory involvement, persistent elevation after stopping a suspected medicine, or a suspected hereditary cause in a well patient.</div>
+      <div>Urgency</div><div><b>Same-day:</b> weakness with breathing or swallowing difficulty (step 1). <b>Urgent (days):</b> progressive proximal weakness, rash of dermatomyositis, weakness persisting after stopping a statin. <b>Specialist assessment:</b> persistent unexplained CK elevation on repeat testing, particularly with objective weakness or abnormal examination. Also consider referral for progressive elevation, abnormal neurological examination, family history, recurrent exertional rhabdomyolysis, persistent elevation after stopping a suspected medicine, or a suspected hereditary cause in a well patient.</div>
       <div>What to include</div><div>Serial CK values with dates and the local ULN, exercise and drug history (with statin dates), renal function, urine results, secondary investigation results, examination findings including a clear statement on weakness, and family history.</div>
       <div>Occupational and sport</div><div>Athletes, military recruits and manual workers with recurrent exertional rhabdomyolysis need specialist assessment for an underlying metabolic myopathy before returning to full training.</div>
     </div>
@@ -325,7 +226,7 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
     <div class="kv">
       <div>Recheck</div><div><b>Repeat CK after about 7 days</b> without strenuous exercise if well. A mild, stable elevation with normal examination and a clear benign explanation may be observed — document the decision; no absolute CK cut-off (e.g. &lt;500 IU/L).</div>
       <div>If still raised</div><div>Persistent unexplained elevation → complete the secondary-cause panel ± rheumatology/neurology referral. Track the trend, not a single value.</div>
-      <div><span class="pill pill-red">Same-day / 999</span></div><div><b>Dark (cola/tea-coloured) urine, reduced urine output, severe muscle pain or weakness</b> — possible rhabdomyolysis with AKI: same-day hospital assessment. Stop causative drugs. 999 for collapse, confusion or rapid deterioration.</div>
+      <div><span class="pill pill-red">Same-day / 999</span></div><div><b>Dark (cola/tea-coloured) urine, reduced urine output, severe muscle pain or weakness</b> — possible rhabdomyolysis with AKI: same-day hospital assessment. Stop causative drugs. 999 for collapse, confusion, rapid deterioration, or a tense, swollen, very painful limb (possible compartment syndrome).</div>
       <div><span class="pill pill-red">Progressive weakness</span></div><div>Weakness that worsens <b>despite stopping a statin</b> → urgent specialist review for immune-mediated necrotising myopathy (myositis antibodies, EMG, MRI and/or biopsy as appropriate).</div>
       <div>After rhabdomyolysis</div><div>Check renal function has recovered after discharge; record the episode and any culprit drug in the notes; advise on the precipitant (drug, exertion, alcohol); refer if recurrent or unexplained.</div>
       <div>Document</div><div>Record the CK as a multiple of ULN, the precipitant, drug changes made, the recheck date and the safety-net given.</div>

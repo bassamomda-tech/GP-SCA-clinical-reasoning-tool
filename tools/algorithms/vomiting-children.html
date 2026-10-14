@@ -533,43 +533,15 @@ body {
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — identify dehydration (no clinically detectable dehydration / clinical dehydration / shock) and the dangerous causes (bilious vomiting, raised ICP, DKA, pyloric stenosis) before managing the common gastroenteritis. Investigate selectively. Advise carers and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Vomiting in a child</span><div class="body">Bilious vs non-bilious, projectile, blood, diarrhoea, fever, hydration, age. Weight, hydration assessment, abdominal exam.</div></div>
-    <div class="arrow"></div>
-    <div class="box dec"><span class="lbl">Step 1 · Safety — dangerous cause / dehydration</span><span class="ttl">Dangerous cause / dehydration?</span><div class="body"><b>Confirmed green/bile-stained vomiting</b> → possible obstruction/volvulus (immediate paediatric/surgical assessment). Progressive/projectile vomiting in an infant (possible pyloric stenosis). Raised ICP (morning vomiting + headache/neuro). Suspected DKA. Shock. Significant haematemesis. Serious poisoning.</div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency</span><div class="body">Bilious vomiting/suspected obstruction → immediate paediatric/surgical assessment (999 if unstable, shocked, collapsed or reduced consciousness). Shock → emergency transfer. Suspected DKA → immediate hospital assessment.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Assess</span><span class="ttl">By pattern</span><div class="body">History + examination guide management. Classify hydration clinically (no clinically detectable dehydration / clinical dehydration / shock). Investigate selectively.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · common causes</span></div>
-    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Gastroenteritis</div><div class="box act"><span class="ttl">Commonest</span><div class="body">Sudden vomiting and/or sudden loose stools — do not diagnose from vomiting alone. Low-osmolarity ORS if clinically dehydrated; safety-net; usually self-limiting. NICE CG84 applies to under 5s.</div></div></div><div class="col"><div class="blabel" style="background:#fffaf0;border-color:#e6c489;color:#8a5208;">Infant feeding / reflux</div><div class="box ix"><span class="ttl">Common</span><div class="body">GOR (well, thriving — reassure) vs GORD; pyloric stenosis (progressive/projectile, hungry, especially under 2 months → same-day specialist assessment).</div></div></div><div class="col"><div class="blabel">Other</div><div class="box ix"><span class="ttl">Consider</span><div class="body">UTI, raised ICP, DKA, surgical causes.</div></div></div>
-    </div></div>
-    <div class="arrow"></div>
-    <div class="box refer" style="max-width:660px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation</span><div class="body"><span class="pill pill-red">Emergency</span> shock / unstable bilious vomiting / raised ICP / suspected DKA. <span class="pill pill-orange">Immediate / same-day</span> confirmed bilious vomiting in a stable child (paediatric/surgical), suspected pyloric stenosis. <span class="pill pill-purple">Paediatrics</span> dehydration not corrected, persistent vomiting, faltering growth.</div></div>
-    <div class="arrow"><span class="tag">Step 8 · carer advice &amp; hydration</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Carer advice &amp; hydration</span><span class="ttl">Gastroenteritis is usually self-limiting</span><div class="body"><b>Low-osmolarity ORS</b> in small frequent amounts for clinical dehydration (or to supplement fluids if at increased risk); <b>continue breastfeeding</b>; avoid fruit juices/fizzy drinks. Reassure most viral gastroenteritis settles in a few days; <b>hand/hygiene advice</b> and exclusion from nursery/school until 48h symptom-free. Manage infant reflux conservatively (reassurance, feed review) if well and thriving — infants sleep flat on their backs; no positional treatment during sleep.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · review &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Review &amp; safety-net</span><span class="ttl">Clear red-flag advice to carers</span><div class="body"><b>Seek urgent help</b> for <b>green/bile-stained vomiting</b>, blood in vomit or stool, worsening abdominal pain or distension, increasing lethargy or reduced responsiveness, reduced urine output, breathing difficulty, non-blanching rash, persistent vomiting preventing hydration, signs of DKA, or carer concern that the child is deteriorating. <b>999</b> if collapsed, floppy/unresponsive, seizing or struggling to breathe. Progressive/projectile vomiting in a hungry young infant (possible pyloric stenosis) needs same-day assessment. <b>Same-day GP</b> for persistent vomiting &gt;1–2 days or any unwell infant. Give written advice and re-weigh if dehydrated.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution crit">⚠️ <b>Confirmed green/bile-stained vomiting needs immediate paediatric/surgical assessment</b> for possible obstruction or volvulus — call 999 if the child is unstable, shocked, collapsed or has reduced consciousness; progressive or projectile vomiting in an infant, especially under 2 months, needs same-day specialist assessment for possible pyloric stenosis.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/vomiting-children.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/vomiting-children.html">⬇ Download PDF</button><a class="sum-open" href="one-page/vomiting-children.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/vomiting-children.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -587,10 +559,10 @@ body {
   <div class="node-body">
     <span><b>Scope:</b> this pathway supports initial primary-care assessment of vomiting in children aged 0–12 years. NICE CG84 recommendations on gastroenteritis and dehydration apply specifically to children under 5 years. Children aged 5 years and over require age-appropriate clinical judgement and local paediatric acute assessment pathways; also use NICE NG143 where fever is present in under 5s, NICE NG18 where diabetes/DKA is suspected, and relevant abdominal, neurological and safeguarding pathways. Confirmed green/bile-stained vomiting requires immediate paediatric/surgical assessment.</span>
     <div class="rfgrid">
-      <div class="rftile"><b>Bilious (green) vomiting</b> Any age — possible malrotation with volvulus, intussusception, bowel obstruction → immediate paediatric/surgical assessment; <span class="pill pill-red">999</span> if unstable, shocked, collapsed or reduced consciousness. A well-appearing child with a single uncertain episode of yellow vomit still needs urgent clinical assessment.</div>
+      <div class="rftile"><b>Bilious (green) vomiting</b> Any age — possible malrotation with volvulus, intussusception, bowel obstruction → immediate paediatric/surgical assessment; <span class="pill pill-red">999</span> if unstable, shocked, collapsed or reduced consciousness. A well-appearing child with a single uncertain episode of yellow or yellow-green vomit still needs immediate (same-day) clinical assessment.</div>
       <div class="rftile"><b>Projectile vomiting — infant</b> Progressive or projectile vomiting, especially under 2 months; hungry after vomiting; olive mass not always palpable → possible pyloric stenosis → <span class="pill pill-red">Same-day specialist assessment</span></div>
       <div class="rftile"><b>Altered consciousness + vomiting</b> Raised ICP, meningitis, encephalitis, intracranial bleed → <span class="pill pill-red">999</span></div>
-      <div class="rftile"><b>Haematemesis</b> Fresh blood or coffee-ground vomit — swallowed blood, mucosal trauma after retching (Mallory-Weiss), oesophagitis, ulceration, rarely varices → urgent assessment; <span class="pill pill-red">999</span> for ongoing or large-volume bleeding, haemodynamic compromise, pallor, collapse, altered consciousness or suspected significant upper GI bleeding</div>
+      <div class="rftile"><b>Haematemesis</b> Fresh blood or coffee-ground vomit — swallowed blood, mucosal trauma after retching (Mallory-Weiss), oesophagitis, ulceration, rarely varices → same-day hospital assessment (A&amp;E); <span class="pill pill-red">999</span> for ongoing or large-volume bleeding, haemodynamic compromise, pallor, collapse, altered consciousness or suspected significant upper GI bleeding</div>
       <div class="rftile"><b>Suspected shock</b> Altered consciousness, weak pulses, mottled/pale skin, cold extremities, hypotension, markedly prolonged CRT or severe respiratory abnormality → <span class="pill pill-red">999</span> — emergency transfer and resuscitation support. Interpret CRT with mental state, pulse quality, heart rate, skin colour, urine output, breathing and BP — not as a standalone threshold.</div>
       <div class="rftile"><b>Vomiting + severe abdominal pain</b> Appendicitis, peritonitis, pancreatitis, volvulus, intussusception → <span class="pill pill-red">999</span> or same-day surgical. Bilious vomiting, abdominal distension, severe/localised pain and rebound tenderness suggest a diagnosis other than gastroenteritis (NICE CG84).</div>
       <div class="rftile"><b>Diabetic ketoacidosis (DKA)</b> Polyuria, polydipsia, weight loss, abdominal pain, vomiting, dehydration, hyperventilation or reduced consciousness; or vomiting/abdominal pain in a child with known diabetes (DKA possible even with normal glucose) → <span class="pill pill-red">Immediate hospital assessment</span> — contact paediatric diabetes team/emergency service</div>
@@ -602,8 +574,8 @@ body {
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>Bilious vomiting (green bile) in a neonate or infant is a surgical emergency — malrotation with midgut volvulus causes complete intestinal ischaemia within 4–6 hours if untreated. It is incompatible with survival without emergency surgery. Never attribute bilious vomiting to feeding problems in neonates.</p>
-      <p>Pyloric stenosis peaks at 4–6 weeks (range 2–8 weeks), affects boys 4x more than girls, and presents with projectile non-bilious vomiting after feeds, a visibly hungry child (not ill), and hypochloraemic hypokalaemic metabolic alkalosis on bloods. The "olive" is palpable in only 50% of cases. US is confirmatory.</p>
+      <p>Bilious vomiting (green bile) in a neonate or infant is a surgical emergency — malrotation with midgut volvulus can cause complete intestinal ischaemia within hours if untreated. It is incompatible with survival without emergency surgery. Never attribute bilious vomiting to feeding problems in neonates.</p>
+      <p>Pyloric stenosis peaks at 4–6 weeks (range 2–8 weeks), is more common in boys, and presents with projectile non-bilious vomiting after feeds, a visibly hungry child (not ill), and hypochloraemic hypokalaemic metabolic alkalosis on bloods. The "olive" is not always palpable. US is confirmatory.</p>
       <p>DKA in previously undiagnosed T1DM can present as a flu-like illness with vomiting. In a vomiting child with polyuria, polydipsia, weight loss, fatigue or hyperventilation, check capillary glucose (and blood ketones where available). Do not diagnose DKA in primary care from glucose and urine ketones alone — NICE NG18 defines DKA by acidosis (pH &lt;7.3 or bicarbonate &lt;15 mmol/L) with ketonaemia &gt;3 mmol/L or urine ketones ≥++, usually with glucose &gt;11 mmol/L.</p>
     </div>
   </div>
@@ -667,7 +639,7 @@ body {
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
       <p>The NICE CG84 framework (no clinically detectable dehydration / clinical dehydration / shock) guides fluid management decisions in under 5s. Skin turgor ("tenting") is less reliable in obese children. The most reliable bedside signs are: dry mucous membranes, sunken eyes, tachycardia, and reduced skin perfusion. No single sign is reliable — interpret signs together.</p>
-      <p>Blood pressure is a late sign of dehydration in children — children compensate well and can maintain normal BP until 25% blood volume loss. Tachycardia is an earlier and more sensitive marker. A normal BP does NOT rule out significant dehydration.</p>
+      <p>Blood pressure is a late sign of dehydration in children — children compensate well and can maintain a normal BP until late. Tachycardia is an earlier and more sensitive marker. A normal BP does NOT rule out significant dehydration.</p>
     </div>
   </div>
 </div>
@@ -696,7 +668,7 @@ body {
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>UTI can present with vomiting in infants without localising urinary symptoms, so test urine when UTI is clinically plausible (NICE NG224); infants under 3 months with suspected UTI need urgent paediatric referral. Most children with gastroenteritis do not need laboratory investigations (NICE CG84). Missing UTI leads to pyelonephritis, bacteraemia, and renal scarring.</p>
+      <p>UTI can present with vomiting in infants without localising urinary symptoms, so test urine when UTI is clinically plausible (NICE NG224); infants under 3 months with suspected UTI need immediate paediatric referral. Most children with gastroenteritis do not need laboratory investigations (NICE CG84). Missing UTI leads to pyelonephritis, bacteraemia, and renal scarring.</p>
       <p>DKA is increasingly diagnosed in primary care as T1DM incidence rises. In new-onset T1DM, the presentation mimics gastroenteritis — vomiting, abdominal pain, and malaise. Checking capillary glucose (and blood ketones where available) in any child with unexplained vomiting + any of polyuria, weight loss, polydipsia or excessive tiredness helps identify possible DKA early — refer immediately if suspected; do not try to confirm DKA in primary care.</p>
     </div>
   </div>
@@ -715,7 +687,7 @@ body {
   <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div>Urine testing</div><div><span class="pill pill-blue">Selective</span> Only if UTI is clinically plausible (NICE NG224): fever without an alternative focus, poor feeding, lethargy, irritability, urinary symptoms, abdominal pain, offensive urine, haematuria or unexplained illness. Not routine in a well child with a clear alternative diagnosis. Infants under 3 months with suspected UTI → urgent paediatric referral.</div>
+      <div>Urine testing</div><div><span class="pill pill-blue">Selective</span> Only if UTI is clinically plausible (NICE NG224): fever without an alternative focus, poor feeding, lethargy, irritability, urinary symptoms, abdominal pain, offensive urine, haematuria or unexplained illness. Not routine in a well child with a clear alternative diagnosis. Infants under 3 months with suspected UTI → immediate paediatric referral.</div>
       <div>Blood glucose (BM)</div><div><span class="pill pill-blue">Selective</span> If diabetic symptoms, significant systemic illness, altered consciousness, dehydration or diagnostic uncertainty. Blood ketones if DKA is possible. Glucose &gt;11 mmol/L with compatible symptoms → suspect DKA, immediate hospital assessment. Low glucose → follow local hypoglycaemia protocol.</div>
       <div>Stool culture</div><div>Perform if: suspected septicaemia; blood or mucus in stool (Campylobacter, STEC/E. coli O157); immunocompromised. Consider if: recent overseas travel; diarrhoea not improved by day 7; diagnostic uncertainty; suspected outbreak. Not routine for uncomplicated gastroenteritis. If STEC suspected or confirmed: no antimotility agents; seek specialist/public-health advice on monitoring for HUS.</div>
       <div>FBC + U&amp;E + venous gas</div><div>Not indicated in uncomplicated gastroenteritis. Appropriate when significant dehydration or shock is present, IV fluids are needed, hypernatraemia or acidosis is suspected, DKA is suspected, or sepsis/another systemic illness is suspected — usually arranged by the receiving paediatric team.</div>
@@ -755,7 +727,7 @@ body {
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>Intussusception has a classic presentation but also presents atypically — the "redcurrant jelly" stool is a late sign (&lt;30% of cases). The classic presentation is: age 6–18 months, sudden-onset severe colicky pain, pallor, drawn-up legs, vomiting (initially non-bilious, may become bilious), followed by periods of apparent wellness between episodes. Any vomiting infant with unexplained pallor and inconsolable crying should be referred immediately.</p>
+      <p>Intussusception has a classic presentation but also presents atypically — the "redcurrant jelly" stool is a late sign and often absent. The classic presentation is: age 6–18 months, sudden-onset severe colicky pain, pallor, drawn-up legs, vomiting (initially non-bilious, may become bilious), followed by periods of apparent wellness between episodes. Any vomiting infant with unexplained pallor and inconsolable crying should be referred immediately.</p>
     </div>
   </div>
 </div>
@@ -848,12 +820,13 @@ body {
   <div class="node-tick"><label><input type="checkbox"/><span class="tlbl">Done</span></label></div>
   <div class="node-body">
     <div class="kv">
-      <div>Gastroenteritis — well child</div><div>No routine follow-up needed. Most resolve within 5–7 days. Return if worsening dehydration, new symptoms (blood in stool, fever), or no improvement after 7 days.</div>
+      <div>Gastroenteritis — well child</div><div>No routine follow-up needed. Vomiting usually lasts 1–2 days and diarrhoea 5–7 days (NICE CG84). Contact the GP the same day or NHS 111 if dehydration worsens, new symptoms appear (blood in stool, fever), vomiting lasts more than 2 days or diarrhoea more than 7 days.</div>
       <div>GORD follow-up</div><div>Only if a 4-week PPI/H2RA trial was started for NICE NG1 indications: review at 4 weeks; stop where possible, and refer to paediatrics if symptoms do not resolve or recur after stopping. Do not continue long term without specialist input.</div>
-      <div>First episode vomiting — unexplained</div><div>Review within 48hrs if: under 3 months, amber features, unable to confirm cause. If cause confirmed and child well → safety-net only.</div>
+      <div>First episode vomiting — unexplained</div><div>Review within 24 hours if amber features or the cause cannot be confirmed. Under 3 months with persistent vomiting, fever, poor feeding, dehydration, weight loss, projectile vomiting or abnormal examination → same-day ED (Step 6), not a later review. If cause confirmed and child well → safety-net only.</div>
       <div>Recurrent vomiting</div><div>Review 1–2 weeks to track pattern. Diary of episodes (duration, trigger, associated symptoms) aids diagnosis of CVS / abdominal migraine. Refer paeds if episodes are unexplained, stereotyped, or associated with faltering growth, neurological symptoms, severe pain, dehydration, abnormal examination or persistent symptoms despite initial management.</div>
       <div><span class="pill pill-red">Call 999 if:</span></div><div>Child becomes floppy / unresponsive, collapses or has a seizure. Difficulty breathing. Suddenly very pale with cold, mottled skin. Vomiting large amounts of blood. Green vomit in a child who is very unwell. Non-blanching rash.</div>
-      <div><span class="pill pill-orange">Seek urgent help if:</span></div><div>Green/bile-stained vomiting. Blood in vomit or stool. Worsening abdominal pain or distension. Increasing lethargy or reduced responsiveness. Reduced urine output / fewer wet nappies. Persistent vomiting preventing hydration (cannot keep ORS down). Signs of DKA (excessive thirst, passing lots of urine, fast or deep breathing). Parent/carer concern that the child is deteriorating.</div>
+      <div><span class="pill pill-red">Go to A&amp;E now if:</span></div><div>Green or yellow-green vomit — even if the child seems well. Blood in vomit or vomit that looks like coffee grounds. Signs of DKA (excessive thirst, passing lots of urine, fast or deep breathing). Call 999 if the child is very unwell.</div>
+      <div><span class="pill pill-orange">Same day — GP or NHS 111:</span></div><div>Blood in stool. Worsening abdominal pain or distension. Increasing lethargy or reduced responsiveness. Reduced urine output / fewer wet nappies. Persistent vomiting preventing hydration (cannot keep ORS down). Forceful or projectile vomiting in a hungry young baby. A baby under 3 months who keeps vomiting, feeds poorly or has a fever. Vomiting for more than 2 days or diarrhoea for more than 7 days. Parent/carer concern that the child is deteriorating.</div>
       <div>Food safety reporting</div><div>Suspected food poisoning from restaurant/takeaway → notify local Environmental Health. VTEC / Salmonella typhi / Shigella → notifiable disease (as is suspected food poisoning) — notify the local UKHSA health protection team (Health Protection (Notification) Regulations 2010).</div>
     </div>
   </div>

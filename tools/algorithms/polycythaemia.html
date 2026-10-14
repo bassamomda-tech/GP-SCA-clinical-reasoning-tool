@@ -253,45 +253,15 @@ body {
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — confirm persistent erythrocytosis (not a single FBC), screen for hyperviscosity/thrombosis, then separate primary (JAK2) from secondary (hypoxia / EPO excess), treat, modify factors, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Raised Hb / haematocrit</span><div class="body">Persistent venous Hct &gt;0.52 (men) / &gt;0.48 (women) — an investigation threshold. Confirm a venous sample; consider dehydration, acute illness, diuretics, alcohol, smoking/CO exposure; repeat FBC (with film) to confirm persistence and review previous results/trend. Ask about testosterone/anabolic steroids/EPO, COPD or cyanotic heart disease, OSA symptoms, altitude, renal disease/transplant and previous thrombosis.</div></div>
-    <div class="arrow"></div>
-    <div class="box dec"><span class="lbl">Step 1 · Safety — hyperviscosity / thrombosis</span><span class="ttl">Hyperviscosity or thrombosis?</span><div class="body">Visual disturbance, headache, confusion, TIA/stroke, chest pain, breathlessness, abdominal pain/ascites, venous/arterial thrombosis. Aquagenic pruritus and splenomegaly raise suspicion of PV but are not diagnostic. Marked erythrocytosis (Hct ≥0.60 men / ≥0.56 women) needs prompt clinical assessment, but is not an emergency on its own in a well patient.</div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES</div><div class="box stop"><span class="lbl">Stop · Escalate</span><span class="ttl">Emergency / urgent discussion</span><div class="body">Acute stroke, ACS, PE, Budd–Chiari or severe hyperviscosity → emergency pathway; same-day specialist discussion for hyperviscosity symptoms, thrombosis with marked erythrocytosis, severe thrombocytosis/leucocytosis, suspected transformation or pregnancy. Management depends on the diagnosis and specialist advice.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO</div><div class="box ix"><span class="lbl">Investigate</span><span class="ttl">JAK2 + EPO + film</span><div class="body">Repeat FBC + film, U&amp;E/LFT, calcium, ferritin (if iron deficiency/microcytosis), O₂ sats (± carboxyhaemoglobin), serum EPO and JAK2 V617F per local pathway; imaging only if clinically indicated.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · primary or secondary?</span></div>
-    <div class="split"><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">Primary — PV</div><div class="box ix"><span class="ttl">Clonal (MPN)</span><div class="body">Raised Hct, JAK2 V617F (most, not all), EPO often low (supportive, not diagnostic), splenomegaly, raised platelets/WCC, aquagenic pruritus, erythromelalgia, thrombosis.</div></div></div>
-      <div class="col"><div class="blabel">Secondary — hypoxic</div><div class="box ix"><span class="ttl">Driven by EPO</span><div class="body">COPD, OSA, heavy smoking, altitude, cyanotic heart disease.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Secondary — other</div><div class="box ix"><span class="ttl">EPO excess / exogenous</span><div class="body">Renal disease or EPO-secreting tumour (imaging if EPO raised or clinically indicated), testosterone, anabolic steroids, EPO.</div></div></div>
-    </div></div>
-    <div class="arrow"></div>
-    <div class="box refer" style="max-width:660px;"><span class="lbl">Refer</span><span class="ttl">Management</span><div class="body"><span class="pill pill-purple">Haematology</span> JAK2-positive, low-EPO or persistent unexplained erythrocytosis → haematology-led diagnosis and treatment (confirmed PV: venesection to Hct &lt;0.45, low-dose aspirin unless contraindicated, cytoreduction in selected patients). Secondary: treat the cause (smoking, OSA, hypoxic lung disease, testosterone) — no routine venesection or aspirin. Do not start venesection, aspirin or cytoreduction empirically in primary care.</div></div>
-    <div class="arrow"><span class="tag">Step 8 · lifestyle &amp; modifiable factors</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; modifiable factors</span><span class="ttl">Reverse the secondary drivers</span><div class="body"><b>Stop smoking</b> (commonest reversible cause) · avoid dehydration (normal fluid intake, considering cardiac/renal comorbidity) · <b>treat OSA</b> and optimise COPD/oxygenation · <b>stop exogenous testosterone/EPO/anabolic steroids</b> · reduce alcohol · manage cardiovascular risk factors (thrombosis risk). In confirmed PV, support aspirin/venesection and target Hct &lt;0.45 as directed.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Recheck &amp; when to escalate</span><div class="body"><b>Repeat FBC/Hct</b> after addressing reversible causes before labelling true polycythaemia; investigate persistent erythrocytosis rather than repeatedly deferring. <b>Urgent / 999</b> for thrombotic features — TIA/stroke symptoms, limb DVT/swelling, chest pain, or visual disturbance/severe headache (hyperviscosity). Smoking cessation and avoiding dehydration may improve a mildly raised Hb.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>A raised Hb/Hct is often relative or secondary:</b> smoking and dehydration are common contributors. Confirm persistence, then check JAK2 + EPO per the local pathway; a positive JAK2 needs haematology assessment, not a PV label.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/polycythaemia.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/polycythaemia.html">⬇ Download PDF</button><a class="sum-open" href="one-page/polycythaemia.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/polycythaemia.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -306,9 +276,9 @@ body {
   <div class="node-body">
     <p>Screen for hyperviscosity syndrome, acute arterial or venous thrombosis, and severe erythrocytosis requiring urgent assessment.</p>
     <div class="rfgrid">
-      <div class="rftile"><b>Marked erythrocytosis</b> Hct ≥0.60 (men) or ≥0.56 (women) → prompt clinical assessment; same-day specialist discussion if hyperviscosity symptoms (headache, visual disturbance, confusion), thrombosis or bleeding, neurological symptoms, chest pain, significant breathlessness, pregnancy or additional major blood-count abnormalities. An isolated Hct of 0.55 in a clinically well patient is not automatically an emergency</div>
-      <div class="rftile"><b>Acute thrombosis</b> Stroke, MI, PE, DVT, Budd-Chiari with polycythaemia → 999 / emergency pathway. Management depends on the clinical diagnosis, haemodynamic state, bleeding risk and specialist advice</div>
-      <div class="rftile"><b>Headache + visual symptoms</b> Severe headache, visual disturbance, dizziness or confusion with erythrocytosis → same-day specialist discussion (possible hyperviscosity); focal neurology → 999</div>
+      <div class="rftile"><b>Marked erythrocytosis</b> Hct ≥0.60 (men) or ≥0.56 (women) → prompt clinical assessment; same-day specialist discussion if hyperviscosity symptoms (headache, visual disturbance), thrombosis or bleeding, pregnancy or additional major blood-count abnormalities; focal neurology, confusion, seizure, or chest pain/significant breathlessness suggesting ACS or PE → 999. An isolated Hct of 0.55 in a clinically well patient is not automatically an emergency</div>
+      <div class="rftile"><b>Acute thrombosis</b> Stroke, MI, PE or acute Budd-Chiari with polycythaemia → 999 / emergency pathway; suspected DVT → same-day assessment (NICE NG158), 999 if breathless or chest pain. Management depends on the clinical diagnosis, haemodynamic state, bleeding risk and specialist advice</div>
+      <div class="rftile"><b>Headache + visual symptoms</b> Severe headache, visual disturbance or dizziness with erythrocytosis → same-day specialist discussion (possible hyperviscosity); focal neurology, confusion, seizure or reduced consciousness → 999</div>
       <div class="rftile"><b>Chest pain + high Hct</b> Chest pain or breathlessness with erythrocytosis → assess for ACS or PE; emergency pathway if significant symptoms or instability</div>
       <div class="rftile"><b>Splenomegaly</b> With erythrocytosis → urgent haematology discussion (suspected PV or another myeloproliferative neoplasm); same-day if symptomatic or with marked leucocytosis/thrombocytosis</div>
       <div class="rftile"><b>Pruritus after bathing</b> Aquagenic pruritus, erythromelalgia, headache, visual symptoms, splenomegaly and thrombosis increase suspicion of PV but are not diagnostic → urgent haematology referral if erythrocytosis persists</div>
@@ -346,7 +316,7 @@ body {
       <div><b>True (absolute) polycythaemia:</b> Raised red cell mass (measured by red cell labelling). <b>Relative (pseudopolycythaemia):</b> Normal red cell mass, reduced plasma volume (dehydration, diuretics, obesity, smoking). Red-cell-mass measurement is rarely required in current primary-care practice and is generally replaced by clinical assessment, repeat FBC, EPO/JAK2 testing and specialist review; normal red-cell mass cannot usually be confirmed in primary care, and JAK2 negativity does not prove relative erythrocytosis.</div>
       
       <div>Haematocrit thresholds</div>
-      <div><b>Investigate</b> persistent venous Hct >0.52 (men) or >0.48 (women) (BSH) — an investigation threshold, not a diagnosis of PV. Haematocrit performs better than haemoglobin for identifying raised red-cell mass; if Hb is used, apply clearly labelled local laboratory/WHO thresholds (approximately >185 g/L men, >165 g/L women for PV assessment). Hct is higher at altitude.</div>
+      <div><b>Investigate</b> persistent venous Hct >0.52 (men) or >0.48 (women) (BSH) — an investigation threshold, not a diagnosis of PV. Haematocrit performs better than haemoglobin for identifying raised red-cell mass; if Hb is used, apply clearly labelled local laboratory/WHO thresholds (WHO: >165 g/L men, >160 g/L women for PV assessment). Hct is higher at altitude.</div>
       
       <div>Clinical context</div>
       <div>Dehydration (diarrhoea, vomiting, heat exposure)? Diuretics? Acute illness? Alcohol? Smoking or carbon monoxide exposure (carboxyhaemoglobin; pulse oximetry may be misleading)? Obesity (may contribute to relative erythrocytosis)? High altitude residence?</div>
@@ -520,13 +490,13 @@ body {
       <div>Acute stroke or focal neurological deficit; acute coronary syndrome; suspected PE with significant symptoms or instability; severe breathlessness or hypoxia; confusion, seizure or reduced consciousness; acute Budd–Chiari-type presentation (severe abdominal pain, ascites or hepatic decompensation). Management depends on the diagnosis, haemodynamic state, bleeding risk and specialist advice.</div>
       
       <div><span class="pill pill-red">Same-day haematology</span></div>
-      <div>Marked or rapidly rising Hct with hyperviscosity symptoms; severe headache with visual or neurological symptoms; recent thrombosis with marked erythrocytosis; Hct ≥0.60 (men) or ≥0.56 (women) with symptoms, thrombosis, pregnancy or other major blood-count abnormalities (otherwise prompt clinical assessment); suspected acute leukaemia, transformation, severe thrombocytosis or leucocytosis; pregnancy with suspected or known PV; severe symptoms despite established venesection. An isolated Hct of 0.55 in an otherwise well person does not automatically need same-day attendance.</div>
+      <div>Marked or rapidly rising Hct with hyperviscosity symptoms; severe headache with visual symptoms (focal neurology, confusion or seizure → 999); recent thrombosis with marked erythrocytosis; Hct ≥0.60 (men) or ≥0.56 (women) with symptoms, thrombosis, pregnancy or other major blood-count abnormalities (otherwise prompt clinical assessment); suspected acute leukaemia, transformation, severe thrombocytosis or leucocytosis; pregnancy with suspected or known PV; severe symptoms despite established venesection. An isolated Hct of 0.55 in an otherwise well person does not automatically need same-day attendance.</div>
       
       <div><span class="pill pill-amber">Urgent haematology</span></div>
       <div>Positive JAK2 mutation. Persistent unexplained erythrocytosis. Low EPO with JAK2-negative erythrocytosis. Erythrocytosis with thrombocytosis, leucocytosis or splenomegaly. Erythrocytosis with arterial, venous or unusual-site thrombosis. Symptomatic secondary erythrocytosis needing consideration of venesection. Unexplained erythrocytosis in a young person. Young-onset or lifelong erythrocytosis. Pregnancy planning with suspected/known PV. Progressive constitutional (B) symptoms (night sweats, weight loss). A single modestly raised Hct with normal WCC/platelets, probable dehydration and no symptoms does not require urgent haematology referral.</div>
       
       <div><span class="pill pill-blue">Routine haematology</span></div>
-      <div>Advice and guidance via the local Bolton/Greater Manchester haematology pathway when investigation or interpretation is uncertain (e.g. borderline persistent Hct with normal EPO and negative JAK2, family history or lifelong erythrocytosis).</div>
+      <div>Advice and guidance via the local Bolton/Greater Manchester haematology pathway when investigation or interpretation is uncertain (e.g. borderline persistent Hct with normal EPO and negative JAK2, or a family history of erythrocytosis).</div>
       
       <div><span class="pill pill-green">Primary care management</span></div>
       <div>Probable relative erythrocytosis once reversible factors (dehydration, diuretics, smoking, obesity, alcohol) are addressed — persistent unexplained erythrocytosis proceeds to EPO/JAK2 or haematology advice. Asymptomatic secondary erythrocytosis with an identified cause: treat COPD/hypoxic lung disease, assess and treat OSA, stop smoking, review testosterone, anabolic steroids, EPO and other drugs — no routine venesection, and no aspirin solely for raised Hct. Known PV: follow the haematology plan and shared-care protocol.</div>
@@ -538,7 +508,7 @@ body {
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p><b>Severe erythrocytosis</b> (Hct ≥0.60 in men or ≥0.56 in women) requires prompt clinical assessment; same-day specialist discussion is appropriate if accompanied by headache, visual disturbance, neurological symptoms, chest pain, breathlessness, confusion, bleeding or thrombosis. Urgency depends on symptoms, thrombosis, rate of rise, other count abnormalities, splenomegaly, pregnancy and underlying hypoxic disease.</p>
+      <p><b>Severe erythrocytosis</b> (Hct ≥0.60 in men or ≥0.56 in women) requires prompt clinical assessment; same-day specialist discussion is appropriate if accompanied by headache, visual disturbance, bleeding or thrombosis; focal neurology, confusion, seizure, or chest pain/breathlessness suggesting ACS or PE → 999 first. Urgency depends on symptoms, thrombosis, rate of rise, other count abnormalities, splenomegaly, pregnancy and underlying hypoxic disease.</p>
       <p><b>JAK2 V617F positive</b> is strongly suggestive of a clonal myeloproliferative neoplasm (usually PV) and warrants urgent haematology referral (BSH). Haematology confirms or refutes the diagnosis (WHO criteria, including bone marrow where required), risk-stratifies (age, thrombosis history), and initiates venesection + aspirin ± cytoreduction.</p>
       <p><b>Probable relative erythrocytosis</b> does not require venesection. Address reversible factors and cardiovascular risk (individualised weight management, BP control, smoking cessation). If erythrocytosis persists unexplained, proceed to EPO/JAK2 or haematology advice rather than labelling it Gaisböck syndrome.</p>
       <p><b>Secondary erythrocytosis</b> that is asymptomatic with an identified cause can usually be managed in primary care by treating the cause. For hypoxic pulmonary disease, BSH recommends respiratory assessment; venesection is not routine and is considered only for symptomatic hyperviscosity or selected patients with very high Hct, usually in specialist care, with a target around 0.50–0.52 rather than the PV target of &lt;0.45 — excessive venesection may worsen tissue oxygen delivery. For congenital, idiopathic and other secondary erythrocytosis, targets are individualised and not copied from PV. Refer if the cause is unclear or symptoms develop.</p>
@@ -624,7 +594,7 @@ body {
     <div class="lsgrid">
       <div class="lstile"><b>Hydration</b> Avoid dehydration and maintain normal fluid intake, taking account of cardiac and renal comorbidity (heart failure, CKD, cirrhosis, hyponatraemia risk, fluid restriction). Do not prescribe a fixed fluid volume for all patients.</div>
       
-      <div class="lstile"><b>Smoking cessation</b> Smoking worsens hypoxia (COPD), raises carboxyhaemoglobin (false Hb elevation), and increases thrombosis risk. Offer varenicline or NRT. Quitting may improve Hct.</div>
+      <div class="lstile"><b>Smoking cessation</b> Smoking worsens hypoxia (COPD), raises carboxyhaemoglobin (false Hb elevation), and increases thrombosis risk. Offer behavioural support with varenicline, cytisinicline, combination NRT or a nicotine vape (NICE NG209). Quitting may improve Hct.</div>
       
       <div class="lstile"><b>Blood pressure control</b> Treat per NICE hypertension guidance. Hypertension adds to vascular risk. Review diuretics, which can worsen relative polycythaemia.</div>
       
@@ -662,7 +632,7 @@ body {
   <div class="node-body">
     <p>Monitor Hct trajectory, watch for thrombotic events, and re-refer if Hct rising or new symptoms. Chronic polycythaemia requires long-term surveillance.</p>
     <div class="kv">
-      <div>Weekly (venesection phase)</div>
+      <div>Venesection phase</div>
       <div>FBC per the venesection service protocol. Iron deficiency may develop with venesection — a low ferritin is not a treatment target and can cause symptoms; do not give iron in PV without haematology discussion. Monitor for symptoms (headache, dizziness improving as Hct falls).</div>
       
       <div>Maintenance</div>
@@ -675,10 +645,10 @@ body {
       <div>For PV patients: Review thrombosis/bleeding events, symptom control (pruritus, headache), splenomegaly progression, cardiovascular risk factors. Assess for transformation (myelofibrosis: tear-drop cells, rising LDH; acute leukaemia: blasts on film).</div>
       
       <div><span class="pill pill-red">Safety-net 999</span></div>
-      <div>Sudden severe headache, focal weakness, speech changes (stroke). Chest pain, breathlessness (MI, PE). Severe abdominal pain + ascites (Budd-Chiari). Unilateral leg swelling (DVT). Confusion, seizures (hyperviscosity).</div>
+      <div>Sudden severe headache, focal weakness, speech changes (stroke or TIA — even if symptoms settle). Chest pain, breathlessness (MI, PE). Severe abdominal pain + ascites (Budd-Chiari). Confusion, seizures (hyperviscosity).</div>
       
       <div><span class="pill pill-red">Safety-net same-day</span></div>
-      <div>Rising Hct with hyperviscosity symptoms despite venesection. New or rapidly enlarging spleen (possible transformation). Extreme thrombocytosis with bleeding, neurological symptoms or planned surgery → urgent haematology discussion (possible acquired von Willebrand syndrome). TIA symptoms. Pregnancy with known or suspected PV.</div>
+      <div>Rising Hct with hyperviscosity symptoms despite venesection. New or rapidly enlarging spleen (possible transformation). Extreme thrombocytosis with bleeding or planned surgery → same-day haematology discussion (possible acquired von Willebrand syndrome); with neurological symptoms → 999. One-sided leg swelling or pain (possible DVT) → same-day assessment. Pregnancy with known or suspected PV.</div>
       
       <div>Re-referral criteria</div>
       <div>Hct rising despite regular venesection (needs cytoreduction). Thrombotic event on treatment (medication escalation). Intolerance or resistance to hydroxycarbamide (specialist review of options, e.g. ruxolitinib per NICE TA921 or interferon). Pregnancy planning (early specialist haematology and obstetric review).</div>

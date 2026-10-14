@@ -489,7 +489,7 @@
     },
     {
      "dom": "gs",
-     "fail": "Jargon: “We’ll do a FIT, tTG, and bidirectional endoscopy on the 2WW.”",
+     "fail": "Jargon: “We’ll do a FIT, tTG, and bidirectional endoscopy on the suspected cancer pathway (2WW).”",
      "why": "“Language not easily understood by the patient.”",
      "fix": "“A stool kit you do at home, a blood test for coeliac disease, a reaction to gluten, and camera tests of the stomach and bowel — day visits.”"
     },
@@ -5338,7 +5338,7 @@
     },
     {
      "dom": "gs",
-     "fail": "Using jargon on the phone — “your qFIT is positive, I’m doing a 2WW for a scope”.",
+     "fail": "Using jargon on the phone — “your qFIT is positive, I’m doing a suspected cancer referral (2WW) for a scope”.",
      "why": "Unexplained terms leave him unsure what is happening and why; on the phone there are no visual cues to show confusion.",
      "fix": "Plain language: “a test for hidden blood”, “an urgent referral to the bowel specialists”, “a camera test with sedation”."
     },

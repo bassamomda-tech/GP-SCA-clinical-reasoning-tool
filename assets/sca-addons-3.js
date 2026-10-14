@@ -8056,7 +8056,7 @@
      "why": "Painless reassurance is the exact error that delays diagnosis of testicular cancer."
     },
     {
-     "dont": "“It could be cancer, so I’m referring you on the two-week-wait.”",
+     "dont": "“It could be cancer, so I’m referring you on the suspected cancer pathway (two-week wait).”",
      "instead": "“This needs ruling out quickly. I’ll examine you this week and arrange an urgent scan and specialist review.”",
      "why": "Blunt labelling without context frightens a young man who is already minimising, and he may not turn up."
     },

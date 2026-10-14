@@ -253,41 +253,15 @@ body {
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — most thrombocytosis is reactive, but NICE NG12 now treats an unexplained raised platelet count as a cancer marker in its own right. Confirm, split reactive vs clonal, treat the cause, assess for cancer, modify factors, and safety-net.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Raised platelet count (&gt;450)</span><div class="body">Review the result and previous FBCs, repeat when appropriate and check for clumping/artefact; film if persistent, unexplained or with other FBC abnormalities. Check ferritin (± transferrin saturation) — iron deficiency is a common reactive driver.</div></div>
-    <div class="arrow"></div>
-    <div class="box dec"><span class="lbl">Step 1/3 · Reactive vs clonal</span><span class="ttl">Persistent and unexplained?</span><div class="body">Transient with an obvious cause vs persistent (generally ≥3 months) &gt;450 with no adequate explanation. The count alone cannot distinguish reactive from clonal.</div></div>
-    <div class="split"><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel">Reactive (commonest)</div><div class="box ix"><span class="ttl">Secondary</span><div class="body">Infection, inflammation, <b>iron deficiency</b>, bleeding, post-splenectomy, malignancy.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Essential thrombocythaemia</div><div class="box ix"><span class="ttl">Myeloproliferative</span><div class="body">Persistent unexplained &gt;450 (may be only modestly raised), <b>JAK2 / CALR / MPL</b> (some triple-negative), thrombosis or bleeding, splenomegaly — a specialist diagnosis.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · treat cause + risk-assess</span></div>
-    <div class="box act" style="max-width:660px;"><span class="lbl">Step 7 · Action</span><span class="ttl">Treat the reactive cause</span><div class="body">Correct iron deficiency, treat infection/inflammation; recheck. If persistent &amp; unexplained → JAK2 V617F per local pathway or refer to haematology (CALR/MPL specialist-directed). No aspirin or cytoreduction for reactive or suspected ET in primary care.</div></div>
-    <div class="arrow"></div>
-    <div class="box refer" style="max-width:680px;"><span class="lbl">Step 6 · Refer · Cancer assessment <span class="pill pill-purple">Suspected cancer</span> <span class="pill pill-grey">NICE NG12</span></span><span class="ttl">Unexplained thrombocytosis → assess for cancer</span><div class="body">NG12 (updated April 2026) uses a raised platelet count as a marker of <b>lung</b>, <b>endometrial</b> and <b>oesophago-gastric</b> cancer. Consider an urgent direct-access <b>chest X-ray</b> in anyone aged 40 or over with thrombocytosis (this does not prove lung cancer or mandate CT); an urgent direct-access pelvic ultrasound in women aged 55 or over with visible haematuria plus thrombocytosis; and a non-urgent direct-access upper GI endoscopy at age 55 or over with thrombocytosis plus nausea, vomiting, weight loss, reflux, dyspepsia or upper abdominal pain. <span class="pill pill-blue">Haematology</span> if persistent unexplained thrombocytosis, an abnormal film or a suspected MPN.</div></div>
-    <div class="arrow"><span class="tag">Step 8 · modifiable factors</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:680px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Modifiable factors &amp; vascular risk</span><span class="ttl">Treat drivers, lower thrombosis risk</span><div class="body"><b>Correct iron deficiency</b> and find its source; treat infection/inflammation. In confirmed essential thrombocythaemia: <b>stop smoking</b>, manage cardiovascular risk factors (BP, lipids, diabetes) via standard NICE/local pathways, and support low-dose <b>aspirin</b>/cytoreduction as directed by haematology. Recheck once the reactive driver is treated.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · monitoring &amp; safety-net</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:680px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Monitoring &amp; safety-net</span><span class="ttl">Recheck &amp; when to escalate</span><div class="body"><b>Repeat platelets</b> after treating the reactive cause; persistent thrombocytosis that is unexplained, disproportionate, progressive or with other abnormalities → JAK2 per local pathway + haematology. <b>Action the NG12 cancer pathways</b> (CXR / endometrial) for unexplained thrombocytosis. <b>Urgent</b> if signs of thrombosis (limb swelling, chest pain, TIA/stroke symptoms) or bleeding — high counts can paradoxically cause both.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>Don't dismiss it:</b> an unexplained, persistent thrombocytosis is an NG12 prompt to actively consider underlying malignancy — not just a reactive curiosity.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/thrombocytosis.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/thrombocytosis.html">⬇ Download PDF</button><a class="sum-open" href="one-page/thrombocytosis.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/thrombocytosis.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -303,10 +277,10 @@ body {
     <p>Screen for acute arterial or venous thrombosis, bleeding, very high counts with symptoms, and features suggesting a myeloproliferative neoplasm (MPN). Most thrombocytosis is reactive.</p>
     <div class="rfgrid">
       <div class="rftile"><b>Platelets ≥1000 × 10⁹/L</b> Prompt clinical review and haematology discussion, particularly with bleeding, thrombosis, neurological or visual symptoms, splenomegaly, an abnormal film or suspected MPN; same-day specialist assessment if symptomatic or unstable. The count alone does not mandate emergency cytoreduction</div>
-      <div class="rftile"><b>Acute thrombosis</b> Stroke/TIA with deficit, acute coronary syndrome, PE, DVT, splanchnic or cerebral venous thrombosis → 999 / relevant emergency pathway. Do not start aspirin solely because the platelet count is high; discuss antiplatelet and cytoreductive treatment urgently with haematology, especially if platelets >1000–1500 × 10⁹/L or bleeding</div>
+      <div class="rftile"><b>Acute thrombosis</b> Stroke or ongoing neurological deficit, acute coronary syndrome, suspected PE, splanchnic or cerebral venous thrombosis → 999 / relevant emergency pathway; resolved suspected TIA → specialist assessment within 24 hours (NICE NG128); suspected DVT → same-day assessment (NICE NG158), 999 if breathless or chest pain. Do not start aspirin solely because the platelet count is high; discuss antiplatelet and cytoreductive treatment urgently with haematology, especially if platelets >1000–1500 × 10⁹/L or bleeding</div>
       <div class="rftile"><b>Splenomegaly</b> New or rapidly enlarging splenomegaly + thrombocytosis → same-day haematology discussion; otherwise urgent referral (ET, PV, myelofibrosis, CML)</div>
-      <div class="rftile"><b>Erythromelalgia / digital ischaemia</b> Burning pain, redness and warmth in hands/feet → urgent assessment if new or severe or with digital ischaemia (same-day haematology discussion if significant); haematology referral for persistent or unexplained symptoms. Don't advise self-starting aspirin without checking bleeding risk and platelet level</div>
-      <div class="rftile"><b>Neurological / visual symptoms</b> Severe headache, visual disturbance, TIA symptoms, confusion or seizures → urgent assessment irrespective of the platelet count (999 if neurological deficit or suspected intracranial bleed). Consider thrombosis, bleeding, hyperviscosity and alternative neurological causes</div>
+      <div class="rftile"><b>Erythromelalgia / digital ischaemia</b> Burning pain, redness and warmth in hands/feet → same-day assessment and haematology discussion if new or severe; digital ischaemia (a cold, pale or blue digit) or threatened limb → 999; haematology referral for persistent or unexplained symptoms. Don't advise self-starting aspirin without checking bleeding risk and platelet level</div>
+      <div class="rftile"><b>Neurological / visual symptoms</b> Severe headache or visual disturbance → same-day assessment irrespective of the platelet count; focal neurological deficit, confusion, seizure, sudden vision loss or suspected intracranial bleed → 999; resolved TIA symptoms → specialist assessment within 24 hours. Consider thrombosis, bleeding, hyperviscosity and alternative neurological causes</div>
       <div class="rftile"><b>Unexplained bleeding</b> Epistaxis, GI bleeding or bruising with very high platelets → same-day haematology discussion (suspected acquired von Willebrand syndrome); major bleeding → 999</div>
       <div class="rftile"><b>B symptoms</b> Fever, night sweats, unexplained weight loss + thrombocytosis → urgent haematology assessment (myeloproliferative neoplasm, lymphoma); also apply the NICE NG12 thrombocytosis routes (for example, urgent chest X-ray at 40 and over)</div>
       <div class="rftile"><b>Pruritus after bathing</b> Intense itching after hot shower/bath + thrombocytosis → a supportive clue for an MPN, but not diagnostic — it has other dermatological and systemic differentials</div>
@@ -317,7 +291,7 @@ body {
     <div class="why-drawer">
       <p><b>Very high platelet counts</b> can be associated with bleeding (acquired von Willebrand syndrome, especially above 1000–1500 × 10⁹/L) as well as thrombosis, but the count correlates poorly with thrombotic risk and does not by itself mandate emergency cytoreduction (BSH). Urgency depends on bleeding, thrombosis, neurological or visual symptoms, suspected MPN, the rate of rise and any need for urgent surgery.</p>
       <p><b>Acute thrombosis</b> with thrombocytosis may be the presenting feature of an MPN, particularly at unusual sites (splanchnic or cerebral veins). Manage the thrombosis through the relevant emergency pathway — acute venous thrombosis is anticoagulated unless contraindicated, and aspirin is not automatically added — and involve haematology if an MPN is suspected.</p>
-      <p><b>Erythromelalgia</b> (red, burning extremities) is an important clue to an MPN and may respond dramatically to aspirin, but it is not diagnostic and not automatically a same-day emergency. New or severe symptoms, or digital ischaemia, need urgent assessment.</p>
+      <p><b>Erythromelalgia</b> (red, burning extremities) is an important clue to an MPN and may respond dramatically to aspirin, but it is not diagnostic. New or severe symptoms need same-day assessment; digital ischaemia is an emergency (999).</p>
       <p><b>Reactive thrombocytosis</b> (infection, inflammation, iron deficiency, bleeding, malignancy) accounts for most cases, although proportions vary by setting. Reactive counts can exceed 700 or even 1000 × 10⁹/L, while ET may be only modestly raised — the platelet count alone cannot distinguish them.</p>
     </div>
   </div>
@@ -445,7 +419,7 @@ body {
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
       <p><b>Splenomegaly</b> in thrombocytosis strongly suggests clonal disorder. Spleen sequestration paradoxically occurs in ET/PV despite high platelet count (extramedullary haematopoiesis). Reactive thrombocytosis does not cause splenomegaly unless the reactive cause itself does (e.g., lymphoma, infection).</p>
-      <p><b>Erythromelalgia</b> (burning red extremities) is a clue to an MPN, not pathognomonic. It reflects platelet-mediated microvascular disturbance and may respond dramatically to aspirin — but aspirin is started on haematology advice after checking bleeding risk and the platelet level. New or severe symptoms, or digital ischaemia, need urgent assessment.</p>
+      <p><b>Erythromelalgia</b> (burning red extremities) is a clue to an MPN, not pathognomonic. It reflects platelet-mediated microvascular disturbance and may respond dramatically to aspirin — but aspirin is started on haematology advice after checking bleeding risk and the platelet level. New or severe symptoms need same-day assessment; digital ischaemia is an emergency (999).</p>
       <p><b>Plethora and aquagenic pruritus</b> suggest PV. Plethora reflects a raised haematocrit; aquagenic pruritus is a supportive clue for an MPN but is not diagnostic and has other dermatological and systemic causes.</p>
       <p><b>Thrombotic events</b> (stroke, MI, DVT, Budd-Chiari) can be the presenting feature of ET/PV. Unusual site thrombosis (portal, splenic, cerebral veins) is highly suggestive of JAK2+ myeloproliferative neoplasm. Screen all thrombocytosis patients for prior thrombosis.</p>
     </div>
@@ -483,7 +457,7 @@ body {
       <div><span class="pill pill-blue">BCR-ABL</span> (Philadelphia chromosome), <span class="pill pill-blue">Blood film</span> (left shift, basophilia). If suspected or positive, urgent haematology referral.</div>
       
       <div>Infection/malignancy screen</div>
-      <div>If reactive cause suspected: <span class="pill pill-blue">Chest X-ray</span> (pneumonia, malignancy), <span class="pill pill-blue">Urine culture</span> (UTI), Adults aged 40 and over with thrombocytosis: consider an urgent direct-access <span class="pill pill-blue">Chest X-ray</span> (NICE NG12). Other investigations targeted to symptoms and examination: FIT or upper GI investigation if GI symptoms or iron-deficiency anaemia indicate it; CT via the relevant specialist or local rapid-diagnostic pathway if malignancy is suspected — not routine broad imaging.</div>
+      <div>If reactive cause suspected: <span class="pill pill-blue">Chest X-ray</span> (pneumonia, malignancy), <span class="pill pill-blue">Urine culture</span> (UTI), Adults aged 40 and over with thrombocytosis: consider an urgent direct-access <span class="pill pill-blue">Chest X-ray</span> (NICE NG12). Women aged 55 and over with thrombocytosis plus visible haematuria or unexplained vaginal discharge: consider a direct-access pelvic ultrasound for endometrial cancer (NICE NG12). Aged 55 and over with thrombocytosis plus nausea, vomiting, weight loss, reflux, dyspepsia or upper abdominal pain: consider a non-urgent direct-access upper GI endoscopy (NICE NG12) — but dysphagia, or weight loss with upper abdominal pain, reflux or dyspepsia at 55 or over, needs a suspected cancer pathway referral. Other investigations targeted to symptoms and examination: FIT or upper GI investigation if GI symptoms or iron-deficiency anaemia indicate it; CT via the relevant specialist or local rapid-diagnostic pathway if malignancy is suspected — not routine broad imaging.</div>
       
       <div>When NOT to investigate</div>
       <div><b>Do NOT</b> perform bone marrow biopsy in primary care. <b>Do NOT</b> restrict JAK2 testing to counts above 600 — follow the local pathway for persistent unexplained thrombocytosis. <b>Do NOT</b> delay treating iron deficiency to "see if platelets normalise" — treat and recheck. <b>Do NOT</b> start aspirin or cytoreduction for suspected ET in primary care.</div>
@@ -513,16 +487,16 @@ body {
     <p>Refer on the whole clinical picture — persistence, explanation, symptoms, film, molecular results and the local pathway — not the platelet count alone. Clonal thrombocytosis requires specialist management.</p>
     <div class="kv">
       <div><span class="pill pill-red">999 Emergency</span></div>
-      <div>Stroke or TIA with neurological deficit; acute coronary syndrome; PE or haemodynamically significant DVT; acute splanchnic or cerebral venous thrombosis; major bleeding; digital ischaemia or threatened limb; severe headache with neurological/visual symptoms; collapse or suspected intracranial bleeding. Do not initiate aspirin/anticoagulation solely from the platelet count.</div>
+      <div>Stroke or ongoing neurological deficit; acute coronary syndrome; suspected PE (suspected DVT alone → same-day assessment, NICE NG158); acute splanchnic or cerebral venous thrombosis; major bleeding; digital ischaemia or threatened limb; severe headache with neurological/visual symptoms; collapse or suspected intracranial bleeding. Do not initiate aspirin/anticoagulation solely from the platelet count.</div>
       
       <div><span class="pill pill-red">Same-day haematology</span></div>
-      <div>Same-day discussion for: symptomatic platelets ≥1000–1500 × 10⁹/L; active bleeding with extreme thrombocytosis; suspected acquired von Willebrand syndrome; significant erythromelalgia or digital ischaemia; a film suggesting acute leukaemia, CML or myelofibrosis; new or rapidly enlarging splenomegaly; recent thrombosis. An asymptomatic count >1000 with a clear reactive cause needs prompt reassessment and specialist advice, not automatic emergency admission.</div>
+      <div>Same-day discussion for: symptomatic platelets ≥1000–1500 × 10⁹/L; active bleeding with extreme thrombocytosis; suspected acquired von Willebrand syndrome; new or severe erythromelalgia (digital ischaemia → 999); a film suggesting acute leukaemia, CML or myelofibrosis; new or rapidly enlarging splenomegaly; recent thrombosis. An asymptomatic count >1000 with a clear reactive cause needs prompt reassessment and specialist advice, not automatic emergency admission.</div>
       
       <div><span class="pill pill-amber">Urgent haematology</span></div>
-      <div>Persistent unexplained thrombocytosis. Positive JAK2, CALR or MPL; BCR-ABL1 positive (CML). Abnormal blood film. Thrombocytosis with splenomegaly, B symptoms, leucocytosis or erythrocytosis. Unexplained thrombocytosis with thrombosis (especially at an unusual site). Platelets persistently >600–700 without an adequate secondary cause. Suspected ET, PV, CML or myelofibrosis. Significant bleeding or severe/progressive thrombocytosis.</div>
+      <div>Persistent unexplained thrombocytosis. Positive JAK2, CALR or MPL; BCR-ABL1 positive (CML). Abnormal blood film. Thrombocytosis with splenomegaly, B symptoms, leucocytosis or erythrocytosis. Unexplained thrombocytosis with thrombosis (especially at an unusual site). Suspected ET, PV, CML or myelofibrosis. Significant bleeding or severe/progressive thrombocytosis.</div>
       
       <div><span class="pill pill-blue">Routine haematology</span></div>
-      <div>Timing per the local Bolton/Greater Manchester haematology pathway — there is no universal count-based rule such as "platelets >700 for >3 months". Persistent unexplained thrombocytosis at any age, including JAK2-negative cases with clinical suspicion.</div>
+      <div>Timing per the local Bolton/Greater Manchester haematology pathway — there is no universal count-based rule such as "platelets >700 for >3 months". Persistent unexplained thrombocytosis, at any age and including JAK2-negative cases, goes on the urgent route above.</div>
       
       <div><span class="pill pill-green">Primary care management</span></div>
       <div>Reactive thrombocytosis with a clear, adequate cause (infection, inflammation, iron deficiency, recent surgery) that is settling with treatment — recheck the FBC after treating the cause. Refer if it becomes unexplained, disproportionate, progressive or accompanied by other abnormalities or symptoms.</div>
@@ -617,7 +591,7 @@ body {
   <div class="node-body">
     <p>In ET/PV, address smoking, hypertension, diabetes, dyslipidaemia, obesity and physical inactivity through the patient's standard NICE/local cardiovascular-risk pathway; thrombocytosis does not change the usual targets.</p>
     <div class="lsgrid">
-      <div class="lstile"><b>Smoking cessation</b> Smoking adds to arterial thrombotic risk. Offer stop-smoking support (behavioural support with varenicline or NRT) and referral to the stop-smoking service.</div>
+      <div class="lstile"><b>Smoking cessation</b> Smoking adds to arterial thrombotic risk. Offer behavioural support with varenicline, cytisinicline, combination NRT or a nicotine vape (NICE NG209) and referral to the stop-smoking service.</div>
       
       <div class="lstile"><b>Blood pressure control</b> Diagnose and manage hypertension per NICE NG136, using the usual targets and drug choice.</div>
       
@@ -670,10 +644,10 @@ body {
       <div>For ET/PV patients: Review thrombosis/bleeding events, symptom control (headache, pruritus, erythromelalgia), cardiovascular risk factors, medication adherence. Assess for disease progression (evolution to myelofibrosis: tear-drop cells, rising LDH).</div>
       
       <div><span class="pill pill-red">Safety-net 999</span></div>
-      <div>Sudden severe headache, focal weakness, speech changes (stroke). Chest pain, breathlessness (MI, PE). Severe abdominal pain + ascites (Budd-Chiari syndrome). Unilateral leg swelling (DVT). Sudden vision loss (retinal vein occlusion). Major bleeding, a cold or threatened digit or limb, collapse.</div>
+      <div>Sudden severe headache, focal weakness, speech changes (stroke or TIA — even if symptoms settle). Chest pain, breathlessness (MI, PE). Severe abdominal pain + ascites (Budd-Chiari syndrome). Confusion or a fit. Sudden vision loss (retinal vein occlusion). Major bleeding, a cold or threatened digit or limb, collapse.</div>
       
       <div><span class="pill pill-red">Safety-net same-day</span></div>
-      <div>New or severe erythromelalgia or digital ischaemia. Unexplained bleeding with very high platelets (possible acquired von Willebrand syndrome). Severe headache, visual changes or confusion — urgent assessment irrespective of the platelet count. Very high or rapidly rising counts on monitoring → same-day haematology discussion. TIA symptoms (999 if ongoing deficit).</div>
+      <div>New or severe erythromelalgia (a cold, pale or blue finger or toe → 999). Unexplained bleeding with very high platelets (possible acquired von Willebrand syndrome). Severe headache or visual changes — same-day assessment irrespective of the platelet count. Very high or rapidly rising counts on monitoring → same-day haematology discussion. One-sided leg swelling or pain (possible DVT) → same-day assessment.</div>
       
       <div>Re-referral criteria</div>
       <div>Platelets rising despite cytoreduction. Thrombotic event on treatment (medication escalation needed). Intolerance to hydroxycarbamide (switch to anagrelide/interferon). Pregnancy planning or pregnancy — early haematology and obstetric referral; do not independently stop cytoreduction or start aspirin/LMWH.</div>

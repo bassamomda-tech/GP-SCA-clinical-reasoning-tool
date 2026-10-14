@@ -154,70 +154,15 @@ body{font-family:'DM Sans',sans-serif;background:#f4f3ef;color:#1a1a2e;min-heigh
   </div>
 </div>
 
-<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="diagram" role="tab" aria-selected="false">Diagram</button></div>
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
   <span>Progress</span>
   <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
   <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
   <button class="reset" id="resetBtn">Reset</button>
 </div>
 
-<!-- DIAGRAM VIEW -->
-<div id="viewDiagram">
-  <div class="dg-legend"><span>The full reasoning pathway — pattern + triggers separate benign peripheral vertigo from a central (stroke) cause (HINTS in acute persistent vertigo), then treat by named diagnosis — Epley for BPPV, short vestibular sedative + rehab, audiometry + ENT pathway for Ménière's — and safety-net incl. driving.</span><span class="legend"><span class="lg"><span class="sw start"></span>Start</span><span class="lg"><span class="sw dec"></span>Decision</span><span class="lg"><span class="sw ix"></span>Investigate</span><span class="lg"><span class="sw act"></span>Action</span><span class="lg"><span class="sw refer"></span>Refer</span><span class="lg"><span class="sw stop"></span>Stop / Admit</span></span></div>
-  <div class="chart">
-  <div class="flow">
-
-    <div class="box start"><span class="lbl">Presentation</span><span class="ttl">Vertigo</span><div class="body"><b>Duration of episodes</b> (seconds / hours / days), triggers (position, head movement), hearing loss/tinnitus, neurology. Examine ears + cranial nerves, gait; <b>Dix-Hallpike</b> for positional vertigo, <b>HINTS</b> for constant vertigo.</div></div>
-    <div class="arrow"></div>
-
-    <!-- STEP 1 — SAFETY -->
-    <div class="box dec"><span class="lbl">Step 1 · Safety — central vs peripheral</span><span class="ttl">Acute vestibular syndrome / stroke?</span><div class="body"><ul>
-      <li><b>Constant vertigo present even when still, &gt;24 h</b> = acute vestibular syndrome → HINTS only if trained; otherwise immediate stroke pathway</li>
-      <li><b>New headache, focal neurology</b> — diplopia, dysarthria, sensory/motor signs, truncal ataxia (can't stand)</li>
-      <li><b>Vertical or direction-changing nystagmus</b>, or central <b>HINTS</b> by a trained clinician (normal head-impulse, direction-changing nystagmus, skew deviation)</li>
-      <li><b>Sudden unilateral hearing loss</b> (idiopathic SSNHL, labyrinthitis or vascular cause — NICE NG98 timelines)</li>
-    </ul></div></div>
-    <div class="split"><div class="stem"></div><div class="bar" style="width:62%;"></div><div class="cols two">
-      <div class="col"><div class="blabel" style="background:#fdf3f2;border-color:#e8b4ae;color:#9b2c2c;">YES — central</div><div class="box stop"><span class="lbl">Stop · admit</span><span class="ttl">Suspected stroke</span><div class="body">Immediate stroke/neuroimaging pathway per local protocol (999 depending on neurological status and stability); a normal early CT does not exclude posterior circulation stroke. Sudden hearing loss ≤3 days, within 30 days → ENT/ED within 24 h.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#f3faf5;border-color:#aacdb6;color:#27603b;">NO — peripheral</div><div class="box ix"><span class="lbl">Step 2 · Classify</span><span class="ttl">By timing/trigger</span><div class="body">Seconds + positional → BPPV (Dix-Hallpike); days, post-URTI → vestibular neuritis; recurrent + hearing loss/tinnitus → Ménière's; gradual + progressive hearing loss ± facial numbness → CPA tumour. Audiometry if asymmetric hearing loss.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 3 · which peripheral cause?</span></div>
-
-    <!-- STEP 3 — DECISION -->
-    <div class="split"><div class="stem"></div><div class="bar" style="width:84%;"></div><div class="cols">
-      <div class="col"><div class="blabel">BPPV</div><div class="box ix"><span class="ttl">Seconds, positional</span><div class="body">Brief spinning on rolling over / looking up; Dix-Hallpike → rotatory nystagmus. No hearing loss.</div></div></div>
-      <div class="col"><div class="blabel">Vestibular neuritis / labyrinthitis</div><div class="box ix"><span class="ttl">Days, post-viral</span><div class="body">Single prolonged episode, severe at onset then settling over days; labyrinthitis adds hearing loss.</div></div></div>
-      <div class="col"><div class="blabel" style="background:#faf3ff;border-color:#cbb0ea;color:#6b46c1;">Ménière's / vestibular migraine</div><div class="box ix"><span class="ttl">Recurrent, hours</span><div class="body">Ménière's — vertigo + fluctuating low-freq SNHL + tinnitus/fullness. Vestibular migraine — headache history, photophobia.</div></div></div>
-    </div></div>
-    <div class="arrow"><span class="tag">Step 7 · treat by diagnosis</span></div>
-
-    <!-- STEP 7 — TREAT -->
-    <div class="box act" style="max-width:760px;"><span class="lbl">Step 7 · Action — cause-directed treatment</span><span class="ttl">Manoeuvre · short sedative · prophylaxis</span><div class="body"><ul>
-      <li><b>BPPV:</b> <b>Epley manoeuvre</b> in clinic by a trained clinician (first line) ± self-Epley once side confirmed; no medication needed.</li>
-      <li><b>Vestibular neuritis/labyrinthitis:</b> short course (≤3 days) prochlorperazine/cinnarizine for the acute phase only — <b>stop early</b> to allow central compensation; vestibular rehab exercises.</li>
-      <li><b>Ménière's:</b> audiometry; short acute vestibular suppressant; betahistine may be tried (benefit uncertain); trial avoiding individual dietary triggers → ENT.</li>
-      <li><b>Vestibular migraine:</b> trigger avoidance + migraine management; prophylaxis per migraine guidance, individualised to comorbidities.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 6 · escalation thresholds</span></div>
-
-    <!-- STEP 6 — REFER -->
-    <div class="box refer" style="max-width:760px;"><span class="lbl">Step 6 · Refer</span><span class="ttl">Escalation thresholds</span><div class="body"><ul>
-      <li><span class="pill pill-red">Immediate</span> central features — HINTS indicating stroke, focal neurology, vertical/direction-changing nystagmus, severe truncal ataxia → stroke/neuroimaging pathway (999 per clinical status and local pathway).</li>
-      <li><span class="pill pill-red">Same-day ENT</span> sudden hearing loss over ≤3 days within the past 30 days (NICE NG98: ENT/ED within 24 h; steroids per ENT pathway).</li>
-      <li><span class="pill pill-amber">Urgent (within 2 weeks)</span> sudden loss &gt;30 days ago, or rapid worsening over 4–90 days (NICE NG98). Progressive unilateral/asymmetric loss ± facial numbness → audiology/ENT, consider MRI internal auditory meati.</li>
-      <li><span class="pill pill-purple">ENT / audiovestibular</span> Ménière's, persistent/atypical vertigo, BPPV persisting despite correctly performed treatment; <span class="pill pill-grey">vestibular rehab</span> chronic vestibular loss.</li>
-    </ul></div></div>
-    <div class="arrow"><span class="tag">Step 8 · rehab &amp; modifiable factors</span></div>
-
-    <!-- STEP 8 — LIFESTYLE -->
-    <div class="box act" style="max-width:760px;border-color:#a9c6b3;"><span class="lbl">Step 8 · Lifestyle &amp; rehabilitation</span><span class="ttl">Compensation &amp; trigger control</span><div class="body"><b>Vestibular rehabilitation exercises</b> (Cawthorne-Cooksey) drive central compensation after neuritis · <b>trial avoiding individual triggers</b> for Ménière's (evidence for salt/caffeine/alcohol thresholds limited) · falls-prevention in the elderly · avoid prolonged vestibular sedatives (delay recovery) · self-Epley for recurrent BPPV once the affected side is confirmed.</div></div>
-    <div class="arrow"><span class="tag">Step 9 · safety-net &amp; DVLA</span></div>
-
-    <!-- STEP 9 — SAFETY-NET -->
-    <div class="box stop" style="max-width:760px;background:#fff8f0;border-color:#e6c489;"><span class="lbl">Step 9 · Safety-net, follow-up &amp; driving</span><span class="ttl">When to come back</span><div class="body"><b>999</b> if new headache, double vision, weakness/numbness, slurred speech, or inability to walk. <b>Same-day</b> if sudden hearing loss. <b>Review</b> BPPV at 1–2 weeks (repeat Epley if persisting); betahistine at 3 months. <b>DVLA:</b> do not drive while vertigo, imbalance or medication effects could impair control; notification depends on diagnosis, severity and recurrence — direct to current DVLA guidance and document.</div></div>
-  </div>
-  </div>
-  <div class="band"><div class="caution">⚠️ <b>Don't miss posterior stroke:</b> sustained vertigo with truncal ataxia or central-pattern nystagmus needs the immediate stroke/neuroimaging pathway — a normal limb exam or a normal early CT does not exclude it. HINTS (acute continuous vertigo only) should be performed only by a clinician trained and experienced in it.</div></div>
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/vertigo.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/vertigo.html">⬇ Download PDF</button><a class="sum-open" href="one-page/vertigo.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/vertigo.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
 </div>
 
 <div class="alg-flow" id="flow">
@@ -233,12 +178,12 @@ body{font-family:'DM Sans',sans-serif;background:#f4f3ef;color:#1a1a2e;min-heigh
     <div class="node-body">
       Assess ABCDE, glucose, gait and focal neurology. Screen for central, vascular and dangerous causes before assuming peripheral pathology. The majority of vertigo is benign — but missing a posterior fossa stroke or cerebellar bleed is catastrophic.
       <div class="rfgrid">
-        <div class="rftile"><b>Acute vestibular syndrome + HINTS indicating stroke</b> Sudden-onset continuous vertigo/dizziness with nausea or vomiting and gait unsteadiness. HINTS only by a clinician trained and experienced in it: normal head impulse, direction-changing nystagmus or skew deviation → <span class="pill pill-red">Immediate</span> stroke/neuroimaging pathway (999 depending on neurological status, stability and local pathway). An abnormal head impulse alone does not exclude stroke. If no trained clinician is available, refer immediately via the local stroke pathway when BPPV/postural hypotension do not explain symptoms.</div>
-        <div class="rftile"><b>Severe gait/truncal ataxia</b> New inability to stand or walk unsupported, or new limb dysmetria → <span class="pill pill-red">Immediate</span> stroke/neuroimaging pathway (999 depending on neurological status, stability and local pathway) — cerebellar stroke / haemorrhage</div>
-        <div class="rftile"><b>New focal neurological deficit</b> Facial numbness, diplopia, dysarthria, dysphagia, limb weakness, vertical or direction-changing nystagmus, or new deafness alongside vertigo → <span class="pill pill-red">Immediate</span> stroke/neuroimaging pathway (999 depending on neurological status, stability and local pathway) — brainstem / cerebellar CVA</div>
+        <div class="rftile"><b>Acute vestibular syndrome + HINTS indicating stroke</b> Sudden-onset continuous vertigo/dizziness with nausea or vomiting and gait unsteadiness. HINTS only by a clinician trained and experienced in it: normal head impulse, direction-changing nystagmus or skew deviation → <span class="pill pill-red">Immediate</span> stroke/neuroimaging pathway (call 999 — immediate transfer via the local stroke pathway). An abnormal head impulse alone does not exclude stroke. If no trained clinician is available, refer immediately via the local stroke pathway when BPPV/postural hypotension do not explain symptoms.</div>
+        <div class="rftile"><b>Severe gait/truncal ataxia</b> New inability to stand or walk unsupported, or new limb dysmetria → <span class="pill pill-red">Immediate</span> stroke/neuroimaging pathway (call 999 — immediate transfer via the local stroke pathway) — cerebellar stroke / haemorrhage</div>
+        <div class="rftile"><b>New focal neurological deficit</b> Facial numbness, diplopia, dysarthria, dysphagia, limb weakness, vertical or direction-changing nystagmus, or new deafness alongside vertigo → <span class="pill pill-red">Immediate</span> stroke/neuroimaging pathway (call 999 — immediate transfer via the local stroke pathway) — brainstem / cerebellar CVA</div>
         <div class="rftile"><b>Thunderclap or severe headache</b> Worst-ever headache with vertigo / neck stiffness → <span class="pill pill-red">999</span> subarachnoid haemorrhage or posterior fossa bleed</div>
         <div class="rftile"><b>Cardiovascular compromise</b> Syncope, chest pain, significant diaphoresis, or palpitations with vertigo → <span class="pill pill-red">999</span> arrhythmia, MI, aortic dissection</div>
-        <div class="rftile"><b>Sudden hearing loss (with or without vertigo)</b> Exclude wax and acute external/middle-ear disease. Onset over ≤3 days within the past 30 days → <span class="pill pill-red">ENT/ED within 24 h</span> (NICE NG98). Causes include idiopathic SSNHL, labyrinthitis and vascular disease; steroid decisions per urgent ENT pathway</div>
+        <div class="rftile"><b>Sudden hearing loss</b> With acute continuous vertigo → treat as central: immediate stroke pathway (above). Exclude wax and acute external/middle-ear disease. Onset over ≤3 days within the past 30 days → <span class="pill pill-red">ENT/ED within 24 h</span> (NICE NG98). Causes include idiopathic SSNHL, labyrinthitis and vascular disease; steroid decisions per urgent ENT pathway</div>
         <div class="rftile"><b>Ear pain + vesicles + facial weakness</b> Otalgia, rash around pinna or canal, ± VII nerve palsy → <span class="pill pill-red">Same-day ENT/acute</span> Ramsay Hunt syndrome — early antiviral and corticosteroid may be considered per ENT/local facial-palsy protocol. Assess eye closure; urgent eye protection if facial weakness. Urgent review if unable to close the eye, corneal symptoms, dysphagia/airway compromise or multiple cranial-nerve involvement</div>
         <div class="rftile"><b>Head trauma preceding vertigo</b> Recent head injury → <span class="pill pill-red">Same-day</span> exclude temporal bone fracture, haemolabyrinth; CT head</div>
         <div class="rftile"><b>Neck pain + vertigo (young / after neck trauma or manipulation)</b> → <span class="pill pill-red">999</span> Vertebral artery dissection — a leading cause of posterior stroke under 50; never dismiss as "cervicogenic"</div>
@@ -323,7 +268,7 @@ body{font-family:'DM Sans',sans-serif;background:#f4f3ef;color:#1a1a2e;min-heigh
     <div class="node-body">
       Perform a focused neurotological examination — these findings change management:
       <div class="kv">
-        <div>Vital signs & lying/standing BP</div><div>HR and BP (both arms if central cause suspected). Postural drop (&gt;20 mmHg systolic) → orthostatic dizziness, not true vertigo. AF → consider cardioembolic event.</div>
+        <div>Vital signs & lying/standing BP</div><div>HR and BP (both arms if central cause suspected). Postural drop (≥20 mmHg systolic or ≥10 mmHg diastolic, NICE NG136) → orthostatic dizziness, not true vertigo. AF → consider cardioembolic event.</div>
         <div>Dix-Hallpike test <span class="pill pill-blue">BPPV</span></div><div>Only if trained and the cervical spine is safe. Lay patient from sitting to supine with head turned 45° to affected side, neck extended 20°. <b>Positive:</b> rotatory upbeat nystagmus with latency 5–20s, duration &lt;1 min, fatigable on repeat. → Posterior canal BPPV confirmed. If horizontal nystagmus → horizontal canal BPPV (supine roll test instead).</div>
         <div>HINTS exam <span class="pill pill-blue">Acute sustained</span></div><div><b>Only in acute continuous vertigo, and only if trained and experienced in HINTS.</b> Head Impulse Test (normal head impulse = central concern; an abnormal head impulse alone does not exclude stroke), Nystagmus (direction-changing = central), Test of Skew (vertical ocular misalignment = central). <b>HINTS indicating stroke → immediate stroke/neuroimaging pathway.</b> If not trained, do not attempt — refer via the local stroke pathway.</div>
         <div>Otoscopy</div><div>Inspect external canal and tympanic membrane. Vesicles → Ramsay Hunt. Cholesteatoma / perforation → ENT referral. Otitis media → treat with antibiotics.</div>
@@ -381,8 +326,8 @@ body{font-family:'DM Sans',sans-serif;background:#f4f3ef;color:#1a1a2e;min-heigh
     <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
     <div class="node-body">
       <div class="kv">
-        <div><span class="pill pill-red">Immediate / 999</span></div><div>HINTS indicating stroke (trained clinician), or acute vestibular syndrome not explained by BPPV/postural hypotension where HINTS unavailable — immediate stroke/neuroimaging pathway (999 per neurological status and local pathway) · Acute cerebellar or brainstem signs · Thunderclap headache · Acute focal neurology · Ramsay Hunt with airway / swallow compromise</div>
-        <div><span class="pill pill-red">Same-day ED/Urgent</span></div><div>Sudden hearing loss over ≤3 days within the past 30 days, with or without vertigo — refer immediately to be seen by ENT or ED within 24 h (NICE NG98); steroid decisions per ENT pathway · Ramsay Hunt syndrome — same-day ENT/acute assessment per local facial-palsy protocol · Head trauma preceding vertigo · Atypical features not explained by a peripheral diagnosis</div>
+        <div><span class="pill pill-red">Immediate / 999</span></div><div>HINTS indicating stroke (trained clinician), or acute vestibular syndrome not explained by BPPV/postural hypotension where HINTS unavailable — immediate stroke/neuroimaging pathway (call 999 — immediate transfer via the local stroke pathway) · Acute cerebellar or brainstem signs · Thunderclap headache · Acute focal neurology · Ramsay Hunt with airway / swallow compromise</div>
+        <div><span class="pill pill-red">Same-day ED/Urgent</span></div><div>Sudden hearing loss over ≤3 days within the past 30 days (with acute continuous vertigo → stroke pathway above) — refer immediately to be seen by ENT or ED within 24 h (NICE NG98); steroid decisions per ENT pathway · Ramsay Hunt syndrome — same-day ENT/acute assessment per local facial-palsy protocol · Head trauma preceding vertigo · Atypical features not explained by a peripheral diagnosis</div>
         <div><span class="pill pill-amber">Urgent ENT (within 2 weeks)</span></div><div>Sudden hearing loss &gt;30 days ago, or hearing loss worsening rapidly over 4–90 days (ENT or audiovestibular medicine, NICE NG98) · Unilateral pulsatile tinnitus</div>
         <div>Routine ENT</div><div>Confirmed or suspected Ménière's disease (diagnosis, dietary advice, intratympanic steroids consideration) · Progressive unilateral/asymmetric hearing loss (audiology/ENT; consider MRI internal auditory meati) · BPPV with uncertain diagnosis, atypical nystagmus or persisting despite correctly performed treatment · Horizontal canal BPPV (log-roll technique) · Recurrent vestibular neuritis</div>
         <div>Neurology</div><div>Suspected vestibular migraine not responding to primary care management · Suspected central cause once emergency excluded · MS workup</div>
@@ -438,7 +383,7 @@ body{font-family:'DM Sans',sans-serif;background:#f4f3ef;color:#1a1a2e;min-heigh
       <p style="margin-top:12px"><b>Ménière's Disease — Stepwise Management</b></p>
       <div class="ladder">
         <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Audiometry + dietary trial</b> — balanced diet without excessive salt restriction; caffeine/alcohol reduction and avoidance of individual triggers may be trialled. Evidence for specific salt, caffeine or alcohol thresholds is limited. Smoking cessation.</span></div>
-        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Betahistine</b> may be tried — effectiveness uncertain. Dose and contraindications per current BNF/SPC (maintenance 24–48 mg daily in divided doses). Review at 3–6 months and stop if ineffective. Caution: asthma, peptic ulcer.</span></div>
+        <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Betahistine</b> — a time-limited trial may be considered after ENT or audiovestibular assessment; effectiveness uncertain. Dose and contraindications per current BNF/SPC (maintenance 24–48 mg daily in divided doses). Review at the agreed review point and stop if ineffective. Caution: asthma, peptic ulcer.</span></div>
         <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Vestibular suppressant</b> (e.g. prochlorperazine, dose per current BNF/SPC) for acute attacks only, short term. Add vestibular rehab between attacks.</span></div>
         <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>ENT referral</b> — intratympanic gentamicin or steroid injections. Endolymphatic sac decompression. Vestibular nerve section for severe refractory cases.</span></div>
       </div>
@@ -451,7 +396,7 @@ body{font-family:'DM Sans',sans-serif;background:#f4f3ef;color:#1a1a2e;min-heigh
           <div class="b-note">No single established acute treatment for vestibular migraine. A triptan may be tried for headache, but evidence for the vertigo component is limited; avoid triptans in cardiovascular disease. Short-term antiemetic for nausea. Migraine lifestyle measures.</div>
         </div>
         <div class="b-card">
-          <div class="b-cond">Frequent attacks (&gt;3/month)</div>
+          <div class="b-cond">Frequent or disabling attacks</div>
           <div class="b-drug">Prophylaxis per migraine guidance <span class="pill pill-teal">Individualised</span></div>
           <div class="b-note">Choice depends on migraine phenotype, comorbidities and patient preference. Options include propranolol (unsuitable in asthma, bradycardia and some people with diabetes), amitriptyline or topiramate (MHRA 2024: pregnancy prevention programme required in women who could become pregnant). Doses per current BNF/SPC.</div>
         </div>
@@ -461,7 +406,7 @@ body{font-family:'DM Sans',sans-serif;background:#f4f3ef;color:#1a1a2e;min-heigh
     <div class="why-row">
       <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
       <div class="why-drawer">
-        The Epley manoeuvre is an effective first-line treatment for posterior canal BPPV when performed by a trained clinician (Cochrane 2014; NICE NG127). Long-term vestibular suppressants (prochlorperazine, cinnarizine) are harmful in most vestibular conditions because they prevent central compensation — the brain's adaptive mechanism for recovering from labyrinthine dysfunction. They should be time-limited to the acute vomiting phase only. Evidence for betahistine in Ménière's is mixed — the Cochrane review (2016) found only low-quality evidence of benefit and the BEMED trial (BMJ 2016) found no reduction in attacks versus placebo; review at 3–6 months and stop if ineffective. Check doses and contraindications for betahistine, prochlorperazine and migraine prophylaxis against the current product information (BNF/SPC) and local ENT pathway. Vestibular rehabilitation physiotherapy improves outcomes across all peripheral vertigo conditions and is significantly under-prescribed in UK primary care.
+        The Epley manoeuvre is an effective first-line treatment for posterior canal BPPV when performed by a trained clinician (Cochrane 2014; NICE NG127). Long-term vestibular suppressants (prochlorperazine, cinnarizine) are harmful in most vestibular conditions because they prevent central compensation — the brain's adaptive mechanism for recovering from labyrinthine dysfunction. They should be time-limited to the acute vomiting phase only. Evidence for betahistine in Ménière's is mixed — the Cochrane review (2016) found only low-quality evidence of benefit and the BEMED trial (BMJ 2016) found no reduction in attacks versus placebo; review at the agreed review point and stop if ineffective. Check doses and contraindications for betahistine, prochlorperazine and migraine prophylaxis against the current product information (BNF/SPC) and local ENT pathway. Vestibular rehabilitation physiotherapy improves outcomes across all peripheral vertigo conditions and is significantly under-prescribed in UK primary care.
       </div>
     </div>
   </div>
@@ -481,7 +426,7 @@ body{font-family:'DM Sans',sans-serif;background:#f4f3ef;color:#1a1a2e;min-heigh
         <div class="lstile"><b>Vestibular Rehabilitation Exercises</b> Cawthorne-Cooksey exercises or Brandt-Daroff exercises daily. Refer to vestibular physiotherapy if available. Useful for persistent imbalance.</div>
         <div class="lstile"><b>Diet (Ménière's)</b> Encourage a balanced diet and identification of individual triggers. Dietary changes can be trialled, but evidence for specific salt thresholds is limited — avoid excessive restriction.</div>
         <div class="lstile"><b>Caffeine (Ménière's / VM)</b> Reducing caffeine may be trialled if it appears to trigger attacks; evidence is limited.</div>
-        <div class="lstile"><b>Sleep hygiene (Vestibular Migraine)</b> Consistent sleep times, 7–8 hours/night. Sleep disruption is a major vestibular migraine trigger. CBT-I referral if insomnia complicates.</div>
+        <div class="lstile"><b>Sleep hygiene (Vestibular Migraine)</b> Consistent sleep times. Sleep disruption is a major vestibular migraine trigger. CBT-I referral if insomnia complicates.</div>
         <div class="lstile"><b>Alcohol avoidance</b> Moderate alcohol intake; reduce further if alcohol appears to trigger Ménière's or vestibular migraine attacks. Evidence for specific thresholds is limited.</div>
         <div class="lstile"><b>Stress management</b> Identify individual triggers, including stress. Mindfulness, CBT or relaxation techniques may help some patients.</div>
         <div class="lstile"><b>Falls prevention</b> Particularly for elderly patients. Home hazard assessment, removal of trip hazards, grab rails. Refer to falls clinic if recurrent falls. DVLA — patient must not drive during active vertigo episodes.</div>
@@ -510,13 +455,13 @@ body{font-family:'DM Sans',sans-serif;background:#f4f3ef;color:#1a1a2e;min-heigh
     <div class="node-body">
       Safety-net every patient — peripheral vertigo can relapse and central causes can evolve.
       <div class="kv">
-        <div>BPPV — 2 weeks</div><div>Review Epley response. If no improvement at 1 week → check technique, consider contralateral ear. If symptoms persist despite correctly performed treatment, the diagnosis is uncertain or nystagmus is atypical → ENT referral. Self-Epley once the affected side is confirmed.</div>
+        <div>BPPV — within 1 month</div><div>Review Epley response. If not improved → check technique, consider contralateral ear. If symptoms persist despite correctly performed treatment, the diagnosis is uncertain or nystagmus is atypical → ENT referral. Self-Epley once the affected side is confirmed.</div>
         <div>Vestibular Neuritis — 4–6 weeks</div><div>Review recovery. Refer vestibular physiotherapy if balance not improving. Stop prochlorperazine if still taking. If &gt;6 weeks of significant symptoms → ENT referral.</div>
-        <div>Ménière's — 8–12 weeks</div><div>Assess attack frequency and severity on betahistine. Confirm audiology appointment arranged. If not controlled → ENT referral. Annual ENT review once established.</div>
+        <div>Ménière's — 8–12 weeks</div><div>Assess attack frequency and severity on betahistine. Confirm audiology appointment arranged. If not controlled → ENT referral.</div>
         <div>Vestibular Migraine — 6–8 weeks</div><div>Review prophylaxis response. Migraine diary to track attacks. If not responding → neurology referral.</div>
-        <div>Medication review</div><div>At 4 weeks: ensure prochlorperazine stopped. Betahistine — review at 3 months; continue if effective. Propranolol — titrate to response, check BP and HR.</div>
-        <div><span class="pill pill-red">Safety-net 999</span></div><div>New neurological symptoms (diplopia, dysarthria, facial weakness, limb weakness) · Sudden severe headache · New deafness with other neurological symptoms · Unable to walk / truncal instability · Cardiac symptoms (chest pain, syncope)</div>
-        <div><span class="pill pill-amber">Same-day GP / ED</span></div><div>Symptoms not improving or deteriorating after 3–4 days of vestibular neuritis · New ear pain, vesicles or facial weakness (Ramsay Hunt) · Falls with injury · Sudden or worsening hearing loss (ENT/ED within 24 h if ≤3 days, NICE NG98) · New atypical or central features</div>
+        <div>Medication review</div><div>At 4 weeks: ensure prochlorperazine stopped. Betahistine — review at the agreed review point; continue only if effective. Propranolol — titrate to response, check BP and HR.</div>
+        <div><span class="pill pill-red">Safety-net 999</span></div><div>New neurological symptoms (diplopia, dysarthria, facial weakness, limb weakness) · Sudden severe headache or new neck pain · New deafness with sudden continuous vertigo or other neurological symptoms · Unable to walk / truncal instability · Cardiac symptoms (chest pain, syncope)</div>
+        <div><span class="pill pill-amber">Same-day GP / ED</span></div><div>Vertigo getting worse at any time, or vestibular neuritis not improving after 3–4 days · New ear pain, vesicles or facial weakness (Ramsay Hunt) · Falls with injury · Sudden or worsening hearing loss (ENT/ED within 24 h if ≤3 days, NICE NG98) · New atypical or central features</div>
         <div>Recurrence warning</div><div>BPPV can recur — self-Epley if the affected side is confirmed. Ménière's is often long-term — reinforce avoidance of individual triggers. Document all vertigo consultations for medicolegal safety in central causes.</div>
       </div>
     </div>
