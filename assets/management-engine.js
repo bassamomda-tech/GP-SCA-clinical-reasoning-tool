@@ -8,6 +8,72 @@
 (function(){
   "use strict";
 
+  /* ---- "Check the source" row (October 2026) ----
+     Adds one short line to the Evidence section of a protocol: the matching NICE CKS
+     topic, BNF pages for the key drugs, and a pointer to the reader's ICB formulary.
+     The links live in assets/external-links.js (window.RGP_EXT_LINKS, keyed by the
+     page's slug), which this engine loads itself, so no protocol page needs editing.
+     No map entry -> no row. Print copies (-print.html) never load it, and the row is
+     hidden when a live page is printed, so printed output is unchanged. */
+  var EXT_SRC = (function(){
+    var s = document.currentScript && document.currentScript.src;
+    return s && /management-engine\.js/.test(s) ? s.replace(/management-engine\.js(\?[^#]*)?$/, 'external-links.js?v=1') : '';
+  })();
+  function extIsPrint(){ return !!document.querySelector('meta[name="omelette-print-source"]'); }
+  function extSlug(){
+    var m = location.pathname.match(/\/tools\/management\/([a-z0-9-]+)\.html$/i);
+    return m ? m[1].toLowerCase() : '';
+  }
+  function extEsc(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+  function extA(href, label){
+    return /^https:\/\/(cks|bnf|bnfc)\.nice\.org\.uk\//.test(href) ?
+      '<a href="'+extEsc(href)+'" target="_blank" rel="noopener noreferrer">'+extEsc(label)+' ↗</a>' : '';
+  }
+  function addExtRow(){
+    var map = window.RGP_EXT_LINKS, slug = extSlug(), e = map && slug && map[slug];
+    var root = document.getElementById('mgRoot');
+    if(!e || !root || !root.firstChild || extIsPrint() || root.querySelector('.mg-extsrc')) return;
+    var parts = [];
+    if(e.cks) parts.push(extA(e.cks, 'CKS — '+(e.cksTitle || 'topic')));
+    (e.cksAlso || []).forEach(function(c){ parts.push(extA(c[1], 'CKS — '+c[0])); });
+    var drugs = (e.bnf || []).slice(0, 4).map(function(d){ return extA(d[1], d[0]); }).filter(Boolean);
+    if(drugs.length) parts.push('BNF — '+drugs.join('<span class="sep">·</span>'));
+    if(e.bnfc) parts.push(extA('https://bnfc.nice.org.uk/', 'BNFC'));
+    parts = parts.filter(Boolean);
+    if(!parts.length) return;
+    parts.push('<a href="../../pages/how-we-fit.html#icb">your ICB formulary</a>');
+    if(!document.getElementById('mgExtCss')){
+      var css = document.createElement('style'); css.id = 'mgExtCss';
+      css.textContent = '.mg-extsrc{margin:16px 0 4px;padding:10px 14px;border:1px solid #d9d2c3;border-left:4px solid #0c4a47;border-radius:8px;background:#fbf8f1;font-size:13.5px;line-height:1.75;color:#2a3744;overflow-wrap:anywhere}'+
+        '.mg-extsrc b{color:#15202b}'+
+        '.mg-extsrc a{color:#0c4a47;font-weight:600;text-decoration:underline;text-underline-offset:2px}'+
+        '.mg-extsrc a:hover{color:#b54c2b}'+
+        '.mg-extsrc .sep{color:#8a929c;margin:0 6px}'+
+        '@media print{.mg-extsrc{display:none!important}}';
+      document.head.appendChild(css);
+    }
+    var row = document.createElement('div');
+    row.className = 'mg-extsrc';
+    row.setAttribute('role', 'note');
+    row.innerHTML = '<b>Also check:</b> '+parts.join('<span class="sep">·</span>');
+    // the Evidence / References section at the end of the page (inside its fold, if folded);
+    // pages without one get the row just above the footnote
+    var sec = root.querySelector('#provenance, #evidence-legacy, #evidence');
+    if(sec){ (sec.querySelector(':scope > .mg-sbody') || sec).appendChild(row); return; }
+    var foot = root.querySelector(':scope > .mg-foot');
+    if(foot){ row.style.display = foot.style.display; root.insertBefore(row, foot); }
+    else root.appendChild(row);
+  }
+  if(EXT_SRC && extSlug() && !extIsPrint()){
+    if(window.RGP_EXT_LINKS) addExtRow();
+    else {
+      var extTag = document.createElement('script');
+      extTag.src = EXT_SRC; extTag.async = true;
+      extTag.onload = addExtRow;
+      (document.head || document.documentElement).appendChild(extTag);
+    }
+  }
+
   function el(html){ var t=document.createElement('template'); t.innerHTML=html.trim(); return t.content.firstChild; }
 
   /* ---- block renderers (inside a node) ---- */
@@ -465,6 +531,10 @@
     });
 
     wireFolds(root);
+
+    // "Check the source" row — runs here when external-links.js is already loaded,
+    // otherwise from that script's onload (see addExtRow above)
+    addExtRow();
 
     // wire why-drawers
     root.querySelectorAll('.mg-why-btn').forEach(function(btn){

@@ -5,7 +5,8 @@
    reader is idle), and accrues it per page into localStorage so the
    CPD page can turn time-on-site into a reflective-CPD log + cert —
    the way point-of-care reference tools auto-log reading time.
-   Storage: localStorage 'rgp-cpd-v1' = { "<path>": {href,title,kind,seconds,visits,first,last,reflection} }
+   Storage: localStorage 'rgp-cpd-v1' = { "<path>": {href,title,kind,seconds,visits,first,last,mod,reflection} }
+   (backed up to the signed-in account by cpd-sync.js)
    ============================================================ */
 /* ---- Shared citation linkifier loader (runs on every content page) ----
    Piggybacks on this always-injected file so guideline references become
@@ -23,6 +24,13 @@
     el.src = base + 'citation-links.js?v=1';
     el.defer = true;
     (document.head || document.documentElement).appendChild(el);
+    // CPD account backup (signed-in users): lossless merge + delete tombstones.
+    if (!window.RGPCPDSync && !document.querySelector('script[src*="cpd-sync.js"]')) {
+      var sy = document.createElement('script');
+      sy.src = base + 'cpd-sync.js?v=1';
+      sy.defer = true;
+      (document.head || document.documentElement).appendChild(sy);
+    }
   } catch (e) { /* cosmetic — never block CPD tracking */ }
 })();
 
@@ -62,9 +70,9 @@
     return out;
   }
   function totalSeconds(){ return list().reduce(function(s,r){ return s + (r.seconds||0); }, 0); }
-  function setReflection(href, text){ var d=load(); if(d[href]){ d[href].reflection = text||''; save(d); } }
-  function remove(href){ var d=load(); delete d[href]; save(d); }
-  function clearAll(){ try{ localStorage.removeItem(KEY); }catch(e){} }
+  function setReflection(href, text){ var d=load(); if(d[href]){ d[href].reflection = text||''; d[href].mod = d[href].emod = Date.now(); save(d); } }
+  function remove(href){ var d=load(); delete d[href]; save(d); try{ window.RGPCPDSync && RGPCPDSync.markDeleted([href]); }catch(e){} }
+  function clearAll(){ var ids=Object.keys(load()); try{ localStorage.removeItem(KEY); }catch(e){} try{ window.RGPCPDSync && RGPCPDSync.markDeleted(ids); }catch(e){} }
   window.RGPCPD = { list:list, totalSeconds:totalSeconds, setReflection:setReflection, remove:remove, clearAll:clearAll, KEY:KEY };
 
   if (!track) return;   // page is read-only for CPD purposes; don't accrue
@@ -89,7 +97,7 @@
     var rec = d[rawPath] || { href:rawPath, title:title(), kind:kind, seconds:0, visits:0, first:Date.now(), reflection:'' };
     rec.title = title(); rec.kind = kind;
     rec.seconds = Math.round((rec.seconds||0) + active/1000);
-    rec.last = Date.now();
+    rec.last = rec.mod = Date.now();   // mod: last change, used by account sync
     if (!visitCounted){ rec.visits = (rec.visits||0) + 1; visitCounted = true; }
     d[rawPath] = rec; save(d);
     active = 0;            // reset accumulator after persisting

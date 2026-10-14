@@ -33,6 +33,8 @@
       visits: 1,
       first: ts,
       last: ts,
+      mod: ts,                             // last change: used by account sync (cpd-sync.js)
+      emod: ts,
       source: opts.source || '',          // 'Consult Scribe' | 'Consultation Spine'
       summary: opts.summary || '',         // short context line
       rLearn: opts.rLearn || '',

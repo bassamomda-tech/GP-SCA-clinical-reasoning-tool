@@ -28,7 +28,7 @@
   <div class="page-hero-inner">
     <span class="eyebrow">Legal</span>
     <h1>Privacy <em>Policy</em></h1>
-    <p class="legal-meta">Last updated: 22 July 2026 · How we handle your personal data under UK GDPR.</p>
+    <p class="legal-meta">Last updated: 13 October 2026 · How we handle your personal data under UK GDPR.</p>
   </div>
 </section>
 
@@ -45,6 +45,8 @@
     <li><b>Payment data:</b> subscriptions are handled by <b>PayPal</b>. We never see or store your card or bank details — only whether your plan is active.</li>
     <li><b>Technical data:</b> with your consent, privacy-friendly aggregate analytics (page views and feature usage) to improve the site. We do not use advertising or cross-site tracking cookies.</li>
   </ul>
+  <p id="cpd-data"><b>Your CPD log.</b> When you are signed in, your CPD log (activity titles, dates, time, credits and your written reflections) is also stored on our server under your account, so it is backed up and available on all your devices. Evidence files you attach stay on your device and are not uploaded. We keep it while your account is active and for 12 months after closure, unless you delete it sooner with the button below (or on the CPD page); that removes the server copy and turns the backup off, and your device keeps its own copy. Please never include patient-identifiable information in reflections.</p>
+  <p><button type="button" id="cpdDeleteServer" style="font:inherit;font-size:13px;font-weight:700;padding:8px 14px;border-radius:9px;border:1px solid #f3c7bd;background:#fff;color:#b91c1c;cursor:pointer">Delete my CPD data from the server</button> <span id="cpdDeleteMsg" role="status" aria-live="polite" style="font-size:13px;color:var(--muted)"></span></p>
 
   <h2>3. How and why we use it (lawful basis)</h2>
   <ul>
@@ -88,5 +90,21 @@
 </div>
 
 </main></div>
-<script src="../assets/site.js?v=105"></script>
+<script src="../assets/site.js?v=106"></script>
+<script src="../assets/cpd-sync.js?v=1"></script>
+<script>
+(function(){
+  var btn=document.getElementById('cpdDeleteServer'), msg=document.getElementById('cpdDeleteMsg');
+  if(!btn) return;
+  btn.addEventListener('click', function(){
+    var S=window.RGPCPDSync;
+    if(!S || !S.state().signedIn){ msg.textContent='Sign in first: the server copy is tied to your account. Signed out, your CPD log is only on this device.'; if(window.RGP_openAuth) RGP_openAuth('signin'); return; }
+    if(!confirm('Delete your CPD log from our server? The copy on this device stays, and account backup is switched off until you turn it on again on the CPD page.')) return;
+    btn.disabled=true; msg.textContent='Deleting…';
+    S.deleteServer().then(function(){ msg.textContent='Deleted. Your CPD log is no longer stored on our server.'; })
+      .catch(function(e){ msg.textContent='Could not delete just now ('+((e&&e.message)||'network error')+'). Please try again or email us.'; })
+      .then(function(){ btn.disabled=false; });
+  });
+})();
+</script>
 </body></html>

@@ -820,7 +820,7 @@
     var rec=d[PATH] || { href:PATH, title:'Clinical Audios', kind:'Audio', seconds:0, visits:0, first:Date.now(), reflection:'' };
     rec.title='Clinical Audios'; rec.kind='Audio';
     rec.seconds=Math.round((rec.seconds||0) + active/1000);
-    rec.last=Date.now();
+    rec.last=rec.mod=Date.now();   // mod: last change, used by account sync (cpd-sync.js)
     if(!visitCounted){ rec.visits=(rec.visits||0)+1; visitCounted=true; }
     d[PATH]=rec; save(d); active=0;
   }

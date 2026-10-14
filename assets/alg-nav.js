@@ -154,7 +154,7 @@
     if (window.__rgpCpdLoad) return; window.__rgpCpdLoad = 1;
     var base = '', ss = document.getElementsByTagName('script');
     for (var i=0;i<ss.length;i++){ var m=(ss[i].src||'').match(/^(.*\/)(site|alg-nav)\.js(\?.*)?$/); if(m){ base=m[1]; break; } }
-    var el = document.createElement('script'); el.src = base + 'cpd-tracker.js?v=1'; el.defer = true;
+    var el = document.createElement('script'); el.src = base + 'cpd-tracker.js?v=2'; el.defer = true;
     document.head.appendChild(el);
     var cl = document.createElement('script'); cl.src = base + 'cite-links.js?v=2'; cl.defer = true;
     document.head.appendChild(cl);
