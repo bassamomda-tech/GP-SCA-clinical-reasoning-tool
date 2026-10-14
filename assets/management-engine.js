@@ -623,7 +623,7 @@
     var me = document.currentScript && document.currentScript.src;
     if(!me) return;
     if(document.querySelector('meta[name="omelette-print-source"]') || /-print\.html$/i.test(location.pathname)) return;
-    var base = me.replace(/[^\/]*$/, ''), V = '?v=4';
+    var base = me.replace(/[^\/]*$/, ''), V = '?v=5';
     var head = document.head || document.documentElement;
     if(!document.querySelector('link[href*="protocol-ui.css"]')){
       var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = base + 'protocol-ui.css' + V; head.appendChild(l);

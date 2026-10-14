@@ -132,9 +132,31 @@ var PX = (function(){
       var parent = ev.parentNode, next = ev.nextSibling;
       parent.insertBefore(refs, next);
       refs.appendChild(ev);
+      /* the whole block folds as one (owner decision, Oct 2026): the guideline and source lists sit
+         inside the Evidence step, first; only the Evidence heading shows while it is closed */
+      var evBody = ev.querySelector(':scope > .mg-sbody');
+      if(evBody && ev.classList.contains('mg-fold')){
+        evBody.insertBefore(top, evBody.firstChild);
+        refs.classList.add('px-refs-in-ev');
+        var rh = refs.querySelector('.px-refs-head'); if(rh) rh.classList.add('px-screen-hide');
+        refs.setAttribute('aria-labelledby', (head(ev) && head(ev).querySelector('h2') && (head(ev).querySelector('h2').id || (head(ev).querySelector('h2').id = 'px-ev-h'))) || 'px-refs-h');
+        var openEv = function(){ setOpen(ev, true); };
+        document.addEventListener('click', function(e){ var a = e.target.closest && e.target.closest('a[href="#px-refs"]'); if(a) openEv(); });
+        if(location.hash === '#px-refs') openEv();
+      }
     } else {
       var foot = root.querySelector('.mg-foot');
       root.insertBefore(refs, foot || null);
+      /* no Evidence step: the References heading itself opens and closes the lists */
+      var rh2 = refs.querySelector('.px-refs-head');
+      refs.classList.add('px-refs-fold'); refs.setAttribute('data-open', '0');
+      rh2.setAttribute('role', 'button'); rh2.setAttribute('tabindex', '0'); rh2.setAttribute('aria-expanded', 'false');
+      rh2.appendChild(el('<span class="mg-chev px-refs-chev" aria-hidden="true">▾</span>'));
+      var tog = function(on){ refs.setAttribute('data-open', on ? '1' : '0'); rh2.setAttribute('aria-expanded', on ? 'true' : 'false'); };
+      rh2.addEventListener('click', function(){ tog(refs.getAttribute('data-open') !== '1'); });
+      rh2.addEventListener('keydown', function(e){ if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); tog(refs.getAttribute('data-open') !== '1'); } });
+      document.addEventListener('click', function(e){ var a = e.target.closest && e.target.closest('a[href="#px-refs"]'); if(a) tog(true); });
+      if(location.hash === '#px-refs') tog(true);
     }
     return refs;
   }

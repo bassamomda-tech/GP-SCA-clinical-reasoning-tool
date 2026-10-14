@@ -32,6 +32,20 @@
 .px-refs .pv-note{font-size:12px;color:var(--muted)}
 .px-refs > section.px-ev-in-refs > .mg-sec-h{margin-top:14px;border-bottom-color:var(--line)}
 .px-refs > section.px-ev-in-refs > .mg-sec-h h2{font-size:19px}
+/* the guideline and source lists inside the folding Evidence step (Oct 2026) */
+@media screen{
+  .mg-wrap .px-refs.px-refs-in-ev{padding-top:8px}
+  .px-refs.px-refs-in-ev > section.px-ev-in-refs > .mg-sec-h{margin-top:4px;border-bottom:0;padding-bottom:4px;align-items:center}
+  .px-ev-in-refs > .mg-sbody > .px-refs-top{margin:6px 0 16px}
+  .px-refs.px-refs-in-ev > section.px-ev-in-refs > .mg-sec-h h2::after{content:" & references"}
+  .px-refs.px-refs-in-ev > section.px-ev-in-refs > .mg-sec-h .mg-sec-n{font-size:0}
+  .px-refs.px-refs-in-ev > section.px-ev-in-refs > .mg-sec-h .mg-sec-n::after{content:"§";font-size:17px}
+  .px-refs.px-refs-fold[data-open="0"] > .px-refs-top{display:none}
+  .px-refs.px-refs-fold > .px-refs-head{cursor:pointer;margin-bottom:8px}
+  .px-refs.px-refs-fold > .px-refs-head:focus-visible{outline:3px solid #f0b429;outline-offset:3px;border-radius:10px}
+  .px-refs-chev{margin-left:auto;transition:transform .2s}
+  .px-refs.px-refs-fold[data-open="0"] .px-refs-chev{transform:rotate(-90deg)}
+}
 @media (max-width:760px){
   .mg-wrap .px-refs{padding:16px 14px 4px;border-radius:14px}
   .px-refs-top{grid-template-columns:1fr}
