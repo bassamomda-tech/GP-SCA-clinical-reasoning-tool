@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Type 1 Diabetes (insulin)
-   NICE NG17 · NICE TA943 (hybrid closed loop) · BNF
+   NICE NG17 · NICE TA943 (hybrid closed loop) · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('type-1-diabetes', {
   title: 'Type 1 diabetes — insulin regimen selection',
   subtitle: 'NICE NG17: multiple daily injection (basal–bolus) is the regimen of choice for adults; pumps and hybrid closed-loop for specific indications.',
-  guideline: 'NICE NG17 · NICE TA943 · BNF',
+  guideline: 'NICE NG17 · NICE TA943 · SPC',
 
 
   safety: [
@@ -146,6 +146,6 @@ MedChooser.register('type-1-diabetes', {
     { label:'NICE NG17 — Type 1 diabetes in adults: diagnosis and management', url:'https://www.nice.org.uk/guidance/ng17' },
     { label:'NICE TA943 — Hybrid closed loop systems for type 1 diabetes', url:'https://www.nice.org.uk/guidance/ta943' },
     { label:'NICE NG17 — type 1 diabetes', url:'https://www.nice.org.uk/guidance/ng17' },
-    { label:'BNF — Insulin', url:'https://bnf.nice.org.uk/drugs/insulin/' }
+    { label:'SPC — insulin products', url:'https://www.medicines.org.uk/emc/search?q=insulin' }
   ],
 });

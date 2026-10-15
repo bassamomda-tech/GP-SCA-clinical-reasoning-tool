@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Heart Failure (HFrEF)
-   NICE NG106 · BNF
+   NICE NG106 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('heart-failure', {
   title: 'Chronic heart failure — disease-modifying therapy',
   subtitle: 'HFrEF prognosis rests on the "four pillars" (ACEi/ARB→ARNI, β-blocker, MRA, SGLT2i). Diuretics treat congestion but not mortality.',
-  guideline: 'NICE NG106 · BNF',
+  guideline: 'NICE NG106 · SPC',
 
 
   safety: [
@@ -97,7 +97,7 @@ MedChooser.register('heart-failure', {
     {
       id:'mra',
       name:'MRA — spironolactone / eplerenone',
-      examples:'Spironolactone 25 mg OD',
+      examples:'Spironolactone 25 mg OD, titrated to 50 mg OD (check K⁺ and renal function)',
       step:'Pillar 3',
       source:'NICE NG106 §1.4',
       sideEffects:'Hyperkalaemia, gynaecomastia (spiro → eplerenone), AKI',
@@ -132,7 +132,7 @@ MedChooser.register('heart-failure', {
       name:'Loop diuretic — furosemide / bumetanide',
       examples:'Furosemide 40 mg OD (titrate to symptoms)',
       step:'Symptom relief',
-      source:'NICE NG106 §1.4 · BNF',
+      source:'NICE NG106 §1.4 · SPC',
       sideEffects:'Hypokalaemia, hyponatraemia, AKI, gout, hearing (high dose)',
       monitor:'U&E, weight, symptoms; use lowest effective dose',
       counsel:'"This tablet shifts the fluid off your lungs and legs so you breathe easier — it controls symptoms but it\'s the other tablets that prolong life."',

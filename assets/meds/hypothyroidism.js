@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Hypothyroidism (levothyroxine & titration)
-   NICE NG145 · BNF
+   NICE NG145 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('hypothyroidism', {
   title: 'Hypothyroidism — levothyroxine replacement',
   subtitle: 'Levothyroxine (LT4) is the treatment for primary hypothyroidism for virtually everyone — the real decisions are the starting dose, how fast to titrate, and the TSH target. Age, cardiac disease, pregnancy and the subclinical/overt distinction drive those choices.',
-  guideline: 'NICE NG145 · BNF',
+  guideline: 'NICE NG145 · SPC',
 
 
   safety: [
@@ -25,7 +25,7 @@ MedChooser.register('hypothyroidism', {
       name:'Levothyroxine — full replacement start (~1.6 mcg/kg)',
       examples:'Typically 50–100 mcg OD; titrate by TSH at 6–8 weeks',
       step:'First-line — young, fit, overt',
-      source:'NICE NG145 · BNF',
+      source:'NICE NG145 · SPC',
       sideEffects:'Usually only if over-replaced: palpitations, tremor, weight loss, AF, ↓bone density',
       monitor:'TSH 6–8 weeks after start/change; then annually once stable',
       counsel:'"Take one tablet every morning on an empty stomach, 30–60 minutes before food or other tablets. It takes a few weeks to work; we\'ll recheck a blood test in about 8 weeks and fine-tune the dose."',
@@ -129,7 +129,7 @@ MedChooser.register('hypothyroidism', {
   sources: [
     { label:'NICE NG145 — Thyroid disease: assessment and management', url:'https://www.nice.org.uk/guidance/ng145' },
     { label:'NICE NG145 — thyroid disease', url:'https://www.nice.org.uk/guidance/ng145' },
-    { label:'BNF — Levothyroxine sodium', url:'https://bnf.nice.org.uk/drugs/levothyroxine-sodium/' },
+    { label:'SPC — levothyroxine', url:'https://www.medicines.org.uk/emc/search?q=levothyroxine' },
     { label:'British Thyroid Association — Liothyronine position statement', url:'https://www.british-thyroid-association.org/' }
   ],
 });

@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Low back pain & sciatica
-   NICE NG59 · BNF
+   NICE NG59 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('low-back-pain', {
   title: 'Low back pain & sciatica — analgesia selection',
   subtitle: 'NICE NG59 analgesic options for low back pain and sciatica.',
-  guideline: 'NICE NG59 · BNF',
+  guideline: 'NICE NG59 · SPC',
 
 
   safety: [
@@ -85,7 +85,7 @@ MedChooser.register('low-back-pain', {
       monitor:'If already taking one for back pain: review and taper',
       counsel:'"Antidepressant-type tablets such as amitriptyline or duloxetine haven\'t been shown to help back pain enough to outweigh their side effects, so the guidance advises against them for this. If your mood is low, we\'ll look at that separately."',
       detail:{
-        'Dose': 'N/A for low back pain — dose per BNF only for a separate indication (e.g. co-existing depression)',
+        'Dose': 'N/A for low back pain — dose per SPC only for a separate indication (e.g. co-existing depression)',
         'Interactions': 'TCA — QT drugs, other sedatives; duloxetine — serotonergic drugs, hepatic',
         'Key teaching': 'NICE NG59: do not offer SSRIs, SNRIs or tricyclic antidepressants for managing low back pain. For sciatica NG59 makes no antidepressant recommendation (research recommendation only) — any trial is a specialist or pain-service decision. NICE CG173 excludes sciatica, which is covered by NG59. Treat co-existing depression in its own right.'
       },

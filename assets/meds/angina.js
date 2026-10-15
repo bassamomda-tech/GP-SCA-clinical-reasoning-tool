@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Stable Angina
-   NICE CG126 · BNF
+   NICE CG126 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('angina', {
   title: 'Stable angina — anti-anginal + secondary prevention',
   subtitle: 'Anti-anginal selection (NICE CG126) plus the mandatory secondary-prevention pair.',
-  guideline: 'NICE CG126 · BNF',
+  guideline: 'NICE CG126 · SPC',
 
 
   safety: [

@@ -164,7 +164,7 @@
 - Travel/migration hx; stool O,C&P if persistent/atypical; eosinophilia/pre-immunosuppression \u2192 strongyloides screen.
 - (Threadworm \u2192 separate card.)`,
     sources: [
-      { label:'BNF — mebendazole', url:'https://bnf.nice.org.uk/drugs/mebendazole/' },
+      { label:'SPC — mebendazole', url:'https://www.medicines.org.uk/emc/search?q=mebendazole' },
     ],
   },
 

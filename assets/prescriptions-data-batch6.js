@@ -51,10 +51,10 @@ Chronic PRIMARY pain (NG193): do NOT start opioids/NSAIDs/paracetamol/gabapentin
 Review function at each step; deprescribe if no benefit.`,
     sources: [
       { label:'NICE NG193 — Chronic pain (primary & secondary)', url:'https://www.nice.org.uk/guidance/ng193' },
-      { label:'BNF — paracetamol', url:'https://bnf.nice.org.uk/drugs/paracetamol/' },
-      { label:'BNF — naproxen', url:'https://bnf.nice.org.uk/drugs/naproxen/' },
-      { label:'BNF — codeine phosphate', url:'https://bnf.nice.org.uk/drugs/codeine-phosphate/' },
-      { label:'BNF — morphine', url:'https://bnf.nice.org.uk/drugs/morphine/' },
+      { label:'SPC — paracetamol', url:'https://www.medicines.org.uk/emc/search?q=paracetamol' },
+      { label:'SPC — naproxen', url:'https://www.medicines.org.uk/emc/search?q=naproxen' },
+      { label:'SPC — codeine', url:'https://www.medicines.org.uk/emc/search?q=codeine' },
+      { label:'SPC — morphine', url:'https://www.medicines.org.uk/emc/search?q=morphine' },
     ],
   },
 
@@ -197,11 +197,11 @@ Review function at each step; deprescribe if no benefit.`,
     eyebrow: 'Topical for skin · oral for nail/scalp · confirm before oral',
     indication: 'Dermatophyte infections by site: tinea corporis/cruris (body/groin), tinea pedis (athlete\u2019s foot), onychomycosis (nail), tinea capitis (scalp). Topical antifungals for skin; ORAL antifungals are needed for nail and scalp disease. Confirm nail/scalp infection (sampling) before oral treatment.',
     contraindications: 'Terbinafine/oral azoles: check LFTs (hepatotoxicity), drug interactions (azoles are CYP inhibitors \u2014 e.g. statins, warfarin). Avoid oral terbinafine in significant liver disease. Tinea capitis needs ORAL therapy (topicals don\u2019t penetrate hair follicles). Pregnancy: avoid oral antifungals (topical imidazole preferred). Griseofulvin: women avoid pregnancy during and for 1 month after; men must not father a child during and for 6 months after (BNF/MHRA).',
-    duration: 'Skin 1\u20136 wks; nail (oral terbinafine) fingernails 6 wks\u20133 months, toenails 3\u20136 months (lacquer longer); scalp 4\u20138 weeks',
+    duration: 'Skin 1\u20136 wks; nail (oral terbinafine) fingernails usually 6 wks, toenails usually 12 wks (some need up to 6 months) (lacquer longer); scalp 4\u20138 weeks',
     drugs: [
       { name: 'Body/groin/foot: Terbinafine 1% cream', dose: 'Apply', freq: 'OD\u2013BD', route: 'Topical', days: '1\u20132 wks (body/groin) / 1 wk (foot)' },
       { name: 'Alt topical: imidazole (clotrimazole/miconazole)', dose: 'Apply', freq: 'BD\u2013TDS', route: 'Topical', days: 'Until clear + 1\u20132 wks' },
-      { name: 'Nail (dermatophyte-confirmed): Terbinafine PO', dose: '250 mg', freq: 'OD', route: 'PO', days: 'Fingernails 6 weeks\u20133 months / toenails 3\u20136 months' },
+      { name: 'Nail (dermatophyte-confirmed): Terbinafine PO', dose: '250 mg', freq: 'OD', route: 'PO', days: 'Fingernails usually 6 weeks / toenails usually 12 weeks (some need up to 6 months)' },
       { name: 'Scalp (tinea capitis): oral antifungal (terbinafine or griseofulvin)', dose: 'Weight-based', freq: 'OD', route: 'PO', days: '4\u20138 weeks (+ antifungal shampoo)' },
     ],
     altRegimens: [
@@ -225,7 +225,7 @@ Review function at each step; deprescribe if no benefit.`,
     ],
     emisText: `Dermatophyte infections by site:
 - Body/groin/foot: terbinafine 1% cream OD-BD 1-2 wks (foot 1 wk), or imidazole BD-TDS until clear + 1-2 wks (usually 4-6 wks).
-- Nail (confirm by clippings): terbinafine 250 mg OD \u2014 fingernails 6 wks-3 months, toenails 3-6 months (or amorolfine lacquer if mild/distal).
+- Nail (confirm by clippings): terbinafine 250 mg OD \u2014 fingernails usually 6 wks, toenails usually 12 wks (some need up to 6 months) (or amorolfine lacquer if mild/distal).
 - Scalp (tinea capitis): ORAL antifungal (terbinafine/griseofulvin) 4-8 wks + antifungal shampoo; treat contacts; oral essential.
 - Confirm nail/scalp before oral; check LFTs/interactions. Don't use steroid alone (tinea incognito).
 - Extensive or terbinafine-failed tinea: think terbinafine-resistant T. indotineae (UKHSA) - scrapings for mycology + specialist advice.`,
@@ -411,7 +411,7 @@ Review function at each step; deprescribe if no benefit.`,
     drugs: [
       { name: 'Sildenafil', dose: '50 mg (range 25\u2013100)', freq: '~1 h before sex (max OD)', route: 'PO', days: 'On-demand; try \u22656\u20138 times' },
       { name: 'Tadalafil (on-demand)', dose: '10 mg (range 10\u201320)', freq: 'Before sex (max OD)', route: 'PO', days: 'On-demand' },
-      { name: 'Tadalafil (regular low-dose)', dose: '2.5\u20135 mg', freq: 'OD', route: 'PO', days: 'Daily (spontaneity)' },
+      { name: 'Tadalafil (regular low-dose)', dose: '5 mg (2.5 mg if not tolerated)', freq: 'OD', route: 'PO', days: 'Daily (spontaneity)' },
       { name: 'Treat low testosterone (if confirmed on repeat AM sample)', dose: 'Per regimen', freq: '\u2014', route: '\u2014', days: 'Endocrine-guided' },
     ],
     altRegimens: [
@@ -433,7 +433,7 @@ Review function at each step; deprescribe if no benefit.`,
     ],
     emisText: `Erectile dysfunction:
 - Treat as CV risk marker: assess QRISK, glucose, lipids, early-morning testosterone; review drugs; lifestyle.
-- 1st-line: PDE5i \u2014 sildenafil 50 mg (~1 h pre-sex, empty stomach) or tadalafil 10 mg on-demand / 2.5-5 mg OD. Try \u22656-8 times at adequate dose.
+- 1st-line: PDE5i \u2014 sildenafil 50 mg (~1 h pre-sex, empty stomach) or tadalafil 10 mg on-demand (20 mg if needed) / 5 mg OD if frequent use; never with nitrates. Try \u22656-8 times at adequate dose.
 - ABSOLUTE CI: nitrates / nicorandil.
 - Confirm/treat low testosterone. Refractory \u2192 vacuum device/alprostadil/urology. Psychogenic \u2192 counselling.
 - Priapism >4 h = emergency.`,

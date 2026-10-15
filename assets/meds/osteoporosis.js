@@ -7,7 +7,7 @@
 MedChooser.register('osteoporosis', {
   title: 'Osteoporosis — bone protection',
   subtitle: 'Once treatment is indicated (FRAX/DXA, or a fragility fracture), an oral bisphosphonate is first-line for almost everyone. The decision shifts when swallowing/upper-GI factors, adherence, severe CKD, or very high fracture risk are present. Always optimise calcium/vitamin D first.',
-  guideline: 'NICE NG259 (July 2026; replaced CG146) · NICE TA464 · NOGG 2024 · BNF',
+  guideline: 'NICE NG259 (July 2026; replaced CG146) · NICE TA464 · NOGG 2024 · SPC',
 
 
   safety: [
@@ -21,7 +21,7 @@ MedChooser.register('osteoporosis', {
       name:'Calcium + vitamin D (foundation)',
       examples:'Ensure adequate calcium intake + colecalciferol if deficient',
       step:'Foundation — for everyone',
-      source:'NOGG 2024 · BNF',
+      source:'NOGG 2024 · SPC',
       sideEffects:'Constipation, bloating (calcium); usually well tolerated',
       monitor:'Correct deficiency before antiresorptives',
       counsel:'"Before and during bone treatment we make sure your calcium and vitamin D are topped up — the bone tablets don\'t work properly without them."',

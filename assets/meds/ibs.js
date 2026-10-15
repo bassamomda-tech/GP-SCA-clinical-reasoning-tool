@@ -7,7 +7,7 @@
 MedChooser.register('ibs', {
   title: 'IBS — symptom-targeted pharmacotherapy',
   subtitle: 'Drug selection by predominant symptom once red flags are excluded (NICE CG61).',
-  guideline: 'NICE CG61 · BNF',
+  guideline: 'NICE CG61 · SPC',
 
 
   safety: [
@@ -122,7 +122,7 @@ MedChooser.register('ibs', {
       monitor:'Mood, suicidality early, QT (citalopram)',
       counsel:'"If the tricyclic isn\'t suitable, this type can help the gut–brain pathway too — and it may help mood if that\'s a factor for you."',
       detail:{
-        'Dose': 'Standard low starting dose per BNF',
+        'Dose': 'Standard low starting dose per SPC',
         'Interactions': 'Other serotonergic drugs, QT drugs (citalopram), NSAIDs/anticoagulants (GI bleed)',
         'Key teaching': 'Considered when a TCA is ineffective or not tolerated; the loosening effect tends to suit IBS-C more than IBS-D.'
       },
@@ -140,7 +140,7 @@ MedChooser.register('ibs', {
       name:'Linaclotide',
       examples:'Linaclotide 290 micrograms OD',
       step:'Specialist (refractory IBS-C)',
-      source:'NICE CG61 §1.2.1.3 · BNF',
+      source:'NICE CG61 §1.2.1.3 · SPC',
       sideEffects:'Diarrhoea (common, can be severe), abdominal pain, flatulence',
       monitor:'Response at 3 months — stop if no benefit; review diarrhoea',
       counsel:'"A newer tablet for stubborn constipation-type IBS that hasn\'t responded to the usual measures. The main side effect is loose stools, so we review it at 3 months."',

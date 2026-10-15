@@ -7,7 +7,7 @@
 MedChooser.register('menorrhagia', {
   title: 'Heavy menstrual bleeding — treatment selection',
   subtitle: 'Hormonal vs non-hormonal choice driven by contraception need and structural cause (NICE NG88).',
-  guideline: 'NICE NG88 · BNF',
+  guideline: 'NICE NG88 · SPC',
 
 
   safety: [

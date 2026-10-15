@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Menopause / HRT
-   NICE NG23 · BNF
+   NICE NG23 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('menopause', {
   title: 'Menopause — HRT & symptom management',
   subtitle: 'Choice turns on three questions: uterus or not (need a progestogen?), oral or transdermal oestrogen, and sequential vs continuous.',
-  guideline: 'NICE NG23 · BNF',
+  guideline: 'NICE NG23 · SPC',
 
 
   safety: [

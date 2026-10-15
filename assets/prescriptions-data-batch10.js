@@ -85,7 +85,8 @@
 - Secondary infection: localised \u2192 hydrogen peroxide 1% cream; widespread \u2192 flucloxacillin 500 mg QDS x5 days (NICE NG153).
 - Consider scabies/fleas/papular urticaria if atypical.`,
     sources: [
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
+      { label:'NICE CKS — Insect bites and stings', url:'https://cks.nice.org.uk/topics/insect-bites-stings/' },
+      { label:'SPC — flucloxacillin', url:'https://www.medicines.org.uk/emc/search?q=flucloxacillin' },
     ],
   },
 
@@ -200,7 +201,7 @@
 - Cover lesion + hand hygiene (avoid auto-inoculation to eyes/genitals).
 - Recurrent \u2192 episodic/suppressive antiviral. Ocular/immunocompromised/severe \u2192 specialist.`,
     sources: [
-      { label:'BNF — aciclovir', url:'https://bnf.nice.org.uk/drugs/aciclovir/' },
+      { label:'SPC — aciclovir', url:'https://www.medicines.org.uk/emc/search?q=aciclovir' },
     ],
   },
 
@@ -239,9 +240,9 @@
 - Preventive (take BEFORE travel): hyoscine hydrobromide oral/patch (most effective; antimuscarinic cautions) OR sedating antihistamine (cinnarizine/promethazine \u2014 drowsiness).
 - Children/pregnancy: non-drug \u00b1 promethazine/cyclizine per licence.`,
     sources: [
-      { label:'BNF — hyoscine hydrobromide', url:'https://bnf.nice.org.uk/drugs/hyoscine-hydrobromide/' },
-      { label:'BNF — cinnarizine', url:'https://bnf.nice.org.uk/drugs/cinnarizine/' },
-      { label:'BNF — promethazine hydrochloride', url:'https://bnf.nice.org.uk/drugs/promethazine-hydrochloride/' },
+      { label:'SPC — hyoscine hydrobromide', url:'https://www.medicines.org.uk/emc/search?q=hyoscine%20hydrobromide' },
+      { label:'SPC — cinnarizine', url:'https://www.medicines.org.uk/emc/search?q=cinnarizine' },
+      { label:'SPC — promethazine', url:'https://www.medicines.org.uk/emc/search?q=promethazine' },
     ],
   },
 

@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Male LUTS
-   NICE CG97 · BNF
+   NICE CG97 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('male-luts', {
   title: 'Male LUTS — drug selection',
   subtitle: 'Match the drug to the dominant symptom: voiding (α-blocker ± 5-ARI), storage/OAB (antimuscarinic / mirabegron), or nocturnal polyuria.',
-  guideline: 'NICE CG97 · BNF',
+  guideline: 'NICE CG97 · SPC',
 
 
   safety: [
@@ -127,7 +127,7 @@ MedChooser.register('male-luts', {
       name:'Tadalafil (if comorbid ED)',
       examples:'Tadalafil 5 mg OD',
       step:'LUTS + ED',
-      source:'BNF (licensed); NICE TA273 (2013) is a terminated appraisal — the company made no evidence submission, so NICE was unable to recommend tadalafil for BPH-LUTS',
+      source:'SPC (licensed); NICE TA273 (2013) is a terminated appraisal — the company made no evidence submission, so NICE was unable to recommend tadalafil for BPH-LUTS',
       sideEffects:'Headache, flushing, dyspepsia; hypotension with nitrates',
       monitor:'Avoid with nitrates / nicorandil',
       counsel:'"A daily low dose can help both the waterworks symptoms and erections at the same time."',

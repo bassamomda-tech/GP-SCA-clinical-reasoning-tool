@@ -40,7 +40,7 @@ var ALG_UI_SKIP = [];
     return x ? x.src.replace(/[^\/]*$/, '') : '../../assets/';
   })();
   var ROOT = ASSETS.replace(/assets\/$/, '');
-  var V = '?v=2';   /* bump with the files this script adds: alg-ui.css, rgp-ui-core.js, algorithm-leaflets.js */
+  var V = '?v=3';   /* bump with the files this script adds: alg-ui.css, rgp-ui-core.js, algorithm-leaflets.js */
 
   /* the stylesheet: a page may link it in <head> (no flash); otherwise load it here */
   if(!D.querySelector('link[href*="assets/alg-ui.css"]')){
@@ -247,7 +247,7 @@ var ALG_UI_SKIP = [];
           and no other medicine is named in the same item. The text is never hidden:
           the box adds a "Check · BNF" panel (verbatim clauses + a BNF search link).
        ========================================================= */
-    var DRUG_SKIP = '.why-drawer, .why-row, .kv, .rftile, .lstile, .dbox, table, .warn, .caution, .intro-note, .override, .pxa-chrome, h1, h2, h3, h4, h5, .node-header, .node-head-row';
+    var DRUG_SKIP = '.why-drawer, .why-row, .kv, .rftile, .lstile, .dbox, table, .warn, .caution, .intro-note, .override, .pxa-chrome, h1, h2, h3, h4, h5, .node-header, .node-head-row, .alg-next';
     function addDrugBoxes(){
       var n = 0, list = [];
       $$('.b-card, .rung .rt, li, p', flow).forEach(function(e){

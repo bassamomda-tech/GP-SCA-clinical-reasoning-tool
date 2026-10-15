@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Neuropathic pain
-   NICE CG173 · BNF
+   NICE CG173 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('neuropathic-pain', {
   title: 'Neuropathic pain — first-line agent selection',
   subtitle: 'The CG173 four first-line agents (switch, don\u2019t stack) plus condition-specific choices.',
-  guideline: 'NICE CG173 · BNF',
+  guideline: 'NICE CG173 · SPC',
 
 
   safety: [
@@ -52,7 +52,7 @@ MedChooser.register('neuropathic-pain', {
       monitor:'BP; mood; tolerability (nausea)',
       counsel:'"This one helps nerve pain and low mood together, so it\'s a good fit if both are a problem. Take it in the morning; any nausea usually settles in a week or two."',
       detail:{
-        'Dose': '60 mg OD for diabetic peripheral neuropathic pain (BNF; max 120 mg daily in divided doses); a lower 30 mg start may be used for tolerability; first-line/licensed in diabetic neuropathy',
+        'Dose': '60 mg OD for diabetic peripheral neuropathic pain (SPC; max 120 mg daily in divided doses); a lower 30 mg start may be used for tolerability; first-line/licensed in diabetic neuropathy',
         'Interactions': 'Other serotonergic drugs, tramadol, hepatic impairment (avoid)',
         'Key teaching': 'CG173 first-line; particularly useful with comorbid depression/anxiety and the agent of choice many use for diabetic neuropathy.'
       },
@@ -75,7 +75,7 @@ MedChooser.register('neuropathic-pain', {
       monitor:'Titrate slowly; reduce dose in renal impairment; taper to stop',
       counsel:'"A nerve-pain tablet built up gradually over a couple of weeks. It can make you drowsy or unsteady at first. Don\'t stop it abruptly — we\'ll taper it if needed."',
       detail:{
-        'Dose': 'Titrate from 300 mg/day (or lower in elderly/renal) per BNF schedule',
+        'Dose': 'Titrate from 300 mg/day (or lower in elderly/renal) per SPC schedule',
         'Interactions': 'CNS depressants, opioids (respiratory depression), antacids reduce absorption',
         'Key teaching': 'CG173 first-line. Controlled drug (Class C) — assess misuse risk. Renally cleared: dose-reduce in low eGFR.'
       },

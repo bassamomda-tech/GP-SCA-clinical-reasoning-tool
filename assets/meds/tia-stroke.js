@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — TIA / Ischaemic Stroke (secondary prevention)
-   NICE NG128 · BNF
+   NICE NG128 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('tia-stroke', {
   title: 'TIA / ischaemic stroke — secondary prevention',
   subtitle: 'Antiplatelet vs anticoagulant, plus statin and BP control after a confirmed ischaemic event (NICE NG128).',
-  guideline: 'NICE NG128 · BNF',
+  guideline: 'NICE NG128 · SPC',
 
 
   safety: [
@@ -91,7 +91,7 @@ MedChooser.register('tia-stroke', {
       name:'Warfarin',
       examples:'Warfarin, target INR 2.5 (2–3); valve INR per type',
       step:'Anticoag — valve / DOAC unsuitable',
-      source:'NICE NG128 · BNF',
+      source:'NICE NG128 · SPC',
       sideEffects:'Bleeding, INR variability (diet/drug interactions), warfarin skin necrosis (rare)',
       monitor:'INR — frequent until stable, then up to every 12 weeks',
       counsel:'"A blood thinner that needs regular blood tests to keep it in the safe range. It\'s the right choice when you have a mechanical valve or the newer tablets aren\'t suitable."',
@@ -110,14 +110,14 @@ MedChooser.register('tia-stroke', {
     {
       id:'statin',
       name:'High-intensity statin',
-      examples:'Atorvastatin 20–80 mg OD',
+      examples:'Atorvastatin 80 mg OD',
       step:'Secondary prevention',
       source:'NICE NG128 §1.5 · NICE NG238',
       sideEffects:'Myalgia, deranged LFTs, rarely myopathy',
       monitor:'LFTs baseline, 3 and 12 months; non-fasting lipids; CK if myalgia',
       counsel:'"This lowers cholesterol and stabilises the arteries supplying the brain — a key part of preventing another stroke, even if your cholesterol looks normal."',
       detail:{
-        'Dose': 'Atorvastatin 20–80 mg OD (start ~48 h after stroke onset, not in the hyperacute phase)',
+        'Dose': 'Atorvastatin 80 mg OD (lower dose if interactions, high adverse-effect risk or patient preference); start ~48 h after stroke onset, not in the hyperacute phase',
         'Interactions': 'Amlodipine/diltiazem (avoid simvastatin), macrolides, grapefruit',
         'Key teaching': 'Indicated after ischaemic stroke/TIA regardless of baseline cholesterol. Avoid in haemorrhagic stroke unless other vascular indication.'
       },

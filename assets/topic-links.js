@@ -54,22 +54,43 @@
     return out;
   }
 
+  // Algorithms whose main protocol(s) differ from the REG topic match (Upload 120):
+  // the strip on these algorithm pages shows these protocols instead of the REG one.
+  var ALG_M = {
+    'headache':          {t:'Headache',                    m:[['migraine','Migraine'],['tension-headache','Tension-type headache']]},
+    'knee-pain':         {t:'Knee Pain',                   m:[['osteoarthritis','Osteoarthritis']]},
+    'chronic-diarrhoea': {t:'Chronic Diarrhoea',           m:[['ibs','Irritable bowel syndrome'],['coeliac-disease','Coeliac disease'],['ulcerative-colitis','Ulcerative colitis'],['crohns-disease',"Crohn's disease"]]},
+    'confusion':         {t:'Confusion',                   m:[['dementia','Dementia']]},
+    'hair-loss':         {t:'Hair Loss',                   m:[['male-pattern-hair-loss','Male pattern hair loss'],['female-pattern-hair-loss','Female pattern hair loss']]},
+    'testicular-lump':   {t:'Scrotal Lumps and Swelling',  m:[['varicocele','Varicocele'],['hernia','Hernia (inguinoscrotal)'],['undescended-testis','Undescended testis']]},
+    'vision-loss':       {t:'Vision Loss',                 m:[['giant-cell-arteritis','Giant cell arteritis'],['tia-stroke','Stroke and TIA'],['macular-degeneration','Macular degeneration'],['glaucoma','Glaucoma']]}
+  };
+
   function build(){
     var cur = current(); if (!cur) return;
-    var entry = lookup(cur); if (!entry) return;
+    var entry = lookup(cur);
+    var ov = cur.type === 'a' ? ALG_M[cur.slug] : null;
+    if (!entry && !ov) return;
+    if (ov){ var e2 = {}; for (var k in (entry || {})) e2[k] = entry[k]; e2.t = ov.t; e2.m = null; entry = e2; }
     var others = ORDER.filter(function(t){
       if (t === cur.type || !entry[t]) return false;
       if (t === 'a' && RETIRED_ALG.indexOf(entry.a) !== -1) return false;
       return true;
     });
     var extra = chipsFor(cur, entry);
-    if (!others.length && !extra.rx.length && !extra.audio.length) return;
+    if (!others.length && !extra.rx.length && !extra.audio.length && !ov) return;
 
     var cards = others.map(function(t){
       var d = DEF[t];
       return '<a class="tl-card" href="'+d.path(cur.pre, entry[t])+'">'+
         '<span class="tl-ic">'+d.icon+'</span>'+
         '<span class="tl-tx"><b>'+d.label+'</b><small>'+d.sub+'</small></span>'+
+        '<span class="tl-arr">→</span></a>';
+    }).join('');
+    if (ov) cards += ov.m.map(function(x){
+      return '<a class="tl-card" href="'+DEF.m.path(cur.pre, x[0])+'">'+
+        '<span class="tl-ic">'+DEF.m.icon+'</span>'+
+        '<span class="tl-tx"><b>'+DEF.m.label+'</b><small>'+esc(x[1])+'</small></span>'+
         '<span class="tl-arr">→</span></a>';
     }).join('');
     cards += extra.rx.map(function(id){

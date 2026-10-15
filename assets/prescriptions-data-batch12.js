@@ -96,15 +96,15 @@
   },
 
   { id:'pyelonephritis', title:'Acute pyelonephritis', category:'Infections',
-    eyebrow:'Longer course broad-spectrum · send MSU · assess sepsis',
+    eyebrow:'Cefalexin first · send MSU · assess sepsis · fluoroquinolone only if others inappropriate',
     indication:'Upper UTI (loin pain, fever/rigors, ± lower urinary symptoms, often systemically unwell). Send urine culture; treat empirically with a broad-spectrum agent; assess for sepsis and admission. Per NICE NG111.',
-    contraindications:'Sepsis, pregnancy, significant dehydration/vomiting, or unable to take oral → admit. Avoid nitrofurantoin (does not treat upper tract). Men/recurrent → consider urological cause. Adjust to culture sensitivities.',
+    contraindications:'Sepsis, pregnancy, significant dehydration/vomiting, or unable to take oral → admit. Avoid nitrofurantoin (does not treat upper tract). Men/recurrent → consider urological cause. Adjust to culture sensitivities. MHRA Drug Safety Update (January 2024): a fluoroquinolone (e.g. ciprofloxacin) should be used only when the other recommended antibiotics are inappropriate for this patient (for example resistance, contraindication, previous side effects or treatment failure), and the reason recorded. Rarely they cause disabling, long-lasting or possibly irreversible effects on tendons, muscles, joints and nerves, and psychiatric effects; tell the patient to stop and seek advice at the first sign of these.',
     duration:'7\u201310 days (per agent)',
     drugs:[
       { name:'Send MSU for culture BEFORE antibiotics; assess sepsis/admission criteria', dose:'\u2014', freq:'\u2014', route:'Investigation', days:'\u2014' },
-      { name:'1st line: cefalexin', dose:'500 mg', freq:'BD\u2013TDS', route:'PO', days:'7\u201310 days' },
-      { name:'Alt: co-amoxiclav (if culture susceptible) OR trimethoprim (if susceptible)', dose:'co-amox 500/125 TDS / trim 200 mg BD', freq:'\u2014', route:'PO', days:'7\u201310 / 14 days' },
-      { name:'Alt: ciprofloxacin (consider fluoroquinolone cautions)', dose:'500 mg', freq:'BD', route:'PO', days:'7 days' },
+      { name:'Usual first choice: cefalexin', dose:'500 mg', freq:'BD\u2013TDS', route:'PO', days:'7\u201310 days' },
+      { name:'Usual alternatives: co-amoxiclav (only if culture susceptible) OR trimethoprim (only if culture susceptible)', dose:'co-amox 500/125 TDS / trim 200 mg BD', freq:'\u2014', route:'PO', days:'7\u201310 / 14 days' },
+      { name:'Only if other recommended antibiotics are inappropriate (MHRA 2024; record the reason): ciprofloxacin', dose:'500 mg', freq:'BD', route:'PO', days:'7 days' },
     ],
     altRegimens:[
       { label:'Pregnant', drugs:'Cefalexin; seek advice; lower threshold to admit; send culture.' },
@@ -121,9 +121,10 @@
     redFlags:['Sepsis, severe pain, vomiting, pregnancy, or not improving at 48 h → admit / urgent assessment.','Suspected obstruction (single kidney, stones) → urgent imaging/urology.'],
     emisText:`Acute pyelonephritis (NG111):
 - Send MSU pre-antibiotic; assess sepsis/admission.
-- 1st line cefalexin 500 mg BD-TDS 7-10d; alt co-amoxiclav or trimethoprim (if susceptible), or ciprofloxacin 500 mg BD 7d. NOT nitrofurantoin (upper tract).
+- 1st line cefalexin 500 mg BD-TDS 7-10d; alt co-amoxiclav or trimethoprim (only if culture susceptible). NOT nitrofurantoin (upper tract).
+- Ciprofloxacin 500 mg BD 7d ONLY if other recommended antibiotics are inappropriate (MHRA Jan 2024) - document reason; warn re tendon/muscle/joint/nerve and psychiatric effects (stop and seek advice).
 - Pregnant/severe/vomiting/sepsis \u2192 admit. Review 48 h + cultures. Male/recurrent \u2192 urology.`,
-    sources:[{ label:'NICE NG111 \u2014 Pyelonephritis (acute): antimicrobial prescribing', url:'https://www.nice.org.uk/guidance/ng111' }],
+    sources:[{ label:'NICE NG111 \u2014 Pyelonephritis (acute): antimicrobial prescribing', url:'https://www.nice.org.uk/guidance/ng111' }, { label:'MHRA Drug Safety Update (January 2024) \u2014 fluoroquinolone antibiotics: must now only be prescribed when other commonly recommended antibiotics are inappropriate', url:'https://www.gov.uk/drug-safety-update/fluoroquinolone-antibiotics-must-now-only-be-prescribed-when-other-commonly-recommended-antibiotics-are-inappropriate' }],
   },
 
   { id:'recurrent-uti', title:'Recurrent UTI (women) — prevention', category:'Urology & Renal',
@@ -186,7 +187,7 @@
 - Mainstay rehydration (\u00b1 ORS); continue eating as tolerated. NO routine antibiotic.
 - Loperamide only if non-bloody, no fever (avoid if bloody/fever \u2014 EHEC/HUS).
 - Hygiene + exclusion until 48 h symptom-free. Stool sample if blood/travel/immunocompromised/persistent. Notifiable pathogens.`,
-    sources:[{ label:'UKHSA · BNF (NICE CG84 applies to under 5s only)', url:'https://www.nice.org.uk/guidance/cg84' }],
+    sources:[{ label:'UKHSA · NICE CG84 (CG84 applies to under 5s only)', url:'https://www.nice.org.uk/guidance/cg84' }],
   },
 
   { id:'influenza', title:'Influenza (antiviral treatment)', category:'Infections',
@@ -219,7 +220,7 @@
 - Healthy/not at-risk: supportive (rest, fluids, analgesia).
 - PEP (at-risk, criteria): oseltamivir 75 mg OD 10d; or zanamivir 10 mg (2 inhalations) OD 10d.
 - Zanamivir treatment (if chosen): 10 mg (2 inhalations) BD 5d. Children: BNFC doses. Annual vaccination = mainstay.`,
-    sources:[{ label:'UKHSA \u2014 Guidance on use of antiviral agents for the treatment and prophylaxis of seasonal influenza', url:'https://www.gov.uk/government/publications/influenza-treatment-and-prophylaxis-using-anti-viral-agents/guidance-on-use-of-antiviral-agents-for-the-treatment-and-prophylaxis-of-seasonal-influenza' }, { label:'BNF \u2014 oseltamivir', url:'https://bnf.nice.org.uk/drugs/oseltamivir/' }, { label:'BNF \u2014 zanamivir', url:'https://bnf.nice.org.uk/drugs/zanamivir/' }],
+    sources:[{ label:'UKHSA \u2014 Guidance on use of antiviral agents for the treatment and prophylaxis of seasonal influenza', url:'https://www.gov.uk/government/publications/influenza-treatment-and-prophylaxis-using-anti-viral-agents/guidance-on-use-of-antiviral-agents-for-the-treatment-and-prophylaxis-of-seasonal-influenza' }, { label:'SPC \u2014 oseltamivir', url:'https://www.medicines.org.uk/emc/search?q=oseltamivir' }, { label:'SPC \u2014 zanamivir', url:'https://www.medicines.org.uk/emc/search?q=zanamivir' }],
   },
 
   { id:'vaginal-candidiasis', title:'Vaginal candidiasis (thrush)', category:'Women\'s & Sexual Health',

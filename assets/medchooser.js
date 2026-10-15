@@ -103,6 +103,11 @@
       const drugs = t.drugs || [];
 
       this.host.className = 'mc mc-static';
+      // BNF links are reminders to check, not dose sources (Upload 121)
+      const allSrc = (t.sources || []);
+      const isBnf = s => s && s.url && /(^|\/\/)bnfc?\.nice\.org\.uk/.test(s.url);
+      const srcMain = allSrc.filter(s => !isBnf(s));
+      const srcCheck = allSrc.filter(isBnf);
       this.host.innerHTML = `
         <div class="mc-head">
           <div class="mc-head-l">
@@ -112,7 +117,7 @@
             ${t.guideline ? `<div class="mc-source-pill">${t.guideline}</div>` : ''}
           </div>
         </div>
-        <p class="mc-static-note">The options below are listed in the order the guideline gives them, with the guideline’s own cautions and conditions. Nothing here is ranked or chosen for a patient — check the cited source, the BNF or SPC, and the patient in front of you.</p>
+        <p class="mc-static-note">The options below are listed in the order the guideline gives them, with the guideline’s own cautions and conditions. Nothing here is ranked or chosen for a patient — check the cited source, the SPC, the BNF and the patient in front of you.</p>
         ${flags.length ? `
           <section class="mc-safety" aria-label="Safety points in the guidance">
             <h4>Safety points in the guidance</h4>
@@ -125,11 +130,15 @@
           <div class="mc-footer-l">
             <h5>Sources</h5>
             <div class="mc-sources-list">
-              ${((t.sources&&t.sources.length)?t.sources:[{label:'UK-based guidelines'}]).map(s => (s.url ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.label} ↗</a>` : `<span>${s.label}</span>`)).join('')}
+              ${(srcMain.length?srcMain:[{label:'UK-based guidelines'}]).map(s => (s.url ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.label} ↗</a>` : `<span>${s.label}</span>`)).join('')}
             </div>
+            ${srcCheck.length ? `<h5>Also check before prescribing</h5>
+            <div class="mc-sources-list">
+              ${srcCheck.map(s => `<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.label} ↗</a>`).join('')}
+            </div>` : ''}
           </div>
           <div class="mc-disclaimer">
-            <strong>Reference only.</strong> A summary of what the cited guidance says about each option. Always verify against the live guideline, the BNF/SPC and your local formulary before prescribing; doses are the BNF’s.
+            <strong>Reference only.</strong> A summary of what the cited guidance says about each option. Doses are written in our own words from NICE guidance and the manufacturers’ product information (SPC), for education. Always check the current SPC, BNF/BNFC, local formulary and the patient before prescribing.
           </div>
         </footer>
       `;

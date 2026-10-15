@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Adult Asthma
-   NICE NG245 (2024 joint NICE/BTS/SIGN) · BNF
+   NICE NG245 (2024 joint NICE/BTS/SIGN) · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('asthma', {
   title: 'Adult Asthma — pharmacological ladder',
   subtitle: 'NICE NG245 replaces the historical SABA-first model. AIR (low-dose ICS-formoterol PRN) is first-line; MART is the next step.',
-  guideline: 'NICE NG245 · BNF',
+  guideline: 'NICE NG245 · SPC',
 
 
   safety: [
@@ -152,14 +152,14 @@ MedChooser.register('asthma', {
     {
       id:'saba',
       name:'SABA — Salbutamol',
-      examples:'Salbutamol 100 µg MDI — 2 puffs PRN',
+      examples:'Salbutamol 100 µg MDI — 1–2 puffs PRN',
       step:'Rescue only',
       source:'NICE NG245 — no longer recommended as monotherapy',
       sideEffects:'Tremor, tachycardia, hypokalaemia at high dose',
       monitor:'Inhaler count — ≥3/year = poor control',
       counsel:'"On its own this is no longer the safest way to treat asthma — using it alone increases the risk of serious attacks. We\'ll add an anti-inflammatory inhaler."',
       detail:{
-        'Dose': 'Salbutamol 100 µg — 2 puffs PRN (max 8/day before review)',
+        'Dose': 'Salbutamol 100–200 micrograms (1–2 puffs of 100 µg) PRN, alongside an ICS; frequent need → review control',
         'Key teaching': 'NG245 explicit: SABA monotherapy is no longer a recommended treatment for asthma. Every patient should have ICS exposure.'
       },
       conditions: [
@@ -174,7 +174,7 @@ MedChooser.register('asthma', {
       name:'Oral corticosteroid (exacerbation)',
       examples:'Prednisolone 40 mg OD × 5 days',
       step:'Exacerbation',
-      source:'BTS/SIGN 158 (2019, acute asthma) · BNF',
+      source:'BTS/SIGN 158 (2019, acute asthma) · SPC',
       sideEffects:'Hyperglycaemia, mood, GI, sleep, adrenal suppression if repeated',
       monitor:'Glucose if diabetic; bone protection if frequent courses',
       counsel:'"A short, 5-day course of steroids to settle this flare. Take with food in the morning. Don\'t stop blue inhaler — use it alongside."',

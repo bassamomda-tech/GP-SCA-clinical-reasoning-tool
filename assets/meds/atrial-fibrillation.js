@@ -1,6 +1,6 @@
 /* ============================================
    Medication Chooser — Atrial Fibrillation
-   NICE NG196 · BNF
+   NICE NG196 · SPC
    Covers anticoagulation + rate control
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
@@ -8,7 +8,7 @@
 MedChooser.register('atrial-fibrillation', {
   title: 'Atrial fibrillation — anticoagulation & rate control',
   subtitle: 'Two decisions: stroke prevention (DOAC-first per NG196) and rate control (β-blocker or rate-limiting CCB first-line).',
-  guideline: 'NICE NG196 · BNF',
+  guideline: 'NICE NG196 · SPC',
 
 
   safety: [
@@ -48,7 +48,7 @@ MedChooser.register('atrial-fibrillation', {
       name:'Warfarin (VKA)',
       examples:'Dose by INR (target 2.5, range 2–3)',
       step:'Anticoag · valvular / DOAC-unsuitable',
-      source:'NICE NG196 · BNF',
+      source:'NICE NG196 · SPC',
       sideEffects:'Bleeding, many food/drug interactions, narrow therapeutic index',
       monitor:'Regular INR (TTR ≥65%); reassess if poor control',
       counsel:'"Effective but needs regular blood tests to keep it in range, and it interacts with foods and other medicines. For your valve, it\'s the only safe option."',
@@ -120,7 +120,7 @@ MedChooser.register('atrial-fibrillation', {
       name:'Digoxin',
       examples:'Digoxin 125–250 µg OD',
       step:'Rate · add-on / sedentary',
-      source:'NICE NG196 §1.7 · BNF',
+      source:'NICE NG196 §1.7 · SPC',
       sideEffects:'Narrow therapeutic index; nausea, visual disturbance, arrhythmia; toxicity in renal impairment / hypokalaemia',
       monitor:'Renal function, K⁺; digoxin level if toxicity suspected',
       counsel:'"Useful if you\'re not very active — but it only controls rate at rest, and we need to keep an eye on kidney function and potassium."',

@@ -201,3 +201,14 @@ ul.pxa-check li{font-size:12.8px;line-height:1.45;margin:0 0 4px;color:#2a3744}
 .pxa-rf-h .pxa-rf-orig{display:block;margin-top:2px;font-family:'DM Sans',system-ui,sans-serif;font-size:.82rem;font-weight:600;line-height:1.35;color:#6b6760}
 html.au .alg-flow .node.pxa-rf-step[data-type] .node-num{background:var(--u-same-day)!important;color:#fff!important}
 }
+
+/* ---------- 8. "Next steps" protocol links (Upload 120) ----------
+   Static <p class="alg-next"> at the end of the Treat step: links to the protocols
+   for the main diagnoses the algorithm reaches. Shows on screen and in print. */
+.alg-flow .alg-next{margin:12px 0 2px;padding:8px 12px;border:1px solid #bcd9d4;border-left:3px solid #0c4a47;border-radius:8px;
+  background:#f2f8f7;font-family:'DM Sans',system-ui,sans-serif;font-size:13px;line-height:1.55;color:#2a3744}
+.alg-flow .alg-next b{color:#0c4a47;font-weight:700}
+.alg-flow .alg-next a{color:#0c4a47;font-weight:600;text-decoration:underline;text-decoration-color:#9cc7c1;text-underline-offset:2px;white-space:nowrap}
+.alg-flow .alg-next a:hover{text-decoration-color:#0c4a47}
+@media (max-width:560px){.alg-flow .alg-next a{white-space:normal}}
+@media print{.alg-flow .alg-next{margin:3px 0 0 !important;padding:2px 5px !important;background:none !important;border:none !important;border-top:1px solid #c9c4ba !important;border-radius:0 !important}}

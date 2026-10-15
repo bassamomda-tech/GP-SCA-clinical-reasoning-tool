@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Atopic eczema
-   NICE CG57 · BNF
+   NICE CG57 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('eczema', {
   title: 'Atopic eczema — emollient & topical steroid selection',
   subtitle: 'Steroid potency matched to site and severity, plus calcineurin and infection management (NICE CG57).',
-  guideline: 'NICE CG57 · BNF',
+  guideline: 'NICE CG57 · SPC',
 
 
   safety: [

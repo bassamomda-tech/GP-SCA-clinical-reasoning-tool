@@ -280,7 +280,8 @@ Safety-net: periorbital swelling, diplopia, severe headache → same-day.`,
 Keep ear dry; no cotton buds; analgesia. Add oral flucloxacillin only if spreading cellulitis.
 Safety-net: diabetic + severe pain/granulation → urgent ENT (necrotising OE).`,
     sources: [
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
+      { label:'NICE CKS — Otitis externa', url:'https://cks.nice.org.uk/topics/otitis-externa/' },
+      { label:'SPC — Otomize ear spray', url:'https://www.medicines.org.uk/emc/search?q=otomize' },
     ],
   },
 
@@ -319,7 +320,7 @@ Safety-net: diabetic + severe pain/granulation → urgent ENT (necrotising OE).`
 Avoid contact lenses. Safety-net: pain / photophobia / reduced vision / lens-wearer → same-day ophthalmology.`,
     sources: [
       { label:'College of Optometrists', url:'https://www.college-optometrists.org/clinical-guidance' },
-      { label:'BNF — chloramphenicol', url:'https://bnf.nice.org.uk/drugs/chloramphenicol/' },
+      { label:'SPC — chloramphenicol', url:'https://www.medicines.org.uk/emc/search?q=chloramphenicol' },
     ],
   },
 

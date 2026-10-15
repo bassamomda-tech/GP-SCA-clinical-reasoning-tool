@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Psoriasis (topical)
-   NICE CG153 · BNF
+   NICE CG153 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('psoriasis', {
   title: 'Psoriasis — topical treatment selection',
   subtitle: 'Topical choice by body site, with escalation thresholds (NICE CG153).',
-  guideline: 'NICE CG153 · BNF',
+  guideline: 'NICE CG153 · SPC',
 
 
   safety: [

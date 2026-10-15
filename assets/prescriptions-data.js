@@ -348,7 +348,7 @@ Counsel: lifelong therapy; lifestyle (alcohol, weight, hydration); rash → STOP
 - Stop and seek review if: calf pain / chest pain / SOB / severe headache (?VTE).
 Off-licence if > 17 days. Consider alternatives (continuous CHC pack) if on COCP.`,
     sources: [
-      { label:'BNF — norethisterone', url:'https://bnf.nice.org.uk/drugs/norethisterone/' },
+      { label:'SPC — norethisterone', url:'https://www.medicines.org.uk/emc/search?q=norethisterone' },
       { label:'FSRH Combined Hormonal Contraception 2019', url:'https://www.fsrh.org/standards-and-guidance/' },
     ],
   },
@@ -399,7 +399,7 @@ Off-licence if > 17 days. Consider alternatives (continuous CHC pack) if on COCP
 - Ophthalmic / Ramsay-Hunt / immunocompromised → same-day specialist.
 - Review at 5 days for pain; 4 wks for PHN.`,
     sources: [
-      { label:'BNF — aciclovir', url:'https://bnf.nice.org.uk/drugs/aciclovir/' },
+      { label:'SPC — aciclovir', url:'https://www.medicines.org.uk/emc/search?q=aciclovir' },
       { label:'NICE CG173 — Neuropathic pain (post-herpetic neuralgia)', url:'https://www.nice.org.uk/guidance/cg173' },
     ],
   },
@@ -444,7 +444,7 @@ For severe / immunocompromised: Aciclovir 200–400 mg PO 5×/day × 5 days.
 Counsel: SPF lip balm, do not share utensils, avoid touching eyes.
 Eye involvement → same-day ophthalmology (?keratitis).`,
     sources: [
-      { label:'BNF — aciclovir', url:'https://bnf.nice.org.uk/drugs/aciclovir/' },
+      { label:'SPC — aciclovir', url:'https://www.medicines.org.uk/emc/search?q=aciclovir' },
     ],
   },
 
@@ -491,8 +491,7 @@ Extensive: Fluconazole 50 mg PO OD × 7 days (100 mg OD up to 14 days if severe 
 CAUTION miconazole: interacts with warfarin (raises INR) + statins. Not under 4 months (choking) — nystatin for neonates/young infants; infant doses per BNFC.
 Counsel: if ICS — rinse mouth, use spacer. Treat denture stomatitis with hygiene + gel. Investigate cause if recurrent (HbA1c, HIV, bloods).`,
     sources: [
-      { label:'BNF — miconazole', url:'https://bnf.nice.org.uk/drugs/miconazole/' },
-      { label:'BNF — Antifungals', url:'https://bnf.nice.org.uk/treatment-summaries/antifungals-systemic-use/' },
+      { label:'SPC — miconazole', url:'https://www.medicines.org.uk/emc/search?q=miconazole' },
     ],
   },
 

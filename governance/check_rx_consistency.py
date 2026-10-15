@@ -95,7 +95,7 @@ def amounts(text):
             out.add(('%g' % x) + ' ' + u2)
     return out
 
-# drug names: BNF drug-page slugs the site already links to, plus common short names
+# drug names: BNF drug-page and emc SPC-search names the site already links to, plus common short names
 def drug_lexicon():
     names = set()
     for root, _, files in os.walk(os.path.join(ROOT, 'assets')):
@@ -104,6 +104,8 @@ def drug_lexicon():
                 try: s = open(os.path.join(root, f), encoding='utf-8').read()
                 except Exception: continue
                 names.update(re.findall(r'bnf\.nice\.org\.uk/drugs/([a-z0-9-]+)/', s))
+                # Upload 121: dose sources are SPC (emc) search links — read those drug names too
+                names.update(x.replace('%20', '-') for x in re.findall(r'medicines\.org\.uk/emc/search\?q=([a-z0-9%-]+)', s))
     words = set()
     for n in names:
         base = re.sub(r'-(hydrochloride|sodium|calcium|fumarate|sulfate|maleate|butyrate|propionate|furoate|acetate|hydrobromide|butylbromide|tartrate|mesilate|dihydrochloride|bromide|phosphate|oxalate|succinate|hexahydrate|husk|3350|potassium)$', '', n)

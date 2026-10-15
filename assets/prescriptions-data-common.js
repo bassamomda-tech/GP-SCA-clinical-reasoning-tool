@@ -81,9 +81,9 @@ Safety-net/urgent assessment: dysphagia, weight loss, GI bleed, vomiting, ≥55 
 - Opioid-induced: avoid bulk-forming; macrogol + senna.
 Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): new change in habit, bleeding, weight loss, mass, IDA; FIT ≥10 µg Hb/g or rectal mass → suspected cancer pathway referral. Taper once regular.`,
     sources: [
-      { label:'BNF — ispaghula husk', url:'https://bnf.nice.org.uk/drugs/ispaghula-husk/' },
-      { label:'BNF — macrogol 3350', url:'https://bnf.nice.org.uk/drugs/macrogol-3350/' },
-      { label:'BNF — senna', url:'https://bnf.nice.org.uk/drugs/senna/' },
+      { label:'SPC — ispaghula', url:'https://www.medicines.org.uk/emc/search?q=ispaghula' },
+      { label:'SPC — macrogol', url:'https://www.medicines.org.uk/emc/search?q=macrogol' },
+      { label:'SPC — senna', url:'https://www.medicines.org.uk/emc/search?q=senna' },
     ],
   },
 
@@ -116,7 +116,7 @@ Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): new change i
 - Pregnancy/<6 months: hygiene measures alone × 6 weeks.
 - Hygiene (2 wks): handwashing/short nails, morning shower, wash linen/nightwear, no scratching.`,
     sources: [
-      { label:'BNF — mebendazole', url:'https://bnf.nice.org.uk/drugs/mebendazole/' },
+      { label:'SPC — mebendazole', url:'https://www.medicines.org.uk/emc/search?q=mebendazole' },
     ],
   },
 
@@ -156,7 +156,7 @@ Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): new change i
 - Persistent/large → banding/surgery referral.
 Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): bleeding ≥50, change in habit, weight loss, IDA, abdominal mass; FIT ≥10 µg Hb/g, rectal or anal mass → suspected cancer pathway referral.`,
     sources: [
-      { label:'BNF — ispaghula husk', url:'https://bnf.nice.org.uk/drugs/ispaghula-husk/' },
+      { label:'SPC — ispaghula', url:'https://www.medicines.org.uk/emc/search?q=ispaghula' },
     ],
   },
 
@@ -272,9 +272,9 @@ Safety-net/suspected cancer pathway referral: PMB, persistent IMB/PCB, ≥45 tre
 - ± Combined hormonal contraception (if suitable / wants contraception). Heat pad, exercise.
 Safety-net: pain between periods, deep dyspareunia, worsening → consider endometriosis / gynae referral.`,
     sources: [
-      { label:'BNF — mefenamic acid', url:'https://bnf.nice.org.uk/drugs/mefenamic-acid/' },
-      { label:'BNF — ibuprofen', url:'https://bnf.nice.org.uk/drugs/ibuprofen/' },
-      { label:'BNF — naproxen', url:'https://bnf.nice.org.uk/drugs/naproxen/' },
+      { label:'SPC — mefenamic acid', url:'https://www.medicines.org.uk/emc/search?q=mefenamic%20acid' },
+      { label:'SPC — ibuprofen', url:'https://www.medicines.org.uk/emc/search?q=ibuprofen' },
+      { label:'SPC — naproxen', url:'https://www.medicines.org.uk/emc/search?q=naproxen' },
     ],
   },
 
@@ -367,7 +367,7 @@ Safety-net: eczema herpeticum (painful punched-out vesicles, unwell) → same-da
     contraindications: 'Sedating antihistamines: avoid (driving/cognition) — use non-sedating. Intranasal steroid: caution with recent nasal surgery; correct technique.',
     duration: 'During exposure / seasonal',
     drugs: [
-      { name: 'Non-sedating antihistamine (cetirizine/loratadine/fexofenadine)', dose: '10 mg (fexofenadine 120–180 mg)', freq: 'OD', route: 'PO', days: 'During season' },
+      { name: 'Non-sedating antihistamine (cetirizine/loratadine/fexofenadine)', dose: '10 mg (fexofenadine 120 mg)', freq: 'OD', route: 'PO', days: 'During season' },
       { name: 'Intranasal corticosteroid (e.g. mometasone/fluticasone)', dose: '2 sprays/nostril', freq: 'OD', route: 'INTRANASAL', days: 'Regular through season (start early)' },
       { name: 'Eye symptoms: Sodium cromoglicate 2% drops', dose: '1–2 drops', freq: 'QDS', route: 'Topical eye', days: 'PRN' },
     ],
@@ -487,7 +487,7 @@ Counsel: 2–6 wks to work; start low/go slow; don\u2019t stop gabapentinoids ab
     duration: '≤2 weeks (intermittent dosing preferred)',
     drugs: [
       { name: 'Sleep hygiene / CBT-I (1st line)', dose: '—', freq: '—', route: '—', days: 'Mainstay (signpost digital CBT-I)' },
-      { name: 'Zopiclone (short-term)', dose: '3.75–7.5 mg', freq: 'ON PRN', route: 'PO', days: '≤2 weeks (intermittent)' },
+      { name: 'Zopiclone (short-term)', dose: '7.5 mg (3.75 mg if older or frail)', freq: 'ON PRN', route: 'PO', days: '≤2 weeks (intermittent); 4 weeks maximum including taper' },
       { name: 'Elderly / alt: Zopiclone 3.75 mg or short-acting alternative', dose: '3.75 mg', freq: 'ON PRN', route: 'PO', days: '≤2 weeks' },
     ],
     altRegimens: [
@@ -507,7 +507,7 @@ Counsel: 2–6 wks to work; start low/go slow; don\u2019t stop gabapentinoids ab
     ],
     emisText: `Short-term insomnia:
 - 1st line: sleep hygiene + CBT-I (signpost digital CBT-I, e.g. Sleepio).
-- If severe daytime impairment: Zopiclone 3.75–7.5 mg ON PRN for ≤2 weeks (intermittent), lowest dose. Adults ≥55: melatonin PR 2 mg ON (up to 13 wks).
+- If severe daytime impairment: Zopiclone 7.5 mg ON PRN (3.75 mg if older/frail) for ≤2 weeks (intermittent; max 4 weeks incl. taper), lowest effective dose. Adults ≥55: melatonin PR 2 mg ON (up to 13 wks).
 Counsel: dependence/next-day drowsiness/falls; no driving if drowsy; treat underlying cause. Avoid long-term hypnotics.`,
     sources: [
       { label:'NICE TA77 — Z-drugs for insomnia', url:'https://www.nice.org.uk/guidance/ta77' },

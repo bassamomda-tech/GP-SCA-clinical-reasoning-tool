@@ -128,8 +128,8 @@ Severe/refractory or ?Sjögren\u2019s → ophthalmology/rheumatology. Painful re
 - Marked inflammation: hydrocortisone 1% OD ≤7 days (mild only — avoid potent steroids).
 Not improving/atypical → reconsider seb/atopic dermatitis, psoriasis, bacterial infection.`,
     sources: [
-      { label:'BNF — clotrimazole', url:'https://bnf.nice.org.uk/drugs/clotrimazole/' },
-      { label:'BNF — hydrocortisone', url:'https://bnf.nice.org.uk/drugs/hydrocortisone/' },
+      { label:'SPC — clotrimazole', url:'https://www.medicines.org.uk/emc/search?q=clotrimazole' },
+      { label:'SPC — hydrocortisone', url:'https://www.medicines.org.uk/emc/search?q=hydrocortisone' },
     ],
   },
 
@@ -213,8 +213,8 @@ Recurrent/atypical/ulcerating or young + systemic features → investigate under
 Do NOT examine throat / distress child if severe. 999 if stridor at rest, recession, cyanosis, drowsy, exhausted.
 Consider epiglottitis (drooling/toxic, no cough) / foreign body (sudden choking).`,
     sources: [
-      { label:'BNF — dexamethasone', url:'https://bnf.nice.org.uk/drugs/dexamethasone/' },
-      { label:'BNF — prednisolone', url:'https://bnf.nice.org.uk/drugs/prednisolone/' },
+      { label:'SPC — dexamethasone', url:'https://www.medicines.org.uk/emc/search?q=dexamethasone' },
+      { label:'SPC — prednisolone', url:'https://www.medicines.org.uk/emc/search?q=prednisolone' },
     ],
   }
   );

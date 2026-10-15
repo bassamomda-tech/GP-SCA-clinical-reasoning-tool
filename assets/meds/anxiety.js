@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Generalised Anxiety Disorder
-   NICE CG113 · BNF
+   NICE CG113 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('anxiety', {
   title: 'GAD — pharmacological selection',
   subtitle: 'NICE CG113 stepped care: sertraline is first-line drug treatment for GAD. Psychological therapy runs alongside.',
-  guideline: 'NICE CG113 · BNF',
+  guideline: 'NICE CG113 · SPC',
 
 
   safety: [
@@ -133,7 +133,7 @@ MedChooser.register('anxiety', {
       name:'Propranolol (somatic symptoms)',
       examples:'Propranolol 10–40 mg PRN/BD',
       step:'Adjunct',
-      source:'BNF',
+      source:'SPC',
       sideEffects:'Bradycardia, fatigue, cold peripheries; bronchospasm',
       monitor:'HR, BP; avoid in asthma',
       counsel:'"This eases the physical side — racing heart, tremor, palpitations — but doesn\'t treat the worry itself."',

@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Erectile dysfunction
-   BSSM 2018 · BNF
+   BSSM 2018 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('erectile-dysfunction', {
   title: 'Erectile dysfunction — treatment selection',
   subtitle: 'PDE5-inhibitor-led therapy after cardiovascular and cause assessment (BSSM 2018).',
-  guideline: 'BSSM 2018 · BNF',
+  guideline: 'BSSM 2018 · SPC',
 
 
   safety: [
@@ -24,7 +24,7 @@ MedChooser.register('erectile-dysfunction', {
       name:'PDE5 inhibitor — on demand',
       examples:'Sildenafil 50 mg · Tadalafil 10–20 mg PRN',
       step:'1st-line',
-      source:'BSSM 2018 · BNF',
+      source:'BSSM 2018 · SPC',
       sideEffects:'Headache, flushing, dyspepsia, nasal congestion, visual disturbance (sildenafil)',
       monitor:'Trial ×4 at adequate dose, correctly used, before declaring failure',
       counsel:'"Take one tablet before sex — sildenafil works in about an hour (avoid a heavy/fatty meal); you still need arousal for it to work. Try it properly a few times before we judge whether it suits."',
@@ -47,14 +47,14 @@ MedChooser.register('erectile-dysfunction', {
     {
       id:'pde5_daily',
       name:'PDE5 inhibitor — daily',
-      examples:'Tadalafil 2.5–5 mg OD',
+      examples:'Tadalafil 5 mg OD',
       step:'1st-line (spontaneity / LUTS)',
-      source:'BSSM 2018 · BNF',
+      source:'BSSM 2018 · SPC',
       sideEffects:'As PDE5 class; back/muscle ache with tadalafil',
       monitor:'Same contraindications as on-demand',
       counsel:'"A low daily dose means you don\'t have to plan ahead — and if you also have urinary symptoms from the prostate, it can help both at once."',
       detail:{
-        'Dose': 'Tadalafil 2.5–5 mg OD',
+        'Dose': 'Tadalafil 5 mg OD (2.5 mg if not tolerated, per SPC)',
         'Interactions': 'Same as on-demand (nitrates absolute CI, α-blockers, CYP3A4)',
         'Key teaching': 'Daily tadalafil suits men wanting spontaneity or with coexisting LUTS/BPH (dual licensed benefit).'
       },
@@ -90,7 +90,7 @@ MedChooser.register('erectile-dysfunction', {
       name:'Alprostadil (2nd-line)',
       examples:'Intracavernosal injection · MUSE intraurethral · topical cream',
       step:'2nd-line (PDE5 failed/unsuitable)',
-      source:'BSSM 2018 · BNF',
+      source:'BSSM 2018 · SPC',
       sideEffects:'Penile pain, priapism, injection-site effects',
       monitor:'First dose titration with supervision; counsel 4-hour rule',
       counsel:'"If tablets don\'t work or aren\'t suitable, there\'s a medicine given as a tiny injection or pellet into the penis — very effective. We\'ll teach the first dose and what to do if an erection lasts over 4 hours."',

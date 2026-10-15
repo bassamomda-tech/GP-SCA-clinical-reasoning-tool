@@ -276,7 +276,8 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
 <div>Stop the supplement and recheck. <b>Glucocorticoids are not a routine primary-care response to vitamin D toxicity</b> — they have a place in granulomatous disease and some lymphoma-related or vitamin-D-mediated hypercalcaemia, but only with endocrine or acute-care guidance. Severe or symptomatic hypercalcaemia goes to acute assessment</div>
 <div>Calcium supplements</div>
 <div>Review rather than automatically stop — they may be clinically necessary in osteoporosis. Check dietary intake and calcium-containing antacids (milk-alkali)</div>
-</div></div>
+</div><p class="alg-next"><b>Next steps:</b> see <a href="../management/malignant-hypercalcaemia.html">Malignant hypercalcaemia</a> · <a href="../management/haematological-cancers.html">Haematological cancers</a> · <a href="../management/osteoporosis.html">Osteoporosis</a> · <a href="../management/ckd.html">Chronic kidney disease</a></p>
+</div>
 <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer"><b>Monitored intravenous fluid is the cornerstone of acute treatment</b>, but it is a hospital intervention: the rate and volume depend on heart failure and fluid-overload risk, renal function and the cause, and it requires monitoring of urine output and electrolytes that primary care cannot provide. The same applies to bisphosphonates, denosumab, calcitonin, glucocorticoids and dialysis — each depends on the cause, renal function, malignancy, vitamin D status and dental risk, which is why this pathway names them without dosing them. <b>Loop diuretics are a specific trap:</b> they increase calcium excretion but worsen dehydration, which raises calcium further, and Society for Endocrinology guidance describes them as rarely used and generally reserved for fluid overload during monitored treatment. Cinacalcet lowers calcium without improving bone density or preventing stones, unlike parathyroidectomy, and NICE NG132 advises against bisphosphonates for long-term calcium reduction in PHPT.</div></div>
 </div>
 <div class="connector"></div>
@@ -332,8 +333,8 @@ h3{font-family:var(--font-serif);font-size:1.08rem;font-weight:600;line-height:1
 <script>
 (function(){const STORE='rgp.alg.hypercalcaemia.v2';const flow=document.getElementById('flow');const pDone=document.getElementById('pDone');const pFill=document.getElementById('pFill');const total=9;function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true;});}catch(e){}}function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});load();update();})();
 </script>
-<script src="../../assets/alg-nav.js?v=2"></script>
-<script src="../../assets/topic-links.js?v=8"></script>
+<script src="../../assets/alg-nav.js?v=3"></script>
+<script src="../../assets/topic-links.js?v=10"></script>
 <script src="../../assets/alg-diagram.js?v=4"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 </body>

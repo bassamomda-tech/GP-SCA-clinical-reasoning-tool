@@ -45,9 +45,9 @@
 - Not healed after 6–8 wks → colorectal referral (botulinum toxin / sphincterotomy).
 Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): bleeding + change in habit, weight loss, IDA, mass, ≥50; FIT ≥10 µg Hb/g, rectal or anal mass → suspected cancer pathway referral. Atypical fissure → exclude IBD/infection/cancer.`,
     sources: [
-      { label:'BNF — ispaghula husk', url:'https://bnf.nice.org.uk/drugs/ispaghula-husk/' },
-      { label:'BNF — macrogol 3350', url:'https://bnf.nice.org.uk/drugs/macrogol-3350/' },
-      { label:'BNF — glyceryl trinitrate', url:'https://bnf.nice.org.uk/drugs/glyceryl-trinitrate/' },
+      { label:'SPC — ispaghula', url:'https://www.medicines.org.uk/emc/search?q=ispaghula' },
+      { label:'SPC — macrogol', url:'https://www.medicines.org.uk/emc/search?q=macrogol' },
+      { label:'SPC — glyceryl trinitrate', url:'https://www.medicines.org.uk/emc/search?q=glyceryl%20trinitrate' },
     ],
   },
 
@@ -132,11 +132,10 @@ Persistent/atypical lesion → refer (exclude malignancy/lichen sclerosus).`,
 - VERY POTENT: Clobetasol propionate 0.05% (Dermovate) — thick plaques, palms/soles (short/specialist).
 FTU: 1 FTU (~0.5 g) covers ~2 palms. Step UP to control then step DOWN/stop. Avoid potent on face/flexures. Recurrent facial/flexural → consider tacrolimus.`,
     sources: [
-      { label:'BNF — hydrocortisone', url:'https://bnf.nice.org.uk/drugs/hydrocortisone/' },
-      { label:'BNF — clobetasone butyrate', url:'https://bnf.nice.org.uk/drugs/clobetasone-butyrate/' },
-      { label:'BNF — betamethasone', url:'https://bnf.nice.org.uk/drugs/betamethasone/' },
-      { label:'BNF — clobetasol propionate', url:'https://bnf.nice.org.uk/drugs/clobetasol-propionate/' },
-      { label:'BNF — Topical corticosteroids', url:'https://bnf.nice.org.uk/treatment-summaries/topical-corticosteroids/' },
+      { label:'SPC — hydrocortisone', url:'https://www.medicines.org.uk/emc/search?q=hydrocortisone' },
+      { label:'SPC — clobetasone', url:'https://www.medicines.org.uk/emc/search?q=clobetasone' },
+      { label:'SPC — betamethasone', url:'https://www.medicines.org.uk/emc/search?q=betamethasone' },
+      { label:'SPC — clobetasol', url:'https://www.medicines.org.uk/emc/search?q=clobetasol' },
     ],
   },
 

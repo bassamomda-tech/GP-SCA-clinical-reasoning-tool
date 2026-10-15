@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Migraine (acute + prophylaxis)
-   NICE CG150 Headache · BNF
+   NICE CG150 Headache · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('migraine', {
   title: 'Migraine — acute treatment & prophylaxis',
   subtitle: 'Two decisions sit side by side: abort the attack, and decide whether prophylaxis is warranted. NICE CG150 recommends a triptan + NSAID/paracetamol for the acute attack, and (since June 2025) advises considering propranolol, topiramate or amitriptyline for prevention — choice is driven by comorbidity, contraception, and pregnancy.',
-  guideline: 'NICE CG150 · BNF',
+  guideline: 'NICE CG150 · SPC',
 
 
   safety: [
@@ -30,7 +30,7 @@ MedChooser.register('migraine', {
       monitor:'Limit to ≤10 triptan days/month; review response after 3 attacks',
       counsel:'"Take the triptan as soon as the headache (not the aura) starts, with an anti-inflammatory. If it helps but comes back, you can repeat the triptan after 2 hours — but keep it to no more than about 10 days a month."',
       detail:{
-        'Dose':'Sumatriptan 50–100 mg at headache onset; may repeat after ≥2 h if it recurs (max per BNF). Combine with naproxen 250–500 mg or ibuprofen 400 mg. Nasal/SC sumatriptan if vomiting.',
+        'Dose':'Sumatriptan 50–100 mg at headache onset; may repeat after ≥2 h if it recurs (max per SPC). Combine with naproxen 250–500 mg or ibuprofen 400 mg. Nasal/SC sumatriptan if vomiting.',
         'Key teaching':'First-line per NICE CG150 — a triptan plus an NSAID (or paracetamol) works better than either alone. Treat early. If one triptan fails, try an alternative triptan before abandoning the class.'
       },
       conditions: [

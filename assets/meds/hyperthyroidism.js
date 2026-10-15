@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Hyperthyroidism
-   NICE NG145 · BNF
+   NICE NG145 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('hyperthyroidism', {
   title: 'Hyperthyroidism — antithyroid therapy',
   subtitle: 'Carbimazole is first-line for most. The choices that move are: PTU in the first trimester of pregnancy and thyroid storm; block-and-replace vs titration; a beta-blocker for symptom relief; and when to favour radioiodine or surgery.',
-  guideline: 'NICE NG145 · BNF',
+  guideline: 'NICE NG145 · SPC',
 
 
   safety: [
@@ -22,7 +22,7 @@ MedChooser.register('hyperthyroidism', {
       name:'Carbimazole',
       examples:'Titration (e.g. 15–40 mg OD, reduce to maintenance) or block-and-replace',
       step:'First-line',
-      source:'NICE NG145 · BNF',
+      source:'NICE NG145 · SPC',
       sideEffects:'Rash, agranulocytosis (rare, serious), hepatotoxicity, congenital malformation in T1',
       monitor:'TFTs (titrate on T4/T3, TSH lags); warn re sore throat/fever → FBC',
       counsel:'"This brings the thyroid back down over a few weeks. The one urgent rule: if you get a sore throat, mouth ulcers or fever, stop it and get a blood test that day. We\'ll check thyroid levels regularly and adjust the dose."',
@@ -43,7 +43,7 @@ MedChooser.register('hyperthyroidism', {
       name:'Propylthiouracil (PTU)',
       examples:'e.g. 200–400 mg/day in divided doses, reduce to maintenance',
       step:'1st trimester / storm / carbimazole-intolerant',
-      source:'NICE NG145 · BNF',
+      source:'NICE NG145 · SPC',
       sideEffects:'Agranulocytosis, hepatotoxicity (rare severe — can be fatal), rash',
       monitor:'TFTs; warn re sore throat/fever; liver symptoms',
       counsel:'"We use this version in early pregnancy and in severe cases. Same urgent rule about sore throat/fever and a blood test — and tell us about any yellowing of the skin or severe tummy pain."',
@@ -108,6 +108,7 @@ MedChooser.register('hyperthyroidism', {
   sources: [
     { label:'NICE NG145 — Thyroid disease: assessment and management', url:'https://www.nice.org.uk/guidance/ng145' },
     { label:'NICE NG145 — thyroid disease', url:'https://www.nice.org.uk/guidance/ng145' },
-    { label:'BNF — Carbimazole / Propylthiouracil', url:'https://bnf.nice.org.uk/drugs/carbimazole/' }
+    { label:'SPC — carbimazole', url:'https://www.medicines.org.uk/emc/search?q=carbimazole' },
+    { label:'SPC — propylthiouracil', url:'https://www.medicines.org.uk/emc/search?q=propylthiouracil' }
   ],
 });

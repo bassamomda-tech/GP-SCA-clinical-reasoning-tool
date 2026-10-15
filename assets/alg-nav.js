@@ -186,7 +186,7 @@
       })();
       var ui = function(){
         if (window.__algUi || document.querySelector('script[src*="alg-ui.js"]')) return;
-        var u = document.createElement('script'); u.src = base + 'alg-ui.js?v=2'; document.head.appendChild(u);
+        var u = document.createElement('script'); u.src = base + 'alg-ui.js?v=3'; document.head.appendChild(u);
       };
       /* Compact header card (Upload 112): after the stepper and the algorithm UI; guards itself too */
       var head = function(){

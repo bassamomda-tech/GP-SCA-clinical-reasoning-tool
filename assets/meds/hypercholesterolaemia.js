@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Hypercholesterolaemia / lipid modification
-   NICE NG238 · CG71 (FH) · BNF
+   NICE NG238 · CG71 (FH) · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('hypercholesterolaemia', {
   title: 'Lipid modification — statin & add-on selection',
   subtitle: 'Primary vs secondary prevention intensity and the add-on ladder to a >40% non-HDL reduction (NICE NG238).',
-  guideline: 'NICE NG238 · CG71 (FH) · BNF',
+  guideline: 'NICE NG238 · CG71 (FH) · SPC',
 
 
   safety: [
@@ -120,7 +120,7 @@ MedChooser.register('hypercholesterolaemia', {
       name:'Fibrate / high TG management',
       examples:'Fenofibrate (specialist) · address secondary causes',
       step:'Hypertriglyceridaemia',
-      source:'NICE NG238 · BNF',
+      source:'NICE NG238 · SPC',
       sideEffects:'Fibrate — myopathy (esp. with statin), GI, gallstones',
       monitor:'Repeat fasting TG; specialist if >10 (pancreatitis risk)',
       counsel:'"Your triglyceride fat is high — first we\'ll look at alcohol, weight and diabetes control. Occasionally a specific tablet is needed to prevent pancreas inflammation."',

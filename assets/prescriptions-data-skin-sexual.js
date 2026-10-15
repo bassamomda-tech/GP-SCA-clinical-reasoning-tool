@@ -22,7 +22,7 @@
     ],
     altRegimens: [
       { label: 'Extensive / scalp (tinea capitis)', drugs: 'Oral terbinafine or griseofulvin (children) — scalp needs ORAL treatment; send scrapings; treat household.' },
-      { label: 'Nail (onychomycosis), confirmed', drugs: 'Oral terbinafine 250 mg OD — fingernails 6 weeks to 3 months; toenails 3 to 6 months; confirm by clippings first.' },
+      { label: 'Nail (onychomycosis), confirmed', drugs: 'Oral terbinafine 250 mg OD — fingernails usually 6 weeks; toenails usually 12 weeks (some need up to 6 months); confirm by clippings first.' },
     ],
     counselling: [
       'Apply to the rash AND 2 cm of surrounding normal skin; continue 1–2 weeks after it clears.',
@@ -115,7 +115,7 @@ Review at 2–4 wks if persistent/new burrows.`,
 - Check household; treat only those with live lice. No school exclusion.
 Recheck by combing 2–3 days after 2nd application.`,
     sources: [
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
+      { label:'NICE CKS — Head lice', url:'https://cks.nice.org.uk/topics/head-lice/' },
     ],
   },
 

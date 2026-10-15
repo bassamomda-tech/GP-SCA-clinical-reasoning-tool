@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Urinary Incontinence (women)
-   NICE NG123 · BNF
+   NICE NG123 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('urinary-incontinence', {
   title: 'Urinary incontinence (women) — drug selection',
   subtitle: 'Conservative therapy comes first (pelvic floor training for stress; bladder training for urgency). Drugs are adjuncts.',
-  guideline: 'NICE NG123 · BNF',
+  guideline: 'NICE NG123 · SPC',
 
 
   safety: [
@@ -95,7 +95,7 @@ MedChooser.register('urinary-incontinence', {
       name:'Desmopressin (nocturia, off-label)',
       examples:'Desmopressin nocte',
       step:'Nocturia',
-      source:'NICE NG123 · BNF',
+      source:'NICE NG123 · SPC',
       sideEffects:'Hyponatraemia (can be severe), fluid retention, headache',
       monitor:'Na⁺ baseline + during; caution >65',
       counsel:'"This can reduce how often you\'re up at night — but we must check your sodium as it can drop too low."',

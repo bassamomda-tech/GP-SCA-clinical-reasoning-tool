@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Depression (adults)
-   NICE NG222 · BNF
+   NICE NG222 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('depression', {
   title: 'Depression — antidepressant selection',
   subtitle: 'NICE NG222 treats all first-line antidepressants as broadly equal in efficacy — choice is driven by the patient profile, side-effect fit and safety.',
-  guideline: 'NICE NG222 · BNF',
+  guideline: 'NICE NG222 · SPC',
 
 
   safety: [
@@ -102,7 +102,7 @@ MedChooser.register('depression', {
       name:'Mirtazapine',
       examples:'15 mg nocte → 45 mg',
       step:'Alternative / 2nd-line',
-      source:'NICE NG222 · BNF',
+      source:'NICE NG222 · SPC',
       sideEffects:'Sedation (worse at low dose), weight gain, ↑ appetite, rare neutropenia',
       monitor:'Weight; FBC if signs of infection',
       counsel:'"Taken at night — it helps sleep and appetite, and many people gain a little weight. Tell us if you get a sore throat or fever."',
@@ -125,7 +125,7 @@ MedChooser.register('depression', {
       name:'Venlafaxine (SNRI)',
       examples:'75 mg OD → 375 mg (MR)',
       step:'2nd-line / severe',
-      source:'NICE NG222 · BNF',
+      source:'NICE NG222 · SPC',
       sideEffects:'Nausea, sweating, ↑ BP (dose-related), marked discontinuation symptoms',
       monitor:'BP at baseline and on titration; taper slowly to stop',
       counsel:'"A stronger option if an SSRI hasn\'t worked. We\'ll keep an eye on your blood pressure, and it\'s important never to stop it abruptly."',
@@ -172,7 +172,7 @@ MedChooser.register('depression', {
       name:'Tricyclic (e.g. amitriptyline)',
       examples:'Not first-line for depression in primary care',
       step:'Avoid (1st-line)',
-      source:'NICE NG222 · BNF',
+      source:'NICE NG222 · SPC',
       sideEffects:'Anticholinergic, sedation, postural drop, cardiotoxic — lethal in overdose',
       monitor:'ECG; extreme caution in overdose risk',
       counsel:'"Older antidepressants like this are rarely first choice now — they can be dangerous in overdose and have more side effects."',

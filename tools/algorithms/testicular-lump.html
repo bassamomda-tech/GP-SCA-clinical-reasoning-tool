@@ -100,7 +100,8 @@
 <div>Treatment (hospital)</div><div>All testicular cancers: radical orchidectomy via inguinal approach (NOT trans-scrotal — risks scrotal lymphatic spread to inguinal nodes). Stage I seminoma: surveillance or carboplatin. Stage I NSGCT: surveillance or BEP chemotherapy. Advanced: BEP chemotherapy (bleomycin + etoposide + cisplatin).</div>
 <div>Sperm banking</div><div>Sperm banking should be discussed before chemotherapy and, where feasible, before orchidectomy. Chemotherapy is gonadotoxic; many men recover spermatogenesis, but banking provides insurance. Usually coordinated by urology/oncology — the GP can check it has been discussed.</div>
 <div>Testosterone replacement</div><div>Post-bilateral orchidectomy — testosterone replacement therapy (gel, injection) prevents hypogonadism symptoms (fatigue, mood, libido, bone density). After unilateral orchidectomy, the remaining testis usually compensates — test testosterone only if clinically indicated or per the hospital survivorship plan. Bilateral orchidectomy: specialist-led replacement.</div>
-</div></div>
+</div><p class="alg-next"><b>Next steps:</b> see <a href="../management/varicocele.html">Varicocele</a> · <a href="../management/chlamydia.html">Chlamydia</a> · <a href="../management/gonorrhoea.html">Gonorrhoea</a> · <a href="../management/undescended-testis.html">Undescended testis</a> · <a href="../management/hernia.html">Hernia</a></p>
+</div>
 <div class="why-row"><button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button><div class="why-drawer">The inguinal approach for orchidectomy (rather than trans-scrotal) is critically important for staging — the scrotum has different lymphatic drainage (inguinal lymph nodes) compared to the testicle (retroperitoneal paraaortic nodes). A trans-scrotal biopsy or orchidectomy redirects tumour cells into scrotal and inguinal lymphatics, changing staging and potentially requiring inguinal radiotherapy or lymphadenectomy. This is why GPs should never attempt to biopsy or aspirate a scrotal mass. Sperm banking is a fertility preservation service available on the NHS before gonadotoxic treatment — it is often not discussed adequately in the rushed perioperative setting. GPs are well-placed to proactively ask young patients with testicular cancer whether sperm banking has been discussed.</div></div></div>
 <div class="connector"></div>
 
@@ -132,8 +133,8 @@
 <script>
 (function(){const STORE='rgp.alg.testicullump.v1';const flow=document.getElementById('flow');const pDone=document.getElementById('pDone');const pFill=document.getElementById('pFill');const total=9;function save(){localStorage.setItem(STORE,JSON.stringify([...flow.querySelectorAll('input[type=checkbox]')].map(c=>c.checked)));}function load(){try{const d=JSON.parse(localStorage.getItem(STORE)||'[]');[...flow.querySelectorAll('input[type=checkbox]')].forEach((c,i)=>{if(d[i])c.checked=true});}catch(e){}}function update(){const done=[...flow.querySelectorAll('input[type=checkbox]')].filter(c=>c.checked).length;pDone.textContent=done;pFill.style.width=(done/total*100)+'%';save();}flow.addEventListener('change',e=>{if(e.target.type==='checkbox')update();});flow.addEventListener('click',e=>{const btn=e.target.closest('.why-btn');if(!btn)return;const exp=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',String(!exp));btn.nextElementSibling.classList.toggle('open',!exp);});document.getElementById('resetBtn').addEventListener('click',()=>{flow.querySelectorAll('input[type=checkbox]').forEach(c=>c.checked=false);flow.querySelectorAll('.why-drawer').forEach(d=>d.classList.remove('open'));flow.querySelectorAll('.why-btn').forEach(b=>b.setAttribute('aria-expanded','false'));localStorage.removeItem(STORE);update();});load();update();})();
 </script>
-<script src="../../assets/alg-nav.js?v=2"></script>
-<script src="../../assets/topic-links.js?v=8"></script>
+<script src="../../assets/alg-nav.js?v=3"></script>
+<script src="../../assets/topic-links.js?v=10"></script>
 <script src="../../assets/alg-diagram.js"></script>
 <script src="../../assets/provenance.js?v=15"></script>
 </body></html>

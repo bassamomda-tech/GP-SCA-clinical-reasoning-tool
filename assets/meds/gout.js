@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Gout (acute attack + urate-lowering)
-   NICE NG219 · BNF
+   NICE NG219 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('gout', {
   title: 'Gout — acute attack & urate-lowering therapy',
   subtitle: 'Two decisions sit side by side: settle the acute attack, and decide on long-term urate-lowering therapy (ULT). NICE NG219 makes allopurinol or febuxostat first-line for ULT and treats NSAID / colchicine / steroid as broadly equal for the acute attack — choice is driven by comorbidity.',
-  guideline: 'NICE NG219 · BNF',
+  guideline: 'NICE NG219 · SPC',
 
 
   safety: [
@@ -48,7 +48,7 @@ MedChooser.register('gout', {
       name:'Colchicine',
       examples:'500 mcg 2–4× daily until symptoms settle (max 6 mg/course)',
       step:'Acute — first-line (NSAID-unsuitable)',
-      source:'NICE NG219 · BNF',
+      source:'NICE NG219 · SPC',
       sideEffects:'Diarrhoea (dose-limiting), nausea; toxicity in renal/hepatic impairment',
       monitor:'Reduce dose in CKD; beware interactions',
       counsel:'"Take it 2–4 times a day until the pain eases. The main side effect is diarrhoea — if that happens, drop the dose."',

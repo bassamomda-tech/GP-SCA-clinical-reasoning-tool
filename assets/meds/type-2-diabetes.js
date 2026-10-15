@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Type 2 Diabetes
-   NICE NG28 (updated February 2026) · BNF
+   NICE NG28 (updated February 2026) · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('type-2-diabetes', {
   title: 'Type 2 Diabetes — glucose-lowering therapy',
   subtitle: 'NICE NG28 (Feb 2026): MR metformin PLUS an SGLT2 inhibitor as dual first-line therapy for the majority \u2014 even with no comorbidity \u2014 then branch by phenotype (ASCVD, HF, CKD, obesity, early-onset, frailty).',
-  guideline: 'NICE NG28 · BNF',
+  guideline: 'NICE NG28 · SPC',
 
 
   safety: [
@@ -29,7 +29,7 @@ MedChooser.register('type-2-diabetes', {
       monitor:'Annual U&E + B12 (long-term). Sick-day rules — hold if dehydrated/AKI risk.',
       counsel:'"Start with one a week, build up slowly with food — most tummy upset settles. If you\'re ever badly ill, vomiting, or not eating, hold the tablets for a day and call us."',
       detail:{
-        'Dose': 'MR: 500 mg OD with evening meal, increased gradually to the maximum tolerated dose (MR max 2 g OD, BNF). Standard-release (500 mg OD → 500 mg BD → 500 mg TDS → 1 g BD) only if tablets must be crushed or a liquid is needed (NG28 Feb 2026)',
+        'Dose': 'MR: 500 mg OD with evening meal, increased gradually to the maximum tolerated dose (MR max 2 g OD, SPC). Standard-release (500 mg OD → 500 mg BD → 500 mg TDS → 1 g BD) only if tablets must be crushed or a liquid is needed (NG28 Feb 2026)',
         'Interactions': 'Iodinated contrast (hold), alcohol excess (lactic acidosis)',
         'Key teaching': 'Cardiovascular-neutral, weight-neutral, no hypos. Backbone of T2DM therapy. Since NG28 (18 Feb 2026) it is paired with an SGLT2 inhibitor for most adults from diagnosis: the SGLT2i is added once the maximum tolerated metformin MR dose is reached.'
       },
@@ -82,7 +82,7 @@ MedChooser.register('type-2-diabetes', {
       monitor:'When prescribed for glucose / weight (not for cardiovascular benefit): continue beyond 6 months only if HbA1c ↓ ≥11 mmol/mol AND weight ↓ ≥3% (NICE NG28 continuation criteria); stop if it is not helping reach targets or BMI falls below 18.5. Do not stop semaglutide given for ASCVD benefit on glycaemic grounds alone.',
       counsel:'"This is a weekly injection that lowers sugar, protects the heart, and reduces appetite. Nausea is common in the first weeks — eat smaller meals."',
       detail:{
-        'Dose': 'Semaglutide 0.25 → 1 mg weekly (NG28 recommends up to 1 mg); dulaglutide 0.75 → 1.5 mg weekly',
+        'Dose': 'Semaglutide once-weekly injection (Ozempic regimen): 0.25 mg weekly for 4 weeks, then 0.5 mg weekly, up to 1 mg weekly if needed (NG28 recommends up to 1 mg; the SPC also allows 2 mg). Not interchangeable with Wegovy or oral semaglutide. Dulaglutide 0.75 → 1.5 mg weekly',
         'Interactions': 'Insulin / sulfonylurea — significant hypo risk if combined',
         'Key teaching': 'NICE NG28 (Feb 2026): established ASCVD → s/c semaglutide first-line alongside MR metformin + SGLT2i, for cardiovascular, renal and glycaemic benefit; early-onset T2DM (diagnosed <40) → consider a GLP-1 RA or tirzepatide early. Never combine with a DPP-4i. For glycaemic / weight use otherwise: BMI ≥35 (≥32.5 if South-Asian etc.) + psychological/medical comorbidity OR BMI <35 with occupational/medical reason against insulin.'
       },
@@ -129,7 +129,7 @@ MedChooser.register('type-2-diabetes', {
       name:'Sulfonylurea',
       examples:'Gliclazide 40–80 mg OD → 160 mg BD',
       step:'Further add-on (after dual first-line)',
-      source:'NICE NG28 (updated Feb 2026) · BNF',
+      source:'NICE NG28 (updated Feb 2026) · SPC',
       sideEffects:'Hypoglycaemia (esp. elderly + skipped meals), weight gain ~2 kg',
       monitor:'Educate on hypos. DVLA: must inform if Group 2 driver.',
       counsel:'"These work quickly to lower sugar — but they can cause low sugars (hypo). I\'ll show you the warning signs and what to do. Don\'t skip meals."',
@@ -156,7 +156,7 @@ MedChooser.register('type-2-diabetes', {
       name:'Pioglitazone',
       examples:'15 → 45 mg OD',
       step:'Further add-on',
-      source:'NICE NG28 (updated Feb 2026) · BNF',
+      source:'NICE NG28 (updated Feb 2026) · SPC',
       sideEffects:'Weight gain, fluid retention → HF, fracture risk, possible bladder cancer signal',
       monitor:'Annual LFTs. Stop if ALT >3× normal. Watch for oedema.',
       counsel:'"This works well but can cause fluid retention. Tell me about any swelling, breathlessness, or unusual bruising."',
@@ -181,7 +181,7 @@ MedChooser.register('type-2-diabetes', {
       name:'Insulin',
       examples:'Isophane (NPH) OD/BD · Detemir (Levemir being discontinued in the UK, supply ends ~Dec 2026)/Glargine · Mixed biphasic',
       step:'Specialist / late stage / pregnancy',
-      source:'NICE NG28 (updated Feb 2026) · BNF',
+      source:'NICE NG28 (updated Feb 2026) · SPC',
       sideEffects:'Hypoglycaemia, weight gain ~4 kg, injection burden',
       monitor:'Capillary glucose, hypo recognition, sick-day rules. DVLA notification.',
       counsel:'"This will make the biggest difference to your sugars — and yes, it\'s an injection, but with a very fine needle most people don\'t feel it. I\'ll arrange specialist nurse support."',

@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Hypertension
-   NICE NG136 · BNF
+   NICE NG136 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('hypertension', {
   title: 'Hypertension — antihypertensive selection',
   subtitle: 'Tiered first-line drug selection from NICE NG136.',
-  guideline: 'NICE NG136 · BNF',
+  guideline: 'NICE NG136 · SPC',
 
 
   // Global warnings shown above tiers
@@ -110,7 +110,7 @@ MedChooser.register('hypertension', {
       name:'Thiazide-like diuretic',
       examples:'Indapamide SR 1.5 mg OD',
       step:'Step 3',
-      source:'NICE NG136 §1.4 · BNF',
+      source:'NICE NG136 §1.4 · SPC',
       sideEffects:'Hypokalaemia, hyponatraemia, hyperuricaemia → gout, hyperglycaemia, photosensitivity',
       monitor:'U&E + Na⁺ + K⁺ within 2 weeks of starting',
       counsel:'"A gentle tablet — it won\'t make you rush to the toilet. We\'ll check your salts in 2 weeks."',
@@ -184,7 +184,7 @@ MedChooser.register('hypertension', {
       name:'β-blocker',
       examples:'Bisoprolol 2.5 → 10 mg OD',
       step:'Step 4 / specialist',
-      source:'NICE NG136 §1.4 · BNF',
+      source:'NICE NG136 §1.4 · SPC',
       sideEffects:'Bradycardia, fatigue, cold extremities, nightmares, ED, masks hypoglycaemia',
       monitor:'Resting HR + BP. Never stop abruptly.',
       counsel:'"Don\'t stop these tablets suddenly — call us if there\'s a problem. They can mask the warning signs of low sugars if you have diabetes."',

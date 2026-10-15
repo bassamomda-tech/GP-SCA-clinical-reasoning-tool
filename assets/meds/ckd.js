@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Chronic Kidney Disease (CKD)
-   NICE NG203 · NG28 · BNF
+   NICE NG203 · NG28 · SPC
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('ckd', {
   title: 'CKD — cardio-renal protection',
   subtitle: 'CKD management is about slowing progression and cutting cardiovascular risk, not "a kidney tablet". The four pillars: an ACE inhibitor / ARB for albuminuria, an SGLT2 inhibitor for cardio-renal protection, a statin for everyone, and — in diabetic CKD with residual albuminuria — finerenone.',
-  guideline: 'NICE NG203 · NG28 · BNF',
+  guideline: 'NICE NG203 · NG28 · SPC',
 
 
   safety: [

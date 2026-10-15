@@ -131,7 +131,7 @@
 - HALAL/VEGAN options: standard D3 often lanolin/fish + gelatin \u2014 use lichen-derived vegan D3, ergocalciferol (D2), or gelatin-free drops; check excipients.
 - Check calcium before loading and 1 month after loading (unmasked hyperparathyroidism); consider PTH/bone profile if severe. Routine retesting often unnecessary.`,
     sources: [
-      { label:'BNF — colecalciferol', url:'https://bnf.nice.org.uk/drugs/colecalciferol/' },
+      { label:'SPC — colecalciferol', url:'https://www.medicines.org.uk/emc/search?q=colecalciferol' },
     ],
   },
 
@@ -219,7 +219,7 @@
 - If CMPA features \u2192 dairy exclusion/eHF trial; if GORD features \u2192 reflux pathway.
 - Red flags (fever, bilious vomiting, blood in stool, faltering growth, unwell) = NOT colic \u2192 assess.`,
     sources: [
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
+      { label:'NICE CKS — Colic (infantile)', url:'https://cks.nice.org.uk/topics/colic-infantile/' },
     ],
   },
 
