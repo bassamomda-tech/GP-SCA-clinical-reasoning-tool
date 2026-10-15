@@ -1,8 +1,8 @@
 /* Case-specific scorecard Tasks for the 32 newer SCA cases.
    Every case uses the same 11 RCGP SCA Consultation Toolkit task items
    (15 points). Merged into window.SCA_SC_TASKS by sca-enrich.js —
-   load this file BEFORE sca-enrich.js. */
-window.SCA_SC_TASKS_EXTRA = {
+   load this file BEFORE sca-enrich.js. Merges with entries the newer case files add. */
+window.SCA_SC_TASKS_EXTRA = Object.assign(window.SCA_SC_TASKS_EXTRA || {}, {
   'bronchiolitis-phone': [
     { t:'Opens and explores the problem', d:'Open question to the mother; confirms who is calling and that Rayan is with her; lets her describe 3 days of runny nose, then cough and noisy, fast breathing.', pts:1, dom:'dg' },
     { t:'Explores psychosocial context', d:'Who is at home (3-year-old Mariam), husband at work, no car; her embarrassment about “wasting an ambulance” and fear of being judged an over-anxious mum.', pts:1, dom:'dg' },
@@ -419,4 +419,4 @@ window.SCA_SC_TASKS_EXTRA = {
     { t:'Manages comorbidity & contributors', d:'Addresses stress and grief over the partnership, sleep, mood and driving; considers thiamine if dependent; involves his partner if he wishes.', pts:1, dom:'cm' },
     { t:'Provides follow-up and safety net', d:'Named withdrawal danger signs; repeat LFTs and fibrosis results; support and a review appointment.', pts:1, dom:'cm' }
   ]
-};
+});
