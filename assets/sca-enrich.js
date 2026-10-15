@@ -599,7 +599,7 @@ window.SCA_BUILD_SCORECARD = function(tasks, ro, gs){
     var cueText = cues.length
       ? 'Picks up and explores the planted cues \u2014 ' + clip(cues.join(' '), 200)
       : 'Picks up and explores the planted verbal and emotional cues rather than reassuring superficially and moving on.';
-    var iceText = [ice.ideas, ice.concerns, ice.expectations].filter(Boolean).join(' ');
+    var iceText = [ice.ideas, String(ice.concerns || '').replace(/HIDDEN AGENDA\s*[\u2014:\-]*\s*/gi, ''), ice.expectations].filter(Boolean).join(' ');
     iceText = iceText
       ? clip(iceText, 250)
       : 'Explores the patient\u2019s ideas, concerns and expectations directly and weaves them into the plan.';
@@ -619,11 +619,47 @@ window.SCA_BUILD_SCORECARD = function(tasks, ro, gs){
     ];
   }
 
+  if (window.SCA_SC_TASKS_EXTRA) Object.keys(window.SCA_SC_TASKS_EXTRA).forEach(function(k){ window.SCA_SC_TASKS[k] = window.SCA_SC_TASKS_EXTRA[k]; });
   window.SCA_CASES.forEach(function(c){
-    // A case that already carries an authored RCGP scorecard (dg / cm / ro) keeps it.
-    if (c.scorecardRcgp || (c.scorecard && (c.scorecard.dg || c.scorecard.cm))) return;
+    // Every case uses the same marking scheme: the 29 RCGP SCA Consultation Toolkit items
+    // (7 Global skills · 11 Tasks · 11 Relating to others). Cases with their own authored
+    // clinical items keep that case-specific wording, slotted into the 11 standard Tasks.
     var tasks = window.SCA_SC_TASKS[c.id];
-    if (!tasks) tasks = genTasks(c);
+    var authored = [];
+    var own = c.scorecardRcgp || (c.scorecard && (c.scorecard.dg || c.scorecard.cm) ? c.scorecard : null);
+    if (own) ['dg','cm','ro'].forEach(function(k){ (own[k] || []).forEach(function(x){ authored.push(x); }); });
+    (c.scTasks || []).forEach(function(x){ authored.push(x); });
+    if (!tasks || tasks.length !== 11) {
+      var base = genTasks(c);
+      var src = authored.length ? authored : (tasks || []);
+      var SLOT = [
+        /open|story|tell|lets the|explor(es|ing) the problem/i,
+        /psycho|social|context|home|work|carer|circumstance|support/i,
+        /\bcue/i,
+        /\bICE\b|idea|concern|expectation|agenda|worr/i,
+        /exam|test|investigat|result|data|ECG|spirometr|blood|observation|interpret|measure|assessment/i,
+        /hypothes|differential|consider|possib/i,
+        /red flag|serious|emergency|999|urgent|danger|safeguard|apnoea|sepsis|rule/i,
+        /diagnos|summar|analys|recognis|explain/i,
+        /plan|manage|treat|offer|prescrib|refer|workable|option|decision/i,
+        /comorbid|contribut|medicines? review|polypharm|other problem|long-term/i,
+        /safety|follow|review|document|net/i
+      ];
+      var used = {}, done = [];
+      // match on the authored item's title only; unmatched slots keep the case-mined text
+      [function(x){ return x.t || ''; }].forEach(function(textOf){
+        src.forEach(function(x, xi){
+          if (done[xi]) return;
+          var txt = textOf(x);
+          for (var s = 0; s < SLOT.length; s++) {
+            if (!used[s] && SLOT[s].test(txt)) { base[s] = { t:base[s].t, d:x.d || x.t, pts:base[s].pts, dom:base[s].dom }; used[s] = true; done[xi] = true; return; }
+          }
+        });
+      });
+      tasks = base;
+    }
+    try { delete c.scorecardRcgp; } catch(e){ c.scorecardRcgp = undefined; }
+    try { Object.defineProperty(c, 'scorecard', { value:null, writable:true, configurable:true, enumerable:true }); } catch(e){}
     var gs = clone(window.SCA_GS_STANDARD);
     var ro = clone(window.SCA_RO_STANDARD);
     // Weave this case's ICE concern into the "Shares and uses ICE" RO item
