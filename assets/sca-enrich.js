@@ -63,7 +63,7 @@
   // Build the three-domain scorecard from either the new or the legacy shape
   function scorecard(c){
     var sc = c && (c.scorecardRcgp || c.scorecard); if (!sc) return null;
-    if (sc.dg && sc.cm && sc.ro) { if (sc.maxDg == null) { var s2 = function(a){ return (a||[]).reduce(function(t,x){ return t + (x.pts||0); }, 0); }; sc.maxDg = s2(sc.dg); sc.maxCm = s2(sc.cm); sc.maxRo = s2(sc.ro); sc.total = sc.maxDg + sc.maxCm + sc.maxRo; } return sc; }
+    if (sc.dg && sc.cm && sc.ro) { return rebalance(sc); }
     var out = { dg:[], cm:[], ro:[] };
     function push(it, fallback){
       var d = it.dom || (fallback === 'ro' ? 'ro' : titleDom(it.t, it.d));
@@ -76,7 +76,48 @@
     var sum = function(a){ return a.reduce(function(s, x){ return s + (x.pts || 0); }, 0); };
     out.maxDg = sum(out.dg); out.maxCm = sum(out.cm); out.maxRo = sum(out.ro);
     out.total = out.maxDg + out.maxCm + out.maxRo;
-    return out;
+    return rebalance(out);
+  }
+  // Rebalance a scorecard to the RCGP weighting. Clinical management carries the most
+  // marks (RCGP: 3 / 4.5 / 3 per case), so every scorecard totals 33 points split
+  // Data gathering 9 · Clinical management 15 · Relating to others 9.
+  var TARGET = { dg:9, cm:15, ro:9 };
+  var TO_DG = /^(Uses closed questions appropriately|Avoids unnecessary repetition|Finishes data gathering in good time)$/i;
+  var TO_CM = /^(Uses psychosocial information in the plan|Shares risks and safety of options|Progresses through the tasks)$/i;
+  function rebalance(sc){
+    if (!sc || !sc.dg || !sc.cm || !sc.ro) return sc;   // idempotent: safe to run on every read
+    // Toolkit column for each item (RCGP SCA Consultation Toolkit: Global skills / Tasks / Relating to others)
+    var GS_T = (root.SCA_GS_STANDARD || []).map(function(x){ return x.t; });
+    var RO_T = (root.SCA_RO_STANDARD || []).map(function(x){ return x.t; });
+    ['dg','cm','ro'].forEach(function(k){ (sc[k] || []).forEach(function(it){
+      if (it.tk) return;
+      it.tk = GS_T.indexOf(it.t) >= 0 ? 'gs' : RO_T.indexOf(it.t) >= 0 ? 'rto' : (k === 'ro' ? 'rto' : 'tasks');
+    }); });
+    ['dg','cm','ro'].forEach(function(k){
+      sc[k] = (sc[k] || []).filter(function(it){
+        var to = TO_DG.test(it.t || '') ? 'dg' : TO_CM.test(it.t || '') ? 'cm' : k;
+        if (to !== k) { it.dom = to; sc[to] = sc[to] || []; sc[to].push(it); return false; }
+        return true;
+      });
+    });
+    ['dg','cm','ro'].forEach(function(k){
+      var items = sc[k]; if (!items || !items.length) return;
+      var raw = items.reduce(function(s, x){ return s + (x.pts || 1); }, 0);
+      var tgt = TARGET[k];
+      // largest-remainder rounding to half points, keeping each item's relative weight
+      var exact = items.map(function(x){ return ((x.pts || 1) / raw) * tgt; });
+      var base = exact.map(function(e){ return Math.max(0.5, Math.floor(e * 2) / 2); });
+      var left = Math.round((tgt - base.reduce(function(s, v){ return s + v; }, 0)) * 2);
+      var order = exact.map(function(e, i){ return i; }).sort(function(a, b){ return (exact[b] - base[b]) - (exact[a] - base[a]) || exact[b] - exact[a]; });
+      for (var n = 0; left > 0 && n < order.length * 4; n++) { base[order[n % order.length]] += 0.5; left--; }
+      for (var m = 0; left < 0 && m < order.length * 4; m++) { var ix = order[order.length - 1 - (m % order.length)]; if (base[ix] > 0.5) { base[ix] -= 0.5; left++; } }
+      items.forEach(function(x, i){ x.pts = base[i]; });
+    });
+    var sum = function(a){ return a.reduce(function(s, x){ return s + (x.pts || 0); }, 0); };
+    sc.maxDg = sum(sc.dg); sc.maxCm = sum(sc.cm); sc.maxRo = sum(sc.ro);
+    sc.total = sc.maxDg + sc.maxCm + sc.maxRo;
+    try { Object.defineProperty(sc, '_bal', { value:true, enumerable:false }); } catch(e){ sc._bal = true; }
+    return sc;
   }
   // Grade a domain from the share of its marks achieved (self-assessment aid)
   function grade(got, max){
@@ -95,7 +136,7 @@
     return c;
   }
   function normaliseAll(){ (root.SCA_CASES || []).forEach(normaliseCase); }
-  var api = { KEYS:['dg','cm','ro'], LABEL:LABEL, SHORT:SHORT, GRADES:GRADES, classify:classify, titleDom:titleDom, dom:dom, scorecard:scorecard, grade:grade, normaliseCase:normaliseCase, normaliseAll:normaliseAll,
+  var api = { KEYS:['dg','cm','ro'], LABEL:LABEL, SHORT:SHORT, GRADES:GRADES, TARGET:TARGET, rebalance:rebalance, classify:classify, titleDom:titleDom, dom:dom, scorecard:scorecard, grade:grade, normaliseCase:normaliseCase, normaliseAll:normaliseAll,
     // map saved legacy keys (tasks/rto/gs) for display; tasks splits between dg and cm so it is shown as dg+cm
     legacyLabel:function(k){ return k === 'tasks' ? 'Data gathering & clinical management' : k === 'rto' || k === 'gs' ? 'Relating to others' : (LABEL[k] || k); } };
   root.SCA_RCGP = api;
@@ -508,10 +549,12 @@ window.SCA_SC_TASKS = {
 window.SCA_BUILD_SCORECARD = function(tasks, ro, gs){
   var o = { dg:[], cm:[], ro:[] };
   function add(list, def){ (list || []).forEach(function(x){ var d = x.dom || def; if (d === 'tasks') d = 'dg'; if (d === 'rto' || d === 'gs') d = 'ro'; (o[d] || o.dg).push(x); }); }
+  (tasks||[]).forEach(function(x){ x.tk = 'tasks'; }); (ro||[]).forEach(function(x){ x.tk = 'rto'; }); (gs||[]).forEach(function(x){ x.tk = 'gs'; });
   add(tasks, 'dg'); add(ro, 'ro'); add(gs, 'ro');
   var sum = function(a){ return a.reduce(function(s, x){ return s + x.pts; }, 0); };
   o.maxDg = sum(o.dg); o.maxCm = sum(o.cm); o.maxRo = sum(o.ro);
   o.total = o.maxDg + o.maxCm + o.maxRo;
+  if (window.SCA_RCGP && window.SCA_RCGP.rebalance) window.SCA_RCGP.rebalance(o);
   try { Object.defineProperty(o, 'roStd', { value: ro, enumerable: false, writable: true }); } catch(e){ o.roStd = ro; }
   return o;
 };
@@ -585,6 +628,7 @@ window.SCA_BUILD_SCORECARD = function(tasks, ro, gs){
     var ro = clone(window.SCA_RO_STANDARD);
     // Weave this case's ICE concern into the "Shares and uses ICE" RO item
     var concern = (c.script && c.script.ice && c.script.ice.concerns) ? c.script.ice.concerns : '';
+    concern = String(concern).replace(/^\s*HIDDEN AGENDA\s*[\u2014:\-]*\s*/i, '');
     if (concern) {
       ro[7] = { t:ro[7].t, dom:'ro', d:'Addressed the patient’s specific concern — ' + concern.replace(/\.$/, '') + ' — directly within the plan, rather than noting it and moving on.', pts:1 };
     }

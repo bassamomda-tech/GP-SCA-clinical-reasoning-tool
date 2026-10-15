@@ -48,7 +48,7 @@
     timerRunning: false,
     timerInterval: null,
     scores: { dg:null, cm:null, ro:null },
-    checkpoints: {},
+    checkpoints: {}, rag: {},
     mediaStream: null,
     recorder: null,
     recChunks: [],
@@ -79,7 +79,7 @@
   const DOM_SHORT = { dg:'Data gathering', cm:'Clinical management', ro:'Relating to others' };
   const DOM_COL = { dg:'#15803d', cm:'#1d4ed8', ro:'#be185d' };
   function normDom(d, text){ return (window.SCA_RCGP && window.SCA_RCGP.dom) ? window.SCA_RCGP.dom(d, text) : (d === 'rto' || d === 'gs' ? 'ro' : d === 'tasks' ? 'dg' : d); }
-  function rcgpCard(c){ if (!c) return null; if (window.SCA_RCGP && window.SCA_RCGP.normaliseCase) window.SCA_RCGP.normaliseCase(c); const sc = (c.scorecardRcgp && c.scorecardRcgp.dg) ? c.scorecardRcgp : c.scorecard; return (sc && sc.dg) ? sc : (window.SCA_RCGP ? window.SCA_RCGP.scorecard(c) : sc); }
+  function rcgpCard(c){ if (!c) return null; if (window.SCA_RCGP && window.SCA_RCGP.normaliseCase) window.SCA_RCGP.normaliseCase(c); const sc = (c.scorecardRcgp && c.scorecardRcgp.dg) ? c.scorecardRcgp : c.scorecard; const out = (sc && sc.dg) ? sc : (window.SCA_RCGP ? window.SCA_RCGP.scorecard(c) : sc); return (out && window.SCA_RCGP && window.SCA_RCGP.rebalance) ? window.SCA_RCGP.rebalance(out) : out; }
   function domGrade(n, t){ if (window.SCA_RCGP && window.SCA_RCGP.grade) return window.SCA_RCGP.grade(n, t); if (!t) return ''; const p = n/t; return p >= 0.8 ? 'Clear pass' : p >= 0.6 ? 'Pass' : p >= 0.35 ? 'Fail' : 'Clear fail'; }
   function domMeta(d){ return DOM_META[d] || DOM_META[normDom(d, '')] || {ic:'•',title:d,sub:''}; }
 
@@ -281,7 +281,7 @@
     state.case = c;
     state.timerSec = (c.duration || 12) * 60;
     state.scores = { dg:null, cm:null, ro:null };
-    state.checkpoints = {};
+    state.checkpoints = {}; state.rag = {};
     state.cueChecks = {};
     state.timeChecks = {};
     state.recordings = [];
@@ -466,16 +466,30 @@
 
     // Fallback to the simple checkpoint card if no full scorecard authored
     if (!sc) { renderScorecardSimple(); return; }
+    state.rag = state.rag || {};
 
     const MAX = { dg:sc.maxDg, cm:sc.maxCm, ro:sc.maxRo };
-    const DOMS = DOM_ORDER.map(k => ({ key:k, cls:k + '-domain', ic:DOM_META[k].ic, title:DOM_META[k].title, sub:DOM_META[k].sub, items:sc[k], max:MAX[k], scoreId:'sc-' + k + '-score' }));
+    // Every item keeps its exam-domain key ('dom:i') for scoring; it is shown in its
+    // RCGP SCA Consultation Toolkit column (Global skills · Tasks · Relating to others).
+    const TK = [
+      { key:'gs',    title:'Global skills',      sub:'Structure, time, language, ethics, responsiveness', cls:'gs-domain',   ic:'🧭' },
+      { key:'tasks', title:'Tasks',              sub:'Explore, examine, diagnose, plan, safety-net',       cls:'task-domain', ic:'🩺' },
+      { key:'rto',   title:'Relating to others', sub:'Rapport, questions, cues, ICE, shared decisions',    cls:'ro-domain',   ic:'🤝' }
+    ];
+    const cols = { gs:[], tasks:[], rto:[] };
+    DOM_ORDER.forEach(dom => (sc[dom] || []).forEach((it, i) => {
+      const tk = cols[it.tk] ? it.tk : (dom === 'ro' ? 'rto' : 'tasks');
+      cols[tk].push({ dom, i, it });
+    }));
+    const TAG = { dg:'DG', cm:'CM', ro:'RO' };
+    const ragOf = key => state.checkpoints[key] ? 'g' : (state.rag[key] || '');
 
     mount.innerHTML = `
       <div class="scwrap">
         <div class="scwrap-hdr">
           <div>
             <div class="scwrap-title">${escapeHtml(c.title)} — SCA Consultation Scorecard</div>
-            <div class="scwrap-sub">Marked in the three RCGP SCA domains — Data gathering &amp; diagnosis · Clinical management &amp; medical complexity · Relating to others — each graded Clear pass / Pass / Fail / Clear fail · tick what you demonstrated</div>
+            <div class="scwrap-sub">Rate each item <b>Red / Amber / Green</b> in the RCGP SCA Consultation Toolkit layout (Global skills · Tasks · Relating to others). Green items count towards your marks, which are shown in the three RCGP exam domains, each graded Clear pass / Pass / Fail / Clear fail. Clinical management carries the most marks, as in the RCGP marking (15 of 33).</div>
           </div>
           <div style="display:flex;gap:8px;align-items:center">
             <div class="scwrap-total-wrap"><span class="scwrap-total" id="sc-total">0</span><span class="scwrap-total-label">/ ${sc.total} pts</span></div>
@@ -483,31 +497,50 @@
           </div>
         </div>
 
+        <div class="sc-exam">
+          <div class="sc-exam-t">Your marks in the RCGP exam domains</div>
+          <div class="sc-exam-row">
+            ${DOM_ORDER.map(k => `
+              <div class="sc-exam-box" style="--dc:${DOM_COL[k]}">
+                <div class="sc-exam-name"><span class="sc-domtag" style="background:${DOM_COL[k]}">${TAG[k]}</span> ${DOM_META[k].title}</div>
+                <div class="sc-exam-score"><span id="sc-${k}-score">0</span><span class="sc-domain-max">/${MAX[k]}</span></div>
+                <div class="sc-domain-grade" id="sc-${k}-score-grade"></div>
+              </div>`).join('')}
+          </div>
+        </div>
+
         <div class="scwrap-grid">
-          ${DOMS.map(d => `
+          ${TK.map(col => `
             <div class="sc-domain">
-              <div class="sc-domain-hdr ${d.cls}">
-                <span class="sc-domain-icon">${d.ic}</span>
-                <div><div class="sc-domain-title">${d.title}</div><div class="sc-domain-sub">${d.sub}</div></div>
-                <div class="sc-domain-score"><span id="${d.scoreId}">0</span><span class="sc-domain-max">/${d.max}</span><div class="sc-domain-grade" id="${d.scoreId}-grade"></div></div>
+              <div class="sc-domain-hdr ${col.cls}">
+                <span class="sc-domain-icon">${col.ic}</span>
+                <div><div class="sc-domain-title">${col.title}</div><div class="sc-domain-sub">${col.sub}</div></div>
+                <div class="sc-domain-score"><span class="sc-col-green" data-col="${col.key}">0</span><span class="sc-domain-max">/${cols[col.key].length} green</span></div>
               </div>
               <div class="sc-items">
-                ${d.items.map((it, i) => `
-                  <label class="sc-item" data-dom="${d.key}" data-i="${i}" data-pts="${it.pts}">
-                    <input type="checkbox" data-dom="${d.key}" data-i="${i}" data-pts="${it.pts}">
-                    <span class="sc-item-text"><strong>${escapeHtml(it.t)}</strong> — ${escapeHtml(it.d)}</span>
-                    <span class="sc-pts">${it.pts}pt</span>
-                  </label>`).join('')}
+                ${cols[col.key].map(x => { const key = x.dom + ':' + x.i, r = ragOf(key); return `
+                  <div class="sc-item rag-${r || 'none'}${r === 'g' ? ' checked' : ''}" data-dom="${x.dom}" data-i="${x.i}" data-pts="${x.it.pts}">
+                    <input type="checkbox" hidden data-dom="${x.dom}" data-i="${x.i}" data-pts="${x.it.pts}"${r === 'g' ? ' checked' : ''}>
+                    <span class="sc-item-text"><strong>${escapeHtml(x.it.t)}</strong> — ${escapeHtml(x.it.d)}</span>
+                    <span class="sc-item-side">
+                      <span class="sc-rag-btns" role="group" aria-label="Rate: ${escapeHtml(x.it.t)}">
+                        <button type="button" class="rb rb-r${r === 'r' ? ' on' : ''}" data-v="r" aria-pressed="${r === 'r'}" title="Red — not achieved">R</button>
+                        <button type="button" class="rb rb-a${r === 'a' ? ' on' : ''}" data-v="a" aria-pressed="${r === 'a'}" title="Amber — partly achieved">A</button>
+                        <button type="button" class="rb rb-g${r === 'g' ? ' on' : ''}" data-v="g" aria-pressed="${r === 'g'}" title="Green — fully achieved">G</button>
+                      </span>
+                      <span class="sc-pts"><span class="sc-domtag" style="background:${DOM_COL[x.dom]}">${TAG[x.dom]}</span> ${x.it.pts}&nbsp;pt</span>
+                    </span>
+                  </div>`; }).join('')}
               </div>
             </div>`).join('')}
         </div>
 
         <div class="sc-rag">
-          <div class="sc-rag-t">RAG self-assessment — tick an item only when fully (green) achieved</div>
+          <div class="sc-rag-t">How to rate (RCGP SCA Consultation Toolkit)</div>
           <div class="sc-rag-row">
-            <div class="sc-rag-cell rag-r"><div class="rag-h">🔴 Red — not achieved</div><div class="rag-d">Clearly missed: wrong/absent decision, red flags not screened, ICE not explored, generic plan. Leave unticked.</div></div>
-            <div class="sc-rag-cell rag-a"><div class="rag-h">🟠 Amber — partial</div><div class="rag-d">Attempted but incomplete — right idea, key detail or explanation missing. Leave unticked and note it.</div></div>
-            <div class="sc-rag-cell rag-g"><div class="rag-h">🟢 Green — fully achieved</div><div class="rag-d">Clearly demonstrated to pass standard, in plain language, tailored to this patient. Tick it.</div></div>
+            <div class="sc-rag-cell rag-r"><div class="rag-h">🔴 Red — not achieved</div><div class="rag-d">Clearly missed: wrong or absent decision, red flags not screened, ICE not explored, generic plan.</div></div>
+            <div class="sc-rag-cell rag-a"><div class="rag-h">🟠 Amber — partial</div><div class="rag-d">Attempted but incomplete — right idea, key detail or explanation missing. Scores no marks; listed below to work on.</div></div>
+            <div class="sc-rag-cell rag-g"><div class="rag-h">🟢 Green — fully achieved</div><div class="rag-d">Clearly demonstrated to pass standard, in plain language, tailored to this patient. Scores the item's marks.</div></div>
           </div>
         </div>
 
@@ -522,29 +555,44 @@
           </div>
           <div class="interp-msg" id="sc-interp-msg">
             <div class="interp-icon">📋</div>
-            <div class="interp-text">Complete the checklist above to see your score interpretation and feedback.</div>
+            <div class="interp-text">Rate the items above to see your score interpretation and feedback.</div>
           </div>
         </div>
 
         <div class="sc-missed-wrap" id="sc-missed-section" style="display:none">
-          <div class="sc-missed-title">⚠ Items not yet ticked — areas to develop</div>
+          <div class="sc-missed-title">⚠ Items not yet green — areas to develop</div>
           <div id="sc-missed-list" class="sc-missed-list"></div>
         </div>
+
+        <div class="sc-source">Checklist items: <a href="https://www.rcgp.org.uk/mrcgp-exams/simulated-consultation-assessment/toolkit" target="_blank" rel="noopener">RCGP SCA Consultation Toolkit</a> (© 2023 Anne Hawkridge and David Molyneux; published by the RCGP). Exam domains and grades: <a href="https://www.rcgp.org.uk/mrcgp-exams/simulated-consultation-assessment/marking-and-results" target="_blank" rel="noopener">RCGP SCA marking and results</a>. gpreasoning.uk is not affiliated with or endorsed by the RCGP.</div>
       </div>`;
 
-    mount.querySelectorAll('.sc-item input').forEach(cb => {
-      cb.addEventListener('change', () => {
-        const key = cb.dataset.dom + ':' + cb.dataset.i;
-        state.checkpoints[key] = cb.checked;
-        cb.closest('.sc-item').classList.toggle('checked', cb.checked);
-        computeScore();
+    const updCols = () => {
+      mount.querySelectorAll('.sc-col-green').forEach(el => {
+        const col = el.dataset.col;
+        el.textContent = cols[col].filter(x => state.checkpoints[x.dom + ':' + x.i]).length;
       });
+    };
+    mount.querySelectorAll('.sc-item').forEach(row => {
+      const key = row.dataset.dom + ':' + row.dataset.i;
+      const cb = row.querySelector('input');
+      row.querySelectorAll('.rb').forEach(b => b.addEventListener('click', () => {
+        const v = b.dataset.v;
+        const cur = state.checkpoints[key] ? 'g' : (state.rag[key] || '');
+        const nv = cur === v ? '' : v;            // clicking the active rating clears it
+        state.checkpoints[key] = nv === 'g';
+        if (nv === 'a' || nv === 'r') state.rag[key] = nv; else delete state.rag[key];
+        cb.checked = nv === 'g';
+        row.className = 'sc-item rag-' + (nv || 'none') + (nv === 'g' ? ' checked' : '');
+        row.querySelectorAll('.rb').forEach(x => { const on = x.dataset.v === nv; x.classList.toggle('on', on); x.setAttribute('aria-pressed', on); });
+        updCols(); computeScore();
+      }));
     });
     $('#scReset').addEventListener('click', () => {
-      mount.querySelectorAll('.sc-item input').forEach(cb => { cb.checked = false; cb.closest('.sc-item').classList.remove('checked'); });
-      state.checkpoints = {};
-      computeScore();
+      state.checkpoints = {}; state.rag = {};
+      renderScorecard();
     });
+    updCols();
     computeScore();
     injectProgressLogger(mount);
   }
@@ -611,7 +659,7 @@
 
     const missed = [];
     Object.keys(groups).forEach(key => {
-      groups[key].forEach((it, i) => { if (!state.checkpoints[key + ':' + i]) missed.push(it.t); });
+      groups[key].forEach((it, i) => { if (!state.checkpoints[key + ':' + i]) missed.push(it.t + ((state.rag && state.rag[key + ':' + i] === 'a') ? ' (amber — partly done)' : '')); });
     });
     const ms = $('#sc-missed-section');
     const totalItems = sc.dg.length + sc.cm.length + sc.ro.length;
