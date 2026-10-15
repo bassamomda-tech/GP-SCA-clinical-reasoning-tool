@@ -10,8 +10,11 @@
     duration:'5 days (stop at 5 days if clinically stable; review if not improving)',
     drugs:[
       { name:'Low severity (clinical judgement + CRB-65): Amoxicillin', dose:'500 mg', freq:'TDS', route:'PO', days:'5 days' },
-      { name:'Penicillin allergy / atypical: doxycycline OR clarithromycin', dose:'doxy 200 mg then 100 mg / clarith 500 mg', freq:'OD / BD', route:'PO', days:'5 days' },
-      { name:'Moderate severity: amoxicillin + (if atypical suspected) a macrolide', dose:'500 mg + 500 mg', freq:'TDS + BD', route:'PO', days:'5 days' },
+      { name:'Low severity, penicillin allergy (or first choice unsuitable): Doxycycline', dose:'200 mg on day 1, then 100 mg', freq:'OD', route:'PO', days:'5 days in total (100 mg OD on days 2\u20135)' },
+      { name:'Low severity, alternative: Clarithromycin', dose:'500 mg', freq:'BD', route:'PO', days:'5 days' },
+      { name:'Pregnancy, penicillin allergy (or first choice unsuitable): Erythromycin', dose:'500 mg', freq:'QDS', route:'PO', days:'5 days' },
+      { name:'Moderate severity: Amoxicillin', dose:'500 mg', freq:'TDS', route:'PO', days:'5 days' },
+      { name:'Moderate severity, atypical pathogen suspected: ADD Clarithromycin (erythromycin in pregnancy)', dose:'500 mg', freq:'BD', route:'PO', days:'5 days' },
       { name:'Safety-net + reassess at 48\u201372 h; CRB-65 \u22652 \u2192 consider hospital referral', dose:'\u2014', freq:'\u2014', route:'Advice', days:'\u2014' },
     ],
     altRegimens:[
@@ -27,8 +30,9 @@
     followUp:'Reassess at 48\u201372 h. If not improving \u2192 CXR/reassess/admit. Consider repeat CXR at ~6 weeks if smoker/>50 to exclude underlying pathology.',
     redFlags:['Sepsis, cardiorespiratory failure, hypoxia, or unable to manage at home \u2192 admit; CRB-65 \u22652 \u2192 consider hospital referral.','Haemoptysis / not resolving \u2192 CXR to exclude malignancy.'],
     emisText:`Community-acquired pneumonia (NICE NG250):
-- Assess CRB-65 + clinical judgement (0: usually home; 1: primary care with safety-netting or community options; 2+: consider hospital). Low severity: amoxicillin 500 mg TDS 5d (pen-allergic: doxycycline 200 mg then 100 mg OD, or clarithromycin 500 mg BD, 5d).
-- Moderate: amoxicillin + macrolide if atypical suspected. Stop at 5 days if clinically stable.
+- Assess CRB-65 + clinical judgement (0: usually home; 1: primary care with safety-netting or community options; 2+: consider hospital). Low severity: amoxicillin 500 mg TDS 5d.
+- Pen-allergic/amoxicillin unsuitable: doxycycline 200 mg day 1 then 100 mg OD days 2-5 (5d total), OR clarithromycin 500 mg BD 5d; pregnancy: erythromycin 500 mg QDS 5d.
+- Moderate: amoxicillin 500 mg TDS 5d, adding clarithromycin 500 mg BD 5d if atypical pathogen suspected (erythromycin in pregnancy). Stop at 5 days if clinically stable.
 - High/sepsis \u2192 admit. Reassess 48-72 h; smoker/>50 \u2192 CXR ~6 wks.`,
     sources:[{ label:'NICE NG250 \u2014 Pneumonia: diagnosis and management (2025; replaced NG138, partly replaced CG191)', url:'https://www.nice.org.uk/guidance/ng250' }],
   },
@@ -188,15 +192,18 @@
   { id:'influenza', title:'Influenza (antiviral treatment)', category:'Infections',
     eyebrow:'At-risk + within 48 h + circulating flu',
     indication:'Antivirals (oseltamivir) for at-risk patients with influenza-like illness, when influenza is circulating and treatment can start within 48 h of symptom onset. Healthy non-at-risk adults: supportive care only.',
-    contraindications:'Only when flu is circulating (per UKHSA notification) and within 48 h (treatment) / 36 h (prophylaxis zanamivir). Dose-adjust oseltamivir in renal impairment. Not a substitute for vaccination.',
-    duration:'5 days (treatment)',
+    contraindications:'Only when flu is circulating (per UKHSA notification) and within 48 h (treatment) / 36 h (prophylaxis zanamivir). Doses below are for adults: dose-adjust oseltamivir in renal impairment (BNF), and use BNFC for children (weight/age-based). Zanamivir is inhaled \u2014 caution in asthma/COPD (risk of bronchospasm). Not a substitute for vaccination.',
+    duration:'5 days (treatment) \u00b7 10 days (post-exposure prophylaxis)',
     drugs:[
       { name:'At-risk + within 48 h + flu circulating: oseltamivir', dose:'75 mg (adjust if renal impairment)', freq:'BD', route:'PO', days:'5 days' },
       { name:'Healthy, not at-risk: supportive care \u2014 rest, fluids, paracetamol/ibuprofen', dose:'\u2014', freq:'PRN', route:'PO', days:'Self-limiting' },
-      { name:'Post-exposure prophylaxis (at-risk, per criteria): oseltamivir 75 mg OD (or zanamivir)', dose:'75 mg', freq:'OD', route:'PO', days:'10 days' },
+      { name:'Post-exposure prophylaxis (at-risk, per criteria): oseltamivir', dose:'75 mg (adjust if renal impairment)', freq:'OD', route:'PO', days:'10 days' },
+      { name:'Treatment, if zanamivir is chosen (e.g. oseltamivir resistance/unsuitable): zanamivir', dose:'10 mg (2 inhalations)', freq:'BD', route:'Inhaled', days:'5 days' },
+      { name:'Post-exposure prophylaxis, if zanamivir is chosen: zanamivir', dose:'10 mg (2 inhalations)', freq:'OD', route:'Inhaled', days:'10 days' },
     ],
     altRegimens:[
-      { label:'Oseltamivir-resistant / unable', drugs:'Inhaled zanamivir per criteria (caution in asthma/COPD).' },
+      { label:'Oseltamivir-resistant / unable', drugs:'Inhaled zanamivir 10 mg (2 inhalations) BD for 5 days to treat, or OD for 10 days as prophylaxis, per UKHSA criteria (caution in asthma/COPD). Severe illness or immunosuppression \u2192 follow the UKHSA guidance / seek specialist advice.' },
+      { label:'Children', drugs:'Oseltamivir and zanamivir doses for children differ by age/weight \u2014 use BNFC.' },
       { label:'Prevention', drugs:'Annual flu vaccination for eligible/at-risk groups \u2014 the mainstay.' },
     ],
     counselling:[
@@ -210,8 +217,9 @@
     emisText:`Influenza \u2014 antiviral treatment:
 - ONLY when flu circulating + at-risk + within 48 h: oseltamivir 75 mg BD 5d (renal dose-adjust).
 - Healthy/not at-risk: supportive (rest, fluids, analgesia).
-- PEP (at-risk, criteria): oseltamivir 75 mg OD 10d (or zanamivir). Annual vaccination = mainstay.`,
-    sources:[{ label:'UKHSA — influenza antivirals', url:'https://www.gov.uk' }],
+- PEP (at-risk, criteria): oseltamivir 75 mg OD 10d; or zanamivir 10 mg (2 inhalations) OD 10d.
+- Zanamivir treatment (if chosen): 10 mg (2 inhalations) BD 5d. Children: BNFC doses. Annual vaccination = mainstay.`,
+    sources:[{ label:'UKHSA \u2014 Guidance on use of antiviral agents for the treatment and prophylaxis of seasonal influenza', url:'https://www.gov.uk/government/publications/influenza-treatment-and-prophylaxis-using-anti-viral-agents/guidance-on-use-of-antiviral-agents-for-the-treatment-and-prophylaxis-of-seasonal-influenza' }, { label:'BNF \u2014 oseltamivir', url:'https://bnf.nice.org.uk/drugs/oseltamivir/' }, { label:'BNF \u2014 zanamivir', url:'https://bnf.nice.org.uk/drugs/zanamivir/' }],
   },
 
   { id:'vaginal-candidiasis', title:'Vaginal candidiasis (thrush)', category:'Women\'s & Sexual Health',
@@ -305,14 +313,15 @@
   },
 
   { id:'acute-prostatitis', title:'Acute bacterial prostatitis', category:'Men\'s & Sexual Health',
-    eyebrow:'Prolonged antibiotic with good prostate penetration',
+    eyebrow:'Trimethoprim 14 days \u00b7 fluoroquinolone only if others inappropriate',
     indication:'Acute prostatitis (fever, perineal/pelvic pain, LUTS, tender prostate). Send MSU/STI screen; treat with a prolonged course of an antibiotic that penetrates the prostate. Assess for sepsis/retention.',
-    contraindications:'Sepsis, acute urinary retention, or severe illness → admit. Avoid prostatic massage (bacteraemia). Adjust to culture; consider STI cause in younger men. Fluoroquinolone cautions (MHRA Drug Safety Update, January 2024: use only when other recommended antibiotics are inappropriate).',
+    contraindications:'Sepsis, acute urinary retention, or severe illness → admit. Avoid prostatic massage (bacteraemia). Adjust to culture; consider STI cause in younger men. MHRA Drug Safety Update (January 2024): a fluoroquinolone (e.g. ciprofloxacin, ofloxacin, levofloxacin) should be used only when the other recommended antibiotics are inappropriate for this patient (for example resistance, contraindication, previous side effects or treatment failure), and the reason recorded. Rarely they cause disabling, long-lasting or possibly irreversible effects on tendons, muscles, joints and nerves, and psychiatric effects; tell the patient to stop and seek advice at the first sign of these.',
     duration:'14 days, then review (NICE NG110)',
     drugs:[
       { name:'Send MSU (\u00b1 STI screen); assess sepsis/retention', dose:'\u2014', freq:'\u2014', route:'Investigation', days:'\u2014' },
-      { name:'1st line: ciprofloxacin (or ofloxacin)', dose:'cipro 500 mg BD / oflox 200 mg BD', freq:'BD', route:'PO', days:'14 days, then review' },
-      { name:'Alt: trimethoprim (if quinolone unsuitable/per sensitivities)', dose:'200 mg', freq:'BD', route:'PO', days:'14 days, then review' },
+      { name:'Usual first choice: Trimethoprim (check recent use, previous cultures and local resistance; adjust to sensitivities)', dose:'200 mg', freq:'BD', route:'PO', days:'14 days, then review' },
+      { name:'Only if other recommended antibiotics are inappropriate (MHRA 2024; record the reason): Ciprofloxacin OR ofloxacin', dose:'cipro 500 mg / oflox 200 mg', freq:'BD', route:'PO', days:'14 days, then review' },
+      { name:'Others (e.g. levofloxacin, co-trimoxazole): only on specialist/microbiology advice', dose:'\u2014', freq:'\u2014', route:'Advice', days:'\u2014' },
       { name:'Analgesia; consider laxative; review with cultures', dose:'\u2014', freq:'PRN', route:'\u2014', days:'\u2014' },
     ],
     altRegimens:[
@@ -329,9 +338,11 @@
     redFlags:['Sepsis, acute urinary retention, or severe illness → admit.','Recurrent/persistent → urology (chronic prostatitis).'],
     emisText:`Acute bacterial prostatitis:
 - MSU \u00b1 STI screen; assess sepsis/retention.
-- Ciprofloxacin 500 mg BD (or ofloxacin) 14d then review (NICE NG110); alt trimethoprim 200 mg BD per sensitivities.
+- Trimethoprim 200 mg BD 14d then review (adjust to culture; check local resistance/recent trimethoprim) (NICE NG110).
+- Fluoroquinolone (ciprofloxacin 500 mg BD / ofloxacin 200 mg BD 14d) ONLY if other recommended antibiotics are inappropriate (MHRA Jan 2024) - document reason; warn re tendon/muscle/joint/nerve and psychiatric effects (stop and seek advice).
+- Levofloxacin/co-trimoxazole only with specialist/microbiology advice.
 - Analgesia; avoid prostatic massage. Retention/sepsis \u2192 admit. Younger/STI risk \u2192 GUM.`,
-    sources:[{ label:'NICE NG110 — Prostatitis (acute)', url:'https://www.nice.org.uk/guidance/ng110' }],
+    sources:[{ label:'NICE NG110 — Prostatitis (acute)', url:'https://www.nice.org.uk/guidance/ng110' }, { label:'MHRA Drug Safety Update (January 2024) \u2014 fluoroquinolone antibiotics: must now only be prescribed when other commonly recommended antibiotics are inappropriate', url:'https://www.gov.uk/drug-safety-update/fluoroquinolone-antibiotics-must-now-only-be-prescribed-when-other-commonly-recommended-antibiotics-are-inappropriate' }],
   },
 
   { id:'chlamydia', title:'Genital chlamydia', category:'Men\'s & Sexual Health',

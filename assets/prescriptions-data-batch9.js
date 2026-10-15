@@ -218,7 +218,7 @@
     contraindications: 'Podophyllotoxin and imiquimod are CONTRAINDICATED in pregnancy \u2014 use physical ablation (cryotherapy) instead. Internal (vaginal/cervical/anal/urethral) or extensive warts \u2192 GUM/specialist. Podophyllotoxin: apply only to external warts, limited area.',
     duration: 'Podophyllotoxin cycles; imiquimod up to 16 weeks',
     drugs: [
-      { name: 'Podophyllotoxin 0.15% cream / 0.5% solution (soft, non-keratinised)', dose: 'Apply to warts', freq: 'BD x3 days, then 4 days off', route: 'Topical', days: 'Up to 4\u20135 cycles' },
+      { name: 'Podophyllotoxin 0.15% cream / 0.5% solution (soft, non-keratinised)', dose: 'Apply to warts', freq: 'BD x3 days, then 4 days off', route: 'Topical', days: 'Up to 4 weekly cycles, then review (check the product SPC)' },
       { name: 'Imiquimod 5% cream (keratinised / larger)', dose: 'Apply, wash off after 6\u201310 h', freq: '3\u00d7/week', route: 'Topical', days: 'Up to 16 weeks' },
       { name: 'Cryotherapy (incl. pregnancy)', dose: '\u2014', freq: 'Weekly cycles', route: 'Procedure', days: 'Until clear' },
     ],
@@ -240,7 +240,7 @@
       'Warts in a child \u2192 consider safeguarding assessment.',
     ],
     emisText: `Anogenital warts (HPV):
-- Patient-applied: podophyllotoxin (soft/non-keratinised) BD x3 days then 4 off, up to 4-5 cycles; OR imiquimod 5% 3x/wk up to 16 wks.
+- Patient-applied: podophyllotoxin (soft/non-keratinised) BD x3 days then 4 off, up to 4 weekly cycles then review; OR imiquimod 5% 3x/wk up to 16 wks.
 - Clinician: cryotherapy (also in pregnancy), electrosurgery/excision.
 - PREGNANCY: avoid podophyllotoxin/imiquimod \u2192 cryotherapy.
 - Offer STI screen + HPV vaccine discussion + GUM (internal/extensive/refractory). Recurrence common.

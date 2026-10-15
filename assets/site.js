@@ -38,6 +38,13 @@
   });
 })();
 
+/* SCA free sample cases: the 5 Hot Seat / AI cases open to free accounts.
+   ONE list for every SCA tool (Hot Seat, AI Simulator, circuits, role-play packs,
+   group sessions). Chosen for spread: face-to-face, telephone and video; a child;
+   an older adult; safeguarding and end-of-life ethics. Shown first and marked
+   "Free" in the pickers. */
+window.SCA_FREE_IDS = ['htn-young-bp', 'teacher-call', 'dnacpr-request', 'anaemia-ida', 'cough-smoker-2ww'];
+
 window.RGP_CONFIG = window.RGP_CONFIG || {
   // e.g. 'https://reasoning-gp-api.YOURNAME.workers.dev'  (no trailing slash)
   workerUrl: 'https://shy-voice-2225.bassamomda.workers.dev',
@@ -46,6 +53,12 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
   // Monthly-only for now. Add the *_yearly ids later to switch the yearly toggle back on.
   paypalPlans: {
     silver_monthly:'P-7W0981493D9643523NJFITGA', silver_yearly:'P-5JJ39495BS015630PNJFJA3A',
+    // OWNER: the £40 every-3-months Gold plan is NOT on sale yet (no PayPal plan ID).
+    // To switch it on: create the plan in PayPal (Gold, £40, billing every 3 months),
+    // paste its ID (it starts with "P-") between the quotes of gold_3monthly below,
+    // then ask Claude to add the 3-month button to assets/rgp-pay.js and put the
+    // "£40 / 3 months" wording back on pages/pricing.html and pages/terms.html.
+    // While it is empty, nothing on the site offers or sells the 3-month plan.
     gold_monthly:'P-3FU28600XR036331XNJFIV2I',   gold_3monthly:'', gold_yearly:'P-1YB945321J846421DNJFJBIY',
     platinum_monthly:'P-85Y58353NJ528450PNJFIXBQ', platinum_yearly:'P-02W75567UM810814LNJVCD5Y'
   },
@@ -636,7 +649,7 @@ function renderSidebar(host, opts={}){
 
       <a class="sb-item ${activeId==='__algorithms'?'active':''}" href="${PRE}tools/algorithms.html" data-search="algorithms pathways flowchart decision tree quick visual print printable diagnosis triage">
         <span class="sb-i-dot" style="background:var(--rust)"></span>
-        <span class="sb-i-text"><b>Diagnostic Algorithms</b><div class="sb-i-meta">200+ visual pathways · red flags &amp; differential</div></span>
+        <span class="sb-i-text"><b>Diagnostic Algorithms</b><div class="sb-i-meta">180+ visual pathways · red flags &amp; differential</div></span>
       </a>
 
       <a class="sb-item ${activeId==='__tools-management'?'active':''}" href="${PRE}tools/management.html" data-search="management algorithms stepwise treatment drug ladder already diagnosed confirmed monitoring follow-up safety netting referral hypertension">
@@ -2074,8 +2087,9 @@ window.RGPAuth = RGPAuth;
   const FREE_ALGS = new Set(['chest-pain.html','headache.html','abdominal-pain.html','back-pain.html','breathlessness.html']);
   // Protocols are individual pages with no global index — curate 5 common samples.
   const FREE_PROTOCOLS = new Set(['hypertension.html','asthma.html','type-2-diabetes.html','gout.html','migraine.html']);
-  // SCA sample cases (first 5 in the Hot Seat library) — enforced in-tool by sca-practice.js.
-  const FREE_SCA = sampleSet((window.SCA_CASES||[]).map(c => c && c.id), 5);
+  // SCA sample cases — the curated list at the top of this file (window.SCA_FREE_IDS),
+  // enforced in-tool by sca-practice.js and the other SCA tools.
+  const FREE_SCA = new Set(window.SCA_FREE_IDS || []);
   window.RGP_FREE_SAMPLES = { cases:[...FREE_CASES], algorithms:[...FREE_ALGS], protocols:[...FREE_PROTOCOLS], scaCases:[...FREE_SCA] };
 
   // Mark which cards are the free samples on the 3 directory pages (algorithms.html,

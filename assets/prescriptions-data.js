@@ -94,18 +94,20 @@ Avoid alcohol during AND for 48 h after treatment. Refer gastro if 2nd line fail
     title: 'Emergency contraception',
     category: "Women's & Sexual Health",
     eyebrow: 'Single doses · choice depends on time since UPSI',
-    indication: 'Unprotected sex or contraceptive failure within last 5 days. Discuss all 3 options.',
-    contraindications: 'UPA: severe asthma insufficiently controlled by oral steroids. UPA is less effective if a progestogen was taken in the previous 7 days; hormonal contraception must not be started/restarted until 5 days after UPA. Enzyme inducers: Cu-IUD preferred (or LNG 3 mg).',
+    indication: 'Unprotected sex or contraceptive failure within last 5 days. Discuss all 3 options. The Cu-IUD is the most effective method \u2014 offer it to everyone eligible. In England, free oral EC is also available from participating community pharmacies (NHS Pharmacy Contraception Service, since October 2025), without a GP appointment.',
+    contraindications: 'Higher weight: if BMI >26 kg/m\u00b2 or weight >70 kg and a Cu-IUD is not used, ulipristal acetate (UPA) is preferred; if UPA is unsuitable, give levonorgestrel (LNG) 3 mg (CoSRH). UPA: severe asthma insufficiently controlled by oral steroids. UPA is less effective if a progestogen was taken in the previous 7 days; hormonal contraception must not be started/restarted until 5 days after UPA. Enzyme inducers: Cu-IUD preferred (or LNG 3 mg). Breastfeeding: after UPA, express and discard breast milk for 1 week; LNG can be used while breastfeeding.',
     duration: 'Single dose (oral options) or fitted device (Cu-IUD)',
     drugs: [
       { name:'Cu-IUD (copper coil)', dose:'1 device', freq:'Fit', route:'IU', days:'Up to 120 h after UPSI OR ≤ 5 days after earliest predicted ovulation — MOST EFFECTIVE' },
       { name:'Ulipristal acetate (ellaOne)', dose:'30 mg', freq:'Stat', route:'PO', days:'Up to 120 h after UPSI' },
-      { name:'Levonorgestrel', dose:'1.5 mg', freq:'Stat', route:'PO', days:'Up to 72 h after UPSI · double to 3 mg if BMI > 26 or > 70 kg' },
+      { name:'Levonorgestrel', dose:'1.5 mg (3 mg if BMI > 26 kg/m\u00b2 or weight > 70 kg, or on enzyme inducers)', freq:'Stat', route:'PO', days:'Up to 72 h after UPSI \u00b7 if BMI > 26 or > 70 kg, UPA is preferred \u2014 use LNG 3 mg only if UPA unsuitable' },
     ],
     counselling: [
       "Cu-IUD is most effective (failure < 0.1%). Offer to ALL women requesting EC who are eligible — within 120 h of first UPSI or ≤ 5 days after earliest predicted ovulation.",
-      "UPA delays ovulation more effectively than LNG — preferred if > 72 h or close to ovulation.",
-      "Restart hormonal contraception: LNG → immediately (+ condoms until effective); UPA → wait 5 days before starting/restarting CHC, POP, patch, ring, injection.",
+      "UPA delays ovulation more effectively than LNG — preferred if > 72 h, close to ovulation, or if BMI > 26 kg/m² / weight > 70 kg.",
+      "Quick-start hormonal contraception: after LNG → start immediately (+ condoms/abstain until effective); after UPA → wait 5 days before starting/restarting CHC, POP, patch, ring, implant or injection (then condoms until effective).",
+      "Breastfeeding: after UPA, express and discard breast milk for 1 week; LNG does not need a break from breastfeeding.",
+      "In England, oral EC is free from participating community pharmacies (since October 2025) as well as from GPs and sexual health clinics.",
       "Vomiting within 3 h of LNG or UPA → repeat dose.",
       "Pregnancy test in 3 weeks if no period.",
       "Discuss ongoing contraception. Offer STI screen.",
@@ -119,10 +121,12 @@ Avoid alcohol during AND for 48 h after treatment. Refer gastro if 2nd line fail
 DISCUSS ALL 3 OPTIONS:
 1. Cu-IUD — fit within 120 h; MOST EFFECTIVE; refer SRH same-day.
 2. Ulipristal acetate (ellaOne) 30 mg PO STAT — within 120 h.
-3. Levonorgestrel 1.5 mg PO STAT — within 72 h (3 mg if BMI > 26 / > 70 kg).
-Counsel: start/restart hormonal contraception 5 days after UPA / immediately after LNG. Pregnancy test if no period in 3 wks. Offer STI screen.`,
+3. Levonorgestrel 1.5 mg PO STAT — within 72 h (3 mg if enzyme inducers).
+BMI > 26 / weight > 70 kg and no Cu-IUD: UPA preferred; LNG 3 mg only if UPA unsuitable.
+Counsel: quick-start hormonal contraception immediately after LNG / wait 5 days after UPA. Breastfeeding: express and discard milk for 1 week after UPA (LNG compatible). Pregnancy test if no period in 3 wks. Offer STI screen. Free oral EC from participating pharmacies in England (since Oct 2025).`,
     sources: [
-      { label:'FSRH Emergency Contraception 2017 (amended 2023)', url:'https://www.fsrh.org/standards-and-guidance/documents/ceu-clinical-guidance-emergency-contraception-march-2017/' },
+      { label:'CoSRH (formerly FSRH) — Emergency Contraception guideline (2017, amended)', url:'https://cosrh.org/Common/Uploaded%20files/documents/fsrh-guideline-emergency-contraception03dec2020-amendedjuly2023-11jul.pdf' },
+      { label:'NHS England — Pharmacy Contraception Service', url:'https://www.england.nhs.uk/pharmacycontraception' },
     ],
   },
 
@@ -357,7 +361,7 @@ Off-licence if > 17 days. Consider alternatives (continuous CHC pack) if on COCP
     title: 'Shingles (herpes zoster)',
     category: 'Dermatology',
     eyebrow: 'Antiviral within 72 h of rash',
-    indication: 'Adult with characteristic unilateral dermatomal vesicular rash + neuropathic pain. Start ASAP — ideally within 72 h of rash onset.',
+    indication: 'Adult with characteristic unilateral dermatomal vesicular rash + neuropathic pain. Not everyone needs an antiviral. Within 72 h of rash onset, offer one if ANY of: aged over 50; immunosuppressed; rash off the trunk (e.g. neck, limbs, perineum) including ophthalmic or ear involvement; moderate or severe pain or rash; or another high-risk site/clinical risk factor. Ophthalmic or ear (otic) zoster: treat while active, even after 72 h. After 72 h (up to about a week): consider if new vesicles are still appearing, severe pain or rash, immunosuppression, or high risk of complications. A healthy younger adult with mild truncal shingles usually needs analgesia and advice only. Pharmacy First (England) covers shingles in adults aged 18 and over.',
     contraindications: 'Renal impairment — dose-adjust by creatinine clearance (aciclovir if CrCl < 25 mL/min; valaciclovir if < 50; famciclovir if < 60) and maintain hydration. Pregnancy: seek specialist advice; aciclovir preferred.',
     duration: 'Antiviral 7 days. Pain management may continue weeks.',
     drugs: [
@@ -388,7 +392,8 @@ Off-licence if > 17 days. Consider alternatives (continuous CHC pack) if on COCP
       'Severe / refractory pain at 4 weeks → consider gabapentin 300 mg ON titrating up; refer pain clinic.',
     ],
     emisText: `Shingles (herpes zoster):
-- Aciclovir 800 mg PO 5×/day × 7 days (within 72 h of rash) OR Valaciclovir 1 g TDS × 7 OR Famciclovir 500 mg TDS × 7.
+- Antiviral within 72 h of rash if: over 50, immunosuppressed, non-truncal rash (incl. ophthalmic/ear), or moderate-severe pain/rash (ophthalmic/otic: treat while active). Mild truncal shingles in a healthy younger adult: analgesia + advice.
+- Aciclovir 800 mg PO 5×/day × 7 days OR Valaciclovir 1 g TDS × 7 OR Famciclovir 500 mg TDS × 7.
 - Pain: paracetamol 1 g QDS + ibuprofen 400 mg TDS PRN. Add amitriptyline 10–25 mg ON if neuropathic.
 - Cover lesions; avoid pregnant women / neonates / immunocompromised.
 - Ophthalmic / Ramsay-Hunt / immunocompromised → same-day specialist.
@@ -452,7 +457,7 @@ Eye involvement → same-day ophthalmology (?keratitis).`,
     category: 'ENT & Eyes',
     eyebrow: 'Miconazole gel 1st line; fluconazole if extensive',
     indication: 'White plaques on tongue / palate / buccal mucosa wiping to leave erythema; or angular cheilitis; or denture stomatitis. Risk factors: ICS, antibiotics, dentures, DM, immunosuppression, age.',
-    contraindications: 'Miconazole gel: warfarin (potentiates — INR rise, bleeding; use nystatin instead), statins (rhabdomyolysis risk). Fluconazole: warfarin, statins, terfenadine, cisapride.',
+    contraindications: 'Miconazole oral gel: not for infants under 4 months (choking risk; the lower age limit is 5–6 months if born preterm or with slow neuromuscular development — see SPC/BNFC) — use nystatin suspension for neonates and infants under 4 months. Miconazole gel: warfarin (potentiates — INR rise, bleeding; use nystatin instead), statins (rhabdomyolysis risk). Fluconazole: warfarin, statins, terfenadine, cisapride. Infant and child doses: use BNFC.',
     duration: 'Miconazole until 7 days after symptoms resolve; nystatin 7 days; fluconazole 7 days (up to 14 if severe).',
     drugs: [
       { name:'Miconazole 2% oral gel', dose:'2.5 mL (½ tsp)', freq:'QDS', route:'Topical (held in mouth before swallow)', days:'Continue for 7 days after symptoms resolve' },
@@ -460,6 +465,7 @@ Eye involvement → same-day ophthalmology (?keratitis).`,
     ],
     altRegimens: [
       { label:'Severe / extensive / immunocompromised', drugs:'Fluconazole 50 mg PO OD × 7 days; 100 mg OD for up to 14 days if severe / immunocompromised.' },
+      { label:'Neonates / infants under 4 months', drugs:'Nystatin oral suspension (not miconazole gel) \u2014 dose per BNFC; treat the mother\u2019s nipples if breastfeeding and both are affected. Infants 4 months and over: miconazole gel at the BNFC infant dose.' },
       { label:'Denture stomatitis', drugs:'Miconazole gel QDS + denture hygiene (clean nightly, soak in chlorhexidine 0.2% or sodium hypochlorite; leave out at night).' },
       { label:'Angular cheilitis', drugs:'Miconazole 2% cream (Daktarin) BD × 10 days; check FBC + ferritin + B12.' },
       { label:'Inhaled corticosteroid related', drugs:'Treat with miconazole + reinforce: rinse mouth after each ICS dose, use spacer.' },
@@ -482,7 +488,7 @@ Eye involvement → same-day ophthalmology (?keratitis).`,
 - Miconazole 2% oral gel 2.5 mL (½ tsp) QDS after food, held in mouth; continue for 7 days after symptoms resolve.
 - If miconazole is unsuitable (e.g. on warfarin): Nystatin suspension 1 mL QDS × 7 days (continue 48 h after lesions resolve).
 Extensive: Fluconazole 50 mg PO OD × 7 days (100 mg OD up to 14 days if severe / immunocompromised).
-CAUTION miconazole: interacts with warfarin (raises INR) + statins.
+CAUTION miconazole: interacts with warfarin (raises INR) + statins. Not under 4 months (choking) — nystatin for neonates/young infants; infant doses per BNFC.
 Counsel: if ICS — rinse mouth, use spacer. Treat denture stomatitis with hygiene + gel. Investigate cause if recurrent (HbA1c, HIV, bloods).`,
     sources: [
       { label:'BNF — miconazole', url:'https://bnf.nice.org.uk/drugs/miconazole/' },

@@ -165,7 +165,7 @@ window.SCA_KNOWLEDGE = {
       { h:'Confidentiality line', t:'For a competent adult, no disclosure or prescribing without consent. You may receive information and give general (non-personal) advice; explain this warmly, not bureaucratically.' },
       { h:'Get the patient in', t:'The key next step is the patient making her own appointment; encourage an open conversation rather than a covert booking.' },
       { h:'Perimenopause knowledge (NG23)', t:'Diagnose perimenopause clinically from symptoms + menstrual change in women aged 45 or over without FSH testing. HRT is first-line for vasomotor symptoms and can be considered for menopause-associated low mood; menopause-specific CBT alongside or instead. SSRIs/SNRIs (e.g. venlafaxine) are not routine first-line for vasomotor symptoms alone.' },
-      { h:'Safeguarding radar', t:'A row that frightened a child, “she doesn’t want me near me”, and marital strain warrant gentle exploration of domestic abuse and child welfare — know your local safeguarding route.' },
+      { h:'Safeguarding radar', t:'A row that frightened a child, “she doesn’t want me near her”, and marital strain warrant gentle exploration of domestic abuse and child welfare — know your local safeguarding route.' },
       { h:'Information you CAN give', t:'Signpost NHS Menopause pages, Women’s Health Concern, Balance app — resources both partners can read.' },
       { h:'Safety-net', t:'If she expresses self-harm or there’s acute risk: Samaritans 116 123, duty doctor, urgent same-day options.' }
     ]
@@ -373,7 +373,7 @@ window.SCA_SC_TASKS = {
     { t:'Rules in/out serious risk', d:'Hypoglycaemia risk (sulfonylurea/insulin), DKA awareness and fasting safety; used IDF-DAR risk category.', pts:2 },
     { t:'Reaches a working analysis', d:'Intensify with an organ-protective agent; if insulin is needed, frames it positively.', pts:2 },
     { t:'Offers a safe Ramadan plan', d:'Pre-Ramadan review; switch SU to a lower-hypo agent; reduce/redistribute insulin to iftar; structured education; faith permits breaking the fast for illness/hypo.', pts:2 },
-    { t:'Addresses DVLA duties', d:'On SU/insulin: glucose ≥5 to drive, check within 2 h and every 2 h; inform DVLA for insulin; Group 2 implications.', pts:1 },
+    { t:'Addresses DVLA duties', d:'On SU/insulin: do not drive below 4.0 mmol/L, snack first if 4.0–5.0 (“five to drive”), check within 2 h and every 2 h; inform DVLA for insulin; Group 2 implications.', pts:1 },
     { t:'Provides follow-up and safety net', d:'Sick-day rules, hypo treatment, carry fast sugar, and a review.', pts:1 }
   ],
   'lft-alcohol': [

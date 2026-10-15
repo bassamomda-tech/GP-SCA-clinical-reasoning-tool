@@ -7535,7 +7535,7 @@
     "who": "dr",
     "text": "Then here’s what I suggest, and tell me what fits. A tablet called metformin, the slow-release kind, starting now; once it’s settled, a second tablet that also protects the heart and kidneys. A cholesterol check with your heart-risk score, and a home blood pressure monitor for a week, because today’s reading is borderline.",
     "dom": "tasks",
-    "why": "Stepwise MR metformin then SGLT2 inhibitor (NICE NG28 2026), QRISK3 and BP confirmation"
+    "why": "Dual first-line therapy introduced stepwise: MR metformin, then the SGLT2 inhibitor within weeks (NICE NG28 2026); QRISK3 and BP confirmation"
    },
    {
     "who": "pt",
@@ -7637,7 +7637,7 @@
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Stepwise MR metformin then SGLT2 inhibitor (NICE NG28, February 2026); remission programme; structured education; one negotiated lifestyle goal.",
+    "d": "Dual first-line MR metformin + SGLT2 inhibitor, introduced stepwise (NICE NG28, February 2026); remission programme; structured education; one negotiated lifestyle goal.",
     "pts": 2
    },
    {
@@ -7689,7 +7689,7 @@
     {
      "t": "6–10",
      "h": "Reframe and plan",
-     "d": "DVLA answer first, then father’s era vs his, smoking as the top priority, stepwise MR metformin then SGLT2 inhibitor, remission referral, one chosen goal."
+     "d": "DVLA answer first, then father’s era vs his, smoking as the top priority, dual first-line MR metformin + SGLT2 inhibitor introduced stepwise, remission referral, one chosen goal."
     },
     {
      "t": "10–12",
@@ -7782,7 +7782,7 @@
     "reflectIce": "“You’ve told me you’ve made your peace with your dad’s ending. I don’t think it’s yours. And your licence is safe with these tablets.”",
     "psychosocial": "Build every step around the van: one chosen swap (water for energy drinks), walking at drops, appointments he can make; smoking support when he’s ready.",
     "sharedPlan": [
-     "MR metformin now, SGLT2 inhibitor added once tolerated (NICE NG28, February 2026); structured education",
+     "Dual first-line (NICE NG28, February 2026): MR metformin now, SGLT2 inhibitor added within weeks once metformin is tolerated; structured education",
      "QRISK3 and statin discussion (NICE NG238); home BP readings (NICE NG136); smoking cessation referral (NICE NG209)",
      "Path to Remission Programme referral; eye screening and foot check booked (NICE NG19)"
     ],

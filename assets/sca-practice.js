@@ -10,8 +10,16 @@
   // Merge per-case extras (record-format stem, time map, word pictures, CEG tags, avoid-phrases)
   (function(){ const EX = window.SCA_EXTRAS || {}; CASES.forEach(c => { if (EX[c.id]) Object.assign(c, EX[c.id]); }); })();
 
-  /* ---- Free “Trainee” taster cap: bronze accounts get the first 5 cases only ---- */
-  const FREE_CASE_IDS = new Set(CASES.slice(0, 5).map(c => c.id));
+  /* ---- Free “Trainee” taster cap: bronze accounts get the 5 curated sample cases ---- */
+  // The list lives in assets/site.js (window.SCA_FREE_IDS) so every SCA tool agrees.
+  const FREE_CASE_IDS = new Set((window.SCA_FREE_IDS && window.SCA_FREE_IDS.length) ? window.SCA_FREE_IDS : CASES.slice(0, 5).map(c => c.id));
+  // Candidate-facing labels: never show meta.system (it often names the diagnosis)
+  // before or during the consultation. Falls back safely if sca-loader.js is missing.
+  const UI = window.SCA_UI || {
+    title: c => String(c.title || '').replace(/\s*\([^()]*\)\s*$/, ''),
+    who: c => `${c.meta.age}y · ${c.meta.sex}`,
+    fullMeta: c => `${c.meta.age}y · ${c.meta.sex} · ${c.meta.system || ''}`
+  };
   function freeCapped(){ return !!(window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier()); }
   function caseLocked(id){ return freeCapped() && !FREE_CASE_IDS.has(id); }
   function showCaseUpsell(){
@@ -23,7 +31,7 @@
       el.innerHTML = '<div style="background:#fff;border-radius:16px;max-width:400px;width:100%;padding:24px;box-shadow:0 30px 70px rgba(0,0,0,.3);font-family:inherit;text-align:center">'+
         '<div style="font-size:26px;margin-bottom:6px">🔐</div>'+
         '<h2 style="font-family:\'Source Serif 4\',Georgia,serif;font-size:21px;margin:0 0 8px;color:#0c4a47">That\u2019s beyond your 5 free cases</h2>'+
-        '<p style="font-size:13.5px;line-height:1.55;color:#57534e;margin:0 0 16px">Your free plan includes the first 5 Hot Seat cases. Upgrade to Gold or Platinum to unlock the full SCA case library.</p>'+
+        '<p style="font-size:13.5px;line-height:1.55;color:#57534e;margin:0 0 16px">Your free plan includes the 5 Hot Seat cases marked Free. Upgrade to Gold or Platinum to unlock the full SCA case library.</p>'+
         '<a href="../index.html#subscriptions" style="display:block;background:#0c4a47;color:#fff;font-weight:700;padding:11px;border-radius:10px;text-decoration:none;margin-bottom:8px">See the plans →</a>'+
         '<button type="button" id="scaUpsellClose" style="font:inherit;font-size:13px;font-weight:600;color:#0c4a47;background:none;border:none;cursor:pointer">Back to the sample cases</button>'+
       '</div>';
@@ -109,19 +117,22 @@
 
   function renderCaseGrid(){
     const grid = $('#caseGrid');
-    if(!document.getElementById('scaLockCss')){ const st=document.createElement('style'); st.id='scaLockCss'; st.textContent='.case-tile.ct-locked{opacity:.6}.case-tile.ct-locked:hover{opacity:.85}.case-tile.ct-locked .ct-cta{color:#b45309;font-weight:700}'; document.head.appendChild(st); }
-    grid.innerHTML = CASES.map(c => {
+    if(!document.getElementById('scaLockCss')){ const st=document.createElement('style'); st.id='scaLockCss'; st.textContent='.case-tile.ct-locked{opacity:.6}.case-tile.ct-locked:hover{opacity:.85}.case-tile.ct-locked .ct-cta{color:#b45309;font-weight:700}.ct-free{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:#0c4a47;border-radius:999px;padding:3px 8px;margin-right:6px;vertical-align:1px}'; document.head.appendChild(st); }
+    // Free accounts see their 5 open cases first.
+    const capped = freeCapped();
+    const list = capped ? [...FREE_CASE_IDS].map(id => CASES.find(c => c.id === id)).filter(Boolean).concat(CASES.filter(c => !FREE_CASE_IDS.has(c.id))) : CASES;
+    grid.innerHTML = list.map(c => {
       const typeLbl = ({video:'Video',telephone:'Telephone',f2f:'Face-to-face',home:'Home visit',data:'Data interp.'})[c.type] || c.type;
       const spec = specOf(c), fam = famOf(c);
       const locked = caseLocked(c.id);
       return `
       <button class="case-tile${locked?' ct-locked':''}" data-id="${c.id}" data-ceg="${(c.ceg||[]).map(escapeHtml).join('|')}" data-spec="${escapeHtml(spec)}" data-fam="${escapeHtml(fam)}">
         <span class="ct-type" data-type="${c.type}">${typeLbl}</span>
-        <h3>${escapeHtml(c.title)}</h3>
-        <div class="ct-meta">${c.meta.age}y · ${escapeHtml(c.meta.sex)} · ${escapeHtml(c.meta.system||'')}</div>
+        <h3>${escapeHtml(UI.title(c))}</h3>
+        <div class="ct-meta">${escapeHtml(UI.who(c))}</div>
         <div class="ct-setting">${escapeHtml(c.meta.setting||'')}</div>
         ${(c.ceg && c.ceg.length) ? `<div class="ct-cegs">${c.ceg.map(g => `<span class="ct-ceg">${escapeHtml(g)}</span>`).join('')}</div>` : ''}
-        <div class="ct-cta">${locked?'🔐 Members only — upgrade':'Open this case →'}</div>
+        <div class="ct-cta">${locked?'🔐 Members only — upgrade':((capped && FREE_CASE_IDS.has(c.id))?'<span class="ct-free">Free</span> Open this case →':'Open this case →')}</div>
       </button>`;
     }).join('');
     grid.querySelectorAll('.case-tile').forEach(t => {
@@ -298,8 +309,10 @@
     const typeLbl = ({video:'VIDEO',telephone:'TELEPHONE',f2f:'F2F',home:'HOME VISIT',data:'DATA'})[c.type] || c.type.toUpperCase();
     $('#shType').textContent = typeLbl;
     $('#shType').dataset.type = c.type;
-    $('#shTitle').textContent = c.title;
-    $('#shMeta').textContent = `${c.meta.age}y · ${c.meta.sex} · ${c.meta.system || ''} — ${c.meta.setting || ''}`;
+    $('#shTitle').textContent = UI.title(c);
+    // Neutral label until the candidate moves past the consultation (see goToStep).
+    state.revealed = false;
+    $('#shMeta').textContent = `${UI.who(c)} — ${c.meta.setting || ''}`;
     $('#briefText').innerHTML = renderStem(c);
 
     // Reset subnav to step 1
@@ -351,7 +364,7 @@
     const COLS = ['#1d4ed8','#0e7490','#7e22ce','#15803d','#b45309'];
     return `
       <details class="tmap">
-        <summary class="tmap-hdr"><span class="tmap-ic">⏱️</span><div class="tmap-htxt"><div class="tmap-t">Your 12 minutes — the time map</div><div class="tmap-s">The commonest mechanical fail is running out of road. Pace the station like this. <em>Tap to expand.</em></div></div><span class="tmap-chev" aria-hidden="true">▾</span></summary>
+        <summary class="tmap-hdr"><span class="tmap-ic">⏱️</span><div class="tmap-htxt"><div class="tmap-t">Your 12 minutes — the time map</div><div class="tmap-s">The commonest mechanical fail is running out of road. Pace the station like this. <em>Spoiler: it names the diagnosis and plan, so open it after your attempt (or now, if you are studying the case).</em></div></div><span class="tmap-chev" aria-hidden="true">▾</span></summary>
         <div class="tmap-rows">
           ${tm.map((p, i) => `
             <div class="tmap-row" style="--tc:${COLS[i % COLS.length]}">
@@ -367,7 +380,7 @@
     const s = c.stem;
     const typeLbl = ({video:'Video consultation', telephone:'Telephone consultation', f2f:'Face-to-face', home:'Home visit', data:'Results review'})[c.type] || 'Consultation';
     if (!s) {
-      return `<div class="stem-card"><div class="stem-hdr"><span class="stem-type">${typeLbl}</span><div class="stem-name">${escapeHtml(c.title)}</div></div><div class="stem-body"><div class="stem-row"><div class="stem-k">Doctor brief</div><div class="stem-v">${escapeHtml(c.brief)}</div></div></div></div>` + timeMapHtml(c);
+      return `<div class="stem-card"><div class="stem-hdr"><span class="stem-type">${typeLbl}</span><div class="stem-name">${escapeHtml(UI.title(c))}</div></div><div class="stem-body"><div class="stem-row"><div class="stem-k">Setting</div><div class="stem-v">${escapeHtml(c.meta.setting || '')}</div></div></div></div>` + timeMapHtml(c);
     }
     const list = (arr) => '<ul class="stem-list">' + arr.map(x => `<li>${escapeHtml(x)}</li>`).join('') + '</ul>';
     const recentCls = (s.recent && s.recent.indexOf('⚠') === 0) ? ' stem-warn' : '';
@@ -1448,6 +1461,12 @@ Your one-sentence nudge:`;
       b.classList.toggle('done', bi > -1 && idx > -1 && bi < idx);
     });
     $$('.session-step').forEach(s => s.classList.toggle('is-on', s.dataset.step === step));
+    // After the consultation (knowledge, scorecard, model, feedback) reveal the full case label.
+    if (!state.revealed && state.case && ['knowledge','score','model','feedback'].indexOf(step) > -1) {
+      state.revealed = true;
+      $('#shTitle').textContent = state.case.title;
+      $('#shMeta').textContent = `${UI.fullMeta(state.case)} — ${state.case.meta.setting || ''}`;
+    }
     if (step !== 'model' && audio.playing) stopAudio(false);
     if (step === 'feedback') {
       renderFeedbackSummary();

@@ -22,7 +22,7 @@
     ],
     altRegimens: [
       { label: 'Extensive / scalp (tinea capitis)', drugs: 'Oral terbinafine or griseofulvin (children) — scalp needs ORAL treatment; send scrapings; treat household.' },
-      { label: 'Nail (onychomycosis), confirmed', drugs: 'Oral terbinafine 250 mg OD — 6 weeks (fingernail) / 3 months (toenail); confirm by clippings first.' },
+      { label: 'Nail (onychomycosis), confirmed', drugs: 'Oral terbinafine 250 mg OD — fingernails 6 weeks to 3 months; toenails 3 to 6 months; confirm by clippings first.' },
     ],
     counselling: [
       'Apply to the rash AND 2 cm of surrounding normal skin; continue 1–2 weeks after it clears.',
@@ -51,7 +51,7 @@ Keep dry; don\u2019t share towels; avoid steroid-only creams. Review if no bette
     category: 'Dermatology',
     eyebrow: 'Permethrin 5% or oral ivermectin · treat all contacts simultaneously',
     indication: 'Intensely itchy rash (worse at night), burrows in web spaces/wrists/genitalia. Treat the patient AND all household/close/sexual contacts at the same time, even if asymptomatic.',
-    contraindications: 'Permethrin: licensed from 2 months (<2 months → specialist advice). Oral ivermectin: national BASHH guidance includes it as a first-line option in suitable patients. Avoid oral ivermectin in pregnancy; it is generally avoided during breastfeeding, particularly of a young infant, unless specialist advice supports its use; in children under 15 kg it is specialist-directed only. In Greater Manchester, oral ivermectin is not routinely commissioned for scabies; use permethrin 5% cream first-line in primary care, and seek specialist advice for exceptional cases. Malathion if permethrin unsuitable (check local stock).',
+    contraindications: 'Permethrin: licensed from 2 months (<2 months → specialist advice). Oral ivermectin: national BASHH guidance includes it as a first-line option in suitable patients. Avoid oral ivermectin in pregnancy; it is generally avoided during breastfeeding, particularly of a young infant, unless specialist advice supports its use; in children under 15 kg it is specialist-directed only. Oral ivermectin may not be commissioned for routine primary-care use in every area — check local commissioning/formulary; permethrin 5% cream is the usual first-line treatment in primary care. Malathion if permethrin unsuitable (check local stock).',
     duration: '2 applications, 7 days apart',
     drugs: [
       { name: 'Permethrin 5% cream', dose: 'Whole body (neck-down; include scalp in young/elderly)', freq: '2 applications 7 days apart', route: 'Topical', days: 'Leave on 8–12 h (overnight)' },
@@ -76,7 +76,7 @@ Keep dry; don\u2019t share towels; avoid steroid-only creams. Review if no bette
       'Secondary bacterial infection (impetiginised) → add antibiotic.',
     ],
     emisText: `Scabies (treat patient + ALL contacts same day):
-- Permethrin 5% cream to whole body (chin-down; scalp in young/elderly), leave 8–12 h, wash off; REPEAT after 7 days. (Alt: oral ivermectin 200 micrograms/kg, repeat after 7–14 days — specialist-directed in Greater Manchester; avoid in pregnancy, generally avoided when breastfeeding, under 15 kg specialist-directed only; or malathion 0.5%, 24 h.)
+- Permethrin 5% cream to whole body (chin-down; scalp in young/elderly), leave 8–12 h, wash off; REPEAT after 7 days. (Alt: oral ivermectin 200 micrograms/kg, repeat after 7–14 days — check local commissioning; avoid in pregnancy, generally avoided when breastfeeding, under 15 kg specialist-directed only; or malathion 0.5%, 24 h.)
 - Wash bedding/clothing at 50°C+ (or bag 72 h) on treatment day.
 - Itch may persist 2–4 wks (antihistamine/crotamiton) — not failure.
 Review at 2–4 wks if persistent/new burrows.`,

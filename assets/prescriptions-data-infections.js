@@ -98,7 +98,7 @@ Safety-net: fever/loin pain/reduced fetal movements → urgent maternity.`,
       { name: 'OR Trimethoprim', dose: '200 mg', freq: 'BD', route: 'PO', days: '7' },
     ],
     altRegimens: [
-      { label: 'Suspected prostatitis', drugs: 'Use a prostate-penetrating agent — ciprofloxacin 500 mg BD or trimethoprim 200 mg BD × 14 days then review (NICE NG110; fluoroquinolone only if appropriate, MHRA January 2024); send culture; consider referral.' },
+      { label: 'Suspected prostatitis', drugs: 'Send culture first. Trimethoprim 200 mg BD × 14 days then review (NICE NG110). A fluoroquinolone (ciprofloxacin 500 mg BD) only if other recommended antibiotics are inappropriate (MHRA Drug Safety Update, January 2024: rare but disabling, long-lasting tendon, muscle, joint, nerve and psychiatric effects; record the reason). See the acute prostatitis card; sepsis/retention → admit.' },
     ],
     counselling: [
       'Men need a longer (7-day) course as UTI is considered complicated.',
@@ -112,7 +112,7 @@ Safety-net: fever/loin pain/reduced fetal movements → urgent maternity.`,
     ],
     emisText: `Lower UTI in a man (complicated; send culture):
 - Nitrofurantoin 100 mg MR PO BD × 7 days OR Trimethoprim 200 mg PO BD × 7 days.
-If prostatitis suspected: ciprofloxacin 500 mg BD (or trimethoprim) × 14 days then review (NICE NG110).
+If prostatitis suspected: trimethoprim 200 mg BD × 14 days then review (NICE NG110); ciprofloxacin only if other recommended antibiotics are inappropriate (MHRA Jan 2024; document reason).
 Safety-net: fever / loin or perineal pain → same-day review. Investigate if recurrent.`,
     sources: [
       { label:'NICE NG109 — Lower UTI', url:'https://www.nice.org.uk/guidance/ng109' },
@@ -125,17 +125,20 @@ Safety-net: fever / loin or perineal pain → same-day review. Investigate if re
     title: 'Acute sore throat / tonsillitis',
     category: 'ENT & Eyes',
     eyebrow: 'FeverPAIN / Centor-guided · most need no antibiotic',
-    indication: 'Acute sore throat. Use FeverPAIN (0–1) or Centor (0–2) → no antibiotic / self-care. Higher scores or systemically unwell → consider antibiotic or back-up.',
-    contraindications: 'Penicillin allergy → clarithromycin/erythromycin. Avoid amoxicillin (rash if glandular fever).',
+    indication: 'Acute sore throat. FeverPAIN 0–1 or Centor 0–2 → no antibiotic / self-care. FeverPAIN 2–3 → no antibiotic or a back-up prescription. FeverPAIN 4–5 or Centor 3–4 → immediate antibiotic or a back-up prescription (NICE NG84). Systemically very unwell or high risk of complications → immediate antibiotic. Pharmacy First (England) covers acute sore throat from age 5.',
+    contraindications: 'Penicillin allergy → clarithromycin; in pregnancy use erythromycin instead. Avoid amoxicillin (rash if glandular fever).',
     duration: '5–10 days',
     drugs: [
       { name: 'Phenoxymethylpenicillin (Pen V)', dose: '500 mg', freq: 'QDS (or 1000 mg BD)', route: 'PO', days: '5–10' },
       { name: 'Penicillin allergy: Clarithromycin', dose: '250–500 mg', freq: 'BD', route: 'PO', days: '5' },
+      { name: 'Penicillin allergy in pregnancy: Erythromycin', dose: '250–500 mg QDS (or 500 mg–1 g BD)', freq: 'QDS (or BD)', route: 'PO', days: '5' },
       { name: 'Analgesia: Paracetamol ± ibuprofen', dose: '1 g / 400 mg', freq: 'QDS / TDS', route: 'PO', days: 'PRN' },
     ],
     altRegimens: [
-      { label: 'No/low score (FeverPAIN 0–1)', drugs: 'No antibiotic — self-care (analgesia, fluids, medicated lozenges); safety-net.' },
-      { label: 'FeverPAIN 2–3', drugs: 'Consider back-up (delayed) antibiotic to use if not improving in 3–5 days.' },
+      { label: 'No/low score (FeverPAIN 0–1 or Centor 0–2)', drugs: 'No antibiotic — self-care (analgesia, fluids, medicated lozenges); safety-net.' },
+      { label: 'FeverPAIN 2–3', drugs: 'No antibiotic, or a back-up (delayed) antibiotic to use if not improving in 3–5 days or worsening.' },
+      { label: 'FeverPAIN 4–5 or Centor 3–4', drugs: 'Immediate antibiotic, or a back-up antibiotic with advice (NICE NG84).' },
+      { label: 'Pharmacy First (England)', drugs: 'Community pharmacies can assess and, where criteria are met, supply treatment for acute sore throat in people aged 5 and over.' },
     ],
     counselling: [
       'Most sore throats are viral and settle within a week without antibiotics.',
@@ -150,7 +153,7 @@ Safety-net: fever / loin or perineal pain → same-day review. Investigate if re
     ],
     emisText: `Acute sore throat (FeverPAIN/Centor-guided):
 - Low score: NO antibiotic — analgesia (paracetamol 1 g QDS ± ibuprofen 400 mg TDS), fluids, lozenges; safety-net.
-- High score / systemically unwell: Phenoxymethylpenicillin 500 mg QDS (or 1 g BD) × 5–10 days. Pen-allergic: clarithromycin 250–500 mg BD × 5 days.
+- FeverPAIN 2–3: no antibiotic or back-up. FeverPAIN 4–5 / Centor 3–4 / systemically unwell: immediate or back-up Phenoxymethylpenicillin 500 mg QDS (or 1 g BD) × 5–10 days. Pen-allergic: clarithromycin 250–500 mg BD × 5 days (pregnancy: erythromycin 250–500 mg QDS or 500 mg–1 g BD × 5 days).
 Safety-net: difficulty swallowing/breathing, drooling, trismus → same-day ENT.`,
     sources: [
       { label:'NICE NG84 — Sore throat (acute)', url:'https://www.nice.org.uk/guidance/ng84' },
@@ -170,9 +173,12 @@ Safety-net: difficulty swallowing/breathing, drooling, trismus → same-day ENT.
       { name: 'Amoxicillin', dose: '(child weight/age-based; adult 500 mg)', freq: 'TDS', route: 'PO', days: '5–7', child:true },
       { name: 'Penicillin allergy: Clarithromycin', dose: '(weight/age-based; adult 250–500 mg)', freq: 'BD', route: 'PO', days: '5–7' },
       { name: 'Analgesia: Paracetamol / ibuprofen', dose: 'Weight-based', freq: 'Regular', route: 'PO', days: 'PRN pain' },
+      { name: 'Under 18, no immediate oral antibiotic, and NO eardrum perforation or discharge: Phenazone 40 mg/g + lidocaine 10 mg/g ear drops', dose: '4 drops into the affected ear', freq: '2–3 times a day', route: 'Ear', days: 'Up to 7 days' },
     ],
     altRegimens: [
       { label: 'No antibiotic / back-up', drugs: 'Regular analgesia; back-up prescription to use if not improving in 3 days.' },
+      { label: 'Anaesthetic/analgesic ear drops (NICE NG91)', drugs: 'Phenazone + lidocaine ear drops are an option for pain in children and young people when an immediate oral antibiotic is not given and there is no perforation or otorrhoea. Do not use if the eardrum may be perforated.' },
+      { label: 'Pharmacy First (England)', drugs: 'Community pharmacies can assess acute otitis media in children and young people aged 1 to 17 and, where criteria are met, supply ear drops or an antibiotic.' },
       { label: 'Worsening / treatment failure', drugs: 'Co-amoxiclav per age/weight; reassess for complications.' },
     ],
     counselling: [
@@ -190,6 +196,8 @@ Safety-net: difficulty swallowing/breathing, drooling, trismus → same-day ENT.
 - Regular analgesia (paracetamol/ibuprofen, weight-based) — mainstay.
 - Antibiotic if systemically unwell / <2 yr bilateral / otorrhoea / high-risk: Amoxicillin (weight/age dose) TDS × 5–7 days. Pen-allergic: clarithromycin × 5–7 days.
 - Otherwise no/back-up antibiotic — use if not better in 3 days.
+- Under 18, no oral antibiotic, no perforation/discharge: consider phenazone + lidocaine ear drops 4 drops 2–3 times a day up to 7 days (NICE NG91).
+- Pharmacy First (England) covers AOM age 1–17.
 Safety-net: mastoid swelling, facial palsy, neck stiffness → same-day.`,
     sources: [
       { label:'NICE NG91 — Otitis media (acute)', url:'https://www.nice.org.uk/guidance/ng91' },
@@ -286,8 +294,8 @@ Safety-net: diabetic + severe pain/granulation → urgent ENT (necrotising OE).`
     contraindications: 'Exclude red-flag causes first (pain, photophobia, reduced vision, contact-lens use → treat as keratitis). Avoid chloramphenicol in known hypersensitivity.',
     duration: '5–7 days',
     drugs: [
-      { name: 'Chloramphenicol 0.5% drops', dose: '1 drop', freq: '2-hourly first 2 days then QDS', route: 'Topical eye', days: '5–7 (48 h after resolution)' },
-      { name: 'OR Chloramphenicol 1% ointment', dose: 'Apply', freq: 'QDS (or BD + drops)', route: 'Topical eye', days: '5–7' },
+      { name: 'Chloramphenicol 0.5% drops', dose: '1 drop', freq: 'Every 2 hours for the first 48 hours, then every 4 hours (waking hours)', route: 'Topical eye', days: 'Continue for 48 hours after the eye has healed' },
+      { name: 'OR Chloramphenicol 1% ointment', dose: 'Apply', freq: '3–4 times a day (or at night only if drops used by day)', route: 'Topical eye', days: 'Continue for 48 hours after the eye has healed' },
     ],
     altRegimens: [
       { label: 'Chloramphenicol allergy', drugs: 'Fusidic acid 1% eye drops BD × 7 days.' },
@@ -307,10 +315,11 @@ Safety-net: diabetic + severe pain/granulation → urgent ENT (necrotising OE).`
     ],
     emisText: `Bacterial conjunctivitis (self-limiting):
 - Hygiene + cooled-boiled-water cleansing; most resolve in 5–7 days.
-- If troublesome: Chloramphenicol 0.5% drops 2-hourly × 2 days then QDS (or 1% ointment QDS) × 5–7 days (continue 48 h after resolution). Allergy → fusidic acid 1% BD.
+- If troublesome: Chloramphenicol 0.5% drops 1 drop every 2 h for the first 48 h, then every 4 h (waking hours) (or 1% ointment 3–4 times a day, or at night with drops by day); continue for 48 h after healing (check product SPC/BNF). Allergy → fusidic acid 1% BD.
 Avoid contact lenses. Safety-net: pain / photophobia / reduced vision / lens-wearer → same-day ophthalmology.`,
     sources: [
       { label:'College of Optometrists', url:'https://www.college-optometrists.org/clinical-guidance' },
+      { label:'BNF — chloramphenicol', url:'https://bnf.nice.org.uk/drugs/chloramphenicol/' },
     ],
   },
 
@@ -359,17 +368,20 @@ Hygiene + exclusion until crusted/48 h on antibiotics. Safety-net: spreading/sys
     category: 'Dermatology',
     eyebrow: 'Flucloxacillin 1st line · use Eron class',
     indication: 'Cellulitis (spreading erythema, warmth, swelling, pain). Treat in community if Eron class I (no systemic toxicity / instability). Mark the margins and review.',
-    contraindications: 'Penicillin allergy → clarithromycin/doxycycline. Near eyes/face or orbital signs → different pathway (admit / co-amoxiclav).',
+    contraindications: 'Penicillin allergy → clarithromycin or doxycycline; in pregnancy use erythromycin. Near the eyes or nose → co-amoxiclav (penicillin allergy: clarithromycin + metronidazole); orbital signs → same-day/admit.',
     duration: '5–7 days (extend to ~7 if slow response)',
     drugs: [
       { name: 'Flucloxacillin', dose: '500 mg–1 g', freq: 'QDS', route: 'PO', days: '5–7' },
       { name: 'Penicillin allergy: Clarithromycin', dose: '500 mg', freq: 'BD', route: 'PO', days: '5–7' },
       { name: 'OR Doxycycline (alt)', dose: '200 mg day 1 then 100 mg', freq: 'OD', route: 'PO', days: '5–7' },
+      { name: 'Penicillin allergy in pregnancy: Erythromycin', dose: '500 mg', freq: 'QDS', route: 'PO', days: '5–7' },
+      { name: 'Near the eyes or nose: Co-amoxiclav', dose: '500/125 mg', freq: 'TDS', route: 'PO', days: '7' },
+      { name: 'Near the eyes or nose + penicillin allergy: Clarithromycin + Metronidazole', dose: '500 mg + 400 mg', freq: 'BD + TDS', route: 'PO', days: '7' },
     ],
     altRegimens: [
-      { label: 'Facial / near eyes', drugs: 'Co-amoxiclav 500/125 mg TDS × 7 days; low threshold for admission (periorbital/orbital).' },
+      { label: 'Facial — near the eyes or nose', drugs: 'Co-amoxiclav 500/125 mg TDS × 7 days (penicillin allergy: clarithromycin 500 mg BD + metronidazole 400 mg TDS × 7 days) (NICE NG141); low threshold for admission (periorbital/orbital).' },
       { label: 'Class II / not improving / comorbid', drugs: 'Consider IV (OPAT) or admission; reassess for abscess/necrotising features.' },
-      { label: 'Likely water exposure / animal source', drugs: 'Broaden cover per local guidance (e.g. co-amoxiclav / ciprofloxacin).' },
+      { label: 'Likely water exposure / animal source', drugs: 'Seek microbiology advice (unusual organisms). If a fluoroquinolone is suggested, MHRA (January 2024) restricts these to when other recommended antibiotics are inappropriate, because of rare but disabling, long-lasting tendon, muscle, joint, nerve and psychiatric effects.' },
     ],
     counselling: [
       'Mark the edge of the redness (or photograph) to track spread.',
@@ -383,8 +395,9 @@ Hygiene + exclusion until crusted/48 h on antibiotics. Safety-net: spreading/sys
       'Periorbital/orbital signs (proptosis, painful eye movement) → same-day.',
     ],
     emisText: `Cellulitis (Eron class I, community):
-- Flucloxacillin 500 mg–1 g PO QDS × 5–7 days. Pen-allergic: clarithromycin 500 mg BD (or doxycycline 100 mg OD) × 5–7.
-- Facial/periorbital: co-amoxiclav 500/125 TDS × 7 + low admission threshold.
+- Flucloxacillin 500 mg–1 g PO QDS × 5–7 days. Pen-allergic: clarithromycin 500 mg BD (or doxycycline 200 mg day 1 then 100 mg OD) × 5–7; pregnancy: erythromycin 500 mg QDS × 5–7.
+- Near eyes/nose: co-amoxiclav 500/125 TDS × 7 (pen-allergic: clarithromycin 500 mg BD + metronidazole 400 mg TDS × 7) + low admission threshold.
+- Water/animal exposure: seek microbiology advice.
 Mark margins; elevate; treat skin breaks. Review at 48 h.
 Safety-net: spreading beyond mark / systemic / severe pain → urgent (exclude necrotising fasciitis).`,
     sources: [
@@ -446,7 +459,7 @@ Urgent dental referral. Safety-net: facial/floor-of-mouth swelling, trismus, dys
       { name: 'Analgesia: Paracetamol ± ibuprofen', dose: '1 g / 400 mg', freq: 'QDS / TDS', route: 'PO', days: 'PRN' },
     ],
     altRegimens: [
-      { label: 'Pregnancy + penicillin allergy', drugs: 'Seek microbiology advice (avoid doxycycline) — e.g. azithromycin + metronidazole per local guidance.' },
+      { label: 'Pregnancy + penicillin allergy', drugs: 'Seek specialist (microbiology) advice (NICE NG184); avoid doxycycline in pregnancy.' },
       { label: 'Established infection', drugs: 'Co-amoxiclav 5-day course; consider swab, imaging if deep/joint involvement.' },
     ],
     counselling: [
@@ -463,7 +476,7 @@ Urgent dental referral. Safety-net: facial/floor-of-mouth swelling, trismus, dys
     emisText: `Animal/human bite:
 - Wound irrigation + tetanus/rabies/BBV risk assessment.
 - Co-amoxiclav 500/125 mg TDS — 3 days prophylaxis (high-risk wound) or 5 days treatment (established infection).
-- Pen-allergic: Doxycycline 100 mg BD + Metronidazole 400 mg TDS × 3–5 days.
+- Pen-allergic: Doxycycline 100 mg BD + Metronidazole 400 mg TDS × 3–5 days. Pregnant + pen-allergic: seek specialist advice.
 Safety-net: hand/joint involvement, spreading infection → same-day review.`,
     sources: [
       { label:'NICE NG184 — Human & animal bites', url:'https://www.nice.org.uk/guidance/ng184' },

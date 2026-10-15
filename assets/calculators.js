@@ -73,7 +73,7 @@
 
   /* fixed source notes about how a score may be used (not about a patient) */
   const NOTE = {
-    'abcd2':    'NICE NG128: all people with suspected TIA need specialist assessment within 24 hours, regardless of score. ABCD² is no longer recommended for triage.',
+    'abcd2':    'NICE NG128: do not use a risk score such as ABCD² to decide how urgently to refer. Suspected TIA in the last 7 days → specialist assessment within 24 hours of symptom onset; TIA more than 7 days ago → specialist assessment as soon as possible, within 7 days.',
     'has-bled': 'A high HAS-BLED is not a reason to withhold anticoagulation — it identifies modifiable bleeding risk factors (NICE NG196 prefers ORBIT).',
     'alcohol-units': 'UK CMO low-risk guideline: ≤ 14 units/week spread over ≥ 3 days, with drink-free days.',
     'bmi':      'NICE NG246: use lower thresholds (overweight ≥23, obesity ≥27.5 kg/m²) for people of South Asian, Chinese, other Asian, Middle Eastern, Black African or African-Caribbean family background.',
@@ -82,7 +82,7 @@
 
   /* full formulas where the data file only named the equation */
   const FORMULA = {
-    'egfr': 'eGFR = 142 × min(SCr/κ, 1)^α × max(SCr/κ, 1)^−1.200 × 0.9938^age × 1.012 [if female] — SCr in mg/dL (µmol/L ÷ 88.4); κ = 0.7 (F) / 0.9 (M); α = −0.241 (F) / −0.302 (M)  (CKD-EPI 2021)'
+    'egfr': 'eGFR = 141 × min(SCr/κ, 1)^α × max(SCr/κ, 1)^−1.209 × 0.993^age × 1.018 [if female] — SCr in mg/dL (µmol/L ÷ 88.4); κ = 0.7 (F) / 0.9 (M); α = −0.329 (F) / −0.411 (M); no ethnicity coefficient  (CKD-EPI 2009, as used by UK laboratories and NICE NG203)'
   };
 
   /* published bands for continuous results, written out so each threshold can be read and checked */
@@ -254,7 +254,7 @@
           '<p class="cc-bandnote">Bands as the source states them — a description of the score, not an action for a patient. Read what follows in the cited guideline.</p>' +
         '</div>' : '') +
       (NOTE[c.id] ? '<p class="cc-srcnote">' + esc(NOTE[c.id]) + '</p>' : '') +
-      (NUMBER_ONLY.has(c.id) && c.id === 'crcl' ? '<p class="cc-srcnote">Cockcroft-Gault has no interpretation bands of its own. No dose is given here: check the BNF and the SPC for the drug.</p>' : '') +
+      (NUMBER_ONLY.has(c.id) && c.id === 'crcl' ? '<p class="cc-srcnote">Cockcroft-Gault has no interpretation bands of its own. Use this value with the drug’s SPC/BNF renal dosing information — no dose or drug advice is given here. See <a href="https://bnf.nice.org.uk/medicines-guidance/prescribing-in-renal-impairment/" target="_blank" rel="noopener noreferrer">BNF: prescribing in renal impairment ↗</a> and the <a href="prescribing.html#sec-ckd">prescribing hub: CKD and renal dosing</a>.</p>' : '') +
       renderRefs(c);
   }
 

@@ -96,7 +96,7 @@
     category: 'Travel Health',
     eyebrow: 'ABCD · bite avoidance + region-specific drug',
     indication: 'Malaria prevention for travel to endemic areas. Follow ABCD: Awareness of risk, Bite avoidance, Chemoprophylaxis, prompt Diagnosis. Choice depends on destination resistance, trip length, cost, comorbidity and patient factors (check current country-specific advice/TRAVAX/NaTHNaC).',
-    contraindications: 'Mefloquine: avoid in neuropsychiatric history (depression, anxiety, psychosis, seizures). Doxycycline: pregnancy, children <12, photosensitivity. Atovaquone-proguanil: avoid for prophylaxis if eGFR <30 mL/min/1.73m\u00b2. Chloroquine: not for resistant areas; caution epilepsy/psoriasis. Pregnancy/children/immunocompromised — specialist travel advice.',
+    contraindications: 'NHS prescribing: antimalarials for travel prophylaxis are not prescribed on the NHS \u2014 issue a private prescription or advise purchase from a pharmacy (some are available from pharmacies after a pharmacist consultation). Mefloquine: avoid in neuropsychiatric history (depression, anxiety, psychosis, seizures). Doxycycline: pregnancy, children <12, photosensitivity. Atovaquone-proguanil: avoid for prophylaxis if eGFR <30 mL/min/1.73m\u00b2. Chloroquine: not for resistant areas; caution epilepsy/psoriasis. Pregnancy/children/immunocompromised — specialist travel advice.',
     duration: 'Varies by drug (see below)',
     drugs: [
       { name: 'Bite avoidance: DEET ≥20–50%, nets, covering clothing, repellents', dose: '—', freq: 'Continuous', route: 'External', days: 'Whole trip + after' },
@@ -124,9 +124,11 @@
 - Atovaquone-proguanil 1 tab OD: 1-2 days before → 7 days after.
 - Doxycycline 100 mg OD: 1-2 days before → 4 weeks after (not pregnancy/<12, photosensitivity).
 - Mefloquine 250 mg weekly: 2-3 wks before → 4 wks after (avoid neuropsychiatric hx).
+- NOT on NHS prescription for travel: private prescription or pharmacy purchase.
 - ANY fever during/within 1 yr of travel → urgent malaria test.`,
     sources: [
-      { label:'UKHSA — Malaria prevention guidelines (2025)', url:'https://www.gov.uk' },
+      { label:'UKHSA \u2014 Malaria prevention guidelines for travellers from the UK', url:'https://www.gov.uk/government/publications/malaria-prevention-guidelines-for-travellers-from-the-uk-2026' },
+      { label:'NaTHNaC TravelHealthPro \u2014 malaria', url:'https://travelhealthpro.org.uk/diseases/malaria' },
     ],
   },
 

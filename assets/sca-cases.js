@@ -355,7 +355,7 @@ window.SCA_CASES = [
       { lbl:'Alternatives first', txt:'"Before we discuss insulin, I want to offer you a different option called an SGLT2 inhibitor and a once-weekly injection — these often improve sugars, take weight off, and protect the heart and kidneys."' },
       { lbl:'Safety-net',        txt:'"If your sugar goes low during a fast — sweating, shaking, confused — you break the fast and take sugar. That\'s not a sin; that\'s the rule that protects the rule."' },
     ],
-    learning:'The marking gap on this kind of station is cultural humility paired with clinical correctness. Tasks: SGLT2 + GLP-1 before insulin where possible, DVLA disclosure, Ramadan-adjusted dose. Relating-to-others: honouring the patient\'s faith without colluding with unsafe practice. Diabetes UK and IFA Ramadan guidance are the reference points.'
+    learning:'The marking gap on this kind of station is cultural humility paired with clinical correctness. Tasks: SGLT2 + GLP-1 before insulin where possible, DVLA disclosure, Ramadan-adjusted dose. Relating-to-others: honouring the patient\'s faith without colluding with unsafe practice. Diabetes UK and IDF-DAR Ramadan guidance are the reference points.'
   },
 
   /* ============= 9. VIDEO — Abnormal LFTs in 42-year-old solicitor ============= */

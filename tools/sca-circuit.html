@@ -136,8 +136,8 @@
   </main>
 </div>
 
-<script src="../assets/site.js?v=105"></script>
-<script src="../assets/sca-cases.js"></script>
+<script src="../assets/site.js?v=107"></script>
+<script src="../assets/sca-cases.js?v=3"></script>
 <script src="../assets/sca-extras.js?v=3"></script>
 <script src="../assets/sca-cases2.js?v=4"></script>
 <script src="../assets/sca-cases3.js?v=3"></script>
@@ -149,7 +149,7 @@
 <script src="../assets/sca-cases9.js?v=2"></script>
 <script src="../assets/sca-cases10.js?v=3"></script>
 <script src="../assets/sca-cases11.js?v=3"></script>
-<script src="../assets/sca-cases12.js?v=3"></script>
+<script src="../assets/sca-cases12.js?v=4"></script>
 <script src="../assets/sca-cases13.js?v=2"></script>
 <script src="../assets/sca-cases14.js?v=5"></script>
 <script src="../assets/sca-cases15.js?v=4"></script>
@@ -217,7 +217,7 @@
 <script src="../assets/sca-cases77.js?v=2"></script>
 <script src="../assets/sca-cases78.js?v=5"></script>
 <script src="../assets/sca-cases79.js?v=2"></script>
-<script src="../assets/sca-cases80.js?v=2"></script>
+<script src="../assets/sca-cases80.js?v=4"></script>
 <script>
 (function(){
   'use strict';
@@ -227,7 +227,8 @@
   const CASES = (window.SCA_CASES || []).map(c => Object.assign({}, c, (window.SCA_EXTRAS || {})[c.id] || {}));
   /* Free tier: circuit draws only from the 5 sample cases */
   if (window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier()){
-    CASES.splice(5);
+    CASES.splice(0, CASES.length, ...CASES.filter(c => (window.SCA_FREE_IDS || []).indexOf(c.id) > -1));
+    if (!CASES.length) CASES.push(...(window.SCA_CASES || []).slice(0, 5)); // stale site.js fallback
     const h = document.querySelector('.tool-head');
     if (h){ const d = document.createElement('div'); d.style.cssText='margin:14px 0 4px;padding:11px 16px;border:1px solid #99c4bf;background:#ecf5f3;border-radius:11px;font-size:13px;line-height:1.55;color:#1c1917';
       d.innerHTML='\ud83d\udd13 <b style="color:#0c4a47">Free plan:</b> your circuit draws from the 5 free sample cases. <a href="../index.html#subscriptions" style="color:#0c4a47;font-weight:700">Unlock all 312 \u2192</a>'; h.insertAdjacentElement('afterend', d); }

@@ -53,6 +53,7 @@
 .gm-list{ margin-top:8px; max-height:260px; overflow:auto; border:1px solid var(--line); border-radius:10px; }
 .gm-case{ display:flex; gap:9px; align-items:center; width:100%; text-align:left; font:inherit; font-size:13px; padding:9px 12px; border:none; border-bottom:1px solid #f4f6f9; background:#fff; cursor:pointer; color:var(--ink-2); }
 .gm-case:last-child{ border-bottom:none; }
+.gm-case .gm-free{ display:inline-block; font-size:9.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:#fff; background:#0c4a47; border-radius:999px; padding:2px 7px; margin-right:6px; vertical-align:1px; }
 .gm-case:hover{ background:#f8faf9; }
 .gm-case.sel{ background:#ecf5f3; color:var(--ink); font-weight:700; }
 .gm-case .ty{ margin-left:auto; flex-shrink:0; font-size:10px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); border:1px solid var(--line); border-radius:999px; padding:2px 8px; }
@@ -204,16 +205,9 @@ a{ color:var(--teal); } a:hover{ color:var(--rust); }
   </main>
 </div>
 
-<script src="../assets/site.js?v=105"></script>
-<script src="../assets/sca-cases.js"></script>
-<script src="../assets/sca-extras.js?v=3"></script>
-<script>
-/* load the rest of the case library so the picker matches the other SCA tools */
-(function(){
-  var n = 80, base='../assets/sca-cases', i;
-  for(i=2;i<=n;i++){ document.write('<scr'+'ipt src="'+base+i+'.js?v=1"></scr'+'ipt>'); }
-})();
-</script>
+<script src="../assets/site.js?v=107"></script>
+<!-- the full 312-case library, same files and order as The Hot Seat -->
+<script src="../assets/sca-loader.js?v=1"></script>
 <script>
 (function(){
   'use strict';
@@ -224,6 +218,7 @@ a{ color:var(--teal); } a:hover{ color:var(--rust); }
   const DOMS = [['dg','Data Gathering & Diagnosis'],['cm','Clinical Management & Medical Complexity'],['rto','Relating to Others']];
   const ROLES = [['candidate','🧑‍⚕️','Candidate'],['patient','🧑','Patient'],['examiner','⚖️','Examiner']];
 
+  const UI = window.SCA_UI;
   const ALL = (window.SCA_CASES||[]).map(c=>Object.assign({},c,(window.SCA_EXTRAS||{})[c.id]||{}));
   const byId = {}; ALL.forEach(c=>{ byId[c.id]=c; });
 
@@ -256,8 +251,10 @@ a{ color:var(--teal); } a:hover{ color:var(--rust); }
 
   // ---- free-tier host cap (mirrors the Hot Seat 5-sample policy) ----
   const freeTier = () => !!(window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier());
-  const freeSet = new Set(((window.RGP_FREE_SAMPLES||{}).scaCases)||[]);
+  const freeSet = new Set(UI.freeIds());
   const hostable = c => !freeTier() || freeSet.has(c.id);
+  // free accounts: the 5 hostable samples first, marked Free
+  if (freeTier()) ALL.splice(0, ALL.length, ...UI.freeFirst(ALL));
 
   // ---- session state ----
   let code = '', st = null, me = { name:'', role:'' }, pollId = null, tickId = null, selCase = null, advancing = false;
@@ -271,7 +268,8 @@ a{ color:var(--teal); } a:hover{ color:var(--rust); }
     const hits = ALL.filter(c => !q || (c.title+' '+(c.brief||'')).toLowerCase().includes(q)).slice(0, 40);
     $('#caseList').innerHTML = hits.map(c => {
       const lock = hostable(c) ? '' : '<span class="lk">🔒</span>';
-      return `<button class="gm-case ${selCase===c.id?'sel':''}" data-id="${esc(c.id)}">${lock}<span>${esc(c.title)}</span><span class="ty">${TYPE_LBL[c.type]||''}</span></button>`;
+      const free = (freeTier() && freeSet.has(c.id)) ? '<span class="gm-free">Free</span>' : '';
+      return `<button class="gm-case ${selCase===c.id?'sel':''}" data-id="${esc(c.id)}">${lock}<span>${free}${esc(UI.title(c))}</span><span class="ty">${TYPE_LBL[c.type]||''}</span></button>`;
     }).join('') || '<div style="padding:12px 14px;font-size:13px;color:var(--muted)">No matching case.</div>';
     document.querySelectorAll('#caseList .gm-case').forEach(b => b.addEventListener('click', () => {
       const c = byId[b.dataset.id];
@@ -285,7 +283,7 @@ a{ color:var(--teal); } a:hover{ color:var(--rust); }
     const pool = ALL.filter(hostable);
     const c = pool[Math.floor(Math.random()*pool.length)];
     if(!c) return;
-    selCase = c.id; $('#caseSearch').value = c.title; renderList(c.title);
+    selCase = c.id; $('#caseSearch').value = UI.title(c); renderList(UI.title(c));
     $('#createBtn').disabled = !ready();
   });
   renderList('');
@@ -408,7 +406,9 @@ a{ color:var(--teal); } a:hover{ color:var(--rust); }
   function renderStage(){
     show('stage');
     const c = byId[st.caseId] || {};
-    $('#barTitle').textContent = me.role==='candidate' && st.phase==='prep' ? 'Your next patient' : (c.title || '');
+    // the candidate never sees a diagnosis-bearing label until marking
+    $('#barTitle').textContent = me.role==='candidate' && st.phase==='prep' ? 'Your next patient'
+      : (me.role==='candidate' && st.phase!=='marking' && st.phase!=='done') ? UI.title(c) : (c.title || '');
     $('#barType').textContent = TYPE_LBL[c.type] || 'Consultation';
     $('#barRole').textContent = me.role || 'observer';
     const tag = $('#phaseTag');
@@ -428,9 +428,9 @@ a{ color:var(--teal); } a:hover{ color:var(--rust); }
 
   function buildPanes(c){
     const s = c.script || {};
-    // Candidate — brief only, like the real exam
+    // Candidate — the record notes only, like the real exam (the examiner brief often names the diagnosis)
     $('#paneCandidate').innerHTML = `
-      <div class="gm-brief"><div class="bh">Medical-record brief</div><p>${esc(c.brief||'')}</p></div>
+      <div class="gm-brief"><div class="bh">Medical record</div>${UI.record(c)}</div>
       <div class="gm-brief"><div class="bh">Reminders</div><p>Open with the patient's agenda · elicit ICE · share your reasoning · agree the plan together · safety-net specifically. Your patient and examiner are on your video call.</p></div>`;
     // Patient — full script
     const facts = (s.facts||[]).map(f=>`<div class="gm-fact"><div class="k">${esc(f.topic||'')}</div><div class="v">${esc(f.text||'')}</div></div>`).join('');

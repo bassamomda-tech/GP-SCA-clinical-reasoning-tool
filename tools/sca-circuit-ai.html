@@ -213,11 +213,10 @@
   </main>
 </div>
 
-<script src="../assets/site.js?v=105"></script>
+<script src="../assets/site.js?v=107"></script>
 <script src="../assets/tts-voice.js?v=1"></script>
-<script src="../assets/sca-cases.js"></script>
-<script src="../assets/sca-extras.js?v=3"></script>
-<script>(function(){ for(var i=2;i<=80;i++){ document.write('<scr'+'ipt src="../assets/sca-cases'+i+'.js?v=1"></scr'+'ipt>'); } })();</script>
+<!-- the full 312-case library, same files and order as The Hot Seat -->
+<script src="../assets/sca-loader.js?v=1"></script>
 <script>
 (function(){
   'use strict';
@@ -227,9 +226,10 @@
   const GVAL = { CF:0, F:1, P:2, CP:3 }, GLAB={CF:'Clear fail',F:'Fail',P:'Pass',CP:'Clear pass'};
 
   const ALL = (window.SCA_CASES || []).map(c => Object.assign({}, c, (window.SCA_EXTRAS || {})[c.id] || {}));
+  const UI = window.SCA_UI;
   /* Free tier: circuit draws only from the 5 sample cases */
   if (window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier()){
-    ALL.splice(5);
+    ALL.splice(0, ALL.length, ...UI.freeOnly(ALL));
     const h = document.querySelector('.tool-head');
     if (h){ const d = document.createElement('div'); d.style.cssText='margin:14px 0 4px;padding:11px 16px;border:1px solid #99c4bf;background:#ecf5f3;border-radius:11px;font-size:13px;line-height:1.55;color:#1c1917';
       d.innerHTML='\ud83d\udd13 <b style="color:#0c4a47">Free plan:</b> your circuit draws from the 5 free sample cases. <a href="../index.html#subscriptions" style="color:#0c4a47;font-weight:700">Unlock all 312 \u2192</a>'; h.insertAdjacentElement('afterend', d); }
@@ -283,12 +283,13 @@
   function startCase(){
     const c=order[idx];
     transcript=[];
-    $('#barTitle').textContent=c.title; $('#barType').textContent=TYPE_LBL[c.type]||'Consultation';
+    $('#barTitle').textContent=UI.title(c); $('#barType').textContent=TYPE_LBL[c.type]||'Consultation';
     renderDots();
     $('#inter').classList.add('hidden'); $('#live').classList.add('hidden');
-    $('#prepTitle').textContent=c.title;
+    $('#prepTitle').textContent=UI.title(c);
     $('#prepMeta').innerHTML=`<span>Case ${idx+1} of ${order.length}</span><span>${TYPE_LBL[c.type]||'Consultation'}</span>`;
-    $('#prepRec').innerHTML=`<b>Medical-record brief:</b> ${esc(c.brief)}`;
+    // candidate sees the record notes (stem), never the examiner brief
+    $('#prepRec').innerHTML=`<b>Medical record:</b>${UI.record(c)}`;
     if($('#optPrep').checked){ phase='prep'; $('#phaseTag').textContent='Prep'; $('#phaseTag').className='sim-phase prep'; $('#prep').classList.remove('hidden'); startTimer(180); }
     else beginConsult();
   }
@@ -422,7 +423,7 @@
     const cls=x=> x==null?'F': x>=2?'P':'F';
     const passAll = a.cm!=null && a.cm>=2 && a.dg>=1.5 && a.rto>=1.5;
     const dom=(k,name)=>`<div class="cc-dom"><div class="dn">${name}</div><div class="dv cc-g ${cls(a[k])}">${a[k]==null?'—':a[k].toFixed(1)}</div><div class="dl">${band(a[k])==='—'?'not marked':GLAB[band(a[k])]}</div></div>`;
-    const rows=results.map((r,i)=> r? `<tr><td class="case">${i+1}. ${esc(r.title)}</td>
+    const rows=results.map((r,i)=> r? `<tr><td class="case">${i+1}. ${esc(r.title)}${order[i]?`<div style="font-size:11.5px;font-weight:500;color:var(--muted);margin-top:2px">${esc(UI.fullMeta(order[i]))}</div>`:''}</td>
         <td><span class="cc-g ${r.dg}">${r.dg}</span></td><td><span class="cc-g ${r.cm}">${r.cm}</span></td><td><span class="cc-g ${r.rto}">${r.rto}</span></td>
         <td>${esc(r.one||'')}</td></tr>`:'').join('');
     $('#repBody').innerHTML = `

@@ -254,7 +254,7 @@ window.SCA_PITFALLS = {
       { dom:'tasks',
         fail:'A taxi driver on a sulfonylurea — possibly starting insulin — and driving is never mentioned.',
         why:'“Missed a medicolegal obligation.” Hypoglycaemia and Group 2/taxi licensing rules are a scored item, and among the most commonly omitted.',
-        fix:'Address it explicitly: glucose ≥5 to drive, test before driving and two-hourly, fast sugar kept in the cab, and the duty to notify the DVLA if insulin starts.' },
+        fix:'Address it explicitly: never drive below 4.0 mmol/L and have a snack first if 4.0–5.0 (“five to drive”), test before driving and two-hourly, fast sugar kept in the cab, and the duty to notify the DVLA if insulin starts.' },
       { dom:'rto',
         fail:'“Why haven’t you come for review in eighteen months?” — the consultation opens with reproach.',
         why:'“Judgemental tone destroys rapport in the first minute.” Engagement is the problem to solve, not attendance to punish.',

@@ -197,11 +197,11 @@ Review function at each step; deprescribe if no benefit.`,
     eyebrow: 'Topical for skin · oral for nail/scalp · confirm before oral',
     indication: 'Dermatophyte infections by site: tinea corporis/cruris (body/groin), tinea pedis (athlete\u2019s foot), onychomycosis (nail), tinea capitis (scalp). Topical antifungals for skin; ORAL antifungals are needed for nail and scalp disease. Confirm nail/scalp infection (sampling) before oral treatment.',
     contraindications: 'Terbinafine/oral azoles: check LFTs (hepatotoxicity), drug interactions (azoles are CYP inhibitors \u2014 e.g. statins, warfarin). Avoid oral terbinafine in significant liver disease. Tinea capitis needs ORAL therapy (topicals don\u2019t penetrate hair follicles). Pregnancy: avoid oral antifungals (topical imidazole preferred). Griseofulvin: women avoid pregnancy during and for 1 month after; men must not father a child during and for 6 months after (BNF/MHRA).',
-    duration: 'Skin 1\u20136 wks; nail 6\u201312 months; scalp 4\u20138 weeks',
+    duration: 'Skin 1\u20136 wks; nail (oral terbinafine) fingernails 6 wks\u20133 months, toenails 3\u20136 months (lacquer longer); scalp 4\u20138 weeks',
     drugs: [
       { name: 'Body/groin/foot: Terbinafine 1% cream', dose: 'Apply', freq: 'OD\u2013BD', route: 'Topical', days: '1\u20132 wks (body/groin) / 1 wk (foot)' },
       { name: 'Alt topical: imidazole (clotrimazole/miconazole)', dose: 'Apply', freq: 'BD\u2013TDS', route: 'Topical', days: 'Until clear + 1\u20132 wks' },
-      { name: 'Nail (dermatophyte-confirmed): Terbinafine PO', dose: '250 mg', freq: 'OD', route: 'PO', days: 'Fingernail 6 wks / toenail 12\u2013(16) wks' },
+      { name: 'Nail (dermatophyte-confirmed): Terbinafine PO', dose: '250 mg', freq: 'OD', route: 'PO', days: 'Fingernails 6 weeks\u20133 months / toenails 3\u20136 months' },
       { name: 'Scalp (tinea capitis): oral antifungal (terbinafine or griseofulvin)', dose: 'Weight-based', freq: 'OD', route: 'PO', days: '4\u20138 weeks (+ antifungal shampoo)' },
     ],
     altRegimens: [
@@ -225,7 +225,7 @@ Review function at each step; deprescribe if no benefit.`,
     ],
     emisText: `Dermatophyte infections by site:
 - Body/groin/foot: terbinafine 1% cream OD-BD 1-2 wks (foot 1 wk), or imidazole BD-TDS until clear + 1-2 wks (usually 4-6 wks).
-- Nail (confirm by clippings): terbinafine 250 mg OD \u2014 fingernail 6 wks, toenail 12-16 wks (or amorolfine lacquer if mild/distal).
+- Nail (confirm by clippings): terbinafine 250 mg OD \u2014 fingernails 6 wks-3 months, toenails 3-6 months (or amorolfine lacquer if mild/distal).
 - Scalp (tinea capitis): ORAL antifungal (terbinafine/griseofulvin) 4-8 wks + antifungal shampoo; treat contacts; oral essential.
 - Confirm nail/scalp before oral; check LFTs/interactions. Don't use steroid alone (tinea incognito).
 - Extensive or terbinafine-failed tinea: think terbinafine-resistant T. indotineae (UKHSA) - scrapings for mycology + specialist advice.`,

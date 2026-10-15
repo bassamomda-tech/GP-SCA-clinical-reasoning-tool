@@ -66,6 +66,7 @@
 .sim-pick-list .sim-case .sc-meta{ font-size:11px; font-weight:600; color:var(--muted); }
 .sim-pick-list .sim-case.sel{ border-color:#0c4a47; background:#ecfdf5; }
 .sim-pick-list .sim-case.sel .sc-title{ color:#0c4a47; }
+.sim-pick-list .sim-case .sc-free{ display:inline-block; font-size:9.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:#fff; background:#0c4a47; border-radius:999px; padding:2px 7px; margin-right:6px; vertical-align:1px; }
 .sim-empty{ padding:26px 14px; text-align:center; font-size:13px; color:var(--muted); }
 
 /* consult shell */
@@ -311,17 +312,10 @@
   </main>
 </div>
 
-<script src="../assets/site.js?v=105"></script>
+<script src="../assets/site.js?v=107"></script>
 <script src="../assets/tts-voice.js?v=1"></script>
-<script src="../assets/sca-cases.js"></script>
-<script src="../assets/sca-extras.js?v=3"></script>
-<script>
-/* load the rest of the case library so the picker matches the role-play packs */
-(function(){
-  var n = 80, base='../assets/sca-cases', i;
-  for(i=2;i<=n;i++){ document.write('<scr'+'ipt src="'+base+i+'.js?v=1"></scr'+'ipt>'); }
-})();
-</script>
+<!-- the full 312-case library, same files and order as The Hot Seat -->
+<script src="../assets/sca-loader.js?v=1"></script>
 <script>
 (function(){
   'use strict';
@@ -330,9 +324,11 @@
   const TYPE_LBL = { video:'Video consultation', phone:'Telephone', telephone:'Telephone', f2f:'Face-to-face', visit:'Home visit', data:'Results review' };
 
   const CASES = (window.SCA_CASES || []).map(c => Object.assign({}, c, (window.SCA_EXTRAS || {})[c.id] || {}));
-  /* Free tier: same 5 sample cases as the Hot Seat, everywhere */
-  if (window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier()){
-    CASES.splice(5);
+  const UI = window.SCA_UI;
+  const freeView = !!(window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier());
+  /* Free tier: same 5 sample cases as the Hot Seat, everywhere (marked Free) */
+  if (freeView){
+    CASES.splice(0, CASES.length, ...UI.freeOnly(CASES));
     const h = document.querySelector('.tool-head');
     if (h){ const d = document.createElement('div'); d.style.cssText='margin:14px 0 4px;padding:11px 16px;border:1px solid #99c4bf;background:#ecf5f3;border-radius:11px;font-size:13px;line-height:1.55;color:#1c1917';
       d.innerHTML='\ud83d\udd13 <b style="color:#0c4a47">Free plan:</b> the 5 sample cases below are open to everyone \u2014 no sign-up needed. <a href="../index.html#subscriptions" style="color:#0c4a47;font-weight:700">Unlock all 312 \u2192</a>'; h.insertAdjacentElement('afterend', d); }
@@ -442,8 +438,10 @@
     if(!list.length){ $('#pick').innerHTML = `<div class="sim-empty">No cases match these filters.</div>`; return; }
     if(!list.includes(cur)) cur = list[0];
     $('#pick').innerHTML = list.map(c=>{
-      const meta = [TYPE_LBL[c.type]||'Consultation', (c.meta&&c.meta.system)||c._spec].filter(Boolean).join(' · ');
-      return `<button class="sim-case${c===cur?' sel':''}" data-id="${esc(c.id)}"><span class="sc-title">${esc(c.title)}</span><span class="sc-meta">${esc(meta)}</span></button>`;
+      // neutral label only: meta.system often names the diagnosis
+      const meta = UI.meta(c);
+      const free = freeView ? '<span class="sc-free">Free</span>' : '';
+      return `<button class="sim-case${c===cur?' sel':''}" data-id="${esc(c.id)}"><span class="sc-title">${free}${esc(UI.title(c))}</span><span class="sc-meta">${esc(meta)}</span></button>`;
     }).join('');
   }
 
@@ -491,12 +489,12 @@
     document.body.classList.toggle('exam-day', examDay);
     $('#setup').classList.add('hidden');
     $('#consult').classList.remove('hidden');
-    $('#barTitle').textContent = cur.title;
+    $('#barTitle').textContent = UI.title(cur);
     $('#barType').textContent = TYPE_LBL[cur.type] || 'Consultation';
-    // prep card
-    $('#prepTitle').textContent = cur.title;
+    // prep card: the candidate's record notes (stem) — never the examiner brief
+    $('#prepTitle').textContent = UI.title(cur);
     $('#prepMeta').innerHTML = `<span>${TYPE_LBL[cur.type]||'Consultation'}</span><span>3 min prep · 12 min consult</span>`;
-    $('#prepRec').innerHTML = `<b>Medical-record brief:</b> ${esc(cur.brief)}`;
+    $('#prepRec').innerHTML = `<b>Medical record:</b>${UI.record(cur)}`;
     $('#say').placeholder = liveMode ? 'Just talk — the patient hears you when you pause…' : 'Type what you say to the patient…';
     if($('#optPrep').checked){
       phase='prep'; $('#phaseTag').textContent='Prep'; $('#phaseTag').className='sim-phase prep';
@@ -514,7 +512,7 @@
     const isPhone=(cur.type==='phone'||cur.type==='telephone');
     $('#csMode').textContent = TYPE_LBL[cur.type]||'Video consultation';
     $('#csHead').textContent = isPhone ? 'Calling your patient…' : 'Connecting to your patient…';
-    $('#csPt').textContent = cur.brief ? ('Booking note: '+cur.brief) : '';
+    $('#csPt').textContent = UI.reason(cur) ? ('Booking note: '+UI.reason(cur)) : '';
     const ov=$('#connect'); ov.classList.remove('hidden');
     setTimeout(()=>{ ov.classList.add('hidden'); $('#consult').classList.remove('hidden'); beginConsult(); }, 2600);
   }
@@ -789,7 +787,7 @@
     $('#phaseTag').textContent='Finished'; $('#phaseTag').className='sim-phase done';
     $('#consult').classList.add('hidden'); $('#feedback').classList.remove('hidden');
     $('#fbBody').innerHTML='<div class="sim-typing">Examiner is marking your consultation…</div>';
-    $('#fbSub').textContent = cur.title+' · '+transcript.filter(m=>m.role==='dr').length+' doctor turns';
+    $('#fbSub').textContent = cur.title+' · '+UI.fullMeta(cur)+' · '+transcript.filter(m=>m.role==='dr').length+' doctor turns';
     let raw='';
     try{
       if(!(window.claude && window.claude.complete)) throw new Error('unavailable');

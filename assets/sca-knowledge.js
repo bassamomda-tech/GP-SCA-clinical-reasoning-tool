@@ -295,7 +295,7 @@ window.SCA_PLAYBOOK = {
     management: {
       reflectIce: '“You said insulin feels like failing, like it did for your dad — I want to be clear this isn’t that, and we can almost certainly avoid it for now while still keeping you safe to fast and to drive.”',
       psychosocial: 'Respect both faith and job: plan a safe fast (faith permits breaking it for illness/hypo) and protect his driving — never force a choice between health, work and religion.',
-      sharedPlan: ['Add organ-protective agent (SGLT2i and/or GLP-1 RA) before reflex insulin; reduce/switch the sulfonylurea (hypo risk for fasting)','Pre-Ramadan review + structured education; agree an individualised HbA1c target','DVLA duties: glucose ≥5 to drive, test before and every 2h, carry sugar; notify DVLA if insulin'],
+      sharedPlan: ['Add organ-protective agent (SGLT2i and/or GLP-1 RA) before reflex insulin; reduce/switch the sulfonylurea (hypo risk for fasting)','Pre-Ramadan review + structured education; agree an individualised HbA1c target','DVLA duties: do not drive below 4.0 mmol/L, snack first if 4.0–5.0 (“five to drive”), test before and every 2h, carry sugar; notify DVLA if insulin'],
       safetyNet: ['Severe hypo you can’t treat, repeated vomiting, very unwell while fasting → break fast / 999','Sick-day rules and hypo treatment; arrange review']
     }
   },

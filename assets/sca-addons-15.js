@@ -7555,7 +7555,7 @@
     },
     {
      "h": "Initial management of type 2",
-     "t": "NG28 (February 2026) [2]: offer structured education and lifestyle support; start modified-release metformin in preference to standard release (unless swallowing needs dictate), titrating to the tolerated dose, then add an SGLT2 inhibitor, with caution in frailty. Before an SGLT2 inhibitor, check DKA risk factors and counsel on ketoacidosis and sick-day rules [8]. Doses per BNF. Typical HbA1c target 48 mmol/mol on lifestyle or drugs without hypoglycaemia risk, individualised."
+     "t": "NG28 (February 2026) [2]: offer structured education and lifestyle support; for most adults needing medication, offer dual first-line therapy: modified-release metformin (in preference to standard release unless swallowing needs dictate, titrated to the tolerated dose) plus an SGLT2 inhibitor, introduced stepwise with the SGLT2 inhibitor added within weeks, unless contraindicated and with caution in frailty. Before an SGLT2 inhibitor, check DKA risk factors and counsel on ketoacidosis and sick-day rules [8]. Doses per BNF. Typical HbA1c target 48 mmol/mol on lifestyle or drugs without hypoglycaemia risk, individualised."
     },
     {
      "h": "Risk and complications",
@@ -7710,7 +7710,7 @@
    },
    {
     "who": "dr",
-    "text": "If it’s type 2, the usual start is a slow-release metformin tablet, increased gradually, and then a second tablet called an SGLT2 inhibitor added later, along with a course on living with diabetes. We’ll arrange eye screening, foot and kidney checks, and look at your heart risk.",
+    "text": "If it’s type 2, the usual start is a slow-release metformin tablet, increased gradually, and then a second tablet called an SGLT2 inhibitor added within a few weeks — the two together are now the usual first treatment — along with a course on living with diabetes. We’ll arrange eye screening, foot and kidney checks, and look at your heart risk.",
     "dom": "tasks",
     "why": "NG28 February 2026 initial treatment and care processes"
    },
@@ -7802,7 +7802,7 @@
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "NG28 (Feb 2026) MR metformin then SGLT2 inhibitor; education; lifestyle agreed with him.",
+    "d": "NG28 (Feb 2026) dual first-line: MR metformin, then SGLT2 inhibitor within weeks; education; lifestyle agreed with him.",
     "pts": 2
    },
    {
@@ -7950,7 +7950,7 @@
     "psychosocial": "Build on his own chosen change; address driving; offer education rather than a lecture.",
     "sharedPlan": [
      "Lab plasma glucose; HbA1c baseline, U&E, lipids, TFT, LFT, urine ACR",
-     "If type 2: MR metformin, then add an SGLT2 inhibitor per NG28 (Feb 2026); doses per BNF",
+     "If type 2: NG28 (Feb 2026) dual first-line — MR metformin, with an SGLT2 inhibitor added within weeks; doses per BNF",
      "Structured education; switch sugary drinks to water",
      "QRISK and statin per NG238; retinal, foot and kidney checks",
      "Same-day diabetes team if ketones rise or type 1 suspected"
@@ -8017,7 +8017,7 @@
     {
      "dom": "tasks",
      "fail": "Starting standard-release metformin alone as the whole plan.",
-     "why": "NG28 (Feb 2026) prefers modified-release metformin, then an SGLT2 inhibitor, plus education and risk reduction.",
+     "why": "NG28 (Feb 2026) makes modified-release metformin plus an SGLT2 inhibitor dual first-line for most adults, plus education and risk reduction.",
      "fix": "Follow the updated sequence with care processes."
     },
     {

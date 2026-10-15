@@ -42,12 +42,13 @@ window.RGP_CALCULATORS = [
     },
     interpret(s, v){
       const isMale = !v.female;
-      if (s === 0)            return { label:'Very low risk', severity:'low',  action:'No anticoagulation. Stroke risk ~0.2%/yr.', detail:'Reassess annually as new risk factors emerge.' };
-      if (s === 1 && isMale)  return { label:'Low risk',      severity:'low',  action:'Consider anticoagulation. Discuss with patient.', detail:'Annual stroke risk ~0.6%. NICE NG196: consider anticoagulation (DOAC) for men with a score of 1, taking bleeding risk into account.' };
-      if (s === 1 && !isMale) return { label:'Low risk',      severity:'low',  action:'No anticoagulation (sex alone insufficient).', detail:'Score of 1 from female sex alone does not mandate anticoagulation.' };
-      if (s === 2)            return { label:'Moderate-high', severity:'med',  action:'Anticoagulation recommended (DOAC 1st line).', detail:'Annual stroke risk ~2%. NICE NG196: offer DOAC (apixaban, rivaroxaban, edoxaban, dabigatran).' };
-      if (s >= 3 && s <= 5)   return { label:'High risk',     severity:'high', action:'Anticoagulation strongly recommended.', detail:`Annual stroke risk rises with score (3 → ~3%; 5 → ~7%). Calculate ORBIT (preferred by NICE NG196) to inform — not to refuse — anticoagulation.` };
-      return                       { label:'Very high risk',  severity:'severe', action:'Anticoagulation indicated unless absolute contraindication.', detail:'Annual stroke risk ≥9%. Modify bleeding risk factors. Anticoagulant choice — see NICE NG196.' };
+      const SEE = ' See the atrial fibrillation protocol and NICE NG196 for the full recommendation.';
+      if (s === 0)            return { label:'Very low risk', severity:'low',  action:'NICE NG196: stroke prevention therapy is not offered to people under 65 with no risk factor other than sex.' + SEE, detail:'Reassess stroke and bleeding risk at review as risk factors change.' };
+      if (s === 1 && isMale)  return { label:'Low risk',      severity:'low',  action:'NICE NG196: consider anticoagulation for men with a score of 1, taking bleeding risk into account.' + SEE, detail:'Annual stroke risk ~0.6%.' };
+      if (s === 1 && !isMale) return { label:'Low risk',      severity:'low',  action:'NICE NG196: a score of 1 from female sex alone is not an indication for anticoagulation.' + SEE, detail:'Reassess as risk factors change.' };
+      if (s === 2)            return { label:'Moderate-high', severity:'med',  action:'NICE NG196: offer anticoagulation to people with a score of 2 or more, taking bleeding risk into account.' + SEE, detail:'Annual stroke risk ~2%.' };
+      if (s >= 3 && s <= 5)   return { label:'High risk',     severity:'high', action:'NICE NG196: offer anticoagulation to people with a score of 2 or more, taking bleeding risk into account.' + SEE, detail:'Annual stroke risk rises with score (3 → ~3%; 5 → ~7%). NICE NG196 uses ORBIT to assess bleeding risk.' };
+      return                       { label:'Very high risk',  severity:'severe', action:'NICE NG196: offer anticoagulation to people with a score of 2 or more, taking bleeding risk into account.' + SEE, detail:'Annual stroke risk ≥9%.' };
     },
     refs:[
       { label:'NICE NG196 Atrial fibrillation', url:'https://www.nice.org.uk/guidance/ng196' },
@@ -75,9 +76,9 @@ window.RGP_CALCULATORS = [
     ],
     compute(v){ return Object.entries(v).filter(([k,val]) => val).length; },
     interpret(s){
-      if (s <= 2) return { label:'Low bleeding risk', severity:'low',  action:'Standard anticoagulation appropriate.', detail:'Annual major bleed risk ~1–3%.' };
-      if (s === 3) return { label:'Moderate risk',   severity:'med',  action:'Anticoagulate + modify risk factors.', detail:'Address: BP control, reduce alcohol, stop unnecessary NSAID/antiplatelet, monitor labs.' };
-      return        { label:'High risk',             severity:'high', action:'Anticoagulate, modify all reversible factors, review 3-monthly.', detail:'A high HAS-BLED is NOT a reason to withhold anticoagulation — it identifies what to fix (NICE NG196).' };
+      if (s <= 2) return { label:'Low bleeding risk', severity:'low',  action:'Lower bleeding-risk band. Address any modifiable bleeding risk factors; see NICE NG196.', detail:'Annual major bleed risk ~1–3%.' };
+      if (s === 3) return { label:'Moderate risk',   severity:'med',  action:'Identify and modify bleeding risk factors; see NICE NG196.', detail:'Address: BP control, reduce alcohol, stop unnecessary NSAID/antiplatelet, monitor labs.' };
+      return        { label:'High risk',             severity:'high', action:'Modify all reversible bleeding risk factors and review more often; see NICE NG196.', detail:'A high HAS-BLED is NOT a reason to withhold anticoagulation — it identifies what to fix (NICE NG196).' };
     },
     refs:[
       { label:'NICE NG196 Atrial fibrillation', url:'https://www.nice.org.uk/guidance/ng196' },
@@ -136,7 +137,7 @@ window.RGP_CALCULATORS = [
     title: 'ABCD₂ (TIA stroke risk)',
     category: 'Cardiovascular',
     description: 'Risk of stroke after TIA within 7 days.',
-    usefulFor: 'Historical — note: NICE NG128 NO LONGER recommends ABCD² for triage. ALL suspected TIA need same-day specialist assessment. Score is for educational context only.',
+    usefulFor: 'Historical, for education only. NICE NG128: do not use a risk score such as ABCD² to decide urgency. Suspected TIA within the last 7 days → specialist assessment within 24 hours of symptom onset; TIA more than 7 days ago → specialist assessment as soon as possible, within 7 days.',
     resultLabel: 'ABCD² score', resultMax: 7,
     inputs: [
       { id:'a_age',     kind:'check',  label:'Age ≥ 60', points:1 },
@@ -157,8 +158,8 @@ window.RGP_CALCULATORS = [
       return s;
     },
     interpret(s){
-      const action = '⚠ Regardless of score: NICE NG128 — ALL suspected TIA need specialist assessment within 24 h.';
-      if (s <= 3) return { label:'"Lower" risk', severity:'med', action, detail:'Historical 2-day stroke risk ~1%. Note ABCD² is no longer recommended for triage — every TIA is same-day TIA clinic.' };
+      const action = 'Regardless of score (NICE NG128): suspected TIA in the last 7 days → specialist assessment within 24 hours of symptom onset; TIA more than 7 days ago → specialist assessment as soon as possible, within 7 days. Do not use ABCD² to decide urgency.';
+      if (s <= 3) return { label:'"Lower" risk', severity:'med', action, detail:'Historical 2-day stroke risk ~1%. A low score does not make a TIA low risk — NICE NG128 advises against using risk scores to triage.' };
       if (s <= 5) return { label:'"Moderate" risk', severity:'high', action, detail:'Historical 2-day stroke risk ~4%.' };
       return         { label:'"High" risk', severity:'severe', action, detail:'Historical 2-day stroke risk ~8%.' };
     },
@@ -202,7 +203,7 @@ window.RGP_CALCULATORS = [
       if (s <= 4) return { label:'PE unlikely', severity:'low',
         action:'D-dimer (high-sensitivity).', detail:'If D-dimer negative → PE excluded. If positive → CTPA (or V/Q if contraindication). NICE NG158.' };
       return         { label:'PE likely', severity:'high',
-        action:'CTPA directly (do NOT delay for D-dimer).', detail:'If CTPA delayed > 1 h → start interim anticoagulation (DOAC) per NICE NG158.' };
+        action:'NICE NG158: PE likely band — see the PE protocol and NICE NG158 for imaging and interim anticoagulation.', detail:'NICE NG158 sets out what to do if imaging is delayed.' };
     },
     refs:[
       { label:'NICE NG158 VTE', url:'https://www.nice.org.uk/guidance/ng158' },
@@ -239,7 +240,7 @@ window.RGP_CALCULATORS = [
     },
     interpret(s){
       if (s >= 2) return { label:'DVT likely',  severity:'high',
-        action:'Proximal-leg USS within 4 h. If delayed → interim therapeutic DOAC + D-dimer + USS within 24 h.',
+        action:'NICE NG158: DVT likely band — see the DVT protocol and NICE NG158 for imaging and interim anticoagulation.',
         detail:'NICE NG158 pathway.' };
       return         { label:'DVT unlikely', severity:'low',
         action:'D-dimer (high-sensitivity). If positive → USS within 4 h. If negative → DVT excluded.',
@@ -269,7 +270,7 @@ window.RGP_CALCULATORS = [
     ],
     compute(v){ return Object.values(v).filter(Boolean).length; },
     interpret(s){
-      if (s === 0) return { label:'Low risk',       severity:'low',  action:'Usually manage at home with safety-netting — oral amoxicillin 5 days (NICE NG250).', detail:'30-day mortality < 1%. Use clinical judgement; refer if sepsis or cardiorespiratory failure.' };
+      if (s === 0) return { label:'Low risk',       severity:'low',  action:'NICE NG250: usually suitable for management at home with safety-netting, using clinical judgement. See the pneumonia protocol.', detail:'30-day mortality < 1%. Use clinical judgement; refer if sepsis or cardiorespiratory failure.' };
       if (s === 1) return { label:'Intermediate',   severity:'med',  action:'Primary care with safety-netting, or virtual ward / SDEC / hospital at home / hospital — clinical judgement (NICE NG250).', detail:'Weigh hypoxia, comorbidities, frailty and social factors.' };
       return          { label:'Higher risk',        severity:'severe', action:'Consider hospital referral (NICE NG250); same-day if sepsis, hypoxia or clinically unwell.', detail:'Mortality rises with each point (score 3–4: high risk).' };
     },
@@ -295,9 +296,9 @@ window.RGP_CALCULATORS = [
     ],
     compute(v){ return Object.values(v).filter(Boolean).length; },
     interpret(s){
-      if (s <= 1) return { label:'No antibiotic',        severity:'low',  action:'Self-care advice. Likely viral.', detail:'Strep risk ~13–18%. Safety-net + analgesia.' };
-      if (s <= 3) return { label:'Backup antibiotic',    severity:'med',  action:'Delayed prescription (if no improvement at 3–5 days).', detail:'Strep risk ~34–40%. NICE NG84: consider no antibiotic or a back-up prescription. Phenoxymethylpenicillin 500 mg QDS or 1 g BD × 5–10 days (or clarithromycin 250–500 mg BD × 5 days if allergic).' };
-      return         { label:'Immediate antibiotic',     severity:'high', action:'Consider immediate antibiotic or back-up prescription (NICE NG84): phenoxymethylpenicillin 500 mg QDS or 1 g BD × 5–10 days.', detail:'Strep risk ~62–65%. Clarithromycin 250–500 mg BD × 5 days if pen-allergic (erythromycin in pregnancy).' };
+      if (s <= 1) return { label:'No antibiotic',        severity:'low',  action:'NICE NG84 (score 0–1): an antibiotic is not usually needed; self-care advice. See the sore throat protocol.', detail:'Strep risk ~13–18%.' };
+      if (s <= 3) return { label:'Backup antibiotic',    severity:'med',  action:'NICE NG84 (score 2–3): consider no antibiotic or a back-up antibiotic prescription. See the sore throat protocol.', detail:'Strep risk ~34–40%.' };
+      return         { label:'Immediate antibiotic',     severity:'high', action:'NICE NG84 (score 4–5): consider an immediate antibiotic or a back-up antibiotic prescription. See the sore throat protocol.', detail:'Strep risk ~62–65%.' };
     },
     refs:[
       { label:'NICE NG84 Sore throat', url:'https://www.nice.org.uk/guidance/ng84' },
@@ -322,7 +323,7 @@ window.RGP_CALCULATORS = [
     interpret(s){
       if (s <= 1) return { label:'Low probability',  severity:'low',  action:'No antibiotic.', detail:'Strep risk ~2–10%. Self-care.' };
       if (s <= 2) return { label:'Moderate',         severity:'med',  action:'No antibiotic (NICE NG84: Centor 0–2) — self-care and safety-net.', detail:'Strep risk ~10–18%.' };
-      return         { label:'High probability',     severity:'high', action:'Consider immediate antibiotic or back-up prescription (NICE NG84).', detail:'Strep risk ~38–63%. Phenoxymethylpenicillin 500 mg QDS or 1 g BD × 5–10 days (clarithromycin 250–500 mg BD × 5 days if pen-allergic).' };
+      return         { label:'High probability',     severity:'high', action:'NICE NG84 (score 3–4): consider an immediate antibiotic or a back-up antibiotic prescription. See the sore throat protocol.', detail:'Strep risk ~38–63%.' };
     },
     refs:[
       { label:'NICE NG84 — Sore throat (acute)', url:'https://www.nice.org.uk/guidance/ng84' },
@@ -434,7 +435,7 @@ window.RGP_CALCULATORS = [
       const suicideNote = suicide > 0 ? ' \u26a0 Item 9 (suicidal ideation) is positive \u2014 assess risk regardless of total score.' : '';
       if (s <= 4)  return { label:'Minimal',           severity:'low',     action:'No depression treatment.', detail:'Reassess if symptoms emerge.' + suicideNote };
       if (s <= 9)  return { label:'Mild',              severity:'med',     action:'Active monitoring; low-intensity psychological intervention (NICE NG222).', detail:'Self-help, sleep hygiene, behavioural activation.' + suicideNote };
-      if (s <= 14) return { label:'Moderate',          severity:'high',    action:'High-intensity psychological + consider antidepressant.', detail:'SSRI (sertraline / citalopram) + therapy (CBT or BA).' + suicideNote };
+      if (s <= 14) return { label:'Moderate',          severity:'high',    action:'Moderate band. Treatment choice is set out in the depression protocol and NICE NG222.', detail:'' + suicideNote };
       if (s <= 19) return { label:'Moderately severe', severity:'high',    action:'Antidepressant + high-intensity psychological intervention.', detail:'Same-week review; consider MH team referral.' + suicideNote };
       return            { label:'Severe',              severity:'severe',  action:'Urgent intervention \u2014 antidepressant + CMHT / urgent psychiatric review.', detail:'Same-day MH review if active risk.' + suicideNote };
     },
@@ -466,7 +467,7 @@ window.RGP_CALCULATORS = [
     interpret(s){
       if (s <= 4)  return { label:'Minimal',  severity:'low',    action:'No specific intervention.', detail:'' };
       if (s <= 9)  return { label:'Mild',     severity:'med',    action:'Step 2 \u2014 guided self-help / psychoeducation.', detail:'NHS Talking Therapies referral, low-intensity psychological.' };
-      if (s <= 14) return { label:'Moderate', severity:'high',   action:'Step 3 \u2014 high-intensity CBT or pharmacological (SSRI).', detail:'Sertraline first-line; review at 4\u20136 wks.' };
+      if (s <= 14) return { label:'Moderate', severity:'high',   action:'Moderate band. Treatment choice is set out in the anxiety protocol and NICE CG113.', detail:'' };
       return            { label:'Severe',     severity:'severe', action:'Step 3+ \u2014 pharmacological + high-intensity CBT; specialist if no response.', detail:'Consider MH referral. Assess function and risk.' };
     },
     refs:[
@@ -624,12 +625,12 @@ window.RGP_CALCULATORS = [
   // ============================================
   {
     id: 'egfr',
-    title: 'eGFR (CKD-EPI 2021)',
+    title: 'eGFR (CKD-EPI 2009)',
     category: 'Renal / metabolic',
-    description: 'Estimated GFR \u2014 race-free 2021 equation.',
-    usefulFor: 'CKD staging by GFR category (NICE NG203). For drug dosing, check the BNF/SPC.',
+    description: 'Estimated GFR \u2014 CKD-EPI 2009 creatinine equation without the ethnicity adjustment (as used by UK laboratories).',
+    usefulFor: 'CKD staging by GFR category (NICE NG203). NICE NG203 recommends the CKD-EPI creatinine equation without an ethnicity adjustment; a UK Kidney Association-led taskforce (with the ACB and UK NEQAS) advises the 2009 equation without the ethnicity factor, and the 2021 version has not been adopted in the UK. Your lab report remains the reference value. For drug dosing, check the BNF/SPC.',
     resultLabel: 'eGFR', resultUnit:'mL/min/1.73m\u00b2',
-    formula: 'CKD-EPI 2021 \u2014 uses creatinine, age, sex (race factor removed)',
+    formula: 'CKD-EPI 2009 creatinine equation \u2014 uses creatinine, age, sex (no ethnicity coefficient)',
     inputs: [
       { id:'eg_cr',     kind:'number', label:'Serum creatinine', unit:'\u00b5mol/L', min:10, max:2000, step:1 },
       { id:'eg_age',    kind:'number', label:'Age', unit:'yrs', min:18, max:120, step:1 },
@@ -641,11 +642,12 @@ window.RGP_CALCULATORS = [
       const isF = !!v.eg_female;
       const sCr = cr / 88.4;
       const kappa = isF ? 0.7 : 0.9;
-      const alpha = isF ? -0.241 : -0.302;
-      const sexFactor = isF ? 1.012 : 1.0;
+      const alpha = isF ? -0.329 : -0.411;
+      const sexFactor = isF ? 1.018 : 1.0;
       const minTerm = Math.min(sCr / kappa, 1);
       const maxTerm = Math.max(sCr / kappa, 1);
-      const egfr = 142 * Math.pow(minTerm, alpha) * Math.pow(maxTerm, -1.200) * Math.pow(0.9938, age) * sexFactor;
+      /* CKD-EPI 2009, no ethnicity coefficient (UK practice; NICE NG203) */
+      const egfr = 141 * Math.pow(minTerm, alpha) * Math.pow(maxTerm, -1.209) * Math.pow(0.993, age) * sexFactor;
       return Math.round(egfr);
     },
     interpret(s){
@@ -658,7 +660,8 @@ window.RGP_CALCULATORS = [
     },
     refs:[
       { label:'NICE NG203 CKD', url:'https://www.nice.org.uk/guidance/ng203' },
-      { label:'CKD-EPI 2021 (Inker et al.)', url:'https://pubmed.ncbi.nlm.nih.gov/34554658/' },
+      { label:'CKD-EPI 2009 (Levey et al.)', url:'https://pubmed.ncbi.nlm.nih.gov/19414839/' },
+      { label:'UK Kidney Association taskforce (2022) \u2014 use CKD-EPI 2009 without ethnicity factor', url:'https://www.ukkidney.org/about-us/news/adoption-kidney-failure-risk-equation' },
     ],
   },
 
@@ -667,7 +670,7 @@ window.RGP_CALCULATORS = [
     title: 'Creatinine clearance (Cockcroft-Gault)',
     category: 'Renal / metabolic',
     description: 'Estimated creatinine clearance (Cockcroft-Gault formula).',
-    usefulFor: 'Reference formula. The BNF and SPC say which renal-function measure applies to each drug (for DOACs it is creatinine clearance, not eGFR); this page gives no dose.',
+    usefulFor: 'Reference formula. Use this value with the drug\u2019s SPC/BNF renal dosing information \u2014 the BNF and SPC say which renal-function measure applies to each drug. This page gives no dose.',
     resultLabel: 'CrCl', resultUnit:'mL/min',
     formula: '((140 \u2212 age) \u00d7 weight \u00d7 (0.85 if F)) / (0.814 \u00d7 Cr \u00b5mol/L)',
     inputs: [
@@ -683,14 +686,13 @@ window.RGP_CALCULATORS = [
       return Math.round(crcl);
     },
     interpret(s){
-      if (s >= 80) return { label:'Normal range', severity:'low', action:'Standard dosing.', detail:'' };
-      if (s >= 50) return { label:'Mild impairment', severity:'med', action:'Most drugs standard; check apixaban / dabigatran dose.', detail:'' };
-      if (s >= 30) return { label:'Moderate', severity:'high', action:'Dose-adjust DOACs (apixaban 2.5 mg BD if 2 of: \u226580, \u226460 kg, Cr \u2265133). Avoid dabigatran if CrCl <30.', detail:'Avoid NSAIDs, review metformin.' };
-      return         { label:'Severe', severity:'severe', action:'Avoid most DOACs except apixaban 2.5 mg BD (with caution). Refer renal.', detail:'Many drugs need significant dose reduction or avoidance.' };
+      /* number only: no drug-specific advice for the entered patient */
+      return { label:'Estimated creatinine clearance (mL/min)', severity:'neutral', action:'Use this value with the drug\u2019s SPC/BNF renal dosing information.', detail:'See BNF \u2014 prescribing in renal impairment, and the prescribing hub (CKD and renal dosing).' };
     },
     refs:[
       { label:'Cockcroft-Gault 1976', url:'https://pubmed.ncbi.nlm.nih.gov/1244564/' },
-      { label:'BNF DOAC dosing', url:'https://bnf.nice.org.uk/' },
+      { label:'BNF \u2014 prescribing in renal impairment', url:'https://bnf.nice.org.uk/medicines-guidance/prescribing-in-renal-impairment/' },
+      { label:'Prescribing hub \u2014 CKD and renal dosing', url:'prescribing.html#sec-ckd' },
     ],
   },
 
@@ -800,8 +802,8 @@ window.RGP_CALCULATORS = [
     compute(v){ return ['i1','i2','i3','i4','i5','i6','i7'].reduce(function(s,k){ return s + Number(v[k]||0); }, 0); },
     interpret(s){
       if (s <= 7)  return { label:'Mild',     severity:'low',  action:'Watchful waiting + lifestyle advice.', detail:'Reduce caffeine / evening fluids.' };
-      if (s <= 19) return { label:'Moderate', severity:'med',  action:'1st-line \u03b1-blocker (tamsulosin) or 5-ARI if prostate >30 g.', detail:'Combination if both bother and large prostate. Review 4\u20136 wks.' };
-      return            { label:'Severe',     severity:'high', action:'Refer urology. Consider combination medical therapy.', detail:'NICE CG97 LUTS pathway. Surgical options if refractory.' };
+      if (s <= 19) return { label:'Moderate', severity:'med',  action:'Moderate symptom band. Management options are set out in the male LUTS protocol and NICE CG97.', detail:'' };
+      return            { label:'Severe',     severity:'high', action:'Severe symptom band. See the male LUTS protocol and NICE CG97.', detail:'' };
     },
     refs:[
       { label:'NICE CG97 LUTS', url:'https://www.nice.org.uk/guidance/cg97' },

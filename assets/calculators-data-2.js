@@ -27,7 +27,7 @@
       ],
       compute(v){ return Object.values(v).filter(Boolean).length; },
       interpret(s){
-        if (s <= 1) return { label:'Low severity',  severity:'low',  action:'Consider home treatment — oral amoxicillin.', detail:'30-day mortality < 3%.' };
+        if (s <= 1) return { label:'Low severity',  severity:'low',  action:'NICE NG250: low-severity band — usually suitable for home management, using clinical judgement. See the pneumonia protocol.', detail:'30-day mortality < 3%.' };
         if (s === 2) return { label:'Moderate',     severity:'med',  action:'Consider hospital / short-stay assessment.', detail:'30-day mortality ~9%.' };
         return        { label:'High severity',      severity:'severe', action:'Urgent hospital admission; assess for critical care.', detail:'30-day mortality 15–40%. Score 4–5 — consider ITU review.' };
       },

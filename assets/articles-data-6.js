@@ -394,6 +394,7 @@
       'Consider antiviral treatment (aciclovir) for adolescents/adults presenting within 24 hours of rash onset, and for those at higher risk of complications',
       'Assess and act promptly in high-risk groups: pregnant women, neonates and the immunocompromised need urgent specialist advice',
       'Post-exposure: non-immune pregnant women or immunocompromised contacts need urgent assessment for antibodies and possible varicella prophylaxis (immunoglobulin/antivirals)',
+      'Prevention: from 1 January 2026 the MMRV vaccine (measles, mumps, rubella and varicella) replaced MMR in the routine UK childhood schedule — doses at 12 months and 18 months, with a selective catch-up for some older children (UKHSA). Varicella vaccine is also offered to non-immune healthcare workers and close contacts of immunosuppressed people (Green Book chapter 34)',
       'Safety-net for complications: high or persistent fever, breathlessness, drowsiness/neurological signs, or spreading/painful skin infection',
       'Treat secondary bacterial infection with antibiotics if it develops',
       'Provide written information on course, infectivity and red flags'],
@@ -402,7 +403,7 @@
       'Complications (pneumonia, encephalitis/cerebellitis, severe secondary infection, dehydration) → emergency admission',
       'Severe or atypical disease → infectious diseases',
       'Neonatal varicella → urgent paediatric/neonatal assessment'],
-    source:'UKHSA Green Book chapter 34 (varicella) / RCOG Green-top Guideline No. 13 (chickenpox in pregnancy) / BNF' },
+    source:'UKHSA Green Book chapter 34 (varicella) / UKHSA MMRV programme (January 2026) / RCOG Green-top Guideline No. 13 (chickenpox in pregnancy) / BNF' },
 
   { id:'chilblains', title:'Chilblains (pernio)', category:'Dermatology', icon:'❄️',
     overview:'An abnormal inflammatory skin reaction to cold (but non-freezing) exposure, causing itchy, painful, red-purple lesions on the extremities. They are common and benign, usually resolving spontaneously; the main task is reassurance, prevention, and recognising when an underlying condition is driving recurrent or atypical disease.',

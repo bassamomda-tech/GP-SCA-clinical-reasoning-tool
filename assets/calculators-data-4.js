@@ -67,7 +67,7 @@
         if (d < 0) return { label:'LMP is in the future', severity:'neutral', action:'Check the date entered.', detail:'' };
         if (d > 300) return { label:'Past dates / post-term range', severity:'med', action:'Re-check dating; if genuinely post-term follow local post-dates pathway.', detail:'Gestation appears > 42 weeks \u2014 likely a date error.' };
         const tri = trimester(d);
-        if (d < 70)  return { label:tri + ' \u2014 ' + wkd(d) + ' weeks', severity:'low', action:'Arrange booking bloods + dating scan (11\u201314 weeks). Folic acid 400 mcg (5 mg if high-risk).', detail:'EDD ' + fmt(r.edd) + '. Dating USS will confirm/adjust.' };
+        if (d < 70)  return { label:tri + ' \u2014 ' + wkd(d) + ' weeks', severity:'low', action:'Arrange booking bloods + dating scan (11\u201314 weeks). Check folic acid supplementation (see the antenatal care guidance).', detail:'EDD ' + fmt(r.edd) + '. Dating USS will confirm/adjust.' };
         if (d < 196) return { label:tri + ' \u2014 ' + wkd(d) + ' weeks', severity:'low', action:'Routine antenatal care; anomaly scan ~18\u201320+6 weeks.', detail:'EDD ' + fmt(r.edd) + '.' };
         if (d < 259) return { label:tri + ' \u2014 ' + wkd(d) + ' weeks', severity:'low', action:'Third-trimester care; GBS/whooping-cough vaccine; growth surveillance if indicated.', detail:'EDD ' + fmt(r.edd) + '.' };
         if (d < 294) return { label:'Term \u2014 ' + wkd(d) + ' weeks', severity:'med', action:'Term (37\u201342 weeks). Discuss birth plan; monitor for labour.', detail:'EDD ' + fmt(r.edd) + '.' };
