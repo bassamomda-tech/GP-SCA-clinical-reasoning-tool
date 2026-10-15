@@ -18,7 +18,8 @@
     drugs: [
       { name: 'Bulk-forming laxative: Ispaghula (Fybogel)', dose: '1 sachet', freq: 'BD', route: 'PO', days: 'Ongoing (keep stool soft)' },
       { name: 'OR Osmotic: Macrogol (Movicol)', dose: '1–2 sachets', freq: 'OD–BD', route: 'PO', days: 'Titrate to soft stool' },
-      { name: 'Short-term pain: Lidocaine 5% ointment / paracetamol', dose: 'Apply / 1 g', freq: 'PRN before stool / QDS', route: 'Topical / PO', days: '≤1–2 weeks (lidocaine short-term)' },
+      { name: 'Short-term pain: Lidocaine 5% ointment', dose: 'Apply', freq: 'PRN before stool', route: 'Topical', days: '≤1–2 weeks (short-term only)' },
+      { name: 'Simple analgesia: paracetamol', dose: 'Usual adult dose (per SPC)', freq: 'PRN, up to QDS', route: 'PO', days: 'Short-term' },
       { name: 'Chronic (≥6 wk): GTN 0.4% rectal ointment (Rectogesic)', dose: 'Apply ~2.5 cm', freq: 'BD', route: 'Topical perianal', days: '6–8 weeks' },
     ],
     altRegimens: [
@@ -88,7 +89,7 @@ Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): bleeding + c
 - Night itch: sedating antihistamine ON short-term.
 Persistent/atypical lesion → refer (exclude malignancy/lichen sclerosus).`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'NICE CKS — Pruritus ani', url:'https://cks.nice.org.uk/topics/pruritus-ani/' },
     ],
   },
 

@@ -47,7 +47,7 @@
 - Recurrent candidal → check glucose/HbA1c (diabetes); treat partner; consider STI screen.
 Persistent/atypical/non-healing → exclude lichen sclerosus (BXO)/penile cancer → derm/urology.`,
     sources: [
-      { label:'BASHH', url:'https://www.bashh.org/guidelines' },
+      { label:'NICE CKS — Balanitis', url:'https://cks.nice.org.uk/topics/balanitis/' },
     ],
   },
 
@@ -88,7 +88,7 @@ Persistent/atypical/non-healing → exclude lichen sclerosus (BXO)/penile cancer
 - Lifestyle: screen breaks (20-20-20), reduce drafts/air-con, hydration; review anticholinergic drugs.
 Severe/refractory or ?Sjögren\u2019s → ophthalmology/rheumatology. Painful red eye/↓vision → urgent ophthalmology.`,
     sources: [
-      { label:'College of Optometrists', url:'https://www.college-optometrists.org/clinical-guidance' },
+      { label:'NICE CKS — Dry eye disease', url:'https://cks.nice.org.uk/topics/dry-eye-disease/' },
     ],
   },
 

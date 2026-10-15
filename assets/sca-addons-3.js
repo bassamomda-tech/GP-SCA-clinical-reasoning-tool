@@ -70,7 +70,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mrs Marsh, it’s Dr Lee from the surgery. Thank you for ringing. Tell me about these dizzy spells in your own words.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question; lets her tell it her way"
    },
    {
@@ -80,7 +80,7 @@
    {
     "who": "dr",
     "text": "I’d love to be able to reassure her honestly. To do that I need to understand the dizziness properly — and the good news is this kind is often something we can fix. May I ask a few questions?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Sets the agenda without colluding with the request"
    },
    {
@@ -92,7 +92,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "When exactly does it come on — lying, sitting, or when you stand up?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Pins the postural pattern"
    },
    {
@@ -102,7 +102,7 @@
    {
     "who": "dr",
     "text": "That’s a very clear description. Has it ever got so bad you’ve had to hold on to something?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Explores near-falls"
    },
    {
@@ -112,7 +112,7 @@
    {
     "who": "dr",
     "text": "Can I ask you something, just between us, and I promise I’m not going to whisk you off anywhere? Have you ever actually gone down — had a fall?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Creates safety to disclose the hidden falls"
    },
    {
@@ -122,7 +122,7 @@
    {
     "who": "dr",
     "text": "Thank you for trusting me with that. Is the hip still painful now, and can you walk on it normally? Did you hit your head or black out either time?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for fracture, head injury and syncope"
    },
    {
@@ -132,7 +132,7 @@
    {
     "who": "dr",
     "text": "Good. Let me check your tablets with you. I have ramipril, bendroflumethiazide, the newer blood-pressure tablet, tamsulosin and amitriptyline at night. Did the dizziness get worse after the new one started?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Medication reconciliation and timing"
    },
    {
@@ -142,7 +142,7 @@
    {
     "who": "dr",
     "text": "And how are you eating and drinking at the moment?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Nutrition and hydration"
    },
    {
@@ -154,7 +154,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "That sounds lonely. I wonder — what’s been worrying you about telling anyone about the falls?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the cue to the real fear"
    },
    {
@@ -164,7 +164,7 @@
    {
     "who": "dr",
     "text": "That’s a very understandable fear, and I’m glad you’ve said it. I want to tell you the opposite is true: sorting this out is how people stay in their own homes. My aim is your independence, not taking it away.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Names the fear and reframes the plan around independence"
    },
    {
@@ -176,7 +176,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Really. When you stand, your blood pressure drops too far for a few seconds, so your brain is briefly short of blood — that’s the dimming. Several of your tablets lower blood pressure, and the new one tipped the balance. Not eating and drinking much makes it worse.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains postural hypotension and the drug link in plain words"
    },
    {
@@ -186,7 +186,7 @@
    {
     "who": "dr",
     "text": "Very likely, yes. I’d like to check your blood pressure lying and then standing to confirm it, and do a blood test for your salts and kidneys, because the water tablet can upset those.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Lying and standing BP; U&E"
    },
    {
@@ -194,7 +194,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Here’s what I suggest, and tell me what you think. First, stop the newest blood-pressure tablet from today. Then, once we’ve got your readings, we look at the water tablet and bring the amitriptyline down slowly — it can make people unsteady at night. I’ll ask the pharmacist to go through everything with me.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Deprescribing with a staged, safe plan"
    },
    {
@@ -204,13 +204,13 @@
    {
     "who": "dr",
     "text": "We’ll bring it down gently and see how you go, and talk about other ways to help sleep. The tamsulosin I’d like to review too — it also lowers blood pressure and may be why you’re up in the night.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Links tamsulosin, nocturia and night falls"
    },
    {
     "who": "dr",
     "text": "I’d also like to refer you to the falls team. They check balance, your home, and things like rails in the bathroom. And I’d like to check your bones, because of the fall onto your hip. Would that be alright?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "NG249 falls assessment and bone health"
    },
    {
@@ -220,7 +220,7 @@
    {
     "who": "dr",
     "text": "It isn’t — it’s what keeps you at home. Would you be happy for me to speak to your daughter about the plan? She can help with shopping and meals, and you decide what I tell her.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Seeks consent to involve the daughter; respects her control"
    },
    {
@@ -232,7 +232,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Of course. Until then: sit on the edge of the bed for a minute before standing, stand up slowly, and try to drink regularly through the day. Have you got an alarm pendant? If you ever fall and can’t get up, or you black out, or the hip becomes painful, that’s 999.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Practical measures and specific safety-net"
    },
    {
@@ -242,7 +242,7 @@
    {
     "who": "dr",
     "text": "I’ll ask her to help sort one. I’ll book you in for the blood pressure check and blood test this week, and I’ll ring you in a week to see how you are off the new tablet. What will you tell your daughter tonight?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Dated follow-up and teach-back"
    },
    {
@@ -254,57 +254,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; did not accept “tell my daughter I’m fine” but did not dismiss her either.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Widowed, lives alone, poor eating and drinking, low mood and loneliness, fear of losing her home.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “grabbed the worktop”, “sat down quick” and “everyone gets that at my age”, and found the hidden falls.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (normal ageing), concern (falls mean a care home), expectation (reassurance and no fuss).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Lying and standing BP; U&E for thiazide and ACE inhibitor effects; hip examination if pain persists; fracture risk assessment.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Postural hypotension from drugs vs dehydration vs hyponatraemia vs cardiac syncope; asked about blackouts.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Screened for head injury, loss of consciousness, a long lie and hip fracture; recognised NG249 criteria for a comprehensive falls assessment.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated drug-induced postural hypotension with unreported falls in plain words.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Stop the recent antihypertensive; staged review of thiazide, tamsulosin and amitriptyline (tapered); falls team; bone health.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Nutrition, hydration, mood and loneliness addressed; nocturia and tamsulosin link; pharmacist medication review.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999 for a fall with long lie, blackout or hip pain; pendant alarm; BP check and bloods this week; phone review in a week.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -491,37 +491,37 @@
    "intro": "This station is failed by agreeing with her. “Just age” and “tell my daughter I’m fine” hide a treatable drug problem and two falls. The medication review is the treatment; trust is how you find the falls.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Accepting light-headedness on standing as normal ageing.",
      "why": "“Does not gather sufficient information to make a safe assessment.” The pattern is classic postural hypotension.",
      "fix": "Ask when it happens, confirm with lying and standing BP, and link it to the new tablet."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Adding a new drug or advice without touching the five BP-lowering medicines.",
      "why": "“Management plan not in line with current UK best practice.” NICE NG249 puts medication review at the centre of falls prevention.",
      "fix": "Stop the recent addition today and plan a staged review of the thiazide, tamsulosin and amitriptyline (tapered)."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Asking “any falls?” once and accepting “no”.",
      "why": "“Does not identify or respond to the patient’s cues.” The worktop and floor episodes are leaking the truth.",
      "fix": "Make it safe: “Just between us, I’m not whisking you anywhere — have you ever gone down?”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Raising care homes or “whether living alone is safe”.",
      "why": "Confirms her fear; she disengages and hides future falls.",
      "fix": "Frame every intervention as keeping her at home."
     },
     {
-     "dom": "gs",
+     "dom": "ro",
      "fail": "Jargon: “orthostatic hypotension from polypharmacy with anticholinergic burden”.",
      "why": "“Language not easily understood by the patient.”",
      "fix": "“When you stand, your blood pressure drops too far, and some of your tablets are making that worse.”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No plan for the next fall and no dated review.",
      "why": "Non-specific safety-netting; she lives alone and has already had a long lie.",
      "fix": "Pendant alarm, “fall and can’t get up means 999”, BP check this week and a phone call in a week."
@@ -581,7 +581,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Leila, I’m Dr Lee. I can see you’re upset. Tell me what’s happening.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges distress immediately; open question"
    },
    {
@@ -591,7 +591,7 @@
    {
     "who": "dr",
     "text": "After losing your last baby, of course your mind has gone straight back there. We’ll take this together, and by the end of this call you’ll have a clear plan. First I need to ask a few quick questions to make sure you’re safe. Is that okay?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Responds to the trauma first, then sets the agenda"
    },
    {
@@ -603,7 +603,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "How heavy is the bleeding — spotting, like a period, or soaking pads? Any clots?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Assesses volume for haemorrhage"
    },
    {
@@ -613,7 +613,7 @@
    {
     "who": "dr",
     "text": "Any pain? If so, is it mild cramping, or severe, or on one side? Any pain in the tip of your shoulder?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for ectopic features"
    },
    {
@@ -623,7 +623,7 @@
    {
     "who": "dr",
     "text": "Have you felt dizzy, faint or had any blackouts?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for haemodynamic compromise"
    },
    {
@@ -633,7 +633,7 @@
    {
     "who": "dr",
     "text": "You had a scan last week — what did it show? And do you know your blood group?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Confirms intrauterine pregnancy with heartbeat; rhesus status"
    },
    {
@@ -645,7 +645,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "Thank you. What’s been going through your mind since it started?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores her ideas and hidden concerns"
    },
    {
@@ -655,7 +655,7 @@
    {
     "who": "dr",
     "text": "I need to say this clearly: none of those things cause a miscarriage. Not the gym, not sex, not shopping. When early losses happen, it’s almost always because of how the pregnancy first formed. It is never the mother’s fault.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Lifts the self-blame with accurate information"
    },
    {
@@ -665,7 +665,7 @@
    {
     "who": "dr",
     "text": "I’m sorry you’ve been carrying that on top of everything. You haven’t done anything wrong.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Stays with the emotion before moving on"
    },
    {
@@ -673,7 +673,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Here’s the honest picture. Bleeding in early pregnancy is common, and many pregnancies with bleeding carry on normally. Seeing a heartbeat last week is encouraging. I can’t promise what’s happening today, and I won’t pretend to. What I can do is get you seen properly.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Honest, balanced information without false reassurance"
    },
    {
@@ -683,7 +683,7 @@
    {
     "who": "dr",
     "text": "There is something. Because you’ve had a miscarriage before and the scan showed the pregnancy in the womb, national guidance recommends progesterone pessaries for women who bleed — it improves the chance of the pregnancy continuing. The early pregnancy unit will usually check with a scan and start it, and it continues until 16 weeks if the heartbeat is there.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Offers NG126 vaginal micronised progesterone accurately"
    },
    {
@@ -693,7 +693,7 @@
    {
     "who": "dr",
     "text": "Bed rest doesn’t change the outcome, so you don’t need to lie still. Rest if you feel like it. And because you’re rhesus positive, you won’t need an anti-D injection.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Dispels bed-rest myth; manages rhesus correctly"
    },
    {
@@ -701,7 +701,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "So, the plan. I’ll refer you to the early pregnancy unit now so they can scan you and start the progesterone if appropriate. I’ll send them your history today. Is there someone who can be with you?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "EPAU referral as the concrete action; checks support"
    },
    {
@@ -711,7 +711,7 @@
    {
     "who": "dr",
     "text": "Good. Whatever the scan shows, you won’t go through it alone. There’s support either way, including the Miscarriage Association, and I’m here too.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Genuine reassurance about support, not outcome"
    },
    {
@@ -723,7 +723,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "While you wait: if the bleeding becomes heavy — soaking a pad in an hour or passing large clots — or you get severe or one-sided pain, shoulder-tip pain, or feel faint, call 999 or go to A&E straight away. Can you tell me which signs mean emergency?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Precise emergency safety-net with teach-back"
    },
    {
@@ -733,7 +733,7 @@
    {
     "who": "dr",
     "text": "Exactly. I’ll call you tomorrow to make sure you’ve been seen. Anything else you want to ask?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Follow-up committed; shares the floor"
    },
    {
@@ -745,57 +745,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Acknowledged her fear first; open question; let her describe it.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Previous loss last year; support at home; her beliefs about activity.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “exactly like last time” and “I’ll do anything”, and the mention of gym, sex and shopping.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea of repeat miscarriage; hidden guilt; wanted something to take.",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "EPAU ultrasound; confirmed previous scan findings and rhesus status.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Threatened miscarriage vs inevitable or incomplete miscarriage vs ectopic (less likely after confirmed IUP).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about heavy bleeding, clots, severe or one-sided pain, shoulder-tip pain, dizziness and collapse.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Threatened miscarriage, explained honestly without false reassurance.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "EPAU referral; vaginal micronised progesterone per NICE NG126; no anti-D needed; bed rest myth dispelled.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Lifted self-blame; checked support at home; signposted miscarriage support.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999/A&E symptoms named with teach-back; call-back to confirm she was seen.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -953,37 +953,37 @@
    "intro": "This station is failed by cold facts to a frightened woman, by missing the ectopic screen, and by telling her nothing can be done when NICE NG126 recommends progesterone for exactly her situation.",
    "items": [
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Opening with “How many pads? Any shoulder pain?” before acknowledging her distress.",
      "why": "“Does not respond to the patient’s emotional state.” She is reliving a loss.",
      "fix": "Thirty seconds of acknowledgement first, then the safety questions."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Not asking about one-sided pain, shoulder-tip pain or dizziness because the scan showed an intrauterine pregnancy.",
      "why": "A previous scan reduces but does not remove concern; haemorrhage can occur with any miscarriage.",
      "fix": "Screen every time, and state the emergency signs."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "“There’s no treatment — we just have to wait.”",
      "why": "NICE NG126 recommends vaginal micronised progesterone for bleeding with a scan-confirmed IUP and a previous miscarriage.",
      "fix": "Explain progesterone and refer to EPAU to scan and start it."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Arranging anti-D or advising bed rest.",
      "why": "Anti-D is not offered up to 11+6 weeks for threatened miscarriage (and she is RhD-positive); bed rest does not change the outcome.",
      "fix": "Say clearly neither is needed."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Hearing about the gym and sex and saying nothing — or advising she avoid them.",
      "why": "Leaves the guilt in place, or reinforces it.",
      "fix": "“None of those cause a miscarriage. It isn’t your fault.”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "“I’m sure it’ll be fine” and no follow-up.",
      "why": "False reassurance and no continuity are both failing feedback statements.",
      "fix": "Honest uncertainty, a named plan, emergency teach-back and a call-back."
@@ -1007,7 +1007,7 @@
    "reason": "Video appointment: “requesting sildenafil”."
   },
   "knowledge": {
-   "guideline": "BSSM erectile dysfunction guideline (2017) · NICE NG238 (2023) · NICE NG12 (updated April 2026) · NICE NG202 (2021) · NICE NG209 (2021) · BNF (sildenafil) · DVLA Assessing fitness to drive",
+   "guideline": "BSSM erectile dysfunction guideline (2017) · NICE NG238 (2023) · NICE NG202 (2021) · NICE NG209 (2021) · BNF (sildenafil) · DVLA Assessing fitness to drive",
    "summary": "Gradual erectile dysfunction in a 49-year-old smoker with a family history of early heart attack is a cardiovascular warning. Treat the symptom and use the visit to find and reduce his vascular risk.",
    "points": [
     {
@@ -1027,8 +1027,8 @@
      "t": "A PDE5 inhibitor such as sildenafil is first-line for most men (BSSM 2017); dose per BNF. BNF: contraindicated with nitrates and nicorandil, and in men for whom sexual activity is inadvisable. Explain it needs sexual stimulation and an adequate trial before judging it ineffective."
     },
     {
-     "h": "NICE NG12 (updated April 2026) prostate check",
-     "t": "NICE NG12 (updated April 2026): consider a PSA test and digital rectal examination to assess for prostate cancer in men with erectile dysfunction. Offer it after explaining what the test can and cannot show."
+     "h": "Prostate check",
+     "t": "Consider a PSA test and digital rectal examination to assess for prostate cancer in men with erectile dysfunction. Offer it after explaining what the test can and cannot show."
     },
     {
      "h": "Snoring and smoking",
@@ -1046,7 +1046,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Marcus, I’m Dr Lee. You said this was mortifying — you’ve nothing to be embarrassed about, it’s one of the most common things men talk to me about. What’s been happening?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Normalises early to lower the shame barrier"
    },
    {
@@ -1056,7 +1056,7 @@
    {
     "who": "dr",
     "text": "I can very likely prescribe those today. I’d also like to spend a few minutes on why it’s happening, because at your age this can tell us something important about your health. Is that alright?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Honours the request while setting a wider agenda"
    },
    {
@@ -1068,7 +1068,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Did it come on gradually, or suddenly? And do you still wake with erections in the morning?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Distinguishes organic from psychogenic pattern"
    },
    {
@@ -1078,7 +1078,7 @@
    {
     "who": "dr",
     "text": "And your interest in sex — is that still there?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens libido as a pointer to low testosterone"
    },
    {
@@ -1088,7 +1088,7 @@
    {
     "who": "dr",
     "text": "Your notes say you smoke, and your dad had a heart attack at 52. When did you last have your blood pressure or cholesterol checked?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes cardiovascular risk and the gap in checks"
    },
    {
@@ -1098,7 +1098,7 @@
    {
     "who": "dr",
     "text": "Any chest pain or breathlessness when you exert yourself? Any heart problems, or tablets for angina?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks cardiac fitness for sexual activity and nitrate use before PDE5"
    },
    {
@@ -1108,7 +1108,7 @@
    {
     "who": "dr",
     "text": "Has anyone mentioned you snore? And do you ever feel sleepy at the wheel?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for OSA with the driving question"
    },
    {
@@ -1118,7 +1118,7 @@
    {
     "who": "dr",
     "text": "I’ll come to that — it links in.",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Signposts to keep the structure"
    },
    {
@@ -1126,7 +1126,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "Can I ask how this has been at home?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Opens the relationship cue sensitively"
    },
    {
@@ -1136,7 +1136,7 @@
    {
     "who": "dr",
     "text": "That sounds really painful for both of you. Thank you for telling me. How have you been in yourself — your mood, your sleep, enjoying things?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates and screens mood"
    },
    {
@@ -1146,7 +1146,7 @@
    {
     "who": "dr",
     "text": "I’m glad you said that. Feeling low with this is very common, and it’s something we can help with too.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges low mood and confirms no risk"
    },
    {
@@ -1154,7 +1154,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Here’s the thing most men don’t know. The blood vessels that give an erection are very small, so they often show the first signs of furring up — before the bigger ones to the heart. With your smoking and your dad’s history, I see this as an early warning we can act on, not just a bedroom problem.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains ED as a cardiovascular warning in plain words"
    },
    {
@@ -1164,7 +1164,7 @@
    {
     "who": "dr",
     "text": "It’s not saying you have heart disease. It’s saying let’s check — blood pressure, a blood test for sugar and cholesterol, and your heart-risk score. That also tells your wife something important: this is physical. It isn’t about how you feel about her.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Plans the risk work-up and reframes the relationship misreading"
    },
    {
@@ -1176,7 +1176,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "So, the tablets: I’ll prescribe sildenafil. Take it about an hour before sex; it needs some arousal to work, and give it several tries. One absolute rule — never with heart tablets called nitrates, or a spray under the tongue for chest pain.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Prescribes PDE5 with key safety counselling"
    },
    {
@@ -1186,8 +1186,8 @@
    {
     "who": "dr",
     "text": "Blood pressure at the practice or pharmacy this week and bloods the same visit. While you’re in, I’d suggest a PSA blood test for the prostate, which guidance advises considering with erection problems — we’ll talk it through first. And the snoring: I’ll send a short sleep questionnaire. If it shows sleep apnoea, it matters for your heart, your erections and, as a lorry driver, your licence.",
-    "dom": "tasks",
-    "why": "Plans BP, bloods, NICE NG12 (updated April 2026) PSA consideration and OSA screen with DVLA relevance"
+    "dom": "cm",
+    "why": "Plans BP, bloods, PSA consideration and OSA screen with DVLA relevance"
    },
    {
     "who": "pt",
@@ -1196,7 +1196,7 @@
    {
     "who": "dr",
     "text": "It’s treatable and most drivers keep driving once it’s controlled. The rule is simple: if you ever feel sleepy at the wheel, don’t drive, and tell me. We’ll deal with that together if it comes to it.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Handles the DVLA concern honestly and supportively"
    },
    {
@@ -1206,7 +1206,7 @@
    {
     "who": "dr",
     "text": "No lecture. If you ever want to stop, the local stop-smoking service gives you the best chance, and it helps erections too. Would you like the referral?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Offers smoking cessation without shaming"
    },
    {
@@ -1218,7 +1218,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If you get chest pain, especially during sex or exertion, stop and call 999. Book a review in about four weeks with your results, and bring your wife if you’d like — I’m happy to explain it to both of you.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "999 safety-net, dated follow-up and partner involvement with consent"
    },
    {
@@ -1228,7 +1228,7 @@
    {
     "who": "dr",
     "text": "Before you go — what will you tell her tonight?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Teach-back"
    },
    {
@@ -1238,7 +1238,7 @@
    {
     "who": "dr",
     "text": "That’s it exactly. You came for tablets and you’re leaving with those and a proper plan for your health.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Closes warmly, linking symptom and warning"
    }
   ],
@@ -1246,57 +1246,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Normalised early; let him describe the problem before widening the agenda.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Lorry driving and access to care, relationship strain, mood, smoking, weight and alcohol.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “no song and dance”, the snoring and the hint of tension at home, and explored each.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (a plumbing problem fixed by a pill); concern (his wife thinks he’s gone off her, feeling less of a man); expectation (a quick prescription).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
-    "d": "BP, HbA1c, lipids, QRISK3; consider testosterone; consider PSA and DRE (NICE NG12 (updated April 2026)); OSA questionnaire (NICE NG202).",
-    "pts": 1
+    "d": "BP, HbA1c, lipids, QRISK3; consider testosterone; consider PSA and DRE; OSA questionnaire (NICE NG202).",
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Organic versus psychogenic ED (onset, morning erections, libido); vascular, metabolic, hormonal and sleep contributors.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about exertional chest pain and nitrate use before prescribing; screened mood and risk.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Gradual organic-pattern ED as a marker of vascular risk in a smoker with a family history of early MI.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Sildenafil with counselling (dose per BNF; no nitrates or nicorandil); cardiovascular work-up; statin if QRISK3 ≥10% (NICE NG238).",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Smoking cessation referral (NICE NG209), OSA screen with DVLA implications, low mood and relationship support.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999 for chest pain, review in about four weeks with results, partner invited with consent, teach-back.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -1348,7 +1348,7 @@
    "wordPics": {
     "fail": "Issues sildenafil with no history, no cardiovascular risk assessment and no nitrate check; or lectures on smoking and refuses the prescription until tests are done; never asks about home or mood; misses the snoring and the driving implications.",
     "pass": "Prescribes sildenafil with nitrate and chest-pain counselling; arranges BP, HbA1c, lipids and QRISK3; notes the snoring; asks about the relationship; basic safety-net and follow-up.",
-    "exc": "All of the above, plus: frames ED as a vascular early warning in plain language tied to his father; uses the explanation to repair his wife’s misreading; screens mood; handles OSA and the DVLA question honestly without scaring him off; considers PSA per NICE NG12 (updated April 2026); offers stop-smoking support without judgement; invites his wife to the review."
+    "exc": "All of the above, plus: frames ED as a vascular early warning in plain language tied to his father; uses the explanation to repair his wife’s misreading; screens mood; handles OSA and the DVLA question honestly without scaring him off; considers PSA; offers stop-smoking support without judgement; invites his wife to the review."
    },
    "avoid": [
     {
@@ -1436,7 +1436,7 @@
     "psychosocial": "Invite his wife to the review with consent; screen and follow up mood; offer psychosexual or couple support.",
     "sharedPlan": [
      "Sildenafil with counselling (dose per BNF; never with nitrates or nicorandil)",
-     "BP, HbA1c, lipids and QRISK3; atorvastatin if QRISK3 ≥10% (NICE NG238); consider PSA and DRE (NICE NG12 (updated April 2026))",
+     "BP, HbA1c, lipids and QRISK3; atorvastatin if QRISK3 ≥10% (NICE NG238); consider PSA and DRE",
      "STOP-Bang/Epworth and sleep referral if indicated (NICE NG202); stop-smoking referral (NICE NG209)"
     ],
     "safetyNet": [
@@ -1487,37 +1487,37 @@
    "intro": "Two opposite errors fail this station: the silent prescription and the lecture. The marks come from treating the symptom and the warning it carries, and from reaching the marriage and mood he is hiding behind “just the pills”.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Prescribing sildenafil without asking about chest pain, heart disease or nitrate use.",
      "why": "Nitrates and nicorandil are contraindications (BNF); unsafe prescribing loses Tasks marks outright.",
      "fix": "Two questions before the prescription: exertional chest pain, and any heart tablets or sprays."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Treating the ED as an isolated problem, with no BP, bloods or QRISK3.",
      "why": "In a smoker with a family history of early MI, ED is a vascular warning; missing it is a significant omission.",
      "fix": "“This can be an early sign about your circulation — let’s check your blood pressure, sugar and cholesterol.”"
     },
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Hearing heavy snoring in a lorry driver and moving on.",
      "why": "OSA links to ED, hypertension and road safety; the DVLA dimension is examinable.",
      "fix": "Ask about sleepiness at the wheel, arrange a questionnaire, and explain the licence rules honestly."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Never asking how things are at home.",
      "why": "The hidden agenda is his wife’s affair suspicion and his low mood; feedback: “did not explore the impact on the patient’s life”.",
      "fix": "“How has this been at home?” — then use the physical explanation to address her misreading."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Making the prescription conditional on stopping smoking or losing weight.",
      "why": "Comes across as judgemental and risks him disengaging.",
      "fix": "Prescribe, then offer stop-smoking support as an extra benefit for both heart and erections."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No safety-net for chest pain and no follow-up to act on the results.",
      "why": "Non-specific safety-netting is a standard failing statement.",
      "fix": "“Chest pain during sex or exertion — stop and call 999. Review in four weeks with your results.”"
@@ -1540,7 +1540,7 @@
    "reason": "Telephone call from mother: “temperature for two days, not himself, now some spots”."
   },
   "knowledge": {
-   "guideline": "NICE NG143 (2019) · NICE NG240 (2024) · NICE NG254 (2025) · NICE NG12 (updated April 2026) · BNFC (benzylpenicillin)",
+   "guideline": "NICE NG143 (2019) · NICE NG240 (2024) · NICE NG254 (2025) · BNFC (benzylpenicillin)",
    "summary": "A febrile child who is flat, drinking less and has a rash that does not fade under a glass has meningococcal sepsis until proven otherwise. The action is 999, now.",
    "points": [
     {
@@ -1560,8 +1560,8 @@
      "t": "NICE NG240: for strongly suspected meningococcal disease, give intramuscular or intravenous benzylpenicillin or ceftriaxone as soon as possible outside hospital, unless this will delay transfer. Doses per BNFC by age. On the telephone, the only action is emergency transfer."
     },
     {
-     "h": "NICE NG12 (updated April 2026) overlap",
-     "t": "NICE NG12 (updated April 2026): children and young people with unexplained petechiae or hepatosplenomegaly need immediate specialist assessment for leukaemia. Hospital assessment covers both concerns."
+     "h": "Overlap",
+     "t": "Children and young people with unexplained petechiae or hepatosplenomegaly need immediate specialist assessment for leukaemia. Hospital assessment covers both concerns."
     },
     {
      "h": "Parental concern counts",
@@ -1575,7 +1575,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello, it’s Dr Lee. You’re not bothering me at all. Tell me about Leo.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Removes the apology barrier in the first sentence"
    },
    {
@@ -1585,7 +1585,7 @@
    {
     "who": "dr",
     "text": "I want to ask about those spots straight away. Have you got a clear glass? Press the side of it firmly on the spots and look through. Do they fade, or can you still see them?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Prioritises the rash and asks for the glass test immediately"
    },
    {
@@ -1597,7 +1597,7 @@
     "clock": "1–3 min",
     "who": "dr",
     "text": "Thank you, that’s really important. How is he right now — is he awake and looking at you, or hard to wake?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Assesses responsiveness (NG143 traffic-light)"
    },
    {
@@ -1607,7 +1607,7 @@
    {
     "who": "dr",
     "text": "What colour is he — pale, blotchy, or a bit blue anywhere? And is his breathing faster than normal?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Assesses colour and breathing"
    },
    {
@@ -1617,7 +1617,7 @@
    {
     "who": "dr",
     "text": "How much has he drunk today, and how many wet nappies?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Assesses hydration"
    },
    {
@@ -1629,7 +1629,7 @@
     "clock": "3–4 min",
     "who": "dr",
     "text": "Okay. I need to be clear with you. A rash that doesn’t fade under a glass, in a child with a fever who is drowsy, pale and not drinking, can be a serious infection in the blood, such as meningitis or sepsis. It can move fast. Leo needs an ambulance now.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Recognises likely meningococcal sepsis and states the emergency plainly"
    },
    {
@@ -1639,7 +1639,7 @@
    {
     "who": "dr",
     "text": "You are not being neurotic. Your instinct told you he looked wrong, and you were right — that instinct is one of the most important warning signs there is. You’ve done exactly the right thing ringing.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the mother’s instinct and counters the judgement fear"
    },
    {
@@ -1649,7 +1649,7 @@
    {
     "who": "dr",
     "text": "I’m sorry that happened. Please never let it stop you. Right now, here’s what I need you to do.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges the past experience briefly, then refocuses on action"
    },
    {
@@ -1657,7 +1657,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "As soon as we hang up, call 999. Say: “my three-year-old has a fever and a rash that doesn’t fade under a glass — I’m worried about meningitis or sepsis.” Those words get the fastest response.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Arranges immediate 999 transfer with a clear phrase"
    },
    {
@@ -1667,7 +1667,7 @@
    {
     "who": "dr",
     "text": "Exactly. Don’t wait for the Calpol to work, and don’t wait to see if more spots come. Is there someone who can look after your little one so you can go with Leo?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Removes delay and solves the sibling barrier"
    },
    {
@@ -1677,7 +1677,7 @@
    {
     "who": "dr",
     "text": "You’re doing brilliantly. Keep Leo with you, lying comfortably. If he becomes floppy, won’t wake, has a fit or struggles to breathe before they arrive, ring 999 back and tell them.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific deterioration advice while waiting"
    },
    {
@@ -1689,7 +1689,7 @@
     "clock": "6–7 min",
     "who": "dr",
     "text": "Tell me back what you’re going to do the moment we hang up.",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Teach-back to confirm the plan"
    },
    {
@@ -1699,7 +1699,7 @@
    {
     "who": "dr",
     "text": "Perfect. I’ll put a note on his record and ring you in fifteen minutes to check the ambulance is with you. Go and call now.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Documents, arranges a call-back and ends promptly"
    },
    {
@@ -1711,13 +1711,13 @@
     "clock": "7–8 min",
     "who": "dr",
     "text": "(Documents: febrile 3-year-old, non-blanching rash spreading, drowsy, pale and mottled, tachypnoeic, one wet nappy — suspected meningococcal sepsis, 999 advised, call-back booked.)",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Contemporaneous documentation of red features and advice"
    },
    {
     "who": "dr",
     "text": "(Call-back fifteen minutes later confirms the ambulance crew is with Leo.)",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Closes the loop and confirms the transfer happened"
    }
   ],
@@ -1725,57 +1725,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Welcomed the call and let her describe it, then went straight to the rash she mentioned in passing.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Younger sibling at home, who can help, the previous dismissive experience.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up the spots “mentioned in passing”, “really flat” and the repeated apology, and acted on each.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (a virus going round); concern (something is wrong, but fear of being judged neurotic); expectation (permission to watch at home).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Glass test by phone; traffic-light features — responsiveness, colour, breathing, fluid intake and wet nappies (NICE NG143).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
-    "d": "Meningococcal disease and sepsis versus viral illness with rash; leukaemia considered (NICE NG12 (updated April 2026)).",
-    "pts": 1
+    "d": "Meningococcal disease and sepsis versus viral illness with rash; leukaemia considered.",
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Recognised non-blanching spreading rash with drowsiness, mottling, tachypnoea and poor urine output as an emergency.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated suspected meningococcal sepsis clearly and why it cannot wait.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "999 immediately with the right words; no waiting for antipyretics; knew pre-hospital antibiotics apply only if they don’t delay transfer (NICE NG240).",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Sorted care of the younger sibling; acknowledged the previous poor experience; validated parental instinct.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Deterioration triggers while waiting, teach-back, documentation and a timed call-back to confirm transfer.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -1889,7 +1889,7 @@
     "redFlags": [
      "Non-blanching rash with fever — NICE NG143 red feature; suspected meningococcal disease",
      "Drowsy or hard to rouse, pale or mottled, fast breathing, few wet nappies — NICE NG143 red and amber features",
-     "Unexplained petechiae — NICE NG12 (updated April 2026) immediate specialist assessment (leukaemia)"
+     "Unexplained petechiae — immediate specialist assessment (leukaemia)"
     ],
     "psychosocial": [
      "Exhausted mother who fears being judged",
@@ -1934,7 +1934,7 @@
    {
     "ic": "🗺️",
     "t": "Suspected cancer in children",
-    "s": "Visual algorithm · NICE NG12 (updated April 2026)",
+    "s": "Visual algorithm",
     "href": "algorithms/paediatric-cancer-referral.html"
    }
   ],
@@ -1942,37 +1942,37 @@
    "intro": "This station is decided in the first three minutes. The rash is mentioned last and quietly, the mother apologises for calling, and the candidate who follows her lead into temperature and Calpol has already failed.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Discussing temperature readings and antipyretic doses before asking about the spots.",
      "why": "Feedback: “did not prioritise the most important problem”. The rash decides the outcome.",
      "fix": "Go to the spots first: “Have you got a glass? Press it on them — do they fade?”"
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Advising a same-day GP appointment or home monitoring with safety-netting.",
      "why": "A non-blanching rash in an unwell febrile child is a NICE NG143 red feature needing emergency care; anything else is unsafe.",
      "fix": "“He needs an ambulance now. Call 999 as soon as we hang up.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Judging severity by the thermometer.",
      "why": "NICE NG143: behaviour, colour, breathing and hydration matter more than the height of the fever.",
      "fix": "Ask four quick questions: how awake, what colour, breathing, wet nappies."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Accepting her apology and “probably nothing” without comment.",
      "why": "Misses the cue that she is minimising; she may not follow through if she still feels foolish.",
      "fix": "“You’re not being neurotic — your instinct was right.”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Ending with “call 999” but no phrase, no sibling plan and no advice while waiting.",
      "why": "Incomplete emergency safety-netting is a standard failing statement.",
      "fix": "Give the 999 phrase, ask who can mind the baby, name the deterioration signs, and do teach-back."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Keeping the mother on the phone to fill twelve minutes.",
      "why": "Prolonging the call delays the ambulance; examiners reward ending appropriately.",
      "fix": "End as soon as the plan is confirmed; document and call back to check the ambulance has arrived."
@@ -1996,7 +1996,7 @@
    "reason": "Follow-up video call booked for the parents after his first febrile convulsion."
   },
   "knowledge": {
-   "guideline": "NICE NG143 (fever in under 5s) · NICE NG217 (epilepsies, 2022, updated August 2026) · NICE NG254 (sepsis, under 16s)",
+   "guideline": "NICE NG143 (fever in under 5s) · NICE NG217 (epilepsies, 2022, updated January 2025) · NICE NG254 (sepsis, under 16s)",
    "summary": "A brief, generalised, self-limiting seizure during a fever in a young child who recovers fully is a simple febrile seizure. It is frightening to watch but benign. The consultation is mostly about the parent’s shock, guilt and what to do next time.",
    "points": [
     {
@@ -2031,7 +2031,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello, I’m Dr Lee. I’ve read the notes from this morning. Before anything else — how are you doing? It sounds like it was a frightening morning.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Opens with the parent’s experience rather than the medical facts"
    },
    {
@@ -2041,7 +2041,7 @@
    {
     "who": "dr",
     "text": "That sounds terrifying, and it makes complete sense that you’re still shaking. I’m going to answer both of those questions clearly. Can I first check how he is now, and hear a bit more about what happened? Then we’ll talk about what it means and what to do.",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Validates the fear, promises answers and sets a clear agenda"
    },
    {
@@ -2053,7 +2053,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Is Musa with you? Can you turn the camera to him? How has he been since the doctor saw him this morning — eating, drinking, playing, responding to you as normal?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Confirms full recovery using video observation"
    },
    {
@@ -2063,7 +2063,7 @@
    {
     "who": "dr",
     "text": "He looks bright and busy, which is exactly what I want to see. During the fit, did both arms and legs jerk the same, or was it one side? And roughly how long did it last?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes generalised vs focal and duration"
    },
    {
@@ -2073,7 +2073,7 @@
    {
     "who": "dr",
     "text": "And since then: any rash, any stiff neck or dislike of light, vomiting, or has he been unusually sleepy or hard to wake? Any more fits?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for meningitis, sepsis and recurrence"
    },
    {
@@ -2085,7 +2085,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You said it’s you that isn’t back to yourself. What’s been going through your mind since this morning?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the cue to her own distress"
    },
    {
@@ -2095,7 +2095,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me. That’s such a normal reaction after a shock like this. Let me take those one at a time — the guilt, what it means for him, and exactly what to do if it happens again.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Normalises the reaction and structures the concerns"
    },
    {
@@ -2107,13 +2107,13 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "What Musa had is called a febrile convulsion — a fit triggered by a rising temperature in a young child. It was short, it involved his whole body, it stopped by itself and he’s recovered completely. Those are the signs of the common, simple type.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names the diagnosis and the features that make it simple"
    },
    {
     "who": "dr",
     "text": "Your two big questions. It has not damaged his brain. And this is not epilepsy — a fit with a fever is a different thing from epilepsy, and the great majority of children who have one like this never develop epilepsy. Most children grow out of these as they get older.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Answers the specific fears directly and accurately"
    },
    {
@@ -2123,7 +2123,7 @@
    {
     "who": "dr",
     "text": "This is important. Calpol and ibuprofen make a child more comfortable, but they don’t prevent these fits. Nothing you did or didn’t do caused it. You didn’t fail him — you held him through it.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Corrects the antipyretic myth and lifts the guilt (NICE NG143)"
    },
    {
@@ -2135,7 +2135,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "It can happen again with another fever, so let me give you a plan. If he fits: put him somewhere he can’t hurt himself, don’t hold him down and don’t put anything in his mouth. Look at the time. When the jerking stops, roll him onto his side. Call 999 if it lasts five minutes, if he has another one in the same illness, or if he doesn’t come round properly.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Concrete first aid with explicit 999 criteria (NICE NG217)"
    },
    {
@@ -2145,7 +2145,7 @@
    {
     "who": "dr",
     "text": "Exactly. Carry on with his ear treatment. Give Calpol or ibuprofen only if he seems uncomfortable. He doesn’t need watching every second — he can sleep in his own cot tonight. Checking on him as you normally would is enough.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Tailored plan that gently heads off hypervigilance"
    },
    {
@@ -2155,7 +2155,7 @@
    {
     "who": "dr",
     "text": "A few bad nights after a shock like this is normal. If in a week or two you’re still getting flashbacks, can’t sleep or can’t leave him, please come back — that’s common after seeing something so frightening, and we can help with it.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Offers support for parental trauma"
    },
    {
@@ -2163,13 +2163,13 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "I’ll send you written information on febrile convulsions and first aid, so you don’t have to remember it all. Please get help urgently if he becomes floppy or very drowsy, has a rash that doesn’t fade under a glass, a stiff neck, or is struggling to breathe.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Written information plus named urgent features"
    },
    {
     "who": "dr",
     "text": "When you tell his dad tonight, what will you say happened and what you’d do next time?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back to check understanding"
    },
    {
@@ -2179,7 +2179,7 @@
    {
     "who": "dr",
     "text": "That’s it exactly. You did everything right today.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Closes with reassurance that restores confidence"
    }
   ],
@@ -2187,57 +2187,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Asked how she was before the medical facts; heard the event and the questions in her own words.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "First child, shock, sleeplessness, fear of leaving him, who is at home to support her.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “it’s me that isn’t” and “I should have got his temperature down”, and explored both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (epilepsy, brain damage, her fault), concern (recurrence and not knowing what to do), expectation (a clear answer).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Observed on video that he is alert and playing; checked the earlier assessment; no investigations needed for a simple febrile seizure with a clear source.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Simple vs complex febrile seizure; considered meningitis, sepsis and non-febrile causes.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about rash, neck stiffness, drowsiness, vomiting and further seizures; confirmed generalised, brief, full recovery.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Simple febrile convulsion with otitis media, explained in plain words as benign and not epilepsy.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Corrected the antipyretic myth (NICE NG143), gave recurrence first aid with 999 at 5 minutes (NICE NG217), continued ear treatment.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Addressed parental trauma and hypervigilance; offered follow-up for her own wellbeing.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Written information, named urgent features (non-blanching rash, drowsiness, stiff neck, breathing), return if trauma persists.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -2401,37 +2401,37 @@
    "intro": "The clinical content here is simple. The station is failed on sequence and tone: facts delivered to a parent still in shock, hedged answers to her two big questions, and a guilt that nobody lifts.",
    "items": [
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Opening with “febrile convulsions are common and benign” before acknowledging what she saw.",
      "why": "“Does not identify or respond to the patient’s cues.” She cannot hear reassurance until her fear has been heard.",
      "fix": "“That sounds terrifying — how are you doing?” Then the facts."
     },
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Hedging: “It’s probably not epilepsy, but we can’t be completely sure.”",
      "why": "Vague answers to a specific fear leave the fear intact. For a simple febrile seizure the answer is clear.",
      "fix": "“This is not epilepsy and it has not damaged his brain.”"
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Advising regular paracetamol to prevent another fit.",
      "why": "“Management plan not in line with current UK best practice.” NICE NG143: antipyretics do not prevent febrile convulsions.",
      "fix": "“Calpol is for comfort — it doesn’t prevent these fits, and nothing you did caused this.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Not checking for complex features or meningitis because the child was seen this morning.",
      "why": "“Does not gather sufficient information to make a safe assessment.” Things can change after an earlier assessment.",
      "fix": "Ask about focal features, duration, recovery, rash, neck stiffness and drowsiness, and observe him on video."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No concrete plan for a recurrence — “bring him in if it happens again”.",
      "why": "The not-knowing is her biggest fear; non-specific safety-netting is a standard failing statement.",
      "fix": "Protect, don’t restrain, time it, recovery position, 999 at 5 minutes — and send it in writing."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Ignoring “I don’t want to leave him alone again”.",
      "why": "Missed cue to parental trauma and hypervigilance that will persist without acknowledgement.",
      "fix": "Normalise it, give permission to let him sleep normally, and offer a review for her."
@@ -2494,7 +2494,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Robyn, it’s Dr Lee. I understand you’ve been having headaches. Tell me about them from the beginning.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question; lets her describe the aura herself"
    },
    {
@@ -2504,7 +2504,7 @@
    {
     "who": "dr",
     "text": "Congratulations on the wedding. I definitely want to get you sorted before then. Can I ask a few questions about the headaches first, and then we’ll agree what will actually help?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Acknowledges the deadline and sets the agenda"
    },
    {
@@ -2516,7 +2516,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "The zigzags — do they build up gradually, and do they go away completely before the headache?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Confirms typical, fully reversible aura"
    },
    {
@@ -2526,7 +2526,7 @@
    {
     "who": "dr",
     "text": "Have you ever had weakness, numbness, trouble speaking, or zigzags that didn’t go away? And have any of these headaches come on suddenly, like a thunderclap?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for atypical aura and secondary causes"
    },
    {
@@ -2536,7 +2536,7 @@
    {
     "who": "dr",
     "text": "Is this like the migraines you had as a teenager?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes the aura is new"
    },
    {
@@ -2546,7 +2546,7 @@
    {
     "who": "dr",
     "text": "And you’re on the combined pill, Rigevidon. What was it started for?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Links the headache to the contraception"
    },
    {
@@ -2556,7 +2556,7 @@
    {
     "who": "dr",
     "text": "One more question I ask everyone, no judgement at all — do you smoke at the moment?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Non-judgemental smoking history"
    },
    {
@@ -2568,7 +2568,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "Thank you for being honest. What do you think is causing the headaches?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Elicits her idea"
    },
    {
@@ -2578,7 +2578,7 @@
    {
     "who": "dr",
     "text": "Let me come to that. What’s the thing you’d most hate to happen before the wedding?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the concern behind the request"
    },
    {
@@ -2590,7 +2590,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "That really helps. The zigzag lines are called an aura, so these are migraines with aura. They aren’t dangerous in themselves, and we can treat them. But the aura changes one important thing: with the combined pill, the oestrogen in it raises the risk of stroke. So we don’t use that pill for anyone who has aura.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains UKMEC 4 in plain words"
    },
    {
@@ -2600,7 +2600,7 @@
    {
     "who": "dr",
     "text": "Yes, I’d advise stopping it today. But I promise you won’t be left unprotected or back to your old periods. We swap to a method without oestrogen. There are several, and some also help heavy periods.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Pairs the bad news with reassurance about her real concern"
    },
    {
@@ -2608,7 +2608,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Options: a progestogen-only pill you could start straight away. An implant in the arm. Or the hormonal coil, which is the best treatment for heavy periods and is also excellent contraception. The coil and the implant can cause irregular bleeding in the first few months, which matters with the wedding so close. What feels right?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Safe alternatives, the original indication, and honest timing"
    },
    {
@@ -2618,7 +2618,7 @@
    {
     "who": "dr",
     "text": "That’s sensible. One plan is to start the progestogen-only pill today, use condoms until it’s working, and fit the coil after the honeymoon if you still want it. If periods are heavy meanwhile, tranexamic acid or mefenamic acid on the heavy days can help. Would that work?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Shared decision built around her priorities"
    },
    {
@@ -2628,7 +2628,7 @@
    {
     "who": "dr",
     "text": "For the migraines: a triptan tablet when the headache starts, with ibuprofen or paracetamol, and an anti-sickness tablet if you need it. A headache diary will show whether they’re frequent enough to need a preventer. And I’d really like to help you stop smoking — it adds to the stroke risk too. Would you try the stop-smoking service?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Acute migraine treatment, diary and smoking support"
    },
    {
@@ -2640,7 +2640,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Great. Stop Rigevidon today. Start the new pill and use condoms until I confirm it’s working. If you ever get sudden weakness, face drooping, slurred speech, an aura that doesn’t go away, or a sudden severe headache, that’s 999.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific stroke safety-net and bridging advice"
    },
    {
@@ -2650,7 +2650,7 @@
    {
     "who": "dr",
     "text": "I’ll book you with the nurse this week to go through the new pill, and a review before the wedding to see how the headaches are. Just so I know I’ve explained it well — what will you tell your fiancé tonight?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Dated follow-up and teach-back"
    },
    {
@@ -2662,57 +2662,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; let her describe the aura in her own words; acknowledged the wedding without accepting “just stronger painkillers”.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Wedding in seven weeks, stress, relapse into smoking, reliance on the pill for heavy periods.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “vision goes funny, then the headache”, “seven weeks” and the hesitation about smoking.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (stress headaches, pill irrelevant), concern (pregnancy or heavy periods ruining the wedding), expectation (stronger analgesia).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Blood pressure check at the contraception review; no imaging needed for typical aura; headache diary.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Migraine with aura vs TIA vs secondary headache; checked for atypical, prolonged or motor aura and thunderclap onset.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Screened for persistent or motor aura, speech disturbance and sudden severe headache; identified the oestrogen stroke risk.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Named migraine with aura and UKMEC 4 for combined hormonal contraception in plain words.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Stop the combined pill today; progestogen-only pill now with condoms; LNG-IUS option after the wedding; triptan plus NSAID or paracetamol plus antiemetic.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Heavy periods (tranexamic or mefenamic acid; LNG-IUS per NICE NG88); smoking cessation; topiramate avoided.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Stroke symptoms mean 999; nurse appointment this week; review before the wedding; headache diary; teach-back.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -2888,37 +2888,37 @@
    "intro": "This station is failed on the pill, not the painkiller. The candidate who hears “zigzag lines, then the headache” and thinks of her contraception passes the Tasks domain; the one who also protects her wedding passes the rest.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Prescribing a triptan and leaving her on Rigevidon.",
      "why": "“Management plan not in line with current UK best practice.” Migraine with aura is UKMEC 4 for combined hormonal contraception.",
      "fix": "Ask about contraception in every woman with new aura, and stop the combined pill today."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Stopping the pill with “use condoms for now” and nothing else.",
      "why": "Leaves her exposed to pregnancy and heavy periods seven weeks before her wedding.",
      "fix": "Start a progestogen-only pill today, bridge with condoms, and plan the heavy periods."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Suggesting topiramate as a preventer.",
      "why": "MHRA (June 2024): contraindicated in women of childbearing potential without a Pregnancy Prevention Programme; it also reduces hormonal contraceptive effect.",
      "fix": "Use a diary first; if prevention is needed, discuss the other CG150 options."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Delivering “stroke risk” bluntly and moving on.",
      "why": "“Does not respond to the patient’s concerns.” She hears only that her wedding plans are ruined.",
      "fix": "Pair it with her concern: “You won’t be unprotected or back to your old periods.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Never asking about smoking, or asking with judgement.",
      "why": "She hides it, and it is an extra stroke risk.",
      "fix": "“No judgement — do you smoke at the moment?” Then offer support."
     },
     {
-     "dom": "gs",
+     "dom": "ro",
      "fail": "Jargon: “UKMEC 4, switch to a POP or LNG-IUS.”",
      "why": "“Language not easily understood by the patient.”",
      "fix": "“A pill without oestrogen”, “the hormonal coil”, “a small rod in the arm”."
@@ -2977,7 +2977,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mr Otieno, I’m Dr Lee. Thanks for joining the video. You’ve booked about headaches — tell me in your own words what’s been going on.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question; lets him set the pace"
    },
    {
@@ -2987,7 +2987,7 @@
    {
     "who": "dr",
     "text": "I can see this feels uncomfortable, and that’s fine. Can I say something that might help? Nothing you tell me will shock me, and there’s no judgement here. Headaches that only come at particular times — during exercise, when coughing, or during sex — are well recognised and have names and treatments. The detail is what lets me pick the right tablet, and make sure it’s safe.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Normalising, permission-based questioning so the true history can emerge"
    },
    {
@@ -2997,7 +2997,7 @@
    {
     "who": "dr",
     "text": "Thank you. That took courage, and it’s exactly what I needed to know. Is it alright if I ask a few specific questions about it?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges the disclosure matter-of-factly and asks permission to continue"
    },
    {
@@ -3009,7 +3009,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "When did it first happen, and how many times since?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes onset and whether this is a first or recurrent pattern"
    },
    {
@@ -3019,7 +3019,7 @@
    {
     "who": "dr",
     "text": "And the most important question: does it build up as you become more aroused and peak around climax? Or has it ever hit like an explosion — worst pain of your life, full strength within a second or two?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "The discriminating question for a sentinel bleed or RCVS"
    },
    {
@@ -3029,7 +3029,7 @@
    {
     "who": "dr",
     "text": "How long does it last, and was the very first one any different?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks duration and specifically asks about the first attack"
    },
    {
@@ -3039,7 +3039,7 @@
    {
     "who": "dr",
     "text": "During or after any of them, have you vomited, had a stiff neck, blacked out, or noticed weakness, numbness, speech or vision problems?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Excludes neurological and meningeal red flags"
    },
    {
@@ -3049,7 +3049,7 @@
    {
     "who": "dr",
     "text": "Any headaches at other times — with exercise, coughing, or migraines in the past? And any drugs, including anything bought online, to help with sex or energy?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Looks for exertional headache, migraine and drug triggers"
    },
    {
@@ -3061,7 +3061,7 @@
     "clock": "5–7 min",
     "who": "dr",
     "text": "You’ve clearly been carrying this for a month. What have you been thinking might be causing it?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores his ideas rather than assuming"
    },
    {
@@ -3071,7 +3071,7 @@
    {
     "who": "dr",
     "text": "That makes complete sense of how frightened you’ve been. I’m glad you told me, because we can deal with it properly. How has all this affected things at home?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the fear and opens the relationship impact"
    },
    {
@@ -3083,7 +3083,7 @@
     "clock": "7–9 min",
     "who": "dr",
     "text": "What you describe sounds like primary sexual headache. It’s a recognised condition where the surge in blood pressure and effort during sex sets off a headache. The pattern you describe — building gradually, both sides, the same each time, no other symptoms — is not the pattern of a bleed.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names a benign working diagnosis in plain language"
    },
    {
@@ -3093,7 +3093,7 @@
    {
     "who": "dr",
     "text": "Your story is reassuring. But I’ll be honest, because of your brother: a new headache brought on by exertion is something guidance says we should think carefully about, so I’d like to ask a neurologist whether you need a scan. And there’s one rule to remember for life: a headache that hits like an explosion, worst ever within seconds, is a 999 call.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Accurate on the aneurysm fear; states the thunderclap rule and plans specialist advice"
    },
    {
@@ -3105,7 +3105,7 @@
     "clock": "9–11 min",
     "who": "dr",
     "text": "There are treatment options: a daily tablet to damp down the blood-pressure surges, or a tablet taken shortly before sex. Neither is officially licensed for this, so I’d like the neurologist’s view on which suits you. Until then, if a headache starts, stopping and resting usually settles it. Your blood pressure was a little high too, so I’d like you to do a week of home readings.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Treatment options with honest licensing status; BP confirmed with home readings"
    },
    {
@@ -3115,7 +3115,7 @@
    {
     "who": "dr",
     "text": "And your wife. She thinks you’ve gone off her, when really you’ve been frightened of a headache. Would it help to tell her tonight that it’s a recognised, treatable headache? I could give you the words, or see you together if you’d like.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Treats the relationship harm as part of the problem and offers support"
    },
    {
@@ -3127,7 +3127,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "So, to check it’s clear: what would make you ring 999?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Teach-back on the key safety rule"
    },
    {
@@ -3137,7 +3137,7 @@
    {
     "who": "dr",
     "text": "Exactly — during sex or at any other time. I’ll send the neurology request today, you’ll do home blood pressure for a week, and I’ll speak to you in two weeks with the readings. Anything I’ve missed?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Summarises the plan with a defined follow-up"
    },
    {
@@ -3149,57 +3149,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; noticed the embarrassment and normalised sexual symptoms before pressing for detail.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Marriage, avoidance of intimacy, his wife’s misreading of it, work as a teacher.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “a tablet, no details” and “my wife thinks I’ve gone off her” and explored both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea of something serious; the specific fear of an aneurysm (brother’s clipped aneurysm); hoped for a tablet without questions.",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Neurological examination when seen in person; home or ambulatory BP; neurology advice on imaging for new exertion-triggered headache.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Primary sexual headache vs sentinel subarachnoid haemorrhage, RCVS, migraine, drug-induced headache.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about thunderclap onset, first attack, vomiting, neck stiffness, collapse and focal neurology.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Named primary sexual headache in plain language and explained why the pattern is reassuring.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Explained preventive options and their off-label status; neurology advice; stop-and-rest advice; offered help to talk to his wife.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Confirmed the raised BP with HBPM/ABPM per NICE NG136; asked about migraine and drugs.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Thunderclap or neurology → 999, stated in plain words with teach-back; review with BP readings.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -3362,37 +3362,37 @@
    "intro": "This station is failed when embarrassment wins: the doctor never hears the word “sex”, or hears it and misses the thunderclap question. It is also failed on the unspoken agendas — the brother’s aneurysm and the marriage.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Treating “headaches” with advice on painkillers and fluids without finding out when they happen.",
      "why": "“Inadequate data gathering” — the trigger is the diagnosis. Without it the consultation is a generic headache review.",
      "fix": "Normalise early: “Headaches at particular times, including during sex, are well recognised — you can tell me plainly.”"
     },
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Hearing “during sex” and reassuring straight away without asking about thunderclap onset or the first attack.",
      "why": "A first or thunderclap-onset sexual headache can be a sentinel bleed or RCVS. Missing the discriminator is a safety fail.",
      "fix": "“Did it ever hit like an explosion — worst ever within a second or two?” Then state the 999 rule."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Visible awkwardness — long pauses, euphemisms, moving on quickly once sex is mentioned.",
      "why": "“Does not put the patient at ease.” His shame will close the consultation if yours shows.",
      "fix": "Stay matter-of-fact, thank him for telling you, and ask permission for specific questions."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Never exploring the brother’s aneurysm, or dismissing it with “that’s nothing to do with you”.",
      "why": "The aneurysm fear is his main concern; dismissal forfeits Relating marks and his trust.",
      "fix": "Name it, explain why his pattern is reassuring, and offer a neurology opinion."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Ending with a prescription and no mention of his wife.",
      "why": "The relationship harm is half the presenting problem. Ignoring it leaves the plan incomplete.",
      "fix": "“Would it help to tell her tonight that it’s a treatable headache? I can give you the words or see you both.”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Starting propranolol without mentioning it is off-label, and not addressing the raised BP.",
      "why": "Shared decisions need honest information; an unconfirmed raised BP needs NICE NG136 confirmation.",
      "fix": "Explain options and licensing, seek neurology advice, and arrange home BP readings with a review date."
@@ -3455,7 +3455,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Nadia, it’s Dr Lee. Can you see and hear me alright? Tell me about this headache.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks the video link and opens with the patient’s story"
    },
    {
@@ -3465,7 +3465,7 @@
    {
     "who": "dr",
     "text": "I’m glad you got in touch. I’ll definitely answer the painkiller question. At 34 weeks, a headache that won’t shift is something I need to ask a few questions about first. Is that okay?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Sets the agenda; signals why she can’t just have analgesia advice"
    },
    {
@@ -3477,7 +3477,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Have you noticed anything with your eyesight — flashing lights, blurring, spots?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Visual symptoms of pre-eclampsia"
    },
    {
@@ -3487,7 +3487,7 @@
    {
     "who": "dr",
     "text": "Any pain in your tummy, especially up here under the ribs?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Epigastric or right upper quadrant pain"
    },
    {
@@ -3497,7 +3497,7 @@
    {
     "who": "dr",
     "text": "Any new swelling — face, hands, ankles? Rings tighter?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "New oedema"
    },
    {
@@ -3507,7 +3507,7 @@
    {
     "who": "dr",
     "text": "Is the baby moving as normal today? And any vomiting?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Fetal movements and vomiting"
    },
    {
@@ -3517,7 +3517,7 @@
    {
     "who": "dr",
     "text": "When was your blood pressure last checked?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Recent BP and urine"
    },
    {
@@ -3529,7 +3529,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You said you don’t want to be sent to hospital. Can I ask what makes that feel so hard?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the cue behind the minimising"
    },
    {
@@ -3539,7 +3539,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me. That sounds really frightening, and it makes complete sense that you’d want this to be just a headache. I’m not going to brush that aside.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the trauma"
    },
    {
@@ -3551,7 +3551,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I’m going to be honest with you. A headache that won’t go, flashing lights, pain under the ribs and new swelling together can be a sign of pre-eclampsia — a rise in blood pressure that pregnancy can cause. It can affect you and the baby, and it can get worse quickly.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Names pre-eclampsia in plain words"
    },
    {
@@ -3561,7 +3561,7 @@
    {
     "who": "dr",
     "text": "I really can’t. It needs your blood pressure, a urine test, a blood test and a check on the baby — none of which I can do over video. So the honest answer to the painkiller question is that the painkiller isn’t the issue. Getting checked today is.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains why remote assessment is unsafe"
    },
    {
@@ -3569,7 +3569,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "I’d like you to go to the maternity assessment unit today, now. I know that’s the place you dread. Can we work out together what would make it more bearable?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Clear recommendation, then shared problem-solving"
    },
    {
@@ -3579,7 +3579,7 @@
    {
     "who": "dr",
     "text": "I’ll ring the unit myself as soon as we finish, so they’re expecting you by name and know about last time. It’s usually a blood pressure check, a urine pot, bloods and a monitor for the baby. Could someone come with you?",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Named handover, expectation-setting, support person"
    },
    {
@@ -3589,7 +3589,7 @@
    {
     "who": "dr",
     "text": "That’s perfect. Please don’t drive yourself. And afterwards, whatever happens, I’d like to talk about support for what happened last time — you shouldn’t have to carry that on your own.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Plans later trauma support"
    },
    {
@@ -3601,7 +3601,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If before you get there the headache gets severe, you lose part of your vision, the pain gets bad, you start vomiting, the baby moves less, or you feel very unwell or have a fit — call 999, don’t wait for your husband.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific 999 triggers"
    },
    {
@@ -3611,7 +3611,7 @@
    {
     "who": "dr",
     "text": "So I know I’ve explained it clearly — what’s the plan?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back"
    },
    {
@@ -3621,7 +3621,7 @@
    {
     "who": "dr",
     "text": "Exactly. I’ll ring you this evening to see how you got on. Getting in touch today was brave, Nadia — and it was the right thing to do.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Follow-up to confirm attendance"
    }
   ],
@@ -3629,57 +3629,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; acknowledged the painkiller question and agreed to answer it after asking some questions.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Previous traumatic emergency caesarean and HDU stay; husband available to take her; fear for the baby.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “don’t want to be a nuisance”, “indigestion” and “just tired”, and explored them.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (hormones or poor sleep), concern (going back to the unit; something wrong with the baby), expectation (safe painkillers).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Recognised video cannot assess: BP, urine protein, FBC, liver and kidney function, PlGF-based testing (NICE HTG630, formerly DG49) and fetal monitoring at the unit.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Pre-eclampsia vs tension headache vs migraine; HELLP suggested by epigastric pain; asked about vomiting and fetal movements.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Visual disturbance, epigastric pain, new swelling, vomiting and fetal movements all asked about; 999 criteria defined.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated suspected pre-eclampsia in plain words.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Same-day maternity assessment unit with a GP phone handover; support person; no driving herself.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Birth trauma acknowledged and later support offered (NICE CG192).",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Specific 999 triggers, teach-back and a call this evening to confirm she attended.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -3844,37 +3844,37 @@
    "intro": "This station is failed by answering her question. “Which painkillers are safe?” hides a pre-eclampsia cluster, and “I don’t want to be a nuisance” hides a traumatic birth. Find both, and make going in possible.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Advising paracetamol and a routine midwife review.",
      "why": "“Management plan not in line with current UK best practice.” Symptomatic possible pre-eclampsia needs same-day assessment (NICE NG133).",
      "fix": "Ask about vision, epigastric pain and swelling in every pregnant woman with headache after 20 weeks."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Trying to reassure her over video because she looks well.",
      "why": "Pre-eclampsia is diagnosed on BP, urine and bloods, none of which video can provide.",
      "fix": "Say it plainly: “I can’t check this on a screen.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Not asking about fetal movements or defining when to call 999.",
      "why": "“Does not gather sufficient information to make a safe assessment.”",
      "fix": "Ask about movements and vomiting, and name the 999 triggers."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Ordering her to hospital without exploring the reluctance.",
      "why": "“Does not identify or respond to the patient’s cues.” She may not go.",
      "fix": "“What makes going in feel so hard?” Then solve it together."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Offering false reassurance to soften the message.",
      "why": "“Probably nothing” gives her permission to stay home.",
      "fix": "Be honest and warm: name pre-eclampsia and why today matters."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Ending with “go in if you’re worried” and no follow-up.",
      "why": "Non-specific safety-netting with no confirmed plan.",
      "fix": "Ring the unit, confirm transport, teach-back, and call her this evening."
@@ -3936,7 +3936,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Luke, it’s Dr Lee. I hear you’ve got a bad headache. Tell me exactly how it started.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question focused on onset"
    },
    {
@@ -3946,7 +3946,7 @@
    {
     "who": "dr",
     "text": "Thanks, that’s very clear. I want to help, and I’ll be quick because you’re busy. But how a headache starts matters a lot, so I need to ask a few specific things before we decide anything. Okay?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Sets the agenda and holds off the prescription"
    },
    {
@@ -3958,7 +3958,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "When it hit — did it build up over a while, or was it at its worst within seconds?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes thunderclap onset"
    },
    {
@@ -3968,7 +3968,7 @@
    {
     "who": "dr",
     "text": "Were you lifting at the time? Did you black out, even briefly?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Exertional onset and loss of consciousness"
    },
    {
@@ -3978,7 +3978,7 @@
    {
     "who": "dr",
     "text": "Any weakness, numbness, double vision, trouble speaking, fever or a rash? Does light hurt your eyes?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for focal signs and meningitis"
    },
    {
@@ -3988,7 +3988,7 @@
    {
     "who": "dr",
     "text": "Is anyone with you at the moment?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks immediate safety"
    },
    {
@@ -4000,7 +4000,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You said migraine or the weights. Has anything else crossed your mind about what this could be?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Invites the hidden fear"
    },
    {
@@ -4010,13 +4010,13 @@
    {
     "who": "dr",
     "text": "That’s a very natural thing to worry about, and I’m glad you said it. I’m going to be honest with you, because you’d want me to be.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges the fear before explaining"
    },
    {
     "who": "dr",
     "text": "One more question I ask everyone with a headache like this, no judgement, and it stays medical information. You mentioned a party last night — did you take anything? Cocaine, or any other drugs?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Calm, confidential drug history"
    },
    {
@@ -4026,7 +4026,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me — that took guts. I won’t tell your work or anyone else. I ask because cocaine can be linked to this kind of headache, and the hospital needs to know so they look after you properly.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Rewards honesty, explains confidentiality and relevance"
    },
    {
@@ -4034,7 +4034,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "A headache that explodes to its worst in seconds, the worst you’ve had, with a stiff neck and being sick, can be a bleed around the brain. It can ease off and still be that. I can’t tell by phone, and nor can anyone — you need a brain scan today.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Names SAH in plain words; explains why easing is not reassuring"
    },
    {
@@ -4044,7 +4044,7 @@
    {
     "who": "dr",
     "text": "It might be something else, and most scans like this are clear. But the scan is the only way to know, and it’s most accurate in the first few hours. Facing the fear means getting the scan, not hoping.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Honest, proportionate, uses his fear to motivate"
    },
    {
@@ -4052,7 +4052,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "So, no co-codamol and no going back to work. I’m going to call an ambulance for you now. Please stay where you are, and don’t drive. Is that okay?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "999 now; no analgesia; no driving"
    },
    {
@@ -4062,7 +4062,7 @@
    {
     "who": "dr",
     "text": "If you got worse in a taxi, nobody could help you. An ambulance is safest. Is there someone you can ask to come and sit with you until it arrives?",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains why 999 and arranges company"
    },
    {
@@ -4072,7 +4072,7 @@
    {
     "who": "dr",
     "text": "That’s fine — what you tell work is up to you. Please do tell the ambulance crew and the hospital about the cocaine and when you took it. It helps them.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Respects his privacy while ensuring the team gets the history"
    },
    {
@@ -4080,7 +4080,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "While you wait: if you get very drowsy, have a fit, your vision or speech goes, or one side goes weak, ring 999 again and tell them you’re worse. Don’t take anything for the pain meanwhile.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific deterioration triggers"
    },
    {
@@ -4090,7 +4090,7 @@
    {
     "who": "dr",
     "text": "Just so I know I’ve explained it properly — what’s going to happen now?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back"
    },
    {
@@ -4100,7 +4100,7 @@
    {
     "who": "dr",
     "text": "Exactly. I’ll document this and ring you this evening to check you’ve been seen. Ringing today was the right call, Luke.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Documentation and follow-up"
    }
   ],
@@ -4108,57 +4108,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question about onset; acknowledged the request without agreeing to it.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Work deadline, on his own, the party, fear after a colleague’s father’s bleed, worry about his employer.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “hit on the back of the head”, “it’s settled a bit” and “a party last night”, and explored each.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (migraine or gym strain), concern (a brain bleed like his colleague’s father; cocaine being found out), expectation (co-codamol and back to work).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Recognised that a phone call cannot exclude SAH; emergency non-contrast CT (and lumbar puncture if CT is late and negative, per NICE NG228).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "SAH vs reversible cerebral vasoconstriction vs dissection vs meningitis vs migraine; cocaine as a relevant trigger.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Onset within seconds, worst ever, exertion, neck stiffness, vomiting, photophobia, collapse, focal signs and fever all asked about.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated suspected subarachnoid haemorrhage in plain words; explained that easing does not exclude it.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "999 now; no analgesia; no driving; someone to stay with him; tell the hospital about the cocaine.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Confidential, non-judgemental handling of cocaine use; offered follow-up about drug use after the emergency.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Named deterioration triggers, teach-back, documentation and a call this evening.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -4325,37 +4325,37 @@
    "intro": "This station is failed by being reassured. He sounds well, it has eased, and he wants to work. The onset is what matters, and the drug history only comes out if the question feels safe.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Prescribing co-codamol because the headache has eased.",
      "why": "“Management plan not in line with current UK best practice.” NICE NG228: thunderclap headache is a red flag for SAH; easing does not exclude it.",
      "fix": "“How it started matters more than how it feels now.” Then 999."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Arranging a GP appointment tomorrow or “A&E if it gets worse”.",
      "why": "CT is most accurate within 6 hours of onset (NICE NG228); delay costs diagnostic accuracy and safety.",
      "fix": "Call the ambulance now and tell him why timing matters."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Never asking about drugs after he mentions the party.",
      "why": "“Does not gather sufficient information.” Cocaine is directly relevant to SAH and vasoconstriction.",
      "fix": "Ask routinely and confidentially, and explain why it matters."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Reacting to the cocaine with disapproval.",
      "why": "He shuts down and may refuse the ambulance.",
      "fix": "“Thank you for telling me. It stays medical, and it helps the hospital look after you.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Missing the fear about his colleague’s father.",
      "why": "“Does not identify or respond to cues.” The fear is why he is minimising.",
      "fix": "“Has anything else crossed your mind?” Then use it: the scan settles it."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Letting him drive to hospital, alone.",
      "why": "Unsafe if he deteriorates; no confirmed plan.",
      "fix": "Ambulance, someone with him, specific 999 triggers, teach-back and a follow-up call."
@@ -4379,7 +4379,7 @@
    "reason": "Telephone appointment to discuss scan and blood results."
   },
   "knowledge": {
-   "guideline": "NICE NG88 · BSG iron-deficiency anaemia guideline (2021) · MHRA Drug Safety Update (February 2021) · NICE NG12 (updated April 2026)",
+   "guideline": "NICE NG88 · BSG iron-deficiency anaemia guideline (2021) · MHRA Drug Safety Update (February 2021)",
    "summary": "Heavy periods with fibroids of 3 cm or more: match treatment to her priorities and consider specialist referral. Treat the iron-deficiency anaemia now.",
    "points": [
     {
@@ -4404,7 +4404,7 @@
     },
     {
      "h": "Red flags",
-     "t": "Intermenstrual or post-coital bleeding, an abnormal endometrium, or a pelvic mass not obviously fibroids change the pathway (a pelvic or abdominal mass not obviously uterine fibroids is a NICE NG12 (updated April 2026), suspected cancer referral). None are present here."
+     "t": "Intermenstrual or post-coital bleeding, an abnormal endometrium, or a pelvic mass not obviously fibroids change the pathway (a pelvic or abdominal mass not obviously uterine fibroids is a suspected cancer referral). None are present here."
     }
    ]
   },
@@ -4414,7 +4414,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Ms Adeyemi, it’s Dr Lee. Can I just check your date of birth? Thanks. You’re ringing about your scan and blood tests — before I go through them, what do you know so far and what would you most like to get out of today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Identity check; establishes her starting point and agenda"
    },
    {
@@ -4424,7 +4424,7 @@
    {
     "who": "dr",
     "text": "Let’s answer that properly. I’d like to ask a bit about the bleeding and the tiredness, then go through the results and the options. Okay?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Sets a clear agenda"
    },
    {
@@ -4436,7 +4436,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "What’s a heavy day like for you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question on impact — how NG88 defines HMB"
    },
    {
@@ -4446,7 +4446,7 @@
    {
     "who": "dr",
     "text": "That sounds exhausting. Are your periods regular? Any bleeding between periods or after sex? Any pressure on your bladder or bowel?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for IMB/PCB and pressure symptoms"
    },
    {
@@ -4456,7 +4456,7 @@
    {
     "who": "dr",
     "text": "And the tiredness — any breathlessness, palpitations, feeling faint?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Assesses symptoms of anaemia"
    },
    {
@@ -4466,7 +4466,7 @@
    {
     "who": "dr",
     "text": "Have you had any blood clots in the legs or lungs, or any stomach problems like ulcers? That affects which medicines are safe.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks contraindications to tranexamic acid and NSAIDs"
    },
    {
@@ -4478,7 +4478,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You said “carry on coping”. It sounds like you’ve put up with this for a long time. Is part of that a worry about what treatment might mean?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the resignation cue"
    },
    {
@@ -4488,7 +4488,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me. That makes sense of everything, and it changes how we approach this — in a good way. Nobody is going to take that choice away from you.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the fertility fear and restores agency"
    },
    {
@@ -4496,7 +4496,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "The results first. Fibroids are very common, benign growths in the muscle of the womb. They’re not cancer. The lining of your womb looks normal, which is reassuring, and your regular periods with no bleeding in between fit with that.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Interprets the scan in context; benign picture"
    },
    {
@@ -4506,7 +4506,7 @@
    {
     "who": "dr",
     "text": "Your blood test shows you’re anaemic, and your iron stores are very low. That’s why you’re breathless and exhausted. I’d like to start iron tablets today — one a day — and recheck your blood in about four weeks. I’d also add a test for coeliac disease, which is routine with low iron.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Treats iron-deficiency anaemia per BSG 2021"
    },
    {
@@ -4518,7 +4518,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "For the bleeding there’s a ladder of options, and hysterectomy is right at the top — the last option, and only ever your choice. Because you might want a baby, the most useful first step is tranexamic acid, a tablet you take only on heavy days. It isn’t a hormone and won’t stop you getting pregnant. An anti-inflammatory can be added.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Options ladder matched to her fertility wishes (NICE NG88)"
    },
    {
@@ -4528,7 +4528,7 @@
    {
     "who": "dr",
     "text": "It works well for many women, but it’s a contraceptive, so it doesn’t fit if you’re trying soon — and with fibroids your size it’s worth a specialist’s view. Because the largest is 4 cm, I’d like to refer you to gynaecology to discuss options that keep the womb, like removing just the fibroids, and to talk about pregnancy at your age. I’ll tell them fertility matters to you.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "NG88 referral consideration for fibroids 3 cm or more; fertility flagged"
    },
    {
@@ -4538,7 +4538,7 @@
    {
     "who": "dr",
     "text": "No. You have choices. Does starting iron and tranexamic acid now, with a gynaecology referral, feel like the right plan?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks agreement; shared decision"
    },
    {
@@ -4550,7 +4550,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Iron can upset your stomach and turns stools dark — that’s expected. If you get chest pain, severe breathlessness, feel faint, or bleeding so heavy you’re soaking through every hour and feel unwell, seek same-day help. Tell us too if you ever get bleeding between periods or after sex. I’ll call you after the blood test in four weeks. What’s the plan in your words?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Side-effects, safety-net, follow-up and teach-back"
    },
    {
@@ -4560,7 +4560,7 @@
    {
     "who": "dr",
     "text": "Perfect. Anything else before we finish?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Shares the floor"
    },
    {
@@ -4572,57 +4572,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Established what she knew and wanted before giving results.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Work as an accountant, days off, planning life around periods, new partner.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “carry on coping” and the hesitation about the future, and explored them.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea that fibroids mean an operation; hidden fear of hysterectomy and losing the chance of a baby; wanted to know about surgery.",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Repeat FBC at about 4 weeks; coeliac serology; pelvic examination at face-to-face review or in gynaecology.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Fibroid-related HMB with iron-deficiency anaemia; considered endometrial pathology and other causes of anaemia.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about IMB, PCB, pressure symptoms and cardiorespiratory symptoms of anaemia; noted normal endometrium.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Heavy menstrual bleeding due to fibroids with iron-deficiency anaemia, explained as benign.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Iron now; tranexamic acid ± NSAID compatible with conception; NG88 options ladder; gynaecology referral with fertility flagged.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Checked VTE and GI history before tranexamic acid and NSAIDs; knew ulipristal is restricted.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Iron side-effects; same-day help for chest pain, faintness or very heavy bleeding; IMB/PCB to report; call after repeat FBC.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -4732,7 +4732,7 @@
    "history": {
     "redFlags": [
      "Intermenstrual or post-coital bleeding, abnormal endometrium",
-     "Pelvic or abdominal mass not obviously fibroids → suspected cancer pathway (NICE NG12 (updated April 2026))",
+     "Pelvic or abdominal mass not obviously fibroids → suspected cancer pathway",
      "Symptomatic anaemia: chest pain, breathlessness at rest, syncope → same-day assessment"
     ],
     "psychosocial": [
@@ -4792,37 +4792,37 @@
    "intro": "This station is failed by answering the question asked (“do I need an operation?”) instead of the one underneath it, and by missing the anaemia in the results.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Discussing fibroids and never mentioning the Hb of 104 and ferritin of 8.",
      "why": "“Fails to act on abnormal results.” Her exhaustion is the anaemia.",
      "fix": "Start iron today and book a repeat FBC."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Jumping straight to a surgical referral, or to the hormone coil, without an options ladder.",
      "why": "NICE NG88 sets out pharmacological and uterus-preserving options; choice depends on her priorities.",
      "fix": "Lay out the ladder and match it to her wish for a baby."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Offering endometrial ablation or a contraceptive option to a woman who may want to conceive.",
      "why": "Ablation is not for women wanting future pregnancy; LNG-IUS and CHC prevent conception.",
      "fix": "Tranexamic acid ± NSAID now; specialist discussion of myomectomy."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Missing “carry on coping” and the pause about the future.",
      "why": "“Does not respond to cues.” The fertility fear is why she stayed away.",
      "fix": "“Is part of that a worry about what treatment might mean?”"
     },
     {
-     "dom": "gs",
+     "dom": "ro",
      "fail": "Medical jargon — “intramural leiomyomata, ferritin, LNG-IUS”.",
      "why": "Language not easily understood by the patient, especially by telephone.",
      "fix": "“Knots in the womb muscle”, “your iron stores”, “the hormone coil”."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No safety-net for anaemia symptoms and no follow-up blood test.",
      "why": "Non-specific safety-netting is a standard failing statement.",
      "fix": "Name the same-day symptoms and book the repeat FBC with a call-back."
@@ -4848,16 +4848,16 @@
    "reason": "Telephone appointment: “the HRT’s made me bleed — I want to stop it”."
   },
   "knowledge": {
-   "guideline": "NICE NG23 (updated April 2026) · NICE NG12 (updated April 2026) · BMS/RCOG/BGCS/BSGE/FSRH/RCGP joint guideline on unscheduled bleeding on HRT (2024) · MHRA Drug Safety Update (August 2019) · NICE NG209",
+   "guideline": "NICE NG23 (updated April 2026) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BMS/RCOG/BGCS/BSGE/FSRH/RCGP joint guideline on unscheduled bleeding on HRT (2024) · MHRA Drug Safety Update (August 2019) · NICE NG209",
    "summary": "Bleeding on continuous combined HRT beyond the first 6 months, or new, prolonged or heavier bleeding, needs assessment. Stopping the HRT does not replace that assessment.",
    "points": [
     {
      "h": "Expected vs unscheduled bleeding",
-     "t": "NICE NG23 (updated April 2026): bleeding is a common side effect in the first 6 months of systemic HRT, or within 3 months of changing dose or preparation; people should seek help promptly for unscheduled bleeding beyond these windows. She is at 8 months with 5 weeks of increasing bleeding."
+     "t": "NICE NG23: bleeding is a common side effect in the first 6 months of systemic HRT, or within 3 months of changing dose or preparation; people should seek help promptly for unscheduled bleeding beyond these windows. She is at 8 months with 5 weeks of increasing bleeding."
     },
     {
      "h": "Which pathway",
-     "t": "NICE NG12 (updated April 2026) endometrial criteria cover postmenopausal bleeding that cannot be attributed to HRT. Bleeding on HRT follows the joint BMS-led guideline (2024), which NICE NG12 (updated April 2026) signposts. She is 54 and on HRT, so assess via that route rather than labelling it a straightforward NICE NG12 (updated April 2026) referral."
+     "t": "NICE NG12 endometrial criteria cover postmenopausal bleeding that cannot be attributed to HRT. Bleeding on HRT follows the joint BMS-led guideline (2024), which NICE NG12 signposts. She is 54 and on HRT, so assess via that route rather than labelling it a straightforward NICE NG12 referral."
     },
     {
      "h": "BMS 2024 thresholds",
@@ -4883,7 +4883,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mrs Wu, it’s Dr Lee returning your call. Can I just confirm your date of birth? Thanks. Tell me what’s been happening.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Telephone identity check, then open question"
    },
    {
@@ -4893,7 +4893,7 @@
    {
     "who": "dr",
     "text": "I can hear you’ve had enough of it. I’ll make sure we talk about stopping — that’s your choice. First I’d like to understand the bleeding, because that matters whatever we decide about the HRT. Is that okay?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Respects autonomy while separating the bleeding from the HRT decision"
    },
    {
@@ -4905,7 +4905,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Which HRT are you on, how long, and how do you take it?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Regimen and duration"
    },
    {
@@ -4915,7 +4915,7 @@
    {
     "who": "dr",
     "text": "Have there been any days you’ve missed the capsules, or times the patch came off?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Adherence — missed progestogen raises endometrial risk"
    },
    {
@@ -4925,7 +4925,7 @@
    {
     "who": "dr",
     "text": "Tell me about the bleeding itself — when it started, how heavy, and any pain, bleeding after sex, or unusual discharge?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Exact pattern and associated features"
    },
    {
@@ -4935,7 +4935,7 @@
    {
     "who": "dr",
     "text": "Before the HRT, how bad were the hot flushes and sweats?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes the symptom cost of stopping"
    },
    {
@@ -4947,7 +4947,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "It sounds like it’s really helped. So I’m curious — is it only the bleeding that makes you want to stop, or is something else on your mind?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the unspoken reason behind the request"
    },
    {
@@ -4957,7 +4957,7 @@
    {
     "who": "dr",
     "text": "I’m so sorry about your friend. That’s frightening, and it makes sense it has changed how you feel. Can I ask — has the bleeding made you worry about anything else?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the breast-cancer fear and gently checks for a second fear"
    },
    {
@@ -4969,7 +4969,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Thank you for telling me both. On the bleeding: some bleeding in the first six months of this HRT is common. Yours is at eight months and getting heavier, so national guidance says we check it properly rather than assume. That means an examination and an internal scan of the womb lining, which should happen within six weeks.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Applies the NG23 window and the BMS 2024 urgent TVUS route"
    },
    {
@@ -4979,7 +4979,7 @@
    {
     "who": "dr",
     "text": "The chance is low, and the scan is how we find out. If the lining is thin, that’s reassuring. If it’s thicker, you’d be seen urgently by the gynaecology team for a closer look. Stopping the HRT wouldn’t answer that question, so the scan happens either way.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Honest about risk; explains why stopping HRT is not a substitute"
    },
    {
@@ -4989,7 +4989,7 @@
    {
     "who": "dr",
     "text": "Honestly: combined HRT does slightly increase breast cancer risk, more the longer you take it. In absolute terms the increase is small. I can go through the actual figures with you using the national decision aid, and weigh them against what the hot flushes were doing to your life. Your friend’s illness is real, but it isn’t your risk.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Proportionate breast-risk information without dismissing or overstating"
    },
    {
@@ -5001,7 +5001,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "So, two separate things. The bleeding gets checked whatever you decide. The HRT decision is yours, made with the real numbers. You could carry on while we wait for the scan, or stop now if you’d rather — what feels right?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Shared decision with the investigation kept non-negotiable"
    },
    {
@@ -5011,7 +5011,7 @@
    {
     "who": "dr",
     "text": "That sounds reasonable. I’ll book you in for an examination this week and request the scan. One more thing that genuinely lowers your risks: the cigarettes. Would you like help to stop? The stop-smoking service gives you support and medicines, which works much better than willpower alone.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Examination and TVUS arranged; very brief advice on smoking (NICE NG209)"
    },
    {
@@ -5023,7 +5023,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If the bleeding becomes very heavy — soaking through pads hourly — or you get pain or feel faint, contact us the same day. Once we have the scan result, let’s speak again and decide the HRT together. What will you take away from today?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net, follow-up and teach-back"
    },
    {
@@ -5033,7 +5033,7 @@
    {
     "who": "dr",
     "text": "Exactly right. Anything else before we finish?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Shares the floor"
    },
    {
@@ -5045,57 +5045,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; acknowledged the request to stop without actioning it immediately.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Impact of vasomotor symptoms on sleep, mood and work; her friend’s diagnosis; smoking.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “just stop it” despite HRT transforming her life, and explored the reason.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea that HRT caused the bleeding; hidden fears of breast and womb cancer; expected HRT to be stopped.",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Speculum examination; cervical screening status; urgent TVUS within 6 weeks per BMS 2024.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Endometrial hyperplasia or cancer vs benign HRT-related bleeding, polyp, adherence problem.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Adherence, pattern, pain, post-coital bleeding, discharge; recognised bleeding beyond the NG23 window.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Unscheduled bleeding on continuous combined HRT needing endometrial assessment.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Investigation regardless of the HRT decision; honest breast risk with the NG23 decision aid; her choice to continue.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Smoking cessation offered (NICE NG209); knew thickened endometrium → suspected cancer pathway.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Heavy bleeding, pain or faintness → same day; review with scan result to decide HRT.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -5160,7 +5160,7 @@
     {
      "dont": "“Breakthrough bleeding is normal on HRT.”",
      "instead": "“In the first six months it’s common. At eight months and getting heavier, we check it.”",
-     "why": "NICE NG23 (updated April 2026) sets the 6-month window; beyond it, bleeding needs assessment."
+     "why": "NICE NG23 sets the 6-month window; beyond it, bleeding needs assessment."
     },
     {
      "dont": "“The breast cancer risk is tiny, don’t worry about it.”",
@@ -5261,37 +5261,37 @@
    "intro": "This station is failed by doing what the patient asks. Stopping HRT feels patient-centred but leaves the bleeding uninvestigated and the real fear untouched.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Stopping the HRT and arranging no assessment.",
      "why": "“Management plan not in line with current UK best practice.” Bleeding beyond the NG23 window needs examination and endometrial assessment.",
      "fix": "“The scan happens whatever you decide about the HRT.”"
     },
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Calling it “normal breakthrough bleeding” at 8 months.",
      "why": "The expected window is the first 6 months, or 3 months after a change (NICE NG23, updated April 2026).",
      "fix": "Name the window and explain why hers is outside it."
     },
     {
-     "dom": "tasks",
-     "fail": "Labelling it a NICE NG12 (updated April 2026) suspected cancer pathway referral without thinking about the HRT, or not knowing the thickness threshold.",
-     "why": "NICE NG12 (updated April 2026) endometrial criteria cover bleeding not attributable to HRT; bleeding on HRT follows the BMS 2024 route.",
+     "dom": "cm",
+     "fail": "Labelling it a NICE NG12 suspected cancer pathway referral without thinking about the HRT, or not knowing the thickness threshold.",
+     "why": "NICE NG12 endometrial criteria cover bleeding not attributable to HRT; bleeding on HRT follows the BMS 2024 route.",
      "fix": "Urgent TVUS within 6 weeks; above 4 mm on ccHRT → suspected cancer pathway."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Never asking why she really wants to stop.",
      "why": "“Does not explore the patient’s health beliefs.” The friend’s breast cancer is the driver.",
      "fix": "“Is it only the bleeding, or is something else on your mind?”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Dismissing or overstating the breast-cancer risk.",
      "why": "Both remove informed choice.",
      "fix": "Small absolute increase, rising with duration; offer the NG23 decision aid."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No follow-up plan linking the scan result to the HRT decision.",
      "why": "An incomplete plan is a common failing feedback statement.",
      "fix": "“Once we have the scan, we’ll speak again and decide together.”"
@@ -5315,7 +5315,7 @@
    "reason": "Mother calling for advice. She hopes it is a sprain or growing pains that can be managed at home."
   },
   "knowledge": {
-   "guideline": "BOAST: Management of children with acute musculoskeletal infection (BOA/BSCOS, 2022) · NICE NG12 (updated April 2026) · NICE CG89 · NICE NG254",
+   "guideline": "BOAST: Management of children with acute musculoskeletal infection (BOA/BSCOS, 2022) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · NICE CG89 · NICE NG254",
    "summary": "A child who suddenly refuses to bear weight has a serious cause until proven otherwise. With possible fever, septic arthritis or osteomyelitis must be excluded the same day; transient synovitis is a diagnosis made only after that.",
    "points": [
     {
@@ -5336,7 +5336,7 @@
     },
     {
      "h": "Malignancy",
-     "t": "NICE NG12 (updated April 2026): unexplained petechiae or hepatosplenomegaly — immediate specialist assessment for leukaemia. Pallor, persistent fatigue, unexplained fever, persistent infections, generalised lymphadenopathy, persistent or unexplained bone pain, unexplained bruising or bleeding — very urgent FBC (within 48 hours). Unexplained bone swelling or pain — consider a very urgent direct-access X-ray (within 48 hours) for bone sarcoma."
+     "t": "NICE NG12: unexplained petechiae or hepatosplenomegaly — immediate specialist assessment for leukaemia. Pallor, persistent fatigue, unexplained fever, persistent infections, generalised lymphadenopathy, persistent or unexplained bone pain, unexplained bruising or bleeding — very urgent FBC (within 48 hours). Unexplained bone swelling or pain — consider a very urgent direct-access X-ray (within 48 hours) for bone sarcoma."
     },
     {
      "h": "Safeguarding",
@@ -5350,7 +5350,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello, I’m Dr Lee. Thanks for calling so quickly. Is Finn with you? I’d like to hear the story from the start, and then I might ask you to show him to me on the camera.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Warm open question and signposts the use of video"
    },
    {
@@ -5360,7 +5360,7 @@
    {
     "who": "dr",
     "text": "I can hear you’d really like to sort this at home, and I’ll keep that in mind. Let me ask a few questions and have a look, then I’ll be straight with you about what I think and we’ll plan it together. Is that okay?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Acknowledges her wish without agreeing to it and sets the agenda"
    },
    {
@@ -5372,7 +5372,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "When he woke up, could he put any weight through the leg at all, or none?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Separates refusal to weight-bear from a mild limp"
    },
    {
@@ -5382,7 +5382,7 @@
    {
     "who": "dr",
     "text": "You said he feels a bit warm. This is the most important question today: do you have a thermometer? Could you take his temperature now while I wait?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Closes the critical data gap — is he febrile?"
    },
    {
@@ -5392,8 +5392,8 @@
    {
     "who": "dr",
     "text": "Thank you, that really helps. Is he himself otherwise — eating, drinking, chatty? Any rash, bruises you can’t explain, or has he looked pale or more tired than usual lately?",
-    "dom": "tasks",
-    "why": "Screens for systemic illness and NICE NG12 (updated April 2026) malignancy features"
+    "dom": "dg",
+    "why": "Screens for systemic illness and NICE NG12 malignancy features"
    },
    {
     "who": "pt",
@@ -5402,7 +5402,7 @@
    {
     "who": "dr",
     "text": "Any fall, knock or rough play in the last few days — at home, school or with anyone else looking after him?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks about mechanism routinely and neutrally (NAI screen)"
    },
    {
@@ -5412,7 +5412,7 @@
    {
     "who": "dr",
     "text": "Could you lie him down and turn the camera to his legs? Let me see if the leg looks swollen or red, and whether he’ll let you move the hip and knee gently. Stop if it hurts him.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Uses video to observe, without treating it as an examination"
    },
    {
@@ -5424,7 +5424,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You said you don’t want to drag him to A&E. Can I ask what makes going in so hard today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the cue to the hidden practical barrier"
    },
    {
@@ -5434,7 +5434,7 @@
    {
     "who": "dr",
     "text": "That’s a lot to juggle on your own, and I’m sorry the last trip left you feeling that way. You’re not being difficult — these are real problems, and solving them is part of my job today.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates without judgement and makes the barriers part of the plan"
    },
    {
@@ -5446,7 +5446,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I’ll be honest with you. Growing pains never stop a child walking, and there’s no injury to explain a sprain. A child who won’t put any weight on a leg, and has a temperature, needs to be examined and have a blood test today — because we have to rule out an infection in the hip joint or bone.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Rejects the unsafe label and names septic arthritis in plain words"
    },
    {
@@ -5456,7 +5456,7 @@
    {
     "who": "dr",
     "text": "Most likely this is an irritable hip after his cold, which settles by itself. But a joint infection looks the same at first, and it can damage the joint quickly if it’s missed. The only safe way to tell them apart is an examination, bloods and possibly a scan. I can’t do that over video, and neither of us should guess.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Shares the differential honestly and explains why it must be same day"
    },
    {
@@ -5468,7 +5468,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Here’s what I suggest. I’ll phone the children’s team at the hospital now and ask them to expect him, so you go straight to them rather than sitting in the main waiting room. Now the practical side — is there anyone who could have the little one, or drive you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Problem-solves the barriers inside the clinical plan"
    },
    {
@@ -5478,7 +5478,7 @@
    {
     "who": "dr",
     "text": "Either is fine — a taxi with both children is completely okay. If you truly can’t get there, ring me back straight away and we’ll arrange transport, because getting there is not optional today. And for work, you are entitled to time off to deal with an emergency involving your child.",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Makes attendance certain and gives a fallback route"
    },
    {
@@ -5488,7 +5488,7 @@
    {
     "who": "dr",
     "text": "Carry him, don’t let him walk on it, and you can give him paracetamol for comfort — the usual dose for his age on the bottle.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Practical interim advice while awaiting assessment"
    },
    {
@@ -5496,7 +5496,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If before you get there he becomes floppy, very sleepy, breathing fast, or you see a rash that doesn’t fade when you press a glass on it — ring 999. I’ll ring the hospital now, and I’ll call you this afternoon to check he’s been seen.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific 999 triggers and a named follow-up call"
    },
    {
@@ -5506,7 +5506,7 @@
    {
     "who": "dr",
     "text": "You did bother — you rang, and you’re doing right by him. Just so I know it’s clear: what’s the plan from here?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Removes guilt and checks understanding with teach-back"
    },
    {
@@ -5518,57 +5518,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question first; let her tell the story; heard “won’t walk on it at all” and “I don’t want A&E” without cutting in.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Single parent, younger sibling, no car, work, previous long A&E wait — the practical reasons she is steering to home care.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “a bit warm” and “drag him to A&E”, got the temperature measured and explored the barrier.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (sprain or growing pains), concern (getting there, feeling foolish again), expectation (home sprain advice).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Video used only to observe; in-person examination the same day with FBC, CRP, ESR, blood cultures and imaging in hospital (BOAST 2022).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Septic arthritis or osteomyelitis vs transient synovitis vs Perthes, injury, reactive arthritis, malignancy and NAI.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Established fever and complete refusal to bear weight; asked about systemic illness, pallor, bruising, rash and mechanism.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated clearly: acute non-weight-bearing with fever — joint or bone infection must be excluded today; transient synovitis only after that.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "GP phones the paediatric team for same-day assessment; transport and childcare solved with her; interim analgesia.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Right to time off for dependants raised; sibling care planned; the previous poor A&E experience addressed.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999 triggers named (floppy, drowsy, fast breathing, non-blanching rash); GP call later the same day to confirm he was seen.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -5683,7 +5683,7 @@
    "history": {
     "redFlags": [
      "Complete refusal to weight-bear, especially with fever — septic arthritis or osteomyelitis until excluded, same-day assessment",
-     "Systemic features: lethargy, pallor, bruising, petechiae, night pain, weight loss — NICE NG12 (updated April 2026) leukaemia and bone sarcoma criteria",
+     "Systemic features: lethargy, pallor, bruising, petechiae, night pain, weight loss — NICE NG12 leukaemia and bone sarcoma criteria",
      "No adequate explanation for the limp or an inconsistent account — consider NAI (NICE CG89)"
     ],
     "psychosocial": [
@@ -5717,7 +5717,7 @@
    {
     "ic": "📋",
     "t": "Childhood limp",
-    "s": "Case walkthrough · BOAST 2022 · NICE NG12 (updated April 2026)",
+    "s": "Case walkthrough · BOAST 2022 · NICE NG12",
     "href": "../cases/childhood-limp.html"
    },
    {
@@ -5743,37 +5743,37 @@
    "intro": "This station is failed in two opposite ways: colluding with a home label because the parent asked for one, or ordering her to A&E without hearing why she can’t get there. The marks sit in finding the fever and then getting Finn seen.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Giving sprain or growing-pains advice with review tomorrow.",
      "why": "“Management plan not in line with current UK best practice.” Refusal to weight-bear with possible fever needs same-day assessment (BOAST 2022).",
      "fix": "Say it plainly: “Growing pains never stop a child walking — he needs checking today.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Accepting “he feels a bit warm” and moving on.",
      "why": "“Does not gather sufficient information to make a safe assessment.” Fever is the single fact that changes the urgency.",
      "fix": "Ask her to take his temperature while you wait, and say why it matters."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Treating the video view as an examination and reassuring on what the camera shows.",
      "why": "Hip range of movement, tenderness and bruising cannot be assessed remotely; false reassurance is unsafe.",
      "fix": "Use the camera to observe posture and willingness to move, then say clearly that he needs to be examined in person."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Telling her she must go to A&E and ending the call.",
      "why": "“Does not identify or respond to the patient’s cues.” Her barrier is practical; without solving it, Finn may not arrive.",
      "fix": "“What makes going in hard today?” — then plan childcare, transport and a direct route with her."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Asking about injuries in a way that sounds accusing, or skipping the question entirely.",
      "why": "Either loses her trust or misses NAI. The question must be routine and neutral.",
      "fix": "“Any fall, knock or rough play in the last few days, at home, school or with anyone else?”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "“Come back if he gets worse” with no named symptoms and no check that he was seen.",
      "why": "Non-specific safety-netting and no follow-up are standard failing feedback statements.",
      "fix": "Name the 999 triggers, phone ahead, and promise a call later today to confirm he was assessed."
@@ -5801,12 +5801,12 @@
    "reason": "Booked a video appointment: “a tiny bit of bleeding, probably nothing”."
   },
   "knowledge": {
-   "guideline": "NICE NG12 (updated April 2026) · NHS Cervical Screening Programme",
+   "guideline": "NHS Cervical Screening Programme · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026)",
    "summary": "Unexplained postmenopausal bleeding at 55 or over, not attributable to HRT, is a suspected cancer pathway referral for endometrial cancer. One episode is enough.",
    "points": [
     {
-     "h": "The NICE NG12 (updated April 2026) criterion",
-     "t": "NICE NG12 (updated April 2026): refer using a suspected cancer pathway referral for endometrial cancer if aged 55 and over with unexplained postmenopausal bleeding that cannot be attributed to HRT. Under 55: consider a suspected cancer pathway referral. She is 61 and has never used HRT, so she meets the “refer” criterion."
+     "h": "The NICE NG12 criterion",
+     "t": "NICE NG12: refer using a suspected cancer pathway referral for endometrial cancer if aged 55 and over with unexplained postmenopausal bleeding that cannot be attributed to HRT. Under 55: consider a suspected cancer pathway referral. She is 61 and has never used HRT, so she meets the “refer” criterion."
     },
     {
      "h": "One episode counts",
@@ -5836,7 +5836,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mrs Easton, I’m Dr Lee. Thanks for joining the video. Tell me what’s been happening.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question"
    },
    {
@@ -5846,7 +5846,7 @@
    {
     "who": "dr",
     "text": "I’m really glad you didn’t cancel — it isn’t silly at all. I’d like to ask a few questions, then explain what I think and what we should do. Is that alright?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Validates attending and sets an agenda without colluding"
    },
    {
@@ -5858,7 +5858,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "When did your periods stop, and have you ever taken HRT?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Confirms postmenopausal status and excludes HRT as a cause"
    },
    {
@@ -5868,7 +5868,7 @@
    {
     "who": "dr",
     "text": "Tell me about the bleeding — colour, amount, and whether there’s been anything else, like discharge, in recent weeks?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Characterises the bleed and asks about associated discharge"
    },
    {
@@ -5878,7 +5878,7 @@
    {
     "who": "dr",
     "text": "That’s helpful. Any pain, weight loss, bleeding after sex, or blood in your urine or from your back passage?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for other sources and systemic features"
    },
    {
@@ -5888,7 +5888,7 @@
    {
     "who": "dr",
     "text": "Have you had children? And any family history of womb, ovary or bowel cancer?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Nulliparity and family history as risk factors"
    },
    {
@@ -5898,7 +5898,7 @@
    {
     "who": "dr",
     "text": "When did you last have a smear test?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Cervical screening status"
    },
    {
@@ -5910,7 +5910,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You mentioned your mum, and “at my age”. I wondered whether something more worrying has crossed your mind?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Picks up the cues and gently surfaces the unspoken fear"
    },
    {
@@ -5920,7 +5920,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me. That fear makes complete sense, and it explains why you’ve been hoping I’d say it’s nothing. And the smear — was that part of why you booked a video appointment?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the fear and names the examination dread"
    },
    {
@@ -5932,8 +5932,8 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I want to be honest with you. Any bleeding after the menopause needs checking, even once, ten years on. National guidance says that for a woman over 55 who isn’t on HRT, we refer urgently to the gynaecology team to check the lining of the womb.",
-    "dom": "tasks",
-    "why": "States the NICE NG12 (updated April 2026) criterion and action"
+    "dom": "cm",
+    "why": "States the NICE NG12 criterion and action"
    },
    {
     "who": "pt",
@@ -5942,7 +5942,7 @@
    {
     "who": "dr",
     "text": "No. Most bleeding like this turns out to be harmless — often thinning of the tissues after the menopause. The urgent referral isn’t a diagnosis; it’s how we make sure quickly. Some things like weight and diabetes do make checking more important, which is another reason not to wait.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Balances honesty with reassurance; links risk factors without alarm"
    },
    {
@@ -5952,7 +5952,7 @@
    {
     "who": "dr",
     "text": "Usually an internal ultrasound scan to measure the womb lining, and sometimes a small sample or a look inside with a thin camera. They’ll explain each step.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains the pathway so she knows what to expect"
    },
    {
@@ -5960,7 +5960,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "I also need to examine you in person, to look for a simple cause like dryness or a polyp. I heard how hard the last one was. You’d be in control: a chaperone, a smaller speculum, and we stop the moment you say. Would that make it manageable?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Accommodates the examination dread with choice and control"
    },
    {
@@ -5970,7 +5970,7 @@
    {
     "who": "dr",
     "text": "Thank you. I’ll make the urgent referral today, so the examination won’t hold anything up. We can check your smear history at the same visit.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Referral not delayed for examination; screening addressed"
    },
    {
@@ -5982,7 +5982,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "The hospital should contact you soon — if you haven’t heard within a week, ring us. If you get heavy bleeding, pain or feel unwell before then, contact us the same day. I’ll look out for the result and we’ll go through it together. What will you tell yourself tonight when the worry comes?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net, tracking of referral, follow-up and teach-back"
    },
    {
@@ -5992,7 +5992,7 @@
    {
     "who": "dr",
     "text": "That’s exactly right. Anything else before we finish?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Shares the floor"
    },
    {
@@ -6004,57 +6004,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; did not accept “probably nothing”; established postmenopausal status and no HRT.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Her mother’s history, living with diabetes and weight, dread of examination after a bad smear.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “at my age”, “Mum’s womb trouble” and the video booking, and explored them.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea of dryness; the hidden fear of cancer and of examination; hoped for reassurance without tests.",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Face-to-face abdominal and speculum examination with chaperone; cervical screening status; TVUS via the pathway.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Endometrial cancer vs atrophy, polyp, cervical lesion, other bleeding source.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Discharge, weight loss, pain, post-coital bleeding, haematuria and rectal bleeding asked; risk factors identified.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Unexplained postmenopausal bleeding needing exclusion of endometrial cancer, explained honestly.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Suspected cancer pathway referral per NICE NG12 (updated April 2026), made today and not delayed by examination.",
-    "pts": 2
+    "d": "Suspected cancer pathway referral per NICE NG12, made today and not delayed by examination.",
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Recognised obesity, diabetes and nulliparity as risk factors; checked cervical screening status.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "What to expect, chase if no contact, heavy bleeding or pain → same day, results reviewed together.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -6098,7 +6098,7 @@
     {
      "t": "6–10",
      "h": "Explain and plan",
-     "d": "NICE NG12 (updated April 2026) referral today; what the pathway involves; most causes benign; in-person examination with control."
+     "d": "NICE NG12 referral today; what the pathway involves; most causes benign; in-person examination with control."
     },
     {
      "t": "10–12",
@@ -6108,14 +6108,14 @@
    ],
    "wordPics": {
     "fail": "Agrees it is probably dryness and offers vaginal oestrogen or a watch-and-wait; no suspected cancer referral; or refers abruptly with “we need to rule out cancer” and no support; skips examination because she booked video.",
-    "pass": "Recognises PMB at 61 off HRT as an NICE NG12 (updated April 2026) suspected cancer referral; makes it today; explains most causes are benign; arranges in-person examination; safety-nets.",
+    "pass": "Recognises PMB at 61 off HRT as an NICE NG12 suspected cancer referral; makes it today; explains most causes are benign; arranges in-person examination; safety-nets.",
     "exc": "All of the above, plus: surfaces the cancer fear and the examination dread; offers choice, chaperone and control; checks screening history; explains the pathway steps; commits to reviewing the result with her; teach-back."
    },
    "avoid": [
     {
      "dont": "“It’s probably just dryness — let’s see if it happens again.”",
      "instead": "“Any bleeding after the menopause is something we always check, even once.”",
-     "why": "Waiting for recurrence is not in line with NICE NG12 (updated April 2026)."
+     "why": "Waiting for recurrence is not in line with NICE NG12."
     },
     {
      "dont": "“We need to rule out cancer, so I’m sending you to the cancer clinic.”",
@@ -6166,7 +6166,7 @@
   "playbook": {
    "history": {
     "redFlags": [
-     "Postmenopausal bleeding at 55 or over, not attributable to HRT: suspected cancer pathway referral (NICE NG12 (updated April 2026))",
+     "Postmenopausal bleeding at 55 or over, not attributable to HRT: suspected cancer pathway referral (NICE NG12)",
      "Blood-stained or watery discharge, weight loss, pelvic pain",
      "Risk factors: obesity, type 2 diabetes, nulliparity, family history"
     ],
@@ -6187,7 +6187,7 @@
     "reflectIce": "“You’ve been hoping I’d say it’s nothing because of what happened to your mum. I’d rather find out properly and fast, so you’re not lying awake guessing.”",
     "psychosocial": "Accommodate the examination dread with a chaperone, choice of speculum, and her control to stop.",
     "sharedPlan": [
-     "Suspected cancer pathway referral for endometrial cancer today (NICE NG12 (updated April 2026))",
+     "Suspected cancer pathway referral for endometrial cancer today (NICE NG12)",
      "Face-to-face abdominal and speculum examination with chaperone, not delaying the referral",
      "Check cervical screening history and offer screening if due"
     ],
@@ -6201,7 +6201,7 @@
    {
     "ic": "🗺️",
     "t": "Vaginal bleeding pathway",
-    "s": "Visual algorithm · NICE NG12 (updated April 2026)",
+    "s": "Visual algorithm · NICE NG12",
     "href": "algorithms/vaginal-bleeding.html"
    },
    {
@@ -6221,37 +6221,37 @@
    "intro": "This station tests whether you hold a red flag against a patient who wants you to let it go. It is failed by collusion, by frightening her out of the pathway, or by skipping the examination.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Accepting “probably dryness” and suggesting vaginal oestrogen or review if it recurs.",
-     "why": "PMB at 61 off HRT meets the NICE NG12 (updated April 2026) referral criterion. A single episode counts.",
+     "why": "PMB at 61 off HRT meets the NICE NG12 referral criterion. A single episode counts.",
      "fix": "“Any bleeding after the menopause gets checked — I’m referring you urgently today.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Delaying the referral until after an examination or blood tests.",
      "why": "Examination matters, but the referral should not wait for it.",
      "fix": "Refer today and book the in-person examination alongside."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Missing the cancer fear under “it’s nothing”.",
      "why": "“Does not identify the patient’s concerns.” Her minimising is fear, and unaddressed fear risks non-attendance.",
      "fix": "“You mentioned your mum — I wondered if cancer had crossed your mind?”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Brushing past her dread of examination.",
      "why": "She booked video to avoid it. Without choice and control, she may not attend.",
      "fix": "Chaperone, smaller speculum, stop on request, talk her through each step."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "“We need to rule out cancer” with no context of how often it is benign.",
      "why": "Unbalanced explanation causes avoidable distress.",
      "fix": "Say both truths: most PMB is benign, and the referral is how we make sure quickly."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No plan to track the referral or discuss the result.",
      "why": "Non-specific follow-up is a common failing feedback statement.",
      "fix": "“If you haven’t heard in a week, ring us. I’ll go through the result with you.”"
@@ -6274,7 +6274,7 @@
    "reason": "Video appointment: “wants to book a PSA blood test”."
   },
   "knowledge": {
-   "guideline": "UKHSA Prostate Cancer Risk Management Programme (GOV.UK) · UK NSC (no population prostate screening programme) · NICE NG12 (updated April 2026) · NICE NG131 (2019, updated 2021)",
+   "guideline": "UKHSA Prostate Cancer Risk Management Programme (GOV.UK) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · UK NSC (no population prostate screening programme) · NICE NG131 (2019, updated 2021)",
    "summary": "An asymptomatic man aged 50 or over can have a PSA test after a balanced discussion. Help him make an informed choice — neither refuse nor reflexively test — and give real weight to his higher risk as a Black man.",
    "points": [
     {
@@ -6295,11 +6295,11 @@
     },
     {
      "h": "If the result is raised",
-     "t": "For an asymptomatic man tested under the Programme, a PSA of 3.0 micrograms/L or more (age 50 to 69) prompts urological referral. The NICE NG12 (updated April 2026) age-specific thresholds (for 50–59 years, above 3.5 micrograms/L) apply to symptomatic men. NICE NG131: multiparametric MRI is the first-line investigation for suspected localised prostate cancer, before any biopsy; active surveillance is an option for low-risk disease."
+     "t": "For an asymptomatic man tested under the Programme, a PSA of 3.0 micrograms/L or more (age 50 to 69) prompts urological referral. The NICE NG12 age-specific thresholds (for 50–59 years, above 3.5 micrograms/L) apply to symptomatic men. NICE NG131: multiparametric MRI is the first-line investigation for suspected localised prostate cancer, before any biopsy; active surveillance is an option for low-risk disease."
     },
     {
      "h": "Symptoms change the pathway",
-     "t": "NICE NG12 (updated April 2026): consider PSA and digital rectal examination in men with lower urinary tract symptoms, erectile dysfunction or visible haematuria. Bone pain, weight loss or a hard irregular prostate move this from informed choice to a symptomatic assessment."
+     "t": "NICE NG12: consider PSA and digital rectal examination in men with lower urinary tract symptoms, erectile dysfunction or visible haematuria. Bone pain, weight loss or a hard irregular prostate move this from informed choice to a symptomatic assessment."
     }
    ]
   },
@@ -6309,7 +6309,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Trevor, I’m Dr Lee. You’d like to talk about a PSA test — tell me what’s brought this up now.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question about the trigger rather than processing the request"
    },
    {
@@ -6319,7 +6319,7 @@
    {
     "who": "dr",
     "text": "I’m sorry about your colleague — that’s a shock. I’m happy to talk about the test, and I want to give you a straight answer on what “normal” means. First, can I ask a few questions about you, then we’ll go through the pros and cons and you can decide. Okay?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Acknowledges the trigger and sets an informed-choice agenda"
    },
    {
@@ -6331,7 +6331,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Any trouble with your waterworks — getting up at night, a weak stream, rushing to the loo, or any blood in your urine?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for lower urinary tract symptoms and haematuria"
    },
    {
@@ -6341,7 +6341,7 @@
    {
     "who": "dr",
     "text": "Any problems with erections, pain in your bones or back, or weight loss you can’t explain?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for symptoms that would move this to a symptomatic pathway"
    },
    {
@@ -6351,7 +6351,7 @@
    {
     "who": "dr",
     "text": "Has anyone in your family had prostate cancer, or breast or ovarian cancer?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks about family history, including BRCA-type patterns"
    },
    {
@@ -6361,7 +6361,7 @@
    {
     "who": "dr",
     "text": "Thank you. One more thing that matters — prostate cancer is more common in Black men, and tends to come on a bit earlier. That’s relevant for you, and I’ll come back to it.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Recognises Black ethnicity as a genuine risk factor"
    },
    {
@@ -6373,7 +6373,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "When you picture having the test, what are you hoping it does for you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores expectations beneath the request"
    },
    {
@@ -6383,7 +6383,7 @@
    {
     "who": "dr",
     "text": "Tell me more about “all that” — what have you heard?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the cue towards the hidden fear"
    },
    {
@@ -6393,7 +6393,7 @@
    {
     "who": "dr",
     "text": "That’s a really honest thing to say, and it’s actually central to this decision. Because the test can start you down that road, understanding it is part of choosing whether to have it.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the fear and links it to the decision"
    },
    {
@@ -6401,7 +6401,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "So here’s the honest picture. The PSA is useful, but it isn’t an all-clear. It can be raised by harmless things — a large prostate, an infection, even sex or a long bike ride. It can be normal even when there is a cancer. And sometimes it finds slow-growing cancers that would never have harmed you.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Corrects the all-clear belief with balance"
    },
    {
@@ -6411,7 +6411,7 @@
    {
     "who": "dr",
     "text": "The point is it can find a significant cancer earlier, when it’s more treatable. For a man of your background, with an uncle affected, that benefit counts for more. You’re entitled to the test, and I’d support you having it if that’s your choice.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Presents benefits honestly and weighs his individual risk"
    },
    {
@@ -6421,7 +6421,7 @@
    {
     "who": "dr",
     "text": "Then we’d likely repeat it, and refer you to the specialists. These days the next step is usually an MRI scan, and many men don’t need a biopsy at all. If a low-risk cancer is found, often the choice is careful monitoring rather than surgery — so a raised result doesn’t automatically mean the treatments you’re worried about.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains the downstream pathway (MRI first, active surveillance)"
    },
    {
@@ -6433,7 +6433,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "So there are two reasonable options. Have the test now, knowing what it can and can’t tell you. Or take some time, read the leaflet I’ll send, and decide later. There’s no wrong answer. What feels right to you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Supports autonomy with balanced options"
    },
    {
@@ -6443,7 +6443,7 @@
    {
     "who": "dr",
     "text": "That’s a well-thought-through choice. A couple of practical points: no sex and no hard exercise for 48 hours before the blood test, and if you get a urine infection, we’d wait six weeks. I’ll book it for next week.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Gives correct pre-test advice"
    },
    {
@@ -6455,7 +6455,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "I’ll go through the result with you myself, not just a text. If it’s normal, we’ll talk about when it might be worth repeating. And whatever the result, if you ever notice waterworks changes, blood in your urine, bone pain or weight loss, come and see us.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Result ownership, follow-up and symptom safety-net"
    },
    {
@@ -6465,7 +6465,7 @@
    {
     "who": "dr",
     "text": "Before you go — if someone at home asks what the test tells you, what will you say?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Checks understanding with teach-back"
    },
    {
@@ -6475,7 +6475,7 @@
    {
     "who": "dr",
     "text": "Spot on. I’ll record that we’ve talked it through and that it’s your decision. Take care, Trevor.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Affirms his decision and documents informed choice"
    }
   ],
@@ -6483,57 +6483,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Asked what prompted the request before discussing the test; let him explain the colleague’s diagnosis.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Impact of the colleague’s illness, who supports him, and what matters to him about possible treatment effects.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “normal means I’m clear” and “biopsies and all that” and explored the fear of treatment harms.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (PSA is an all-clear); concern (cancer, and sexual and urinary side effects of treatment); expectation (a quick normal test).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Symptom screen; informed-choice PSA with pre-test advice (48 hours, 6 weeks after infection); DRE if symptoms arise.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Asymptomatic informed choice versus symptomatic presentation; benign causes of a raised PSA.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Asked about LUTS, haematuria, erectile dysfunction, bone pain and weight loss that would change the pathway (NICE NG12 (updated April 2026)).",
-    "pts": 2
+    "d": "Asked about LUTS, haematuria, erectile dysfunction, bone pain and weight loss that would change the pathway (NICE NG12).",
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Summarised: asymptomatic man at higher-than-average risk, eligible for PSA after counselling; no symptoms needing urgent assessment.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Balanced benefits and harms; his choice respected; explained MRI-first pathway (NICE NG131) and active surveillance if a raised result.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Weighed Black ethnicity and family history; asked about BRCA-pattern cancers; explained second-degree history carries less weight than first-degree.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Result given personally, plan for a raised or normal value, symptom safety-net, and informed choice documented.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -6641,7 +6641,7 @@
   "playbook": {
    "history": {
     "redFlags": [
-     "Lower urinary tract symptoms, erectile dysfunction or visible haematuria — consider PSA and DRE (NICE NG12 (updated April 2026))",
+     "Lower urinary tract symptoms, erectile dysfunction or visible haematuria — consider PSA and DRE (NICE NG12)",
      "Bone pain, back pain, weight loss or fatigue — possible advanced disease",
      "Family history of prostate cancer in a first-degree relative, or breast or ovarian cancer suggesting a BRCA variant"
     ],
@@ -6664,7 +6664,7 @@
     "sharedPlan": [
      "Balanced discussion of benefits and harms; his decision respected either way",
      "If testing: no ejaculation or vigorous exercise for 48 hours, defer 6 weeks after a UTI",
-     "Raised result for age: repeat and refer (NICE NG12 (updated April 2026)); MRI before biopsy (NICE NG131)"
+     "Raised result for age: repeat and refer (NICE NG12); MRI before biopsy (NICE NG131)"
     ],
     "safetyNet": [
      "GP discusses the result personally and agrees when to consider repeating it",
@@ -6676,7 +6676,7 @@
    {
     "ic": "🗺️",
     "t": "High PSA",
-    "s": "Visual algorithm · NICE NG12 (updated April 2026) thresholds",
+    "s": "Visual algorithm · NICE NG12 thresholds",
     "href": "algorithms/high-psa.html"
    },
    {
@@ -6696,37 +6696,37 @@
    "intro": "Candidates fail this station at either extreme: the reflex blood form or the paternalistic refusal. The marks sit in the balanced conversation, the weighting of his risk, and the fear of treatment he does not volunteer.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Agreeing that a normal PSA means he is in the clear.",
      "why": "PSA misses some significant cancers; false reassurance is a clinical error.",
      "fix": "“A normal result is reassuring but not a guarantee.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Declining the test because “there’s no screening programme”.",
      "why": "The risk management programme allows asymptomatic men aged 50 or over to choose PSA after counselling; refusal is outdated and paternalistic.",
      "fix": "Explain there is no population screening, then offer the test as his informed choice."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "No symptom screen before treating it as an informed-choice request.",
-     "why": "LUTS, ED, haematuria or bone pain change the pathway under NICE NG12 (updated April 2026).",
+     "why": "LUTS, ED, haematuria or bone pain change the pathway under NICE NG12.",
      "fix": "Four quick questions: waterworks, blood in the urine, erections, bone pain or weight loss."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Ignoring his ethnicity, or overstating a second-degree family history.",
      "why": "Black ethnicity is a genuine risk factor; an uncle’s late-life cancer adds little compared with a father or brother.",
      "fix": "Weigh both accurately and say so."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Reciting benefits and harms as a list without finding out what worries him.",
      "why": "Feedback: “information not tailored to the patient’s concerns”. His fear of impotence and incontinence is what drives the decision.",
      "fix": "Ask what he has heard about biopsies and treatment, then explain MRI-first and active surveillance."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No pre-test advice and no plan for who gives the result.",
      "why": "Spuriously raised results and unexplained numbers create harm and anxiety.",
      "fix": "48 hours without ejaculation or hard exercise; “I’ll go through the result with you myself.”"
@@ -6785,7 +6785,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hi Ivy, I’m Dr Lee. Thanks for booking in. Tell me what’s been going on.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question, letting her set out her story"
    },
    {
@@ -6795,7 +6795,7 @@
    {
     "who": "dr",
     "text": "I’m glad you came, because fainting at school is something I want to take properly seriously, not just give you tablets for. Can I ask you some questions to work out what’s behind it, and then we’ll decide on tests together?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Validates the symptom and agrees an agenda wider than iron"
    },
    {
@@ -6807,7 +6807,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Tell me about the faints. Have you actually blacked out? Any chest pain, heart racing or fluttering?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for cardiac red flags"
    },
    {
@@ -6817,7 +6817,7 @@
    {
     "who": "dr",
     "text": "You mentioned eating healthily and exercising. What does a typical day look like — food and exercise?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Uses her own words to open the subject non-confrontationally"
    },
    {
@@ -6827,7 +6827,7 @@
    {
     "who": "dr",
     "text": "How do you feel if you can’t train, or eat more than you planned?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Tests for compulsive exercise and fear of weight gain"
    },
    {
@@ -6837,7 +6837,7 @@
    {
     "who": "dr",
     "text": "Thank you for being honest. Has your weight changed recently? And your periods — are they regular?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes rapid weight loss and amenorrhoea"
    },
    {
@@ -6847,7 +6847,7 @@
    {
     "who": "dr",
     "text": "And your mood — how have you been in yourself? Any thoughts of harming yourself?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens mood and self-harm risk"
    },
    {
@@ -6859,7 +6859,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "It sounds like there’s a lot of pressure on you right now. What’s that like?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores context and control without challenging her"
    },
    {
@@ -6869,7 +6869,7 @@
    {
     "who": "dr",
     "text": "That makes a lot of sense. When everything feels like it’s about performing, having one thing that’s yours matters. What worries you most about what I might say today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the need for control and elicits her fear"
    },
    {
@@ -6881,7 +6881,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Thank you for telling me that. I’ll be honest with you. Losing weight fast, periods stopping, feeling cold, going grey when you stand — those tell me your body isn’t getting enough fuel for what you’re asking of it. I don’t think this is anaemia. I think your eating and exercise have become an eating disorder, and it’s started to affect your heart and blood pressure.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names the probable eating disorder and its medical danger, gently"
    },
    {
@@ -6891,7 +6891,7 @@
    {
     "who": "dr",
     "text": "I can see why it feels that way — it started as trying to be healthy. But being healthy shouldn’t make you faint. This isn’t about blame or vanity; it’s an illness, it’s treatable, and people do recover. And I won’t make any decisions without you.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Avoids argument, reframes as illness and restores some control"
    },
    {
@@ -6903,7 +6903,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Here’s what I’d like. I can’t check your heart properly over video, so I’d like you to come in today. We’ll check your pulse and blood pressure lying and standing, your temperature and weight, do a heart tracing and bloods for your salts and sugar. If anything is dangerous, you may need to be seen in hospital today.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Same-day in-person MEED risk assessment, bloods and ECG"
    },
    {
@@ -6913,7 +6913,7 @@
    {
     "who": "dr",
     "text": "I know exams matter a lot to you. Fainting could hurt you, and it will affect your revision far more than an hour here. I’ll also refer you urgently to the eating disorder team for young people — they’re specialists, and they aim to see urgent referrals within a week.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Urgent CEDS referral in line with NICE NG69 and the waiting time standard"
    },
    {
@@ -6923,7 +6923,7 @@
    {
     "who": "dr",
     "text": "Because this is affecting your physical safety, your family will need to be involved — the treatment that works best for people your age includes them. But we can decide together how, and what you’d like to say first. Would it help if I was there when you tell them?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Honest about limits of confidentiality at 16, negotiated with her"
    },
    {
@@ -6935,13 +6935,13 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "That’s fine. Please come in this afternoon — can someone bring you? Until then, if you pass out, get chest pain, your heart races or you feel very weak, ring 999. Please don’t exercise today.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Same-day attendance and explicit emergency triggers"
    },
    {
     "who": "dr",
     "text": "Before we finish, tell me in your own words what we’ve agreed.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back to confirm understanding"
    },
    {
@@ -6951,7 +6951,7 @@
    {
     "who": "dr",
     "text": "Exactly. You came hoping for a quick fix, and I know this is harder to hear. You did the right thing coming, and you won’t be doing this alone.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Closes with warmth and acknowledges the gap between wish and plan"
    }
   ],
@@ -6959,57 +6959,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; took the faints seriously without accepting “just anaemia” and agreed a wider agenda.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Academic and parental pressure, perfectionism, need for control, mood and self-harm screen.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “eating healthily and exercising” and “I feel huge” and explored them without confrontation.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (run down, anaemic), concern (being made to gain weight, losing control), expectation (iron or a blood test).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Same-day in-person lying and standing BP and pulse, temperature, weight, sit-up–squat–stand; FBC, U&E, phosphate, magnesium, glucose, LFTs; ECG (MEED, NICE NG69).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Anorexia nervosa vs anaemia, thyroid disease, coeliac disease and other causes of weight loss; cardiac causes of presyncope.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about blackouts, chest pain and palpitations; recognised postural symptoms and rapid weight loss as possible medical instability.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Probable anorexia nervosa with possible medical instability, explained as an illness rather than a choice.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Same-day physical assessment with admission if red MEED features; immediate urgent referral to the community eating disorder service.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Low mood screened; exam pressure acknowledged; family involvement negotiated; exercise paused today.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999 for collapse, chest pain, palpitations or weakness; seen today; review after results and once the team is involved.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -7182,37 +7182,37 @@
    "intro": "This station hides an eating disorder behind a request for iron. It is failed by accepting the anaemia story, by confronting her so bluntly that she shuts down, and by forgetting that the dizziness may be a medical emergency.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Ordering an FBC and ferritin and offering iron.",
      "why": "“Management plan not in line with current UK best practice.” The history points to an eating disorder with possible medical instability.",
      "fix": "Ask about food, exercise, weight and periods, and say clearly: “I don’t think this is anaemia.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Recognising the eating disorder but only making a routine referral from a video call.",
      "why": "“Does not gather sufficient information to make a safe assessment.” MEED requires in-person observations; postural symptoms may mean she is unstable.",
      "fix": "Bring her in today for lying and standing observations, temperature, weight, bloods and ECG, and refer urgently."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "“You’re clearly too thin — you need to eat more.”",
      "why": "Confrontation increases defensiveness; she will minimise and may not return.",
      "fix": "Start from her words: “Tell me what a typical day of food and exercise looks like.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Missing the fear of losing control.",
      "why": "“Does not identify or respond to the patient’s cues.” Her resistance comes from fear, not stubbornness.",
      "fix": "“Food feels like the one thing you control. I won’t take decisions away from you — we’ll make them together.”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Promising confidentiality, or telling her parents will be phoned without discussion.",
      "why": "Both fail the balance GMC 0–18 years requires between confidentiality and safety.",
      "fix": "Explain honestly that family must be involved, then negotiate who, when and how."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Closing with “we’ll ring with the results” and no emergency advice.",
      "why": "Non-specific safety-netting in a patient who is fainting.",
      "fix": "Name 999 triggers, pause exercise, confirm how she gets to the surgery today, and teach-back."
@@ -7271,7 +7271,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hi Maya, I’m Dr Lee. Thanks for staying on with me on your own. Before anything else, can I explain how this works, because it matters? What you tell me stays between us. The only time I’d have to share something is if I was seriously worried about your safety — and even then I’d talk to you first about what happens.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Sets up confidentiality and its limits before any question"
    },
    {
@@ -7281,7 +7281,7 @@
    {
     "who": "dr",
     "text": "I hear that. I’m not going to make you talk about anything you don’t want to. What I can’t honestly do is tell her you’re fine before I know. So can we have a chat — your pace, your call on what we talk about?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Does not collude, but respects her autonomy and pace"
    },
    {
@@ -7293,7 +7293,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Let’s start easy. How are things at home, and at school at the moment?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "HEEADSSS-style psychosocial screen, starting with low-threat areas"
    },
    {
@@ -7303,7 +7303,7 @@
    {
     "who": "dr",
     "text": "What keeps you up at night?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the sleep cue with an open question"
    },
    {
@@ -7313,7 +7313,7 @@
    {
     "who": "dr",
     "text": "Can I ask something I ask lots of young people, because it matters? When things build up — have you ever hurt yourself on purpose?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks directly and normalises the question"
    },
    {
@@ -7323,7 +7323,7 @@
    {
     "who": "dr",
     "text": "Thank you for trusting me with that. I’m not shocked and I’m not cross. For lots of people it’s a way of letting pressure out. Are any of the cuts deep, or looking red, hot or sore? Has it been getting more often?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Responds without alarm and checks wound care and escalation"
    },
    {
@@ -7333,7 +7333,7 @@
    {
     "who": "dr",
     "text": "When you feel that low, do thoughts come about not wanting to be here, or about ending your life? Have you ever thought about how, or made any plans?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Explicit suicide enquiry: thoughts, plan, intent, means"
    },
    {
@@ -7343,7 +7343,7 @@
    {
     "who": "dr",
     "text": "Tell me about her — and who else keeps you going?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Explores protective factors"
    },
    {
@@ -7355,7 +7355,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "Can I gently ask what’s been building the pressure? It could be school, friends, online, anything.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Opens a safe door to the hidden trigger"
    },
    {
@@ -7365,7 +7365,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me. That’s so much to carry on your own. Nothing about who you might be is anything to be ashamed of, and who knows is completely your decision. What were you most worried would happen if you told me today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Receives the disclosure warmly, without comment, and returns control"
    },
    {
@@ -7377,7 +7377,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I won’t tell her about who you like — that’s yours. From what you’ve told me, you’re very low, you’re cutting to cope, and you have thoughts that others would be better off without you, but no plans and some really strong reasons to stay safe. That means you need more support, not that you’re in trouble.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Summarises the risk picture honestly and without a score"
    },
    {
@@ -7387,7 +7387,7 @@
    {
     "who": "dr",
     "text": "Not behind your back. Right now I don’t need to break confidentiality. I would like to refer you to the young people’s mental health team, who help with exactly this — the low mood, the cutting, and what’s underneath. Would you be okay with that?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Proportionate decision on confidentiality and referral with consent (NICE NG225)"
    },
    {
@@ -7399,7 +7399,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "They work the same way I do. Let’s also make a plan for the moments it feels too much: what helps, who you can text, like your best friend, and numbers you can call any time — Childline is 0800 1111, day or night. And the online messages — would you want help from school with those? We can decide together how.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Safety plan, crisis routes and bullying support, co-produced"
    },
    {
@@ -7409,7 +7409,7 @@
    {
     "who": "dr",
     "text": "Fair. We can keep it to one trusted person. And your mum — she clearly loves you and she’s worried. Would it help if we told her something together, like that you’ve been really low and you’re getting support, without the private parts? You choose the words.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Negotiates parental involvement with her in control"
    },
    {
@@ -7421,13 +7421,13 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Deal. If those thoughts ever turn into a plan, or you feel you can’t keep yourself safe, call 999 or go to A&E, or ring NHS 111 for urgent mental health help. If a cut looks infected or is deep, get it seen. And I want to see you again in a week — just you and me for part of it.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Crisis routes, wound safety-net and a defined follow-up"
    },
    {
     "who": "dr",
     "text": "Before we bring your mum in — what will you do tonight if it builds up again?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back of the safety plan"
    },
    {
@@ -7437,7 +7437,7 @@
    {
     "who": "dr",
     "text": "That’s a good plan. Thank you for being so honest with me, Maya. You’re not on your own with this any more.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Closes with warmth and validation"
    }
   ],
@@ -7445,57 +7445,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Saw her alone; explained confidentiality first; did not collude with “tell her I’m fine” but let her set the pace.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Home, school, sleep, phone use, friends, online life, sexuality (HEEADSSS-style) — surfaced the bullying and fear of being outed.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Long sleeves, falling grades, poor sleep, “my phone, thinking, stuff” — each followed rather than noted.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (mum overreacting), concern (everything told to her parents; being outed), expectation (to be declared fine).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Asked about wound depth and infection; offered to check wounds; assessed competence; no risk scale used (NICE NG225).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Self-harm as emotional regulation vs suicidal intent; depression; bullying and identity stress as triggers; safeguarding concerns.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked directly about suicidal thoughts, plans, intent and means, and about protective factors.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Low mood with repeated self-harm and passive suicidal thoughts, no current plan, strong protective factors — stated without labelling her risk level.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Referral to young people’s mental health services with consent, co-produced safety plan, crisis numbers, school support she controls.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Online bullying addressed; sexuality handled without comment and kept confidential; sleep and phone use raised.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999, A&E and NHS 111 for crisis; Childline; wound safety-net; review in a week with time alone.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -7668,37 +7668,37 @@
    "intro": "This station is won or lost in the first minute. Without an honest confidentiality statement, Maya stays closed; without direct risk questions, the candidate cannot be safe; and one careless comment about her sexuality ends the consultation.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Starting with questions about mood before explaining confidentiality.",
      "why": "“Does not establish a safe environment for disclosure.” Her “tell my mum I’m fine” is a test of whether this room is private.",
      "fix": "Open with what stays private and the one exception, in plain words."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Avoiding the suicide question because she seems guarded, or asking only “you’re not going to do anything silly, are you?”",
      "why": "“Does not gather sufficient information to make a safe assessment.” Leading or vague questions get a “no”.",
      "fix": "Ask directly about thoughts, plans, intent and means, then about what keeps her safe."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Summarising risk as “low” or scoring it on a scale.",
      "why": "NICE NG225 advises against risk tools and low/medium/high labels to predict suicide or allocate care.",
      "fix": "Describe what she told you, her protective factors, and the needs the plan must meet."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Promising total secrecy to win her trust.",
      "why": "An absolute promise may have to be broken; GMC 0–18 years requires honesty about limits.",
      "fix": "“It stays between us unless I’m seriously worried about your safety — and I’d talk to you first.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Reacting to the sexuality disclosure with a comment, a question about certainty, or moving straight past it.",
      "why": "Editorialising or ignoring it both read as judgement; she withdraws.",
      "fix": "Thank her, say it is nothing to be ashamed of, and make clear she controls who knows."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Ending with a referral and “see you soon”, with no crisis plan or agreed message for her mother.",
      "why": "Non-specific safety-netting; and the mother waiting outside needs a plan both can live with.",
      "fix": "Co-produce a safety plan, give crisis numbers, book a review in a week, and agree the exact words for her mum."
@@ -7721,12 +7721,12 @@
    "reason": "Video appointment booked by the patient: “lump on one testicle”."
   },
   "knowledge": {
-   "guideline": "NICE NG12 (updated April 2026) · NICE NG257 (fertility preservation) · GMC Intimate examinations and chaperones (2024)",
+   "guideline": "NICE NG257 (fertility preservation) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · GMC Intimate examinations and chaperones (2024)",
    "summary": "A hard, painless lump in the body of the testis in a young man is testicular cancer until examination and ultrasound say otherwise. Painlessness is the worrying feature, not the comforting one.",
    "points": [
     {
-     "h": "NICE NG12 (updated April 2026) testicular criteria",
-     "t": "NICE NG12 (updated April 2026): consider a suspected cancer pathway referral for testicular cancer in men with a non-painful enlargement or change in shape or texture of the testis. Consider a direct-access ultrasound scan for unexplained or persistent testicular symptoms."
+     "h": "NICE NG12 testicular criteria",
+     "t": "NICE NG12: consider a suspected cancer pathway referral for testicular cancer in men with a non-painful enlargement or change in shape or texture of the testis. Consider a direct-access ultrasound scan for unexplained or persistent testicular symptoms."
     },
     {
      "h": "Inside or outside the testis",
@@ -7756,7 +7756,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hi Jordan, I’m Dr Lee. Thanks for booking this — I know it isn’t the easiest thing to talk about on a screen. Tell me about the lump in your own words.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open start that acknowledges the awkwardness without rushing him"
    },
    {
@@ -7766,7 +7766,7 @@
    {
     "who": "dr",
     "text": "I can hear you’d love me to say yes. I’d rather give you a proper answer than a quick one, so let me ask a few things first, then I’ll tell you honestly what I think and what happens next. Okay?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Sets an agenda and signals honesty without dismissing his question"
    },
    {
@@ -7778,7 +7778,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Which side is it, and when exactly did you first notice it?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes side and duration"
    },
    {
@@ -7788,7 +7788,7 @@
    {
     "who": "dr",
     "text": "When you feel it, is the lump part of the testicle itself, or does it feel like a separate little ball sitting above or behind it?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Distinguishes intratesticular from epididymal swelling"
    },
    {
@@ -7798,7 +7798,7 @@
    {
     "who": "dr",
     "text": "Any pain, tenderness, redness, a temperature, burning when you pass urine, or any discharge?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for infection and inflammatory causes"
    },
    {
@@ -7808,7 +7808,7 @@
    {
     "who": "dr",
     "text": "Any injury down there? And have you had any cough, breathlessness, back pain or weight loss?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks trauma and features of spread"
    },
    {
@@ -7818,7 +7818,7 @@
    {
     "who": "dr",
     "text": "One thing from your notes — you had an operation as a baby for a testicle that hadn’t come down. Do you know much about that?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Elicits the orchidopexy risk factor"
    },
    {
@@ -7828,7 +7828,7 @@
    {
     "who": "dr",
     "text": "It’s relevant, and I’ll explain why in a moment.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Flags significance honestly without alarming him mid-history"
    },
    {
@@ -7836,7 +7836,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "Can I ask — before you booked, had you looked any of this up online?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Opens the door to the hidden fear"
    },
    {
@@ -7846,7 +7846,7 @@
    {
     "who": "dr",
     "text": "That’s a very human thing to do. When you read that, what was the bit that frightened you most?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the specific concern rather than general anxiety"
    },
    {
@@ -7856,7 +7856,7 @@
    {
     "who": "dr",
     "text": "Thank you for saying it. Lots of young men carry exactly that fear and never voice it, and I’m really glad you have, because there’s good information I can give you on every one of those points.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates and normalises the masculinity and fertility fear"
    },
    {
@@ -7864,7 +7864,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Here’s my honest view. A hard lump that’s part of the testicle, that doesn’t hurt and may be growing, is exactly the kind we always check quickly. The lack of pain is actually why I take it seriously. Your childhood operation also slightly raises the chance of testicular problems later. It could still be something harmless — but I can’t tell you that from a video.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains why painlessness and the risk factor raise concern"
    },
    {
@@ -7874,8 +7874,8 @@
    {
     "who": "dr",
     "text": "I think it needs ruling out properly, and fast. I need to examine you in person — I can see you here in the next day or two, with a chaperone if you’d like. Then there’s a national urgent pathway for exactly this: a scan of the testicle and a specialist appointment, usually within two weeks.",
-    "dom": "tasks",
-    "why": "Arranges face-to-face examination and the NICE NG12 (updated April 2026) suspected cancer pathway"
+    "dom": "cm",
+    "why": "Arranges face-to-face examination and the NICE NG12 suspected cancer pathway"
    },
    {
     "who": "pt",
@@ -7884,7 +7884,7 @@
    {
     "who": "dr",
     "text": "Then the news is better than what you read. Testicular cancer is one of the most curable cancers there is. If a testicle needs removing, the other one normally keeps your hormones and fertility working. Before any treatment you’d be offered sperm storage as a back-up, and a prosthesis can be fitted so things look the same.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Gives accurate reassurance on cure, fertility, sperm storage and prosthesis"
    },
    {
@@ -7896,7 +7896,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "So the plan: an examination with me this week, and I’ll send the urgent referral and scan request today rather than wait. Does that feel doable around your clients?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Shares the plan and checks it fits his life"
    },
    {
@@ -7906,7 +7906,7 @@
    {
     "who": "dr",
     "text": "Absolutely. She clearly cares, and she was right to push you. You can tell her as much or as little as you like — it’s your information. Would it help if I sent you some reliable reading so you’re not back on random websites tonight?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Supports involvement of his partner while respecting confidentiality"
    },
    {
@@ -7918,7 +7918,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If before the appointments it becomes painful, swells quickly, or you get a cough, breathlessness or back pain, contact us the same day. If the hospital hasn’t been in touch within a week, ring us and we’ll chase it — and I’ll check the result myself.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net and ownership of the referral"
    },
    {
@@ -7928,7 +7928,7 @@
    {
     "who": "dr",
     "text": "I know. What I can say is we’ll find out quickly and you won’t be dealing with it alone. What are you going to tell your girlfriend when we finish?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Checks understanding with teach-back"
    },
    {
@@ -7938,7 +7938,7 @@
    {
     "who": "dr",
     "text": "That’s exactly it. I’ll see you in clinic.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Closes warmly and confirms the next step"
    }
   ],
@@ -7946,57 +7946,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Opened with a free description of the lump; did not answer “it’s fine, right?” before gathering the facts.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Occupation and body image as a personal trainer, the relationship and plans for children, what he has read online.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “my girlfriend made me”, the online searching and the bravado as signals of fear, and explored them.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (cyst or gym strain); concern (cancer, losing a testicle, fertility and masculinity); expectation (quick reassurance).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
-    "d": "Arranged face-to-face examination with a chaperone offered; direct-access ultrasound and suspected cancer referral per NICE NG12 (updated April 2026).",
-    "pts": 1
+    "d": "Arranged face-to-face examination with a chaperone offered; direct-access ultrasound and suspected cancer referral per NICE NG12.",
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Intratesticular tumour versus epididymal cyst, hydrocele, varicocele and epididymo-orchitis, tested with targeted questions.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about symptoms of spread (cough, breathlessness, back pain, weight loss); recognised painless intratesticular lump plus orchidopexy history as high suspicion.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated clearly that this needs testicular cancer ruling out urgently, without claiming a diagnosis over video.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Examination this week, same-day referral and scan request, accurate information on cure, fertility, sperm storage (NICE NG257) and prosthesis.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Addressed the undescended-testis history and the psychological load; offered reliable written information.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Named same-day return triggers, a date to chase the referral, and personal ownership of the result.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -8036,7 +8036,7 @@
     {
      "t": "6–10",
      "h": "Explain and plan",
-     "d": "Painless and hard is the worrying feature. In-person examination this week, urgent NICE NG12 (updated April 2026) scan and referral sent today. Cure rates, the other testis, sperm storage, prosthesis."
+     "d": "Painless and hard is the worrying feature. In-person examination this week, urgent NICE NG12 scan and referral sent today. Cure rates, the other testis, sperm storage, prosthesis."
     },
     {
      "t": "10–12",
@@ -8046,7 +8046,7 @@
    ],
    "wordPics": {
     "fail": "Accepts “it doesn’t hurt so it’s nothing” and offers review if it grows; relies on a video impression; never asks about the orchidopexy; misses the fear beneath the bravado; no referral, or a referral with no explanation so he may not attend.",
-    "pass": "Recognises a painless hard intratesticular lump as suspicious; arranges examination and an urgent NICE NG12 (updated April 2026) pathway with ultrasound; notes the undescended-testis history; acknowledges he is worried; gives a basic safety-net.",
+    "pass": "Recognises a painless hard intratesticular lump as suspicious; arranges examination and an urgent NICE NG12 pathway with ultrasound; notes the undescended-testis history; acknowledges he is worried; gives a basic safety-net.",
     "exc": "All of the above, plus: explicitly reframes painlessness; draws out the specific fear of losing a testicle and fertility and answers it with accurate facts (cure rates, the other testis, sperm storage, prosthesis); involves the girlfriend on his terms; owns the referral and result; teach-back confirms he will attend."
    },
    "avoid": [
@@ -8095,7 +8095,7 @@
     },
     {
      "h": "Referral ownership",
-     "t": "Document the NICE NG12 (updated April 2026) criterion, send the referral the same day, and have a system to check he was seen and the scan was reported."
+     "t": "Document the NICE NG12 criterion, send the referral the same day, and have a system to check he was seen and the scan was reported."
     }
    ],
    "community": [
@@ -8108,7 +8108,7 @@
   "playbook": {
    "history": {
     "redFlags": [
-     "Hard, painless lump arising from the testis, possibly enlarging — NICE NG12 (updated April 2026) suspected cancer pathway",
+     "Hard, painless lump arising from the testis, possibly enlarging — NICE NG12 suspected cancer pathway",
      "Previous undescended testis (even after orchidopexy), previous testicular tumour, family history",
      "Symptoms of spread: cough, breathlessness, haemoptysis, back pain, weight loss, breast swelling"
     ],
@@ -8130,7 +8130,7 @@
     "psychosocial": "Invite his girlfriend if he wants; give reliable written information; acknowledge work and income worries if treatment is needed.",
     "sharedPlan": [
      "Face-to-face examination this week with a chaperone offered",
-     "Same-day NICE NG12 (updated April 2026) suspected cancer referral and direct-access testicular ultrasound",
+     "Same-day NICE NG12 suspected cancer referral and direct-access testicular ultrasound",
      "Explain cure rates, preserved function of the other testis, sperm storage before treatment (NICE NG257) and prosthesis"
     ],
     "safetyNet": [
@@ -8143,7 +8143,7 @@
    {
     "ic": "🗺️",
     "t": "Testicular lump",
-    "s": "Visual algorithm · NICE NG12 (updated April 2026)",
+    "s": "Visual algorithm · NICE NG12",
     "href": "algorithms/testicular-lump.html"
    },
    {
@@ -8157,37 +8157,37 @@
    "intro": "This station is lost when the candidate is persuaded by his confidence. The lump is suspicious because it is painless; the man is minimising because he is frightened. Miss either and the station fails.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Accepting “it doesn’t hurt” as reassuring and advising review in a few weeks.",
-     "why": "A painless hard intratesticular lump meets the NICE NG12 (updated April 2026) testicular criterion; watchful waiting is unsafe management.",
+     "why": "A painless hard intratesticular lump meets the NICE NG12 testicular criterion; watchful waiting is unsafe management.",
      "fix": "Say it plainly: “No pain is exactly why I want this scanned quickly.” Then arrange examination and the suspected cancer pathway."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Making a diagnosis or plan purely from the video, without arranging a face-to-face examination.",
      "why": "Distinguishing intratesticular from epididymal lumps needs palpation; relying on a remote impression is a recognised safety failure.",
      "fix": "Book an in-person examination within days with a chaperone offered — and send the referral and scan request in parallel so nothing waits."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Not asking about, or not using, the orchidopexy history.",
      "why": "Undescended testis is a known risk factor; missing it looks like incomplete data gathering.",
      "fix": "Ask directly about childhood surgery, then use it in the explanation."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Taking “my girlfriend made me come” at face value and never exploring his own worries.",
      "why": "Feedback: “did not identify or respond to cues”. The bravado is the cue.",
      "fix": "“Had you looked it up before booking? What worried you most?” — then pause and let him answer."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Hearing the fear of losing a testicle or fertility and answering “let’s not get ahead of ourselves”.",
      "why": "Deferring the central fear feels dismissive and can drive avoidance of the referral.",
      "fix": "Give the facts now: high cure rates, the other testis usually preserves hormones and fertility, sperm storage before treatment, prosthesis."
     },
     {
-     "dom": "gs",
+     "dom": "ro",
      "fail": "Using “two-week-wait” and “germ cell tumour” without explanation, then ending with “any questions?”.",
      "why": "Jargon and no check of understanding are standard failing feedback statements.",
      "fix": "Plain words — “an urgent scan and a specialist appointment, usually within two weeks” — and teach-back: “What will you tell your girlfriend?”"
@@ -8246,7 +8246,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello, it’s Dr Lee. Thanks for ringing. Tell me what’s happened to Kai.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open start, but listening for the time-critical detail"
    },
    {
@@ -8256,7 +8256,7 @@
    {
     "who": "dr",
     "text": "You’re not bothering me — I’m glad you rang now. I need to ask a couple of quick, quite direct questions, and it may be easiest if Kai answers some himself. Is he there?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Signals urgency and a focused structure from the first minute"
    },
    {
@@ -8268,7 +8268,7 @@
     "clock": "1–3 min",
     "who": "dr",
     "text": "Kai, it’s Dr Lee. I promise this is completely routine for me, and nothing you say will embarrass me. Is the pain actually in one of your testicles, or higher up in the groin?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Speaks directly to the teenager, normalises, asks the key question"
    },
    {
@@ -8278,7 +8278,7 @@
    {
     "who": "dr",
     "text": "Thanks, Kai, that helps a lot. Did it come on suddenly, over seconds or minutes, rather than building up over a day?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes abrupt onset — the key discriminator"
    },
    {
@@ -8288,7 +8288,7 @@
    {
     "who": "dr",
     "text": "Any fever, stinging when you wee, or has it happened before and gone away on its own?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Briefly screens for infection and previous intermittent episodes"
    },
    {
@@ -8300,7 +8300,7 @@
     "clock": "3–5 min",
     "who": "dr",
     "text": "Okay. I’m going to be really clear with you both. Sudden, severe pain in one testicle that makes you sick is something we treat as an emergency, because it can be the testicle twisting on its cord and cutting off its own blood supply. That’s called torsion.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Recognises likely torsion and names it plainly"
    },
    {
@@ -8310,7 +8310,7 @@
    {
     "who": "dr",
     "text": "It could be something else, and I hope it is. But football and a knock don’t rule torsion out — exercise can even set it off. The only people who can rule it out are the surgeons at the hospital, and it needs to happen quickly because the testicle only survives a limited time without blood.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Rejects the musculoskeletal label and explains time-critical salvage"
    },
    {
@@ -8320,7 +8320,7 @@
    {
     "who": "dr",
     "text": "Now. Not after the ibuprofen kicks in, not tomorrow. He’s about ninety minutes in, so there’s time — but only if you leave straight away.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Arranges immediate emergency assessment"
    },
    {
@@ -8328,7 +8328,7 @@
     "clock": "5–7 min",
     "who": "dr",
     "text": "Kai, I know hospital and people looking down there is the last thing you want. Can I be honest? Doctors in A&E see this every week. For them it’s a normal day. And going now is what keeps your testicle safe.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Addresses the embarrassment that could stall transfer"
    },
    {
@@ -8338,7 +8338,7 @@
    {
     "who": "dr",
     "text": "That’s a fair question. If we wait and it is a twist, there’s a real chance of losing that testicle. If you go and it’s nothing serious, you’ve lost an evening. I’d choose the evening every time. What do you think?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explains the risk trade-off in his terms and invites his view"
    },
    {
@@ -8348,7 +8348,7 @@
    {
     "who": "dr",
     "text": "Good decision — and that’s a grown-up call to make. You can ask for a male doctor, or for your mum to step out, whenever you want. That’s your choice.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Respects his dignity and autonomy as a 15-year-old"
    },
    {
@@ -8356,7 +8356,7 @@
     "clock": "7–10 min",
     "who": "dr",
     "text": "Mum, can you drive him straight to the emergency department now? If there’s any delay, or he gets much worse, call 999 instead.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Clear transport instruction with an escalation route"
    },
    {
@@ -8366,7 +8366,7 @@
    {
     "who": "dr",
     "text": "Good. At the desk, say: “sudden severe testicular pain with vomiting, possible torsion.” Those words get him seen fast. I’ll also ring ahead to the on-call team.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Gives the escalation phrase and arranges a handover"
    },
    {
@@ -8376,7 +8376,7 @@
    {
     "who": "dr",
     "text": "And Kai, nothing to eat or drink from now, not even a snack in the car, because you might need a small operation.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Nil by mouth in anticipation of theatre"
    },
    {
@@ -8388,7 +8388,7 @@
     "clock": "10–12 min",
     "who": "dr",
     "text": "One important thing: if the pain suddenly gets better on the way, still go. A twist can undo itself and twist again, so it still needs checking tonight.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Warns that pain easing does not exclude torsion"
    },
    {
@@ -8398,7 +8398,7 @@
    {
     "who": "dr",
     "text": "Just so I know we’re on the same page — tell me what you’re doing now?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Checks understanding and commitment to act"
    },
    {
@@ -8408,7 +8408,7 @@
    {
     "who": "dr",
     "text": "Perfect. You both did the right thing ringing. I’ll document this and let the hospital know he’s coming. Go now — good luck, Kai.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Affirms the family and ends promptly so they can leave"
    }
   ],
@@ -8416,57 +8416,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Let the mother describe events, then moved quickly to the key facts without a long clerking.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Worked with a mortified teenager and a minimising parent; practical barriers such as transport.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “groin” as likely testicular pain, the vomiting, the embarrassment and the “pulled muscle” framing.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Mother’s idea (muscle strain or knock), both family members’ concern (embarrassment, fuss), expectation (manage at home).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Recognised that no GP examination or scan should delay transfer; the investigation is surgical exploration in hospital.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Torsion versus epididymo-orchitis, torsion of an appendage and muscular strain, using onset, vomiting, fever and urinary symptoms.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Treated sudden severe testicular pain with vomiting as torsion until proven otherwise; noted a possible earlier self-resolving episode.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated suspected testicular torsion clearly and explained why it is time-critical.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Immediate ED attendance (999 if delay), escalation phrase, ring-ahead to the on-call team, nil by mouth.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Addressed the teenager’s embarrassment and autonomy, and confirmed transport.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Pain easing still means go, 999 if worse, teach-back of the plan, documented and hospital informed.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -8628,37 +8628,37 @@
    "intro": "This is a time-critical station. The clinical decision is simple; candidates fail by taking too long to reach it, by being drawn into the pulled-muscle story, or by never winning over an embarrassed teenager.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Offering a same-day GP appointment “so I can examine him”.",
      "why": "Examination cannot exclude torsion and the journey wastes time. Feedback: “management plan not appropriate to the urgency”.",
      "fix": "Send him straight to ED and ring ahead. Say why: “the surgeons are the ones who can check and fix this.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "A full systematic history before reaching a decision at minute eight.",
      "why": "Poor prioritisation in an emergency is marked down in Tasks and Global Skills.",
      "fix": "Three questions — testicle, sudden onset, fever or urinary symptoms — then decide by minute three to five."
     },
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Accepting the knock last week or the football as the explanation.",
      "why": "Exercise and minor trauma often precede torsion; an alternative story does not exclude it.",
      "fix": "“That may be part of it, but it doesn’t rule out a twist — only the hospital can.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Speaking only to the mother about Kai’s testicle while he listens.",
      "why": "Feedback: “did not involve the patient”. It deepens his embarrassment and resistance.",
      "fix": "Ask to speak to him, normalise it, and offer choices he controls."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No nil-by-mouth advice, no escalation phrase, and no warning that easing pain still needs assessment.",
      "why": "Incomplete safety-netting is a standard failing statement in urgent-care stations.",
      "fix": "Nil by mouth, “possible torsion” at the desk, 999 if worse, and “if it eases, still go”."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Ending the call without confirming they are actually leaving and how.",
      "why": "Feedback: “did not check understanding or agreement with the plan”.",
      "fix": "“Tell me what you’re doing now” — then end quickly so they can go."
@@ -8725,7 +8725,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello, is that Mr Whitfield? It’s Dr Lee from the surgery. I’ve got a note that you’re dizzy. Tell me what’s been happening.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question; lets him give his story first"
    },
    {
@@ -8735,7 +8735,7 @@
    {
     "who": "dr",
     "text": "You rang, and that was right. I do want to help you feel better. But the right treatment depends on what’s causing it, and this sort of spinning has a few causes. Can I ask some quick, specific questions first? Then we’ll decide together.",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Sets an agenda without agreeing to the tablet"
    },
    {
@@ -8747,7 +8747,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "When you had the ear crystals before, how did the spinning behave? And how is it behaving today?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Uses his own comparison to test the BPPV label"
    },
    {
@@ -8757,7 +8757,7 @@
    {
     "who": "dr",
     "text": "Constant since you woke. Can you stand and walk on your own at the moment?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks about gait, the key discriminator"
    },
    {
@@ -8767,7 +8767,7 @@
    {
     "who": "dr",
     "text": "Thank you — and please thank your wife, that’s important. Is she able to come to the phone for a moment?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Values and seeks the collateral history"
    },
    {
@@ -8777,7 +8777,7 @@
    {
     "who": "dr",
     "text": "That’s really helpful, thank you. Mr Whitfield, a few more checks. Any double vision, numbness, trouble swallowing, or new headache or neck ache today?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for associated brainstem and cerebellar symptoms"
    },
    {
@@ -8787,7 +8787,7 @@
    {
     "who": "dr",
     "text": "And before today — have you had any odd episodes lately, where your speech or a hand didn’t work properly, even for a short while?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks directly about preceding TIAs"
    },
    {
@@ -8799,7 +8799,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "Thank you for telling me that — I know you’d rather not have. When those happened, did anything cross your mind about what they might be?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Invites the buried fear without putting words in his mouth"
    },
    {
@@ -8809,7 +8809,7 @@
    {
     "who": "dr",
     "text": "That sounds frightening, and it makes sense you’d rather this was the ear crystals — that answer is familiar and doesn’t need a hospital. I’d want the same. But I have to be honest with you about what I’m hearing.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Names why he is anchoring on BPPV, kindly"
    },
    {
@@ -8817,7 +8817,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "The ear crystals give short spells when you move your head. Today is different: constant spinning, being sick, not able to walk straight, a sore neck, your face looking lopsided, and those speech and hand episodes. With your blood pressure and diabetes, that pattern can be a stroke at the back of the brain.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains the central features in plain words and links them to his risk"
    },
    {
@@ -8827,7 +8827,7 @@
    {
     "who": "dr",
     "text": "That’s exactly why this kind is often missed — it doesn’t always cause the weak arm people expect. It gets mistaken for an ear problem, and a tablet for the spinning would just cover it up while time runs out. The stroke team have treatments that only work if they see you quickly.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains why a vestibular sedative would be dangerous"
    },
    {
@@ -8839,7 +8839,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "No. What you need is the stroke team, now. I want to call an ambulance for you — 999, today. Not a GP appointment and not A&E tomorrow. Will you let me do that?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Arranges emergency assessment clearly and asks for agreement"
    },
    {
@@ -8849,7 +8849,7 @@
    {
     "who": "dr",
     "text": "You’re not a burden — this is exactly what they’re there for. And the thing you were worried about, those mini-strokes, is the very reason to go now: getting seen quickly is how we treat this and try to stop a bigger one. Your wife’s instinct was right.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Uses his own fear and his wife’s concern to motivate acceptance"
    },
    {
@@ -8859,7 +8859,7 @@
    {
     "who": "dr",
     "text": "Thank you. I’ll ring 999 as soon as we finish and tell them it’s a suspected stroke. Please don’t eat or drink anything, and don’t take any aspirin — they need to scan you first. Stay sitting or lying down so you don’t fall. Your wife stays with you and tells them about the speech, the hand, the doorframe and your face.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Nil by mouth, no aspirin before imaging, falls prevention, collateral for the crew"
    },
    {
@@ -8867,7 +8867,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "While you wait: if your face droops more, an arm or leg weakens, speech slurs, you get very drowsy or the headache gets suddenly worse, ring 999 again and tell them it’s worse. And please don’t drive — today or after, until the doctors say it’s safe.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific deterioration triggers and driving advice"
    },
    {
@@ -8877,7 +8877,7 @@
    {
     "who": "dr",
     "text": "So that I know I’ve explained it properly — what’s going to happen in the next few minutes?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back to confirm he will accept the ambulance"
    },
    {
@@ -8887,7 +8887,7 @@
    {
     "who": "dr",
     "text": "Exactly right. I’ll document all of this and ring your wife later today to check you’ve been seen. Ringing this morning was the right thing to do, Gordon.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Documents, closes the loop and follows up"
    }
   ],
@@ -8895,57 +8895,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question first; let him give the “ear crystals” story, then agreed to ask specific questions before deciding on treatment.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Retired, lives with his wife; fear of hospital and of being a burden; the wife as a reliable witness and support.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “the wife made me”, the doorframe, the face “looking off” and the “funny dos”, and explored each.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (old BPPV back), concern (hospital, being a burden, buried fear of mini-strokes), expectation (a tablet, no A&E).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Recognised that a phone call cannot exclude stroke; needs emergency brain imaging. Collateral from his wife in place of an examination.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "BPPV vs vestibular neuritis vs posterior-circulation stroke or TIA vs vertebral artery dissection (new neck pain).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about gait, diplopia, dysarthria, dysphagia, numbness, weakness, headache and neck pain; elicited the preceding TIA-like episodes.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated suspected posterior-circulation stroke, with recent TIAs, in plain words; did not accept the BPPV label.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "999 now; no prochlorperazine; no aspirin before imaging; nil by mouth; stay seated; wife to give the history to the crew.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Linked hypertension, type 2 diabetes and ex-smoking to his stroke risk; secondary prevention left to the stroke team.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Named deterioration triggers, no driving (DVLA), teach-back, documentation and a follow-up call to his wife.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -9131,37 +9131,37 @@
    "intro": "This station is failed by agreeing with the patient. He brings a ready diagnosis and a simple request; the candidate who tests the pattern, listens to his wife and finds the recent episodes will send him to the stroke team.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Prescribing prochlorperazine over the phone because he has had BPPV before.",
      "why": "“Management plan not in line with current UK best practice.” BPPV is brief and positional; constant vertigo with gait failure needs emergency assessment.",
      "fix": "Test the pattern first: “Short bursts when you move your head, or there all the time?” Then: “Can you walk on your own?”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Never asking about recent episodes, so the TIAs stay hidden.",
      "why": "“Does not gather sufficient information to make a safe assessment.” He will not volunteer them.",
      "fix": "Ask directly: “Any spells recently where your speech or a hand didn’t work properly, even briefly?”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Advising aspirin at home while waiting for the ambulance.",
      "why": "NICE NG128: in suspected acute stroke, aspirin is given only after imaging has excluded haemorrhage.",
      "fix": "“No aspirin, nothing to eat or drink — they’ll scan you first.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Ignoring the wife in the background, or treating her as interference.",
      "why": "“Does not identify or respond to cues.” Her account (doorframe, face looking off) is the strongest evidence in the call.",
      "fix": "“Can I speak to your wife for a moment? What have you noticed?”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Telling him bluntly “you’re having a stroke, you must go in” without meeting his fear, so he refuses.",
      "why": "Correct but unpersuasive; a minimising patient who feels bulldozed may decline care.",
      "fix": "Name the fear he already has about the “funny dos” and use it: “That worry is exactly why we act now.”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Closing with “go to A&E if it gets worse”.",
      "why": "Non-specific safety-netting and no confirmed plan. He is already an emergency.",
      "fix": "Make the 999 call yourself or confirm he has, give specific deterioration triggers, check with teach-back and follow up later."
@@ -9220,7 +9220,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello, it’s Dr Lee calling about Reuben. Can I just check I’m speaking to his dad, and is he with you now? Tell me what’s been happening.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Confirms identity and opens with an open question"
    },
    {
@@ -9230,7 +9230,7 @@
    {
     "who": "dr",
     "text": "Three good questions — is it asthma, does he need a preventer, and the inhaler itself. I’ll make sure we cover all three. First I want to check how he is right now, then we’ll go through the rest. Is that okay?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Reflects his agenda back and prioritises current safety"
    },
    {
@@ -9242,7 +9242,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Can you look at him for me now? Is he playing and chatting? Is he drinking? And if you lift his top, is the skin between or under his ribs sucking in when he breathes?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Assesses current severity by phone using what the parent can see"
    },
    {
@@ -9252,7 +9252,7 @@
    {
     "who": "dr",
     "text": "Good. And when you give the blue inhaler, how long does it help for?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks reliever response and duration"
    },
    {
@@ -9262,7 +9262,7 @@
    {
     "who": "dr",
     "text": "When he hasn’t got a cold, is he completely well? Any coughing at night, or wheezing when he runs about or laughs? Any eczema or hay fever?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Separates episodic viral wheeze from interval symptoms and atopy"
    },
    {
@@ -9272,7 +9272,7 @@
    {
     "who": "dr",
     "text": "Talk me through exactly how you give the inhaler — what do you do, step by step?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Explores the technique problem he flagged"
    },
    {
@@ -9284,7 +9284,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You mentioned your sister’s little boy. What were you hoping we’d decide today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Elicits expectation behind the preventer request"
    },
    {
@@ -9294,7 +9294,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me that — it can’t have been easy. It makes sense you’re watchful when you remember how frightening your own asthma was. And going outside to smoke shows how much you’re already trying to protect him.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges fear and guilt without shaming"
    },
    {
@@ -9306,7 +9306,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "You’re not. What you describe — wheezy only with colds, completely well in between — is what we call viral wheeze. His airways are small, so colds go to his chest. Many children grow out of it as their airways grow. At two, we can’t test for asthma properly, and with nothing in between colds, a daily preventer isn’t usually the answer.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Distinguishes viral wheeze from asthma and explains the preventer decision"
    },
    {
@@ -9316,13 +9316,13 @@
    {
     "who": "dr",
     "text": "Not for now. If he starts coughing at night or wheezing between colds, or the episodes get severe, we’d think again and might try one for a couple of months. What will help most today is the inhaler technique you mentioned.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Gives a conditional plan with clear criteria to revisit"
    },
    {
     "who": "dr",
     "text": "Here’s the trick. One puff into the spacer at a time — not several. Hold the mask gently but firmly over his nose and mouth so there’s a seal, and let him breathe normally in and out several times. Then the next puff. Crying doesn’t help the medicine get in, so a cuddle on your lap, or while he’s calm, works best.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Coaches spacer and mask technique in plain words"
    },
    {
@@ -9334,7 +9334,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Can I raise the smoking gently? Smoke on clothes, hair and breath still reaches him, even when you’re outside, and it’s one of the biggest triggers for these chests. Stopping would help him more than any inhaler. Our local stop-smoking service gives medicines and support, which makes quitting much more likely to work. Would you like me to refer you?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Addresses smoking as a modifiable trigger without shame and offers referral"
    },
    {
@@ -9344,7 +9344,7 @@
    {
     "who": "dr",
     "text": "Great. I’ll also send you a written plan: when to give the blue inhaler, how many puffs, and when to get help. And I’d like our nurse to watch you do the inhaler this week, so you feel confident. How does that sound?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Shared plan with a written action plan and technique check"
    },
    {
@@ -9356,13 +9356,13 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Right now he sounds mild. Call 999 if he’s working hard to breathe with his ribs sucking in, can’t drink or talk, is unusually sleepy, or his lips look blue. Ring us the same day if the blue inhaler isn’t helping or he’s needing it more and more.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific 999 and same-day triggers"
    },
    {
     "who": "dr",
     "text": "Before you go, tell me back how you’ll give the inhaler tonight.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back of technique"
    },
    {
@@ -9372,7 +9372,7 @@
    {
     "who": "dr",
     "text": "Perfect. Nurse appointment this week, smoking referral today, written plan by text. You’re doing a good job, and this will make it easier.",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Summarises actions and closes with encouragement"
    }
   ],
@@ -9380,57 +9380,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; heard all three of his questions (asthma, preventer, technique) and agreed to cover them.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Household smoking, his own frightening childhood asthma, the cousin on a preventer, and managing a wriggling toddler.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “not sure I’m getting it into him” and the smoking guilt, and explored both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (asthma like his cousin), concern (it’s his fault; his own asthma), expectation (a brown preventer).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Severity assessed by phone through the parent; face-to-face review if uncertain; technique demonstration with the nurse.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Episodic viral wheeze vs suspected asthma (interval symptoms, atopy), with severity of the current episode.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Checked recession, feeding, alertness and reliever response; knows the features needing emergency care.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Explained episodic viral wheeze in plain words and why an asthma label is not applied yet.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Salbutamol via spacer and mask with correct technique; no reflex preventer; clear criteria for an ICS trial (NICE NG245).",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Smoking addressed without shame and stop-smoking referral agreed (NICE NG209).",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Written action plan, 999 triggers, nurse technique check this week, review if interval symptoms appear.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -9600,37 +9600,37 @@
    "intro": "This station is rarely failed on the diagnosis. It is failed by giving the preventer on request, by skipping the technique problem the father flagged, and by handling the smoking in a way that makes him switch off.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Starting a regular inhaled steroid because the father asked and the cousin has one.",
      "why": "“Management plan not in line with current UK best practice.” Pure episodic viral wheeze is not an automatic indication; NICE NG245 reserves an ICS trial for suspected asthma with persistent or severe features.",
      "fix": "Explain viral wheeze, say “not for now”, and give the specific signs that would change that."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Discussing the diagnosis without first checking how Reuben is right now.",
      "why": "“Does not gather sufficient information to make a safe assessment.” A telephone call about a wheezy toddler must establish current severity.",
      "fix": "Ask the father to look: playing, drinking, ribs sucking in, reliever response."
     },
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Hearing “I’m not sure I’m getting it into him” and moving on.",
      "why": "Poor technique is the likeliest reason the reliever seems to fail, and he raised it himself.",
      "fix": "Ask him to describe each step, then coach one puff at a time with a sealed mask and tidal breathing."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "“You need to stop smoking, it’s making him ill.”",
      "why": "Shaming is flagged as judgemental; he disengages from the whole plan.",
      "fix": "Credit his effort to smoke outside, explain third-hand smoke simply, and offer referral as help, not a verdict."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Missing the father’s own childhood asthma when he mentions it.",
      "why": "“Does not identify or respond to the patient’s cues.” It explains his anxiety and his wish for a preventer.",
      "fix": "“It makes sense you’re watchful — your own asthma sounds frightening.” Then show how the plan removes the guesswork."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Ending with “ring back if he gets worse”, with no written plan or named symptoms.",
      "why": "Non-specific safety-netting is a standard failing feedback statement.",
      "fix": "Written action plan, named 999 features, nurse technique check this week, and a teach-back."
@@ -9657,12 +9657,10 @@
     if (a.playbook) c.playbook = a.playbook;
     if (a.links) c.links = a.links;
     if (a.pitfalls) c.pitfalls = a.pitfalls;
-    if (a.scTasks && window.SCA_GS_STANDARD && window.SCA_RO_STANDARD) {
+    if (a.scTasks && window.SCA_GS_STANDARD && window.SCA_RO_STANDARD && window.SCA_BUILD_SCORECARD) {
       var ro = clone(window.SCA_RO_STANDARD), gs = clone(window.SCA_GS_STANDARD);
-      if (c.scorecard && c.scorecard.ro) ro = c.scorecard.ro;
-      c.scorecard = { tasks: a.scTasks, ro: ro, gs: gs,
-        maxTasks: sum(a.scTasks), maxRo: sum(ro), maxGs: sum(gs),
-        total: sum(a.scTasks) + sum(ro) + sum(gs) };
+      if (c.scorecard && c.scorecard.roStd) ro = c.scorecard.roStd;
+      c.scorecard = window.SCA_BUILD_SCORECARD(a.scTasks, ro, gs);
     }
   });
 })();

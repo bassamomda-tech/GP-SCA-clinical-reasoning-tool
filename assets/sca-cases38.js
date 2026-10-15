@@ -12,33 +12,68 @@
   /* ============ 145. VIDEO — Persistent hoarseness: the laryngeal-cancer 2WW ============ */
   const c145 = {
     id:'persistent-hoarseness', title:'"My voice has gone husky \u2014 it\u2019s just a smoker\u2019s throat"', type:'video', duration:12,
-    meta:{ age:63, sex:'M', setting:'Video consultation \u2014 hoarseness for weeks.', system:'ENT / Laryngeal cancer' },
-    brief:'Mr Roy Calladine, 63, publican. ~6 weeks of progressive HOARSENESS that hasn\u2019t settled \u2014 he blames "a smoker\u2019s throat / a cold that lingered". Smoker 40/day, heavy alcohol. On directed history: a sensation of something in the throat, mild throat/ear ache on one side, and \u2014 if asked \u2014 he\u2019s noticed a small neck lump. No clear infection. Persistent unexplained hoarseness at 45 or over meets the NICE NG12 (updated April 2026) criterion to consider a suspected cancer pathway referral for laryngeal cancer (NG12 has no smoking requirement; his smoking and drinking add to the risk), and his neck lump meets it independently. He minimises and wants "a spray or some antibiotics".',
+    meta:{ age:63, sex:'M', setting:'Video consultation \u2014 hoarseness for weeks.', system:'ENT / Laryngeal cancer', checked:'October 2026' },
+    brief:"Mr Roy Calladine, 63, publican. ~6 weeks of progressive HOARSENESS that hasn’t settled — he blames \"a smoker’s throat / a cold that lingered\". Smoker 40/day, heavy alcohol. On directed history: a sensation of something in the throat, mild throat/ear ache on one side, and — if asked — he’s noticed a small neck lump. No clear infection. Persistent unexplained hoarseness at 45 or over meets the NICE NG12 criterion to consider a suspected cancer pathway referral for laryngeal cancer (NG12 has no smoking requirement; his smoking and drinking add to the risk), and his neck lump meets it independently. He minimises and wants \"a spray or some antibiotics\".",
     script:{
-      opening:'"Afternoon doc. My voice has gone all husky and gravelly \u2014 been weeks now. I\u2019m a publican and I smoke, so it\u2019s probably just a smoker\u2019s throat, or a cold that never quite went. Could you give me a throat spray or some antibiotics to clear it? I can\u2019t be doing without my voice behind the bar. It\u2019s nothing to worry about, surely \u2014 just need it to settle."',
-      facts:[
-        { topic:'Persistent hoarseness is a flag', text:'HOARSENESS that persists (in practice, beyond about 3 weeks), especially PROGRESSIVE, and in a SMOKER and heavy drinker, is a red flag for LARYNGEAL (or other head-and-neck) cancer — NOT just "a smoker’s throat" or a lingering cold. NICE NG12 (updated April 2026): consider a suspected cancer pathway referral for laryngeal cancer in people aged 45 and over with persistent unexplained hoarseness or an unexplained lump in the neck — NG12 sets no duration and no smoking requirement; smoking and alcohol raise the risk but are not part of the criterion. Antibiotics/sprays for persistent hoarseness without examination is the dangerous miss.' },
-        { topic:'The associated red flags', text:'On directed history: throat-clearing/globus, unilateral throat or referred EAR pain (otalgia with a normal ear), and \u2014 importantly \u2014 a NECK LUMP. Other head-and-neck red flags: persistent sore throat, dysphagia/odynophagia, unexplained persistent neck lump, oral/throat ulceration. His smoking AND heavy alcohol are major combined risk factors.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 his breezy "just a smoker\u2019s throat, give me a spray" masks avoidance: he\u2019s noticed the neck lump and the persistence and is privately frightened it\u2019s cancer (perhaps after a regular at his pub had throat cancer), but is terrified of the diagnosis, of losing his voice/livelihood, and of being told to stop smoking and drinking. The skill is to gently challenge the minimisation, examine/elicit the red flags, name the concern honestly, and refer \u2014 while reassuring that early laryngeal cancer is very treatable.' },
-        { topic:'Reassurance + lifestyle', text:'Genuinely reassuring: early laryngeal cancer (and many head-and-neck cancers) caught early are very treatable, often with voice-preserving treatment \u2014 so urgent referral is precautionary and improves outcomes. Address smoking and alcohol supportively (the major modifiable risks) without making the consultation a lecture that drives him away.' },
-        { topic:'What he needs',        text:'Officially: a spray/antibiotics for a smoker\u2019s throat. What he needs: recognition that persistent unexplained hoarseness at 45 or over (and his neck lump) meets the NICE NG12 (updated April 2026) laryngeal-cancer suspected cancer pathway criterion, elicitation of red flags (neck lump, otalgia) with a prompt face-to-face examination, an urgent suspected cancer pathway head-and-neck referral, the fear addressed and the lump taken seriously, reassurance that early cancer is treatable, and smoking/alcohol support \u2014 not symptomatic treatment alone.' },
+      "opening": "\"Afternoon doc. My voice has gone all husky and gravelly — been weeks now. I'm a publican and I smoke, so it's probably just a smoker's throat, or a cold that never quite went. Could you give me a throat spray or some antibiotics to clear it? I can't be doing without my voice behind the bar. It's nothing to worry about, surely — just need it to settle.\"",
+      "facts": [
+        {
+          "topic": "The voice (if asked)",
+          "text": "About six weeks; slowly getting worse, not better. Started after a cold, but the cold went. Husky all day, not just in the morning."
+        },
+        {
+          "topic": "Throat and ear (if asked)",
+          "text": "Feeling of \"something stuck\" on the right side of your throat. An ache in your right ear, especially when swallowing — \"but the ear's not blocked or anything\". Food goes down fine; no choking. No coughing blood."
+        },
+        {
+          "topic": "Neck — only if asked about lumps",
+          "text": "\"Funny you should ask — there's a little lump here (right side of the neck, below the jaw). Noticed it shaving a couple of weeks ago. Doesn't hurt.\""
+        },
+        {
+          "topic": "Breathing and weight (if asked)",
+          "text": "No noisy breathing, no breathlessness at rest. Belt \"a notch looser\" — maybe half a stone in two months."
+        },
+        {
+          "topic": "Smoking and alcohol",
+          "text": "40 a day since 16. \"I run a pub — I have a few every night,\" about 50–60 units a week."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "Nothing diagnosed. No regular medicines. No allergies."
+        },
+        {
+          "topic": "Social",
+          "text": "63, runs a pub with wife Denise. Two grown-up children."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "Your best mate from the darts team had throat cancer and \"ended up with a hole in his neck\". You have avoided thinking about it. Say this only if asked what you are worried about."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Jovial, minimising, keen to get a spray. If the doctor asks good questions you answer honestly, including the lump. If they explain a hoarse voice for this long needs an urgent specialist look, go quiet: \"You're thinking cancer, aren't you?\" Respond well to honesty and to hearing that early treatment works well. If smoking is raised as a lecture, get defensive; if it is offered as support, show interest."
+        }
       ],
-      ice:{
-        ideas:'It\u2019s just a smoker\u2019s throat or a lingering cold; a spray or antibiotics will clear it.',
-        concerns:'HIDDEN AGENDA \u2014 he\u2019s noticed the neck lump and the persistence and quietly fears throat cancer (maybe after a regular had it), but dreads the diagnosis, losing his voice/livelihood, and being told to stop smoking/drinking.',
-        expectations:'A throat spray/antibiotics and to carry on. What he actually needs: recognition of the NICE NG12 (updated April 2026) laryngeal-cancer suspected cancer pathway criterion, red-flag elicitation and a face-to-face examination, an urgent referral, the fear and the lump addressed, reassurance early cancer is treatable, and smoking/alcohol support.'
+      "ice": {
+        "ideas": "\"It's a smoker's throat, or a cold that never cleared.\"",
+        "concerns": "Your voice for work. Underneath (only if asked): your mate's throat cancer.",
+        "expectations": "\"A spray or antibiotics.\" You will accept an urgent referral if you are told honestly why."
       },
-      cues:['Persistent, progressive hoarseness at 63 — meets the NICE NG12 (updated April 2026) laryngeal-cancer suspected cancer pathway criterion (45+), not "a smoker’s throat"; smoking and alcohol add risk.','Unilateral throat/ear ache + a NECK LUMP \u2014 head-and-neck red flags; ask for them and refer urgently.','"Just give me a spray, it\u2019s nothing" \u2014 avoidance masking the noticed lump and cancer fear; gently challenge and refer.']
+      "cues": [
+        "\"It's nothing to worry about, surely.\" — say in the opening.",
+        "\"My ear aches when I swallow.\" — say if asked about other symptoms.",
+        "\"There's a little lump here.\" — say only if asked about lumps."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises that PERSISTENT (in practice >3 weeks) progressive HOARSENESS at 45 or over — made more worrying by smoking and heavy alcohol — is a red flag for LARYNGEAL/head-and-neck cancer \u2014 NOT "a smoker\u2019s throat" or a lingering cold \u2014 and does NOT just give a throat spray/antibiotics without assessment' },
-      { dom:'tasks', text:'Acts on NICE NG12 (updated April 2026): makes a suspected cancer pathway referral for laryngeal cancer (NG12: consider for persistent unexplained hoarseness or an unexplained neck lump at 45+; he has both), with the associated head-and-neck features included in the referral' },
-      { dom:'tasks', text:'Elicits and weights the ASSOCIATED red flags by directed history/examination: a NECK LUMP, unilateral referred otalgia (with a normal ear), globus/throat discomfort, dysphagia/odynophagia, sore throat \u2014 and the combined smoking + heavy-alcohol risk' },
-      { dom:'tasks', text:'Arranges a prompt face-to-face examination (throat/oral cavity, neck/lymph nodes, ears — not possible on video) without letting it delay the referral, and recognises an unexplained persistent NECK LUMP as itself warranting urgent referral' },
-      { dom:'tasks', text:'Reassures accurately (early laryngeal/head-and-neck cancer is very treatable, often voice-preserving \u2014 urgent referral is precautionary) and addresses SMOKING and ALCOHOL supportively as the major modifiable risks' },
-      { dom:'rto',   text:'Gently challenges the "just a smoker\u2019s throat" minimisation and surfaces the noticed lump and underlying cancer fear, rather than colluding with the spray/antibiotic request' },
-      { dom:'rto',   text:'Balances honesty (this needs urgent checking) with genuine reassurance and concern for his livelihood/voice, so he accepts the referral; addresses smoking/alcohol without a lecture that alienates' },
-      { dom:'gs',    text:'Safety-nets and follows up: the urgent suspected cancer pathway referral and what to expect (nasendoscopy/ENT assessment), reassurance, smoking/alcohol support, what to report (worsening, the lump enlarging, swallowing/breathing trouble), and a follow-up \u2014 referring the likely cancer, not spraying it' },
+      { dom:'dg', text:'Recognises that PERSISTENT (in practice >3 weeks) progressive HOARSENESS at 45 or over — made more worrying by smoking and heavy alcohol — is a red flag for LARYNGEAL/head-and-neck cancer \u2014 NOT "a smoker\u2019s throat" or a lingering cold \u2014 and does NOT just give a throat spray/antibiotics without assessment' },
+      { dom:'cm', text:"Acts on NICE NG12: makes a suspected cancer pathway referral for laryngeal cancer (NG12: consider for persistent unexplained hoarseness or an unexplained neck lump at 45+; he has both), with the associated head-and-neck features included in the referral" },
+      { dom:'dg', text:'Elicits and weights the ASSOCIATED red flags by directed history/examination: a NECK LUMP, unilateral referred otalgia (with a normal ear), globus/throat discomfort, dysphagia/odynophagia, sore throat \u2014 and the combined smoking + heavy-alcohol risk' },
+      { dom:'cm', text:'Arranges a prompt face-to-face examination (throat/oral cavity, neck/lymph nodes, ears — not possible on video) without letting it delay the referral, and recognises an unexplained persistent NECK LUMP as itself warranting urgent referral' },
+      { dom:'ro', text:'Reassures accurately (early laryngeal/head-and-neck cancer is very treatable, often voice-preserving \u2014 urgent referral is precautionary) and addresses SMOKING and ALCOHOL supportively as the major modifiable risks' },
+      { dom:'ro',   text:'Gently challenges the "just a smoker\u2019s throat" minimisation and surfaces the noticed lump and underlying cancer fear, rather than colluding with the spray/antibiotic request' },
+      { dom:'ro',   text:'Balances honesty (this needs urgent checking) with genuine reassurance and concern for his livelihood/voice, so he accepts the referral; addresses smoking/alcohol without a lecture that alienates' },
+      { dom:'cm',    text:'Safety-nets and follows up: the urgent suspected cancer pathway referral and what to expect (nasendoscopy/ENT assessment), reassurance, smoking/alcohol support, what to report (worsening, the lump enlarging, swallowing/breathing trouble), and a follow-up \u2014 referring the likely cancer, not spraying it' },
     ],
     worked:[
       { lbl:'Reframe \"smoker\u2019s throat\"', txt:'"I\u2019m glad you came. Here\u2019s the important rule though: a voice that stays husky for more than about three weeks — especially over the age of 45, and more so in someone who smokes and drinks — we never just put down to a smoker\u2019s throat or an old cold. It needs looking at properly, because occasionally a persistent hoarse voice is the first sign of something in the voice box we\u2019d want to catch early. So a spray isn\u2019t the answer here."' },
@@ -48,17 +83,17 @@
       { lbl:'Smoking + alcohol, supportively', txt:'"I\u2019m not going to lecture you behind your own bar \u2014 but the smoking and the drink are the two biggest things behind throat problems, and cutting them is the best thing you could do for your voice AND your recovery. When you\u2019re ready, I\u2019ll help you with both, properly. No judgement."' },
       { lbl:'Safety-net',           txt:'"If your swallowing gets worse, the lump grows, or you get any trouble breathing, tell us sooner. I\u2019ll get the urgent referral done and follow it up with you. You came in for a spray for your voice; what you actually needed was to get this looked at properly \u2014 and most likely sorted while it\u2019s early."' },
     ],
-    learning:'Hoarseness persisting beyond ~3 weeks \u2014 especially progressive and in a smoker over 45 \u2014 is a red flag for laryngeal/head-and-neck cancer, NOT "a smoker\u2019s throat" or a lingering cold, so NICE NG12 (updated April 2026) recommends considering a suspected cancer pathway referral for laryngeal cancer for persistent unexplained hoarseness (or an unexplained neck lump) in those aged 45 and over — with no smoking requirement — and treating it with a spray/antibiotics without examination is the dangerous miss. Elicit and weight the associated red flags (a neck lump, unilateral referred otalgia with a normal ear, globus, dysphagia/odynophagia, sore throat) and the combined smoking + heavy-alcohol risk, examine the throat/oral cavity/neck/ears, and recognise an unexplained persistent neck lump as itself warranting urgent referral. Reassure genuinely (early laryngeal cancer is very treatable, often voice-preserving \u2014 urgent referral is precautionary) and address smoking and alcohol supportively without a lecture that alienates. The hidden agenda is avoidance masking a noticed neck lump and an unvoiced cancer fear (and worry about voice/livelihood and being told to stop smoking/drinking); gently challenge the minimisation, name the concern honestly while reassuring, and refer.',
+    learning:"Hoarseness persisting beyond ~3 weeks — especially progressive and in a smoker over 45 — is a red flag for laryngeal/head-and-neck cancer, NOT \"a smoker’s throat\" or a lingering cold, so NICE NG12 recommends considering a suspected cancer pathway referral for laryngeal cancer for persistent unexplained hoarseness (or an unexplained neck lump) in those aged 45 and over — with no smoking requirement — and treating it with a spray/antibiotics without examination is the dangerous miss. Elicit and weight the associated red flags (a neck lump, unilateral referred otalgia with a normal ear, globus, dysphagia/odynophagia, sore throat) and the combined smoking + heavy-alcohol risk, examine the throat/oral cavity/neck/ears, and recognise an unexplained persistent neck lump as itself warranting urgent referral. Reassure genuinely (early laryngeal cancer is very treatable, often voice-preserving — urgent referral is precautionary) and address smoking and alcohol supportively without a lecture that alienates. The hidden agenda is avoidance masking a noticed neck lump and an unvoiced cancer fear (and worry about voice/livelihood and being told to stop smoking/drinking); gently challenge the minimisation, name the concern honestly while reassuring, and refer.",
     knowledge:{
-      guideline:'NICE NG12 (updated April 2026) Suspected cancer: recognition and referral — laryngeal / head and neck · NICE NG209 Tobacco: preventing uptake, promoting quitting and treating dependence (2021) · NICE PH24 Alcohol-use disorders: prevention (2010) · NICE CG115 Alcohol-use disorders: dependence (2011) · head-and-neck cancer pathways',
+      guideline:"NICE NG209 Tobacco: preventing uptake, promoting quitting and treating dependence (2021) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · NICE PH24 Alcohol-use disorders: prevention (2010) · NICE CG115 Alcohol-use disorders: dependence (2011) · head-and-neck cancer pathways",
       points:[
-        { h:'Persistent hoarseness = red flag', t:'Hoarseness lasting >3 weeks (especially progressive) requires explanation, not symptomatic treatment (a clinical rule of thumb). NICE NG12 (updated April 2026): consider a suspected cancer pathway referral for laryngeal cancer in people aged 45 and over with persistent unexplained hoarseness or an unexplained lump in the neck — NG12 sets no duration and does not require smoking. Smoking and alcohol are the major risk factors. NICE NG12 also advises considering an urgent chest X-ray at 40 and over with persistent cervical lymphadenopathy.' },
+        { h:'Persistent hoarseness = red flag', t:"Hoarseness lasting >3 weeks (especially progressive) requires explanation, not symptomatic treatment (a clinical rule of thumb). NICE NG12: consider a suspected cancer pathway referral for laryngeal cancer in people aged 45 and over with persistent unexplained hoarseness or an unexplained lump in the neck — NG12 sets no duration and does not require smoking. Smoking and alcohol are the major risk factors. NICE NG12 also advises considering an urgent chest X-ray at 40 and over with persistent cervical lymphadenopathy." },
         { h:'Head-and-neck red flags', t:'Persistent: hoarseness, sore throat, neck lump, referred otalgia (ear pain with a normal ear), dysphagia/odynophagia, oral ulceration/red or white patches, and unexplained weight loss. Any unexplained persistent neck lump warrants urgent referral. Combined smoking + heavy alcohol greatly raises risk.' },
         { h:'Examine and refer, don\u2019t treat blind', t:'Examine the oral cavity, throat, neck/lymph nodes and ears in person (a video call cannot do this), without delaying the referral. Do not prescribe antibiotics/sprays for persistent hoarseness without assessment. ENT assessment includes nasendoscopy/laryngoscopy to visualise the larynx \u2014 refer rather than treating empirically.' },
         { h:'Reassure proportionately', t:'Early laryngeal and many head-and-neck cancers are very treatable, frequently with voice-preserving options when caught early. Frame urgent referral as precautionary and outcome-improving \u2014 this helps an avoidant patient accept it.' },
         { h:'Address smoking and alcohol', t:'These are the principal modifiable risks. Offer cessation/reduction support supportively (not as a lecture), as part of care \u2014 important both for prevention and for treatment outcomes.' },
         { h:'Surface the fear', t:'Minimisation ("just a smoker\u2019s throat, give me a spray") may mask a noticed neck lump and an unvoiced cancer fear plus worry about voice/livelihood. Surface it, name the concern proportionately, and use it to motivate the referral.' },
-        { h:'Never do', t:'Never treat persistent hoarseness in a smoker over 45 with sprays/antibiotics without examination/referral; never miss the NICE NG12 (updated April 2026) laryngeal suspected cancer pathway criterion or the neck lump; never skip the head-and-neck red-flag screen; never collude with minimisation; never lecture so as to alienate, nor frighten without the genuine reassurance.' },
+        { h:'Never do', t:"Never treat persistent hoarseness in a smoker over 45 with sprays/antibiotics without examination/referral; never miss the NICE NG12 laryngeal suspected cancer pathway criterion or the neck lump; never skip the head-and-neck red-flag screen; never collude with minimisation; never lecture so as to alienate, nor frighten without the genuine reassurance." },
         { h:'Safety-net & follow-up', t:'Urgent suspected cancer pathway head-and-neck/laryngeal referral; examine and act on a neck lump; smoking/alcohol support; report worsening/enlarging lump/swallowing or breathing difficulty; follow up the referral and outcome.' }
       ]
     }
@@ -67,33 +102,68 @@
   /* ============ 146. VIDEO — Unilateral blood-stained nasal discharge: the one-sided rule ============ */
   const c146 = {
     id:'unilateral-nasal', title:'"One nostril keeps blocking and bleeding \u2014 just hay fever, surely?"', type:'video', duration:12,
-    meta:{ age:52, sex:'M', setting:'Video consultation \u2014 unilateral nasal symptoms.', system:'ENT / Sinonasal red flags' },
+    meta:{ age:52, sex:'M', setting:'Video consultation \u2014 unilateral nasal symptoms.', system:'ENT / Sinonasal red flags', checked:'October 2026' },
     brief:'Mr Wei Chen, 52. Several weeks of persistent blockage of ONE nostril (the right) with blood-stained discharge and recurrent unilateral epistaxis, no clear infective trigger. He blames "hay fever / a sinus thing" and wants a nasal spray/antihistamine. On directed history: he\u2019s of Southern Chinese family origin (a nasopharyngeal-carcinoma risk group) and \u2014 if asked \u2014 has some right-sided hearing dullness/blocked ear and a small neck lump. UNILATERAL persistent nasal obstruction/bleeding is the red flag (sinonasal / nasopharyngeal carcinoma), not bilateral allergic rhinitis.',
     script:{
-      opening:'"Hi doctor. My right nostril keeps blocking up and there\u2019s been a bit of blood in the discharge, on and off for weeks. I get hay fever, so I figured it\u2019s that, or a sinus infection. Could you sort me a steroid spray or some antihistamines? My left side\u2019s completely fine, it\u2019s just the right. I\u2019m sure it\u2019s nothing \u2014 just need to clear it up."',
-      facts:[
-        { topic:'The one-sided rule', text:'UNILATERAL persistent nasal symptoms \u2014 one-sided blockage, blood-stained discharge, recurrent unilateral epistaxis \u2014 are the RED FLAG that distinguishes a possible sinonasal or NASOPHARYNGEAL tumour from benign BILATERAL allergic rhinitis (which is typically two-sided, seasonal, with sneezing/itch and clear discharge). "Just hay fever" for persistent ONE-SIDED bleeding/blockage is the dangerous misconception; unilateral = investigate.' },
-        { topic:'Nasopharyngeal red flags & risk', text:'Nasopharyngeal carcinoma (NPC) classically presents with a NECK LUMP (often the first sign), UNILATERAL serous otitis media/blocked ear (Eustachian tube obstruction), nasal obstruction/blood-stained discharge, and cranial-nerve signs. Risk is higher in people of Southern Chinese/Southeast Asian and certain other ethnic origins (and EBV-related). His ethnicity, the unilateral nasal signs, the unilateral ear and the neck lump fit \u2014 warranting urgent ENT referral.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 he attributes it to hay fever and wants a quick spray partly out of genuine belief, but also because he\u2019s noticed the neck lump and the blocked ear and is quietly worried, while reluctant to make a fuss/take time off work. There may be a specific fear (a relative with NPC). The skill is to not accept the "hay fever" framing for unilateral symptoms, elicit the red flags and ethnicity-related risk, examine, and refer \u2014 reassuring proportionately.' },
-        { topic:'Why it matters',      text:'Unilateral persistent nasal obstruction/epistaxis can also be benign (e.g. a polyp, foreign body, deviated septum), but the one-sided pattern mandates examination and ENT referral to exclude tumour \u2014 you cannot reassure it away as allergy. NPC caught earlier has better outcomes.' },
-        { topic:'What he needs',        text:'Officially: a spray/antihistamine for "hay fever". What he needs: recognition that UNILATERAL persistent nasal blockage/blood-stained discharge is a red flag (sinonasal/nasopharyngeal tumour), elicitation of the neck lump, unilateral ear symptoms and ethnicity-related risk, examination, an urgent ENT referral (nasendoscopy), and the fear addressed \u2014 not allergy treatment for a one-sided problem.' },
+      "opening": "\"Hi doctor. My right nostril keeps blocking up and there's been a bit of blood in the discharge, on and off for weeks. I get hay fever, so I figured it's that, or a sinus infection. Could you sort me a steroid spray or some antihistamines? My left side's completely fine, it's just the right. I'm sure it's nothing — just need to clear it up.\"",
+      "facts": [
+        {
+          "topic": "The nose (if asked)",
+          "text": "About two months. Right side blocked all the time, not just in summer. Blood-streaked mucus most mornings. Three nosebleeds from the right side in the last month, stopped on their own. Left side clear. No sneezing or itchy eyes now."
+        },
+        {
+          "topic": "Usual hay fever (if asked)",
+          "text": "Hay fever every June and July — both sides, sneezing, itchy eyes, settles with antihistamines. This is \"different — it's autumn and it's only one side\"."
+        },
+        {
+          "topic": "Ear (if asked)",
+          "text": "Right ear feels blocked and dull for about a month, \"like being on a plane\". No pain, no discharge."
+        },
+        {
+          "topic": "Neck — only if asked about lumps",
+          "text": "A painless lump on the right side of your neck below the ear, noticed about three weeks ago, \"about the size of a grape\"."
+        },
+        {
+          "topic": "Other questions (if asked)",
+          "text": "No double vision, no facial numbness, no headaches, no swelling of the cheek, no loose teeth. Weight steady. No foreign body."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "Hay fever (cetirizine in summer). No other medicines, no allergies, not on blood thinners. Non-smoker. No woodwork or leather work."
+        },
+        {
+          "topic": "Family and background (if asked)",
+          "text": "Born in Hong Kong, family originally from Guangdong; moved to the UK at 20. An uncle in Hong Kong had \"nose cancer\"."
+        },
+        {
+          "topic": "Social",
+          "text": "52, restaurant owner, married, two teenagers. Drinks little."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Polite, practical, wanting a spray. Answer the ear and neck questions honestly when asked. If the doctor explains that one-sided blockage with blood needs a specialist camera check soon, you become worried: \"My uncle had cancer in the nose. Is it that?\" Accept urgent referral and an in-person check if explained calmly."
+        }
       ],
-      ice:{
-        ideas:'It\u2019s hay fever or a sinus infection; a spray/antihistamine will clear it.',
-        concerns:'HIDDEN AGENDA \u2014 he\u2019s noticed the neck lump and the blocked ear and is quietly worried, while reluctant to make a fuss/take time off; possible specific fear (a relative with nasopharyngeal cancer).',
-        expectations:'A nasal spray/antihistamine. What he actually needs: recognition that unilateral persistent nasal blockage/bleeding is a red flag, elicitation of the neck lump/ear symptoms/ethnicity risk, examination, an urgent ENT referral, and the fear addressed.'
+      "ice": {
+        "ideas": "\"It's hay fever or a sinus infection.\"",
+        "concerns": "Mostly the nuisance. Underneath (only if asked): your uncle's nose cancer.",
+        "expectations": "\"A steroid spray or antihistamines.\" You will accept referral if the reasons are explained."
       },
-      cues:['UNILATERAL persistent nasal blockage + blood-stained discharge/epistaxis \u2014 the one-sided rule; not "hay fever" (which is bilateral).','Neck lump + unilateral blocked ear + Southern Chinese family origin \u2014 nasopharyngeal-carcinoma red flags/risk; refer urgently.','"Just hay fever, give me a spray" \u2014 the misconception + avoidance masking the noticed lump; examine and refer.']
+      "cues": [
+        "\"It's just the right side.\" — say in the opening.",
+        "\"My right ear feels blocked too.\" — say if asked about other symptoms.",
+        "\"My uncle had something in his nose.\" — say if asked about family history."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Applies the ONE-SIDED RULE: recognises UNILATERAL persistent nasal obstruction with blood-stained discharge / recurrent unilateral epistaxis as a RED FLAG (possible sinonasal or nasopharyngeal tumour) \u2014 distinct from benign BILATERAL allergic rhinitis \u2014 and does NOT treat it as "hay fever" with a spray/antihistamine' },
-      { dom:'tasks', text:'Elicits the NASOPHARYNGEAL/head-and-neck red flags by directed history: a NECK LUMP, UNILATERAL serous otitis media/blocked ear, blood-stained nasal discharge, and any cranial-nerve symptoms \u2014 and the ETHNICITY-related risk (Southern Chinese/Southeast Asian)' },
-      { dom:'tasks', text:'Arranges a prompt face-to-face examination of the nose (anterior rhinoscopy), ears (otoscopy) and neck/lymph nodes — none of which can be done on video — without delaying the referral, recognising a unilateral middle-ear effusion in an adult and an unexplained neck lump as themselves warranting urgent referral' },
-      { dom:'tasks', text:'Refers URGENTLY to ENT for nasendoscopy/assessment to exclude tumour (sinonasal/nasopharyngeal carcinoma), rather than trialling allergy treatment for a unilateral problem; recognises the suspected cancer pathway criteria that apply: NICE NG12 (updated April 2026) — an unexplained neck lump at 45+ (laryngeal) or a persistent unexplained neck lump (oral); NICE NG98 — hearing loss with a middle-ear effusion not associated with an upper respiratory tract infection in an adult of Chinese or south-east Asian family origin. NG12 has no nasal criterion' },
-      { dom:'tasks', text:'Keeps the benign differential in mind (polyp, foreign body, deviated septum) but does NOT let it justify allergy treatment without examination/referral for persistent unilateral symptoms' },
-      { dom:'rto',   text:'Does not accept the "hay fever" framing for unilateral symptoms; surfaces the noticed neck lump and the underlying fear, naming the concern proportionately' },
-      { dom:'rto',   text:'Reassures proportionately (many causes are benign; we examine and refer to be sure) so he accepts assessment, and addresses the reluctance to make a fuss/take time off' },
-      { dom:'gs',    text:'Safety-nets and follows up: the urgent ENT referral and what to expect (nasendoscopy), what to report (worsening, the lump enlarging, new neurological/visual symptoms), and a follow-up \u2014 investigating the one-sided red flag, not treating allergy' },
+      { dom:'dg', text:'Applies the ONE-SIDED RULE: recognises UNILATERAL persistent nasal obstruction with blood-stained discharge / recurrent unilateral epistaxis as a RED FLAG (possible sinonasal or nasopharyngeal tumour) \u2014 distinct from benign BILATERAL allergic rhinitis \u2014 and does NOT treat it as "hay fever" with a spray/antihistamine' },
+      { dom:'dg', text:'Elicits the NASOPHARYNGEAL/head-and-neck red flags by directed history: a NECK LUMP, UNILATERAL serous otitis media/blocked ear, blood-stained nasal discharge, and any cranial-nerve symptoms \u2014 and the ETHNICITY-related risk (Southern Chinese/Southeast Asian)' },
+      { dom:'cm', text:'Arranges a prompt face-to-face examination of the nose (anterior rhinoscopy), ears (otoscopy) and neck/lymph nodes — none of which can be done on video — without delaying the referral, recognising a unilateral middle-ear effusion in an adult and an unexplained neck lump as themselves warranting urgent referral' },
+      { dom:'cm', text:"Refers URGENTLY to ENT for nasendoscopy/assessment to exclude tumour (sinonasal/nasopharyngeal carcinoma), rather than trialling allergy treatment for a unilateral problem; recognises the suspected cancer pathway criteria that apply: NICE NG12 — an unexplained neck lump at 45+ (laryngeal) or a persistent unexplained neck lump (oral); NICE NG98 — hearing loss with a middle-ear effusion not associated with an upper respiratory tract infection in an adult of Chinese or south-east Asian family origin. NG12 has no nasal criterion" },
+      { dom:'cm', text:'Keeps the benign differential in mind (polyp, foreign body, deviated septum) but does NOT let it justify allergy treatment without examination/referral for persistent unilateral symptoms' },
+      { dom:'ro',   text:'Does not accept the "hay fever" framing for unilateral symptoms; surfaces the noticed neck lump and the underlying fear, naming the concern proportionately' },
+      { dom:'ro',   text:'Reassures proportionately (many causes are benign; we examine and refer to be sure) so he accepts assessment, and addresses the reluctance to make a fuss/take time off' },
+      { dom:'cm',    text:'Safety-nets and follows up: the urgent ENT referral and what to expect (nasendoscopy), what to report (worsening, the lump enlarging, new neurological/visual symptoms), and a follow-up \u2014 investigating the one-sided red flag, not treating allergy' },
     ],
     worked:[
       { lbl:'Apply the one-sided rule', txt:'"I can see why you\u2019d think hay fever \u2014 but there\u2019s an important difference that changes my plan: hay fever affects BOTH sides, with sneezing and clear runny nose. Yours is just the ONE nostril, persistently blocked, with blood in it. Persistent one-sided nose symptoms like that we always check properly, because occasionally there\u2019s something on that side we need to find. So a spray isn\u2019t the right answer here."' },
@@ -103,14 +173,14 @@
       { lbl:'Address the avoidance', txt:'"I know you didn\u2019t want to make a fuss or take time off \u2014 but you\u2019ve done exactly the right thing, and this is worth a couple of hours. The lump you\u2019d noticed is a real reason to get checked, not to worry alone about."' },
       { lbl:'Safety-net',           txt:'"If the bleeding gets heavier, the lump grows, or you get double vision, numbness in the face or worsening hearing, tell us sooner. I\u2019ll get the urgent referral done and follow it up. You came for a hay-fever spray; what you actually needed was to have this one-sided problem looked at properly."' },
     ],
-    learning:'The one-sided rule: UNILATERAL persistent nasal obstruction with blood-stained discharge or recurrent unilateral epistaxis is a RED FLAG (possible sinonasal or nasopharyngeal tumour) and must NOT be treated as "hay fever" \u2014 benign allergic rhinitis is typically BILATERAL, seasonal, with sneezing/itch and clear discharge. Nasopharyngeal carcinoma classically presents with a NECK LUMP (often first), UNILATERAL serous otitis media/blocked ear (Eustachian obstruction), blood-stained nasal discharge and cranial-nerve signs, with higher risk in people of Southern Chinese/Southeast Asian origin \u2014 so elicit these red flags and the ethnicity-related risk, examine the nose/ears/neck (a unilateral middle-ear effusion in an adult and an unexplained neck lump each warrant urgent referral), and refer urgently to ENT for nasendoscopy rather than trialling allergy treatment for a one-sided problem. Keep the benign differential (polyp, foreign body, deviated septum) in mind but do not let it justify allergy treatment without examination/referral. The hidden agenda is the "hay fever" misconception plus avoidance masking a noticed neck lump and quiet fear; don\u2019t accept the framing, surface the fear, reassure proportionately, and refer.',
+    learning:"The one-sided rule: UNILATERAL persistent nasal obstruction with blood-stained discharge or recurrent unilateral epistaxis is a RED FLAG (possible sinonasal or nasopharyngeal tumour) and must NOT be treated as \"hay fever\" — benign allergic rhinitis is typically BILATERAL, seasonal, with sneezing/itch and clear discharge. Nasopharyngeal carcinoma classically presents with a NECK LUMP (often first), UNILATERAL serous otitis media/blocked ear (Eustachian obstruction), blood-stained nasal discharge and cranial-nerve signs, with higher risk in people of Southern Chinese/Southeast Asian origin — so elicit these red flags and the ethnicity-related risk, examine the nose/ears/neck (a unilateral middle-ear effusion in an adult and an unexplained neck lump each warrant urgent referral), and refer urgently to ENT for nasendoscopy rather than trialling allergy treatment for a one-sided problem. Keep the benign differential (polyp, foreign body, deviated septum) in mind but do not let it justify allergy treatment without examination/referral. The hidden agenda is the \"hay fever\" misconception plus avoidance masking a noticed neck lump and quiet fear; don’t accept the framing, surface the fear, reassure proportionately, and refer. Unilateral persistent nasal obstruction/epistaxis can also be benign (e.g. a polyp, foreign body, deviated septum), but the one-sided pattern mandates examination and ENT referral to exclude tumour — you cannot reassure it away as allergy. NPC caught earlier has better outcomes.",
     knowledge:{
-      guideline:'NICE NG12 (updated April 2026) — head and neck (neck lump criteria; no nasal criterion) · NICE NG98 Hearing loss in adults (2018, updated 2023) — middle-ear effusion in adults of Chinese or south-east Asian family origin · nasopharyngeal carcinoma red flags',
+      guideline:"NICE NG98 Hearing loss in adults (2018, updated 2023) — middle-ear effusion in adults of Chinese or south-east Asian family origin · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · nasopharyngeal carcinoma red flags",
       points:[
         { h:'Unilateral = red flag', t:'Persistent UNILATERAL nasal obstruction, blood-stained discharge, or recurrent unilateral epistaxis should be investigated \u2014 it distinguishes a possible sinonasal/nasopharyngeal tumour, polyp or foreign body from benign BILATERAL allergic rhinitis. Do not treat persistent one-sided symptoms as allergy without examination/referral.' },
         { h:'Nasopharyngeal carcinoma', t:'NPC red flags: neck lump (often the presenting sign), unilateral serous otitis media/conductive hearing loss in an adult (Eustachian tube obstruction \u2014 a key, easily-missed clue), nasal obstruction/blood-stained discharge/epistaxis, and cranial-nerve palsies (diplopia, facial numbness). Higher risk in Southern Chinese/Southeast Asian and some other populations; EBV-associated.' },
         { h:'A unilateral middle-ear effusion in an adult', t:'New unilateral glue ear/serous otitis media in an adult must prompt examination of the postnasal space (nasendoscopy) to exclude a nasopharyngeal tumour \u2014 it is a classic, frequently-overlooked presentation. Refer for assessment: NICE NG98 advises considering a suspected cancer pathway referral to ENT for adults of Chinese or south-east Asian family origin with hearing loss and a middle-ear effusion not associated with an upper respiratory tract infection. Confirm the effusion on otoscopy face to face.' },
-        { h:'Examine and refer', t:'Examine the nose (anterior rhinoscopy), ears (effusion) and neck (lymph nodes) — face to face, since video cannot replace these, but the history alone justifies the urgent referral. Persistent unilateral signs and any unexplained neck lump warrant urgent ENT referral for nasendoscopy. NICE NG12 (updated April 2026) has no nasal criterion; its neck-lump criteria apply (consider a suspected cancer pathway referral for laryngeal cancer at 45+ with an unexplained neck lump, and for oral cancer with a persistent unexplained neck lump), as does the NICE NG98 middle-ear effusion criterion. Do not trial allergy treatment for a unilateral problem.' },
+        { h:'Examine and refer', t:"Examine the nose (anterior rhinoscopy), ears (effusion) and neck (lymph nodes) — face to face, since video cannot replace these, but the history alone justifies the urgent referral. Persistent unilateral signs and any unexplained neck lump warrant urgent ENT referral for nasendoscopy. NICE NG12 has no nasal criterion; its neck-lump criteria apply (consider a suspected cancer pathway referral for laryngeal cancer at 45+ with an unexplained neck lump, and for oral cancer with a persistent unexplained neck lump), as does the NICE NG98 middle-ear effusion criterion. Do not trial allergy treatment for a unilateral problem." },
         { h:'Benign causes exist \u2014 but exclude tumour', t:'Unilateral symptoms can be benign (polyp, deviated septum, foreign body \u2014 especially in children), but the one-sided pattern mandates examination/referral to exclude malignancy rather than reassurance as allergy.' },
         { h:'Surface the fear & risk', t:'Patients may attribute it to hay fever while quietly worried about a noticed lump. Surface the concern, ask about ethnicity-related risk and a family history, and use the red flags to motivate referral, reassuring proportionately.' },
         { h:'Never do', t:'Never treat persistent unilateral nasal blockage/bleeding as hay fever with a spray/antihistamine; never miss a unilateral adult middle-ear effusion or a neck lump; never skip examination/ENT referral; never ignore ethnicity-related NPC risk; never collude with avoidance.' },
@@ -122,33 +192,72 @@
   /* ============ 147. TELEPHONE — Asymmetric sensorineural hearing loss: the acoustic-neuroma rule ============ */
   const c147 = {
     id:'asymmetric-hearing-loss', title:'"My right ear\u2019s gone muffled \u2014 it\u2019s just wax, isn\u2019t it?"', type:'telephone', duration:12,
-    meta:{ age:49, sex:'F', setting:'Telephone \u2014 gradual one-sided hearing loss.', system:'ENT / Asymmetric sensorineural hearing loss' },
+    meta:{ age:49, sex:'F', setting:'Telephone \u2014 gradual one-sided hearing loss.', system:'ENT / Asymmetric sensorineural hearing loss', checked:'October 2026' },
     brief:'Mrs Hayley Brooks, 49. Several months of GRADUAL, progressive, ONE-SIDED (right) hearing loss, with unilateral TINNITUS and occasional unsteadiness; she blames wax and wants "drops/syringing". CRUCIAL: ASYMMETRIC/unilateral sensorineural hearing loss with unilateral tinnitus is the red-flag pattern for a retrocochlear lesion \u2014 notably an ACOUSTIC NEUROMA (vestibular schwannoma) \u2014 needing audiology + ENT referral (and MRI), NOT just wax removal. She minimises; her hearing affects her work (teacher) and she\u2019s frightened of "going deaf".',
     script:{
-      opening:'"Hi, I\u2019m ringing because my right ear\u2019s gone all muffled over the last few months \u2014 and there\u2019s a ringing in just that ear. I\u2019m a teacher so I really need my hearing. It\u2019s just wax, isn\u2019t it? Could you sort me some drops or book me in for syringing to clear it out? My left ear\u2019s totally fine, it\u2019s just the right one playing up."',
-      facts:[
-        { topic:'Asymmetric SNHL is the red flag', text:'GRADUAL, progressive, ONE-SIDED (asymmetric) hearing loss with UNILATERAL tinnitus \u00b1 imbalance is the red-flag pattern for a RETROCOCHLEAR lesion \u2014 classically an ACOUSTIC NEUROMA (vestibular schwannoma) \u2014 and needs audiometry + ENT referral (with MRI of the internal auditory meati), NOT wax removal. Wax/eustachian causes are usually conductive, often bilateral or fluctuating; persistent ASYMMETRIC SENSORINEURAL loss with one-sided tinnitus is the flag. (Note: SUDDEN sensorineural loss is a separate same-day emergency.)' },
-        { topic:'What to assess',       text:'Establish the pattern: gradual vs sudden (sudden = emergency), unilateral vs bilateral, associated tinnitus/vertigo/imbalance, and any facial numbness/weakness (larger tumours affect CN V/VII). This is a telephone call, so the ears cannot be examined now: arrange a face-to-face ear examination (otoscopy to exclude simple wax/effusion, with tuning-fork tests there if useful) — but the persistent ASYMMETRIC pattern mandates audiology/ENT referral regardless of finding some wax.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 she wants it to be "just wax" because she\u2019s frightened: deep down she\u2019s worried about going deaf and the impact on her teaching career and identity, and possibly about a brain tumour (she may have googled the unilateral tinnitus). She minimises to make it a simple fix. The skill is to not just treat the wax, explain why one-sided persistent loss with tinnitus needs proper testing, and address the fear with reassurance (acoustic neuromas are benign and managed well) while arranging the referral.' },
-        { topic:'Reassurance available', text:'Genuinely reassuring: acoustic neuromas are BENIGN, slow-growing, and managed effectively (monitoring, surgery or radiotherapy depending on size) \u2014 and many cases of asymmetric loss turn out to have other, treatable explanations. So the referral/MRI is precautionary and good practice, not a sign of disaster.' },
-        { topic:'What she needs',        text:'Officially: drops/syringing for wax. What she needs: recognition that gradual ASYMMETRIC sensorineural hearing loss with unilateral tinnitus is a red flag for a retrocochlear lesion (acoustic neuroma), ear examination (excluding simple wax) AND audiology/ENT referral (MRI) regardless, the "going deaf"/tumour fear addressed with proportionate reassurance, and her work impact acknowledged \u2014 not wax removal alone.' },
+      "opening": "\"Hi, I'm ringing because my right ear's gone all muffled over the last few months — and there's a ringing in just that ear. I'm a teacher so I really need my hearing. It's just wax, isn't it? Could you sort me some drops or book me in for syringing to clear it out? My left ear's totally fine, it's just the right one playing up.\"",
+      "facts": [
+        {
+          "topic": "Time-course (if asked)",
+          "text": "Gradual, over about six months, slowly getting worse. Nothing came on suddenly overnight. You first noticed you were switching the phone to your left ear."
+        },
+        {
+          "topic": "The ringing (if asked)",
+          "text": "A constant high-pitched hiss in the right ear only, worse at night when it is quiet."
+        },
+        {
+          "topic": "Hearing in class (if asked)",
+          "text": "You struggle to hear pupils on your right side and in the noisy dining hall; you have started standing with your left side to the class."
+        },
+        {
+          "topic": "Balance (if asked)",
+          "text": "Occasionally a bit unsteady, \"like I'm on a boat for a second\", especially in the dark. No room-spinning attacks, no falls."
+        },
+        {
+          "topic": "Other questions (if asked)",
+          "text": "No ear pain, no discharge, no fullness that clears, no recent cold or flying, no loud noise exposure, no head injury. No facial numbness or weakness, no double vision, no headaches, no trouble swallowing. Never had wax problems; never had syringing."
+        },
+        {
+          "topic": "Phone test (if asked)",
+          "text": "With a phone at normal volume, you can hear clearly in the left ear but voices are faint and \"tinny\" in the right."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "Fit and well. No regular medicines, no allergies. No family history of deafness in younger people."
+        },
+        {
+          "topic": "Social",
+          "text": "49, primary school teacher, married, two teenagers."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "You are frightened of \"going deaf\" and losing your job: \"Teaching is all I've ever done.\" Say this only if asked what worries you."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Practical and a bit impatient — you want wax sorted. If the doctor asks good questions, answer honestly. If they explain that hearing loss in one ear like this needs a proper hearing test and probably a scan, you get worried: \"A scan? For my ear? What are you looking for?\" Calm down if they explain honestly that it is to rule out a rare, usually benign growth on the hearing nerve, and that hearing help exists."
+        }
       ],
-      ice:{
-        ideas:'It\u2019s just wax in the right ear; drops or syringing will clear it.',
-        concerns:'HIDDEN AGENDA \u2014 frightened of going deaf and the impact on her teaching career/identity, and possibly of a brain tumour (googled the one-sided tinnitus); minimises to make it a simple fix.',
-        expectations:'Drops/syringing for wax. What she actually needs: recognition that asymmetric sensorineural loss with unilateral tinnitus is a red flag for an acoustic neuroma, ear exam AND audiology/ENT referral (MRI) regardless, and the fear addressed with proportionate reassurance.'
+      "ice": {
+        "ideas": "\"It's wax, it must be.\"",
+        "concerns": "Teaching with poor hearing. Underneath (only if asked): going deaf and losing your job.",
+        "expectations": "\"Drops or syringing.\" You will accept a hearing test and referral if the reasons are explained."
       },
-      cues:['Gradual ASYMMETRIC (one-sided) hearing loss + UNILATERAL tinnitus \u2014 the red-flag pattern for an acoustic neuroma; not just wax.','"It\u2019s just wax, sort me some drops" \u2014 minimisation; persistent one-sided sensorineural loss needs audiology/ENT + MRI even if some wax is present.','Fear of going deaf / a brain tumour behind it \u2014 address with proportionate reassurance (acoustic neuromas are benign, managed well).']
+      "cues": [
+        "\"It's just the right one playing up.\" — say in the opening.",
+        "\"There's a ringing in just that ear.\" — say in the opening.",
+        "\"I'm a teacher, I need my hearing.\" — say again when referral is discussed."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises that GRADUAL, persistent, ASYMMETRIC (unilateral) hearing loss with UNILATERAL tinnitus \u00b1 imbalance is a RED-FLAG pattern for a retrocochlear lesion (acoustic neuroma) \u2014 and does NOT just treat it as wax with drops/syringing' },
-      { dom:'tasks', text:'Establishes the pattern and screens associated features: gradual vs SUDDEN (sudden sensorineural loss = same-day emergency), unilateral vs bilateral, tinnitus/vertigo/imbalance, and any facial numbness/weakness \u2014 and arranges a face-to-face ear examination (not possible on the telephone) to exclude simple wax/effusion' },
-      { dom:'tasks', text:'Refers for AUDIOLOGY/ENT assessment and (per pathway) MRI of the internal auditory meati to exclude an acoustic neuroma \u2014 recognising that finding some wax does NOT explain or excuse a persistent asymmetric sensorineural pattern' },
-      { dom:'tasks', text:'Distinguishes the emergency: knows that SUDDEN sensorineural hearing loss is a separate, same-day ENT emergency (urgent steroids) \u2014 and clarifies the time-course here (gradual)' },
-      { dom:'tasks', text:'Gives accurate, reassuring information: acoustic neuromas are benign, slow-growing and managed effectively, and many asymmetric losses have other treatable causes \u2014 so the referral/MRI is precautionary' },
-      { dom:'rto',   text:'Hears the "just wax" minimisation and the fear beneath it (going deaf, career, tumour), surfaces and addresses it, rather than colluding with a wax-only fix' },
-      { dom:'rto',   text:'Acknowledges the impact on her teaching/identity and engages her in the referral, balancing honesty with proportionate reassurance' },
-      { dom:'gs',    text:'Safety-nets and follows up: audiology/ENT referral (and MRI), what would be an emergency (SUDDEN loss \u2192 same-day), report new facial numbness/weakness/worsening, hearing support meanwhile, and a follow-up \u2014 investigating the asymmetric red flag, not just removing wax' },
+      { dom:'dg', text:'Recognises that GRADUAL, persistent, ASYMMETRIC (unilateral) hearing loss with UNILATERAL tinnitus \u00b1 imbalance is a RED-FLAG pattern for a retrocochlear lesion (acoustic neuroma) \u2014 and does NOT just treat it as wax with drops/syringing' },
+      { dom:'dg', text:'Establishes the pattern and screens associated features: gradual vs SUDDEN (sudden sensorineural loss = same-day emergency), unilateral vs bilateral, tinnitus/vertigo/imbalance, and any facial numbness/weakness \u2014 and arranges a face-to-face ear examination (not possible on the telephone) to exclude simple wax/effusion' },
+      { dom:'cm', text:'Refers for AUDIOLOGY/ENT assessment and (per pathway) MRI of the internal auditory meati to exclude an acoustic neuroma \u2014 recognising that finding some wax does NOT explain or excuse a persistent asymmetric sensorineural pattern' },
+      { dom:'dg', text:'Distinguishes the emergency: knows that SUDDEN sensorineural hearing loss is a separate, same-day ENT emergency (urgent steroids) \u2014 and clarifies the time-course here (gradual)' },
+      { dom:'cm', text:'Gives accurate, reassuring information: acoustic neuromas are benign, slow-growing and managed effectively, and many asymmetric losses have other treatable causes \u2014 so the referral/MRI is precautionary' },
+      { dom:'ro',   text:'Hears the "just wax" minimisation and the fear beneath it (going deaf, career, tumour), surfaces and addresses it, rather than colluding with a wax-only fix' },
+      { dom:'ro',   text:'Acknowledges the impact on her teaching/identity and engages her in the referral, balancing honesty with proportionate reassurance' },
+      { dom:'cm',    text:'Safety-nets and follows up: audiology/ENT referral (and MRI), what would be an emergency (SUDDEN loss \u2192 same-day), report new facial numbness/weakness/worsening, hearing support meanwhile, and a follow-up \u2014 investigating the asymmetric red flag, not just removing wax' },
     ],
     worked:[
       { lbl:'Not just wax',         txt:'"I can get your ear looked at for wax in person — but I want to be honest about why I won’t just leave it there. Hearing loss that\u2019s in ONE ear, coming on gradually, with ringing in that same ear, is a pattern we always look into properly, because it can point to something other than wax \u2014 sometimes a small, benign growth on the hearing nerve. So even if there\u2019s a bit of wax, this one-sided pattern needs proper testing."' },
@@ -158,7 +267,7 @@
       { lbl:'Address the real fear', txt:'"I can hear how much your hearing matters \u2014 you\u2019re a teacher, it\u2019s your livelihood, and I suspect the thought of going deaf, or worse, has frightened you. That\u2019s exactly why getting it properly checked is the kind thing to do, so you\u2019re not lying awake guessing. And we\u2019ll sort hearing support if you need it meanwhile."' },
       { lbl:'Safety-net',           txt:'"If your hearing suddenly drops further over a day or two, treat that as urgent \u2014 same-day \u2014 and tell us about any facial numbness or weakness. Otherwise I\u2019ll arrange the hearing test, the specialist referral and the scan, and follow it up with you. You rang expecting drops; what you actually needed was to have this one-sided change looked at properly."' },
     ],
-    learning:'Gradual, persistent, ASYMMETRIC (unilateral) hearing loss with UNILATERAL tinnitus \u00b1 imbalance is the red-flag pattern for a retrocochlear lesion \u2014 classically an ACOUSTIC NEUROMA (vestibular schwannoma) \u2014 and needs audiology/ENT referral with MRI of the internal auditory meati, NOT just wax removal; finding some wax does not explain a persistent asymmetric sensorineural pattern. Establish the time-course (crucially, SUDDEN sensorineural hearing loss is a SEPARATE same-day ENT emergency needing urgent steroids), unilateral vs bilateral, and associated tinnitus/vertigo/facial numbness or weakness; examine the ears to exclude simple wax/effusion but refer regardless for the asymmetric pattern. Reassure accurately \u2014 acoustic neuromas are benign, slow-growing and managed effectively, and many asymmetric losses have other treatable causes \u2014 so the referral/MRI is precautionary. The hidden agenda is "just wax" minimisation masking a fear of going deaf (career/identity) and possibly of a brain tumour; surface and address it with proportionate reassurance, acknowledge the work impact, arrange the referral, and safety-net the sudden-loss emergency.',
+    learning:"Gradual, persistent, ASYMMETRIC (unilateral) hearing loss with UNILATERAL tinnitus ± imbalance is the red-flag pattern for a retrocochlear lesion — classically an ACOUSTIC NEUROMA (vestibular schwannoma) — and needs audiology/ENT referral with MRI of the internal auditory meati, NOT just wax removal; finding some wax does not explain a persistent asymmetric sensorineural pattern. Establish the time-course (crucially, SUDDEN sensorineural hearing loss is a SEPARATE same-day ENT emergency needing urgent steroids), unilateral vs bilateral, and associated tinnitus/vertigo/facial numbness or weakness; examine the ears to exclude simple wax/effusion but refer regardless for the asymmetric pattern. Reassure accurately — acoustic neuromas are benign, slow-growing and managed effectively, and many asymmetric losses have other treatable causes — so the referral/MRI is precautionary. The hidden agenda is \"just wax\" minimisation masking a fear of going deaf (career/identity) and possibly of a brain tumour; surface and address it with proportionate reassurance, acknowledge the work impact, arrange the referral, and safety-net the sudden-loss emergency. Genuinely reassuring: acoustic neuromas are BENIGN, slow-growing, and managed effectively (monitoring, surgery or radiotherapy depending on size) — and many cases of asymmetric loss turn out to have other, treatable explanations. So the referral/MRI is precautionary and good practice, not a sign of disaster.",
     knowledge:{
       guideline:'NICE NG98 Hearing loss in adults: assessment and management (2018, updated 2023) · NICE NG155 Tinnitus: assessment and management (2020) · ENT UK sudden sensorineural hearing loss guidance (2018) · acoustic neuroma / asymmetric SNHL referral · sudden SNHL emergency',
       points:[
@@ -177,33 +286,72 @@
   /* ============ 148. TELEPHONE — Globus: reassurance with an exit (and the red flags) ============ */
   const c148 = {
     id:'globus-sensation', title:'"There\u2019s a lump in my throat \u2014 I\u2019m sure it\u2019s cancer"', type:'telephone', duration:12,
-    meta:{ age:45, sex:'F', setting:'Telephone \u2014 a persistent throat-lump sensation.', system:'ENT / Globus pharyngeus & health anxiety' },
+    meta:{ age:45, sex:'F', setting:'Telephone \u2014 a persistent throat-lump sensation.', system:'ENT / Globus pharyngeus & health anxiety', checked:'October 2026' },
     brief:'Mrs Asha Devi, 45. Several weeks of a sensation of "a lump in the throat" / something stuck, MIDLINE, present BETWEEN meals, eased when EATING/swallowing food, with throat-clearing. NO true dysphagia (food doesn\u2019t actually stick), no weight loss, no pain, no voice change, no neck lump. This is GLOBUS PHARYNGEUS (functional), often linked to reflux/anxiety/throat-clearing. She is convinced it\u2019s throat cancer (a colleague was recently diagnosed) and is highly anxious. The task: reasoned reassurance with safety-netting \u2014 while excluding the red flags.',
     script:{
-      opening:'"Hi, I\u2019m really frightened. I\u2019ve had this feeling of a lump in my throat for weeks, like something\u2019s stuck. A woman at my work was just diagnosed with throat cancer and I\u2019m now convinced that\u2019s what this is. It\u2019s there all the time, I keep clearing my throat. Please \u2014 I need to know if it\u2019s cancer. Can you refer me for all the tests, a camera, a scan, everything?"',
-      facts:[
-        { topic:'The globus pattern', text:'GLOBUS PHARYNGEUS: a persistent sensation of a lump/tightness in the MIDLINE of the throat, present BETWEEN meals, characteristically EASED by eating/swallowing food (the opposite of an obstructing tumour), often with throat-clearing, WITHOUT true dysphagia, weight loss, pain, voice change or a neck lump. It is functional, commonly associated with reflux (laryngopharyngeal reflux), post-nasal drip, anxiety and the throat-clearing habit. A reassuring positive pattern \u2014 not a tumour.' },
-        { topic:'The red flags to exclude', text:'CRITICAL \u2014 reassurance is only safe after excluding the red flags that would mandate urgent referral: TRUE dysphagia (food/liquids actually sticking) or odynophagia, persistent/progressive symptoms, a NECK LUMP, hoarseness/voice change, unexplained WEIGHT LOSS, LATERALISED (one-sided) symptoms, otalgia, or a smoking/alcohol/older-age risk profile. Their ABSENCE supports globus; their presence changes the pathway — true dysphagia at any age → a suspected cancer pathway referral for oesophageal or stomach cancer (NICE NG12 (updated April 2026); this replaced urgent direct-access endoscopy in 2025), and at 45 and over persistent unexplained hoarseness or an unexplained neck lump → a suspected cancer pathway referral for laryngeal cancer.' },
-        { topic:'The hidden agenda \u2014 health anxiety', text:'HIDDEN AGENDA \u2014 the REAL presentation is HEALTH ANXIETY, triggered by a colleague\u2019s throat-cancer diagnosis mapped onto herself; the throat-clearing is both a symptom and a feeding behaviour, and she is seeking "all the tests" for certainty. The skill is reasoned, confident reassurance (a POSITIVE globus diagnosis, explained \u2014 including why eased-by-eating is the opposite of cancer) that addresses the specific fear, NOT either a dismissive "it\u2019s nothing" or capitulating to a battery of tests that would feed the anxiety \u2014 with a clear safety-net and treatment of any reflux/anxiety.' },
-        { topic:'Management',           text:'Treat contributing factors (reflux measures/PPI trial if indicated, reduce throat-clearing, address anxiety), explain the mechanism, give reasoned reassurance, and safety-net the red flags. Persistent globus despite this, or any red flag, warrants ENT referral/examination.' },
-        { topic:'What she needs',       text:'Officially: referral for "all the tests" to rule out cancer. What she needs: a confident POSITIVE globus diagnosis with reasoned reassurance (why the pattern, especially eased-by-eating, points away from cancer), the red flags screened (and their absence explained), the specific cancer fear/health anxiety addressed and supported, treatment of reflux/throat-clearing, and a precise safety-net \u2014 not a dismissive brush-off NOR an anxiety-feeding battery of tests.' },
+      "opening": "\"Hi, I'm really frightened. I've had this feeling of a lump in my throat for weeks, like something's stuck. A woman at my work was just diagnosed with throat cancer and I'm now convinced that's what this is. It's there all the time, I keep clearing my throat. Please — I need to know if it's cancer. Can you refer me for all the tests, a camera, a scan, everything?\"",
+      "facts": [
+        {
+          "topic": "The feeling (if asked)",
+          "text": "About seven weeks. A lump or tightness in the middle of the throat, at the level of the \"Adam's apple\". Worse between meals and when you are anxious. \"Funnily enough it goes when I'm eating.\""
+        },
+        {
+          "topic": "Swallowing (if asked)",
+          "text": "Food and drink go down normally — nothing sticks, no choking, no pain on swallowing."
+        },
+        {
+          "topic": "Red-flag questions (if asked)",
+          "text": "No change in your voice, no ear pain, no neck lump you can feel, no weight loss, no coughing blood, no vomiting. Symptoms are not getting worse."
+        },
+        {
+          "topic": "Reflux and habits (if asked)",
+          "text": "Heartburn now and then after big meals or wine. You clear your throat a lot — \"my husband says I do it all the time\". A bit of post-nasal drip."
+        },
+        {
+          "topic": "Lifestyle",
+          "text": "Never smoked. A couple of glasses of wine at weekends."
+        },
+        {
+          "topic": "Anxiety (if asked)",
+          "text": "You have always been \"a worrier\". Since your colleague's diagnosis you check your throat in the mirror several times a day and google symptoms at night. Sleeping badly. Not depressed, no thoughts of harming yourself."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "Nothing. No regular medicines. No allergies."
+        },
+        {
+          "topic": "Social",
+          "text": "45, office manager. Married, two children."
+        },
+        {
+          "topic": "Your colleague — hold back details",
+          "text": "Sue, 50, was diagnosed with throat cancer a month ago; she smoked and had a hoarse voice for months. Give these details only if the doctor asks about her."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Very anxious, pressing for \"every test\". If the doctor says \"it's nothing\" without explaining, become more anxious: \"How can you know without a camera?\" If they ask careful questions and explain why the pattern (better when eating, no swallowing problems) points away from cancer, you calm noticeably. Accept a plan with clear safety-netting and some help for the worry."
+        }
       ],
-      ice:{
-        ideas:'The throat-lump feeling is throat cancer (like her colleague\u2019s); she needs every test \u2014 a camera and a scan \u2014 to be sure.',
-        concerns:'HIDDEN AGENDA \u2014 health anxiety triggered by a colleague\u2019s throat-cancer diagnosis mapped onto herself; seeking certainty through "all the tests"; the throat-clearing both a symptom and a feeding behaviour.',
-        expectations:'Referral for every test to rule out cancer. What she actually needs: a confident positive globus diagnosis with reasoned reassurance, the red flags screened and explained, the health anxiety addressed, reflux/throat-clearing treated, and a precise safety-net.'
+      "ice": {
+        "ideas": "\"I'm convinced it's throat cancer, like Sue.\"",
+        "concerns": "\"I can't stop thinking about it.\"",
+        "expectations": "\"Refer me for everything — a camera, a scan.\" You will accept a different plan if your fear is genuinely addressed and you know what to look out for."
       },
-      cues:['Midline throat-lump sensation, between meals, EASED by eating, no true dysphagia \u2014 globus (functional), not a tumour.','Screen red flags: true dysphagia, neck lump, hoarseness, weight loss, one-sided symptoms, otalgia \u2014 absent here supports globus.','"A colleague got throat cancer, refer me for everything" \u2014 health anxiety; reasoned reassurance with an exit, not a battery of tests.']
+      "cues": [
+        "\"A woman at my work was just diagnosed with throat cancer.\" — say in the opening.",
+        "\"Funnily enough it goes when I'm eating.\" — say if asked what makes it better.",
+        "\"I check it in the mirror all the time.\" — say if asked how it is affecting you."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Makes a confident POSITIVE diagnosis of GLOBUS PHARYNGEUS from the pattern \u2014 midline lump sensation present between meals, EASED by eating/swallowing, with throat-clearing, WITHOUT true dysphagia/weight loss/pain/voice change/neck lump \u2014 rather than an open-ended "could be cancer, let\u2019s test everything"' },
-      { dom:'tasks', text:'EXCLUDES the red flags explicitly: true dysphagia/odynophagia (food actually sticking), persistent/progressive symptoms, neck lump, hoarseness, unexplained weight loss, lateralised symptoms, otalgia, and a smoking/alcohol/older-age risk profile \u2014 so reassurance is safe, and knows their presence would change the pathway under NICE NG12 (updated April 2026) — true dysphagia → suspected cancer pathway referral for oesophageal cancer; hoarseness or a neck lump at 45+ → suspected cancer pathway referral for laryngeal cancer' },
-      { dom:'tasks', text:'Gives REASONED reassurance that addresses the cancer fear: explains WHY the pattern (especially being EASED by eating \u2014 the opposite of an obstructing tumour) points away from cancer, rather than a dismissive "it\u2019s nothing"' },
-      { dom:'tasks', text:'Identifies and treats the CONTRIBUTING factors: reflux/laryngopharyngeal reflux (lifestyle measures \u00b1 PPI trial), the throat-clearing habit, post-nasal drip, and the anxiety \u2014 explaining the mechanism' },
-      { dom:'tasks', text:'Addresses the HEALTH ANXIETY (the colleague-triggered fear) as the real issue \u2014 offering support \u2014 and resists capitulating to an anxiety-feeding battery of tests, while not refusing appropriate examination/referral if red flags or persistence emerge' },
-      { dom:'rto',   text:'Identifies the specific fear (the colleague\u2019s diagnosis) and addresses it directly and warmly, treating reassurance as a skilled, specific task rather than a brush-off' },
-      { dom:'rto',   text:'Validates her fear and the genuine symptom, engages her in the explanation and plan, and supports the anxiety so she feels heard and reassured' },
-      { dom:'gs',    text:'Safety-nets PRECISELY so reassurance is safe: which specific symptoms would warrant urgent review/ENT referral (true dysphagia, neck lump, hoarseness, weight loss, one-sided symptoms, persistent/worsening), a reflux/anxiety plan, and a follow-up \u2014 confident diagnosis, red flags excluded, fear addressed, exit clearly marked' },
+      { dom:'dg', text:'Makes a confident POSITIVE diagnosis of GLOBUS PHARYNGEUS from the pattern \u2014 midline lump sensation present between meals, EASED by eating/swallowing, with throat-clearing, WITHOUT true dysphagia/weight loss/pain/voice change/neck lump \u2014 rather than an open-ended "could be cancer, let\u2019s test everything"' },
+      { dom:'dg', text:"EXCLUDES the red flags explicitly: true dysphagia/odynophagia (food actually sticking), persistent/progressive symptoms, neck lump, hoarseness, unexplained weight loss, lateralised symptoms, otalgia, and a smoking/alcohol/older-age risk profile — so reassurance is safe, and knows their presence would change the pathway under NICE NG12 — true dysphagia → suspected cancer pathway referral for oesophageal cancer; hoarseness or a neck lump at 45+ → suspected cancer pathway referral for laryngeal cancer" },
+      { dom:'ro', text:'Gives REASONED reassurance that addresses the cancer fear: explains WHY the pattern (especially being EASED by eating \u2014 the opposite of an obstructing tumour) points away from cancer, rather than a dismissive "it\u2019s nothing"' },
+      { dom:'dg', text:'Identifies and treats the CONTRIBUTING factors: reflux/laryngopharyngeal reflux (lifestyle measures \u00b1 PPI trial), the throat-clearing habit, post-nasal drip, and the anxiety \u2014 explaining the mechanism' },
+      { dom:'ro', text:'Addresses the HEALTH ANXIETY (the colleague-triggered fear) as the real issue \u2014 offering support \u2014 and resists capitulating to an anxiety-feeding battery of tests, while not refusing appropriate examination/referral if red flags or persistence emerge' },
+      { dom:'ro',   text:'Identifies the specific fear (the colleague\u2019s diagnosis) and addresses it directly and warmly, treating reassurance as a skilled, specific task rather than a brush-off' },
+      { dom:'ro',   text:'Validates her fear and the genuine symptom, engages her in the explanation and plan, and supports the anxiety so she feels heard and reassured' },
+      { dom:'cm',    text:'Safety-nets PRECISELY so reassurance is safe: which specific symptoms would warrant urgent review/ENT referral (true dysphagia, neck lump, hoarseness, weight loss, one-sided symptoms, persistent/worsening), a reflux/anxiety plan, and a follow-up \u2014 confident diagnosis, red flags excluded, fear addressed, exit clearly marked' },
     ],
     worked:[
       { lbl:'Reasoned positive diagnosis', txt:'"Let me start with the answer, because I can hear how frightened you are: what you\u2019re describing is something called globus \u2014 a very common, harmless feeling of a lump in the throat. And here\u2019s the bit that\u2019s genuinely reassuring: yours eases when you actually eat and swallow food. A cancer blocking the throat does the OPPOSITE \u2014 food sticks and it gets worse with eating. So the pattern itself points firmly AWAY from cancer."' },
@@ -213,17 +361,17 @@
       { lbl:'Treat the cause',      txt:'"There are real things driving this we CAN treat: often a bit of acid reflux irritating the throat, and the throat-clearing itself, which keeps the feeling going. So let\u2019s try some reflux measures, and consciously easing off the throat-clearing. And because the anxiety is part of it, I\u2019d like to help with that too \u2014 it\u2019s not \u2018all in your head\u2019, but the fear is feeding the feeling."' },
       { lbl:'Safety-net (the exit)', txt:'"And I\u2019m not abandoning you \u2014 here\u2019s exactly when to come back: if food or drink starts actually sticking, you lose weight, your voice changes, you feel a lump in your neck, or it\u2019s persistently getting worse \u2014 those I\u2019d see you and refer urgently. But what you have now is the ordinary, harmless kind. Let\u2019s treat the reflux and the worry, and review. You rang sure it was cancer; the pattern says it isn\u2019t \u2014 and I\u2019ve told you exactly what to watch for."' },
     ],
-    learning:'Globus pharyngeus is a POSITIVE clinical diagnosis: a persistent MIDLINE lump/tightness sensation present BETWEEN meals, characteristically EASED by eating/swallowing food (the opposite of an obstructing tumour), with throat-clearing, WITHOUT true dysphagia, weight loss, pain, voice change or neck lump \u2014 functional, commonly linked to reflux, post-nasal drip, anxiety and the throat-clearing habit. The skill is reasoned, confident reassurance that explains WHY the pattern (especially eased-by-eating) points away from cancer \u2014 NOT a dismissive "it\u2019s nothing" \u2014 but ONLY after explicitly excluding the red flags (true dysphagia/odynophagia, persistent/progressive symptoms, neck lump, hoarseness, weight loss, lateralised symptoms, otalgia, smoking/alcohol/older-age), whose presence would change the pathway under NICE NG12 (updated April 2026): true dysphagia → suspected cancer pathway referral for oesophageal cancer; hoarseness or a neck lump at 45+ → a suspected cancer pathway referral for laryngeal cancer. The examinable hidden agenda is health anxiety triggered by a colleague\u2019s throat-cancer diagnosis and a demand for "all the tests" for certainty; address the specific fear directly, treat the contributing reflux/throat-clearing and the anxiety, resist an anxiety-feeding battery of tests (without refusing appropriate referral if red flags emerge), and safety-net PRECISELY so reassurance is safe \u2014 a clearly marked exit.',
+    learning:"Globus pharyngeus is a POSITIVE clinical diagnosis: a persistent MIDLINE lump/tightness sensation present BETWEEN meals, characteristically EASED by eating/swallowing food (the opposite of an obstructing tumour), with throat-clearing, WITHOUT true dysphagia, weight loss, pain, voice change or neck lump — functional, commonly linked to reflux, post-nasal drip, anxiety and the throat-clearing habit. The skill is reasoned, confident reassurance that explains WHY the pattern (especially eased-by-eating) points away from cancer — NOT a dismissive \"it’s nothing\" — but ONLY after explicitly excluding the red flags (true dysphagia/odynophagia, persistent/progressive symptoms, neck lump, hoarseness, weight loss, lateralised symptoms, otalgia, smoking/alcohol/older-age), whose presence would change the pathway under NICE NG12: true dysphagia → suspected cancer pathway referral for oesophageal cancer; hoarseness or a neck lump at 45+ → a suspected cancer pathway referral for laryngeal cancer. The examinable hidden agenda is health anxiety triggered by a colleague’s throat-cancer diagnosis and a demand for \"all the tests\" for certainty; address the specific fear directly, treat the contributing reflux/throat-clearing and the anxiety, resist an anxiety-feeding battery of tests (without refusing appropriate referral if red flags emerge), and safety-net PRECISELY so reassurance is safe — a clearly marked exit.",
     knowledge:{
-      guideline:'NICE NG12 (updated April 2026) — upper GI (dysphagia) and head and neck red flags · NICE CG184 GORD and dyspepsia in adults (2014, updated 2019) · NICE CG123 Common mental health problems (2011; withdrawn May 2024) · laryngopharyngeal reflux (globus has no dedicated guideline)',
+      guideline:"NICE CG184 GORD and dyspepsia in adults (2014, updated 2019) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · NICE CG123 Common mental health problems (2011; withdrawn May 2024) · laryngopharyngeal reflux (globus has no dedicated guideline)",
       points:[
         { h:'Recognise globus (positive diagnosis)', t:'Globus pharyngeus: persistent sensation of a lump/tightness in the MIDLINE throat, present between meals, typically EASED by eating/swallowing, often with throat-clearing, and WITHOUT true dysphagia, odynophagia, weight loss, pain, voice change or neck mass. Commonly associated with reflux (LPR), post-nasal drip, anxiety and the throat-clearing habit. It is a positive, reassuring diagnosis.' },
         { h:'Eased-by-eating vs obstruction', t:'A key discriminator: globus is often relieved by swallowing food, whereas a mechanically obstructing lesion (tumour, stricture) causes TRUE dysphagia \u2014 food/liquids actually sticking, worse with solids, progressive. Use this to reassure and to flag concern.' },
-        { h:'Exclude the red flags', t:'Reassurance is safe only after excluding: true/progressive dysphagia or odynophagia, unexplained weight loss, neck lump, hoarseness/voice change, lateralised (one-sided) symptoms, referred otalgia, and high-risk profile (smoking/alcohol/older age). These change the pathway under NICE NG12 (updated April 2026): dysphagia at any age → suspected cancer pathway referral for oesophageal or stomach cancer; at 45 and over, persistent unexplained hoarseness or an unexplained neck lump → consider a suspected cancer pathway referral for laryngeal cancer (a persistent unexplained neck lump also meets the oral cancer criterion); other features (odynophagia, one-sided symptoms, otalgia, weight loss, high-risk profile) → ENT assessment.' },
+        { h:'Exclude the red flags', t:"Reassurance is safe only after excluding: true/progressive dysphagia or odynophagia, unexplained weight loss, neck lump, hoarseness/voice change, lateralised (one-sided) symptoms, referred otalgia, and high-risk profile (smoking/alcohol/older age). These change the pathway under NICE NG12: dysphagia at any age → suspected cancer pathway referral for oesophageal or stomach cancer; at 45 and over, persistent unexplained hoarseness or an unexplained neck lump → consider a suspected cancer pathway referral for laryngeal cancer (a persistent unexplained neck lump also meets the oral cancer criterion); other features (odynophagia, one-sided symptoms, otalgia, weight loss, high-risk profile) → ENT assessment." },
         { h:'Treat contributing factors', t:'Manage reflux/laryngopharyngeal reflux (lifestyle measures ± a PPI trial if there are reflux symptoms — NICE CG184; dose and duration per BNF), reduce throat-clearing (which perpetuates the sensation), treat post-nasal drip, and address anxiety. Explain the mechanism \u2014 it is a real sensation with treatable drivers, not imaginary.' },
         { h:'Reassurance is a skill, not a brush-off', t:'Identify and address the SPECIFIC fear (often a relative/colleague\u2019s diagnosis); give reasoned, confident reassurance explaining why the pattern is benign. Avoid both dismissiveness ("it\u2019s nothing") and capitulating to an anxiety-feeding battery of tests \u2014 over-investigation reinforces health anxiety and risks incidental findings.' },
         { h:'Manage health anxiety', t:'Where health anxiety is the real driver, name and support it (psychoeducation, address reassurance-seeking, consider CBT/NHS Talking Therapies self-referral in line with stepped care (CG123, withdrawn 2024)). The symptom and the anxiety are both addressed.' },
-        { h:'Never do', t:'Never give open-ended "could be cancer, let\u2019s test everything" for a clear globus picture; never give dismissive "it\u2019s nothing" without reasoned explanation; never skip the red-flag exclusion; never feed health anxiety with an undirected battery of tests; never miss true dysphagia (suspected cancer pathway referral) or a neck lump/hoarseness (laryngeal suspected cancer pathway) under NICE NG12 (updated April 2026).' },
+        { h:'Never do', t:"Never give open-ended \"could be cancer, let’s test everything\" for a clear globus picture; never give dismissive \"it’s nothing\" without reasoned explanation; never skip the red-flag exclusion; never feed health anxiety with an undirected battery of tests; never miss true dysphagia (suspected cancer pathway referral) or a neck lump/hoarseness (laryngeal suspected cancer pathway) under NICE NG12." },
         { h:'Safety-net & follow-up', t:'Treat reflux/throat-clearing and anxiety; specify exactly which symptoms warrant urgent review/ENT referral (true dysphagia, neck lump, hoarseness, weight loss, one-sided/persistent-worsening); review; persistent globus despite treatment or any red flag \u2192 ENT examination.' }
       ]
     }
@@ -248,16 +396,16 @@
         { t:'0–2',  h:'Reframe "smoker\u2019s throat"', d:'Persistent, progressive hoarseness at 45+ (smoking and drink add risk) — never "just a smoker’s throat". Needs proper looking at, not a spray.' },
         { t:'2–4',  h:'Elicit red flags',     d:'Throat/ear ache, swallowing, NECK LUMP? He has one. Smoking + heavy alcohol = major combined risk.' },
         { t:'4–6',  h:'Name it + reassure',   d:'Laryngeal/throat cancer must be excluded; early disease is very treatable, often voice-preserving. Urgent referral is precautionary.' },
-        { t:'6–8',  h:'NICE NG12 (updated April 2026) suspected cancer pathway referral',    d:'Urgent ENT/head-and-neck suspected cancer pathway referral; nasendoscopy. Tag NICE NG12 (updated April 2026) (persistent unexplained hoarseness or neck lump, 45+).' },
+        { t:'6–8',  h:"NICE NG12 suspected cancer pathway referral",    d:"Urgent ENT/head-and-neck suspected cancer pathway referral; nasendoscopy. Tag NICE NG12 (persistent unexplained hoarseness or neck lump, 45+)." },
         { t:'8–12', h:'Smoking/alcohol + net', d:'Support cessation/reduction, no lecture. Worsening swallowing/lump growth/breathing trouble → sooner. Follow up.' }
       ],
       wordPics: {
-        fail: 'Prescribes a spray/antibiotics for "a smoker\u2019s throat"; never elicits the neck lump or the red flags; misses the NICE NG12 (updated April 2026) laryngeal suspected cancer pathway referral; colludes with the minimisation.',
+        fail: "Prescribes a spray/antibiotics for \"a smoker’s throat\"; never elicits the neck lump or the red flags; misses the NICE NG12 laryngeal suspected cancer pathway referral; colludes with the minimisation.",
         pass: 'Recognises persistent hoarseness as a suspected cancer pathway flag, elicits red flags, refers urgently, reassures, and supports smoking/alcohol.',
-        exc:  'Reframes "a smoker’s throat" and applies the NICE NG12 (updated April 2026) laryngeal suspected cancer pathway criterion; elicits the neck lump and head-and-neck red flags and the combined smoking/alcohol risk; reassures that early disease is very treatable; refers urgently; and supports smoking/alcohol without a lecture, with a clear safety-net.'
+        exc:  "Reframes \"a smoker’s throat\" and applies the NICE NG12 laryngeal suspected cancer pathway criterion; elicits the neck lump and head-and-neck red flags and the combined smoking/alcohol risk; reassures that early disease is very treatable; refers urgently; and supports smoking/alcohol without a lecture, with a clear safety-net."
       },
       avoid: [
-        { dont:'"It\u2019s just a smoker\u2019s throat — here\u2019s a spray and some antibiotics."', instead:'"A husky voice for over three weeks at 45 or over — and more so in a smoker — we never put down to a smoker’s throat — it needs an urgent specialist look to rule out a cancer of the voice box."', why:'Treating persistent hoarseness with sprays/antibiotics without examination misses the NICE NG12 (updated April 2026) laryngeal-cancer suspected cancer pathway referral.' },
+        { dont:'"It\u2019s just a smoker\u2019s throat — here\u2019s a spray and some antibiotics."', instead:'"A husky voice for over three weeks at 45 or over — and more so in a smoker — we never put down to a smoker’s throat — it needs an urgent specialist look to rule out a cancer of the voice box."', why:"Treating persistent hoarseness with sprays/antibiotics without examination misses the NICE NG12 laryngeal-cancer suspected cancer pathway referral." },
         { dont:'"As long as you\u2019ve no pain, it\u2019s probably nothing serious."', instead:'"Have you noticed any lumps in your neck, or ache in one ear? \u2026 You have — that\u2019s exactly why I want this checked urgently, not treated blind."', why:'Skipping the neck-lump/otalgia red-flag screen misses head-and-neck cancer.' },
         { dont:'"You really need to stop smoking and drinking — this is what it leads to." (lecture)', instead:'"The smoking and drink are the biggest factors, and I\u2019ll help you with both properly when you\u2019re ready — no judgement. First, let\u2019s get this looked at."', why:'A judgemental lecture alienates the patient and risks him disengaging from the urgent referral.' }
       ]
@@ -277,7 +425,7 @@
         { t:'0–2',  h:'The one-sided rule',  d:'Hay fever is BOTH sides. Persistent ONE-sided blockage + blood = red flag; check properly, not a spray.' },
         { t:'2–4',  h:'Elicit NPC red flags', d:'Neck lump? blocked ear on the same side? Southern Chinese heritage? — nasopharyngeal-carcinoma risk/red flags.' },
         { t:'4–6',  h:'Name it + reassure',  d:'Need to exclude something at the back of the nose; might be a harmless polyp, but a specialist must look. Early matters.' },
-        { t:'6–8',  h:'Urgent ENT referral', d:'Nasendoscopy + neck exam; a unilateral adult middle-ear effusion alone warrants this (NICE NG98). Neck lump → NICE NG12 (updated April 2026) suspected cancer pathway.' },
+        { t:'6–8',  h:'Urgent ENT referral', d:"Nasendoscopy + neck exam; a unilateral adult middle-ear effusion alone warrants this (NICE NG98). Neck lump → NICE NG12 suspected cancer pathway." },
         { t:'8–12', h:'Address avoidance + net', d:'The noticed lump is a reason to get checked, not worry alone. Heavier bleeding/lump growth/face numbness/double vision → sooner.' }
       ],
       wordPics: {

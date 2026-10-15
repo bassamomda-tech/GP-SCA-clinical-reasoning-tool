@@ -19,6 +19,7 @@
     'Diabetes / endocrine':'🦋', 'Renal / metabolic':'🧪', 'Gastro / hepatology':'🫃',
     'Urology':'💧', 'Mental health':'🧠', 'Cognition':'🧩', 'Frailty':'🧓',
     "Women's / obstetric":'🌸', 'MSK / pain':'🦴', 'General / anthropometry':'📏', 'Paediatrics':'🧒',
+    'Trauma / head injury':'🤕',
   };
   const esc = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 
@@ -77,7 +78,12 @@
     'has-bled': 'A high HAS-BLED is not a reason to withhold anticoagulation — it identifies modifiable bleeding risk factors (NICE NG196 prefers ORBIT).',
     'alcohol-units': 'UK CMO low-risk guideline: ≤ 14 units/week spread over ≥ 3 days, with drink-free days.',
     'bmi':      'NICE NG246: use lower thresholds (overweight ≥23, obesity ≥27.5 kg/m²) for people of South Asian, Chinese, other Asian, Middle Eastern, Black African or African-Caribbean family background.',
-    'epds':     'Item 10 asks about thoughts of self-harm; the score alone does not assess risk.'
+    'epds':     'Item 10 asks about thoughts of self-harm; the score alone does not assess risk.',
+    'kfre':     'NICE NG203 (2021): refer adults with CKD for specialist assessment if the 5-year risk of needing renal replacement therapy is greater than 5% (4-variable KFRE). Other NG203 referral criteria apply whatever the KFRE: ACR 70 mg/mmol or more (unless known diabetes and already appropriately treated); ACR 30 mg/mmol or more with haematuria; a sustained fall in eGFR of 25% or more with a change in category, or 15 mL/min/1.73m² or more within 12 months; hypertension uncontrolled on 4 or more antihypertensives; known or suspected rare or genetic causes; suspected renal artery stenosis. The KFRE is validated for eGFR below 60 only.',
+    'glasgow-blatchford': 'NICE CG141 (2012, updated 2016): use the Blatchford score at first assessment of acute upper GI bleeding, and consider early discharge for patients with a pre-endoscopy Blatchford score of 0. Suspected acute upper GI bleeding in primary care is assessed in hospital according to local pathways; haemodynamic instability → 999.',
+    'start-back': 'NICE NG59 (2016, updated 2020): consider using risk stratification (for example the STarT Back tool) at first point of contact for each new episode of low back pain with or without sciatica, to inform shared decision-making about stratified management. In the Keele approach, low risk → advice, reassurance and self-management; medium risk → physiotherapy-led care; high risk → psychologically informed physiotherapy. Exclude red flags first — the tool does not assess serious pathology.',
+    'ng143-traffic-light': 'NICE NG143 positions (as the guideline states them). Immediately life-threatening features → emergency transfer (999). Remote assessment: any red feature (not immediately life-threatening) → urgent face-to-face assessment within 2 hours; any amber feature → face-to-face assessment, urgency by clinical judgement; green → care at home with advice on when to seek further help. Face-to-face assessment by a non-paediatric practitioner: red → urgent referral to paediatric specialist care; amber with no diagnosis reached → provide a safety net or refer for paediatric specialist assessment; green → care at home with safety-net advice. Measure temperature, heart rate, respiratory rate and capillary refill time in every febrile child; this checker does not replace the full NG143 table or illness-specific assessment.',
+    'head-injury-ng232': 'NICE NG232 (2023): community services (GPs, NHS 111, minor injury units, walk-in centres, dental practitioners) should refer people with a head injury to an emergency department if any criterion in section A is present; use ambulance transport where clinically indicated (for example reduced GCS, seizure, high-energy injury). Sections B and C are the adult CT head criteria applied in the emergency department (derived from the Canadian CT Head Rule) — shown for reference; children have separate CT criteria. For adults taking anticoagulants with no other CT indication, NG232 asks the ED to consider a CT head scan within 8 hours.'
   };
 
   /* full formulas where the data file only named the equation */
@@ -135,6 +141,34 @@
       { r:'> 2.67', l:'High risk of advanced fibrosis', sev:'high', t:x => x > 2.67 }
     ]
   };
+  /* Upload 130 additions: guideline positions for the new reference calculators */
+  BANDS['kfre'] = [
+    { r:'5-year risk ≤ 5%', l:'At or below the NICE NG203 KFRE referral threshold (other NG203 criteria may still apply)', sev:'low', t:x => x.r5 <= 5 },
+    { r:'5-year risk > 5%', l:'NICE NG203: refer for specialist assessment (5-year risk of needing RRT > 5%)', sev:'high', t:x => x.r5 > 5 },
+    { r:'eGFR ≥ 60', l:'KFRE not validated above eGFR 60 — use the other NG203 criteria', sev:'neutral', t:x => x.egfr >= 60, extra:true },
+    { r:'ACR ≥ 70 mg/mmol', l:'NICE NG203 ACR referral criterion also met (unless known diabetes and appropriately treated)', sev:'high', t:x => x.acr >= 70, extra:true }
+  ];
+  BANDS['start-back'] = (function(){
+    const sub = v => ['sb5','sb6','sb7','sb8'].filter(k => v[k]).length + (v.sb9 === 'b1' ? 1 : 0);
+    return [
+      { r:'Total 0–3', l:'Low risk', sev:'low', t:(x, v) => x <= 3 },
+      { r:'Total ≥ 4 and psychosocial subscale (items 5–9) ≤ 3', l:'Medium risk', sev:'med', t:(x, v) => x >= 4 && sub(v) <= 3 },
+      { r:'Total ≥ 4 and psychosocial subscale (items 5–9) ≥ 4', l:'High risk', sev:'high', t:(x, v) => x >= 4 && sub(v) >= 4 }
+    ];
+  })();
+  BANDS['ng143-traffic-light'] = [
+    { r:'Immediately life-threatening features', l:'NICE NG143: emergency transfer — 999', sev:'severe', t:x => x.band === 'life' },
+    { r:'Any red feature', l:'Red — high risk of serious illness (NG143: urgent face-to-face within 2 hours if remote; urgent paediatric referral if seen face to face)', sev:'severe', t:x => x.band === 'red' },
+    { r:'Any amber feature, no red', l:'Amber — intermediate risk (NG143: face-to-face assessment; safety net or paediatric referral)', sev:'high', t:x => x.band === 'amber' },
+    { r:'No amber or red feature ticked', l:'Green — low risk (NG143: care at home with safety-net advice)', sev:'low', t:x => x.band === 'green' }
+  ];
+  BANDS['head-injury-ng232'] = [
+    { r:'Any section A criterion', l:'NICE NG232: refer to an emergency department', sev:'high', t:x => x.ed },
+    { r:'Any section B criterion (adult)', l:'NG232 adult criteria for CT head within 1 hour (ED decision)', sev:'severe', t:x => x.ct1 },
+    { r:'Section C met (adult), no section B', l:'NG232 adult criteria for CT head within 8 hours (ED decision)', sev:'high', t:x => !x.ct1 && x.ct8 },
+    { r:'No criterion ticked', l:'No NG232 referral criterion ticked — clinical judgement and head injury advice', sev:'low', t:x => !x.any }
+  ];
+
   /* results shown as a number only: no published bands, or a band would read as a dose or plan */
   const NUMBER_ONLY = new Set(['crcl', 'pack-years', 'alcohol-units']);
   /* the result is a date or age fact; the interpret() label states it (no action shown) */

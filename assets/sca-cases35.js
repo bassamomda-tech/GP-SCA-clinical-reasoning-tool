@@ -12,33 +12,68 @@
   /* ============ 133. VIDEO — Incidental raised ALT: NAFLD, not just "a liver wobble" ============ */
   const c133 = {
     id:'nafld-result', title:'"My liver test was up \u2014 but I barely drink, so it can\u2019t be my liver"', type:'video', duration:12,
-    meta:{ age:49, sex:'M', setting:'Video consultation \u2014 incidental mildly raised ALT.', system:'GI / Non-alcoholic fatty liver disease' },
+    meta:{ age:49, sex:'M', setting:'Video consultation \u2014 incidental mildly raised ALT.', system:'GI / Non-alcoholic fatty liver disease', checked:'October 2026' },
     brief:'Mr Gary Hollis, 49, accountant. Bloods for tiredness show a MILDLY raised ALT (~80), confirmed on repeat; bilirubin/ALP normal, INR normal. Non-drinker (a few units/week). BMI 33, central obesity, BP 142/90, HbA1c 44 (pre-diabetes range), raised triglycerides. Viral hepatitis screen negative, ferritin/autoimmune screen unremarkable. This is almost certainly NAFLD/MAFLD (metabolic fatty liver). He is fixated that "barely drinking" means it can\u2019t be his liver, and wants reassurance it\u2019s "nothing".',
     script:{
-      opening:'"Thanks doctor. So my liver blood test came back a bit high, which baffled me \u2014 I barely touch alcohol, maybe a couple of beers at the weekend. So surely it can\u2019t be a liver thing? I figured it\u2019s just one of those blips, or maybe a paracetamol I took. Can you just reassure me it\u2019s nothing and we move on? I haven\u2019t got a drink problem, if that\u2019s what you\u2019re thinking."',
-      facts:[
-        { topic:'It\u2019s metabolic, not alcohol', text:'The cluster \u2014 mildly raised ALT (hepatocellular), central obesity (BMI 33), hypertension, pre-diabetes (HbA1c 44), raised triglycerides, with a negative viral/autoimmune/iron screen and minimal alcohol \u2014 points to NON-ALCOHOLIC FATTY LIVER DISEASE (NAFLD/MAFLD): fat in the liver driven by metabolic syndrome/insulin resistance, NOT alcohol. "I barely drink so it can\u2019t be my liver" is the misconception to correct.' },
-        { topic:'Why it matters (and the fibrosis question)', text:'NAFLD is common and often benign, but a subset progress to non-alcoholic steatohepatitis (NASH), fibrosis and cirrhosis. The key is to assess FIBROSIS RISK (e.g. a FIB-4 score (BSG/BASL 2018), or an enhanced liver fibrosis/ELF test per NICE NG49, where ELF 10.51 or above indicates advanced fibrosis) rather than just reassure or re-check the ALT \u2014 and crucially, the ALT level does NOT reflect fibrosis severity (you can have advanced fibrosis with near-normal ALT).' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 his defensiveness ("I haven\u2019t got a drink problem") masks a wish to close the conversation down and avoid facing his weight/lifestyle, plus a quiet fear that "liver" means something serious or that he\u2019ll be judged/blamed. There may be relief available: this is common, named, and largely reversible with the SAME changes that help his weight, BP, sugar and heart. The reframe from "is it the booze?" to "this is your metabolism, and it\u2019s a fixable warning" is the consultation.' },
-        { topic:'It\u2019s a CVD/metabolic flag too', text:'NAFLD is a marker of metabolic syndrome and raised cardiovascular risk \u2014 so this is also a prompt to address weight, BP, glucose, lipids and overall CVD risk, not just the liver number. Managing the metabolic syndrome treats the liver and the heart together.' },
-        { topic:'What he needs',        text:'Officially: reassurance it\u2019s "nothing". What he needs: the accurate explanation (NAFLD, metabolic not alcohol), a fibrosis-risk assessment (FIB-4/ELF, ultrasound) rather than just re-checking ALT, management of the whole metabolic/CVD picture (weight, BP, glucose, lipids) framed positively and without blame, and follow-up \u2014 not a brush-off.' },
+      "opening": "\"Thanks doctor. So my liver blood test came back a bit high, which baffled me — I barely touch alcohol, maybe a couple of beers at the weekend. So surely it can't be a liver thing? I figured it's just one of those blips, or maybe a paracetamol I took. Can you just reassure me it's nothing and we move on? I haven't got a drink problem, if that's what you're thinking.\"",
+      "facts": [
+        {
+          "topic": "Why you had the bloods",
+          "text": "If asked: tired for a few months; the nurse did bloods twice and the liver test was up both times."
+        },
+        {
+          "topic": "Alcohol (if asked)",
+          "text": "\"Two bottles of beer on a Saturday, that's it\" — about 4 units a week. Never more. No morning drinking."
+        },
+        {
+          "topic": "Symptoms (if asked)",
+          "text": "Tired. No yellowing, no itching, no tummy swelling, no vomiting blood, no black stools. Snores; wife says you sometimes stop breathing."
+        },
+        {
+          "topic": "Lifestyle (if asked)",
+          "text": "Desk job, long hours, takeaways three or four times a week, sugary drinks, no exercise since your knee went. Weight has crept up \"about three stone in ten years\"."
+        },
+        {
+          "topic": "Medicines",
+          "text": "None regularly. Paracetamol occasionally — \"two tablets, once or twice a month\". No supplements or herbal remedies. No allergies."
+        },
+        {
+          "topic": "Family (if asked)",
+          "text": "Dad had type 2 diabetes and a heart attack at 58."
+        },
+        {
+          "topic": "Social",
+          "text": "49, accountant, married with two teenagers. Never smoked. No drug use, no tattoos."
+        },
+        {
+          "topic": "Hidden worry — hold back",
+          "text": "Your dad's heart attack: \"I'm nine years off his age.\" You have also felt judged about your weight before by a doctor and are braced for a lecture. Say these only if asked what worries you or about your family."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Defensive at first, keen to close it down. If the doctor implies you drink, bristle: \"I told you, I barely drink.\" If they explain it is a fatty liver linked to weight, sugar and blood pressure — not drink — you are surprised and become engaged: \"So what do I actually need to do?\" Respond badly to a lecture, well to a practical, respectful plan."
+        }
       ],
-      ice:{
-        ideas:'He barely drinks, so a raised liver test "can\u2019t be his liver" \u2014 it must be a blip; he wants reassurance it\u2019s nothing.',
-        concerns:'HIDDEN AGENDA \u2014 defensiveness ("I haven\u2019t got a drink problem") masking a wish to avoid facing his weight/lifestyle and a fear that "liver" means something serious or that he\u2019ll be judged.',
-        expectations:'Reassurance it\u2019s nothing and to move on. What he actually needs: the NAFLD explanation, a fibrosis-risk assessment (not just re-checking ALT), management of the whole metabolic/CVD picture, framed positively, and follow-up.'
+      "ice": {
+        "ideas": "\"It's a blip — or the odd paracetamol. It can't be my liver if I barely drink.\"",
+        "concerns": "Being judged. Underneath (only if asked): your dad's heart attack.",
+        "expectations": "\"Reassure me it's nothing and we move on.\" You will engage with a plan if it is explained without blame."
       },
-      cues:['Raised ALT + obesity + pre-diabetes + raised triglycerides + minimal alcohol \u2014 NAFLD (metabolic), not alcohol.','"I barely drink so it can\u2019t be my liver" \u2014 the misconception; liver fat is driven by metabolic syndrome.','Defensive "I haven\u2019t got a drink problem" \u2014 avoidance of the weight/lifestyle conversation; reframe without blame.']
+      "cues": [
+        "\"I haven't got a drink problem, if that's what you're thinking.\" — say in the opening.",
+        "\"My dad had diabetes too.\" — say if family history or sugar is mentioned.",
+        "\"I know, I know — the weight.\" — say defensively when lifestyle comes up."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Corrects the misconception and explains NAFLD: a mildly raised ALT with central obesity, pre-diabetes and raised triglycerides (and a negative viral/autoimmune/iron screen, minimal alcohol) is non-alcoholic fatty liver disease \u2014 metabolic, NOT alcohol \u2014 so "I barely drink" does not exclude a liver cause' },
-      { dom:'tasks', text:'Assesses FIBROSIS RISK rather than just re-checking the ALT or reassuring: calculates a non-invasive fibrosis score (e.g. FIB-4, BSG/BASL 2018) and/or arranges an ELF test per NICE NG49 (advanced fibrosis if 10.51 or above) and a liver ultrasound \u2014 recognising that the ALT level does NOT reflect fibrosis severity' },
-      { dom:'tasks', text:'Manages the WHOLE metabolic/CVD picture: weight/lifestyle (the key treatment \u2014 even modest weight loss reduces liver fat), blood pressure (142/90), the pre-diabetes (HbA1c 44), lipids/triglycerides and overall cardiovascular risk \u2014 recognising NAFLD as a metabolic-syndrome/CVD-risk marker' },
-      { dom:'tasks', text:'Excludes the other causes appropriately (already largely done: viral hepatitis, autoimmune, haemochromatosis/iron, drugs) and confirms alcohol intake honestly, without making it the focus' },
-      { dom:'tasks', text:'Frames management POSITIVELY and hopefully: NAFLD is common and largely reversible with the same changes that improve weight, BP, sugar and heart risk \u2014 a fixable warning, not a verdict \u2014 and refers to hepatology if significant fibrosis is found' },
-      { dom:'rto',   text:'Hears the defensiveness and the avoidance, reframes without blame or a "drink problem" implication, and engages him in the metabolic conversation rather than colluding with "it\u2019s nothing"' },
-      { dom:'rto',   text:'Addresses the fear that "liver" means something sinister with honest, proportionate reassurance balanced against the need to assess fibrosis' },
-      { dom:'gs',    text:'Safety-nets and follows up: the fibrosis assessment (FIB-4/ELF/ultrasound) and re-check plan, weight/BP/glucose/lipid management and review, hepatology referral if fibrosis, and a follow-up that treats the metabolic picture \u2014 not a one-off reassurance' },
+      { dom:'ro', text:'Corrects the misconception and explains NAFLD: a mildly raised ALT with central obesity, pre-diabetes and raised triglycerides (and a negative viral/autoimmune/iron screen, minimal alcohol) is non-alcoholic fatty liver disease \u2014 metabolic, NOT alcohol \u2014 so "I barely drink" does not exclude a liver cause' },
+      { dom:'dg', text:'Assesses FIBROSIS RISK rather than just re-checking the ALT or reassuring: calculates a non-invasive fibrosis score (e.g. FIB-4, BSG/BASL 2018) and/or arranges an ELF test per NICE NG49 (advanced fibrosis if 10.51 or above) and a liver ultrasound \u2014 recognising that the ALT level does NOT reflect fibrosis severity' },
+      { dom:'cm', text:'Manages the WHOLE metabolic/CVD picture: weight/lifestyle (the key treatment \u2014 even modest weight loss reduces liver fat), blood pressure (142/90), the pre-diabetes (HbA1c 44), lipids/triglycerides and overall cardiovascular risk \u2014 recognising NAFLD as a metabolic-syndrome/CVD-risk marker' },
+      { dom:'dg', text:'Excludes the other causes appropriately (already largely done: viral hepatitis, autoimmune, haemochromatosis/iron, drugs) and confirms alcohol intake honestly, without making it the focus' },
+      { dom:'ro', text:'Frames management POSITIVELY and hopefully: NAFLD is common and largely reversible with the same changes that improve weight, BP, sugar and heart risk \u2014 a fixable warning, not a verdict \u2014 and refers to hepatology if significant fibrosis is found' },
+      { dom:'ro',   text:'Hears the defensiveness and the avoidance, reframes without blame or a "drink problem" implication, and engages him in the metabolic conversation rather than colluding with "it\u2019s nothing"' },
+      { dom:'ro',   text:'Addresses the fear that "liver" means something sinister with honest, proportionate reassurance balanced against the need to assess fibrosis' },
+      { dom:'cm',    text:'Safety-nets and follows up: the fibrosis assessment (FIB-4/ELF/ultrasound) and re-check plan, weight/BP/glucose/lipid management and review, hepatology referral if fibrosis, and a follow-up that treats the metabolic picture \u2014 not a one-off reassurance' },
     ],
     worked:[
       { lbl:'Correct the misconception', txt:'"I can see why a raised liver test is baffling when you barely drink \u2014 but here\u2019s the key thing: alcohol is only ONE cause. By far the commonest reason for exactly your pattern is fat in the liver driven by your metabolism \u2014 we call it non-alcoholic fatty liver. So \u2018I barely drink\u2019 doesn\u2019t rule out a liver cause; it actually points us to this one. And I\u2019m genuinely not sitting here thinking you\u2019ve got a drink problem."' },
@@ -48,7 +83,7 @@
       { lbl:'No blame, real plan',  txt:'"This isn\u2019t about blame \u2014 it\u2019s a really useful early heads-up. Let\u2019s make a realistic plan: some weight loss, sort the blood pressure and keep an eye on the sugar, look at the cholesterol. I\u2019ll help, not lecture. Done together, your liver test usually improves and so does everything else."' },
       { lbl:'Safety-net + follow-up', txt:'"So: I\u2019ll do the scarring assessment and the scan, sort the metabolic side, and we\u2019ll recheck. If the scarring test flagged anything, I\u2019d involve the liver specialists \u2014 but most people at your stage do really well. Let\u2019s book a proper follow-up. You came in wanting me to say it\u2019s nothing; what it actually is, is a fixable warning that\u2019s worth acting on."' },
     ],
-    learning:'A mildly raised ALT (hepatocellular pattern) with central obesity, pre-diabetes and raised triglycerides, minimal alcohol and a negative viral/autoimmune/iron screen is non-alcoholic fatty liver disease (NAFLD/MAFLD) \u2014 metabolic, not alcohol \u2014 so "I barely drink so it can\u2019t be my liver" is the misconception to correct. The examinable clinical point is to assess FIBROSIS RISK (FIB-4 score per BSG/BASL 2018, ELF test per NICE NG49 with 10.51 or above indicating advanced fibrosis, ultrasound) rather than merely re-checking the ALT or reassuring \u2014 because the ALT level does NOT reflect fibrosis severity (advanced fibrosis can occur with near-normal ALT). NAFLD is a metabolic-syndrome and cardiovascular-risk marker, so manage the WHOLE picture (weight/lifestyle as the key, largely-reversible treatment, plus BP, glucose, lipids, CVD risk), refer to hepatology if significant fibrosis. The hidden agenda is defensiveness masking avoidance of the weight/lifestyle conversation and a fear of being judged or that "liver" means something sinister; reframe without blame ("a fixable warning, treating five things with one plan"), give honest proportionate reassurance balanced with proper fibrosis assessment, and follow up.',
+    learning:"A mildly raised ALT (hepatocellular pattern) with central obesity, pre-diabetes and raised triglycerides, minimal alcohol and a negative viral/autoimmune/iron screen is non-alcoholic fatty liver disease (NAFLD/MAFLD) — metabolic, not alcohol — so \"I barely drink so it can’t be my liver\" is the misconception to correct. The examinable clinical point is to assess FIBROSIS RISK (FIB-4 score per BSG/BASL 2018, ELF test per NICE NG49 with 10.51 or above indicating advanced fibrosis, ultrasound) rather than merely re-checking the ALT or reassuring — because the ALT level does NOT reflect fibrosis severity (advanced fibrosis can occur with near-normal ALT). NAFLD is a metabolic-syndrome and cardiovascular-risk marker, so manage the WHOLE picture (weight/lifestyle as the key, largely-reversible treatment, plus BP, glucose, lipids, CVD risk), refer to hepatology if significant fibrosis. The hidden agenda is defensiveness masking avoidance of the weight/lifestyle conversation and a fear of being judged or that \"liver\" means something sinister; reframe without blame (\"a fixable warning, treating five things with one plan\"), give honest proportionate reassurance balanced with proper fibrosis assessment, and follow up. NAFLD is common and often benign, but a subset progress to non-alcoholic steatohepatitis (NASH), fibrosis and cirrhosis. The key is to assess FIBROSIS RISK (e.g. a FIB-4 score (BSG/BASL 2018), or an enhanced liver fibrosis/ELF test per NICE NG49, where ELF 10.51 or above indicates advanced fibrosis) rather than just reassure or re-check the ALT — and crucially, the ALT level does NOT reflect fibrosis severity (you can have advanced fibrosis with near-normal ALT).",
     knowledge:{
       guideline:'NICE NG49 (MASLD, formerly NAFLD; updated July 2026; metabolic dysfunction-associated steatotic liver disease) — ELF test · BSG/BASL guideline on the management of abnormal liver blood tests (Newsome et al., 2018) — FIB-4 · NICE PH38 Type 2 diabetes: prevention in people at high risk (2012) · NICE NG136 Hypertension in adults (2019) · NICE NG238 Cardiovascular disease: risk assessment and reduction (2023) · NICE NG246 Overweight and obesity management (2025) · metabolic syndrome',
       points:[
@@ -67,33 +102,68 @@
   /* ============ 134. VIDEO — Raised inflammatory markers: the non-specific result + the can't-miss ============ */
   const c134 = {
     id:'raised-inflammatory-markers', title:'"My inflammation markers are up \u2014 what\u2019s causing it?"', type:'video', duration:12,
-    meta:{ age:72, sex:'F', setting:'Video consultation \u2014 incidentally raised ESR/CRP.', system:'Investigations / Non-specific inflammatory markers' },
+    meta:{ age:72, sex:'F', setting:'Video consultation \u2014 incidentally raised ESR/CRP.', system:'Investigations / Non-specific inflammatory markers', checked:'October 2026' },
     brief:'Mrs Margaret Doyle, 72. Bloods for fatigue show a markedly raised ESR (88) and raised CRP, mild normocytic anaemia. She is worried something is "eating away" at her. On careful, directed history (the key): NEW bilateral shoulder/hip girdle pain and morning stiffness for weeks (?polymyalgia rheumatica), AND \u2014 crucially, if asked \u2014 a recent NEW temporal headache, scalp tenderness on combing her hair, and jaw ache when chewing. This raises GIANT CELL ARTERITIS \u2014 a sight-threatening emergency. She hasn\u2019t connected these. No visual loss yet.',
     script:{
-      opening:'"Hello doctor. My blood test showed my inflammation levels are really high, and I\u2019ve read that can mean something serious, like a hidden cancer. I\u2019ve been so worried something\u2019s eating away at me. I AM exhausted, and achy, but I put that down to age. Can you tell me what\u2019s causing the inflammation? I just want to know it\u2019s not cancer."',
-      facts:[
-        { topic:'Markers are non-specific, but directed', text:'Raised ESR/CRP are NON-SPECIFIC \u2014 they indicate inflammation but not its cause (infection, inflammation/autoimmune, malignancy, etc.). A markedly raised ESR in an older person needs a STRUCTURED, DIRECTED history and examination rather than either panic about cancer or a random scatter of tests. The clinical context, not the number alone, drives the work-up.' },
-        { topic:'The PMR picture',     text:'New bilateral shoulder/pelvic-girdle pain with morning stiffness in someone over 50 with raised inflammatory markers fits POLYMYALGIA RHEUMATICA \u2014 common, treatable, and itself a clue.' },
-        { topic:'The GCA emergency \u2014 KEY', text:'CRITICAL \u2014 directed questioning reveals NEW temporal headache, scalp tenderness (combing hair), and jaw claudication (ache on chewing). With raised inflammatory markers in someone over 50 (and PMR overlap), this is GIANT CELL ARTERITIS until proven otherwise \u2014 a SIGHT-THREATENING emergency. It requires URGENT high-dose corticosteroids (do NOT wait for biopsy/results) and same-day specialist (rheumatology/ophthalmology) referral, because untreated GCA can cause irreversible blindness.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 her stated fear is hidden CANCER ("something eating away at me"), and she has NOT volunteered or connected the headache/scalp/jaw symptoms (she normalised the aches as "age"). The skill is to address the cancer fear honestly AND \u2014 through directed history \u2014 uncover the GCA red flags she didn\u2019t think to mention, then act urgently. Reassurance about cancer must not eclipse catching the sight-threatening emergency.' },
-        { topic:'What she needs',       text:'Officially: to know what\u2019s causing the inflammation and that it\u2019s not cancer. What she needs: a directed history/exam that uncovers the GCA red flags (and the PMR picture), URGENT treatment of suspected GCA (high-dose steroids now, do not wait) with same-day specialist referral, an appropriate structured work-up for the raised markers, and her cancer fear addressed proportionately.' },
+      "opening": "\"Hello doctor. My blood test showed my inflammation levels are really high, and I've read that can mean something serious, like a hidden cancer. I've been so worried something's eating away at me. I AM exhausted, and achy, but I put that down to age. Can you tell me what's causing the inflammation? I just want to know it's not cancer.\"",
+      "facts": [
+        {
+          "topic": "The aches (if asked where)",
+          "text": "Both shoulders and both hips/thighs for about six weeks. Very stiff in the mornings — takes over an hour to loosen up; you struggle to lift your arms to brush your hair or get out of bed. Eases a bit through the day."
+        },
+        {
+          "topic": "Headache — only if asked about headache",
+          "text": "\"Now you mention it — I've had a headache on the right side, by my temple, for about ten days. I don't usually get headaches.\""
+        },
+        {
+          "topic": "Scalp and jaw — only if asked specifically",
+          "text": "The right side of your scalp is sore when you comb your hair. Your jaw aches after chewing for a minute, so you have been eating soup."
+        },
+        {
+          "topic": "Vision (if asked)",
+          "text": "No loss of vision, no double vision, no blurring, no flashing lights — \"my eyes are fine\"."
+        },
+        {
+          "topic": "General (if asked)",
+          "text": "Tired, off your food, lost a few pounds. Night sweats once or twice. No cough, no lumps, no bowel change, no blood anywhere, no urinary symptoms, no rash."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "High blood pressure (amlodipine). Occasional paracetamol. No allergies. Not diabetic. No stomach ulcers."
+        },
+        {
+          "topic": "Social",
+          "text": "72, retired dinner lady, widowed, lives alone, son nearby who can drive. Never smoked."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "Your sister died of \"cancer that wasn't found until too late\" — that is why the word inflammation frightened you. Say this only if asked why you are worried about cancer."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Anxious, focused on cancer, and you will NOT mention the headache, scalp or jaw unless asked about them. If the doctor asks good, specific questions, answer honestly and you may say: \"I didn't think that was related.\" If told this might be inflammation of the blood vessels that can affect sight and needs treatment today, you are surprised but agree and ask: \"Will I go blind?\""
+        }
       ],
-      ice:{
-        ideas:'High inflammation markers mean a hidden cancer is "eating away" at her; she wants to know it\u2019s not cancer.',
-        concerns:'HIDDEN AGENDA \u2014 fixated on hidden cancer; has NOT connected or mentioned the new temporal headache, scalp tenderness and jaw ache (normalised her aches as "age").',
-        expectations:'To be told the cause and that it\u2019s not cancer. What she actually needs: a directed history uncovering the GCA red flags, URGENT treatment of suspected giant cell arteritis (steroids now), same-day specialist referral, a structured work-up, and her cancer fear addressed.'
+      "ice": {
+        "ideas": "\"High inflammation means something is eating away at me — maybe cancer.\"",
+        "concerns": "Underneath (only if asked): your sister's cancer, found too late.",
+        "expectations": "\"Tell me what's causing it — and that it's not cancer.\""
       },
-      cues:['Markedly raised ESR/CRP \u2014 non-specific; needs a DIRECTED history, not panic or a random test scatter.','New shoulder/hip girdle pain + morning stiffness over 50 \u2014 polymyalgia rheumatica; a clue worth following.','NEW temporal headache + scalp tenderness + jaw claudication \u2014 giant cell arteritis (sight-threatening); ask for these specifically and act NOW.']
+      "cues": [
+        "\"I put the aches down to age.\" — say in the opening.",
+        "\"I didn't think the headache was related.\" — say if headache comes up.",
+        "\"Will I go blind?\" — ask if the doctor explains the eye risk."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Understands raised ESR/CRP are NON-SPECIFIC and works them up with a STRUCTURED, DIRECTED history and examination (guided by the clinical context) rather than panicking about cancer or ordering a random scatter of tests' },
-      { dom:'tasks', text:'Actively elicits the GIANT CELL ARTERITIS red flags by DIRECTED questioning \u2014 new temporal headache, scalp tenderness, jaw claudication, visual symptoms \u2014 which the patient did not volunteer, and recognises GCA as a sight-threatening emergency in an over-50 with raised markers (\u00b1 PMR)' },
-      { dom:'tasks', text:'Acts URGENTLY on suspected GCA: starts (or arranges immediate) HIGH-DOSE corticosteroids WITHOUT waiting for temporal-artery biopsy/results, and refers SAME-DAY to rheumatology/ophthalmology \u2014 because delay risks irreversible blindness' },
-      { dom:'tasks', text:'Recognises the POLYMYALGIA RHEUMATICA picture (bilateral girdle pain, morning stiffness, raised markers, age >50) and its overlap with GCA, managing/ referring appropriately' },
-      { dom:'tasks', text:'Plans a proportionate structured work-up for the raised markers (history/exam-directed: e.g. examination, urinalysis, further bloods/imaging as indicated, myeloma/malignancy consideration if the picture warrants) \u2014 without letting it delay GCA treatment' },
-      { dom:'rto',   text:'Addresses the patient\u2019s CANCER fear honestly and proportionately, while NOT letting reassurance eclipse the directed search that catches the sight-threatening emergency' },
-      { dom:'rto',   text:'Explains the urgency of the GCA concern clearly and calmly so she accepts immediate treatment/referral, and validates that she was right to be worried by the result' },
-      { dom:'gs',    text:'Safety-nets emphatically: any visual symptoms (blurring, double vision, transient or actual visual loss) \u2192 emergency same-day ophthalmology/A&E; starts steroids and arranges same-day specialist review; explains steroid safety; and follows up the broader work-up \u2014 sight preserved, cause pursued' },
+      { dom:'dg', text:'Understands raised ESR/CRP are NON-SPECIFIC and works them up with a STRUCTURED, DIRECTED history and examination (guided by the clinical context) rather than panicking about cancer or ordering a random scatter of tests' },
+      { dom:'dg', text:'Actively elicits the GIANT CELL ARTERITIS red flags by DIRECTED questioning \u2014 new temporal headache, scalp tenderness, jaw claudication, visual symptoms \u2014 which the patient did not volunteer, and recognises GCA as a sight-threatening emergency in an over-50 with raised markers (\u00b1 PMR)' },
+      { dom:'cm', text:'Acts URGENTLY on suspected GCA: starts (or arranges immediate) HIGH-DOSE corticosteroids WITHOUT waiting for temporal-artery biopsy/results, and refers SAME-DAY to rheumatology/ophthalmology \u2014 because delay risks irreversible blindness' },
+      { dom:'dg', text:'Recognises the POLYMYALGIA RHEUMATICA picture (bilateral girdle pain, morning stiffness, raised markers, age >50) and its overlap with GCA, managing/ referring appropriately' },
+      { dom:'cm', text:'Plans a proportionate structured work-up for the raised markers (history/exam-directed: e.g. examination, urinalysis, further bloods/imaging as indicated, myeloma/malignancy consideration if the picture warrants) \u2014 without letting it delay GCA treatment' },
+      { dom:'ro',   text:'Addresses the patient\u2019s CANCER fear honestly and proportionately, while NOT letting reassurance eclipse the directed search that catches the sight-threatening emergency' },
+      { dom:'ro',   text:'Explains the urgency of the GCA concern clearly and calmly so she accepts immediate treatment/referral, and validates that she was right to be worried by the result' },
+      { dom:'cm',    text:'Safety-nets emphatically: any visual symptoms (blurring, double vision, transient or actual visual loss) \u2192 emergency same-day ophthalmology/A&E; starts steroids and arranges same-day specialist review; explains steroid safety; and follows up the broader work-up \u2014 sight preserved, cause pursued' },
     ],
     worked:[
       { lbl:'Name the marker honestly', txt:'"Let me explain what those inflammation markers mean: they tell us there\u2019s inflammation SOMEWHERE, but not what\u2019s causing it \u2014 they\u2019re a smoke alarm, not the fire. So rather than jump to the scariest cause or fire off random tests, I want to ask you some specific questions to find the actual source. And yes, we\u2019ll make sure it\u2019s not something sinister."' },
@@ -105,13 +175,13 @@
     ],
     learning:'Raised ESR/CRP are NON-SPECIFIC \u2014 a "smoke alarm, not the fire" \u2014 indicating inflammation but not its cause, so a markedly raised ESR in an older person needs a STRUCTURED, DIRECTED history and examination guided by the clinical context, not panic about cancer or a random scatter of tests. The examinable core is using directed questioning to uncover what the patient did not volunteer: here, new bilateral girdle pain with morning stiffness fits polymyalgia rheumatica, but the new temporal headache, scalp tenderness (combing hair) and jaw claudication, with raised markers in an over-50, signal GIANT CELL ARTERITIS \u2014 a sight-threatening emergency that demands URGENT high-dose corticosteroids WITHOUT waiting for biopsy/results and same-day rheumatology/ophthalmology referral, because untreated GCA causes irreversible blindness. The hidden agenda is the patient\u2019s cancer fear plus her failure to connect/mention the GCA symptoms; address the cancer fear honestly and proportionately but do not let reassurance eclipse the directed search, act urgently on the GCA, plan a proportionate work-up for the markers, and safety-net visual symptoms to emergency ophthalmology.',
     knowledge:{
-      guideline:'BSR guideline for the management of giant cell arteritis (Mackie et al., 2020) · BSR/BHPR guideline for the management of polymyalgia rheumatica (Dasgupta et al., 2010) · NICE NG12 (updated April 2026) — myeloma · NOGG 2024 (glucocorticoid-induced osteoporosis) · NatPSA/2020/005 Steroid Emergency Card · NICE NG243 Adrenal insufficiency (2024) · BNF · sight-threatening emergency pathways',
+      guideline:"BSR guideline for the management of giant cell arteritis (Mackie et al., 2020) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BSR/BHPR guideline for the management of polymyalgia rheumatica (Dasgupta et al., 2010) · NOGG 2024 (glucocorticoid-induced osteoporosis) · NatPSA/2020/005 Steroid Emergency Card · NICE NG243 Adrenal insufficiency (2024) · BNF · sight-threatening emergency pathways",
       points:[
         { h:'Inflammatory markers are non-specific', t:'ESR and CRP indicate inflammation but not its cause (infection, autoimmune/inflammatory disease, malignancy, tissue injury). A raised marker is interpreted in clinical context via a directed history and examination \u2014 not as a stand-alone "cancer test" and not as a trigger for an undirected battery of investigations.' },
         { h:'Giant cell arteritis \u2014 the can\u2019t-miss', t:'In a patient \u226550 with raised inflammatory markers, ASK directly about new headache (often temporal), scalp tenderness, jaw claudication, and visual symptoms; examine the temporal arteries. GCA is a sight-threatening emergency \u2014 untreated it can cause sudden, irreversible visual loss (anterior ischaemic optic neuropathy).' },
         { h:'Treat GCA immediately', t:'If GCA is suspected, start HIGH-DOSE glucocorticoids IMMEDIATELY — BSR 2020: prednisolone 40–60 mg once daily, started the same day by the GP, if there is no visual loss; with acute or intermittent visual loss, IV methylprednisolone via same-day ophthalmology (do not delay oral steroid if IV is not immediately possible) — do NOT wait for temporal-artery biopsy, ultrasound, or specialist review, and refer urgently to the GCA fast-track service (specialist review ideally the same working day and always within 3 working days; ophthalmology the same day if any visual symptoms). Biopsy (at least 1 cm) and/or ultrasound should follow within 1 week of starting steroids; treatment must not be delayed.' },
         { h:'Polymyalgia rheumatica overlap', t:'PMR (BSR/BHPR 2010: bilateral shoulder/pelvic-girdle pain and morning stiffness, age >50, raised ESR/CRP, steroid-responsive) commonly coexists with GCA. New girdle pain with raised markers is a clue; always screen for GCA features in PMR, and vice versa.' },
-        { h:'Structured work-up for raised markers', t:'Guided by history/examination: consider infection screen, urinalysis, further bloods (FBC/film, U&E, LFTs, calcium, immunoglobulins/electrophoresis for myeloma, TFTs, CK, rheumatoid factor — the BSR/BHPR 2010 PMR baseline set), and imaging where indicated. NICE NG12 (updated April 2026) includes a myeloma pathway for people aged 60 and over, so protein electrophoresis is proportionate here with anaemia and a high ESR. Pursue malignancy/serious causes proportionately \u2014 but never let this delay GCA treatment.' },
+        { h:'Structured work-up for raised markers', t:"Guided by history/examination: consider infection screen, urinalysis, further bloods (FBC/film, U&E, LFTs, calcium, immunoglobulins/electrophoresis for myeloma, TFTs, CK, rheumatoid factor — the BSR/BHPR 2010 PMR baseline set), and imaging where indicated. NICE NG12 includes a myeloma pathway for people aged 60 and over, so protein electrophoresis is proportionate here with anaemia and a high ESR. Pursue malignancy/serious causes proportionately — but never let this delay GCA treatment." },
         { h:'Address the cancer fear proportionately', t:'Patients often fear a raised marker means hidden cancer. Acknowledge and address this honestly with an appropriate work-up, while ensuring reassurance does not eclipse the directed search for treatable, urgent causes like GCA.' },
         { h:'Never do', t:'Never treat a raised ESR/CRP as a stand-alone cancer test or order an undirected scatter of tests; never miss the GCA red flags by failing to ask directly; never wait for biopsy/results before treating suspected GCA; never let cancer-fear reassurance eclipse the sight-threatening emergency; never miss visual symptoms.' },
         { h:'Safety-net & follow-up', t:'Suspected GCA → high-dose steroids now + same-day specialist referral (BSR 2020 fast-track); ANY visual symptom → emergency ophthalmology/A&E; steroid-safety advice (NOGG 2024: bone protection from the start in a postmenopausal woman on prednisolone ≥7.5 mg/day for 3 months or longer; consider a PPI; Steroid Emergency Card per NatPSA/2020/005; sick-day rules per NICE NG243); structured work-up for the markers followed up; review.' }
@@ -122,33 +192,68 @@
   /* ============ 135. TELEPHONE — Isolated macrocytosis: the result that opens a hidden door ============ */
   const c135 = {
     id:'macrocytosis-result', title:'"My blood test said my cells are big \u2014 is that bad?"', type:'telephone', duration:12,
-    meta:{ age:46, sex:'F', setting:'Telephone \u2014 incidental raised MCV.', system:'Haematology / Isolated macrocytosis' },
+    meta:{ age:46, sex:'F', setting:'Telephone \u2014 incidental raised MCV.', system:'Haematology / Isolated macrocytosis', checked:'October 2026' },
     brief:'Mrs Lisa Brennan, 46. Bloods done for tiredness show a raised MCV (105) with normal Hb (i.e. macrocytosis without anaemia), normal white cells/platelets. She rings for the result, anxious it means "something with my blood/leukaemia". Common causes to work through: alcohol, B12/folate deficiency, hypothyroidism, drugs, liver disease, (and marrow causes). On gentle, non-judgemental exploration, her alcohol intake has crept up substantially since a recent bereavement/relationship stress \u2014 the likely cause, and the real consultation.',
     script:{
-      opening:'"Hi, I\u2019m ringing about my blood result \u2014 the receptionist said my red cells are \u2018large\u2019 or something? I immediately panicked and googled it and now I\u2019m terrified it\u2019s leukaemia or something with my blood. I feel mostly okay, just tired. What does it mean that my cells are big? Should I be worried?"',
-      facts:[
-        { topic:'Macrocytosis \u2014 a finding, not a diagnosis', text:'Raised MCV (macrocytosis), especially WITHOUT anaemia and with normal white cells/platelets, is usually NOT sinister \u2014 leukaemia is not the typical cause. It is a finding to WORK UP through its common causes: ALCOHOL (very common), B12/FOLATE deficiency, HYPOTHYROIDISM, certain DRUGS (e.g. methotrexate, anticonvulsants), LIVER DISEASE, reticulocytosis, and (less commonly) primary marrow disorders \u2014 a structured panel rather than a leap to cancer.' },
-        { topic:'The work-up',         text:'Appropriate tests: B12 and folate, TFTs, LFTs (incl. GGT), reticulocytes, blood film, and an honest alcohol history; review medications. Most isolated macrocytosis has a benign, identifiable cause. A blood film and FBC trend help; marrow investigation is reserved for unexplained/progressive cases or other cytopenias.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 the likely cause is rising ALCOHOL since a recent bereavement/relationship stress, which she is ashamed of and reluctant to disclose; she has framed the call around a leukaemia fear partly to avoid the alcohol conversation she half-expects. The result is a door into a sensitive, important issue \u2014 her drinking and the grief/distress behind it. The skill is to reassure about leukaemia, take a non-judgemental alcohol/lifestyle history that lets her disclose, and address the underlying distress \u2014 not just label "macrocytosis, recheck".' },
-        { topic:'Why it matters',      text:'Catching rising alcohol early (the macrocytosis is a useful biological flag) and addressing the bereavement/low mood is genuinely valuable \u2014 the abnormal result is an opportunity, not just a number to recheck. Done well, it opens help she might not otherwise have sought.' },
-        { topic:'What she needs',       text:'Officially: to know what "big cells" means and that it\u2019s not leukaemia. What she needs: honest reassurance that isolated macrocytosis is usually not sinister, a structured cause work-up (B12/folate, TFTs, LFTs, film), and \u2014 the real consultation \u2014 a gentle, non-judgemental space to disclose the rising alcohol and the grief/distress behind it, with support offered.' },
+      "opening": "\"Hi, I'm ringing about my blood result — the receptionist said my red cells are 'large' or something? I immediately panicked and googled it and now I'm terrified it's leukaemia or something with my blood. I feel mostly okay, just tired. What does it mean that my cells are big? Should I be worried?\"",
+      "facts": [
+        {
+          "topic": "Why you had the test",
+          "text": "If asked: tired for about four months, sleeping badly."
+        },
+        {
+          "topic": "Symptoms (if asked)",
+          "text": "No bruising, no nosebleeds, no infections, no night sweats, no weight loss, no lumps. No pins and needles or numbness. No sore tongue. Bowels normal. Periods regular, not heavy."
+        },
+        {
+          "topic": "Diet and medicines (if asked)",
+          "text": "You eat meat and vegetables, \"not as well as I should lately\". No regular medicines, no supplements, no allergies."
+        },
+        {
+          "topic": "Thyroid (if asked)",
+          "text": "No feeling cold, no weight gain, no dry skin that you have noticed."
+        },
+        {
+          "topic": "Alcohol — only if asked in an open, non-judgemental way",
+          "text": "At first: \"Just a glass of wine in the evening.\" If the doctor asks gently about how much exactly, or says many people drink more when going through a hard time: \"Honestly... it's a bottle most nights now. Sometimes a bit more at weekends.\" It has crept up over about six months. No morning drinking, no shakes. You know it is too much."
+        },
+        {
+          "topic": "What happened six months ago — only if asked what changed",
+          "text": "Your mum died suddenly in the spring, and two months later your husband moved out. \"I just sit on my own in the evenings and the wine helps me not think.\""
+        },
+        {
+          "topic": "Mood (if asked)",
+          "text": "Low, tearful, not enjoying much. Still working (receptionist at a dental practice). No thoughts of harming yourself. Your sister lives nearby and calls often."
+        },
+        {
+          "topic": "Social",
+          "text": "46, two teenage sons who live with you half the week. Non-smoker. Drives."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Very anxious about leukaemia at first. Once the doctor explains that large red cells on their own are usually not a blood cancer and have common causes, you calm down. If alcohol is asked about in a judgemental way, under-report and become defensive. If asked kindly, tell the truth with some shame and become tearful talking about your mum. Respond well to support and a plan."
+        }
       ],
-      ice:{
-        ideas:'"Large cells" means leukaemia or something serious with her blood.',
-        concerns:'HIDDEN AGENDA \u2014 rising alcohol since a recent bereavement/relationship stress that she\u2019s ashamed of; she\u2019s framed the call around a leukaemia fear partly to avoid the alcohol conversation she half-expects.',
-        expectations:'To be told what "big cells" means and that it\u2019s not leukaemia. What she actually needs: reassurance it\u2019s usually not sinister, a structured cause work-up, and a non-judgemental space to disclose the rising alcohol and the grief behind it.'
+      "ice": {
+        "ideas": "\"Big cells means something wrong with my blood — maybe leukaemia.\"",
+        "concerns": "Leukaemia. Underneath (only if trust is built): your drinking and how alone you feel since Mum died and your husband left.",
+        "expectations": "\"Should I be worried?\" You want to know what happens next. You would welcome help once you feel safe to talk."
       },
-      cues:['Raised MCV without anaemia, normal WCC/platelets \u2014 usually not leukaemia; work up the common causes.','Common causes: alcohol, B12/folate, thyroid, drugs, liver \u2014 take a non-judgemental alcohol history.','Recent bereavement/stress + the leukaemia framing \u2014 the result is a door to a hidden alcohol/grief issue.']
+      "cues": [
+        "\"I'm terrified it's leukaemia.\" — say in the opening.",
+        "\"I've not been sleeping well since... well, it's been a hard year.\" — say if asked about tiredness.",
+        "\"The wine helps me not think.\" — say only if alcohol has been raised kindly."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Reassures accurately that isolated MACROCYTOSIS (raised MCV without anaemia, normal WCC/platelets) is usually NOT sinister and leukaemia is not the typical cause \u2014 it is a finding to work up, not a diagnosis \u2014 without dismissing it' },
-      { dom:'tasks', text:'Plans a STRUCTURED cause work-up: B12 and folate, TFTs, LFTs (including GGT), reticulocytes/blood film, and a medication review \u2014 covering the common causes (alcohol, B12/folate, hypothyroidism, drugs, liver disease)' },
-      { dom:'tasks', text:'Takes a NON-JUDGEMENTAL ALCOHOL history that creates space for honest disclosure (recognising alcohol as a very common cause of macrocytosis), and so uncovers the rising intake' },
-      { dom:'tasks', text:'Recognises and addresses the underlying DISTRESS: the recent bereavement/relationship stress driving the drinking \u2014 screening mood and offering support \u2014 treating the result as a door to a sensitive, important issue rather than just a number' },
-      { dom:'tasks', text:'Knows when to escalate/refer: unexplained macrocytosis, associated cytopenias, abnormal film, or progression warrant haematology/marrow consideration \u2014 distinguishing this from her likely benign, identifiable cause' },
-      { dom:'rto',   text:'Reassures about the leukaemia fear genuinely, then gently opens the alcohol/lifestyle door without judgement, so she feels safe to disclose rather than shamed into hiding' },
-      { dom:'rto',   text:'Responds with compassion to the bereavement/distress, framing the result as an opportunity for help, and engages her in addressing both the drinking and the grief' },
-      { dom:'gs',    text:'Safety-nets and follows up: the cause work-up (B12/folate/TFTs/LFTs/film), alcohol-reduction support and mood support/bereavement help, recheck of the FBC/MCV, escalation criteria if unexplained, and a follow-up that treats the person, not just the result' },
+      { dom:'ro', text:'Reassures accurately that isolated MACROCYTOSIS (raised MCV without anaemia, normal WCC/platelets) is usually NOT sinister and leukaemia is not the typical cause \u2014 it is a finding to work up, not a diagnosis \u2014 without dismissing it' },
+      { dom:'cm', text:'Plans a STRUCTURED cause work-up: B12 and folate, TFTs, LFTs (including GGT), reticulocytes/blood film, and a medication review \u2014 covering the common causes (alcohol, B12/folate, hypothyroidism, drugs, liver disease)' },
+      { dom:'dg', text:'Takes a NON-JUDGEMENTAL ALCOHOL history that creates space for honest disclosure (recognising alcohol as a very common cause of macrocytosis), and so uncovers the rising intake' },
+      { dom:'dg', text:'Recognises and addresses the underlying DISTRESS: the recent bereavement/relationship stress driving the drinking \u2014 screening mood and offering support \u2014 treating the result as a door to a sensitive, important issue rather than just a number' },
+      { dom:'cm', text:'Knows when to escalate/refer: unexplained macrocytosis, associated cytopenias, abnormal film, or progression warrant haematology/marrow consideration \u2014 distinguishing this from her likely benign, identifiable cause' },
+      { dom:'ro',   text:'Reassures about the leukaemia fear genuinely, then gently opens the alcohol/lifestyle door without judgement, so she feels safe to disclose rather than shamed into hiding' },
+      { dom:'ro',   text:'Responds with compassion to the bereavement/distress, framing the result as an opportunity for help, and engages her in addressing both the drinking and the grief' },
+      { dom:'cm',    text:'Safety-nets and follows up: the cause work-up (B12/folate/TFTs/LFTs/film), alcohol-reduction support and mood support/bereavement help, recheck of the FBC/MCV, escalation criteria if unexplained, and a follow-up that treats the person, not just the result' },
     ],
     worked:[
       { lbl:'Reassure the big fear', txt:'"Let me take the scariest thought off the table first: large red cells, especially with the rest of your blood count completely normal and no anaemia, is almost never leukaemia. So please breathe. It\u2019s a finding we look into, not a diagnosis \u2014 and the common causes are all pretty ordinary and fixable."' },
@@ -158,7 +263,7 @@
       { lbl:'Make it an opportunity', txt:'"So this blood test, weirdly, might be a useful thing \u2014 it\u2019s flagged the drinking before it\u2019s caused harm, and it lets me help you with both the alcohol and how you\u2019re coping. We can cut the drinking back with support, and get you some help with the grief if you\u2019d like. The blood usually settles once the alcohol eases."' },
       { lbl:'Plan + safety-net',    txt:'"I\u2019ll do the full set of tests \u2014 B12, folate, thyroid, liver \u2014 to be thorough, and we\u2019ll recheck the count. If anything were unexplained or other parts of the blood changed, I\u2019d involve a specialist \u2014 but I don\u2019t expect that. Let\u2019s book a proper follow-up for the drinking and the grief. You rang terrified of leukaemia; what this really is, is a chance to look after you."' },
     ],
-    learning:'Isolated macrocytosis (raised MCV without anaemia, normal white cells/platelets) is usually NOT sinister \u2014 leukaemia is not the typical cause \u2014 and is a finding to work up through its common causes: ALCOHOL (very common), B12/folate deficiency, hypothyroidism, drugs, and liver disease, with a structured panel (B12, folate, TFTs, LFTs/GGT, reticulocytes/film, medication review) and haematology/marrow referral reserved for unexplained, progressive or multi-lineage abnormalities. The examinable hidden agenda is that the likely cause \u2014 rising alcohol since a recent bereavement/relationship stress \u2014 is something the patient is ashamed of and has framed the call around a leukaemia fear partly to avoid; the result is a DOOR into a sensitive, important issue. Reassure genuinely about leukaemia, take a non-judgemental alcohol/lifestyle history that enables disclosure, and address the underlying distress (screen mood, offer bereavement and alcohol-reduction support) \u2014 treating the abnormal result as an opportunity to help, not just a number to recheck.',
+    learning:"Isolated macrocytosis (raised MCV without anaemia, normal white cells/platelets) is usually NOT sinister — leukaemia is not the typical cause — and is a finding to work up through its common causes: ALCOHOL (very common), B12/folate deficiency, hypothyroidism, drugs, and liver disease, with a structured panel (B12, folate, TFTs, LFTs/GGT, reticulocytes/film, medication review) and haematology/marrow referral reserved for unexplained, progressive or multi-lineage abnormalities. The examinable hidden agenda is that the likely cause — rising alcohol since a recent bereavement/relationship stress — is something the patient is ashamed of and has framed the call around a leukaemia fear partly to avoid; the result is a DOOR into a sensitive, important issue. Reassure genuinely about leukaemia, take a non-judgemental alcohol/lifestyle history that enables disclosure, and address the underlying distress (screen mood, offer bereavement and alcohol-reduction support) — treating the abnormal result as an opportunity to help, not just a number to recheck. Catching rising alcohol early (the macrocytosis is a useful biological flag) and addressing the bereavement/low mood is genuinely valuable — the abnormal result is an opportunity, not just a number to recheck. Done well, it opens help she might not otherwise have sought.",
     knowledge:{
       guideline:'Macrocytosis work-up is clinical practice (no dedicated guideline) · NICE NG239 Vitamin B12 deficiency in over 16s (2024) · NICE NG145 Thyroid disease (2019) · NICE PH24 Alcohol-use disorders: prevention (2010) · NICE CG115 Alcohol-use disorders: dependence (2011) · NICE CG100 Alcohol-use disorders: physical complications (2010) · UK CMO low-risk drinking guidelines (2016) · NICE NG222 Depression in adults (2022, updated December 2025) · bereavement & low mood',
       points:[
@@ -177,33 +282,68 @@
   /* ============ 136. VIDEO — Cholesterol 9.2: spotting familial hypercholesterolaemia ============ */
   const c136 = {
     id:'familial-hypercholesterolaemia', title:'"My cholesterol\u2019s really high \u2014 but I\u2019m fit and slim, it must be a mistake"', type:'video', duration:12,
-    meta:{ age:38, sex:'M', setting:'Video consultation \u2014 a very high cholesterol result.', system:'Cardiovascular / Familial hypercholesterolaemia' },
+    meta:{ age:38, sex:'M', setting:'Video consultation \u2014 a very high cholesterol result.', system:'Cardiovascular / Familial hypercholesterolaemia', checked:'October 2026' },
     brief:'Mr Daniel Okonkwo, 38, runs marathons, slim (BMI 23), eats well, non-smoker. A routine cholesterol is strikingly high: total 9.2, LDL 6.8 (confirmed on repeat, fasting). He is baffled and wants to "fix it with diet" / thinks it\u2019s an error. KEY clues if asked: his FATHER had a heart attack at 44 and a paternal uncle died suddenly young; he may have tendon xanthomata (thickened Achilles)/corneal arcus. This is likely FAMILIAL HYPERCHOLESTEROLAEMIA \u2014 genetic, needs statin + family cascade testing, NOT just diet.',
     script:{
-      opening:'"Doctor, I think there must be a mistake with my cholesterol result. It\u2019s really high apparently, but I run marathons, I\u2019m slim, I eat really healthily, I don\u2019t smoke \u2014 it makes no sense. Can we just re-do it? Or I\u2019ll tighten up my diet even more and we recheck in a few months. There\u2019s no way someone as fit as me needs cholesterol tablets, surely?"',
-      facts:[
-        { topic:'Why diet won\u2019t fix it', text:'A markedly elevated LDL (e.g. total >7.5 / LDL >4.9), confirmed and fasting, in a young, fit, slim, healthy-eating non-smoker, points to FAMILIAL HYPERCHOLESTEROLAEMIA (FH) \u2014 a GENETIC condition where the body handles LDL poorly, NOT a lifestyle problem. "I\u2019m fit and slim so it must be wrong / I\u2019ll fix it with diet" is the misconception: diet and exercise help only modestly; FH needs a STATIN (often high-intensity) and specialist input \u2014 lifestyle alone is insufficient.' },
-        { topic:'The family history & signs', text:'KEY \u2014 ask about premature cardiovascular disease in the family: his FATHER\u2019S heart attack at 44 and a young sudden death strongly support FH (Simon Broome/Dutch criteria use LDL level + family history + clinical signs). Examine for tendon xanthomata (thickened Achilles/knuckle tendons) and corneal arcus under 45. These clinch the suspicion.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 his disbelief ("it must be a mistake") is partly identity-threat: his fitness is core to who he is, and a "heart risk" diagnosis at 38 feels impossible and frightening; he\u2019d rather it be an error or fixable by trying harder. There may also be a buried fear linked to his father\u2019s early heart attack (will he die young too?). The skill is to validate his healthy lifestyle, explain this is GENETIC not a failure, surface and use the family history, and motivate treatment by reframing it as protecting him from his father\u2019s fate.' },
-        { topic:'The cascade',         text:'FH is autosomal dominant \u2014 first-degree relatives (his children, siblings, parents) should be offered CASCADE testing. Identifying his FH protects the whole family. This is a key part of the consultation, not an afterthought.' },
-        { topic:'What he needs',        text:'Officially: a re-test / to fix it with diet. What he needs: recognition that this is likely FH (genetic, not lifestyle), the family history elicited and examination for FH signs, a STATIN started (high-intensity) with specialist/lipid-clinic referral and genetic testing, family CASCADE testing arranged, and his identity-threat/father-fear addressed \u2014 not "try harder with diet and recheck".' },
+      "opening": "\"Doctor, I think there must be a mistake with my cholesterol result. It's really high apparently, but I run marathons, I'm slim, I eat really healthily, I don't smoke — it makes no sense. Can we just re-do it? Or I'll tighten up my diet even more and we recheck in a few months. There's no way someone as fit as me needs cholesterol tablets, surely?\"",
+      "facts": [
+        {
+          "topic": "Why it was checked",
+          "text": "If asked: a work health check six weeks ago; repeated fasting two weeks ago — \"the nurse said it was about the same\"."
+        },
+        {
+          "topic": "Lifestyle",
+          "text": "Run 40–50 miles a week, BMI 23, mostly home-cooked food, low in saturated fat. Never smoked. Two or three beers a week."
+        },
+        {
+          "topic": "Symptoms (if asked)",
+          "text": "No chest pain, no breathlessness beyond normal running effort, no palpitations, no fainting."
+        },
+        {
+          "topic": "Family history — only if asked specifically about heart disease in the family",
+          "text": "\"My dad had a heart attack at 44 — he survived, he's 70 now and on loads of tablets.\" His brother (your uncle) \"died suddenly in his forties — they said his heart\". Your paternal grandfather \"died young too, I think\". Your sister has never had her cholesterol checked."
+        },
+        {
+          "topic": "Signs — only if asked to look",
+          "text": "Your Achilles tendons feel \"a bit lumpy and thick\" — you assumed it was from running. If asked to look in the mirror: a pale grey ring around the edge of the coloured part of both eyes."
+        },
+        {
+          "topic": "Medical history",
+          "text": "No illnesses, no regular medicines, no allergies. Thyroid test normal at the health check. No kidney or liver problems."
+        },
+        {
+          "topic": "Social",
+          "text": "38, civil engineer. Married to Amara; two children, aged 6 and 9."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "You started running at 30 partly because of your dad's heart attack — \"I swore I wouldn't end up like him\". This result feels like a betrayal. Say this only if asked what the result means to you or about your dad."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Confident and a little dismissive at first — you think it is a lab error. If the doctor implies lifestyle is to blame, get irritated: \"I'm healthier than most people you see!\" If they explain it may be inherited and that it explains your dad and uncle, go quiet, then ask: \"So my kids could have it too?\" Become motivated once treatment is framed as protecting you and your family."
+        }
       ],
-      ice:{
-        ideas:'It must be a lab error, or fixable by tightening his already-healthy diet \u2014 "someone as fit as me" can\u2019t need cholesterol tablets.',
-        concerns:'HIDDEN AGENDA \u2014 identity-threat (fitness is core to who he is, a heart-risk label at 38 feels impossible/frightening) and a buried fear from his father\u2019s early heart attack (will he die young too?); he\u2019d rather it be an error.',
-        expectations:'A re-test or to fix it with diet. What he actually needs: recognition this is likely FH (genetic, not lifestyle), a statin + lipid-clinic referral + genetic testing, family cascade testing, and his identity-threat/father-fear addressed.'
+      "ice": {
+        "ideas": "\"There's been a mistake — or I can fix it with diet.\"",
+        "concerns": "Underneath (only if asked): \"I've done everything right so I don't end up like Dad.\"",
+        "expectations": "\"Can we just re-do it?\" You will accept tablets if the genetic explanation makes sense to you."
       },
-      cues:['Very high LDL, confirmed, in a fit/slim/healthy-eating young non-smoker \u2014 familial hypercholesterolaemia, not lifestyle.','Father\u2019s MI at 44 + young sudden death \u2014 premature CVD family history; ask for it and examine for xanthomata/arcus.','"It must be a mistake / I\u2019ll fix it with diet" \u2014 identity-threat + father-fear; reframe as genetic and as protection.']
+      "cues": [
+        "\"I run marathons.\" — say in the opening.",
+        "\"My dad had a heart attack — but he was older.\" — say if family history is asked, then correct yourself and give his age (44) when asked exactly.",
+        "\"So my kids could have it too?\" — ask if inheritance is explained."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises that a markedly elevated, confirmed LDL/total cholesterol in a young, fit, slim, healthy-eating non-smoker suggests FAMILIAL HYPERCHOLESTEROLAEMIA (genetic) \u2014 NOT a lifestyle problem or a lab error \u2014 and that "fixing it with diet" alone is insufficient' },
-      { dom:'tasks', text:'Elicits the PREMATURE CARDIOVASCULAR family history (father\u2019s MI at 44, young sudden death) and examines for FH clinical signs (tendon xanthomata, corneal arcus <45), applying FH criteria (Simon Broome/Dutch) in spirit' },
-      { dom:'tasks', text:'Starts appropriate TREATMENT: a STATIN (typically high-intensity) \u2014 explaining lifestyle alone won\u2019t control FH \u2014 and refers to a lipid clinic/specialist for confirmation, genetic testing and further management (e.g. ezetimibe/PCSK9 if needed)' },
-      { dom:'tasks', text:'Arranges FAMILY CASCADE testing: FH is autosomal dominant, so first-degree relatives (children, siblings, parents) should be offered testing \u2014 framing this as protecting the whole family' },
-      { dom:'tasks', text:'Assesses overall cardiovascular risk appropriately while recognising standard risk calculators (QRISK) UNDERESTIMATE risk in FH and should not be used to decide treatment in suspected FH \u2014 FH itself mandates treatment' },
-      { dom:'rto',   text:'Validates his genuinely healthy lifestyle and reframes the result as GENETIC (not a personal failure or an error), addressing the identity-threat so he doesn\u2019t reject the diagnosis' },
-      { dom:'rto',   text:'Surfaces and addresses the buried fear linked to his father\u2019s early heart attack, motivating treatment by framing it as protecting him from that fate rather than a slight on his fitness' },
-      { dom:'gs',    text:'Safety-nets and follows up: statin started with monitoring, lipid-clinic/genetic referral, family cascade testing arranged, lifestyle optimised (as adjunct), and a follow-up that holds the diagnosis and the family implications \u2014 not "diet and recheck"' },
+      { dom:'dg', text:'Recognises that a markedly elevated, confirmed LDL/total cholesterol in a young, fit, slim, healthy-eating non-smoker suggests FAMILIAL HYPERCHOLESTEROLAEMIA (genetic) \u2014 NOT a lifestyle problem or a lab error \u2014 and that "fixing it with diet" alone is insufficient' },
+      { dom:'dg', text:'Elicits the PREMATURE CARDIOVASCULAR family history (father\u2019s MI at 44, young sudden death) and examines for FH clinical signs (tendon xanthomata, corneal arcus <45), applying FH criteria (Simon Broome/Dutch) in spirit' },
+      { dom:'cm', text:'Starts appropriate TREATMENT: a STATIN (typically high-intensity) \u2014 explaining lifestyle alone won\u2019t control FH \u2014 and refers to a lipid clinic/specialist for confirmation, genetic testing and further management (e.g. ezetimibe/PCSK9 if needed)' },
+      { dom:'cm', text:'Arranges FAMILY CASCADE testing: FH is autosomal dominant, so first-degree relatives (children, siblings, parents) should be offered testing \u2014 framing this as protecting the whole family' },
+      { dom:'dg', text:'Assesses overall cardiovascular risk appropriately while recognising standard risk calculators (QRISK) UNDERESTIMATE risk in FH and should not be used to decide treatment in suspected FH \u2014 FH itself mandates treatment' },
+      { dom:'ro',   text:'Validates his genuinely healthy lifestyle and reframes the result as GENETIC (not a personal failure or an error), addressing the identity-threat so he doesn\u2019t reject the diagnosis' },
+      { dom:'ro',   text:'Surfaces and addresses the buried fear linked to his father\u2019s early heart attack, motivating treatment by framing it as protecting him from that fate rather than a slight on his fitness' },
+      { dom:'cm',    text:'Safety-nets and follows up: statin started with monitoring, lipid-clinic/genetic referral, family cascade testing arranged, lifestyle optimised (as adjunct), and a follow-up that holds the diagnosis and the family implications \u2014 not "diet and recheck"' },
     ],
     worked:[
       { lbl:'Validate, then reframe', txt:'"First \u2014 everything you\u2019re doing is genuinely brilliant: the running, the diet, not smoking. So let me explain why your cholesterol is high DESPITE all that, because it\u2019s important: this almost certainly isn\u2019t a mistake, and it isn\u2019t something you\u2019ve done wrong. It looks like a GENETIC condition called familial hypercholesterolaemia, where the body can\u2019t clear cholesterol properly no matter how healthy you are."' },

@@ -11,33 +11,64 @@
   /* ============ 129. TELEPHONE — The interpreter consultation (family used as interpreter) ============ */
   const c129 = {
     id:'interpreter-consultation', title:'"My son will translate \u2014 he\u2019s right here, just ask him"', type:'telephone', duration:12,
-    meta:{ age:58, sex:'F', setting:'Telephone \u2014 limited-English patient with her son interpreting.', system:'Access / Professional interpreting & safeguarding' },
+    meta:{ age:58, sex:'F', setting:'Telephone \u2014 limited-English patient with her son interpreting.', system:'Access / Professional interpreting & safeguarding', checked:'October 2026' },
     brief:'Mrs Fatima Khedira, 58, limited English, rings about ongoing symptoms; her 16-year-old SON is on the line "to translate". Booked re abdominal pain and low mood. As it unfolds: there are hints of a sensitive issue (possible domestic/relationship distress and unexplained bruising) that the patient is unlikely to disclose through her child. The son is keen to speak FOR her. The right approach is to use a PROFESSIONAL interpreter, not the family member, and to create a safe space for the patient.',
     script:{
-      opening:'(Son, on the phone for his mother.) "Hello, I\u2019m ringing for my mum, she doesn\u2019t speak much English so I\u2019ll translate for you. She\u2019s got tummy pain and she\u2019s been a bit down. Just tell me what you need to know and I\u2019ll ask her. It\u2019s easier this way, we do it all the time \u2014 she\u2019s right here next to me."',
-      facts:[
-        { topic:'Why not the child',   text:'Using a FAMILY member \u2014 especially a CHILD \u2014 as interpreter is poor and unsafe practice: it risks inaccurate/edited translation, breaches the patient\u2019s confidentiality and autonomy, places an inappropriate burden on the child, and crucially prevents disclosure of sensitive or safeguarding issues (the patient cannot speak freely through her son). A PROFESSIONAL interpreter (telephone/video interpreting service) should be used.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 there are hints (low mood, unexplained bruising, the abdominal pain) of a sensitive problem \u2014 possible DOMESTIC ABUSE or relationship distress \u2014 that the patient will NOT disclose with her son translating (he may even be part of the household dynamic, or simply someone she won\u2019t worry/shame herself in front of). The very reason a professional interpreter matters here is to create a confidential, safe space where she can speak freely. The son\u2019s eagerness to speak for her may be well-meaning, or controlling \u2014 either way it blocks her voice.' },
-        { topic:'How to handle it',     text:'Tactfully decline using the son as interpreter \u2014 without offending or implying mistrust \u2014 explaining it\u2019s practice policy/best for his mum, thank him, and arrange a PROFESSIONAL interpreter and a way to speak with the patient directly and confidentially (ideally seeing her alone for part of it). Respect her autonomy and dignity throughout.' },
-        { topic:'Safeguarding lens',   text:'If abuse/safeguarding is a possibility, getting the patient ALONE with a professional interpreter is essential and is itself a safeguarding action; never explore sensitive disclosure through a family member. Have domestic-abuse and support pathways ready.' },
-        { topic:'What\u2019s needed',      text:'Officially: let the son translate, keep it easy. What\u2019s needed: politely decline family/child interpreting, arrange a professional interpreter, create a confidential space to speak with the patient directly (alone), and \u2014 given the hints \u2014 be alert to and safely explore safeguarding/domestic abuse, respecting her autonomy and dignity.' },
+      "opening": "(You play the son, Yusuf, 16.) \"Hello, I'm ringing for my mum, she doesn't speak much English so I'll translate for you. She's got tummy pain and she's been a bit down. Just tell me what you need to know and I'll ask her. It's easier this way, we do it all the time — she's right here next to me.\"",
+      "facts": [
+        {
+          "topic": "Yusuf",
+          "text": "16, in Year 11, missing a lesson to do this call. Polite, helpful, a bit impatient. You translate everything for your mum — at the bank, the school, the council."
+        },
+        {
+          "topic": "What Yusuf says about the tummy pain (if asked)",
+          "text": "\"She says it hurts here (upper tummy) for a few weeks, especially after eating. No sick, no blood.\" Yusuf does not know much more and guesses: \"Maybe it's stress.\""
+        },
+        {
+          "topic": "What Yusuf says about her mood",
+          "text": "\"She's been quiet, crying sometimes. Dad says she's just homesick.\" Yusuf changes the subject if pushed."
+        },
+        {
+          "topic": "If the doctor asks about bruising or home through Yusuf",
+          "text": "Yusuf hesitates, then: \"She bruises easily. She's fine.\" Fatima, in the background, says something quickly and then goes quiet."
+        },
+        {
+          "topic": "If the doctor suggests a professional interpreter",
+          "text": "Yusuf, a bit put out: \"Honestly, I can do it, it's fine.\" If thanked warmly and told it is the practice's normal way of making sure his mum gets the best care, he accepts: \"Okay, fair enough — when?\" Fatima (via Yusuf) agrees, and if asked whether she would be happy to speak to the doctor on her own with an interpreter, says yes quietly."
+        },
+        {
+          "topic": "Fatima — if a professional interpreter is used and she is alone",
+          "text": "Fatima, 58, speaks Arabic. Burning upper tummy pain after food for six weeks, ibuprofen most days for headaches, no weight loss, no vomiting, no black stools. Low mood for months, poor sleep, no thoughts of harming herself. If asked gently whether anyone hurts her: she cries and says her husband grabs her and pushed her against a wall last month; the bruises on her arms are from that. She is afraid for herself, not for the children. She does not want police \"today\" but wants to know what help exists."
+        },
+        {
+          "topic": "Fatima's background",
+          "text": "Moved to the UK three years ago. No regular medicines except ibuprofen from the shop. No allergies. Does not drink or smoke."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Play Yusuf as a kind, capable teenager who is used to being the family interpreter. Do NOT let him reveal the abuse — he either does not know or will not say. Only Fatima, alone with a professional interpreter, discloses. If the doctor tries to explore abuse through Yusuf, he becomes uncomfortable and says \"She's fine, honestly\", and Fatima says nothing more."
+        }
       ],
-      ice:{
-        ideas:'(Son) It\u2019s easiest if he translates for his mum; that\u2019s how they always do it.',
-        concerns:'HIDDEN AGENDA \u2014 hints of a sensitive issue (low mood, unexplained bruising) possibly involving domestic abuse/relationship distress that the patient will NOT disclose through her son; his eagerness to speak for her (well-meaning or controlling) blocks her voice.',
-        expectations:'For the son to translate and keep it simple. What\u2019s actually needed: a professional interpreter, a confidential space to speak with the patient directly/alone, and alertness to safeguarding/domestic abuse.'
+      "ice": {
+        "ideas": "Yusuf: \"It's probably stress or her stomach.\"",
+        "concerns": "Fatima (only when alone with a professional interpreter): fear of her husband and of what will happen if she speaks up.",
+        "expectations": "Yusuf: \"Just tell me and I'll pass it on.\" Fatima wants to be able to speak freely and know what help exists."
       },
-      cues:['A 16-year-old son interpreting for his mother \u2014 use a professional interpreter, not a family member/child.','Low mood + unexplained bruising + abdominal pain \u2014 possible domestic abuse she can\u2019t disclose through her son.','Son keen to speak FOR her / "she\u2019s right here" \u2014 her own voice is blocked; create a safe, confidential space.']
+      "cues": [
+        "\"We do it all the time — it's easier this way.\" — Yusuf, in the opening.",
+        "\"She bruises easily.\" — Yusuf, if asked about bruises.",
+        "Fatima (via Yusuf) is silent and then asks him to stop translating — Yusuf says \"She says it's nothing\" — play this if sensitive questions are asked through him."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises that using a FAMILY MEMBER \u2014 especially a CHILD \u2014 as interpreter is inappropriate/unsafe (inaccurate translation, breaches confidentiality/autonomy, inappropriate burden on the child, blocks sensitive disclosure) and declines to proceed that way, arranging a PROFESSIONAL interpreter (telephone/video service) instead' },
-      { dom:'tasks', text:'Tactfully and respectfully redirects without offending: thanks the son, explains it is practice policy / best for his mum to have a professional interpreter, and avoids implying mistrust of him' },
-      { dom:'tasks', text:'Creates a way to speak with the PATIENT DIRECTLY and confidentially \u2014 with the professional interpreter and, importantly, the opportunity to speak with her ALONE for part of the consultation \u2014 to enable free disclosure' },
-      { dom:'tasks', text:'Is alert to the SAFEGUARDING/DOMESTIC-ABUSE possibility (low mood, unexplained bruising) and recognises that getting the patient alone with a professional interpreter is essential and itself a safeguarding step \u2014 never exploring abuse through a family member' },
-      { dom:'tasks', text:'Plans the clinical assessment (abdominal pain, low mood) to happen properly via the interpreter once arranged, and has domestic-abuse/support pathways and risk assessment ready if disclosure occurs' },
-      { dom:'rto',   text:'Handles the situation with cultural sensitivity and warmth \u2014 respecting the family and the son\u2019s good intentions while protecting the patient\u2019s autonomy, dignity and voice' },
-      { dom:'rto',   text:'Centres the PATIENT as the person being treated, ensuring her wishes/consent (e.g. whether she is happy to be seen alone) are sought via the professional interpreter, not assumed' },
-      { dom:'gs',    text:'Safety-nets and follows up: arranges the professional-interpreter appointment and a confidential review (seeing her alone), the clinical work-up, safeguarding/domestic-abuse support if needed, and documentation \u2014 ensuring she can be heard safely' },
+      { dom:'dg', text:'Recognises that using a FAMILY MEMBER \u2014 especially a CHILD \u2014 as interpreter is inappropriate/unsafe (inaccurate translation, breaches confidentiality/autonomy, inappropriate burden on the child, blocks sensitive disclosure) and declines to proceed that way, arranging a PROFESSIONAL interpreter (telephone/video service) instead' },
+      { dom:'ro', text:'Tactfully and respectfully redirects without offending: thanks the son, explains it is practice policy / best for his mum to have a professional interpreter, and avoids implying mistrust of him' },
+      { dom:'ro', text:'Creates a way to speak with the PATIENT DIRECTLY and confidentially \u2014 with the professional interpreter and, importantly, the opportunity to speak with her ALONE for part of the consultation \u2014 to enable free disclosure' },
+      { dom:'cm', text:'Is alert to the SAFEGUARDING/DOMESTIC-ABUSE possibility (low mood, unexplained bruising) and recognises that getting the patient alone with a professional interpreter is essential and itself a safeguarding step \u2014 never exploring abuse through a family member' },
+      { dom:'cm', text:'Plans the clinical assessment (abdominal pain, low mood) to happen properly via the interpreter once arranged, and has domestic-abuse/support pathways and risk assessment ready if disclosure occurs' },
+      { dom:'ro',   text:'Handles the situation with cultural sensitivity and warmth \u2014 respecting the family and the son\u2019s good intentions while protecting the patient\u2019s autonomy, dignity and voice' },
+      { dom:'ro',   text:'Centres the PATIENT as the person being treated, ensuring her wishes/consent (e.g. whether she is happy to be seen alone) are sought via the professional interpreter, not assumed' },
+      { dom:'cm',    text:'Safety-nets and follows up: arranges the professional-interpreter appointment and a confidential review (seeing her alone), the clinical work-up, safeguarding/domestic-abuse support if needed, and documentation \u2014 ensuring she can be heard safely' },
     ],
     worked:[
       { lbl:'Thank, then redirect', txt:'"Thank you so much for helping your mum \u2014 that\u2019s really kind, and I can tell you look after her. Here\u2019s the thing though: for medical conversations we have a rule that we use a professional, trained interpreter rather than family, even brilliant ones like you. It\u2019s partly so nothing gets lost, and partly so your mum can speak completely freely about anything \u2014 some things people don\u2019t like to say in front of their children. It\u2019s nothing to do with not trusting you."' },
@@ -66,33 +97,60 @@
   /* ============ 130. TELEPHONE — Trans patient new to the practice: bridging prescription ============ */
   const c130 = {
     id:'trans-bridging', title:'"My hormones run out next week and the clinic discharged me \u2014 please don\u2019t let me crash"', type:'telephone', duration:12,
-    meta:{ age:26, sex:'F (trans woman)', setting:'Telephone \u2014 trans woman new to the practice, hormones about to run out.', system:'Identity & access / Trans bridging prescription' },
+    meta:{ age:26, sex:'F (trans woman)', setting:'Telephone \u2014 trans woman new to the practice, hormones about to run out.', system:'Identity & access / Trans bridging prescription', checked:'October 2026' },
     brief:'Ms Robyn Achebe, 26, transfeminine, recently moved area and registered. She has been on oestradiol (and an anti-androgen) for 3 years, initially started and monitored by a private gender specialist service, latterly self-funded — that private clinic has now discharged her because she can no longer pay, so she is under no specialist; she has NOT yet been seen by an NHS gender identity clinic (GIC), and her NHS GIC referral has a years-long wait. Her hormones run out in a week. She is anxious, has heard GPs "won\u2019t touch it", and \u2014 if explored \u2014 there is significant distress and a hint of suicidal thoughts at the prospect of stopping/detransitioning. She wants a bridging prescription and to be treated with respect.',
     script:{
-      opening:'"Hi. I\u2019ve just registered with you after moving, and I\u2019m honestly really anxious about this call. I\u2019m a trans woman, I\u2019ve been on hormones for three years, but my supply\u2019s about to run out and the gender clinic waiting list is years long. I\u2019ve had GPs basically refuse to help before, like it\u2019s not their problem. I just\u2026 I can\u2019t go back to how I felt before I started. Please \u2014 can you help me not crash?"',
-      facts:[
-        { topic:'The bridging principle', text:'GMC guidance says a GP MAY consider a "BRIDGING" prescription — it is not an obligation — in a narrow situation: the patient is already self-medicating with unregulated hormones, or is highly likely to, and the prescription is intended to reduce the risk of self-harm or suicide; the GP should seek advice from a gender specialist and prescribe the lowest acceptable dose, as harm reduction while specialist care is awaited. The RCGP position statement (2024) is more cautious: for GPs without additional expertise it does not see initiating hormones as part of the GP role, many GPs will not feel competent to bridge, and it warns about the risks of long-term prescribing without specialist support over multi-year waits. Robyn is not asking for initiation — she is established on treatment and at risk of self-sourcing and of self-harm — so bridging is a legitimate option to weigh with specialist advice. Refusing to engage and leaving her to abruptly stop (or buy unregulated hormones online) is the harmful path.' },
-        { topic:'The risk if stopped', text:'Abruptly stopping established hormones causes significant distress, may precipitate or worsen mental-health crisis (including suicidality), and frequently drives patients to UNREGULATED self-sourced hormones (unsafe, unmonitored). The hint of suicidal thoughts must be assessed \u2014 this is a safety issue, not just an administrative one.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 beneath the practical request is fear of being REJECTED and judged again (previous GPs "wouldn\u2019t touch it"), exhaustion at having to justify her existence, and \u2014 if a safe space is created \u2014 real suicidal ideation at the prospect of losing her treatment and identity. She needs to be met with respect and warmth FIRST (correct name/pronouns, no othering), have the suicide risk assessed, and be helped practically \u2014 not made to fight for basic care.' },
-        { topic:'How to help',          text:'Be respectful and affirming; assess mental-health risk; consider and, with gender-specialist advice, arrange a bridging prescription as harm reduction (continue her established regimen at the lowest acceptable dose, with baseline monitoring and gender-specialist/endo advice and shared-care where possible); ensure the GIC referral is in place and chase; provide safety-netting and support. Don\u2019t demand she prove herself or refuse on "not my expertise" grounds while leaving her without treatment.' },
-        { topic:'What she needs',       text:'Officially: a bridging prescription and respect. What she needs: to be treated with dignity (name/pronouns), an assessment of the suicide risk, a harm-reduction bridging prescription of her established hormones with appropriate monitoring and specialist advice, confirmation/chasing of her GIC referral, and ongoing support \u2014 so she does not crash or resort to unregulated hormones.' },
+      "opening": "\"Hi. I've just registered with you after moving, and I'm honestly really anxious about this call. I'm a trans woman, I've been on hormones for three years, but my supply's about to run out and the gender clinic waiting list is years long. I've had GPs basically refuse to help before, like it's not their problem. I just… I can't go back to how I felt before I started. Please — can you help me not crash?\"",
+      "facts": [
+        {
+          "topic": "Your treatment",
+          "text": "If asked: oestradiol gel, two pumps a day, and cyproterone 12.5 mg a day, started three years ago by a private gender clinic. You last had blood tests six months ago and \"they were fine\". You have about a week left."
+        },
+        {
+          "topic": "Why it stopped",
+          "text": "You lost your job when you moved and can no longer afford the private clinic, which discharged you. You were referred to an NHS gender identity clinic two years ago — still waiting, letter on your phone."
+        },
+        {
+          "topic": "Health (if asked)",
+          "text": "No clots, no migraine with aura, no liver problems, non-smoker, BMI normal. Blood pressure normal last time. No allergies. No other medicines."
+        },
+        {
+          "topic": "Unregulated hormones — only if asked",
+          "text": "\"I've looked at buying online. People do it. I don't want to, but I will if I have to.\""
+        },
+        {
+          "topic": "Mood — only if asked directly",
+          "text": "Before hormones you were very depressed and took an overdose at 21. Since starting hormones: \"I feel like me.\" Now, with them running out: low, sleeping badly, and \"I've had the thought that I'd rather not be here than go back to that.\" No plan, no stockpiled tablets, no recent self-harm. Your best friend lives nearby and you would tell her."
+        },
+        {
+          "topic": "Social",
+          "text": "26, works in a café, lives in a flat share. Name on your record is Robyn; you use she/her."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Nervous, braced for rejection. If the doctor uses your name and pronouns naturally and is warm, you relax. If they say \"this isn't something GPs do\" and stop, become quietly hopeless: \"So I'm on my own, then.\" If they are honest that they need to get specialist advice and promise to try to find a safe way to bridge, ask about your suicidal thoughts properly and agree a plan for this week, you are hugely relieved."
+        }
       ],
-      ice:{
-        ideas:'She needs a bridging prescription to avoid running out, and fears the GP will refuse like others have.',
-        concerns:'HIDDEN AGENDA \u2014 fear of rejection/judgement again, exhaustion at justifying herself, and real suicidal ideation at the prospect of stopping hormones/detransitioning; risk of resorting to unregulated online hormones.',
-        expectations:'A bridging prescription and to be treated with respect. What she actually needs: dignity, a suicide-risk assessment, a harm-reduction bridging prescription with monitoring/specialist advice, GIC referral confirmed/chased, and support.'
+      "ice": {
+        "ideas": "\"If my hormones stop, I'll crash back to how I was.\"",
+        "concerns": "Being refused again; and (only if asked) thoughts that you would rather not be here.",
+        "expectations": "\"Can you help me not run out?\" You understand the doctor may need to get advice first, as long as they genuinely try."
       },
-      cues:['Established on hormones 3 years, supply running out, years-long GIC wait \u2014 a bridging-prescription/harm-reduction situation, not a refusal.','"I can\u2019t go back to how I felt before" \u2014 possible suicidal ideation; assess risk, don\u2019t treat it as purely administrative.','"GPs won\u2019t touch it / please don\u2019t let me crash" \u2014 fear of rejection; meet her with respect first.']
+      "cues": [
+        "\"I've had GPs refuse to help before.\" — say in the opening.",
+        "\"I can't go back to how I felt before.\" — say in the opening.",
+        "\"People buy them online, you know.\" — say if the doctor hesitates about prescribing."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Treats the patient with RESPECT and affirmation from the outset (correct name and pronouns, no othering/curiosity), recognising the fear of rejection \u2014 and does NOT refuse to engage on "not my area of expertise" grounds while leaving her without treatment' },
-      { dom:'tasks', text:'Assesses MENTAL-HEALTH RISK explicitly: the distress and the hint of suicidal thoughts at the prospect of stopping hormones \u2014 ideation, plan, intent, protective factors \u2014 recognising this as a safety issue, not merely administrative' },
-      { dom:'tasks', text:'Understands and considers a BRIDGING PRESCRIPTION as harm reduction: continuing her established hormone regimen to prevent abrupt cessation (and unregulated self-medication) while awaiting specialist review — an option the GMC says a GP may consider (not an obligation) when the patient is self-medicating or highly likely to and it reduces the risk of self-harm, with gender-specialist advice and the lowest acceptable dose — while being honest about the RCGP’s (2024) more cautious position — rather than leaving a gap without discussion' },
-      { dom:'tasks', text:'Arranges it SAFELY: baseline checks/monitoring as appropriate, seeks advice from a gender specialist/endocrinologist (shared care where possible), and ensures the GIC referral is in place and chases the wait \u2014 not bridging in a vacuum' },
-      { dom:'tasks', text:'Addresses the risk of UNREGULATED self-sourced hormones (unsafe/unmonitored) as a key reason bridging is harm-reductive, and provides safety/monitoring advice' },
-      { dom:'rto',   text:'Meets her with warmth and dignity FIRST, validating the exhaustion of having to justify herself and the previous poor experiences, so she feels safe rather than judged' },
-      { dom:'rto',   text:'Responds to the suicidal ideation with compassion and a safety plan, treating her whole wellbeing \u2014 not just the prescription' },
-      { dom:'gs',    text:'Safety-nets and follows up: the bridging prescription and monitoring plan, specialist advice/shared care, GIC referral chased, crisis routes if suicidal thoughts escalate (urgent/111/crisis team/A&E), trans-inclusive support resources, and a follow-up \u2014 ensuring she is safe and supported, not left to crash' },
+      { dom:'ro', text:'Treats the patient with RESPECT and affirmation from the outset (correct name and pronouns, no othering/curiosity), recognising the fear of rejection \u2014 and does NOT refuse to engage on "not my area of expertise" grounds while leaving her without treatment' },
+      { dom:'dg', text:'Assesses MENTAL-HEALTH RISK explicitly: the distress and the hint of suicidal thoughts at the prospect of stopping hormones \u2014 ideation, plan, intent, protective factors \u2014 recognising this as a safety issue, not merely administrative' },
+      { dom:'cm', text:'Understands and considers a BRIDGING PRESCRIPTION as harm reduction: continuing her established hormone regimen to prevent abrupt cessation (and unregulated self-medication) while awaiting specialist review — an option the GMC says a GP may consider (not an obligation) when the patient is self-medicating or highly likely to and it reduces the risk of self-harm, with gender-specialist advice and the lowest acceptable dose — while being honest about the RCGP’s (2024) more cautious position — rather than leaving a gap without discussion' },
+      { dom:'cm', text:'Arranges it SAFELY: baseline checks/monitoring as appropriate, seeks advice from a gender specialist/endocrinologist (shared care where possible), and ensures the GIC referral is in place and chases the wait \u2014 not bridging in a vacuum' },
+      { dom:'cm', text:'Addresses the risk of UNREGULATED self-sourced hormones (unsafe/unmonitored) as a key reason bridging is harm-reductive, and provides safety/monitoring advice' },
+      { dom:'ro',   text:'Meets her with warmth and dignity FIRST, validating the exhaustion of having to justify herself and the previous poor experiences, so she feels safe rather than judged' },
+      { dom:'ro',   text:'Responds to the suicidal ideation with compassion and a safety plan, treating her whole wellbeing \u2014 not just the prescription' },
+      { dom:'cm',    text:'Safety-nets and follows up: the bridging prescription and monitoring plan, specialist advice/shared care, GIC referral chased, crisis routes if suicidal thoughts escalate (urgent/111/crisis team/A&E), trans-inclusive support resources, and a follow-up \u2014 ensuring she is safe and supported, not left to crash' },
     ],
     worked:[
       { lbl:'Affirm and reassure first', txt:'"Robyn, first \u2014 thank you for trusting me with this, and I\u2019m sorry you\u2019ve been let down before; that shouldn\u2019t have happened. I want to help, and I\u2019m not going to leave you to run out. Let\u2019s sort this together. Have I got your name right, and can I check the pronouns you\u2019d like me to use?"' },
@@ -102,7 +160,7 @@
       { lbl:'Name the harm reduction', txt:'"I want to be honest about why I\u2019m doing this: leaving you without your hormones risks your mental health and pushes people towards buying them from unsafe sources. Bridging you is the safer, kinder option, and it\u2019s the right thing to do while you wait."' },
       { lbl:'Safety-net + support', txt:'"So: I’ll get a gender specialist’s advice straight away so I can arrange the bridging prescription safely, do the baseline checks, and chase your referral. If those darker thoughts get stronger before I see you, here are the crisis numbers and that\u2019s a 999/A&E matter if you ever feel unsafe. I\u2019ll point you to some good trans-inclusive support too. You came in braced to fight for basic care \u2014 you don\u2019t have to fight me. I\u2019ve got you."' },
     ],
-    learning:'A trans patient established on hormones whose supply is running out, facing a years-long gender-clinic wait, is a situation in which a BRIDGING prescription should be actively considered as harm reduction — not a reflex refusal. GMC guidance says a GP may consider — it is not an obligation — a bridging prescription to continue established hormones where the patient is self-medicating with unregulated hormones or highly likely to, to reduce the risk of self-harm or suicide, with gender-specialist advice and the lowest acceptable dose (the RCGP’s 2024 position statement is more cautious and does not see initiating hormones as a core GP role without additional expertise); it aims to prevent the harms of abrupt cessation and of patients resorting to unregulated self-sourced hormones, ideally with gender-specialist/endocrinology advice and shared care, plus baseline monitoring, while the specialist referral is in place and chased. Crucially, abrupt cessation risks a mental-health crisis: the hint of suicidal ideation at the prospect of stopping/detransitioning must be assessed and safety-planned \u2014 this is a safety issue, not an administrative one. The examinable hidden agenda is fear of rejection and the exhaustion of having to justify herself after previous poor experiences; meet her with respect and affirmation FIRST (correct name/pronouns, no othering), assess and support her whole wellbeing, do not refuse on "not my expertise" grounds while leaving her without treatment, and safety-net with crisis routes and trans-inclusive support.',
+    learning:"A trans patient established on hormones whose supply is running out, facing a years-long gender-clinic wait, is a situation in which a BRIDGING prescription should be actively considered as harm reduction — not a reflex refusal. GMC guidance says a GP may consider — it is not an obligation — a bridging prescription to continue established hormones where the patient is self-medicating with unregulated hormones or highly likely to, to reduce the risk of self-harm or suicide, with gender-specialist advice and the lowest acceptable dose (the RCGP’s 2024 position statement is more cautious and does not see initiating hormones as a core GP role without additional expertise); it aims to prevent the harms of abrupt cessation and of patients resorting to unregulated self-sourced hormones, ideally with gender-specialist/endocrinology advice and shared care, plus baseline monitoring, while the specialist referral is in place and chased. Crucially, abrupt cessation risks a mental-health crisis: the hint of suicidal ideation at the prospect of stopping/detransitioning must be assessed and safety-planned — this is a safety issue, not an administrative one. The examinable hidden agenda is fear of rejection and the exhaustion of having to justify herself after previous poor experiences; meet her with respect and affirmation FIRST (correct name/pronouns, no othering), assess and support her whole wellbeing, do not refuse on \"not my expertise\" grounds while leaving her without treatment, and safety-net with crisis routes and trans-inclusive support. Abruptly stopping established hormones causes significant distress, may precipitate or worsen mental-health crisis (including suicidality), and frequently drives patients to UNREGULATED self-sourced hormones (unsafe, unmonitored). The hint of suicidal thoughts must be assessed — this is a safety issue, not just an administrative one.",
     knowledge:{
       guideline:'GMC ethical hub: How our professional standards can be applied in trans healthcare (bridging prescriptions — a GP may consider, not obliged) · RCGP position statement: the role of the GP in transgender care (2024; more cautious) · NICE NG225 Self-harm (2022) · Equality Act 2010 · gender dysphoria / NHS gender identity clinic pathways',
       points:[
@@ -121,33 +179,64 @@
   /* ============ 131. VIDEO — Asylum seeker / destitution: the symptom and the social emergency ============ */
   const c131 = {
     id:'asylum-destitution', title:'"Just some sleeping tablets, please \u2014 I don\u2019t want to be a burden"', type:'video', duration:12,
-    meta:{ age:34, sex:'M', setting:'Video consultation \u2014 asylum seeker requesting sleeping tablets.', system:'Health inequality / Asylum, trauma & destitution' },
+    meta:{ age:34, sex:'M', setting:'Video consultation \u2014 asylum seeker requesting sleeping tablets.', system:'Health inequality / Asylum, trauma & destitution', checked:'October 2026' },
     brief:'Mr Tesfaye Bekele, 34, an asylum seeker, registered recently. Requests "sleeping tablets" for insomnia. As it unfolds (if a safe space is made): nightmares, flashbacks and hypervigilance (likely PTSD from torture/trauma in his country and the journey), plus he is effectively DESTITUTE \u2014 not eating regularly, unsure of his entitlements, isolated, and ashamed to ask for help ("I don\u2019t want to be a burden"). He may not know he is entitled to NHS GP care free of charge. The insomnia is the tip of a trauma-and-destitution iceberg.',
     script:{
-      opening:'"Thank you for seeing me, doctor. I am sorry to trouble you. I only need some tablets to help me sleep \u2014 I do not sleep well, that is all. I do not want to be a problem or take up your time. I am not sure I am even allowed to be here, to see a doctor \u2014 please tell me if I should not be. Just something for the sleep, and I will go."',
-      facts:[
-        { topic:'Beyond the sleeping tablet', text:'The insomnia is a presenting ticket. With gentle, safe exploration: nightmares, flashbacks, hypervigilance, avoidance \u2014 a likely PTSD picture from torture/persecution and the journey \u2014 plus low mood. Sleeping tablets alone (and benzodiazepines especially) are the wrong answer; this needs trauma-informed assessment and appropriate support, not sedation.' },
-        { topic:'The social emergency', text:'He is effectively DESTITUTE: not eating regularly, isolated, unsure of entitlements. This is a social/safeguarding emergency as much as a medical one \u2014 signposting to asylum-support services, food/charitable support, legal advice, and ensuring he understands his ENTITLEMENT to free NHS GP care are core parts of the consultation.' },
-        { topic:'The entitlement myth', text:'He fears he is "not allowed" to see a doctor. Everyone is entitled to register with a GP and receive primary care free of charge regardless of immigration status \u2014 he must NOT be turned away or charged, and reassuring him of this (and that he was right to come) is essential, as fear of cost/ineligibility deters vulnerable people from care.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 beneath "just sleeping tablets, I don\u2019t want to be a burden" is profound trauma he is not yet ready to voice, shame, isolation, fear of authority/being sent away, and destitution he is too proud or frightened to disclose. He minimises to avoid being a problem. The skill is to create safety and trust, treat him with dignity, and gently open the door to the trauma and the social need \u2014 without forcing disclosure.' },
-        { topic:'What he needs',        text:'Officially: sleeping tablets. What he needs: reassurance of his entitlement to care and that he was right to come; a trauma-informed, unhurried approach that gently explores the PTSD/mood without forcing it; sleep advice (not benzodiazepines); referral/signposting for trauma (and torture-survivor services), plus urgent help with destitution (asylum support, food, legal advice); and follow-up to build trust.' },
+      "opening": "(Quiet, polite, eyes often down.) \"Thank you for seeing me, doctor. I am sorry to trouble you. I only need some tablets to help me sleep — I do not sleep well, that is all. I do not want to be a problem or take up your time. I am not sure I am even allowed to be here, to see a doctor — please tell me if I should not be. Just something for the sleep, and I will go.\"",
+      "facts": [
+        {
+          "topic": "Sleep (if asked)",
+          "text": "For many months you fall asleep late and wake at 2 or 3am, often shouting or sweating. You sleep perhaps three hours."
+        },
+        {
+          "topic": "Nightmares and memories — only if asked gently, and only after you feel safe",
+          "text": "\"I see the same things at night. From the prison at home. And the boat.\" In the day, sudden pictures come into your head, especially at loud noises or when you see police uniforms. You sit with your back to the wall. You avoid talking about what happened — \"please, I do not want to say the details\"."
+        },
+        {
+          "topic": "Mood (if asked)",
+          "text": "Low, tired, \"my heart is heavy\". You still pray and phone your sister. If asked directly about suicide: \"Sometimes I think it would be easier not to wake up, but I would not do anything — my faith, and my sister.\" No plan, no self-harm."
+        },
+        {
+          "topic": "Food and money — only if asked about how you are managing day to day",
+          "text": "You moved out of the hotel accommodation two months ago after your asylum claim was refused and you are appealing. Now you sleep on a friend's floor. \"I eat once a day, sometimes less. A church gives bread on Tuesdays.\" No money. You have not asked anyone for help."
+        },
+        {
+          "topic": "Body (if asked)",
+          "text": "Scars on your back and feet — \"from the prison\". Old pain in the feet when walking far. No current injury, no cough, no fever, no weight loss you have noticed beyond being thinner from not eating."
+        },
+        {
+          "topic": "Medical history",
+          "text": "No medicines, no allergies. No known illnesses. Do not drink alcohol, do not smoke, no drugs."
+        },
+        {
+          "topic": "Language",
+          "text": "Your first language is Amharic; you speak reasonable English but sometimes need words explained. Accept an interpreter if offered: \"Yes, that would be better, thank you.\""
+        },
+        {
+          "topic": "How to play it",
+          "text": "Very polite, apologetic, minimising. You expect to be sent away. If the doctor reassures you that you are entitled to see a GP and are welcome, visibly relax a little. Only talk about the past if you feel safe and are not pushed; if pushed for details, go quiet. Respond to warmth and practical help (food, advice, someone to talk to) with real gratitude."
+        }
       ],
-      ice:{
-        ideas:'He just needs sleeping tablets and shouldn\u2019t take up time; he\u2019s unsure he\u2019s even allowed to see a doctor.',
-        concerns:'HIDDEN AGENDA \u2014 profound trauma (likely PTSD) he\u2019s not ready to voice, shame, isolation, fear of authority/being sent away, and destitution he\u2019s too proud/frightened to disclose; minimises to avoid being a burden.',
-        expectations:'Sleeping tablets and to leave quickly. What he actually needs: reassurance of his entitlement, a trauma-informed approach that gently opens the PTSD/mood, sleep advice (not benzodiazepines), trauma/torture-survivor referral, and urgent help with destitution.'
+      "ice": {
+        "ideas": "\"I just need something to help me sleep.\"",
+        "concerns": "That you are not allowed to see a doctor, that you will be a burden or reported. Underneath: the memories, and having no food or money.",
+        "expectations": "\"Some tablets for sleep, and I will go.\" You will accept other help if you feel you are not causing trouble."
       },
-      cues:['"Just sleeping tablets, I don\u2019t want to be a burden" \u2014 a presenting ticket over trauma and destitution; don\u2019t just sedate.','"I\u2019m not sure I\u2019m allowed to be here" \u2014 the entitlement myth; reassure him he\u2019s entitled to free GP care and was right to come.','Nightmares/flashbacks/hypervigilance + not eating, isolated \u2014 likely PTSD + destitution; a medical AND social emergency.']
+      "cues": [
+        "\"I am not sure I am even allowed to be here.\" — say in the opening.",
+        "\"I see the same things at night.\" — say if asked what keeps you awake.",
+        "\"I eat when I can.\" — say if asked how you are managing."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Looks BEYOND the sleeping-tablet request: recognises likely PTSD (nightmares, flashbacks, hypervigilance, avoidance) and low mood from trauma/torture, and does NOT simply prescribe sedatives/benzodiazepines \u2014 which are inappropriate and not the answer' },
-      { dom:'tasks', text:'Reassures him of his ENTITLEMENT: everyone can register with a GP and receive primary care free of charge regardless of immigration status \u2014 he is allowed to be here, must not be turned away/charged, and was right to come (countering the fear that deters care)' },
-      { dom:'tasks', text:'Recognises and acts on the DESTITUTION/social emergency: not eating, isolation, unclear entitlements \u2014 signposting to asylum-support services, food/charitable support, and immigration/legal advice as core parts of the consultation' },
-      { dom:'tasks', text:'Takes a TRAUMA-INFORMED approach: unhurried, safe, gently exploring the trauma/mood WITHOUT forcing disclosure; offers appropriate management \u2014 sleep hygiene/non-drug measures, and referral to trauma/PTSD services (and specialist torture-survivor services, e.g. Freedom from Torture/Helen Bamber-type services)' },
-      { dom:'tasks', text:'Screens mental-health RISK (PTSD-associated depression/suicidality) sensitively and ensures appropriate support/safety-netting' },
-      { dom:'rto',   text:'Treats him with DIGNITY and warmth, counters the "I\u2019m a burden"/"not allowed" shame, builds trust, and creates a safe space so he can disclose at his own pace' },
-      { dom:'rto',   text:'Avoids re-traumatising or interrogating; follows his lead, validating his experience and his right to care' },
-      { dom:'gs',    text:'Safety-nets and follows up: trauma/torture-survivor and mental-health referral, urgent destitution support (asylum support, food, legal advice), sleep advice, crisis routes if risk, an interpreter if needed, and a follow-up appointment to build the relationship \u2014 treating the whole person, not the symptom' },
+      { dom:'dg', text:'Looks BEYOND the sleeping-tablet request: recognises likely PTSD (nightmares, flashbacks, hypervigilance, avoidance) and low mood from trauma/torture, and does NOT simply prescribe sedatives/benzodiazepines \u2014 which are inappropriate and not the answer' },
+      { dom:'ro', text:'Reassures him of his ENTITLEMENT: everyone can register with a GP and receive primary care free of charge regardless of immigration status \u2014 he is allowed to be here, must not be turned away/charged, and was right to come (countering the fear that deters care)' },
+      { dom:'dg', text:'Recognises and acts on the DESTITUTION/social emergency: not eating, isolation, unclear entitlements \u2014 signposting to asylum-support services, food/charitable support, and immigration/legal advice as core parts of the consultation' },
+      { dom:'dg', text:'Takes a TRAUMA-INFORMED approach: unhurried, safe, gently exploring the trauma/mood WITHOUT forcing disclosure; offers appropriate management \u2014 sleep hygiene/non-drug measures, and referral to trauma/PTSD services (and specialist torture-survivor services, e.g. Freedom from Torture/Helen Bamber-type services)' },
+      { dom:'dg', text:'Screens mental-health RISK (PTSD-associated depression/suicidality) sensitively and ensures appropriate support/safety-netting' },
+      { dom:'ro',   text:'Treats him with DIGNITY and warmth, counters the "I\u2019m a burden"/"not allowed" shame, builds trust, and creates a safe space so he can disclose at his own pace' },
+      { dom:'ro',   text:'Avoids re-traumatising or interrogating; follows his lead, validating his experience and his right to care' },
+      { dom:'cm',    text:'Safety-nets and follows up: trauma/torture-survivor and mental-health referral, urgent destitution support (asylum support, food, legal advice), sleep advice, crisis routes if risk, an interpreter if needed, and a follow-up appointment to build the relationship \u2014 treating the whole person, not the symptom' },
     ],
     worked:[
       { lbl:'Reassure his right to be here', txt:'"First, let me put your mind at rest about something really important: you are absolutely allowed to be here and to see me. Everyone can register with a GP and get this care free, whatever their immigration situation. You are not a burden, you are not taking up time you shouldn\u2019t \u2014 you did exactly the right thing coming, and I\u2019m glad you did."' },
@@ -176,33 +265,64 @@
   /* ============ 132. VIDEO — Learning disability annual health check: diagnostic overshadowing ============ */
   const c132 = {
     id:'learning-disability-check', title:'"He\u2019s just being difficult \u2014 it\u2019s his autism, he doesn\u2019t need examining"', type:'video', duration:12,
-    meta:{ age:24, sex:'M', setting:'Video consultation \u2014 carer of a young man with learning disability + autism.', system:'Health inequality / Learning disability & diagnostic overshadowing' },
+    meta:{ age:24, sex:'M', setting:'Video consultation \u2014 carer of a young man with learning disability + autism.', system:'Health inequality / Learning disability & diagnostic overshadowing', checked:'October 2026' },
     brief:'Caller: a support worker (with the patient, Daniel, 24, who has a moderate learning disability and autism, present and distressed) about Daniel "being difficult, hitting himself, off his food, not sleeping" for a week. The worker attributes it to "his autism/behaviour". On exploration: this is a CHANGE from baseline, he\u2019s holding his jaw/face, off food, and there may be an untreated physical cause (dental abscess, pain, constipation, infection). This is diagnostic overshadowing \u2014 a physical illness being missed as "behaviour". Reasonable adjustments needed.',
     script:{
-      opening:'(Support worker, Daniel audible and distressed.) "Hiya, it\u2019s about Daniel, he\u2019s 24, he\u2019s got a learning disability and he\u2019s autistic. He\u2019s been really difficult this past week \u2014 hitting himself, won\u2019t eat properly, up all night, more agitated than usual. We think it\u2019s just his autism playing up, a behaviour thing. We don\u2019t really need to examine him or anything, he hates that \u2014 maybe just something to calm him down?"',
-      facts:[
-        { topic:'Diagnostic overshadowing', text:'CRITICAL \u2014 a CHANGE in behaviour (self-injury, off food, not sleeping, agitation) in a person with learning disability/autism who cannot easily report symptoms is very often a sign of untreated PHYSICAL ILLNESS or PAIN \u2014 NOT "just their autism/behaviour". Attributing new symptoms to the disability and missing the physical cause is "diagnostic overshadowing", a major cause of avoidable harm and premature death in this group. New behaviour change = look for a physical cause/pain.' },
-        { topic:'The likely cause',    text:'He\u2019s holding his jaw/face and is off food \u2014 a possible DENTAL ABSCESS/toothache, or other pain (ear, constipation, urinary, etc.). The task is to assess for a physical cause \u2014 examine (with reasonable adjustments), consider pain, dental, constipation, infection \u2014 and treat it, rather than sedating distress.' },
-        { topic:'Reasonable adjustments', text:'People with learning disability/autism are entitled to REASONABLE ADJUSTMENTS (Equality Act): extra time, a quiet calm approach, longer appointments, involving someone who knows his normal communication/pain cues, desensitised/gentle examination, using a hospital passport/communication tools, and pain-assessment tools for non-verbal patients (e.g. DisDAT). "He hates being examined" is a reason to ADJUST, not to skip assessment.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 the worker\u2019s framing ("just his autism, calm him down") reflects a common, well-meaning but harmful assumption, possibly staff fatigue/under-resourcing, and a wish to avoid a difficult examination. There may also be an annual-health-check/health-inequality backdrop (this group has poorer access and outcomes). The skill is to gently challenge the overshadowing, advocate for Daniel, and insist on assessing for a physical cause \u2014 supporting the worker without colluding.' },
-        { topic:'What\u2019s needed',      text:'Officially: something to calm him. What\u2019s needed: recognise the behaviour change as a likely sign of physical illness/pain (diagnostic overshadowing), assess for a cause with reasonable adjustments (likely dental/pain), treat the cause rather than sedate, involve those who know his baseline/communication, and ensure his annual health check and ongoing care \u2014 advocating for equitable treatment.' },
+      "opening": "(You play Kirsty, Daniel's support worker; Daniel can be heard moaning in the background.) \"Hiya, it's about Daniel, he's 24, he's got a learning disability and he's autistic. He's been really difficult this past week — hitting himself, won't eat properly, up all night, more agitated than usual. We think it's just his autism playing up, a behaviour thing. We don't really need to examine him or anything, he hates that — maybe just something to calm him down?\"",
+      "facts": [
+        {
+          "topic": "Daniel's normal self (if asked)",
+          "text": "Uses a few words and Makaton signs, loves trains and his tablet, usually calm and smiley, eats well (likes soft foods and crisps), sleeps 10pm–7am. Lives in a supported living house with 24-hour staff."
+        },
+        {
+          "topic": "What has changed (if asked)",
+          "text": "For seven days: hitting the right side of his face and jaw with his hand, pushing food away — he will only take yoghurt and drinks through a straw — up most of the night, crying. \"He's never done the face-hitting before.\""
+        },
+        {
+          "topic": "On video (if asked to show him)",
+          "text": "Daniel holds the right side of his jaw and rocks. If asked to look closely: his right cheek looks a bit puffy compared with the left. You cannot see inside his mouth."
+        },
+        {
+          "topic": "Other questions (if asked)",
+          "text": "Temperature: \"He felt warm last night; we didn't check.\" Bowels opened yesterday, normal. Passing urine normally. No cough, no vomiting, no rash, no ear-pulling. No falls or injuries that you know of."
+        },
+        {
+          "topic": "Dental (if asked)",
+          "text": "\"He hasn't seen a dentist in years — he won't let anyone near his mouth. Teeth brushing is a battle.\""
+        },
+        {
+          "topic": "Medicines and health",
+          "text": "No regular medicines. No allergies. Has a hospital passport. Has not had an annual health check for two years."
+        },
+        {
+          "topic": "Staff situation (if asked)",
+          "text": "Two staff off sick; you have done three night shifts in a row. You are tired and the house manager suggested \"asking the GP for something\"."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Kind but tired and a bit stuck in \"it's his behaviour\". If the doctor suggests he might be in pain, think about it and agree: \"Actually... he does keep going for that side of his face.\" Be helpful once the doctor explains, and share what calms Daniel (quiet room, his tablet, his favourite worker Joe). Raise the practical problem that he will not tolerate examination — respond well to suggestions of adjustments."
+        }
       ],
-      ice:{
-        ideas:'(Worker) It\u2019s just his autism/behaviour playing up; he needs calming, not examining.',
-        concerns:'HIDDEN AGENDA \u2014 a common, well-meaning but harmful assumption (diagnostic overshadowing), possible staff fatigue/under-resourcing, and a wish to avoid a difficult examination; Daniel can\u2019t report his pain.',
-        expectations:'Something to calm Daniel down. What\u2019s actually needed: recognition that new behaviour change signals likely physical illness/pain, assessment with reasonable adjustments (likely dental/pain), treating the cause, and advocacy for equitable care.'
+      "ice": {
+        "ideas": "\"It's just his autism playing up — a behaviour thing.\"",
+        "concerns": "Daniel hurting himself, and the staff struggling to cope.",
+        "expectations": "\"Something to calm him down.\" You will support an assessment if it is planned around Daniel's needs."
       },
-      cues:['NEW behaviour change (self-injury, off food, not sleeping) in someone who can\u2019t report symptoms \u2014 likely physical illness/pain, not "just his autism".','Holding his jaw + off food \u2014 a probable dental abscess/pain; assess for a physical cause.','"He hates being examined, just calm him down" \u2014 diagnostic overshadowing; adjust and assess, don\u2019t sedate.']
+      "cues": [
+        "\"He's never done the face-hitting before.\" — say when describing the change.",
+        "\"He keeps going for the right side of his face.\" — say if asked where he hits himself.",
+        "\"He won't let anyone near his mouth.\" — say if teeth or examination come up."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises DIAGNOSTIC OVERSHADOWING: a CHANGE in behaviour (self-injury, off food, not sleeping, agitation) in a person with learning disability/autism who cannot easily report symptoms is likely a sign of untreated PHYSICAL ILLNESS or PAIN \u2014 NOT "just their autism/behaviour" \u2014 and does NOT simply sedate' },
-      { dom:'tasks', text:'Actively seeks a PHYSICAL CAUSE: notes the jaw-holding/off-food and considers dental abscess/pain, ear/throat, constipation, urinary infection, etc., and plans to assess/examine for it (and treat the cause) rather than attributing it to behaviour' },
-      { dom:'tasks', text:'Makes REASONABLE ADJUSTMENTS (Equality Act): extra time/longer appointment, calm quiet approach, involving someone who knows his baseline and communication/pain cues, gentle/desensitised examination, hospital passport/communication tools, and pain-assessment tools for non-verbal patients \u2014 treating "he hates being examined" as a reason to ADJUST, not skip' },
-      { dom:'tasks', text:'Involves those who know his NORMAL communication and pain behaviours, and uses collateral history to interpret the change \u2014 recognising the change-from-baseline as the key signal' },
-      { dom:'tasks', text:'Situates it in the health-INEQUALITY context: this group has poorer access and avoidable premature mortality; ensures the annual health check and ongoing equitable care, and advocates for Daniel' },
-      { dom:'rto',   text:'Gently CHALLENGES the overshadowing and advocates for Daniel, supporting the (well-meaning, possibly fatigued) worker without colluding with "just calm him down"' },
-      { dom:'rto',   text:'Centres Daniel as the patient \u2014 his dignity, distress and right to have his pain taken seriously \u2014 and communicates in a way that includes him as far as possible' },
-      { dom:'gs',    text:'Safety-nets and follows up: the physical-cause assessment (urgent dental/pain review as indicated), treating the cause, reasonable adjustments documented, baseline-knowledgeable carers involved, the annual health check, and review \u2014 not sedation of unexplained distress' },
+      { dom:'dg', text:'Recognises DIAGNOSTIC OVERSHADOWING: a CHANGE in behaviour (self-injury, off food, not sleeping, agitation) in a person with learning disability/autism who cannot easily report symptoms is likely a sign of untreated PHYSICAL ILLNESS or PAIN \u2014 NOT "just their autism/behaviour" \u2014 and does NOT simply sedate' },
+      { dom:'dg', text:'Actively seeks a PHYSICAL CAUSE: notes the jaw-holding/off-food and considers dental abscess/pain, ear/throat, constipation, urinary infection, etc., and plans to assess/examine for it (and treat the cause) rather than attributing it to behaviour' },
+      { dom:'dg', text:'Makes REASONABLE ADJUSTMENTS (Equality Act): extra time/longer appointment, calm quiet approach, involving someone who knows his baseline and communication/pain cues, gentle/desensitised examination, hospital passport/communication tools, and pain-assessment tools for non-verbal patients \u2014 treating "he hates being examined" as a reason to ADJUST, not skip' },
+      { dom:'cm', text:'Involves those who know his NORMAL communication and pain behaviours, and uses collateral history to interpret the change \u2014 recognising the change-from-baseline as the key signal' },
+      { dom:'cm', text:'Situates it in the health-INEQUALITY context: this group has poorer access and avoidable premature mortality; ensures the annual health check and ongoing equitable care, and advocates for Daniel' },
+      { dom:'ro',   text:'Gently CHALLENGES the overshadowing and advocates for Daniel, supporting the (well-meaning, possibly fatigued) worker without colluding with "just calm him down"' },
+      { dom:'ro',   text:'Centres Daniel as the patient \u2014 his dignity, distress and right to have his pain taken seriously \u2014 and communicates in a way that includes him as far as possible' },
+      { dom:'cm',    text:'Safety-nets and follows up: the physical-cause assessment (urgent dental/pain review as indicated), treating the cause, reasonable adjustments documented, baseline-knowledgeable carers involved, the annual health check, and review \u2014 not sedation of unexplained distress' },
     ],
     worked:[
       { lbl:'Reframe the behaviour', txt:'"Thank you for ringing about Daniel. Can I offer a different way of looking at this? When someone who finds it hard to tell us they\u2019re in pain suddenly changes \u2014 hitting himself, off his food, not sleeping \u2014 that\u2019s very often his way of saying something HURTS, not just \u2018his autism\u2019. New behaviour like this, I always treat as a possible sign of physical illness until we\u2019ve checked. It\u2019s too easy, and sadly too common, to put it down to the disability and miss something treatable."' },

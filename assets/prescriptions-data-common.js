@@ -10,6 +10,7 @@
   {
     id: 'gord-dyspepsia',
     title: 'GORD / uninvestigated dyspepsia',
+    aka: 'reflux medications ladder, heartburn, indigestion, PPI, alginate, antacid, famotidine',
     category: 'Gastroenterology',
     eyebrow: 'PPI 4–8 weeks · lifestyle · test-and-treat H. pylori',
     indication: 'Reflux / dyspepsia without ALARM features. Lifestyle advice + full-dose PPI for 4–8 weeks, OR test-and-treat H. pylori. Review and step down.',
@@ -19,15 +20,20 @@
       { name: 'Omeprazole (or lansoprazole)', dose: '20 mg (lanso 30 mg)', freq: 'OD', route: 'PO', days: '4–8 weeks' },
       { name: 'Step-down: lowest effective dose / PRN', dose: '10–20 mg', freq: 'OD or PRN', route: 'PO', days: 'Maintenance' },
       { name: 'Alginate (e.g. Gaviscon)', dose: '10–20 mL', freq: 'After meals & ON', route: 'PO', days: 'PRN' },
+      { name: 'Antacid (e.g. magnesium/aluminium salts) — self-care, often bought OTC', dose: 'Per pack', freq: 'PRN', route: 'PO', days: 'Symptomatic' },
+      { name: 'H2-receptor antagonist (famotidine) — add-on or step-down', dose: '20–40 mg', freq: 'BD', route: 'PO', days: 'Per review' },
     ],
     altRegimens: [
       { label: 'H. pylori positive', drugs: 'Eradication therapy (see H. pylori 1st-line card); retest only if relapse.' },
       { label: 'Refractory after 8 weeks full-dose PPI', drugs: 'Confirm adherence/lifestyle; consider H2RA (famotidine) add-on; review for OGD if persistent/alarm.' },
-      { label: 'Pregnancy', drugs: 'Lifestyle + alginate first; omeprazole if needed (well-established safety).' },
+      { label: 'Pregnancy', drugs: 'Lifestyle + antacid/alginate first; omeprazole if needed (most safety data); famotidine an alternative.' },
+      { label: 'Severe oesophagitis', drugs: 'Full-dose PPI for 8 weeks; high (double) dose only if not responding, then step down once healed.' },
+      { label: 'Reference ladder (merged from the former reflux-medications card)', drugs: 'Lifestyle → antacid/alginate PRN → full-dose PPI 4–8 weeks (or H. pylori test-and-treat) → H2RA add-on if refractory → step down to the lowest effective dose / on-demand PPI or H2RA; review long-term PPI annually.' },
     ],
     counselling: [
       'Lifestyle: lose weight if overweight, smaller meals, avoid late eating, reduce alcohol/caffeine/fatty foods, stop smoking, raise the head of the bed.',
       'Take the PPI 30–60 minutes before breakfast.',
+      'Antacids and alginates give quick, short-term relief; a PPI works over days.',
       'Aim to step down to the lowest dose that controls symptoms / use as-needed.',
       'Return if difficulty swallowing, unintentional weight loss, vomiting, or black stools.',
     ],
@@ -37,7 +43,7 @@
     ],
     emisText: `GORD / uninvestigated dyspepsia (no alarm features):
 - Lifestyle advice + Omeprazole 20 mg (or lansoprazole 30 mg) OD × 4–8 weeks; take before breakfast. OR test-and-treat H. pylori.
-- Alginate PRN. Step down to lowest effective dose / PRN.
+- Alginate/antacid PRN. Refractory: H2RA (famotidine 20-40 mg BD) add-on. Step down to lowest effective dose / PRN.
 Safety-net/urgent assessment: dysphagia, weight loss, GI bleed, vomiting, ≥55 new dyspepsia; suspected cancer pathway referral if dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia (NICE NG12 (updated April 2026)). Review long-term PPI annually.`,
     sources: [
       { label:'NICE CG184 — Dyspepsia & GORD', url:'https://www.nice.org.uk/guidance/cg184' },
@@ -393,7 +399,7 @@ Safety-net: eczema herpeticum (painful punched-out vesicles, unwell) → same-da
 - Inadequate control: combine + consider azelastine/fluticasone spray; refractory → immunotherapy referral.
 Allergen avoidance advice. Unilateral/bloody discharge → ENT.`,
     sources: [
-      { label:'BSACI', url:'https://www.bsaci.org/guidelines/' },
+      { label:'NICE CKS — Allergic rhinitis', url:'https://cks.nice.org.uk/topics/allergic-rhinitis/' },
     ],
   },
 

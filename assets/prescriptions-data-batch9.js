@@ -123,7 +123,7 @@
 - Lichen sclerosus: potent topical steroid (e.g. clobetasol) + follow-up.
 - Recurrent candida \u2192 check glucose. Lump/ulcer/white plaque/non-healing \u2192 examine, exclude VIN/cancer (suspected cancer pathway referral).`,
     sources: [
-      { label:'BASHH', url:'https://www.bashh.org/guidelines' },
+      { label:'NICE CKS — Pruritus vulvae', url:'https://cks.nice.org.uk/topics/pruritus-vulvae/' },
     ],
   },
 
@@ -204,7 +204,7 @@
 - AVOID acid/cryo on face; caution in diabetes/poor circulation/neuropathy.
 - Cover at pools; don't share towels. Atypical/bleeding/pigmented or immunocompromised \u2192 refer.`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'NICE CKS — Warts and verrucae', url:'https://cks.nice.org.uk/topics/warts-verrucae/' },
     ],
   },
 
@@ -246,7 +246,7 @@
 - Offer STI screen + HPV vaccine discussion + GUM (internal/extensive/refractory). Recurrence common.
 - Atypical/pigmented/bleeding lesion \u2192 refer; child \u2192 safeguarding.`,
     sources: [
-      { label:'BASHH — anogenital warts', url:'https://www.bashh.org/guidelines' },
+      { label:'NICE CKS — Warts (anogenital)', url:'https://cks.nice.org.uk/topics/warts-anogenital/' },
     ],
   },
 

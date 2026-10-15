@@ -349,7 +349,7 @@ Counsel: lifelong therapy; lifestyle (alcohol, weight, hydration); rash → STOP
 Off-licence if > 17 days. Consider alternatives (continuous CHC pack) if on COCP.`,
     sources: [
       { label:'SPC — norethisterone', url:'https://www.medicines.org.uk/emc/search?q=norethisterone' },
-      { label:'FSRH Combined Hormonal Contraception 2019', url:'https://www.fsrh.org/standards-and-guidance/' },
+      { label:'FSRH — Combined hormonal contraception (2019, amended)', url:'https://www.fsrh.org/standards-and-guidance/documents/combined-hormonal-contraception/' },
     ],
   },
 

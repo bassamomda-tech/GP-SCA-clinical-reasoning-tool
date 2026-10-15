@@ -11,7 +11,7 @@
   /* ============ 13. TELEPHONE — Dysuria in a young man ============ */
   const c13 = {
     id:'dysuria-sti', title:'Burning waterworks at 24', type:'telephone', duration:12,
-    meta:{ age:24, sex:'M', setting:'Telephone appointment — patient requested antibiotics.', system:'GU / Sexual health' },
+    meta:{ age:24, sex:'M', setting:'Telephone appointment — patient requested antibiotics.', system:'GU / Sexual health', checked:'October 2026' },
     brief:'Mr Jordan Walsh, 24, has booked a telephone appointment asking for "antibiotics for a water infection" — five days of burning when passing urine. PMH nil. No medication. Lives with his girlfriend of two years. Reception note: he asked whether a prescription could be sent to a pharmacy near his work "rather than the local one".',
     script:{
       opening:'"Hi doctor — nothing major, I think it\u2019s just a water infection. Burning when I pee, few days now. Could you send some antibiotics over? Oh — and could it go to the Boots near my work, not the one by the flat? Easier to collect."',
@@ -31,14 +31,14 @@
       cues:['Asks for the prescription to go to a pharmacy away from home — secrecy travelling as convenience.','A long silence when asked "any other partners?" — the silence IS the answer; let it finish.','"How long would something take to show up in a test… hypothetically?" — the HIV fear, wearing a disguise.']
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises that dysuria in a 24-year-old man is urethritis/STI until proven otherwise — UTIs are rare in young men — and says so without alarm' },
-      { dom:'tasks', text:'Takes a complete, matter-of-fact sexual history: partners (regular + other), last UPSI with dates, condom use, sites of exposure, symptoms in partners' },
-      { dom:'tasks', text:'Test before treatment: first-void urine NAAT for chlamydia/gonorrhoea + bloods for HIV and syphilis, explained with window periods — and explains WHY blind antibiotics fail (wrong drug, masked diagnosis, untreated partner)' },
-      { dom:'tasks', text:'Covers partner notification and no sex until he and any partner have completed treatment and follow-up and symptoms have resolved (BASHH NGU 2026) — including the hard truth that Megan needs testing if anything is positive' },
-      { dom:'rto',   text:'Hears the pharmacy-swap cue and names the secrecy kindly; states confidentiality explicitly — nothing goes anywhere Megan can see' },
-      { dom:'rto',   text:'Surfaces the buried HIV question and answers it properly: low single-exposure risk, 45-day window for 4th-gen testing, testing as the route OUT of the 3am googling' },
-      { dom:'rto',   text:'Handles the girlfriend conversation without a flicker of moralising — the consultation is clinical, not a tribunal' },
-      { dom:'gs',    text:'Safety-nets: testicular pain/swelling or fever = same-day review (epididymo-orchitis); books the GUM slot or follow-up for results, plus window-period repeat' },
+      { dom:'dg', text:'Recognises that dysuria in a 24-year-old man is urethritis/STI until proven otherwise — UTIs are rare in young men — and says so without alarm' },
+      { dom:'dg', text:'Takes a complete, matter-of-fact sexual history: partners (regular + other), last UPSI with dates, condom use, sites of exposure, symptoms in partners' },
+      { dom:'dg', text:'Test before treatment: first-void urine NAAT for chlamydia/gonorrhoea + bloods for HIV and syphilis, explained with window periods — and explains WHY blind antibiotics fail (wrong drug, masked diagnosis, untreated partner)' },
+      { dom:'dg', text:'Covers partner notification and no sex until he and any partner have completed treatment and follow-up and symptoms have resolved (BASHH NGU 2026) — including the hard truth that Megan needs testing if anything is positive' },
+      { dom:'ro',   text:'Hears the pharmacy-swap cue and names the secrecy kindly; states confidentiality explicitly — nothing goes anywhere Megan can see' },
+      { dom:'ro',   text:'Surfaces the buried HIV question and answers it properly: low single-exposure risk, 45-day window for 4th-gen testing, testing as the route OUT of the 3am googling' },
+      { dom:'ro',   text:'Handles the girlfriend conversation without a flicker of moralising — the consultation is clinical, not a tribunal' },
+      { dom:'cm',    text:'Safety-nets: testicular pain/swelling or fever = same-day review (epididymo-orchitis); books the GUM slot or follow-up for results, plus window-period repeat' },
     ],
     worked:[
       { lbl:'Reframe the diagnosis',  txt:'"At 24, with no history of water infections, burning like this usually isn\u2019t a urine infection at all — it\u2019s most often an infection of the water pipe itself, the kind that\u2019s passed on through sex. So I need to ask you some direct questions, and they stay between us."' },
@@ -66,7 +66,7 @@
   /* ============ 14. VIDEO — "Water infection" in an 87-year-old ============ */
   const c14 = {
     id:'uti-elderly', title:'A "water infection" at 87', type:'video', duration:12,
-    meta:{ age:87, sex:'M', setting:'Video consultation — daughter connects the call from her father\u2019s sitting room.', system:'Older adults / Prescribing' },
+    meta:{ age:87, sex:'M', setting:'Video consultation — daughter connects the call from her father\u2019s sitting room.', system:'Older adults / Prescribing', checked:'October 2026' },
     brief:'Mr Harold Finch, 87, is "not himself". His daughter Carol (68, visits daily) requested an urgent consultation: the care agency dipsticked his urine yesterday — "positive" — and Carol wants antibiotics started today. Harold: strong-smelling urine, dribbling, more muddled in the evenings for about a week. PMH: hypertension, OA shoulder. Meds: amlodipine 5 mg; co-codamol 30/500 QDS started 3 weeks ago for the shoulder. Carol connects the video call with Harold beside her.',
     script:{
       opening:'(Carol leads, Harold gazing at the screen.) "Thank you for calling back so fast, doctor. The carers tested his water and it\u2019s an infection — it\u2019s happened before and antibiotics sorted it. Can we just get them started today? I don\u2019t want this turning into anything."',
@@ -86,14 +86,14 @@
       cues:['"He\u2019s not been right since those new painkillers" — dropped in passing; the case key, unnoticed by the speaker.','Harold rubs his lower belly and winces when bowels are mentioned — on camera, wordless.','Carol\u2019s voice cracks on "you hear what happens to people his age in there" — Derek, unspoken.']
     },
     checkpoints:[
-      { dom:'tasks', text:'Does not treat a dipstick: states plainly that urine dipsticks are not recommended over 65 (UKHSA) and that smelly urine alone is not an infection — up to half of older adults carry bacteria harmlessly; yet, because new incontinence and new confusion are two criteria on the UKHSA over-65 tool, sends a urine culture and keeps infection on the list while hunting other causes' },
-      { dom:'tasks', text:'Hunts the real mechanism: five days constipated on new co-codamol + deliberate fluid restriction → retention with overflow (the dribbling) and evening confusion' },
-      { dom:'tasks', text:'Acts on the drug cause: stops/steps down the co-codamol (swap to paracetamol ± topical NSAID for the shoulder), starts laxatives, sets a fluid plan that answers his leak fear' },
-      { dom:'tasks', text:'Names the video\u2019s limits and arranges same-day in-person review: abdominal/PR examination and a bladder scan — said as completing the job, not escalating it' },
-      { dom:'rto',   text:'Talks to Harold directly, by name, not over him — and gets his version ("it won\u2019t come proper") which unlocks the retention picture' },
-      { dom:'rto',   text:'Notices Carol\u2019s cracked voice, asks, and lets Derek\u2019s story be told — then SAYS the reassurance she actually needs: "everything we\u2019re doing today is designed to treat him here at home"' },
-      { dom:'rto',   text:'Reframes antibiotics honestly: the wrong treatment isn\u2019t a shield against hospital — it\u2019s a delay that makes admission MORE likely' },
-      { dom:'gs',    text:'Safety-nets in plain words: cannot pass urine at all / hard swollen belly / drowsy or feverish / rigors → same-day call or 999; books tomorrow\u2019s follow-up call himself' },
+      { dom:'cm', text:'Does not treat a dipstick: states plainly that urine dipsticks are not recommended over 65 (UKHSA) and that smelly urine alone is not an infection — up to half of older adults carry bacteria harmlessly; yet, because new incontinence and new confusion are two criteria on the UKHSA over-65 tool, sends a urine culture and keeps infection on the list while hunting other causes' },
+      { dom:'dg', text:'Hunts the real mechanism: five days constipated on new co-codamol + deliberate fluid restriction → retention with overflow (the dribbling) and evening confusion' },
+      { dom:'cm', text:'Acts on the drug cause: stops/steps down the co-codamol (swap to paracetamol ± topical NSAID for the shoulder), starts laxatives, sets a fluid plan that answers his leak fear' },
+      { dom:'dg', text:'Names the video\u2019s limits and arranges same-day in-person review: abdominal/PR examination and a bladder scan — said as completing the job, not escalating it' },
+      { dom:'ro',   text:'Talks to Harold directly, by name, not over him — and gets his version ("it won\u2019t come proper") which unlocks the retention picture' },
+      { dom:'ro',   text:'Notices Carol\u2019s cracked voice, asks, and lets Derek\u2019s story be told — then SAYS the reassurance she actually needs: "everything we\u2019re doing today is designed to treat him here at home"' },
+      { dom:'ro',   text:'Reframes antibiotics honestly: the wrong treatment isn\u2019t a shield against hospital — it\u2019s a delay that makes admission MORE likely' },
+      { dom:'cm',    text:'Safety-nets in plain words: cannot pass urine at all / hard swollen belly / drowsy or feverish / rigors → same-day call or 999; books tomorrow\u2019s follow-up call himself' },
     ],
     worked:[
       { lbl:'The dipstick, defused',  txt:'"Carol, that dipstick has done its job by getting us talking — but here\u2019s the thing: over 65, those sticks are positive in up to half of older people with no infection at all. At Harold’s age the stick can’t tell us what’s happening. His story, an examination and a proper lab test of his urine can."' },
@@ -121,7 +121,7 @@
   /* ============ 15. TELEPHONE — Visible haematuria at 67 ============ */
   const c15 = {
     id:'haematuria-2ww', title:'Pink urine and a cruise', type:'telephone', duration:12,
-    meta:{ age:67, sex:'M', setting:'Telephone appointment — booked "because the wife insisted".', system:'Urology / suspected cancer pathway' },
+    meta:{ age:67, sex:'M', setting:'Telephone appointment — booked "because the wife insisted".', system:'Urology / suspected cancer pathway', checked:'October 2026' },
     brief:'Mr Victor Aldridge, 67, retired decorator, has phoned "to put the wife\u2019s mind at rest". Twice last week his urine ran pink-red, whole stream, completely painless — gone by the next day each time. He blames beetroot and a new multivitamin. Ex-smoker: 30 pack-years, quit 5 years ago. PMH: hypertension. Meds: ramipril. No anticoagulants. His golden-wedding cruise leaves in five weeks (not in the notes).',
     script:{
       opening:'"Morning doctor — bit of a fuss over nothing, this. The wife saw a bit of colour in the bowl and won\u2019t let it go. I\u2019ve been having beetroot with my lunches, you see, and these new vitamin tablets. You know how the wives are. Quick once-over and we\u2019ll say no more about it?"',
@@ -141,14 +141,14 @@
       cues:['"You know how the wives are" — deflection doing the talking; the appointment exists because HE is frightened.','A flat pause after "did you lose anyone to anything like this?" — Stan, arriving.','"We\u2019ve got this cruise, you see — five weeks" — dropped casually; it\u2019s the real consultation.']
     },
     checkpoints:[
-      { dom:'tasks', text:'Pins down true visible haematuria vs beetroot: whole-stream red urine twice, painless, no clots — and does not let the beetroot story stand once the colour is established' },
-      { dom:'tasks', text:'Screens the rest: UTI symptoms (none), trauma (none), anticoagulants (none — and knows that even ON anticoagulants, visible haematuria still gets investigated), smoking pack-years and occupational dye/solvent exposure' },
-      { dom:'tasks', text:'States the threshold out loud: aged 45+ with unexplained visible haematuria = urgent suspected cancer pathway urology referral under NICE NG12 (updated April 2026) — made TODAY, not pending results' },
-      { dom:'tasks', text:'Arranges same-week MSU (exclude infection without delaying referral), U&E, FBC, BP review, and offers PSA with DRE after counselling (NICE NG12 (updated April 2026): men with visible haematuria; his slow stream too) — and explains what cystoscopy involves in one calm sentence' },
-      { dom:'rto',   text:'Challenges the deflection gently and finds Stan — then answers the real question honestly: same symptom, NOT the same story; most investigated haematuria is not cancer, and early-found bladder cancer is very treatable' },
-      { dom:'rto',   text:'Surfaces the cruise and solves it concretely: the suspected cancer pathway aims for a diagnosis or all-clear within 28 days (NHS Faster Diagnosis Standard) — the timeline can work WITH the cruise, and going investigated beats going frightened' },
-      { dom:'rto',   text:'Handles the secret from Pam: encourages honesty without forcing it — "you\u2019ve carried this alone for a week; that\u2019s long enough"' },
-      { dom:'gs',    text:'Safety-nets: clot retention / cannot pass urine / heavy persistent bleeding → A&E today; chase the hospital letter if nothing within a week; named GP follow-up booked either way' },
+      { dom:'dg', text:'Pins down true visible haematuria vs beetroot: whole-stream red urine twice, painless, no clots — and does not let the beetroot story stand once the colour is established' },
+      { dom:'dg', text:'Screens the rest: UTI symptoms (none), trauma (none), anticoagulants (none — and knows that even ON anticoagulants, visible haematuria still gets investigated), smoking pack-years and occupational dye/solvent exposure' },
+      { dom:'cm', text:"States the threshold out loud: aged 45+ with unexplained visible haematuria = urgent suspected cancer pathway urology referral under NICE NG12 — made TODAY, not pending results" },
+      { dom:'cm', text:"Arranges same-week MSU (exclude infection without delaying referral), U&E, FBC, BP review, and offers PSA with DRE after counselling (NICE NG12: men with visible haematuria; his slow stream too) — and explains what cystoscopy involves in one calm sentence" },
+      { dom:'ro',   text:'Challenges the deflection gently and finds Stan — then answers the real question honestly: same symptom, NOT the same story; most investigated haematuria is not cancer, and early-found bladder cancer is very treatable' },
+      { dom:'ro',   text:'Surfaces the cruise and solves it concretely: the suspected cancer pathway aims for a diagnosis or all-clear within 28 days (NHS Faster Diagnosis Standard) — the timeline can work WITH the cruise, and going investigated beats going frightened' },
+      { dom:'ro',   text:'Handles the secret from Pam: encourages honesty without forcing it — "you\u2019ve carried this alone for a week; that\u2019s long enough"' },
+      { dom:'cm',    text:'Safety-nets: clot retention / cannot pass urine / heavy persistent bleeding → A&E today; chase the hospital letter if nothing within a week; named GP follow-up booked either way' },
     ],
     worked:[
       { lbl:'The beetroot, retired',  txt:'"Beetroot\u2019s a fair thought — it catches people out. But you\u2019ve described proper red, through the whole stream, twice. I\u2019d be doing you a disservice if I filed that under vegetables. Let\u2019s do this properly."' },
@@ -158,14 +158,14 @@
       { lbl:'The cruise, solved',     txt:'"Five weeks gives us room. The aim is for you to be seen and tested within about four weeks, often sooner — so you’d most likely board that ship with an answer instead of a secret. The version of this where you wait until you\u2019re back is the only version I\u2019d genuinely worry about."' },
       { lbl:'Safety-net',             txt:'"Two things tonight: if you can\u2019t pass water at all, or it\u2019s running heavily red with clots, that\u2019s A&E, not a wait. And if no letter lands within a week — ring me, don\u2019t let it drift. I\u2019m booking myself to call you after the camera test either way."' },
     ],
-    learning:'NICE NG12 (updated April 2026): aged 45+ with unexplained visible haematuria (no UTI, or persisting or recurring after UTI treatment) = suspected cancer pathway urology referral — with PSA and DRE considered in men — made on the day, never deferred for convenience, holidays, or a beetroot story. Anticoagulation never explains haematuria away. The consultation\u2019s real work is the hidden agenda: a friend\u2019s death from the same first symptom, and a cruise he\u2019s scared to lose — the reframe ("investigated beats frightened; the timeline works") is what converts referral into attendance.',
+    learning:"NICE NG12: aged 45+ with unexplained visible haematuria (no UTI, or persisting or recurring after UTI treatment) = suspected cancer pathway urology referral — with PSA and DRE considered in men — made on the day, never deferred for convenience, holidays, or a beetroot story. Anticoagulation never explains haematuria away. The consultation’s real work is the hidden agenda: a friend’s death from the same first symptom, and a cruise he’s scared to lose — the reframe (\"investigated beats frightened; the timeline works\") is what converts referral into attendance.",
     knowledge:{
-      guideline:'NICE NG12 (updated April 2026) — bladder, renal and prostate cancer · NHS England Faster Diagnosis Standard (October 2023)',
+      guideline:"NHS England Faster Diagnosis Standard (October 2023) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026)",
       points:[
         { h:'Diagnose the symptom honestly', t:'Painless visible haematuria in a 67-year-old ex-smoker decorator is bladder cancer until excluded — smoking is the biggest risk factor and occupational solvents/dyes add more. Beetroot, rifampicin and myoglobin are stories to RULE OUT, not rest on.' },
-        { h:'Red flags — the NG12 thresholds', t:'NICE NG12 (updated April 2026), suspected cancer pathway urology: aged ≥45 with unexplained visible haematuria without UTI, or persisting/recurring after successful UTI treatment; aged ≥60 with unexplained NON-visible haematuria plus dysuria or raised WCC. Aged ≥60 with recurrent or persistent unexplained UTI is a different route: consider a NON-urgent referral for bladder cancer.' },
-        { h:'Investigate without delaying', t:'MSU (exclude infection — but a positive culture only pauses the clock if symptoms fully explain and bleeding resolves after treatment), U&E/eGFR, FBC, BP. NICE NG12 (updated April 2026): consider PSA and DRE in men with visible haematuria (and with LUTS — his slow stream), after PSA counselling. Do NOT wait for results to refer. Anticoagulants do not exempt anyone from investigation.' },
-        { h:'Refer — suspected cancer pathway urology, NICE NG12 (updated April 2026), today', t:'Urgent suspected-cancer referral on the call, named out loud as such. Tell him the sequence: the NHS Faster Diagnosis Standard aims for a diagnosis or all-clear within 28 days of referral; flexible cystoscopy (local anaesthetic gel, ten minutes, home the same day) ± upper-tract imaging (CT urogram).' },
+        { h:'Red flags — the NG12 thresholds', t:"NICE NG12, suspected cancer pathway urology: aged ≥45 with unexplained visible haematuria without UTI, or persisting/recurring after successful UTI treatment; aged ≥60 with unexplained NON-visible haematuria plus dysuria or raised WCC. Aged ≥60 with recurrent or persistent unexplained UTI is a different route: consider a NON-urgent referral for bladder cancer." },
+        { h:'Investigate without delaying', t:"MSU (exclude infection — but a positive culture only pauses the clock if symptoms fully explain and bleeding resolves after treatment), U&E/eGFR, FBC, BP. NICE NG12: consider PSA and DRE in men with visible haematuria (and with LUTS — his slow stream), after PSA counselling. Do NOT wait for results to refer. Anticoagulants do not exempt anyone from investigation." },
+        { h:"Refer — suspected cancer pathway urology, NICE NG12, today", t:'Urgent suspected-cancer referral on the call, named out loud as such. Tell him the sequence: the NHS Faster Diagnosis Standard aims for a diagnosis or all-clear within 28 days of referral; flexible cystoscopy (local anaesthetic gel, ten minutes, home the same day) ± upper-tract imaging (CT urogram).' },
         { h:'Manage the person', t:'Honest base rates: most haematuria suspected cancer pathway referrals find no cancer; early non-muscle-invasive bladder cancer is commonly resected and surveilled, not lost to. The cruise logistics are clinical work — solving them is what makes him attend.' },
         { h:'Safety-net & follow-up', t:'A&E today for clot retention or heavy persistent bleeding; chase-the-letter rule at one week; named GP follow-up after cystoscopy regardless of result; recheck non-visible haematuria and BP at review if cystoscopy is clear.' },
         { h:'Marking edge', t:'"You know how the wives are" is armour — the candidate who treats the appointment as the wife\u2019s anxiety misses the man counting days between episodes. Find Stan, answer the Stan question straight, and the cruise becomes your ally: an answer on board beats a secret at sea.' }
@@ -255,7 +255,7 @@
       ],
       wordPics: {
         fail: 'Accepts beetroot/multivitamin and arranges "a sample when convenient"; never asks smoking or occupation; Stan and the cruise never surface; referral deferred until after the MSU "to be sure"; he hangs up relieved, unreferred, and boards the cruise with a secret.',
-        pass: 'Establishes true painless visible haematuria; knows the NICE NG12 (updated April 2026) threshold and makes the suspected cancer pathway urology referral today; orders MSU/bloods without delaying it; touches the fear; gives A&E triggers and follow-up.',
+        pass: "Establishes true painless visible haematuria; knows the NICE NG12 threshold and makes the suspected cancer pathway urology referral today; orders MSU/bloods without delaying it; touches the fear; gives A&E triggers and follow-up.",
         exc:  'Deflection gently dismantled using his own behaviour (he booked, he counted); Stan found and the Stan question answered with honest asymmetry — same symptom, different story; the cruise turned from obstacle into motivator; secrecy from Pam addressed; chase-the-letter, A&E triggers and a named post-scope call close it watertight.'
       },
       avoid: [

@@ -65,7 +65,7 @@
         <div class="tool-eyebrow">Reasoning GP · Likely to come up</div>
         <h1>SCA <em>hot topics</em></h1>
         <p>A short, curated feed of the themes most worth revising before your sitting — recent guideline shifts, perennial examiner favourites, seasonal presentations and safety musts. Each links straight to the case or protocol so you can drill it now, not just read about it.</p>
-        <div class="review-stamp"><span class="dot"></span> Curated June 2026 · verify against current NICE</div>
+        <div class="review-stamp"><span class="dot"></span> Updated October 2026 · verify against current NICE</div>
       </div>
 
       <div class="ht-filters" id="filters">
@@ -90,11 +90,11 @@
   const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
   const TOPICS = [
-    { cat:'guideline', date:'Feb 2026', title:'Type 2 diabetes — NG28 rewritten: SGLT2 inhibitors are now first-line for almost everyone',
+    { cat:'guideline', date:'NG28 · 18 Feb 2026', title:'Type 2 diabetes — NG28 rewritten: SGLT2 inhibitors are now first-line for almost everyone',
       what:'NICE NG28 was updated on 18 February 2026. Metformin monotherapy is out: offer MR metformin AND an SGLT2 inhibitor as DUAL first-line therapy to the majority, even with no comorbidity (stepwise introduction; SGLT2i only if frailty does not put them at risk of volume depletion/hypotension). Established ASCVD gets TRIPLE first-line therapy (adding s/c semaglutide up to 1mg weekly), and the pathway then branches by phenotype — heart failure, CKD, obesity, early-onset (<40y), frailty — all independent of HbA1c.',
       why:'A classic management station. Marks come from individualising the second agent to the patient\u2019s CV/renal profile and counselling on sick-day rules (DKA, "-flozin" pause).',
       links:[['Diabetes protocol','../tools/management.html'],['Sick-day rules','../tools/management/sick-day-rules.html']] },
-    { cat:'guideline', date:'2024–25', title:'Hypertension — confirm with ABPM/HBPM, treat from stage 1 under 80 with risk',
+    { cat:'guideline', date:'NG136 · 2019, updated 2023', title:'Hypertension — confirm with ABPM/HBPM, treat from stage 1 under 80 with risk',
       what:'Diagnose with ambulatory or home readings, not a single clinic reading; offer treatment in stage 1 if <80 with QRISK ≥10%, diabetes, renal or established CVD/organ damage (NICE NG136).',
       why:'Tests whether you confirm before labelling, use QRISK, and negotiate lifestyle + drug choice by age/ethnicity (ACEi/ARB vs CCB).',
       links:[['Hypertension pathway','../tools/algorithms.html'],['QRISK3 calculator','../tools/calculators.html']] },
@@ -106,11 +106,11 @@
       what:'Traffic-light (NICE NG143) assessment of the febrile child, with explicit, specific worsening advice and clear escalation routes for the parent.',
       why:'Paediatric safety-netting is one of the most reliably tested skills. Vague "come back if worse" loses marks; specific signs + where to go scores.',
       links:[['Wheeze in children','../cases/wheeze-children.html'],['Childhood limp','../cases/childhood-limp.html']] },
-    { cat:'safety', date:'NICE NG12 (updated April 2026)', title:'Suspected cancer pathway thresholds — get the exact criteria right',
+    { cat:'safety', date:'NG12 · updated 15 Apr 2026', title:'Suspected cancer pathway thresholds — get the exact criteria right',
       what:'Age- and feature-specific urgent suspected-cancer referrals and direct-access tests: FIT first for suspected colorectal cancer (including rectal bleeding), referring if FIT ≥10 µg Hb/g, post-menopausal bleeding 55+, age-specific CA-125 thresholds from 40 (≥35 IU/mL at 40–49, ≥31 at 50–59, ≥24 at 60–69, ≥25 at 70–79, ≥31 at 80+), PSA by age range, very urgent FBC for suspected childhood leukaemia.',
       why:'A single missed red flag can fail the management domain. Knowing the precise threshold and the named direct-access test is the difference between Pass and Fail.',
       links:[['Haematological cancers','../cases/haematological-cancers.html'],['Breast cancer','../cases/breast-cancer.html']] },
-    { cat:'guideline', date:'NG193', title:'Chronic primary pain — away from opioids',
+    { cat:'guideline', date:'NG193 · 2021', title:'Chronic primary pain — away from opioids',
       what:'For chronic primary pain, do not initiate opioids, gabapentinoids, paracetamol or NSAIDs; offer exercise, psychological therapy and (per guidance) consider an antidepressant. Deprescribe where started.',
       why:'A counselling minefield — managing the patient who wants/expects strong analgesia, validating pain while explaining the evidence, and agreeing a plan.',
       links:[['Analgesia in primary care','../cases/analgesia-primary-care.html'],['Neuropathic pain','../cases/neuropathic-pain.html']] },
@@ -126,7 +126,7 @@
       what:'Structured assessment of depression severity, a sensitive and explicit risk assessment, and stepped-care management including when to consider/withhold antidepressants.',
       why:'Mental-health cases are heavily sampled. Marks hinge on a genuine, unhurried risk assessment and shared management — not a checklist.',
       links:[['Depression','../cases/depression.html'],['Perinatal mental health','../cases/perinatal-mental-health.html']] },
-    { cat:'guideline', date:'NICE NG219 (2022)', title:'Gout — treat-to-target urate, offer ULT earlier',
+    { cat:'guideline', date:'NG219 · 2022', title:'Gout — treat-to-target urate, offer ULT earlier',
       what:'Discuss urate-lowering therapy with everyone after a flare and offer it to those with recurrent or troublesome flares, tophi, CKD 3–5, diuretic use or chronic gouty arthritis (allopurinol or febuxostat first-line; allopurinol if major CVD), titrating to a target serum urate (<360, or <300 with tophi/ongoing flares), with prophylaxis on initiation.',
       why:'A neat management station: acute flare treatment plus the longer-term treat-to-target conversation many candidates under-play.',
       links:[['Gout','../cases/gout.html'],['Management protocols','../tools/management.html']] },
@@ -135,9 +135,29 @@
       why:'A safeguarding cue embedded in an ordinary presentation is a favourite trap. Missing it is a clear fail; handling it well is a clear pass.',
       links:[['Safeguarding','../cases/safeguarding.html']] },
     { cat:'favourite', date:'Perennial', title:'The remote consultation — telephone and video skills',
-      what:'Most SCA cases are remote. Verbalising the absent examination, managing uncertainty without seeing the patient, and safety-netting harder because you can\u2019t lay hands on them.',
-      why:'The format itself is examined. Candidates who consult as if face-to-face miss the explicit remote-specific safety-netting examiners look for.',
-      links:[['AI Patient Simulator','sca-simulator.html'],['The Hot Seat','sca-practice.html']] }
+      what:'The SCA is a remote exam: every case is a video or telephone consultation. Verbalising the absent examination, managing uncertainty without seeing the patient, and safety-netting harder because you can\u2019t lay hands on them.',
+      why:'The format itself is examined. Candidates who consult as if the patient were in the room miss the explicit remote-specific safety-netting examiners look for.',
+      links:[['AI Patient Simulator','sca-simulator.html'],['The Hot Seat','sca-practice.html']] },
+    { cat:'guideline', date:'NG23 · 15 Apr 2026', title:'Menopause — unscheduled bleeding on HRT now follows the suspected cancer guideline',
+      what:'NICE NG23 was updated on 15 April 2026: recommendation 1.8.4 was amended and 1.8.5 added so that advice on unscheduled vaginal bleeding in people taking systemic HRT matches NICE NG12 (Source: NICE NG23 update information, April 2026).',
+      why:'HRT stations now carry a bleeding safety-net that must be specific: when bleeding on HRT is expected, when it needs review, and when it is a suspected cancer referral.',
+      links:[['NICE NG23','https://www.nice.org.uk/guidance/ng23'],["Women's health protocols",'../tools/management.html']] },
+    { cat:'guideline', date:'NG259 · 29 Jul 2026', title:'Osteoporosis — new NICE guideline on fracture risk assessment',
+      what:'NICE published NG259, Osteoporosis: risk assessment, on 29 July 2026, the long-awaited update to the 2012 CG146 approach to assessing fragility-fracture risk (Source: NICE NG259, July 2026). Check the current recommendations on which risk tool to use and when to measure bone density.',
+      why:'Bone-health stations (long-term steroids, a fragility fracture, an older faller) reward knowing when to assess risk, when to treat, and explaining bisphosphonate benefit and harm in plain numbers.',
+      links:[['NICE NG259','https://www.nice.org.uk/guidance/ng259'],['Management protocols','../tools/management.html']] },
+    { cat:'guideline', date:'UKHSA · 1 Jan 2026', title:'Childhood immunisation schedule — MMRV at 12 and 18 months',
+      what:'From 1 January 2026 children in England are offered combined MMRV (measles, mumps, rubella and varicella) at 12 and 18 months, the second MMR-containing dose moved from 3 years 4 months to 18 months, and a new 18-month appointment includes a 4th hexavalent dose; a selective MMRV catch-up runs for older children (Source: UKHSA, MMRV vaccination: information for healthcare professionals, 2026).',
+      why:'Vaccine-hesitancy and "which jab when" conversations are common. Accurate schedule facts plus a respectful, non-judgemental conversation score in both relating and management.',
+      links:[['UKHSA MMRV guidance','https://www.gov.uk/government/publications/mmrv-programme-information-for-healthcare-practitioners/mmrv-vaccination-information-for-healthcare-professionals'],['Vaccine hesitancy case','sca-practice.html']] },
+    { cat:'guideline', date:'NG220 · 3 Jun 2026', title:'Multiple sclerosis — diagnosis now uses the 2024 McDonald criteria',
+      what:'NICE NG220 was amended on 3 June 2026 after exceptional surveillance: diagnosis recommendations now refer to the revised 2024 McDonald criteria, and the statement that MS should never be diagnosed on MRI alone was removed (Source: NICE NG220 update information, June 2026).',
+      why:'Optic neuritis, transient numbness and "is it MS?" stations test urgent, honest referral and balanced, up-to-date information — not premature labelling.',
+      links:[['NICE NG220','https://www.nice.org.uk/guidance/ng220'],['The Hot Seat','sca-practice.html']] },
+    { cat:'safety', date:'As of Oct 2026', title:'Assisted dying — what the law is now, and what to say',
+      what:'As of October 2026, assisting suicide remains a criminal offence in England and Wales (Suicide Act 1961). The 2026–27 Terminally Ill Adults (End of Life) Bill was defeated at Commons second reading on 11 September 2026 by 286 votes to 270 (Pharmaceutical Journal; Politics.co.uk, September 2026). The law differs elsewhere: the Scottish Parliament rejected its bill on 17 March 2026, and Jersey and the Isle of Man have taken their own legislation forward. Always check the current legal position before the exam.',
+      why:'A request to help someone die is a recognised SCA ethics station. Marks come from listening, stating the law accurately and kindly, exploring suffering, mood and suicide risk, and not abandoning the patient.',
+      links:[['Pharmaceutical Journal report','https://pharmaceutical-journal.com/article/news/assisted-dying-bill-defeated-in-house-of-commons'],['Palliative care','../cases/palliative-care.html']] }
   ];
 
   let cat='all';

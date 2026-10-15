@@ -174,7 +174,7 @@
 
 <script src="../assets/site.js?v=107"></script>
 <!-- the full 312-case library, same files and order as The Hot Seat -->
-<script src="../assets/sca-loader.js?v=1"></script>
+<script src="../assets/sca-loader.js?v=3"></script>
 <script>
 (function(){
   'use strict';
@@ -204,13 +204,14 @@
   [].concat(domAtt, hotSeat).forEach(e=>{ if(e&&typeof e==='object'){ const rto=e.rto!=null?e.rto:e.ro;
     if(num(e.dg)!=null)dgP.push(num(e.dg)); if(num(e.cm)!=null)cmP.push(num(e.cm)); if(num(rto)!=null)rtoP.push(num(rto)); } });
   // Hot Seat scorecard attempts (RGPScaProgress store): map got/max fractions onto the 0–3 domain scale.
-  // Scorecard domains are gs (Global Skills) · tasks (data-gathering + diagnosis + management) · ro (Relating).
+  // Scorecard domains are the RCGP three: dg · cm · ro. Older saves used gs / tasks / ro and are mapped here.
   hotSeatSC.forEach(r=>{ if(!r||!r.got||!r.max) return;
     const fr=k=> (r.max[k]>0 ? r.got[k]/r.max[k] : null);
+    if(r.max.dg!=null||r.max.cm!=null){ const d=fr('dg'),m=fr('cm'),o=fr('ro'); if(d!=null)dgP.push(d*3); if(m!=null)cmP.push(m*3); if(o!=null)rtoP.push(o*3); return; }
     const tasks=fr('tasks'), ro=fr('ro'), gs=fr('gs');
     if(tasks!=null){ dgP.push(tasks*3); cmP.push(tasks*3); }          // Tasks spans DG + CM
     const rel=[ro,gs].filter(v=>v!=null);
-    if(rel.length){ rtoP.push(rel.reduce((a,b)=>a+b,0)/rel.length*3); } // Relating + Global skills → RTO
+    if(rel.length){ rtoP.push(rel.reduce((a,b)=>a+b,0)/rel.length*3); } // legacy relating + consultation-skills items → RTO
   });
 
   const avg = a => a.length? a.reduce((x,y)=>x+y,0)/a.length : null;

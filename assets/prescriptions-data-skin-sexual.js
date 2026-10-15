@@ -6,44 +6,7 @@
   const RX = (window.RGP_PRESCRIPTIONS = window.RGP_PRESCRIPTIONS || []);
 
   RX.push(
-  // ---------------- Fungal skin infection (tinea) ----------------
-  {
-    id: 'tinea-skin',
-    title: 'Fungal skin infection (tinea / ringworm)',
-    category: 'Dermatology',
-    eyebrow: 'Topical antifungal · oral if extensive/scalp/nail',
-    indication: 'Tinea corporis/cruris/pedis (ringworm, jock itch, athlete\u2019s foot) — annular scaly itchy rash with raised edge. Confirm clinically ± skin scrapings if doubt.',
-    contraindications: 'Oral terbinafine: avoid in chronic/active liver disease — check LFTs before starting and after 4–6 weeks; stop if they rise. Avoid potent steroid alone (worsens / "tinea incognito").',
-    duration: 'Topical 2–4 weeks (continue 1–2 weeks after clearing)',
-    drugs: [
-      { name: 'Terbinafine 1% cream', dose: 'Apply', freq: 'OD–BD', route: 'Topical', days: '1–2 weeks (foot up to 4)' },
-      { name: 'OR Clotrimazole 1% cream', dose: 'Apply', freq: 'BD–TDS', route: 'Topical', days: '2–4 weeks' },
-      { name: 'Marked inflammation: + Hydrocortisone 1% (short)', dose: 'Apply', freq: 'OD', route: 'Topical', days: '7 (with antifungal)' },
-    ],
-    altRegimens: [
-      { label: 'Extensive / scalp (tinea capitis)', drugs: 'Oral terbinafine or griseofulvin (children) — scalp needs ORAL treatment; send scrapings; treat household.' },
-      { label: 'Nail (onychomycosis), confirmed', drugs: 'Oral terbinafine 250 mg OD — fingernails usually 6 weeks; toenails usually 12 weeks (some need up to 6 months); confirm by clippings first.' },
-    ],
-    counselling: [
-      'Apply to the rash AND 2 cm of surrounding normal skin; continue 1–2 weeks after it clears.',
-      'Keep the area clean and dry; wear loose cotton clothing; dry between toes.',
-      'Do not share towels; wash towels/socks hot; treat athlete\u2019s foot to prevent recurrence/cellulitis.',
-      'Avoid using steroid creams alone — they mask and worsen fungal rashes.',
-    ],
-    followUp: 'Review if no better at 2–4 weeks (reconsider diagnosis / scrapings / oral therapy).',
-    redFlags: [
-      'Scalp involvement / hair loss → needs oral antifungal (topical insufficient).',
-      'Spreading cellulitis from cracked athlete\u2019s foot → antibiotics.',
-    ],
-    emisText: `Tinea (ringworm/jock itch/athlete\u2019s foot):
-- Terbinafine 1% cream OD–BD × 1–2 wks (foot up to 4) OR Clotrimazole 1% cream BD–TDS × 2–4 wks. Apply to rash + 2 cm margin; continue 1–2 wks after clearing.
-- Scalp/nail → ORAL terbinafine (confirm nail by clippings first).
-Keep dry; don\u2019t share towels; avoid steroid-only creams. Review if no better at 2–4 wks.`,
-    sources: [
-      { label:'PCDS — tinea', url:'https://www.pcds.org.uk/clinical-guidance/tinea' },
-    ],
-  },
-
+  // tinea-skin merged into fungal-infections (Upload 127) — #tinea-skin still opens it (alias in prescriptions.js)
   // ---------------- Scabies ----------------
   {
     id: 'scabies',
@@ -236,7 +199,7 @@ Avoid facial steroids. Ocular symptoms → ophthalmology.`,
 Avoid triggers; take regularly. Chronic >6 wks or uncontrolled → dermatology/immunology.
 Angioedema with airway/breathing compromise → IM adrenaline + 999.`,
     sources: [
-      { label:'BSACI', url:'https://www.bsaci.org/guidelines/' },
+      { label:'NICE CKS — Urticaria', url:'https://cks.nice.org.uk/topics/urticaria/' },
     ],
   },
 

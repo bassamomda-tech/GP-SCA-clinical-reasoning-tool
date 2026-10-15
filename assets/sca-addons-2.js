@@ -60,7 +60,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mrs Beech, it’s Dr Lee. Thank you for taking the call. Is now a good time, and are you somewhere you can talk?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks privacy and readiness on the telephone"
    },
    {
@@ -70,7 +70,7 @@
    {
     "who": "dr",
     "text": "I’m very glad you feel well, and that matters. I’d like to explain what the tracing showed, hear what you make of it, and decide together what, if anything, to do. Does that sound all right?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Clear agenda that includes her view and her choice"
    },
    {
@@ -82,7 +82,7 @@
     "clock": "1–3 min",
     "who": "dr",
     "text": "Have you noticed anything at all: fluttering, breathlessness, dizziness, chest pain or blackouts?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for symptoms and haemodynamic effect"
    },
    {
@@ -92,7 +92,7 @@
    {
     "who": "dr",
     "text": "Any bleeding problems, falls, kidney trouble, or do you take ibuprofen or aspirin? And how much alcohol, roughly?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Bleeding-risk screen before any anticoagulation discussion"
    },
    {
@@ -104,7 +104,7 @@
     "clock": "3–5 min",
     "who": "dr",
     "text": "Then here’s what the watch found. The top chambers of your heart aren’t beating in step; they’re quivering. Blood in a small pouch up there moves sluggishly, and still blood can clot. If a clot breaks off, it can travel to the brain and cause a stroke. You can feel perfectly well through all of that, which is why the watch caught it and you didn’t.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Plain picture of AF and why feeling well and being at risk coexist"
    },
    {
@@ -114,7 +114,7 @@
    {
     "who": "dr",
     "text": "The usual treatment is a blood thinner, to stop clots forming.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Introduces anticoagulation"
    },
    {
@@ -126,7 +126,7 @@
    {
     "who": "dr",
     "text": "You went quiet when I said blood thinner. Can I ask what that brought up?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Names the temperature drop and invites the story"
    },
    {
@@ -136,7 +136,7 @@
    {
     "who": "dr",
     "text": "I’m so sorry. Three days, from a fall that didn’t break his glasses. I can understand completely why the tablet is the villain in that story, and on the ice that day it did play its part. Thank you for telling me.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Receives the grief fully before any pharmacology"
    },
    {
@@ -148,19 +148,19 @@
     "clock": "7–10 min",
     "who": "dr",
     "text": "May I tell you what’s different between Gordon and you? Three things. First, he had a metal valve. For that, warfarin is the only option, even now. The newer tablets can’t be used. He had no choice.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Honours the story while correcting its categories"
    },
    {
     "who": "dr",
     "text": "Second, the tablets we use for AF now are different drugs from warfarin. No blood-test clinics, fewer food rules, and in the big trials they caused fewer bleeds into the brain than warfarin. Third, your own bleeding risk is low: no falls, good health, no ibuprofen, and I’ll keep your blood pressure well controlled.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Distinguishes DOAC from warfarin and personalises bleeding risk"
    },
    {
     "who": "dr",
     "text": "On aspirin, I have to be honest with you. For this kind of clot it gives very little protection, but it still makes you bleed more easily. National guidance says not to use it for AF. I’d be giving you the risk without the benefit.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Retires the aspirin compromise kindly and explicitly"
    },
    {
@@ -170,7 +170,7 @@
    {
     "who": "dr",
     "text": "We score it from your age, being a woman, and your blood pressure. Your score is three, which puts you in the group where a blood thinner is recommended. Each year without treatment carries a real chance of a stroke, and strokes from AF tend to be the big ones that take speech or movement. Treatment reduces that risk a great deal.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Makes the CHA₂DS₂-VASc score personal and honest without false precision"
    },
    {
@@ -180,7 +180,7 @@
    {
     "who": "dr",
     "text": "You don’t have to. This is your decision. I’ll post you written information, we’ll do some baseline blood tests so the option stays open, and we’ll speak again next week. Your grandson is welcome on that call if you’d like a second pair of ears.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Hands the decision back with structure, not pressure"
    },
    {
@@ -188,7 +188,7 @@
     "clock": "10–12 min",
     "who": "dr",
     "text": "Whatever you decide, one thing holds: if your face droops, an arm goes weak, or your words come out jumbled, that’s 999 straight away. And if you get palpitations, breathlessness or feel faint, ring us the same day.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "FAST safety-net regardless of her decision"
    },
    {
@@ -198,7 +198,7 @@
    {
     "who": "dr",
     "text": "Exactly. I’ll book the call for Tuesday. And keep the watch on; it did you a favour.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Dated follow-up and a positive reframe of the watch"
    },
    {
@@ -210,57 +210,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Let her state her view (“a wobbly tick”) and agreed an agenda that included her choice.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Active, independent, widowed, dog walking and driving; the grandson and neighbour as influences.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Noticed the silence at “blood thinner” and invited Gordon’s story; took the aspirin offer as a cue, not a solution.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (normal ageing, a fussy watch), concern (warfarin killed Gordon), expectation (decline politely, perhaps aspirin).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Baseline FBC, U&E with creatinine clearance, LFTs, thyroid function; BP check; pulse and symptom review.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Asymptomatic AF with controlled rate; screened for symptoms, bleeding history, falls, NSAIDs and alcohol.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "No syncope, chest pain, breathlessness or previous stroke or TIA; stroke risk quantified with CHA₂DS₂-VASc and bleeding with ORBIT.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Explained AF and the clot mechanism in plain words, and why feeling well does not mean low risk.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "DOAC offered per NICE NG196; aspirin explicitly not recommended; decision time with written information and a booked follow-up.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "BP optimised; NSAIDs avoided; Gordon’s mechanical-valve warfarin distinguished from her situation.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "FAST symptoms mean 999; palpitations, breathlessness or faintness mean a same-day call; next call dated.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -434,37 +434,37 @@
    "intro": "This station is failed by talking pharmacology through a silence. Gordon arrives before his name does; hear him first, then separate his story from hers.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Accepting aspirin as a reasonable compromise.",
      "why": "“Management plan not in line with current UK best practice.” NICE NG196 advises against aspirin monotherapy for AF stroke prevention.",
      "fix": "Say it plainly and kindly: little protection, real bleeding risk, not recommended."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Reassuring her that asymptomatic AF needs nothing because she feels well.",
      "why": "Symptoms do not predict stroke risk; CHA₂DS₂-VASc does, and hers is 3.",
      "fix": "Explain the still-blood mechanism and why the watch caught what she could not feel."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Skipping the bleeding-risk screen.",
      "why": "NICE NG196 asks for bleeding assessment (ORBIT) and management of modifiable risks; it is also what reassures a frightened patient.",
      "fix": "Ask about falls, bleeding, NSAIDs and alcohol, and say out loud what you will optimise."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Carrying on with DOAC facts after she goes quiet.",
      "why": "“Does not identify or respond to the patient’s cues.” The silence is Gordon.",
      "fix": "“You went quiet when I said blood thinner. What did that bring up?”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Pressing for a decision on the call.",
      "why": "Pressure turns hesitation into a lasting refusal and fails the shared-decision marks.",
      "fix": "Written information, the grandson invited, a dated follow-up call, and a record that the door stays open."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No safety-net because she has declined treatment.",
      "why": "Non-specific or absent safety-netting is a standard failing statement, and her stroke risk is unchanged by her decision.",
      "fix": "FAST means 999 whatever she decides; palpitations or breathlessness mean a same-day call."
@@ -523,7 +523,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Marek, I’m Dr Lee. I can see you’re on site, so I’ll be efficient. Tell me about this chest.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Respects his time and opens with his story"
    },
    {
@@ -533,7 +533,7 @@
    {
     "who": "dr",
     "text": "I’ll give you a straight answer. To do that, I need a few minutes on exactly how it behaves. Then we’ll agree a plan that works with the job. Fair?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Agenda that accepts his constraint without accepting his diagnosis"
    },
    {
@@ -545,7 +545,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Put your hand on the spot where it hurts and press hard. Does that bring it on? And does it catch when you twist or take a deep breath?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Tests the muscle explanation properly and visibly"
    },
    {
@@ -555,7 +555,7 @@
    {
     "who": "dr",
     "text": "Does it ever come when you’re resting, sitting in the van, or in bed? And how long does it last?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks the rest-pain question that changes the lane"
    },
    {
@@ -565,7 +565,7 @@
    {
     "who": "dr",
     "text": "That last bit is important. When did you last have it?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Picks up the falling threshold and times the last episode"
    },
    {
@@ -575,7 +575,7 @@
    {
     "who": "dr",
     "text": "Any sweating or feeling sick with it, or feeling faint? And tell me about smoking, blood pressure, and your family’s hearts.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Autonomic features and risk factors"
    },
    {
@@ -587,7 +587,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "Your dad. What happened to him after that?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the family cue to its meaning"
    },
    {
@@ -597,7 +597,7 @@
    {
     "who": "dr",
     "text": "Thank you for being that honest. That’s a heavy thing to carry up the stairs every morning. What would it mean for you if it was your heart?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Receives the confession and explores the consequence"
    },
    {
@@ -609,13 +609,13 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Then here’s the honest answer. Tightness that comes with effort, goes with rest, with no sore spot and no catch on breathing, isn’t a strain. It’s very likely angina: the heart asking for more blood than a narrowed artery can give. The good part of that sentence is that it’s a warning, before any damage.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Earned reframe to angina with the reasoning shown"
    },
    {
     "who": "dr",
     "text": "Your dad’s generation found out on the day of the heart attack. You’re finding out at the warning. The tests and tablets exist so forty-seven doesn’t become fifty-two.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Answers the father’s story with the warning-versus-damage difference"
    },
    {
@@ -625,7 +625,7 @@
    {
     "who": "dr",
     "text": "Because it’s coming on more easily, I don’t want to wait. I’d like you in this afternoon for a heart tracing, blood pressure and bloods. I’ll speak to the heart team today about how quickly they see you. If the tracing or their advice says today, it’s today.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Weighs the falling threshold and lowers the bar for urgency"
    },
    {
@@ -633,13 +633,13 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Treatment starts today. A GTN spray under the tongue for attacks, a tablet to protect the heart from angina, a low-dose aspirin and a cholesterol tablet. I’ll go through each one with you this afternoon.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Starts treatment in line with NICE CG126"
    },
    {
     "who": "dr",
     "text": "And work. I’m not signing you off. I’m redeploying you. The lads carry the boards and push the barrow; you run the job from the ground floor until the clinic has seen you. Can that work?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "A work prescription built around his economics"
    },
    {
@@ -649,7 +649,7 @@
    {
     "who": "dr",
     "text": "About the spray. If the tightness comes: stop, sit down, one spray. Not better in five minutes, a second spray. Still there five minutes after the second, ring 999, wherever you are.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "GTN teaching with the NICE CG126 999 rule"
    },
    {
@@ -657,7 +657,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "And 999 straight away for pain at rest, pain lasting more than a few minutes that the spray doesn’t shift, or pain with sweating or sickness. Don’t drive if it comes on at the wheel. Tell me back the spray rule.",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Specific red flags and teach-back"
    },
    {
@@ -667,7 +667,7 @@
    {
     "who": "dr",
     "text": "Spot on. See you at four for the tracing. When the results are back we’ll have the smoking conversation properly; I suspect you’re more ready for it than you were this morning.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Dated follow-up and planned cessation discussion"
    },
    {
@@ -679,57 +679,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; let him give the whole “pulled muscle” story before examining it.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Self-employed, two labourers paid weekly, no income protection, a client complaining; smoking and diet.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “eases off when I have a breather”, “three flights to one and a bit” and the father, and explored each.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (strain), concern (father’s MI at 52 and three families’ income), expectation (something to rub on and carry on).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Self-palpation and positional check on video; same-day ECG, BP, weight; lipids, HbA1c, FBC, U&E; rapid-access chest pain clinic for CT coronary angiography.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Angina versus musculoskeletal pain versus reflux; tested the muscle story rather than dismissing it.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about rest pain, duration, autonomic features and timing of the last episode; recognised the falling threshold as a warning of instability.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Named probable angina clearly and explained why it is not a strain.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Same-day ECG and cardiology advice; GTN with teaching; beta-blocker or CCB; aspirin 75 mg; statin; a specific work plan instead of a sick note.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Smoking cessation offered at the right moment; BP and diabetes screening; DVLA Group 1 angina advice.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999 rules for rest pain and GTN failure; afternoon appointment; results review with the smoking conversation booked.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -903,37 +903,37 @@
    "intro": "This station is failed by agreeing with the patient’s label. It is passed by testing the muscle story honestly, naming angina, and building a plan he can afford to follow.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Accepting “pulled muscle” because he is a builder and it started with lifting.",
      "why": "“Does not gather sufficient information to make a safe assessment.” Exertional discomfort relieved by rest within minutes is typical angina (NICE CG95).",
      "fix": "Test it: press the spot, twist, deep breath. Then ask whether it ever comes at rest."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Missing “three flights, now one and a bit”.",
      "why": "A falling threshold suggests instability and changes how fast he needs assessment.",
      "fix": "Ask when it last happened and arrange a same-day ECG and cardiology advice."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Giving GTN without the instructions, or with the wrong 999 rule.",
      "why": "NICE CG126: if the pain has not gone 5 minutes after the second dose, call 999.",
      "fix": "Sit, one spray, 5 minutes, second spray, 5 minutes, then 999. Get him to say it back."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Hearing about the father and moving straight on to cholesterol.",
      "why": "“Does not identify or respond to the patient’s cues.” The father’s MI is why he mislabelled the pain.",
      "fix": "Ask what happened to his dad after the heart attack, and let the confession come."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Signing him off work as the default.",
      "why": "He will refuse or ignore it; adherence depends on keeping his crew paid.",
      "fix": "A specific work prescription: no loaded stairs, supervise from the ground floor."
     },
     {
-     "dom": "gs",
+     "dom": "ro",
      "fail": "Jargon: “We’ll refer you to RACPC for CTCA and start a beta-blocker and a high-intensity statin.”",
      "why": "“Language not easily understood by the patient.”",
      "fix": "“A clinic that scans the heart’s pipes, a tablet to calm the heart on the stairs, and one to lower cholesterol.”"
@@ -993,7 +993,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Barry, it’s Dr Lee from the surgery. Thanks for waiting. Before anything else: are you parked up safely with the handbrake on, and is the pain there right now?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes safety and whether pain is ongoing in the first breath"
    },
    {
@@ -1003,7 +1003,7 @@
    {
     "who": "dr",
     "text": "I hear you about Plymouth, and we’ll come back to it, I promise. Tell me what the pain feels like, in your own words.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges his agenda without letting it steer the call"
    },
    {
@@ -1015,7 +1015,7 @@
     "clock": "1–3 min",
     "who": "dr",
     "text": "Does it go anywhere, into your arm, neck or jaw? And are you sweaty or sick with it?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Targets radiation and autonomic features"
    },
    {
@@ -1025,7 +1025,7 @@
    {
     "who": "dr",
     "text": "Have you had anything like this before, maybe when you were lifting or climbing up into the cab?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Harvests the crescendo history"
    },
    {
@@ -1035,7 +1035,7 @@
    {
     "who": "dr",
     "text": "Barry, I’m going to be straight with you, because I think you’d see through anything else. Heavy pain like a strap, into your arm and jaw, with sweating and sickness, in a man with diabetes who smokes, is not heartburn. I think your heart is short of blood right now, and those two weeks of turns were it warning you. This needs an ambulance to you now.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names ACS plainly and links the fortnight to today"
    },
    {
@@ -1047,7 +1047,7 @@
    {
     "who": "dr",
     "text": "Finished how? What are you picturing?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Hears the resistance as fear and explores it"
    },
    {
@@ -1057,7 +1057,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me. That’s a lot riding on you, and it explains why you’d rather this was indigestion. Can I give you the real rules, not Tony’s version?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the fear and asks permission before informing"
    },
    {
@@ -1067,7 +1067,7 @@
    {
     "who": "dr",
     "text": "After a heart attack the DVLA pauses a lorry licence, yes. But there’s a route back: from six weeks onwards, if you’ve no symptoms, pass an exercise test and the heart is pumping well, you can apply to get it back. It’s a pause, not a full stop. The thing that ends a driving career for good is a big heart attack that nobody treated in time.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Answers the licence fear with honest DVLA specifics"
    },
    {
@@ -1075,7 +1075,7 @@
     "clock": "5–8 min",
     "who": "dr",
     "text": "So here’s what happens now, and I’ll stay with you. I’m going to call 999 for you on the other line while you stay on with me. Tell me exactly where you are: road, direction, anything the crew will see.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "999 arranged from this call with the location pinned"
    },
    {
@@ -1085,7 +1085,7 @@
    {
     "who": "dr",
     "text": "Got it. Next: turn the engine off, unlock the cab door, and sit upright; don’t lie flat. You said there’s aspirin in the glove box. Read me what the packet says.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Practical instructions and checks the aspirin strength"
    },
    {
@@ -1095,7 +1095,7 @@
    {
     "who": "dr",
     "text": "Perfect. Chew one whole tablet now, don’t just swallow it. It’s now … 1:52. The crew will want that time. Are you allergic to aspirin at all?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Aspirin 300 mg chewed with allergy check and time logged"
    },
    {
@@ -1105,7 +1105,7 @@
    {
     "who": "dr",
     "text": "The load is now your dispatcher’s problem, not yours. It takes one sentence: “Driver taken ill, lorry secure in a layby on the A38 southbound.” Would you like me to ring them, or will you do it once the ambulance is booked?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Solves the practical chain that is blocking consent"
    },
    {
@@ -1115,7 +1115,7 @@
    {
     "who": "dr",
     "text": "No. And nobody drives that lorry until someone from the firm comes for it. Not you, today or tomorrow.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Makes explicit that he does not drive"
    },
    {
@@ -1123,7 +1123,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "The ambulance is booked and on its way. While we wait: if the pain gets worse, you feel faint, or you get more breathless, tell me straight away, and if we get cut off, ring 999 yourself. Keep the phone in your hand.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Concrete escalation plan for the minutes before the crew arrive"
    },
    {
@@ -1133,7 +1133,7 @@
    {
     "who": "dr",
     "text": "You’re not daft. You rang someone, and that matters. The smoking, the sugar and those two weeks of warnings are a conversation for when you’re home, and I want us to have it. Not today.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Defers the lifestyle conversation deliberately and kindly"
    },
    {
@@ -1143,7 +1143,7 @@
    {
     "who": "dr",
     "text": "Before the crew get there, tell me back what you’ll say to them.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back under pressure"
    },
    {
@@ -1155,7 +1155,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Exactly right. I’ll put a note on your record that I’ve spoken to you, and when you’re discharged I’ll ring you. We’ll talk about the licence paperwork, a fit note and getting you back on the road properly. I can hear the siren. Stay sat where you are.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Documents, commits to follow-up and closes safely"
    },
    {
@@ -1167,57 +1167,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Checked he was parked safely and whether pain was present now; let him describe the pain in his own words before challenging the heartburn label.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "HGV driver, Group 2 licence, mortgage and finance, daughter living at home; the delivery deadline and the dispatcher as the practical pressure.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Heard “heavy like a strap”, the sweating and “that’s me finished, isn’t it?” and explored each rather than moving past them.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (heartburn), concern (losing the HGV licence after Tony’s stent), expectation (a stronger antacid and Plymouth by four).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Recognised that no remote assessment is adequate: emergency admission for ECG and troponin, not a prescription or a same-day surgery visit.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "ACS versus reflux, weighed on the character of the pain, radiation, autonomic features and risk factors; did not use antacid failure or success as a test.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Established ongoing pain for an hour with radiation, sweating and nausea, plus a two-week crescendo; treated it as ACS.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Told him plainly that this is probably his heart, not heartburn, and why.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "999 from the call with location pinned; aspirin 300 mg chewed with the time logged; engine off, door unlocked, upright; no driving; dispatcher told.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Diabetes and smoking recognised as risk; the lifestyle conversation deliberately deferred to follow-up; DVLA duties explained honestly.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "What to do if the pain worsens or the call drops; stayed on the line until the crew arrived; post-discharge call promised.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -1392,37 +1392,37 @@
    "intro": "This station is failed by taking the patient’s label at face value, or by getting the clinical steps right and never finding out why he is refusing them. The licence is the lock; honest DVLA facts are the key.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Accepting “heartburn” and sending a PPI or antacid prescription, or advising a trial to see if it settles.",
      "why": "“Does not gather sufficient information to make a safe assessment.” The description is classic for ACS, and NICE CG95 says not to use response to treatment to diagnose.",
      "fix": "Ask about character, radiation, sweating and nausea in the first two minutes, then say what you think out loud."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Advising him to “get to A&E” or to come to the surgery.",
      "why": "“Management plan not in line with current UK best practice.” Ongoing pain means an emergency ambulance, and he must not drive.",
      "fix": "Arrange 999 from the call, pin the location, and say plainly that nobody drives the lorry."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Forgetting aspirin, or not checking the tablets he has.",
      "why": "NICE CG95 recommends 300 mg aspirin as soon as possible unless allergic; a 75 mg tablet swallowed whole is not the same thing.",
      "fix": "Ask him to read the packet, check allergy, have him chew 300 mg and note the time for the crew."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Repeating “you need an ambulance” louder each time he says no.",
      "why": "“Does not identify or respond to the patient’s cues.” The refusal is fear about the licence, not ignorance.",
      "fix": "Ask “finished how?” and let Tony’s story come out, then answer it with the real Group 2 rules."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Lecturing about smoking and diabetes while he is in pain in a layby.",
      "why": "Mistimed advice reads as blame and costs his trust at the moment you need his agreement.",
      "fix": "Name it for later: “That’s a conversation for when you’re home, and I want us to have it.”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Hanging up once the ambulance is called, with no plan if things change.",
      "why": "Non-specific safety-netting is a standard failing statement; he is alone and may deteriorate.",
      "fix": "Stay on the line, tell him what to do if the pain worsens or the call drops, and use teach-back for the crew handover."
@@ -1446,28 +1446,28 @@
    "reason": "Telephone appointment for his chest X-ray result."
   },
   "knowledge": {
-   "guideline": "NICE NG12 (updated April 2026) · BTS clinical statement on chronic cough in adults (2023) · NICE NG115 (COPD)",
+   "guideline": "BTS clinical statement on chronic cough in adults (2023) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · NICE NG115 (COPD)",
    "summary": "A normal chest X-ray does not close the case. An 11-week cough in a 64-year-old ex-smoker with asbestos exposure, hoarseness, possible haemoptysis and possible weight loss needs a face-to-face review and onward referral, not an all-clear.",
    "points": [
     {
      "h": "What the X-ray was for",
-     "t": "NICE NG12 (updated April 2026): offer an urgent direct-access chest X-ray to assess for lung cancer or mesothelioma at 40 and over with 2 or more unexplained symptoms (cough, fatigue, breathlessness, chest pain, weight loss, appetite loss), or 1 or more if the person has ever smoked or (for mesothelioma) been exposed to asbestos. Derek met this, and the film was done. A plain film can miss both cancers, so persisting symptoms need reassessment."
+     "t": "NICE NG12: offer an urgent direct-access chest X-ray to assess for lung cancer or mesothelioma at 40 and over with 2 or more unexplained symptoms (cough, fatigue, breathlessness, chest pain, weight loss, appetite loss), or 1 or more if the person has ever smoked or (for mesothelioma) been exposed to asbestos. Derek met this, and the film was done. A plain film can miss both cancers, so persisting symptoms need reassessment."
     },
     {
      "h": "Haemoptysis overrides the film",
-     "t": "NICE NG12 (updated April 2026): refer on a suspected cancer pathway for lung cancer if aged 40 and over with unexplained haemoptysis. “Maybe a fleck once” must be clarified, not accepted as a bitten cheek."
+     "t": "NICE NG12: refer on a suspected cancer pathway for lung cancer if aged 40 and over with unexplained haemoptysis. “Maybe a fleck once” must be clarified, not accepted as a bitten cheek."
     },
     {
      "h": "Hoarseness",
-     "t": "NICE NG12 (updated April 2026): consider a suspected cancer pathway referral for laryngeal cancer at 45 and over with persistent unexplained hoarseness. In a smoker it can also reflect recurrent laryngeal nerve involvement from chest disease."
+     "t": "NICE NG12: consider a suspected cancer pathway referral for laryngeal cancer at 45 and over with persistent unexplained hoarseness. In a smoker it can also reflect recurrent laryngeal nerve involvement from chest disease."
     },
     {
      "h": "Weight loss",
-     "t": "NICE NG12 (updated April 2026): at 60 and over with unexplained weight loss of more than 5% within 6 months, assess for other symptoms and offer urgent investigation, a suspected cancer pathway referral, or a non-specific symptoms pathway referral. Weigh him; don’t rely on “a notch looser”."
+     "t": "NICE NG12: at 60 and over with unexplained weight loss of more than 5% within 6 months, assess for other symptoms and offer urgent investigation, a suspected cancer pathway referral, or a non-specific symptoms pathway referral. Weigh him; don’t rely on “a notch looser”."
     },
     {
      "h": "Asbestos and the occupational history",
-     "t": "Pipe lagging and boiler insulation work before the 1990s is significant asbestos exposure. Latency for mesothelioma and asbestos-related lung cancer is decades. It is on no template; ask “what work did you do?”. Where symptoms persist after a normal film, NICE NG12 (updated April 2026) safety-netting applies: arrange review and discuss with the local respiratory or lung cancer team, who will usually go to CT."
+     "t": "Pipe lagging and boiler insulation work before the 1990s is significant asbestos exposure. Latency for mesothelioma and asbestos-related lung cancer is decades. It is on no template; ask “what work did you do?”. Where symptoms persist after a normal film, NICE NG12 safety-netting applies: arrange review and discuss with the local respiratory or lung cancer team, who will usually go to CT."
     },
     {
      "h": "Other causes still count",
@@ -1485,7 +1485,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Morning Mr Halloran, it’s Dr Lee from the surgery. Can I just check I’m speaking to Derek, and that you’re somewhere you can talk for ten minutes or so?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Identity and privacy checks on a telephone consultation"
    },
    {
@@ -1495,7 +1495,7 @@
    {
     "who": "dr",
     "text": "You’re not bothering me at all. I can confirm the X-ray didn’t show anything obvious. You also said the cough’s no better, and I don’t want to skip past that. Can I ask a few questions about it before we decide what the result means for you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Gives the result honestly without granting an all-clear, and picks up the afterthought cue"
    },
    {
@@ -1507,7 +1507,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "Tell me about the cough itself. How has it been over these eleven weeks?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question before narrowing"
    },
    {
@@ -1517,7 +1517,7 @@
    {
     "who": "dr",
     "text": "When you say more puffed, is that new since the cough started, or has it been creeping up? And has your voice changed at all?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Re-screens the symptoms he minimises: breathlessness and hoarseness"
    },
    {
@@ -1527,8 +1527,8 @@
    {
     "who": "dr",
     "text": "Have you ever coughed up any blood, even a streak or a fleck?",
-    "dom": "tasks",
-    "why": "Asks directly about haemoptysis, an NICE NG12 (updated April 2026) referral criterion"
+    "dom": "dg",
+    "why": "Asks directly about haemoptysis, an NICE NG12 referral criterion"
    },
    {
     "who": "pt",
@@ -1537,7 +1537,7 @@
    {
     "who": "dr",
     "text": "Was it mixed in with what you coughed up, or in your mouth before you coughed? And how about your weight and appetite?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Clarifies the fleck rather than accepting the explanation, and asks about weight"
    },
    {
@@ -1547,7 +1547,7 @@
    {
     "who": "dr",
     "text": "Thank you. Can I ask something the forms never do: what work did you do over the years?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Takes the occupational history no template prompts"
    },
    {
@@ -1559,7 +1559,7 @@
     "clock": "5–7 min",
     "who": "dr",
     "text": "That matters a great deal, and I’m glad you told me. I get the sense that X-ray result meant a lot to you. What were you hoping it would tell you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Responds to the exposure and explores what the all-clear means to him"
    },
    {
@@ -1569,7 +1569,7 @@
    {
     "who": "dr",
     "text": "I’m so sorry about Tommy. Three years of carrying that on your own is a lot. It makes complete sense that you wanted this call to end the worry.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Names and validates the hidden fear without feeding or dismissing it"
    },
    {
@@ -1581,8 +1581,8 @@
     "clock": "7–9 min",
     "who": "dr",
     "text": "I’m saying I owe you the honest version. An X-ray is a good first look, but it can miss things. You have a cough that won’t settle, a hoarse voice, some weight off, a fleck of blood in the phlegm, and your smoking and asbestos history. Any one of those alone would be small. Together, national guidance says I should refer you urgently for a proper look, even with a normal X-ray.",
-    "dom": "tasks",
-    "why": "Explains why the normal CXR does not exclude cancer and states the NICE NG12 (updated April 2026) basis"
+    "dom": "ro",
+    "why": "Explains why the normal CXR does not exclude cancer and states the NICE NG12 basis"
    },
    {
     "who": "pt",
@@ -1591,7 +1591,7 @@
    {
     "who": "dr",
     "text": "I don’t know, and I’m not telling you it is. There are other causes: smoking damage to the lungs, reflux, asbestos scarring that isn’t cancer. What I am telling you is that I’d be failing you if I didn’t look properly. The next step is usually a CT scan, which sees far more than an X-ray.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Honest differential without false reassurance or catastrophising"
    },
    {
@@ -1603,7 +1603,7 @@
     "clock": "9–11 min",
     "who": "dr",
     "text": "Here’s what I suggest. I’d like to see you in person this week to examine your chest and neck, weigh you properly and check a breathing test. I’m sending an urgent referral to the lung team today, and they’ll usually arrange the CT within a couple of weeks. If the voice is still hoarse, it gets looked at too. How does that sit with you?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Suspected cancer pathway referral, examination and weight, shared decision"
    },
    {
@@ -1613,7 +1613,7 @@
    {
     "who": "dr",
     "text": "Getting on with it now is the right choice, whatever it shows. Is there anyone at home you’d want to talk this through with?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks support before closing"
    },
    {
@@ -1625,7 +1625,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "It might help to tell her. If you cough up more than a fleck of blood, get suddenly more breathless, or have chest pain, ring us the same day, or 999 if it’s severe. The hospital will contact you within two weeks. If you haven’t heard in a week, ring me, and I’ll call you when the results are back.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net, timescales, and the surgery owns the follow-up"
    },
    {
@@ -1635,7 +1635,7 @@
    {
     "who": "dr",
     "text": "Just so I know I’ve explained it well, what will you tell your wife tonight?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back to check understanding"
    },
    {
@@ -1645,7 +1645,7 @@
    {
     "who": "dr",
     "text": "That’s exactly it. You’ve done the right thing, Derek. I’ll see you on Thursday.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Confirms the plan and a dated follow-up"
    }
   ],
@@ -1653,57 +1653,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Gave the result honestly, then opened up the ongoing cough instead of letting him close the call on “it’s clear”.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Occupational history (30 years of asbestos lagging), smoking history, retirement and golf, who is at home.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “the cough’s no better”, “that’s good, isn’t it?” and the fleck he explained away, and explored each.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (clear X-ray means all clear), concern (Tommy’s death from mesothelioma), expectation (to be discharged).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Face-to-face review this week: chest, clubbing, neck nodes, measured weight, spirometry; urgent CT via the lung team.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Lung cancer and mesothelioma vs COPD, reflux, rhinitis and benign asbestos-related disease; clarified whether the blood was coughed up.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Recognised haemoptysis at 40+, persistent hoarseness at 45+ and possible weight loss at 60+ as NICE NG12 (updated April 2026) criteria despite the normal film.",
-    "pts": 2
+    "d": "Recognised haemoptysis at 40+, persistent hoarseness at 45+ and possible weight loss at 60+ as NICE NG12 criteria despite the normal film.",
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated plainly: persistent cough with red flags, cancer not excluded by the X-ray, cause not yet known.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Suspected cancer pathway referral to the lung team the same day, CT expected; hoarseness followed up; honest framing, no false reassurance.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Considered COPD (spirometry) and asbestos-related disease; involved his wife as support.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Same-day triggers named; referral timescale given; surgery chases; dated review and a results call.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -1745,7 +1745,7 @@
     {
      "t": "7–10",
      "h": "Explain and refer",
-     "d": "Why a normal film doesn’t exclude cancer; the NICE NG12 (updated April 2026) features he has; urgent referral to the lung team and a face-to-face this week."
+     "d": "Why a normal film doesn’t exclude cancer; the NICE NG12 features he has; urgent referral to the lung team and a face-to-face this week."
     },
     {
      "t": "10–12",
@@ -1767,7 +1767,7 @@
     {
      "dont": "“Any other symptoms?”",
      "instead": "“Have you coughed up any blood at all, even a fleck, and was it in the phlegm?”",
-     "why": "Vague questions let him minimise; the specific question finds an NICE NG12 (updated April 2026) criterion."
+     "why": "Vague questions let him minimise; the specific question finds an NICE NG12 criterion."
     },
     {
      "dont": "“I’m worried this could be cancer, like your friend’s.”",
@@ -1813,9 +1813,9 @@
   "playbook": {
    "history": {
     "redFlags": [
-     "Haemoptysis at 40+ — NICE NG12 (updated April 2026) suspected lung cancer pathway referral, whatever the X-ray showed",
-     "Persistent unexplained hoarseness at 45+ — consider a suspected cancer pathway referral for laryngeal cancer (NICE NG12 (updated April 2026))",
-     "Unexplained weight loss over 5% in 6 months at 60+ — NICE NG12 (updated April 2026) 1.13.2; asbestos exposure; progressive breathlessness"
+     "Haemoptysis at 40+ — NICE NG12 suspected lung cancer pathway referral, whatever the X-ray showed",
+     "Persistent unexplained hoarseness at 45+ — consider a suspected cancer pathway referral for laryngeal cancer (NICE NG12)",
+     "Unexplained weight loss over 5% in 6 months at 60+ — NICE NG12 1.13.2; asbestos exposure; progressive breathlessness"
     ],
     "psychosocial": [
      "What work did you do? Asbestos history, dates and protection",
@@ -1828,13 +1828,13 @@
      "Expectation: to be told he’s fine and stop “bothering” the surgery"
     ]
    },
-   "diagnosis": "Persistent cough for 11 weeks with hoarseness, possible haemoptysis and probable weight loss in a 64-year-old ex-smoker with heavy asbestos exposure: lung cancer or mesothelioma not excluded by a normal chest X-ray; meets NICE NG12 (updated April 2026) referral criteria.",
+   "diagnosis": "Persistent cough for 11 weeks with hoarseness, possible haemoptysis and probable weight loss in a 64-year-old ex-smoker with heavy asbestos exposure: lung cancer or mesothelioma not excluded by a normal chest X-ray; meets NICE NG12 referral criteria.",
    "diagnosisLay": "“An X-ray is like a quick photo from across the room. It catches a lot, but it can miss things. Because your cough hasn’t settled and you’ve got those other changes, I want the detailed scan, which looks at the chest in slices.”",
    "management": {
     "reflectIce": "“You hoped this call would end three years of worrying since Tommy died. I can’t give you that today, but I can make sure we look properly and quickly, so you’re not left guessing.”",
     "psychosocial": "Invite him to involve his wife; acknowledge the grief for Tommy; make the surgery responsible for chasing so the waiting is shorter and less lonely.",
     "sharedPlan": [
-     "Suspected cancer pathway referral to the lung team today (NICE NG12 (updated April 2026)); CT usually arranged by the team",
+     "Suspected cancer pathway referral to the lung team today (NICE NG12); CT usually arranged by the team",
      "Face-to-face this week: examination, measured weight, spirometry; hoarseness followed up if it persists",
      "Record the asbestos exposure; consider COPD and other causes once cancer is excluded"
     ],
@@ -1854,13 +1854,13 @@
    {
     "ic": "🗺️",
     "t": "Hoarseness pathway",
-    "s": "Visual algorithm · NICE NG12 (updated April 2026) laryngeal",
+    "s": "Visual algorithm · NICE NG12 laryngeal",
     "href": "algorithms/hoarseness.html"
    },
    {
     "ic": "🗺️",
     "t": "Weight loss pathway",
-    "s": "Visual algorithm · NICE NG12 (updated April 2026) 1.13.2",
+    "s": "Visual algorithm · NICE NG12 1.13.2",
     "href": "algorithms/weight-loss.html"
    },
    {
@@ -1874,37 +1874,37 @@
    "intro": "This station is failed by one sentence: “Your X-ray is clear.” The second trap is the template. The asbestos history sits behind a single question that no form prompts.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Reading out the normal result and closing the call because he asked to be discharged.",
      "why": "“Management plan not in line with current UK best practice.” A plain film does not exclude lung cancer or mesothelioma, and his symptoms persist.",
      "fix": "“The X-ray didn’t show anything obvious, but your cough hasn’t settled, so we’re not stopping here.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Never asking about his job.",
      "why": "“Does not gather sufficient information to make a safe assessment.” Thirty years of asbestos changes the risk completely.",
      "fix": "Ask every older patient with a chronic chest symptom: “What work did you do over the years?”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Accepting “probably bit my cheek” for the fleck of blood.",
-     "why": "Unexplained haemoptysis at 40+ is a NICE NG12 (updated April 2026) suspected cancer pathway criterion by itself.",
+     "why": "Unexplained haemoptysis at 40+ is a NICE NG12 suspected cancer pathway criterion by itself.",
      "fix": "“Was it in what you coughed up, or in your mouth?” Then act on the answer."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Missing the reason he wants the all-clear so badly.",
      "why": "“Does not identify or respond to the patient’s cues.” Tommy’s death is why he may downplay symptoms and resist referral.",
      "fix": "“That result seemed to matter a lot to you. What were you hoping it would tell you?”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Swinging to catastrophe: “this could well be mesothelioma like your friend’s.”",
      "why": "“Language not easily understood” or frightening; he disengages or panics.",
      "fix": "Honest uncertainty: “I don’t know, and I’m not saying it’s cancer. I want to look properly.”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "“Ring us if you’re worried” with no timescale.",
      "why": "Non-specific safety-netting is a standard failing feedback statement.",
      "fix": "Name the triggers, give the two-week timescale, say who chases, and book the face-to-face."
@@ -1963,7 +1963,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Amara, I’m Dr Lee. Ten weeks is a long time to be coughing through lessons. Tell me about it from the start.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question that acknowledges the impact"
    },
    {
@@ -1973,7 +1973,7 @@
    {
     "who": "dr",
     "text": "Let’s find something that works. If this were the kind of cough antibiotics fix, the first course would have fixed it, so I’d like to work out what it really is. A few questions first, then a plan. All right?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Resists the antibiotic request and sets an agenda"
    },
    {
@@ -1985,7 +1985,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Is it dry or bringing anything up? And what sets it off?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Characterises the cough and triggers"
    },
    {
@@ -1995,7 +1995,7 @@
    {
     "who": "dr",
     "text": "Did you have asthma as a child, or eczema or hay fever? Anyone in the family?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Explores the atopic background"
    },
    {
@@ -2005,7 +2005,7 @@
    {
     "who": "dr",
     "text": "Any blood in what you cough, weight loss, fevers, chest pain? Heartburn, or worse lying flat? Coughing fits that end in a whoop or being sick?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens red flags, reflux and pertussis"
    },
    {
@@ -2015,7 +2015,7 @@
    {
     "who": "dr",
     "text": "Two questions I ask everyone with a cough, with no judgement at all. Do you smoke, or vape?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks about vaping openly and safely"
    },
    {
@@ -2025,7 +2025,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me. Stopping cigarettes was a real achievement. Vaping can irritate exactly the airways we’re talking about, so it’s part of the picture, not a telling-off.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Receives the disclosure without shame"
    },
    {
@@ -2033,7 +2033,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "Before we talk about a plan, is there anything else on your mind with all this? Sometimes a cough that won’t go carries a bigger worry.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Creates space for the hidden agenda"
    },
    {
@@ -2043,7 +2043,7 @@
    {
     "who": "dr",
     "text": "Thank you for trusting me with that. Congratulations, if that feels like the right word. It doesn’t change what the cough is, but it matters a lot for how we treat it, so I’m glad you said. What’s worrying you most?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Receives the disclosure as entrusted and checks her feelings"
    },
    {
@@ -2055,13 +2055,13 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Let me explain what I think this is. A dry cough, worse at night, in cold air and when you laugh, with your childhood asthma and hay fever, isn’t an infection hanging on. Your airways have become twitchy again. It’s called cough-variant asthma, and it’s very treatable, with an inhaler rather than antibiotics.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names the diagnosis and the reasoning"
    },
    {
     "who": "dr",
     "text": "And the thing that will help you sleep: in pregnancy the danger isn’t the inhaler, it’s asthma that isn’t controlled. The baby needs a mum who can breathe well. The inhalers we use are well studied in pregnancy and recommended to continue.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Delivers the key safety fact about asthma treatment in pregnancy"
    },
    {
@@ -2073,13 +2073,13 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Here’s the plan. This week, a quick breath test and a blood test to confirm asthma, ideally before you start the inhaler. Then one inhaler that combines a low-dose steroid with a reliever, used when you need it. I’ll show you how. If the tests are delayed and nights are bad, we can start sooner.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Objective testing and AIR per NICE NG245"
    },
    {
     "who": "dr",
     "text": "For the pregnancy: start folic acid 400 micrograms a day today, and I’ll help you book with the midwife. On vaping, it’s much safer than going back to cigarettes. The stop smoking service can help you come off it properly. Would you like a referral?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Proportionate pregnancy care and supportive cessation"
    },
    {
@@ -2089,7 +2089,7 @@
    {
     "who": "dr",
     "text": "Nobody’s judging. And who you tell, and when, is up to you. That includes him. If you want to talk it through, we can.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Respects confidentiality and autonomy"
    },
    {
@@ -2097,13 +2097,13 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If you get properly breathless, wheezy, can’t finish sentences, cough blood or have a fever, contact us the same day, or 999 if you’re struggling to breathe. Any bleeding or pain in the pregnancy, call us or the early pregnancy unit. I’ll see you in two weeks for the cough and to see how you’re doing.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Clear escalation for asthma and early pregnancy, dated follow-up"
    },
    {
     "who": "dr",
     "text": "What will you take away from today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back"
    },
    {
@@ -2115,57 +2115,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; acknowledged the impact on her teaching; did not open with the antibiotic request.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Teacher, sleep loss, embarrassment in class; vaping since stopping smoking; the newly known pregnancy and who she has told.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “the antibiotics did nothing”, the hesitation about vaping and the worry beneath the request, and explored each.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (infection needing stronger antibiotics), concern (harm to the pregnancy from the cough, vaping or treatment), expectation (something that works and is safe).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "FeNO or blood eosinophils first, then spirometry with reversibility or peak-flow variability (NICE NG245); chest examination at a face-to-face visit.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Cough-variant asthma versus reflux, post-infective cough, pertussis and vaping-related irritation.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about haemoptysis, weight loss, fever, chest pain and paroxysms; none present.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Explained cough-variant asthma in plain words and why antibiotics will not help.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "AIR inhaler (as-needed low-dose ICS/formoterol) per NICE NG245, with objective testing; clear statement that asthma treatment is safe in pregnancy.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Folic acid 400 micrograms, midwife booking, stop smoking service for vaping, cetirizine reviewed; confidentiality respected.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Named asthma and early-pregnancy triggers; two-week review covering both the cough and the pregnancy.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -2339,37 +2339,37 @@
    "intro": "This station is failed by prescribing into the antibiotic request, and passed by finding the pregnancy and telling her the truth that treating her asthma is what protects the baby.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Issuing a second antibiotic for a 10-week dry cough.",
      "why": "“Management plan not in line with current UK best practice.” The pattern is non-infective, and antibiotics already failed.",
      "fix": "Name the asthma pattern and arrange objective testing per NICE NG245."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Prescribing a salbutamol inhaler alone.",
      "why": "NICE NG245 advises against SABA without ICS; new adult asthma starts with as-needed low-dose ICS/formoterol.",
      "fix": "Offer an AIR inhaler and check technique."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Holding back asthma treatment because she is pregnant.",
      "why": "NICE NG245 advises using inhaled steroids as normal in pregnancy; uncontrolled asthma is the risk.",
      "fix": "Say it plainly: the inhaler is safe, and not treating is the danger."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Accepting “non-smoker” from the record, or asking about vaping in a judging tone.",
      "why": "“Does not gather sufficient information.” Shame closes disclosure, and vaping is relevant.",
      "fix": "“Two questions I ask everyone: do you smoke, or vape?” Then thank her."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Never asking what else is on her mind.",
      "why": "“Does not identify or respond to the patient’s cues.” The pregnancy is the real reason for her fear.",
      "fix": "“Is there anything else on your mind with all this?” and wait."
     },
     {
-     "dom": "gs",
+     "dom": "ro",
      "fail": "Turning the consultation into a full antenatal booking.",
      "why": "Poor time management leaves the cough plan underdeveloped.",
      "fix": "Folic acid, midwife, stop smoking service in one sentence each; keep the cough as the main plan."
@@ -2434,7 +2434,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mr Pike, it’s Dr Lee from the surgery. Can I check I’m speaking to Stanley, and are you sitting somewhere comfortable to talk?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Identity and setting checks on the phone"
    },
    {
@@ -2444,7 +2444,7 @@
    {
     "who": "dr",
     "text": "You’re not troubling me, and I don’t think it’s nothing. You sound very calm about something that would unsettle anyone. I’d like to ask some practical questions first, then answer both of those questions properly. Is that all right?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Declines the minimising and sets an agenda that includes his questions"
    },
    {
@@ -2456,7 +2456,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Tell me about each time. How much was there, what did it look like, and has it been getting more or less?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Characterises volume, colour and trend"
    },
    {
@@ -2466,7 +2466,7 @@
    {
     "who": "dr",
     "text": "And your breathing right now, is it any worse than your usual? Any dizziness, chest pain, fever, or changes in your phlegm?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for haemodynamic compromise and infection"
    },
    {
@@ -2476,7 +2476,7 @@
    {
     "who": "dr",
     "text": "Are you taking any blood thinners, like aspirin, apixaban or anything similar?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks for a reversible contributor"
    },
    {
@@ -2486,7 +2486,7 @@
    {
     "who": "dr",
     "text": "Thank you. That all tells me this is a small bleed and not an emergency this minute. Can I ask, who’s with you at home?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Proportionate interpretation and moves to context"
    },
    {
@@ -2498,7 +2498,7 @@
     "clock": "4–7 min",
     "who": "dr",
     "text": "You asked what to do if it happens again. I wonder whether you’ve been reading about this and worrying about something bigger. Would it help to tell me what’s on your mind?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Opens the door to the hidden fear"
    },
    {
@@ -2508,7 +2508,7 @@
    {
     "who": "dr",
     "text": "Can I ask you the question you haven’t quite asked me? Are you frightened this is how it ends, with a big bleed, and that Edith would have to see it?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Names the unspoken fear gently"
    },
    {
@@ -2520,7 +2520,7 @@
     "clock": "7–9 min",
     "who": "dr",
     "text": "Then I’ll be honest with you. A larger bleed is possible. It isn’t certain, and many people never have one. If it did happen, it is usually quick, not a long struggle. And the part that matters most: we plan for it now, so neither of you is ever alone with it, not knowing what to do.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Answers the question honestly and promises non-abandonment"
    },
    {
@@ -2530,7 +2530,7 @@
    {
     "who": "dr",
     "text": "Because you’re comfortable at home and we’ve agreed that’s what you want, I don’t think you need to go into hospital today. We’ll manage this with your palliative team. There is a tablet that can help reduce small bleeds, and sometimes a short course of radiotherapy helps too. I’ll ask the team about both.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Management matched to his ceiling of care, with treatable options"
    },
    {
@@ -2542,7 +2542,7 @@
     "clock": "9–11 min",
     "who": "dr",
     "text": "Here’s what I’ll put in place today. I’ll ring your palliative team straight after this, and the district nurse will visit. They’ll make sure there’s medicine in the house that calms you quickly if a big bleed ever came. Keep dark towels by the bed and your chair, not white ones. And one number, day or night: the palliative line, not 999.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Activates the team, anticipatory medicines and a concrete crisis plan"
    },
    {
@@ -2552,7 +2552,7 @@
    {
     "who": "dr",
     "text": "They make it far less frightening to see. If it happened, Edith’s job is simple: help you onto your side, stay with you, hold your hand, and ring the number. That’s all anyone would ask of her. Would you like me to speak to her too, now or this evening?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Addresses Edith directly and offers to include her"
    },
    {
@@ -2562,7 +2562,7 @@
    {
     "who": "dr",
     "text": "Of course. I’ll also update your plan on the record that out-of-hours doctors and the ambulance service can see, so anyone who comes knows you want to stay at home and be kept comfortable.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Shares the plan with out-of-hours and ambulance services"
    },
    {
@@ -2570,7 +2570,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If the bleeding gets heavier, you get breathless, or you develop a fever, ring the palliative line or us straight away. I’ll ring you both at six this evening to check the nurse has been and the medicines are in the house. Can you tell me back what you’ll do if it happens again?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net, a dated follow-up call and teach-back"
    },
    {
@@ -2580,7 +2580,7 @@
    {
     "who": "dr",
     "text": "That’s it exactly. You rang to ask what to do. The answer is: nothing on your own. We’ve got you both.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Closes with a clear promise of support"
    },
    {
@@ -2592,57 +2592,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open start; did not accept “probably nothing”; agreed to answer his actual question after the assessment.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Who is at home, Edith’s coping, what he has read, his wish to stay at home.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up the minimising, “what I’m meant to do if it happens again” and the internet search, and explored them.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (nothing to fuss about, but maybe the beginning of the end), concern (a drowning bleed with Edith alone), expectation (a plan).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Proportionate phone assessment; district nurse visit today; no investigations that would not change care.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Tumour bleeding vs infection vs anticoagulant effect; small-volume vs herald of a larger bleed.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Screened breathing, dizziness, chest pain and fever; recognised that small bleeds can precede a major one.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Small-volume haemoptysis from known lung cancer, manageable at home, with a risk of a larger bleed.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Palliative team contacted today; crisis medicine in the house; dark towels, positioning, one number; tranexamic acid or radiotherapy discussed with the team.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Confirmed no anticoagulant; screened for infection; plan shared with out-of-hours and ambulance services.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Named triggers, the palliative line, a call at six this evening, and a conversation with Edith.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -2817,37 +2817,37 @@
    "intro": "This station is not failed on haemoptysis knowledge. It is failed on two reflexes: sending a dying man to hospital, and answering the small question while missing the big one.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "“Call 999” or a same-day admission for a teaspoon of blood in a man with an agreed palliative plan.",
      "why": "“Management plan not appropriate for the patient’s circumstances.” It ignores his ceiling of care and his wish to stay home.",
      "fix": "Assess proportionately, then manage at home with the palliative team."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "No crisis plan: “ring us if it happens again.”",
      "why": "“Does not develop a safe management plan.” A major bleed at night needs medicine in the house and a plan the family can follow.",
      "fix": "Palliative team today, crisis medicine in the house, dark towels, positioning, one number."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Forgetting reversible causes.",
      "why": "Infection and anticoagulants are treatable even at the end of life.",
      "fix": "Ask about fever, sputum change and blood thinners; mention tranexamic acid and radiotherapy."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Agreeing that “it’s probably nothing”.",
      "why": "“Does not identify or respond to the patient’s cues.” His real question stays unanswered.",
      "fix": "“I don’t think it’s nothing. Can I ask what’s worrying you most?”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Never mentioning Edith.",
      "why": "Protecting her is his main concern; ignoring her misses the point of the call.",
      "fix": "Tell him exactly what Edith would do, and offer to speak to her."
     },
     {
-     "dom": "gs",
+     "dom": "ro",
      "fail": "Vague, soothing language: “let’s not worry about that now.”",
      "why": "Avoidance reads as abandonment and leaves the family unprepared.",
      "fix": "Honest, plain words: possible, not certain, usually quick, never alone."
@@ -2906,7 +2906,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Good afternoon Mr Mott, I’m Dr Lee. I see you’ve joined early and you’ve got notes ready. What would you like to get out of today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Opens with his agenda and notices his preparation"
    },
    {
@@ -2916,7 +2916,7 @@
    {
     "who": "dr",
     "text": "That’s a fair question and I’ll answer it honestly, I promise. What we say stays between us unless you choose otherwise. First, can I understand how you are, and what “organising” means for you?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Commits to the question, confirms confidentiality, structures the consultation"
    },
    {
@@ -2928,7 +2928,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "How’s the breathing now? What can you manage, and how many pillows?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes functional class and congestion"
    },
    {
@@ -2938,7 +2938,7 @@
    {
     "who": "dr",
     "text": "And sleep?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Distinguishes breathlessness from worry at night"
    },
    {
@@ -2948,7 +2948,7 @@
    {
     "who": "dr",
     "text": "You said there are things to organise. What have you already done?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the cue to the shutdown behind the admin language"
    },
    {
@@ -2958,7 +2958,7 @@
    {
     "who": "dr",
     "text": "That’s a lot to carry by yourself at three in the morning. Can I ask gently: has it got so dark that you’ve thought about harming yourself?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Proportionate mood and risk check given the closing-down behaviour"
    },
    {
@@ -2970,7 +2970,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "What made you so sure it was a matter of months?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the source of his belief"
    },
    {
@@ -2980,7 +2980,7 @@
    {
     "who": "dr",
     "text": "And Lynne thinks it’s…?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Opens the withheld part"
    },
    {
@@ -2992,13 +2992,13 @@
     "clock": "6–9 min",
     "who": "dr",
     "text": "Let’s start with the word, because it’s done you harm this week. “Heart failure” means the pump is under-performing, not finished. Yours pushes out about a third of its blood each beat instead of more than half. With the right treatment, many hearts like yours get stronger again. We can see that on repeat scans.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Dismantles “failure” and introduces recovery"
    },
    {
     "who": "dr",
     "text": "The plan is four types of medicine, each shown on its own to help people live longer and keep out of hospital. One you’re on: the ramipril. We add a beta-blocker, a tablet called spironolactone that protects the heart muscle, and one originally used for diabetes that protects the heart and kidneys. We start them low and build up over weeks, with blood tests and a heart failure nurse whose job is you. The water tablet eases symptoms; the four are what rebuild.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains the four pillars in lay terms and separates furosemide"
    },
    {
@@ -3008,13 +3008,13 @@
    {
     "who": "dr",
     "text": "I won’t give you a number of months, because any number would be a guess. What I can say honestly: untreated, this is serious. You won’t be untreated. On full treatment, many people with a scan like yours live for years, and plenty see their pump improve. We repeat the scan after the build-up, and then we’ll know your course rather than Des’s.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Answers prognosis honestly without a false number"
    },
    {
     "who": "dr",
     "text": "About Des: you don’t know his scan, how long he’d had it, or whether he ever had these four medicines. Christmas to Easter sounds like something found late. Yours was found early, by a blood test and a scan, in a man still bowling.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Distinguishes Des specifically"
    },
    {
@@ -3026,7 +3026,7 @@
     "clock": "9–11 min",
     "who": "dr",
     "text": "So, September. I’d like you to un-cancel the caravan. On everything in front of me, it’s a realistic goal, and I’d like us to build the treatment around it, with a review in August as a checkpoint. Would you do that?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Reinstates a concrete future goal as part of treatment"
    },
    {
@@ -3036,7 +3036,7 @@
    {
     "who": "dr",
     "text": "And Lynne. It’s your decision and I’ll respect it. But she’s worrying about “a bit of fluid” while you price funerals alone. If you’d like, she joins our next call and I do the explaining. You just hold her hand while she hears that this is being treated.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Addresses the secret at his pace with a practical offer"
    },
    {
@@ -3048,13 +3048,13 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Practical things. Weigh yourself each morning after the toilet, before breakfast. If you go up more than 2 kg in 3 days, get breathless at rest or need more pillows, ring us that day. Chest pain is 999. I’ll refer you to the heart failure nurse and cardiac rehab, bloods next week, and I’ll see you both in two weeks.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific triggers, named referrals and a dated review"
    },
    {
     "who": "dr",
     "text": "When Lynne asks tonight how it went, what will you tell her?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back that also rehearses the disclosure"
    },
    {
@@ -3066,57 +3066,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Let him ask his question first, promised an honest answer, and agreed confidentiality and an agenda.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Retired postman, married 40 years, bowls, allotment; the cancelled caravan and the plans he has been quietly making.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “things I need to organise”, joining alone and early, and the Lynne secret, and explored each.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (failure means finished, based on Des), concern (months to live and protecting Lynne), expectation (a private number).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "U&E before and after each titration step, BP and pulse, weight; repeat echo after titration; NT-proBNP trend as advised.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Checked current congestion and function (NYHA class, orthopnoea) and separated sleeplessness from breathlessness.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about chest pain, syncope and rest breathlessness; checked mood and self-harm given the closing-down behaviour.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Explained HFrEF as an under-performing pump that can improve, not a finished one.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Four core drug classes per NICE NG106, started low and titrated with the heart failure nurse; furosemide explained as symptom relief; caravan set as a goal.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Cardiac rehabilitation, flu and pneumococcal vaccination, activity encouraged, driving advice; the Lynne conversation offered.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Daily weights with a threshold, same-day triggers, chest pain 999, bloods booked, two-week review with Lynne invited.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -3290,37 +3290,37 @@
    "intro": "This station looks like a medication review and is really a prognosis conversation. It is failed by ignoring his question, answering it with a number, or never finding what he has already cancelled.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Listing drug names and doses without explaining that they change the heart.",
      "why": "He believes treatment only eases decline; an unexplained list will not be taken as intended.",
      "fix": "Explain the four classes as the rebuild, furosemide as symptom relief, and the titration with the nurse."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "No monitoring plan for titration.",
      "why": "“Management plan not in line with current UK best practice.” NICE NG106 requires renal function and potassium checks around ACE inhibitor and MRA changes.",
      "fix": "Bloods before and after each step, BP and pulse, and a named nurse."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Giving a number of months, or deflecting the question entirely.",
      "why": "A number is false precision; deflection feels like confirmation of the worst.",
      "fix": "Answer honestly: serious if untreated, much better on treatment, measured by repeat scan rather than guessed."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Missing “things I need to organise”.",
      "why": "“Does not identify or respond to the patient’s cues.” It hides the cancelled caravan and funeral planning.",
      "fix": "Ask what he has already done, then reverse it: un-cancel the caravan with an August checkpoint."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Telling him he must tell Lynne, or not mentioning her at all.",
      "why": "Pressure breaches his autonomy; silence leaves the secret costing him sleep.",
      "fix": "Offer a joint call where the GP explains, at his pace."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "“Come back if you get worse.”",
      "why": "Non-specific safety-netting is a standard failing statement in heart failure, where early decompensation is detectable.",
      "fix": "Daily weights with a threshold, named same-day triggers, chest pain 999, dated bloods and review."
@@ -3380,7 +3380,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Sean, I’m Dr Lee. Thanks for booking in. It takes guts to ask about drink. Tell me where things are at.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the step of asking for help and opens"
    },
    {
@@ -3390,7 +3390,7 @@
    {
     "who": "dr",
     "text": "I’m really glad you want to stop, and I want to help you do it. So that we make a plan that works, can I ask some questions about the drinking and how your body is doing? You don’t look well to me today, and I’d like to understand why.",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Supports his motivation while setting an agenda that includes his physical state"
    },
    {
@@ -3402,7 +3402,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Walk me through a normal day’s drinking. When’s the first drink?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Quantifies drinking and screens for relief drinking"
    },
    {
@@ -3412,7 +3412,7 @@
    {
     "who": "dr",
     "text": "Have you tried stopping before? What happened?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks about previous withdrawal complications"
    },
    {
@@ -3422,7 +3422,7 @@
    {
     "who": "dr",
     "text": "Thank you, that’s very important. I’ll come back to it. How has your body been lately? Any vomiting, and any change in your stools?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks directly about bleeding symptoms"
    },
    {
@@ -3432,7 +3432,7 @@
    {
     "who": "dr",
     "text": "Sean, I’m going to stop you there, because that matters more than anything else today. Dark vomit with blood and black, sticky stools can mean bleeding inside. When was the last time, and do you feel faint or dizzy when you stand?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Recognises the red flag and assesses current severity"
    },
    {
@@ -3442,7 +3442,7 @@
    {
     "who": "dr",
     "text": "Have you noticed your eyes going yellow, your tummy swelling, or your ankles? And has anyone said you’ve seemed muddled?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for decompensated liver disease and encephalopathy"
    },
    {
@@ -3454,7 +3454,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You called the bleeding ‘probably nothing’, but you mentioned it. What have you been thinking it might be?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the fear behind the concealment"
    },
    {
@@ -3464,7 +3464,7 @@
    {
     "who": "dr",
     "text": "That’s a frightening thing to carry on your own. Things sound hard at home too. When people are this low, sometimes they think everyone would be better off without them. Has anything like that crossed your mind?",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Sensitive, direct suicide risk question"
    },
    {
@@ -3474,7 +3474,7 @@
    {
     "who": "dr",
     "text": "Thank you for being honest. That thought is common when things are this bad, and we’ll take it seriously and get you support. You’re not a burden.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Responds with compassion and commits to follow it up"
    },
    {
@@ -3482,7 +3482,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I’ll be straight with you, because it could save your life. The black stools and the blood mean you may be bleeding from swollen veins in your gullet, which happens when the liver is scarred. That needs hospital today. Not Monday: now.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains the probable variceal bleed and the urgency plainly"
    },
    {
@@ -3492,7 +3492,7 @@
    {
     "who": "dr",
     "text": "I know it’s a shock. It can be treated, but it has to be done in hospital. The yellow, the swelling and being vague tell me your liver is struggling too. Is it cancer? I can’t say yet, but bleeding like this in someone who drinks heavily is much more often from those veins, and that’s treatable.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Answers the cancer fear honestly without false reassurance"
    },
    {
@@ -3502,7 +3502,7 @@
    {
     "who": "dr",
     "text": "And about Monday: your wish to stop is exactly right. But with your body this used to alcohol, and a fit last time, stopping dead on your own could cause another fit or a dangerous confused state. We don’t cancel your plan; we make it safe. In hospital they’ll cover the withdrawal with medication and give you vitamin B1 to protect your brain.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Refuses to endorse unsafe self-detox while keeping his motivation"
    },
    {
@@ -3510,7 +3510,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Here’s what I’d like to do now. I’m going to call an ambulance while we’re on this call. Is someone with you? Please don’t drive, and don’t have any more to drink or eat for now.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Immediate action: ambulance, checks he is not alone, practical instructions"
    },
    {
@@ -3520,7 +3520,7 @@
    {
     "who": "dr",
     "text": "Thank you. That’s the brave choice. Can you put her on for a moment so she knows what to watch for until they arrive? I’ll also write to the hospital today, and once you’re out I’ll link you with the alcohol service for support to stay stopped.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Involves the partner with consent and coordinates care beyond discharge"
    },
    {
@@ -3530,7 +3530,7 @@
    {
     "who": "dr",
     "text": "I’ll make sure your mood is part of the plan too. I’ll phone you after discharge. If the low thoughts get stronger at any point, tell the ward staff, or ring 111 option 2 or the Samaritans on 116 123.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Builds the mood follow-up and crisis contacts into the plan"
    },
    {
@@ -3538,7 +3538,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "While you wait, if you vomit more blood, feel faint, become more confused or have a fit, your partner should ring 999 again and tell them. Lie on your side if you feel faint.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net for the minutes before the ambulance"
    },
    {
@@ -3548,7 +3548,7 @@
    {
     "who": "dr",
     "text": "Just so I know we’re on the same page, what’s happening next?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back on the emergency plan"
    },
    {
@@ -3558,7 +3558,7 @@
    {
     "who": "dr",
     "text": "Exactly. You came to tell someone you’re done with drink. I’m going to make sure you get through it safely.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Closes by honouring his decision"
    }
   ],
@@ -3566,57 +3566,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; welcomed his decision without endorsing the method; noticed he looked unwell.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Off work 3 months, partner threatening to leave, shame, who is at home today.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up the passing mention of black stools and blood, and ‘stopping dead on my own’, and acted on both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (willpower and stopping Monday), concern (cancer, dying), expectation (a willpower tablet).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Postural symptoms asked on video; hospital assessment, bloods and endoscopy arranged through admission.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Variceal vs peptic bleed; decompensated cirrhosis; withdrawal risk; mood disorder.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Recognised a probable upper GI bleed, decompensation and encephalopathy; asked directly about suicidal thoughts.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Probable variceal bleed with decompensated alcohol-related liver disease and physical dependence, in plain words.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Ambulance now; medically assisted withdrawal and thiamine in hospital (NICE CG100, CG115); no unsupported stopping.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Mood and suicide risk followed up; alcohol service after discharge; partner involved with consent.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999 triggers while waiting; crisis numbers; GP phone call after discharge.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -3797,37 +3797,37 @@
    "intro": "This station hides two emergencies under a request that sounds routine. It is failed by the candidate who praises the plan, misses the bleed, and ends with a leaflet.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Missing the haematemesis and melaena because he mentions them as an aside, or never asking.",
      "why": "“Does not gather sufficient information to make a safe assessment.” A probable variceal bleed needs admission today (NICE CG141).",
      "fix": "Ask every heavy drinker: “Any vomiting of blood or dark material? Have your stools gone black or sticky?”"
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Endorsing ‘stopping dead on Monday’ as a positive step.",
      "why": "With a previous withdrawal seizure he is at high risk of seizures and delirium tremens; NICE CG100 advises admission for medically assisted withdrawal.",
      "fix": "Welcome the decision, redirect the method: “We don’t cancel your plan; we make it safe.”"
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Arranging a community detox.",
      "why": "NICE CG115 criteria for inpatient withdrawal are met: previous withdrawal seizure and chronic liver disease, before even counting the bleed.",
      "fix": "State that withdrawal will be managed in hospital, with thiamine."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Delivering the emergency coldly, so he refuses to go.",
      "why": "His fear of cancer is why he concealed it; a blunt order can make him disengage.",
      "fix": "Answer the fear honestly: bleeding like this is more often from treatable veins than cancer, and hospital is how it gets treated."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Never asking about suicidal thoughts.",
      "why": "Dependence, shame and a relationship crisis raise suicide risk; omitting the question is unsafe (NICE NG225).",
      "fix": "Ask directly and kindly, then build mood follow-up and crisis numbers into the plan."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Telling him to get himself to A&E and ending the call.",
      "why": "He may still be bleeding and may be encephalopathic; he may drive, or not go at all.",
      "fix": "Call the ambulance during the consultation, check who is with him, brief his partner and phone the admitting team."
@@ -3886,7 +3886,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mr Pryce, I’m Dr Lee. Thanks for joining. I know you’ve had the result and you’ve been reading about it. Before I explain anything, tell me what’s on your mind.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Invites his agenda before delivering information"
    },
    {
@@ -3896,7 +3896,7 @@
    {
     "who": "dr",
     "text": "That’s a big question and I promise we’ll answer it properly today. So I get it right for you, can I ask a little about how you’ve been, explain what the result means, then talk about your children? Does that work?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Commits to the key concern and sets a structure"
    },
    {
@@ -3908,7 +3908,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "The bloods were done for tiredness and aching joints. Tell me about those.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question on the presenting symptoms"
    },
    {
@@ -3918,7 +3918,7 @@
    {
     "who": "dr",
     "text": "Have you noticed any change in your skin colour?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Targets pigmentation from the haemochromatosis constellation"
    },
    {
@@ -3928,7 +3928,7 @@
    {
     "who": "dr",
     "text": "Too much iron can affect hormones as well. Some men notice a lower sex drive or difficulty with erections. Is that something that’s happened to you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Normalises and asks directly about an embarrassing symptom"
    },
    {
@@ -3938,7 +3938,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me. It’s common, and it may well be part of this. Any thirst or passing more urine, breathlessness, swollen ankles or yellowing of the eyes?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for diabetes, cardiac involvement and liver decompensation"
    },
    {
@@ -3948,7 +3948,7 @@
    {
     "who": "dr",
     "text": "And roughly how much do you drink in a week?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Quantifies alcohol, which adds to liver injury"
    },
    {
@@ -3960,7 +3960,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You mentioned your dad. Tell me what happened to him.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the cue to the family story"
    },
    {
@@ -3970,7 +3970,7 @@
    {
     "who": "dr",
     "text": "That’s a lot to be sitting with: worry for your children, and wondering about your dad. What were you hoping I could tell you today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Names both strands of guilt and elicits expectations"
    },
    {
@@ -3982,7 +3982,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Let me take those in turn. Your body is storing too much iron. The most likely reason is a condition called haemochromatosis, and the gene test we’ve sent will confirm it. It is common in people with Welsh and Celtic roots, it is not cancer, and it is very treatable.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names the diagnosis, frames it accurately and defuses fear"
    },
    {
@@ -3992,7 +3992,7 @@
    {
     "who": "dr",
     "text": "By taking blood off regularly, a bit like giving blood, until the iron comes down, then less often to keep it down. It often helps the tiredness and the skin, and it stops further damage. The joints and the bedroom side can improve too, though not always completely, and there are other treatments for those if needed.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains venesection honestly, including what may not reverse"
    },
    {
@@ -4002,7 +4002,7 @@
    {
     "who": "dr",
     "text": "It runs in families, so your son, your daughter and your brother should each be offered a simple blood and gene test. To be affected you need two copies of the gene, one from each parent, so your children’s risk depends on their mum’s genes too. And hear this: you couldn’t have known. Because it has been found in you, they can be checked early, before it ever harms them.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Accurate recessive inheritance, cascade testing, and reframes the guilt"
    },
    {
@@ -4012,7 +4012,7 @@
    {
     "who": "dr",
     "text": "No. You may well have protected them. And your dad could have had this at a time when nobody tested for it. That isn’t something you missed.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Addresses the father’s story without blame"
    },
    {
@@ -4020,7 +4020,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Here’s the plan. I’ll chase the gene test and refer you to the liver team, because with your iron this high they’ll want a scan to see how your liver is coping. They’ll organise the blood removal. I’ll repeat your sugar test, because it’s on the high side of normal.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Specialist referral, fibrosis assessment and glucose monitoring"
    },
    {
@@ -4030,7 +4030,7 @@
    {
     "who": "dr",
     "text": "About drink: this isn’t your dad’s story being repeated. Iron and alcohol both put strain on the liver, so the less you drink, the better it copes. What would be realistic for you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Alcohol advice that avoids echoing the family’s blame, and negotiates"
    },
    {
@@ -4040,7 +4040,7 @@
    {
     "who": "dr",
     "text": "That’s a good start, and the liver team may advise more once they’ve seen the scan. Avoid iron or vitamin C tablets and raw shellfish too. I’ll give you a letter for your children and brother to take to their GP.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Practical advice and a concrete cascade tool"
    },
    {
@@ -4048,7 +4048,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If you notice yellowing, a swollen tummy, vomiting blood, black stools, or new breathlessness or swollen ankles, ring us the same day. I’ll call you with the gene result, and I’ll see you again once you’ve met the specialist.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific red flags and a defined review"
    },
    {
@@ -4058,7 +4058,7 @@
    {
     "who": "dr",
     "text": "When you speak to your son tonight, what will you tell him?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back on the cascade message"
    },
    {
@@ -4068,7 +4068,7 @@
    {
     "who": "dr",
     "text": "That’s exactly right. You came in thinking you’d harmed them. Today is the day you started protecting them.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Closes by reframing the emotional core"
    }
   ],
@@ -4076,57 +4076,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question first; allowed the worry about his son to surface before any iron physiology.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Builder, family structure (two children, brother), the father’s death and the family’s alcohol narrative, his drinking.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “have I given it to him?”, the father’s ‘bronze’ skin and the embarrassment around libido, and explored each.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (inherited iron disease), concern (guilt about the children, repeating his father), expectation (treatable, children protected).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "HFE genotype; fibrosis assessment via hepatology; repeat HbA1c; ECG if any cardiac symptom; abdominal examination at a face-to-face visit.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "HFE haemochromatosis vs reactive ferritin (alcohol, fatty liver, inflammation); transferrin saturation used to discriminate.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about jaundice, abdominal swelling, cardiac and diabetic symptoms; recognised ferritin above 1000 with raised ALT as a fibrosis risk.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Iron overload, most likely hereditary haemochromatosis, with the genetic test pending, in plain words.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Hepatology referral for fibrosis assessment and venesection; cascade testing for children and brother; negotiated alcohol reduction.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Non-diabetic hyperglycaemia monitored; erectile dysfunction acknowledged with a plan; supplements and raw shellfish avoided.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Liver and cardiac red flags named; gene result phoned; review after specialist; HCC surveillance if cirrhosis found.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -4300,37 +4300,37 @@
    "intro": "This station is not failed on iron studies. It is failed by a candidate who explains the physiology and never answers the question he walked in with, or who turns it into an alcohol consultation that repeats the family’s mistake about his father.",
    "items": [
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Launching into ferritin and transferrin physiology while his question about his son hangs unanswered.",
      "why": "“Does not identify or respond to the patient’s cues.” The inheritance guilt is the emotional core.",
      "fix": "Acknowledge it in the first minute and promise to answer it; then answer it clearly before the end of minute 8."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Telling him his children will definitely have it, or that they don’t need testing.",
      "why": "Inaccurate genetics. HFE haemochromatosis is autosomal recessive; first-degree relatives should be offered testing (EASL 2022).",
      "fix": "“You need two copies to be affected, so their risk depends on their mum’s genes too. A simple test will tell us.”"
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Managing a ferritin of 1180 with venesection alone and no liver assessment.",
      "why": "Ferritin above 1000 with raised ALT marks a higher fibrosis risk; cirrhosis changes follow-up, including HCC surveillance (NICE NG50).",
      "fix": "Refer to hepatology for fibrosis assessment as part of the plan."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Calling HbA1c 47 diabetes.",
      "why": "47 mmol/mol is non-diabetic hyperglycaemia (NICE PH38); a diagnosis of diabetes needs 48 or more.",
      "fix": "“Your sugar is on the high side of normal; we’ll recheck it and it may improve as the iron comes down.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Making alcohol the headline: “this is why you need to stop drinking.”",
      "why": "It mirrors the family’s false story about his father and he disengages.",
      "fix": "Frame it as liver protection and negotiate a goal he chooses."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Missing the erectile dysfunction because he never raises it.",
      "why": "Incomplete data gathering; hypogonadism is part of the picture and he is too embarrassed to volunteer it.",
      "fix": "Normalise and ask: “Some men notice a lower sex drive or difficulty with erections. Has that happened to you?”"
@@ -4354,7 +4354,7 @@
    "reason": "Video consultation to discuss jaundice and his blood results."
   },
   "knowledge": {
-   "guideline": "UKHSA Public health control and management of hepatitis A (2024) · UKHSA Green Book ch.17 (2024) · Health Protection (Notification) Regulations 2010 · NICE NG60 · BHIVA/BASHH/BIA HIV testing guidelines (2020) · BSG abnormal liver blood tests guideline (2018) · NICE NG12 (updated April 2026)",
+   "guideline": "UKHSA Public health control and management of hepatitis A (2024) · UKHSA Green Book ch.17 (2024) · Health Protection (Notification) Regulations 2010 · NICE NG60 · BHIVA/BASHH/BIA HIV testing guidelines (2020) · BSG abnormal liver blood tests guideline (2018)",
    "summary": "Jaundice with ALT in the thousands in a returning traveller is acute viral hepatitis until proven otherwise, most often A or E. Check synthetic function, test the full viral and blood-borne panel with consent, notify on suspicion, and exclude a food handler from work.",
    "points": [
     {
@@ -4379,7 +4379,7 @@
     },
     {
      "h": "Acute liver failure and age",
-     "t": "Confusion, drowsiness, bruising or bleeding, persistent vomiting, a rising INR or deepening jaundice mean same-day hospital assessment. Avoid alcohol; paracetamol at standard doses only, avoiding large doses (BNF). For contrast: NICE NG12 (updated April 2026) refers people aged 40 and over with jaundice on a suspected pancreatic cancer pathway, which does not apply to Jay at 26."
+     "t": "Confusion, drowsiness, bruising or bleeding, persistent vomiting, a rising INR or deepening jaundice mean same-day hospital assessment. Avoid alcohol; paracetamol at standard doses only, avoiding large doses (BNF). For contrast: NICE suspected-cancer guidance refers people aged 40 and over with jaundice on a suspected pancreatic cancer pathway, which does not apply to Jay at 26."
     }
    ]
   },
@@ -4389,7 +4389,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Jay, I’m Dr Lee. Thanks for coming on video, and I can see what you mean about the colour. Before we get to results, tell me how you’re feeling in yourself today.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges his joke and the visible jaundice, then opens with his experience"
    },
    {
@@ -4399,7 +4399,7 @@
    {
     "who": "dr",
     "text": "Those are fair questions and I’ll answer both. So that I give you real answers rather than guesses, can I ask about the illness and the trip first, then explain the blood test and agree a plan? Your work is definitely on the list.",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Agrees an agenda that includes his work question without jumping to it"
    },
    {
@@ -4411,7 +4411,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Take me back to when this started. What came first?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question to get the timeline in his words"
    },
    {
@@ -4421,7 +4421,7 @@
    {
     "who": "dr",
     "text": "Any confusion or drowsiness, bruising or bleeding from your gums, or vomiting so much you can’t keep fluids down? And has the fever come back at all?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for acute liver failure and for fever that would need malaria films"
    },
    {
@@ -4431,7 +4431,7 @@
    {
     "who": "dr",
     "text": "Good. Tell me about the food and water out there.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Covers the faeco-oral route for hepatitis A and E"
    },
    {
@@ -4441,7 +4441,7 @@
    {
     "who": "dr",
     "text": "That’s the most likely route. Everyone I see with this gets the same full set of questions, with no judgement, because the answer changes which tests we do. On the trip, any new sexual partners, any tattoos or piercings, and any injections, medical or dental treatment?",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Normalises the question and covers the blood-borne and sexual routes"
    },
    {
@@ -4451,7 +4451,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me. That is genuinely useful, and it isn’t something to feel ashamed about here. Any drugs by injection, and any alcohol or medicines recently, including paracetamol?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Rewards the disclosure without moralising and completes the toxin history"
    },
    {
@@ -4463,7 +4463,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You went quiet before you told me about the trip. I wonder whether the thing keeping you awake isn’t the yellow at all.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Names the cue behind the pause and invites the hidden concern"
    },
    {
@@ -4473,7 +4473,7 @@
    {
     "who": "dr",
     "text": "That’s a lot to have been carrying on your own. So the real hope today is to find out whether this is a food bug or something caught through sex, and whether she’s at risk?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Reflects the concern and confirms the real expectation"
    },
    {
@@ -4485,7 +4485,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Here’s what I think. Your liver is inflamed, which is why you’re yellow. The pattern in your blood test, after a month of street food, most likely fits hepatitis A or E, which come from food and water. They usually settle by themselves over a few weeks, and your clotting test is normal, which tells me the liver is still doing its main jobs.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains acute hepatocellular hepatitis in plain words, with its likely cause"
    },
    {
@@ -4495,7 +4495,7 @@
    {
     "who": "dr",
     "text": "Probably, but I won’t guess. I’d like one blood sample today that checks for hepatitis A, B, C and E, and, with your agreement, HIV. I’ll repeat the liver and clotting tests too. I should be honest that HIV and hepatitis C can take several weeks to show, so if the first results are clear we may repeat them later to be sure.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Full viral and blood-borne panel with consent, and honest testing windows"
    },
    {
@@ -4505,7 +4505,7 @@
    {
     "who": "dr",
     "text": "Now the part you didn’t expect. Hepatitis from food spreads through food. As a chef, you mustn’t work in the kitchen until you’re cleared: at least a week from when the yellow started, and the public health team advises on your return. I have a legal duty to notify them, and they will also check whether people close to you need a vaccine.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "States the food-handler exclusion and the statutory notification"
    },
    {
@@ -4517,7 +4517,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "I know it hits your wages. I’ll give you a fit note, and the public health team can confirm the exclusion in writing for your employer, which also protects your job. Is money going to be a real problem?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges the financial impact and offers practical help"
    },
    {
@@ -4527,7 +4527,7 @@
    {
     "who": "dr",
     "text": "About your girlfriend: condoms, or no sex, until your results are back. If she has been close to you since you got home, the public health team may offer her a hepatitis A vaccine, and the sexual health clinic can test her confidentially. When and how you tell her is your decision, and I’m happy to help you plan it.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Protects the partner and supports disclosure without taking control from him"
    },
    {
@@ -4537,7 +4537,7 @@
    {
     "who": "dr",
     "text": "That’s a reasonable plan. While you recover: no alcohol at all, eat what you can, drink plenty, and paracetamol only at normal doses. No herbal remedies. And there isn’t a tablet to speed up this kind of hepatitis; rest is the treatment.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Hepatotoxin advice and an honest answer to his tablet question"
    },
    {
@@ -4545,7 +4545,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Please go straight to A&E, or call 999 if you can’t get there, if you become confused or very sleepy, bruise or bleed easily, can’t keep fluids down, or go more yellow. I’ll ring you with the results in a few days, and we’ll book a repeat test for later.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Named acute liver failure red flags and dated follow-up"
    },
    {
@@ -4555,7 +4555,7 @@
    {
     "who": "dr",
     "text": "So I know I’ve explained it properly, what will you tell your boss tomorrow?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back on the point he most needs to act on"
    },
    {
@@ -4565,7 +4565,7 @@
    {
     "who": "dr",
     "text": "Exactly. You did the right thing by telling me everything today.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Closes warmly and reinforces the disclosure"
    }
   ],
@@ -4573,57 +4573,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question about how he feels; heard the work and ‘quick fix’ questions without letting them set the agenda.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Chef and food handler, income worries, relationship of two years, alcohol use.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up the pause about the trip and the over-firm ‘travel bug’ and opened the sexual and tattoo history safely.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (food bug), concern (blood-borne infection and his girlfriend), expectation (return-to-work date and a tablet).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Hepatitis A, B, C and E serology; HIV with consent; repeat LFTs and INR; malaria films if febrile; repeat tests after the window period.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Hepatitis A or E vs acute hepatitis B vs drug or toxin injury; tested with food, sexual, tattoo, injecting and medication history.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about confusion, drowsiness, bleeding and vomiting; normal INR noted and repeated; same-day admission criteria known.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Acute viral hepatitis, most likely A or E, explained in plain words with the cause still to confirm.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Notification on suspicion; food-handler exclusion for at least 7 days from jaundice onset per UKHSA; fit note; no alcohol, standard paracetamol doses.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Partner protection and testing, contact vaccination via the health protection team, sexual health signposting.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Liver failure red flags named; results phoned; repeat HIV and hepatitis C testing timed after the window period.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -4739,7 +4739,7 @@
     "redFlags": [
      "Confusion, drowsiness, bruising or bleeding, persistent vomiting, rising INR or deepening jaundice: acute liver failure, same-day hospital",
      "Fever after travel to a malaria-endemic area: same-day malaria films",
-     "Jaundice aged 40 and over without an infective cause: NICE NG12 (updated April 2026) suspected pancreatic cancer pathway (not applicable at 26)"
+     "Jaundice aged 40 and over without an infective cause: suspected pancreatic cancer pathway (not applicable at 26)"
     ],
     "psychosocial": [
      "Chef and food handler: exclusion, income and fit note",
@@ -4804,37 +4804,37 @@
    "intro": "The diagnosis here is easy. The station is failed on what surrounds it: a risk history that never goes beyond food, a chef sent back to the kitchen, and a frightened young man left alone with the question he came to ask.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Taking only a food and water history and accepting ‘travel bug’.",
      "why": "“Does not gather sufficient information to make a safe assessment.” Sexual and tattoo exposure change the test panel and the partner plan.",
      "fix": "Normalise it: “I ask everyone the same questions, no judgement: new partners, tattoos or piercings, injections or procedures?”"
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Telling a chef he can go back to work when he feels better.",
      "why": "“Management plan not in line with current UK best practice.” UKHSA 2024 excludes hepatitis A cases, including food handlers, until 7 days after jaundice onset, and notification is a statutory duty.",
      "fix": "State the exclusion, notify on suspicion, and give a fit note so the plan is workable."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Telling him a clear HIV test today means he is fine.",
      "why": "False reassurance: a fourth-generation test excludes HIV only from 45 days after exposure (BHIVA/BASHH/BIA 2020).",
      "fix": "“Some tests take weeks to turn positive, so we’ll repeat them later to be certain.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Reacting to the disclosure with a lecture about condoms or fidelity.",
      "why": "Judgemental responses are a recurring Relating fail and shut down further disclosure.",
      "fix": "Thank him, then move to what it means for his tests and his partner."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Telling him he must inform his girlfriend today.",
      "why": "Takes control away from the patient; he disengages from testing.",
      "fix": "Protect her in the meantime (condoms or no sex, clinic testing) and offer help planning the conversation when he is ready."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Closing with “come back if you get worse”.",
      "why": "Non-specific safety-netting misses the features of acute liver failure.",
      "fix": "Name confusion, drowsiness, bleeding, vomiting and deepening jaundice, and give dated results and repeat testing."
@@ -4893,7 +4893,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hi Deniz, I’m Dr Lee. Your mum booked this, but I’d like to hear it from you. What’s been going on?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Addresses the adult patient directly and opens"
    },
    {
@@ -4903,7 +4903,7 @@
    {
     "who": "dr",
     "text": "I can hear how much the trial matters. I’ll be honest with you whatever I find, because I think that’s what you’d want. Can I ask about the two episodes properly, then tell you what I think and what we do next?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Acknowledges his goal without promising the outcome and sets the agenda"
    },
    {
@@ -4915,7 +4915,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Take me through the first one. What were you doing at the exact moment you went down?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes whether syncope was during or after exertion"
    },
    {
@@ -4925,7 +4925,7 @@
    {
     "who": "dr",
     "text": "Any warning at all? Feeling hot, sick, vision going grey?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks for a reflex prodrome"
    },
    {
@@ -4935,7 +4935,7 @@
    {
     "who": "dr",
     "text": "And the second time?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Explores the second episode for palpitations"
    },
    {
@@ -4945,7 +4945,7 @@
    {
     "who": "dr",
     "text": "Any chest pain or breathlessness when you train, any jerking, tongue-biting or confusion afterwards?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for structural heart symptoms and seizure features"
    },
    {
@@ -4955,7 +4955,7 @@
    {
     "who": "dr",
     "text": "Has anyone in your family died suddenly or young, or had heart problems or a pacemaker young?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Family history of sudden cardiac death and inherited cardiac disease"
    },
    {
@@ -4967,7 +4967,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "Thank you for telling me that. I noticed you paused before you said it. Has your cousin been on your mind with all this?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the pause to the buried fear"
    },
    {
@@ -4977,7 +4977,7 @@
    {
     "who": "dr",
     "text": "So you’ve been frightened about your heart, and more frightened that finding out will take football away?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Reflects both fears accurately"
    },
    {
@@ -4989,7 +4989,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I respect you for being straight with me, so I’ll be straight back. What worries me isn’t that you fainted. It’s when. You went down while running flat out, once with your heart racing first, and with hardly any warning. Collapsing during exercise is the one kind of faint doctors never put down to heat.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Refuses the heat reframe and explains exertional syncope"
    },
    {
@@ -4999,7 +4999,7 @@
    {
     "who": "dr",
     "text": "It could, and I hope it is. But put together with your cousin and your uncle, it could be a heart rhythm condition that runs in families. They often show up exactly like this in fit young players. If that’s what it is, the next sprint could stop your heart. So I can’t sign you off today, and I don’t think you’d really want me to.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Weights the family history and holds the professional line honestly"
    },
    {
@@ -5009,7 +5009,7 @@
    {
     "who": "dr",
     "text": "No. This is how you protect it. Many of these conditions can be treated, and some players get back to sport after specialist assessment. A heart that’s checked has a future in football. One that’s ignored may not get the chance.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Takes his career seriously and reframes assessment as the route back"
    },
    {
@@ -5017,7 +5017,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Here’s the plan. I’d like you to come in today for a heart tracing. And I’m referring you to the heart specialists to be seen within 24 hours, for a scan of your heart and rhythm tests. Can you get here this afternoon?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Same-day ECG and specialist cardiovascular assessment within 24 hours (NICE CG109)"
    },
    {
@@ -5027,7 +5027,7 @@
    {
     "who": "dr",
     "text": "Good, and a lift is right: please don’t drive until you’ve been seen. Until the specialist clears you, no matches and no flat-out training. I know that’s the hardest thing I could say. What would help with the club?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Clear activity and driving advice, then invites his priorities"
    },
    {
@@ -5037,7 +5037,7 @@
    {
     "who": "dr",
     "text": "Nothing goes to the club without your say-so; you’re 19 and it’s your information. If you want, I can write a letter saying you’re under urgent medical assessment and can’t play for now, without details. A proper medical reason, handled well, isn’t the end of a career.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Respects confidentiality and offers practical help with the trial"
    },
    {
@@ -5049,7 +5049,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If you collapse again, or get chest pain or your heart racing that doesn’t settle, anyone with you calls 999 straight away and starts CPR if you’re not responding. Please tell your mum and your teammates that. I’ll chase the appointment myself and ring you tomorrow.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Emphatic safety-net including bystander CPR and GP follow-up"
    },
    {
@@ -5059,7 +5059,7 @@
    {
     "who": "dr",
     "text": "Would you like me to speak to your mum as well, or would you rather tell her yourself? And when you do, what will you tell her?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Consent for family involvement and teach-back"
    },
    {
@@ -5069,7 +5069,7 @@
    {
     "who": "dr",
     "text": "Exactly. You wanted me to say you’re fine. I’m trying to make sure you get to be.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Closes by linking the plan to his goal"
    }
   ],
@@ -5077,57 +5077,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Addressed the 19-year-old directly; heard the request for sign-off without agreeing to it.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Football as identity and income, imminent academy trial, mother’s involvement, driving.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up the pause before the family history and ‘they’ll pull me from the squad’, and explored both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (heat and dehydration), concern (losing football, and the buried fear about his cousin), expectation (to be signed off today).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "12-lead ECG today; cardiovascular examination at the same visit; echo, exercise and rhythm testing via the specialist.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Inherited arrhythmia or cardiomyopathy vs reflex syncope vs seizure; timing, prodrome and palpitations used to discriminate.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Recognised exertional syncope, palpitations before collapse and family history of sudden death under 40 as NICE CG109 red flags.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Exertional syncope with suspected inherited cardiac condition, explained in plain words.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Specialist cardiovascular assessment within 24 hours; no competitive sport or high-intensity training; no driving until assessed; no false clearance.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Club letter with his consent and without clinical detail; family screening implications raised; mother involved as he wishes.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999 and bystander CPR if he collapses; GP chases the referral and phones tomorrow.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -5301,37 +5301,37 @@
    "intro": "This station is built around pressure to collude. It is failed by the candidate who accepts the heat story to keep him happy, and by the one who is right but so blunt that he walks away from the plan.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Accepting heat and dehydration and advising fluids.",
      "why": "Exertional syncope is a NICE CG109 red flag; missing it can be fatal.",
      "fix": "Establish timing precisely: “What were you doing at the exact moment you went down?”"
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Routine cardiology referral with no timescale.",
      "why": "“Management plan not in line with current UK best practice.” NICE CG109 requires specialist cardiovascular assessment within 24 hours.",
      "fix": "ECG today and a referral to be seen within 24 hours, with the GP chasing it."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Not asking about family history, or asking only about parents.",
      "why": "The cousin’s sudden death at 23 and the uncle’s pacemaker are decisive and only come out if asked broadly.",
      "fix": "“Has anyone in the family died suddenly or young, or had a pacemaker or heart problem young?”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "“You can’t play football any more.”",
      "why": "Overstated and crushing; he disengages and plays anyway.",
      "fix": "“No matches until the specialist has seen you. Many of these conditions can be treated, and this is how you protect your career.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Talking to his mother about the plan without asking him.",
      "why": "He is 19; it breaches confidentiality and undermines his autonomy.",
      "fix": "Ask whether he wants his mother involved, and how."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Safety-netting with “come back if it happens again”.",
      "why": "A further episode may be cardiac arrest; he will not be the one to come back.",
      "fix": "Tell him and those around him: 999 and CPR if he collapses and is unresponsive."
@@ -5390,7 +5390,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Casey, I’m Dr Lee. Thanks for joining. You look tense. Tell me what’s been happening.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Notices her distress and opens"
    },
    {
@@ -5400,7 +5400,7 @@
    {
     "who": "dr",
     "text": "I can hear how frightened you are, and I want to give you a proper answer, not a brush-off. Can I go through each faint in detail first? That will tell us more than anything else. Then I’ll explain what I think and we’ll talk about the scan.",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Takes the fear seriously and sets an agenda that includes the scan request"
    },
    {
@@ -5412,7 +5412,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Take me through the first one. Where were you, and what did you feel just before?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Episode-by-episode history for the 3 Ps"
    },
    {
@@ -5422,7 +5422,7 @@
    {
     "who": "dr",
     "text": "And the other two?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks the pattern is consistent across episodes"
    },
    {
@@ -5432,7 +5432,7 @@
    {
     "who": "dr",
     "text": "Have you ever fainted during exercise, while lying down, or with no warning at all? Any racing or pounding heart before you went?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Excludes cardiac red flags"
    },
    {
@@ -5442,7 +5442,7 @@
    {
     "who": "dr",
     "text": "Did anyone see you jerk for a long time, did you bite the side of your tongue, wet yourself, or feel muddled for a long time afterwards?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Excludes seizure features"
    },
    {
@@ -5452,7 +5452,7 @@
    {
     "who": "dr",
     "text": "Has anyone in your family died suddenly or unexpectedly young, or had a heart condition that runs in families?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Family history of sudden cardiac death"
    },
    {
@@ -5464,7 +5464,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You said a brain tumour. What made you think of that in particular?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the specific fear behind the scan request"
    },
    {
@@ -5474,7 +5474,7 @@
    {
     "who": "dr",
     "text": "That makes complete sense. You’ve seen how it went for her, and your mind has put you into her story. How has the worry been affecting your life?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the fear and explores its impact"
    },
    {
@@ -5486,7 +5486,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I want to give you the answer first, because you’ve been carrying the question at three in the morning. This is a simple faint, called vasovagal syncope. I’m not saying that to be kind. Your story fits it exactly.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Confident positive diagnosis"
    },
    {
@@ -5496,7 +5496,7 @@
    {
     "who": "dr",
     "text": "Every faint had a trigger: a needle, standing in heat, getting up fast when unwell. Every one had the warning and a quick recovery. The faints that worry doctors are the opposite: no warning, during exercise, lying down, or a racing heart first. You’ve had none of those, your heart tracing is normal and there’s no sudden death in your family. I looked for the dangerous version and it isn’t there.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Shows the reasoning and states the excluded red flags"
    },
    {
@@ -5506,7 +5506,7 @@
    {
     "who": "dr",
     "text": "Brain tumours don’t cause faints with a warning and a trigger like yours. A scan wouldn’t change the diagnosis, and scans often show small harmless things that would give you something new to worry about. As one clinician to another: your story is the test, and it’s reassuring.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains why a scan is not indicated without dismissing her"
    },
    {
@@ -5514,7 +5514,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "For the faints themselves: when the hot, grey feeling starts, get down straight away. Sit or lie, cross your legs and squeeze, or grip your hands together. Drink plenty, don’t skip meals, take a bit more salt, and don’t spring out of bed. Lie down when you give blood.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Practical self-management and counter-pressure manoeuvres"
    },
    {
@@ -5524,7 +5524,7 @@
    {
     "who": "dr",
     "text": "For a simple faint like yours, with a clear trigger and warning when you’re standing, you can drive and you don’t need to tell the DVLA. If you ever felt that warning at the wheel, you’d pull over safely.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Accurate DVLA advice for reflex syncope"
    },
    {
@@ -5534,7 +5534,7 @@
    {
     "who": "dr",
     "text": "The bigger thing, I think, is the worry. The faints are harmless, but the fear has taken your driving, the gym and your sleep. That’s health anxiety. It’s common and very treatable, and the pulse-checking and Googling keep it going. Would you be open to talking therapy? You can refer yourself, and I’d like to see you in a few weeks to see how you are.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Names the health anxiety and agrees a plan for it"
    },
    {
@@ -5546,7 +5546,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "What would change my mind and bring you back quickly: a faint with no warning, during exercise or while lying down, a racing heart before you go, or a faint where you injure yourself. Any of those, contact us the same day.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Precise safety-net that keeps reassurance safe"
    },
    {
@@ -5556,7 +5556,7 @@
    {
     "who": "dr",
     "text": "If a colleague asked you tomorrow what the GP said, what would you tell them?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back"
    },
    {
@@ -5566,7 +5566,7 @@
    {
     "who": "dr",
     "text": "Perfect. Let’s get your life back.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Closes with a clear, hopeful message"
    }
   ],
@@ -5574,57 +5574,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; acknowledged the fear and the scan request without agreeing to it or dismissing it.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Nurse on a busy ward; avoidance of driving and the gym; poor sleep; checking and Googling.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “I know just enough to scare myself” and the patient ‘her age’, and explored both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (brain tumour or heart stopping), concern (the ward patient’s story), expectation (a brain scan).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Reviewed the normal ECG and lying and standing BP; explained no scan or EEG is indicated (NICE CG109).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Reflex syncope vs orthostatic vs cardiac arrhythmia vs seizure; tested each with targeted questions.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Exertional, supine and no-warning syncope, palpitations, family history of young sudden death, and seizure features all asked and excluded out loud.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Confident positive diagnosis of vasovagal syncope, with health anxiety named as the main problem.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Counter-pressure manoeuvres, fluids and salt, trigger avoidance; accurate DVLA advice; talking therapy for health anxiety.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Health anxiety, sleep and avoidance addressed; lying down for venepuncture; hydration on long shifts.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Named the features that would need same-day review; follow-up booked in a few weeks for the anxiety.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -5800,37 +5800,37 @@
    "intro": "This station tests whether reassurance can be delivered as a clinical skill. It is failed both by the candidate who orders a scan to calm her and by the one who says “it’s just a faint” and moves on.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Ordering a CT or MRI head to put her mind at rest.",
      "why": "Not indicated for uncomplicated faint (NICE CG109; ESC 2018), and it reinforces health anxiety.",
      "fix": "Explain why the story is the test and what a scan could and could not tell her."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Diagnosing vasovagal syncope without asking about exertion, lying down, palpitations or family history.",
      "why": "“Does not gather sufficient information to make a safe assessment.” The reassurance is only safe if the red flags are excluded.",
      "fix": "Ask each red flag and then say out loud which ones you checked."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "“You’re a nurse, you know it’s just a faint.”",
      "why": "Dismissive; it ignores the specific fear and the ward patient.",
      "fix": "Ask what made her think of a tumour, then address that story directly."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Telling her not to drive, or to inform the DVLA.",
      "why": "Incorrect: DVLA (September 2025) allows a Group 1 driver with typical vasovagal syncope and an avoidable trigger when standing to drive without notifying.",
      "fix": "Give the correct rule and what would change it."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Ignoring the anxiety because the faints are benign.",
      "why": "The avoidance and sleeplessness are the real morbidity; leaving them misses her agenda.",
      "fix": "Name health anxiety, explain how checking maintains it, and offer talking therapy and follow-up."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Safety-netting with “come back if it happens again”.",
      "why": "It will happen again; that advice brings her straight back into the anxiety cycle.",
      "fix": "Name what would change the picture: no warning, exertion, lying down, palpitations, injury."
@@ -5871,7 +5871,7 @@
     },
     {
      "h": "SGLT2 inhibitor",
-     "t": "NICE NG28 (updated February 2026): offer an SGLT2 inhibitor to adults with type 2 diabetes and CKD on the highest tolerated ACE inhibitor or ARB if ACR is over 30 mg/mmol, and consider it if ACR is 3–30 mg/mmol; the February 2026 update also recommends an SGLT2 inhibitor alongside metformin for most adults. Check eGFR thresholds in the BNF."
+     "t": "NICE NG28: offer an SGLT2 inhibitor to adults with type 2 diabetes and CKD on the highest tolerated ACE inhibitor or ARB if ACR is over 30 mg/mmol, and consider it if ACR is 3–30 mg/mmol; the February 2026 update also recommends an SGLT2 inhibitor alongside metformin for most adults. Check eGFR thresholds in the BNF."
     },
     {
      "h": "Blood pressure and ACE inhibitor",
@@ -5893,7 +5893,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mrs Iqbal, I’m Dr Lee. I can see you’re upset, and I know the letter is why you’ve come. Would you tell me what you took from it?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Opens with her understanding and names the distress"
    },
    {
@@ -5903,7 +5903,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me straight away. I want to go through what the letter actually means, because I don’t think it means what you fear. Then I’d like to understand how things have been for you this year, and make a plan together. Is that okay?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Signals a different reading of the letter and sets an agenda"
    },
    {
@@ -5915,7 +5915,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Tell me about your aunt — what happened to her?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the source of the catastrophic interpretation"
    },
    {
@@ -5925,7 +5925,7 @@
    {
     "who": "dr",
     "text": "I’m sorry. That would frighten anyone reading ‘kidneys’ and ‘eyes’ in a letter. Have you noticed any problems with your vision, any swelling of your ankles, or passing urine differently?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for symptomatic complications"
    },
    {
@@ -5935,7 +5935,7 @@
    {
     "who": "dr",
     "text": "Your sugar test went up quite a bit this year, from 58 to 75. That usually means something changed. Lots of people find tablets hard to take or get side effects they don’t mention. No judgement at all — how have you really been getting on with them?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Explores adherence permissively, prompted by the HbA1c rise"
    },
    {
@@ -5945,7 +5945,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me that. Really. Diarrhoea with metformin is miserable and very common, and stopping it is a completely human thing to do. If anything, we should have asked you sooner. You’re not in trouble.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Receives the disclosure warmly and removes blame"
    },
    {
@@ -5955,7 +5955,7 @@
    {
     "who": "dr",
     "text": "Are you taking the others — the gliclazide, ramipril and the cholesterol tablet? And any low sugar episodes, shaky or sweaty spells?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Completes the medication and hypoglycaemia history"
    },
    {
@@ -5967,7 +5967,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You said ‘punishment’. What else has been going through your mind since the letter?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the shame cue"
    },
    {
@@ -5977,7 +5977,7 @@
    {
     "who": "dr",
     "text": "That’s a lot to be carrying alone. What were you hoping I’d say today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Elicits her expectation"
    },
    {
@@ -5989,7 +5989,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Then let me answer that. ‘Background retinopathy’ is the very earliest change the eye screening can see. It doesn’t affect your vision and it isn’t treated — it’s watched. The kidney result is a small leak of protein in the urine, the earliest sign we can measure. Your aunt had the end of the road. You’re at the very beginning, with time to change it.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Accurately reframes early complications"
    },
    {
@@ -5999,7 +5999,7 @@
    {
     "who": "dr",
     "text": "Not from this, and the aim now is to keep it that way. And here’s the hopeful part: a big chunk of this year’s rise is the missing tablet, not your body giving up. That’s fixable.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Links the HbA1c rise to the stopped drug and restores agency"
    },
    {
@@ -6011,7 +6011,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Here’s what I’d suggest. There’s a slow-release metformin that is much gentler on the stomach — we’d start low and build up. And a newer tablet, an SGLT2 inhibitor, which protects the kidneys and heart as well as lowering sugar. Given the letter, that’s the one I most want you on.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Side-effect-aware plan: MR metformin and SGLT2 inhibitor per NICE NG28"
    },
    {
@@ -6021,7 +6021,7 @@
    {
     "who": "dr",
     "text": "Not usually. It can cause thrush, so keep things clean and tell me if it happens. If you’re ever unwell with vomiting or can’t keep fluids down, stop it for a day or two and ring us. The blood pressure is also higher than we want, and it guards both kidneys and eyes, so I’d like to increase the ramipril and check your kidney blood test one to two weeks after.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "SGLT2 counselling, ramipril titration and U&E monitoring per NICE NG203"
    },
    {
@@ -6031,7 +6031,7 @@
    {
     "who": "dr",
     "text": "I’d also like a repeat early-morning urine sample to confirm the kidney result. And if anything doesn’t agree with you, I want you to tell me — you won’t be a nuisance. Deal?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Confirms the ACR and rebuilds the partnership for honest reporting"
    },
    {
@@ -6043,7 +6043,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If your vision changes suddenly — blurring, a shadow, or lots of new floaters — ring us that day. With the gliclazide, if you ever feel shaky, sweaty or confused, have something sugary. I’ll see you in four weeks with the bloods and your blood pressure, and see how the new tablets are going.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net for eyes, hypoglycaemia and a dated review"
    },
    {
@@ -6053,7 +6053,7 @@
    {
     "who": "dr",
     "text": "When you tell your family about today, what will you say?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back"
    },
    {
@@ -6065,57 +6065,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Opened with what she took from the letter; acknowledged distress before any numbers.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Aunt’s dialysis and death; shame about the stopped tablet; not sleeping; family unaware; fear of being “a nuisance”.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Followed “what’s the point”, “I’ve done everything” and “punishment”, and the HbA1c jump from 58 to 75.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (complications have started and are unstoppable), concerns (dialysis, blindness, being blamed), expectation (to hear whether it is too late).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Repeat early-morning ACR and eGFR (NICE NG203); U&E and potassium 1–2 weeks after ramipril increase; BP recheck; annual retinal screening continued.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Adherence vs disease progression vs intercurrent illness as the reason for the HbA1c rise; diabetic kidney disease vs other causes of albuminuria.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about visual symptoms, oedema and urinary change; hypoglycaemia on gliclazide; sudden visual change safety-netted.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated: early diabetic kidney disease and background retinopathy, with worsening control mainly from stopped metformin.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "MR metformin reintroduced slowly; SGLT2 inhibitor for kidney and heart protection (NICE NG28); ramipril titrated to BP target (NICE NG203); statin continued.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Hypoglycaemia advice with gliclazide; SGLT2 inhibitor sick-day and thrush counselling; metformin dose by eGFR.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Sudden visual change and hypoglycaemia advice; bloods at 1–2 weeks; review in 4 weeks; teach-back.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -6299,37 +6299,37 @@
    "intro": "This station hides its key fact in a blood result: an HbA1c that jumped. Candidates who explore why find the stopped metformin; candidates who don’t just add another drug and miss the patient.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Adding a new drug to “bring the HbA1c down” without asking why it rose.",
      "why": "“Does not gather sufficient information.” A sudden rise signals a change; here it is a stopped medicine.",
      "fix": "Ask permissively: “Lots of people get side effects they don’t mention — how have you really been getting on?”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Responding to the disclosure with “you really should have told us”.",
      "why": "“Does not respond appropriately to the patient’s emotions.” Shame ensures she will conceal again.",
      "fix": "Thank her, normalise it, take shared responsibility: “We should have asked sooner.”"
     },
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Leaving her thinking retinopathy and kidney changes mean blindness and dialysis.",
      "why": "Inaccurate framing drives hopelessness and disengagement.",
      "fix": "Explain the earliest grades plainly and contrast them with her aunt’s end-stage disease."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Forgetting renal protection: no SGLT2 inhibitor, no ACE inhibitor titration, no BP target.",
      "why": "“Management plan not in line with current UK best practice.” NICE NG28 and NG203 set out the kidney protection package.",
      "fix": "SGLT2 inhibitor, ramipril to highest tolerated dose, BP target, U&E at 1–2 weeks, repeat ACR."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Medical terms: microalbuminuria, NPDR, eGFR, SGLT2.",
      "why": "“Language not easily understood by the patient.”",
      "fix": "“A tiny protein leak”, “earliest marks at the back of the eye”, “a tablet that protects the kidneys”."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No dated follow-up and no invitation to report side effects.",
      "why": "She stopped a drug silently once; without explicit permission she will again.",
      "fix": "Book bloods and review, and say: “If anything doesn’t agree with you, tell me — you’re not a nuisance.”"
@@ -6393,7 +6393,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mr Hollis, it’s Dr Lee from the surgery. I’ve got your message about the colchicine. Is now a good time to talk for a few minutes?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks it is a safe time to talk on a telephone consultation"
    },
    {
@@ -6403,7 +6403,7 @@
    {
     "who": "dr",
     "text": "I will be quick, I promise, and I’ve heard that Sheila needs you. Before I prescribe anything I need to understand the foot properly, because with diabetes a hot foot isn’t always gout. Then we’ll make a plan that works for both of you. All right?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Sets an agenda that respects his constraint without accepting his diagnosis"
    },
    {
@@ -6415,7 +6415,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Describe the foot for me. Where exactly is the redness and swelling, and how long has it been going on?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Open, specific description of the foot"
    },
    {
@@ -6425,7 +6425,7 @@
    {
     "who": "dr",
     "text": "That’s important. Is there any break in the skin — a blister, a graze, anything underneath, any fluid or smell?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Looks for an ulcer or portal of infection"
    },
    {
@@ -6435,7 +6435,7 @@
    {
     "who": "dr",
     "text": "Do you walk barefoot at home at all? And do you remember knocking it or standing on anything?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Explores mechanism of an unnoticed injury"
    },
    {
@@ -6445,7 +6445,7 @@
    {
     "who": "dr",
     "text": "How are you in yourself? Any fever, shivering, sweats, feeling muddled? Have you checked your sugars?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for sepsis and hyperglycaemia"
    },
    {
@@ -6457,7 +6457,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "Thank you. You said you can’t come in because of Sheila. Tell me about her and what a normal day looks like for you.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the carer cue"
    },
    {
@@ -6467,7 +6467,7 @@
    {
     "who": "dr",
     "text": "That’s an enormous amount to carry on your own. Can I ask what’s been going through your mind about the foot, if you’re honest with yourself?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Gently explores the buried fear"
    },
    {
@@ -6477,7 +6477,7 @@
    {
     "who": "dr",
     "text": "That makes complete sense — it has to be gout, because the other thing would mean hospital and leaving Sheila. And you were hoping for a prescription and no fuss.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Names the hidden agenda and his expectation without judgement"
    },
    {
@@ -6489,7 +6489,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I’m going to be straight with you. A red, hot, swollen foot in someone with diabetes and numb feet, with some wetness under it and shivers, is not something I can safely call gout over the phone. It could be an infection coming from a sore you can’t see, and those can spread quickly. It needs to be seen today, at the hospital.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Recognises a limb-threatening diabetic foot problem and states the plan clearly"
    },
    {
@@ -6499,7 +6499,7 @@
    {
     "who": "dr",
     "text": "That’s exactly the worry. The diabetes has dulled the nerves, so a serious problem can feel mild. The shivering tells me your body is fighting something. And about your brother-in-law — feet are lost when these are left. They’re saved when they’re seen early. Going today is how you keep your foot.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explains why low pain is falsely reassuring and meets the amputation fear honestly"
    },
    {
@@ -6511,7 +6511,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "So let’s solve Sheila first, because that’s the real problem. Who could sit with her for a few hours — the neighbour who was going to fetch the prescription?",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Treats the caring barrier as a clinical task"
    },
    {
@@ -6521,7 +6521,7 @@
    {
     "who": "dr",
     "text": "Good. Ring Pat after this. If Pat can’t, I will ring the council’s adult social care team now — they can arrange emergency cover, and if you’re kept in, they’ll make sure Sheila is looked after. I’ll also let her MS nurse know. Is that all right?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Arranges emergency carer cover with a fallback"
    },
    {
@@ -6531,7 +6531,7 @@
    {
     "who": "dr",
     "text": "I’m referring you to the hospital team now, and letting the diabetic foot team know. Please don’t drive yourself — ask Pat or a taxi, or I can help arrange transport. Keep off the foot as much as you can and don’t walk barefoot. If you have a meter, check your sugar before you go and take your tablets and the box with you.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Immediate acute referral and MDT notification per NICE NG19, with practical advice"
    },
    {
@@ -6541,7 +6541,7 @@
    {
     "who": "dr",
     "text": "Not today. If it does turn out to be gout, the hospital can treat it once they’ve looked. Colchicine also doesn’t always mix well with your cholesterol tablet, so I’d rather they decide.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains why the requested drug is withheld"
    },
    {
@@ -6553,7 +6553,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If before you get there you feel much worse — shaking you can’t stop, confused or very drowsy, breathless, or the redness racing up your leg — that’s 999. Tell them Sheila is at home alone so they can help.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific sepsis safety-net, including what to say about the dependant"
    },
    {
@@ -6563,7 +6563,7 @@
    {
     "who": "dr",
     "text": "I’ll ring you at four o’clock to check you’ve got there and Sheila’s covered. Can you tell me the plan back, so I know I’ve explained it well?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back and a timed call-back"
    },
    {
@@ -6573,7 +6573,7 @@
    {
     "who": "dr",
     "text": "That’s it exactly. You did the right thing ringing.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates help-seeking and closes warmly"
    }
   ],
@@ -6581,57 +6581,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Acknowledged the request and Sheila, but did not let the call close on a prescription; asked him to describe the foot openly.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Sole carer for a wife with advanced MS, no other help at home, barefoot at home, own health neglected.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Followed “it’s not as sore as usual”, “bit of wet on the sock” and “I’ve got Sheila to see to”.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (gout again), concern (leaving Sheila; buried amputation fear after his brother-in-law), expectation (phone script, no visit).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Recognised the foot must be examined today; asked for a capillary glucose; hospital will need bloods, wound swab or tissue sample and imaging for osteomyelitis.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Diabetic foot infection or cellulitis from an unseen ulcer vs osteomyelitis vs septic arthritis vs Charcot foot vs gout.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about skin break, spread, fever, rigors, confusion and glucose; applied NICE NG19 limb-threatening criteria and NICE NG253 sepsis red flags.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated: possible infected diabetic foot with systemic features — not safe to treat as gout by phone.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Immediate referral to acute services with MDT foot team informed (NICE NG19); no colchicine; offloading; transport that does not involve him driving.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Emergency carer cover arranged with a fallback via adult social care; MS nurse informed; sick-day and glucose advice for metformin and gliclazide.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999 triggers for sepsis and rapid spread; timed call-back at four o’clock; teach-back confirmed.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -6816,37 +6816,37 @@
    "intro": "This station is built to tempt you into a two-minute prescription. It is failed by treating the request, and passed by treating the foot and the obstacle behind the request.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Issuing colchicine because he has a gout history and asked for it.",
      "why": "“Management plan not in line with current UK best practice.” NICE NG19 requires immediate acute referral for a possibly infected diabetic foot with systemic features.",
      "fix": "Say plainly why you won’t prescribe, and what happens instead today."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Never asking about skin breaks, fever or glucose.",
      "why": "“Does not gather sufficient information to make a safe assessment.” The wet sock and shivers only emerge if asked.",
      "fix": "Ask about blisters, wetness, smell, barefoot walking, shivers, confusion and sugars."
     },
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Accepting “it’s not that sore” as reassuring.",
      "why": "Neuropathy masks pain; low pain in a hot diabetic foot is a warning sign.",
      "fix": "Explain it to him: “The nerves are numbed, so this can feel milder than it is.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Telling him to go to A&E without asking about Sheila.",
      "why": "“Does not identify or respond to the patient’s cues.” He will not go, and the safe plan fails.",
      "fix": "Solve cover first: neighbour, family, then adult social care, with a fallback that you arrange."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Missing the amputation fear behind “it has to be gout”.",
      "why": "Unaddressed, the fear keeps him minimising.",
      "fix": "Name it gently and reframe: early assessment is how feet are saved."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Ending with “go to hospital if it gets worse”.",
      "why": "Non-specific safety-netting for possible sepsis, with no follow-through.",
      "fix": "Name the 999 triggers, tell him what to say about Sheila, and book a timed call-back."
@@ -6910,7 +6910,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mr Wójcik, it’s Dr Lee. I’ve read your message. Before we start — are you somewhere you can talk, and how are you feeling right this minute?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Checks setting and immediate wellbeing on the phone"
    },
    {
@@ -6920,7 +6920,7 @@
    {
     "who": "dr",
     "text": "Thank you — that’s really clear, and I believe you. I want to ask some questions to understand what’s going on, because what you describe matters. Then we’ll agree what to do today. All right?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Believes him explicitly and sets an agenda"
    },
    {
@@ -6932,7 +6932,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "How much weight have you lost, and over how long?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Quantifies weight loss"
    },
    {
@@ -6942,7 +6942,7 @@
    {
     "who": "dr",
     "text": "Have you had any nausea or vomiting, tummy pain, or noticed a sweet or fruity smell on your breath? Any breathlessness or feeling drowsy?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens directly for DKA features"
    },
    {
@@ -6952,7 +6952,7 @@
    {
     "who": "dr",
     "text": "Do you have a glucose meter at home? Any recent readings?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Seeks objective data"
    },
    {
@@ -6962,7 +6962,7 @@
    {
     "who": "dr",
     "text": "Does anyone in your family have diabetes, or conditions like thyroid disease or coeliac disease? And were you unwell before you were diagnosed?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Tests the type 1 hypothesis: family history, autoimmunity, viral prodrome"
    },
    {
@@ -6974,7 +6974,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You mentioned your family say you must be sneaking food. How has that been for you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the blame cue"
    },
    {
@@ -6984,7 +6984,7 @@
    {
     "who": "dr",
     "text": "So you’ve been punishing yourself for something you believe you caused. What were you hoping I’d do today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Names the self-blame and asks his expectation"
    },
    {
@@ -6996,7 +6996,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I’m going to be very clear: you are not doing anything wrong. Someone slim, your age, losing weight this fast, with sugars climbing on two tablets — I don’t think this is type 2 diabetes. I think it’s a different kind, where the immune system stops the body making insulin. It’s not caused by food. Nobody gets it from bread or sugar.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Reframes the diagnosis and lifts the blame explicitly"
    },
    {
@@ -7006,7 +7006,7 @@
    {
     "who": "dr",
     "text": "It wasn’t you. The weight loss and the thirst are the illness, not you failing. Your family meant well, but they had it wrong — and I’m sorry to say the first label was probably wrong too.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Repeats the absolution and acknowledges the mislabelling honestly"
    },
    {
@@ -7016,7 +7016,7 @@
    {
     "who": "dr",
     "text": "Either is fine. But the pear-drop smell and the sickness worry me today. They can mean your body is short of insulin and making ketones, which can tip into a serious condition called DKA. I need you checked today — a finger-prick test for sugar and ketones.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Prioritises acute safety: possible evolving DKA"
    },
    {
@@ -7028,7 +7028,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "I’d like you at the surgery within the hour. The nurse will check your sugar and ketones and I’ll speak to the hospital diabetes team straight away. If the ketones are raised, you’ll go to hospital today, and they’ll most likely start insulin. Can someone drive you?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Same-day ketone testing and specialist contact; arranges safe transport"
    },
    {
@@ -7038,7 +7038,7 @@
    {
     "who": "dr",
     "text": "Yes. It replaces what your body has stopped making. The team will teach you everything, and people do very well on it. There’s also a blood test for antibodies that can confirm the type, but we won’t wait for that to treat you.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains insulin and confirmatory tests without delaying treatment"
    },
    {
@@ -7048,7 +7048,7 @@
    {
     "who": "dr",
     "text": "Not for having diabetes. On insulin there are DVLA rules — checking your sugar before and during driving, and telling them if it’s long term — and the team will go through them. For today, please don’t drive yourself.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Accurate DVLA reassurance and same-day driving advice"
    },
    {
@@ -7058,7 +7058,7 @@
    {
     "who": "dr",
     "text": "And from now, please eat normally. Cutting food makes this more dangerous, not less. Keep drinking water. Don’t change your tablets yourself until the team sees you.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Stops self-starvation and gives interim medicines advice"
    },
    {
@@ -7070,7 +7070,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If before you get here you start vomiting, get tummy pain, feel drowsy or your breathing speeds up, call 999 — don’t wait for us. I’ll ring the nurse now so she’s expecting you, and I’ll call you back this afternoon with the plan.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Precise DKA safety-net and a defined call-back"
    },
    {
@@ -7080,7 +7080,7 @@
    {
     "who": "dr",
     "text": "Can you tell me what you’re going to do now, and what you’ll tell your family tonight?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back including the family narrative"
    },
    {
@@ -7092,57 +7092,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Believed him from the first minute; asked how he felt now before exploring; set a clear agenda on the phone.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Stopped eating with his family; blame from relatives; self-restriction; drives for work.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “fruity breath” and nausea, the weight loss in a slim man, and “it must be me”.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (he caused it by eating wrong), concern (shame, relentless weight loss), expectation (stronger tablets or to be told what he is doing wrong).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Capillary glucose and blood ketones today; same-day diabetes team or acute assessment; GAD antibodies and C-peptide to confirm type, without delaying insulin (NICE NG17).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Type 1 diabetes or latent autoimmune diabetes vs type 2; tested with age, BMI, weight loss, family and autoimmune history and viral prodrome.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Screened for DKA features (vomiting, abdominal pain, drowsiness, breathlessness, ketotic breath); low threshold for admission.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated: likely autoimmune (type 1) diabetes misclassified as type 2, with possible ketosis — not his fault.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Seen within the hour; specialist contacted; insulin anticipated; no extra oral agents; stop dietary restriction; someone else drives him.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Asked about personal and family autoimmune disease; DVLA advice for insulin; interim medicines advice; family narrative addressed.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999 for vomiting, abdominal pain, drowsiness or rapid breathing; nurse pre-warned; afternoon call-back; teach-back.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -7323,37 +7323,37 @@
    "intro": "The trap is in the title of his records: “type 2”. The station is failed by treating the label and passed by treating the patient — a slim young man in insulin deficiency who thinks it is his fault.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Adding a third oral agent or advising stricter carbohydrate restriction.",
      "why": "“Management plan not in line with current UK best practice.” NICE NG17 features point to type 1; insulin, not more tablets, is needed.",
      "fix": "Say you doubt the type 2 label and arrange same-day specialist input."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Missing the ketotic breath and nausea.",
      "why": "“Does not rule out serious disease.” Evolving DKA must be excluded today.",
      "fix": "Ask directly about vomiting, abdominal pain, breath and drowsiness; check ketones within the hour."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Waiting for GAD antibodies before acting.",
      "why": "Antibodies help classify, but NICE NG17 treats type 1 as a clinical diagnosis; delay risks DKA.",
      "fix": "“We’ll do the antibody test, but we won’t wait for it to treat you.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Letting “my family say I’m sneaking food” pass.",
      "why": "“Does not identify or respond to the patient’s cues.” The blame is the hidden agenda and is driving self-starvation.",
      "fix": "Say explicitly: “You didn’t cause this. It’s your immune system, not food.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Delivering the new diagnosis without acknowledging the earlier mislabelling.",
      "why": "He will not trust the new plan if the old one is defended.",
      "fix": "Be honest and non-blaming: “I think the first label was probably wrong.”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Vague safety-netting and letting him drive himself in.",
      "why": "Non-specific advice in possible DKA is unsafe.",
      "fix": "Name the 999 triggers, arrange a driver, pre-warn the nurse and book a call-back."
@@ -7386,7 +7386,7 @@
     },
     {
      "h": "Glucose-lowering drugs",
-     "t": "NICE NG28 (updated February 2026): for most adults, offer modified-release metformin with an SGLT2 inhibitor from diagnosis, introduced stepwise — metformin first to check tolerability, then the SGLT2 inhibitor. Doses per BNF. Set an individualised HbA1c target and review at 3–6 months."
+     "t": "NICE NG28: for most adults, offer modified-release metformin with an SGLT2 inhibitor from diagnosis, introduced stepwise — metformin first to check tolerability, then the SGLT2 inhibitor. Doses per BNF. Set an individualised HbA1c target and review at 3–6 months."
     },
     {
      "h": "Cardiovascular risk",
@@ -7416,7 +7416,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Errol, I’m Dr Lee. Thanks for making time between drops. You’ve already guessed why we asked you in — before I say anything, tell me what’s going through your mind.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Opens with his perspective, not the result"
    },
    {
@@ -7426,7 +7426,7 @@
    {
     "who": "dr",
     "text": "Yes, the two blood tests do confirm type 2 diabetes. I’m sorry about your dad — that’s a lot to have watched. I don’t want to just hand you a prescription today. Can we spend a few minutes on you, what this means, and a plan that fits your life?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Confirms the diagnosis honestly and sets an agenda beyond tablets"
    },
    {
@@ -7438,7 +7438,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Tell me more about what happened with your dad.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the dominant cue first"
    },
    {
@@ -7448,7 +7448,7 @@
    {
     "who": "dr",
     "text": "Thank you. That tells me a lot. Have you had any symptoms yourself — very thirsty, up at night to pass water, losing weight without trying, blurred vision, sores that won’t heal?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for symptomatic hyperglycaemia and complications"
    },
    {
@@ -7458,7 +7458,7 @@
    {
     "who": "dr",
     "text": "Talk me through a normal working day — food, drink, how much you’re sitting.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open, non-judgemental lifestyle history"
    },
    {
@@ -7468,7 +7468,7 @@
    {
     "who": "dr",
     "text": "That sounds like the job is running you, rather than you being lazy. What do you drive — a van, or anything over three and a half tonnes?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes licence group for the DVLA advice"
    },
    {
@@ -7480,7 +7480,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "I’ll come to that. Can I ask — has anything about this diagnosis worried you that you haven’t said yet?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Invites the unspoken concern"
    },
    {
@@ -7490,7 +7490,7 @@
    {
     "who": "dr",
     "text": "I’m really glad you said that. So there are two worries: that you’re on your dad’s path whatever you do, and that this could cost you your living. What were you hoping for today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Summarises both hidden concerns and checks expectations"
    },
    {
@@ -7502,7 +7502,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Let me answer the licence first. On a van licence, with diet or the tablets I’d suggest, you don’t even need to tell the DVLA. You keep driving and you keep earning. Insulin has extra rules, but they’re manageable, and we’re nowhere near that.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Accurate, proactive DVLA advice for Group 1"
    },
    {
@@ -7512,7 +7512,7 @@
    {
     "who": "dr",
     "text": "Now your dad. What happened to him came from years of high sugar, high blood pressure and smoking left untreated, in a different era. You’ve been caught early, with no symptoms, kidneys and eyes working. The eyes, feet and heart can largely be protected if we control those things. That’s a very different starting line.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Reframes fatalism with accurate information on modifiable risk"
    },
    {
@@ -7522,7 +7522,7 @@
    {
     "who": "dr",
     "text": "And you’re here. The biggest thing for your heart isn’t the sugar — it’s the cigarettes. Would you be open to help with stopping, not today necessarily, but properly?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Prioritises smoking cessation as the highest-yield action"
    },
    {
@@ -7534,7 +7534,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Then here’s what I suggest, and tell me what fits. A tablet called metformin, the slow-release kind, starting now; once it’s settled, a second tablet that also protects the heart and kidneys. A cholesterol check with your heart-risk score, and a home blood pressure monitor for a week, because today’s reading is borderline.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Dual first-line therapy introduced stepwise: MR metformin, then the SGLT2 inhibitor within weeks (NICE NG28 2026); QRISK3 and BP confirmation"
    },
    {
@@ -7544,7 +7544,7 @@
    {
     "who": "dr",
     "text": "The newer guidance starts both early because they protect more than the sugar. And there’s something your dad was never offered: with your weight and an early diagnosis, type 2 can sometimes go into remission — sugar back to normal off medication. There’s an NHS programme for that. Would you want me to refer you?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Offers remission via the NHS Path to Remission Programme"
    },
    {
@@ -7554,7 +7554,7 @@
    {
     "who": "dr",
     "text": "Good. And one small change you choose for this week — not a list from me. What could you realistically do on the road?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Negotiates a single achievable goal"
    },
    {
@@ -7564,7 +7564,7 @@
    {
     "who": "dr",
     "text": "Perfect. I’ll also book a diabetes education course, eye screening and a foot check — they catch problems years before they matter. The stop-smoking team will ring you if you’re happy for me to refer.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Arranges care processes and follow-through"
    },
    {
@@ -7576,7 +7576,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If you get very thirsty, are passing lots of urine, lose weight, or once you’re on the second tablet feel very unwell with vomiting or tummy pain, stop that tablet and ring us the same day, or 111 out of hours. I’ll see you in two weeks with the blood pressure readings.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net including SGLT2 inhibitor sick-day advice"
    },
    {
@@ -7586,7 +7586,7 @@
    {
     "who": "dr",
     "text": "When you get home and someone asks what the doctor said, what will you tell them?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back"
    },
    {
@@ -7598,57 +7598,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Opened with his thoughts before the result; confirmed the diagnosis without either minimising or dwelling on complications.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Eleven-hour days in the van, garage food, energy drinks, smoking, self-employed with no sick pay, caring for his father at the end.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “made my peace with where this goes” and “give me the tablets”, and the unspoken licence worry.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (father’s path is fixed), concerns (early death, losing his licence and income), expectation (tablets and no fuss).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Confirmed two diagnostic HbA1c values; QRISK3 and lipids; HBPM or ABPM to confirm BP; U&E, ACR; eye screening and foot check.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Type 2 diabetes vs other types (slow onset, BMI 32, asymptomatic); asked what he drives to place him in the right DVLA group.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about osmotic symptoms, weight loss and visual change; no features of hyperglycaemic emergency.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated: type 2 diabetes, early and asymptomatic, with modifiable cardiovascular risk from smoking, BP and cholesterol.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Dual first-line MR metformin + SGLT2 inhibitor, introduced stepwise (NICE NG28, February 2026); remission programme; structured education; one negotiated lifestyle goal.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Smoking cessation referral (NICE NG209); statin if QRISK3 10% or more (NICE NG238); BP confirmation (NICE NG136).",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Named osmotic and SGLT2 inhibitor sick-day warning symptoms; 2-week review with BP readings; teach-back.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -7828,37 +7828,37 @@
    "intro": "Almost every candidate can prescribe metformin. This station is passed or failed on whether you hear the fatalism and the licence fear under “just give me the tablets”.",
    "items": [
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Taking “just give me the tablets” at face value and prescribing.",
      "why": "“Does not identify or respond to the patient’s cues.” His father’s death is the engine of the consultation; a prescription into despair changes nothing.",
      "fix": "Ask about his father first: “Tell me what happened to him.” Then reframe with facts."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Giving no DVLA advice, or telling him he must inform the DVLA.",
      "why": "Wrong advice for a Group 1 driver on non-hypoglycaemic tablets, and it leaves his main hidden fear unaddressed.",
      "fix": "Ask what he drives, then say clearly: van licence, these tablets, no notification needed."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Focusing only on HbA1c and ignoring smoking, BP and cholesterol.",
      "why": "“Management plan not in line with current UK best practice.” Cardiovascular disease is the main threat; NICE NG238, NG136 and NG209 all apply.",
      "fix": "Name smoking as the biggest single step, calculate QRISK3, and confirm the BP with home readings."
     },
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Metformin alone with no mention of the updated NICE NG28 approach.",
-     "why": "NICE NG28 (updated February 2026) recommends MR metformin plus an SGLT2 inhibitor for most adults, introduced stepwise.",
+     "why": "NICE NG28 recommends MR metformin plus an SGLT2 inhibitor for most adults, introduced stepwise.",
      "fix": "Explain the two-step plan simply and why the second tablet protects the heart and kidneys."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "A generic lifestyle lecture: salmon, gyms and 150 minutes a week.",
      "why": "“Advice not tailored to the patient’s circumstances.” He sits in a van eleven hours a day.",
      "fix": "Ask him to choose one change that works on the road, and build from there at review."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No safety-net and no booked review.",
      "why": "Non-specific safety-netting is a standard failing statement; new SGLT2 inhibitor users need sick-day advice.",
      "fix": "Name osmotic symptoms and the SGLT2 inhibitor sick-day rule, and book review in two weeks."
@@ -7916,7 +7916,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Priya, I’m Dr Lee. Can you see and hear me OK? Before I go into the results, tell me how things have been.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Opens with her experience before the numbers"
    },
    {
@@ -7926,7 +7926,7 @@
    {
     "who": "dr",
     "text": "I’ll answer that properly, I promise. Can I ask a few questions first, then explain the results and agree a plan together?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Acknowledges the request and sets a structure"
    },
    {
@@ -7938,7 +7938,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Tell me more about the pounding. Is it regular, or does it skip or flutter? Any chest pain, fainting or breathlessness?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for arrhythmia and cardiac compromise"
    },
    {
@@ -7948,7 +7948,7 @@
    {
     "who": "dr",
     "text": "What else has changed: heat, sweating, bowels, sleep, periods, mood?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Completes the thyrotoxic symptom review"
    },
    {
@@ -7958,7 +7958,7 @@
    {
     "who": "dr",
     "text": "And your eyes? Any grittiness, pain, double vision or change in your sight? Do you smoke?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks for thyroid eye disease and a modifiable risk"
    },
    {
@@ -7968,7 +7968,7 @@
    {
     "who": "dr",
     "text": "Do you have asthma? And are you using any contraception at the moment?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks before a beta-blocker and before carbimazole (MHRA 2019)"
    },
    {
@@ -7980,7 +7980,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You said leave the rest. Can I ask what the weight loss has meant to you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the cue at the centre of the case"
    },
    {
@@ -7990,7 +7990,7 @@
    {
     "who": "dr",
     "text": "That makes sense, and I’m not going to brush it aside. After a long fight, those compliments matter. Is anything about the heart side worrying you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates without judgement and elicits her concern"
    },
    {
@@ -8000,7 +8000,7 @@
    {
     "who": "dr",
     "text": "Thank you for being honest about both. Can I ask gently: over the years, have you ever skipped meals, made yourself sick, or used anything to control your weight?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens sensitively for disordered eating before treatment"
    },
    {
@@ -8010,7 +8010,7 @@
    {
     "who": "dr",
     "text": "That fits with an overactive thyroid: eating more but still losing weight. I’m glad you told me about the diets, because it helps me understand why this part is hard.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Links her answer to the diagnosis and validates"
    },
    {
@@ -8018,7 +8018,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Your thyroid is in overdrive. It’s an immune condition called Graves’ disease. The racing heart and the weight loss are the same problem: your body is burning fuel far too fast, including muscle, and the heart is working flat out. So I can’t treat one and leave the other.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names Graves’ and reframes the weight loss as part of the illness"
    },
    {
@@ -8028,7 +8028,7 @@
    {
     "who": "dr",
     "text": "Treating it won’t make you balloon. Your weight tends to settle back towards your own normal, gradually, and I’ll support you with that. I won’t pretend it isn’t a loss for you. But your heart matters more than the compliments.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Holds the line kindly and addresses the regain fear realistically"
    },
    {
@@ -8040,7 +8040,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Three things. First, an ECG in the next day or two to check the rhythm, and a tablet called propranolol today to slow your heart and settle the shaking. Second, an urgent referral to the thyroid specialists. Third, I’ll speak to them about starting carbimazole, which switches the overdrive off. Does that sound reasonable?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "ECG, beta-blocker, specialist referral and antithyroid drug (NICE NG145)"
    },
    {
@@ -8050,7 +8050,7 @@
    {
     "who": "dr",
     "text": "Mostly, but two rules matter. Rarely it lowers the cells that fight infection, so a sore throat, mouth ulcers or fever means stop it and get a same-day blood test. And it can harm a baby, so keep taking your pill reliably and tell us straight away if you might be pregnant.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Agranulocytosis rule and MHRA contraception advice"
    },
    {
@@ -8062,7 +8062,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If you get chest pain, fainting, a very fast heartbeat with fever or confusion, call 999. For eye pain, double vision or blurred sight, contact us the same day. I’ll send the carbimazole rules in writing and see you in two weeks.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Named emergency triggers, eye red flags, written advice and dated follow-up"
    },
    {
@@ -8072,7 +8072,7 @@
    {
     "who": "dr",
     "text": "When I see you, I want to hear about the heart and the shakes, and also how you’re feeling about your weight. Both matter. Can you tell me back the two rules for carbimazole?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Commits to follow up the body-image cost and checks understanding"
    },
    {
@@ -8084,57 +8084,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; heard the request to “leave the rest” without agreeing to it.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Work as a solicitor, body-image history, the effect of compliments, a colleague’s collapse.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “leave the rest” and “everyone says I look amazing”, and explored them.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (something overactive), concern (losing the weight loss; the heart), expectation (fix the heart only).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "ECG within days; eye symptoms checked; pregnancy status and contraception confirmed.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Graves’ disease (TRAb positive, eye signs) vs other causes; AF vs sinus tachycardia; possible disordered eating.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Screened for AF, chest pain, syncope, thyroid storm and sight-threatening eye disease.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated Graves’ hyperthyroidism and that the weight loss is part of it, in plain words.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Propranolol after checking for asthma; urgent specialist referral; carbimazole discussed per NICE NG145 with MHRA safety advice.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Contraception reviewed for carbimazole; body-image distress acknowledged and followed up.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Agranulocytosis rule in writing, 999 triggers, eye red flags, review in two weeks.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -8303,37 +8303,37 @@
    "intro": "The endocrinology here is standard. The station is failed by agreeing to “just sort the heart”, and by forgetting the carbimazole safety rules.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Prescribing propranolol and stopping there.",
      "why": "“Management plan not in line with current UK best practice.” Graves’ needs specialist referral and definitive treatment.",
      "fix": "Beta-blocker plus urgent referral, and discuss carbimazole in line with NICE NG145."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "No agranulocytosis warning or contraception check with carbimazole.",
      "why": "BNF and MHRA (February 2019) safety advice is mandatory.",
      "fix": "“Sore throat, ulcers or fever: stop and get a same-day blood test. Keep your contraception reliable.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Missing the ECG despite “skippy” palpitations and a pulse of 104.",
      "why": "AF in thyrotoxicosis changes management and stroke risk.",
      "fix": "ECG within days; act on AF per NICE NG196."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Ignoring “leave the rest” or treating it as vanity.",
      "why": "“Does not identify or respond to the patient’s cues.” Her reluctance is the central problem.",
      "fix": "“What has the weight loss meant to you?” Validate before explaining."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Bargaining treatment away to keep her happy.",
      "why": "Unsafe; colluding with the illness puts her heart at risk.",
      "fix": "Hold the line kindly and offer support with the weight change."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Safety-net limited to “come back if it gets worse”.",
      "why": "Non-specific safety-netting is a standard failing feedback statement.",
      "fix": "Name storm, cardiac and eye triggers; give written carbimazole rules; book review."
@@ -8392,7 +8392,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Hana, I’m Dr Lee. Can you hear and see me all right? I know the receptionist mentioned your thyroid. Before I go through the results, what have you made of it so far?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Starts with her understanding before giving information"
    },
    {
@@ -8402,7 +8402,7 @@
    {
     "who": "dr",
     "text": "That’s a good place to start. I’ll explain the results, talk about treatment, and make sure we cover anything else on your mind. Is there anything you want to be sure we get to?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Sets the agenda and invites other concerns early"
    },
    {
@@ -8414,7 +8414,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Tell me how things have been over the last few months.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question"
    },
    {
@@ -8424,7 +8424,7 @@
    {
     "who": "dr",
     "text": "How have your periods been, and your mood?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Completes the hypothyroid symptom review and opens a door"
    },
    {
@@ -8434,7 +8434,7 @@
    {
     "who": "dr",
     "text": "You said you want your life back. I had a feeling there might be more riding on this than the tiredness. Is there something else you’re hoping it explains?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Picks up the cue behind “life back” and the pause"
    },
    {
@@ -8446,7 +8446,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "Thank you for telling me. That changes what today is about. What have you read about the thyroid and pregnancy?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Receives the disclosure as the main agenda and explores her ideas"
    },
    {
@@ -8456,7 +8456,7 @@
    {
     "who": "dr",
     "text": "That’s a lot to carry on your own. What would you most like to come out of today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges the burden and elicits expectations"
    },
    {
@@ -8468,7 +8468,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Your thyroid, the gland in your neck that sets your body’s pace, is running slow because your immune system has been attacking it. It’s called Hashimoto’s. It’s common, and it’s very treatable with a daily tablet that replaces the missing hormone.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Clear, jargon-free explanation of autoimmune hypothyroidism"
    },
    {
@@ -8478,7 +8478,7 @@
    {
     "who": "dr",
     "text": "It may well be part of it. An underactive thyroid can make conceiving harder and can affect a pregnancy. That’s why this is good news: we’ve found something real and fixable. It isn’t your fault, and it isn’t your body being broken. It’s a hormone level, and we can correct it.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Links hypothyroidism to fertility honestly and reframes the self-blame"
    },
    {
@@ -8488,7 +8488,7 @@
    {
     "who": "dr",
     "text": "Can I check you’re not pregnant at the moment, as far as you know? When was your last period?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks current pregnancy status before planning the dose"
    },
    {
@@ -8500,7 +8500,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "I’d like to start levothyroxine today at a full dose based on your weight. Take it first thing on an empty stomach, half an hour before breakfast, and keep it apart from any iron or calcium. The fog and the cold should ease over a few weeks, not overnight. I’ll check your level in about six weeks so we can adjust it quickly, because you’re planning a pregnancy.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Correct starting dose, administration, realistic timescale and early review"
    },
    {
@@ -8510,7 +8510,7 @@
    {
     "who": "dr",
     "text": "Ideally we get the level into range first, and we can talk about that together. What matters most is this: the moment you have a positive test, ring us that day. We’ll increase the dose straight away and check your bloods, because a baby needs more thyroid hormone early on. Start folic acid today too.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Pregnancy dose-increase rule and folic acid"
    },
    {
@@ -8520,7 +8520,7 @@
    {
     "who": "dr",
     "text": "Fourteen months is also long enough for you and your husband to have fertility checks, alongside treating the thyroid. I can start those. And I wonder whether he’d want to share some of this with you.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Offers fertility assessment and gently addresses sharing the load"
    },
    {
@@ -8532,7 +8532,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If you get palpitations, shakiness or chest pain after starting, let me know, as the dose may be too high. I’ll book your blood test and a review, and send the fertility test forms. Can you tell me back the main points, so I know I’ve explained well?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Safety-net for over-replacement, dated follow-up and teach-back"
    },
    {
@@ -8542,7 +8542,7 @@
    {
     "who": "dr",
     "text": "Perfect. You came in for a tablet, and you’re leaving with a plan for the thing that matters most to you.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Summarises and ties the plan to her agenda"
    },
    {
@@ -8554,57 +8554,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Asked what she already understood; invited other concerns early.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Work, relationship, 14 months trying to conceive, crying alone, what she has not told her husband.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “give me my life back”, the pause and “look at the state of me”, and explored them.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (thyroid explains everything, maybe infertility), concern (it’s her fault, miscarriage), expectation (a tablet).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Repeat TSH to titrate, earlier because she is trying to conceive; fertility assessment for both partners (NICE NG257).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Autoimmune primary hypothyroidism; other causes of fatigue already excluded (FBC, ferritin, B12, coeliac, glucose).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about mood; recognised the pregnancy risk of untreated hypothyroidism.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated Hashimoto’s hypothyroidism in plain words, linked to her symptoms and fertility.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Full weight-based levothyroxine (NICE NG145); how to take it; folic acid; dose increase and bloods on a positive test (RCOG 2025).",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Fertility assessment for both partners; iron-containing supplements kept apart from levothyroxine.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Blood test and review booked; over-replacement symptoms; ring the same day on a positive test.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -8774,37 +8774,37 @@
    "intro": "The thyroid part of this station is easy. It is failed by treating a tiredness appointment as just that, and by missing the pregnancy safety rule.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Starting 25 micrograms “to be safe” in a fit 31-year-old.",
      "why": "NICE NG145 recommends a full weight-based starting dose in adults under 65 without heart disease.",
      "fix": "1.6 micrograms/kg/day, rounded to the nearest 25 micrograms."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "No advice about what to do if she becomes pregnant.",
      "why": "“Management plan not in line with current UK best practice.” Thyroid hormone need rises early in pregnancy.",
      "fix": "“Positive test: ring us that day. We’ll increase the dose and check your bloods.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Ignoring 14 months of trying to conceive once it is disclosed.",
      "why": "NICE NG257: after 1 year, offer both partners assessment and investigation.",
      "fix": "Offer fertility tests for both partners now, alongside treating the thyroid."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Handing over a prescription without asking what “give me my life back” means.",
      "why": "“Does not identify or respond to the patient’s cues.” The real agenda stays hidden.",
      "fix": "“It sounds like there’s more riding on this. Is there anything else you hope it explains?”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Brushing past “look at the state of me”.",
      "why": "Self-blame drives her distress; leaving it unaddressed loses Relating marks.",
      "fix": "“This is your immune system, not your fault.”"
     },
     {
-     "dom": "gs",
+     "dom": "ro",
      "fail": "Jargon: “TPO-positive autoimmune thyroiditis with TSH 22; we’ll titrate to a target.”",
      "why": "“Language not easily understood by the patient.”",
      "fix": "“Your immune system has slowed your thyroid. A daily tablet replaces what it isn’t making.”"
@@ -8867,7 +8867,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello, is that Aoife? It’s Dr Lee from the surgery. I can hear you’re really upset. Before anything else — are you somewhere you can talk for ten minutes, and is anyone with you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks safety and privacy on the phone and names the distress first"
    },
    {
@@ -8877,7 +8877,7 @@
    {
     "who": "dr",
     "text": "You don’t need to apologise. You’ve been up all night with a frightening letter and two losses behind you. I promise I’ll answer that question properly. Can I ask a few things first, so my answer is honest and about you, and then we’ll make a clear plan together?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Holds the question, sets an agenda and signals the plan"
    },
    {
@@ -8889,7 +8889,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "First, how are you right now in the pregnancy — any bleeding, any tummy or pelvic pain?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Excludes an acute early-pregnancy problem before anything else"
    },
    {
@@ -8899,7 +8899,7 @@
    {
     "who": "dr",
     "text": "That’s good to hear. And before this pregnancy, did you ever feel particularly cold, sluggish, put on weight or have dry skin? Has anyone in your family had thyroid problems, or conditions like type 1 diabetes or coeliac disease?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for overt hypothyroidism and autoimmune clustering"
    },
    {
@@ -8909,7 +8909,7 @@
    {
     "who": "dr",
     "text": "Thank you. Can you tell me a little about the two miscarriages? When they happened and what you were told?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Invites her story of the losses, not just dates"
    },
    {
@@ -8929,7 +8929,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "You said a moment ago ‘did my thyroid kill them’. That’s a heavy question to have been carrying. What’s been going through your mind overnight?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Follows the guilt cue explicitly"
    },
    {
@@ -8939,7 +8939,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me that. Can I ask — have you been able to say any of this to your husband?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores support and the private weight of self-blame"
    },
    {
@@ -8949,7 +8949,7 @@
    {
     "who": "dr",
     "text": "So you’ve been holding this on your own. And what were you hoping I could do for you today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Elicits her expectation before explaining"
    },
    {
@@ -8961,7 +8961,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Let me take your real question first. I can’t look back and tell you what caused losses a year or two ago — nobody honestly can, and I won’t pretend. What I can tell you is that miscarriage is very common and is almost never caused by anything a woman did. And a thyroid that runs a bit slow is your immune system, not a failing and not a choice. This is not you.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Answers the causation question honestly and dismantles self-blame"
    },
    {
@@ -8971,7 +8971,7 @@
    {
     "who": "dr",
     "text": "Now the result. Pregnancy changes the numbers. Outside pregnancy, your level would be called borderline and we’d often just watch it. In early pregnancy we want the thyroid working a bit harder, and your antibodies are positive — so yours is a result we take seriously and act on.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Interprets the result in pregnancy context, not by non-pregnant thresholds"
    },
    {
@@ -8981,7 +8981,7 @@
    {
     "who": "dr",
     "text": "It’s mild, and it’s treatable. The guidance for pregnancy is to repeat the test quickly first, because sometimes a single result settles on its own. So I’d like you to have the repeat blood test tomorrow morning. I’ll also speak to the antenatal thyroid team at the hospital today. If the repeat confirms it, which I think is likely, the usual step is a small daily thyroid tablet called levothyroxine, which is safe in pregnancy.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Confirms within days and involves the antenatal endocrine team, per RCOG GTG 76"
    },
    {
@@ -8991,7 +8991,7 @@
    {
     "who": "dr",
     "text": "That’s a fair question. We’re talking days, not weeks, and at six weeks that short wait makes no difference to the baby. It just makes sure we’re treating a real result. If the tablet starts, we recheck your levels every four to six weeks and adjust, so it stays where this pregnancy needs it.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explains the reason for waiting and addresses the urge for action"
    },
    {
@@ -9003,7 +9003,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "There’s something else I want to do. Two losses deserve more than ‘bad luck’. I’ll refer you to the early pregnancy team so you have a named place to call, and ask the specialists about further assessment of the previous miscarriages. Would that feel helpful?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Takes the two previous losses seriously and plans assessment"
    },
    {
@@ -9013,7 +9013,7 @@
    {
     "who": "dr",
     "text": "One practical thing: if the tablet starts, take it on its own first thing, and keep your pregnancy vitamin for later in the day, because the iron in it stops the thyroid tablet being absorbed properly.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Practical prescribing advice on absorption"
    },
    {
@@ -9023,7 +9023,7 @@
    {
     "who": "dr",
     "text": "And Aoife — how are you sleeping and coping generally? Over the last month, have you felt down or hopeless, or unable to stop worrying?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for perinatal anxiety and depression (NICE CG192)"
    },
    {
@@ -9033,7 +9033,7 @@
    {
     "who": "dr",
     "text": "That makes sense after what you’ve been through. I’d like to talk to you again next week with the results, and the midwife can link you to support if the worry keeps you from sleeping. Would you consider telling your husband some of what you told me? You don’t have to carry this alone.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Plans support and gently encourages sharing with her partner"
    },
    {
@@ -9045,7 +9045,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Before we finish: if you get bleeding, or pain low in your tummy or in your shoulder tip, ring the early pregnancy unit — I’ll text you the number now. Heavy bleeding, feeling faint or severe pain is 999. I’ll ring you myself with the repeat result.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net with named routes and a promised call-back"
    },
    {
@@ -9055,7 +9055,7 @@
    {
     "who": "dr",
     "text": "When your husband asks tonight what the doctor said, what will you tell him?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back"
    },
    {
@@ -9067,57 +9067,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Slowed the call, acknowledged her distress and the two losses, and held the causation question until she had been heard.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Husband unaware of her guilt; sleep, isolation and catastrophising; family history of thyroid disease; much-wanted pregnancy.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Followed “did my thyroid kill them?” and “that’s not luck, that’s me”, and returned to both explicitly.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (her thyroid caused the losses), concern (guilt and fear of a third loss), expectation (to be told what to do, and absolution).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Repeat TFTs within days (within 3 weeks per RCOG GTG 76); no examination needed by phone; current bleeding or pain checked; mood screen (NICE CG192).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Mild subclinical hypothyroidism vs transient result vs evolving overt hypothyroidism; thyroid autoimmunity; other causes of recurrent loss.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about bleeding and pain now; gave EPAU and 999 routes; noted TSH above 10 would change urgency.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Named it plainly: mild underactive thyroid in pregnancy with positive antibodies, mild and treatable, not a cause of past losses that can be proven.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Repeat TFTs, same-day discussion with the antenatal thyroid team, levothyroxine if confirmed with TSH aim 2.5 or less, TFTs every 4–6 weeks.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Advised separating levothyroxine from the iron-containing vitamin; referral to early pregnancy services and assessment of previous losses.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "EPAU number for bleeding or pain; 999 for heavy bleeding, faintness or severe pain; GP call with results next week; teach-back.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -9291,37 +9291,37 @@
    "intro": "This station is failed in two opposite ways: treating it as a routine borderline TSH, or answering her grief with endocrinology. The marks sit in reading the result in pregnancy and in meeting the guilt honestly.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Applying non-pregnant rules: “TSH under 10, no treatment, recheck in three months.”",
      "why": "“Management plan not in line with current UK best practice.” NICE NG145 does not cover pregnancy; RCOG GTG 76 (2025) uses a 4.0 mU/L threshold and supports treatment when confirmed, especially with positive antibodies.",
      "fix": "Say out loud that pregnancy changes the numbers, repeat TFTs within days, and get antenatal thyroid advice the same day."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Telling her the thyroid probably caused her miscarriages, or that levothyroxine will stop another.",
      "why": "It overclaims the evidence and confirms her guilt. Past losses cannot be attributed after the event, and treatment is not a guarantee.",
      "fix": "“Nobody can say what caused those losses. What we can do is treat what we’ve found now, and make sure you’re properly looked after.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Launching into TSH and antibodies while she is still sobbing.",
      "why": "“Does not respond to the patient’s emotional state.” She cannot take in numbers until she feels heard.",
      "fix": "Slow the call, check she is safe to talk, name the losses and the frightening letter, then agree an agenda."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Hearing “that’s not luck, that’s me” and moving on.",
      "why": "“Does not identify or respond to the patient’s cues.” The self-blame is the hidden agenda of the station.",
      "fix": "Address it directly: “This is not you. Miscarriage is common and almost never caused by anything a woman did.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Ignoring the two previous miscarriages because the question was about the thyroid.",
      "why": "Missing the wider picture. RCOG GTG 17 (2023) supports assessment after two losses where clinically appropriate.",
      "fix": "Offer early pregnancy support and referral for assessment, and explain why."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Closing with “any problems, get in touch”.",
      "why": "Non-specific safety-netting. In early pregnancy after two losses she needs named routes.",
      "fix": "EPAU number for bleeding or pain, 999 for heavy bleeding or collapse, and a promised call with results."
@@ -9379,7 +9379,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mrs Petrie, it’s Dr Lee. Can I check I’m speaking to Lorna, and that it’s a good time to talk?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Identity and privacy on the phone"
    },
    {
@@ -9389,7 +9389,7 @@
    {
     "who": "dr",
     "text": "I can hear you feel genuinely awful, and I’m not going to fob you off. I’d like to go through your results with you, understand everything that’s been going on, and then agree what will actually help. Is that OK?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Believes her first and sets a shared agenda"
    },
    {
@@ -9401,7 +9401,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Tell me about a typical day at the moment.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question"
    },
    {
@@ -9411,7 +9411,7 @@
    {
     "who": "dr",
     "text": "Can I ask about your periods, and whether you’re getting any hot flushes or night sweats?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for perimenopause"
    },
    {
@@ -9421,7 +9421,7 @@
    {
     "who": "dr",
     "text": "It may be, and it could explain a lot. How has your mood been? Are you still enjoying things?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for low mood"
    },
    {
@@ -9431,7 +9431,7 @@
    {
     "who": "dr",
     "text": "And your weight and appetite, any change there? Drinking a bit more than usual to cope?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Completes the differential and screens alcohol"
    },
    {
@@ -9443,7 +9443,7 @@
     "clock": "4–7 min",
     "who": "dr",
     "text": "Blood tests aside, what has life been like these past months?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Opens space for the hidden agenda"
    },
    {
@@ -9453,7 +9453,7 @@
    {
     "who": "dr",
     "text": "I’m so sorry. That’s a huge loss, and very recent. Thank you for telling me. Can I ask, have you had any thoughts of harming yourself, or that life isn’t worth living?",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Responds with empathy and assesses risk"
    },
    {
@@ -9465,7 +9465,7 @@
     "clock": "7–9 min",
     "who": "dr",
     "text": "Here’s what your results show. Your thyroid-stimulating level is a little high, but the thyroid hormone itself is normal and the antibody test is negative. We call that subclinical: a mild, borderline change. It is different from a truly underactive thyroid.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains subclinical hypothyroidism honestly"
    },
    {
@@ -9475,7 +9475,7 @@
    {
     "who": "dr",
     "text": "No, I’m saying not yet, and not blindly. National guidance says to repeat the test three months after the first one to be sure. If it’s still raised, a six-month trial of levothyroxine is something we can try together, and stop it if it doesn’t help. But at this level it often doesn’t fix tiredness, and I don’t want it to be the only thing we do.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "NICE NG145-concordant plan; keeps a trial on the table"
    },
    {
@@ -9485,7 +9485,7 @@
    {
     "who": "dr",
     "text": "Partly. At 52, with periods spacing out, flushes and night sweats, the perimenopause is very likely, and it causes exactly this: poor sleep, fog, low mood, weight change. It’s very treatable. And after what’s happened in your marriage, anyone would feel flattened. Both deserve help as much as your thyroid does.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names perimenopause and low mood as likely drivers"
    },
    {
@@ -9497,7 +9497,7 @@
     "clock": "9–11 min",
     "who": "dr",
     "text": "Here’s what I’d suggest. A face-to-face appointment next week to talk properly about menopause treatment, including HRT, which can help the sweats, sleep and mood. I’ll give you the number for NHS Talking Therapies, which you can call yourself. And a repeat thyroid test in about two months, three months after your first one. What do you think?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Shared plan with concrete options and a dated repeat test"
    },
    {
@@ -9507,7 +9507,7 @@
    {
     "who": "dr",
     "text": "Your friend’s tablet helped her, and I’m glad. Her thyroid may have been very different. I want the treatment that fits you.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Respects the friend’s story without arguing"
    },
    {
@@ -9515,7 +9515,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If your mood drops, or you ever have thoughts of harming yourself, ring us the same day or call 111. Tell me back what we’ve agreed so I know I’ve explained it clearly.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Mood safety-net and teach-back"
    },
    {
@@ -9525,7 +9525,7 @@
    {
     "who": "dr",
     "text": "Exactly. You came for one tablet, and you’re leaving with a plan for all of it. I’ll see you next week.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Summarises and confirms follow-up"
    },
    {
@@ -9537,57 +9537,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Believed her symptoms first; did not open with the result or a refusal.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Work, sleep, the end of a 24-year marriage, support from her mother, what she tells people.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “that explains everything”, flushes brushed off as “just my age”, and the flat mood.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (thyroid explains everything), concern (being dismissed; grief she cannot name), expectation (levothyroxine).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination and tests",
     "d": "Repeat TSH and free T4 3 months after the first test (NICE NG145); no FSH needed at 52 (NICE NG23).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates and tests hypotheses",
     "d": "Subclinical hypothyroidism vs perimenopause vs low mood or depression; anaemia, B12 and diabetes already excluded.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked directly about self-harm and suicidal thoughts.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Borderline thyroid result not yet confirmed; perimenopause and grief-related low mood likely.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Repeat TFTs, 6-month trial if still raised (NICE NG145); HRT discussion (NICE NG23); talking therapies (NICE NG222).",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity and contributors",
     "d": "Addressed the perimenopause and low mood rather than attributing everything to the thyroid.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Face-to-face next week, dated blood test, mood safety-net, teach-back.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -9761,37 +9761,37 @@
    "intro": "This station is failed at both extremes: prescribing on demand, or saying “your thyroid’s fine” and closing. The marks sit in the middle ground and in the history she brushes off.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Starting levothyroxine on request after two readings four weeks apart.",
      "why": "“Management plan not in line with current UK best practice.” NICE NG145 repeats the test at 3 months before deciding.",
      "fix": "Repeat TSH and free T4 at 3 months; discuss a 6-month trial if still raised."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Refusing levothyroxine outright as if it can never help.",
      "why": "NICE NG145 allows a 6-month trial for symptomatic adults under 65 with TSH above range but below 10.",
      "fix": "Keep the trial on the table while treating the likelier causes."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Missing the perimenopause.",
      "why": "Erratic periods, flushes and sweats at 52 meet NICE NG23’s clinical diagnosis.",
      "fix": "Ask directly about periods and flushes, name it, and offer treatment."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "“Your thyroid is fine, there’s nothing wrong.”",
      "why": "“Does not respond to the patient’s concerns.” It confirms her fear of being dismissed.",
      "fix": "“You feel genuinely unwell. Let’s find out why.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Never asking about life beyond the symptoms.",
      "why": "The separation is the hidden agenda; missing it loses both Relating and Tasks marks.",
      "fix": "“Blood tests aside, what has life been like these past months?”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No mood safety-net after a disclosure of low mood.",
      "why": "Unsafe; non-specific safety-netting is a standard failing statement.",
      "fix": "Ask about self-harm, give a same-day route, and book follow-up."
@@ -9818,12 +9818,10 @@
     if (a.playbook) c.playbook = a.playbook;
     if (a.links) c.links = a.links;
     if (a.pitfalls) c.pitfalls = a.pitfalls;
-    if (a.scTasks && window.SCA_GS_STANDARD && window.SCA_RO_STANDARD) {
+    if (a.scTasks && window.SCA_GS_STANDARD && window.SCA_RO_STANDARD && window.SCA_BUILD_SCORECARD) {
       var ro = clone(window.SCA_RO_STANDARD), gs = clone(window.SCA_GS_STANDARD);
-      if (c.scorecard && c.scorecard.ro) ro = c.scorecard.ro;
-      c.scorecard = { tasks: a.scTasks, ro: ro, gs: gs,
-        maxTasks: sum(a.scTasks), maxRo: sum(ro), maxGs: sum(gs),
-        total: sum(a.scTasks) + sum(ro) + sum(gs) };
+      if (c.scorecard && c.scorecard.roStd) ro = c.scorecard.roStd;
+      c.scorecard = window.SCA_BUILD_SCORECARD(a.scTasks, ro, gs);
     }
   });
 })();

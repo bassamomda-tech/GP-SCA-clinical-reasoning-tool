@@ -12,33 +12,64 @@
   /* ============ 153. TELEPHONE — Itching in pregnancy: obstetric cholestasis ============ */
   const c153 = {
     id:'obstetric-cholestasis', title:'"My hands and feet are itching like mad \u2014 it\u2019s just my skin being dry"', type:'telephone', duration:12,
-    meta:{ age:31, sex:'F', setting:'Telephone \u2014 itching at 34 weeks pregnant.', system:'Obstetrics / Obstetric cholestasis' },
+    meta:{ age:31, sex:'F', setting:'Telephone \u2014 itching at 34 weeks pregnant.', system:'Obstetrics / Obstetric cholestasis', checked:'October 2026' },
     brief:'Mrs Priya Anand, 31, 34 weeks pregnant (first ongoing pregnancy). Rings about intense ITCHING, worst on the PALMS and SOLES, worse at NIGHT, for about a week, keeping her awake. No rash to see. She blames "dry skin / pregnancy hormones" and wants moisturiser advice. CRUCIAL: itching without a rash, especially palms/soles and worse at night in the late second/third trimester, suggests OBSTETRIC CHOLESTASIS (intrahepatic cholestasis of pregnancy) \u2014 needs bile acids + LFTs and obstetric referral, as it carries fetal risk (stillbirth at high bile-acid levels).',
     script:{
-      opening:'"Hi, sorry to bother you. I\u2019ve got this maddening itch \u2014 mostly my hands and feet, and it\u2019s worse at night, I\u2019m barely sleeping. There\u2019s nothing to see, no rash. I\u2019m sure it\u2019s just dry skin, or the pregnancy hormones doing their thing. Could you just recommend a good moisturiser or an antihistamine? I don\u2019t want to make a fuss over a bit of itching."',
-      facts:[
-        { topic:'Why this isn’t just dry skin', text:'ITCHING WITHOUT A RASH, characteristically on the PALMS and SOLES, WORSE AT NIGHT, in the late second/third trimester is the classic picture of OBSTETRIC CHOLESTASIS (intrahepatic cholestasis of pregnancy). It is NOT simply dry skin or hormones \u2014 it is a liver condition of pregnancy needing investigation (bile acids + LFTs) because it carries FETAL RISK.' },
-        { topic:'Why it matters',      text:'Obstetric cholestasis is associated with increased fetal risk \u2014 notably STILLBIRTH at high bile-acid concentrations \u2014 plus preterm birth and meconium. It mandates measuring SERUM BILE ACIDS and LFTs, obstetric referral and increased fetal/maternal monitoring, and often planned timing of birth depending on bile-acid levels. Reassuring it away as dry skin and recommending moisturiser is the dangerous miss.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 her "I don\u2019t want to make a fuss" reflects a tendency to minimise (and not wanting to be seen as an anxious first-time mum), but she is also exhausted and quietly worried something isn\u2019t right (the itch is relentless and odd). She may not connect itching to the baby at all. The skill is to take it seriously, recognise the pattern, explain why it needs testing, and arrange it \u2014 without either alarming her excessively or colluding with "just dry skin".' },
-        { topic:'Other features / differential', text:'Ask about dark urine, pale stools and jaundice (more advanced); exclude a rash (PEP/pemphigoid gestationis are different). But the palms/soles, no-rash, night-worse pattern is enough to investigate for cholestasis regardless.' },
-        { topic:'What she needs',       text:'Officially: moisturiser/antihistamine advice. What she needs: recognition that itching without a rash (palms/soles, night-worse) in late pregnancy suggests obstetric cholestasis, urgent BILE ACIDS + LFTs, obstetric referral and increased monitoring, symptom relief meanwhile, and clear safety-netting (reduced fetal movements, worsening) \u2014 not just moisturiser.' },
+      "opening": "\"Hi, sorry to bother you. I've got this maddening itch — mostly my hands and feet, and it's worse at night, I'm barely sleeping. There's nothing to see, no rash. I'm sure it's just dry skin, or the pregnancy hormones doing their thing. Could you just recommend a good moisturiser or an antihistamine? I don't want to make a fuss over a bit of itching.\"",
+      "facts": [
+        {
+          "topic": "The itch (if asked)",
+          "text": "About a week, palms of your hands and soles of your feet mostly, spreading a bit to your arms. Much worse at night — scratching till the skin is raw. No rash apart from scratch marks."
+        },
+        {
+          "topic": "Pregnancy",
+          "text": "34 weeks, first baby to get this far — you had an early miscarriage last year. Antenatal care has been normal so far; last midwife check two weeks ago, blood pressure fine."
+        },
+        {
+          "topic": "Baby's movements (if asked)",
+          "text": "\"He's moving as normal — lots of kicks this morning.\""
+        },
+        {
+          "topic": "Other questions (if asked)",
+          "text": "No dark urine, no pale stools, no yellow skin or eyes. No tummy pain, no headache, no visual disturbance, no swelling of face or hands, no bleeding, no fluid leaking. Feel a bit tired."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "Nothing. Pregnancy vitamins only. No allergies. Your mum had \"really bad itching\" in her pregnancies but nobody said why."
+        },
+        {
+          "topic": "Social",
+          "text": "31, pharmacist's assistant. Married to Dev. Non-smoker, no alcohol."
+        },
+        {
+          "topic": "Hidden — hold back",
+          "text": "After the miscarriage you have been anxious throughout and you do not want to \"be one of those anxious mums who calls about everything\". Say this only if asked how you are feeling or what worries you."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Apologetic, minimising. If the doctor explains that itching without a rash on hands and feet in late pregnancy needs a blood test today and a call to the maternity unit, become worried: \"Is the baby okay?\" Respond well to calm, clear explanation and a practical plan (where to go today, what to watch for)."
+        }
       ],
-      ice:{
-        ideas:'It\u2019s just dry skin or pregnancy hormones; moisturiser or an antihistamine will do.',
-        concerns:'HIDDEN AGENDA \u2014 minimising / not wanting to be "a fussy first-time mum", but exhausted and quietly worried the relentless odd itch isn\u2019t right; doesn\u2019t connect itching to the baby.',
-        expectations:'Moisturiser/antihistamine advice. What she actually needs: recognition of possible obstetric cholestasis, urgent bile acids + LFTs, obstetric referral and monitoring, symptom relief, and safety-netting (fetal movements).'
+      "ice": {
+        "ideas": "\"It's dry skin or pregnancy hormones.\"",
+        "concerns": "Not sleeping. Underneath (only if asked): anything happening to this baby after last year.",
+        "expectations": "\"A moisturiser or antihistamine.\" You will go to be checked today if the reason is explained."
       },
-      cues:['Itching WITHOUT a rash, palms/soles, worse at night, late pregnancy \u2014 obstetric cholestasis, not dry skin.','"Just dry skin/hormones, don\u2019t want to fuss" \u2014 minimisation of a pattern that carries fetal risk.','No rash to see \u2014 reinforces cholestasis (a liver cause) rather than a skin condition; investigate.']
+      "cues": [
+        "\"There's nothing to see, no rash.\" — say in the opening.",
+        "\"I don't want to make a fuss.\" — say in the opening.",
+        "\"Is the baby okay?\" — ask when tests or maternity are mentioned."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises ITCHING WITHOUT A RASH \u2014 characteristically palms/soles, worse at night, in late pregnancy \u2014 as suggestive of OBSTETRIC CHOLESTASIS, and does NOT dismiss it as dry skin/hormones with moisturiser advice' },
-      { dom:'tasks', text:'Arranges the right INVESTIGATIONS urgently: serum BILE ACIDS and LIVER FUNCTION TESTS, and screens associated features (dark urine, pale stools, jaundice) and excludes a rash' },
-      { dom:'tasks', text:'Refers to OBSTETRICS/maternity for assessment, increased fetal and maternal MONITORING, and planning \u2014 recognising the condition carries fetal risk (stillbirth at high bile-acid levels, preterm birth) and that timing of birth may be brought forward by bile-acid level' },
-      { dom:'tasks', text:'Offers symptom RELIEF appropriately (e.g. emollients/menthol-in-aqueous for the itch; ursodeoxycholic acid is a maternity-team decision for itch only, with no proven perinatal benefit per RCOG GTG 43, 2022) while making clear this is symptomatic and the investigation/referral is the priority' },
-      { dom:'tasks', text:'Knows the safety-net: reduced FETAL MOVEMENTS, worsening symptoms, jaundice, or feeling unwell warrant urgent maternity assessment \u2014 and that this is fundamentally about the baby\u2019s safety, not just comfort' },
-      { dom:'rto',   text:'Takes the symptom seriously and gently counters the "just dry skin/don\u2019t want to fuss" minimisation, validating that she was right to ring without alarming her excessively' },
-      { dom:'rto',   text:'Explains clearly why itching can matter in pregnancy, linking it to the baby in an honest but calm way so she accepts the tests and referral' },
-      { dom:'gs',    text:'Safety-nets and follows up: urgent bile acids/LFTs and obstetric referral, fetal-movement and worsening red flags \u2192 urgent maternity assessment, symptom relief meanwhile, and follow-up of results \u2014 investigating for cholestasis, not treating dry skin' },
+      { dom:'dg', text:'Recognises ITCHING WITHOUT A RASH \u2014 characteristically palms/soles, worse at night, in late pregnancy \u2014 as suggestive of OBSTETRIC CHOLESTASIS, and does NOT dismiss it as dry skin/hormones with moisturiser advice' },
+      { dom:'cm', text:'Arranges the right INVESTIGATIONS urgently: serum BILE ACIDS and LIVER FUNCTION TESTS, and screens associated features (dark urine, pale stools, jaundice) and excludes a rash' },
+      { dom:'cm', text:'Refers to OBSTETRICS/maternity for assessment, increased fetal and maternal MONITORING, and planning \u2014 recognising the condition carries fetal risk (stillbirth at high bile-acid levels, preterm birth) and that timing of birth may be brought forward by bile-acid level' },
+      { dom:'cm', text:'Offers symptom RELIEF appropriately (e.g. emollients/menthol-in-aqueous for the itch; ursodeoxycholic acid is a maternity-team decision for itch only, with no proven perinatal benefit per RCOG GTG 43, 2022) while making clear this is symptomatic and the investigation/referral is the priority' },
+      { dom:'cm', text:'Knows the safety-net: reduced FETAL MOVEMENTS, worsening symptoms, jaundice, or feeling unwell warrant urgent maternity assessment \u2014 and that this is fundamentally about the baby\u2019s safety, not just comfort' },
+      { dom:'ro',   text:'Takes the symptom seriously and gently counters the "just dry skin/don\u2019t want to fuss" minimisation, validating that she was right to ring without alarming her excessively' },
+      { dom:'ro',   text:'Explains clearly why itching can matter in pregnancy, linking it to the baby in an honest but calm way so she accepts the tests and referral' },
+      { dom:'cm',    text:'Safety-nets and follows up: urgent bile acids/LFTs and obstetric referral, fetal-movement and worsening red flags \u2192 urgent maternity assessment, symptom relief meanwhile, and follow-up of results \u2014 investigating for cholestasis, not treating dry skin' },
     ],
     worked:[
       { lbl:'Take it seriously',    txt:'"I\u2019m really glad you rang \u2014 and this isn\u2019t a fuss at all. There\u2019s a particular kind of itching in pregnancy that I always check properly: itching with NO rash, especially on the palms and soles and worse at night, like yours. That pattern can point to a liver condition of pregnancy rather than dry skin, and it\u2019s important we test for it."' },
@@ -67,33 +98,64 @@
   /* ============ 154. TELEPHONE — Fever in a young infant (<3 months): the can't-miss ============ */
   const c154 = {
     id:'febrile-young-infant', title:'"She\u2019s got a temperature but she\u2019s only 7 weeks \u2014 can I just give Calpol?"', type:'telephone', duration:12,
-    meta:{ age:0, sex:'F', setting:'Telephone \u2014 fever in a 7-week-old infant.', system:'Paediatrics / Febrile young infant (sepsis risk)' },
+    meta:{ age:0, sex:'F', setting:'Telephone \u2014 fever in a 7-week-old infant.', system:'Paediatrics / Febrile young infant (sepsis risk)', checked:'October 2026' },
     brief:'Caller: mother of Lily, 7 WEEKS old, with a measured temperature of 38.2\u00b0C, a bit sleepy and feeding less today. First-time mum, worried but hoping to manage at home; she asks whether she can "just give Calpol and keep an eye". CRUCIAL: a fever (\u226538\u00b0C) in an infant UNDER 3 MONTHS is a NICE NG143 RED flag \u2014 it mandates URGENT face-to-face assessment (paediatric/ED), because young infants can have serious bacterial infection/sepsis with few localising signs. Home management with antipyretics is unsafe here.',
     script:{
-      opening:'"Hi, I\u2019m really sorry to call, I\u2019m probably overreacting \u2014 my little girl Lily, she\u2019s seven weeks old, she feels hot and I took her temperature and it\u2019s 38.2. She\u2019s a bit more sleepy than usual and not feeding as well today. Can I just give her some Calpol and keep an eye on her at home? I don\u2019t want to drag a newborn to hospital if it\u2019s just a cold."',
-      facts:[
-        { topic:'Fever <3 months = red flag', text:'CRITICAL \u2014 a temperature of 38\u00b0C or above in an infant UNDER 3 MONTHS is a NICE NG143 traffic-light RED feature in its own right. Young infants are at high risk of serious bacterial infection (sepsis, meningitis, UTI) and can deteriorate rapidly with FEW localising signs. This mandates URGENT face-to-face assessment (paediatric/emergency) \u2014 NOT home management with Calpol.' },
-        { topic:'The added amber/red features', text:'On top of the age + fever, Lily is more SLEEPY and FEEDING LESS \u2014 reduced feeding/activity are themselves concerning. Assess (or ensure assessment of) colour, responsiveness, breathing, hydration (wet nappies), and for any rash \u2014 but the age + fever alone already requires urgent assessment.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 the first-time mum is MINIMISING ("probably overreacting", "don\u2019t want to drag a newborn to hospital") out of a wish not to be a nuisance and fear of overreacting, AND quiet terror that something is seriously wrong with her tiny baby. Reassurance-seeking and the hope it\u2019s "just a cold" mask real worry. The skill is to validate her instinct, be unambiguous that a fever at this age must be seen urgently, and convey it without inducing panic \u2014 her calling was exactly right.' },
-        { topic:'Why not Calpol-and-wait', text:'Antipyretics treat the temperature, not the cause, and do NOT make a febrile young infant safe; "give Calpol and keep an eye" risks a rapidly-deteriorating serious infection being missed. The number on the thermometer plus the age is the trigger \u2014 regardless of how she looks between feeds.' },
-        { topic:'What\u2019s needed',      text:'Officially: permission to give Calpol and watch at home. What\u2019s needed: recognition that fever \u226538\u00b0C in an infant <3 months is a red flag mandating URGENT face-to-face assessment (paediatric/ED) today \u2014 arranged now \u2014 with the mother\u2019s instinct validated, clear advice to go, and safety-netting en route (worsening, rash, breathing, unresponsiveness \u2192 999).' },
+      "opening": "\"Hi, I'm really sorry to call, I'm probably overreacting — my little girl Lily, she's seven weeks old, she feels hot and I took her temperature and it's 38.2. She's a bit more sleepy than usual and not feeding as well today. Can I just give her some Calpol and keep an eye on her at home? I don't want to drag a newborn to hospital if it's just a cold.\"",
+      "facts": [
+        {
+          "topic": "Temperature (if asked)",
+          "text": "Measured with a digital under-arm thermometer 20 minutes ago: 38.2°C. Rechecked: 38.3°C. You have not given any Calpol yet."
+        },
+        {
+          "topic": "Feeding and nappies (if asked)",
+          "text": "Breastfed. Normally feeds every 3 hours for 20 minutes; today feeds are short and she falls asleep after five minutes. Two wet nappies since this morning (usually five or six by now)."
+        },
+        {
+          "topic": "How she is (if asked)",
+          "text": "Sleepier than usual and harder to rouse for feeds, but she does wake and cries when changed. Cry is normal, not high-pitched. Colour a little pale; hands and feet cool. No blue lips."
+        },
+        {
+          "topic": "Breathing (if asked)",
+          "text": "Breathing \"a bit fast\" when you watch her chest; no grunting, no pauses, no sucking in under the ribs that you can see."
+        },
+        {
+          "topic": "Rash and other signs (if asked)",
+          "text": "No rash. If asked to check the soft spot: \"It feels normal, not bulging.\" No vomiting, no diarrhoea, no fits, no stiffness or floppiness. Your partner has had a cold this week."
+        },
+        {
+          "topic": "Birth and history",
+          "text": "Born at 39 weeks, normal delivery, no problems; went home after a day. Mum did not have a fever in labour as far as you know. No medicines. 8-week vaccines not given yet."
+        },
+        {
+          "topic": "Social",
+          "text": "You are Jess, 28; Lily is your first baby. Partner at work; your mum lives 10 minutes away and could drive. Car seat available."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Apologetic and hoping for \"Calpol and see\". If the doctor explains that babies under three months with a temperature need to be checked in hospital today, you are frightened: \"Is it something serious?\" If they explain calmly and give clear instructions, agree to go now. Ask: \"Should I give her Calpol first?\""
+        }
       ],
-      ice:{
-        ideas:'It\u2019s probably just a cold; Calpol and keeping an eye at home should be enough.',
-        concerns:'HIDDEN AGENDA \u2014 first-time mum minimising ("probably overreacting", "don\u2019t want to drag a newborn to hospital") out of not wanting to be a nuisance, while quietly terrified something is seriously wrong.',
-        expectations:'Permission to give Calpol and watch at home. What\u2019s actually needed: urgent face-to-face assessment now (fever <3 months is a red flag), her instinct validated, and safety-netting.'
+      "ice": {
+        "ideas": "\"It's probably just the cold her dad's got.\"",
+        "concerns": "\"I don't want to be the overreacting mum\" — but you are worried by how sleepy she is.",
+        "expectations": "\"Can I just give Calpol and keep an eye?\" You will go straight to hospital if it is explained clearly."
       },
-      cues:['Fever ≥38°C in an infant UNDER 3 months — a NICE NG143 red feature in itself; urgent face-to-face assessment, not Calpol-and-wait.','More sleepy + feeding less \u2014 additional concerning features; young infants deteriorate fast with few signs.','"Probably overreacting, don\u2019t want to drag her to hospital" \u2014 minimisation masking real worry; validate the instinct, be unambiguous.']
+      "cues": [
+        "\"I'm probably overreacting.\" — say in the opening.",
+        "\"She's more sleepy than usual.\" — say in the opening.",
+        "\"Only two wet nappies today.\" — say if asked about nappies."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises that a temperature \u226538\u00b0C in an infant UNDER 3 MONTHS is a NICE NG143 RED flag mandating URGENT face-to-face assessment \u2014 and does NOT advise home management with Calpol "and keep an eye"' },
-      { dom:'tasks', text:'Weights the additional concerning features (more sleepy, feeding less) and screens/asks about colour, responsiveness, breathing, hydration (wet nappies) and rash \u2014 while recognising the age + fever alone already triggers urgent assessment' },
-      { dom:'tasks', text:'Arranges URGENT assessment NOW: same-day paediatric/emergency assessment (the infant needs to be SEEN, typically with septic-screen evaluation in secondary care) \u2014 not a routine GP appointment or telephone reassurance' },
-      { dom:'tasks', text:'Conveys that antipyretics do NOT make a febrile young infant safe and that the age + fever is the trigger regardless of how she looks between feeds \u2014 so this is not deferrable' },
-      { dom:'tasks', text:'Gives clear, practical instructions to get her seen (where to go / arranging it) and the threshold for 999 (worsening, non-blanching rash, breathing difficulty, unresponsiveness, fits, mottled/pale)' },
-      { dom:'rto',   text:'VALIDATES the mother\u2019s instinct and explicitly counters the "overreacting/don\u2019t want to be a nuisance" minimisation \u2014 she did exactly the right thing \u2014 while not inducing paralysing panic' },
-      { dom:'rto',   text:'Communicates the urgency calmly and supportively, giving concrete doable actions so she accepts and acts on the need for assessment' },
-      { dom:'gs',    text:'Safety-nets unambiguously: urgent assessment today, what to watch en route, 999 criteria (non-blanching rash, breathing trouble, unresponsiveness, mottling/seizure), and ensures she will go \u2014 not Calpol-and-wait for a febrile 7-week-old' },
+      { dom:'dg', text:'Recognises that a temperature \u226538\u00b0C in an infant UNDER 3 MONTHS is a NICE NG143 RED flag mandating URGENT face-to-face assessment \u2014 and does NOT advise home management with Calpol "and keep an eye"' },
+      { dom:'dg', text:'Weights the additional concerning features (more sleepy, feeding less) and screens/asks about colour, responsiveness, breathing, hydration (wet nappies) and rash \u2014 while recognising the age + fever alone already triggers urgent assessment' },
+      { dom:'cm', text:'Arranges URGENT assessment NOW: same-day paediatric/emergency assessment (the infant needs to be SEEN, typically with septic-screen evaluation in secondary care) \u2014 not a routine GP appointment or telephone reassurance' },
+      { dom:'ro', text:'Conveys that antipyretics do NOT make a febrile young infant safe and that the age + fever is the trigger regardless of how she looks between feeds \u2014 so this is not deferrable' },
+      { dom:'cm', text:'Gives clear, practical instructions to get her seen (where to go / arranging it) and the threshold for 999 (worsening, non-blanching rash, breathing difficulty, unresponsiveness, fits, mottled/pale)' },
+      { dom:'ro',   text:'VALIDATES the mother\u2019s instinct and explicitly counters the "overreacting/don\u2019t want to be a nuisance" minimisation \u2014 she did exactly the right thing \u2014 while not inducing paralysing panic' },
+      { dom:'ro',   text:'Communicates the urgency calmly and supportively, giving concrete doable actions so she accepts and acts on the need for assessment' },
+      { dom:'cm',    text:'Safety-nets unambiguously: urgent assessment today, what to watch en route, 999 criteria (non-blanching rash, breathing trouble, unresponsiveness, mottling/seizure), and ensures she will go \u2014 not Calpol-and-wait for a febrile 7-week-old' },
     ],
     worked:[
       { lbl:'Validate, then be clear', txt:'"First \u2014 you are absolutely NOT overreacting, and you did exactly the right thing ringing. Here\u2019s the important rule: a temperature of 38 or more in a baby under three months old is something we always get seen straightaway, today, in person. Babies this tiny can get unwell quickly and don\u2019t always show it, so we don\u2019t manage a fever at this age at home."' },
@@ -122,33 +184,64 @@
   /* ============ 155. VIDEO — Faltering growth in an infant ============ */
   const c155 = {
     id:'faltering-growth', title:'"The health visitor says he\u2019s dropped centiles \u2014 am I starving my baby?"', type:'video', duration:12,
-    meta:{ age:0, sex:'M', setting:'Video consultation \u2014 mother of a 5-month-old crossing down centiles.', system:'Paediatrics / Faltering growth' },
+    meta:{ age:0, sex:'M', setting:'Video consultation \u2014 mother of a 5-month-old crossing down centiles.', system:'Paediatrics / Faltering growth', checked:'October 2026' },
     brief:'Mother of Noah, 5 months, whose weight has crossed DOWN two centile spaces; the health visitor flagged it and advised a GP review. He is breastfed, otherwise feeding, with no obvious illness; on history there may be feeding difficulties (frequent small feeds, some posseting), and the mother is exhausted, tearful and feels she is "failing" / "starving him". Faltering growth needs a structured, non-blaming assessment (feeding, history, examination, plotting) \u2014 most is non-organic and feeding-related, but red flags must be excluded, and maternal mental health matters.',
     script:{
-      opening:'(Tearful.) "The health visitor weighed Noah and said he\u2019s dropped down the lines on his chart, and now I\u2019m beside myself. Am I starving my own baby? I\u2019m breastfeeding and I thought it was going okay, but maybe I haven\u2019t got enough milk, maybe I\u2019m doing it all wrong. I feel like such a failure. Is something seriously wrong with him? Please just tell me what I\u2019m doing wrong."',
-      facts:[
-        { topic:'What faltering growth means', text:'Faltering growth = a sustained fall across centile spaces / weight gain slower than expected for age. NICE NG75 (2017) thresholds depend on birthweight centile: a fall across 1 or more weight centile spaces if birthweight was below the 9th centile, 2 or more if between the 9th and 91st, 3 or more if above the 91st, or current weight below the 2nd centile — so check Noah’s birthweight centile before labelling a two-space fall. It needs a STRUCTURED, NON-BLAMING assessment: a careful feeding and dietary history, birth/medical/developmental history, examination, and accurate plotting (using the correct chart; account for prematurity, mid-parental size, regression to the mean and measurement error). Most faltering growth is NON-ORGANIC and feeding-related \u2014 not a sign the mother is "starving" the baby.' },
-        { topic:'Feeding assessment & red flags', text:'Assess the feeding closely (latch/attachment and positioning if breastfeeding, frequency/volume, feed duration, satisfaction, posseting/vomiting, stools), and observe a feed where possible. EXCLUDE red flags / organic causes: significant vomiting (reflux, pyloric stenosis pattern), diarrhoea/malabsorption, recurrent infections, dysmorphism, developmental concerns, or signs of illness \u2014 and consider safeguarding/neglect only where indicated. Here, supporting feeding is likely central.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 the consultation is at least as much about the MOTHER: she is exhausted, tearful, feels she is FAILING and "starving" her baby, and may have low mood / postnatal depression and crumbling breastfeeding confidence. Her guilt and distress are central. The skill is to relieve the blame, support feeding practically, assess the baby properly, and attend to her mental health \u2014 not just produce a feeding plan.' },
-        { topic:'Why blame is wrong & harmful', text:'Faltering growth is usually NOT the mother\u2019s fault, and blame/shame undermines feeding and mental health further. Reassure that seeking help is good mothering, support breastfeeding (lactation/feeding support, consider top-ups only as guided), monitor weight, and involve the health visitor and, if needed, paediatrics/dietetics.' },
-        { topic:'What\u2019s needed',      text:'Officially: to be told what she\u2019s doing wrong. What\u2019s needed: a structured non-blaming assessment (feeding/history/examination/plotting), exclusion of organic red flags, practical feeding support, monitoring with the health visitor (and paediatric/dietetic referral if indicated), and \u2014 crucially \u2014 relief of her guilt and assessment/support of her mental health, framed around partnership not blame.' },
+      "opening": "(Tearful.) \"The health visitor weighed Noah and said he's dropped down the lines on his chart, and now I'm beside myself. Am I starving my own baby? I'm breastfeeding and I thought it was going okay, but maybe I haven't got enough milk, maybe I'm doing it all wrong. I feel like such a failure. Is something seriously wrong with him? Please just tell me what I'm doing wrong.\"",
+      "facts": [
+        {
+          "topic": "Weights (if asked)",
+          "text": "Born at term, 3.4 kg (about the 50th centile). The health visitor said he has dropped from the 50th to just below the 9th centile over the last two months. You can show the red book on camera."
+        },
+        {
+          "topic": "Feeding (if asked)",
+          "text": "Breastfed only. Feeds very often — every 1–2 hours, \"little snacky feeds\", often falls asleep on the breast after 5 minutes. Sometimes your nipples hurt with a \"lipstick\" shape after feeds. You have never seen a breastfeeding specialist. No bottles or solids yet."
+        },
+        {
+          "topic": "Sick and stools (if asked)",
+          "text": "Brings up a little milk after most feeds, not forceful, never green or bloody. Stools yellow, soft, two or three a day. Five or six wet nappies a day."
+        },
+        {
+          "topic": "Noah otherwise (if asked)",
+          "text": "Smiling, cooing, holding his head up, rolling. No coughs or infections, no breathing problems, no sweating with feeds. On video he looks alert and smiley, slim but not unwell."
+        },
+        {
+          "topic": "Pregnancy and birth",
+          "text": "Normal pregnancy and birth. Newborn check normal. Immunisations up to date."
+        },
+        {
+          "topic": "You — only if asked how you are",
+          "text": "You are 29, first baby. Exhausted, sleeping in 1–2 hour chunks, crying most days, feel \"useless\". Partner works long shifts. You enjoy cuddles with Noah but feel anxious all the time. No thoughts of harming yourself or Noah."
+        },
+        {
+          "topic": "Family (if asked)",
+          "text": "You are 5'3\", your partner 5'8\". Both were \"small babies\"."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Tearful, expecting to be blamed. If the doctor asks clipped questions without acknowledging your feelings, get more upset: \"So it IS my fault.\" If they reassure you that this is common, not your fault, and that they will work it out with you, calm down. Welcome practical help (feeding specialist, weight checks) and accept support for yourself if offered kindly."
+        }
       ],
-      ice:{
-        ideas:'She is "starving" her baby / doing breastfeeding wrong, or something is seriously wrong with him; she wants to know what she\u2019s doing wrong.',
-        concerns:'HIDDEN AGENDA \u2014 exhaustion, guilt and a sense of failing; crumbling breastfeeding confidence and possible postnatal low mood; the consultation is as much about her as the baby.',
-        expectations:'To be told what she\u2019s doing wrong. What she actually needs: a structured non-blaming assessment, exclusion of red flags, practical feeding support and monitoring, and relief of her guilt with attention to her mental health.'
+      "ice": {
+        "ideas": "\"I haven't got enough milk — I'm starving him.\"",
+        "concerns": "\"Is something seriously wrong with him?\" and that you are failing as a mum.",
+        "expectations": "\"Tell me what I'm doing wrong.\" You want a plan and to be told he is going to be okay."
       },
-      cues:['Crossing down centiles \u2014 needs structured assessment (feeding/history/exam/plotting); most is non-organic/feeding-related.','"Am I starving him / I\u2019m a failure" \u2014 maternal guilt and possible low mood are central; relieve blame, support her.','Tearful, exhausted, breastfeeding confidence gone \u2014 attend to the mother\u2019s mental health, not just a feeding plan.']
+      "cues": [
+        "\"I feel like such a failure.\" — say in the opening.",
+        "\"He falls asleep on the breast after five minutes.\" — say when describing feeds.",
+        "\"I cry most days, to be honest.\" — say if asked how you are coping."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Approaches faltering growth with a STRUCTURED, NON-BLAMING assessment: careful feeding/dietary history, birth/medical/developmental history, examination, and accurate plotting (correct chart, prematurity, mid-parental size, regression to mean, measurement error) \u2014 rather than assuming maternal fault' },
-      { dom:'tasks', text:'Assesses FEEDING closely (breastfeeding attachment/positioning, frequency/volume, posseting/vomiting, stools, satisfaction) and observes/plans to observe a feed and involve feeding/lactation support' },
-      { dom:'tasks', text:'EXCLUDES organic red flags: significant/projectile vomiting, diarrhoea/malabsorption, recurrent infections, dysmorphism, developmental concerns, signs of illness \u2014 and considers safeguarding only where genuinely indicated; refers to paediatrics/dietetics if red flags or no improvement' },
-      { dom:'tasks', text:'Recognises that most faltering growth is NON-ORGANIC/feeding-related and plans practical support and MONITORING (regular weights with the health visitor, feeding plan, top-ups only as guided) rather than alarm or unnecessary investigation' },
-      { dom:'tasks', text:'Assesses and supports MATERNAL MENTAL HEALTH \u2014 screens for postnatal depression/anxiety, exhaustion and breastfeeding confidence \u2014 recognising this as central to the consultation and the baby\u2019s feeding' },
-      { dom:'rto',   text:'RELIEVES THE GUILT explicitly: faltering growth is usually not her fault and she is not "starving" her baby; seeking help is good mothering \u2014 responding to the tears and self-blame first' },
-      { dom:'rto',   text:'Works in PARTNERSHIP and validates her efforts and distress, framing the plan as support not judgement, and engaging the health visitor as an ally' },
-      { dom:'gs',    text:'Safety-nets and follows up: feeding support and a monitoring plan with the health visitor, what would prompt paediatric/dietetic referral or concern (red flags, no weight improvement), maternal-mental-health support/follow-up, and a review \u2014 partnership and reassurance, not blame' },
+      { dom:'ro', text:'Approaches faltering growth with a STRUCTURED, NON-BLAMING assessment: careful feeding/dietary history, birth/medical/developmental history, examination, and accurate plotting (correct chart, prematurity, mid-parental size, regression to mean, measurement error) \u2014 rather than assuming maternal fault' },
+      { dom:'dg', text:'Assesses FEEDING closely (breastfeeding attachment/positioning, frequency/volume, posseting/vomiting, stools, satisfaction) and observes/plans to observe a feed and involve feeding/lactation support' },
+      { dom:'dg', text:'EXCLUDES organic red flags: significant/projectile vomiting, diarrhoea/malabsorption, recurrent infections, dysmorphism, developmental concerns, signs of illness \u2014 and considers safeguarding only where genuinely indicated; refers to paediatrics/dietetics if red flags or no improvement' },
+      { dom:'dg', text:'Recognises that most faltering growth is NON-ORGANIC/feeding-related and plans practical support and MONITORING (regular weights with the health visitor, feeding plan, top-ups only as guided) rather than alarm or unnecessary investigation' },
+      { dom:'dg', text:'Assesses and supports MATERNAL MENTAL HEALTH \u2014 screens for postnatal depression/anxiety, exhaustion and breastfeeding confidence \u2014 recognising this as central to the consultation and the baby\u2019s feeding' },
+      { dom:'ro',   text:'RELIEVES THE GUILT explicitly: faltering growth is usually not her fault and she is not "starving" her baby; seeking help is good mothering \u2014 responding to the tears and self-blame first' },
+      { dom:'ro',   text:'Works in PARTNERSHIP and validates her efforts and distress, framing the plan as support not judgement, and engaging the health visitor as an ally' },
+      { dom:'cm',    text:'Safety-nets and follows up: feeding support and a monitoring plan with the health visitor, what would prompt paediatric/dietetic referral or concern (red flags, no weight improvement), maternal-mental-health support/follow-up, and a review \u2014 partnership and reassurance, not blame' },
     ],
     worked:[
       { lbl:'Relieve the guilt first', txt:'"Stop \u2014 before anything else: you are NOT starving your baby, and you are not failing. Please hear that. Lots of babies cross the lines on the chart, and the great majority is to do with feeding getting established, not a mum doing anything wrong. The fact you\u2019re this worried tells me what a good, attentive mum you are. Let\u2019s work it out together, with no blame at all."' },
@@ -177,33 +270,60 @@
   /* ============ 156. TELEPHONE — Sticky eye in a newborn: usually benign, occasionally ophthalmia ============ */
   const c156 = {
     id:'neonatal-sticky-eye', title:'"My newborn\u2019s eye is gunky \u2014 it\u2019s just a blocked tear duct, isn\u2019t it?"', type:'telephone', duration:12,
-    meta:{ age:0, sex:'M', setting:'Telephone \u2014 mother of a newborn with a sticky eye.', system:'Paediatrics / Neonatal conjunctivitis' },
+    meta:{ age:0, sex:'M', setting:'Telephone \u2014 mother of a newborn with a sticky eye.', system:'Paediatrics / Neonatal conjunctivitis', checked:'October 2026' },
     brief:'Mother of Kai, 12 DAYS old, with a "gunky"/watery eye. Most neonatal sticky eye is a blocked nasolacrimal duct or mild sticky eye (benign, managed with cleaning). BUT the key task is to TRIAGE for OPHTHALMIA NEONATORUM (conjunctivitis in the first ~28 days) \u2014 especially severe/purulent discharge, marked swelling/redness, onset in the first days of life \u2014 which can be gonococcal (hyperacute, sight-threatening, needs same-day) or chlamydial (and signals maternal STI). On history there is COPIOUS PURULENT discharge and lid swelling \u2014 not a simple blocked duct.',
     script:{
-      opening:'"Hi, my little boy Kai is twelve days old and his eye keeps getting gunky \u2014 there\u2019s yellowy stuff and it\u2019s a bit swollen. My mum says it\u2019s just a blocked tear duct and to bathe it with cooled boiled water. I\u2019m sure she\u2019s right, she had four of us \u2014 but it does seem like a lot of discharge. Should I just keep cleaning it, or is that not enough? I don\u2019t want to overreact over a sticky eye."',
-      facts:[
-        { topic:'Triage benign vs ophthalmia', text:'Most neonatal sticky eye is a blocked nasolacrimal duct / mild "sticky eye" \u2014 benign, watery \u00b1 mild discharge, managed with cleaning and lacrimal-sac massage. BUT conjunctivitis in the first ~28 days (OPHTHALMIA NEONATORUM) must be triaged for: COPIOUS PURULENT discharge, marked LID SWELLING/redness, and early onset are red flags. Here there is copious purulent discharge AND lid swelling \u2014 this is NOT a simple blocked duct and needs urgent assessment, swabs and treatment.' },
-        { topic:'Gonococcal vs chlamydial', text:'GONOCOCCAL ophthalmia (typically the more hyperacute picture; timing of onset alone does not reliably separate the causes) is HYPERACUTE \u2014 profuse purulent discharge, marked lid oedema \u2014 and is SIGHT-THREATENING (corneal perforation) and a medical emergency needing same-day ophthalmology/paediatric assessment and systemic treatment. CHLAMYDIAL (now the commonest cause, per the College of Optometrists; timing of onset alone does not reliably separate the causes) is usually less acute but needs systemic treatment and signals a maternal STI. Both require swabs (including for gonococcus/chlamydia) and have public-health/parental-treatment implications.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 the mother is being reassured by her own mother ("just a blocked duct, bathe it") and is minimising ("don\u2019t want to overreact"), torn between deferring to family experience and her own niggling worry at how much discharge there is. There may also be unspoken anxiety/shame if STI is raised (chlamydial/gonococcal implies maternal infection). The skill is to validate the family wisdom for the common benign case BUT recognise the red flags here, arrange urgent assessment, and handle the maternal-infection angle sensitively and without blame.' },
-        { topic:'Management',           text:'For the benign blocked duct: clean with cooled boiled water and lacrimal massage, reassure (usually resolves by ~12 months). For red-flag ophthalmia (purulent/swollen/early): urgent same-day assessment, swabs (MC&S + gonococcal/chlamydial), and treatment; gonococcal is an ophthalmic emergency; chlamydial needs systemic treatment and maternal/partner sexual-health follow-up.' },
-        { topic:'What\u2019s needed',      text:'Officially: confirmation to keep cleaning a "blocked duct". What\u2019s needed: triage that recognises the copious purulent discharge + lid swelling as possible ophthalmia neonatorum (NOT a simple blocked duct), urgent same-day assessment with swabs and treatment (gonococcal = emergency), validation of the family wisdom for the common case while acting on the red flags here, and sensitive handling of the maternal-STI implication.' },
+      "opening": "\"Hi, my little boy Kai is twelve days old and his eye keeps getting gunky — there's yellowy stuff and it's a bit swollen. My mum says it's just a blocked tear duct and to bathe it with cooled boiled water. I'm sure she's right, she had four of us — but it does seem like a lot of discharge. Should I just keep cleaning it, or is that not enough? I don't want to overreact over a sticky eye.\"",
+      "facts": [
+        {
+          "topic": "The eye (if asked)",
+          "text": "Right eye. Started two days ago, worse today. Thick yellow-green pus that comes back within minutes of wiping — \"it's pouring out\". Both eyelids on that side are puffy and red, and the eye is hard to open. The left eye is fine."
+        },
+        {
+          "topic": "Kai otherwise (if asked)",
+          "text": "Feeding well (breast), wet nappies normal, no fever (36.9°C), not floppy or sleepy, no rash, no breathing problems."
+        },
+        {
+          "topic": "Birth (if asked)",
+          "text": "Born at 39 weeks, normal vaginal delivery, no problems. Newborn check was normal."
+        },
+        {
+          "topic": "Pregnancy and sexual health — only if asked sensitively",
+          "text": "You did not have any sexual health tests in pregnancy that you remember. \"I had a bit of discharge near the end but the midwife said it was normal.\" One partner, Kai's dad, together a year."
+        },
+        {
+          "topic": "Medicines",
+          "text": "None for Kai. You are on no medicines. No allergies."
+        },
+        {
+          "topic": "Social",
+          "text": "22, lives with partner Jay. Your mum is staying to help."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Apologetic, deferring to your mum. If the doctor asks good questions, describe the discharge honestly. If they explain this needs to be seen today by the eye or children's team, you are surprised but agree. If an infection passed on at birth is mentioned, become anxious and a little defensive: \"Are you saying I've got something?\" Respond well to calm, non-judgemental explanation and an offer of testing for you and Jay."
+        }
       ],
-      ice:{
-        ideas:'It\u2019s just a blocked tear duct (as her mother says); keep bathing it with cooled boiled water.',
-        concerns:'HIDDEN AGENDA \u2014 torn between deferring to her experienced mother and her own worry at how much purulent discharge there is; possible unspoken anxiety/shame if an STI cause is raised; "don\u2019t want to overreact".',
-        expectations:'Confirmation to keep cleaning a blocked duct. What she actually needs: triage recognising possible ophthalmia neonatorum (purulent + swollen), urgent same-day assessment + swabs + treatment, and sensitive handling of the maternal-infection angle.'
+      "ice": {
+        "ideas": "\"My mum says it's a blocked tear duct.\"",
+        "concerns": "\"It does seem like a lot of gunk.\" Underneath: not wanting to overreact as a new mum.",
+        "expectations": "\"Should I just keep cleaning it?\" You will take him to be seen today if the reason is explained."
       },
-      cues:['Newborn eye: COPIOUS PURULENT discharge + lid swelling \u2014 possible ophthalmia neonatorum, NOT a simple blocked duct; triage urgently.','Early onset / hyperacute purulent picture \u2014 gonococcal ophthalmia is sight-threatening and a same-day emergency.','"Just a blocked duct, don\u2019t want to overreact" \u2014 family-reassurance minimisation; validate the common case but act on the red flags.']
+      "cues": [
+        "\"It does seem like a lot of discharge.\" — say in the opening.",
+        "\"It comes straight back after I wipe it.\" — say if asked about the discharge.",
+        "\"Are you saying I've got something?\" — say if infection from birth is mentioned."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'TRIAGES the sticky eye rather than assuming a blocked duct: recognises that COPIOUS PURULENT discharge with marked LID SWELLING/redness in a neonate is possible OPHTHALMIA NEONATORUM \u2014 not a simple blocked nasolacrimal duct \u2014 and needs urgent assessment, not just cleaning' },
-      { dom:'tasks', text:'Identifies the EMERGENCY: hyperacute, profuse purulent discharge with marked lid oedema (especially early onset) suggests GONOCOCCAL ophthalmia \u2014 SIGHT-THREATENING \u2014 needing SAME-DAY ophthalmology/paediatric assessment, swabs and systemic treatment' },
-      { dom:'tasks', text:'Arranges SWABS and treatment per pathway: conjunctival swabs including for GONOCOCCUS and CHLAMYDIA (urgent), and recognises chlamydial conjunctivitis (the commonest cause; onset timing alone does not identify it) needs systemic treatment and signals maternal infection' },
-      { dom:'tasks', text:'Distinguishes the benign case and manages it correctly when appropriate: simple blocked nasolacrimal duct / mild sticky eye \u2014 cleaning with cooled boiled water and lacrimal-sac massage, reassurance (usually resolves by ~12 months) \u2014 i.e. does not over-treat the benign nor under-treat the red-flag picture' },
-      { dom:'tasks', text:'Handles the MATERNAL-STI implication sensitively and without blame: chlamydial/gonococcal ophthalmia implies maternal infection requiring maternal/partner sexual-health assessment and treatment \u2014 raised supportively and confidentially' },
-      { dom:'rto',   text:'Validates the family wisdom for the common benign case while gently explaining why THIS picture (purulent, swollen) needs urgent checking \u2014 not colluding with "just a blocked duct" when red flags are present' },
-      { dom:'rto',   text:'Reassures and supports an anxious new mother (and navigates the family-advice dynamic and any STI sensitivity) so she accepts urgent assessment without shame or panic' },
-      { dom:'gs',    text:'Safety-nets and acts: same-day assessment for the purulent/swollen picture (gonococcal = emergency), swabs and treatment, what to watch (worsening swelling, corneal cloudiness, systemic illness \u2192 urgent), maternal sexual-health follow-up if indicated, and follow-up \u2014 triage and treat, not "keep cleaning"' },
+      { dom:'dg', text:'TRIAGES the sticky eye rather than assuming a blocked duct: recognises that COPIOUS PURULENT discharge with marked LID SWELLING/redness in a neonate is possible OPHTHALMIA NEONATORUM \u2014 not a simple blocked nasolacrimal duct \u2014 and needs urgent assessment, not just cleaning' },
+      { dom:'dg', text:'Identifies the EMERGENCY: hyperacute, profuse purulent discharge with marked lid oedema (especially early onset) suggests GONOCOCCAL ophthalmia \u2014 SIGHT-THREATENING \u2014 needing SAME-DAY ophthalmology/paediatric assessment, swabs and systemic treatment' },
+      { dom:'cm', text:'Arranges SWABS and treatment per pathway: conjunctival swabs including for GONOCOCCUS and CHLAMYDIA (urgent), and recognises chlamydial conjunctivitis (the commonest cause; onset timing alone does not identify it) needs systemic treatment and signals maternal infection' },
+      { dom:'dg', text:'Distinguishes the benign case and manages it correctly when appropriate: simple blocked nasolacrimal duct / mild sticky eye \u2014 cleaning with cooled boiled water and lacrimal-sac massage, reassurance (usually resolves by ~12 months) \u2014 i.e. does not over-treat the benign nor under-treat the red-flag picture' },
+      { dom:'cm', text:'Handles the MATERNAL-STI implication sensitively and without blame: chlamydial/gonococcal ophthalmia implies maternal infection requiring maternal/partner sexual-health assessment and treatment \u2014 raised supportively and confidentially' },
+      { dom:'ro',   text:'Validates the family wisdom for the common benign case while gently explaining why THIS picture (purulent, swollen) needs urgent checking \u2014 not colluding with "just a blocked duct" when red flags are present' },
+      { dom:'ro',   text:'Reassures and supports an anxious new mother (and navigates the family-advice dynamic and any STI sensitivity) so she accepts urgent assessment without shame or panic' },
+      { dom:'cm',    text:'Safety-nets and acts: same-day assessment for the purulent/swollen picture (gonococcal = emergency), swabs and treatment, what to watch (worsening swelling, corneal cloudiness, systemic illness \u2192 urgent), maternal sexual-health follow-up if indicated, and follow-up \u2014 triage and treat, not "keep cleaning"' },
     ],
     worked:[
       { lbl:'Validate, then triage', txt:'"Your mum\u2019s right that a LOT of the time a gunky newborn eye is just a blocked tear duct \u2014 so she\u2019s not wrong in general. But what makes me want to check Kai today specifically is the amount of yellow discharge AND the swelling you\u2019re describing. That\u2019s a bit more than a simple blocked duct, and in a baby this young we always take that seriously."' },

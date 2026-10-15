@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Burns and Scalds — Protocol · Reasoning GP</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Burns and Scalds — Protocol">
+<meta property="og:description" content="Burns and scalds in primary care on one page: first aid (cool running water for 20 minutes, useful up to 3 hours after the burn), depth and %TBSA (palm about 1%, Lund and Browder), British Burn Association referral thresholds (2% or more in children, 3% or more in adults, full thickness, circumferential, special areas, chemical, electrical, inhalation, not healed in 2 weeks), non-accidental injury, dressings, toxic shock syndrome, tetanus and analgesia.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/management/burns.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<meta name="description" content="Burns and scalds in primary care on one page: first aid (cool running water for 20 minutes, useful up to 3 hours after the burn), depth and %TBSA (palm about 1%, Lund and Browder), British Burn Association referral thresholds (2% or more in children, 3% or more in adults, full thickness, circumferential, special areas, chemical, electrical, inhalation, not healed in 2 weeks), non-accidental injury, dressings, toxic shock syndrome, tetanus and analgesia." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/burns.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="Burns and scalds management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({ snapshot:"summaries/burns.html",
+icon:"\u{1F525}",
+  title:"Burns and scalds",
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Burns: cool it for 20 minutes, size and depth it honestly, refer by the burn service thresholds, and ask how it happened",
+  stemSub:"One page for minor burns and scalds in primary care. Give or check first aid: cool running water for 20 minutes, worthwhile up to 3 hours after the injury. Estimate depth and the percentage of total body surface area (TBSA), leaving out simple redness. Refer by the British Burn Association thresholds: 2% or more in children, 3% or more in adults, any full-thickness or circumferential burn, special areas, chemical, electrical and inhalation injuries, and anything not healed by 2 weeks. Think about non-accidental injury in every child. Manage the rest with non-adherent dressings, analgesia, tetanus and review.",
+  guideline:"British Burn Association: National Burn Care Referral Guidance (2012) and First Aid Clinical Practice Guidelines (2018) · NICE CKS burns and scalds · NICE CG89 child maltreatment (2009, updated 2017) · UKHSA Green Book chapter 30: tetanus · paracetamol and ibuprofen SPCs",
+  reviewed:"15 October 2026",
+  nextReview:"15 April 2027",
+  meta:[
+    {t:"BBA referral guidance (2012) · thresholds"},
+    {t:"BBA first aid guideline (2018)"},
+    {t:"NICE CKS · minor burn care"},
+    {t:"NICE CG89 · non-accidental injury"},
+    {t:"v1.0 · reviewed Oct 2026", tone:"ok"}
+  ],
+  lead:"<div class='mg-layers'><a href='#redflags'><b>999 or burns unit?</b><small>airway · size · site · type</small></a><a href='#confirm'><b>First aid and assess</b><small>20 minutes · depth · %TBSA</small></a><a href='#manage'><b>Dress and review</b><small>non-adherent · 2 weeks</small></a><a href='#safeguard'><b>Safeguarding</b><small>pattern and story</small></a></div>",
+  quickSub:"The six points that change what you do today. Each one is traced to a named source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Airway, large burns, electrical and chemical injuries: 999", html:"Signs of <b>inhalation injury</b> (burns in an enclosed space, facial or singed nasal hair burns, soot in the mouth, hoarseness, stridor, breathlessness), a <b>large burn</b>, <b>high-voltage electrical</b> injury, a significant <b>chemical</b> burn, shock, or a burn with other major trauma → <b>999</b>. Keep cooling with water during the wait, and keep the patient warm."},
+    {tone:"cream", h:"First aid: cool running water for 20 minutes", html:"Cool the burn under <b>cool running tap water for 20 minutes</b>; this still helps if started <b>up to 3 hours</b> after the injury. Remove clothing and jewellery unless stuck. No ice, iced water, butter or creams. Then cover loosely with <b>cling film laid in strips</b> (not wrapped round a limb) or a clean non-fluffy dressing. Chemical burns need prolonged irrigation."},
+    {tone:"cream", h:"Size and depth: palm about 1%, ignore simple redness", html:"The patient's <b>palm and fingers together are about 1% TBSA</b>; use a <b>Lund and Browder</b> chart for larger burns, and especially in children (the rule of nines over-estimates in children). <b>Do not count simple erythema</b> (superficial epidermal burns). Re-assess depth at 48–72 hours, when burns often look deeper."},
+    {tone:"amber", h:"Refer: 2% or more in children, 3% or more in adults", html:"British Burn Association minimum referral thresholds: <b>2% TBSA or more in children</b>, <b>3% or more in adults</b>, <b>all full-thickness burns</b>, all <b>circumferential</b> burns, any burn <b>not healed in 2 weeks</b>, and <b>suspected non-accidental injury</b>. Discuss burns to the face, hands, feet, genitalia, perineum or major joints, chemical, electrical, friction and cold injuries, and burns in an unwell or febrile child or a person with relevant comorbidity."},
+    {tone:"red", h:"Every burned child: does the story fit?", html:"<b>Non-accidental injury</b> features: delay in presenting, a history that does not fit the injury or the child's development, <b>immersion pattern</b> (glove or stocking distribution, clear tide lines, sparing of flexures), cigarette-sized round burns, contact burns with a clear shape, or previous injuries. Follow local safeguarding procedures the same day (NICE CG89)."},
+    {tone:"blue", h:"Toxic shock syndrome in a child with a small burn", html:"A child with even a small burn who becomes unwell within days, with <b>fever, rash, diarrhoea or vomiting, irritability or lethargy</b>, may have <b>toxic shock syndrome</b> → <b>same-day</b> hospital assessment, or 999 if signs of shock."}
+  ],
+  pathwaySub:"The consultation in five moves. Steps one and two decide where the patient is treated.",
+  pathway:[
+    {title:"Check airway, breathing and first aid", html:"Inhalation features, shock or major trauma → 999. Confirm 20 minutes of cooling (worth doing up to 3 hours after the burn); cover with cling film in strips."},
+    {title:"Estimate depth and TBSA", html:"Palm about 1%, Lund and Browder for larger burns; exclude erythema. Note site, circumferential burns and mechanism (scald, flame, contact, chemical, electrical, friction)."},
+    {title:"Apply the referral thresholds", html:"Children 2% or more, adults 3% or more, full thickness, circumferential, special areas, chemical or electrical, comorbidity, suspected NAI → burns service the same day (via the local referral line or emergency department)."},
+    {title:"Ask how it happened", html:"Does the history fit the injury and development? Safeguarding concerns in children and vulnerable adults → same-day action. Consider self-harm in adults."},
+    {title:"Dress, treat and review", html:"Non-adherent dressing, analgesia, tetanus check, review at 48 hours and then every 3–5 days. Not healing by 2 weeks → burns service."}
+  ],
+  sections:[
+    {id:"redflags", nav:"Red flags", title:"Red flags: 999 and same-day burns service", sub:"The burn's size, depth, site, cause and the person decide the destination.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Inhalation injury", html:"Burn in an enclosed space, facial burns, singed nasal hairs or eyebrows, soot in the mouth or nose, hoarse voice, stridor, cough or breathlessness → <b>999</b>. Airway swelling can develop over hours.", src:"BBA referral guidance (2012)"},
+         {tone:"red", h:"🔴 Large burns and shock", html:"Large burns (roughly 10% TBSA or more in adults and 5% or more in children need intravenous fluids), signs of shock, or burns with major trauma → <b>999</b>.", src:"BBA referral guidance (2012)"},
+         {tone:"red", h:"🔴 Electrical and chemical", html:"<b>High-voltage</b> electrical injuries and lightning → 999 (deep damage and arrhythmia). Any electrical burn needs an ECG and burns service discussion. <b>Chemical burns</b>: irrigate with copious water for longer than 20 minutes, remove contaminated clothing, identify the agent, and refer the same day; eye exposure → emergency eye irrigation and same-day eye casualty.", src:"BBA first aid guideline (2018)"},
+         {tone:"red", h:"🔴 Circumferential or full-thickness burns", html:"Circumferential burns of a limb, chest or neck can restrict circulation or breathing; full-thickness burns of any size need specialist care → <b>same-day</b> burns service referral.", src:"BBA referral guidance (2012)"},
+         {tone:"amber", h:"🟠 Special areas", html:"Face, hands, feet, genitalia, perineum and major joints → discuss with the burns service <b>the same day</b>: function and cosmesis are at stake even when small.", src:"BBA referral guidance (2012)"},
+         {tone:"amber", h:"🟠 Unwell child with a burn", html:"Fever, rash, vomiting or diarrhoea, irritability or lethargy in the days after a burn → <b>same-day</b> assessment for toxic shock syndrome; 999 if shocked.", src:"BBA referral guidance (2012)"}
+       ]},
+       {b:"why", html:"Burns are commonly underestimated in size and overestimated in how well they will heal. Deep dermal burns can look pink at first, and inhalation injury can look fine for an hour. Using the referral thresholds as written, rather than gestalt, is what protects patients from scarring, contracture and missed airway burns."}
+     ]},
+
+    {id:"confirm", nav:"Assess", title:"First aid and assessment: depth and size", sub:"Assess after cooling. Depth evolves over 48–72 hours.",
+     blocks:[
+       {b:"table", head:["Depth","Appearance","Healing"], rows:[
+         ["<b>Superficial epidermal</b>","Red, dry, painful, no blisters, blanches (like sunburn)","Within about 7 days; <b>not counted</b> in %TBSA"],
+         ["<b>Superficial partial thickness</b>","Pink, moist, blisters, brisk capillary refill, very painful","Usually within 2 weeks with minimal scarring"],
+         ["<b>Deep partial thickness</b>","Blotchy red or pale, sluggish or absent capillary refill, reduced sensation","Slow; often scars; refer"],
+         ["<b>Full thickness</b>","White, waxy, leathery or charred, painless, no capillary refill","Does not heal without surgery; refer"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"📏 Estimating TBSA", html:"The patient's <b>palm including fingers is about 1%</b>, useful for small or patchy burns. Use a <b>Lund and Browder</b> chart for larger burns and for children; the rule of nines is for adults only. Count partial- and full-thickness areas, not erythema.", src:"BBA referral guidance (2012) · NICE CKS burns and scalds"},
+         {tone:"blue", h:"🚿 First aid recap", html:"Cool running water for 20 minutes (within 3 hours of the burn); remove clothing and jewellery; keep the rest of the person warm; cover with cling film in strips or a clean non-adherent dressing. No ice, butter, toothpaste or creams. Cling film is for first aid and transfer, not a long-term dressing.", src:"BBA first aid guideline (2018)"},
+         {tone:"cream", h:"🗒️ History", html:"Mechanism (scald, flame, contact, chemical, electrical, friction, cold), time, first aid given, enclosed space, who was present, the child's developmental stage, previous injuries, comorbidities (diabetes, immunosuppression, peripheral vascular disease), and tetanus status.", src:"NICE CKS burns and scalds"},
+         {tone:"cream", h:"🔁 Re-assess", html:"Review at 48–72 hours: burns often declare themselves deeper than first thought, which can change the referral decision.", src:"NICE CKS burns and scalds"}
+       ]}
+     ]},
+
+    {id:"manage", nav:"Manage", title:"Management of minor burns in primary care", sub:"For superficial burns below the referral thresholds, outside special areas, in a well patient.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", tone:"cream", title:"Clean and deal with blisters", when:"after cooling", fromLabel:"then",
+          html:"Clean with water or saline. Leave small blisters intact; larger, tense or ruptured blisters may be deroofed according to local burns service advice. Do not apply creams to a wound that will be referred."},
+         {step:"2", tone:"cream", title:"Dress", when:"partial-thickness burns", fromLabel:"and",
+          html:"A <b>non-adherent dressing</b> (for example a silicone or paraffin-impregnated mesh) with an absorbent secondary dressing, held in place without constriction. Superficial epidermal burns need only an emollient. Facial burns are usually left open with a bland ointment after specialist advice."},
+         {step:"3", tone:"cream", title:"Analgesia", when:"everyone", fromLabel:"",
+          html:"<span class=mg-dose>Usual adult dose: paracetamol 1 g up to four times daily (NICE/SPC; check the SPC, BNF and local formulary; <a href='https://www.medicines.org.uk/emc/search?q=paracetamol' target=_blank rel=noopener>SPC: paracetamol</a>)</span>, with <span class=mg-dose>ibuprofen 400 mg three times daily with food if no contraindication (NICE/SPC; check the SPC, BNF and local formulary; <a href='https://www.medicines.org.uk/emc/search?q=ibuprofen' target=_blank rel=noopener>SPC: ibuprofen</a>)</span>. Children's doses per the BNFC. Dressing changes may need analgesia beforehand."},
+         {step:"4", tone:"green", title:"Review and heal", when:"48 hours, then every 3–5 days", fromLabel:"",
+          html:"Check depth, infection and healing. <b>Not healed by 2 weeks</b> → refer to the burns service (risk of hypertrophic scarring). Once healed: moisturise, high-factor sun protection for at least a year, and watch for itch and scarring."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"🦠 Infection", html:"Do not give prophylactic antibiotics. Increasing pain, spreading redness, offensive exudate or fever → swab and treat as cellulitis (see the <a href='cellulitis.html'>cellulitis protocol</a>), and discuss with the burns service; an unwell child → same-day assessment for toxic shock syndrome.", src:"NICE CKS burns and scalds"},
+         {tone:"amber", h:"💉 Tetanus", html:"Burns needing surgical intervention that is delayed beyond 6 hours, and burns with systemic sepsis, are tetanus-prone. Check immunisation status and give a booster and, if indicated, immunoglobulin as Green Book chapter 30 sets out.", src:"Green Book ch.30"}
+       ]},
+       {b:"say", html:"The burn is shallow, so it should heal in about two weeks with little or no scarring. Keep the dressing clean and dry and come back in two days so we can check it, because burns sometimes turn out deeper than they first look. Take the painkillers regularly for the first few days. If it hasn't healed in two weeks, we'll ask the burns team to see it."}
+     ]},
+
+    {id:"safeguard", nav:"Safeguarding", title:"Safeguarding and non-accidental injury", sub:"Most childhood scalds are accidental, but every one deserves the question.",
+     blocks:[
+       {b:"table", head:["Feature","Why it matters"], rows:[
+         ["<b>Delay</b> in seeking help, or an inconsistent or changing history","Common in inflicted injury"],
+         ["<b>Immersion pattern</b>: glove or stocking distribution, uniform depth, clear tide lines, sparing of skin creases or buttock centre","Suggests forced immersion rather than a spill"],
+         ["<b>Contact burns</b> with a clear shape (iron, hair straighteners) or <b>small round burns</b> the size of a cigarette tip","Suggests deliberate contact"],
+         ["Burn on the back, buttocks, perineum or soles of the feet; a burn in a non-mobile infant","Unusual sites for accidents"],
+         ["Other injuries, previous attendances, or a child known to children's social care","Pattern of harm"]
+       ]},
+       {b:"warn", html:"If you suspect maltreatment, follow local safeguarding procedures <b>the same day</b> and refer to the burns service (NICE CG89; BBA guidance asks for suspected non-accidental injury to be referred for specialist assessment). Consider self-harm, domestic abuse and neglect in adults, and elder abuse in older people."}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Special groups", sub:"Groups where the default plan changes.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"🧒 Children", html:"Lower referral threshold (2% TBSA), larger head and smaller limbs in Lund and Browder, higher risk of toxic shock syndrome and of non-accidental injury. Doses per the BNFC.", src:"BBA referral guidance (2012)"},
+         {tone:"amber", h:"🤰 Pregnancy", html:"Discuss any significant burn with the burns service and obstetrics; pregnancy is a reason for a lower threshold.", src:"BBA referral guidance (2012)"},
+         {tone:"amber", h:"🧓 Older people and comorbidities", html:"Thin skin burns deeper; diabetes, peripheral vascular disease and immunosuppression slow healing. Lower threshold for referral and early review.", src:"BBA referral guidance (2012)"},
+         {tone:"cream", h:"🔥 Self-harm", html:"Burns from self-harm need wound care plus a risk assessment and mental health follow-up (NICE NG225).", src:"NICE NG225 (2022)"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer: who, where and how fast", sub:"Use the local burns service referral line; most offer telephone advice and photo review.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999", html:"Inhalation injury or airway concern; large burns; shock; high-voltage electrical injury or lightning; significant chemical burns; burns with major trauma.", src:"BBA referral guidance (2012)"},
+         {tone:"red", h:"Same-day burns service (direct or via emergency department)", html:"Children 2% TBSA or more, adults 3% or more; any full-thickness or circumferential burn; chemical, electrical or friction burns; suspected non-accidental injury; unwell or febrile child with a burn.", src:"BBA referral guidance (2012)"},
+         {tone:"amber", h:"Same-day discussion with the burns service", html:"Burns to the face, hands, feet, genitalia, perineum or major joints; cold injury; comorbidity affecting healing; pregnancy; uncertainty about depth.", src:"BBA referral guidance (2012)"},
+         {tone:"amber", h:"Burns service referral", html:"Any burn not healed within 2 weeks; hypertrophic scarring or contracture.", src:"BBA referral guidance (2012)"},
+         {tone:"green", h:"Stays in primary care", html:"Superficial burns below the thresholds, outside special areas, in a well patient with no safeguarding concern, with dressings and review.", src:"NICE CKS burns and scalds"}
+       ]}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"Patient information and safety-netting", sub:"Say it, give it in writing, document it.",
+     blocks:[
+       {b:"say", html:"Call 999 if anyone has trouble breathing, a hoarse voice after being in a fire, or becomes faint and clammy. Contact us the same day if your child becomes unwell with a temperature, rash, sickness or diarrhoea, or is unusually sleepy, even if the burn looks small, or if the burn becomes more painful, red or smelly. Come back if it hasn't healed in two weeks."},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"📄 Information", html:"NHS: burns and scalds. Children's Burns Trust: first aid and prevention.", src:"NHS burns and scalds information"},
+         {tone:"green", h:"🏠 Prevention", html:"Hot drinks out of reach of young children, run cold water first in the bath and check the temperature, use cooker guards and fireguards, keep hair straighteners out of reach, and fit smoke alarms.", src:"NHS burns and scalds information"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A father brings his 14-month-old, who 'pulled a cup of tea over' 2 days ago. Photos sent to the practice show blistered burns on both feet and ankles with a sharp upper line, sparing the soles. He did not cool it because 'it didn't look bad'.", src:"NICE CG89 · BBA referral guidance (2012)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Notices that the <b>pattern does not fit</b> the story (stocking distribution suggests immersion) and the <b>delay</b>. Explains concerns honestly, arranges <b>same-day</b> burns service and paediatric assessment, and follows <b>safeguarding</b> procedures. Asks about fever and wellbeing (toxic shock). Stays non-judgemental while being clear.", src:"NICE CG89 · BBA referral guidance (2012)"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page traces to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>British Burn Association / National Network for Burn Care — National Burn Care Referral Guidance (February 2012)</b><br><a href="https://www.britishburnassociation.org/national-burn-care-referral-guidance/" rel="noopener">britishburnassociation.org — referral guidance</a><span class="rd"> — 2% (children) and 3% (adults) TBSA thresholds, full thickness, circumferential, special areas, chemical, electrical, inhalation, not healed in 2 weeks, non-accidental injury</span></li>'+
+         '<li><b>British Burn Association — First Aid Clinical Practice Guidelines (2018)</b><br><a href="https://www.britishburnassociation.org/first-aid/" rel="noopener">britishburnassociation.org — first aid</a><span class="rd"> — cool running water for 20 minutes, effective up to 3 hours, cling film, chemical irrigation</span></li>'+
+         '<li><b>NICE CKS — Burns and scalds</b><br><a href="https://cks.nice.org.uk/topics/burns-scalds/" rel="noopener">cks.nice.org.uk — burns and scalds</a><span class="rd"> — depth assessment, minor burn care, dressings, infection, review</span></li>'+
+         '<li><b>NICE CG89 — Child maltreatment: when to suspect maltreatment in under 18s (2009, updated 2017)</b><br><a href="https://www.nice.org.uk/guidance/cg89" rel="noopener">nice.org.uk/guidance/cg89</a><span class="rd"> — burn and scald features suggesting maltreatment</span></li>'+
+         '<li><b>UKHSA — Tetanus: the Green Book, chapter 30</b><br><a href="https://www.gov.uk/government/publications/tetanus-the-green-book-chapter-30" rel="noopener">gov.uk — Green Book chapter 30</a><span class="rd"> — tetanus-prone burns</span></li>'+
+         '<li><b>NICE NG225 — Self-harm: assessment, management and preventing recurrence (2022)</b><br><a href="https://www.nice.org.uk/guidance/ng225" rel="noopener">nice.org.uk/guidance/ng225</a><span class="rd"> — burns from self-harm</span></li>'+
+         '<li><b>SPCs — paracetamol, ibuprofen</b><br><a href="https://www.medicines.org.uk/emc" rel="noopener">medicines.org.uk/emc</a><span class="rd"> — analgesic doses</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Burns and scalds in primary care — British Burn Association referral guidance (2012) and first aid guidelines (2018), NICE CKS, NICE CG89, NICE NG225, UKHSA Green Book chapter 30 and analgesic SPCs. Local burns networks may set their own thresholds; use the local referral line. Not a substitute for clinical judgement."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
+</body>
+</html>

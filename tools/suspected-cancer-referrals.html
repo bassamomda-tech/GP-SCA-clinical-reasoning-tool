@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Suspected Cancer Referrals (NG12) · GP / SCA Clinical Reasoning Tool</title>
+<meta name="description" content="Searchable quick view of NICE NG12 suspected cancer recognition and referral (updated April 2026): symptom, age and action by cancer site, including the new CA125 age thresholds.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="NICE NG12 quick view">
+<meta property="og:description" content="Searchable quick view of NICE NG12 suspected cancer recognition and referral (updated April 2026): symptom, age and action by cancer site, including the new CA125 age thresholds.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/suspected-cancer-referrals.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/suspected-cancer-referrals.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=14" />
+<link rel="stylesheet" href="../assets/clinic-ref.css?v=1" />
+</head>
+<body>
+<button class="sb-toggle" aria-label="Open menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-clinicref"></aside>
+  <main class="main">
+    <div class="tool-page">
+      <div class="panel">
+
+        <div class="tool-breadcrumb">
+          <a href="../index.html">Reasoning GP</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <a href="clinic-reference.html">Clinic reference</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <span style="color:var(--ink-2)">Suspected cancer referrals (NG12)</span>
+        </div>
+
+        <header class="tool-head" data-screen-label="Tool head">
+          <span class="eyebrow">Clinic reference · NICE NG12 · reference only</span>
+          <h1>Suspected cancer referrals — <em>symptom, age, action</em></h1>
+          <p>A searchable summary of NICE NG12 by cancer site: which symptoms at which age need a suspected cancer pathway referral, a very urgent referral, a direct access test or a test first. Reference only — use your ICB proforma and check the full recommendation for borderline cases.</p>
+          <div class="review-stamp"><span class="dot"></span> Last checked: October 2026 <span class="src">· NICE NG12, last updated 15 April 2026</span></div>
+        </header>
+        <script src="../assets/suspected-cancer-referrals-data.js?v=1"></script>
+
+
+<div class="cr-note new"><b>What changed recently.</b> NG12 was last updated on <b>15 April 2026</b>: age-specific <b>CA125 thresholds</b> for ovarian cancer from age 40 (and no CA125 alone at 39 and under), amended <b>endometrial</b> recommendations, and the <b>non-site-specific weight loss</b> recommendation (1.13.2). In May 2025 oesophageal and stomach cancer moved to <b>suspected cancer pathway referral</b> (instead of direct access endoscopy); in April 2025 myeloma testing changed to <b>serum free light chains</b> instead of urine Bence Jones protein.</div>
+
+<div class="cr-note warn"><b>Reference only.</b> Use your <b>ICB's suspected cancer referral proforma</b> — local forms decide the route (for example straight-to-test endoscopy, FIT thresholds, non-specific symptoms services) and the information you must include. "Suspected cancer pathway" is NICE's term for the old "2-week wait"; the 28-day Faster Diagnosis Standard applies from referral. Children and young people have lower thresholds — <a href="algorithms/paediatric-cancer-referral.html">paediatric cancer referral</a>.</div>
+
+<div class="cr-filter" role="search">
+  <input type="search" id="ngSearch" placeholder="Search symptom, test or cancer… (e.g. haematuria, CA125, hoarse)" autocomplete="off" aria-label="Search NG12 rows">
+  <select id="ngSite" aria-label="Filter by site"><option value="all">All sites</option></select>
+  <select id="ngAct" aria-label="Filter by action">
+    <option value="all">All actions</option>
+    <option value="scp">Suspected cancer pathway</option>
+    <option value="vu">Very urgent (48 h)</option>
+    <option value="dat">Direct access test</option>
+    <option value="test">Test first (FIT, CA125, PSA, bloods)</option>
+    <option value="urg">Urgent (2 weeks) other</option>
+    <option value="nonurg">Non-urgent / safety-net</option>
+  </select>
+  <button type="button" class="cr-fbtn" id="ngReset">Reset</button>
+</div>
+<div class="cr-related" style="margin-top:0;margin-bottom:10px">Key:
+  <span class="pill scp">Suspected cancer pathway</span><span class="pill vu">Very urgent 48 h</span><span class="pill dat">Direct access test</span><span class="pill urg">Urgent / test first</span><span class="pill con">Consider</span>
+</div>
+<div class="cr-count" id="ngCount" aria-live="polite"></div>
+<table class="cr-table" id="ngTable">
+  <thead><tr><th>Symptom or finding</th><th>Age</th><th>Action</th><th>Go to</th></tr></thead>
+  <tbody id="ngBody"></tbody>
+</table>
+<noscript><p class="cr-p">This table needs JavaScript. See the <a href="https://www.nice.org.uk/guidance/ng12">NICE NG12 recommendations</a>.</p></noscript>
+
+<section class="cr-sec" style="margin-top:26px">
+  <h2>Using the table well</h2>
+  <ul class="cr-list">
+    <li><b>"Consider"</b> means NICE leaves it to clinical judgement; <b>"refer" / "offer"</b> rows are firmer recommendations. Rows are summarised in our words — check the numbered recommendation before acting on a borderline case.</li>
+    <li><b>Safety-net every time</b>: explain why you are referring, what will happen, and to come back if symptoms change. Record that cancer was discussed.</li>
+    <li><b>A normal test does not end the story</b> — negative FIT, CA125 or chest X-ray with persisting symptoms still needs review, specialist advice or the non-specific symptoms pathway.</li>
+    <li>Related pages: <a href="algorithms/weight-loss.html">weight loss</a> · <a href="algorithms/haematuria.html">haematuria</a> · <a href="algorithms/rectal-bleeding.html">rectal bleeding</a> · <a href="algorithms/abnormal-cancer-markers.html">abnormal cancer markers</a> · <a href="management/screening-programmes.html">screening programmes</a> · <a href="qof.html">QOF cancer care review</a>.</li>
+  </ul>
+</section>
+
+<section class="cr-sources" id="sources">
+  <h2>Sources (checked October 2026)</h2>
+  <ol>
+    <li>NICE. NG12 Suspected cancer: recognition and referral (2015; last updated 15 April 2026) — recommendations and update information. <a href="https://www.nice.org.uk/guidance/ng12" target="_blank" rel="noopener">nice.org.uk/guidance/ng12</a></li>
+    <li>NICE. NG12 update information: April 2026 (ovarian CA125 and age thresholds 1.5.6–1.5.9 and 1.5.11; endometrial 1.5.12, 1.5.14, 1.5.15; non-site-specific weight loss 1.13.2), May 2025 (oesophageal and stomach), April 2025 (myeloma tests). <a href="https://www.nice.org.uk/guidance/ng12/chapter/Update-information" target="_blank" rel="noopener">nice.org.uk</a></li>
+    <li>NICE. Quantitative faecal immunochemical testing to guide colorectal cancer pathway referral in primary care (DG56, 2023; now HTG690). <a href="https://www.nice.org.uk/guidance/dg56" target="_blank" rel="noopener">nice.org.uk</a></li>
+    <li>GatewayC. New NICE guidance for CA125: why age matters (2026). <a href="https://www.gatewayc.org.uk/cancer-keys/new-nice-guidance-for-ca125-why-age-matters/" target="_blank" rel="noopener">gatewayc.org.uk</a></li>
+  </ol>
+</section>
+
+<script>
+(function(){
+  var DATA = window.RGP_NG12 || [];
+  var $ = function(q){ return document.querySelector(q); };
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var PILL = { scp:['scp','Suspected cancer pathway'], vu:['vu','Very urgent'], dat:['dat','Direct access'], test:['urg','Test first'], urg:['urg','Urgent'], nonurg:['con','Non-urgent'] };
+  var sites = []; DATA.forEach(function(d){ if(sites.indexOf(d.site) < 0) sites.push(d.site); });
+  $('#ngSite').insertAdjacentHTML('beforeend', sites.map(function(s){ return '<option>'+esc(s)+'</option>'; }).join(''));
+  function render(){
+    var q = $('#ngSearch').value.trim().toLowerCase(), site = $('#ngSite').value, act = $('#ngAct').value;
+    var rows = DATA.filter(function(d){
+      if(site !== 'all' && d.site !== site) return false;
+      if(act !== 'all' && d.a !== act) return false;
+      if(q && (d.site+' '+d.sym+' '+d.age+' '+d.act).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    var html = '', last = '';
+    rows.forEach(function(d){
+      if(d.site !== last){ html += '<tr class="grp"><td colspan="4">'+esc(d.site)+'</td></tr>'; last = d.site; }
+      var p = PILL[d.a] || ['con',''];
+      html += '<tr><td>'+esc(d.sym)+'</td><td data-l="Age">'+esc(d.age)+'</td><td data-l="Action"><span class="pill '+p[0]+'">'+p[1]+'</span>'+(d.s==='consider'?' <span class="pill con">Consider</span>':'')+'<br>'+esc(d.act)+'</td><td data-l="Go to">'+(d.link?'<a class="cr-chip" href="'+esc(d.link)+'">Open →</a>':'')+'</td></tr>';
+    });
+    $('#ngBody').innerHTML = html || '<tr><td colspan="4" class="cr-empty">No rows match. Try another word, or check NICE NG12 directly.</td></tr>';
+    $('#ngCount').textContent = rows.length + ' of ' + DATA.length + ' recommendations shown';
+  }
+  ['#ngSearch','#ngSite','#ngAct'].forEach(function(id){ $(id).addEventListener('input', render); $(id).addEventListener('change', render); });
+  $('#ngReset').addEventListener('click', function(){ $('#ngSearch').value=''; $('#ngSite').value='all'; $('#ngAct').value='all'; render(); });
+  render();
+})();
+</script>
+
+        <div class="footer-disclaimer">
+          <strong>Educational reference only — not a substitute for the source guidance or clinical judgement.</strong> Summarised in our own words from the national sources listed, last checked October 2026. Rules, eligibility and thresholds change, and local commissioning (ICB) arrangements vary: always check the live guidance, the product SPC, the BNF/BNFC and your local formulary or protocol before acting. No patient-specific dosing is given here.
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=105"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

@@ -2,7 +2,7 @@
    Reasoning GP — SCA case extras
    Per-case: RCGP clinical experience groups (ceg), exam-format
    medical-record stem, 12-minute time map, examiner word-pictures
-   (fail / pass / excellent), and "don't say" formulaic-phrase
+   (fail / pass / clear pass), and "don't say" formulaic-phrase
    contrasts. Merged into window.SCA_CASES by sca-practice.js.
    ============================================================ */
 
@@ -31,7 +31,7 @@ window.SCA_EXTRAS = {
       exc:  'All of the above, plus: shares the QRISK as an actual number tied to his father\'s story; screens for OSA and says why; negotiates one specific, owned goal ("one energy drink a day, we re-check in four weeks"); checks understanding with teach-back; the patient leaves wanting to come back.'
     },
     avoid: [
-      { dont:'"Don\'t worry, high blood pressure is very common and very treatable."', instead:'"You\'ve watched what untreated blood pressure did to your dad. Let\'s deal with that fear first — then the plan."', why:'Generic reassurance ignores the one thing he actually came in carrying.' },
+      { dont:'"Don\'t worry, high blood pressure is very common and very treatable."', instead:'"You\'ve watched what untreated blood pressure did to your dad. Let\'s deal with that fear first — then the plan."', why:'Generic reassurance ignores the one thing he actually brought to the call.' },
       { dont:'"You need to improve your diet, exercise more, cut down alcohol and stop the energy drinks."', instead:'"If we picked one change that would actually stick — what would it be?"', why:'A shopping-list lecture earns no marks; a negotiated single goal does.' },
       { dont:'"We\'ll start you on a tablet today just to be safe."', instead:'"Before any tablet, I want a week of readings at home — we treat the real number, not a rushed morning."', why:'Treating a single clinic reading is a clinical-management fail in itself.' }
     ]

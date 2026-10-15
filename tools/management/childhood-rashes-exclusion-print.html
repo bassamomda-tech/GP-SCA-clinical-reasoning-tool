@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Childhood rashes and school exclusion — Protocol · Reasoning GP</title>
+<meta name="description" content="Common childhood rashes and nursery or school exclusion in one place: the dangerous rash first (non-blanching, Kawasaki, invasive group A strep), then UKHSA exclusion periods for chickenpox, measles, scarlet fever, impetigo, hand, foot and mouth, slapped cheek, roseola, molluscum, head lice and scabies, notifiable diseases, the MMRV vaccine from January 2026, and advice for pregnant contacts." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/childhood-rashes-exclusion.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1791879515288965">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+</head>
+<body data-screen-label="Childhood rashes and school exclusion protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"\u{1F9D2}",
+  title:"Childhood rashes and school exclusion",
+  eyebrow:"Protocol · spot the dangerous rash · name it · exclude correctly · protect contacts",
+  stemTitle:"Childhood rashes: exclude the dangerous rash first, then give the right exclusion period, notify what is notifiable, and think about the pregnant contact",
+  stemSub:"One page for the child with a rash and the parent asking “can they go to school?”: the rashes that need 999 or same-day care, how to recognise the common exanthems, the UKHSA exclusion periods for children's settings, which diseases are notifiable, the MMRV vaccine introduced in January 2026, and what to tell pregnant women who have been exposed.",
+  guideline:"UKHSA Health protection in children and young people settings (2023, updated) · UKHSA Viral rash in pregnancy (2024) · NICE NG143 (2019, updated 2021) · NICE NG51 (2016, updated 2024)",
+  reviewed:"15 October 2026",
+  nextReview:"15 April 2027",
+  meta:[
+    {t:"UKHSA — exclusion periods in children's settings"},
+    {t:"UKHSA — viral rash in pregnancy (2024)"},
+    {t:"NICE NG143 — fever in under 5s"},
+    {t:"UKHSA — MMRV from 1 January 2026"},
+    {t:"Children's doses: BNFC", tone:"tw"},
+    {t:"v1.0 · reviewed Oct 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Red flags</b><small>Non-blanching · iGAS</small></a><a href="#confirm"><b>Which rash?</b><small>Recognition table</small></a><a href="#exclusion"><b>Exclusion</b><small>UKHSA periods</small></a><a href="#pregnancy"><b>Pregnant contacts</b><small>VZV · parvovirus · measles</small></a><a href="../algorithms/fever-children.html"><b>Fever in children</b><small>Algorithm →</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these cards. Every period traces to the UKHSA table cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Non-blanching rash with fever → 999", html:"A <b>non-blanching (petechial or purpuric) rash in an unwell or febrile child</b> is meningococcal disease until proved otherwise: <b>999</b>, and give <b>IM or IV benzylpenicillin</b> without delaying transfer if meningococcal disease is suspected (dose by age, BNFC). Also same-day: rash with red-amber NICE NG143 features, suspected Kawasaki disease, eczema herpeticum, or a child with chickenpox or scarlet fever who becomes more unwell (invasive group A strep)."},
+    {tone:"amber", h:"The exclusion periods parents ask about", html:"<b>Chickenpox</b>: at least 5 days from rash onset and until all blisters have crusted over. <b>Measles</b>: 4 days from rash onset. <b>Scarlet fever</b>: 24 hours after starting antibiotics. <b>Impetigo</b>: until lesions are crusted and healed, or 48 hours after starting antibiotics. <b>Rubella</b>: 5 days from rash onset."},
+    {tone:"green", h:"No exclusion needed", html:"<b>Hand, foot and mouth</b>, <b>slapped cheek</b> (once the rash has appeared), <b>roseola</b>, <b>molluscum</b>, <b>head lice</b>, warts and verrucae, ringworm (treat it). <b>Scabies</b>: can return after the first treatment. Children well enough to attend should not be kept off for these."},
+    {tone:"blue", h:"Notify on suspicion", html:"<b>Measles, rubella, mumps, scarlet fever, meningococcal disease and invasive group A strep</b> are notifiable: the registered medical practitioner notifies the UKHSA health protection team on clinical suspicion — do not wait for confirmation. Chickenpox, slapped cheek and hand, foot and mouth are not notifiable."},
+    {tone:"cream", h:"Pregnant contacts", html:"A pregnant woman exposed to <b>chickenpox</b>, <b>slapped cheek</b> or <b>measles</b> (or who develops a rash) should contact her GP or midwife promptly — not wait for the antenatal appointment — and avoid antenatal clinics until assessed. Immunity testing and post-exposure treatment are time-critical."},
+    {tone:"green", h:"MMRV from January 2026", html:"From 1 January 2026 the routine schedule in England offers a combined <b>MMRV</b> (measles, mumps, rubella and varicella) vaccine at <b>12 months and 18 months</b>, replacing MMR, with catch-up for some older children. Check vaccine status at every rash consultation."}
+  ],
+  pathwaySub:"The rash consultation in five moves. The red step is where children come to harm.",
+  pathway:[
+    {title:"Danger first", html:"Is the child unwell? NICE NG143 traffic light, blanching test (glass test), meningism, signs of sepsis, Kawasaki features, eczema herpeticum, deterioration during chickenpox or scarlet fever.", alert:true},
+    {title:"Name the rash", html:"Distribution, morphology (vesicular, maculopapular, sandpaper, slapped cheek), prodrome, contacts, vaccine status. Uncertain + unwell → treat as serious."},
+    {title:"Treat", html:"Most viral exanthems: supportive care. Scarlet fever: antibiotics (BNFC). Impetigo: per NICE NG153. Scabies and head lice: treat the household."},
+    {title:"Exclude and notify", html:"Give the UKHSA exclusion period in writing, notify the health protection team for notifiable diseases, and advise the setting where appropriate."},
+    {title:"Protect contacts", html:"Pregnant women, immunosuppressed children and neonates exposed to chickenpox or measles need prompt advice; check immunisation status in the household."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Red flags", title:"Red flags — the rash that needs 999 or same-day care", sub:"Most childhood rashes are benign. These are the exceptions.",
+     blocks:[
+       {b:"warn", html:"<b>Non-blanching rash with fever or an unwell child → 999.</b> If meningococcal disease is suspected, give <b>IM or IV benzylpenicillin</b> before transfer unless it would delay it (dose by age, BNFC; NICE NG240). Do not be reassured by a well appearance early on — meningococcal sepsis can deteriorate within hours."},
+       {b:"cards", items:[
+         {tone:"red", h:"Meningococcal disease and sepsis", html:"Petechiae or purpura (especially below the nipple line), fever, cold peripheries, leg pain, drowsiness, neck stiffness, photophobia → 999.", src:"NICE NG240 · NG51"},
+         {tone:"red", h:"Invasive group A strep", html:"A child with chickenpox or scarlet fever who becomes more unwell: high persistent fever, spreading red painful skin, severe pain, lethargy, breathing difficulty → same-day or emergency assessment.", src:"UKHSA"},
+         {tone:"red", h:"Kawasaki disease", html:"Fever for 5 days or more with conjunctival injection, red cracked lips or strawberry tongue, rash, red or swollen hands and feet, cervical lymphadenopathy → same-day paediatric assessment.", src:"NICE NG143"},
+         {tone:"red", h:"Eczema herpeticum", html:"Rapidly worsening painful eczema with clustered punched-out erosions, fever → same-day assessment and antiviral treatment.", src:"NICE CKS"},
+         {tone:"amber", h:"Chickenpox complications and high-risk children", html:"Neonates, immunosuppressed children, breathing difficulty, dehydration, neurological signs (ataxia, drowsiness), or bacterial skin infection → same-day assessment. Immunosuppressed contacts of chickenpox or measles need same-day advice.", src:"UKHSA · NICE CKS"},
+         {tone:"amber", h:"Measles complications", html:"Breathlessness (pneumonia), dehydration, drowsiness or seizures, or an infant or immunosuppressed child → same-day assessment.", src:"UKHSA"}
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Which rash?", title:"Recognising the common childhood rashes", sub:"Pattern, prodrome and vaccine status usually give the diagnosis.",
+     blocks:[
+       {b:"table", head:["Rash","Features","Notifiable"], rows:[
+         ["<b>Chickenpox</b> (varicella)","Itchy crops of papules → vesicles → crusts, starting on the trunk and face; mild prodrome; incubation 1–3 weeks","No"],
+         ["<b>Measles</b>","Fever, cough, coryza, conjunctivitis for 2–4 days, then maculopapular rash from behind the ears spreading down; Koplik spots; unvaccinated","Yes"],
+         ["<b>Scarlet fever</b>","Sore throat, fever, headache, then fine “sandpaper” erythematous rash on the trunk, flushed cheeks with circumoral pallor, strawberry tongue; later peeling","Yes"],
+         ["<b>Impetigo</b>","Golden-crusted lesions, often around nose and mouth; bullous form","No"],
+         ["<b>Hand, foot and mouth</b>","Mouth ulcers and vesicles on hands, feet and buttocks; mild fever","No"],
+         ["<b>Slapped cheek</b> (parvovirus B19)","Bright red cheeks, then lacy reticular rash on limbs; child usually well; infectious before the rash","No"],
+         ["<b>Roseola</b> (HHV-6)","High fever for 3–5 days in a child under 2, then a pink macular rash as the fever settles","No"],
+         ["<b>Rubella</b>","Mild illness, pink macular rash, suboccipital and post-auricular nodes","Yes"],
+         ["<b>Molluscum contagiosum</b>","Pearly umbilicated papules; resolves over months","No"],
+         ["<b>Scabies</b>","Intense itch worse at night, burrows in finger webs and wrists; household itching","No"]
+       ]},
+       {b:"why", html:"Notifiable diseases are listed in the Health Protection (Notification) Regulations 2010 as updated by UKHSA. Notification is on clinical suspicion so that the health protection team can trace contacts and offer prophylaxis — for measles, within days of exposure — and testing (oral fluid kits for measles and rubella) is arranged with them."}
+     ]},
+
+    {id:"exclusion", nav:"Exclusion periods", title:"Exclusion from nursery, school and other children's settings", sub:"UKHSA ‘Health protection in children and young people settings’. Children should be well enough to attend; exclusion is about onward spread, not illness.",
+     blocks:[
+       {b:"table", head:["Infection","Exclusion","Comments"], rows:[
+         ["<b>Chickenpox</b>","At least 5 days from onset of rash and until all blisters have crusted over","Pregnant staff and contacts, and immunosuppressed children, should be informed — see <a href=\"#pregnancy\">Pregnant contacts</a>"],
+         ["<b>Measles</b>","4 days from onset of rash, and well enough","Notifiable. Unvaccinated contacts may be advised by the health protection team; pregnant and immunosuppressed contacts need urgent advice"],
+         ["<b>Scarlet fever</b>","24 hours after starting appropriate antibiotics","Notifiable. Without antibiotics, infectious for 2–3 weeks. Outbreaks: inform the health protection team"],
+         ["<b>Impetigo</b>","Until lesions are crusted and healed, or 48 hours after starting antibiotic treatment","Antibiotics speed healing and reduce infectiousness"],
+         ["<b>Rubella</b>","5 days from onset of rash","Notifiable. Pregnant contacts need advice"],
+         ["<b>Mumps</b>","5 days after onset of swelling","Notifiable"],
+         ["<b>Hand, foot and mouth</b>","None","Exclusion may be considered in an outbreak on health protection team advice"],
+         ["<b>Slapped cheek</b>","None once the rash has developed","Pregnant contacts: see below"],
+         ["<b>Roseola</b>","None",""],
+         ["<b>Molluscum contagiosum</b>","None","Self-limiting"],
+         ["<b>Head lice</b>","None","Treat only if live lice are seen"],
+         ["<b>Scabies</b>","Can return after first treatment","Household and close contacts need treating at the same time"],
+         ["<b>Ringworm</b>","Not usually required","Treatment is needed"],
+         ["<b>Shingles</b>","Exclude only if the rash is weeping and cannot be covered","Can cause chickenpox in non-immune contacts"],
+         ["<b>Warts and verrucae</b>","None","Cover verrucae in swimming pools and changing rooms"],
+         ["<b>Diarrhoea and vomiting</b>","48 hours from the last episode","Longer for some specific infections on health protection team advice"]
+       ]},
+       {b:"say", html:"“Chickenpox is catching until every spot has crusted over — usually about five days after it starts. Once they're all crusted and your child is well in themselves, they can go back to nursery.”"}
+     ]},
+
+    {id:"ladder", nav:"Treatment", title:"Treatment — supportive care for most, antibiotics for a few", sub:"Children's doses are in the BNFC; treat the child, protect the contacts.",
+     blocks:[
+       {b:"table", head:["Condition","Treatment","Notes"], rows:[
+         ["<b>Chickenpox</b>","Paracetamol for fever and pain; fluids; calamine or emollient for itch; sedating antihistamine for older children if sleep is disturbed (BNFC)","<b>Avoid ibuprofen and other NSAIDs</b> in chickenpox (risk of severe skin and soft-tissue infection). Aciclovir is not routinely needed in healthy children; consider in adolescents presenting within 24 hours and in high-risk groups (specialist advice for neonates and immunosuppressed)"],
+         ["<b>Scarlet fever</b>","Phenoxymethylpenicillin for 10 days (penicillin allergy: clarithromycin or azithromycin) — doses by age per BNFC","Exclude until 24 hours after starting. Watch for complications (otitis media, quinsy, rheumatic fever, invasive group A strep)"],
+         ["<b>Impetigo</b>","Localised, not systemically unwell: hydrogen peroxide 1% cream; topical antibiotic if unsuitable; widespread: oral flucloxacillin (BNFC)","See the <a href=\"impetigo.html\">impetigo protocol</a> (NICE NG153)"],
+         ["<b>Measles</b>","Supportive; fluids; paracetamol","Vitamin A is given to some children in hospital; specialist decision"],
+         ["<b>Hand, foot and mouth, roseola, slapped cheek</b>","Supportive: fluids, paracetamol or ibuprofen for discomfort","Encourage drinking with mouth ulcers"],
+         ["<b>Scabies</b>","Permethrin 5% cream to all household contacts on the same day, repeated after 7 days","See the <a href=\"scabies.html\">scabies protocol</a>"],
+         ["<b>Head lice</b>","Wet combing or a physical insecticide (dimeticone) if live lice are seen","No treatment for contacts unless lice are found"],
+         ["<b>Molluscum</b>","Usually none; resolves within 18 months","Treat secondary eczema; seek advice if near the eye or in immunosuppression"]
+       ]},
+       {b:"warn", html:"<b>Fever and antipyretics:</b> use paracetamol or ibuprofen for distress, not simply to lower temperature; do not give both at the same time — consider alternating only if distress persists (NICE NG143). <b>Avoid ibuprofen in chickenpox.</b>"}
+     ]},
+
+    {id:"pregnancy", nav:"Pregnant contacts", title:"Pregnant contacts and other vulnerable contacts", sub:"UKHSA ‘Viral rash in pregnancy’ (2024): significant exposure is time-critical.",
+     blocks:[
+       {b:"table", head:["Exposure","Risk","What to do"], rows:[
+         ["<b>Chickenpox or shingles</b>","Maternal pneumonia; fetal varicella syndrome (first 20 weeks); neonatal varicella near term","Check history of chickenpox or vaccination. If no history or uncertain → urgent varicella-zoster IgG on booking or new sample. If not immune, oral antiviral post-exposure prophylaxis is offered (UKHSA), given from day 7 to day 14 after exposure. <span class=mg-dose>Usual adult dose: aciclovir 800 mg four times daily for 7 days, or valaciclovir 1 g three times daily for 7 days (UKHSA/SPC; check the SPC, BNF and local formulary; <a href=\"https://www.medicines.org.uk/emc/search?q=aciclovir\" target=_blank rel=noopener>SPC: aciclovir</a>).</span> A pregnant woman who develops a chickenpox rash should contact her GP or midwife the same day"],
+         ["<b>Slapped cheek</b> (parvovirus B19)","Fetal anaemia, hydrops and loss, particularly before 20 weeks","Contact GP or midwife promptly; parvovirus B19 IgG and IgM testing (with stored booking sample); fetal medicine referral if infection confirmed"],
+         ["<b>Measles</b>","Fetal loss, preterm birth, severe maternal illness","Check MMR history; urgent discussion with the health protection team — human normal immunoglobulin may be offered to susceptible pregnant women within 6 days of exposure"],
+         ["<b>Rubella</b>","Congenital rubella syndrome (first 16 weeks)","Any rash illness in pregnancy → testing; discuss with the health protection team and virology"],
+         ["<b>Immunosuppressed children and neonates</b>","Severe chickenpox or measles","Same-day advice from the treating specialist or health protection team for post-exposure prophylaxis"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Pregnant staff in settings", html:"Staff who are pregnant should tell their manager and midwife about exposure to chickenpox, measles, rubella or slapped cheek in the setting; they should not attend antenatal clinics until assessed."},
+         {tone:"cream", h:"Vaccines", html:"Live vaccines (MMR, MMRV, varicella) are not given in pregnancy. Non-immune women are offered MMR and varicella vaccine after delivery."}
+       ]}
+     ]},
+
+    {id:"vaccines", nav:"Vaccines", title:"Prevention — MMRV and the childhood schedule", sub:"Every rash consultation is a chance to check the red book.",
+     blocks:[
+       {b:"dl", rows:[
+         ["MMRV","From 1 January 2026, children in England are offered MMRV (measles, mumps, rubella and varicella) at 12 months and at a new 18-month appointment, replacing MMR in the routine schedule. Children already past 18 months on that date receive MMRV in place of their second MMR, and a time-limited catch-up is offered to some older children who have had neither chickenpox nor varicella vaccine — follow the current UKHSA schedule"],
+         ["Measles","Two doses of a measles-containing vaccine give about 99% protection; check catch-up MMR in older children and young adults"],
+         ["After chickenpox","A child who has had chickenpox still receives MMRV (or MMR) as scheduled"]
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Safety-net", title:"Follow-up and safety-netting", sub:"Tell parents what to watch for and when to come back.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999", html:"“If a rash doesn't fade when you press a glass on it, or your child is floppy, drowsy, hard to wake, or struggling to breathe — call 999.”"},
+         {tone:"red", h:"🟠 Same day", html:"“If your child with chickenpox or scarlet fever gets worse instead of better — a high temperature that won't settle, red painful spreading skin, severe pain or not drinking — contact us the same day, or 111.”"},
+         {tone:"amber", h:"🟡 Exclusion", html:"“Keep them off nursery until [date]; they can go back once [all spots have crusted / 24 hours after starting antibiotics] and they feel well.”"},
+         {tone:"green", h:"🤰 Pregnant contacts", html:"“If anyone pregnant has been in contact, they should ring their GP or midwife today — not wait for their next appointment.”"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer and notify", title:"Refer and notify", sub:"Who to call, and how fast.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / same-day paediatrics", html:"Non-blanching rash with fever, suspected sepsis, invasive group A strep, Kawasaki disease, eczema herpeticum, complicated chickenpox or measles, neonate with chickenpox."},
+         {tone:"amber", h:"Health protection team — notify", html:"On clinical suspicion: measles, rubella, mumps, scarlet fever, meningococcal disease, invasive group A strep. Urgent ones (measles, meningococcal, iGAS) by telephone; others via the online notification within 3 days. Also call about outbreaks in a setting."},
+         {tone:"blue", h:"Midwife or obstetrics", html:"Pregnant woman exposed to, or developing, a rash illness — same-day advice."}
+       ]}
+     ]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence and references", sub:"Every recommendation on this page is traceable to these sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>UKHSA — Health protection in children and young people settings, including education (2023, updated): public health exclusion periods</b><br><a href="https://www.gov.uk/government/publications/health-protection-in-schools-and-other-childcare-facilities" rel="noopener">gov.uk — health protection in schools and childcare</a><span class="rd"> — exclusion table: chickenpox, measles, scarlet fever, impetigo, rubella, mumps, hand foot and mouth, slapped cheek, roseola, molluscum, head lice, scabies, diarrhoea and vomiting</span></li>'+
+         '<li><b>UKHSA — Viral rash in pregnancy (2019, updated 2024)</b><br><a href="https://www.gov.uk/government/publications/viral-rash-in-pregnancy" rel="noopener">gov.uk — viral rash in pregnancy</a><span class="rd"> — chickenpox, parvovirus B19, measles and rubella exposure in pregnancy</span></li>'+
+         '<li><b>UKHSA — Guidance on post-exposure prophylaxis for chickenpox and shingles (2023, updated)</b><br><a href="https://www.gov.uk/government/publications/post-exposure-prophylaxis-for-chickenpox-and-shingles" rel="noopener">gov.uk — chickenpox PEP</a><span class="rd"> — oral antivirals from day 7 to day 14 after exposure</span></li>'+
+         '<li><b>UKHSA — Notifiable diseases and causative organisms: how to report</b><br><a href="https://www.gov.uk/guidance/notifiable-diseases-and-causative-organisms-how-to-report" rel="noopener">gov.uk — notifiable diseases</a><span class="rd"> — measles, rubella, mumps, scarlet fever, iGAS, meningococcal disease; urgent telephone notification</span></li>'+
+         '<li><b>UKHSA / NHS England — MMRV vaccine programme from 1 January 2026</b><br><a href="https://www.gov.uk/government/collections/immunisation-against-infectious-disease-the-green-book" rel="noopener">gov.uk — the Green Book</a><span class="rd"> — schedule at 12 and 18 months, catch-up</span></li>'+
+         '<li><b>NICE NG143 — Fever in under 5s: assessment and initial management (2019, updated 2021)</b><br><a href="https://www.nice.org.uk/guidance/ng143" rel="noopener">nice.org.uk/guidance/ng143</a><span class="rd"> — traffic-light system, Kawasaki disease, antipyretics</span></li>'+
+         '<li><b>NICE NG240 — Meningitis (bacterial) and meningococcal disease (2024)</b><br><a href="https://www.nice.org.uk/guidance/ng240" rel="noopener">nice.org.uk/guidance/ng240</a><span class="rd"> — pre-hospital benzylpenicillin</span></li>'+
+         '<li><b>NICE NG153 — Impetigo: antimicrobial prescribing (2020)</b><br><a href="https://www.nice.org.uk/guidance/ng153" rel="noopener">nice.org.uk/guidance/ng153</a></li>'+
+         '<li><b>BNF for Children</b><br><a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a><span class="rd"> — all children’s doses</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Childhood rashes and school exclusion — UKHSA children's settings guidance and viral rash in pregnancy (2024), NICE NG143 and NG240. Check the current UKHSA exclusion table and your local health protection team's advice for outbreaks. Children's doses: BNFC."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

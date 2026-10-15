@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Croup — Protocol · Reasoning GP</title>
+<meta name="description" content="Croup in primary care on one page: grading severity (mild, moderate, severe, impending respiratory failure, with the Westley score for context), a single dose of oral dexamethasone 0.15 mg/kg for every child, prednisolone as the alternative, who needs admission or 999, stridor at rest, the differentials not to miss (epiglottitis, foreign body, bacterial tracheitis) and safety-netting." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/croup.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1792086342060893">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+</head>
+<body data-screen-label="Croup management card">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"🦭",
+  title:"Croup",
+  eyebrow:"Protocol · children · grade, treat and safety-net",
+  stemTitle:"Croup: grade the severity, give every child a single dose of oral dexamethasone, and admit stridor at rest",
+  stemSub:"One page for the child with a barking cough. Croup (acute laryngotracheobronchitis) is usually viral, most common between 6 months and 3 years, and worst at night. NICE CKS advises a single dose of oral dexamethasone 0.15 mg/kg for all children with croup, whatever the severity, and assessing severity to decide who goes to hospital. The danger lies in missing a child who is tiring or hypoxic, and in mistaking epiglottitis, an inhaled foreign body or bacterial tracheitis for croup.",
+  guideline:"NICE CKS Croup (revised 2023) · Dexamethasone oral solution SPC · BNFC · Cochrane (Gates 2018) · NICE NG143 (2019, updated 2021)",
+  reviewed:"15 October 2026",
+  nextReview:"April 2027",
+  meta:[
+    {t:"NICE CKS · croup"},
+    {t:"Dexamethasone 0.15 mg/kg single dose"},
+    {t:"Stridor at rest → same-day hospital", tone:"tw"},
+    {t:"Reviewed October 2026 · next review April 2027"}
+  ],
+  lead:"<div class='mg-layers'><a href='#redflags'><b>999 signs</b><small>tiring, hypoxia, drowsy</small></a><a href='#severity'><b>Severity</b><small>stridor at rest?</small></a><a href='#treat'><b>Dexamethasone</b><small>every child</small></a><a href='#differentials'><b>Not croup?</b><small>epiglottitis, foreign body</small></a></div>",
+  quickSub:"Six points that change what you do today. Each one is traced to a named source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"999: impending respiratory failure", html:"Call <b>999</b> for <b>increasing work of breathing with exhaustion</b>, <b>cyanosis or saturations under 92%</b>, <b>reduced level of consciousness or drowsiness</b>, apnoea, or a <b>quietening stridor in a tiring child</b>. A quieter stridor can mean worse obstruction, not improvement. Keep the child calm, upright and with their carer; give oxygen if available."},
+    {tone:"red", h:"Stridor at rest is moderate croup: same-day hospital", html:"<b>Easily audible stridor at rest</b>, chest recession at rest, or agitation and restlessness mean <b>moderate or severe croup</b>. Give oral dexamethasone and arrange <b>same-day hospital assessment</b> (999 transport for severe croup). Mild croup has a barking cough but <b>no stridor at rest</b> and no or mild recession."},
+    {tone:"cream", h:"Dexamethasone 0.15 mg/kg, single oral dose, for all", html:"NICE CKS advises a <b>single dose of oral dexamethasone 0.15 mg/kg</b> for every child with croup, including mild croup. It reduces severity, re-attendance and admission. Some hospital protocols use doses up to 0.6 mg/kg for severe croup. <b>Prednisolone</b> is an alternative if dexamethasone is unavailable."},
+    {tone:"amber", h:"Lower the threshold for admission", html:"Consider admission even with milder signs if the child is <b>under 3 months</b>, has a known <b>upper airway abnormality</b> (such as laryngomalacia or subglottic stenosis) or Down's syndrome, is <b>immunocompromised</b>, has poor fluid intake, the diagnosis is uncertain, or carers cannot cope or live far from hospital."},
+    {tone:"blue", h:"Is it really croup?", html:"Think of <b>epiglottitis</b> (toxic, drooling, muffled voice, sitting forward, little cough), <b>bacterial tracheitis</b> (high fever, toxic, poor response to steroids), <b>inhaled foreign body</b> (sudden onset, choking episode, no coryza) and <b>anaphylaxis</b> (sudden, with urticaria or swelling). <b>Do not examine the throat</b> if epiglottitis is possible."},
+    {tone:"green", h:"Safety-net carefully: it is worse at night", html:"Symptoms usually settle within <b>48 hours</b> but can last up to a week. Explain that croup is often worse at night, that steam inhalation is not recommended (risk of scalds), and exactly which signs mean 999. Paracetamol or ibuprofen for fever or discomfort."}
+  ],
+  pathwaySub:"Five moves. The first and the last are where children come to harm.",
+  pathway:[
+    {title:"Look for impending respiratory failure", alert:true, html:"Exhaustion, cyanosis or saturations under 92%, drowsiness, apnoea, or quietening stridor with increasing effort → 999."},
+    {title:"Check it is croup", alert:true, html:"Barking, seal-like cough, hoarse voice, inspiratory stridor, coryzal prodrome, age 6 months to 3 years. Exclude epiglottitis, foreign body, bacterial tracheitis and anaphylaxis. Do not examine the throat if epiglottitis is possible."},
+    {title:"Grade the severity", html:"Calm child, observed: stridor at rest? Recession at rest? Agitation or lethargy? Heart rate, respiratory rate and saturations. Mild = no stridor at rest."},
+    {title:"Treat everyone", html:"Single oral dose of dexamethasone 0.15 mg/kg now, in the surgery where possible. Moderate or severe croup → same-day hospital assessment."},
+    {title:"Safety-net", html:"Worse at night; usually better within 48 hours; 999 signs; when to come back. Avoid steam."}
+  ],
+  sections:[
+    {id:"redflags", nav:"Red flags", title:"Red flags: who goes by 999 or to hospital today", sub:"Croup can tire a child quickly. Observe before you decide, and keep the child calm.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Impending respiratory failure", html:"Increasing work of breathing with exhaustion, cyanosis or <b>saturations under 92%</b>, decreased level of consciousness, apnoea, tachycardia. → <b>999</b>. Give oxygen if available without distressing the child.", src:"NICE CKS Croup"},
+         {tone:"red", h:"🔴 Severe croup", html:"Prominent stridor at rest, marked sternal or subcostal recession, significant distress, agitation, lethargy or restlessness (a sign of hypoxaemia). → give dexamethasone and call <b>999</b>.", src:"NICE CKS Croup"},
+         {tone:"red", h:"🔴 Moderate croup", html:"Frequent barking cough, <b>easily audible stridor at rest</b>, recession at rest, but little or no distress. → dexamethasone and <b>same-day hospital assessment</b>.", src:"NICE CKS Croup"},
+         {tone:"red", h:"🔴 Suspected epiglottitis or tracheitis", html:"Toxic appearance, high fever, drooling, unable to swallow, muffled voice, sitting forward, soft stridor with little cough. → <b>999</b>; do not examine the throat or lie the child down.", src:"NICE CKS Croup"},
+         {tone:"amber", h:"🟠 Consider admission", html:"Under 3 months; upper airway abnormality or Down's syndrome; immunocompromise; poor fluid intake; uncertain diagnosis; carers who cannot cope; long distance to hospital; returning after a dose of dexamethasone with persisting symptoms.", src:"NICE CKS Croup"},
+         {tone:"amber", h:"🟠 Recurrent or atypical croup", html:"Recurrent episodes, onset under 6 months, or symptoms between episodes suggest an underlying airway problem (for example subglottic stenosis, laryngomalacia, haemangioma) or reflux. Refer to paediatrics or paediatric ENT.", src:"NICE CKS Croup"}
+       ]},
+       {b:"why", html:"In upper airway obstruction, stridor depends on airflow. As a child tires, airflow falls and the stridor can quieten even though the obstruction is worse. Agitation and restlessness are signs of hypoxia, not bad behaviour. Distressing the child (lying them down, examining the throat, taking blood) can precipitate complete obstruction."}
+     ]},
+
+    {id:"severity", nav:"Severity", title:"Assessing severity", sub:"CKS grades croup as mild, moderate, severe or impending respiratory failure. The Westley score is used mainly in hospitals and research.",
+     blocks:[
+       {b:"table", head:["Severity","Features (child calm)","Action"], rows:[
+         ["<b>Mild</b>","Occasional barking cough; <b>no audible stridor at rest</b>; no or mild recession; settled and interested in surroundings","Dexamethasone 0.15 mg/kg; manage at home with safety-netting"],
+         ["<b>Moderate</b>","Frequent barking cough; <b>easily audible stridor at rest</b>; recession at rest; little or no distress or agitation","Dexamethasone; same-day hospital assessment"],
+         ["<b>Severe</b>","Frequent barking cough; prominent stridor at rest (inspiratory and sometimes expiratory); marked recession; significant distress, agitation, lethargy or restlessness; tachycardia","Dexamethasone if it can be given without distress; 999"],
+         ["<b>Impending respiratory failure</b>","Increasing work of breathing, exhaustion, cyanosis or saturations under 92%, reduced consciousness, apnoea; stridor may become quieter","999; oxygen"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"📊 Westley croup score", html:"Scores level of consciousness, cyanosis, stridor, air entry and recession, from 0 to 17. Roughly: 0–2 mild, 3–5 moderate, 6–11 severe, 12 or more impending respiratory failure. Useful for communicating with hospital teams; the CKS clinical grading is enough in primary care.", src:"Westley CR et al. 1978 · Cochrane (Gates 2018)"},
+         {tone:"blue", h:"🩺 What to record", html:"Age, onset, stridor at rest (yes or no), recession, mental state, heart rate, respiratory rate, saturations, temperature, hydration, and whether the child is drinking.", src:"NICE CKS Croup"}
+       ]}
+     ]},
+
+    {id:"treat", nav:"Treat", title:"Treatment", sub:"A single dose of oral corticosteroid for every child. No antibiotics, no steam.",
+     blocks:[
+       {b:"table", head:["Drug","Dose","Notes"], rows:[
+         ["<b>Dexamethasone</b> (first line)","<b>0.15 mg/kg</b> by mouth, single dose (NICE CKS). Some hospital protocols use 0.15–0.6 mg/kg, with higher doses for severe croup. <span class=mg-dose>Usual children's dose: dexamethasone 150 micrograms/kg as a single dose (NICE CKS/SPC; check the BNFC and local formulary; <a href=https://www.medicines.org.uk/emc/search?q=dexamethasone+oral+solution target=_blank rel=noopener>SPC: dexamethasone oral solution</a>).</span>","Give in the surgery where possible. Oral solution or soluble tablets; check the strength, as products differ. Works within hours; reduces re-attendance and admission."],
+         ["<b>Prednisolone</b> (alternative)","<b>1–2 mg/kg</b> by mouth, single dose, if dexamethasone is not available (NICE CKS). <span class=mg-dose>Check the BNFC and local formulary; <a href=https://www.medicines.org.uk/emc/search?q=prednisolone+soluble target=_blank rel=noopener>SPC: prednisolone</a>.</span>","Trials suggest slightly more re-attendance than with dexamethasone."],
+         ["<b>Paracetamol or ibuprofen</b>","Dose by age (BNFC or product label)","For fever or discomfort only."]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"🏥 In hospital", html:"Nebulised adrenaline and oxygen are hospital treatments for severe croup; they work quickly but briefly, so the child must be observed. Nebulised budesonide is an alternative to oral steroids if the child is vomiting.", src:"NICE CKS Croup · Cochrane (Gates 2018)"},
+         {tone:"cream", h:"🚫 What not to do", html:"No antibiotics (croup is viral). No steam or humidified air: no benefit and a scald risk. No over-the-counter cough and cold medicines under 6 years. Do not lie the child down or force examination of the throat.", src:"NICE CKS Croup · MHRA (2009)"},
+         {tone:"blue", h:"🔁 Second dose?", html:"If a child with mild croup is reassessed with persisting symptoms, reassess severity and discuss with paediatrics rather than repeating doses routinely.", src:"NICE CKS Croup"},
+         {tone:"green", h:"✅ Evidence", html:"A Cochrane review found corticosteroids reduce symptoms within 2 hours, return visits and length of hospital stay in croup.", src:"Cochrane: Gates A et al. 2018 (CD001955)"}
+       ]},
+       {b:"say", html:"Croup is a virus that swells the windpipe, which causes the barking cough and the noisy breathing. The steroid medicine reduces the swelling and works within a few hours. It's often worse at night and usually settles within two days. Keep your child calm and upright, give plenty of drinks, and don't use steam."}
+     ]},
+
+    {id:"differentials", nav:"Differentials", title:"Differentials not to miss", sub:"Most barking coughs are croup. These are not, and they are more dangerous.",
+     blocks:[
+       {b:"table", head:["Condition","Clues","Action"], rows:[
+         ["<b>Epiglottitis</b>","Rapid onset, high fever, toxic, drooling, unable to swallow, muffled voice, sits forward, little or no cough. Rare since Hib vaccination, but check immunisation status.","999; do not examine the throat; keep upright and calm"],
+         ["<b>Bacterial tracheitis</b>","Croup-like illness that becomes severe with high fever and toxicity; poor response to steroids or adrenaline.","999"],
+         ["<b>Inhaled foreign body</b>","Sudden onset with choking, no prodrome, unilateral signs.","Same-day hospital; 999 if obstructed"],
+         ["<b>Anaphylaxis or angioedema</b>","Sudden stridor with urticaria, facial or tongue swelling, after a trigger.","999; IM adrenaline (see anaphylaxis protocol)"],
+         ["<b>Retropharyngeal or peritonsillar abscess</b>","Fever, neck stiffness or swelling, drooling, trismus.","Same-day hospital"],
+         ["<b>Diphtheria</b>","Rare; unimmunised or recent travel; grey membrane.","Same-day hospital; notify"]
+       ]}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Special groups", sub:"Where the default plan changes.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"👶 Under 6 months", html:"Croup is uncommon; consider congenital airway problems. Under 3 months, consider admission.", src:"NICE CKS Croup"},
+         {tone:"amber", h:"🧬 Airway abnormalities and Down's syndrome", html:"Smaller airway reserve: low threshold for same-day assessment.", src:"NICE CKS Croup"},
+         {tone:"blue", h:"🧒 Older children and adults", html:"Croup is less common after 6 years. Consider other causes of stridor, such as foreign body, anaphylaxis or laryngeal pathology.", src:"NICE CKS Croup"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Referral", sub:"Who, where and how fast.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999", html:"Severe croup, impending respiratory failure, suspected epiglottitis or bacterial tracheitis, anaphylaxis, airway obstruction from a foreign body.", src:"NICE CKS Croup"},
+         {tone:"red", h:"Same-day hospital assessment", html:"Moderate croup (stridor at rest); mild croup with risk factors or social concerns; under 3 months; poor fluid intake.", src:"NICE CKS Croup"},
+         {tone:"amber", h:"Paediatrics or ENT (outpatient)", html:"Recurrent croup, onset under 6 months, or persistent stridor between episodes.", src:"NICE CKS Croup"},
+         {tone:"green", h:"Home", html:"Mild croup, after a dose of dexamethasone, with carers who understand the safety-net.", src:"NICE CKS Croup"}
+       ]}
+     ]},
+
+    {id:"patient", nav:"Safety-net", title:"Patient information and safety-netting", sub:"Croup is frightening for families, especially at night.",
+     blocks:[
+       {b:"say", html:"Call 999 if your child is struggling to breathe, is very pale or blue, is drowsy or hard to wake, can't swallow or is drooling, or if the noisy breathing goes quiet while they are working harder to breathe. Contact us or NHS 111 the same day if the noisy breathing happens while they are resting, they are not drinking, or they are not improving after two days."},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"✅ Key messages", html:"Keep the child calm and sitting up; give drinks; check on them at night; steam is not recommended; most children are better within 48 hours, some take up to a week; it can come back with future colds.", src:"NICE CKS Croup"},
+         {tone:"green", h:"📄 Information", html:"NHS website: croup. Healthier Together (local paediatric advice) where available.", src:"NHS website"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Scenario", html:"An evening video call: a father shows his 2-year-old, who has a barking cough after a cold. You can hear the stridor while the child sits quietly on his lap. He asks for antibiotics.", src:"NICE CKS Croup"},
+       {tone:"cream", h:"What a good consultation does", html:"Recognises <b>stridor at rest</b> as moderate croup. Checks for drooling, colour, drowsiness and tiring. Arranges <b>same-day hospital assessment</b> (or a face-to-face assessment with dexamethasone and onward transfer) rather than home treatment. Explains why antibiotics will not help. Gives clear 999 advice.", src:"NICE CKS Croup"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page traces to a named primary source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE Clinical Knowledge Summaries — Croup (revised 2023)</b><br><a href="https://cks.nice.org.uk/topics/croup/" rel="noopener">cks.nice.org.uk/topics/croup</a><span class="rd"> — severity grading; single dose of oral dexamethasone 0.15 mg/kg for all; prednisolone 1–2 mg/kg alternative; admission criteria; differentials; no steam</span></li>'+
+         '<li><b>Gates A, et al. Glucocorticoids for croup in children. Cochrane Database Syst Rev 2018 (CD001955)</b><br><a href="https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD001955.pub4/full" rel="noopener">cochranelibrary.com — CD001955</a><span class="rd"> — reduced symptoms at 2 hours, return visits and length of stay</span></li>'+
+         '<li><b>Westley CR, Cotton EK, Brooks JG. Nebulized racemic epinephrine by IPPB for the treatment of croup. Am J Dis Child 1978;132:484–7</b><span class="rd"> — the Westley croup score</span></li>'+
+         '<li><b>Parker CM, Cooper MN. Prednisolone versus dexamethasone for croup: a randomized controlled trial. Pediatrics 2019</b><br><a href="https://pubmed.ncbi.nlm.nih.gov/31413138/" rel="noopener">pubmed.ncbi.nlm.nih.gov/31413138</a><span class="rd"> — prednisolone associated with more re-attendance</span></li>'+
+         '<li><b>Dexamethasone oral solution and prednisolone SPCs; BNFC</b><br><a href="https://www.medicines.org.uk/emc" rel="noopener">medicines.org.uk/emc</a> · <a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a><span class="rd"> — croup doses</span></li>'+
+         '<li><b>NICE NG143 — Fever in under 5s (2019, updated 2021)</b><br><a href="https://www.nice.org.uk/guidance/ng143" rel="noopener">nice.org.uk/guidance/ng143</a><span class="rd"> — assessing the febrile child</span></li>'+
+         '<li><b>MHRA / Commission on Human Medicines — over-the-counter cough and cold medicines for children (2009)</b><span class="rd"> — not for children under 6 years</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Croup in children — NICE CKS Croup (revised 2023), Cochrane (Gates 2018), dexamethasone and prednisolone SPCs and the BNFC. Check children's doses in the current BNFC and local formulary. Not a substitute for clinical judgement."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

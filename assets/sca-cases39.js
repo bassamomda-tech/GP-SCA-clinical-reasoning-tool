@@ -11,33 +11,68 @@
   /* ============ 149. VIDEO — Opioid escalation in chronic back pain ============ */
   const c149 = {
     id:'opioid-escalation', title:'"The tramadol\u2019s not touching it \u2014 I need something stronger"', type:'video', duration:12,
-    meta:{ age:48, sex:'M', setting:'Video consultation \u2014 request to increase opioids for chronic back pain.', system:'Pain / Opioids in chronic pain' },
+    meta:{ age:48, sex:'M', setting:'Video consultation \u2014 request to increase opioids for chronic back pain.', system:'Pain / Opioids in chronic pain', checked:'October 2026' },
     brief:'Mr Craig Hollis, 48, ex-warehouse worker. Chronic non-specific low back pain ~4 years; on escalating opioids (now tramadol + codeine), requesting "something stronger \u2014 morphine". No new red-flag features. On exploration: the opioids barely help the pain but he\u2019s frightened of being without them; he\u2019s low in mood, off work, isolated, and there are signs of tolerance/dependence. He\u2019s also lost his sense of purpose since the injury ended his job. The request is for escalation; the need is a whole-person pain and mood plan.',
     script:{
-      opening:'"Doc, I\u2019m at the end of my tether. The tramadol and the codeine just aren\u2019t touching this back pain anymore \u2014 I need something stronger, morphine or whatever it takes. I can\u2019t live like this. Just up the dose or give me the strong stuff, please. I\u2019m not a drug seeker, I\u2019m in genuine pain and nobody\u2019s helping me."',
-      facts:[
-        { topic:'Opioids in chronic pain', text:'Long-term opioids are largely INEFFECTIVE for chronic non-cancer pain and carry real harms (tolerance, dependence, hyperalgesia, sedation, falls, hormonal/mood effects, overdose). Escalating because "it’s not working" usually reflects tolerance/dependence, not under-treatment — and higher doses rarely improve function. For chronic low back pain specifically, NICE NG59 advises NOT offering opioids at all. He is also on TWO opioids at once (tramadol and codeine), which adds harm without clear benefit and should be flagged. The honest message: stronger opioids are unlikely to help and may harm; the plan is a whole-person approach and a careful, supported reduction \u2014 NOT escalation.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 beneath "give me morphine" is FEAR of being left in pain and without the tablets he\u2019s become dependent on, plus profound loss: the injury ended his job and identity, he\u2019s low/depressed, isolated and purposeless, and the opioids have become a way of coping with emotional as well as physical pain. "I\u2019m not a drug seeker" reveals his fear of being judged. The real work is the mood, the loss, and a supported pain plan \u2014 not the prescription.' },
-        { topic:'What actually helps', text:'Evidence-based management of chronic low back pain (NICE NG59, updated July 2026): supported self-management, an exercise programme/physiotherapy (manual therapy only as part of a package with exercise), explanation that the pain is real but the nervous system amplifies it (NG59 withdrew its psychological therapy and combined physical-psychological programme recommendations, 1.2.13/1.2.14, in July 2026), addressing mood/depression and sleep, social/occupational support, and a structured, agreed opioid REDUCTION with support \u2014 framed compassionately, not as abandonment. Validate that the pain is real while being honest that opioids aren\u2019t the answer.' },
-        { topic:'The trap',            text:'Both poles fail: simply escalating (collusion \u2014 more harm, more dependence) OR a flat refusal/"it\u2019s all in your head" that ruptures trust and abandons him. The skill is honest, validating partnership: name the dependence and the futility of escalation kindly, treat the mood and the loss, and offer a real plan he doesn\u2019t have to face alone.' },
-        { topic:'What he needs',        text:'Officially: stronger opioids. What he needs: validation that his pain is real; an honest explanation that escalating opioids won\u2019t help and may harm (and that needing more reflects tolerance/dependence); a whole-person plan (activity/physio, psychological support, mood treatment, social/occupational help) and a supported opioid reduction; the fear of abandonment and being judged addressed; and follow-up \u2014 not a bigger prescription.' },
+      "opening": "\"Doc, I'm at the end of my tether. The tramadol and the codeine just aren't touching this back pain anymore — I need something stronger, morphine or whatever it takes. I can't live like this. Just up the dose or give me the strong stuff, please. I'm not a drug seeker, I'm in genuine pain and nobody's helping me.\"",
+      "facts": [
+        {
+          "topic": "The pain (if asked)",
+          "text": "Low back pain since lifting a pallet at work four years ago. Constant ache across the lower back, 7–8/10, sometimes into the buttocks. Worse with sitting long or standing."
+        },
+        {
+          "topic": "Red-flag questions (if asked)",
+          "text": "No numbness around the bottom or genitals, no bladder or bowel problems, no leg weakness, no fever, no weight loss, no night sweats, no history of cancer. Nothing new — \"it's the same pain, it's just the tablets don't work\"."
+        },
+        {
+          "topic": "Tablets (if asked)",
+          "text": "Tramadol 100 mg four times a day and codeine 60 mg four times a day. If asked honestly: you sometimes take an extra tramadol \"on bad days\" and run out early. If you miss doses you get sweaty, restless and achy, and \"the pain's worse\". You have never bought tablets off the street."
+        },
+        {
+          "topic": "What you have tried (if asked)",
+          "text": "Physio once, three years ago — \"six sessions, they gave me a sheet\". Never had a pain clinic referral or psychological support."
+        },
+        {
+          "topic": "Mood and life — only if asked",
+          "text": "Lost your job a year ago. Sit at home most of the day. Low mood, poor sleep, irritable with your partner, stopped seeing mates. \"I feel useless.\" If asked about suicide: no thoughts of ending your life. Drinking \"a few cans most nights\" to help you sleep."
+        },
+        {
+          "topic": "Other medicines",
+          "text": "Sertraline was started once but you stopped it after two weeks. No allergies."
+        },
+        {
+          "topic": "Social",
+          "text": "48, used to work in a warehouse. Lives with partner Lisa and her son, 15. Smokes 15 a day."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "You are frightened that if the tablets are reduced you will be \"left in agony\" and that the doctor thinks you are an addict. Say this only if asked what worries you about changing the tablets."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Frustrated and defensive. If the doctor refuses flatly or implies you are an addict, get angry: \"So you think I'm a junkie?\" If they believe your pain is real, explain honestly why more opioids will not help, and ask about your life and mood, you calm down and engage. You agree to a slow, supported reduction only if there is a real plan to help the pain and your mood."
+        }
       ],
-      ice:{
-        ideas:'His pain is under-treated and a stronger opioid (morphine) will finally control it.',
-        concerns:'HIDDEN AGENDA \u2014 fear of being left in pain and without the tablets he depends on; loss of job/identity since the injury, low mood, isolation and purposelessness, with opioids coping for emotional as well as physical pain; fear of being judged a "drug seeker".',
-        expectations:'A stronger opioid / dose increase. What he actually needs: validation, an honest explanation that escalation won\u2019t help and may harm, a whole-person pain + mood plan, a supported opioid reduction, and the fear of abandonment addressed.'
+      "ice": {
+        "ideas": "\"The tablets have stopped working so I need stronger ones.\"",
+        "concerns": "\"Being left in pain, with nobody helping me.\" Underneath: being labelled an addict, and feeling useless since losing your job.",
+        "expectations": "\"Morphine or a higher dose.\" You will consider another plan if you feel believed and supported."
       },
-      cues:['"It\u2019s not touching it, give me morphine" \u2014 needing more usually reflects tolerance/dependence, not under-treatment; escalation rarely helps.','"I\u2019m not a drug seeker, nobody\u2019s helping me" \u2014 fear of judgement + abandonment; the loss and low mood underneath.','Off work, isolated, low since the injury \u2014 the emotional pain the opioids are also medicating; the real work.']
+      "cues": [
+        "\"I'm not a drug seeker.\" — say in the opening.",
+        "\"I run out early sometimes.\" — say only if asked how you take them.",
+        "\"Since I lost my job I just sit at home.\" — say if asked about your life."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises that long-term opioids are largely INEFFECTIVE for chronic non-cancer pain and carry real harms, and that needing "something stronger" usually reflects TOLERANCE/DEPENDENCE rather than under-treatment \u2014 so does NOT simply escalate to morphine/increase the dose' },
-      { dom:'tasks', text:'VALIDATES that the pain is real (avoiding "it\u2019s all in your head") while honestly explaining why escalation won\u2019t help and may harm \u2014 holding the line without abandoning him' },
-      { dom:'tasks', text:'Explores and addresses the WHOLE picture: mood/depression, sleep, the loss of job/identity, isolation and purpose, and function \u2014 recognising the opioids are coping with emotional as well as physical pain' },
-      { dom:'tasks', text:'Offers an evidence-based chronic low back pain PLAN (NICE NG59): supported self-management, an exercise programme/physiotherapy, support to return to work or normal activities, treating mood in its own right (psychological therapy for depression per NICE NG222 — not a pain-management programme/CBT for the back pain, whose NG59 recommendations were withdrawn in July 2026), and social/occupational support \u2014 rather than a pharmacological-only approach' },
-      { dom:'tasks', text:'Proposes a STRUCTURED, SUPPORTED opioid reduction (not abrupt withdrawal), framed as reducing harm and often improving pain/function \u2014 with the patient as a partner and clear support, not as punishment or abandonment' },
-      { dom:'rto',   text:'Hears the fear of abandonment and being judged ("I\u2019m not a drug seeker") and responds with warmth and partnership, neither colluding with escalation nor rupturing trust with a flat refusal' },
-      { dom:'rto',   text:'Surfaces the loss/low mood with compassion and frames the plan as helping the whole person, so he feels supported rather than dismissed' },
-      { dom:'gs',    text:'Safety-nets and follows up: the agreed plan (physio/psychological/mood support, supported reduction), what help is available, mood/risk review, and a clear follow-up \u2014 partnership over a prescription, with the patient not left to cope alone' },
+      { dom:'dg', text:'Recognises that long-term opioids are largely INEFFECTIVE for chronic non-cancer pain and carry real harms, and that needing "something stronger" usually reflects TOLERANCE/DEPENDENCE rather than under-treatment \u2014 so does NOT simply escalate to morphine/increase the dose' },
+      { dom:'ro', text:'VALIDATES that the pain is real (avoiding "it\u2019s all in your head") while honestly explaining why escalation won\u2019t help and may harm \u2014 holding the line without abandoning him' },
+      { dom:'dg', text:'Explores and addresses the WHOLE picture: mood/depression, sleep, the loss of job/identity, isolation and purpose, and function \u2014 recognising the opioids are coping with emotional as well as physical pain' },
+      { dom:'cm', text:'Offers an evidence-based chronic low back pain PLAN (NICE NG59): supported self-management, an exercise programme/physiotherapy, support to return to work or normal activities, treating mood in its own right (psychological therapy for depression per NICE NG222 — not a pain-management programme/CBT for the back pain, whose NG59 recommendations were withdrawn in July 2026), and social/occupational support \u2014 rather than a pharmacological-only approach' },
+      { dom:'cm', text:'Proposes a STRUCTURED, SUPPORTED opioid reduction (not abrupt withdrawal), framed as reducing harm and often improving pain/function \u2014 with the patient as a partner and clear support, not as punishment or abandonment' },
+      { dom:'ro',   text:'Hears the fear of abandonment and being judged ("I\u2019m not a drug seeker") and responds with warmth and partnership, neither colluding with escalation nor rupturing trust with a flat refusal' },
+      { dom:'ro',   text:'Surfaces the loss/low mood with compassion and frames the plan as helping the whole person, so he feels supported rather than dismissed' },
+      { dom:'cm',    text:'Safety-nets and follows up: the agreed plan (physio/psychological/mood support, supported reduction), what help is available, mood/risk review, and a clear follow-up \u2014 partnership over a prescription, with the patient not left to cope alone' },
     ],
     worked:[
       { lbl:'Validate the pain',    txt:'"First \u2014 I believe you. Your pain is real, I\u2019m not for one second saying it\u2019s in your head, and you\u2019re not a drug seeker. Four years of this would grind anyone down. So let\u2019s work on it honestly together, because I don\u2019t think you\u2019re getting the help you deserve."' },
@@ -66,33 +101,64 @@
   /* ============ 150. TELEPHONE — New patient needs methadone continued today: safe bridging ============ */
   const c150 = {
     id:'methadone-bridging', title:'"I\u2019ve just moved here and my methadone runs out today \u2014 I need a script now"', type:'telephone', duration:12,
-    meta:{ age:35, sex:'M', setting:'Telephone \u2014 new patient requesting urgent methadone continuation.', system:'Addiction / Opioid substitution & safe bridging' },
+    meta:{ age:35, sex:'M', setting:'Telephone \u2014 new patient requesting urgent methadone continuation.', system:'Addiction / Opioid substitution & safe bridging', checked:'October 2026' },
     brief:'Mr Danny Boyd, 35, recently moved area, newly registered, rings because his methadone (opioid substitution therapy) "runs out today" and he\u2019ll be "in bits"/at risk of relapse without it. He cannot immediately verify his dose or current prescriber/pharmacy. He is anxious and pressured. The safe approach: do NOT prescribe methadone blind (overdose risk if dose unverified/not tolerant), but do NOT simply abandon him to withdrawal/relapse either \u2014 verify urgently and bridge safely via the local drug service.',
     script:{
-      opening:'"Hello, I\u2019ve just registered with you \u2014 I moved here last week. Look, I\u2019m on methadone, 60ml a day, and my script runs out today. If I don\u2019t get it I\u2019ll be climbing the walls by tonight and honestly I\u2019m scared I\u2019ll end up using again. I just need you to write me a methadone script now, today. Please, I can\u2019t be without it."',
-      facts:[
-        { topic:'Why not prescribe blind', text:'Prescribing methadone to a new patient WITHOUT verifying the current dose, prescriber and that they are genuinely tolerant is DANGEROUS \u2014 methadone has a narrow safety margin and a long half-life; an unverified/excessive dose, or a dose given to someone who has lost tolerance (e.g. a gap in treatment), can be FATAL. So a GP should NOT issue a methadone script on an unverified phone request. But equally, leaving him to abrupt withdrawal/relapse is unsafe and unkind.' },
-        { topic:'The safe bridging path', text:'The safe approach: urgently VERIFY \u2014 contact his previous drug service/prescriber and dispensing pharmacy to confirm the regimen, dose and last pick-up \u2014 and route him rapidly to the LOCAL specialist drug/substance-misuse service (often same-day) to assess and continue OST safely. Most areas have a fast-track for transferring OST patients. The GP\u2019s job is to facilitate safe, verified continuity, not to prescribe blind.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 his pressure and fear are genuine: he is frightened of withdrawal and, more, of RELAPSE and losing the stability he\u2019s fought for (he may have a job, kids, a recovery he\u2019s proud of). There may be shame and an expectation of being judged/dismissed as "just an addict". He needs to be treated with respect and taken seriously, and to be helped urgently \u2014 the worst outcome is feeling abandoned and using again. Some may also test for an unverified script, which is exactly why verification (not suspicion-as-refusal) is the route.' },
-        { topic:'Harm reduction',       text:'Treat him with dignity, take the relapse risk seriously, act with genuine urgency to verify and bridge, and provide harm-reduction safety-netting (relapse/overdose risk, naloxone, not topping up from illicit sources) while continuity is arranged. Refusal-without-action is unsafe; prescribing-blind is unsafe; verified urgent bridging is the answer.' },
-        { topic:'What he needs',        text:'Officially: a methadone script today. What he needs: NOT a blind prescription, but urgent verification (previous service/pharmacy) and rapid routing to the local drug service for safe same-day continuation; to be treated with respect not suspicion; harm-reduction advice (overdose risk, naloxone) meanwhile; and reassurance he won\u2019t be abandoned \u2014 safe continuity, fast.' },
+      "opening": "\"Hello, I've just registered with you — I moved here last week. Look, I'm on methadone, 60ml a day, and my script runs out today. If I don't get it I'll be climbing the walls by tonight and honestly I'm scared I'll end up using again. I just need you to write me a methadone script now, today. Please, I can't be without it.\"",
+      "facts": [
+        {
+          "topic": "Your treatment",
+          "text": "On methadone for three years with the Leeds drug service, 60 ml once a day, supervised at the pharmacy at first, now picking up twice a week. Last dose collected yesterday — \"that was my last one\"."
+        },
+        {
+          "topic": "Details for verifying — if asked",
+          "text": "Your keyworker is Sam at \"Forward Leeds\"; you have the number on your phone. Pharmacy: Boots on Kirkstall Road. You will happily give consent for the doctor to call them."
+        },
+        {
+          "topic": "Why no transfer",
+          "text": "\"I moved in a hurry — my mum got ill and I came to look after her. I didn't sort the transfer. Stupid, I know.\""
+        },
+        {
+          "topic": "Drug use (if asked honestly)",
+          "text": "Clean from heroin for 18 months. No other drugs. No benzodiazepines or alcohol to excess. Urine tests at the old service were clean."
+        },
+        {
+          "topic": "Health",
+          "text": "Hepatitis C treated two years ago. No other medicines. No allergies. You do not have naloxone with you — \"it's in a drawer back in Leeds\"."
+        },
+        {
+          "topic": "Social",
+          "text": "35, staying with your mum, who has just had a stroke. You were working part-time in a warehouse in Leeds. Your daughter (8) lives with her mum in Leeds and you see her at weekends — \"I'm not losing that again\"."
+        },
+        {
+          "topic": "Feelings",
+          "text": "Anxious and pressured, fear of withdrawal and, more, of relapse: \"If I score once, that's it.\""
+        },
+        {
+          "topic": "How to play it",
+          "text": "Polite but urgent; you will push for a script \"just for today\". If the doctor refuses outright and offers nothing, get desperate: \"So I'm just meant to go and score then?\" If they explain why they cannot safely prescribe without checking, but promise to ring your old service and the local drug service today and keep you safe meanwhile, you accept, give consent and contact details, and agree a time to be called back."
+        }
       ],
-      ice:{
-        ideas:'The GP can just write him a methadone script today to tide him over.',
-        concerns:'HIDDEN AGENDA \u2014 genuine fear of withdrawal and, more, of relapse and losing hard-won stability (job/kids/recovery); shame and expectation of being judged/dismissed as "just an addict".',
-        expectations:'A methadone prescription today. What he actually needs: NOT a blind script, but urgent verification + rapid routing to the local drug service for safe same-day continuation, treated with respect, with harm-reduction advice and reassurance he won\u2019t be abandoned.'
+      "ice": {
+        "ideas": "\"A GP can just write me a methadone script today.\"",
+        "concerns": "\"I'm scared I'll end up using again.\" And losing contact with your daughter.",
+        "expectations": "\"Write me a script now.\" You will accept an urgent verification and same-day plan if you are not left with nothing."
       },
-      cues:['Unverified methadone dose/prescriber in a new patient \u2014 do NOT prescribe blind (overdose/tolerance risk); verify first.','"I\u2019ll relapse if I don\u2019t get it" \u2014 take the relapse risk seriously and act urgently; refusal-without-action is unsafe too.','Fear of being judged/abandoned \u2014 treat with respect, not suspicion; verified urgent bridging is the safe middle path.']
+      "cues": [
+        "\"I'm scared I'll end up using again.\" — say in the opening.",
+        "\"My keyworker's number is on my phone.\" — say when the doctor talks about checking.",
+        "\"I'm not losing my little girl again.\" — say if asked about family or what keeps you going."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Does NOT prescribe methadone blind on an unverified phone request \u2014 recognising the fatal overdose risk of an unverified/excessive dose or lost tolerance \u2014 while also NOT simply refusing and abandoning him to withdrawal/relapse' },
-      { dom:'tasks', text:'Acts with genuine URGENCY to VERIFY: contacts his previous drug service/prescriber and dispensing pharmacy to confirm the dose, regimen and last pick-up' },
-      { dom:'tasks', text:'Routes him rapidly to the LOCAL specialist drug/substance-misuse service for same-day assessment and safe continuation of OST (using local fast-track/transfer arrangements), rather than managing it as a routine GP prescription' },
-      { dom:'tasks', text:'Provides HARM-REDUCTION safety-netting while continuity is arranged: the risks of relapse and overdose (especially with lost tolerance), advice not to top up from illicit sources, and naloxone provision/availability' },
-      { dom:'tasks', text:'Takes the RELAPSE RISK and the patient\u2019s wider stability (work, family, recovery) seriously as part of the urgency, and documents the verification/bridging steps' },
-      { dom:'rto',   text:'Treats him with RESPECT and dignity \u2014 not suspicion-as-dismissal \u2014 hears the fear of withdrawal/relapse and of being judged, and reassures he will not be abandoned' },
-      { dom:'rto',   text:'Holds the safety boundary (no blind script) WITHOUT rupturing trust, framing verification/urgent routing as the way he gets his treatment safely and fast' },
-      { dom:'gs',    text:'Safety-nets and follows up: the verification + same-day drug-service route confirmed, harm-reduction/overdose advice and naloxone, what to do meanwhile, and follow-up to ensure continuity happened \u2014 safe, verified bridging, treating him as a person' },
+      { dom:'cm', text:'Does NOT prescribe methadone blind on an unverified phone request \u2014 recognising the fatal overdose risk of an unverified/excessive dose or lost tolerance \u2014 while also NOT simply refusing and abandoning him to withdrawal/relapse' },
+      { dom:'cm', text:'Acts with genuine URGENCY to VERIFY: contacts his previous drug service/prescriber and dispensing pharmacy to confirm the dose, regimen and last pick-up' },
+      { dom:'cm', text:'Routes him rapidly to the LOCAL specialist drug/substance-misuse service for same-day assessment and safe continuation of OST (using local fast-track/transfer arrangements), rather than managing it as a routine GP prescription' },
+      { dom:'cm', text:'Provides HARM-REDUCTION safety-netting while continuity is arranged: the risks of relapse and overdose (especially with lost tolerance), advice not to top up from illicit sources, and naloxone provision/availability' },
+      { dom:'dg', text:'Takes the RELAPSE RISK and the patient\u2019s wider stability (work, family, recovery) seriously as part of the urgency, and documents the verification/bridging steps' },
+      { dom:'ro',   text:'Treats him with RESPECT and dignity \u2014 not suspicion-as-dismissal \u2014 hears the fear of withdrawal/relapse and of being judged, and reassures he will not be abandoned' },
+      { dom:'ro',   text:'Holds the safety boundary (no blind script) WITHOUT rupturing trust, framing verification/urgent routing as the way he gets his treatment safely and fast' },
+      { dom:'cm',    text:'Safety-nets and follows up: the verification + same-day drug-service route confirmed, harm-reduction/overdose advice and naloxone, what to do meanwhile, and follow-up to ensure continuity happened \u2014 safe, verified bridging, treating him as a person' },
     ],
     worked:[
       { lbl:'Take it seriously, with respect', txt:'"Thank you for ringing, and for being upfront \u2014 you\u2019ve done exactly the right thing, and I\u2019m going to take this seriously and help you. I can hear you\u2019re frightened of withdrawal and, more than that, of slipping back when you\u2019ve worked hard to be stable. I\u2019m not going to judge you or leave you stuck."' },
@@ -121,33 +187,64 @@
   /* ============ 151. TELEPHONE — Just out of prison, medications stopped at the gate ============ */
   const c151 = {
     id:'prison-release-continuity', title:'"I got out yesterday and they stopped all my meds \u2014 I\u2019ve got nothing"', type:'telephone', duration:12,
-    meta:{ age:41, sex:'M', setting:'Telephone \u2014 recently-released prisoner with no medication.', system:'Health inequality / Continuity after prison release' },
+    meta:{ age:41, sex:'M', setting:'Telephone \u2014 recently-released prisoner with no medication.', system:'Health inequality / Continuity after prison release', checked:'October 2026' },
     brief:'Mr Lee Marwood, 41, released from prison yesterday, newly registered, rings because he\u2019s been left with NO medication. On exploration: he was on a mix \u2014 an antipsychotic (for a psychotic illness), an antiepileptic, and was on opioid substitution. He has nowhere stable to stay, no money, and is anxious. The first weeks after release are a period of EXTREME risk (overdose death, relapse, mental-health crisis, self-harm/suicide). Continuity of medication and rapid wrap-around support are urgent, life-saving priorities.',
     script:{
-      opening:'"Hi, I got out of prison yesterday and I\u2019ve registered with you. The thing is they stopped all my medication at the gate \u2014 I\u2019ve got nothing. I was on tablets for my head, for my fits, and I was on a methadone script in there. I don\u2019t know what I\u2019m doing, I\u2019ve got nowhere proper to stay, no money, and I\u2019m starting to feel rough. Can you help me? I don\u2019t want to end up back where I was."',
-      facts:[
-        { topic:'Post-release is extreme-risk', text:'The first weeks after prison release carry markedly elevated risk of DEATH \u2014 especially drug-related OVERDOSE (lost tolerance after enforced abstinence/reduction), and elevated suicide, relapse and mental-health crisis. Continuity of essential medication and rapid support are URGENT, potentially life-saving. Being left with "nothing" is a dangerous gap to close fast.' },
-        { topic:'The medication priorities', text:'Several medications, each with urgency: the ANTIPSYCHOTIC (stopping risks psychotic relapse), the ANTIEPILEPTIC (stopping risks seizures \u2014 sudden withdrawal is dangerous), and OPIOID SUBSTITUTION (methadone \u2014 with the same not-blind, verify-and-route-urgently rule as the bridging case, plus overdose risk from lost tolerance). Each needs verifying (prison healthcare/records) and continuing safely/urgently \u2014 don\u2019t prescribe blind, but act fast.' },
-        { topic:'The social emergency', text:'He is effectively homeless, penniless and unsupported \u2014 a social emergency intertwined with the medical one. Housing, benefits/finance, and substance/mental-health service linkage are core. Many areas have specific prison-release/RECONNECT-type liaison and homeless-health pathways. Addressing the destitution is part of preventing the bad outcomes.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 beneath the practical request is fear of relapse and of "ending up back where I was", shame, low self-worth ("I don\u2019t know what I\u2019m doing"), and an expectation of being judged/turned away. He may be close to a mental-health or substance crisis. He needs to be met with respect and genuine urgency \u2014 treated as someone whose life matters \u2014 not processed as a difficult registration. Continuity-as-care is the message.' },
-        { topic:'What he needs',        text:'Officially: his medication back. What he needs: urgent verification of his prison medications (prison healthcare/records) and safe, rapid continuation of the antipsychotic and antiepileptic (and OST via the drug service, not blind), wrap-around support for housing/finance and substance/mental-health services, a mental-health/risk assessment, harm-reduction (overdose/naloxone), and to be treated with dignity and urgency \u2014 continuity as life-saving care.' },
+      "opening": "\"Hi, I got out of prison yesterday and I've registered with you. The thing is they stopped all my medication at the gate — I've got nothing. I was on tablets for my head, for my fits, and I was on a methadone script in there. I don't know what I'm doing, I've got nowhere proper to stay, no money, and I'm starting to feel rough. Can you help me? I don't want to end up back where I was.\"",
+      "facts": [
+        {
+          "topic": "Where you were",
+          "text": "HMP Leeds for 14 months. Released yesterday morning with a discharge grant and \"a bit of paper\" — you have lost it. You were told an appointment with the drug service \"would be sorted\" but nobody has rung."
+        },
+        {
+          "topic": "Your tablets (if asked)",
+          "text": "\"Olanzapine — 10, I think, at night — for my head. Something for my fits, levetiracetam, twice a day. And methadone, 50 ml every morning.\" Last doses were the morning before release, about 30 hours ago."
+        },
+        {
+          "topic": "How you feel now (if asked)",
+          "text": "Sweaty, yawning, stomach cramps, runny nose, aching — \"starting to rattle\". Sleeping badly. No fits since about two years ago; last one was when you stopped the tablets before. You are not hearing voices at the moment \"but I can feel myself getting wound up\"."
+        },
+        {
+          "topic": "Drugs (if asked honestly)",
+          "text": "Used heroin for years before prison. Clean inside. \"I've had a mate offer me some already. I said no. For now.\" You know your tolerance is low."
+        },
+        {
+          "topic": "Mental health — only if asked directly",
+          "text": "Diagnosed with schizophrenia at 25; two admissions, last one six years ago. If asked about suicide: \"Some days I think what's the point.\" No plan; you have not harmed yourself since prison; you would ring your sister if it got bad."
+        },
+        {
+          "topic": "Living situation",
+          "text": "Sleeping on a friend's sofa for now, \"but he uses, so it's not great\". No money until benefits come through. Probation officer, Sarah, is expecting you on Thursday."
+        },
+        {
+          "topic": "Medical history",
+          "text": "Epilepsy since childhood. Hepatitis C — \"they treated it inside\". No allergies. Smoke 20 a day."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Anxious, a bit jumpy, trying hard. If the doctor sounds like they will just \"wait for your records\", you panic: \"I can't wait, I'll be using by the weekend.\" If they take you seriously, get the prison healthcare details, explain what can be sorted today (fits tablets, mental-health medicine, urgent drug service, naloxone) and help with housing, you calm down and cooperate — giving consent to contact the prison, probation and the drug service."
+        }
       ],
-      ice:{
-        ideas:'He needs his medications restarted and some help, having been left with nothing.',
-        concerns:'HIDDEN AGENDA \u2014 fear of relapse and "ending up back where I was", shame and low self-worth, and expectation of being judged/turned away; possibly close to a crisis; homeless, penniless, unsupported.',
-        expectations:'His medication back. What he actually needs: urgent verified continuation of antipsychotic/antiepileptic (and OST via the drug service), wrap-around housing/finance/substance/mental-health support, a risk assessment, harm-reduction, and to be treated with dignity and urgency.'
+      "ice": {
+        "ideas": "\"They've stopped my meds and I need them back today.\"",
+        "concerns": "\"I don't want to end up back where I was\" — using, unwell, or back inside. Underneath: having a fit or \"losing it\".",
+        "expectations": "\"Can you help me?\" You want your tablets and somebody to sort things with you."
       },
-      cues:['Just released, all meds stopped, on antipsychotic + antiepileptic + methadone \u2014 extreme post-release risk; urgent verified continuity.','Homeless, penniless, "feeling rough" \u2014 a social + medical emergency; wrap-around support and overdose risk.','"I don\u2019t want to end up back where I was" \u2014 fear of relapse/crisis and being judged; treat with respect and genuine urgency.']
+      "cues": [
+        "\"I don't want to end up back where I was.\" — say in the opening.",
+        "\"A mate's already offered me some.\" — say if asked about drugs.",
+        "\"Some days I think what's the point.\" — say only if asked about your mood directly."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises the post-release period as EXTREME risk (drug-related overdose death from lost tolerance, suicide, relapse, mental-health and seizure risk) and treats continuity of essential medication and support as an URGENT, potentially life-saving priority' },
-      { dom:'tasks', text:'Prioritises and acts on each medication with appropriate urgency: verifies prison medications (prison healthcare/records) and safely continues the ANTIPSYCHOTIC (relapse risk) and ANTIEPILEPTIC (seizure risk \u2014 not to be stopped abruptly), and routes OST/methadone via the drug service (verify, don\u2019t prescribe blind)' },
-      { dom:'tasks', text:'Addresses the SOCIAL emergency: housing/homelessness, finance/benefits, and linkage to substance-misuse and mental-health services \u2014 using prison-release liaison/RECONNECT-type and homeless-health pathways where available' },
-      { dom:'tasks', text:'Carries out a MENTAL-HEALTH and RISK assessment (psychotic relapse, suicide/self-harm, substance relapse) and provides HARM REDUCTION (overdose risk/lost tolerance, naloxone)' },
-      { dom:'tasks', text:'Acts with genuine URGENCY/continuity rather than deferring \u2014 obtaining records and bridging essential medication safely the same day where possible, and not leaving him with "nothing"' },
-      { dom:'rto',   text:'Treats him with RESPECT and dignity \u2014 not as a difficult registration \u2014 hears the fear of relapse and being judged, and reassures him his health matters and he will be helped' },
-      { dom:'rto',   text:'Holds the safety boundaries (verify OST, don\u2019t prescribe blind) while conveying genuine urgency and care, so he engages rather than disengages' },
-      { dom:'gs',    text:'Safety-nets and follows up: urgent verified medication continuity, wrap-around support arranged (housing/finance/substance/MH services), risk plan and crisis routes, harm-reduction/naloxone, and a close follow-up \u2014 continuity-as-care through a high-risk window' },
+      { dom:'dg', text:'Recognises the post-release period as EXTREME risk (drug-related overdose death from lost tolerance, suicide, relapse, mental-health and seizure risk) and treats continuity of essential medication and support as an URGENT, potentially life-saving priority' },
+      { dom:'cm', text:'Prioritises and acts on each medication with appropriate urgency: verifies prison medications (prison healthcare/records) and safely continues the ANTIPSYCHOTIC (relapse risk) and ANTIEPILEPTIC (seizure risk \u2014 not to be stopped abruptly), and routes OST/methadone via the drug service (verify, don\u2019t prescribe blind)' },
+      { dom:'dg', text:'Addresses the SOCIAL emergency: housing/homelessness, finance/benefits, and linkage to substance-misuse and mental-health services \u2014 using prison-release liaison/RECONNECT-type and homeless-health pathways where available' },
+      { dom:'cm', text:'Carries out a MENTAL-HEALTH and RISK assessment (psychotic relapse, suicide/self-harm, substance relapse) and provides HARM REDUCTION (overdose risk/lost tolerance, naloxone)' },
+      { dom:'cm', text:'Acts with genuine URGENCY/continuity rather than deferring \u2014 obtaining records and bridging essential medication safely the same day where possible, and not leaving him with "nothing"' },
+      { dom:'ro',   text:'Treats him with RESPECT and dignity \u2014 not as a difficult registration \u2014 hears the fear of relapse and being judged, and reassures him his health matters and he will be helped' },
+      { dom:'ro',   text:'Holds the safety boundaries (verify OST, don\u2019t prescribe blind) while conveying genuine urgency and care, so he engages rather than disengages' },
+      { dom:'cm',    text:'Safety-nets and follows up: urgent verified medication continuity, wrap-around support arranged (housing/finance/substance/MH services), risk plan and crisis routes, harm-reduction/naloxone, and a close follow-up \u2014 continuity-as-care through a high-risk window' },
     ],
     worked:[
       { lbl:'Meet him with urgency + respect', txt:'"I\u2019m really glad you rang \u2014 you\u2019ve done exactly the right thing, and I\u2019m going to treat this as urgent, because the first days after getting out are when people most need looking after, not least. You matter, and I\u2019m not going to leave you with nothing. Let\u2019s sort this together."' },
@@ -157,9 +254,9 @@
       { lbl:'Continuity, not a brush-off', txt:'"I want you to hear this clearly: you\u2019re not being passed around or judged. The opposite \u2014 I\u2019m going to chase your records, get your essential medication continued safely today, link you with the drug team, and get you support for housing and money. We\u2019re doing this now."' },
       { lbl:'Confirm + follow-up',  txt:'"So: I\u2019ll get your prison medication records, continue what can\u2019t safely wait, fast-track the methadone through the drug service, and connect you with release and housing support \u2014 and I\u2019ll ring you back today with the plan. I want to see you again very soon to keep you safe through these next weeks. You rang frightened of ending up back where you were; my job is to make sure you don\u2019t."' },
     ],
-    learning:'The first weeks after prison release are an extreme-risk window \u2014 markedly elevated drug-related overdose death (lost tolerance after enforced abstinence/reduction), suicide, relapse, mental-health crisis and seizure risk \u2014 so being left with "nothing" is a dangerous gap to close urgently, and continuity of medication plus rapid wrap-around support is potentially life-saving. Triage each medication: continue the ANTIEPILEPTIC (abrupt stopping risks seizures) and ANTIPSYCHOTIC (stopping risks relapse) safely and urgently after verifying prison records, and route OST/methadone via the drug service (verify, don\u2019t prescribe blind \u2014 same rule as bridging, plus overdose risk from lost tolerance). Address the intertwined SOCIAL emergency (homelessness, finance, substance/mental-health service linkage) via prison-release/RECONNECT-type and homeless-health pathways, carry out a mental-health/risk assessment, and provide harm reduction (overdose/naloxone). The examinable hidden agenda is fear of relapse and "ending up back where I was", shame and low self-worth, and an expectation of being judged/turned away; meet him with respect and genuine urgency \u2014 his life matters \u2014 hold the OST boundary while conveying care, and deliver continuity-as-life-saving-care with close follow-up.',
+    learning:"The first weeks after prison release are an extreme-risk window — markedly elevated drug-related overdose death (lost tolerance after enforced abstinence/reduction), suicide, relapse, mental-health crisis and seizure risk — so being left with \"nothing\" is a dangerous gap to close urgently, and continuity of medication plus rapid wrap-around support is potentially life-saving. Triage each medication: continue the ANTIEPILEPTIC (abrupt stopping risks seizures) and ANTIPSYCHOTIC (stopping risks relapse) safely and urgently after verifying prison records, and route OST/methadone via the drug service (verify, don’t prescribe blind — same rule as bridging, plus overdose risk from lost tolerance). Address the intertwined SOCIAL emergency (homelessness, finance, substance/mental-health service linkage) via prison-release/RECONNECT-type and homeless-health pathways, carry out a mental-health/risk assessment, and provide harm reduction (overdose/naloxone). The examinable hidden agenda is fear of relapse and \"ending up back where I was\", shame and low self-worth, and an expectation of being judged/turned away; meet him with respect and genuine urgency — his life matters — hold the OST boundary while conveying care, and deliver continuity-as-life-saving-care with close follow-up. He is effectively homeless, penniless and unsupported — a social emergency intertwined with the medical one. Housing, benefits/finance, and substance/mental-health service linkage are core. Many areas have specific prison-release/RECONNECT-type liaison and homeless-health pathways. Addressing the destitution is part of preventing the bad outcomes.",
     knowledge:{
-      guideline:'NICE NG57 Physical health of people in prison (2016) · NICE QS156 Physical health of people in prisons (2017) · NICE NG66 Mental health of adults in contact with the criminal justice system (2017) · NICE NG217 Epilepsies in children, young people and adults (2022, updated August 2026) · NICE CG178 Psychosis and schizophrenia in adults (2014) · NICE TA114 Methadone and buprenorphine for opioid dependence (2007) · DHSC Drug misuse and dependence: UK guidelines on clinical management (Orange Book, 2017) · Homelessness Reduction Act 2017 · continuity of care after prison release · post-release mortality (overdose) · NHS England RECONNECT care after custody · take-home naloxone',
+      guideline:'NICE NG57 Physical health of people in prison (2016) · NICE QS156 Physical health of people in prisons (2017) · NICE NG66 Mental health of adults in contact with the criminal justice system (2017) · NICE NG217 Epilepsies in children, young people and adults (2022, updated January 2025) · NICE CG178 Psychosis and schizophrenia in adults (2014) · NICE TA114 Methadone and buprenorphine for opioid dependence (2007) · DHSC Drug misuse and dependence: UK guidelines on clinical management (Orange Book, 2017) · Homelessness Reduction Act 2017 · continuity of care after prison release · post-release mortality (overdose) · NHS England RECONNECT care after custody · take-home naloxone',
       points:[
         { h:'Post-release is high-mortality', t:'Recently-released prisoners have sharply elevated mortality in the first weeks, especially from drug-related overdose (tolerance falls during custody), plus elevated suicide and relapse. Treat continuity of medication and support as urgent and potentially life-saving — do not defer or leave gaps. NICE NG57 and QS156 (statement 5): people leaving prison should go with at least 7 days of prescribed medicines or an FP10 prescription, with complex needs planned before release; leaving with nothing is a care gap to fix, not his fault.' },
         { h:'Triage essential medications', t:'Antiepileptics (abrupt withdrawal risks seizures and status epilepticus — NICE NG217) and antipsychotics (stopping risks relapse — NICE CG178) need safe, urgent continuation — verify via prison healthcare records and bridge, doses per BNF and the prison record. OST (methadone/buprenorphine) follows the verify-and-route rule: do NOT prescribe blind; confirm regimen and the time of the last supervised dose with the prison and route rapidly (same day) to the drug service (overdose risk if dose/tolerance unverified). NICE TA114 supports methadone or buprenorphine as maintenance options; the DHSC Orange Book (2017) sets out safe induction and continuation.' },
@@ -176,33 +273,64 @@
   /* ============ 152. TELEPHONE — Flight-anxiety diazepam request: the policy and the alternative ============ */
   const c152 = {
     id:'flight-anxiety-diazepam', title:'"I just need a few diazepam for the flight \u2014 my old GP always gave them"', type:'telephone', duration:12,
-    meta:{ age:38, sex:'F', setting:'Telephone \u2014 request for diazepam for fear of flying.', system:'Prescribing / Benzodiazepines & fear of flying' },
+    meta:{ age:38, sex:'F', setting:'Telephone \u2014 request for diazepam for fear of flying.', system:'Prescribing / Benzodiazepines & fear of flying', checked:'October 2026' },
     brief:'Ms Bianca Foster, 38, rings two weeks before a long-haul flight requesting "a few diazepam" for her fear of flying \u2014 "my old GP always gave me them". She is otherwise well. There are several specific reasons GPs generally decline benzodiazepines for flight anxiety (sedation/paradoxical effects, VTE risk with immobility, impairment in an emergency, legality at some destinations, dependence, and that they hinder, not help, treating the phobia). The task: decline kindly with the reasons, validate the fear, and offer genuinely effective alternatives.',
     script:{
-      opening:'"Hi, I\u2019ve got a long-haul flight in a couple of weeks and I\u2019m terrified \u2014 I really struggle with flying. My old GP used to just give me a few diazepam to get me through it, and it really helped. Could you do me a small prescription, like five tablets? I\u2019m not after them for anything else, just the flight. It\u2019s the only thing that gets me on the plane."',
-      facts:[
-        { topic:'Why GPs decline benzos for flights', text:'There are well-recognised reasons GPs generally do NOT prescribe benzodiazepines for fear of flying: (1) benzodiazepines cause SEDATION and can cause PARADOXICAL agitation/disinhibition; (2) sedation + immobility increases VENOUS THROMBOEMBOLISM (DVT/PE) risk on long flights; (3) reduced alertness IMPAIRS the ability to respond in an EMERGENCY/evacuation; (4) benzodiazepines are ILLEGAL or controlled in some destination countries (possession risk); (5) DEPENDENCE/misuse potential and they\u2019re not licensed for this; (6) they hinder rather than help OVERCOMING the phobia (avoidance/safety-behaviour) and aren\u2019t a treatment. "My old GP gave them" doesn\u2019t make it appropriate.' },
-        { topic:'The effective alternative', text:'What actually helps fear of flying: FEAR-OF-FLYING COURSES (many airlines run them, often with CBT and pilot input \u2014 highly effective), CBT/psychological techniques for the phobia, breathing/relaxation and grounding skills, and self-help resources. These TREAT the problem rather than sedating through it. Validate the fear as real and common, and signpost these.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 her fear is genuine and the flight may matter enormously (a wedding, a dying relative, a job) so the stakes feel high; she may also feel embarrassed, or anxious more broadly, and the "my old GP gave them" is partly an expectation and partly a worry she\u2019ll be left unable to travel. There may be an underlying anxiety disorder worth exploring. The skill is to decline the benzodiazepines kindly WITHOUT dismissing her or the importance of the trip, validate the fear, and offer real help \u2014 not a flat "no".' },
-        { topic:'The trap',            text:'Both poles fail: caving and prescribing (against good practice and unsafe) OR a curt refusal that leaves her feeling dismissed and stuck. The skill is the kindly, well-reasoned decline plus genuine, effective alternatives and validation.' },
-        { topic:'What she needs',       text:'Officially: a few diazepam for the flight. What she needs: a kind, well-reasoned explanation of why benzodiazepines aren\u2019t prescribed for flight anxiety (the safety/legal/dependence/efficacy reasons), validation that the fear is real and the trip matters, and genuinely effective alternatives (fear-of-flying course, CBT/psychological techniques, breathing/relaxation, self-help) \u2014 plus exploring any broader anxiety \u2014 not a benzodiazepine and not a flat refusal.' },
+      "opening": "\"Hi, I've got a long-haul flight in a couple of weeks and I'm terrified — I really struggle with flying. My old GP used to just give me a few diazepam to get me through it, and it really helped. Could you do me a small prescription, like five tablets? I'm not after them for anything else, just the flight. It's the only thing that gets me on the plane.\"",
+      "facts": [
+        {
+          "topic": "The trip",
+          "text": "If asked: flying to Singapore via Dubai in two weeks for your sister's wedding. About 14 hours of flying each way."
+        },
+        {
+          "topic": "The fear (if asked)",
+          "text": "Since a bad bout of turbulence 10 years ago. Days before a flight you cannot sleep; on the plane your heart races, you feel trapped and sweat. You have never had a panic attack anywhere else."
+        },
+        {
+          "topic": "Previous diazepam (if asked)",
+          "text": "Your old GP gave you 2 mg tablets for the last two trips. \"I took two each time and was a bit woozy but at least I got on.\" You did not drink with them. You have never taken them otherwise."
+        },
+        {
+          "topic": "Other anxiety (if asked)",
+          "text": "You are \"a bit of a worrier\" but cope fine day to day. No low mood, no other phobias, no thoughts of harming yourself. Never had therapy."
+        },
+        {
+          "topic": "Health",
+          "text": "Fit and well. On the combined pill. No regular medicines otherwise. No allergies. Non-smoker; a few glasses of wine a week. Never had a blood clot."
+        },
+        {
+          "topic": "Social",
+          "text": "38, marketing manager. Partner will travel with you."
+        },
+        {
+          "topic": "Hidden — hold back",
+          "text": "Your sister has asked you to give a speech at the wedding; if you do not get on the plane \"I'll let her down and she'll never forgive me\". Say this only if asked why this trip matters so much."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Polite, a bit anxious, expecting a quick yes. If refused bluntly, become upset: \"So I just miss my sister's wedding?\" If the doctor explains the specific reasons kindly (sedation, clot risk on long flights, being alert in an emergency, rules in some countries) and offers practical alternatives — a fear-of-flying course, techniques, support — you are disappointed but come round: \"I didn't know about the courses.\""
+        }
       ],
-      ice:{
-        ideas:'A few diazepam will get her through the flight, as her old GP provided.',
-        concerns:'HIDDEN AGENDA \u2014 genuine fear and a trip that may matter enormously; embarrassment and possibly broader anxiety; worry she\u2019ll be left unable to travel; "my old GP gave them" as an expectation.',
-        expectations:'A small diazepam prescription. What she actually needs: a kind, reasoned decline (safety/legal/dependence/efficacy), validation of the fear and the trip\u2019s importance, and genuinely effective alternatives (fear-of-flying course, CBT, breathing/self-help), with broader anxiety explored.'
+      "ice": {
+        "ideas": "\"Diazepam is the only thing that gets me on the plane.\"",
+        "concerns": "Not getting on the plane and missing your sister's wedding.",
+        "expectations": "\"Five tablets, like my old GP gave me.\" You will accept alternatives if your fear is taken seriously."
       },
-      cues:['"My old GP always gave me diazepam for flights" \u2014 expectation, but not appropriate; decline kindly with the reasons.','Genuine fear + an important trip \u2014 validate it and offer effective alternatives, not a flat "no".','Possible broader anxiety behind the flight phobia \u2014 worth exploring and addressing.']
+      "cues": [
+        "\"My old GP always gave me them.\" — say in the opening.",
+        "\"It's the only thing that gets me on the plane.\" — say in the opening.",
+        "\"It's my sister's wedding.\" — say if asked why the trip matters."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Declines benzodiazepines for fear of flying and can give the REASONS: sedation/paradoxical effects, increased VTE risk with immobility, impaired response in an emergency/evacuation, illegality in some destination countries, dependence/misuse potential and not licensed, and that they hinder rather than treat the phobia \u2014 rather than prescribing because "the old GP did"' },
-      { dom:'tasks', text:'VALIDATES that the fear is real and common and acknowledges the trip may matter greatly \u2014 declining the drug WITHOUT dismissing her or the importance of travelling' },
-      { dom:'tasks', text:'Offers genuinely EFFECTIVE alternatives: fear-of-flying courses (often airline-run, CBT-based), CBT/psychological techniques for the phobia, breathing/relaxation/grounding skills, and self-help resources \u2014 treatments that address the problem' },
-      { dom:'tasks', text:'Explores any BROADER anxiety disorder behind the flight phobia and considers appropriate management/support if present' },
-      { dom:'tasks', text:'Avoids both failure modes: does NOT cave and prescribe (unsafe/poor practice) and does NOT issue a curt refusal that leaves her dismissed and stuck \u2014 holds the boundary kindly with alternatives' },
-      { dom:'rto',   text:'Handles the request with warmth: validates the fear and the importance of the flight, explains the decline as care/safety not bureaucracy, so she doesn\u2019t feel judged or abandoned' },
-      { dom:'rto',   text:'Engages her in the alternative plan and explores what the trip means/any wider anxiety, so she leaves with help rather than just a refusal' },
-      { dom:'gs',    text:'Safety-nets and follows up: signposting to a fear-of-flying course/CBT and self-help, breathing techniques to practise, an offer to explore broader anxiety, and a route back \u2014 a kind decline plus effective help, not a benzodiazepine and not a bare "no"' },
+      { dom:'cm', text:'Declines benzodiazepines for fear of flying and can give the REASONS: sedation/paradoxical effects, increased VTE risk with immobility, impaired response in an emergency/evacuation, illegality in some destination countries, dependence/misuse potential and not licensed, and that they hinder rather than treat the phobia \u2014 rather than prescribing because "the old GP did"' },
+      { dom:'ro', text:'VALIDATES that the fear is real and common and acknowledges the trip may matter greatly \u2014 declining the drug WITHOUT dismissing her or the importance of travelling' },
+      { dom:'cm', text:'Offers genuinely EFFECTIVE alternatives: fear-of-flying courses (often airline-run, CBT-based), CBT/psychological techniques for the phobia, breathing/relaxation/grounding skills, and self-help resources \u2014 treatments that address the problem' },
+      { dom:'dg', text:'Explores any BROADER anxiety disorder behind the flight phobia and considers appropriate management/support if present' },
+      { dom:'cm', text:'Avoids both failure modes: does NOT cave and prescribe (unsafe/poor practice) and does NOT issue a curt refusal that leaves her dismissed and stuck \u2014 holds the boundary kindly with alternatives' },
+      { dom:'ro',   text:'Handles the request with warmth: validates the fear and the importance of the flight, explains the decline as care/safety not bureaucracy, so she doesn\u2019t feel judged or abandoned' },
+      { dom:'ro',   text:'Engages her in the alternative plan and explores what the trip means/any wider anxiety, so she leaves with help rather than just a refusal' },
+      { dom:'cm',    text:'Safety-nets and follows up: signposting to a fear-of-flying course/CBT and self-help, breathing techniques to practise, an offer to explore broader anxiety, and a route back \u2014 a kind decline plus effective help, not a benzodiazepine and not a bare "no"' },
     ],
     worked:[
       { lbl:'Validate first',       txt:'"I completely get it \u2014 fear of flying is real and horrible, and it sounds like this trip matters a lot to you. So I want to help you actually get on that plane. Let me be honest with you about the diazepam, though, and then let\u2019s find something that works better."' },

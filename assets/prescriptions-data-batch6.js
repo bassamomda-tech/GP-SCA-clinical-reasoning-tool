@@ -102,97 +102,13 @@ Review function at each step; deprescribe if no benefit.`,
     ],
   },
 
-  // ---------------- Reflux medications (reference ladder) ----------------
-  {
-    id: 'reflux-medications',
-    title: 'Reflux medications (reference ladder)',
-    category: 'Gastroenterology',
-    eyebrow: 'Antacid/alginate → H2RA → PPI · step up/down',
-    indication: 'Reference ladder of acid-reducing/neutralising agents for reflux/dyspepsia in adults (see GORD card for the full pathway). Lifestyle first; escalate to PPI for proven/persistent reflux; step down to lowest effective dose.',
-    contraindications: 'Exclude ALARM features (dysphagia, weight loss, GI bleed, mass, age \u226555 with new dyspepsia) before symptomatic treatment. PPIs: long-term risks (hyponatraemia, hypomagnesaemia, B12, fracture, C. difficile, microscopic colitis). Review need for long-term PPI.',
-    duration: 'PPI 4\u20138 weeks then review/step down',
-    drugs: [
-      { name: 'Antacid (e.g. magnesium/aluminium salts)', dose: 'Per pack', freq: 'PRN', route: 'PO', days: 'Symptomatic' },
-      { name: 'Alginate (e.g. Gaviscon Advance)', dose: '5\u201310 mL / 1\u20132 tabs', freq: 'After meals + bedtime', route: 'PO', days: 'Symptomatic' },
-      { name: 'H2-receptor antagonist (famotidine)', dose: '20\u201340 mg', freq: 'BD', route: 'PO', days: 'Step-up / adjunct' },
-      { name: 'PPI standard dose (e.g. omeprazole 20 mg / lansoprazole 30 mg)', dose: 'Standard', freq: 'OD', route: 'PO', days: '4\u20138 weeks' },
-      { name: 'PPI high dose (severe oesophagitis not responding to 8 wks full dose / persistent symptoms)', dose: 'Double', freq: 'OD\u2013BD', route: 'PO', days: 'Per indication' },
-    ],
-    altRegimens: [
-      { label: 'Test-and-treat H. pylori', drugs: 'In uninvestigated dyspepsia, test for H. pylori and eradicate if positive (see H. pylori cards).' },
-      { label: 'Pregnancy', drugs: 'Lifestyle + antacid/alginate first; omeprazole/famotidine alternatives if needed (omeprazole has most safety data).' },
-      { label: 'Step-down', drugs: 'After symptom control, reduce to lowest effective dose, on-demand PPI, or H2RA; review long-term PPI need annually.' },
-    ],
-    counselling: [
-      'Lifestyle helps a lot: smaller meals, not eating late, weight loss, less alcohol/caffeine, raising the head of the bed, and stopping smoking.',
-      'Antacids and alginates give quick, short-term relief; a PPI tablet works over days and is taken before food.',
-      'We use the PPI for a set course then try to reduce it to the lowest dose that keeps you comfortable \u2014 long-term use has some risks we review.',
-      'Tell us about difficulty swallowing, weight loss, vomiting blood or black stools \u2014 these need urgent checks.',
-    ],
-    followUp: 'Review at 4\u20138 weeks; step down to lowest effective dose. Persistent/relapsing or alarm features \u2192 consider endoscopy/referral. Review long-term PPI annually.',
-    redFlags: [
-      'Dysphagia, odynophagia, weight loss, GI bleeding (haematemesis/melaena), iron-deficiency anaemia, epigastric mass, or new dyspepsia ≥55 → urgent assessment; dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
-    ],
-    emisText: `Reflux medication ladder (adult):
-- Lifestyle first (weight, meal timing, alcohol/caffeine, smoking, bed head-up).
-- PRN: antacid \u00b1 alginate (Gaviscon Advance 5-10 mL after meals + bedtime).
-- Severe oesophagitis: full-dose PPI 8 wks; high dose only if not responding.
-- Step up: H2RA (famotidine 20-40 mg BD).
-- PPI standard dose OD 4-8 weeks (high dose if severe oesophagitis); step down to lowest effective.
-- Uninvestigated dyspepsia: test-and-treat H. pylori.
-- ALARM features / new dyspepsia ≥55 → urgent assessment; dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia → suspected cancer pathway referral (NICE NG12 (updated April 2026)). Review long-term PPI.`,
-    sources: [
-      { label:'NICE CG184 — GORD and dyspepsia', url:'https://www.nice.org.uk/guidance/cg184' },
-    ],
-  },
-
-  // ---------------- Cough preparations ----------------
-  {
-    id: 'cough-preparations',
-    title: 'Cough preparations (acute cough)',
-    category: 'ENT & Eyes',
-    eyebrow: 'Self-care · honey · OTC limited evidence',
-    indication: 'Acute cough (usually viral URTI / acute bronchitis), self-limiting. Mainstay is reassurance and self-care; over-the-counter cough preparations have limited evidence. Antibiotics are not routinely indicated.',
-    contraindications: 'Honey: not under 1 year (infant botulism). Codeine/opioid linctus: avoid <18 y for cough, avoid in respiratory depression risk. Sedating antihistamines/decongestants: caution in elderly, cardiovascular disease, glaucoma, prostatism. Many OTC products unsuitable in young children.',
-    duration: 'Acute cough usually 3\u20134 weeks (can linger)',
-    drugs: [
-      { name: 'Honey (\u22651 year) \u00b1 warm lemon drink', dose: '1\u20132 tsp', freq: 'PRN', route: 'PO', days: 'Self-care' },
-      { name: 'Simple linctus / glycerol-based soothing syrup', dose: 'Per pack', freq: 'PRN', route: 'PO', days: 'Symptomatic' },
-      { name: 'Pelargonium (\u226512 y) / guaifenesin or dextromethorphan (OTC, limited evidence)', dose: 'Per pack', freq: 'Per pack', route: 'PO', days: 'Optional' },
-      { name: 'Paracetamol / ibuprofen for systemic symptoms', dose: 'Standard', freq: 'PRN', route: 'PO', days: 'Symptomatic' },
-    ],
-    altRegimens: [
-      { label: 'Acute bronchitis', drugs: 'Antibiotics NOT routinely offered (no/marginal benefit). Consider delayed/immediate antibiotic only if systemically very unwell or high risk (e.g. significant comorbidity, CRP-guided per NG120).' },
-      { label: 'Cough with COPD exacerbation', drugs: 'Treat the exacerbation (see COPD pathway) \u2014 not just cough linctus.' },
-      { label: 'Children', drugs: 'Honey \u22651 year; avoid OTC cough/cold medicines under 6 years; safety-net.' },
-    ],
-    counselling: [
-      'Most coughs are caused by viruses and get better on their own, though a cough can linger for 3\u20134 weeks after a cold.',
-      'Honey in a warm drink (if over 1 year old) is as good as most cough medicines; paracetamol or ibuprofen help if you feel achey or feverish.',
-      'Cough medicines from the pharmacy are optional \u2014 the evidence they help is weak.',
-      'Antibiotics don\u2019t help a normal viral cough and can cause side effects.',
-      'Come back if you cough up blood, are very breathless, have chest pain, high fever that won\u2019t settle, or the cough lasts more than 3 weeks.',
-    ],
-    followUp: 'Safety-net; review if >3 weeks (consider CXR / further assessment), or if red flags. Persistent cough >8 weeks = chronic cough work-up.',
-    redFlags: [
-      'Haemoptysis, significant breathlessness, chest pain, weight loss, or cough >3 weeks in a smoker/\u226540 \u2192 consider chest X-ray / lung-cancer pathway.',
-      'Signs of pneumonia (focal signs, high NEWS) \u2192 assess/treat.',
-    ],
-    emisText: `Acute cough (viral URTI/bronchitis):
-- Self-limiting (can last 3-4 wks). Reassure + safety-net.
-- Honey \u22651 yr; simple linctus PRN; paracetamol/ibuprofen for systemic symptoms.
-- OTC cough preparations: limited evidence, optional. Avoid OTC cough/cold <6 yrs.
-- Antibiotics NOT routine for acute cough/bronchitis (consider only if systemically very unwell/high-risk, per NG120).
-- Red flags: haemoptysis, breathlessness, chest pain, weight loss, cough >3 wks (smoker/\u226540) \u2192 CXR.`,
-    sources: [
-      { label: 'NICE NG120 \u2014 Cough (acute): antimicrobial prescribing', url: 'https://www.nice.org.uk/guidance/ng120' },
-    ],
-  },
+  // reflux-medications merged into gord-dyspepsia; cough-preparations merged into acute-cough-bronchitis (Upload 127) — old #ids still open the merged cards (alias in prescriptions.js)
 
   // ---------------- Fungal infections (body / foot / nail / scalp) ----------------
   {
     id: 'fungal-infections',
     title: 'Fungal infections (body, foot, nail, scalp)',
+    aka: 'tinea, ringworm, athlete\u2019s foot, jock itch, fungal nail',
     category: 'Dermatology',
     eyebrow: 'Topical for skin · oral for nail/scalp · confirm before oral',
     indication: 'Dermatophyte infections by site: tinea corporis/cruris (body/groin), tinea pedis (athlete\u2019s foot), onychomycosis (nail), tinea capitis (scalp). Topical antifungals for skin; ORAL antifungals are needed for nail and scalp disease. Confirm nail/scalp infection (sampling) before oral treatment.',
@@ -201,6 +117,7 @@ Review function at each step; deprescribe if no benefit.`,
     drugs: [
       { name: 'Body/groin/foot: Terbinafine 1% cream', dose: 'Apply', freq: 'OD\u2013BD', route: 'Topical', days: '1\u20132 wks (body/groin) / 1 wk (foot)' },
       { name: 'Alt topical: imidazole (clotrimazole/miconazole)', dose: 'Apply', freq: 'BD\u2013TDS', route: 'Topical', days: 'Until clear + 1\u20132 wks' },
+      { name: 'Marked inflammation (skin only): add Hydrocortisone 1% cream, short course, with the antifungal', dose: 'Apply', freq: 'OD', route: 'Topical', days: 'Up to 7 days (never alone)' },
       { name: 'Nail (dermatophyte-confirmed): Terbinafine PO', dose: '250 mg', freq: 'OD', route: 'PO', days: 'Fingernails usually 6 weeks / toenails usually 12 weeks (some need up to 6 months)' },
       { name: 'Scalp (tinea capitis): oral antifungal (terbinafine or griseofulvin)', dose: 'Weight-based', freq: 'OD', route: 'PO', days: '4\u20138 weeks (+ antifungal shampoo)' },
     ],
@@ -213,6 +130,8 @@ Review function at each step; deprescribe if no benefit.`,
     ],
     counselling: [
       'Skin fungal infections usually clear with a cream; keep using it for a week or two after it looks better.',
+      'Spread the cream over the rash and about 2 cm of the normal skin around it.',
+      'Don\u2019t use a steroid cream on its own \u2014 it can hide and worsen a fungal rash.',
       'Nail and scalp infections need tablets because creams can\u2019t reach deep enough \u2014 and we usually take a sample first to confirm it.',
       'Nail treatment is long (several months to a year) and the nail looks normal only as it grows out.',
       'Keep feet clean and dry, change socks, treat athlete\u2019s foot to prevent nail/groin spread, and don\u2019t share towels.',
@@ -222,9 +141,10 @@ Review function at each step; deprescribe if no benefit.`,
     redFlags: [
       'Scalp boggy swelling (kerion), widespread/immunocompromised infection, or diagnostic doubt \u2192 sample/refer.',
       'Recurrent/extensive tinea \u2192 consider underlying immunosuppression or diabetes.',
+      'Spreading cellulitis from cracked athlete\u2019s foot \u2192 treat as cellulitis.',
     ],
     emisText: `Dermatophyte infections by site:
-- Body/groin/foot: terbinafine 1% cream OD-BD 1-2 wks (foot 1 wk), or imidazole BD-TDS until clear + 1-2 wks (usually 4-6 wks).
+- Body/groin/foot: terbinafine 1% cream OD-BD 1-2 wks (foot 1 wk), or imidazole BD-TDS until clear + 1-2 wks (usually 4-6 wks). Apply to rash + 2 cm margin; hydrocortisone 1% OD up to 7 days with the antifungal only if very inflamed.
 - Nail (confirm by clippings): terbinafine 250 mg OD \u2014 fingernails usually 6 wks, toenails usually 12 wks (some need up to 6 months) (or amorolfine lacquer if mild/distal).
 - Scalp (tinea capitis): ORAL antifungal (terbinafine/griseofulvin) 4-8 wks + antifungal shampoo; treat contacts; oral essential.
 - Confirm nail/scalp before oral; check LFTs/interactions. Don't use steroid alone (tinea incognito).
@@ -313,7 +233,7 @@ Review function at each step; deprescribe if no benefit.`,
 - Visible bleeding point \u2192 silver nitrate cautery (one side only).
 - Not controlled / posterior / heavy \u2192 pack + ENT/ED. Review anticoagulants; FBC/clotting if recurrent.`,
     sources: [
-      { label:'ENT UK', url:'https://www.entuk.org' },
+      { label:'NICE CKS — Epistaxis (nosebleeds)', url:'https://cks.nice.org.uk/topics/epistaxis-nosebleeds/' },
     ],
   },
 
@@ -354,7 +274,7 @@ Review function at each step; deprescribe if no benefit.`,
 - ANUG: metronidazole 400 mg TDS 3 days + chlorhexidine + urgent dental review + stop smoking.
 - Optimise smoking/diabetes. Non-healing oral ulcer >3 wks \u2192 suspected cancer pathway referral.`,
     sources: [
-      { label:'SDCEP', url:'https://www.sdcep.org.uk' },
+      { label:'NICE CKS — Gingivitis and periodontitis', url:'https://cks.nice.org.uk/topics/gingivitis-periodontitis/' },
     ],
   },
 
@@ -438,7 +358,7 @@ Review function at each step; deprescribe if no benefit.`,
 - Confirm/treat low testosterone. Refractory \u2192 vacuum device/alprostadil/urology. Psychogenic \u2192 counselling.
 - Priapism >4 h = emergency.`,
     sources: [
-      { label:'BSSM (2018)', url:'https://www.bssm.org.uk' },
+      { label:'NICE CKS — Erectile dysfunction', url:'https://cks.nice.org.uk/topics/erectile-dysfunction/' },
     ],
   }
   );

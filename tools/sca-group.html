@@ -99,6 +99,7 @@
 .gm-chk .dom.tasks{ background:#f0fdf4; color:#15803d; }
 .gm-chk .dom.rto{ background:#fdf2f8; color:#be185d; }
 .gm-chk .dom.gs{ background:#fffbeb; color:#b45309; }
+.gm-chk .dom.dg{ background:#f0fdf4; color:#15803d; } .gm-chk .dom.cm{ background:#eff6ff; color:#1d4ed8; } .gm-chk .dom.ro{ background:#fdf2f8; color:#be185d; }
 
 .gm-grade{ margin:10px 0 14px; }
 .gm-grade .gname{ font-size:12.5px; font-weight:800; color:var(--ink); margin-bottom:6px; }
@@ -207,7 +208,7 @@ a{ color:var(--teal); } a:hover{ color:var(--rust); }
 
 <script src="../assets/site.js?v=107"></script>
 <!-- the full 312-case library, same files and order as The Hot Seat -->
-<script src="../assets/sca-loader.js?v=1"></script>
+<script src="../assets/sca-loader.js?v=3"></script>
 <script>
 (function(){
   'use strict';
@@ -446,7 +447,8 @@ a{ color:var(--teal); } a:hover{ color:var(--rust); }
       <div class="gm-sec-h">Cues to plant</div>${cues}`;
     // Examiner — checkpoints (tick live) + cues
     ticks = (c.checkpoints||[]).map(()=>false); grades = {};
-    const cps = (c.checkpoints||[]).map((cp,i)=>`<label class="gm-chk"><input type="checkbox" data-cp="${i}"><span class="dom ${esc(cp.dom)}">${esc(cp.dom)}</span><span>${esc(cp.text)}</span></label>`).join('');
+    const CPL = { dg:'Data gathering', cm:'Clinical mgmt', ro:'Relating' }; const cpd = cp => window.SCA_RCGP ? window.SCA_RCGP.dom(cp.dom, cp.text) : cp.dom;
+    const cps = (c.checkpoints||[]).map((cp,i)=>`<label class="gm-chk"><input type="checkbox" data-cp="${i}"><span class="dom ${esc(cpd(cp))}">${esc(CPL[cpd(cp)]||cpd(cp))}</span><span>${esc(cp.text)}</span></label>`).join('');
     $('#paneExaminer').innerHTML = `
       <div class="gm-brief"><div class="bh">Examiner card</div><p>Tick each behaviour as you see it. The cues the patient will plant are listed below — watch whether the candidate picks them up. You'll grade the three domains when the case ends.</p></div>
       <div class="gm-sec-h">Checkpoints</div>${cps}

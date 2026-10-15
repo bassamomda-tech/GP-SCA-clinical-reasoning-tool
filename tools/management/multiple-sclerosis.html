@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Multiple Sclerosis — Protocol · Reasoning GP</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Multiple Sclerosis — Protocol">
+<meta property="og:description" content="Multiple sclerosis in primary care on one page (NICE NG220, 2022): refer suspected MS to neurology without diagnosing it in primary care, manage a relapse (exclude infection, oral methylprednisolone 0.5 g daily for 5 days with the MS team), treat spasticity, fatigue, bladder, mood and pain, support disease-modifying therapy monitoring and shared care, vaccines, pregnancy, driving and the annual review.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/management/multiple-sclerosis.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<meta name="description" content="Multiple sclerosis in primary care on one page (NICE NG220, 2022): refer suspected MS to neurology without diagnosing it in primary care, manage a relapse (exclude infection, oral methylprednisolone 0.5 g daily for 5 days with the MS team), treat spasticity, fatigue, bladder, mood and pain, support disease-modifying therapy monitoring and shared care, vaccines, pregnancy, driving and the annual review." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/multiple-sclerosis.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="Multiple sclerosis protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({ snapshot:"summaries/multiple-sclerosis.html",
+  icon:"🧠",
+  title:"Multiple sclerosis",
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Refer suspected MS to neurology, treat a relapse only after excluding infection, and manage the symptoms, medicines and life events that fall to primary care",
+  stemSub:"One page for multiple sclerosis (MS) in primary care, following NICE NG220 (2022). Do not diagnose MS in primary care: do a short set of blood tests to exclude other causes and refer to a neurologist. In someone with MS, look for infection before calling new symptoms a relapse, and agree relapse treatment (usually oral methylprednisolone 0.5 g daily for 5 days) with the MS team. Treat spasticity, fatigue, bladder and bowel problems, pain and low mood. Support disease-modifying therapy (DMT) monitoring and shared care, plan vaccines and pregnancy around the DMT, and remind patients to tell the DVLA.",
+  guideline:"NICE NG220 multiple sclerosis in adults (2022) · NICE QS108 (2016, updated 2023) · NICE NG144 cannabis-based medicinal products (2019) · NHS England treatment algorithm for MS DMTs · DVLA assessing fitness to drive · UKHSA Green Book · SPCs",
+  reviewed:"15 October 2026",
+  nextReview:"15 April 2027",
+  meta:[
+    {t:"NICE NG220 · MS in adults (2022)"},
+    {t:"Relapse: oral methylprednisolone 0.5 g daily for 5 days"},
+    {t:"DMTs specialist-led · shared care monitoring"},
+    {t:"No NG12 cancer criterion applies", tone:"tw"},
+    {t:"v1.0 · reviewed Oct 2026", tone:"ok"}
+  ],
+  lead:"<div class='mg-layers'><a href='#suspected'><b>Suspected MS</b><small>bloods, then neurology</small></a><a href='#relapse'><b>Relapse</b><small>exclude infection first</small></a><a href='#symptoms'><b>Symptoms</b><small>spasticity, fatigue, bladder, mood</small></a><a href='#dmt'><b>DMTs</b><small>monitoring, vaccines, pregnancy</small></a></div>",
+  quickSub:"Six cards for the consultation. Each one traces to a named source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"Emergencies are not always MS", html:"Sudden focal deficit (possible <b>stroke</b>: 999), new <b>cauda equina or cord compression</b> features (999 or the emergency department), <b>sepsis</b> (often urinary or chest, or from pressure sores), severe swallowing or breathing difficulty, or <b>PML</b> warning signs on natalizumab or other DMTs (new cognitive, behavioural, visual or motor symptoms: contact the MS team the same day). Do not assume new symptoms are an MS relapse."},
+    {tone:"amber", h:"Suspected MS: bloods, then neurology", html:"Do not diagnose MS in primary care. If MS is suspected (for example optic neuritis, a partial myelitis or a brainstem syndrome lasting more than 24 hours), check <b>FBC, inflammatory markers, liver and renal function, calcium, glucose, thyroid function, vitamin B12 and HIV serology</b>, and refer to a <b>consultant neurologist</b>. Refer optic neuritis urgently to ophthalmology or neurology per the local pathway."},
+    {tone:"cream", h:"Relapse: exclude infection, then treat with the MS team", html:"A relapse is new or worse symptoms lasting <b>more than 24 hours</b> after at least 30 days of stability, without fever or infection. Check urine and look for infection first (a <b>pseudo-relapse</b>). If symptoms affect function, offer <b>oral methylprednisolone 0.5 g daily for 5 days</b>, as soon as possible and within 14 days of onset, in agreement with the MS team. Do not give 'standby' steroids for self-treatment."},
+    {tone:"cream", h:"Spasticity, fatigue and bladder: treat them", html:"Spasticity: look for triggers (infection, constipation, pain, pressure sores), then <b>baclofen or gabapentin</b> first line with physiotherapy. Fatigue: exclude anaemia, thyroid disease, depression and poor sleep; offer energy management and exercise. Bladder: exclude infection, measure post-void residual, then an antimuscarinic or intermittent self-catheterisation via continence services."},
+    {tone:"blue", h:"DMTs: specialist-led, primary care supports", html:"Disease-modifying therapies are chosen and started by the MS specialist service. Primary care helps with <b>monitoring bloods under shared care</b>, recognising infections and adverse effects, checking <b>interactions</b>, and making sure <b>live vaccines are avoided</b> where the DMT requires it. Record the DMT on the GP record."},
+    {tone:"green", h:"Pregnancy, vaccines, driving and the annual review", html:"Discuss <b>contraception and pregnancy plans</b>: several DMTs need stopping or washout before conception. Offer <b>annual flu</b> and other recommended vaccines, timed with the MS team. MS is a <b>notifiable condition</b>: the patient must tell the DVLA. Make sure a <b>comprehensive review</b> by an MS professional happens at least once a year."}
+  ],
+  pathwaySub:"Five moves. Step one prevents a missed emergency or a pseudo-relapse treated with steroids.",
+  pathway:[
+    {title:"Rule out the emergencies and infection", html:"Stroke, cauda equina or cord compression, sepsis, swallowing or breathing difficulty, PML features on a DMT. In known MS, check temperature and urine and look for infection before diagnosing a relapse.", alert:true},
+    {title:"Suspected MS: test and refer", html:"Short set of bloods to exclude mimics, then refer to a consultant neurologist. Do not start treatment or label the diagnosis in primary care."},
+    {title:"Relapse: confirm, discuss, treat", html:"New or worse symptoms for more than 24 hours, no infection: contact the MS team and offer oral methylprednisolone 0.5 g daily for 5 days if function is affected. Arrange rehabilitation and review."},
+    {title:"Manage symptoms", html:"Spasticity, fatigue, bladder, bowel, pain, mood, cognition, sexual function, mobility and falls, each with first-line options and referral routes."},
+    {title:"Support DMTs and life events", html:"Shared-care monitoring, vaccines, contraception and pregnancy, bone health, smoking cessation, driving, work, and the annual comprehensive review."}
+  ],
+  sections:[
+    {id:"redflags", nav:"Red flags", title:"Red flags in a person with MS or suspected MS", sub:"New neurology in someone with MS is not automatically a relapse.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999", html:"Sudden focal deficit, speech disturbance or facial weakness (stroke); acute breathing difficulty; reduced consciousness; status epilepticus.", src:"NICE NG220 (2022)"},
+         {tone:"red", h:"🔴 Emergency referral", html:"New saddle anaesthesia, bladder or bowel dysfunction with back pain, or a new sensory level: suspected cauda equina or spinal cord compression needs an immediate emergency referral. Sepsis: same-day hospital assessment (NICE NG51).", src:"NICE NG51 (2016, updated 2024)"},
+         {tone:"red", h:"🔴 Same day: the MS team", html:"Possible <b>progressive multifocal leukoencephalopathy (PML)</b> in someone on natalizumab or another DMT (new or worsening cognitive, behavioural, visual, speech or motor symptoms over days to weeks); serious DMT adverse effects (severe infection, jaundice, bleeding, low white cell or platelet count).", src:"Natalizumab SPC · NHS England DMT algorithm"},
+         {tone:"amber", h:"🟠 Urgent: optic neuritis", html:"Painful visual loss, worse on eye movement, with reduced colour vision: urgent ophthalmology or neurology assessment the same or next day, according to the local pathway. Severe visual loss, bilateral involvement or no pain suggests other causes.", src:"NICE NG220 (2022)"},
+         {tone:"amber", h:"🟠 Swallowing and choking", html:"New coughing on eating, chest infections or weight loss suggest dysphagia: refer to speech and language therapy and check for aspiration pneumonia.", src:"NICE NG220 (2022)"},
+         {tone:"amber", h:"🟠 Suicidal thoughts", html:"Depression and suicide risk are higher in MS. Ask directly; thoughts with a plan or intent need same-day crisis assessment (NICE NG225).", src:"NICE NG225 (2022)"}
+       ]}
+     ]},
+
+    {id:"suspected", nav:"Suspected MS", title:"Suspected MS: what to do in primary care", sub:"NICE NG220: do not diagnose MS in primary care; refer to a consultant neurologist.",
+     blocks:[
+       {b:"kv", rows:[
+         ["Symptoms suggesting MS","Episodes of neurological symptoms lasting more than 24 hours, separated in time and in the nervous system: optic neuritis; partial transverse myelitis (sensory level, Lhermitte's symptom, limb weakness, bladder symptoms); brainstem or cerebellar syndromes (diplopia, internuclear ophthalmoplegia, vertigo, ataxia). Usually in people aged 20 to 50."],
+         ["Be cautious about","Fatigue, depression or dizziness alone, without a history or signs of focal neurological symptoms or signs."],
+         ["Before referral","Check FBC, inflammatory markers (ESR or CRP), liver function, renal function, calcium, glucose, thyroid function, vitamin B12 and HIV serology to exclude other causes."],
+         ["Refer","To a consultant neurologist. Urgency depends on severity and the local pathway; refer more urgently for progressive or disabling symptoms. Do not request MRI as a substitute for referral unless local direct-access pathways agree."]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🔍 Mimics", html:"Vitamin B12 deficiency, thyroid disease, HIV, syphilis, Lyme disease, sarcoidosis, lupus and other vasculitides, neuromyelitis optica spectrum disorder, cervical myelopathy, stroke and migraine aura.", src:"NICE NG220 (2022)"},
+         {tone:"cream", h:"🗣️ While waiting", html:"Be honest that MS is one possibility among several. Give information about the referral and who to contact. Safety-net for new or worsening symptoms, particularly visual loss and weakness.", src:"NICE NG220 (2022)"}
+       ]}
+     ]},
+
+    {id:"relapse", nav:"Relapse", title:"Relapse: recognise and treat", sub:"Steroids shorten a relapse but do not change long-term disability. Treat relapses that affect function, after excluding infection.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", tone:"amber", title:"Is it a relapse?", when:"new or worse symptoms", fromLabel:"",
+          html:"New symptoms, or worsening of existing symptoms, lasting <b>more than 24 hours</b>, after at least 30 days of stability, in the absence of fever or infection. Check temperature and urine dipstick (and culture), and look for chest, skin or other infection. Infection, heat, stress or poor sleep can cause a temporary <b>pseudo-relapse</b>: treat the cause, not the MS."},
+         {step:"2", tone:"cream", title:"Contact the MS team", when:"relapse confirmed", fromLabel:"agree the plan",
+          html:"Discuss with the MS nurse or neurologist, who may assess the person, consider DMT changes, and arrange rehabilitation (physiotherapy or occupational therapy)."},
+         {step:"3", tone:"cream", title:"Steroids if function is affected", when:"within 14 days of onset", fromLabel:"if function affected",
+          html:"<span class=mg-dose>Usual adult dose: oral methylprednisolone 0.5 g daily for 5 days (NICE NG220/SPC; check the SPC, BNF and local formulary; <a href='https://www.medicines.org.uk/emc/search?q=methylprednisolone' target=_blank rel=noopener>SPC: methylprednisolone</a>).</span> Consider intravenous methylprednisolone 1 g daily for 3 to 5 days if oral treatment has failed or is not tolerated, or if admission is needed for a severe relapse or monitoring. Start as soon as possible and within 14 days of onset."},
+         {step:"4", tone:"green", title:"Review", when:"after the course", fromLabel:"follow up",
+          html:"Review recovery, mood and function; arrange rehabilitation; inform the MS team of the outcome."}
+       ]},
+       {b:"warn", html:"<b>Before steroids:</b> exclude infection; check blood glucose in people with diabetes and monitor during the course; consider gastric protection (for example a PPI) if there is a history of dyspepsia or ulcer or NSAIDs or anticoagulants are taken; warn about mood change, insomnia and, rarely, psychosis. <b>Do not</b> give a supply of steroids for the person to keep and self-treat future relapses (NICE NG220)."},
+       {b:"say", html:"New symptoms in MS are not always a relapse. Infections, especially water infections, can make old symptoms flare for a while, so I would like to check your urine first. If this is a relapse, steroid tablets can help you recover faster, though they do not change the long-term course. I will speak to your MS nurse today."}
+     ]},
+
+    {id:"symptoms", nav:"Symptoms", title:"Symptom management", sub:"Many symptoms are managed in primary care with support from the MS team, physiotherapy, continence and mental health services.",
+     blocks:[
+       {b:"table", head:["Symptom","First steps","Medicines and referral"], rows:[
+         ["<b>Spasticity and spasms</b>","Look for and treat triggers: infection, constipation, pain, pressure sores, tight clothing. Physiotherapy and stretching.","<span class=mg-dose>Offer baclofen or gabapentin first line (NICE NG220). Usual adult dose: baclofen 5 mg three times daily, increased gradually (maximum 100 mg daily) (SPC; check the SPC, BNF and local formulary; <a href='https://www.medicines.org.uk/emc/search?q=baclofen' target=_blank rel=noopener>SPC: baclofen</a>).</span> Gabapentin is off-label for spasticity; titrate from a low dose (<a href='https://www.medicines.org.uk/emc/search?q=gabapentin' target=_blank rel=noopener>SPC: gabapentin</a>). Consider combining them if either alone is not effective or limited by side effects. Second line: tizanidine or dantrolene; third line: a benzodiazepine (specialist advice). Nabiximols (Sativex) only by specialists, under NICE NG144. Do not stop baclofen suddenly (withdrawal, seizures)."],
+         ["<b>Fatigue</b>","Exclude anaemia, thyroid disease, depression, poor sleep (pain, spasms, nocturia), infection and medicine side effects.","Energy management and an aerobic, balance and strengthening exercise programme; CBT approaches. Do not use vitamin B12 injections or hyperbaric oxygen for fatigue. Specialists may consider amantadine (off-label)."],
+         ["<b>Bladder</b>","Exclude infection. Measure post-void residual volume (bladder scan).","Overactive bladder with a low residual: an antimuscarinic (consider anticholinergic burden and cognition) or mirabegron. Residual over 100 mL: intermittent self-catheterisation, via the continence service. Nocturia: consider desmopressin with sodium monitoring. Refer to urology for persistent problems or recurrent infections."],
+         ["<b>Bowel</b>","Constipation and urgency are common.","Fluids, fibre, laxatives, bowel routine; specialist continence advice."],
+         ["<b>Pain</b>","Distinguish neuropathic pain (for example trigeminal neuralgia) from musculoskeletal pain.","Neuropathic pain under NICE CG173 (amitriptyline, duloxetine, gabapentin or pregabalin). Trigeminal neuralgia: carbamazepine first line. Musculoskeletal pain: physiotherapy, posture and seating."],
+         ["<b>Mood and emotions</b>","Screen for depression and anxiety; ask about suicidal thoughts.","Treat depression under NICE NG222. Emotional lability (pseudobulbar affect): consider amitriptyline, with specialist advice."],
+         ["<b>Mobility, falls, oscillopsia, cognition, sexual dysfunction</b>","Physiotherapy and occupational therapy; falls assessment; cognitive screen.","Oscillopsia: gabapentin or memantine with specialist advice. Erectile dysfunction: a PDE5 inhibitor. Refer for cognitive rehabilitation, mobility aids and home adaptations."]
+       ]}
+     ]},
+
+    {id:"dmt", nav:"DMTs", title:"Disease-modifying therapies, vaccines and pregnancy", sub:"DMTs are prescribed by MS specialist services, many through homecare. The GP record must show them.",
+     blocks:[
+       {b:"table", head:["DMT examples","What primary care should know"], rows:[
+         ["<b>Injectables:</b> interferon beta, glatiramer acetate","Injection-site reactions; flu-like symptoms (interferon); blood monitoring (FBC, LFT) for interferon under shared care; depression (interferon)."],
+         ["<b>Oral:</b> dimethyl fumarate, teriflunomide, fingolimod and other S1P modulators, cladribine","Lymphopenia and infection risk; LFTs (teriflunomide, S1P modulators); macular oedema and bradycardia (S1P modulators); teratogenicity and washout (teriflunomide, cladribine); herpes zoster risk."],
+         ["<b>Infusions:</b> natalizumab, ocrelizumab, ofatumumab (injection), alemtuzumab","PML (natalizumab: JC virus monitoring by specialists); low immunoglobulins and infections (anti-CD20 drugs); autoimmune thyroid disease, ITP and kidney disease after alemtuzumab (monthly blood and urine tests for 4 years)."]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"💉 Vaccines", html:"Offer <b>annual flu vaccine</b>, and COVID-19 and pneumococcal vaccines as eligible. Avoid <b>live vaccines</b> on many DMTs and for a period after some; check with the MS team, ideally completing vaccines before a DMT starts. Severely immunosuppressed adults are eligible for <b>Shingrix</b>. Vaccine responses may be reduced on anti-CD20 therapies.", src:"UKHSA Green Book · NHS England DMT algorithm"},
+         {tone:"amber", h:"🤰 Contraception and pregnancy", html:"MS does not usually affect fertility or the baby. Relapses tend to fall in pregnancy and rise in the first 3 months after birth. Several DMTs are <b>teratogenic</b> or need washout before conception (for example teriflunomide, cladribine, fingolimod): discuss plans early and refer to the MS team before stopping contraception. Breastfeeding is possible with some DMTs. Folic acid as usual.", src:"NICE NG220 (2022) · DMT SPCs"},
+         {tone:"blue", h:"🦴 Bone health and lifestyle", html:"Repeated steroid courses and immobility increase osteoporosis risk: assess fracture risk. Support <b>smoking cessation</b> (smoking is linked to faster progression), exercise and healthy weight. Vitamin D should not be used solely to treat MS; treat deficiency as usual.", src:"NICE NG220 (2022)"},
+         {tone:"blue", h:"🚗 Driving and work", html:"MS must be reported to the <b>DVLA</b> (car and bus or lorry licences). Many people continue to drive, sometimes with adaptations. Discuss work adjustments, fit notes and the Equality Act.", src:"DVLA assessing fitness to drive"}
+       ]}
+     ]},
+
+    {id:"review", nav:"Review and refer", title:"Reviews, advanced MS and referral", sub:"NICE NG220: a comprehensive review at least once a year by healthcare professionals with MS expertise.",
+     blocks:[
+       {b:"table", head:["When","What"], rows:[
+         ["Each GP contact","Infection, new symptoms (relapse versus other cause), mood, DMT adverse effects and interactions"],
+         ["Shared-care schedule","DMT blood tests as set by the specialist service; act on results as the protocol states"],
+         ["At least annually (MS service)","Comprehensive review: MS symptoms, function, mood, cognition, bladder and bowel, falls, bone health, vaccines, carers, DMT suitability"],
+         ["Advanced MS","Swallowing, nutrition, pressure areas, contractures, continence, carer support, advance care planning and palliative care"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"999 or same day", html:"Stroke features; cauda equina or cord compression (emergency referral); sepsis; PML features or serious DMT adverse effects (MS team the same day).", src:"NICE NG220 (2022)"},
+         {tone:"amber", h:"MS team (nurse or neurologist)", html:"Suspected relapse; changing disability; DMT questions; pregnancy planning; problem symptoms such as spasticity not controlled by first-line drugs.", src:"NICE NG220 (2022)"},
+         {tone:"amber", h:"Other services", html:"Physiotherapy, occupational therapy, continence, speech and language therapy, mental health, specialist neurorehabilitation, palliative care.", src:"NICE NG220 (2022)"},
+         {tone:"cream", h:"Children and young people", html:"MS in children is managed by paediatric neurology services. Doses per the BNFC.", src:"NICE NG220 (2022)"}
+       ]},
+       {b:"say", html:"Call 999 if you suddenly develop weakness of one side, facial drooping or difficulty speaking. If you have new numbness around your bottom or genitals, or lose control of your bladder or bowel, go to the emergency department straight away. Contact your MS nurse or us the same day if you have a fever or feel unwell on your MS treatment, or if new symptoms last more than a day. Tell the DVLA that you have MS."}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card. The Casebook holds the full teaching case.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 34-year-old woman with relapsing MS on teriflunomide says her legs have been weaker and stiffer for three days, with urinary frequency. She asks for 'the steroid tablets' and mentions she wants to try for a baby this year.", src:"NICE NG220 (2022)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Checks for <b>infection</b> (urine dipstick and culture, temperature) before diagnosing a relapse. Explains <b>pseudo-relapse</b>. If a relapse is confirmed and affects function, agrees <b>methylprednisolone 0.5 g daily for 5 days</b> with the MS team. Recognises <b>teriflunomide is teratogenic</b> and needs an accelerated elimination procedure and specialist planning before conception; continues contraception meanwhile. Safety-nets.", src:"NICE NG220 (2022) · teriflunomide SPC"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page traces to a named primary source.",
+     blocks:[
+       {b:"html", html:"<div class='card'><h3>Evidence panel</h3><ul class='evlist'>"+
+         "<li><b>NICE NG220 — Multiple sclerosis in adults: management (June 2022)</b><br><a href='https://www.nice.org.uk/guidance/ng220' rel='noopener'>nice.org.uk/guidance/ng220</a><span class='rd'> — do not diagnose in primary care, blood tests before referral, relapse definition and treatment (oral methylprednisolone 0.5 g daily for 5 days; IV 1 g for 3 to 5 days), no standby steroids, spasticity (baclofen or gabapentin first line), fatigue, bladder, oscillopsia, emotional lability, annual comprehensive review, vitamin D, pregnancy</span></li>"+
+         "<li><b>NICE QS108 — Multiple sclerosis (2016, updated 2023)</b><br><a href='https://www.nice.org.uk/guidance/qs108' rel='noopener'>nice.org.uk/guidance/qs108</a><span class='rd'> — managing relapses, comprehensive review</span></li>"+
+         "<li><b>NICE NG144 — Cannabis-based medicinal products (2019)</b><br><a href='https://www.nice.org.uk/guidance/ng144' rel='noopener'>nice.org.uk/guidance/ng144</a><span class='rd'> — nabiximols for spasticity (specialist)</span></li>"+
+         "<li><b>NICE CG173 — Neuropathic pain (2013, updated 2020)</b>, <b>NICE NG222 — Depression (2022)</b>, <b>NICE NG225 — Self-harm (2022)</b>, <b>NICE NG51 — Sepsis (2016, updated 2024)</b><br><a href='https://www.nice.org.uk/guidance/cg173' rel='noopener'>nice.org.uk/guidance/cg173</a> · <a href='https://www.nice.org.uk/guidance/ng222' rel='noopener'>ng222</a> · <a href='https://www.nice.org.uk/guidance/ng225' rel='noopener'>ng225</a> · <a href='https://www.nice.org.uk/guidance/ng51' rel='noopener'>ng51</a><span class='rd'> — pain, mood, risk, sepsis</span></li>"+
+         "<li><b>NHS England — Treatment algorithm for multiple sclerosis disease-modifying therapies</b><br><a href='https://www.england.nhs.uk/commissioning/publication/treatment-algorithm-for-multiple-sclerosis-disease-modifying-therapies/' rel='noopener'>england.nhs.uk — MS DMT algorithm</a><span class='rd'> — specialist prescribing of DMTs</span></li>"+
+         "<li><b>DVLA — Assessing fitness to drive: multiple sclerosis</b><br><a href='https://www.gov.uk/guidance/neurological-disorders-assessing-fitness-to-drive' rel='noopener'>gov.uk — neurological disorders</a><span class='rd'> — notification</span></li>"+
+         "<li><b>UKHSA — Green Book (immunisation of individuals with immunosuppression; shingles chapter 28a)</b><br><a href='https://www.gov.uk/government/collections/immunisation-against-infectious-disease-the-green-book' rel='noopener'>gov.uk — Green Book</a><span class='rd'> — live vaccines, Shingrix</span></li>"+
+         "<li><b>SPCs — methylprednisolone, baclofen, gabapentin, natalizumab, teriflunomide and other DMTs</b><br><a href='https://www.medicines.org.uk/emc' rel='noopener'>medicines.org.uk/emc</a><span class='rd'> — doses, monitoring, pregnancy and washout</span></li>"+
+         "</ul></div>"}
+     ]}
+  ],
+  foot:"Multiple sclerosis in primary care — NICE NG220 (2022), NICE QS108, NICE NG144, the NHS England DMT treatment algorithm and DVLA guidance. DMTs are prescribed by MS specialist services: follow the shared-care protocol for monitoring. Not a substitute for clinical judgement."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
+</body>
+</html>

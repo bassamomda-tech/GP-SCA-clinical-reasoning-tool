@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hepatitis B and C — Protocol · Reasoning GP</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Hepatitis B and C — Protocol">
+<meta property="og:description" content="Hepatitis B and C in primary care: who to test (NICE PH43), interpreting serology (HBsAg, anti-HBc, anti-HBs; HCV antibody then RNA), referring every HCV RNA-positive person for curative direct-acting antiviral treatment and every HBsAg-positive person to hepatology (NICE CG165), vaccinating contacts, pregnancy, reactivation before immunosuppression, and notification of acute hepatitis.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/management/hepatitis-b-c.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<meta name="description" content="Hepatitis B and C in primary care: who to test (NICE PH43), interpreting serology (HBsAg, anti-HBc, anti-HBs; HCV antibody then RNA), referring every HCV RNA-positive person for curative direct-acting antiviral treatment and every HBsAg-positive person to hepatology (NICE CG165), vaccinating contacts, pregnancy, reactivation before immunosuppression, and notification of acute hepatitis." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/hepatitis-b-c.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="Hepatitis B and C protocol">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({snapshot:"summaries/hepatitis-b-c.html",
+  icon:"\u{1FA78}",
+  title:"Hepatitis B and C",
+  eyebrow:"Protocol · test the right people · read the serology · refer to treat · protect contacts",
+  stemTitle:"Hepatitis B and C: test people at risk, read the serology correctly, refer every HCV RNA-positive person for a cure and every HBsAg-positive person to a specialist, and vaccinate and test the contacts",
+  stemSub:"One page for blood-borne hepatitis in general practice: the NICE PH43 risk groups to test, what each hepatitis B marker and the hepatitis C antibody and RNA results mean, the bloods to send with a referral, curative direct-acting antiviral treatment for hepatitis C through the NHS England elimination programme, NICE CG165 hepatitis B care, vaccination and testing of household and sexual contacts, pregnancy and babies, reactivation risk before immunosuppression, and notification.",
+  guideline:"NICE PH43 (2012, updated 2013) · NICE CG165 (2013, updated 2017) · NICE TA430 / TA499 · UKHSA Green Book ch. 18 · NHS England hepatitis C elimination programme",
+  reviewed:"15 October 2026",
+  nextReview:"15 April 2027",
+  meta:[
+    {t:"NICE PH43 — hepatitis B and C testing (2012, updated 2013)"},
+    {t:"NICE CG165 — chronic hepatitis B (updated 2017)"},
+    {t:"NICE TA430 · TA499 — hepatitis C antivirals"},
+    {t:"UKHSA Green Book — hepatitis B"},
+    {t:"Acute hepatitis is notifiable", tone:"tw"},
+    {t:"v1.0 · reviewed Oct 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Red flags</b><small>Acute liver failure</small></a><a href="#test"><b>Who to test</b><small>PH43 groups</small></a><a href="#confirm"><b>Serology</b><small>Read the result</small></a><a href="#ladder"><b>Refer and treat</b><small>DAA · hepatology</small></a><a href="#contacts"><b>Contacts</b><small>Test · vaccinate</small></a><a href="../algorithms/abnormal-lfts.html"><b>Abnormal LFTs</b><small>Algorithm →</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Acute hepatitis with liver failure → same day", html:"Jaundice with <b>confusion or drowsiness, bleeding or bruising, raised INR</b> or prolonged prothrombin time, persistent vomiting or hypoglycaemia → <b>same-day hospital assessment</b>. Acute infectious hepatitis is <b>notifiable</b> — telephone the UKHSA health protection team on clinical suspicion."},
+    {tone:"amber", h:"Test the people at risk", html:"Offer testing (NICE PH43) to people who have ever injected drugs, people born or brought up in a country with intermediate or high prevalence, prisoners, men who have sex with men (HBV), sex workers, household and sexual contacts of people with hepatitis B, people with HIV, babies of mothers with hepatitis B or C, and anyone with unexplained abnormal LFTs. Offer an HIV test at the same time."},
+    {tone:"blue", h:"Hepatitis C — antibody, then RNA", html:"A positive <b>HCV antibody</b> shows exposure, not current infection. The lab should reflex-test <b>HCV RNA</b> (or core antigen): <b>RNA positive = current infection</b>; antibody positive with RNA negative = cleared or cured. Antibody stays positive for life — use RNA to detect reinfection."},
+    {tone:"blue", h:"Hepatitis B — HBsAg is the key", html:"<b>HBsAg positive = current infection</b> (chronic if present for more than 6 months). Anti-HBc positive with HBsAg negative = past infection. Anti-HBs alone = vaccinated (immune). Isolated anti-HBc → discuss with virology."},
+    {tone:"cream", h:"Refer everyone who is positive", html:"<b>Every HCV RNA-positive person</b> → the local hepatitis C operational delivery network (ODN) or treatment service for <b>direct-acting antivirals</b>: 8–12 weeks of tablets, cure in over 95%. <b>Every HBsAg-positive person</b> → hepatology or infectious diseases for assessment (NICE CG165); pregnant women urgently."},
+    {tone:"green", h:"Protect the contacts", html:"Hepatitis B: <b>test and vaccinate</b> household and sexual contacts; babies of mothers with hepatitis B need vaccine from birth. Hepatitis C has no vaccine: test injecting and sexual contacts and offer harm reduction. Offer hepatitis A and B vaccines to people with chronic hepatitis C."}
+  ],
+  pathwaySub:"The blood-borne hepatitis consultation in five moves. The red step is where people come to harm.",
+  pathway:[
+    {title:"Acutely unwell?", html:"Jaundice with confusion, bleeding, raised INR or vomiting → same-day hospital. Notify suspected acute hepatitis by telephone.", alert:true},
+    {title:"Test", html:"Risk-based (PH43), antenatal, before immunosuppression, unexplained abnormal LFTs. HBsAg (± anti-HBc, anti-HBs), HCV antibody with reflex RNA, plus HIV."},
+    {title:"Interpret", html:"HBsAg positive = infection; HCV RNA positive = infection. Past or vaccinated patterns need no referral. Isolated anti-HBc → virology advice."},
+    {title:"Refer", html:"HCV RNA positive → ODN for DAAs. HBsAg positive → hepatology. Send LFT, FBC, INR, U&amp;E, HIV, hepatitis A, B and C serology with the referral."},
+    {title:"Protect and follow up", html:"Contacts tested and vaccinated, harm reduction, alcohol advice, hepatitis A and B vaccines, post-treatment RNA check and reinfection testing, cirrhosis surveillance per specialist."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Red flags", title:"Red flags — acute liver failure and notification", sub:"Most hepatitis B and C is silent. The emergencies are acute liver failure and decompensated cirrhosis.",
+     blocks:[
+       {b:"warn", html:"<b>Jaundice with encephalopathy (confusion, drowsiness), coagulopathy (bleeding, raised INR), hypoglycaemia or persistent vomiting → same-day hospital assessment</b> — 999 if reduced consciousness. In known chronic infection, <b>new ascites, variceal bleeding (haematemesis, melaena) or confusion</b> means decompensation → emergency admission."},
+       {b:"cards", items:[
+         {tone:"red", h:"Acute hepatitis", html:"Malaise, nausea, right upper quadrant pain, dark urine, jaundice, very high ALT. <b>Notifiable</b>: acute infectious hepatitis (A, B or C) is an urgent notification — telephone the health protection team within 24 hours; do not wait for serology.", src:"UKHSA notifiable diseases"},
+         {tone:"red", h:"Decompensated cirrhosis", html:"Ascites, jaundice, encephalopathy, variceal bleeding → emergency admission.", src:"NICE NG50"},
+         {tone:"amber", h:"Hepatitis B reactivation", html:"Rising ALT or new jaundice in someone with past or chronic hepatitis B who has started chemotherapy, rituximab, other biologics or high-dose steroids → same-day specialist advice. Prevent it by testing before immunosuppression.", src:"NICE CG165"},
+         {tone:"amber", h:"Needlestick or sexual exposure", html:"Post-exposure prophylaxis for hepatitis B (accelerated vaccine ± immunoglobulin) and HIV is time-critical → same-day occupational health, sexual health or emergency department.", src:"UKHSA Green Book"}
+       ]}
+     ]},
+
+    {id:"test", nav:"Who to test", title:"Who to test — NICE PH43", sub:"Most people with hepatitis B or C do not know. Offer testing; do not wait for symptoms or abnormal LFTs.",
+     blocks:[
+       {b:"table", head:["Group","Hepatitis B","Hepatitis C"], rows:[
+         ["<b>People who inject or have injected drugs</b> (including once, long ago, and image- and performance-enhancing drugs)","Test and vaccinate","Test (and retest at least annually if ongoing risk)"],
+         ["<b>Born or brought up in an intermediate- or high-prevalence country</b> (much of Asia, Africa, Eastern Europe, the Middle East, the Pacific)","Test","Test (especially South Asia, Middle East, Eastern Europe, Africa)"],
+         ["<b>Prisoners, people in immigration removal centres, homeless people</b>","Test","Test"],
+         ["<b>Men who have sex with men, sex workers</b>","Test and vaccinate","Test if risk (for example chemsex, HIV)"],
+         ["<b>Household and sexual contacts</b> of someone with hepatitis B","Test and vaccinate","—"],
+         ["<b>Babies of mothers with hepatitis B or C</b>","Vaccine from birth; HBsAg at 12 months","HCV RNA or antibody per local protocol"],
+         ["<b>Blood transfusion before 1991 or blood products before 1986 in the UK</b>, or medical treatment abroad","—","Test"],
+         ["<b>HIV, unexplained abnormal LFTs, renal dialysis, before immunosuppression or chemotherapy</b>","Test (HBsAg and anti-HBc before immunosuppression)","Test"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"How", html:"HBsAg (± anti-HBc and anti-HBs); HCV antibody with reflex RNA or core antigen on the same sample. Dried blood spot testing is used in drug services and outreach. Offer an <b>HIV test</b> at the same time.", src:"NICE PH43"},
+         {tone:"cream", h:"Other settings", html:"Antenatal screening tests every pregnant woman for hepatitis B. Opt-out blood-borne virus testing in emergency departments in high-prevalence areas and community pharmacy and drug-service testing are finding many new cases — act on any result sent to you."}
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Serology", title:"Interpreting the results", sub:"Most confusion comes from hepatitis B core antibody and from a positive HCV antibody. If unsure, ring virology.",
+     blocks:[
+       {b:"table", head:["HBsAg","Anti-HBc","Anti-HBs","Meaning","Action"], rows:[
+         ["+","IgM +","−","Acute hepatitis B","Notify; same-day advice if unwell; specialist referral; test contacts"],
+         ["+","+ (IgG)","−","Chronic hepatitis B (if HBsAg positive for more than 6 months)","Refer to hepatology; test and vaccinate contacts"],
+         ["−","+","+","Past infection, now immune","No referral; reactivation risk with immunosuppression — tell the prescriber"],
+         ["−","−","+","Vaccinated","No action (protective if 10 mIU/mL or more)"],
+         ["−","+","−","Isolated core antibody","Discuss with virology (past infection, occult infection or false positive)"],
+         ["−","−","−","Susceptible","Vaccinate if at risk"]
+       ]},
+       {b:"table", head:["HCV antibody","HCV RNA (or core antigen)","Meaning","Action"], rows:[
+         ["−","—","Not infected (unless very recent exposure — repeat at 3 months or test RNA)","Harm reduction; retest if ongoing risk"],
+         ["+","+","<b>Current hepatitis C infection</b>","Refer for DAA treatment"],
+         ["+","−","Past infection — cleared spontaneously or cured","No treatment; retest with <b>RNA</b> if ongoing risk"]
+       ]},
+       {b:"why", html:"About a quarter of people infected with hepatitis C clear the virus spontaneously but remain antibody positive for life, so the antibody cannot distinguish current from past infection or detect reinfection — only RNA (or core antigen) can. In hepatitis B, HBsAg marks current infection; anti-HBc shows exposure at some time; anti-HBs shows immunity from either recovery or vaccination."}
+     ]},
+
+    {id:"ladder", nav:"Refer and treat", title:"Referral and treatment", sub:"Treatment is specialist-led; primary care finds, refers, supports adherence and follows up.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", title:"Bloods with the referral", when:"before or at referral",
+          html:"LFT, FBC (platelets), INR, U&amp;E and eGFR, HIV, hepatitis A IgG, full hepatitis B serology, HCV antibody and RNA. Alcohol history (AUDIT), BMI, current medicines including OTC and herbal (DAA interactions). Do not let tests delay a referral."},
+         {step:"HCV", title:"Hepatitis C — refer every RNA-positive person", when:"to the ODN or local treatment service",
+          fromLabel:"cure is the goal",
+          html:"NHS England's elimination programme offers <b>direct-acting antivirals</b> (for example sofosbuvir–velpatasvir for 12 weeks or glecaprevir–pibrentasvir for 8 weeks; NICE TA430, TA499) to everyone with current infection, often in drug services, pharmacies or outreach. Cure rates exceed 95%. Fibrosis is assessed (for example FibroScan) to identify cirrhosis. Check interactions (for example acid suppressants, amiodarone, some antiepileptics, St John's wort) — specialists use the Liverpool HEP Drug Interactions checker."},
+         {step:"HBV", title:"Hepatitis B — refer every HBsAg-positive person", when:"hepatology or infectious diseases",
+          fromLabel:"assess and monitor",
+          html:"NICE CG165: refer adults with chronic hepatitis B for specialist assessment (HBeAg, HBV DNA, fibrosis). Many have inactive disease needing monitoring only; others need long-term <b>tenofovir</b> or <b>entecavir</b> (specialist-initiated). Pregnant women with hepatitis B are referred urgently so they are seen within 6 weeks."},
+         {step:"After", title:"After treatment or discharge", when:"shared follow-up",
+          fromLabel:"keep it cured",
+          html:"Hepatitis C: SVR12 (RNA negative 12 weeks after treatment) means cure; reinfection is possible — retest RNA annually if ongoing risk. People with cirrhosis need 6-monthly liver ultrasound for hepatocellular carcinoma, and variceal screening, even after cure. Hepatitis B: monitoring per specialist plan (ALT and HBV DNA), HCC surveillance where advised."}
+       ]},
+       {b:"warn", html:"<b>Before immunosuppression</b> — chemotherapy, rituximab and other biologics, high-dose or prolonged corticosteroids, transplant — test <b>HBsAg and anti-HBc</b>. Past or chronic hepatitis B can reactivate, sometimes fatally; specialists may give prophylactic antivirals."}
+     ]},
+
+    {id:"contacts", nav:"Contacts and vaccines", title:"Contacts, vaccination and prevention", sub:"Hepatitis B is vaccine-preventable; hepatitis C prevention is harm reduction.",
+     blocks:[
+       {b:"table", head:["Who","Action"], rows:[
+         ["<b>Household and sexual contacts of hepatitis B</b>","Test (HBsAg, anti-HBc) and vaccinate if not immune; condoms until a partner is immune"],
+         ["<b>Babies of HBsAg-positive mothers</b>","Hepatitis B vaccine within 24 hours of birth and at 4 weeks, then the routine hexavalent doses and a dose at 1 year, per the current Green Book schedule (± hepatitis B immunoglobulin at birth if high infectivity); <b>HBsAg test at 12 months</b>"],
+         ["<b>At-risk adults</b>: injecting drug use, MSM, sex workers, chronic liver disease (including hepatitis C), CKD and dialysis, close contacts, some travellers and occupations","Hepatitis B vaccine; check anti-HBs after the course in those at continued risk (occupational, CKD, contacts) as the Green Book advises"],
+         ["<b>People with chronic hepatitis B or C</b>","Hepatitis A vaccine (and hepatitis B vaccine in hepatitis C) if not immune; avoid or minimise alcohol"],
+         ["<b>People who inject drugs</b>","Needle and syringe programmes, opioid substitution therapy, no sharing of any equipment — see the <a href=\"opioid-dependence.html\">opioid dependence protocol</a>"]
+       ]},
+       {b:"cards", items:[
+         {tone:"blue", h:"Hepatitis B vaccine — adults", html:"<span class=mg-dose>Usual adult dose: hepatitis B vaccine (for example Engerix B) 20 micrograms by IM injection at 0, 1 and 6 months; accelerated 0, 1 and 2 months with a booster at 12 months; very rapid 0, 7 and 21 days with a booster at 12 months for urgent protection (UKHSA Green Book/SPC; check the SPC, BNF and local formulary; <a href=\"https://www.medicines.org.uk/emc/search?q=engerix%20b\" target=_blank rel=noopener>SPC: hepatitis B vaccine</a>).</span>", src:"UKHSA Green Book ch. 18"},
+         {tone:"green", h:"Everyday advice", html:"Don't share razors, toothbrushes or nail scissors; cover cuts; clean blood spills with bleach; don't donate blood or organs without discussion; tell dentists and healthcare workers. Hepatitis B and C are not spread by kissing, hugging, sharing cups or food."}
+       ]}
+     ]},
+
+    {id:"special", nav:"Pregnancy and special groups", title:"Pregnancy, children and other special groups", sub:"Most transmission worldwide is mother to baby — prevention works.",
+     blocks:[
+       {b:"table", head:["Group","What to do"], rows:[
+         ["<b>Pregnant with hepatitis B</b>","Antenatal screening detects it; urgent specialist referral (seen within 6 weeks). Women with a high viral load are offered tenofovir in the third trimester. Baby vaccinated from birth. Breastfeeding is safe once the baby is vaccinated"],
+         ["<b>Pregnant with hepatitis C</b>","DAAs are not routinely given in pregnancy; refer for treatment after delivery. Baby tested (HCV RNA from 2 months or antibody at 18 months per local protocol). Breastfeeding is fine unless nipples are cracked or bleeding"],
+         ["<b>Children</b>","Specialist paediatric hepatology; DAAs are licensed from age 3 for hepatitis C. Doses per BNFC"],
+         ["<b>HIV co-infection</b>","Joint specialist care — some HIV drugs also treat hepatitis B; never stop them without specialist advice"],
+         ["<b>Healthcare workers</b>","Occupational health; exposure-prone procedures restrictions apply"]
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Follow-up and safety-netting", sub:"Track the referral, the treatment outcome and ongoing risk.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Referral outcome","Within weeks","Check the person has been seen; people who inject drugs often need outreach and reminders"],
+         ["HCV RNA after cure","Annually if ongoing risk","RNA positive → re-refer (reinfection is treatable)"],
+         ["Liver ultrasound","Every 6 months in cirrhosis (and some hepatitis B per specialist)","Hepatocellular carcinoma surveillance continues after cure"],
+         ["Hepatitis B monitoring","As the specialist plan states (ALT, HBV DNA)","Rising ALT → specialist advice"],
+         ["New immunosuppressive drug","At prescription","Check hepatitis B status first"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Same day", html:"“If your skin or eyes turn yellow and you feel confused, very sleepy, are bleeding or bruising easily, or vomiting and can't keep fluids down — get medical help the same day; call 999 if you're very drowsy or vomiting blood.”"},
+         {tone:"amber", h:"💊 Treatment", html:"“Hepatitis C tablets cure almost everyone who finishes the course. Tell us or the pharmacist before starting any new medicine or remedy, including indigestion medicines.”"},
+         {tone:"green", h:"🛡️ Protect others", html:"“Your partner and the people you live with should have a blood test and the hepatitis B vaccine. Use condoms until they are protected.”"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer and notify", sub:"Everyone with a current infection needs specialist care.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day", html:"Acute hepatitis with liver failure features; decompensated cirrhosis; hepatitis B reactivation on immunosuppression; post-exposure prophylaxis."},
+         {tone:"amber", h:"Urgent", html:"Pregnant woman with HBsAg or HCV RNA; acute hepatitis B or C; HIV co-infection; cirrhosis."},
+         {tone:"blue", h:"Routine", html:"All other HCV RNA-positive people (ODN or treatment service) and all other HBsAg-positive people (hepatology)."},
+         {tone:"purple", h:"Notify", html:"Acute infectious hepatitis (A, B or C) — urgent telephone notification to the UKHSA health protection team. Laboratories report hepatitis B and C results separately; chronic infection does not need a clinician notification form."}
+       ]}
+     ]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence and references", sub:"Every recommendation on this page is traceable to these sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE PH43 — Hepatitis B and C testing: people at risk of infection (2012, updated 2013)</b><br><a href="https://www.nice.org.uk/guidance/ph43" rel="noopener">nice.org.uk/guidance/ph43</a><span class="rd"> — risk groups, testing in primary care, follow-up of positive results</span></li>'+
+         '<li><b>NICE CG165 — Hepatitis B (chronic): diagnosis and management (2013, updated 2017)</b><br><a href="https://www.nice.org.uk/guidance/cg165" rel="noopener">nice.org.uk/guidance/cg165</a><span class="rd"> — referral, pregnancy, immunosuppression, specialist treatment and surveillance</span></li>'+
+         '<li><b>NICE TA430 (sofosbuvir–velpatasvir, 2017) and TA499 (glecaprevir–pibrentasvir, 2018)</b><br><a href="https://www.nice.org.uk/guidance/ta430" rel="noopener">nice.org.uk/guidance/ta430</a><span class="rd"> — direct-acting antivirals for chronic hepatitis C</span></li>'+
+         '<li><b>NHS England — hepatitis C elimination programme and operational delivery networks</b><br><a href="https://www.england.nhs.uk/hepatitis-c/" rel="noopener">england.nhs.uk — hepatitis C</a><span class="rd"> — test-and-treat pathways, community and pharmacy testing</span></li>'+
+         '<li><b>UKHSA — Immunisation against infectious disease (the Green Book), chapter 18: hepatitis B</b><br><a href="https://www.gov.uk/government/publications/hepatitis-b-the-green-book-chapter-18" rel="noopener">gov.uk — Green Book chapter 18</a><span class="rd"> — schedules, babies of positive mothers, at-risk groups, post-exposure prophylaxis</span></li>'+
+         '<li><b>UKHSA — Notifiable diseases and causative organisms: how to report</b><br><a href="https://www.gov.uk/guidance/notifiable-diseases-and-causative-organisms-how-to-report" rel="noopener">gov.uk — notifiable diseases</a><span class="rd"> — acute infectious hepatitis is an urgent notification</span></li>'+
+         '<li><b>NICE NG50 — Cirrhosis in over 16s (2016, updated 2023)</b><br><a href="https://www.nice.org.uk/guidance/ng50" rel="noopener">nice.org.uk/guidance/ng50</a><span class="rd"> — HCC and variceal surveillance</span></li>'+
+         '<li><b>Hepatitis B vaccine product information (SPC)</b><br><a href="https://www.medicines.org.uk/emc/search?q=engerix%20b" rel="noopener">medicines.org.uk — hepatitis B vaccine</a></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Hepatitis B and C — NICE PH43, CG165, TA430/TA499, UKHSA Green Book and the NHS England hepatitis C elimination programme. Antiviral treatment is specialist-led. Check vaccine schedules in the current Green Book and SPC."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
+</body>
+</html>

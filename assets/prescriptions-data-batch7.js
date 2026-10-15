@@ -177,7 +177,7 @@
 - Red flags: necrotising skin infection, pneumonia, neuro signs, dehydration.
 - Prevention: MMRV in routine UK schedule from Jan 2026 (12 + 18 months); check immunisation status.`,
     sources: [
-      { label:'UKHSA — Green Book, varicella', url:'https://www.gov.uk/government/collections/immunisation-against-infectious-disease-the-green-book' },
+      { label:'UKHSA — Green Book chapter 34: varicella', url:'https://www.gov.uk/government/publications/varicella-the-green-book-chapter-34' },
     ],
   },
 
@@ -302,7 +302,7 @@
 - Oral antihistamine (cetirizine/loratadine). Treat coexisting allergic rhinitis (intranasal steroid).
 - Avoid topical steroids in primary care. Pain/photophobia/reduced vision/unilateral red eye \u2192 ophthalmology.`,
     sources: [
-      { label:'College of Optometrists', url:'https://www.college-optometrists.org/clinical-guidance' },
+      { label:'NICE CKS — Conjunctivitis (allergic)', url:'https://cks.nice.org.uk/topics/conjunctivitis-allergic/' },
     ],
   },
 

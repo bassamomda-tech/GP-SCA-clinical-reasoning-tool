@@ -11,33 +11,72 @@
   /* ============ 109. TELEPHONE — PID: treat empirically, protect fertility ============ */
   const c109 = {
     id:'pid-young-woman', title:'"It\u2019s probably just a water infection again"', type:'telephone', duration:12,
-    meta:{ age:23, sex:'F', setting:'Telephone \u2014 lower abdominal pain + discharge.', system:'Sexual health / Pelvic inflammatory disease' },
+    meta:{ age:23, sex:'F', setting:'Telephone \u2014 lower abdominal pain + discharge.', system:'Sexual health / Pelvic inflammatory disease', checked:'October 2026' },
     brief:'Miss Demi Carter, 23. Rings about lower abdominal pain (several days, both sides), an abnormal vaginal discharge, deep pain with sex, and \u2014 if asked \u2014 some intermenstrual/post-coital bleeding and a low-grade fever. She blames "another water infection" and wants antibiotics for that. Recent new partner, inconsistent condoms. LMP ~3 weeks ago. No contraception. She is keen to keep it quick and "not make a thing of it". No syncope/shoulder-tip pain.',
     script:{
-      opening:'"Hiya \u2014 I keep getting these water infections, I think I\u2019ve got another one. Bit of pain low down in my tummy and some discharge. Could you just put me a prescription through for some antibiotics like last time? I\u2019m at work, I don\u2019t really want a big fuss or to come in for tests and all that. It\u2019s just a UTI, isn\u2019t it?"',
-      facts:[
-        { topic:'Why it\u2019s not a UTI',  text:'If explored: BILATERAL lower abdominal pain, abnormal vaginal DISCHARGE, DEEP DYSPAREUNIA, intermenstrual/post-coital bleeding, low-grade fever \u2014 in a young woman with a new partner and inconsistent condoms. This is pelvic inflammatory disease (PID), not a UTI (which gives dysuria/frequency without discharge or dyspareunia). The "water infection" label is a misattribution.' },
-        { topic:'Exclude pregnancy/ectopic', text:'CRITICAL: any young woman with lower abdominal pain needs a pregnancy test — to exclude ectopic pregnancy (and because management differs in pregnancy: doxycycline is contraindicated in pregnancy — BNF). Screen the ectopic red flags (severe/unilateral pain, shoulder-tip pain, syncope, amenorrhoea) \u2014 absent here, but must be asked.' },
-        { topic:'Why empirical treatment matters', text:'PID is a CLINICAL diagnosis treated EMPIRICALLY and PROMPTLY — BASHH (UK national guideline for PID, 2018, 2019 update) recommends a low threshold because delay risks tubal damage, chronic pelvic pain, ectopic pregnancy and INFERTILITY. Waiting for swab results before treating is the wrong approach; take swabs (NAAT for chlamydia/gonorrhoea) but start treatment.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 the "just a UTI, keep it quick" is partly avoidance/shame: she suspects it might be sexually transmitted (her new partner has been unreliable and she\u2019s worried he\u2019s been unfaithful), is frightened of the words "STI" and of being judged, and dreads the partner-notification conversation. There\u2019s also an unspoken fear about her future fertility. Surfacing this gently is central.' },
-        { topic:'What she needs',       text:'Officially: antibiotics for a "UTI". What she needs: recognition of PID, a pregnancy test, sexual-health assessment (swabs/NAAT, examination), PROMPT empirical PID treatment, an HIV/STI screen offered, partner notification handled without shame, and the fertility stakes addressed.' },
+      "opening": "\"Hiya — I keep getting these water infections, I think I've got another one. Bit of pain low down in my tummy and some discharge. Could you just put me a prescription through for some antibiotics like last time? I'm at work, I don't really want a big fuss or to come in for tests and all that. It's just a UTI, isn't it?\"",
+      "facts": [
+        {
+          "topic": "The pain",
+          "text": "If asked: low down on both sides of your tummy, a dull dragging ache, for about five days and slowly getting worse. 5/10. Not sudden, not one-sided."
+        },
+        {
+          "topic": "Discharge and bleeding (if asked)",
+          "text": "Yellowish discharge that smells \"a bit off\", for about a week. Some spotting between periods and after sex."
+        },
+        {
+          "topic": "Sex — only if asked sensitively",
+          "text": "Deep pain during sex, \"right up inside\". New boyfriend for three months; you use condoms \"sometimes\". No other partners in the last 6 months. You think he might have been seeing someone else."
+        },
+        {
+          "topic": "Waterworks (if asked)",
+          "text": "A bit of stinging \"when it touches\" but no frequency or urgency. You have had two UTIs in the past year, diagnosed over the phone."
+        },
+        {
+          "topic": "Fever and general (if asked)",
+          "text": "Felt hot and shivery last night; you have not taken your temperature. Eating, drinking and passing urine. No vomiting."
+        },
+        {
+          "topic": "Pregnancy (if asked)",
+          "text": "Last period three weeks ago, normal. No contraception except condoms sometimes. \"I don't think I'm pregnant.\" No shoulder-tip pain, no fainting, no one-sided sharp pain. Happy to do a test."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "No regular medicines. No allergies."
+        },
+        {
+          "topic": "Social",
+          "text": "23, works in a phone shop. Lives with a friend. Smokes 5 a day, drinks at weekends."
+        },
+        {
+          "topic": "Hidden worries — hold back",
+          "text": "You are frightened it is an STI and embarrassed to say so. You are dreading having to raise it with your boyfriend. Quietly you wonder whether this could stop you having children one day. Reveal only if the doctor is non-judgemental and asks what you are worried about."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Chatty but in a hurry, keen to keep it to \"a UTI\". If questions about sex feel judgemental, get short and vague. If the doctor explains why they are asking and normalises it, answer honestly. You accept a pregnancy test, swabs and treatment if it is explained that treating now protects your fertility."
+        }
       ],
-      ice:{
-        ideas:'It\u2019s just another water infection; antibiotics for a UTI will sort it.',
-        concerns:'HIDDEN AGENDA \u2014 she half-suspects it\u2019s sexually transmitted (unreliable new partner, fears infidelity), is frightened of the "STI" label and of being judged, dreads telling the partner, and has an unspoken fear about her fertility.',
-        expectations:'A quick antibiotic prescription for a UTI. What she actually needs: recognition of PID, a pregnancy test, prompt empirical treatment, an STI screen, non-judgemental partner notification, and the fertility stakes addressed.'
+      "ice": {
+        "ideas": "\"It's just another water infection.\"",
+        "concerns": "Underneath: \"What if it's something he's given me?\" — and whether it could affect having children.",
+        "expectations": "\"Can you just send antibiotics through like last time?\" You will accept tests and proper treatment if you are not made to feel judged."
       },
-      cues:['Bilateral pelvic pain + discharge + deep dyspareunia + IMB/PCB + new partner \u2014 PID, not a UTI; treat empirically.','Any young woman with abdo pain \u2014 do a pregnancy test; screen ectopic red flags.','"Just a UTI, keep it quick, no fuss" \u2014 shame/avoidance about a possible STI and the partner conversation; surface it gently.']
+      "cues": [
+        "\"It's just a UTI, isn't it?\" — say in the opening.",
+        "\"It hurts when we... you know.\" — say hesitantly if asked about pain with sex.",
+        "\"Could this stop me having kids?\" — ask near the end if trust has been built."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises PELVIC INFLAMMATORY DISEASE from the picture (bilateral lower abdominal pain, abnormal discharge, deep dyspareunia, IMB/PCB, fever, sexual risk) and does NOT treat it as a UTI with a quick antibiotic for cystitis' },
-      { dom:'tasks', text:'Excludes PREGNANCY/ECTOPIC: arranges a pregnancy test and screens the ectopic red flags (severe/unilateral pain, shoulder-tip pain, syncope, amenorrhoea), recognising abdominal pain in a young woman always needs this' },
-      { dom:'tasks', text:'Treats PID PROMPTLY and EMPIRICALLY (low threshold): starts recommended empirical antibiotic therapy (BASHH 2019 outpatient regimen: ceftriaxone 1 g IM single dose, plus doxycycline 100 mg twice daily and metronidazole 400 mg twice daily for 14 days) without waiting for swab results \u2014 because delay risks infertility, chronic pain and ectopic \u2014 while taking swabs (NAAT for chlamydia/gonorrhoea) and arranging examination' },
-      { dom:'tasks', text:'Offers a full sexual-health assessment/screen (chlamydia, gonorrhoea, HIV, syphilis), advice on abstaining until treated, contraception review, and considers sexual-health-clinic involvement \u2014 rather than a phone antibiotic alone' },
-      { dom:'tasks', text:'Handles PARTNER NOTIFICATION/contact tracing: explains current and recent partners (BASHH 2019: those from the previous 6 months) need testing/treatment to prevent reinfection and onward spread, offered supportively and confidentially (clinic/provider options), without shame' },
-      { dom:'rto',   text:'Hears the avoidance/shame and the fear of infidelity/judgement, surfaces it gently, and does NOT collude with "just a UTI"; normalises the situation and reduces stigma' },
-      { dom:'rto',   text:'Addresses the unspoken FERTILITY fear honestly: prompt treatment protects future fertility \u2014 which is exactly why acting now matters \u2014 with reassurance balanced by honesty' },
-      { dom:'gs',    text:'Safety-nets and follows up: red flags that mean urgent/emergency review (severe pain, high fever, vomiting, pregnancy/ectopic features \u2192 same-day/A&E), treatment plan and review at 72 hours (BASHH 2019) to confirm response, then results, partner-notification support, and documentation' },
+      { dom:'dg', text:'Recognises PELVIC INFLAMMATORY DISEASE from the picture (bilateral lower abdominal pain, abnormal discharge, deep dyspareunia, IMB/PCB, fever, sexual risk) and does NOT treat it as a UTI with a quick antibiotic for cystitis' },
+      { dom:'dg', text:'Excludes PREGNANCY/ECTOPIC: arranges a pregnancy test and screens the ectopic red flags (severe/unilateral pain, shoulder-tip pain, syncope, amenorrhoea), recognising abdominal pain in a young woman always needs this' },
+      { dom:'cm', text:'Treats PID PROMPTLY and EMPIRICALLY (low threshold): starts recommended empirical antibiotic therapy (BASHH 2019 outpatient regimen: ceftriaxone 1 g IM single dose, plus doxycycline 100 mg twice daily and metronidazole 400 mg twice daily for 14 days) without waiting for swab results \u2014 because delay risks infertility, chronic pain and ectopic \u2014 while taking swabs (NAAT for chlamydia/gonorrhoea) and arranging examination' },
+      { dom:'cm', text:'Offers a full sexual-health assessment/screen (chlamydia, gonorrhoea, HIV, syphilis), advice on abstaining until treated, contraception review, and considers sexual-health-clinic involvement \u2014 rather than a phone antibiotic alone' },
+      { dom:'cm', text:'Handles PARTNER NOTIFICATION/contact tracing: explains current and recent partners (BASHH 2019: those from the previous 6 months) need testing/treatment to prevent reinfection and onward spread, offered supportively and confidentially (clinic/provider options), without shame' },
+      { dom:'ro',   text:'Hears the avoidance/shame and the fear of infidelity/judgement, surfaces it gently, and does NOT collude with "just a UTI"; normalises the situation and reduces stigma' },
+      { dom:'ro',   text:'Addresses the unspoken FERTILITY fear honestly: prompt treatment protects future fertility \u2014 which is exactly why acting now matters \u2014 with reassurance balanced by honesty' },
+      { dom:'cm',    text:'Safety-nets and follows up: red flags that mean urgent/emergency review (severe pain, high fever, vomiting, pregnancy/ectopic features \u2192 same-day/A&E), treatment plan and review at 72 hours (BASHH 2019) to confirm response, then results, partner-notification support, and documentation' },
     ],
     worked:[
       { lbl:'Refuse the UTI label', txt:'"I\u2019m glad you rang \u2014 but I don\u2019t think this is a water infection, and I don\u2019t want to just send the wrong antibiotic. Pain low down on both sides, the discharge, pain deep during sex, a bit of bleeding \u2014 that points to an infection higher up, in the womb and tubes, which we call PID. It\u2019s common, it\u2019s treatable, but it\u2019s a different thing from a UTI and it matters that we get it right."' },
@@ -66,33 +105,68 @@
   /* ============ 110. TELEPHONE — Emergency contraception request (+ safeguarding) ============ */
   const c110 = {
     id:'emergency-contraception', title:'"I need the morning-after pill \u2014 quickly, please"', type:'telephone', duration:12,
-    meta:{ age:16, sex:'F', setting:'Telephone \u2014 request for emergency contraception.', system:'Sexual health / Emergency contraception & consent at 16' },
+    meta:{ age:16, sex:'F', setting:'Telephone \u2014 request for emergency contraception.', system:'Sexual health / Emergency contraception & consent at 16', checked:'October 2026' },
     brief:'Caller: a 16-year-old, "Aimee", rings requesting the morning-after pill after unprotected sex. She is rushed, embarrassed, wants it sorted fast. On sensitive questioning: the UPSI was ~3 days (72 h) ago, mid-cycle; no regular contraception. She is 16. If gently explored, her partner is 25 and they "met online" \u2014 a potential safeguarding/CSE concern. She is competent and articulate. Wants the pill without "loads of questions". No features of pregnancy/STI symptoms volunteered.',
     script:{
-      opening:'"Hi, um \u2014 I need the morning-after pill please. We didn\u2019t use anything and I really don\u2019t want to be pregnant. Can I just get it sorted today, like at the chemist or whatever? I\u2019d rather not go through a load of questions if that\u2019s okay, it\u2019s a bit embarrassing. How quickly can I get it?"',
-      facts:[
-        { topic:'The timing/method choice', text:'If clarified: the UPSI was ~72 hours ago, mid-cycle (higher conception risk). Method matters (CoSRH — formerly FSRH — Emergency contraception guideline, 2017, amended 2023): the COPPER IUD is the most effective EC (up to 120 hours after the first UPSI in the cycle, or up to 5 days after the earliest likely ovulation) and should be offered/recommended; oral options are ulipristal acetate (ellaOne, up to 120 h, more effective than levonorgestrel, especially mid-cycle/later) and levonorgestrel (up to 72 h). At ~72 h mid-cycle, ulipristal or the copper IUD are preferable to levonorgestrel.' },
-        { topic:'Capacity and consent at 16', text:'She is 16 — presumed to have capacity (Mental Capacity Act 2005) and able to consent to her own treatment (Family Law Reform Act 1969 s8); Fraser criteria are for under-16s. She is still a child for safeguarding purposes until 18 (Working Together to Safeguard Children 2026). The consultation must still check understanding and best interests, and crucially screen for COERCION/abuse and ongoing contraception/STI needs.' },
-        { topic:'The SAFEGUARDING red flag', text:'CRITICAL \u2014 on gentle questioning, her partner is 25 and they met online. A significant age gap (and online grooming pattern) in a 16-year-old raises CHILD SEXUAL EXPLOITATION / abuse concerns that must be sensitively explored and may require safeguarding action \u2014 even though 16 is the age of consent, exploitation, power imbalance and coercion still need assessing. This must be handled without alienating her.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 the "just give it to me quickly, no questions" is embarrassment AND a wish to avoid scrutiny of the relationship she half-knows others would worry about; she may be minimising the partner\u2019s age or controlling behaviour. The skill is to meet her practical need promptly (she IS entitled to EC) while gently, non-judgementally exploring the safeguarding picture and her ongoing needs \u2014 keeping her trust.' },
-        { topic:'What she needs',     text:'Officially: the morning-after pill, fast, no questions. What she needs: prompt, effective EC (offer copper IUD as most effective; ulipristal given timing) provided without unnecessary barriers, a sensitive capacity/safeguarding assessment of the older-partner/online concern (at 16 capacity is presumed — Mental Capacity Act 2005), STI screening, ongoing contraception, and support \u2014 balancing prompt access with safeguarding.' },
+      "opening": "\"Hi, um — I need the morning-after pill please. We didn't use anything and I really don't want to be pregnant. Can I just get it sorted today, like at the chemist or whatever? I'd rather not go through a load of questions if that's okay, it's a bit embarrassing. How quickly can I get it?\"",
+      "facts": [
+        {
+          "topic": "When it happened",
+          "text": "If asked: Saturday night — \"about three days ago, so like 72 hours\". Only once since your last period. No condom."
+        },
+        {
+          "topic": "Periods",
+          "text": "If asked: regular, every 28 days. Last period started about two weeks ago, so you are mid-cycle. You have not had any other unprotected sex this cycle."
+        },
+        {
+          "topic": "Contraception and health",
+          "text": "Not on any contraception. Never used emergency contraception before. No medical problems, no regular medicines, no allergies. You are not on anything for epilepsy or HIV, and do not take any herbal remedies."
+        },
+        {
+          "topic": "Weight (if asked)",
+          "text": "\"About average, I think\" — about 9 stone."
+        },
+        {
+          "topic": "Symptoms (if asked)",
+          "text": "No discharge, no pain, no bleeding. Never had an STI test."
+        },
+        {
+          "topic": "You",
+          "text": "Aimee, 16, in Year 12 at college. Lives with mum and stepdad. Mum does not know you are sexually active."
+        },
+        {
+          "topic": "The boyfriend — only if asked gently and without judgement",
+          "text": "His name is Ryan. \"He's 25. We met on Instagram about two months ago.\" He picks you up from college in his car. He bought you a new phone. He says you should keep it quiet \"because people wouldn't understand\". If asked whether he ever pressures you: \"Not really... he gets annoyed if I don't reply straight away.\" He did not want to use a condom."
+        },
+        {
+          "topic": "Other worries — hold back",
+          "text": "He has asked you to come to a party at his friend's flat this weekend and stay over; you feel a bit uneasy about it but \"it's probably fine\". Say this only if the doctor has built trust and asks whether you feel safe."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Embarrassed, in a hurry, a bit defensive. If questions about the boyfriend feel like a telling-off, clam up: \"Can I just get the pill?\" If the doctor first reassures you that you WILL get emergency contraception today and explains why they ask, answer more openly. You are not keen on a coil (\"that sounds painful\") but will listen. You want to keep it from your mum; if the doctor explains when they might need to share information, you are anxious but will ask \"Would you tell me first?\""
+        }
       ],
-      ice:{
-        ideas:'She just needs the morning-after pill quickly and would rather skip the questions.',
-        concerns:'HIDDEN AGENDA \u2014 embarrassment plus a wish to avoid scrutiny of a relationship (25-year-old partner, met online) she half-knows others would worry about; possible minimisation of his age/control.',
-        expectations:'Fast EC with no questions. What she actually needs: prompt effective EC, a sensitive capacity/safeguarding assessment of the older-partner concern, STI screening and ongoing contraception \u2014 access balanced with safeguarding.'
+      "ice": {
+        "ideas": "\"I just need the morning-after pill and it'll be fine.\"",
+        "concerns": "\"I really can't be pregnant.\" Underneath: you half-know other people would be worried about Ryan, and you do not want anyone to find out.",
+        "expectations": "\"Just sort it today, no questions.\" You will answer questions if you feel they are not judging you and you are sure you will still get the pill."
       },
-      cues:['~72 h post-UPSI, mid-cycle \u2014 method choice matters (copper IUD most effective; ulipristal over levonorgestrel here).','16-year-old + "no questions" — provide EC promptly; at 16 capacity is presumed (Mental Capacity Act 2005 — Fraser is for under-16s), but check understanding and ongoing needs.','Partner is 25, met online \u2014 a safeguarding/CSE red flag to explore sensitively without alienating her.']
+      "cues": [
+        "\"I'd rather not go through a load of questions.\" — say in the opening.",
+        "\"He's a bit older.\" — say vaguely if asked about your partner; give his age only if asked directly.",
+        "\"He says people wouldn't understand.\" — say if the relationship is explored."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Provides EMERGENCY CONTRACEPTION promptly without unnecessary barriers, AND advises on the most effective method (CoSRH 2017, amended 2023): the COPPER IUD is the most effective EC (offer/recommend, effective up to 5 days; if a fitting is being arranged, give oral EC now in case it cannot happen), with oral options ulipristal acetate (up to 120 h, preferred over levonorgestrel at ~72 h/mid-cycle) and levonorgestrel \u2014 chosen by timing/cycle and patient preference' },
-      { dom:'tasks', text:'Knows that at 16 she is presumed to have capacity (Mental Capacity Act 2005) and can consent to her own treatment (Family Law Reform Act 1969 s8) — Fraser criteria apply to under-16s — and checks her understanding and best interests appropriately, while not creating barriers to a time-sensitive treatment she is entitled to' },
-      { dom:'tasks', text:'Screens for SAFEGUARDING/CSE: gently explores the relationship (partner age 25, met online), coercion/control, capacity to consent, and other exploitation indicators \u2014 recognising the significant age gap and online pattern as red flags requiring sensitive assessment and possible safeguarding action per local pathways (a structured tool such as the BASHH and Brook Spotting the Signs proforma, 2014; discuss with the practice safeguarding lead)' },
-      { dom:'tasks', text:'Addresses ONGOING contraception (so she\u2019s not back in the same position) and STI risk (testing/screening), and advises a pregnancy test 3 weeks after the unprotected sex (CoSRH 2017), or sooner if her period is late or unusual' },
-      { dom:'tasks', text:'Knows the practical points: ulipristal vs levonorgestrel interaction (don\u2019t mix; quick-starting hormonal contraception differs after ulipristal), to repeat the dose if vomiting occurs within 3 hours (CoSRH), and that EC does not protect for the rest of the cycle' },
-      { dom:'rto',   text:'Meets her need promptly and non-judgementally so she stays engaged, while gently raising the safeguarding questions in a way that doesn\u2019t feel like interrogation or alienate her' },
-      { dom:'rto',   text:'Balances her autonomy and confidentiality with the duty to safeguard \u2014 being honest about limits if a serious safeguarding concern requires sharing information, ideally with her involvement (GMC 0–18 years guidance)' },
-      { dom:'gs',    text:'Safety-nets and follows up: pregnancy test 3 weeks after the unprotected sex (CoSRH 2017) — sooner if her period is more than 7 days late or lighter than usual, STI screen and ongoing-contraception plan, safeguarding referral/discussion as indicated, sources of support, and a route back \u2014 prompt access AND safeguarding both delivered' },
+      { dom:'cm', text:'Provides EMERGENCY CONTRACEPTION promptly without unnecessary barriers, AND advises on the most effective method (CoSRH 2017, amended 2023): the COPPER IUD is the most effective EC (offer/recommend, effective up to 5 days; if a fitting is being arranged, give oral EC now in case it cannot happen), with oral options ulipristal acetate (up to 120 h, preferred over levonorgestrel at ~72 h/mid-cycle) and levonorgestrel \u2014 chosen by timing/cycle and patient preference' },
+      { dom:'cm', text:'Knows that at 16 she is presumed to have capacity (Mental Capacity Act 2005) and can consent to her own treatment (Family Law Reform Act 1969 s8) — Fraser criteria apply to under-16s — and checks her understanding and best interests appropriately, while not creating barriers to a time-sensitive treatment she is entitled to' },
+      { dom:'dg', text:'Screens for SAFEGUARDING/CSE: gently explores the relationship (partner age 25, met online), coercion/control, capacity to consent, and other exploitation indicators \u2014 recognising the significant age gap and online pattern as red flags requiring sensitive assessment and possible safeguarding action per local pathways (a structured tool such as the BASHH and Brook Spotting the Signs proforma, 2014; discuss with the practice safeguarding lead)' },
+      { dom:'dg', text:'Addresses ONGOING contraception (so she\u2019s not back in the same position) and STI risk (testing/screening), and advises a pregnancy test 3 weeks after the unprotected sex (CoSRH 2017), or sooner if her period is late or unusual' },
+      { dom:'cm', text:'Knows the practical points: ulipristal vs levonorgestrel interaction (don\u2019t mix; quick-starting hormonal contraception differs after ulipristal), to repeat the dose if vomiting occurs within 3 hours (CoSRH), and that EC does not protect for the rest of the cycle' },
+      { dom:'ro',   text:'Meets her need promptly and non-judgementally so she stays engaged, while gently raising the safeguarding questions in a way that doesn\u2019t feel like interrogation or alienate her' },
+      { dom:'ro',   text:'Balances her autonomy and confidentiality with the duty to safeguard \u2014 being honest about limits if a serious safeguarding concern requires sharing information, ideally with her involvement (GMC 0–18 years guidance)' },
+      { dom:'cm',    text:'Safety-nets and follows up: pregnancy test 3 weeks after the unprotected sex (CoSRH 2017) — sooner if her period is more than 7 days late or lighter than usual, STI screen and ongoing-contraception plan, safeguarding referral/discussion as indicated, sources of support, and a route back \u2014 prompt access AND safeguarding both delivered' },
     ],
     worked:[
       { lbl:'Meet the need first',  txt:'"Of course \u2014 and well done for sorting this quickly, that\u2019s the sensible thing. I can absolutely help you get emergency contraception today. Let me ask just a few quick things so I give you the option that works best for you, not to make it awkward \u2014 is that okay?"' },
@@ -102,7 +176,7 @@
       { lbl:'Ongoing needs',        txt:'"Two more useful things: shall we sort some regular contraception so you\u2019re not back here stressed again \u2014 there are options that are very reliable and easy. And because no condom was used, it\u2019s worth a quick check for infections too, all confidential. None of that has to be a big deal."' },
       { lbl:'Safety-net',           txt:'"So \u2014 I\u2019ll get you the emergency contraception today and explain the choices. If you’re sick within 3 hours of the tablet, ring back as you’ll need another. Do a pregnancy test three weeks after the unprotected sex — or sooner if your period’s more than a week late or seems different. And you can come back to me about ANYTHING \u2014 the relationship, contraception, infections, anything at all. You\u2019re not in trouble and you\u2019re not on your own."' },
     ],
-    learning:'An emergency-contraception request from a 16-year-old must deliver TWO things at once: prompt, barrier-free access to effective EC, AND a sensitive safeguarding assessment. On method, advise by timing/cycle \u2014 the COPPER IUD is the most effective EC (up to 5 days, and provides ongoing contraception), ulipristal acetate is preferred over levonorgestrel at ~72 h/mid-cycle (effective up to 120 h), and levonorgestrel up to 72 h; mind the practical points (CoSRH 2017, amended 2023: don’t mix ulipristal and levonorgestrel, repeat if vomiting within 3 hours, EC doesn’t cover the rest of the cycle, quick-start ongoing contraception, pregnancy test 3 weeks after the unprotected sex). At 16 she is presumed to have capacity (Mental Capacity Act 2005; Fraser criteria are for under-16s) — check understanding without obstructing a time-sensitive treatment she is entitled to. The examinable core is the SAFEGUARDING red flag \u2014 a 25-year-old partner met online \u2014 which, despite 16 being the age of consent, raises CSE/exploitation and coercion concerns to be explored gently and acted on per local pathways, balancing her autonomy/confidentiality with the duty to safeguard (honest about limits, ideally involving her). Address ongoing contraception and STI screening, and meet her need non-judgementally so she stays engaged.',
+    learning:"An emergency-contraception request from a 16-year-old must deliver TWO things at once: prompt, barrier-free access to effective EC, AND a sensitive safeguarding assessment. On method, advise by timing/cycle — the COPPER IUD is the most effective EC (up to 5 days, and provides ongoing contraception), ulipristal acetate is preferred over levonorgestrel at ~72 h/mid-cycle (effective up to 120 h), and levonorgestrel up to 72 h; mind the practical points (CoSRH 2017, amended 2023: don’t mix ulipristal and levonorgestrel, repeat if vomiting within 3 hours, EC doesn’t cover the rest of the cycle, quick-start ongoing contraception, pregnancy test 3 weeks after the unprotected sex). At 16 she is presumed to have capacity (Mental Capacity Act 2005; Fraser criteria are for under-16s) — check understanding without obstructing a time-sensitive treatment she is entitled to. The examinable core is the SAFEGUARDING red flag — a 25-year-old partner met online — which, despite 16 being the age of consent, raises CSE/exploitation and coercion concerns to be explored gently and acted on per local pathways, balancing her autonomy/confidentiality with the duty to safeguard (honest about limits, ideally involving her). Address ongoing contraception and STI screening, and meet her need non-judgementally so she stays engaged. If clarified: the UPSI was ~72 hours ago, mid-cycle (higher conception risk). Method matters (CoSRH — formerly FSRH — Emergency contraception guideline, 2017, amended 2023): the COPPER IUD is the most effective EC (up to 120 hours after the first UPSI in the cycle, or up to 5 days after the earliest likely ovulation) and should be offered/recommended; oral options are ulipristal acetate (ellaOne, up to 120 h, more effective than levonorgestrel, especially mid-cycle/later) and levonorgestrel (up to 72 h). At ~72 h mid-cycle, ulipristal or the copper IUD are preferable to levonorgestrel.",
     knowledge:{
       guideline:'CoSRH (College of Sexual and Reproductive Healthcare, formerly FSRH) Emergency contraception guideline (2017, amended 2023) · BNF · GMC 0–18 years: guidance for all doctors (2007, updated 2018) · Mental Capacity Act 2005 · Family Law Reform Act 1969 s8 · Working Together to Safeguard Children (2026) · BASHH and Brook Spotting the Signs proforma (2014) · Sexual Offences Act 2003',
       points:[
@@ -121,33 +195,72 @@
   /* ============ 111. VIDEO — PCOS named kindly (metabolic + fertility + body image) ============ */
   const c111 = {
     id:'pcos-named', title:'"Why can\u2019t I lose weight and why am I so hairy?"', type:'video', duration:12,
-    meta:{ age:27, sex:'F', setting:'Video consultation \u2014 irregular periods, hirsutism, weight.', system:'Endocrine / Polycystic ovary syndrome' },
+    meta:{ age:27, sex:'F', setting:'Video consultation \u2014 irregular periods, hirsutism, weight.', system:'Endocrine / Polycystic ovary syndrome', checked:'October 2026' },
     brief:'Miss Bethan Lloyd, 27. Attends about irregular/infrequent periods (every 2\u20133 months), unwanted facial/body hair, acne, and difficulty losing weight despite trying. Bloods/USS (arranged previously) fit PCOS. She is distressed about her appearance and, if explored, has just got engaged and is privately terrified she "won\u2019t be able to have children". Low mood about her body. BMI 31. Family history of type 2 diabetes. Wants "something to fix the weight and the hair".',
     script:{
-      opening:'"Thanks for seeing me. I just feel like my body\u2019s against me \u2014 my periods are all over the place, I\u2019ve got hair growing where I really don\u2019t want it, my skin\u2019s bad, and no matter what I do I can\u2019t shift the weight. I feel disgusting, honestly. I read it might be polycystic ovaries? I just want something to fix the weight and the hair. Is there a tablet or something?"',
-      facts:[
-        { topic:'The PCOS picture',     text:'If reviewed: oligomenorrhoea, clinical hyperandrogenism (hirsutism, acne), and polycystic ovaries/biochemistry \u2014 fitting the Rotterdam criteria for PCOS (as used by the International evidence-based PCOS guideline, 2023 — international; there is no current UK national PCOS guideline; a UK guideline, GID-NG10436, is in development and not yet published). Named kindly and explained as a common, manageable hormonal condition (not a personal failing).' },
-        { topic:'The metabolic dimension', text:'PCOS carries insulin resistance and raised risk of type 2 diabetes, dyslipidaemia and (with prolonged amenorrhoea/unopposed oestrogen) endometrial hyperplasia \u2014 so management isn’t just cosmetic: weight/lifestyle, metabolic screening (glycaemic status at diagnosis and every 1–3 years — International PCOS guideline 2023, international), and ensuring regular endometrial shedding (RCOG Green-top Guideline 33, 2014: a withdrawal bleed at least every 3–4 months) matter. Family history of T2DM is relevant.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 beneath "fix the weight and hair" is a recently-engaged woman terrified she\u2019s "broken" and won\u2019t be able to have children, and significant body-image distress/low mood (she said "I feel disgusting"). The fertility fear and the mood/self-esteem are the real consultation; the cosmetic request is the entry point. There may be shame she hasn\u2019t voiced to her fianc\u00e9.' },
-        { topic:'The reassurance available', text:'If reached: PCOS is one of the most common and most manageable causes of subfertility \u2014 many women conceive with weight management and, if needed, ovulation-induction treatments; symptoms (hair, acne, cycles) are treatable; and the weight difficulty is partly the condition, not just willpower. This reframes self-blame into a manageable plan.' },
-        { topic:'What she needs',     text:'Officially: a tablet for weight and hair. What she needs: PCOS named kindly and explained, the metabolic risks addressed (lifestyle, HbA1c, endometrial protection), symptom management (cycle regulation/COCP, anti-androgen/cosmetic options for hirsutism, acne treatment), honest and largely-reassuring fertility information, and her body-image/mood addressed.' },
+      "opening": "\"Thanks for seeing me. I just feel like my body's against me — my periods are all over the place, I've got hair growing where I really don't want it, my skin's bad, and no matter what I do I can't shift the weight. I feel disgusting, honestly. I read it might be polycystic ovaries? I just want something to fix the weight and the hair. Is there a tablet or something?\"",
+      "facts": [
+        {
+          "topic": "Periods",
+          "text": "If asked: since your teens they have come every 2–3 months; the last was about 10 weeks ago. When they come they are heavy for a day or two. Never been on the pill. No bleeding between periods."
+        },
+        {
+          "topic": "Hair and skin",
+          "text": "Dark hairs on your chin, upper lip and tummy; you shave or wax every few days. Spots on your jaw and back. No hair loss from the scalp that you have noticed; no deepening voice."
+        },
+        {
+          "topic": "Weight and diet (if asked)",
+          "text": "BMI is 31. You have done slimming clubs, calorie counting and the gym; you lose half a stone and it comes back. Not thirsty, not passing more urine."
+        },
+        {
+          "topic": "Tests",
+          "text": "You had blood tests and a scan a few months ago — \"nobody rang me with the results\"."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "Nothing else. No regular medicines. No allergies. Not trying to get pregnant right now; you and your partner use condoms."
+        },
+        {
+          "topic": "Family (if asked)",
+          "text": "Dad has type 2 diabetes. Mum also had \"irregular periods\"."
+        },
+        {
+          "topic": "Social",
+          "text": "27, nursery nurse. Just got engaged to Tom, wedding next summer. Non-smoker, drinks occasionally."
+        },
+        {
+          "topic": "Mood — if asked how this affects you",
+          "text": "You avoid photos and swimming. You feel low about your body most days but you are not depressed all the time, still enjoy work and friends, and have no thoughts of harming yourself. You have not told Tom how much the hair upsets you."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "You are terrified you \"won't be able to have kids\" — you read that PCOS causes infertility and you have not told Tom you are worried. Reveal only if the doctor asks about plans for a family or what worries you most."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Frustrated and a little tearful; you blame yourself. If the doctor names PCOS kindly and explains the weight is partly the condition, you are relieved: \"So it's not just me being lazy?\" If fertility is raised, become emotional and ask: \"Will I be able to get pregnant?\" Respond well to honest, hopeful information."
+        }
       ],
-      ice:{
-        ideas:'Her body is "against her"/she\u2019s failing; she wants a tablet to fix the weight and the hair.',
-        concerns:'HIDDEN AGENDA \u2014 recently engaged and terrified she\u2019s "broken" and can\u2019t have children; significant body-image distress and low mood ("I feel disgusting"); possible shame she hasn\u2019t shared with her fianc\u00e9.',
-        expectations:'A quick fix for weight and hair. What she actually needs: PCOS named kindly, metabolic risks managed, symptom treatment, honest reassuring fertility information, and her mood/body-image addressed.'
+      "ice": {
+        "ideas": "\"I think it might be polycystic ovaries — or my body's just against me.\"",
+        "concerns": "Underneath (only if asked): \"What if I can't have children? We've just got engaged.\"",
+        "expectations": "\"A tablet to fix the weight and the hair.\" You will welcome a proper explanation and a plan."
       },
-      cues:['Oligomenorrhoea + hirsutism/acne + weight difficulty \u2014 PCOS; name it kindly, not as a failing.','Recently engaged + "can\u2019t shift the weight, feel disgusting" \u2014 the fertility fear and body-image/mood underneath.','"Just fix the weight and hair" \u2014 cosmetic request as the entry point to the real (fertility + mood) consultation.']
+      "cues": [
+        "\"I feel disgusting, honestly.\" — say in the opening.",
+        "\"I've just got engaged.\" — mention in passing when talking about photos or the future.",
+        "\"Will I be able to have kids?\" — ask if trust has been built."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'NAMES PCOS kindly and explains it as a common, manageable hormonal condition (Rotterdam: oligo/anovulation, clinical/biochemical hyperandrogenism, polycystic ovaries) \u2014 NOT a personal failing \u2014 and that the weight difficulty is partly the condition, reducing self-blame' },
-      { dom:'tasks', text:'Addresses the METABOLIC dimension: insulin resistance and raised type 2 diabetes/CVD risk (screen glycaemic status at diagnosis and every 1–3 years, plus lipids and BP — International PCOS guideline 2023, international), the importance of weight/lifestyle, and ensuring regular endometrial shedding to reduce endometrial hyperplasia risk with prolonged amenorrhoea' },
-      { dom:'tasks', text:'Offers SYMPTOM management: cycle regulation/endometrial protection (e.g. combined hormonal contraception or cyclical progestogen, dose per BNF; RCOG GTG 33: a withdrawal bleed at least every 3–4 months), hirsutism options (the combined pill first line — International PCOS guideline 2023; an anti-androgen only after at least 6 months and always with reliable contraception; co-cyprindiol second line because of its higher VTE risk — MHRA Drug Safety Update, June 2013; cosmetic measures; topical eflornithine, stopped if no benefit at 4 months per SPC), and acne treatment \u2014 with realistic timeframes' },
-      { dom:'tasks', text:'Gives honest, largely REASSURING fertility information: PCOS is a common, very treatable cause of reduced fertility; weight loss improves ovulation, and ovulation-induction options exist \u2014 directly addressing the "I\u2019m broken/can\u2019t have children" fear once surfaced' },
-      { dom:'tasks', text:'Addresses MOOD and body-image: screens for low mood/depression (PCOS carries higher rates), validates the distress, and offers support \u2014 recognising the psychological impact as part of care, not an aside' },
-      { dom:'rto',   text:'Hears the cosmetic request as an entry point and surfaces the deeper fertility fear and body-image distress gently, rather than just prescribing for weight/hair; counters the self-blame ("feel disgusting") with compassion' },
-      { dom:'rto',   text:'Frames the plan as collaborative and hopeful, and explores whether she has support (the fianc\u00e9) and how she\u2019s coping emotionally' },
-      { dom:'gs',    text:'Safety-nets and follows up: metabolic screening and monitoring plan, symptom-treatment review, pre-conception/fertility pathway when relevant (folic acid, weight, referral threshold), mood support, and a follow-up that holds the whole picture \u2014 not a one-off cosmetic fix' },
+      { dom:'dg', text:'NAMES PCOS kindly and explains it as a common, manageable hormonal condition (Rotterdam: oligo/anovulation, clinical/biochemical hyperandrogenism, polycystic ovaries) \u2014 NOT a personal failing \u2014 and that the weight difficulty is partly the condition, reducing self-blame' },
+      { dom:'cm', text:'Addresses the METABOLIC dimension: insulin resistance and raised type 2 diabetes/CVD risk (screen glycaemic status at diagnosis and every 1–3 years, plus lipids and BP — International PCOS guideline 2023, international), the importance of weight/lifestyle, and ensuring regular endometrial shedding to reduce endometrial hyperplasia risk with prolonged amenorrhoea' },
+      { dom:'cm', text:'Offers SYMPTOM management: cycle regulation/endometrial protection (e.g. combined hormonal contraception or cyclical progestogen, dose per BNF; RCOG GTG 33: a withdrawal bleed at least every 3–4 months), hirsutism options (the combined pill first line — International PCOS guideline 2023; an anti-androgen only after at least 6 months and always with reliable contraception; co-cyprindiol second line because of its higher VTE risk — MHRA Drug Safety Update, June 2013; cosmetic measures; topical eflornithine, stopped if no benefit at 4 months per SPC), and acne treatment \u2014 with realistic timeframes' },
+      { dom:'ro', text:'Gives honest, largely REASSURING fertility information: PCOS is a common, very treatable cause of reduced fertility; weight loss improves ovulation, and ovulation-induction options exist \u2014 directly addressing the "I\u2019m broken/can\u2019t have children" fear once surfaced' },
+      { dom:'dg', text:'Addresses MOOD and body-image: screens for low mood/depression (PCOS carries higher rates), validates the distress, and offers support \u2014 recognising the psychological impact as part of care, not an aside' },
+      { dom:'ro',   text:'Hears the cosmetic request as an entry point and surfaces the deeper fertility fear and body-image distress gently, rather than just prescribing for weight/hair; counters the self-blame ("feel disgusting") with compassion' },
+      { dom:'ro',   text:'Frames the plan as collaborative and hopeful, and explores whether she has support (the fianc\u00e9) and how she\u2019s coping emotionally' },
+      { dom:'cm',    text:'Safety-nets and follows up: metabolic screening and monitoring plan, symptom-treatment review, pre-conception/fertility pathway when relevant (folic acid, weight, referral threshold), mood support, and a follow-up that holds the whole picture \u2014 not a one-off cosmetic fix' },
     ],
     worked:[
       { lbl:'Name it kindly',       txt:'"First, let me give this a name, because I think it\u2019ll help: what you\u2019re describing fits polycystic ovary syndrome, PCOS. It\u2019s really common, it\u2019s a hormone imbalance \u2014 not anything you\u2019ve done wrong \u2014 and crucially it\u2019s manageable. And the bit about not being able to shift the weight however hard you try? That\u2019s partly the condition itself, not a lack of willpower. Please don\u2019t carry that as a personal failing."' },
@@ -176,33 +289,64 @@
   /* ============ 112. TELEPHONE — Chlamydia-positive result: contact tracing without shame ============ */
   const c112 = {
     id:'chlamydia-positive', title:'"My test was positive \u2014 does this mean he\u2019s cheated?"', type:'telephone', duration:12,
-    meta:{ age:25, sex:'F', setting:'Telephone \u2014 giving a positive chlamydia result.', system:'Sexual health / STI result & partner notification' },
+    meta:{ age:25, sex:'F', setting:'Telephone \u2014 giving a positive chlamydia result.', system:'Sexual health / STI result & partner notification', checked:'October 2026' },
     brief:'Miss Orla Devine, 25. A chlamydia NAAT (done at a routine pill check / after some IMB) is POSITIVE. She is in a 2-year relationship and is upset and angry \u2014 "does this mean he\u2019s been cheating?" She is otherwise well; if asked, some IMB and mild pelvic discomfort — which need assessment for PID (examination for cervical motion and adnexal tenderness). She wants to know how she got it and what it means for her relationship and fertility. No severe pain/systemic features. On combined pill.',
     script:{
-      opening:'"You said my result was back? \u2026 Positive? For chlamydia? But \u2014 I\u2019ve been with my boyfriend two years, there\u2019s been no one else for me. So that means HE\u2019S cheated, right? I\u2019m so angry, and also \u2014 oh god \u2014 is it serious? Can it stop me having kids? I don\u2019t even know what to think right now."',
-      facts:[
-        { topic:'The result & treatment', text:'Chlamydia is common, easily treated (BASHH UK national guideline for Chlamydia trachomatis, 2026: doxycycline 100 mg twice daily for 7 days is the sole first-line treatment; where doxycycline is unsuitable, e.g. pregnancy, use the alternative in BASHH 2026 agreed with sexual health), and usually asymptomatic. Her IMB and pelvic discomfort mean she needs assessing for PID, which changes the treatment (BASHH PID guideline, 2019). The management: treat her, treat the partner, screen for other STIs (HIV, gonorrhoea, syphilis), advise abstaining until both treated, and arrange a retest to exclude reinfection (BASHH 2026: 2–6 months after treatment for under-25s).' },
-        { topic:'The "has he cheated?" trap', text:'CRITICAL communication point \u2014 chlamydia can be present silently for months to YEARS, so a positive test does NOT prove recent infidelity. The GP must NOT confirm or fuel the "he cheated" conclusion; explain honestly that the timing of acquisition often can\u2019t be determined, avoiding both false reassurance and inflaming the relationship. This is the examinable nuance.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 her distress is really about the RELATIONSHIP (trust, betrayal) and a deeper fear about FERTILITY, more than the infection itself. There may also be shame/embarrassment and worry about how to even raise it with her partner. The consultation is as much about supporting her through a relationship shock and partner notification as about prescribing antibiotics.' },
-        { topic:'Partner notification reframed', text:'She needs the partner tested and treated \u2014 but framed not as "confronting a cheater" but as a health necessity to prevent reinfection and protect them both; the clinic can do anonymous provider notification if she prefers. Handling the emotional charge so partner notification actually happens is the skill.' },
-        { topic:'What she needs',     text:'Officially: to know if he cheated and whether she can have children. What she needs: treatment, an honest explanation that timing of acquisition is uncertain (don\u2019t confirm infidelity), partner notification and STI screening handled supportively, accurate fertility reassurance (single treated infection rarely causes infertility; untreated/recurrent PID is the risk), and emotional support.' },
+      "opening": "\"You said my result was back? … Positive? For chlamydia? But — I've been with my boyfriend two years, there's been no one else for me. So that means HE'S cheated, right? I'm so angry, and also — oh god — is it serious? Can it stop me having kids? I don't even know what to think right now.\"",
+      "facts": [
+        {
+          "topic": "Why you had the test",
+          "text": "If asked: at your pill check two weeks ago you mentioned some spotting between periods, and the nurse did a swab."
+        },
+        {
+          "topic": "Symptoms (if asked)",
+          "text": "Spotting between periods for about two months and sometimes after sex. A mild ache low in your tummy on and off. A bit of pain deep inside during sex recently. No fever, no unusual discharge, no pain passing urine."
+        },
+        {
+          "topic": "Contraception and pregnancy",
+          "text": "On the combined pill for 5 years, never missed one recently. Last period (withdrawal bleed) two weeks ago. You do not think you are pregnant."
+        },
+        {
+          "topic": "Sexual history (if asked sensitively)",
+          "text": "With Liam for two years. Before Liam you had two partners — the last about three years ago. Never had an STI test before this one."
+        },
+        {
+          "topic": "Medical history",
+          "text": "No other problems. No allergies, no other medicines."
+        },
+        {
+          "topic": "Social",
+          "text": "25, hairdresser. Living with Liam for a year. Non-smoker."
+        },
+        {
+          "topic": "Hidden worries — hold back",
+          "text": "You are dreading telling Liam, and part of you is frightened he will think YOU have cheated. Your sister had IVF, so fertility is a raw subject. Say these only if the doctor asks how you are feeling about it or what worries you most."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Shocked, then angry, then tearful. Keep coming back to \"So he cheated?\" If the doctor says yes or hints at it, get angrier. If they explain that it can sit silently for a long time and nobody can tell when it was caught, go quiet and say: \"So it could have been from before?\" Respond well to calm, practical help about how to tell Liam and what happens next."
+        }
       ],
-      ice:{
-        ideas:'A positive chlamydia test means her partner has definitely cheated, and it might stop her having children.',
-        concerns:'HIDDEN AGENDA \u2014 the real distress is about the relationship (trust/betrayal) and a deeper fertility fear, more than the infection; plus shame and dread of raising it with her partner.',
-        expectations:'To be told whether he cheated and whether she can have kids. What she actually needs: treatment, an honest "timing is uncertain" (not confirmation of infidelity), supportive partner notification/STI screening, accurate fertility reassurance, and emotional support.'
+      "ice": {
+        "ideas": "\"If I've got it and I've been faithful, he must have cheated.\"",
+        "concerns": "\"Can it stop me having kids?\" and what this means for you and Liam.",
+        "expectations": "To know who gave it to you and whether it has damaged your fertility. You also want it treated quickly."
       },
-      cues:['"Does this mean he\u2019s cheated?" \u2014 chlamydia can be silent for years; don\u2019t confirm infidelity, explain timing is uncertain.','"Can it stop me having kids?" \u2014 the deeper fertility fear; reassure accurately (single treated infection rarely causes infertility).','Anger/distress about the relationship \u2014 the real consultation is emotional support + getting partner notification to happen.']
+      "cues": [
+        "\"So that means HE'S cheated, right?\" — say in the opening and again later.",
+        "\"Can it stop me having kids?\" — say in the opening.",
+        "\"How am I even meant to tell him?\" — say when partner treatment is mentioned."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Treats the chlamydia correctly (BASHH 2026: doxycycline 100 mg twice daily for 7 days, the sole first-line treatment; checks for pregnancy first; alternative per BASHH 2026 with sexual-health advice if contraindicated/pregnant) — unless PID is suspected, when the PID regimen applies — advises ABSTAINING from sex until she and her partner have completed treatment, and arranges a retest for reinfection (BASHH 2026: 2–6 months after treatment for under-25s; test of cure is not routine outside pregnancy)' },
-      { dom:'tasks', text:'Handles the "has he cheated?" question HONESTLY and carefully: explains chlamydia can be carried silently for months to years, so a positive result does NOT prove recent infidelity and the timing of acquisition often cannot be determined \u2014 avoiding both confirming infidelity and false reassurance' },
-      { dom:'tasks', text:'Arranges PARTNER NOTIFICATION supportively: the partner needs testing and treating to prevent reinfection and protect them both; frames it as a health necessity (not confronting a cheater) and offers clinic/provider/anonymous options' },
-      { dom:'tasks', text:'Offers a FULL STI screen (HIV, gonorrhoea, syphilis) and — because she reports IMB and pelvic discomfort — assesses for PID, including an examination for cervical motion and adnexal tenderness (plus deep dyspareunia, discharge, fever), with a low threshold to treat as PID (BASHH 2019 outpatient regimen: ceftriaxone 1 g IM, then doxycycline 100 mg twice daily with metronidazole 400 mg twice daily for 14 days; review at 72 hours)' },
-      { dom:'tasks', text:'Gives accurate FERTILITY information: a single, promptly-treated chlamydia infection rarely causes infertility; the risk comes from untreated or recurrent infection causing PID/tubal damage \u2014 which is exactly why treatment and partner notification matter \u2014 reassuring without dismissing' },
-      { dom:'rto',   text:'Recognises the consultation is largely emotional \u2014 supports her through the relationship shock and anger, validates her feelings, and does NOT take sides or speculate about the partner\u2019s behaviour' },
-      { dom:'rto',   text:'Helps her with the practicalities and emotional difficulty of telling her partner (or using anonymous notification), reducing shame and stigma' },
-      { dom:'gs',    text:'Safety-nets and follows up: PID red flags (worsening pelvic pain, fever \u2192 review), completion of treatment and partner treatment before resuming sex, STI-screen results, contraception/condom advice, and emotional support/follow-up' },
+      { dom:'cm', text:'Treats the chlamydia correctly (BASHH 2026: doxycycline 100 mg twice daily for 7 days, the sole first-line treatment; checks for pregnancy first; alternative per BASHH 2026 with sexual-health advice if contraindicated/pregnant) — unless PID is suspected, when the PID regimen applies — advises ABSTAINING from sex until she and her partner have completed treatment, and arranges a retest for reinfection (BASHH 2026: 2–6 months after treatment for under-25s; test of cure is not routine outside pregnancy)' },
+      { dom:'ro', text:'Handles the "has he cheated?" question HONESTLY and carefully: explains chlamydia can be carried silently for months to years, so a positive result does NOT prove recent infidelity and the timing of acquisition often cannot be determined \u2014 avoiding both confirming infidelity and false reassurance' },
+      { dom:'cm', text:'Arranges PARTNER NOTIFICATION supportively: the partner needs testing and treating to prevent reinfection and protect them both; frames it as a health necessity (not confronting a cheater) and offers clinic/provider/anonymous options' },
+      { dom:'cm', text:'Offers a FULL STI screen (HIV, gonorrhoea, syphilis) and — because she reports IMB and pelvic discomfort — assesses for PID, including an examination for cervical motion and adnexal tenderness (plus deep dyspareunia, discharge, fever), with a low threshold to treat as PID (BASHH 2019 outpatient regimen: ceftriaxone 1 g IM, then doxycycline 100 mg twice daily with metronidazole 400 mg twice daily for 14 days; review at 72 hours)' },
+      { dom:'cm', text:'Gives accurate FERTILITY information: a single, promptly-treated chlamydia infection rarely causes infertility; the risk comes from untreated or recurrent infection causing PID/tubal damage \u2014 which is exactly why treatment and partner notification matter \u2014 reassuring without dismissing' },
+      { dom:'ro',   text:'Recognises the consultation is largely emotional \u2014 supports her through the relationship shock and anger, validates her feelings, and does NOT take sides or speculate about the partner\u2019s behaviour' },
+      { dom:'ro',   text:'Helps her with the practicalities and emotional difficulty of telling her partner (or using anonymous notification), reducing shame and stigma' },
+      { dom:'cm',    text:'Safety-nets and follows up: PID red flags (worsening pelvic pain, fever \u2192 review), completion of treatment and partner treatment before resuming sex, STI-screen results, contraception/condom advice, and emotional support/follow-up' },
     ],
     worked:[
       { lbl:'Steady + treatable',   txt:'"I can hear this has hit you hard, and I\u2019m sorry it\u2019s landed like this over the phone. Let me start with the reassuring bit: chlamydia is really common and very easily treated \u2014 a short course of antibiotics clears it. So the infection itself is the straightforward part. Let\u2019s take the rest gently."' },

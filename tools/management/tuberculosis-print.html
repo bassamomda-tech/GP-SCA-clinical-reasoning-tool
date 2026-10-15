@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tuberculosis — Protocol · Reasoning GP</title>
+<meta name="description" content="Tuberculosis in primary care on one page (NICE NG33): when to suspect TB (cough over 3 weeks, weight loss, night sweats, haemoptysis, risk groups), chest X-ray and three sputum samples, urgent referral to the TB service, notification to UKHSA on suspicion, latent TB testing for new entrants with IGRA, BCG eligibility, contact tracing, and why treatment is never started in primary care." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/tuberculosis.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1791880261555335">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="Tuberculosis management card">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+icon:"\u{1FAC1}",
+  title:"Tuberculosis (TB)",
+  eyebrow:"Protocol · suspect, refer, notify, prevent",
+  stemTitle:"Tuberculosis: suspect it, X-ray it, send three sputums, refer urgently and notify, but never start treatment in primary care",
+  stemSub:"One page for tuberculosis in primary care, following NICE NG33. Think of TB in anyone with a cough lasting more than 3 weeks, weight loss, night sweats, haemoptysis or unexplained fever, especially in risk groups. Arrange a chest X-ray and three sputum samples, refer urgently to the TB service and notify UKHSA on clinical suspicion. Primary care's other jobs are latent TB testing for new entrants, BCG, supporting treatment adherence, spotting drug interactions and side effects, and helping the TB service with contacts.",
+  guideline:"NICE NG33 Tuberculosis (2016, updated 2024) · UKHSA Green Book chapter 32: tuberculosis · UKHSA/NHS England latent TB infection testing programme · Health Protection (Notification) Regulations 2010 · NICE NG12 (2015, updated 2026) · FSRH drug interactions with hormonal contraception (2022)",
+  reviewed:"15 October 2026",
+  nextReview:"15 April 2027",
+  meta:[
+    {t:"NICE NG33 (2016, updated 2024)"},
+    {t:"Green Book ch.32 · BCG"},
+    {t:"Notifiable on suspicion · UKHSA"},
+    {t:"Treatment by the TB service only", tone:"tw"},
+    {t:"v1.0 · reviewed Oct 2026", tone:"ok"}
+  ],
+  lead:"<div class='mg-layers'><a href='#redflags'><b>Danger</b><small>meningitis · massive haemoptysis</small></a><a href='#confirm'><b>Suspect</b><small>CXR + 3 sputums</small></a><a href='#refer'><b>Refer + notify</b><small>TB service · UKHSA</small></a><a href='#latent'><b>Latent TB</b><small>new entrants · IGRA</small></a></div>",
+  quickSub:"The six points that change what you do today. Each one is traced to a named source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"red", h:"TB meningitis and massive haemoptysis are emergencies", html:"Headache with fever, confusion, drowsiness, neck stiffness or focal signs in someone at risk of TB → <b>999</b> or same-day admission. <b>Massive haemoptysis</b> or respiratory distress → <b>999</b>. Suspected spinal TB with new limb weakness or bladder or bowel change → same-day assessment as for cord compression."},
+    {tone:"cream", h:"Suspect it: cough over 3 weeks plus anything else", html:"Think of pulmonary TB with a <b>cough lasting more than 3 weeks</b>, especially with <b>weight loss, night sweats, fever, haemoptysis</b> or fatigue, and in <b>risk groups</b>: born in or lived in a high-incidence country, a known contact, HIV or other immunosuppression (including anti-TNF and long-term steroids), homelessness, prison, drug or alcohol misuse. Extrapulmonary TB (lymph nodes, spine, abdomen) is common in people born abroad."},
+    {tone:"cream", h:"Chest X-ray and three sputum samples, but do not wait to refer", html:"Arrange a <b>chest X-ray</b> and send <b>three respiratory (sputum) samples</b> for TB microscopy and culture, including <b>at least one early-morning sample</b>, marked 'TB'. If the X-ray suggests TB or suspicion is high, <b>refer urgently to the TB service</b> without waiting for the culture, which takes weeks. Offer an <b>HIV test</b> to everyone being assessed for TB."},
+    {tone:"amber", h:"Notify on suspicion", html:"TB is a <b>notifiable disease</b>: the doctor who <b>suspects</b> it must notify the local UKHSA health protection team, without waiting for confirmation (in writing within 3 days, or by phone if urgent). The TB service and health protection team then organise <b>contact tracing</b>."},
+    {tone:"red", h:"Never start TB treatment in primary care", html:"TB treatment (usually rifampicin, isoniazid, pyrazinamide and ethambutol for 2 months, then rifampicin and isoniazid for 4 months for drug-sensitive disease) is started and supervised by the TB service, often with directly or video observed therapy. Do not give a 'trial' of TB drugs, and avoid empirical fluoroquinolones for a chest infection when TB is suspected, as they can mask the diagnosis."},
+    {tone:"green", h:"Latent TB testing and BCG prevent future cases", html:"In areas with the national programme, new entrants aged <b>16–35</b> who arrived in the last <b>5 years</b> from a <b>high-incidence country</b> (150 per 100,000 or more, or sub-Saharan Africa) are offered an <b>IGRA</b> blood test at GP registration. Neonatal <b>BCG</b> is offered to infants at higher risk (Green Book chapter 32), after the SCID screening result."}
+  ],
+  pathwaySub:"The consultation in five moves. Referral and notification run in parallel.",
+  pathway:[
+    {title:"Screen for emergencies", html:"Meningitis features, massive haemoptysis, respiratory distress or new neurological signs → 999 or same-day admission."},
+    {title:"Suspect and test", html:"Cough over 3 weeks, systemic symptoms or risk factors → chest X-ray, three sputum samples (one early-morning), FBC, CRP, HIV test. Consider extrapulmonary sites."},
+    {title:"Refer urgently and notify", html:"Urgent TB service referral when the X-ray suggests TB or clinical suspicion is high. Notify the health protection team on suspicion."},
+    {title:"Reduce spread", html:"Advise the patient to cover coughs, avoid new contacts and stay off work or school until the TB service says otherwise. Do not wait for culture to act."},
+    {title:"Support treatment", html:"Check interactions (rifampicin), contraception, side effects and adherence; keep the TB service informed. Help with contacts, latent TB testing and BCG."}
+  ],
+  sections:[
+    {id:"redflags", nav:"Red flags", title:"Red flags: TB that cannot wait", sub:"Most TB presents slowly. These presentations do not.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 TB meningitis", html:"Subacute headache, fever, behaviour change, confusion, drowsiness, neck stiffness, cranial nerve palsy or focal signs → <b>999</b> or same-day admission. It progresses over days and is fatal if missed.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"red", h:"🔴 Massive haemoptysis or respiratory distress", html:"Large-volume haemoptysis, hypoxia or a very unwell patient → <b>999</b>.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"red", h:"🔴 Spinal TB with neurology", html:"Back pain with new limb weakness, sensory level, or bladder or bowel dysfunction → <b>same-day</b> assessment as for cord compression.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"amber", h:"🟠 Miliary or disseminated TB", html:"Fever, weight loss and malaise in an immunosuppressed person or a young child, sometimes with few chest signs → same-day assessment.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"amber", h:"🟠 Young child who is a contact", html:"Children under 5 who are household contacts of pulmonary TB are at high risk of severe disease. The TB service assesses them urgently; ensure the family has been reached.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"amber", h:"🟠 Lung cancer overlap", html:"Aged 40 or over with unexplained haemoptysis → <b>suspected cancer pathway referral</b> (NG12). Weight loss, cough and an abnormal chest X-ray can be cancer or TB; the X-ray report and urgent referral handle both.", src:"NICE NG12 (2015, updated 2026)"}
+       ]},
+       {b:"why", html:"TB is curable, but delay costs lives and spreads infection. The average delay from symptom onset to treatment in England is months, much of it before the first chest X-ray. Thinking of TB, testing early and referring before culture results arrive is where primary care makes the difference."}
+     ]},
+
+    {id:"confirm", nav:"Suspect", title:"Suspect and test: who, what and how", sub:"The diagnosis is made by the TB service. Primary care starts the tests and the referral.",
+     blocks:[
+       {b:"table", head:["Presentation","Think of","First tests"], rows:[
+         ["<b>Pulmonary</b>","Cough over 3 weeks, haemoptysis, weight loss, night sweats, fever, breathlessness","Chest X-ray; three sputum samples (one early-morning) for microscopy and culture; HIV test"],
+         ["<b>Lymph node</b>","Painless, often cervical, nodes enlarging over weeks, sometimes discharging","Urgent referral for biopsy or aspirate (TB culture as well as histology)"],
+         ["<b>Spinal and bone</b>","Persistent back pain, vertebral tenderness, systemic symptoms","Urgent imaging and referral; same day if neurological signs"],
+         ["<b>Abdominal, genitourinary, other</b>","Ascites, abdominal pain, sterile pyuria, infertility, pericardial effusion","Referral to the relevant specialty with TB in mind"],
+         ["<b>Meningitis</b>","Subacute headache, confusion, cranial nerve palsies","999 or same-day admission"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🧪 Sputum technique", html:"Deep cough samples, not saliva, ideally at least 8 hours apart, with at least one early-morning sample. Mark the form 'suspected TB, for AFB microscopy and culture'. If the patient cannot produce sputum, the TB service arranges induced sputum or bronchoscopy.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"blue", h:"🩸 Other tests", html:"FBC, CRP, U&amp;E, LFTs (baseline for treatment), HbA1c, and HIV, hepatitis B and C serology as the TB service advises. An HIV test is offered to everyone with TB.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"amber", h:"🟠 Do not be falsely reassured", html:"A normal chest X-ray does not exclude extrapulmonary TB, or early pulmonary TB in immunosuppressed people. A negative IGRA or Mantoux test does not exclude active TB. Sputum smear can be negative when culture is positive.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"cream", h:"🌍 Risk groups", html:"Born in or recently lived in a high-incidence country; close contact of a case; HIV, transplant, chemotherapy, anti-TNF or long-term steroids; diabetes; CKD on dialysis; homelessness, prison, drug or alcohol misuse; previous untreated TB.", src:"NICE NG33 (2016, updated 2024)"}
+       ]}
+     ]},
+
+    {id:"manage", nav:"Treatment", title:"Treatment: the TB service leads, primary care supports", sub:"Standard treatment for drug-sensitive TB is 6 months. Drug-resistant TB needs longer, specialist regimens.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", tone:"cream", title:"Specialist starts treatment", when:"after assessment", fromLabel:"then",
+          html:"Drug-sensitive pulmonary TB: <b>rifampicin, isoniazid, pyrazinamide and ethambutol for 2 months</b>, then <b>rifampicin and isoniazid for 4 months</b> (longer for TB meningitis and some other sites). Pyridoxine is given with isoniazid when there is a risk of neuropathy. The TB service prescribes, enhances case management and arranges directly or video observed therapy where needed."},
+         {step:"2", tone:"amber", title:"Primary care checks every new prescription", when:"throughout treatment", fromLabel:"and",
+          html:"<b>Rifampicin is a strong enzyme inducer</b>: it reduces the effect of combined and progestogen-only pills, implants, DOACs, warfarin, methadone, some antiretrovirals, steroids, antiepileptics and many others. Check every co-prescription with the BNF interactions checker and the TB pharmacist."},
+         {step:"3", tone:"green", title:"Watch for side effects and adherence", when:"every contact", fromLabel:"",
+          html:"Hepatotoxicity (nausea, vomiting, jaundice, abdominal pain) → stop and contact the TB service the same day. Visual change on ethambutol (colour vision, blurring) → stop and contact the TB service the same day. Peripheral neuropathy (isoniazid), rash, gout-like joint pain (pyrazinamide). Orange urine, tears and sweat are expected with rifampicin; soft contact lenses can stain."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"🟠 Contraception on rifampicin", html:"Hormonal methods other than injectable DMPA and the levonorgestrel or copper intrauterine devices are unreliable during rifampicin treatment and for 28 days after. Offer a copper IUD, LNG-IUD or DMPA injection; emergency contraception choices also change.", src:"FSRH drug interactions with hormonal contraception (2022)"},
+         {tone:"blue", h:"🏠 Infectiousness", html:"People with pulmonary TB on effective treatment are usually considered non-infectious after about 2 weeks, but the TB service decides when to return to work or school, especially for healthcare and childcare workers.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"cream", h:"🤝 Social support", html:"Housing, immigration fears, alcohol and drug use, and stigma are common barriers. Treatment for TB is free on the NHS for everyone, regardless of immigration status.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"cream", h:"🩺 Comorbidities", html:"Optimise diabetes control; review HIV care; check hepatitis status. Report any new symptom to the TB service rather than changing the regimen.", src:"NICE NG33 (2016, updated 2024)"}
+       ]},
+       {b:"say", html:"The tests suggest you may have TB. It is a bacterial infection that is completely curable with a course of tablets, usually for six months, which the TB team will organise and check with you. Treatment is free for everyone. Until the team says otherwise, cover your mouth when you cough, keep away from people you don't live with, and stay off work. The team will also check the people you live with, to keep them safe."}
+     ]},
+
+    {id:"latent", nav:"Latent TB", title:"Latent TB, contacts and BCG", sub:"Finding and treating latent infection prevents active disease.",
+     blocks:[
+       {b:"table", head:["Group","Offer","Who does it"], rows:[
+         ["<b>New entrants</b> aged 16–35, arrived in the last 5 years from a country with TB incidence of 150 per 100,000 or more (or sub-Saharan Africa)","<b>IGRA</b> blood test, usually at GP registration in programme areas","Primary care or local LTBI service; positive → TB service for assessment and treatment"],
+         ["<b>Contacts</b> of active TB","Symptom screen, IGRA or Mantoux, chest X-ray as needed","TB service and health protection team"],
+         ["<b>Starting immunosuppression</b> (anti-TNF and other biologics, transplant, chemotherapy) or with HIV","Latent TB screening before treatment","The specialist starting the treatment"],
+         ["<b>Positive latent TB test</b>","Usually 3 months of rifampicin and isoniazid, or 6 months of isoniazid","TB service"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"💉 Neonatal BCG", html:"Offered to infants living in an area with TB incidence of 40 per 100,000 or more, or with a parent or grandparent born in a country with that incidence, and to other at-risk infants (Green Book chapter 32). It is given within 28 days of birth once the SCID newborn screening result shows SCID is not suspected.", src:"Green Book ch.32 · UKHSA BCG programme (2021)"},
+         {tone:"green", h:"💉 Older children and adults", html:"Unvaccinated children under 16 with risk factors can be offered BCG after a negative test for latent TB where needed. BCG is not usually given over 16, except some at-risk occupational groups under 35. It is a live vaccine: not in immunosuppression or pregnancy.", src:"Green Book ch.32"}
+       ]}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Special groups", sub:"Groups where the default plan changes.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"🤰 Pregnancy", html:"Active TB in pregnancy is treated (standard first-line drugs) by the TB service with obstetric input. Latent TB treatment is often deferred until after delivery unless the risk is high.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"amber", h:"🧒 Children", html:"Children often have non-specific symptoms (fever, weight faltering, lymphadenopathy). Refer to the paediatric TB service. Child contacts under 5 are a priority.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"amber", h:"🛡️ HIV and immunosuppression", html:"Atypical presentations, normal chest X-rays and extrapulmonary disease are more common. Keep a low threshold for referral.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"cream", h:"🏚️ Under-served groups", html:"People who are homeless, in prison, or misuse drugs or alcohol need enhanced case management; liaise with the TB service and outreach teams.", src:"NICE NG33 (2016, updated 2024)"}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Monitoring during treatment", sub:"The TB service owns monitoring; primary care sees the patient in between.",
+     blocks:[
+       {b:"table", head:["Check","When","Action"], rows:[
+         ["<b>Adherence</b>","Every contact","Missed doses → tell the TB service."],
+         ["<b>Liver symptoms</b>","Every contact","Nausea, vomiting, jaundice, abdominal pain → stop TB drugs and contact the TB service the same day."],
+         ["<b>Vision</b> (on ethambutol)","Every contact","Blurring or colour change → stop ethambutol and contact the TB service the same day."],
+         ["<b>New prescriptions</b>","Every time","Check interactions with rifampicin; review contraception."]
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer and notify: who, where and how fast", sub:"Referral and notification are separate duties; do both.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 or same-day admission", html:"Suspected TB meningitis; massive haemoptysis; respiratory distress; spinal TB with neurological signs; very unwell or disseminated disease.", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"amber", h:"Urgent TB service referral", html:"Chest X-ray suggesting TB, or strong clinical suspicion of pulmonary or extrapulmonary TB, without waiting for sputum culture. Use the local TB service referral route (often a respiratory or infectious diseases team).", src:"NICE NG33 (2016, updated 2024)"},
+         {tone:"amber", h:"Notify UKHSA health protection team", html:"On clinical suspicion: in writing within 3 days, or by phone if urgent (for example a healthcare worker or a large exposure).", src:"Health Protection (Notification) Regulations 2010"},
+         {tone:"amber", h:"Suspected cancer pathway", html:"Aged 40 or over with unexplained haemoptysis, or chest X-ray suggesting lung cancer (NG12).", src:"NICE NG12 (2015, updated 2026)"},
+         {tone:"green", h:"Stays in primary care", html:"Latent TB testing in programme areas, BCG recall, interaction checks and support during treatment, in partnership with the TB service.", src:"NICE NG33 (2016, updated 2024)"}
+       ]}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"Patient information and safety-netting", sub:"Say it, give it in writing, document it.",
+     blocks:[
+       {b:"say", html:"Call 999 if you cough up a lot of blood, can't breathe, or become confused or very drowsy with a bad headache. While on TB tablets, stop them and contact the TB team or us the same day if your skin or eyes turn yellow, you keep vomiting, or your eyesight changes. Orange urine and tears are expected. Tell any doctor or pharmacist that you are on rifampicin before starting a new medicine."},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"📄 Information", html:"NHS: tuberculosis. TB Alert: information in many languages.", src:"NHS TB information"},
+         {tone:"green", h:"🌍 Free treatment", html:"TB testing and treatment are free in the NHS regardless of immigration status; reassure people who fear charges.", src:"NHS charging regulations: exempt diseases"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 29-year-old man who arrived from Pakistan 2 years ago has had a cough for 5 weeks, night sweats and 4 kg weight loss. He shares a flat with four others, works in a restaurant, and asks for 'stronger antibiotics'. He is worried about his visa.", src:"NICE NG33 (2016, updated 2024)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Raises <b>TB</b> sensitively. Arranges <b>chest X-ray and three sputum samples</b> and offers an HIV test. Avoids antibiotics. Refers urgently to the TB service and <b>notifies on suspicion</b>. Explains infection control and that treatment is free regardless of immigration status. Mentions flatmates will be assessed. Safety-nets.", src:"NICE NG33 (2016, updated 2024) · Health Protection (Notification) Regulations 2010"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page traces to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG33 — Tuberculosis (January 2016, last updated February 2024)</b><br><a href="https://www.nice.org.uk/guidance/ng33" rel="noopener">nice.org.uk/guidance/ng33</a><span class="rd"> — suspecting TB, chest X-ray and three respiratory samples, HIV testing, treatment regimens, latent TB testing and treatment, contact tracing, under-served groups</span></li>'+
+         '<li><b>NICE QS141 — Tuberculosis quality standard (2017)</b><br><a href="https://www.nice.org.uk/guidance/qs141" rel="noopener">nice.org.uk/guidance/qs141</a><span class="rd"> — latent TB testing at GP registration for people aged 16–35 from high-incidence countries who arrived within 5 years</span></li>'+
+         '<li><b>UKHSA — Tuberculosis: the Green Book, chapter 32</b> and <b>BCG programme changes from September 2021</b><br><a href="https://www.gov.uk/government/publications/tuberculosis-the-green-book-chapter-32" rel="noopener">gov.uk — Green Book chapter 32</a> · <a href="https://www.gov.uk/government/publications/bcg-immunisation-programme-changes-from-september-2021-letter" rel="noopener">gov.uk — BCG 2021 letter</a><span class="rd"> — BCG eligibility (40 per 100,000), timing after SCID screening</span></li>'+
+         '<li><b>UKHSA/NHS England — Latent TB infection testing and treatment programme</b><br><a href="https://www.gov.uk/government/publications/latent-tb-infection-ltbi-testing-and-treatment" rel="noopener">gov.uk — LTBI programme</a><span class="rd"> — 150 per 100,000 threshold, IGRA</span></li>'+
+         '<li><b>Health Protection (Notification) Regulations 2010</b><br><a href="https://www.gov.uk/guidance/notifiable-diseases-and-causative-organisms-how-to-report" rel="noopener">gov.uk — notifiable diseases</a><span class="rd"> — notify on suspicion within 3 days; urgent cases by phone</span></li>'+
+         '<li><b>NICE NG12 — Suspected cancer: recognition and referral (2015, updated 2026)</b><br><a href="https://www.nice.org.uk/guidance/ng12" rel="noopener">nice.org.uk/guidance/ng12</a><span class="rd"> — haemoptysis aged 40 and over</span></li>'+
+         '<li><b>FSRH — Drug interactions with hormonal contraception (2022)</b><br><a href="https://www.fsrh.org/Common/Uploaded%20files/documents/fsrh-ceu-guidance-drug-interactions-with-hormonal-contraception-may-2022.pdf" rel="noopener">fsrh.org — drug interactions</a><span class="rd"> — enzyme inducers and contraception</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Tuberculosis in primary care — NICE NG33 (2016, updated 2024), NICE QS141, UKHSA Green Book chapter 32 and the latent TB programme, the Health Protection (Notification) Regulations 2010, NICE NG12 and FSRH interaction guidance. TB treatment is started and supervised by the TB service. Not a substitute for clinical judgement."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

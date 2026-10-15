@@ -76,7 +76,36 @@
     }
     /* Old card addresses kept working after duplicate cards were merged (Upload 114):
        #vaginal-thrush now opens the single vaginal candidiasis card. */
-    const ALIAS = { 'vaginal-thrush': 'vaginal-candidiasis' };
+    /* Upload 127: three more duplicate pairs merged — the old #ids open the kept card. */
+    const ALIAS = { 'vaginal-thrush': 'vaginal-candidiasis', 'tinea-skin': 'fungal-infections',
+                    'cough-preparations': 'acute-cough-bronchitis', 'reflux-medications': 'gord-dyspepsia' };
+    const isSelf = p => p.type === 'selfcare';
+    const TYPES = [
+      { v:'rx',   label:'Prescription cards', test: p => !isSelf(p) },
+      { v:'self', label:'Self-care (no prescription)', test: isSelf },
+      { v:'pf',   label:'Pharmacy First condition', test: p => !!p.pharmacyFirst && /clinical pathway for/.test(p.pharmacyFirst) },
+    ];
+    const typeCount = {}; TYPES.forEach(t => { typeCount[t.v] = DATA.filter(t.test).length; });
+    function badges(p, front){
+      const b = [];
+      if (isSelf(p)) b.push('<span class="rx-badge rx-badge-self">Self-care · buy over the counter · no prescription</span>');
+      if (p.pharmacyFirst && /clinical pathway for/.test(p.pharmacyFirst)) b.push('<span class="rx-badge rx-badge-pf">Pharmacy First</span>');
+      if (!b.length) return '';
+      return front ? `<span class="rx-front-badges">${b.join('')}</span>` : `<div class="rx-badges">${b.join('')}</div>`;
+    }
+    function whoHTML(p){
+      const rows = [['Age range', p.ageRange], ['Children', p.children ? p.children + (!/BNFC/i.test(p.children) ? '' : ` <a class="rx-bnfc" href="${BNFC}" target="_blank" rel="noopener noreferrer">Check the BNFC ↗</a>`) : ''],
+                    ['Pregnancy', p.pregnancy], ['Breastfeeding', p.breastfeeding]].filter(r => r[1]);
+      if (!rows.length) return '';
+      const long = rows.reduce((n, r) => n + String(r[1]).length, 0) > 700;
+      return `<div class="rx-section"><details class="rx-who"${long ? '' : ' open'}><summary>👥 Age, children, pregnancy &amp; breastfeeding</summary><dl class="rx-who-grid">${rows.map(r => `<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join('')}</dl></details></div>`;
+    }
+    function recordText(p){
+      let t = p.emisText || '';
+      const L = (p.leaflets || [])[0];
+      if (L && t && t.indexOf(L.url) === -1) t += `\nLeaflet signposted: ${L.label.replace(/^NHS — /, 'NHS: ')} (${L.url})`;
+      return t;
+    }
     const BNFC = 'https://bnfc.nice.org.uk/';
     const bnfcNote = d => d && d.child ? `<a class="rx-bnfc" href="${BNFC}" target="_blank" rel="noopener noreferrer">Children: check the BNFC ↗</a>` : '';
     /* Same-topic links from the shared registry (assets/topic-links.js) */
@@ -86,7 +115,7 @@
       if (!l || (!l.m && !l.a)) return '';
       return `<div class="rx-xlinks">${l.m ? `<a class="rx-xlink" href="management/${l.m}.html">See the full protocol →</a>` : ''}${l.a ? `<a class="rx-xlink" href="algorithms/${l.a}.html">Diagnostic algorithm →</a>` : ''}</div>`;
     }
-    const state = { q:'', cats:new Set(), sort:'chapter', activeId:null };
+    const state = { q:'', cats:new Set(), types:new Set(), sort:'chapter', activeId:null };
 
     /* ---- category model (curated order, only those present) ---- */
     function catList(){
@@ -102,10 +131,13 @@
 
     function matches(p){
       if (state.cats.size && !state.cats.has(p.category)) return false;
+      if (state.types.size && !TYPES.some(t => state.types.has(t.v) && t.test(p))) return false;
       if (!state.q) return true;
       const q = state.q.toLowerCase();
       const hay = [
-        p.title, p.category, p.eyebrow, p.indication,
+        p.title, p.category, p.eyebrow, p.indication, p.aka, p.id,
+        isSelf(p) ? 'self-care selfcare over the counter otc' : '',
+        p.pharmacyFirst && /clinical pathway for/.test(p.pharmacyFirst) ? 'pharmacy first' : '',
         (p.drugs||[]).map(d => d.name).join(' '),
       ].filter(Boolean).join(' ').toLowerCase();
       return hay.includes(q);
@@ -125,6 +157,19 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
               </button>
             </span>
+          </div>
+          <div class="dir-rail-sec">
+            <div class="dir-rail-h">Card type</div>
+            <div class="dir-rail-list">
+              ${TYPES.map(t =>
+                `<label class="dir-check" data-type="${t.v}">
+                   <input type="checkbox" value="${t.v}" data-kind="type">
+                   <span class="dir-check-box"></span>
+                   <span class="dir-check-label">${t.label}</span>
+                   <span class="dir-check-n">${typeCount[t.v]}</span>
+                 </label>`
+              ).join('')}
+            </div>
           </div>
           <div class="dir-rail-sec">
             <div class="dir-rail-h">Specialty</div>
@@ -191,6 +236,7 @@
             <div class="rx-open-titles">
               <h3 class="rx-card-title">${p.title}</h3>
               ${p.eyebrow ? `<div class="rx-card-eyebrow">${p.eyebrow}</div>` : ''}
+              ${badges(p, false)}
             </div>
           </div>
           ${renderDetail(p)}
@@ -212,13 +258,14 @@
               <span class="rx-front-ic" style="--c:${catColor(p.category)}">${catIcon(p.category)}</span>
               <h3 class="rx-card-title">${p.title}</h3>
               ${p.eyebrow ? `<div class="rx-card-eyebrow">${p.eyebrow}</div>` : ''}
-              <span class="rx-front-hint">View prescription
+              ${badges(p, true)}
+              <span class="rx-front-hint">${isSelf(p) ? 'View self-care advice' : 'View prescription'}
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
               </span>
             </button>
             <div class="rx-face rx-face-back">
               <div class="rx-back-head">
-                <span class="rx-back-label">Prescription</span>
+                <span class="rx-back-label">${isSelf(p) ? 'Self-care' : 'Prescription'}</span>
                 <button class="rx-back-flip" type="button" data-flip="${p.id}" aria-label="Flip back" title="Flip back">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 5 5v0a5 5 0 0 1-5 5H9"/></svg>
                 </button>
@@ -241,27 +288,33 @@
       ).join('');
       const counsel = (p.counselling||[]).map(c => `<li>${c}</li>`).join('');
       const reds = (p.redFlags||[]).map(r => `<li>${r}</li>`).join('');
+      const leaflets = (p.leaflets||[]).map(l => `<li><a href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label} ↗</a></li>`).join('');
       const sources = (p.sources||[]).map(s => (s.url ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.label} ↗</a>` : `<span>${s.label}</span>`)).join('');
       return `
         <div class="rx-detail">
           ${topicLinks(p)}
           ${p.indication ? `<div class="rx-section"><h4>Indication</h4><p>${p.indication}</p></div>` : ''}
           ${p.contraindications ? `<div class="rx-section rx-section-warn"><h4>⚠ Contraindications / cautions</h4><p>${p.contraindications}</p></div>` : ''}
+          ${whoHTML(p)}
+          ${p.pharmacyFirst ? `<div class="rx-section rx-section-pf"><h4>🏥 Pharmacy First</h4><p>${p.pharmacyFirst}</p></div>` : ''}
           <div class="rx-section">
-            <h4>Prescription</h4>
+            <h4>${isSelf(p) ? 'Self-care options (no prescription)' : 'Prescription'}</h4>
             <div class="rx-drugs-wrap">
               <table class="rx-drugs">
-                <thead><tr><th>Drug</th><th>Dose</th><th>Freq</th><th>Route</th><th>Duration</th></tr></thead>
+                <thead><tr><th>${isSelf(p) ? 'Advice / product' : 'Drug'}</th><th>Dose</th><th>Freq</th><th>Route</th><th>Duration</th></tr></thead>
                 <tbody>${drugRows}</tbody>
               </table>
             </div>
             ${p.duration ? `<div class="rx-duration"><b>Course:</b> ${p.duration}</div>` : ''}
+            ${isSelf(p) ? '<div class="rx-selfcare-note">Self-care: products are bought over the counter — the NHS England over-the-counter guidance (2024) advises they are not routinely prescribed.</div>' : ''}
           </div>
+          ${p.selfCare ? `<div class="rx-section rx-section-self"><h4>🛒 Self-care / over the counter</h4><p>${p.selfCare}</p></div>` : ''}
           ${altRows ? `<div class="rx-section"><h4>Alternative regimens</h4><div class="rx-alts">${altRows}</div></div>` : ''}
           ${counsel ? `<div class="rx-section"><h4>💬 Counselling points</h4><ul class="rx-list">${counsel}</ul></div>` : ''}
           ${p.followUp ? `<div class="rx-section"><h4>🔁 Follow-up</h4><p>${p.followUp}</p></div>` : ''}
           ${reds ? `<div class="rx-section rx-section-red"><h4>🔴 Red flags</h4><ul class="rx-list">${reds}</ul></div>` : ''}
-          ${p.emisText ? `<div class="rx-section rx-section-emis"><h4>📋 Example record wording (EMIS / SystmOne)</h4><div class="rx-emis-wrap"><pre class="rx-emis-text" id="rx-emis-${p.id}">${p.emisText}</pre><button class="rx-copy-btn" data-copy="${p.id}" type="button">Copy</button></div></div>` : ''}
+          ${leaflets ? `<div class="rx-section"><h4>📄 Patient leaflets</h4><ul class="rx-leaflets">${leaflets}</ul></div>` : ''}
+          ${p.emisText ? `<div class="rx-section rx-section-emis"><h4>📋 Example record wording (EMIS / SystmOne)</h4><div class="rx-emis-wrap"><pre class="rx-emis-text" id="rx-emis-${p.id}">${recordText(p)}</pre><button class="rx-copy-btn" data-copy="${p.id}" type="button">Copy</button></div></div>` : ''}
           ${sources ? `<div class="rx-section"><h4>Sources</h4><div class="rx-sources">${sources}</div></div>` : ''}
           <div class="rx-detail-foot"><button class="rx-close-btn" data-close="${p.id}" type="button">Close ▲</button></div>
         </div>
@@ -297,10 +350,11 @@
       empty.hidden = n !== 0;
 
       // rail / toggle affordances
-      reset.hidden = !(state.cats.size || state.q || state.sort !== 'chapter');
+      reset.hidden = !(state.cats.size || state.types.size || state.q || state.sort !== 'chapter');
       const tn = toggle.querySelector('.n');
-      tn.hidden = state.cats.size === 0;
-      tn.textContent = state.cats.size;
+      const nf = state.cats.size + state.types.size;
+      tn.hidden = nf === 0;
+      tn.textContent = nf;
     }
 
     function wireResults(){
@@ -340,12 +394,13 @@
     rail.addEventListener('change', e => {
       if (!e.target.matches('.dir-check input')) return;
       const c = e.target.value;
-      if (e.target.checked) state.cats.add(c); else state.cats.delete(c);
+      const set = e.target.dataset.kind === 'type' ? state.types : state.cats;
+      if (e.target.checked) set.add(c); else set.delete(c);
       state.activeId = null;
       renderResults();
     });
     reset.addEventListener('click', () => {
-      state.cats.clear(); state.q = ''; state.sort = 'chapter'; state.activeId = null;
+      state.cats.clear(); state.types.clear(); state.q = ''; state.sort = 'chapter'; state.activeId = null;
       search.value = ''; sortSel.value = 'chapter';
       rail.querySelectorAll('.dir-check input:checked').forEach(i => i.checked = false);
       renderResults();
@@ -369,7 +424,7 @@
         try { history.replaceState(history.state, '', location.pathname + location.search + '#' + id); } catch(e){}
       }
       if (id && DATA.find(p => p.id === id)){
-        state.activeId = id; state.q = ''; state.cats.clear(); state.sort = 'chapter';
+        state.activeId = id; state.q = ''; state.cats.clear(); state.types.clear(); state.sort = 'chapter';
         search.value = ''; sortSel.value = 'chapter';
         rail.querySelectorAll('.dir-check input:checked').forEach(i => i.checked = false);
         renderResults();

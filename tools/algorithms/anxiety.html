@@ -1,15 +1,490 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Anxiety disorders &middot; now the Anxiety disorders protocol &middot; Reasoning GP</title>
-<link rel="canonical" href="https://gpreasoning.uk/tools/management/anxiety.html">
-<meta http-equiv="refresh" content="0; url=../management/anxiety.html" />
-<style>body{font-family:system-ui,sans-serif;background:#f6f2e9;color:#1c1917;display:grid;place-items:center;min-height:100vh;margin:0}p{font-size:15px;line-height:1.6;max-width:48ch;text-align:center;padding:0 20px}a{color:#0c4a47;font-weight:700}</style>
+<title>Anxiety and Panic Algorithm · Reasoning GP</title>
+<meta name="description" content="Anxiety and Panic: Anxiety and panic symptoms in adults: exclude physical causes and suicide risk, then distinguish GAD, panic disorder, PTSD, OCD, social anxiety and health anxiety, with NICE CG113 stepped care at the first consultation.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Anxiety and Panic Algorithm">
+<meta property="og:description" content="Anxiety and Panic: Anxiety and panic symptoms in adults: exclude physical causes and suicide risk, then distinguish GAD, panic disorder, PTSD, OCD, social anxiety and health anxiety, with NICE CG113 stepped care at the first consultation.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/algorithms/anxiety.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/anxiety.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body>
-<p>Anxiety is a condition, not a presentation &mdash; it is covered in full by the <a href="../management/anxiety.html">Anxiety disorders protocol</a>, which carries the GAD-7 stepped-care model, SSRI dosing and titration, and the referral thresholds. Taking you there now&hellip;</p>
-<script>location.replace('../management/anxiety.html');</script>
+
+<div class="alg-header">
+  <h1>😟 Anxiety and Panic Symptoms</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta">
+    <span>NICE CG113</span><span>NICE CG159</span><span>NICE NG116</span><span>10-min consult</span>
+  </div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">😟</div>
+  <div>
+    <b>Anxiety and Panic Symptoms — New Presentation in Adults</b>
+    <small>Physical mimics and suicide risk first · GAD, panic disorder, PTSD, OCD, social anxiety, health anxiety · caffeine, substances and medicines · stepped care</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/anxiety.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/anxiety.html">⬇ Download PDF</button><a class="sum-open" href="one-page/anxiety.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/anxiety.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1" id="node1">
+  <div class="node-header">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Physical Emergencies, Suicide Risk and Withdrawal</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<p class="intro-note">A first "panic attack" is a diagnosis of exclusion. Rule out the physical emergency before reassuring.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Chest pain with sweating, breathlessness or collapse</b> Cardiac risk factors, pain at rest, abnormal ECG → <span class="pill pill-red">999</span> Possible acute coronary syndrome or PE — do not label as panic</div>
+      <div class="rftile"><b>Palpitations with syncope or haemodynamic compromise</b> Fast irregular or broad-complex rhythm, chest pain, low BP → <span class="pill pill-red">999</span> Arrhythmia</div>
+      <div class="rftile"><b>Sweating, shaking, confusion in someone on insulin or a sulfonylurea</b> Check capillary glucose → <span class="pill pill-red">Same-day</span> Treat hypoglycaemia now; 999 if unconscious or fitting</div>
+      <div class="rftile"><b>Severe tachycardia, fever, agitation and weight loss</b> Known or suspected hyperthyroidism → <span class="pill pill-red">999</span> Possible thyroid storm</div>
+      <div class="rftile"><b>Alcohol or benzodiazepine withdrawal</b> Tremor, sweating, agitation, hallucinations, previous withdrawal fits → <span class="pill pill-red">Same-day</span> Medical assessment (seizure and delirium tremens risk); 999 if fitting or confused</div>
+      <div class="rftile"><b>Suicidal intent, a plan, or unable to stay safe</b> Especially with depression, alcohol or recent crisis → <span class="pill pill-red">Same-day</span> Local mental-health crisis team (NHS 111 option 2); 999 if immediate danger</div>
+      <div class="rftile"><b>Psychotic symptoms or severe agitation</b> Paranoid fear, hallucinations, unable to be reassured → <span class="pill pill-red">Same-day</span> Mental-health assessment; consider stimulant intoxication</div>
+      <div class="rftile"><b>Safeguarding</b> Anxiety in the context of domestic abuse, coercive control or exploitation; children at home → <span class="pill pill-red">Same-day</span> Act under local safeguarding procedures</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Panic symptoms — palpitations, chest tightness, breathlessness, sweating, tremor, a sense of doom — overlap almost completely with acute cardiac, respiratory and endocrine emergencies. The first presentation, older age, cardiac risk factors or abnormal observations should push you towards physical assessment first. Severe anxiety, particularly with depression, is an independent risk factor for suicide.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2" id="node2">
+  <div class="node-header">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>History — Characterise the Anxiety</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Pattern</div><div>Continuous worry about many things (GAD) · sudden attacks peaking within minutes (panic) · fear of specific situations (phobia, social anxiety) · after a trauma (PTSD) · intrusive thoughts with rituals (OCD) · fear of having an illness (health anxiety)</div>
+      <div>Duration and impact</div><div>How long, how often, avoidance, work, relationships, sleep. GAD usually 6 months or more of excessive, hard-to-control worry</div>
+      <div>Panic attacks</div><div>Triggered or out of the blue? Fear of further attacks, avoiding places (agoraphobia), attending A&amp;E repeatedly</div>
+      <div>Trauma</div><div>Ask directly: re-experiencing (flashbacks, nightmares), avoidance, hypervigilance, startle — PC-PTSD-5 is case-finding only</div>
+      <div>Caffeine and substances</div><div>Coffee, energy drinks, caffeine-containing painkillers; alcohol (and withdrawal the morning after), cannabis, cocaine, amphetamines, nicotine withdrawal</div>
+      <div>Medicines</div><div>Salbutamol, theophylline, corticosteroids, levothyroxine excess, decongestants, ADHD stimulants, early SSRI activation, antipsychotic akathisia, recent stopping of benzodiazepines, antidepressants or alcohol</div>
+      <div>Physical symptoms</div><div>Weight loss, heat intolerance, tremor (thyroid); exertional or syncopal palpitations (arrhythmia); episodic headache, sweating and palpitations with high BP (phaeochromocytoma — rare); hypoglycaemia on treatment</div>
+      <div>Mood and risk</div><div>Depression, hopelessness, suicidal thoughts; past mania before an SSRI</div>
+      <div>GAD-7</div><div><span class="pill pill-blue">Measure, not diagnosis</span> Baseline severity and response; GAD-2 is a case-finding prompt only</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Naming the specific disorder matters because NICE recommends different psychological treatments for each — for example individual CBT for social anxiety rather than group work, exposure and response prevention for OCD, and trauma-focused therapy for PTSD.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3" id="node3">
+  <div class="node-header">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Examination and Targeted Tests</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Observations</div><div>Pulse rate and rhythm, BP (lying and standing if dizzy), respiratory rate, SpO₂, temperature, weight</div>
+      <div>Examination</div><div>Thyroid (goitre, tremor, eye signs, warm skin), heart sounds, chest, signs of alcohol use or withdrawal, mental state</div>
+      <div>Capillary glucose</div><div>If symptoms are episodic and the person takes insulin or a sulfonylurea, or symptoms are linked to fasting</div>
+      <div>Bloods by indication</div><div><span class="pill pill-blue">TSH</span> for thyroid features or new anxiety with physical symptoms · <span class="pill pill-blue">FBC</span> for anaemia · <span class="pill pill-blue">HbA1c/glucose</span> · calcium if suggested</div>
+      <div>ECG</div><div><span class="pill pill-blue">12-lead ECG</span> for palpitations, chest symptoms, syncope, or before a QT-prolonging drug; ambulatory monitoring if episodes are frequent and uncaptured</div>
+      <div>Phaeochromocytoma</div><div>Plasma metanephrines only for paroxysmal headache, sweating and palpitations with hypertension or a suggestive history — rare</div>
+      <div>Not routine</div><div>Repeated cardiac tests after normal results in clear health anxiety — they reinforce the fear</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Targeted tests reassure appropriately and catch thyrotoxicosis and arrhythmia. Over-investigation, particularly in health anxiety, maintains the cycle of checking and reassurance-seeking.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4" id="node4">
+  <div class="node-header">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Differentials — Name the Anxiety Disorder</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">Generalised anxiety disorder</div><div class="b-drug">Free-floating worry</div><div class="b-note">Excessive, hard-to-control worry about many things, restlessness, tension, poor sleep and concentration, usually 6+ months</div></div>
+      <div class="b-card"><div class="b-cond">Panic disorder</div><div class="b-drug">Unexpected attacks</div><div class="b-note">Recurrent unexpected panic attacks plus persistent fear of further attacks and avoidance (± agoraphobia)</div></div>
+      <div class="b-card"><div class="b-cond">PTSD</div><div class="b-drug">After trauma</div><div class="b-note">Re-experiencing, avoidance, negative mood and hyperarousal for more than a month after a traumatic event (NICE NG116)</div></div>
+      <div class="b-card"><div class="b-cond">OCD</div><div class="b-drug">Obsessions + compulsions</div><div class="b-note">Intrusive unwanted thoughts with rituals (checking, washing, counting) causing distress and taking time (NICE CG31)</div></div>
+      <div class="b-card"><div class="b-cond">Social anxiety disorder</div><div class="b-drug">Fear of scrutiny</div><div class="b-note">Fear of embarrassment in social or performance situations with avoidance; often mistaken for shyness (NICE CG159)</div></div>
+      <div class="b-card"><div class="b-cond">Health anxiety</div><div class="b-drug">Fear of illness</div><div class="b-note">Persistent preoccupation with having a serious illness despite appropriate assessment, with checking and reassurance-seeking</div></div>
+      <div class="b-card"><div class="b-cond">Physical causes</div><div class="b-drug">Mimics</div><div class="b-note">Thyrotoxicosis, arrhythmia, hypoglycaemia, asthma or COPD, anaemia, phaeochromocytoma (rare), menopause</div></div>
+      <div class="b-card"><div class="b-cond">Substances and medicines</div><div class="b-drug">Caffeine, alcohol, drugs</div><div class="b-note">Caffeine excess, alcohol withdrawal, cannabis and stimulants, drug side effects (step 2)</div></div>
+      <div class="b-card"><div class="b-cond">Depression and others</div><div class="b-drug">Comorbidity</div><div class="b-note">Depression with anxiety is common and raises risk; also specific phobia, adjustment disorder, body dysmorphic disorder</div></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Anxiety disorders commonly coexist, and with depression. When depression and anxiety coexist, NICE advises treating the depression first, unless the anxiety disorder is clearly primary.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5" id="node5">
+  <div class="node-header">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Formulate — Stepped Care Position (NICE CG113)</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>All presentations</b> — identification, assessment, education about the disorder and the options, active monitoring</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Symptoms not improved after step 1</b> — low-intensity psychological interventions: individual non-facilitated or guided self-help, psychoeducational groups (GAD, panic)</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Marked functional impairment, or no improvement after step 2</b> — choice of high-intensity psychological intervention (CBT or applied relaxation) or drug treatment</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Complex, treatment-refractory, very marked impairment or high risk</b> — specialist mental-health care</span></div>
+    </div>
+    <p>PTSD, OCD and social anxiety go straight to the disorder-specific psychological treatment rather than generic self-help.</p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Stepped care offers the least intrusive effective intervention first and steps up when needed. People with marked functional impairment can enter at step 3 at the first consultation.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6" id="node6">
+  <div class="node-header">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Referral — Who, Where and How Fast</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Suspected acute coronary syndrome, arrhythmia with compromise, thyroid storm, withdrawal seizures, immediate danger to life</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Suicidal intent or plan or unable to stay safe; psychosis; complicated withdrawal; safeguarding concerns</div>
+      <div>NHS Talking Therapies</div><div>Self-referral or GP referral: guided self-help and groups (GAD, panic), individual CBT for social anxiety, CBT with exposure and response prevention for OCD, trauma-focused CBT or EMDR for PTSD</div>
+      <div>Community mental health</div><div>Step 4: complex comorbidity, treatment-resistant illness, severe impairment, self-neglect or significant risk</div>
+      <div>Cardiology or endocrinology</div><div>Documented arrhythmia, structural heart disease, confirmed thyrotoxicosis or suspected phaeochromocytoma per the relevant pathway</div>
+      <div>Under 18</div><div>CAMHS or local children's mental-health services</div>
+      <div>Drug and alcohol services</div><div>Dependence or withdrawal driving the anxiety</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>NHS Talking Therapies deliver the NICE-recommended psychological treatments for common anxiety disorders and accept self-referral, so the person can make contact the same day.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7" id="node7">
+  <div class="node-header">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Treatment at This Consultation</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">All</div><div class="b-drug">Explain and self-refer <span class="pill pill-teal">First-line</span></div><div class="b-note">Explain the anxiety cycle and that panic is frightening but not dangerous; give Talking Therapies self-referral details and self-help resources; reduce caffeine, review alcohol and drugs</div></div>
+      <div class="b-card"><div class="b-cond">Marked impairment or preference for medication</div><div class="b-drug">SSRI <span class="pill pill-teal">Step 3</span></div><div class="b-note">Sertraline is the cost-effective SSRI for GAD (may be off-label for GAD — check the SPC and document). Usual adult dose: start 25–50 mg once daily, lower start if panic or activation is likely, then titrate per the SPC</div></div>
+      <div class="b-card"><div class="b-cond">Physical cause found</div><div class="b-drug">Treat the cause</div><div class="b-note">Thyrotoxicosis, arrhythmia, hypoglycaemia, anaemia or drug side effect — follow the relevant pathway</div></div>
+      <div class="b-card"><div class="b-cond">Crisis only</div><div class="b-drug">Benzodiazepine <span class="pill pill-amber">Avoid</span></div><div class="b-note">Not for routine GAD or panic (NICE). If ever used: short-term crisis only, fixed small quantity, end date, risk assessed. No antipsychotics in primary care for anxiety</div></div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Counsel</span><span class="rt">Anxiety and jitteriness may increase in the first 1–2 weeks of an SSRI; benefit builds over weeks; possible early suicidal thoughts (especially under 30) — contact the same day; do not stop suddenly</span></div>
+      <div class="rung"><span class="rn">Cautions</span><span class="rt">Past mania (specialist advice); bleeding risk with NSAIDs or anticoagulants; hyponatraemia in older adults; citalopram and escitalopram QT caps</span></div>
+      <div class="rung"><span class="rn">Not routine</span><span class="rt">Propranolol is not a NICE treatment for GAD, panic or PTSD and is dangerous in overdose; pregabalin only if SSRIs and SNRIs are unsuitable — controlled drug with misuse and respiratory-depression risk (see the protocol)</span></div>
+    </div>
+    <p class="alg-next"><b>Next steps:</b> see <a href="../management/anxiety.html">Anxiety disorders</a> · <a href="../management/ptsd.html">PTSD</a> · <a href="../management/ocd.html">OCD</a> · <a href="../management/depression.html">Depression</a> · <a href="../management/hyperthyroidism.html">Hyperthyroidism</a> · <a href="../management/alcohol-problem-drinking.html">Harmful drinking and alcohol dependence</a> · <a href="../management/benzodiazepines-z-drugs.html">Benzodiazepines and z-drugs</a></p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>NICE CG113 recommends sertraline as the first-choice drug for GAD on cost-effectiveness, advises against benzodiazepines except short-term in a crisis, and against antipsychotics in primary care. For panic disorder, benzodiazepines are associated with a less good long-term outcome. Second-line drugs, durations and disorder-specific dosing are in the Anxiety disorders protocol.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8" id="node8">
+  <div class="node-header">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Self-Care</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="lsgrid">
+      <div class="lstile"><b>Caffeine</b> Cut down gradually — coffee, tea, cola, energy drinks and caffeine-containing painkillers</div>
+      <div class="lstile"><b>Alcohol and drugs</b> Alcohol eases anxiety briefly then worsens it, including next-day withdrawal; cannabis and stimulants trigger panic</div>
+      <div class="lstile"><b>Physical activity</b> Regular exercise reduces anxiety; it also teaches that a racing heart is safe</div>
+      <div class="lstile"><b>Breathing and relaxation</b> Slow breathing, progressive muscle relaxation; avoid relying on paper-bag breathing</div>
+      <div class="lstile"><b>Reduce avoidance</b> Gradual, planned return to avoided situations; limit checking and reassurance-seeking</div>
+      <div class="lstile"><b>Sleep and routine</b> Regular wake time, wind-down; self-help from Every Mind Matters</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Avoidance and safety behaviours keep anxiety going by preventing the person from learning that the feared outcome does not happen — the core of CBT for anxiety.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9" id="node9">
+  <div class="node-header">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up and Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>1 week</div><div>After starting an SSRI if under 30 or at increased risk of suicide (then weekly for the first month)</div>
+      <div>1–2 weeks</div><div>After starting an SSRI for others; then every 2–4 weeks for the first 3 months (NICE CG113)</div>
+      <div>2–4 weeks</div><div>Steps 1–2: check engagement with Talking Therapies, symptoms (GAD-7) and function; step up if not improving</div>
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>Chest pain that is crushing or spreading, collapse, fainting with palpitations, severe breathlessness, a fit</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Suicidal thoughts or feeling unable to stay safe (NHS 111 option 2), new agitation after starting a tablet, shakes and sweats after stopping alcohol or sleeping tablets, symptoms that differ from usual attacks</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Early review after an SSRI catches activation and emerging suicidal thoughts and prevents early drop-out. A change in the character of "panic" symptoms needs re-assessment rather than assumption.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE CG113 (Generalised anxiety disorder and panic disorder in adults, 2011, updated 2020), NICE CG159 (Social anxiety disorder, 2013), NICE CG31 (OCD and BDD, 2005), NICE NG116 (PTSD, 2018), NICE NG225 (Self-harm, 2022), NICE CKS Generalized anxiety disorder and Panic disorder, MHRA drug safety updates (citalopram QT, pregabalin), sertraline SPC. Check doses against the current SPC, BNF and local formulary. Always adapt to individual patient context. Not a substitute for clinical judgement.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.anxiety.v1';
+  const nodes=document.querySelectorAll('.node[data-step]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state={};
+    nodes.forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});
+    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+  function load(){
+    try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');
+      nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(s[n.dataset.step]){cb.checked=true;n.classList.add('done');}});}catch(e){}
+  }
+  function updateProgress(){
+    const done=document.querySelectorAll('.node.done').length;
+    pDone.textContent=done;
+    pFill.style.width=((done/total)*100)+'%';
+  }
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{
+      n.classList.toggle('done',cb.checked);
+      save();updateProgress();
+    });
+  });
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!expanded));
+      btn.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    if(!confirm('Reset all progress?'))return;
+    nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});
+    localStorage.removeItem(KEY);updateProgress();
+  });
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=3"></script>
+<script src="../../assets/topic-links.js?v=10"></script>
+<script src="../../assets/alg-diagram.js"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 </body>
 </html>

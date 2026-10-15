@@ -11,33 +11,72 @@
   /* ============ 117. TELEPHONE — Facial weakness: Bell's vs stroke ============ */
   const c117 = {
     id:'facial-palsy-bell-stroke', title:'"Half my face has dropped \u2014 I look like I\u2019ve had a stroke"', type:'telephone', duration:12,
-    meta:{ age:39, sex:'F', setting:'Telephone \u2014 sudden one-sided facial droop on waking.', system:'Urgent / Facial palsy (Bell\u2019s vs stroke)' },
+    meta:{ age:39, sex:'F', setting:'Telephone \u2014 sudden one-sided facial droop on waking.', system:'Urgent / Facial palsy (Bell\u2019s vs stroke)', checked:'October 2026' },
     brief:'Mrs Priya Naidu, 39, woke today with the LEFT side of her face drooped \u2014 can\u2019t fully close the eye, mouth pulls to the right, dribbling tea. Terrified it\u2019s a stroke. On questioning: the FOREHEAD is also affected (can\u2019t raise the eyebrow/wrinkle that side), no arm/leg weakness, normal speech, no visual or sensory change. Mild ache behind the ear yesterday; ?altered taste. Recent viral cold. No vascular risk factors. Pregnant (28 weeks).',
     script:{
-      opening:'(Frightened.) "Doctor, I woke up and half my face has gone \u2014 my eye won\u2019t close properly and my mouth\u2019s pulling to one side, tea\u2019s dribbling out. I\u2019m 39 and I\u2019m pregnant and I\u2019m terrified I\u2019m having a stroke. My nan had one and this is exactly how hers looked. Please \u2014 is this a stroke? What do I do?"',
-      facts:[
-        { topic:'The KEY discriminator',  text:'CRITICAL: in a lower-motor-neurone facial palsy (Bell\u2019s), the FOREHEAD IS INVOLVED (can\u2019t raise the eyebrow/wrinkle the forehead on the affected side) because the upper face has bilateral cortical innervation. In an upper-motor-neurone lesion (stroke), the forehead is SPARED (she can still wrinkle it). Here the forehead IS affected and there are no other neurological signs — pointing to Bell’s palsy, not stroke. The forehead sign is a strong clue, not an absolute test: a brainstem (pontine) lesion can involve the facial nucleus and produce a whole-face palsy, so ANY other neurological sign (limb, speech, vision, other cranial nerves, ataxia) goes to the stroke pathway (NICE NG128) whatever the forehead shows.' },
-        { topic:'Bell\u2019s features',       text:'Supportive of Bell\u2019s: acute onset, isolated unilateral facial weakness including the forehead, post-auricular ache, altered taste/hyperacusis, recent viral illness, no limb/speech/visual deficit. Bell\u2019s is a diagnosis of exclusion but the forehead involvement + isolated picture is reassuring against stroke.' },
-        { topic:'Why still assess urgently', text:'Even though it looks like Bell\u2019s, sudden facial weakness needs prompt assessment to EXCLUDE stroke (FAST), examine fully, and confirm the forehead sign and absence of other deficits \u2014 and Bell\u2019s itself needs early treatment (steroids ideally within 72 h) and EYE PROTECTION. Consider Ramsay Hunt (vesicles, severe pain) and other causes (Lyme, parotid). In pregnancy, Bell’s is more common; steroid use needs an obstetric steer but is generally still offered, and the discussion must not delay treatment. At 28 weeks, check blood pressure and urine for protein at the same-day review — Bell’s palsy in late pregnancy has been associated with gestational hypertension and pre-eclampsia (manage per NICE NG133).' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 her terror is fuelled by her nan\u2019s stroke (mapped onto herself) AND a deeper, unspoken fear: that "something is wrong with the baby" or that whatever this is, or its treatment, will harm her pregnancy. She\u2019s also frightened of permanent facial disfigurement. Reassurance must address the stroke fear, the pregnancy fear, and the recovery outlook.' },
-        { topic:'What she needs',       text:'Officially: to know if it\u2019s a stroke and what to do. What she needs: the forehead-sign reasoning explained so she\u2019s reassured it\u2019s very likely Bell\u2019s not stroke, prompt same-day assessment to confirm and exclude stroke, early steroid treatment + crucial EYE CARE, pregnancy-safe management, and the recovery prognosis (most recover well).' },
+      "opening": "(Frightened.) \"Doctor, I woke up and half my face has gone — my eye won't close properly and my mouth's pulling to one side, tea's dribbling out. I'm 39 and I'm pregnant and I'm terrified I'm having a stroke. My nan had one and this is exactly how hers looked. Please — is this a stroke? What do I do?\"",
+      "facts": [
+        {
+          "topic": "The face",
+          "text": "Noticed on waking at 7am. Left side of the face is drooped. You cannot close the left eye fully; the left corner of your mouth droops and tea dribbles out."
+        },
+        {
+          "topic": "Forehead — answer if asked to try in a mirror",
+          "text": "When you try to raise your eyebrows, the left eyebrow does not move and the left side of your forehead stays smooth; the right side wrinkles normally."
+        },
+        {
+          "topic": "Other neurology (if asked)",
+          "text": "Arms and legs feel normal and strong; you can hold both arms out. Speech is clear (a bit slurred only because the lip will not move). No double vision or loss of vision, no numbness elsewhere, no dizziness, no headache, no trouble swallowing, walking normally."
+        },
+        {
+          "topic": "Other features (if asked)",
+          "text": "Ache behind the left ear yesterday. Food tastes \"odd\" on the left of your tongue. Loud noises sound harsh in the left ear. No rash or blisters in or around the ear."
+        },
+        {
+          "topic": "Recent illness",
+          "text": "A heavy cold last week."
+        },
+        {
+          "topic": "Pregnancy",
+          "text": "28 weeks, first baby, all well so far. Baby moving normally today. No headache, no visual disturbance, no swelling of face or hands, no tummy pain. Booking blood pressure was normal; you have not had it checked for three weeks."
+        },
+        {
+          "topic": "Medical history",
+          "text": "No high blood pressure, diabetes or heart problems. Never smoked. Medicines: pregnancy vitamins only. No allergies."
+        },
+        {
+          "topic": "Social",
+          "text": "39, works in HR. Husband Raj is at home with you and can drive."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "You are frightened that something is wrong with the baby, or that any treatment will harm it. Also: \"Will my face stay like this for the wedding photos in June?\" Say these only if the doctor asks what worries you most, or mentions treatment."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Very frightened at first, talking fast. If the doctor asks you to try specific movements, do them and report back. If they explain why the forehead matters and that this looks much more like Bell's palsy than a stroke, you calm noticeably — but still want to know about the baby. If treatment is mentioned, ask: \"Is it safe in pregnancy?\""
+        }
       ],
-      ice:{
-        ideas:'Her drooping face means she\u2019s having a stroke, like her nan.',
-        concerns:'HIDDEN AGENDA \u2014 the nan\u2019s stroke mapped onto herself, PLUS an unspoken fear that something is wrong with the baby or that this/its treatment will harm the pregnancy; and fear of permanent facial disfigurement.',
-        expectations:'To know if it\u2019s a stroke and what to do. What she actually needs: the forehead-sign reasoning (very likely Bell\u2019s), prompt assessment to exclude stroke, early steroids + eye protection, pregnancy-safe care, and recovery reassurance.'
+      "ice": {
+        "ideas": "\"I think I'm having a stroke, like my nan.\"",
+        "concerns": "Underneath (only if asked): whether the baby is okay, and whether your face will recover.",
+        "expectations": "To know whether it is a stroke and what to do right now. You expect to be seen."
       },
-      cues:['Forehead INVOLVED (can\u2019t raise eyebrow) + isolated facial weakness, no other deficit \u2014 points to Bell\u2019s, not stroke.','Post-auricular ache, altered taste, recent virus, pregnant \u2014 supportive of Bell\u2019s palsy.','"Is it a stroke, like my nan? what about the baby?" \u2014 stroke fear + unspoken pregnancy fear to address.']
+      "cues": [
+        "\"My nan had a stroke and this is exactly how hers looked.\" — say in the opening.",
+        "\"I'm pregnant.\" — say in the opening.",
+        "\"Is it safe for the baby?\" — ask when any treatment is mentioned."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Applies the KEY discriminator: establishes whether the FOREHEAD is involved \u2014 forehead involvement (can\u2019t raise eyebrow) with isolated facial weakness points to a lower-motor-neurone (Bell\u2019s) palsy, whereas forehead SPARING + other deficits suggests an upper-motor-neurone (stroke) lesion — knowing the sign is not absolute (a brainstem lesion can involve the forehead), so any other deficit means the stroke pathway \u2014 and screens FAST/other neurology' },
-      { dom:'tasks', text:'Still arranges PROMPT same-day assessment to EXCLUDE stroke and examine fully (confirm forehead sign, no limb/speech/visual/sensory deficit), rather than diagnosing Bell\u2019s purely over the phone \u2014 sudden facial weakness warrants urgent face-to-face evaluation' },
-      { dom:'tasks', text:'Recognises and treats BELL\u2019S appropriately: early corticosteroids (ideally within 72 hours of onset) where indicated, and crucially EYE PROTECTION (lubricating drops/ointment, taping the eye at night) because incomplete eye closure risks exposure keratopathy \u2014 a commonly-missed essential' },
-      { dom:'tasks', text:'Considers the differential/special cases: Ramsay Hunt syndrome (vesicles in/around the ear, severe pain \u2014 needs antivirals + steroids), Lyme disease, parotid lesions, and bilateral/other-cranial-nerve involvement (which would change the picture); and accounts for PREGNANCY (Bell’s commoner; involve obstetric advice on steroids without delaying them; check blood pressure and urine protein at 28 weeks for pre-eclampsia — NICE NG133)' },
-      { dom:'tasks', text:'Gives an accurate PROGNOSIS: most people with Bell\u2019s recover well, especially with early treatment \u2014 directly addressing the disfigurement fear \u2014 while being honest that recovery can take weeks to months' },
-      { dom:'rto',   text:'Responds to the stroke terror with the reassuring forehead-sign reasoning, and surfaces/addresses the unspoken pregnancy fear (the baby) \u2014 not just the facial diagnosis' },
-      { dom:'rto',   text:'Balances genuine reassurance (very likely Bell\u2019s, good recovery) with the honesty that she still needs urgent assessment to be sure' },
-      { dom:'gs',    text:'Safety-nets and follows up: same-day assessment; red flags that would change urgency (limb weakness, speech change, vomiting, drowsiness, vesicles, eye pain/visual change \u2192 urgent/999); eye-care instructions; pregnancy-safe treatment plan with blood pressure and urine protein checked; review and recovery expectations' },
+      { dom:'dg', text:'Applies the KEY discriminator: establishes whether the FOREHEAD is involved \u2014 forehead involvement (can\u2019t raise eyebrow) with isolated facial weakness points to a lower-motor-neurone (Bell\u2019s) palsy, whereas forehead SPARING + other deficits suggests an upper-motor-neurone (stroke) lesion — knowing the sign is not absolute (a brainstem lesion can involve the forehead), so any other deficit means the stroke pathway \u2014 and screens FAST/other neurology' },
+      { dom:'dg', text:'Still arranges PROMPT same-day assessment to EXCLUDE stroke and examine fully (confirm forehead sign, no limb/speech/visual/sensory deficit), rather than diagnosing Bell\u2019s purely over the phone \u2014 sudden facial weakness warrants urgent face-to-face evaluation' },
+      { dom:'dg', text:'Recognises and treats BELL\u2019S appropriately: early corticosteroids (ideally within 72 hours of onset) where indicated, and crucially EYE PROTECTION (lubricating drops/ointment, taping the eye at night) because incomplete eye closure risks exposure keratopathy \u2014 a commonly-missed essential' },
+      { dom:'dg', text:'Considers the differential/special cases: Ramsay Hunt syndrome (vesicles in/around the ear, severe pain \u2014 needs antivirals + steroids), Lyme disease, parotid lesions, and bilateral/other-cranial-nerve involvement (which would change the picture); and accounts for PREGNANCY (Bell’s commoner; involve obstetric advice on steroids without delaying them; check blood pressure and urine protein at 28 weeks for pre-eclampsia — NICE NG133)' },
+      { dom:'cm', text:'Gives an accurate PROGNOSIS: most people with Bell\u2019s recover well, especially with early treatment \u2014 directly addressing the disfigurement fear \u2014 while being honest that recovery can take weeks to months' },
+      { dom:'ro',   text:'Responds to the stroke terror with the reassuring forehead-sign reasoning, and surfaces/addresses the unspoken pregnancy fear (the baby) \u2014 not just the facial diagnosis' },
+      { dom:'ro',   text:'Balances genuine reassurance (very likely Bell\u2019s, good recovery) with the honesty that she still needs urgent assessment to be sure' },
+      { dom:'cm',    text:'Safety-nets and follows up: same-day assessment; red flags that would change urgency (limb weakness, speech change, vomiting, drowsiness, vesicles, eye pain/visual change \u2192 urgent/999); eye-care instructions; pregnancy-safe treatment plan with blood pressure and urine protein checked; review and recovery expectations' },
     ],
     worked:[
       { lbl:'Hear the fear, then the key question', txt:'"I can hear how frightening this is, and a drooping face naturally makes everyone think stroke \u2014 so let me ask the one question that helps most: can you raise your eyebrows and wrinkle your forehead on the drooped side? Try now. \u2026 You CAN\u2019T move that forehead. Okay \u2014 that\u2019s actually reassuring, and let me explain why."' },
@@ -66,33 +105,68 @@
   /* ============ 118. TELEPHONE — First seizure + the DVLA duty ============ */
   const c118 = {
     id:'first-seizure-dvla', title:'"It was just a one-off faint \u2014 I can still drive, right?"', type:'telephone', duration:12,
-    meta:{ age:31, sex:'M', setting:'Telephone \u2014 after a first witnessed seizure.', system:'Neurology / First seizure & driving' },
+    meta:{ age:31, sex:'M', setting:'Telephone \u2014 after a first witnessed seizure.', system:'Neurology / First seizure & driving', checked:'October 2026' },
     brief:'Mr Connor Healy, 31, delivery DRIVER. Yesterday, witnessed by his wife, who was with him, he went stiff then jerked all four limbs for ~1 minute, bit his tongue (lateral), was confused/drowsy for 20 minutes after, and was incontinent of urine. He calls it "just a funny faint" and is mainly worried about being told not to drive (his job). On questioning: poor sleep, recent heavy alcohol then stopping, no prior episodes. He wants reassurance he can keep driving and "doesn\u2019t need a fuss".',
     script:{
-      opening:'"Morning. So I had a bit of a funny turn yesterday \u2014 the wife says I went stiff and shook for a minute and was a bit out of it after, but I feel totally fine now. I reckon it was just a faint, maybe I was tired. The main thing is \u2014 I drive for a living, so I just need you to confirm I\u2019m okay to carry on driving, yeah? I can\u2019t afford any time off."',
-      facts:[
-        { topic:'This was a seizure',   text:'The features are classic for a GENERALISED TONIC-CLONIC SEIZURE, not a faint: tonic stiffening then clonic jerking of all limbs lasting ~1 minute, LATERAL TONGUE-BITING, URINARY INCONTINENCE, and a prolonged POST-ICTAL confusion/drowsiness (~20 min). Faints (vasovagal) are brief, with quick full recovery, usually a prodrome and a trigger \u2014 not this. Calling it "a faint" is a misattribution.' },
-        { topic:'The DVLA duty \u2014 KEY', text:'CRITICAL: after a first unprovoked/any seizure, the patient MUST stop driving and NOTIFY THE DVLA. For a Group 1 (car) licence, after a first isolated unprovoked seizure the licence is usually regained after 6 months seizure-free — 12 months if investigations or clinical factors suggest a higher risk of recurrence, and different rules apply if epilepsy is diagnosed (DVLA Assessing fitness to drive). For Group 2 (HGV/PCV \u2014 and relevant to a professional driver) the rules are far stricter (years seizure-free off medication). The patient cannot simply be "confirmed okay to drive"; the legal duty to inform the DVLA and stop driving is non-negotiable.' },
-        { topic:'Provoking factors / work-up', text:'Possible provoking factors: sleep deprivation and ALCOHOL (heavy use then abrupt cessation \u2014 withdrawal seizures). Even a "provoked" seizure usually still triggers driving restrictions and needs assessment. Work-up: urgent referral to an epilepsy specialist (a clinician with expertise in first seizures), to be seen within 2 weeks (NICE NG217), 12-lead ECG (exclude cardiac/arrhythmic cause of collapse), bloods, consider imaging/EEG per pathway; safety advice meanwhile.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 the minimisation ("just a faint") is driven by terror of losing his LICENCE and therefore his JOB and income (sole earner, mortgage). He\u2019s downplaying frightening symptoms to dodge the driving conversation. There may also be genuine fear of "having epilepsy/something serious" he\u2019s avoiding. The skill is to be honest and firm about the driving/DVLA duty while supporting him through the livelihood blow and the work-up.' },
-        { topic:'What he needs',        text:'Officially: confirmation he can keep driving. What he needs: recognition this was a seizure not a faint, the clear (non-negotiable) advice to STOP driving and notify the DVLA, first-seizure-clinic referral and work-up (incl. ECG), provoking-factor and safety advice, and compassionate support around the job/income impact \u2014 NOT false clearance.' },
+      "opening": "\"Morning. So I had a bit of a funny turn yesterday — the wife says I went stiff and shook for a minute and was a bit out of it after, but I feel totally fine now. I reckon it was just a faint, maybe I was tired. The main thing is — I drive for a living, so I just need you to confirm I'm okay to carry on driving, yeah? I can't afford any time off.\"",
+      "facts": [
+        {
+          "topic": "What happened (your memory)",
+          "text": "You were sitting on the sofa watching TV about 9pm. You remember nothing until you \"came round\" on the floor with Kelly kneeling over you. You felt muddled for a while and then very sleepy."
+        },
+        {
+          "topic": "What Kelly saw (if asked whether anyone saw it)",
+          "text": "\"She says I went rigid, made a groaning noise, then my arms and legs were jerking for about a minute. My eyes were open. She timed it on her phone.\" Afterwards you did not know where you were for about 20 minutes."
+        },
+        {
+          "topic": "Other details (if asked)",
+          "text": "You bit the side of your tongue — it is sore today. You had wet yourself. No warning beforehand — no light-headedness, sweating or feeling sick. You did not hit your head. No chest pain or palpitations before or after."
+        },
+        {
+          "topic": "Lead-up (if asked)",
+          "text": "Sleeping badly for weeks — new baby, about 4 hours a night. You were drinking heavily at weekends (\"10 or 12 pints Friday and Saturday\") and stopped completely on Monday because you felt rough — the turn was on Wednesday. No drugs."
+        },
+        {
+          "topic": "Past and family history (if asked)",
+          "text": "Never had anything like this. No head injuries, no febrile fits as a child that you know of. No family history of epilepsy. No family history of sudden death."
+        },
+        {
+          "topic": "Medicines",
+          "text": "None. No allergies."
+        },
+        {
+          "topic": "Work and licence",
+          "text": "31, delivery driver for a parcel firm, driving a 3.5-tonne van on a normal car licence. You drove to the depot this morning. You are the only earner; Kelly is on maternity leave; you have a mortgage."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "Losing your licence means losing your job. Deeper down: \"My mate's brother has epilepsy and can't do anything.\" Reveal only if the doctor asks what worries you most."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Breezy and in a hurry at first, steering everything back to driving. If the doctor says plainly that this sounds like a seizure and that you must stop driving and tell the DVLA, argue once: \"Can't you just put it down as a faint?\" If they hold firm kindly, acknowledge the money worry and talk about what support exists, you become flat and quiet, then ask: \"How long for?\" Accept the plan."
+        }
       ],
-      ice:{
-        ideas:'It was just a one-off faint from being tired; he\u2019s fine and can keep driving.',
-        concerns:'HIDDEN AGENDA \u2014 terror of losing his licence and his job/income (sole earner), driving the "just a faint" minimisation; possibly avoiding the fear of "having epilepsy/something serious".',
-        expectations:'Confirmation he can keep driving. What he actually needs: recognition it was a seizure, the non-negotiable stop-driving/notify-DVLA advice, first-seizure-clinic referral + work-up, and support around the livelihood impact.'
+      "ice": {
+        "ideas": "\"It was just a faint because I was knackered.\"",
+        "concerns": "\"If I can't drive I lose my job — and we've got a new baby and a mortgage.\"",
+        "expectations": "\"Just confirm I'm okay to keep driving.\" You will accept honest advice if the doctor is clear and supportive."
       },
-      cues:['Stiff-then-jerking ~1 min + lateral tongue-bite + incontinence + 20-min post-ictal confusion \u2014 a seizure, not a faint.','Professional driver + first seizure \u2014 must stop driving + notify DVLA; cannot be "confirmed okay to drive".','"Just a faint, confirm I can drive, can\u2019t afford time off" \u2014 minimisation driven by livelihood fear; be honest and supportive.']
+      "cues": [
+        "\"I reckon it was just a faint.\" — say in the opening.",
+        "\"I drive for a living.\" — say in the opening and again when driving is raised.",
+        "\"Can't you just put it down as a faint?\" — say once when DVLA is mentioned."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises this as a GENERALISED TONIC-CLONIC SEIZURE, not a faint \u2014 using the discriminating features (tonic-clonic movements ~1 min, lateral tongue-biting, incontinence, prolonged post-ictal confusion) \u2014 and does NOT accept the "just a faint" framing' },
-      { dom:'tasks', text:'Gives the clear, non-negotiable DRIVING advice: he MUST STOP DRIVING now and NOTIFY THE DVLA \u2014 a first seizure means a driving ban (typically 6 months for a car licence; far stricter/longer for Group 2/professional driving) \u2014 and does NOT provide false reassurance that he can keep driving' },
-      { dom:'tasks', text:'Identifies possible PROVOKING factors (sleep deprivation, alcohol use/withdrawal) and recognises that even a provoked seizure generally still carries driving restrictions and needs proper assessment \u2014 not dismissal' },
-      { dom:'tasks', text:'Arranges the WORK-UP: urgent referral to a first-seizure clinic / clinician with expertise in first seizures and diagnosing epilepsy, to be seen within 2 weeks (NICE NG217), a 12-lead ECG (to exclude a cardiac/arrhythmic cause of collapse; NICE CG109), bloods, and consideration of imaging/EEG per pathway; gives interim safety advice' },
-      { dom:'tasks', text:'Gives SAFETY advice meanwhile: avoid swimming/baths alone, working at heights/with dangerous machinery, and other situations where a seizure would be dangerous; address alcohol and sleep; what to do if another seizure occurs (and prolonged seizure >5 min \u2192 999)' },
-      { dom:'rto',   text:'Handles the minimisation and the livelihood terror with honesty AND compassion: is firm and clear about the driving/DVLA duty while genuinely acknowledging the devastating impact on his job and income, and does not collude to keep him onside' },
-      { dom:'rto',   text:'Supports him through the blow \u2014 sick note, exploring work options/finances, the possibility of returning to driving after the relevant seizure-free period \u2014 so honesty doesn\u2019t feel like abandonment' },
-      { dom:'gs',    text:'Safety-nets and documents: the explicit stop-driving/notify-DVLA advice given, first-seizure-clinic referral and ECG, interim safety advice, what to do if another/prolonged seizure occurs (999), and follow-up \u2014 the honest, supported plan, not false clearance' },
+      { dom:'dg', text:'Recognises this as a GENERALISED TONIC-CLONIC SEIZURE, not a faint \u2014 using the discriminating features (tonic-clonic movements ~1 min, lateral tongue-biting, incontinence, prolonged post-ictal confusion) \u2014 and does NOT accept the "just a faint" framing' },
+      { dom:'cm', text:'Gives the clear, non-negotiable DRIVING advice: he MUST STOP DRIVING now and NOTIFY THE DVLA \u2014 a first seizure means a driving ban (typically 6 months for a car licence; far stricter/longer for Group 2/professional driving) \u2014 and does NOT provide false reassurance that he can keep driving' },
+      { dom:'dg', text:'Identifies possible PROVOKING factors (sleep deprivation, alcohol use/withdrawal) and recognises that even a provoked seizure generally still carries driving restrictions and needs proper assessment \u2014 not dismissal' },
+      { dom:'cm', text:'Arranges the WORK-UP: urgent referral to a first-seizure clinic / clinician with expertise in first seizures and diagnosing epilepsy, to be seen within 2 weeks (NICE NG217), a 12-lead ECG (to exclude a cardiac/arrhythmic cause of collapse; NICE CG109), bloods, and consideration of imaging/EEG per pathway; gives interim safety advice' },
+      { dom:'cm', text:'Gives SAFETY advice meanwhile: avoid swimming/baths alone, working at heights/with dangerous machinery, and other situations where a seizure would be dangerous; address alcohol and sleep; what to do if another seizure occurs (and prolonged seizure >5 min \u2192 999)' },
+      { dom:'ro',   text:'Handles the minimisation and the livelihood terror with honesty AND compassion: is firm and clear about the driving/DVLA duty while genuinely acknowledging the devastating impact on his job and income, and does not collude to keep him onside' },
+      { dom:'ro',   text:'Supports him through the blow \u2014 sick note, exploring work options/finances, the possibility of returning to driving after the relevant seizure-free period \u2014 so honesty doesn\u2019t feel like abandonment' },
+      { dom:'cm',    text:'Safety-nets and documents: the explicit stop-driving/notify-DVLA advice given, first-seizure-clinic referral and ECG, interim safety advice, what to do if another/prolonged seizure occurs (999), and follow-up \u2014 the honest, supported plan, not false clearance' },
     ],
     worked:[
       { lbl:'Name what it was',     txt:'"I\u2019m really glad you rang. I have to be straight with you though \u2014 from what your wife describes, this wasn\u2019t a faint. Going stiff then shaking for a minute, biting the side of your tongue, wetting yourself, and being confused for twenty minutes afterwards \u2014 those are the features of a seizure, not a simple faint. I know that\u2019s not what you wanted to hear."' },
@@ -104,12 +178,12 @@
     ],
     learning:'A "funny faint" with tonic-clonic movements lasting ~1 minute, LATERAL tongue-biting, urinary incontinence and prolonged post-ictal confusion is a GENERALISED TONIC-CLONIC SEIZURE, not a vasovagal faint (which is brief with quick full recovery and a trigger/prodrome). The non-negotiable examinable point is the DRIVING/DVLA duty: after a first seizure the patient MUST stop driving and notify the DVLA \u2014 usually 6 months seizure-free for a car (Group 1) licence after a first isolated unprovoked seizure (12 months if recurrence risk is higher) and far stricter, longer rules for Group 2/professional driving \u2014 so the patient cannot be "confirmed okay to drive", and even a provoked seizure generally still carries restrictions. Arrange the work-up (urgent referral to an epilepsy specialist/first-seizure clinic, seen within 2 weeks per NICE NG217, ECG to exclude a cardiac cause of collapse, bloods, imaging/EEG per pathway), identify provoking factors (sleep deprivation, alcohol use/withdrawal), and give interim safety advice (no swimming/baths alone, heights, machinery; 999 if a seizure >5 min). The hidden agenda is livelihood terror driving the minimisation; the skill is honesty AND compassion \u2014 be firm and clear about the driving duty while genuinely supporting the job/income blow (sick note, work options, the likely temporary nature) so honesty doesn\u2019t feel like abandonment.',
     knowledge:{
-      guideline:'NICE NG217 Epilepsies in children, young people and adults (2022, updated August 2026) · NICE CG109 Transient loss of consciousness in over 16s (2010) · DVLA Assessing fitness to drive (seizures) · GMC Confidentiality (2017): patients’ fitness to drive · first-seizure pathway (epilepsy specialist within 2 weeks)',
+      guideline:'NICE NG217 Epilepsies in children, young people and adults (2022, updated January 2025) · NICE CG109 Transient loss of consciousness in over 16s (2010) · DVLA Assessing fitness to drive (seizures) · GMC Confidentiality (2017): patients’ fitness to drive · first-seizure pathway (epilepsy specialist within 2 weeks)',
       points:[
         { h:'Seizure vs faint', t:'Generalised tonic-clonic seizure: tonic stiffening then clonic jerking (often ~1\u20132 min), lateral tongue-biting, incontinence, cyanosis, and a prolonged POST-ICTAL phase (confusion/drowsiness, headache, muscle ache). Vasovagal syncope: brief, with a prodrome/trigger, rapid full recovery, no significant post-ictal confusion. The history (and a witness) discriminates.' },
         { h:'Driving \u2014 the duty', t:'After a first seizure the person MUST STOP driving and NOTIFY the DVLA. Group 1 (car/motorcycle): usually a 6-month seizure-free period after a first isolated unprovoked seizure, or 12 months if investigations or clinical factors suggest a higher risk of recurrence (longer with epilepsy/abnormal investigations; relicensing after defined seizure-free periods). Group 2 (HGV/PCV): much stricter (e.g. years seizure-free off anti-seizure medication). The clinician must advise this clearly; the patient has the legal duty to notify. If he keeps driving against advice, GMC Confidentiality (2017) allows informing the DVLA medical adviser after trying to persuade him and telling him first.' },
         { h:'Provoked vs unprovoked', t:'Identify provoking factors (sleep deprivation, alcohol excess/withdrawal, drugs, metabolic derangement, acute brain insult). Provoked seizures may carry different epilepsy-diagnosis implications, but driving restrictions generally still apply \u2014 do not use "it was just provoked" to waive the DVLA duty.' },
-        { h:'Work-up', t:'Refer urgently to a clinician with expertise in assessing first seizures and diagnosing epilepsy (an epilepsy specialist or first-seizure clinic — not simply general neurology), to be seen within 2 weeks (NICE NG217, 2022, updated August 2026). Do a 12-lead ECG (NICE CG109) (cardiac/arrhythmic causes of collapse can mimic/trigger), bloods (glucose, electrolytes, etc.), and consider neuroimaging and EEG per pathway. Do not start anti-seizure medication in primary care \u2014 that is a specialist decision.' },
+        { h:'Work-up', t:'Refer urgently to a clinician with expertise in assessing first seizures and diagnosing epilepsy (an epilepsy specialist or first-seizure clinic — not simply general neurology), to be seen within 2 weeks (NICE NG217, 2022, updated January 2025). Do a 12-lead ECG (NICE CG109) (cardiac/arrhythmic causes of collapse can mimic/trigger), bloods (glucose, electrolytes, etc.), and consider neuroimaging and EEG per pathway. Do not start anti-seizure medication in primary care \u2014 that is a specialist decision.' },
         { h:'Interim safety advice', t:'Avoid swimming/bathing alone, heights, operating dangerous machinery, and other activities where a seizure would be dangerous; address sleep and alcohol; educate the patient/family on seizure first aid and that a seizure >5 minutes or repeated seizures = 999 (status epilepticus).' },
         { h:'Honesty + livelihood support', t:'Driving loss is devastating for professional drivers and drives minimisation. Be firm and clear about the duty (public and personal safety) while compassionately supporting the impact \u2014 sick note, work options, finances, and that driving is often regained after the seizure-free period. Do not collude with false reassurance.' },
         { h:'Never do', t:'Never accept "just a faint" for a clear seizure; never confirm fitness to drive after a first seizure; never use "provoked" to bypass the DVLA duty; never start anti-seizure meds without specialist input; never omit ECG/first-seizure referral or interim safety advice; never deliver the news without support.' },
@@ -121,33 +195,68 @@
   /* ============ 119. VIDEO — Optic neuritis / suspected MS ============ */
   const c119 = {
     id:'optic-neuritis-ms', title:'"My eye\u2019s gone blurry and aches \u2014 it\u2019s probably just a migraine"', type:'video', duration:12,
-    meta:{ age:28, sex:'F', setting:'Video consultation \u2014 subacute monocular visual loss.', system:'Neurology / Optic neuritis & suspected MS' },
+    meta:{ age:28, sex:'F', setting:'Video consultation \u2014 subacute monocular visual loss.', system:'Neurology / Optic neuritis & suspected MS', checked:'October 2026' },
     brief:'Miss Robyn Carlisle, 28. Over 3 days, blurred/dim vision in the LEFT eye, worse over time, with ACHE behind the eye worsened by eye movement, and colours look "washed out" (reds especially). She blames a migraine/eye strain. On questioning: a self-limiting episode of tingling/numbness in one leg months ago that resolved and that she ignored; no headache with the visual change. Otherwise well. The picture fits optic neuritis (often a first presentation of MS). Wants drops/reassurance.',
     script:{
-      opening:'"Hi \u2014 thanks. So my left eye\u2019s gone a bit blurry over the last few days and it aches, especially when I move it. Colours look a bit faded too. I get migraines, so I\u2019m guessing it\u2019s that, or maybe eye strain from screens? Could you just sort me some eye drops or tell me it\u2019ll settle? I\u2019m sure it\u2019s nothing serious."',
-      facts:[
-        { topic:'The optic neuritis picture', text:'Subacute (days) MONOCULAR visual loss/blurring, PAIN ON EYE MOVEMENT (retrobulbar ache), and impaired COLOUR vision (red desaturation) is the classic triad of OPTIC NEURITIS. A relative afferent pupillary defect may be present. This is NOT a migraine (which gives transient, often bilateral/zig-zag positive visual phenomena with headache) or simple eye strain.' },
-        { topic:'The MS link',          text:'Optic neuritis is frequently the FIRST presentation of multiple sclerosis. The previously-ignored transient leg numbness months ago suggests a prior demyelinating event (dissemination in time and space) \u2014 raising the suspicion of MS. This needs urgent neurology/ophthalmology assessment and MRI, not drops.' },
-        { topic:'Why urgent assessment', text:'Needs same-day/urgent ophthalmology or neurology assessment to confirm optic neuritis (fundoscopy, visual acuity/fields/colour, RAPD), exclude other causes of visual loss, and arrange MRI (brain/orbits) and neurology referral. Steroids may shorten the episode (specialist decision). Other sinister causes of monocular visual loss (e.g. vascular) must be excluded.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 the "it\u2019s just a migraine/eye strain" is partly genuine misattribution and partly AVOIDANCE: a close family relative has MS and Robyn, half-suspecting, is terrified of that diagnosis and is using the migraine label to avoid confronting it. She also fears for her job/independence and "ending up in a wheelchair" (an outdated MS fear). Surfacing this and giving balanced, modern information is central.' },
-        { topic:'What she needs',       text:'Officially: eye drops/reassurance it\u2019ll settle. What she needs: recognition that this is likely optic neuritis (not migraine), urgent ophthalmology/neurology assessment + MRI, the previous neurological symptom taken seriously, honest handling of the MS possibility (without premature labelling or catastrophising), and her fears addressed with up-to-date information.' },
+      "opening": "\"Hi — thanks. So my left eye's gone a bit blurry over the last few days and it aches, especially when I move it. Colours look a bit faded too. I get migraines, so I'm guessing it's that, or maybe eye strain from screens? Could you just sort me some eye drops or tell me it'll settle? I'm sure it's nothing serious.\"",
+      "facts": [
+        {
+          "topic": "The eye",
+          "text": "If asked: left eye only. Started three days ago as slight blurring, now \"like looking through frosted glass\" in the middle of your vision. Getting a little worse each day. Ache behind the eye, worse when you look left or right. If asked to compare a red object with each eye: \"It looks washed out, more pink, with the left eye.\""
+        },
+        {
+          "topic": "Testing on video (if asked)",
+          "text": "With the right eye covered you cannot read the small print on your phone; with the left eye covered you can read it easily."
+        },
+        {
+          "topic": "Your usual migraines (if asked)",
+          "text": "Your migraines come a few times a year with zigzag lines in both eyes for 20 minutes followed by a one-sided headache. This is completely different — no zigzags, no headache, and it has not gone away."
+        },
+        {
+          "topic": "The leg — only if asked about any previous numbness, tingling or weakness",
+          "text": "\"Oh — about six months ago my right leg went tingly and numb from the knee down for about two weeks, then it went away. I thought I'd trapped a nerve.\" Never saw anyone about it."
+        },
+        {
+          "topic": "Other negatives (if asked)",
+          "text": "No double vision, no weakness now, no bladder problems, no balance problems, no severe headache, no jaw pain, no recent illness. The right eye is fine."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "Migraine. Paracetamol occasionally. On the combined pill. No allergies."
+        },
+        {
+          "topic": "Social",
+          "text": "28, primary school teacher. Lives with partner. Non-smoker. Drives."
+        },
+        {
+          "topic": "Family and hidden fear — hold back",
+          "text": "Your aunt (mum's sister) has MS and uses a wheelchair. You googled \"eye pain blurry\" last night, saw \"MS\", shut the laptop and decided it was a migraine. Say this only if asked about family history or what you are worried about."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Bright and dismissive at first. If the doctor takes the eye seriously and asks about the leg, become uneasy. If they mention MS bluntly, become very upset: \"Like my auntie?\" If they explain it carefully — needs urgent checking, could be several causes, and MS today is very different and treatable — you are frightened but cope, and ask: \"Can I still work? Can I drive?\""
+        }
       ],
-      ice:{
-        ideas:'It\u2019s a migraine or eye strain and will settle with drops/rest.',
-        concerns:'HIDDEN AGENDA \u2014 she half-suspects MS (a close family relative has it) and is terrified, using the migraine label to avoid confronting it; fears for her job/independence and an outdated "wheelchair" image of MS.',
-        expectations:'Eye drops/reassurance it\u2019ll settle. What she actually needs: recognition of likely optic neuritis, urgent ophthalmology/neurology assessment + MRI, the previous symptom taken seriously, and honest, modern MS information.'
+      "ice": {
+        "ideas": "\"It's a migraine or eye strain.\"",
+        "concerns": "Underneath (only if asked): \"I'm scared it's MS, like my auntie — she's in a wheelchair.\"",
+        "expectations": "\"Some drops, or tell me it'll settle.\" You will accept urgent eye and neurology assessment if it is explained honestly and kindly."
       },
-      cues:['Subacute monocular blur + PAIN ON EYE MOVEMENT + washed-out colours \u2014 optic neuritis, not migraine.','Previous transient leg numbness she ignored \u2014 a possible prior demyelinating event; raises MS suspicion.','"Just a migraine, give me drops" \u2014 avoidance of a feared MS diagnosis; surface it gently.']
+      "cues": [
+        "\"It aches, especially when I move it.\" — say in the opening.",
+        "\"I'm sure it's nothing serious.\" — say in the opening, a little too quickly.",
+        "\"My auntie has... something with her nerves.\" — say if family history is asked, before naming MS."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises the OPTIC NEURITIS triad (subacute monocular visual loss/blur, pain on eye movement, impaired colour/red desaturation, \u00b1 RAPD) and does NOT accept the "migraine/eye strain" framing or offer drops \u2014 migraine gives transient positive visual phenomena with headache, not this' },
-      { dom:'tasks', text:'Takes the previous neurological symptom seriously: the earlier transient leg numbness suggests a prior demyelinating event, raising suspicion of MS (dissemination in time/space) \u2014 and elicits it rather than dismissing it' },
-      { dom:'tasks', text:'Arranges URGENT assessment: same-day/urgent ophthalmology or neurology to confirm optic neuritis (acuity, fields, colour vision, fundoscopy, RAPD), exclude other causes of monocular visual loss, and arrange MRI (brain \u00b1 orbits) and neurology referral \u2014 not primary-care drops' },
-      { dom:'tasks', text:'Explains management honestly: steroids may shorten the episode (a specialist decision, not always needed), vision usually recovers well, and MRI/neurology will clarify whether this is isolated optic neuritis or part of MS \u2014 avoiding both premature labelling and false reassurance' },
-      { dom:'tasks', text:'Addresses the MS possibility appropriately: does not blurt "you have MS", but is honest that this needs investigating for causes including MS, and gives balanced, up-to-date information (MS is very variable and highly treatable now \u2014 countering the outdated wheelchair image)' },
-      { dom:'rto',   text:'Surfaces the avoidance and the feared MS diagnosis gently, validates the fear, and provides modern, hopeful but honest information rather than colluding with the migraine label' },
-      { dom:'rto',   text:'Balances urgency and reassurance, supports her through the anxiety of investigation, and addresses the job/independence fears' },
-      { dom:'gs',    text:'Safety-nets and follows up: urgent ophthalmology/neurology and MRI pathway, what would be an emergency (rapidly worsening vision, both eyes, new neurology \u2192 urgent), the plan and follow-up to discuss results and support \u2014 holding her through the uncertainty' },
+      { dom:'dg', text:'Recognises the OPTIC NEURITIS triad (subacute monocular visual loss/blur, pain on eye movement, impaired colour/red desaturation, \u00b1 RAPD) and does NOT accept the "migraine/eye strain" framing or offer drops \u2014 migraine gives transient positive visual phenomena with headache, not this' },
+      { dom:'dg', text:'Takes the previous neurological symptom seriously: the earlier transient leg numbness suggests a prior demyelinating event, raising suspicion of MS (dissemination in time/space) \u2014 and elicits it rather than dismissing it' },
+      { dom:'cm', text:'Arranges URGENT assessment: same-day/urgent ophthalmology or neurology to confirm optic neuritis (acuity, fields, colour vision, fundoscopy, RAPD), exclude other causes of monocular visual loss, and arrange MRI (brain \u00b1 orbits) and neurology referral \u2014 not primary-care drops' },
+      { dom:'ro', text:'Explains management honestly: steroids may shorten the episode (a specialist decision, not always needed), vision usually recovers well, and MRI/neurology will clarify whether this is isolated optic neuritis or part of MS \u2014 avoiding both premature labelling and false reassurance' },
+      { dom:'dg', text:'Addresses the MS possibility appropriately: does not blurt "you have MS", but is honest that this needs investigating for causes including MS, and gives balanced, up-to-date information (MS is very variable and highly treatable now \u2014 countering the outdated wheelchair image)' },
+      { dom:'ro',   text:'Surfaces the avoidance and the feared MS diagnosis gently, validates the fear, and provides modern, hopeful but honest information rather than colluding with the migraine label' },
+      { dom:'ro',   text:'Balances urgency and reassurance, supports her through the anxiety of investigation, and addresses the job/independence fears' },
+      { dom:'cm',    text:'Safety-nets and follows up: urgent ophthalmology/neurology and MRI pathway, what would be an emergency (rapidly worsening vision, both eyes, new neurology \u2192 urgent), the plan and follow-up to discuss results and support \u2014 holding her through the uncertainty' },
     ],
     worked:[
       { lbl:'Gently refuse migraine', txt:'"I can see why you\u2019d think migraine \u2014 but what you\u2019re describing is a bit different and I don\u2019t want to miss it. Blurred vision in one eye coming on over days, an ache that\u2019s worse when you move the eye, and colours looking washed out \u2014 that points to inflammation of the eye\u2019s nerve, called optic neuritis, rather than a migraine, which usually gives flashing zig-zags with a headache and settles quickly."' },
@@ -159,7 +268,7 @@
     ],
     learning:'Subacute MONOCULAR visual loss/blur with PAIN ON EYE MOVEMENT and impaired COLOUR vision (red desaturation), \u00b1 a relative afferent pupillary defect, is the classic triad of OPTIC NEURITIS \u2014 not a migraine (transient positive visual phenomena with headache) or eye strain \u2014 and it is frequently the first presentation of MULTIPLE SCLEROSIS. A previously-ignored transient neurological symptom (here leg numbness) suggests a prior demyelinating event and raises the MS suspicion (dissemination in time/space). The action is urgent ophthalmology/neurology assessment (acuity, fields, colour vision, fundoscopy, RAPD), MRI (brain \u00b1 orbits) and neurology referral \u2014 not primary-care drops; steroids may shorten the episode (a specialist decision) and vision usually recovers well. The examinable hidden agenda is avoidance of a feared MS diagnosis (a relative has it), using the migraine label as a shelter, plus an outdated "wheelchair" fear. Recognise the picture, take the old symptom seriously, investigate urgently, handle the MS possibility honestly (no premature labelling, no false reassurance) with balanced modern information (MS is variable and highly treatable now; early treatment gives the best outcomes), and safety-net new/worsening neurology.',
     knowledge:{
-      guideline:'NICE NG220 Multiple sclerosis in adults: management (2022, updated August 2026) — refer confirmed optic neuritis to a consultant neurologist · DVLA Assessing fitness to drive (visual standards) · Equality Act 2010 · local urgent ophthalmology (eye casualty) and neurology pathways',
+      guideline:'NICE NG220 Multiple sclerosis in adults: management (2022, updated June 2026) — refer confirmed optic neuritis to a consultant neurologist · DVLA Assessing fitness to drive (visual standards) · Equality Act 2010 · local urgent ophthalmology (eye casualty) and neurology pathways',
       points:[
         { h:'Recognise optic neuritis', t:'Subacute (hours\u2013days) unilateral visual loss/blur, PAIN on eye movement, and impaired colour vision (red desaturation), often with a relative afferent pupillary defect (RAPD) and a normal or swollen disc. Distinguish from migraine (transient, often bilateral positive phenomena with headache, full recovery) and from vascular/other causes of monocular visual loss.' },
         { h:'Optic neuritis & MS', t:'Optic neuritis is a common first presentation of MS. Ask about prior transient neurological symptoms (numbness/tingling, weakness, balance, bladder) suggesting earlier demyelination (dissemination in time and space). A suggestive history raises the pre-test probability of MS and the urgency of work-up. NICE NG220: refer people with ophthalmologist-confirmed isolated optic neuritis to a consultant neurologist; MS is diagnosed by the neurologist, not on MRI alone.' },
@@ -176,33 +285,68 @@
   /* ============ 120. VIDEO — Functional/medically-unexplained symptoms (taken seriously) ============ */
   const c120 = {
     id:'functional-symptoms', title:'"Every doctor says my tests are normal \u2014 but I\u2019m not making it up"', type:'video', duration:12,
-    meta:{ age:34, sex:'F', setting:'Video consultation \u2014 chronic disabling symptoms, normal investigations.', system:'Neurology / Functional neurological & persistent physical symptoms' },
+    meta:{ age:34, sex:'F', setting:'Video consultation \u2014 chronic disabling symptoms, normal investigations.', system:'Neurology / Functional neurological & persistent physical symptoms', checked:'October 2026' },
     brief:'Miss Carys Bevan, 34. Months of fatigue, widespread pain, intermittent leg weakness/heaviness and "fuzzy" episodes; extensive investigations (bloods, MRI, neurology review) all normal/non-diagnostic. She arrives frustrated, fearing she\u2019s being dismissed as "a hypochondriac" or "making it up", and demands more scans or a specialist who will "find what\u2019s wrong". She is genuinely disabled by the symptoms. If explored: high stress, a past trauma, poor sleep. PMH: anxiety. The challenge is validating real, functional symptoms and building a positive plan without further fruitless tests.',
     script:{
-      opening:'"I\u2019m at the end of my tether. Every doctor does tests, says they\u2019re normal, and basically implies it\u2019s in my head. But I am NOT making this up \u2014 I can barely walk some days, I\u2019m exhausted, my body\u2019s falling apart. I want a referral to someone who\u2019ll actually FIND what\u2019s wrong, or more scans. I just want someone to believe me and not fob me off again."',
-      facts:[
-        { topic:'The framing',          text:'Extensively investigated, persistent, genuinely disabling symptoms with normal/non-diagnostic tests \u2014 a picture of FUNCTIONAL NEUROLOGICAL DISORDER / persistent physical symptoms. These are REAL (a problem with how the nervous system functions, not structural damage and not "made up"), common, and the goal is a POSITIVE diagnosis and rehabilitative management \u2014 not endless re-investigation, which entrenches the cycle and risks harm.' },
-        { topic:'Validation is the treatment', text:'CRITICAL: the most important intervention is to VALIDATE that the symptoms are real and that she is not making them up or imagining it, while explaining the functional model (the "hardware is fine but the software/signalling is misfiring") \u2014 framed positively, not as a diagnosis of exclusion or "nothing wrong". Dismissiveness ("your tests are normal so there\u2019s nothing wrong") is exactly what has harmed her and perpetuates the cycle.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 beneath the demand for more tests is a desperate need to be BELIEVED and not abandoned, plus fear that a serious disease is being missed. If explored gently: significant life STRESS, a PAST TRAUMA, poor sleep and her anxiety \u2014 relevant to functional symptoms but to be raised carefully so she doesn\u2019t feel reduced to "it\u2019s psychological/your fault". She fears that acknowledging a mind-body link means being told it\u2019s "not real".' },
-        { topic:'The trap',             text:'Two failure modes: (1) ordering yet more tests/referrals to placate (reinforces the cycle, risks iatrogenic harm and incidental findings); (2) dismissing her ("nothing wrong, it\u2019s anxiety") which ruptures trust. The skill is the middle path: positive functional diagnosis, validation, and a rehabilitative, multidisciplinary plan with a consistent clinician.' },
-        { topic:'What she needs',       text:'Officially: more scans / a specialist to "find it". What she needs: to be believed, a clear POSITIVE explanation of functional symptoms (real, common, treatable), the mind-body links raised sensitively (not blamingly), a rehabilitative plan (physiotherapy for functional disorders, psychological therapy, sleep, pacing, symptom-specific support), a consistent named clinician, and an end to fruitless re-investigation.' },
+      "opening": "\"I'm at the end of my tether. Every doctor does tests, says they're normal, and basically implies it's in my head. But I am NOT making this up — I can barely walk some days, I'm exhausted, my body's falling apart. I want a referral to someone who'll actually FIND what's wrong, or more scans. I just want someone to believe me and not fob me off again.\"",
+      "facts": [
+        {
+          "topic": "The symptoms",
+          "text": "If asked: for about 18 months — exhaustion that sleep does not fix, aching \"everywhere\", and episodes where your legs go heavy and won't do what you tell them, worse when you are tired or stressed. Some days you use a stick. \"Fuzzy\" spells where you cannot think straight or find words."
+        },
+        {
+          "topic": "What makes it better or worse (if asked)",
+          "text": "Worse after a busy day or an argument; you \"pay for it\" for two days. Your legs sometimes work better when you are distracted — \"I walked fine round the supermarket once and then couldn't get up the stairs at home.\""
+        },
+        {
+          "topic": "Tests so far",
+          "text": "Lots of blood tests, an MRI of your brain and spine, and a neurologist last year. \"He said everything was normal and that it might be functional. He talked at me for five minutes and I left feeling like a fraud.\""
+        },
+        {
+          "topic": "Red-flag questions (if asked)",
+          "text": "No weight loss, no fevers, no night sweats, no bladder or bowel incontinence, no loss of vision, no seizures."
+        },
+        {
+          "topic": "Life — only if asked gently and with a reason",
+          "text": "You were made redundant from a call-centre job a year ago. Sleep is poor — 4 or 5 broken hours. If the doctor has built trust and asks about difficult experiences: \"I had a really bad relationship in my twenties. I don't really talk about it.\" Do not go further."
+        },
+        {
+          "topic": "Mood (if asked)",
+          "text": "Anxious for years; low because nobody believes you. No thoughts of suicide or self-harm. Not drinking much, no drugs."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "Anxiety (tried sertraline years ago, stopped because of side effects). Paracetamol and ibuprofen. No allergies."
+        },
+        {
+          "topic": "Social",
+          "text": "34, lives with your mum, single. Used to love swimming."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Angry and braced for dismissal. If the doctor says \"your tests are normal\" or hints at \"stress\", flare up: \"So it IS all in my head?\" If they say clearly that they believe you, that the symptoms are real, and explain them in a way that makes sense (the wiring is intact but the signals are not working properly), you soften and say: \"Nobody's ever put it like that.\" Become cautiously open to physiotherapy and therapy if they are offered as treatment, not as a brush-off, and if you can see the same doctor again."
+        }
       ],
-      ice:{
-        ideas:'A serious disease is being missed; she needs more scans or the right specialist to "find what\u2019s wrong".',
-        concerns:'HIDDEN AGENDA \u2014 a desperate need to be believed and not dismissed as "making it up", fear a serious illness is missed, and (if explored) significant stress/past trauma/poor sleep she fears will be used to say "it\u2019s all in your head".',
-        expectations:'More tests / a specialist who will find a structural cause. What she actually needs: to be believed, a positive functional explanation, the mind-body links raised sensitively, a rehabilitative plan, a consistent clinician, and no more fruitless re-investigation.'
+      "ice": {
+        "ideas": "\"Something serious is being missed — maybe MS or something they haven't tested for.\"",
+        "concerns": "\"Everyone thinks I'm making it up.\" And that you will be like this forever.",
+        "expectations": "\"A referral to someone who'll find what's wrong, or more scans.\" You will accept a plan if you genuinely feel believed."
       },
-      cues:['Extensively investigated, normal tests, genuinely disabling symptoms \u2014 functional disorder; validate, don\u2019t re-investigate endlessly.','"I\u2019m not making it up / believe me" \u2014 the core need is to be believed; validation IS the treatment.','Demands more scans \u2014 the trap; positive functional diagnosis + rehab, not placating tests or dismissal.']
+      "cues": [
+        "\"I am NOT making this up.\" — say in the opening, emphatically.",
+        "\"He talked at me for five minutes and I felt like a fraud.\" — say when previous doctors come up.",
+        "\"I just want my life back.\" — say if asked what you hope for."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'VALIDATES that the symptoms are REAL and that she is not making them up or imagining it \u2014 making this explicit early \u2014 rather than dismissing her with "your tests are normal so there\u2019s nothing wrong"' },
-      { dom:'tasks', text:'Explains a POSITIVE functional model: functional neurological disorder / persistent physical symptoms are a genuine problem with how the nervous system FUNCTIONS (the "hardware is intact but the signalling/software misfires"), common and treatable \u2014 NOT a diagnosis of exclusion, "nothing wrong", or "all in the mind"' },
-      { dom:'tasks', text:'Resists FURTHER fruitless investigation/referral-shopping: explains (kindly) that more scans are unlikely to help and can entrench the problem and cause harm (incidental findings, reinforcing illness focus), while not abandoning her \u2014 the middle path between re-testing and dismissal' },
-      { dom:'tasks', text:'Raises the mind-body / contributory factors SENSITIVELY (stress, past trauma, sleep, anxiety) as relevant to how symptoms are generated and maintained \u2014 NOT as blame or "it\u2019s psychological/your fault" \u2014 and screens mood appropriately' },
-      { dom:'tasks', text:'Builds a REHABILITATIVE, multidisciplinary plan: physiotherapy tailored to functional disorders, psychological therapy (e.g. CBT for functional symptoms), sleep and pacing/activity management, symptom-specific strategies, and reputable resources (e.g. neurosymptoms.org) \u2014 a positive, active treatment plan' },
-      { dom:'rto',   text:'Meets the desperate need to be BELIEVED with genuine warmth; does not dismiss, and explicitly names that previous "fobbing off" was wrong \u2014 rebuilding trust' },
-      { dom:'rto',   text:'Offers continuity: a consistent named clinician and a therapeutic alliance, so she isn\u2019t bounced between services \u2014 itself part of effective management' },
-      { dom:'gs',    text:'Safety-nets proportionately: what genuinely NEW or red-flag symptoms would warrant reassessment (so she\u2019s not abandoned), the rehab/therapy referrals, a follow-up plan and named clinician \u2014 treating the functional disorder actively rather than re-investigating or discharging' },
+      { dom:'ro', text:'VALIDATES that the symptoms are REAL and that she is not making them up or imagining it \u2014 making this explicit early \u2014 rather than dismissing her with "your tests are normal so there\u2019s nothing wrong"' },
+      { dom:'ro', text:'Explains a POSITIVE functional model: functional neurological disorder / persistent physical symptoms are a genuine problem with how the nervous system FUNCTIONS (the "hardware is intact but the signalling/software misfires"), common and treatable \u2014 NOT a diagnosis of exclusion, "nothing wrong", or "all in the mind"' },
+      { dom:'cm', text:'Resists FURTHER fruitless investigation/referral-shopping: explains (kindly) that more scans are unlikely to help and can entrench the problem and cause harm (incidental findings, reinforcing illness focus), while not abandoning her \u2014 the middle path between re-testing and dismissal' },
+      { dom:'ro', text:'Raises the mind-body / contributory factors SENSITIVELY (stress, past trauma, sleep, anxiety) as relevant to how symptoms are generated and maintained \u2014 NOT as blame or "it\u2019s psychological/your fault" \u2014 and screens mood appropriately' },
+      { dom:'ro', text:'Builds a REHABILITATIVE, multidisciplinary plan: physiotherapy tailored to functional disorders, psychological therapy (e.g. CBT for functional symptoms), sleep and pacing/activity management, symptom-specific strategies, and reputable resources (e.g. neurosymptoms.org) \u2014 a positive, active treatment plan' },
+      { dom:'ro',   text:'Meets the desperate need to be BELIEVED with genuine warmth; does not dismiss, and explicitly names that previous "fobbing off" was wrong \u2014 rebuilding trust' },
+      { dom:'ro',   text:'Offers continuity: a consistent named clinician and a therapeutic alliance, so she isn\u2019t bounced between services \u2014 itself part of effective management' },
+      { dom:'cm',    text:'Safety-nets proportionately: what genuinely NEW or red-flag symptoms would warrant reassessment (so she\u2019s not abandoned), the rehab/therapy referrals, a follow-up plan and named clinician \u2014 treating the functional disorder actively rather than re-investigating or discharging' },
     ],
     worked:[
       { lbl:'Believe her, explicitly', txt:'"Before anything else, I want to say this clearly and mean it: I believe you. Your symptoms are REAL \u2014 you are not making them up, and you are not a hypochondriac. The exhaustion, the pain, your legs giving way \u2014 those are genuinely happening to you, and being disbelieved on top of being unwell is its own kind of awful. I\u2019m not going to do that to you."' },

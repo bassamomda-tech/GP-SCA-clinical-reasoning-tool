@@ -43,6 +43,7 @@
     if (/\/tools\/algorithms\//.test(p)) return 'algorithm';
     if (/\/cases\//.test(p)) return 'case';
     if (/\/pages\//.test(p)) return 'page';
+    if (/\/sca\//.test(p)) return 'page';
     return 'tool';
   }
   function canonical(){

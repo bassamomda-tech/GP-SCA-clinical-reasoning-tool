@@ -12,33 +12,64 @@
   /* ============ 97. TELEPHONE — Hyperkalaemia urgent recall ============ */
   const c97 = {
     id:'hyperkalaemia-recall', title:'"You\u2019ve rung me at work \u2014 is it that serious?"', type:'telephone', duration:12,
-    meta:{ age:68, sex:'M', setting:'Telephone \u2014 GP-initiated recall for a high potassium result.', system:'Urgent / Hyperkalaemia' },
+    meta:{ age:68, sex:'M', setting:'Telephone \u2014 GP-initiated recall for a high potassium result.', system:'Urgent / Hyperkalaemia', checked:'October 2026' },
     brief:'Mr Raymond Childs, 68. Routine bloods (monitoring after a recent dose increase) show POTASSIUM 6.6 mmol/L (critical), with a mild rise in creatinine. CKD3, type 2 diabetes, heart failure. Meds: ramipril (dose recently increased), spironolactone, metformin, and he\u2019s been taking ibuprofen for knee pain (OTC, not on record) plus a "low-salt" substitute (potassium-based). You are ringing HIM. He\u2019s at work, dismissive, "feels fine". No chest pain/palpitations volunteered.',
     script:{
-      opening:'"Hello? \u2026 Oh, the surgery. You\u2019ve caught me at work \u2014 is everything alright? You don\u2019t usually ring me. The nurse said my bloods were just routine. I feel absolutely fine, honestly, bit of a knee playing up but otherwise grand. Is it really something that couldn\u2019t wait for my next appointment? I\u2019ve got a delivery to sign for."',
-      facts:[
-        { topic:'The result',          text:'Potassium 6.6 mmol/L is SEVERE hyperkalaemia \u2014 a risk of life-threatening cardiac arrhythmia, even when the patient feels well. With a rising creatinine it suggests worsening renal function on top. This needs urgent action TODAY — UK Kidney Association (Treatment of Acute Hyperkalaemia in Adults, updated 2023): potassium 6.5 mmol/L or more found in the community needs urgent same-day hospital assessment for an ECG, repeat potassium and treatment — not deferral, and not a practice ECG first.' },
-        { topic:'The drivers',          text:'On questioning: a recently INCREASED ramipril dose, spironolactone (potassium-sparing), CKD3 + heart failure, AND \u2014 the hidden contributors \u2014 OTC IBUPROFEN for his knee (not on his record; NSAIDs worsen renal function and potassium) and a POTASSIUM-BASED "low-salt" substitute he started for his blood pressure. These stack to cause the hyperkalaemia.' },
-        { topic:'The asymptomatic trap', text:'He "feels fine" \u2014 hyperkalaemia is often asymptomatic until a fatal arrhythmia; muscle weakness/palpitations may or may not be present. Reassuring symptoms do NOT make a potassium of 6.6 safe. The challenge is conveying urgency to a well-feeling man who wants to defer.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 his dismissiveness ("I feel fine, can it wait") masks both a stoical reluctance to be "a bother" and a fear of hospitals (his brother went into hospital and "never came home"). He\u2019s also not mentioned the ibuprofen or the salt-substitute because he doesn\u2019t think OTC things "count" as medicines \u2014 so the safe medication history must be actively sought. Getting him to take it seriously and disclose the hidden drivers is the consultation.' },
-        { topic:'What he needs',        text:'Officially he wants to defer and get back to work. What he needs: to grasp that a potassium of 6.6 is an emergency despite feeling well, urgent same-day HOSPITAL assessment (ECG, repeat potassium, treatment — UK Kidney Association 2023), STOP the culprits (hold ramipril/spironolactone, stop the NSAID and the potassium salt-substitute) per advice, and dietary potassium advice \u2014 with his hospital fear handled so he accepts it.' },
+      "opening": "\"Hello? … Oh, the surgery. You've caught me at work — is everything alright? You don't usually ring me. The nurse said my bloods were just routine. I feel absolutely fine, honestly, bit of a knee playing up but otherwise grand. Is it really something that couldn't wait for my next appointment? I've got a delivery to sign for.\"",
+      "facts": [
+        {
+          "topic": "How you feel",
+          "text": "If asked: you feel well. No chest pain, no palpitations or fluttering, no fainting or dizziness. If asked specifically about weakness: \"My legs have felt a bit heavy this week, but I put that down to the knee.\""
+        },
+        {
+          "topic": "Your tablets (prescribed)",
+          "text": "Ramipril — \"they put the dose up about three weeks ago\". Spironolactone, metformin. You take them as directed. No allergies."
+        },
+        {
+          "topic": "Over-the-counter things — only if asked specifically",
+          "text": "If asked about anything you buy yourself: \"Just some ibuprofen for the knee — two tablets three times a day for the last fortnight.\" If asked about salt or diet: \"I've switched to that low-salt stuff, LoSalt, for my blood pressure.\" You did not mention these because \"they're not proper medicines\"."
+        },
+        {
+          "topic": "Diet (if asked)",
+          "text": "Banana every morning, lots of orange juice, potatoes most days."
+        },
+        {
+          "topic": "Other health",
+          "text": "Kidney problem (\"stage 3\"), type 2 diabetes, heart failure — \"but I'm stable\". Breathing no worse than usual, ankles no more swollen. Passing water normally. No vomiting or diarrhoea."
+        },
+        {
+          "topic": "Social",
+          "text": "68, works part-time in a builders' merchant yard. Lives with wife Maureen, who can drive. Ex-smoker. A pint or two at the weekend."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "Your brother went into hospital \"for a few tests\" last year and never came home. You hate hospitals. Reveal only if the doctor asks why you are reluctant, or what worries you about going in."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Cheerful, a bit dismissive, keen to get back to work. Ask \"Can't it wait till Monday?\" at least once. If the doctor explains plainly that this level can affect the heart rhythm even when you feel well, go quiet and take it seriously. If they also hear your hospital worry, agree to go today and ask \"What do I do about the tablets?\""
+        }
       ],
-      ice:{
-        ideas:'The bloods were "just routine" and he feels fine, so it can surely wait for his next appointment.',
-        concerns:'HIDDEN AGENDA \u2014 stoical reluctance to be a bother and a fear of hospital (brother who "never came home"); plus he hasn\u2019t mentioned the OTC ibuprofen or the potassium-based salt-substitute because he doesn\u2019t think they "count".',
-        expectations:'To defer and get back to work. What he actually needs: to grasp the urgency of a potassium of 6.6, same-day assessment (ECG/treatment), stopping the culprit drugs/substitute, with his hospital fear addressed.'
+      "ice": {
+        "ideas": "\"It was just a routine blood test and I feel fine, so it can't be that serious.\"",
+        "concerns": "\"I don't want to be a nuisance.\" Underneath (only if asked): fear of hospital since your brother died there.",
+        "expectations": "\"Can it not wait till my next appointment?\" You will go in today if the danger is explained without panic and your worry is heard."
       },
-      cues:['Potassium 6.6 + feels fine \u2014 hyperkalaemia is often silent until a fatal arrhythmia; symptoms don\u2019t make it safe.','Recent ramipril increase + spironolactone + CKD/HF \u2014 the prescribed drivers; AND ask about OTC/salt-substitute.','"Can it wait, I feel fine, I\u2019ve a delivery to sign" \u2014 deferral driven by stoicism + hospital fear; convey urgency without panic.']
+      "cues": [
+        "\"I feel absolutely fine, honestly.\" — say in the opening.",
+        "\"Bit of a knee playing up.\" — say in the opening; it leads to the ibuprofen if followed up.",
+        "\"I'm not keen on hospitals.\" — say when hospital is first mentioned."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises POTASSIUM 6.6 mmol/L as SEVERE hyperkalaemia \u2014 a risk of life-threatening cardiac arrhythmia \u2014 and that the patient feeling well does NOT make it safe or deferrable; conveys this clearly as needing action TODAY' },
-      { dom:'tasks', text:'Arranges URGENT same-day HOSPITAL assessment (acute medical unit or emergency department, per local pathway), because UK Kidney Association guidance (2023) says potassium 6.5 mmol/L or more found in the community needs urgent hospital assessment for an ECG (hyperkalaemic changes — peaked T waves, widened QRS, etc.), repeat potassium/renal function and treatment — rather than a practice ECG first; the grade (mild 5.5–5.9, moderate 6.0–6.4, severe ≥6.5) sets the route, whatever the symptoms' },
-      { dom:'tasks', text:'Identifies and addresses the DRUG/INTAKE drivers: recently increased ramipril and spironolactone (advise to hold/stop per plan), and \u2014 by actively asking \u2014 the OTC IBUPROFEN (stop) and the POTASSIUM-BASED salt-substitute (stop), recognising these are key reversible contributors often missed' },
-      { dom:'tasks', text:'Takes a proper medication and intake history that captures OTC/non-prescribed items and salt substitutes (because the patient won\u2019t volunteer them), and gives dietary high-potassium advice' },
-      { dom:'tasks', text:'Plans appropriate follow-up of renal function and a medication review (ACE inhibitor/spironolactone titration and monitoring — NICE NG106: check potassium and renal function after starting or changing these; NICE NG203: stop an ACE inhibitor/ARB if potassium rises to 6.0 or more once other potassium-raising drugs are stopped), and considers the precipitant for the creatinine rise (NSAID, dehydration, progression; possible AKI — NICE NG148)' },
-      { dom:'rto',   text:'Overcomes the deferral/dismissiveness without inducing panic: names the seriousness plainly, hears the stoicism and the hospital fear (the brother), and brings him to accept same-day care' },
-      { dom:'rto',   text:'Asks about OTC medicines and salt-substitutes in a way that makes disclosure easy and non-judgemental, rather than assuming the record is complete' },
-      { dom:'gs',    text:'Safety-nets clearly and acts: same-day hospital assessment route (ECG, repeat potassium, treatment), what to do if palpitations/chest pain/weakness/collapse occur (999), explicit stop/hold instructions for the culprits, confirms he will attend, and documents the plan and the recall' },
+      { dom:'dg', text:'Recognises POTASSIUM 6.6 mmol/L as SEVERE hyperkalaemia \u2014 a risk of life-threatening cardiac arrhythmia \u2014 and that the patient feeling well does NOT make it safe or deferrable; conveys this clearly as needing action TODAY' },
+      { dom:'cm', text:'Arranges URGENT same-day HOSPITAL assessment (acute medical unit or emergency department, per local pathway), because UK Kidney Association guidance (2023) says potassium 6.5 mmol/L or more found in the community needs urgent hospital assessment for an ECG (hyperkalaemic changes — peaked T waves, widened QRS, etc.), repeat potassium/renal function and treatment — rather than a practice ECG first; the grade (mild 5.5–5.9, moderate 6.0–6.4, severe ≥6.5) sets the route, whatever the symptoms' },
+      { dom:'dg', text:'Identifies and addresses the DRUG/INTAKE drivers: recently increased ramipril and spironolactone (advise to hold/stop per plan), and \u2014 by actively asking \u2014 the OTC IBUPROFEN (stop) and the POTASSIUM-BASED salt-substitute (stop), recognising these are key reversible contributors often missed' },
+      { dom:'dg', text:'Takes a proper medication and intake history that captures OTC/non-prescribed items and salt substitutes (because the patient won\u2019t volunteer them), and gives dietary high-potassium advice' },
+      { dom:'cm', text:'Plans appropriate follow-up of renal function and a medication review (ACE inhibitor/spironolactone titration and monitoring — NICE NG106: check potassium and renal function after starting or changing these; NICE NG203: stop an ACE inhibitor/ARB if potassium rises to 6.0 or more once other potassium-raising drugs are stopped), and considers the precipitant for the creatinine rise (NSAID, dehydration, progression; possible AKI — NICE NG148)' },
+      { dom:'ro',   text:'Overcomes the deferral/dismissiveness without inducing panic: names the seriousness plainly, hears the stoicism and the hospital fear (the brother), and brings him to accept same-day care' },
+      { dom:'ro',   text:'Asks about OTC medicines and salt-substitutes in a way that makes disclosure easy and non-judgemental, rather than assuming the record is complete' },
+      { dom:'cm',    text:'Safety-nets clearly and acts: same-day hospital assessment route (ECG, repeat potassium, treatment), what to do if palpitations/chest pain/weakness/collapse occur (999), explicit stop/hold instructions for the culprits, confirms he will attend, and documents the plan and the recall' },
     ],
     worked:[
       { lbl:'Convey urgency calmly',  txt:'"I\u2019m glad I caught you, and I\u2019m sorry to ring you at work \u2014 but I did because it can\u2019t wait. One of your blood results, your potassium, has come back high enough to matter today, even though you feel completely fine. Potassium is what keeps the heart\u2019s rhythm steady, and at this level it can occasionally upset the rhythm, so I need to act now rather than at your next appointment."' },
@@ -48,7 +79,7 @@
       { lbl:'The plan today',       txt:'"Here’s what needs to happen now: at this level, you need to be seen at the hospital today — the assessment unit — for a heart tracing, an ECG, and your bloods repeated straight away, and treatment there to bring the potassium down safely if it’s still high. That’s what the kidney specialists’ guidance says for a potassium this high, rather than coming to us first. The delivery will have to wait. I’ll ring ahead and arrange where you go."' },
       { lbl:'Meet the fear + net',  txt:'"I sense going in worries you \u2014 is that about hospitals? \u2026 Your brother. I\u2019m sorry, and I understand. This is different: we\u2019re acting early, on a number, to keep you safe, and most people are sorted the same day. If before you\u2019re seen you get palpitations, chest pain, feel weak or faint \u2014 that\u2019s 999 straightaway. I\u2019ll confirm exactly where to go and follow up your repeat result. You feel fine, and I want to keep it that way \u2014 that\u2019s why we move today."' },
     ],
-    learning:'A potassium of 6.6 mmol/L is severe hyperkalaemia and a risk of life-threatening arrhythmia \u2014 and the patient feeling completely well does NOT make it safe or deferrable; hyperkalaemia is frequently silent until it causes a fatal rhythm. The action is urgent same-day hospital assessment (UK Kidney Association 2023: potassium 6.5 mmol/L or more in the community): an ECG (peaked T waves, widened QRS, etc.), an urgent repeat potassium/renal function and emergency treatment as needed — not a practice ECG first. The examinable clinical skill is finding the stacked, partly-hidden drivers: a recently increased ACE inhibitor and spironolactone (hold per plan), plus the contributors the record misses and the patient won\u2019t volunteer \u2014 OTC NSAIDs (ibuprofen for his knee) and a potassium-based "low-salt" substitute (both stopped). The hidden agenda is deferral driven by stoicism and hospital fear (a brother who "never came home"), and the belief that OTC items "don\u2019t count" as medicines. Convey urgency without panic, take an active OTC/salt-substitute history, give explicit stop/hold instructions and dietary advice, arrange same-day ECG/assessment, and safety-net cardiac symptoms to 999.',
+    learning:"A potassium of 6.6 mmol/L is severe hyperkalaemia and a risk of life-threatening arrhythmia — and the patient feeling completely well does NOT make it safe or deferrable; hyperkalaemia is frequently silent until it causes a fatal rhythm. The action is urgent same-day hospital assessment (UK Kidney Association 2023: potassium 6.5 mmol/L or more in the community): an ECG (peaked T waves, widened QRS, etc.), an urgent repeat potassium/renal function and emergency treatment as needed — not a practice ECG first. The examinable clinical skill is finding the stacked, partly-hidden drivers: a recently increased ACE inhibitor and spironolactone (hold per plan), plus the contributors the record misses and the patient won’t volunteer — OTC NSAIDs (ibuprofen for his knee) and a potassium-based \"low-salt\" substitute (both stopped). The hidden agenda is deferral driven by stoicism and hospital fear (a brother who \"never came home\"), and the belief that OTC items \"don’t count\" as medicines. Convey urgency without panic, take an active OTC/salt-substitute history, give explicit stop/hold instructions and dietary advice, arrange same-day ECG/assessment, and safety-net cardiac symptoms to 999. He \"feels fine\" — hyperkalaemia is often asymptomatic until a fatal arrhythmia; muscle weakness/palpitations may or may not be present. Reassuring symptoms do NOT make a potassium of 6.6 safe. The challenge is conveying urgency to a well-feeling man who wants to defer.",
     knowledge:{
       guideline:'UK Kidney Association: Treatment of Acute Hyperkalaemia in Adults (updated 2023) · NICE NG203 Chronic kidney disease (2021) · NICE NG106 Chronic heart failure (2018) · NICE NG148 Acute kidney injury (2019) · MHRA Drug Safety Update (February 2016): spironolactone and renin–angiotensin system drugs',
       points:[
@@ -67,33 +98,64 @@
   /* ============ 98. TELEPHONE — CKD stage 3 result: "disease" defused ============ */
   const c98 = {
     id:'ckd3-result', title:'"The letter says I\u2019ve got kidney disease \u2014 am I going on dialysis?"', type:'telephone', duration:12,
-    meta:{ age:64, sex:'F', setting:'Telephone \u2014 patient distressed by a CKD3 result letter.', system:'Renal / Chronic kidney disease' },
+    meta:{ age:64, sex:'F', setting:'Telephone \u2014 patient distressed by a CKD3 result letter.', system:'Renal / Chronic kidney disease', checked:'October 2026' },
     brief:'Mrs Patricia Nwosu, 64. A routine review labelled her CKD stage 3a (eGFR 52, stable over a year; ACR normal/mildly raised). She received a letter mentioning "chronic kidney disease" and is frightened. Hypertension (on amlodipine), type 2 diabetes (metformin), well in herself. No symptoms. She has googled it and is convinced she\u2019s heading for dialysis like a neighbour. Rings in distress wanting to know "how long she\u2019s got" her kidneys.',
     script:{
-      opening:'"Doctor, I got this letter saying I\u2019ve got chronic kidney disease and I\u2019ve been beside myself. My neighbour had kidney disease and ended up on dialysis three times a week, and then\u2026 well. Am I heading for that? How long have my kidneys got? I feel fine, so I don\u2019t understand how my kidneys can be diseased. I didn\u2019t sleep a wink after that letter came."',
-      facts:[
-        { topic:'What CKD3a actually means', text:'eGFR 52 (CKD stage 3a) that is STABLE over a year with normal/mildly-raised ACR is common, usually age- and blood-pressure-related, and the large majority of people at this stage NEVER need dialysis and die WITH it, not OF it. The label "disease" frightens people far more than the mild, manageable reality.' },
-        { topic:'The protective levers',  text:'If explained: the plan is to PROTECT the kidneys \u2014 good blood-pressure control, good diabetes control, an ACE inhibitor/ARB if indicated (NICE NG203: with diabetes, offer one if ACR is 3 mg/mmol or more — so her exact repeat ACR decides it), avoiding nephrotoxins (NSAIDs), reviewing doses, a statin (NICE NG238: offer atorvastatin 20 mg for primary prevention in CKD), and periodic monitoring of eGFR/ACR. CKD is more a cardiovascular risk marker than a path to dialysis at this stage.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 her terror is built on the neighbour\u2019s dialysis-and-death, mapped onto herself, and the cold word "disease" in a letter with no conversation. Underneath is also a fear of being a burden on her family and of "losing her independence". She needs the catastrophic story dismantled and replaced with an accurate, empowering one. There may also be guilt that she "did this" (diabetes/diet).' },
-        { topic:'The label problem',     text:'If reached: nobody explained the result before the letter; the term landed as a death sentence. The consultation is largely RISK COMMUNICATION \u2014 reframing a number into a manageable, mostly-stable condition without either minimising or terrifying.' },
-        { topic:'What she wants',       text:'Officially: to know "how long her kidneys have got". What she needs: an accurate, reassuring explanation that CKD3a is common and usually stable, that dialysis is very unlikely from here, the protective plan, guilt addressed, and the neighbour-fear dismantled \u2014 with honest monitoring and safety-netting.' },
+      "opening": "\"Doctor, I got this letter saying I've got chronic kidney disease and I've been beside myself. My neighbour had kidney disease and ended up on dialysis three times a week, and then… well. Am I heading for that? How long have my kidneys got? I feel fine, so I don't understand how my kidneys can be diseased. I didn't sleep a wink after that letter came.\"",
+      "facts": [
+        {
+          "topic": "The letter",
+          "text": "If asked: it arrived on Tuesday, a standard letter saying your recent blood test showed \"chronic kidney disease stage 3a\" and asking you to book a review. Nobody had mentioned kidneys to you before."
+        },
+        {
+          "topic": "Symptoms (if asked)",
+          "text": "None. You feel well. No swelling, no breathlessness, passing water normally, no blood in the urine, no itching, appetite fine, no weight loss."
+        },
+        {
+          "topic": "Medical history",
+          "text": "High blood pressure for about 10 years and type 2 diabetes for 8 years. \"My sugars are okay, the nurse says.\" Home BP readings \"usually around 140 over 85\"."
+        },
+        {
+          "topic": "Tablets",
+          "text": "Amlodipine and metformin. No allergies. If asked about painkillers: \"I take ibuprofen for my knees now and again — a few times a week.\" You did not know it could matter for the kidneys."
+        },
+        {
+          "topic": "Social",
+          "text": "64, retired school cook, widowed, lives alone, close to your daughter and two grandchildren. Never smoked, rarely drinks. Walks to the shops daily."
+        },
+        {
+          "topic": "The neighbour",
+          "text": "Mrs Okafor next door had kidney failure, was on dialysis three times a week for two years and died last spring. \"She went downhill so fast.\""
+        },
+        {
+          "topic": "Hidden worries — hold back",
+          "text": "You are frightened of becoming a burden on your daughter and losing your independence. You also feel guilty: \"I suppose I brought this on myself with the diabetes — all those years of cakes at work.\" Say these only if asked what worries you most, or if the doctor is warm and unhurried."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Tearful and anxious at the start. If the doctor jumps straight into numbers, get confused: \"I don't understand what that means.\" If they explain in plain words that this is a mild, stable change and that most people at this stage never need dialysis, you relax and start asking practical questions (\"So what can I do?\"). If told \"it's nothing to worry about\" without explanation, stay unconvinced: \"Then why did they send me a letter?\""
+        }
       ],
-      ice:{
-        ideas:'"Kidney disease" means her kidneys are failing and she\u2019s heading for dialysis and death, like her neighbour \u2014 even though she feels fine.',
-        concerns:'HIDDEN AGENDA \u2014 the neighbour\u2019s dialysis-and-death mapped onto herself, the cold "disease" letter with no conversation, fear of being a burden / losing independence, and possible guilt that diabetes/diet "did this".',
-        expectations:'To be told how long her kidneys have left. What she actually needs: an accurate reframe (CKD3a is common, usually stable, dialysis very unlikely), the protective plan, guilt addressed, and honest monitoring.'
+      "ice": {
+        "ideas": "\"Kidney disease means my kidneys are failing and I'll end up on dialysis like Mrs Okafor.\"",
+        "concerns": "\"How long have my kidneys got?\" Underneath: being a burden on your daughter, and guilt that you caused it.",
+        "expectations": "To be told honestly what is going to happen to you. You would welcome a clear plan of what you can do to protect your kidneys."
       },
-      cues:['"Am I going on dialysis? How long have my kidneys got?" \u2014 catastrophic reading of a label; reframe, don\u2019t minimise.','eGFR 52, stable, ACR ok, feels fine \u2014 mild, manageable CKD3a; most never reach dialysis.','The neighbour on dialysis \u2014 the specific fear driving the distress; dismantle it directly.']
+      "cues": [
+        "\"Am I heading for dialysis?\" — say in the opening.",
+        "\"I didn't sleep a wink.\" — say in the opening; shows the distress.",
+        "\"I suppose I brought this on myself.\" — say quietly if diabetes or lifestyle comes up."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Explains CKD3a ACCURATELY and reassuringly: a mild reduction in kidney filtering that is common (especially with age, blood pressure and diabetes), here STABLE, and that the large majority of people at this stage NEVER need dialysis \u2014 without either minimising or catastrophising' },
-      { dom:'tasks', text:'Reframes the "disease" label and the dialysis fear directly: distinguishes her stable CKD3a from the neighbour\u2019s end-stage disease, and explains CKD at this stage is largely a cardiovascular RISK marker to act on, not a countdown to dialysis' },
-      { dom:'tasks', text:'Lays out the PROTECTIVE plan: optimise blood pressure and diabetes, ACE inhibitor/ARB where indicated (NICE NG203: with diabetes, offer if ACR is 3 mg/mmol or more; NICE NG136 also favours one first-line in hypertension with type 2 diabetes, so her amlodipine-only plan is reviewed), avoid nephrotoxins (NSAIDs), offer a statin (NICE NG238: atorvastatin 20 mg), medication-dose review, and explains the monitoring (periodic eGFR + ACR) as surveillance that catches change early' },
-      { dom:'tasks', text:'Addresses GUILT and lifestyle without shaming, and gives realistic, empowering actions (BP, glucose, avoiding ibuprofen, hydration) framed as protecting her kidneys' },
-      { dom:'tasks', text:'Knows the genuine NICE NG203 referral criteria (5-year kidney failure risk over 5% on the KFRE; ACR 70 mg/mmol or more unless diabetes is already appropriately treated; ACR 30 or more with haematuria; a sustained eGFR fall of 25% or more with a change of category, or 15 mL/min/1.73 m² or more within 12 months; hypertension uncontrolled on 4 or more drugs; suspected rare or genetic cause) that WOULD warrant nephrology referral \u2014 distinguishing her stable picture from those' },
-      { dom:'rto',   text:'Responds to the distress and the sleepless fear FIRST, dismantles the neighbour-driven catastrophe with empathy, and replaces dread with an accurate, empowering narrative' },
-      { dom:'rto',   text:'Acknowledges the harm of a cold letter without a conversation, and the burden/independence fears, validating them while reassuring' },
-      { dom:'gs',    text:'Safety-nets and follows up: the monitoring plan and what change would prompt review, avoiding NSAIDs, when to seek help (e.g. with intercurrent illness/dehydration \u2014 sick-day guidance for relevant meds), and a follow-up that leaves her reassured and engaged rather than terrified' },
+      { dom:'ro', text:'Explains CKD3a ACCURATELY and reassuringly: a mild reduction in kidney filtering that is common (especially with age, blood pressure and diabetes), here STABLE, and that the large majority of people at this stage NEVER need dialysis \u2014 without either minimising or catastrophising' },
+      { dom:'ro', text:'Reframes the "disease" label and the dialysis fear directly: distinguishes her stable CKD3a from the neighbour\u2019s end-stage disease, and explains CKD at this stage is largely a cardiovascular RISK marker to act on, not a countdown to dialysis' },
+      { dom:'cm', text:'Lays out the PROTECTIVE plan: optimise blood pressure and diabetes, ACE inhibitor/ARB where indicated (NICE NG203: with diabetes, offer if ACR is 3 mg/mmol or more; NICE NG136 also favours one first-line in hypertension with type 2 diabetes, so her amlodipine-only plan is reviewed), avoid nephrotoxins (NSAIDs), offer a statin (NICE NG238: atorvastatin 20 mg), medication-dose review, and explains the monitoring (periodic eGFR + ACR) as surveillance that catches change early' },
+      { dom:'ro', text:'Addresses GUILT and lifestyle without shaming, and gives realistic, empowering actions (BP, glucose, avoiding ibuprofen, hydration) framed as protecting her kidneys' },
+      { dom:'cm', text:'Knows the genuine NICE NG203 referral criteria (5-year kidney failure risk over 5% on the KFRE; ACR 70 mg/mmol or more unless diabetes is already appropriately treated; ACR 30 or more with haematuria; a sustained eGFR fall of 25% or more with a change of category, or 15 mL/min/1.73 m² or more within 12 months; hypertension uncontrolled on 4 or more drugs; suspected rare or genetic cause) that WOULD warrant nephrology referral \u2014 distinguishing her stable picture from those' },
+      { dom:'ro',   text:'Responds to the distress and the sleepless fear FIRST, dismantles the neighbour-driven catastrophe with empathy, and replaces dread with an accurate, empowering narrative' },
+      { dom:'ro',   text:'Acknowledges the harm of a cold letter without a conversation, and the burden/independence fears, validating them while reassuring' },
+      { dom:'cm',    text:'Safety-nets and follows up: the monitoring plan and what change would prompt review, avoiding NSAIDs, when to seek help (e.g. with intercurrent illness/dehydration \u2014 sick-day guidance for relevant meds), and a follow-up that leaves her reassured and engaged rather than terrified' },
     ],
     worked:[
       { lbl:'Defuse the word first', txt:'"I\u2019m so sorry that letter frightened you and cost you a night\u2019s sleep \u2014 let me put the scary word in proportion straightaway. \u2018Chronic kidney disease stage 3\u2019 sounds dramatic, but in your case it means your kidneys are filtering a little slower than a younger person\u2019s \u2014 which is incredibly common at 64, especially with blood pressure and diabetes \u2014 and yours has been STABLE for a year. This is a world away from your neighbour\u2019s situation."' },
@@ -103,7 +165,7 @@
       { lbl:'Honest monitoring',    txt:'"I\u2019ll be straight: we do keep watching, because occasionally kidney function drifts, and we\u2019d rather catch that early. So you\u2019ll have periodic tests. If the numbers ever changed in a way that needed a specialist, we\u2019d arrange that \u2014 but you are nowhere near that, and stable is exactly what we want."' },
       { lbl:'Safety-net + reassure', txt:'"One practical thing: avoid anti-inflammatory painkillers like ibuprofen \u2014 paracetamol\u2019s fine \u2014 and if you\u2019re ever really unwell with vomiting or diarrhoea, drink plenty and let us know, as we sometimes pause certain tablets briefly. Otherwise, please sleep tonight: this is mild, stable, and managed. Come and see me to go through it properly and ask anything \u2014 you are going to be absolutely fine looking after this."' },
     ],
-    learning:'A CKD stage-3a result (eGFR ~52, stable, ACR normal/mildly raised) in a well 64-year-old is a RISK-COMMUNICATION consultation: the word "disease" in a letter, with no conversation, lands as a dialysis-and-death sentence \u2014 here amplified by a neighbour\u2019s end-stage disease mapped onto herself. The task is to reframe ACCURATELY without minimising: CKD3a is common (age, BP, diabetes), usually stable, the large majority never need dialysis (they die with it, not of it), and at this stage it is largely a cardiovascular risk marker to act on. Lay out the protective levers (BP and diabetes control, ACE inhibitor/ARB where indicated — NICE NG203: with diabetes, if ACR is 3 mg/mmol or more — avoid NSAIDs, atorvastatin 20 mg per NICE NG238, dose review, periodic eGFR+ACR monitoring), address guilt without shaming, and know the genuine NICE NG203 referral criteria (5-year kidney failure risk over 5%, ACR 70 or more, ACR 30 or more with haematuria, a sustained significant eGFR fall, hypertension uncontrolled on 4 or more drugs, suspected rare or genetic cause) that distinguish her stable picture from those needing nephrology. Respond to the distress first, dismantle the neighbour-driven catastrophe, and safety-net (NSAID avoidance, sick-day guidance, monitoring) so she leaves reassured and engaged.',
+    learning:"A CKD stage-3a result (eGFR ~52, stable, ACR normal/mildly raised) in a well 64-year-old is a RISK-COMMUNICATION consultation: the word \"disease\" in a letter, with no conversation, lands as a dialysis-and-death sentence — here amplified by a neighbour’s end-stage disease mapped onto herself. The task is to reframe ACCURATELY without minimising: CKD3a is common (age, BP, diabetes), usually stable, the large majority never need dialysis (they die with it, not of it), and at this stage it is largely a cardiovascular risk marker to act on. Lay out the protective levers (BP and diabetes control, ACE inhibitor/ARB where indicated — NICE NG203: with diabetes, if ACR is 3 mg/mmol or more — avoid NSAIDs, atorvastatin 20 mg per NICE NG238, dose review, periodic eGFR+ACR monitoring), address guilt without shaming, and know the genuine NICE NG203 referral criteria (5-year kidney failure risk over 5%, ACR 70 or more, ACR 30 or more with haematuria, a sustained significant eGFR fall, hypertension uncontrolled on 4 or more drugs, suspected rare or genetic cause) that distinguish her stable picture from those needing nephrology. Respond to the distress first, dismantle the neighbour-driven catastrophe, and safety-net (NSAID avoidance, sick-day guidance, monitoring) so she leaves reassured and engaged. eGFR 52 (CKD stage 3a) that is STABLE over a year with normal/mildly-raised ACR is common, usually age- and blood-pressure-related, and the large majority of people at this stage NEVER need dialysis and die WITH it, not OF it. The label \"disease\" frightens people far more than the mild, manageable reality. If reached: nobody explained the result before the letter; the term landed as a death sentence. The consultation is largely RISK COMMUNICATION — reframing a number into a manageable, mostly-stable condition without either minimising or terrifying.",
     knowledge:{
       guideline:'NICE NG203 Chronic kidney disease: assessment and management (2021) · NICE NG238 Cardiovascular disease: risk assessment and reduction (2023) · NICE NG136 Hypertension in adults (2019) · NICE TA1075 Dapagliflozin for CKD (2025) · BNF · KDIGO CKD guideline (2024; international — the eGFR/ACR heat-map that NG203 also uses)',
       points:[
@@ -122,33 +184,68 @@
   /* ============ 99. TELEPHONE — Hyponatraemia on a diuretic ============ */
   const c99 = {
     id:'hyponatraemia-diuretic', title:'"Bit muddly and wobbly \u2014 it\u2019s just my age, surely"', type:'telephone', duration:12,
-    meta:{ age:77, sex:'F', setting:'Telephone \u2014 low sodium on bloods; mild symptoms.', system:'Renal / Hyponatraemia' },
+    meta:{ age:77, sex:'F', setting:'Telephone \u2014 low sodium on bloods; mild symptoms.', system:'Renal / Hyponatraemia', checked:'October 2026' },
     brief:'Mrs Glenys Tovey, 77. Bloods (done because she felt "off") show SODIUM 121 mmol/L (low). Recently started bendroflumethiazide for blood pressure ~3 weeks ago; also on citalopram (SSRI, long-standing) and omeprazole. Daughter reports she\u2019s been more confused, unsteady, and had a near-fall. She minimises ("just getting old"). Drinks lots of squash "to stay hydrated". You are ringing about the result. No seizure/vomiting volunteered.',
     script:{
-      opening:'"Hello dear \u2014 the surgery? Oh. My daughter does fuss. I\u2019ve been a bit muddly and wobbly, that\u2019s all, but isn\u2019t that just getting old? I\u2019ve been drinking lots of squash to keep my fluids up like they say. I nearly went over getting up the other day but I\u2019m fine. Is it the blood test? I\u2019m sure it\u2019s nothing that can\u2019t wait."',
-      facts:[
-        { topic:'The result & risk',    text:'Sodium 121 mmol/L is significant hyponatraemia. With NEW confusion, unsteadiness and a near-fall, this is symptomatic and needs urgent assessment \u2014 severe or rapidly-developing hyponatraemia risks seizures and is dangerous; even moderate symptomatic hyponatraemia in the elderly causes falls and confusion.' },
-        { topic:'The drivers',          text:'On questioning: a recently started THIAZIDE (bendroflumethiazide \u2014 a classic cause of hyponatraemia, especially in older women, within weeks of starting), an SSRI (citalopram — SIADH; the BNF lists hyponatraemia with SSRIs, particularly in older people), her proton pump inhibitor (omeprazole — the BNF also lists hyponatraemia), and EXCESS HYPOTONIC FLUID (lots of squash "to stay hydrated") compounding it. The drug + water-loading combination is the picture. Her citalopram dose also needs checking: MHRA Drug Safety Update (December 2011) — maximum 20 mg daily over 60 because of dose-dependent QT prolongation, with hypokalaemia (a thiazide effect) corrected.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 she attributes the confusion, unsteadiness and near-fall to "just getting old", and is minimising to avoid fuss and (if reached) because she\u2019s frightened that admitting confusion/falls means "losing her independence" or "going into a home". The daughter\u2019s concern is the reliable signal. She also over-drinks squash from well-meant but misapplied "stay hydrated" advice \u2014 a correctable contributor she\u2019s proud of.' },
-        { topic:'The symptom-attribution trap', text:'Confusion, unsteadiness and falls in an older person are too easily written off as ageing; here they are symptoms of a treatable, dangerous electrolyte problem. Recognising the new symptoms as the sodium, not age, is the consultation.' },
-        { topic:'What she needs',       text:'Officially she wants to defer. What she needs: recognition that symptomatic hyponatraemia at 121 needs urgent assessment, same-day hospital assessment (Society for Endocrinology guidance), identification and stopping of the culprit (hold the thiazide; review the SSRI and PPI; check the citalopram dose against the MHRA 20 mg limit over 60), correction of the excess squash, and safe management/monitoring \u2014 with the independence fear handled so she accepts help.' },
+      "opening": "\"Hello dear — the surgery? Oh. My daughter does fuss. I've been a bit muddly and wobbly, that's all, but isn't that just getting old? I've been drinking lots of squash to keep my fluids up like they say. I nearly went over getting up the other day but I'm fine. Is it the blood test? I'm sure it's nothing that can't wait.\"",
+      "facts": [
+        {
+          "topic": "The muddle",
+          "text": "If asked: for about two weeks you have been \"foggy\" — losing your words, forgetting whether you have taken your tablets, and you left the gas on once last week. Your daughter Karen says you repeated the same story twice on the phone."
+        },
+        {
+          "topic": "Balance and the near-fall",
+          "text": "If asked: wobbly on your feet, especially getting up. Three days ago you stood up from the chair, went \"swimmy\" and grabbed the table — did not actually fall or hit your head."
+        },
+        {
+          "topic": "Other symptoms (if asked)",
+          "text": "Mild headache, a bit queasy, off your food. No vomiting, no fits, no blackouts, no chest pain. No diarrhoea. No cramps. You are passing water a lot."
+        },
+        {
+          "topic": "Fluids (if asked)",
+          "text": "\"Oh, I'm very good — at least three big jugs of squash a day, they told me on the radio to keep hydrated.\" Plus several cups of tea."
+        },
+        {
+          "topic": "Tablets",
+          "text": "A \"new water tablet for blood pressure\" started about three weeks ago (bendroflumethiazide). Citalopram \"for my nerves, for years — 20 milligrams I think\". Omeprazole for indigestion. No allergies. Nothing bought over the counter."
+        },
+        {
+          "topic": "Medical history",
+          "text": "Blood pressure, recently diagnosed. Depression after your husband died 8 years ago, settled on citalopram."
+        },
+        {
+          "topic": "Social",
+          "text": "77, widowed, lives alone in a bungalow. Karen lives 10 minutes away and visits most days. You still do your own shopping and cooking. No alcohol, never smoked."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "You are frightened that if you admit to being muddled and wobbly, \"they'll put me in a home\". Reveal this only if the doctor asks what worries you about getting checked, or gently asks about managing at home."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Chatty, warm, a little vague; lose your thread once or twice. Minimise at first (\"it's just my age\"). If the doctor explains this is a blood salt level that can be fixed, probably caused by the new tablet and the squash, you become relieved and cooperative. If going to hospital is suggested without explanation, resist: \"Oh no, I don't want all that.\" Accept if your fear about a home is heard and Karen can take you."
+        }
       ],
-      ice:{
-        ideas:'The muddledness and wobbliness are just old age, and the squash is her being good about hydration; the blood test can wait.',
-        concerns:'HIDDEN AGENDA \u2014 fear that admitting confusion/falls means losing independence or "a home", driving minimisation; pride in drinking lots of squash (misapplied hydration advice).',
-        expectations:'To defer and not make a fuss. What she actually needs: urgent assessment for symptomatic hyponatraemia, stopping the thiazide, reviewing the SSRI, cutting the excess fluid, with her independence fear addressed.'
+      "ice": {
+        "ideas": "\"It's just old age. I'm being good drinking all that squash.\"",
+        "concerns": "Underneath (only if asked): being \"put in a home\" and losing your independence.",
+        "expectations": "\"It can wait, surely.\" You will accept going to be checked today if it is explained kindly and Karen can come with you."
       },
-      cues:['Sodium 121 + NEW confusion/unsteadiness/near-fall \u2014 symptomatic hyponatraemia; urgent, not "just age".','Thiazide started 3 weeks ago + SSRI + lots of squash \u2014 the stacked drivers; thiazide is the classic culprit.','"Just getting old, my daughter fusses" \u2014 symptom misattribution + independence fear; daughter\u2019s concern is the signal.']
+      "cues": [
+        "\"Isn't that just getting old?\" — say in the opening.",
+        "\"I've been drinking lots of squash to keep my fluids up.\" — say in the opening, proudly.",
+        "\"I don't want anyone thinking I can't cope.\" — say if managing at home comes up."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises SODIUM 121 mmol/L with NEW confusion, unsteadiness and a near-fall as SYMPTOMATIC, significant hyponatraemia needing urgent assessment \u2014 and does NOT accept "just getting old" or defer it' },
-      { dom:'tasks', text:'Identifies the DRUG drivers: the recently started THIAZIDE (bendroflumethiazide \u2014 a classic, often-early cause of hyponatraemia, especially in older women) and the SSRI (citalopram — SIADH), plus the PPI (omeprazole — also a listed cause, BNF); advises holding/stopping the thiazide and reviewing the SSRI and PPI once sodium is corrected — and checks the citalopram dose (MHRA Drug Safety Update, December 2011: maximum 20 mg daily over 60, QT risk worsened by thiazide-induced hypokalaemia)' },
-      { dom:'tasks', text:'Identifies the EXCESS HYPOTONIC FLUID (lots of squash) as a compounding factor and advises sensible fluid restriction/normalisation, correcting the misapplied "stay hydrated" advice without shaming' },
-      { dom:'tasks', text:'Arranges urgent assessment and appropriate work-up/monitoring: urgent repeat sodium and clinical assessment, same-day hospital/acute assessment given symptomatic (moderately severe, by Society for Endocrinology grading) hyponatraemia at this level (and knows severe symptoms — seizures, vomiting, drowsiness, reduced consciousness — are a 999 emergency), with awareness that correction must be controlled (Society for Endocrinology: a rise of no more than 10 mmol/L in the first 24 hours and 8 mmol/L in each 24 hours after)' },
-      { dom:'tasks', text:'Considers the broader hyponatraemia differential and assessment (volume status, other drugs, SIADH causes) appropriately, and plans falls-risk review given the near-fall (NICE NG249) and a different antihypertensive afterwards (NICE NG136)' },
-      { dom:'rto',   text:'Overcomes the "just my age" minimisation, treats the daughter\u2019s concern as the reliable signal, and surfaces/handles the independence/"a home" fear so she accepts assessment' },
-      { dom:'rto',   text:'Corrects the over-drinking advice gently (she\u2019s proud of it) and frames stopping the tablet and the squash as the fix, not a failing' },
-      { dom:'gs',    text:'Safety-nets clearly: urgent assessment route, red flags that mean emergency (worsening confusion, drowsiness, seizure, vomiting \u2192 999), hold the thiazide and cut the squash now, repeat bloods, falls review, and follow-up \u2014 confirming she will be seen' },
+      { dom:'dg', text:'Recognises SODIUM 121 mmol/L with NEW confusion, unsteadiness and a near-fall as SYMPTOMATIC, significant hyponatraemia needing urgent assessment \u2014 and does NOT accept "just getting old" or defer it' },
+      { dom:'dg', text:'Identifies the DRUG drivers: the recently started THIAZIDE (bendroflumethiazide \u2014 a classic, often-early cause of hyponatraemia, especially in older women) and the SSRI (citalopram — SIADH), plus the PPI (omeprazole — also a listed cause, BNF); advises holding/stopping the thiazide and reviewing the SSRI and PPI once sodium is corrected — and checks the citalopram dose (MHRA Drug Safety Update, December 2011: maximum 20 mg daily over 60, QT risk worsened by thiazide-induced hypokalaemia)' },
+      { dom:'dg', text:'Identifies the EXCESS HYPOTONIC FLUID (lots of squash) as a compounding factor and advises sensible fluid restriction/normalisation, correcting the misapplied "stay hydrated" advice without shaming' },
+      { dom:'cm', text:'Arranges urgent assessment and appropriate work-up/monitoring: urgent repeat sodium and clinical assessment, same-day hospital/acute assessment given symptomatic (moderately severe, by Society for Endocrinology grading) hyponatraemia at this level (and knows severe symptoms — seizures, vomiting, drowsiness, reduced consciousness — are a 999 emergency), with awareness that correction must be controlled (Society for Endocrinology: a rise of no more than 10 mmol/L in the first 24 hours and 8 mmol/L in each 24 hours after)' },
+      { dom:'dg', text:'Considers the broader hyponatraemia differential and assessment (volume status, other drugs, SIADH causes) appropriately, and plans falls-risk review given the near-fall (NICE NG249) and a different antihypertensive afterwards (NICE NG136)' },
+      { dom:'ro',   text:'Overcomes the "just my age" minimisation, treats the daughter\u2019s concern as the reliable signal, and surfaces/handles the independence/"a home" fear so she accepts assessment' },
+      { dom:'ro',   text:'Corrects the over-drinking advice gently (she\u2019s proud of it) and frames stopping the tablet and the squash as the fix, not a failing' },
+      { dom:'cm',    text:'Safety-nets clearly: urgent assessment route, red flags that mean emergency (worsening confusion, drowsiness, seizure, vomiting \u2192 999), hold the thiazide and cut the squash now, repeat bloods, falls review, and follow-up \u2014 confirming she will be seen' },
     ],
     worked:[
       { lbl:'Refuse “just age”',     txt:'"I\u2019m glad I caught you, and your daughter\u2019s right to be concerned. The muddledness and the wobbles, and nearly going over \u2014 I don\u2019t think that\u2019s simply age. Your blood test shows your salt level is low, and that genuinely causes exactly those symptoms: confusion, unsteadiness, falls. The good news is it\u2019s treatable \u2014 but it needs sorting now, not waiting."' },
@@ -158,7 +255,7 @@
       { lbl:'Meet the fear',        txt:'"I get the sense you don\u2019t want a fuss \u2014 and maybe a worry that admitting you\u2019ve been muddled means losing your independence. Let me reassure you: this is the OPPOSITE \u2014 a low salt level we fix, so you\u2019re steadier and clearer and SAFER at home, not the other way round. Sorting this is how you stay independent."' },
       { lbl:'Safety-net',           txt:'"If you become more confused, very drowsy, are sick, or have any kind of fit before you\u2019re seen \u2014 that\u2019s 999 immediately. Otherwise: stop the water tablet, normal drinking only, and get seen today. I\u2019ll chase your repeat result and we\u2019ll review all your tablets and your balance afterwards. You\u2019re not \u2018just getting old\u2019 \u2014 you\u2019ve got something we can put right."' },
     ],
-    learning:'Sodium 121 mmol/L with NEW confusion, unsteadiness and a near-fall is symptomatic, significant hyponatraemia \u2014 a treatable, dangerous cause of exactly the symptoms too easily dismissed as "just getting old". The clinical skill is finding the stacked drivers: a recently started THIAZIDE (bendroflumethiazide is a classic, often early, cause of hyponatraemia in older women), an SSRI (citalopram → SIADH; its dose checked against the MHRA December 2011 limit of 20 mg over 60), a PPI (omeprazole, also a listed cause — BNF), and EXCESS hypotonic fluid (lots of squash from misapplied "stay hydrated" advice) compounding it. Hold the thiazide, review the SSRI, normalise the fluid intake, and arrange same-day hospital assessment and a repeat sodium — with awareness that symptomatic hyponatraemia at this level needs acute assessment (Society for Endocrinology guidance), severe symptoms (seizures, marked confusion, vomiting, reduced consciousness) are an emergency, and correction must be controlled (avoid over-rapid correction). The examinable hidden agenda is symptom-misattribution plus an independence/"a home" fear driving minimisation; treat the daughter\u2019s concern as the reliable signal, reframe fixing the sodium as the way to STAY safe and independent, correct the over-drinking gently, plan a falls review, and safety-net the emergency features.',
+    learning:"Sodium 121 mmol/L with NEW confusion, unsteadiness and a near-fall is symptomatic, significant hyponatraemia — a treatable, dangerous cause of exactly the symptoms too easily dismissed as \"just getting old\". The clinical skill is finding the stacked drivers: a recently started THIAZIDE (bendroflumethiazide is a classic, often early, cause of hyponatraemia in older women), an SSRI (citalopram → SIADH; its dose checked against the MHRA December 2011 limit of 20 mg over 60), a PPI (omeprazole, also a listed cause — BNF), and EXCESS hypotonic fluid (lots of squash from misapplied \"stay hydrated\" advice) compounding it. Hold the thiazide, review the SSRI, normalise the fluid intake, and arrange same-day hospital assessment and a repeat sodium — with awareness that symptomatic hyponatraemia at this level needs acute assessment (Society for Endocrinology guidance), severe symptoms (seizures, marked confusion, vomiting, reduced consciousness) are an emergency, and correction must be controlled (avoid over-rapid correction). The examinable hidden agenda is symptom-misattribution plus an independence/\"a home\" fear driving minimisation; treat the daughter’s concern as the reliable signal, reframe fixing the sodium as the way to STAY safe and independent, correct the over-drinking gently, plan a falls review, and safety-net the emergency features. Confusion, unsteadiness and falls in an older person are too easily written off as ageing; here they are symptoms of a treatable, dangerous electrolyte problem. Recognising the new symptoms as the sodium, not age, is the consultation.",
     knowledge:{
       guideline:'Society for Endocrinology emergency guidance: acute hyponatraemia (2016, updated 2022) · ESE/ESICM/ERA-EDTA clinical practice guideline on hyponatraemia (2014; international) · MHRA Drug Safety Update (December 2011): citalopram and QT prolongation · NICE NG249 Falls (2025) · NICE NG136 Hypertension in adults (2019) · NICE NG5 Medicines optimisation (2015) · BNF',
       points:[
@@ -177,54 +274,89 @@
   /* ============ 100. VIDEO — Non-visible (microscopic) haematuria ============ */
   const c100 = {
     id:'nonvisible-haematuria', title:'"There was blood on my dip test \u2014 but I can\u2019t see any"', type:'video', duration:12,
-    meta:{ age:67, sex:'M', setting:'Video consultation \u2014 incidental non-visible haematuria.', system:'Urology / Non-visible haematuria' },
+    meta:{ age:67, sex:'M', setting:'Video consultation \u2014 incidental non-visible haematuria.', system:'Urology / Non-visible haematuria', checked:'October 2026' },
     brief:'Mr Alec Brennan, 67. A urine dip done for unrelated reasons showed blood (non-visible / microscopic), confirmed on repeat, with no proteinuria. He has no visible blood, mild lower urinary tract symptoms. Ex-smoker (35 pack-years), worked in the rubber/dye industry years ago. BP fine, eGFR normal. He\u2019s dismissive \u2014 "if I can\u2019t see it, it can\u2019t be much" \u2014 and wants to skip "a load of tests". No frank pain. Meds: none.',
     script:{
-      opening:'"Afternoon. So the nurse said my water sample had a bit of blood in it, but here\u2019s the thing \u2014 I can\u2019t SEE any blood when I go, it looks totally normal. So surely if I can\u2019t see it, it\u2019s not much to worry about? I\u2019d really rather not get dragged into a load of tests and hospital appointments for something I can\u2019t even see. Can we just leave it and recheck in a while?"',
-      facts:[
-        { topic:'Why it still matters',  text:'Non-visible (microscopic) haematuria confirmed on testing, in a 60+ ex-smoker with occupational dye/rubber exposure, requires investigation \u2014 it can be the only sign of urological cancer (bladder cancer especially; kidney cancer more often presents with visible haematuria) or significant renal disease, even with no visible blood and no pain. "Can\u2019t see it" does NOT mean benign.' },
-        { topic:'The suspected cancer pathway criterion',     text:'NICE NG12 (updated April 2026): refer on a suspected cancer pathway for BLADDER cancer in people aged 60+ with unexplained non-visible haematuria AND either dysuria OR a raised white cell count on a blood test; VISIBLE haematuria has its own criteria (aged 45+, unexplained visible haematuria without UTI, or persisting/recurring after UTI treatment → bladder and kidney cancer pathways). Persistent non-visible haematuria otherwise still warrants urological assessment/work-up (BAUS and Renal Association consensus 2008: refer asymptomatic persistent non-visible haematuria aged 40 and over). His age, smoking and occupational exposure raise concern; clarify dysuria/WCC to apply the precise threshold.' },
-        { topic:'The risk factors',     text:'Age 67, 35 pack-year smoking history, and historical RUBBER/DYE industry exposure (aromatic amines) \u2014 all significant bladder-cancer risk factors. He doesn\u2019t realise these matter.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 the "if I can\u2019t see it, it\u2019s nothing" is partly genuine misunderstanding and partly avoidance: he\u2019s a recently-bereaved widower who has "let his health go", dreads hospitals and invasive tests (specifically frightened of a "camera up there" \u2014 cystoscopy), and there\u2019s a quieter fear that tests will find something and he\u2019ll face it alone. The minimisation protects him from both the hassle and the fear.' },
-        { topic:'What he needs',        text:'Officially he wants to leave it and recheck. What he needs: to understand that confirmed non-visible haematuria in his risk group needs proper investigation (and likely a urology suspected cancer pathway referral — NICE NG12 (updated April 2026) if dysuria or a raised WCC; otherwise routine urology per BAUS/Renal Association 2008), the cystoscopy fear addressed honestly, and support given the bereavement \u2014 so he engages rather than deferring a potentially important finding.' },
+      "opening": "\"Afternoon. So the nurse said my water sample had a bit of blood in it, but here's the thing — I can't SEE any blood when I go, it looks totally normal. So surely if I can't see it, it's not much to worry about? I'd really rather not get dragged into a load of tests and hospital appointments for something I can't even see. Can we just leave it and recheck in a while?\"",
+      "facts": [
+        {
+          "topic": "How the test came about",
+          "text": "If asked: the nurse dipped your urine at your blood pressure check a month ago, and again last week — \"blood\" both times. Nobody said anything about infection."
+        },
+        {
+          "topic": "Waterworks (if asked)",
+          "text": "Never seen red or pink urine. Getting up once or twice a night for a couple of years and the stream is \"a bit slower than it was\". No burning or stinging when you pass water, no smelly urine, no fever, no pain in your back or side, no clots."
+        },
+        {
+          "topic": "General health (if asked)",
+          "text": "A bit tired since your wife died. Appetite \"not what it was\" but weight steady as far as you know. No night sweats, no bone pain, no cough."
+        },
+        {
+          "topic": "Smoking",
+          "text": "If asked: smoked 20 a day from 16 until you were 51 — \"gave up when my first grandchild was born\"."
+        },
+        {
+          "topic": "Work history — only if asked about jobs",
+          "text": "Worked 22 years in a factory making rubber products, mixing dyes and chemicals, \"in the 70s and 80s before all the masks and rules\". Then a postman until retirement."
+        },
+        {
+          "topic": "Medical background",
+          "text": "No regular tablets, no allergies, no blood thinners. Never had kidney problems. Blood pressure checked and \"fine\"."
+        },
+        {
+          "topic": "Home life",
+          "text": "67, widowed four months ago — Margaret died of a heart attack. Two sons, one lives nearby. You live alone. \"I've let things slide a bit since — not cooking properly, that sort of thing.\" Drinks \"a few cans in the evening, more than I used to\"."
+        },
+        {
+          "topic": "Hidden fears — hold back",
+          "text": "You dread hospitals since Margaret died there, and you have heard that tests mean \"a camera up there\" which terrifies you. Underneath: \"If it's something bad, I'll be dealing with it on my own.\" Say these only if asked what worries you about tests, or how you are managing since Margaret died."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Polite, a bit gruff, keen to wrap up. Push for \"recheck in a few months\". If the doctor explains why invisible blood still matters for someone with your smoking and factory history, go quiet and then ask \"What would they actually do to me?\" If the camera test is explained honestly and kindly, and your being on your own is noticed, agree to the referral. If you feel lectured, dig in."
+        }
       ],
-      ice:{
-        ideas:'If he can\u2019t see blood in his urine, it can\u2019t be significant, so it can be left and rechecked later.',
-        concerns:'HIDDEN AGENDA \u2014 recently bereaved, "let his health go", dread of hospitals and specifically of a cystoscopy ("camera up there"), and a quiet fear of facing bad news alone; minimisation protects him from hassle and fear.',
-        expectations:'To leave it and recheck in a while. What he actually needs: to grasp that confirmed non-visible haematuria in his risk group needs investigation (likely a urology suspected cancer pathway referral), with the cystoscopy fear and bereavement addressed.'
+      "ice": {
+        "ideas": "\"If I can't see any blood, it can't be much.\"",
+        "concerns": "Hospitals and \"a camera up there\". Underneath (only if asked): facing bad news on your own since Margaret died.",
+        "expectations": "\"Can we just leave it and recheck in a while?\" You will accept the tests if they are explained honestly and you feel supported."
       },
-      cues:['"If I can\u2019t see it, it\u2019s nothing" \u2014 a misconception to correct; non-visible haematuria can be the only sign of cancer.','67 + 35 pack-years + rubber/dye industry \u2014 stacked bladder-cancer risk factors he doesn\u2019t recognise.','"Don\u2019t want a camera up there / drag me into tests" \u2014 cystoscopy fear + bereavement-driven avoidance underneath.']
+      "cues": [
+        "\"I can't even see it.\" — say in the opening.",
+        "\"I don't fancy any cameras.\" — say when tests or hospital come up.",
+        "\"It's just me now.\" — say quietly if home life or support is mentioned."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises that confirmed NON-VISIBLE (microscopic) haematuria still requires investigation and does NOT accept "if I can\u2019t see it, it\u2019s nothing" \u2014 it can be the sole sign of urological cancer or renal disease, even painless and invisible' },
-      { dom:'tasks', text:'Applies the NICE NG12 (updated April 2026) thresholds: clarifies dysuria and checks the white cell count to determine the suspected cancer pathway criterion (60+ with unexplained non-visible haematuria AND dysuria OR raised WCC → bladder cancer suspected cancer pathway referral), and recognises his age/smoking/occupational risk \u2014 referring on the suspected-cancer pathway where criteria are met and for urological assessment otherwise; tagged NICE NG12' },
-      { dom:'tasks', text:'Weights the RISK FACTORS (age 67, 35 pack-year smoking, aromatic-amine exposure from the rubber/dye industry) as raising bladder-cancer concern, and explains why investigation matters' },
-      { dom:'tasks', text:'Plans the appropriate work-up: confirm persistence (already repeated), exclude UTI/transient causes, check renal function and ACR/proteinuria and BP (to triage urological vs nephrological pathways), and refer accordingly (urology for cancer work-up incl. cystoscopy/imaging; nephrology if proteinuria/declining eGFR/dysmorphic picture — NICE NG203: refer if ACR is 30 mg/mmol or more with haematuria; if urology finds no cause, monitor haematuria, ACR, eGFR and BP annually while haematuria persists)' },
-      { dom:'tasks', text:'Addresses the CYSTOSCOPY fear honestly: explains what investigation involves, that it is usually quick and well-tolerated, and that finding things early is exactly the point \u2014 without dismissing the fear' },
-      { dom:'rto',   text:'Corrects the "can\u2019t see it = nothing" misconception clearly but kindly, and surfaces the bereavement and the dread of facing tests alone, rather than accepting the deferral at face value' },
-      { dom:'rto',   text:'Supports him around the bereavement and "letting his health go", and frames investigation as worth doing for himself \u2014 engaging him rather than coercing' },
-      { dom:'gs',    text:'Safety-nets and follows up: arranges the referral/work-up (NHS England Faster Diagnosis Standard: diagnosis or all-clear within 28 days of an urgent suspected cancer referral), advises to report any VISIBLE blood or new symptoms (which would escalate), confirms understanding and engagement, offers support, documents, and tracks the outcome' },
+      { dom:'dg', text:'Recognises that confirmed NON-VISIBLE (microscopic) haematuria still requires investigation and does NOT accept "if I can\u2019t see it, it\u2019s nothing" \u2014 it can be the sole sign of urological cancer or renal disease, even painless and invisible' },
+      { dom:'dg', text:"Applies the NICE NG12 thresholds: clarifies dysuria and checks the white cell count to determine the suspected cancer pathway criterion (60+ with unexplained non-visible haematuria AND dysuria OR raised WCC → bladder cancer suspected cancer pathway referral), and recognises his age/smoking/occupational risk — referring on the suspected-cancer pathway where criteria are met and for urological assessment otherwise; tagged NICE NG12" },
+      { dom:'dg', text:'Weights the RISK FACTORS (age 67, 35 pack-year smoking, aromatic-amine exposure from the rubber/dye industry) as raising bladder-cancer concern, and explains why investigation matters' },
+      { dom:'cm', text:'Plans the appropriate work-up: confirm persistence (already repeated), exclude UTI/transient causes, check renal function and ACR/proteinuria and BP (to triage urological vs nephrological pathways), and refer accordingly (urology for cancer work-up incl. cystoscopy/imaging; nephrology if proteinuria/declining eGFR/dysmorphic picture — NICE NG203: refer if ACR is 30 mg/mmol or more with haematuria; if urology finds no cause, monitor haematuria, ACR, eGFR and BP annually while haematuria persists)' },
+      { dom:'ro', text:'Addresses the CYSTOSCOPY fear honestly: explains what investigation involves, that it is usually quick and well-tolerated, and that finding things early is exactly the point \u2014 without dismissing the fear' },
+      { dom:'ro',   text:'Corrects the "can\u2019t see it = nothing" misconception clearly but kindly, and surfaces the bereavement and the dread of facing tests alone, rather than accepting the deferral at face value' },
+      { dom:'ro',   text:'Supports him around the bereavement and "letting his health go", and frames investigation as worth doing for himself \u2014 engaging him rather than coercing' },
+      { dom:'cm',    text:'Safety-nets and follows up: arranges the referral/work-up (NHS England Faster Diagnosis Standard: diagnosis or all-clear within 28 days of an urgent suspected cancer referral), advises to report any VISIBLE blood or new symptoms (which would escalate), confirms understanding and engagement, offers support, documents, and tracks the outcome' },
     ],
     worked:[
       { lbl:'Correct the misconception', txt:'"I understand the logic \u2014 if you can\u2019t see it, surely it\u2019s nothing. But here\u2019s the important bit: blood that only shows up on testing, that you can\u2019t see, can still be the first and only sign of something that needs sorting \u2014 sometimes in the bladder or kidneys. Invisible doesn\u2019t mean harmless. That\u2019s exactly why we don\u2019t just leave it."' },
       { lbl:'Name the risk factors', txt:'"And a couple of things about you specifically matter. You\u2019re 67, you smoked for a long time, and you worked in the rubber and dye trade years back \u2014 all of those raise the chance of a bladder problem being the cause. None of that means you have anything; it means you\u2019re someone we check properly rather than wait and see."' },
-      { lbl:'The plan / suspected cancer pathway',       txt:'"So let me ask \u2014 any burning or stinging when you pass water? \u2026 Depending on that and a couple of checks, you likely qualify for an urgent referral to the bladder specialists — the aim is an answer within 28 days of the referral; that’s what the NICE suspected cancer guideline, NICE NG12 (updated April 2026), sets out — and even if you don’t, you still need a urology referral. They\u2019ll do some imaging and usually a look into the bladder. I\u2019ll also check your kidney function and protein in the urine, because that steers whether it\u2019s a bladder or a kidney question."' },
+      { lbl:'The plan / suspected cancer pathway',       txt:"\"So let me ask — any burning or stinging when you pass water? … Depending on that and a couple of checks, you likely qualify for an urgent referral to the bladder specialists — the aim is an answer within 28 days of the referral; that’s what the NICE suspected cancer guideline, NICE NG12, sets out — and even if you don’t, you still need a urology referral. They’ll do some imaging and usually a look into the bladder. I’ll also check your kidney function and protein in the urine, because that steers whether it’s a bladder or a kidney question.\"" },
       { lbl:'Address the camera fear', txt:'"I suspect part of the reluctance is the thought of a camera test \u2014 is that right? Let me be honest and reassuring: it\u2019s a quick look with a fine, flexible camera, usually just a bit uncomfortable, with numbing gel, and over in minutes. People dread it far more than the reality. And the whole point is to catch anything early, when it\u2019s most easily dealt with."' },
       { lbl:'Meet the bereavement', txt:'"Can I gently ask how things have been since you lost your wife? \u2026 I\u2019m sorry. It\u2019s so common to let your own health slide when you\u2019re grieving, and maybe part of you didn\u2019t want tests that might find bad news to face on your own. You wouldn\u2019t be on your own \u2014 we\u2019d be with you every step, whatever it showed. And doing this is you looking after yourself, which matters."' },
       { lbl:'Safety-net',          txt:'"So I\u2019ll arrange the referral and the kidney checks. If you ever DO see blood in your urine, or get pain or fever, tell us sooner \u2014 that changes things. I\u2019ll make sure you\u2019re booked and I\u2019ll follow it up with you, and we can talk again about the camera test beforehand if it helps. You came wanting to leave it; what I\u2019m asking is that you let us check it \u2014 for something you can\u2019t see, it\u2019s the sensible, caring thing to do for yourself."' },
     ],
-    learning:'Confirmed non-visible (microscopic) haematuria still requires investigation \u2014 "if I can\u2019t see it, it\u2019s nothing" is a misconception, as invisible, painless haematuria can be the sole sign of urological cancer (especially bladder) or significant renal disease. Apply the NICE NG12 (updated April 2026) thresholds: 60+ with unexplained non-visible haematuria AND dysuria OR a raised white cell count warrants a bladder cancer suspected cancer pathway referral; visible haematuria has its own criteria (45+, unexplained, for bladder and kidney cancer); otherwise persistent non-visible haematuria warrants urological/nephrological work-up (BAUS and Renal Association consensus 2008: urology referral for asymptomatic persistent non-visible haematuria aged 40 and over). Weight his risk factors (age, 35 pack-year smoking, aromatic-amine dye/rubber exposure), confirm persistence and exclude UTI, and check renal function/ACR/BP to triage urological vs nephrological pathways. The examinable hidden agenda is a recently-bereaved widower minimising from a mix of genuine misunderstanding, cystoscopy dread, and fear of facing bad news alone. Correct the misconception kindly, address the cystoscopy fear honestly, support him around the bereavement, frame investigation as caring for himself, and safety-net visible blood/new symptoms.',
+    learning:"Confirmed non-visible (microscopic) haematuria still requires investigation — \"if I can’t see it, it’s nothing\" is a misconception, as invisible, painless haematuria can be the sole sign of urological cancer (especially bladder) or significant renal disease. Apply the NICE NG12 thresholds: 60+ with unexplained non-visible haematuria AND dysuria OR a raised white cell count warrants a bladder cancer suspected cancer pathway referral; visible haematuria has its own criteria (45+, unexplained, for bladder and kidney cancer); otherwise persistent non-visible haematuria warrants urological/nephrological work-up (BAUS and Renal Association consensus 2008: urology referral for asymptomatic persistent non-visible haematuria aged 40 and over). Weight his risk factors (age, 35 pack-year smoking, aromatic-amine dye/rubber exposure), confirm persistence and exclude UTI, and check renal function/ACR/BP to triage urological vs nephrological pathways. The examinable hidden agenda is a recently-bereaved widower minimising from a mix of genuine misunderstanding, cystoscopy dread, and fear of facing bad news alone. Correct the misconception kindly, address the cystoscopy fear honestly, support him around the bereavement, frame investigation as caring for himself, and safety-net visible blood/new symptoms.",
     knowledge:{
-      guideline:'NICE NG12 (updated April 2026) — bladder cancer (non-visible haematuria) · NICE NG203 Chronic kidney disease (2021) · BAUS and Renal Association joint consensus statement on the initial assessment of haematuria (2008) · NHS England Faster Diagnosis Standard (October 2023)',
+      guideline:"NICE NG203 Chronic kidney disease (2021) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BAUS and Renal Association joint consensus statement on the initial assessment of haematuria (2008) · NHS England Faster Diagnosis Standard (October 2023)",
       points:[
         { h:'Non-visible haematuria is not benign', t:'Microscopic/non-visible haematuria, confirmed and unexplained, can be the only sign of urological malignancy or renal disease. Absence of visible blood and absence of pain do NOT exclude serious causes. Confirm with repeat testing — use reagent strips rather than microscopy; NICE NG203: persistent non-visible haematuria = 2 out of 3 positive dipsticks (1+ or more) — and exclude transient causes (UTI — send an MSU; menstruation; recent exercise/instrumentation).' },
-        { h:'NICE NG12 (updated April 2026) thresholds', t:'NICE NG12 (updated April 2026): refer on a suspected cancer pathway for bladder cancer at aged 60+ with unexplained NON-VISIBLE haematuria AND either dysuria OR a raised white cell count on a blood test; for bladder and kidney cancer at aged 45+ with unexplained VISIBLE haematuria without UTI, or visible haematuria persisting/recurring after successful UTI treatment. Consider non-urgent referral for bladder cancer for recurrent/persistent unexplained UTI in 60+. Clarify the specific features to apply the right pathway; without them, persistent non-visible haematuria at his age still warrants urology referral (BAUS and Renal Association 2008: aged 40 and over).' },
+        { h:"NICE NG12 thresholds", t:"NICE NG12: refer on a suspected cancer pathway for bladder cancer at aged 60+ with unexplained NON-VISIBLE haematuria AND either dysuria OR a raised white cell count on a blood test; for bladder and kidney cancer at aged 45+ with unexplained VISIBLE haematuria without UTI, or visible haematuria persisting/recurring after successful UTI treatment. Consider non-urgent referral for bladder cancer for recurrent/persistent unexplained UTI in 60+. Clarify the specific features to apply the right pathway; without them, persistent non-visible haematuria at his age still warrants urology referral (BAUS and Renal Association 2008: aged 40 and over)." },
         { h:'Risk factors raise concern', t:'Bladder cancer: increasing age, smoking (dose-dependent), occupational exposure to aromatic amines (dye, rubber, leather, printing industries), prior pelvic radiotherapy/chemo (cyclophosphamide), and chronic catheter/schistosomiasis. Their presence strengthens the case for investigation.' },
         { h:'Triage urological vs nephrological', t:'Check renal function (eGFR), ACR/proteinuria and blood pressure (NICE NG203: refer to nephrology if ACR is 30 mg/mmol or more with haematuria; annual monitoring of haematuria, ACR, eGFR and BP if urology finds no cause). Haematuria WITH significant proteinuria, declining eGFR, hypertension, or dysmorphic red cells points to a renal (nephrology) cause; isolated haematuria with risk factors points to urology (imaging + flexible cystoscopy). Both can be needed.' },
         { h:'Address the cystoscopy fear', t:'Fear of cystoscopy commonly drives avoidance. Explain honestly: a quick flexible-scope examination with local anaesthetic gel, usually mildly uncomfortable, brief \u2014 dread exceeds reality. Frame investigation as early detection.' },
         { h:'Communication & context', t:'Correct the "can\u2019t see it = nothing" misconception kindly; surface psychosocial drivers of avoidance (here bereavement and facing bad news alone); support engagement rather than coerce. Treat investigation as self-care.' },
-        { h:'Never do', t:'Never accept "invisible so benign" for confirmed non-visible haematuria; never miss the age/smoking/occupational risk factors or the NICE NG12 (updated April 2026) thresholds; never skip renal-function/proteinuria triage; never dismiss the cystoscopy fear instead of addressing it; never leave a bereaved patient to disengage.' },
-        { h:'Safety-net & follow-up', t:'Confirm persistence, exclude UTI, check eGFR/ACR/BP; refer per NICE NG12 (updated April 2026) (urology ± nephrology; NHS England Faster Diagnosis Standard: diagnosis or all-clear within 28 days — tell him when to expect contact and what to do if he hears nothing); advise reporting visible blood/pain/fever (escalation); address the cystoscopy fear and bereavement; confirm booking and follow up the outcome.' }
+        { h:'Never do', t:"Never accept \"invisible so benign\" for confirmed non-visible haematuria; never miss the age/smoking/occupational risk factors or the NICE NG12 thresholds; never skip renal-function/proteinuria triage; never dismiss the cystoscopy fear instead of addressing it; never leave a bereaved patient to disengage." },
+        { h:'Safety-net & follow-up', t:"Confirm persistence, exclude UTI, check eGFR/ACR/BP; refer per NICE NG12 (urology ± nephrology; NHS England Faster Diagnosis Standard: diagnosis or all-clear within 28 days — tell him when to expect contact and what to do if he hears nothing); advise reporting visible blood/pain/fever (escalation); address the cystoscopy fear and bereavement; confirm booking and follow up the outcome." }
       ]
     }
   };
@@ -334,14 +466,14 @@
       timeMap: [
         { t:'0–2',  h:'Correct the misconception', d:'Invisible blood can be the only sign of a bladder/kidney problem. "Can\u2019t see it" ≠ benign — don\u2019t leave it.' },
         { t:'2–4',  h:'Name the risk factors', d:'67 + 35 pack-years + rubber/dye (aromatic amines) = real bladder-cancer risk. He\u2019s someone we check, not watch.' },
-        { t:'4–6',  h:'Plan / suspected cancer pathway',           d:'Clarify dysuria + check WCC: 60+ non-visible haematuria + dysuria OR raised WCC → bladder cancer suspected cancer pathway referral (NICE NG12 (updated April 2026)); otherwise urology referral anyway. Check eGFR/ACR/BP to triage. Tag NG12.' },
+        { t:'4–6',  h:'Plan / suspected cancer pathway',           d:"Clarify dysuria + check WCC: 60+ non-visible haematuria + dysuria OR raised WCC → bladder cancer suspected cancer pathway referral (NICE NG12); otherwise urology referral anyway. Check eGFR/ACR/BP to triage. Tag NG12." },
         { t:'6–9',  h:'Address cystoscopy fear', d:'Honest: quick flexible scope, numbing gel, minutes — dread exceeds reality; the point is early detection.' },
         { t:'9–12', h:'Bereavement + net',     d:'Support the grief and "facing bad news alone" fear; frame tests as self-care. Visible blood/pain/fever → sooner. Confirm booking; follow up.' }
       ],
       wordPics: {
-        fail: 'Accepts "if I can\u2019t see it, it\u2019s nothing" and agrees to "leave it and recheck"; misses the age/smoking/dye risk and the NICE NG12 (updated April 2026) thresholds; never addresses the cystoscopy dread or the bereavement — a potentially important finding deferred.',
-        pass: 'Corrects the misconception, applies the NICE NG12 (updated April 2026) thresholds and risk factors, arranges urology/renal work-up, and addresses the cystoscopy fear.',
-        exc:  'Corrects the "invisible = benign" misconception kindly and weights the stacked risk factors; clarifies dysuria/WCC to apply the precise NICE NG12 (updated April 2026) suspected cancer pathway threshold and triages with eGFR/ACR/BP; addresses the cystoscopy fear honestly; surfaces and supports the bereavement and the fear of facing bad news alone; and secures engagement with a clear safety-net.'
+        fail: "Accepts \"if I can’t see it, it’s nothing\" and agrees to \"leave it and recheck\"; misses the age/smoking/dye risk and the NICE NG12 thresholds; never addresses the cystoscopy dread or the bereavement — a potentially important finding deferred.",
+        pass: "Corrects the misconception, applies the NICE NG12 thresholds and risk factors, arranges urology/renal work-up, and addresses the cystoscopy fear.",
+        exc:  "Corrects the \"invisible = benign\" misconception kindly and weights the stacked risk factors; clarifies dysuria/WCC to apply the precise NICE NG12 suspected cancer pathway threshold and triages with eGFR/ACR/BP; addresses the cystoscopy fear honestly; surfaces and supports the bereavement and the fear of facing bad news alone; and secures engagement with a clear safety-net."
       },
       avoid: [
         { dont:'"If you can\u2019t see any blood, it\u2019s probably nothing — we\u2019ll recheck in a few months."', instead:'"Blood you can\u2019t see can still be the first sign of a bladder or kidney problem — invisible doesn\u2019t mean harmless, so we check it properly rather than wait."', why:'Accepting "can\u2019t see it = nothing" risks missing a urological cancer for which microscopic haematuria is the only clue.' },

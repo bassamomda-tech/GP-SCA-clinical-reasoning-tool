@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rash with Fever in a Child Algorithm · Reasoning GP</title>
+<meta name="description" content="Rash with fever in a child: non-blanching rash and meningococcal disease, NICE NG143 traffic light, measles, scarlet fever and iGAS, Kawasaki disease, chickenpox (MMRV from January 2026), hand, foot and mouth, slapped cheek, roseola and exclusion advice.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Rash with Fever in a Child Algorithm">
+<meta property="og:description" content="Rash with fever in a child: non-blanching rash and meningococcal disease, NICE NG143 traffic light, measles, scarlet fever and iGAS, Kawasaki disease, chickenpox (MMRV from January 2026), hand, foot and mouth, slapped cheek, roseola and exclusion advice.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/algorithms/fever-rash-child.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/fever-rash-child.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+.alg-next{margin:12px 0 2px;padding:9px 12px;background:var(--treat-bg);border:1px solid #bbf7d0;border-radius:8px;font-size:.84rem;line-height:1.55}
+.alg-next a{color:#166534;font-weight:600}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body>
+
+<div class="alg-header">
+  <h1>🌡️ Rash with Fever in a Child</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta">
+    <span>NICE NG143</span><span>NICE NG240</span><span>UKHSA</span><span>NICE CKS</span><span>10-min consult</span>
+  </div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🌡️</div>
+  <div>
+    <b>Rash with Fever in a Child — Assessment &amp; Initial Management</b>
+    <small>Non-blanching rash 999 · NG143 traffic light · measles · scarlet fever/iGAS · Kawasaki · chickenpox · exclusion advice | Children 0–16</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/fever-rash-child.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/fever-rash-child.html">⬇ Download PDF</button><a class="sum-open" href="one-page/fever-rash-child.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/fever-rash-child.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1" id="node1">
+  <div class="node-header">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Meningococcal Disease, Sepsis &amp; the Seriously Ill Child</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-note">Fever with a rash is usually viral, but meningococcal disease can kill within hours. Look at the whole child first, then the rash. For the full feverish-child pathway see the <a href="fever-children.html">Fever in children algorithm</a>.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Non-blanching (petechial or purpuric) rash with fever</b> Or any child who looks ill with a rash → <span class="pill pill-red">999</span> immediate transfer. If meningococcal disease is strongly suspected, give IM/IV benzylpenicillin or ceftriaxone before transfer unless this would delay it (NICE NG240) — dose by age per BNFC</div>
+      <div class="rftile"><b>Signs of shock or sepsis</b> Mottled, pale or blue skin, cold hands and feet, weak pulse, raised RR, drowsy or floppy, reduced urine output → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Suspected meningitis</b> Neck stiffness, bulging fontanelle, photophobia, altered consciousness, seizure, irritability when handled → <span class="pill pill-red">999</span>. Classic signs are often absent in infants</div>
+      <div class="rftile"><b>Infant under 3 months with temperature 38°C or more</b> → <span class="pill pill-red">Urgent paediatric assessment (generally ≤2 h)</span>; 999 if shocked, poor breathing, reduced consciousness or seizure (NICE NG143)</div>
+      <div class="rftile"><b>Fever for 5 days or more with red eyes, red lips or tongue, rash, swollen hands or feet, neck node</b> Kawasaki disease (incomplete forms common in infants) → <span class="pill pill-red">Same-day</span> paediatric assessment</div>
+      <div class="rftile"><b>Invasive group A strep (iGAS) features</b> Scarlet fever or chickenpox with severe pain out of proportion, rapidly spreading redness or swelling, persistent high fever, toxic appearance → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Blisters, skin pain or mucosal involvement</b> Eczema herpeticum (punched-out erosions on eczema), SJS/TEN, staphylococcal scalded skin → <span class="pill pill-red">Same-day</span> paediatric / dermatology assessment</div>
+      <div class="rftile"><b>Vulnerable child with chickenpox or measles</b> Neonate, immunosuppressed (chemotherapy, high-dose steroids, biologics) or exposed while vulnerable → <span class="pill pill-red">Same-day</span> specialist advice (antivirals, immunoglobulin)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Early meningococcal disease may show a blanching maculopapular rash, or no rash at all; leg pain, cold extremities and abnormal skin colour can come before the classic signs. A glass test is not sufficiently reliable to exclude meningococcal disease. NICE NG240 (2024) advises IV or IM ceftriaxone or benzylpenicillin outside hospital for strongly suspected meningococcal disease unless it would delay transfer; benzylpenicillin is more often carried in GP bags. Do not give it if the child has had a severe allergic reaction to either antibiotic.</p>
+      <p>iGAS can complicate scarlet fever and chickenpox; it is uncommon but has a high mortality and progresses quickly.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2" id="node2">
+  <div class="node-header">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Assess the Child — NICE NG143 Traffic Light &amp; History</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Traffic light (under 5s)</div><div><b>Green:</b> normal colour, responds normally, content or smiles, normal cry, moist mucous membranes. <b>Amber:</b> pallor reported by parent, not responding normally, reduced activity, nasal flaring, SpO₂ ≤95% in air, capillary refill ≥3 s, dry mucous membranes, poor feeding, age 3–6 months with temperature ≥39°C, fever for 5 days or more, rigors, limb or joint swelling. <b>Red:</b> pale, mottled, ashen or blue, no response to social cues, appears ill, weak, high-pitched or continuous cry, grunting, RR &gt;60, moderate or severe chest indrawing, reduced skin turgor, bulging fontanelle, neck stiffness, focal signs, non-blanching rash (NICE NG143)</div>
+      <div>Age 5 and over</div><div>NG143 is not validated: use the same principles — appearance, circulation, breathing, hydration, conscious level and parental concern</div>
+      <div>Rash history</div><div>Where it started, how it spread, itch, blisters, timing relative to the fever (rash as fever falls → roseola)</div>
+      <div>Associated features</div><div>Sore throat, cough, coryza, conjunctivitis, mouth ulcers, joint pain, abdominal pain, limb pain, vomiting, poor feeding, urine output</div>
+      <div>Contacts and outbreaks</div><div>Nursery or school cases (chickenpox, scarlet fever, measles), household contacts, travel abroad</div>
+      <div>Vaccination</div><div>MMR or MMRV doses (measles, chickenpox), MenB, MenACWY, Hib/MenC — an unvaccinated child with fever, cough, conjunctivitis and rash has measles until proven otherwise</div>
+      <div>Medicines and risk</div><div>Recent antibiotics (amoxicillin rash with EBV), new drugs; eczema, immunosuppression, sickle cell disease, asplenia; pregnant household members</div>
+      <div>Parental concern</div><div>Take it seriously — "this is different" is an important amber flag</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>The traffic light system supports, but does not replace, clinical judgement. Height of fever alone does not reliably identify serious illness. Asking about pregnant contacts matters for chickenpox, measles, rubella and parvovirus B19.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3" id="node3">
+  <div class="node-header">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Examine the Whole Child and the Whole Skin</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Observations</div><div>Temperature (axillary electronic under 4 weeks; axillary or tympanic from 4 weeks to 5 years), HR, RR, SpO₂, capillary refill, hydration, conscious level; BP if available</div>
+      <div>Undress fully</div><div>Including the nappy area. Check conjunctivae, palms, soles and the mouth — petechiae and colour change are harder to see on brown and black skin</div>
+      <div>Blanching</div><div>Blanching (viral, scarlet fever, drug, urticaria) versus non-blanching (petechiae, purpura). The glass test helps describe a rash but cannot exclude meningococcal disease</div>
+      <div>Morphology</div><div>Maculopapular, sandpaper-like (scarlet fever), vesicles in crops (chickenpox), vesicles on hands, feet and mouth (HFMD), red cheeks then lacy limbs (slapped cheek), wheals (urticaria), target lesions (erythema multiforme)</div>
+      <div>Mouth and eyes</div><div>Koplik spots (measles), strawberry tongue (scarlet fever, Kawasaki), cracked red lips, exudative tonsillitis, mouth ulcers; non-purulent conjunctivitis (Kawasaki, measles)</div>
+      <div>Other</div><div>Neck stiffness, fontanelle, lymph nodes, liver and spleen, joints, chest, ears and throat for a source; peeling hands and feet (late scarlet fever or Kawasaki)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Petechiae only above the nipple line after forceful coughing or vomiting can be benign in a well child, but only after full assessment and a period of observation; if in doubt, treat as meningococcal disease. Unexplained petechiae, especially with pallor, bruising or hepatosplenomegaly, need immediate paediatric assessment (leukaemia — NICE NG12). See the <a href="purpura-petechiae.html">Purpura and petechiae algorithm</a>.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4" id="node4">
+  <div class="node-header">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Pattern Recognition — Common Fever-and-Rash Illnesses</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Meningococcal disease</div><div>Rapidly evolving petechiae or purpura, ill child; may start blanching. Notifiable</div>
+      <div>Measles</div><div>2–4 days of fever, cough, coryza and conjunctivitis; Koplik spots; maculopapular rash from behind the ears and face spreading down by day 3–4; miserable child; often unvaccinated. Notifiable</div>
+      <div>Scarlet fever</div><div>Typically 2–8 years: sore throat, fever, headache; fine sandpaper rash on the trunk 12–48 hours later, flushed cheeks with pale around the mouth, strawberry tongue; later peeling. Notifiable</div>
+      <div>Kawasaki disease</div><div>Fever for 5 days or more plus 4 of: bilateral non-purulent conjunctivitis; red cracked lips or strawberry tongue; red or swollen hands and feet (later peeling); polymorphous rash; cervical node over 1.5 cm. Infants may have incomplete features</div>
+      <div>Chickenpox</div><div>Itchy crops of papules → vesicles → crusts, mostly trunk and face, mild fever. Complications: bacterial skin infection, pneumonia, cerebellar ataxia, encephalitis, iGAS</div>
+      <div>Hand, foot and mouth disease</div><div>Under 10s: mild fever, painful mouth ulcers, oval grey vesicles on hands, feet and buttocks; usually mild</div>
+      <div>Slapped cheek (parvovirus B19)</div><div>Mild illness, then bright red cheeks, followed by a lacy rash on limbs; child well and no longer infectious once the rash appears. Risk to pregnant contacts and children with haemolytic anaemia</div>
+      <div>Roseola (HHV-6)</div><div>6 months to 2 years: 3–5 days of high fever in a well child, then a pink macular rash as the fever settles; febrile seizures possible</div>
+      <div>Others</div><div>Non-specific viral exanthem (commonest), rubella (notifiable), urticaria, EBV with amoxicillin rash, eczema herpeticum, impetigo, IgA vasculitis (palpable purpura on legs and buttocks), drug reaction, Lyme disease (erythema migrans) — see the <a href="maculopapular-rash.html">Maculopapular rash algorithm</a></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Untreated Kawasaki disease causes coronary artery aneurysms in about a quarter of children; treatment within 10 days of fever onset greatly reduces this. Measles is resurgent in England with falling MMR uptake, and it can cause pneumonia, encephalitis and, years later, SSPE.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5" id="node5">
+  <div class="node-header">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Tests &amp; Notification — Mostly a Clinical Diagnosis</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Notify on clinical suspicion</div><div>Measles, rubella, scarlet fever, invasive group A strep and meningococcal disease are notifiable: the registered medical practitioner informs the local UKHSA Health Protection Team — do not wait for confirmation (Health Protection (Notification) Regulations 2010). Phone the HPT the same day for measles</div>
+      <div>Measles</div><div>The HPT arranges confirmation (oral fluid test kit or PCR swab) and contact assessment</div>
+      <div>Scarlet fever</div><div>Diagnose clinically; a throat swab is not needed before treatment but helps when the diagnosis is uncertain or in outbreaks</div>
+      <div>No obvious source</div><div>Urine sample in a febrile child under 5 without a clear source (NICE NG143)</div>
+      <div>Not in primary care</div><div>Do not delay transfer for blood tests in an ill child; Kawasaki and meningococcal investigations are done in hospital</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Prompt notification lets the Health Protection Team protect vulnerable contacts — post-exposure MMR within 72 hours or immunoglobulin within 6 days of measles exposure for those who need it — and manage outbreaks in nurseries and schools.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6" id="node6">
+  <div class="node-header">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Where Does This Child Go?</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Non-blanching rash with fever or an ill child; shock; suspected meningitis; seizure lasting 5 minutes or more; respiratory compromise; suspected iGAS or toxic shock</div>
+      <div><span class="pill pill-red">Urgent ≤2 h</span></div><div>Any other NG143 red feature; infant under 3 months with temperature 38°C or more — urgent paediatric assessment</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Suspected Kawasaki disease; eczema herpeticum; blistering or mucosal rash; complicated chickenpox (pneumonia, ataxia, drowsiness, dehydration, spreading skin infection); measles with complications or in an infant or immunosuppressed child; vulnerable contacts needing post-exposure treatment (specialist or HPT advice)</div>
+      <div>Amber features</div><div>Face-to-face assessment; paediatric assessment the same day if the clinical picture is concerning, otherwise a clear safety-net and planned review (NICE NG143)</div>
+      <div>Primary care manage</div><div>Green features with a recognisable self-limiting illness or scarlet fever — treat, notify where needed, give exclusion and safety-net advice</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>NICE NG143 asks for face-to-face assessment of children with amber features and a written safety-net or planned follow-up if they are sent home. Children with red features who are not immediately life-threatened still need urgent face-to-face paediatric assessment, generally within 2 hours.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7" id="node7">
+  <div class="node-header">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Management at This Consultation</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Strongly suspected meningococcal disease</div>
+        <div class="b-drug">Benzylpenicillin or ceftriaxone + 999</div>
+        <div class="b-note">IM or IV, as soon as possible, unless it would delay transfer or there is a severe allergy to the antibiotic (NICE NG240). Dose by age per BNFC. Oxygen if shocked or SpO₂ &lt;92%. Pre-alert the hospital</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Scarlet fever</div>
+        <div class="b-drug">Phenoxymethylpenicillin 10 days</div>
+        <div class="b-note">First line for 10 days (UKHSA, NICE CKS); dose by age per BNFC. Penicillin allergy: a macrolide per UKHSA and local guidance (clarithromycin or azithromycin, BNFC). Notify the HPT. Off nursery or school until 24 hours after starting the antibiotic</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Measles</div>
+        <div class="b-drug">Supportive · notify · isolate</div>
+        <div class="b-note">Phone the HPT; keep the child out of the waiting room. Fluids, paracetamol or ibuprofen for distress. Off nursery or school for 4 days from the onset of the rash. Identify vulnerable contacts (pregnant, immunosuppressed, infants) for HPT advice. Check the family's MMR or MMRV status</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Chickenpox</div>
+        <div class="b-drug">Paracetamol, fluids, itch relief</div>
+        <div class="b-note">Avoid NSAIDs such as ibuprofen (risk of severe skin and soft tissue infection — NICE CKS). Emollient or calamine; a sedating antihistamine (e.g. chlorphenamine, from 1 year — BNFC) for itch disturbing sleep. Aciclovir is not routine in healthy children; consider it for those aged 14 and over seen within 24 hours of rash onset, and seek urgent advice for neonates, the immunosuppressed and pregnancy. Off nursery or school until all spots have crusted over</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">HFMD · slapped cheek · roseola · viral exanthem</div>
+        <div class="b-drug">Supportive care</div>
+        <div class="b-note">Fluids, paracetamol or ibuprofen if distressed. No exclusion needed while the child is well enough. Slapped cheek: advise pregnant contacts to contact their midwife or GP; same-day FBC and advice if the child has sickle cell disease or another haemolytic anaemia</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Antipyretics (all)</div>
+        <div class="b-drug">For distress, not the number</div>
+        <div class="b-note">Paracetamol or ibuprofen if the child is distressed; do not give both at the same time, consider alternating only if distress persists; no tepid sponging; antipyretics do not prevent febrile seizures (NICE NG143)</div>
+      </div>
+    </div>
+    <p class="alg-next"><b>Next steps:</b> see <a href="../management/impetigo.html">Impetigo</a> · <a href="../management/eczema.html">Eczema</a> · <a href="../management/urticaria.html">Urticaria</a> · <a href="../management/glandular-fever.html">Glandular fever</a></p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>A 10-day course of phenoxymethylpenicillin is advised for scarlet fever to eradicate group A strep and reduce complications. NSAIDs in chickenpox have been associated with severe skin and soft tissue infections, including necrotising fasciitis. Kawasaki disease is treated in hospital with IVIG and aspirin — do not start aspirin in primary care.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8" id="node8">
+  <div class="node-header">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Home Care, Exclusion &amp; Vaccination</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Exclusion (UKHSA)</div><div><b>Chickenpox:</b> until all vesicles have crusted over. <b>Measles:</b> 4 days from rash onset. <b>Scarlet fever:</b> 24 hours after starting antibiotics. <b>Rubella:</b> 5 days from rash onset. <b>Impetigo:</b> until lesions crust or 48 hours after starting antibiotics. <b>Hand, foot and mouth, slapped cheek, roseola:</b> none if well</div>
+      <div>Vaccination</div><div>From 1 January 2026 MMRV (measles, mumps, rubella and varicella) replaced MMR in the routine UK schedule: children born on or after 1 January 2025 are offered doses at 12 and 18 months; older cohorts follow transitional schedules and a catch-up programme. Check status and offer any missed doses once well</div>
+    </div>
+    <div class="lsgrid">
+      <div class="lstile"><b>Fluids</b> Offer regular drinks (breastfeeding as usual); watch for fewer wet nappies, dry mouth, no tears.</div>
+      <div class="lstile"><b>Comfort</b> Light clothing, normal room temperature; do not over- or under-dress.</div>
+      <div class="lstile"><b>Check the skin</b> Look at the child and the rash regularly, including during the night.</div>
+      <div class="lstile"><b>Hygiene</b> Handwashing, tissues, separate towels; keep nails short in chickenpox.</div>
+      <div class="lstile"><b>Pregnant contacts</b> Pregnant women exposed to chickenpox, measles, rubella or slapped cheek should contact their midwife or GP promptly.</div>
+      <div class="lstile"><b>Childcare</b> Keep at home while unwell, even when no formal exclusion applies.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Exclusion periods follow the UKHSA guidance for children and young people settings. Slapped cheek is infectious before the rash appears, so excluding a child with the rash has no public health benefit.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9" id="node9">
+  <div class="node-header">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up &amp; Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Amber features sent home</div><div>Written safety-net and a planned review (often within 24 hours) or direct access back (NICE NG143)</div>
+      <div>Scarlet fever</div><div>Complications are uncommon: return with ear pain, neck swelling, joint pain, dark urine or swelling, or a child getting worse after 48 hours of antibiotics</div>
+      <div>Fever for 5 days or more</div><div>Reassess face to face for Kawasaki disease and other serious causes</div>
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>A rash that does not fade when a glass is pressed on it, the child is floppy, drowsy or hard to wake, has a fit, struggles to breathe, has blue lips, or has cold hands and feet with pale or mottled skin</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Fever for 5 days or more; not drinking or very few wet nappies; red eyes and lips with swollen hands or feet; chickenpox spots becoming red, hot, swollen or very painful, or fever coming back after a few days; the parent is more worried than before</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Serious illness can evolve after the consultation. Clear, specific safety-net advice (verbal and written) and documentation are central to NICE NG143. In a remote consultation, any non-blanching rash or red feature converts to immediate face-to-face or emergency care.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE NG143 (Fever in under 5s: assessment and initial management, 2019, updated 2021), NICE NG240 (Meningitis (bacterial) and meningococcal disease: recognition, diagnosis and management, 2024), NICE NG51 (Sepsis, updated 2024), UKHSA Guidance on infection control in schools and other childcare settings (Children and young people settings: tools and resources, 2023), UKHSA Group A streptococcal infections: guidance and data (scarlet fever management, 2023), UKHSA National measles guidelines (2024), UKHSA Green Book chapters 21 (measles) and 34 (varicella) and the routine childhood immunisation schedule (MMRV from January 2026), NICE CKS Scarlet fever, Chickenpox, Measles, Hand, foot and mouth disease and Parvovirus B19 infection, NICE NG84 (Sore throat (acute): antimicrobial prescribing, 2018), Health Protection (Notification) Regulations 2010. Check doses against the current SPC, BNF/BNFC and local formulary. Always adapt to individual patient context, comorbidities, and local pathways. Not a substitute for clinical judgement.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.fever-rash-child.v1';
+  const nodes=document.querySelectorAll('.node[data-step]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state={};
+    nodes.forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});
+    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+  function load(){
+    try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');
+      nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(s[n.dataset.step]){cb.checked=true;n.classList.add('done');}});}catch(e){}
+  }
+  function updateProgress(){
+    const done=document.querySelectorAll('.node.done').length;
+    pDone.textContent=done;
+    pFill.style.width=((done/total)*100)+'%';
+  }
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{
+      n.classList.toggle('done',cb.checked);
+      save();updateProgress();
+    });
+  });
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!expanded));
+      btn.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    if(!confirm('Reset all progress?'))return;
+    nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});
+    localStorage.removeItem(KEY);updateProgress();
+  });
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=3"></script>
+<script src="../../assets/topic-links.js?v=10"></script>
+<script src="../../assets/alg-diagram.js"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+</body>
+</html>

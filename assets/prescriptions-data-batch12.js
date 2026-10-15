@@ -38,29 +38,35 @@
   },
 
   { id:'acute-cough-bronchitis', title:'Acute cough / acute bronchitis', category:'Infections',
+    aka:'cough preparations, cough medicine, linctus, honey, chest cold',
     eyebrow:'Usually viral · no antibiotic · safety-net',
     indication:'Acute cough/bronchitis in otherwise healthy adults \u2014 usually viral and self-limiting (~3 weeks). Antibiotics are not routinely indicated. Per NICE NG120.',
-    contraindications:'Antibiotics offer minimal benefit and cause harm/resistance. Consider antibiotic only if systemically very unwell, higher risk of complications, or CRB-65/pneumonia features. Exclude pneumonia, PE, heart failure, asthma/COPD exacerbation.',
+    contraindications:'Antibiotics offer minimal benefit and cause harm/resistance. Consider antibiotic only if systemically very unwell, higher risk of complications, or CRB-65/pneumonia features. Exclude pneumonia, PE, heart failure, asthma/COPD exacerbation. Cough preparations: honey not under 1 year (infant botulism); codeine-containing products not for cough under 18; avoid OTC cough and cold medicines under 6 years; sedating antihistamines/decongestants \u2014 caution in older people, cardiovascular disease, glaucoma and prostatism.',
     duration:'Self-limiting (~3 weeks)',
     drugs:[
       { name:'No antibiotic \u2014 self-care: rest, fluids, honey, simple analgesia; reassure cough may last ~3 weeks', dose:'\u2014', freq:'\u2014', route:'Advice', days:'~3 weeks' },
-      { name:'Honey / OTC cough preparations for symptom relief (limited evidence)', dose:'\u2014', freq:'PRN', route:'PO', days:'Symptomatic' },
+      { name:'Honey (1 year and over) \u00b1 warm lemon drink', dose:'1\u20132 teaspoons', freq:'PRN', route:'PO', days:'Self-care' },
+      { name:'Simple linctus / glycerol-based soothing syrup (OTC)', dose:'Per pack', freq:'PRN', route:'PO', days:'Symptomatic' },
+      { name:'Pelargonium (12 years and over), guaifenesin or dextromethorphan (OTC; limited evidence)', dose:'Per pack', freq:'Per pack', route:'PO', days:'Optional' },
+      { name:'Paracetamol / ibuprofen for fever or aches', dose:'Per pack (adult)', freq:'PRN', route:'PO', days:'Symptomatic' },
       { name:'Back-up / immediate antibiotic ONLY if systemically very unwell or high complication risk (e.g. doxycycline)', dose:'200 mg then 100 mg OD', freq:'OD', route:'PO', days:'5 days' },
     ],
     altRegimens:[
       { label:'Higher-risk patient', drugs:'Consider back-up or immediate antibiotic if pre-existing comorbidity, frailty, or systemically unwell (per NG120).' },
       { label:'Suspected pneumonia', drugs:'Focal signs/CRB-65 features \u2192 treat as CAP.' },
+      { label:'Cough with COPD exacerbation', drugs:'Treat the exacerbation (see the COPD card) \u2014 not just a cough linctus.' },
+      { label:'Children', drugs:'Honey from 1 year; avoid OTC cough and cold medicines under 6 years; safety-net (see Fever in under-5s card).' },
     ],
     counselling:[
       'This is usually a viral chest infection that gets better on its own \u2014 antibiotics won\u2019t help and can cause side effects.',
       'The cough can last up to about three weeks even when everything else improves \u2014 that\u2019s normal.',
-      'Self-care helps: rest, fluids, and honey for the cough.',
+      'Self-care helps: rest, fluids, and honey for the cough \u2014 honey in a warm drink (over 1 year old) is as good as most cough medicines; pharmacy cough medicines are optional and the evidence they help is weak.',
       'Come back urgently if you become breathless, cough up blood, get chest pain, a high fever, or feel much worse.',
     ],
     followUp:'Safety-net (most settle). Reassess if symptoms worsen, systemic deterioration, or cough >3 weeks (→ consider CXR/other cause).',
-    redFlags:['Breathlessness, pleuritic pain, haemoptysis, high fever, confusion → reassess for pneumonia/PE/sepsis.','Cough >3 weeks / red flags → CXR (exclude malignancy).'],
+    redFlags:['Breathlessness, pleuritic pain, haemoptysis, high fever, confusion → reassess for pneumonia/PE/sepsis.','Cough >3 weeks / red flags → CXR (exclude malignancy); haemoptysis, weight loss or cough >3 weeks in a smoker/\u226540 \u2192 consider the lung-cancer pathway.'],
     emisText:`Acute cough / bronchitis (NG120):
-- Usually viral, self-limiting (~3 wks). NO routine antibiotic. Self-care: rest, fluids, honey, analgesia.
+- Usually viral, self-limiting (~3 wks). NO routine antibiotic. Self-care: rest, fluids, honey (\u22651 yr), analgesia; OTC cough preparations optional (limited evidence; none under 6 yrs).
 - Back-up/immediate antibiotic ONLY if systemically very unwell / high complication risk (e.g. doxycycline 200 mg then 100 mg OD 5d).
 - Pneumonia features \u2192 treat as CAP. Cough >3 wks \u2192 CXR.`,
     sources:[{ label:'NICE NG120 \u2014 Cough (acute): antimicrobial prescribing', url:'https://www.nice.org.uk/guidance/ng120' }],
@@ -103,7 +109,7 @@
     drugs:[
       { name:'Send MSU for culture BEFORE antibiotics; assess sepsis/admission criteria', dose:'\u2014', freq:'\u2014', route:'Investigation', days:'\u2014' },
       { name:'Usual first choice: cefalexin', dose:'500 mg', freq:'BD\u2013TDS', route:'PO', days:'7\u201310 days' },
-      { name:'Usual alternatives: co-amoxiclav (only if culture susceptible) OR trimethoprim (only if culture susceptible)', dose:'co-amox 500/125 TDS / trim 200 mg BD', freq:'\u2014', route:'PO', days:'7\u201310 / 14 days' },
+      { name:'Usual alternatives: co-amoxiclav (only if culture susceptible) OR trimethoprim (only if culture susceptible)', dose:'co-amoxiclav 500/125 mg TDS / trimethoprim 200 mg BD', freq:'\u2014', route:'PO', days:'7\u201310 / 14 days' },
       { name:'Only if other recommended antibiotics are inappropriate (MHRA 2024; record the reason): ciprofloxacin', dose:'500 mg', freq:'BD', route:'PO', days:'7 days' },
     ],
     altRegimens:[
@@ -249,7 +255,7 @@
 - Non-pregnant: fluconazole 150 mg PO single dose, OR clotrimazole 500 mg pessary single dose \u00b1 external cream.
 - Pregnancy: topical clotrimazole (longer course); avoid oral azole.
 - Recurrent (\u22654/yr): confirm swab; induction + maintenance fluconazole; screen diabetes.`,
-    sources:[{ label:'BASHH — vulvovaginal candidiasis (2019)', url:'https://www.bashh.org/guidelines' }],
+    sources:[{ label:'NICE CKS — Candida (female genital)', url:'https://cks.nice.org.uk/topics/candida-female-genital/' }],
   },
 
   { id:'pid', title:'Pelvic inflammatory disease', category:'Women\'s & Sexual Health',

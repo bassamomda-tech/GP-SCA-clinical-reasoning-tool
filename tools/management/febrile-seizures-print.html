@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Febrile seizures — Protocol · Reasoning GP</title>
+<meta name="description" content="Febrile seizures in children: simple versus complex, 999 for a seizure lasting more than 5 minutes (buccal midazolam if prescribed), hospital assessment after a first seizure, excluding meningitis and encephalitis, recurrence and epilepsy risk, why antipyretics do not prevent seizures, and first-aid and safety-net advice for parents (NICE CKS, NICE NG143)." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/febrile-seizures.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1791879515288965">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+</head>
+<body data-screen-label="Febrile seizures protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"\u{1F321}\u{FE0F}",
+  title:"Febrile seizures",
+  eyebrow:"Protocol · stop the seizure · find the fever · exclude meningitis · reassure and equip",
+  stemTitle:"Febrile seizures: call 999 if it lasts more than 5 minutes, look hard for meningitis or encephalitis, assess a first seizure in hospital, and send parents home with a first-aid plan rather than fever-lowering rules",
+  stemSub:"One page for the child who has had a fit with a fever: what makes it simple or complex, when 999, admission or home is right, the infections that must not be missed, why paracetamol and ibuprofen do not prevent the next one, the recurrence and epilepsy risk in plain numbers, and the safety-net that parents actually need.",
+  guideline:"NICE CKS Febrile seizure (2023) · NICE NG143 (2019, updated 2021) · NICE NG240 (2024) · NICE NG217 (2022)",
+  reviewed:"15 October 2026",
+  nextReview:"15 April 2027",
+  meta:[
+    {t:"NICE CKS — febrile seizure"},
+    {t:"NICE NG143 — fever in under 5s"},
+    {t:"NICE NG240 — meningitis and meningococcal disease"},
+    {t:"NICE NG217 — epilepsies"},
+    {t:"Children's doses: BNFC", tone:"tw"},
+    {t:"v1.0 · reviewed Oct 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Red flags</b><small>&gt;5 min · meningitis</small></a><a href="#confirm"><b>Simple or complex?</b><small>Definitions</small></a><a href="#ladder"><b>Where to manage</b><small>999 · admit · home</small></a><a href="#safety"><b>Parents</b><small>First aid · risks</small></a><a href="../algorithms/fits-funny-turns.html"><b>Fits and funny turns</b><small>Algorithm →</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Seizure lasting more than 5 minutes → 999", html:"If a seizure lasts <b>more than 5 minutes</b>, call <b>999</b> and give <b>buccal midazolam</b> if it has been prescribed and the carer is trained (dose by age, BNFC). Also 999 for repeated seizures without recovery, breathing difficulty, or a child who does not start to recover."},
+    {tone:"red", h:"⚠ Meningitis and encephalitis first", html:"Fever with a seizure can be the first sign of <b>bacterial meningitis, meningococcal disease or encephalitis</b>. Look for a non-blanching rash, neck stiffness, bulging fontanelle, drowsiness or slow recovery, focal signs, and recent antibiotics (which mask meningitis). Any of these → emergency admission."},
+    {tone:"amber", h:"First seizure — usually hospital", html:"After a <b>first febrile seizure</b>, most children are assessed in hospital the same day (often via the paediatric assessment unit). Also admit a <b>complex</b> seizure, a child <b>under 18 months</b>, no clear source of fever, parental anxiety or inability to cope, or concern about serious illness."},
+    {tone:"blue", h:"Simple or complex", html:"<b>Simple</b>: generalised, lasting <b>less than 15 minutes</b>, not recurring within 24 hours or the same illness, full recovery within an hour. <b>Complex</b>: focal features, lasting 15 minutes or more, recurrence within 24 hours or the same illness, or incomplete recovery within an hour."},
+    {tone:"cream", h:"Antipyretics do not prevent seizures", html:"Paracetamol or ibuprofen can be given for <b>distress</b>, but do <b>not</b> prevent febrile seizures — tell parents this so they do not feel they failed. Do not give both together; prophylactic anticonvulsants are not recommended."},
+    {tone:"green", h:"Recurrence and epilepsy — the numbers", html:"About <b>1 in 3</b> children have another febrile seizure, usually within a year or two. Epilepsy risk is only slightly raised after a simple febrile seizure (about 1 in 50, compared with about 1 in 100 for all children), higher after complex seizures."}
+  ],
+  pathwaySub:"The febrile seizure consultation in five moves. The red steps are where children come to harm.",
+  pathway:[
+    {title:"Still fitting?", html:"Seizure ongoing more than 5 minutes → 999, buccal midazolam if prescribed, recovery position, oxygen if available. Note the time it started.", alert:true},
+    {title:"Exclude CNS infection", html:"Rash, neck stiffness, fontanelle, drowsiness, focal signs, slow recovery, pre-treated with antibiotics, under 6 months → emergency admission.", alert:true},
+    {title:"Classify", html:"Simple or complex? Eyewitness account (video if available), duration, focal features, recovery, recurrence within 24 hours."},
+    {title:"Decide where", html:"First seizure, complex, under 18 months, no source, worried parents → same-day hospital assessment. Recurrent simple seizure, fully recovered, clear source → may be managed at home."},
+    {title:"Equip the parents", html:"First aid, when to call 999, why antipyretics won't prevent it, recurrence and epilepsy risk, written information, and treatment of the underlying infection."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Red flags", title:"Red flags — status, meningitis and encephalitis", sub:"The seizure itself is rarely harmful if short; the danger is a prolonged seizure or the illness causing the fever.",
+     blocks:[
+       {b:"warn", html:"<b>Seizure lasting more than 5 minutes, or repeated seizures without recovery → 999.</b> Give buccal midazolam if prescribed (BNFC). <b>Signs of meningitis, meningococcal disease or encephalitis → emergency admission</b>, with IM or IV benzylpenicillin before transfer if meningococcal disease is suspected and it will not delay transfer (NICE NG240)."},
+       {b:"cards", items:[
+         {tone:"red", h:"Meningitis / meningococcal disease", html:"Non-blanching rash, neck stiffness, bulging fontanelle, photophobia, irritability, reduced consciousness, signs of shock. Children under 18 months may have no meningism.", src:"NICE NG240"},
+         {tone:"red", h:"Encephalitis", html:"Prolonged or focal seizure, altered behaviour or consciousness persisting after the seizure, focal neurology, cold-sore or other HSV contact.", src:"NICE CKS"},
+         {tone:"red", h:"Slow or incomplete recovery", html:"Not back to normal within an hour, Todd's paresis, persistent drowsiness — treat as complex and look for a CNS cause.", src:"NICE CKS"},
+         {tone:"amber", h:"Pre-treated or very young", html:"Already on antibiotics (masks meningitis); under 6 months (febrile seizures are unusual — look for another cause); incomplete Hib or pneumococcal immunisation.", src:"NICE CKS"},
+         {tone:"amber", h:"Serious bacterial infection", html:"Use the NICE NG143 traffic-light system for the underlying febrile illness: red features → urgent referral; amber → face-to-face assessment and safety-net or referral.", src:"NICE NG143"}
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Simple or complex", title:"Diagnosis — what counts as a febrile seizure", sub:"A clinical diagnosis based on an eyewitness account, after excluding other causes.",
+     blocks:[
+       {b:"dl", rows:[
+         ["Definition","A seizure with a fever (38°C or higher) in a child usually aged 6 months to 5 years, without CNS infection, metabolic disturbance or a history of afebrile seizures"],
+         ["Simple","Generalised tonic-clonic, lasting less than 15 minutes (most under 5), not recurring within 24 hours or the same illness, full recovery within 1 hour"],
+         ["Complex","Any of: focal features; lasting 15 minutes or more; recurrence within 24 hours or the same illness; incomplete recovery within 1 hour"],
+         ["Febrile status epilepticus","Seizure lasting 30 minutes or more, or a series without recovery — an emergency"]
+       ]},
+       {b:"cards", items:[
+         {tone:"blue", h:"History", html:"Eyewitness description (video on a phone is very helpful), duration, movements and side, colour change, recovery time, number of seizures, the fever and its source, vaccinations, previous seizures, family history of febrile seizures or epilepsy, development."},
+         {tone:"blue", h:"Examination", html:"Temperature, heart rate, respiratory rate, capillary refill, conscious level, rash, fontanelle, neck stiffness, focal neurology, and a source: ears, throat, chest, urine."},
+         {tone:"cream", h:"Mimics", html:"Rigors (no loss of consciousness), febrile delirium, reflex anoxic seizures, breath-holding, syncope, and true epileptic seizures triggered by fever."}
+       ]},
+       {b:"why", html:"Febrile seizures affect about 1 in 30 children and peak in the second year of life. The temperature rise rather than the height of the fever seems to matter, and genetic predisposition is strong — a family history in a first-degree relative raises the risk. MMR and MMRV vaccines cause a small, temporary increase in febrile seizures 6 to 11 days after vaccination; this is not a reason to delay vaccination."}
+     ]},
+
+    {id:"ladder", nav:"Where to manage", title:"Management — 999, admission or home", sub:"Choose by the seizure, the child and the family.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"999", title:"During the seizure", when:"lasting more than 5 minutes",
+          html:"Protect from injury, recovery position once movements stop, nothing in the mouth, time it. <b>More than 5 minutes → 999</b>; give buccal midazolam if prescribed for this child. In the surgery: airway, oxygen, glucose check, and buccal midazolam or rectal diazepam per local protocol (dose by age, BNFC). <span class=mg-dose>Children's doses: buccal midazolam and rectal diazepam by age in the BNFC (<a href=\"https://www.medicines.org.uk/emc/search?q=buccal%20midazolam\" target=_blank rel=noopener>SPC: buccal midazolam</a>).</span>", danger:true},
+         {step:"Admit", title:"Same-day hospital assessment", when:"most first seizures",
+          fromLabel:"seizure stopped",
+          html:"First febrile seizure; complex seizure; under 18 months; signs or suspicion of meningitis, encephalitis or serious infection; no identifiable source of fever; already on antibiotics; still drowsy or not fully recovered; parents anxious or unable to manage at home."},
+         {step:"Home", title:"Managing at home", when:"selected children",
+          fromLabel:"if all are true",
+          html:"Consider home management if the child has had a previous febrile seizure, this one was simple, they have fully recovered, there is a clear benign cause of fever (for example otitis media or a viral illness), and the parents are confident. Treat the underlying infection, give written information and a safety-net, and review within 24–48 hours if needed."},
+         {step:"Fever", title:"Antipyretics for distress only", when:"not for prevention",
+          fromLabel:"comfort",
+          html:"Paracetamol or ibuprofen may be used if the child is distressed — they do not prevent febrile seizures. Do not give both at the same time; consider alternating only if distress persists or recurs before the next dose is due. Do not tepid sponge. Doses by age and weight in the BNFC."}
+       ]},
+       {b:"warn", html:"<b>Do not prescribe prophylactic anticonvulsants or regular antipyretics to prevent febrile seizures.</b> Neither is effective enough to justify the harms. Buccal midazolam to keep at home is a specialist decision, usually after a previous prolonged seizure."}
+     ]},
+
+    {id:"special", nav:"Special situations", title:"Special situations", sub:"Where the usual rules shift.",
+     blocks:[
+       {b:"table", head:["Situation","What to do"], rows:[
+         ["<b>Under 6 months or over 6 years</b>","Atypical age — admit and look for another cause (infection, metabolic, epilepsy)"],
+         ["<b>Recurrent febrile seizures</b>","Recurrent simple seizures in a well child with a clear source can be managed at home with a parent plan; recurrent complex or prolonged seizures → paediatric review and a rescue-medication plan"],
+         ["<b>After vaccination</b>","MMR or MMRV: small risk at 6–11 days; other vaccines: fever within 48 hours. Continue the schedule; give paracetamol after MenB as recommended in infants"],
+         ["<b>Developmental concerns or neurological signs</b>","Paediatric referral; higher epilepsy risk"],
+         ["<b>Family history of epilepsy</b>","Higher risk of later epilepsy; lower threshold for paediatric review"]
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Follow-up and recurrence", sub:"Most children need no investigation and no long-term follow-up.",
+     blocks:[
+       {b:"table", head:["Risk factor","Effect"], rows:[
+         ["<b>Age under 18 months at first seizure</b>","Higher recurrence risk"],
+         ["<b>Family history of febrile seizures</b>","Higher recurrence risk"],
+         ["<b>Lower temperature at the time of seizure</b>","Higher recurrence risk"],
+         ["<b>Short duration of fever before the seizure</b> (under 1 hour)","Higher recurrence risk"],
+         ["<b>Complex features, neurodevelopmental problems, family history of epilepsy</b>","Higher risk of later epilepsy"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Investigations", html:"Not routinely needed after a simple febrile seizure — no routine EEG or brain imaging. Investigate the source of fever (for example urine). EEG and specialist assessment are for complex or atypical cases.", src:"NICE CKS"},
+         {tone:"blue", h:"Review", html:"Review if the child is not improving, if the fever persists beyond 5 days (consider Kawasaki disease), or after any further seizure.", src:"NICE NG143"}
+       ]}
+     ]},
+
+    {id:"safety", nav:"Parents and safety-net", title:"Patient information and safety-netting", sub:"A febrile seizure is terrifying to watch. Calm, specific advice prevents repeat 999 calls and missed meningitis.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 999", html:"“If the fit lasts more than 5 minutes, if another one starts before they wake up, if they are struggling to breathe, or they don't start to come round — call 999. Use the midazolam if it has been prescribed.”"},
+         {tone:"red", h:"🔴 Same day", html:"“If your child is drowsy and hard to wake, has a rash that doesn't fade when you press a glass on it, a stiff neck, or seems different from usual after the fit — get them seen urgently: 999 or A&amp;E for the rash or very drowsy child.”"},
+         {tone:"amber", h:"🟡 First aid", html:"“Lie them on their side on a soft surface, don't put anything in their mouth, don't hold them down, and note the time it started. Stay with them until they're fully awake.”"},
+         {tone:"green", h:"🟢 Reassurance", html:"“Short febrile fits don't cause brain damage. About a third of children have another one. Paracetamol or ibuprofen make them more comfortable but won't stop a fit — it isn't anything you did or didn't do. Most children grow out of them by school age.”"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer", sub:"Urgent pathways are in Red flags and Where to manage.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 / emergency admission", html:"Seizure more than 5 minutes; repeated seizures; signs of meningitis, meningococcal disease or encephalitis; not recovering."},
+         {tone:"amber", h:"Same-day paediatric assessment", html:"First febrile seizure; complex seizure; under 18 months; no source; pre-treated with antibiotics; parents unable to cope."},
+         {tone:"blue", h:"Routine paediatric referral", html:"Recurrent complex seizures; developmental delay or neurological signs; afebrile seizures (refer to a first-seizure clinic within 2 weeks — NICE NG217); diagnostic doubt."}
+       ]}
+     ]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence and references", sub:"Every recommendation on this page is traceable to these sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE CKS — Febrile seizure (last revised 2023)</b><br><a href="https://cks.nice.org.uk/topics/febrile-seizure/" rel="noopener">cks.nice.org.uk/topics/febrile-seizure</a><span class="rd"> — definitions, admission criteria, home management, antipyretics, recurrence and epilepsy risk, investigations, parent advice</span></li>'+
+         '<li><b>NICE NG143 — Fever in under 5s: assessment and initial management (2019, updated 2021)</b><br><a href="https://www.nice.org.uk/guidance/ng143" rel="noopener">nice.org.uk/guidance/ng143</a><span class="rd"> — traffic-light system, antipyretic use, Kawasaki disease</span></li>'+
+         '<li><b>NICE NG240 — Meningitis (bacterial) and meningococcal disease: recognition, diagnosis and management (2024)</b><br><a href="https://www.nice.org.uk/guidance/ng240" rel="noopener">nice.org.uk/guidance/ng240</a><span class="rd"> — features and pre-hospital antibiotics</span></li>'+
+         '<li><b>NICE NG217 — Epilepsies in children, young people and adults (2022)</b><br><a href="https://www.nice.org.uk/guidance/ng217" rel="noopener">nice.org.uk/guidance/ng217</a><span class="rd"> — first-seizure referral, prolonged seizures and rescue medication</span></li>'+
+         '<li><b>UKHSA — Immunisation against infectious disease (the Green Book): MMR and MMRV chapters</b><br><a href="https://www.gov.uk/government/collections/immunisation-against-infectious-disease-the-green-book" rel="noopener">gov.uk — the Green Book</a><span class="rd"> — febrile seizures after MMR-containing vaccines</span></li>'+
+         '<li><b>BNF for Children</b><br><a href="https://bnfc.nice.org.uk" rel="noopener">bnfc.nice.org.uk</a><span class="rd"> — buccal midazolam, rectal diazepam, paracetamol and ibuprofen doses by age</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Febrile seizures — NICE CKS, NICE NG143, NG240 and NG217. Children's doses are in the BNFC. Not a substitute for local paediatric pathways."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

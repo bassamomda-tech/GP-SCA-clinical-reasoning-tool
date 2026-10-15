@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Unilateral Leg Swelling Algorithm · Reasoning GP</title>
+<meta name="description" content="Unilateral Leg Swelling: DVT first (two-level Wells, D-dimer, proximal leg vein ultrasound within 4 hours or interim anticoagulation) · cellulitis, ruptured Baker&#x27;s cyst, compartment syndrome, lymphoedema, venous disease and the pelvic mass">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Unilateral Leg Swelling Algorithm">
+<meta property="og:description" content="Unilateral Leg Swelling: DVT first (two-level Wells, D-dimer, proximal leg vein ultrasound within 4 hours or interim anticoagulation) · cellulitis, ruptured Baker&#x27;s cyst, compartment syndrome, lymphoedema, venous disease and the pelvic mass">
+<meta property="og:url" content="https://gpreasoning.uk/tools/algorithms/unilateral-leg-swelling.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/unilateral-leg-swelling.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+.alg-next{margin:12px 0 2px;padding:9px 12px;background:var(--treat-bg);border:1px solid #bbf7d0;border-radius:8px;font-size:.84rem;line-height:1.55}
+.alg-next a{color:#0f766e;font-weight:600}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body>
+
+<div class="alg-header">
+  <h1>🦵 Unilateral Leg Swelling</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta">
+    <span>NICE NG158</span><span>NICE NG141</span><span>NICE NG12</span><span>NICE NG253</span><span>10-min consult</span>
+  </div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🦵</div>
+  <div>
+    <b>Unilateral Leg Swelling — Adults, New Presentation</b>
+    <small>DVT first (two-level Wells, D-dimer, proximal leg vein ultrasound within 4 hours or interim anticoagulation) · cellulitis, ruptured Baker's cyst, compartment syndrome, lymphoedema, venous disease and the pelvic mass</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/unilateral-leg-swelling.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/unilateral-leg-swelling.html">⬇ Download PDF</button><a class="sum-open" href="one-page/unilateral-leg-swelling.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/unilateral-leg-swelling.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1" id="node1">
+  <div class="node-header">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — The Limb- and Life-Threatening Causes First</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<p class="intro-note">One swollen leg is a <b>DVT until excluded</b> — and the conditions that kill or cost a limb (PE, phlegmasia, compartment syndrome, necrotising infection, acute ischaemia) are recognised on the first look. Bilateral swelling follows the <a href="ankle-swelling.html">ankle swelling algorithm</a>.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Breathlessness, pleuritic chest pain, haemoptysis or collapse</b> With a swollen leg → suspected PE → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Massive, tense, blue or white leg</b> Phlegmasia cerulea or alba dolens (iliofemoral DVT threatening the limb) → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Pain out of proportion, pain on passive stretch, tense compartment</b> After trauma, fracture, crush, prolonged immobility or on anticoagulants → compartment syndrome → <span class="pill pill-red">999</span> emergency orthopaedics</div>
+      <div class="rftile"><b>Pain out of proportion to the redness, rapid spread, skin necrosis, crepitus, systemic toxicity</b> Necrotising soft tissue infection → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Cold, pale, pulseless, painful limb</b> Acute limb ischaemia (not true swelling, but can be confused) → <span class="pill pill-red">999</span> vascular</div>
+      <div class="rftile"><b>Sepsis</b> Fever with NEWS2 or NG253 high-risk features and spreading cellulitis → <span class="pill pill-red">999</span>; moderate risk → <span class="pill pill-red">Same-day</span></div>
+      <div class="rftile"><b>Suspected DVT</b> Any unexplained unilateral swelling with pain, tenderness or pitting → <span class="pill pill-red">Same-day</span> two-level Wells and the NG158 pathway (step 4) — today, not next week</div>
+      <div class="rftile"><b>Pregnant or within 6 weeks postpartum</b> → <span class="pill pill-red">Same-day</span> assessment per RCOG/local pathway (NG158 does not cover pregnancy); LMWH, not a DOAC, if treating before imaging</div>
+      <div class="rftile"><b>Swelling with a pelvic or abdominal mass, groin nodes, or known cancer</b> → <span class="pill pill-purple">Suspected cancer</span> image or refer per NICE NG12 site criteria; unexplained lymphadenopathy → consider suspected cancer pathway referral</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>DVT, ruptured Baker's cyst, cellulitis and calf muscle injury look alike, and clinical features alone cannot exclude a DVT — which is why NICE NG158 builds the assessment around a structured score, a D-dimer and imaging within a fixed time. PE presents as breathlessness or chest pain, so ask about the chest in every patient with a swollen leg.</p>
+      <p>Compartment syndrome and necrotising fasciitis share one early clue: pain out of proportion to what you can see. Both need surgery within hours.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2" id="node2">
+  <div class="node-header">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>History — Onset, Risk Factors and the Knee</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Onset</div><div>Hours to days: DVT, cellulitis, ruptured Baker's cyst, muscle tear, haematoma, compartment syndrome. Weeks to months: venous insufficiency, lymphoedema, pelvic mass, post-thrombotic syndrome</div>
+      <div>VTE risk factors</div><div>Surgery or hospital admission in the last 12 weeks, immobility, plaster cast, long travel, active cancer or treatment, previous VTE, pregnancy or postpartum, combined hormonal contraception or HRT, thrombophilia, obesity, IV drug use (groin injection)</div>
+      <div>Pain &amp; mechanism</div><div>Sudden "kick" in the calf during exercise → gastrocnemius tear. Known knee arthritis with sudden calf pain → ruptured Baker's cyst. Trauma, crush or long lie → compartment syndrome</div>
+      <div>Infection clues</div><div>Fever, rigors, spreading redness, broken skin, tinea between toes, leg ulcer, insect bite, previous cellulitis</div>
+      <div>Chest</div><div>Breathlessness, pleuritic pain, haemoptysis, palpitations, syncope → PE</div>
+      <div>Chronic &amp; cancer</div><div>Previous DVT in that leg (post-thrombotic syndrome), varicose veins, previous pelvic or groin surgery, lymph node dissection or radiotherapy, weight loss, night sweats, bowel, bladder or gynaecological symptoms</div>
+      <div>Medicines</div><div>Anticoagulants (haematoma, compartment bleed), oestrogens, tamoxifen, chemotherapy; calcium channel blockers cause bilateral rather than unilateral oedema</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>VTE risk factors raise the pre-test probability but their absence does not exclude DVT — up to a third of DVTs are unprovoked. Baker's cyst rupture typically follows exertion in someone with knee arthritis and can cause calf swelling, tenderness and later a crescent of bruising below the malleolus; it can coexist with DVT, so imaging is still needed.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3" id="node3">
+  <div class="node-header">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Examination — Both Legs, Then the Abdomen and Nodes</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Observations</div><div>Temperature, pulse, BP, respiratory rate, SpO₂ — tachycardia or hypoxia with a swollen leg → PE</div>
+      <div>Measure</div><div>Calf circumference 10 cm below the tibial tuberosity on both legs; a difference of 3 cm or more scores on Wells</div>
+      <div>Look &amp; feel</div><div>Pitting, warmth, erythema (spreading edge — mark it), tenderness along the deep veins, collateral superficial veins, skin changes (haemosiderin, lipodermatosclerosis, varicose eczema), ulceration, entry wounds, tinea</div>
+      <div>Knee</div><div>Popliteal fullness or effusion, crescent bruising at the ankle (ruptured Baker's cyst)</div>
+      <div>Compartments</div><div>Tense, woody compartments, pain on passive toe or ankle movement, paraesthesia — late signs include pallor and pulselessness</div>
+      <div>Vascular</div><div>Foot pulses, capillary refill, temperature — needed before any compression</div>
+      <div>Lymphatic</div><div>Non-pitting, toe and foot dorsum involvement, Stemmer's sign (positive supports lymphoedema)</div>
+      <div>Abdomen, pelvis, groin</div><div>Inguinal lymph nodes, abdominal or pelvic mass, hepatosplenomegaly; pelvic or rectal examination if indicated</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Examining both legs together makes asymmetry obvious. Do not use Homan's sign — it is neither sensitive nor specific. An unexplained unilateral swelling without DVT needs an abdominal, pelvic and groin examination, because extrinsic compression of the iliac veins or lymphatics (pelvic tumour, lymphadenopathy, May–Thurner anatomy) presents exactly like this.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4" id="node4">
+  <div class="node-header">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>DVT Pathway — NICE NG158</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Score</div><div><span class="pill pill-blue">Two-level DVT Wells score</span>: 2 or more = DVT likely; 1 or less = DVT unlikely. Assess for PE as well</div>
+      <div>DVT likely (Wells 2 or more)</div><div><span class="pill pill-blue">Proximal leg vein ultrasound</span> within 4 hours. If it cannot be done within 4 hours: <span class="pill pill-blue">D-dimer</span>, then <b>interim therapeutic anticoagulation</b> and ultrasound within 24 hours. Ultrasound positive → treat as DVT. Ultrasound negative and D-dimer positive → stop interim anticoagulation and repeat the scan 6–8 days later</div>
+      <div>DVT unlikely (Wells 1 or less)</div><div><span class="pill pill-blue">D-dimer</span> with the result within 4 hours (if not possible, interim anticoagulation while waiting). Negative → DVT unlikely; stop any interim anticoagulation and look for another cause. Positive → ultrasound within 4 hours, or interim anticoagulation and ultrasound within 24 hours</div>
+      <div>D-dimer cautions</div><div>Consider an age-adjusted threshold over 50 (NG158). Raised by infection, inflammation, cancer, pregnancy, recent surgery and older age — a positive result is not a diagnosis</div>
+      <div>Interim anticoagulation</div><div>Choose one that can continue if DVT is confirmed — <b>apixaban or rivaroxaban</b>; <b>dose per SPC</b> (treatment-phase loading regimen). Take FBC, U&amp;E with creatinine clearance (Cockcroft–Gault), LFT, PT and APTT but do not wait for results; check bleeding risk, weight, pregnancy and interacting drugs. LMWH in pregnancy, severe renal impairment or where a DOAC is unsuitable</div>
+      <div>Other imaging</div><div>Ultrasound also shows Baker's cyst, haematoma, muscle tear or superficial thrombosis. Unexplained swelling with a negative scan and no local cause → abdominal/pelvic imaging per findings</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>NICE NG158 sets clear time limits: imaging within 4 hours, or a D-dimer and interim anticoagulation with imaging within 24 hours. A DOAC that can be continued avoids switching if the scan is positive. In people with a likely DVT but a negative proximal ultrasound and a positive D-dimer, a repeat scan at 6–8 days picks up calf clots that have propagated.</p>
+      <p>Superficial vein thrombosis near the saphenofemoral or saphenopopliteal junction can extend into the deep system, so a scan is needed when it is in the thigh or close to a junction (CKS).</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5" id="node5">
+  <div class="node-header">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Differential Diagnosis</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">Thrombotic</div><div class="b-drug">DVT · superficial vein thrombosis</div><div class="b-note">Pitting, calf tenderness, risk factors; tender cord along a superficial vein (scan if near a junction)</div></div>
+      <div class="b-card"><div class="b-cond">Infective</div><div class="b-drug">Cellulitis · necrotising infection</div><div class="b-note">Acute spreading warmth and redness, fever, portal of entry; pain out of proportion → necrotising</div></div>
+      <div class="b-card"><div class="b-cond">Knee &amp; muscle</div><div class="b-drug">Ruptured Baker's cyst · calf tear</div><div class="b-note">Knee arthritis, sudden pain, ankle crescent bruise; "kick" during exercise</div></div>
+      <div class="b-card"><div class="b-cond">Compartment &amp; bleed</div><div class="b-drug">Compartment syndrome · haematoma</div><div class="b-note">Trauma, crush, anticoagulants; tense compartment, pain on passive stretch</div></div>
+      <div class="b-card"><div class="b-cond">Venous</div><div class="b-drug">Venous insufficiency · post-thrombotic</div><div class="b-note">Gradual, worse through the day, varicosities, skin changes; previous DVT in that leg</div></div>
+      <div class="b-card"><div class="b-cond">Lymphatic</div><div class="b-drug">Lymphoedema</div><div class="b-note">Non-pitting, foot dorsum and toes, Stemmer positive; after cancer surgery or radiotherapy, or primary</div></div>
+      <div class="b-card"><div class="b-cond">Extrinsic compression</div><div class="b-drug">Pelvic mass · lymphadenopathy</div><div class="b-note">Gradual, unexplained, with weight loss, abdominal or pelvic symptoms; May–Thurner (left iliac vein)</div></div>
+      <div class="b-card"><div class="b-cond">Other</div><div class="b-drug">Gout, fracture, dependent oedema</div><div class="b-note">Hemiplegic limb, unilateral dependency, ankle fracture, acute gout or Charcot foot in diabetes</div></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>When the scan excludes DVT, the differential is guided by onset and examination. In people with diabetes and neuropathy, a hot swollen foot with normal or minimal pain may be an acute Charcot foot, which needs same-day offloading and specialist foot team referral.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6" id="node6">
+  <div class="node-header">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Referral Criteria</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Suspected PE with instability, phlegmasia, compartment syndrome, necrotising infection, acute limb ischaemia, high-risk sepsis</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>DVT pathway (local DVT service, ambulatory clinic or emergency department) — scan within 4 hours, or D-dimer and interim anticoagulation with a scan within 24 hours; pregnancy or postpartum (maternity / medical team); cellulitis with moderate sepsis risk or Eron class III–IV; suspected acute Charcot foot (foot protection service)</div>
+      <div><span class="pill pill-purple">Suspected cancer · NICE NG12</span></div><div>Pelvic or abdominal mass on examination or imaging → site-specific pathway; unexplained lymphadenopathy → consider suspected cancer pathway referral. Unprovoked DVT: assess for other cancer symptoms and signs and investigate or refer if present — no routine extensive screening</div>
+      <div>Vascular</div><div>Superficial vein thrombosis near a junction (same-day scan), venous ulceration, symptomatic varicose veins with skin changes (NICE CG168)</div>
+      <div>Lymphoedema service</div><div>Suspected lymphoedema once a DVT and an extrinsic cause have been excluded</div>
+      <div>Orthopaedics / MSK</div><div>Baker's cyst with recurrent rupture or significant knee pathology</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Most areas run an ambulatory DVT service that delivers the NG158 timeframes; refer there the same day rather than by routine letter. Lymphoedema referral should follow exclusion of DVT and of a pelvic or abdominal cause, because a new unilateral lymphoedema can be the first sign of malignancy.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7" id="node7">
+  <div class="node-header">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Management at This Consultation</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">Suspected DVT, scan not within 4 hours</div><div class="b-drug">Interim anticoagulation <span class="pill pill-teal">Start today</span></div><div class="b-note">Apixaban or rivaroxaban, dose per SPC, after baseline bloods (do not wait for results), unless contraindicated — then same-day specialist advice. LMWH in pregnancy</div></div>
+      <div class="b-card"><div class="b-cond">Confirmed proximal DVT</div><div class="b-drug">DOAC for at least 3 months</div><div class="b-note">Apixaban or rivaroxaban, dose per SPC; creatinine clearance by Cockcroft–Gault; specialist advice for active cancer, triple-positive antiphospholipid syndrome, severe renal impairment, pregnancy</div></div>
+      <div class="b-card"><div class="b-cond">Cellulitis</div><div class="b-drug">Flucloxacillin (NICE NG141)</div><div class="b-note">Usual adult dose: 500 mg to 1 g four times a day for 5–7 days (1 g is off-label). Penicillin allergy: clarithromycin 500 mg twice a day, or doxycycline per NG141. Mark the edge; treat tinea; elevate</div></div>
+      <div class="b-card"><div class="b-cond">Ruptured Baker's cyst / calf tear</div><div class="b-drug">Analgesia, rest, elevation</div><div class="b-note">Only once DVT is excluded by ultrasound; paracetamol ± topical or oral NSAID if suitable; treat the knee</div></div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Venous</span><span class="rt"><b>Venous insufficiency</b> — elevation, exercise and compression hosiery once arterial supply is adequate (pulses ± ABPI); emollient for varicose eczema</span></div>
+      <div class="rung"><span class="rn">Lymphoedema</span><span class="rt"><b>Suspected lymphoedema</b> — skin care, exercise, weight management, refer for specialist compression; diuretics do not help</span></div>
+      <div class="rung"><span class="rn">Superficial</span><span class="rt"><b>Superficial vein thrombosis</b> away from junctions — NSAID if suitable, warm compresses; scan if thigh or near a junction</span></div>
+      <div class="rung"><span class="rn">Precipitants</span><span class="rt"><b>Review combined hormonal contraception or HRT</b> if DVT is confirmed; plan contraception</span></div>
+    </div>
+    <p class="alg-next"><b>Next steps:</b> see <a href="../management/dvt.html">Deep vein thrombosis</a> · <a href="../management/pulmonary-embolism.html">Pulmonary embolism</a> · <a href="../management/antiplatelets-anticoagulants.html">DOACs, antiplatelets &amp; anticoagulation</a> · <a href="../management/cellulitis.html">Cellulitis &amp; erysipelas</a> · <a href="../management/varicose-veins.html">Varicose veins</a></p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>NICE NG158 recommends interim therapeutic anticoagulation when imaging cannot be done within 4 hours, using an anticoagulant that can be continued if DVT is confirmed; apixaban and rivaroxaban fit this and need no heparin lead-in. Doses differ between the initial and maintenance phases and by renal function, so prescribe from the SPC.</p>
+      <p>NICE NG141 gives flucloxacillin as first choice for non-severe cellulitis, with clarithromycin, erythromycin (pregnancy) or doxycycline for penicillin allergy. Compression without checking the arterial supply risks ischaemic injury.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8" id="node8">
+  <div class="node-header">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Self-Care and Prevention</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="lsgrid">
+      <div class="lstile"><b>Mobilise</b> Walk as tolerated once anticoagulated — bed rest is not needed for DVT.</div>
+      <div class="lstile"><b>Elevation</b> Raise the leg above hip level when sitting; for cellulitis and venous swelling.</div>
+      <div class="lstile"><b>Skin care</b> Daily emollient, treat athlete's foot, avoid cuts — reduces cellulitis recurrence, especially with lymphoedema.</div>
+      <div class="lstile"><b>Travel</b> On long journeys walk regularly and stay hydrated; discuss travel within the early weeks of a DVT.</div>
+      <div class="lstile"><b>Weight &amp; activity</b> Weight management and calf exercises help venous and lymphatic return.</div>
+      <div class="lstile"><b>Anticoagulant card</b> Carry it; tell dentists, pharmacists and surgeons; avoid over-the-counter NSAIDs and aspirin.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Early mobilisation with anticoagulation is safe and improves symptoms. Recurrent cellulitis is driven by oedema and broken skin, so skin care and oedema control are the main preventive measures.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9" id="node9">
+  <div class="node-header">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up and Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>Sudden breathlessness, chest pain, coughing blood or collapse; the leg becomes cold, white or blue; severe pain that is getting rapidly worse; vomiting blood, black stools or a bleed that will not stop on anticoagulation; any head injury on anticoagulation (emergency department)</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Redness spreading beyond the marked line, fever or feeling unwell, swelling increasing despite treatment, new numbness or tingling</div>
+      <div>Within 24 hours</div><div>Confirm the scan happened and the result was acted on; stop interim anticoagulation if DVT excluded (unless repeat scan planned at 6–8 days)</div>
+      <div>2–3 days</div><div>Cellulitis review if not improving (NG141)</div>
+      <div>3 months</div><div>DVT: review provoked or unprovoked, bleeding risk and whether to continue (see the DVT protocol)</div>
+      <div>Scan negative, swelling persists</div><div>Review in 1–2 weeks: re-examine abdomen, pelvis and groin; consider imaging, lymphoedema or venous referral</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>The highest-risk moment is the gap between the consultation and the scan: a documented plan for who books it, when, and who acts on the result closes that gap. A negative scan with persisting unexplained swelling needs a planned re-look for an extrinsic cause.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE NG158 (Venous thromboembolic diseases: diagnosis, management and thrombophilia testing, 2020, updated August 2023), NICE NG141 (Cellulitis and erysipelas: antimicrobial prescribing, 2019), NICE NG253 (Suspected sepsis in over-16s, 2025), NICE NG12 (Suspected cancer: recognition and referral, updated April 2026), NICE CKS Superficial vein thrombosis and Lymphoedema, RCOG Green-top Guideline 37b (VTE in pregnancy), British Lymphology Society guidance, National Wound Care Strategy Programme lower-limb recommendations, MHRA Drug Safety Updates on DOACs, product SPCs for apixaban and rivaroxaban. Bilateral swelling: see the ankle swelling algorithm. Check doses against the current SPC, BNF and local formulary. Not a substitute for clinical judgement.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.unilateral-leg-swelling.v1';
+  const nodes=document.querySelectorAll('.node[data-step]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state={};
+    nodes.forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});
+    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+  function load(){
+    try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');
+      nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(s[n.dataset.step]){cb.checked=true;n.classList.add('done');}});}catch(e){}
+  }
+  function updateProgress(){
+    const done=document.querySelectorAll('.node.done').length;
+    pDone.textContent=done;
+    pFill.style.width=((done/total)*100)+'%';
+  }
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{
+      n.classList.toggle('done',cb.checked);
+      save();updateProgress();
+    });
+  });
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!expanded));
+      btn.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    if(!confirm('Reset all progress?'))return;
+    nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});
+    localStorage.removeItem(KEY);updateProgress();
+  });
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=3"></script>
+<script src="../../assets/topic-links.js?v=10"></script>
+<script src="../../assets/alg-diagram.js"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+</body>
+</html>

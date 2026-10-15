@@ -27,9 +27,9 @@ window.SCA_CASES = [
 
   /* ============= 1. VIDEO — Hypertension in young Black man ============= */
   {
-    id:'htn-young-bp', title:'New diagnosis of hypertension', type:'f2f', duration:12,
-    meta:{ age:32, sex:'M', setting:'Routine well-man check, clinic BP 162/96 mmHg today.', system:'Cardiovascular' },
-    brief:'Mr Marcus Whitfield, 32, attends following a routine well-man review last week where his clinic BP was 162/96. Repeat in the surgery this morning is 158/94. He has no past medical history. He works as a software engineer, plays football weekly, and is of African-Caribbean heritage. His father had a stroke at 51. He is married with a 6-month-old baby. He has come because the practice nurse asked him to.',
+    id:'htn-young-bp', title:'New diagnosis of hypertension', type:'video', duration:12,
+    meta:{ age:32, sex:'M', setting:'Video consultation after a raised BP at a well-man check (162/96, repeat 158/94).', system:'Cardiovascular', checked:'October 2026' },
+    brief:'Mr Marcus Whitfield, 32, has a video consultation following a routine well-man review last week where his clinic BP was 162/96. Practice nurse, this morning: repeat BP 158/94 (second reading 156/92), pulse 72 regular, BMI 29; urine dipstick negative for blood and protein. He has no past medical history. He works as a software engineer, plays football weekly, and is of African-Caribbean heritage. His father had a stroke at 51. He is married with a 6-month-old baby. He booked the call because the practice nurse asked him to.',
     script:{
       opening:'"Honestly, I feel fine. The nurse said my blood pressure was up but I think it\'s probably because I was rushing to get here. I don\'t want to be on tablets for the rest of my life like my dad was."',
       facts:[
@@ -48,14 +48,14 @@ window.SCA_CASES = [
       cues:['Mentions his father in passing — wants the GP to ask more.','Glances away when mentioning the energy drinks.','Repeats "I just don\'t want to live in fear" if rushed.']
     },
     checkpoints:[
-      { dom:'tasks', text:'Confirms diagnosis with ABPM or HBPM rather than treating on a single clinic reading' },
-      { dom:'tasks', text:'Risk-stratifies — orders U&Es, eGFR, ACR, lipids, HbA1c, ECG, QRISK3' },
-      { dom:'tasks', text:'Screens for OSA given snoring + daytime sleepiness' },
-      { dom:'tasks', text:'Plans culturally-appropriate first-line drug (CCB, not ACEi as first-line in Afro-Caribbean with no DM)' },
-      { dom:'rto',   text:'Acknowledges father\'s stroke and explicit fear before any clinical agenda' },
-      { dom:'rto',   text:'Shares QRISK as an actual percentage rather than a vague "low risk"' },
-      { dom:'rto',   text:'Negotiates lifestyle target with one specific, achievable goal (e.g. cap energy drinks at 1/day)' },
-      { dom:'gs',    text:'Safety-nets 999 symptoms in plain language and books a follow-up within 4 weeks' },
+      { dom:'dg', text:'Confirms diagnosis with ABPM or HBPM rather than treating on a single clinic reading' },
+      { dom:'dg', text:'Risk-stratifies — orders U&Es, eGFR, ACR, lipids, HbA1c, ECG, QRISK3' },
+      { dom:'dg', text:'Screens for OSA given snoring + daytime sleepiness' },
+      { dom:'cm', text:'Plans culturally-appropriate first-line drug (CCB, not ACEi as first-line in Afro-Caribbean with no DM)' },
+      { dom:'ro',   text:'Acknowledges father\'s stroke and explicit fear before any clinical agenda' },
+      { dom:'ro',   text:'Shares QRISK as an actual percentage rather than a vague "low risk"' },
+      { dom:'ro',   text:'Negotiates lifestyle target with one specific, achievable goal (e.g. cap energy drinks at 1/day)' },
+      { dom:'cm',    text:'Safety-nets 999 symptoms in plain language and books a follow-up within 4 weeks' },
     ],
     worked:[
       { lbl:'Open question',          txt:'"Marcus, before we talk about the numbers — tell me what was going through your mind when the nurse said your blood pressure was up?"' },
@@ -71,7 +71,7 @@ window.SCA_CASES = [
   /* ============= 2. TELEPHONE — RIF pain in young woman ============= */
   {
     id:'rif-pain-young-female', title:'Right iliac fossa pain', type:'telephone', duration:12,
-    meta:{ age:28, sex:'F', setting:'Telephone triage — patient called surgery 30 minutes ago.', system:'Surgical / Gynae' },
+    meta:{ age:28, sex:'F', setting:'Telephone triage — patient called surgery 30 minutes ago.', system:'Surgical / Gynae', checked:'October 2026' },
     brief:'Layla Ahmed, 28, calls the surgery with right-sided lower abdominal pain since this morning. Receptionist has triaged to a telephone consultation with the duty GP. No previous notes of significance. LMP 6 weeks ago. Married, no children, works as a pharmacist.',
     script:{
       opening:'"Doctor, I\'ve had this awful pain in the lower right side of my tummy since I woke up. I\'ve never had anything like this before. I don\'t know what to do."',
@@ -91,14 +91,14 @@ window.SCA_CASES = [
       cues:['Mentions "we\'ve been trying" — invitation to discuss pregnancy.','Goes quiet when asked about shoulder pain.','Says "I really thought we\'d be lucky this month".']
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises ectopic pregnancy as the leading differential and asks about LMP, contraception, and intercourse' },
-      { dom:'tasks', text:'Elicits red flags: shoulder-tip pain, lightheadedness, bleeding' },
-      { dom:'tasks', text:'Arranges same-day Early Pregnancy Unit (EPAU) or A&E review — does NOT plan a routine GP review' },
-      { dom:'tasks', text:'Advises urine pregnancy test before leaving home, but does not delay transfer waiting for the result' },
-      { dom:'rto',   text:'Acknowledges the emotional weight ("you\'ve been trying for a baby")' },
-      { dom:'rto',   text:'Uses plain language about ectopic pregnancy — explains why this is urgent without frightening' },
-      { dom:'gs',    text:'Safety-nets clearly: 999 if collapse / severe sudden worsening / heavy bleeding' },
-      { dom:'gs',    text:'Confirms transport and whether husband / family are available' },
+      { dom:'dg', text:'Recognises ectopic pregnancy as the leading differential and asks about LMP, contraception, and intercourse' },
+      { dom:'dg', text:'Elicits red flags: shoulder-tip pain, lightheadedness, bleeding' },
+      { dom:'cm', text:'Arranges same-day Early Pregnancy Unit (EPAU) or A&E review — does NOT plan a routine GP review' },
+      { dom:'cm', text:'Advises urine pregnancy test before leaving home, but does not delay transfer waiting for the result' },
+      { dom:'ro',   text:'Acknowledges the emotional weight ("you\'ve been trying for a baby")' },
+      { dom:'ro',   text:'Uses plain language about ectopic pregnancy — explains why this is urgent without frightening' },
+      { dom:'cm',    text:'Safety-nets clearly: 999 if collapse / severe sudden worsening / heavy bleeding' },
+      { dom:'cm',    text:'Confirms transport and whether husband / family are available' },
     ],
     worked:[
       { lbl:'Open question',       txt:'"Layla, I want to hear the story in your own words first — what\'s the pain been doing since you noticed it this morning?"' },
@@ -107,13 +107,13 @@ window.SCA_CASES = [
       { lbl:'Acknowledging emotion', txt:'"I can hear how much this matters. Whatever this turns out to be, you\'re doing the right thing by ringing now."' },
       { lbl:'Safety-net',          txt:'"If you feel suddenly faint, the pain gets dramatically worse, or you start bleeding heavily — that\'s a 999 call, not a wait."' },
     ],
-    learning:'Any woman of reproductive age with abdominal pain has an ectopic until proven otherwise — LMP, contraception, sexual activity. Shoulder-tip pain and orthostatic symptoms shift the probability sharply. EPAU is the destination, not a routine GP review. The emotional layer here — "we\'ve been trying" — is the marking difference between Clear and Excellent.'
+    learning:'Any woman of reproductive age with abdominal pain has an ectopic until proven otherwise — LMP, contraception, sexual activity. Shoulder-tip pain and orthostatic symptoms shift the probability sharply. EPAU is the destination, not a routine GP review. The emotional layer here — "we\'ve been trying" — is the marking difference between Pass and Clear pass.'
   },
 
   /* ============= 3. VIDEO — Knee pain in older walker ============= */
   {
     id:'knee-pain-walker', title:'Sore knee in keen hill walker', type:'video', duration:12,
-    meta:{ age:65, sex:'M', setting:'Video consultation, requested by patient.', system:'MSK' },
+    meta:{ age:65, sex:'M', setting:'Video consultation, requested by patient.', system:'MSK', checked:'October 2026' },
     brief:'Mr Donald Harris, 65, retired teacher and keen long-distance hill walker, attends with right knee pain. He has scheduled a 200-mile Coast-to-Coast walk in 8 weeks\' time. PMH: BMI 31. Statin for hyperlipidaemia. No prior knee problems.',
     script:{
       opening:'"Doctor, I\'ve got a problem with my right knee and I have to be honest with you — I don\'t want to be told to stop. I\'ve got Wainwright\'s Coast-to-Coast booked in two months."',
@@ -133,14 +133,14 @@ window.SCA_CASES = [
       cues:['Photo of late wife — he holds it up to the camera.','Says "Margaret would have hated me to give up".','Looks visibly distressed if you suggest cancelling.']
     },
     checkpoints:[
-      { dom:'tasks', text:'Asks for the knee examination findings (effusion, ROM, joint-line tenderness, McMurray, ligaments) — provided on request, as in the exam' },
-      { dom:'tasks', text:'Recognises probable medial-compartment OA — does not arrange MRI or X-ray reflexively' },
-      { dom:'tasks', text:'Offers structured non-operative plan: weight, quads strengthening, topical NSAID, paracetamol, poles, downhill technique' },
-      { dom:'tasks', text:'Discusses oral NSAID risk in older patient on statin, offers PPI cover if needed' },
-      { dom:'rto',   text:'Acknowledges the meaning of the walk — Margaret, grief, what completing it would mean' },
-      { dom:'rto',   text:'Negotiates: doesn\'t order him to cancel; offers a graded plan with check-in at 4 weeks' },
-      { dom:'gs',    text:'Safety-nets red flags: sudden swelling, locking, giving way, systemic symptoms' },
-      { dom:'gs',    text:'Considers signposting bereavement support (Cruse) tactfully' },
+      { dom:'dg', text:'Asks for the knee examination findings (effusion, ROM, joint-line tenderness, McMurray, ligaments) — provided on request, as in the exam' },
+      { dom:'dg', text:'Recognises probable medial-compartment OA — does not arrange MRI or X-ray reflexively' },
+      { dom:'cm', text:'Offers structured non-operative plan: weight, quads strengthening, topical NSAID, paracetamol, poles, downhill technique' },
+      { dom:'cm', text:'Discusses oral NSAID risk in older patient on statin, offers PPI cover if needed' },
+      { dom:'ro',   text:'Acknowledges the meaning of the walk — Margaret, grief, what completing it would mean' },
+      { dom:'ro',   text:'Negotiates: doesn\'t order him to cancel; offers a graded plan with check-in at 4 weeks' },
+      { dom:'cm',    text:'Safety-nets red flags: sudden swelling, locking, giving way, systemic symptoms' },
+      { dom:'cm',    text:'Considers signposting bereavement support (Cruse) tactfully' },
     ],
     worked:[
       { lbl:'Open question',      txt:'"Donald — before we talk about the knee, tell me about the walk. Why this one, why now?"' },
@@ -155,7 +155,7 @@ window.SCA_CASES = [
   /* ============= 4. VIDEO — Confused grandmother, daughter connecting from the flat ============= */
   {
     id:'home-visit-confusion', title:'Confused grandmother — video from her home', type:'video', duration:12,
-    meta:{ age:84, sex:'F', setting:'Video consultation — daughter connects the call from her mother\'s flat; both on screen.', system:'Older adult / safeguarding' },
+    meta:{ age:84, sex:'F', setting:'Video consultation — daughter connects the call from her mother\'s flat; both on screen.', system:'Older adult / safeguarding', checked:'October 2026' },
     brief:'Mrs Edith Saunders, 84, lives in a ground-floor flat. PMH: hypertension, osteoarthritis, mild memory impairment last documented 18 months ago. Daughter (June, primary carer) requested an urgent consultation because mother has been "confused, more forgetful, and not eating" for two weeks. June connects a video call from the flat, sitting beside Edith.',
     script:{
       opening:'(June starts the call, Edith beside her.) "Thank goodness I got through, doctor. Mum\'s been getting worse for two weeks — she\'s leaving the cooker on, she didn\'t recognise me on Sunday, and she\'s only picking at her food. I don\'t know what to do anymore." Then Edith says, vaguely: "I\'m fine, I just had a bit of a funny turn."',
@@ -175,14 +175,14 @@ window.SCA_CASES = [
       cues:['June\'s hands shake as she steadies the phone.','June mentions "a strong smell" when helping Edith to the toilet.','The kettle behind them has visible burn marks.']
     },
     checkpoints:[
-      { dom:'tasks', text:'Considers delirium first (UTI / opiate toxicity / dehydration / electrolytes) — not dementia by default' },
-      { dom:'tasks', text:'Gathers what a video allows — observes Edith, cognitive screen (4AT/AMTS questions over video), asks June for the home BP/temperature readings — and arranges same-day in-person review for examination + urinalysis' },
-      { dom:'tasks', text:'Sends urine MSU; arranges bloods (U&Es, FBC, CRP, glucose, calcium, B12/folate, TSH)' },
-      { dom:'tasks', text:'Reviews co-codamol — stops or reduces; considers laxative cover' },
-      { dom:'rto',   text:'Acknowledges June\'s exhaustion and asks how SHE is, not only about mother' },
-      { dom:'rto',   text:'Speaks directly to Edith (not over her), assesses capacity for the decisions at hand' },
-      { dom:'gs',    text:'Considers carer support — respite, social services referral, GP carer review for June' },
-      { dom:'gs',    text:'Safety-nets: when to call 999 (drowsy, fitting, sudden deterioration) vs surgery (worsening confusion, falls)' },
+      { dom:'dg', text:'Considers delirium first (UTI / opiate toxicity / dehydration / electrolytes) — not dementia by default' },
+      { dom:'dg', text:'Gathers what a video allows — observes Edith, cognitive screen (4AT/AMTS questions over video), asks June for the home BP/temperature readings — and arranges same-day in-person review for examination + urinalysis' },
+      { dom:'dg', text:'Sends urine MSU; arranges bloods (U&Es, FBC, CRP, glucose, calcium, B12/folate, TSH)' },
+      { dom:'cm', text:'Reviews co-codamol — stops or reduces; considers laxative cover' },
+      { dom:'ro',   text:'Acknowledges June\'s exhaustion and asks how SHE is, not only about mother' },
+      { dom:'ro',   text:'Speaks directly to Edith (not over her), assesses capacity for the decisions at hand' },
+      { dom:'cm',    text:'Considers carer support — respite, social services referral, GP carer review for June' },
+      { dom:'cm',    text:'Safety-nets: when to call 999 (drowsy, fitting, sudden deterioration) vs surgery (worsening confusion, falls)' },
     ],
     worked:[
       { lbl:'To June, opening',    txt:'"June — before I talk to your mum, tell me what\'s happened in the last fortnight, in your own words?"' },
@@ -197,7 +197,7 @@ window.SCA_CASES = [
   /* ============= 5. VIDEO — Acne in teenager ============= */
   {
     id:'acne-teen', title:'Acne in a 16-year-old', type:'video', duration:12,
-    meta:{ age:16, sex:'F', setting:'Video appointment, mother is also on the screen.', system:'Dermatology / adolescent' },
+    meta:{ age:16, sex:'F', setting:'Video appointment, mother is also on the screen.', system:'Dermatology / adolescent', checked:'October 2026' },
     brief:'Sophie Edwards, 16. Mother (Karen) has booked the appointment. Sophie has had acne for 18 months — increasing in severity. She is currently sitting beside her mother, head slightly down. No PMH. Doing GCSEs this summer.',
     script:{
       opening:'(Karen, talking first:) "Hi doctor, I\'ve booked Sophie in because her acne has got really bad and she\'s not coping. The over-the-counter stuff isn\'t working. We need something strong." (Sophie says nothing.)',
@@ -216,14 +216,14 @@ window.SCA_CASES = [
       cues:['Sophie\'s body language closes off when mum speaks.','Sophie touches her chin repeatedly.','Karen interrupts when Sophie tries to answer.']
     },
     checkpoints:[
-      { dom:'tasks', text:'Grades the acne (mild/moderate/severe; comedonal vs inflammatory vs nodulocystic)' },
-      { dom:'tasks', text:'Starts a structured first-line: topical adapalene + benzoyl peroxide combination, or fixed-combo treatment' },
-      { dom:'tasks', text:'Recognises when oral antibiotic (lymecycline) is appropriate; understands when to refer for isotretinoin' },
-      { dom:'tasks', text:'Screens for psychological impact — explicitly, not as a tick-box' },
-      { dom:'rto',   text:'Creates space for Sophie to speak — asks Karen if it\'s OK to hear from Sophie directly first' },
-      { dom:'rto',   text:'Manages the mother\'s expectation about isotretinoin without dismissing it' },
-      { dom:'gs',    text:'Considers safeguarding the consultation: offers a private follow-up Sophie can attend alone' },
-      { dom:'gs',    text:'Safety-nets — mental health worsening, suicidal ideation; signposts (Mind, Kooth, Papyrus HOPELINE247)' },
+      { dom:'dg', text:'Grades the acne (mild/moderate/severe; comedonal vs inflammatory vs nodulocystic)' },
+      { dom:'cm', text:'Starts a structured first-line: topical adapalene + benzoyl peroxide combination, or fixed-combo treatment' },
+      { dom:'dg', text:'Recognises when oral antibiotic (lymecycline) is appropriate; understands when to refer for isotretinoin' },
+      { dom:'dg', text:'Screens for psychological impact — explicitly, not as a tick-box' },
+      { dom:'ro',   text:'Creates space for Sophie to speak — asks Karen if it\'s OK to hear from Sophie directly first' },
+      { dom:'ro',   text:'Manages the mother\'s expectation about isotretinoin without dismissing it' },
+      { dom:'cm',    text:'Considers safeguarding the consultation: offers a private follow-up Sophie can attend alone' },
+      { dom:'cm',    text:'Safety-nets — mental health worsening, suicidal ideation; signposts (Mind, Kooth, Papyrus HOPELINE247)' },
     ],
     worked:[
       { lbl:'Inviting Sophie',     txt:'"Karen, thank you for booking this. Sophie — would it be OK if I heard from you first, in your own words?"' },
@@ -238,7 +238,7 @@ window.SCA_CASES = [
   /* ============= 6. TELEPHONE — Husband ringing about wife's mood ============= */
   {
     id:'third-party-meno', title:'Husband worried about wife\'s mood (perimenopause)', type:'telephone', duration:12,
-    meta:{ age:52, sex:'F (caller is husband)', setting:'Telephone call from husband.', system:'Women\'s health / ethics' },
+    meta:{ age:52, sex:'F (caller is husband)', setting:'Telephone call from husband.', system:'Women\'s health / ethics', checked:'October 2026' },
     brief:'Mr Andrew Carter rings the surgery about his wife, Mrs Helen Carter (52). He says she has "completely changed in six months" — irritable, exhausted, snapping at the children. Helen has not booked an appointment herself. There is no consent on file for you to discuss her care with Andrew.',
     script:{
       opening:'"Doctor, thank you for calling back. I\'m at my wit\'s end. My wife Helen is — she\'s just not herself. She\'s biting our daughter\'s head off, she\'s not sleeping, she sat at the kitchen table last night and cried for an hour. Can you put her on HRT or something? I think it\'s the menopause."',
@@ -257,14 +257,14 @@ window.SCA_CASES = [
       cues:['Pause when he says "she doesn\'t want me near her".','Voice cracks when mentioning his daughter.','Tries to skip ahead to "so can you start her on something".']
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises this is a third-party call — cannot prescribe or share Helen\'s information without her consent' },
-      { dom:'tasks', text:'Listens to the concern fully without breaching confidentiality boundaries' },
-      { dom:'tasks', text:'Plan: invites Helen to make her own appointment; offers general information about perimenopause for Andrew\'s reading' },
-      { dom:'tasks', text:'Screens (sensitively) for any safeguarding concern — domestic conflict, child witnessing' },
-      { dom:'rto',   text:'Acknowledges Andrew\'s distress without dismissing him' },
-      { dom:'rto',   text:'Explains the confidentiality principle in plain English — without sounding bureaucratic' },
-      { dom:'gs',    text:'Offers a named slot for Helen and information she can use (NHS perimenopause page, Women\'s Health Concern)' },
-      { dom:'gs',    text:'Safety-nets — if Helen\'s mood worsens, if she expresses self-harm, what to do' },
+      { dom:'dg', text:'Recognises this is a third-party call — cannot prescribe or share Helen\'s information without her consent' },
+      { dom:'ro', text:'Listens to the concern fully without breaching confidentiality boundaries' },
+      { dom:'cm', text:'Plan: invites Helen to make her own appointment; offers general information about perimenopause for Andrew\'s reading' },
+      { dom:'dg', text:'Screens (sensitively) for any safeguarding concern — domestic conflict, child witnessing' },
+      { dom:'ro',   text:'Acknowledges Andrew\'s distress without dismissing him' },
+      { dom:'ro',   text:'Explains the confidentiality principle in plain English — without sounding bureaucratic' },
+      { dom:'cm',    text:'Offers a named slot for Helen and information she can use (NHS perimenopause page, Women\'s Health Concern)' },
+      { dom:'cm',    text:'Safety-nets — if Helen\'s mood worsens, if she expresses self-harm, what to do' },
     ],
     worked:[
       { lbl:'Acknowledge',         txt:'"Andrew — thank you for ringing. I can hear how worried you are and how much you love her. Before I say anything, I have to be straight with you about what I can and can\'t do on a call about someone else."' },
@@ -279,7 +279,7 @@ window.SCA_CASES = [
   /* ============= 7. VIDEO — Persistent cough in smoker, weight loss ============= */
   {
     id:'cough-smoker-2ww', title:'Persistent cough in a smoker', type:'video', duration:12,
-    meta:{ age:56, sex:'M', setting:'Booked video appointment. Patient self-referred.', system:'Respiratory / cancer' },
+    meta:{ age:56, sex:'M', setting:'Booked video appointment. Patient self-referred.', system:'Respiratory / cancer', checked:'October 2026' },
     brief:'Mr Raymond Powell, 56, builder, smokes 20/day for 35 years. Attends with a "chesty cough" of three months. PMH: hypertension, well-controlled on ramipril. No previous chest imaging on record.',
     script:{
       opening:'"Cheers, doctor. Listen — I\'ve had this cough hanging on for ages and I just want some antibiotics so I can get back on site."',
@@ -298,14 +298,14 @@ window.SCA_CASES = [
       cues:['Brushes past the blood quickly when he mentions it.','Asks "It\'s not anything sinister, is it?"','Tone changes when he talks about his wife.']
     },
     checkpoints:[
-      { dom:'tasks', text:'Elicits the red flags: ≥3 weeks cough, haemoptysis, hoarse voice, weight loss, smoker' },
-      { dom:'tasks', text:'Arranges an urgent chest X-ray (within 2 weeks) as per NICE NG12 suspected cancer pathway' },
-      { dom:'tasks', text:'Does NOT prescribe antibiotics reflexively' },
-      { dom:'tasks', text:'Offers smoking-cessation support proactively even now' },
-      { dom:'rto',   text:'Picks up the throwaway about blood and slows down to address it' },
-      { dom:'rto',   text:'Uses honest, lay-language framing of the suspected cancer pathway — "an urgent X-ray to rule out anything sinister"' },
-      { dom:'gs',    text:'Safety-nets: massive haemoptysis, breathlessness at rest, chest pain → A&E' },
-      { dom:'gs',    text:'Books explicit follow-up to discuss results — does not leave outcome to a letter' },
+      { dom:'dg', text:'Elicits the red flags: ≥3 weeks cough, haemoptysis, hoarse voice, weight loss, smoker' },
+      { dom:'cm', text:'Arranges an urgent chest X-ray (within 2 weeks) as per NICE NG12 suspected cancer pathway' },
+      { dom:'cm', text:'Does NOT prescribe antibiotics reflexively' },
+      { dom:'cm', text:'Offers smoking-cessation support proactively even now' },
+      { dom:'ro',   text:'Picks up the throwaway about blood and slows down to address it' },
+      { dom:'ro',   text:'Uses honest, lay-language framing of the suspected cancer pathway — "an urgent X-ray to rule out anything sinister"' },
+      { dom:'cm',    text:'Safety-nets: massive haemoptysis, breathlessness at rest, chest pain → A&E' },
+      { dom:'cm',    text:'Books explicit follow-up to discuss results — does not leave outcome to a letter' },
     ],
     worked:[
       { lbl:'Open question',       txt:'"Raymond — three months is a long time for a cough. Walk me through how it\'s changed from when it first started."' },
@@ -320,7 +320,7 @@ window.SCA_CASES = [
   /* ============= 8. VIDEO — T2DM insulin uptitration with Ramadan ============= */
   {
     id:'insulin-ramadan', title:'Insulin in poorly-controlled T2DM, Ramadan approaching', type:'video', duration:12,
-    meta:{ age:48, sex:'M', setting:'Video diabetes review — booked by the practice nurse.', system:'Endocrine / cultural' },
+    meta:{ age:48, sex:'M', setting:'Video diabetes review — booked by the practice nurse.', system:'Endocrine / cultural', checked:'October 2026' },
     brief:'Mr Imran Shah, 48, T2DM diagnosed 7 years ago. HbA1c 84 mmol/mol (target 53). BMI 36. On metformin 1g BD + gliclazide 80mg BD. Practising Muslim — Ramadan begins in 5 weeks. Works as a taxi driver. No retinopathy at last screen.',
     script:{
       opening:'"Salaam doctor. The diabetic nurse rang me and said my sugars are bad and I need a stronger treatment. But Ramadan\'s in five weeks. I\'m not stopping fasting, doctor."',
@@ -339,14 +339,14 @@ window.SCA_CASES = [
       cues:['Pauses when his father is mentioned.','Looks at his hands when "insulin" is said.','Brightens when GP shows knowledge of Ramadan rulings.']
     },
     checkpoints:[
-      { dom:'tasks', text:'Reviews the picture — HbA1c 84 is far off target, complications screen, current therapy maxed' },
-      { dom:'tasks', text:'Considers SGLT2 inhibitor + GLP-1 RA (cardio-renal protection, weight, fasting safety) before insulin' },
-      { dom:'tasks', text:'If insulin is needed: explains it is treatment, not failure; uses Diabetes UK / IDF Ramadan guidance for dose adjustment' },
-      { dom:'tasks', text:'Reviews DVLA implications for taxi driver on hypoglycaemic agents (gliclazide, insulin)' },
-      { dom:'rto',   text:'Honours the religious context — does not insist on breaking fast as a default position' },
-      { dom:'rto',   text:'Reframes insulin: not a failure, not a death sentence — uses the cousin\'s story respectfully' },
-      { dom:'gs',    text:'Safety-nets hypos during Ramadan — sugar to hand, what to do, when to break fast (Islamic rulings permit it for safety)' },
-      { dom:'gs',    text:'Arranges short-interval review with the diabetes nurse before Ramadan starts' },
+      { dom:'cm', text:'Reviews the picture — HbA1c 84 is far off target, complications screen, current therapy maxed' },
+      { dom:'dg', text:'Considers SGLT2 inhibitor + GLP-1 RA (cardio-renal protection, weight, fasting safety) before insulin' },
+      { dom:'cm', text:'If insulin is needed: explains it is treatment, not failure; uses Diabetes UK / IDF Ramadan guidance for dose adjustment' },
+      { dom:'cm', text:'Reviews DVLA implications for taxi driver on hypoglycaemic agents (gliclazide, insulin)' },
+      { dom:'ro',   text:'Honours the religious context — does not insist on breaking fast as a default position' },
+      { dom:'ro',   text:'Reframes insulin: not a failure, not a death sentence — uses the cousin\'s story respectfully' },
+      { dom:'cm',    text:'Safety-nets hypos during Ramadan — sugar to hand, what to do, when to break fast (Islamic rulings permit it for safety)' },
+      { dom:'cm',    text:'Arranges short-interval review with the diabetes nurse before Ramadan starts' },
     ],
     worked:[
       { lbl:'Opening',          txt:'"Imran — before anything else, tell me how diabetes has been for you over the last year, in your own words."' },
@@ -361,7 +361,7 @@ window.SCA_CASES = [
   /* ============= 9. VIDEO — Abnormal LFTs in 42-year-old solicitor ============= */
   {
     id:'lft-alcohol', title:'Abnormal LFTs — alcohol concern', type:'video', duration:12,
-    meta:{ age:42, sex:'M', setting:'Video consultation booked to discuss recent blood results.', system:'GI / alcohol' },
+    meta:{ age:42, sex:'M', setting:'Video consultation booked to discuss recent blood results.', system:'GI / alcohol', checked:'October 2026' },
     brief:'Mr Charles Bennett, 42, solicitor, joins a video consultation after blood tests requested 2 weeks ago when he mentioned feeling tired. PMH: nothing of note. No regular medications.',
     script:{
       opening:'"Hello doctor — the receptionist said the bloods needed a chat. Look, I\'ve got a court appearance at 2 so if we can keep it brief that\'d be great."',
@@ -393,14 +393,14 @@ window.SCA_CASES = [
       cues:['Checks his watch when alcohol is mentioned.','Defensive — "I\'m not an alcoholic, doctor."','Goes quiet when the partnership is mentioned.']
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises the LFT pattern: AST:ALT ratio + GGT raised + macrocytosis = alcohol-related liver injury' },
-      { dom:'tasks', text:'Calculates actual units (35-40/week — well above 14 unit limit) and explains the calculation' },
-      { dom:'tasks', text:'Requests viral hepatitis screen, autoimmune screen, ferritin, fibroscan/non-invasive liver fibrosis (ELF / FIB-4)' },
-      { dom:'tasks', text:'Screens for dependence — AUDIT-C, withdrawal features, morning drinking' },
-      { dom:'rto',   text:'Avoids judgemental framing — does not label him an "alcoholic"' },
-      { dom:'rto',   text:'Picks up the partnership grief and the jitteriness on the dry week' },
-      { dom:'gs',    text:'Signposts: local alcohol service (or Drinkaware / Drinkline 0300 123 1110); discusses brief intervention' },
-      { dom:'gs',    text:'Safety-nets: do NOT stop drinking abruptly without medical support if withdrawal features present (risk of DTs); plans follow-up' },
+      { dom:'dg', text:'Recognises the LFT pattern: AST:ALT ratio + GGT raised + macrocytosis = alcohol-related liver injury' },
+      { dom:'dg', text:'Calculates actual units (35-40/week — well above 14 unit limit) and explains the calculation' },
+      { dom:'dg', text:'Requests viral hepatitis screen, autoimmune screen, ferritin, fibroscan/non-invasive liver fibrosis (ELF / FIB-4)' },
+      { dom:'dg', text:'Screens for dependence — AUDIT-C, withdrawal features, morning drinking' },
+      { dom:'ro',   text:'Avoids judgemental framing — does not label him an "alcoholic"' },
+      { dom:'ro',   text:'Picks up the partnership grief and the jitteriness on the dry week' },
+      { dom:'cm',    text:'Signposts: local alcohol service (or Drinkaware / Drinkline 0300 123 1110); discusses brief intervention' },
+      { dom:'cm',    text:'Safety-nets: do NOT stop drinking abruptly without medical support if withdrawal features present (risk of DTs); plans follow-up' },
     ],
     worked:[
       { lbl:'Setting tone',      txt:'"Charles — these results have a story in them and I want us to look at them together rather than me lecturing at you. Five minutes, then a plan."' },
@@ -415,7 +415,7 @@ window.SCA_CASES = [
   /* ============= 10. VIDEO — Sleep problems in 4-year-old ============= */
   {
     id:'sleep-paeds', title:'Sleep problems in a 4-year-old', type:'video', duration:12,
-    meta:{ age:4, sex:'M (mother is caller)', setting:'Booked video appointment with mother.', system:'Paediatrics / family' },
+    meta:{ age:4, sex:'M (mother is caller)', setting:'Booked video appointment with mother.', system:'Paediatrics / family', checked:'October 2026' },
     brief:'Mrs Naomi Patel video-calls about her son Aaron, 4. She is calling from the kitchen — Aaron is at nursery. She looks exhausted. No PMH for Aaron. She had postnatal depression after Aaron\'s birth, treated and resolved.',
     script:{
       opening:'"Hi doctor. I don\'t know what to do anymore. Aaron just won\'t sleep. He\'s up four, five times a night. I\'ve not slept properly in months. Please tell me there\'s something we can give him."',
@@ -435,14 +435,14 @@ window.SCA_CASES = [
       cues:['Crying when she says "I just want my evenings back".','Mentions Suresh\'s shifts twice.','Asks "Am I doing this wrong?" twice.']
     },
     checkpoints:[
-      { dom:'tasks', text:'Takes a structured paediatric sleep history — pattern, environment, routine, comorbidities, red flags' },
-      { dom:'tasks', text:'Recognises this as behavioural sleep difficulty (limit-setting / sleep-onset association) rather than a medical sleep disorder' },
-      { dom:'tasks', text:'Does NOT prescribe melatonin reflexively (off-licence in this age group without specialist input)' },
-      { dom:'tasks', text:'Offers structured behavioural strategy — graduated extinction or "chair method"; consistent bedtime routine; one room only' },
-      { dom:'rto',   text:'Notices Naomi is exhausted and asks how SHE is — not just Aaron' },
-      { dom:'rto',   text:'Screens for postnatal depression / current depression sensitively (PHQ-9 / specifically asks about recurrence)' },
-      { dom:'gs',    text:'Signposts: Health Visiting team, ICON (parental coping), local Sleep Charity resources' },
-      { dom:'gs',    text:'Safety-nets — worsening mood, thoughts of harm, escalation route; offers follow-up for Naomi as a patient' },
+      { dom:'dg', text:'Takes a structured paediatric sleep history — pattern, environment, routine, comorbidities, red flags' },
+      { dom:'dg', text:'Recognises this as behavioural sleep difficulty (limit-setting / sleep-onset association) rather than a medical sleep disorder' },
+      { dom:'cm', text:'Does NOT prescribe melatonin reflexively (off-licence in this age group without specialist input)' },
+      { dom:'cm', text:'Offers structured behavioural strategy — graduated extinction or "chair method"; consistent bedtime routine; one room only' },
+      { dom:'ro',   text:'Notices Naomi is exhausted and asks how SHE is — not just Aaron' },
+      { dom:'ro',   text:'Screens for postnatal depression / current depression sensitively (PHQ-9 / specifically asks about recurrence)' },
+      { dom:'cm',    text:'Signposts: Health Visiting team, ICON (parental coping), local Sleep Charity resources' },
+      { dom:'cm',    text:'Safety-nets — worsening mood, thoughts of harm, escalation route; offers follow-up for Naomi as a patient' },
     ],
     worked:[
       { lbl:'Open Q',            txt:'"Naomi — before we talk about Aaron, how are YOU doing? You look exhausted."' },
@@ -451,7 +451,7 @@ window.SCA_CASES = [
       { lbl:'Negotiation',        txt:'"I\'m not going to prescribe a sleep medicine for Aaron today — at his age the research is shaky and the issue is behavioural. But I am going to ask you to book yourself an appointment for next week, just for you."' },
       { lbl:'Safety-net',         txt:'"If you ever feel you can\'t cope, or you have thoughts of hurting yourself — ring 111 option 2, or come to me, or Samaritans 116 123. Please don\'t wait for our next appointment."' },
     ],
-    learning:'The marking pivot here is realising the patient in the room is the mother, not the child. Behavioural paediatric sleep difficulty does not respond to medication; it responds to consistency. Spotting recurrent depression in an exhausted parent — and offering them their own appointment — is the difference between Clear Pass and Excellent.'
+    learning:'The marking pivot here is realising the patient in the room is the mother, not the child. Behavioural paediatric sleep difficulty does not respond to medication; it responds to consistency. Spotting recurrent depression in an exhausted parent — and offering them their own appointment — is the difference between Pass and Clear pass.'
   },
 
 ];

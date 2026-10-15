@@ -315,7 +315,7 @@
 <script src="../assets/site.js?v=107"></script>
 <script src="../assets/tts-voice.js?v=1"></script>
 <!-- the full 312-case library, same files and order as The Hot Seat -->
-<script src="../assets/sca-loader.js?v=1"></script>
+<script src="../assets/sca-loader.js?v=3"></script>
 <script>
 (function(){
   'use strict';
@@ -404,7 +404,7 @@
     const q = filter.q.trim().toLowerCase();
     return CASES.filter(c=>{
       if(filter.spec!=='all' && c._spec!==filter.spec) return false;
-      if(filter.type!=='all' && (c.type||'f2f')!==filter.type) return false;
+      if(filter.type!=='all' && (c.type||'video')!==filter.type) return false;
       if(q){
         const hay = (c.title+' '+((c.meta&&c.meta.system)||'')+' '+(c.brief||'')).toLowerCase();
         if(!hay.includes(q)) return false;
@@ -416,7 +416,7 @@
   function renderFacets(){
     // specialty counts (respecting the active type filter so numbers stay honest)
     const sc = {};
-    CASES.forEach(c=>{ if(filter.type==='all' || (c.type||'f2f')===filter.type) sc[c._spec]=(sc[c._spec]||0)+1; });
+    CASES.forEach(c=>{ if(filter.type==='all' || (c.type||'video')===filter.type) sc[c._spec]=(sc[c._spec]||0)+1; });
     const specs = Object.keys(sc).sort((a,b)=> sc[b]-sc[a] || a.localeCompare(b));
     const total = Object.values(sc).reduce((n,v)=>n+v,0);
     let html = `<button class="sf-item${filter.spec==='all'?' on':''}" data-spec="all">All specialties <span class="n">${total}</span></button>`;
@@ -424,7 +424,7 @@
     $('#specList').innerHTML = html;
     // type counts (respecting the active specialty filter)
     const tc = {};
-    CASES.forEach(c=>{ if(filter.spec==='all' || c._spec===filter.spec){ const t=c.type||'f2f'; tc[t]=(tc[t]||0)+1; } });
+    CASES.forEach(c=>{ if(filter.spec==='all' || c._spec===filter.spec){ const t=c.type||'video'; tc[t]=(tc[t]||0)+1; } });
     const types = Object.keys(tc).sort((a,b)=> tc[b]-tc[a]);
     const ttotal = Object.values(tc).reduce((n,v)=>n+v,0);
     let th = `<button class="sf-item${filter.type==='all'?' on':''}" data-type="all">All types <span class="n">${ttotal}</span></button>`;
@@ -561,7 +561,7 @@
     return [
       'You are a simulated PATIENT in a UK GP consultation, for a doctor practising the RCGP SCA exam. Stay strictly in role as the patient — never act as a doctor, narrator, or examiner.',
       'WHO YOU ARE: '+(cur.brief||''),
-      'CONSULTATION TYPE: '+(TYPE_LBL[cur.type]||'Face-to-face')+'.',
+      'CONSULTATION TYPE: '+(TYPE_LBL[cur.type]||'Video consultation')+'.',
       'YOUR STORY — reveal each piece ONLY when the doctor asks a relevant question; do not volunteer it all at once:',
       facts||'(no extra facts)',
       'YOUR INNER WORLD — share only if the doctor genuinely explores ideas/concerns/expectations:',
@@ -742,13 +742,13 @@
 
   // ---------- end & examiner marking ----------
   function examinerPrompt(){
-    const c=cur, cps=(c.checkpoints||[]).map(cp=>`- [${cp.dom}] ${cp.text}`).join('\n');
+    const DL={dg:'Data gathering & diagnosis',cm:'Clinical management & medical complexity',ro:'Relating to others'}; const c=cur, cps=(c.checkpoints||[]).map(cp=>{ const d=window.SCA_RCGP?window.SCA_RCGP.dom(cp.dom,cp.text):cp.dom; return `- [${DL[d]||d}] ${cp.text}`; }).join('\n');
     const cues=((c.script&&c.script.cues)||[]).map((q,i)=>`- Cue ${i+1}: ${q}`).join('\n');
     const convo=transcript.map(m=>(m.role==='dr'?'DOCTOR':'PATIENT')+': '+m.text).join('\n');
     return [
       'You are an RCGP SCA examiner. Mark the following simulated consultation against the three SCA domains. Be fair, specific and constructive — quote what the candidate actually did.',
       'CASE: '+c.title+' — '+(c.brief||''),
-      'EXPECTED POSITIVE BEHAVIOURS (checkpoints; dom = tasks[Data Gathering & Clinical Management] / rto[Relating to Others] / gs[Global/Safety]):',
+      'EXPECTED POSITIVE BEHAVIOURS (checkpoints, tagged by RCGP domain):',
       cps||'(none provided)',
       'CUES THE PATIENT PLANTED (did the candidate pick up and respond to each?):',
       cues||'(none)',

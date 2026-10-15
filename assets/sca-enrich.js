@@ -6,6 +6,104 @@
    station. Educational summary only — verify against live NICE.
    ============================================================ */
 
+/* ---- RCGP SCA marking domains: shared helper (window.SCA_RCGP) ----
+   dg = Data gathering & diagnosis · cm = Clinical management & medical complexity
+   ro = Relating to others. Grades: Clear pass / Pass / Fail / Clear fail.
+   dom(key, text) maps legacy keys (tasks / rto / gs) to the new ones. */
+/* RCGP SCA domains: classifier + legacy mapping (ES5, shared by build scripts and sca-loader.js) */
+(function(root){
+  var LABEL = { dg:'Data gathering & diagnosis', cm:'Clinical management & medical complexity', ro:'Relating to others' };
+  var SHORT = { dg:'Data gathering', cm:'Clinical management', ro:'Relating to others' };
+  var GRADES = ['Clear pass', 'Pass', 'Fail', 'Clear fail'];
+  // Leading verbs → domain (checked on the first word, case-insensitive)
+  var V_DG = /^(recognis|identif|takes|screen|assess|consider|distinguish|differentiat|applies|confirm|asks|actively|elicit|explor|examin|exclud|establish|checks|covers|interpret|conduct|perform|weight|weigh|investigat|diagnos|gathers|hunts|characteris|looks|works|re-takes|risk-strat|grades|gauges|calculat|clarif|triages|reconstruct|reassess|re-screens|systematically|notes|heeds|spots|catches|pins|picks|names|reads|thinks|tests|test|harvests|disentangl|objectively|still|attempts|sends|requests|orders|uses|briefly)/i;
+  var V_CM = /^(arranges|refers|manages|offers|treats|acts|plans|advises|avoids|reviews|provides|starts|stops|counsels|keeps|optimis|prioritis|safety|prescrib|initiates|institutes|mobilis|signposts|declines|insists|resists|reserves|follows|maintains|escalat|routes|proposes|involves|navigates|fulfils|commits|flags|has|documents|upholds|verifies|specifies|reconnects|fixes|solves|retires|stops|activates|moves|completes|runs|books|agrees|decides|carries|outlines|lays|discusses|teaches|neither|sets|spells|defines|situates|breaks|owns|separates|contextualis|practis|co-creates|leads|follows-up|closes|reaches|confirms transport)/i;
+  var V_RO = /^(hears|corrects|explains|responds|validates|acknowledg|balances|surfaces|communicates|reassures|negotiat|engages|conveys|reframes|creates|answers|frames|finds|meets|overcomes|honours|supports|builds|gently|treats the|centres|de-escalat|empathis|normalis|destigmatis|respects|partners|motivates|defuses|helps|restores|accommodates|problem-solves|believes|absolves|translates|dismantles|concedes|earns|re-opens|draws|calmly|lets|opens|receives|talks|speaks|touches|obeys|challenges|protects|paces|counters|brings|contains|notices|delivers|apologises|lifts|de-shames|emphasises|reinforces|weaves|converts|redirects|puts|raises|mentions|tactfully|sensitively|explicitly|directly|specifically|busts|connects|approaches|listens|firmly)/i;
+  var K_RO = /\b(ICE|idea|concern|expectation|rapport|empath|validat|acknowledg|cue|shared decision|decision-making|negotiat|explain|explanation|plain (language|english|words)|jargon|understanding|teach-back|reassur|listen|open question|non-judgement|compassion|warmth|trust|dignity|feelings|fear|distress|hidden agenda|surfac|de-escalat|agenda|signpost(ing)? the|structure|summar|chunk|check(s|ing)? (her|his|their) understanding|hear(s|d)?|emotion|shame|guilt|embarrass|anxiet|frighten|terrif|worry|worries|autonomy)/ig;
+  var K_CM = /\b(refer|referral|prescri|treat|manag|safety[- ]?net|follow[- ]?up|review|arrange|start|stop|admi(t|ssion)|999|same-day|urgent|deprescrib|dose|DVLA|safeguard|consent|capacity|confidential|document|duty|notif|fit note|sick note|escalat|monitor|advi[cs]e|offer|plan|therap|medication|drug|antibiotic|vaccin|statin|insulin|steroid|follow up|continuity|multimorbid|polypharmacy|risk assessment|safety plan|legal|law|GMC|candour)/ig;
+  var K_DG = /\b(history|asks?|elicit|screen|examin|investigat|test(s|ing)?|blood|ECG|x-ray|scan|imaging|differential|diagnos|interpret|exclud|rule (in|out)|red[- ]flag|assess|establish|clarif|risk factor|recognis|identif|discriminat|pattern|picture|result|findings|observations|sign(s)?|symptom|cause)/ig;
+  function cnt(re, s){ var m = s.match(re); return m ? m.length : 0; }
+  function lead(s){ var m = String(s||'').replace(/^[\s"'“(]+/, '').match(/^[A-Za-z-]+(\s+the)?/); return m ? m[0].toLowerCase() : ''; }
+  function classify(text, prior){
+    var s = String(text || ''); var v = lead(s);
+    var sc = { dg: cnt(K_DG, s), cm: cnt(K_CM, s), ro: cnt(K_RO, s) };
+    var head = s.slice(0, 90);
+    sc.dg += 2*cnt(K_DG, head); sc.cm += 2*cnt(K_CM, head); sc.ro += 2*cnt(K_RO, head);
+    if (V_RO.test(v)) sc.ro += 8; else if (V_DG.test(v)) sc.dg += 8; else if (V_CM.test(v)) sc.cm += 8;
+    if (/^\W*(knows|understands|states|gives|explains)\b[^.]{0,40}safety[- ]?net/i.test(s) || /^\W*safety[- ]?net/i.test(s)) sc.cm += 12;
+    if (/\bcues?\b/i.test(s.slice(0, 70))) sc.ro += 10;
+    if (/jargon|plain (language|words|english)|teach-back|summari[sz]es|sets? (a |the )?(clear )?agenda|signposts? the consultation/i.test(s)) sc.ro += 10;
+    if (/safety[- ]?net|come back if|no follow-?up|no review|crisis route|emergency advice|escalation/i.test(s)) sc.cm += 8;
+    if (prior === 'gs') { sc.dg -= 20; sc.cm += 6; if (/structur|time|summar|plain language|jargon|signpost(s|ing)? (the )?(consultation|agenda)|agenda/i.test(s) && !/safety|999|refer|admi|urgent/i.test(s)) sc.ro += 14; }
+    var best = 'dg'; ['cm','ro'].forEach(function(k){ if (sc[k] > sc[best]) best = k; });
+    return best;
+  }
+  // Scorecard item titles (generic SCA tool items) → domain
+  var TITLE = [
+    [/^(opens|explores psychosocial|plans appropriate examination|generates|rules in|reaches a working|weighs risk|takes a|establishes|screens|assesses|clarifies|elicits|interprets|recognises|identifies the|history)/i, 'dg'],
+    [/^(identifies and follows cues|discovers ice|generates rapport|uses open|clarifies and explores cues|listens|uses closed|explains the rationale|verbalises|shares and uses ice|uses psychosocial|shares risks|supports the patient|structures|avoids unnecessary|progresses|finishes data|uses clear|remains responsive)/i, 'ro'],
+    [/^(applies confidentiality|supports the carer|generates & tests management|addresses dvla|offers smoking)/i, 'cm'],
+    [/^(gives information)/i, 'ro'],
+    [/^(plans appropriate tests|examines|investigates)/i, 'dg'],
+    [/^(offers a safe|manages comorbidity|provides follow-up|recognises ethical|mobilises|safety|follow|arranges|refers|prescrib|treat|manag|plans (the )?(management|treatment))/i, 'cm']
+  ];
+  function titleDom(t, d){
+    var s = String(t || '');
+    for (var i = 0; i < TITLE.length; i++) if (TITLE[i][0].test(s)) return TITLE[i][1];
+    return classify(s + ' ' + (d || ''), 'tasks');
+  }
+  // Legacy key → new key (content-aware for tasks/gs)
+  function dom(key, text){
+    if (key === 'dg' || key === 'cm' || key === 'ro') return key;
+    if (key === 'rto' || key === 'relating') return 'ro';
+    if (key === 'gs' || key === 'global') return classify(text, 'gs') === 'cm' ? 'cm' : 'ro';
+    var c = classify(text, 'tasks');
+    return c;
+  }
+  // Build the three-domain scorecard from either the new or the legacy shape
+  function scorecard(c){
+    var sc = c && (c.scorecardRcgp || c.scorecard); if (!sc) return null;
+    if (sc.dg && sc.cm && sc.ro) { if (sc.maxDg == null) { var s2 = function(a){ return (a||[]).reduce(function(t,x){ return t + (x.pts||0); }, 0); }; sc.maxDg = s2(sc.dg); sc.maxCm = s2(sc.cm); sc.maxRo = s2(sc.ro); sc.total = sc.maxDg + sc.maxCm + sc.maxRo; } return sc; }
+    var out = { dg:[], cm:[], ro:[] };
+    function push(it, fallback){
+      var d = it.dom || (fallback === 'ro' ? 'ro' : titleDom(it.t, it.d));
+      if (fallback === 'gs' && !it.dom) d = /ethic|medico-legal/i.test(it.t) ? 'cm' : 'ro';
+      out[d].push({ t:it.t, d:it.d, pts:it.pts, dom:d });
+    }
+    (sc.tasks || []).forEach(function(it){ push(it, 'tasks'); });
+    (sc.ro || []).forEach(function(it){ push(it, 'ro'); });
+    (sc.gs || []).forEach(function(it){ push(it, 'gs'); });
+    var sum = function(a){ return a.reduce(function(s, x){ return s + (x.pts || 0); }, 0); };
+    out.maxDg = sum(out.dg); out.maxCm = sum(out.cm); out.maxRo = sum(out.ro);
+    out.total = out.maxDg + out.maxCm + out.maxRo;
+    return out;
+  }
+  // Grade a domain from the share of its marks achieved (self-assessment aid)
+  function grade(got, max){
+    if (!max) return '';
+    var p = got / max;
+    return p >= 0.8 ? 'Clear pass' : p >= 0.6 ? 'Pass' : p >= 0.35 ? 'Fail' : 'Clear fail';
+  }
+  function normaliseCase(c){
+    if (!c || c._rcgp) return c;
+    (c.checkpoints || []).forEach(function(p){ p.dom = dom(p.dom, p.text); });
+    (c.model || []).forEach(function(t){ if (t.dom && t.dom !== '-') t.dom = dom(t.dom, (t.why || '') + ' ' + (t.text || '')); });
+    if (c.pitfalls && c.pitfalls.items) c.pitfalls.items.forEach(function(p){ p.dom = dom(p.dom, (p.fail || '') + ' ' + (p.why || '') + ' ' + (p.fix || '')); });
+    // Prefer an authored RCGP scorecard (c.scorecardRcgp, or c.scorecard with dg/cm/ro) over a generated one
+    if (c.scorecard || c.scorecardRcgp) { var _sc = scorecard(c); try { c.scorecard = _sc; } catch(e){} }
+    try { Object.defineProperty(c, '_rcgp', { value:true, enumerable:false }); } catch(e){ c._rcgp = true; }
+    return c;
+  }
+  function normaliseAll(){ (root.SCA_CASES || []).forEach(normaliseCase); }
+  var api = { KEYS:['dg','cm','ro'], LABEL:LABEL, SHORT:SHORT, GRADES:GRADES, classify:classify, titleDom:titleDom, dom:dom, scorecard:scorecard, grade:grade, normaliseCase:normaliseCase, normaliseAll:normaliseAll,
+    // map saved legacy keys (tasks/rto/gs) for display; tasks splits between dg and cm so it is shown as dg+cm
+    legacyLabel:function(k){ return k === 'tasks' ? 'Data gathering & clinical management' : k === 'rto' || k === 'gs' ? 'Relating to others' : (LABEL[k] || k); } };
+  root.SCA_RCGP = api;
+  if (typeof module !== 'undefined' && module.exports) module.exports = api;
+})(typeof window !== 'undefined' ? window : this);
+
+
+
 /* ============================================================
    Reasoning GP — The Hot Seat: booklet-style DOCTOR'S STEM
    The clinical-record card presented to the candidate before the
@@ -115,7 +213,7 @@ window.SCA_KNOWLEDGE = {
       { h:'Don’t let the test delay transfer', t:'Advise a urine βhCG but do not wait for it before arranging review if clinical suspicion is high; in EPAU, serial serum βhCG + transvaginal USS guide management.' },
       { h:'Safety-net explicitly', t:'999 for collapse, severe sudden worsening, or heavy bleeding. Be clear it’s an emergency pathway, not “see how it goes”.' },
       { h:'Differentials to hold in mind', t:'Appendicitis, ovarian torsion, ruptured/haemorrhagic cyst, PID, UTI — but ectopic is the can’t-miss diagnosis driving the urgency.' },
-      { h:'The marking edge', t:'Naming and holding the emotional weight (“you’ve been trying for a baby”) while acting decisively is what separates Clear Pass from Excellent.' }
+      { h:'The marking edge', t:'Naming and holding the emotional weight (“you’ve been trying for a baby”) while acting decisively is what separates Pass from Clear pass.' }
     ]
   },
 
@@ -172,7 +270,7 @@ window.SCA_KNOWLEDGE = {
   },
 
   'cough-smoker-2ww': {
-    guideline: 'NICE NG12 — Suspected cancer recognition & referral',
+    guideline: "NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026)",
     summary: 'A ≥40-year-old smoker with an unexplained persistent cough, haemoptysis, hoarseness or weight loss needs an urgent CXR and a suspected-cancer pathway — not antibiotics.',
     points: [
       { h:'Who gets an urgent CXR (within 2 weeks)', t:'≥40 with ≥2 unexplained features (cough, fatigue, breathlessness, chest pain, weight loss, appetite loss) — or ≥1 such feature if ever-smoked or asbestos-exposed. Offer urgent CXR.' },
@@ -237,176 +335,191 @@ window.SCA_KNOWLEDGE = {
 
 /* ============================================================
    FULL SCA CONSULTATION SCORECARD (as in the case pages)
-   The official RCGP SCA consultation tool uses the SAME domain
-   descriptors for every station — Global Skills (7) and Relating
-   to Others (11) are standard; only the clinical Tasks (15) change
-   per case. We author bespoke Tasks per case and assemble the full
-   /33 scorecard. Educational self-assessment aid only.
+   Marked in the three RCGP SCA domains: Data gathering & diagnosis,
+   Clinical management & medical complexity, and Relating to others.
+   The standard consultation-skills items (formerly "Global skills"
+   and "Relating to others") are the same for every station; the 15
+   points of clinical items change per case. Each item carries its
+   domain (dom: dg / cm / ro). Educational self-assessment aid only.
    ============================================================ */
 
-/* Standard Global Skills — 7 × 1pt (station-independent) */
+/* Standard consultation-skills items — 7 × 1pt (station-independent; ethics → cm, the rest → ro) */
 window.SCA_GS_STANDARD = [
-  { t:'Structures the consultation', d:'Clear agenda set early, logical flow from data gathering to management. Did not jump to a plan before gathering enough information.', pts:1 },
-  { t:'Avoids unnecessary repetition', d:'Used information already available in the notes/referral; did not re-ask what was already documented or said.', pts:1 },
-  { t:'Progresses through the tasks', d:'Moved efficiently through the consultation so all key areas were covered within the time without getting stuck.', pts:1 },
-  { t:'Recognises ethical & medico-legal issues', d:'Acknowledged autonomy, capacity, confidentiality, safeguarding and any fitness-to-drive/work or duty-of-care implications relevant to this case.', pts:1 },
-  { t:'Finishes data gathering in good time', d:'History, ICE, psychosocial context and red-flag screen completed by ~6–7 minutes, leaving time for explanation and a shared plan.', pts:1 },
-  { t:'Uses clear, jargon-free language', d:'Explained clinical terms in plain English, or defined them immediately; checked the patient was following.', pts:1 },
-  { t:'Remains responsive to the patient', d:'Noticed and responded to emotional and verbal cues rather than continuing a fixed clinical script.', pts:1 }
+  { t:'Structures the consultation', d:'Clear agenda set early, logical flow from data gathering to management. Did not jump to a plan before gathering enough information.', pts:1, dom:'ro' },
+  { t:'Avoids unnecessary repetition', d:'Used information already available in the notes/referral; did not re-ask what was already documented or said.', pts:1, dom:'ro' },
+  { t:'Progresses through the tasks', d:'Moved efficiently through the consultation so all key areas were covered within the time without getting stuck.', pts:1, dom:'ro' },
+  { t:'Recognises ethical & medico-legal issues', d:'Acknowledged autonomy, capacity, confidentiality, safeguarding and any fitness-to-drive/work or duty-of-care implications relevant to this case.', pts:1, dom:'cm' },
+  { t:'Finishes data gathering in good time', d:'History, ICE, psychosocial context and red-flag screen completed by ~6–7 minutes, leaving time for explanation and a shared plan.', pts:1, dom:'ro' },
+  { t:'Uses clear, jargon-free language', d:'Explained clinical terms in plain English, or defined them immediately; checked the patient was following.', pts:1, dom:'ro' },
+  { t:'Remains responsive to the patient', d:'Noticed and responded to emotional and verbal cues rather than continuing a fixed clinical script.', pts:1, dom:'ro' }
 ];
 
 /* Standard Relating to Others — 11 × 1pt (station-independent;
    item 8 gets a per-case ICE example woven in by the builder) */
 window.SCA_RO_STANDARD = [
-  { t:'Generates rapport', d:'Warm, non-judgmental tone; put the patient at ease and showed respect for their perspective.', pts:1 },
-  { t:'Uses open questions appropriately', d:'Opened broadly and let the patient tell their story before narrowing down.', pts:1 },
-  { t:'Clarifies and explores cues', d:'When a cue was offered, stopped and explored the specific concern rather than reassuring superficially and moving on.', pts:1 },
-  { t:'Listens and shows curiosity', d:'Active listening throughout — reflecting, pausing, not interrupting — interested in the patient as a person.', pts:1 },
-  { t:'Uses closed questions appropriately', d:'After open exploration, used closed questions with clear signposting to confirm specific details.', pts:1 },
-  { t:'Explains the rationale for questions/decisions', d:'Told the patient why a question, examination or test was being done — transparent reasoning throughout.', pts:1 },
-  { t:'Verbalises the diagnosis / analysis', d:'Explained the working diagnosis or analysis in plain language the patient could understand.', pts:1 },
-  { t:'Shares and uses ICE in the plan', d:'Addressed the patient’s specific idea, concern and expectation directly within the management plan.', pts:1 },
-  { t:'Uses psychosocial information in the plan', d:'Tailored the plan to the patient’s circumstances, beliefs and practical barriers rather than giving a generic plan.', pts:1 },
-  { t:'Shares risks and safety of options', d:'Explained the benefits and risks of the options clearly, as concrete terms or numbers where possible.', pts:1 },
-  { t:'Supports the patient in decision-making', d:'Checked understanding, offered written/follow-up support, asked if anything else was on their mind, agreed next steps.', pts:1 }
+  { t:'Generates rapport', d:'Warm, non-judgmental tone; put the patient at ease and showed respect for their perspective.', pts:1, dom:'ro' },
+  { t:'Uses open questions appropriately', d:'Opened broadly and let the patient tell their story before narrowing down.', pts:1, dom:'ro' },
+  { t:'Clarifies and explores cues', d:'When a cue was offered, stopped and explored the specific concern rather than reassuring superficially and moving on.', pts:1, dom:'ro' },
+  { t:'Listens and shows curiosity', d:'Active listening throughout — reflecting, pausing, not interrupting — interested in the patient as a person.', pts:1, dom:'ro' },
+  { t:'Uses closed questions appropriately', d:'After open exploration, used closed questions with clear signposting to confirm specific details.', pts:1, dom:'ro' },
+  { t:'Explains the rationale for questions/decisions', d:'Told the patient why a question, examination or test was being done — transparent reasoning throughout.', pts:1, dom:'ro' },
+  { t:'Verbalises the diagnosis / analysis', d:'Explained the working diagnosis or analysis in plain language the patient could understand.', pts:1, dom:'ro' },
+  { t:'Shares and uses ICE in the plan', d:'Addressed the patient’s specific idea, concern and expectation directly within the management plan.', pts:1, dom:'ro' },
+  { t:'Uses psychosocial information in the plan', d:'Tailored the plan to the patient’s circumstances, beliefs and practical barriers rather than giving a generic plan.', pts:1, dom:'ro' },
+  { t:'Shares risks and safety of options', d:'Explained the benefits and risks of the options clearly, as concrete terms or numbers where possible.', pts:1, dom:'ro' },
+  { t:'Supports the patient in decision-making', d:'Checked understanding, offered written/follow-up support, asked if anything else was on their mind, agreed next steps.', pts:1, dom:'ro' }
 ];
 
 /* Bespoke Tasks per case — 11 items, 15 pts (four 2-pt items) */
 window.SCA_SC_TASKS = {
   'htn-young-bp': [
-    { t:'Opens and explores the problem', d:'Open question first; acknowledged the incidental high reading without re-asking; let him describe his understanding and worries.', pts:1 },
-    { t:'Explores psychosocial context', d:'Work (manual/driving), salt, alcohol, exercise, smoking, stress, and practical barriers to lifelong daily medication.', pts:1 },
-    { t:'Identifies and follows cues', d:'Picked up the heavy snoring/daytime sleepiness and reluctance about “tablets for life”, and explored them.', pts:1 },
-    { t:'Discovers ICE', d:'Idea of cause; the specific fear (stroke / “my father died young”); what he hoped for today.', pts:2 },
-    { t:'Plans appropriate examination & tests', d:'ABPM/HBPM to confirm; U&E/eGFR, ACR, HbA1c, lipids, ECG; QRISK3; OSA screen (Epworth/STOP-BANG).', pts:1 },
-    { t:'Generates & tests hypotheses', d:'Primary vs secondary (OSA, renal), white-coat effect, and target-organ damage.', pts:1 },
-    { t:'Rules in/out serious disease', d:'Screened for accelerated hypertension (severe headache, visual change, chest pain, neurology); BP ≥180/120 + end-organ = same-day.', pts:2 },
-    { t:'Reaches a working diagnosis', d:'Stated stage per ABPM logic; calculated and shared QRISK as a personal number.', pts:2 },
-    { t:'Offers a safe, patient-centred plan', d:'Correct first-line for phenotype (CCB if ≥55 or Black African/Caribbean; ACEi/ARB if <55), specific lifestyle advice, statin if QRISK ≥10%.', pts:2 },
-    { t:'Manages comorbidity & contributors', d:'Refer/screen for OSA; ACEi/ARB if T2DM; avoided contraindicated combinations.', pts:1 },
-    { t:'Provides follow-up and safety net', d:'U&E within 2 weeks of ACEi/ARB, BP review, HBPM technique, and 999 symptoms named explicitly.', pts:1 }
+    { t:'Opens and explores the problem', d:'Open question first; acknowledged the incidental high reading without re-asking; let him describe his understanding and worries.', pts:1, dom:'dg' },
+    { t:'Explores psychosocial context', d:'Work (manual/driving), salt, alcohol, exercise, smoking, stress, and practical barriers to lifelong daily medication.', pts:1, dom:'dg' },
+    { t:'Identifies and follows cues', d:'Picked up the heavy snoring/daytime sleepiness and reluctance about “tablets for life”, and explored them.', pts:1, dom:'ro' },
+    { t:'Discovers ICE', d:'Idea of cause; the specific fear (stroke / “my father died young”); what he hoped for today.', pts:2, dom:'ro' },
+    { t:'Plans appropriate examination & tests', d:'ABPM/HBPM to confirm; U&E/eGFR, ACR, HbA1c, lipids, ECG; QRISK3; OSA screen (Epworth/STOP-BANG).', pts:1, dom:'dg' },
+    { t:'Generates & tests hypotheses', d:'Primary vs secondary (OSA, renal), white-coat effect, and target-organ damage.', pts:1, dom:'dg' },
+    { t:'Rules in/out serious disease', d:'Screened for accelerated hypertension (severe headache, visual change, chest pain, neurology); BP ≥180/120 + end-organ = same-day.', pts:2, dom:'dg' },
+    { t:'Reaches a working diagnosis', d:'Stated stage per ABPM logic; calculated and shared QRISK as a personal number.', pts:2, dom:'dg' },
+    { t:'Offers a safe, patient-centred plan', d:'Correct first-line for phenotype (CCB if ≥55 or Black African/Caribbean; ACEi/ARB if <55), specific lifestyle advice, statin if QRISK ≥10%.', pts:2, dom:'cm' },
+    { t:'Manages comorbidity & contributors', d:'Refer/screen for OSA; ACEi/ARB if T2DM; avoided contraindicated combinations.', pts:1, dom:'cm' },
+    { t:'Provides follow-up and safety net', d:'U&E within 2 weeks of ACEi/ARB, BP review, HBPM technique, and 999 symptoms named explicitly.', pts:1, dom:'cm' }
   ],
   'rif-pain-young-female': [
-    { t:'Opens and explores the pain', d:'Open question, then SOCRATES; LMP, contraception and possibility of pregnancy established early.', pts:1 },
-    { t:'Explores psychosocial context', d:'Trying to conceive, relationship, work, and the emotional weight of a possible pregnancy.', pts:1 },
-    { t:'Identifies and follows cues', d:'Shoulder-tip pain, dizziness, and her unspoken hope/fear about being pregnant.', pts:1 },
-    { t:'Discovers ICE', d:'Her idea of what’s wrong; fear of losing a pregnancy or something serious; what she expected today.', pts:2 },
-    { t:'Plans appropriate examination & tests', d:'Urine βhCG, observations for shock, appropriate abdominal/pelvic assessment; EPAU does serial βhCG + TVUSS.', pts:1 },
-    { t:'Generates & tests hypotheses', d:'Ectopic, miscarriage, ovarian torsion, appendicitis, PID, ruptured cyst.', pts:1 },
-    { t:'Rules in/out serious disease', d:'Ectopic red flags and haemodynamic compromise screened; recognised this is an emergency, not a routine review.', pts:2 },
-    { t:'Reaches a working diagnosis', d:'“Possible ectopic — needs same-day assessment”; did not falsely reassure.', pts:2 },
-    { t:'Offers a safe, patient-centred plan', d:'Same-day EPAU referral without waiting for the test; analgesia; a clear, named pathway.', pts:2 },
-    { t:'Weighs risk factors', d:'Previous ectopic, PID/chlamydia, IUD, tubal surgery, assisted conception.', pts:1 },
-    { t:'Provides follow-up and safety net', d:'999 for collapse, severe worsening or heavy bleeding; explicit, not “see how it goes”.', pts:1 }
+    { t:'Opens and explores the pain', d:'Open question, then SOCRATES; LMP, contraception and possibility of pregnancy established early.', pts:1, dom:'dg' },
+    { t:'Explores psychosocial context', d:'Trying to conceive, relationship, work, and the emotional weight of a possible pregnancy.', pts:1, dom:'dg' },
+    { t:'Identifies and follows cues', d:'Shoulder-tip pain, dizziness, and her unspoken hope/fear about being pregnant.', pts:1, dom:'ro' },
+    { t:'Discovers ICE', d:'Her idea of what’s wrong; fear of losing a pregnancy or something serious; what she expected today.', pts:2, dom:'ro' },
+    { t:'Plans appropriate examination & tests', d:'Urine βhCG, observations for shock, appropriate abdominal/pelvic assessment; EPAU does serial βhCG + TVUSS.', pts:1, dom:'dg' },
+    { t:'Generates & tests hypotheses', d:'Ectopic, miscarriage, ovarian torsion, appendicitis, PID, ruptured cyst.', pts:1, dom:'dg' },
+    { t:'Rules in/out serious disease', d:'Ectopic red flags and haemodynamic compromise screened; recognised this is an emergency, not a routine review.', pts:2, dom:'dg' },
+    { t:'Reaches a working diagnosis', d:'“Possible ectopic — needs same-day assessment”; did not falsely reassure.', pts:2, dom:'dg' },
+    { t:'Offers a safe, patient-centred plan', d:'Same-day EPAU referral without waiting for the test; analgesia; a clear, named pathway.', pts:2, dom:'cm' },
+    { t:'Weighs risk factors', d:'Previous ectopic, PID/chlamydia, IUD, tubal surgery, assisted conception.', pts:1, dom:'dg' },
+    { t:'Provides follow-up and safety net', d:'999 for collapse, severe worsening or heavy bleeding; explicit, not “see how it goes”.', pts:1, dom:'cm' }
   ],
   'knee-pain-walker': [
-    { t:'Opens and explores the problem', d:'Open question; activity-related pain, morning stiffness ≤30 min, function and what triggers it.', pts:1 },
-    { t:'Explores psychosocial context', d:'Impact on walking/hobby and work, weight, mood, and willingness to exercise.', pts:1 },
-    { t:'Identifies and follows cues', d:'Fear of “bone on bone”/needing a replacement, and reluctance to load the joint.', pts:1 },
-    { t:'Discovers ICE', d:'Idea (“it’s wearing out”), concern about disability/surgery, expectation (a scan?).', pts:2 },
-    { t:'Examines & interprets appropriately', d:'Diagnoses OA clinically — no X-ray needed when typical; image only if it would change management.', pts:1 },
-    { t:'Generates & tests hypotheses', d:'OA vs inflammatory arthritis, referred hip pain, meniscal injury, gout.', pts:1 },
-    { t:'Rules in/out serious disease', d:'Hot swollen joint (septic), locking/true giving-way, systemic upset or significant trauma.', pts:2 },
-    { t:'Reaches a working diagnosis', d:'States clinical OA and explains it plainly; no imaging required to confirm.', pts:2 },
-    { t:'Offers a safe, patient-centred plan', d:'Therapeutic exercise + weight loss as core; topical NSAID first-line; short oral NSAID + PPI; de-emphasise paracetamol/opioids; adjuncts.', pts:2 },
-    { t:'Manages comorbidity', d:'NSAID caution for GI/renal/CV risk; chose analgesia accordingly.', pts:1 },
-    { t:'Provides follow-up and safety net', d:'Review arranged; refer for surgical opinion on quality of life + failed conservative care, not on X-ray alone.', pts:1 }
+    { t:'Opens and explores the problem', d:'Open question; activity-related pain, morning stiffness ≤30 min, function and what triggers it.', pts:1, dom:'dg' },
+    { t:'Explores psychosocial context', d:'Impact on walking/hobby and work, weight, mood, and willingness to exercise.', pts:1, dom:'dg' },
+    { t:'Identifies and follows cues', d:'Fear of “bone on bone”/needing a replacement, and reluctance to load the joint.', pts:1, dom:'ro' },
+    { t:'Discovers ICE', d:'Idea (“it’s wearing out”), concern about disability/surgery, expectation (a scan?).', pts:2, dom:'ro' },
+    { t:'Examines & interprets appropriately', d:'Diagnoses OA clinically — no X-ray needed when typical; image only if it would change management.', pts:1, dom:'dg' },
+    { t:'Generates & tests hypotheses', d:'OA vs inflammatory arthritis, referred hip pain, meniscal injury, gout.', pts:1, dom:'dg' },
+    { t:'Rules in/out serious disease', d:'Hot swollen joint (septic), locking/true giving-way, systemic upset or significant trauma.', pts:2, dom:'dg' },
+    { t:'Reaches a working diagnosis', d:'States clinical OA and explains it plainly; no imaging required to confirm.', pts:2, dom:'dg' },
+    { t:'Offers a safe, patient-centred plan', d:'Therapeutic exercise + weight loss as core; topical NSAID first-line; short oral NSAID + PPI; de-emphasise paracetamol/opioids; adjuncts.', pts:2, dom:'cm' },
+    { t:'Manages comorbidity', d:'NSAID caution for GI/renal/CV risk; chose analgesia accordingly.', pts:1, dom:'cm' },
+    { t:'Provides follow-up and safety net', d:'Review arranged; refer for surgical opinion on quality of life + failed conservative care, not on X-ray alone.', pts:1, dom:'cm' }
   ],
   'home-visit-confusion': [
-    { t:'Opens and gathers a collateral history', d:'Open question to carer and (directly) to Edith; established onset over days–weeks and the fluctuating course.', pts:1 },
-    { t:'Explores psychosocial context', d:'Carer (June) strain, home safety, function, and the support network.', pts:1 },
-    { t:'Identifies and follows cues', d:'Carer exhaustion, “she’s never been this bad”, and the recently started co-codamol.', pts:1 },
-    { t:'Discovers ICE', d:'Family’s idea (dementia worsening), their concern, and what they hoped for from the visit.', pts:2 },
-    { t:'Examines & investigates appropriately', d:'4AT, obs/temp/sats, hydration, abdomen/bladder, focal neurology, medication review; MSU + bloods (U&E, FBC, CRP, glucose, calcium, B12/folate, TSH).', pts:1 },
-    { t:'Generates & tests hypotheses', d:'Delirium vs dementia vs depression; worked through PINCH ME precipitants.', pts:1 },
-    { t:'Rules in/out serious disease', d:'Sepsis, hypoxia, AKI; drowsiness/seizure would prompt escalation.', pts:2 },
-    { t:'Reaches a working diagnosis', d:'Delirium on a background of mild impairment; treats the patient, not the dipstick.', pts:2 },
-    { t:'Offers a safe, patient-centred plan', d:'Treat the cause, address constipation/opioid, hydration; capacity (MCA) and best-interests; home management vs admission.', pts:2 },
-    { t:'Supports the carer & safeguarding', d:'Offered a carer’s assessment (Care Act 2014), respite and support.', pts:1 },
-    { t:'Provides follow-up and safety net', d:'999 for deterioration; who to call and when; planned review.', pts:1 }
+    { t:'Opens and gathers a collateral history', d:'Open question to carer and (directly) to Edith; established onset over days–weeks and the fluctuating course.', pts:1, dom:'dg' },
+    { t:'Explores psychosocial context', d:'Carer (June) strain, home safety, function, and the support network.', pts:1, dom:'dg' },
+    { t:'Identifies and follows cues', d:'Carer exhaustion, “she’s never been this bad”, and the recently started co-codamol.', pts:1, dom:'ro' },
+    { t:'Discovers ICE', d:'Family’s idea (dementia worsening), their concern, and what they hoped for from the visit.', pts:2, dom:'ro' },
+    { t:'Examines & investigates appropriately', d:'4AT, obs/temp/sats, hydration, abdomen/bladder, focal neurology, medication review; MSU + bloods (U&E, FBC, CRP, glucose, calcium, B12/folate, TSH).', pts:1, dom:'dg' },
+    { t:'Generates & tests hypotheses', d:'Delirium vs dementia vs depression; worked through PINCH ME precipitants.', pts:1, dom:'dg' },
+    { t:'Rules in/out serious disease', d:'Sepsis, hypoxia, AKI; drowsiness/seizure would prompt escalation.', pts:2, dom:'dg' },
+    { t:'Reaches a working diagnosis', d:'Delirium on a background of mild impairment; treats the patient, not the dipstick.', pts:2, dom:'dg' },
+    { t:'Offers a safe, patient-centred plan', d:'Treat the cause, address constipation/opioid, hydration; capacity (MCA) and best-interests; home management vs admission.', pts:2, dom:'cm' },
+    { t:'Supports the carer & safeguarding', d:'Offered a carer’s assessment (Care Act 2014), respite and support.', pts:1, dom:'cm' },
+    { t:'Provides follow-up and safety net', d:'999 for deterioration; who to call and when; planned review.', pts:1, dom:'cm' }
   ],
   'acne-teen': [
-    { t:'Opens and explores the problem', d:'Open question; severity, distribution, scarring, duration and what’s been tried.', pts:1 },
-    { t:'Explores psychosocial context', d:'School, mood, self-esteem; offered a private appointment the young person can attend alone.', pts:1 },
-    { t:'Identifies and follows cues', d:'Low mood, social withdrawal, “I hate how I look”.', pts:1 },
-    { t:'Discovers ICE', d:'Idea of cause, concern (scarring/being judged), expectation (“the strong tablets”).', pts:2 },
-    { t:'Examines & grades appropriately', d:'Grades acne clinically; no routine tests; notes any hormonal/PCOS features.', pts:1 },
-    { t:'Generates & tests hypotheses', d:'Acne vulgaris vs rosacea vs folliculitis; consider PCOS.', pts:1 },
-    { t:'Rules in/out serious concerns', d:'Screened mood/self-harm; identified scarring/nodulocystic disease needing referral.', pts:2 },
-    { t:'Reaches a working diagnosis', d:'States the severity grade and explains it.', pts:2 },
-    { t:'Offers a safe, patient-centred plan', d:'12-week fixed topical combination; oral tetracycline + topical retinoid/BPO for moderate–severe; avoids antibiotic monotherapy and topical+oral antibiotic; COC option; review at 12 weeks.', pts:2 },
-    { t:'Refers appropriately', d:'Dermatology for isotretinoin (severe/scarring/two failed courses), with pregnancy-prevention safeguards.', pts:1 },
-    { t:'Provides follow-up and safety net', d:'Mental-health signposting (Kooth, Papyrus), planned review, Gillick/safeguarding where relevant.', pts:1 }
+    { t:'Opens and explores the problem', d:'Open question; severity, distribution, scarring, duration and what’s been tried.', pts:1, dom:'dg' },
+    { t:'Explores psychosocial context', d:'School, mood, self-esteem; offered a private appointment the young person can attend alone.', pts:1, dom:'dg' },
+    { t:'Identifies and follows cues', d:'Low mood, social withdrawal, “I hate how I look”.', pts:1, dom:'ro' },
+    { t:'Discovers ICE', d:'Idea of cause, concern (scarring/being judged), expectation (“the strong tablets”).', pts:2, dom:'ro' },
+    { t:'Examines & grades appropriately', d:'Grades acne clinically; no routine tests; notes any hormonal/PCOS features.', pts:1, dom:'dg' },
+    { t:'Generates & tests hypotheses', d:'Acne vulgaris vs rosacea vs folliculitis; consider PCOS.', pts:1, dom:'dg' },
+    { t:'Rules in/out serious concerns', d:'Screened mood/self-harm; identified scarring/nodulocystic disease needing referral.', pts:2, dom:'dg' },
+    { t:'Reaches a working diagnosis', d:'States the severity grade and explains it.', pts:2, dom:'dg' },
+    { t:'Offers a safe, patient-centred plan', d:'12-week fixed topical combination; oral tetracycline + topical retinoid/BPO for moderate–severe; avoids antibiotic monotherapy and topical+oral antibiotic; COC option; review at 12 weeks.', pts:2, dom:'cm' },
+    { t:'Refers appropriately', d:'Dermatology for isotretinoin (severe/scarring/two failed courses), with pregnancy-prevention safeguards.', pts:1, dom:'cm' },
+    { t:'Provides follow-up and safety net', d:'Mental-health signposting (Kooth, Papyrus), planned review, Gillick/safeguarding where relevant.', pts:1, dom:'cm' }
   ],
   'third-party-meno': [
-    { t:'Opens and explores the husband’s account', d:'Open question; clarified what has changed and why she isn’t here herself.', pts:1 },
-    { t:'Establishes the consultation’s limits', d:'Clarified what information can be received versus what can be given about a competent adult.', pts:1 },
-    { t:'Identifies and follows cues', d:'The row that frightened a child, “she doesn’t want me near her”, and marital strain.', pts:1 },
-    { t:'Discovers ICE', d:'Husband’s idea (menopause/“hormones”), his concern, and his expectation today.', pts:2 },
-    { t:'Applies confidentiality correctly', d:'No diagnosis, prescribing or disclosure about a competent adult without consent — explained warmly, not bureaucratically.', pts:2 },
-    { t:'Screens for safeguarding', d:'Gently explored domestic abuse and child welfare and knows the safeguarding route.', pts:2 },
-    { t:'Gets the patient into the room', d:'Key step — encouraged her to make her own appointment and an open conversation.', pts:2 },
-    { t:'Shows relevant clinical knowledge', d:'Perimenopause is a clinical diagnosis >45 without routine FSH; HRT first-line, venlafaxine/CBT alternatives (general advice only).', pts:2 },
-    { t:'Gives information he can share', d:'Signposted NHS menopause pages, Women’s Health Concern and the Balance app.', pts:1 },
-    { t:'Provides follow-up and safety net', d:'Clear routes if she expresses self-harm or there’s acute risk (Samaritans, duty doctor).', pts:1 }
+    { t:'Opens and explores the husband’s account', d:'Open question; clarified what has changed and why she isn’t here herself.', pts:1, dom:'dg' },
+    { t:'Establishes the consultation’s limits', d:'Clarified what information can be received versus what can be given about a competent adult.', pts:1, dom:'dg' },
+    { t:'Identifies and follows cues', d:'The row that frightened a child, “she doesn’t want me near her”, and marital strain.', pts:1, dom:'ro' },
+    { t:'Discovers ICE', d:'Husband’s idea (menopause/“hormones”), his concern, and his expectation today.', pts:2, dom:'ro' },
+    { t:'Applies confidentiality correctly', d:'No diagnosis, prescribing or disclosure about a competent adult without consent — explained warmly, not bureaucratically.', pts:2, dom:'cm' },
+    { t:'Screens for safeguarding', d:'Gently explored domestic abuse and child welfare and knows the safeguarding route.', pts:2, dom:'dg' },
+    { t:'Gets the patient into the room', d:'Key step — encouraged her to make her own appointment and an open conversation.', pts:2, dom:'dg' },
+    { t:'Shows relevant clinical knowledge', d:'Perimenopause is a clinical diagnosis >45 without routine FSH; HRT first-line, venlafaxine/CBT alternatives (general advice only).', pts:2, dom:'dg' },
+    { t:'Gives information he can share', d:'Signposted NHS menopause pages, Women’s Health Concern and the Balance app.', pts:1, dom:'ro' },
+    { t:'Provides follow-up and safety net', d:'Clear routes if she expresses self-harm or there’s acute risk (Samaritans, duty doctor).', pts:1, dom:'cm' }
   ],
   'cough-smoker-2ww': [
-    { t:'Opens and explores the cough', d:'Open question; duration, haemoptysis, weight loss, appetite, hoarseness, breathlessness.', pts:1 },
-    { t:'Explores psychosocial context', d:'Smoking history, occupation, and what he’s hoping for (“just some antibiotics”).', pts:1 },
-    { t:'Identifies and follows cues', d:'The streak of blood, the hoarseness, and his wish to play it down.', pts:1 },
-    { t:'Discovers ICE', d:'Idea (a lingering chest infection), concern, and expectation (antibiotics).', pts:2 },
-    { t:'Plans appropriate tests', d:'Urgent CXR within 2 weeks (not antibiotics); spirometry later if indicated.', pts:1 },
-    { t:'Generates & tests hypotheses', d:'Lung cancer, COPD, infection, laryngeal cancer — without anchoring on “just a cough”.', pts:1 },
-    { t:'Rules in/out serious disease', d:'Applied NG12; haemoptysis ≥40 warrants a suspected cancer pathway referral; massive haemoptysis is an emergency.', pts:2 },
-    { t:'Reaches a working diagnosis', d:'“We need an urgent test to rule out something serious” — honest, clear language.', pts:2 },
-    { t:'Offers a safe, patient-centred plan', d:'Lung cancer suspected cancer pathway referral + urgent CXR; head-and-neck pathway for hoarseness >3 weeks.', pts:2 },
-    { t:'Offers smoking cessation', d:'Proactively offered varenicline/NRT plus behavioural support.', pts:1 },
-    { t:'Provides follow-up and safety net', d:'Named in-person follow-up to give results; A&E for massive haemoptysis or breathlessness at rest.', pts:1 }
+    { t:'Opens and explores the cough', d:'Open question; duration, haemoptysis, weight loss, appetite, hoarseness, breathlessness.', pts:1, dom:'dg' },
+    { t:'Explores psychosocial context', d:'Smoking history, occupation, and what he’s hoping for (“just some antibiotics”).', pts:1, dom:'dg' },
+    { t:'Identifies and follows cues', d:'The streak of blood, the hoarseness, and his wish to play it down.', pts:1, dom:'ro' },
+    { t:'Discovers ICE', d:'Idea (a lingering chest infection), concern, and expectation (antibiotics).', pts:2, dom:'ro' },
+    { t:'Plans appropriate tests', d:'Urgent CXR within 2 weeks (not antibiotics); spirometry later if indicated.', pts:1, dom:'dg' },
+    { t:'Generates & tests hypotheses', d:'Lung cancer, COPD, infection, laryngeal cancer — without anchoring on “just a cough”.', pts:1, dom:'dg' },
+    { t:'Rules in/out serious disease', d:'Applied NG12; haemoptysis ≥40 warrants a suspected cancer pathway referral; massive haemoptysis is an emergency.', pts:2, dom:'dg' },
+    { t:'Reaches a working diagnosis', d:'“We need an urgent test to rule out something serious” — honest, clear language.', pts:2, dom:'dg' },
+    { t:'Offers a safe, patient-centred plan', d:'Lung cancer suspected cancer pathway referral + urgent CXR; head-and-neck pathway for hoarseness >3 weeks.', pts:2, dom:'cm' },
+    { t:'Offers smoking cessation', d:'Proactively offered varenicline/NRT plus behavioural support.', pts:1, dom:'cm' },
+    { t:'Provides follow-up and safety net', d:'Named in-person follow-up to give results; A&E for massive haemoptysis or breathlessness at rest.', pts:1, dom:'cm' }
   ],
   'insulin-ramadan': [
-    { t:'Opens and explores the problem', d:'Open question; current therapy (metformin + sulfonylurea), HbA1c 84, and intention to fast for Ramadan.', pts:1 },
-    { t:'Explores psychosocial context', d:'Occupation (driving?), faith, family, meal patterns and work routine.', pts:1 },
-    { t:'Identifies and follows cues', d:'Reluctance about insulin (“failure”), the wish to fast, and any driving duties.', pts:1 },
-    { t:'Discovers ICE', d:'Idea, concern (insulin/needles, fasting safely), and expectation today.', pts:2 },
-    { t:'Examines & investigates appropriately', d:'HbA1c, renal function/eGFR, weight, CV risk, and that foot/retinal review is current.', pts:1 },
-    { t:'Generates & tests management options', d:'Add an SGLT2 inhibitor and/or GLP-1 RA before reflex insulin (cardio-renal protection, weight).', pts:1 },
-    { t:'Rules in/out serious risk', d:'Hypoglycaemia risk (sulfonylurea/insulin), DKA awareness and fasting safety; used IDF-DAR risk category.', pts:2 },
-    { t:'Reaches a working analysis', d:'Intensify with an organ-protective agent; if insulin is needed, frames it positively.', pts:2 },
-    { t:'Offers a safe Ramadan plan', d:'Pre-Ramadan review; switch SU to a lower-hypo agent; reduce/redistribute insulin to iftar; structured education; faith permits breaking the fast for illness/hypo.', pts:2 },
-    { t:'Addresses DVLA duties', d:'On SU/insulin: do not drive below 4.0 mmol/L, snack first if 4.0–5.0 (“five to drive”), check within 2 h and every 2 h; inform DVLA for insulin; Group 2 implications.', pts:1 },
-    { t:'Provides follow-up and safety net', d:'Sick-day rules, hypo treatment, carry fast sugar, and a review.', pts:1 }
+    { t:'Opens and explores the problem', d:'Open question; current therapy (metformin + sulfonylurea), HbA1c 84, and intention to fast for Ramadan.', pts:1, dom:'dg' },
+    { t:'Explores psychosocial context', d:'Occupation (driving?), faith, family, meal patterns and work routine.', pts:1, dom:'dg' },
+    { t:'Identifies and follows cues', d:'Reluctance about insulin (“failure”), the wish to fast, and any driving duties.', pts:1, dom:'ro' },
+    { t:'Discovers ICE', d:'Idea, concern (insulin/needles, fasting safely), and expectation today.', pts:2, dom:'ro' },
+    { t:'Examines & investigates appropriately', d:'HbA1c, renal function/eGFR, weight, CV risk, and that foot/retinal review is current.', pts:1, dom:'dg' },
+    { t:'Generates & tests management options', d:'Add an SGLT2 inhibitor and/or GLP-1 RA before reflex insulin (cardio-renal protection, weight).', pts:1, dom:'dg' },
+    { t:'Rules in/out serious risk', d:'Hypoglycaemia risk (sulfonylurea/insulin), DKA awareness and fasting safety; used IDF-DAR risk category.', pts:2, dom:'dg' },
+    { t:'Reaches a working analysis', d:'Intensify with an organ-protective agent; if insulin is needed, frames it positively.', pts:2, dom:'dg' },
+    { t:'Offers a safe Ramadan plan', d:'Pre-Ramadan review; switch SU to a lower-hypo agent; reduce/redistribute insulin to iftar; structured education; faith permits breaking the fast for illness/hypo.', pts:2, dom:'cm' },
+    { t:'Addresses DVLA duties', d:'On SU/insulin: do not drive below 4.0 mmol/L, snack first if 4.0–5.0 (“five to drive”), check within 2 h and every 2 h; inform DVLA for insulin; Group 2 implications.', pts:1, dom:'cm' },
+    { t:'Provides follow-up and safety net', d:'Sick-day rules, hypo treatment, carry fast sugar, and a review.', pts:1, dom:'cm' }
   ],
   'lft-alcohol': [
-    { t:'Opens and explores the results', d:'Open question; explained the abnormal LFT pattern (AST:ALT >1, high GGT, raised MCV) in plain terms.', pts:1 },
-    { t:'Explores psychosocial context', d:'Being passed over for partnership, stress, relationships and what drinking does for him.', pts:1 },
-    { t:'Identifies and follows cues', d:'The “jittery dry week” (withdrawal) and any defensiveness.', pts:1 },
-    { t:'Discovers ICE', d:'Idea of cause, concern (liver damage), and expectation today.', pts:2 },
-    { t:'Quantifies and screens', d:'Calculated actual weekly units; used AUDIT-C/AUDIT; assessed dependence (4Cs, morning drinking).', pts:2 },
-    { t:'Investigates appropriately', d:'Non-invasive fibrosis (ELF/FIB-4); viral hepatitis, autoimmune profile, ferritin; repeat LFTs; signs of chronic liver disease.', pts:1 },
-    { t:'Rules in/out serious risk', d:'Recognised withdrawal danger — abrupt cessation risks seizures/DTs; did not just say “stop drinking”.', pts:2 },
-    { t:'Reaches a working analysis', d:'Identified the alcohol fingerprint; honest without labelling him “an alcoholic”.', pts:2 },
-    { t:'Offers a safe, patient-centred plan', d:'Brief intervention; medically supported reduction; local alcohol services; Drinkline; acamprosate via specialist.', pts:2 },
-    { t:'Provides follow-up and safety net', d:'Named withdrawal danger signs, support, and a review.', pts:1 }
+    { t:'Opens and explores the results', d:'Open question; explained the abnormal LFT pattern (AST:ALT >1, high GGT, raised MCV) in plain terms.', pts:1, dom:'dg' },
+    { t:'Explores psychosocial context', d:'Being passed over for partnership, stress, relationships and what drinking does for him.', pts:1, dom:'dg' },
+    { t:'Identifies and follows cues', d:'The “jittery dry week” (withdrawal) and any defensiveness.', pts:1, dom:'ro' },
+    { t:'Discovers ICE', d:'Idea of cause, concern (liver damage), and expectation today.', pts:2, dom:'ro' },
+    { t:'Quantifies and screens', d:'Calculated actual weekly units; used AUDIT-C/AUDIT; assessed dependence (4Cs, morning drinking).', pts:2, dom:'dg' },
+    { t:'Investigates appropriately', d:'Non-invasive fibrosis (ELF/FIB-4); viral hepatitis, autoimmune profile, ferritin; repeat LFTs; signs of chronic liver disease.', pts:1, dom:'dg' },
+    { t:'Rules in/out serious risk', d:'Recognised withdrawal danger — abrupt cessation risks seizures/DTs; did not just say “stop drinking”.', pts:2, dom:'dg' },
+    { t:'Reaches a working analysis', d:'Identified the alcohol fingerprint; honest without labelling him “an alcoholic”.', pts:2, dom:'dg' },
+    { t:'Offers a safe, patient-centred plan', d:'Brief intervention; medically supported reduction; local alcohol services; Drinkline; acamprosate via specialist.', pts:2, dom:'cm' },
+    { t:'Provides follow-up and safety net', d:'Named withdrawal danger signs, support, and a review.', pts:1, dom:'cm' }
   ],
   'sleep-paeds': [
-    { t:'Opens and explores the child’s sleep', d:'Open question; bedtime routine, sleep associations, snoring/apnoea, growth and development.', pts:1 },
-    { t:'Explores the family context', d:'Mother’s exhaustion, support at home, partner, and “the worst since he was born”.', pts:1 },
-    { t:'Identifies and follows cues', d:'Maternal tearfulness, low mood and a sense of hopelessness.', pts:1 },
-    { t:'Discovers ICE', d:'Mother’s idea (something is wrong with the child), concern, and expectation (a sleep medicine?).', pts:2 },
-    { t:'Examines/assesses appropriately', d:'A well, thriving child points to a behavioural difficulty; screened the mother’s mood (PHQ-9).', pts:1 },
-    { t:'Generates & tests hypotheses', d:'Behavioural sleep-onset association vs organic (apnoea/red flags); maternal depression.', pts:1 },
-    { t:'Rules in/out serious concerns', d:'Spotted the real patient — screened maternal depression/self-harm; checked child red flags.', pts:2 },
-    { t:'Reaches a working analysis', d:'Behavioural sleep difficulty; recognised the mother needs assessment in her own right.', pts:2 },
-    { t:'Offers a safe, patient-centred plan', d:'Behavioural strategy (consistent routine, graduated extinction/gradual retreat); melatonin not routine/specialist-only; addressed maternal mood.', pts:2 },
-    { t:'Mobilises support', d:'Health Visitor, ICON, The Sleep Charity; offered the mother her own appointment.', pts:1 },
-    { t:'Provides follow-up and safety net', d:'Routes for worsening mood/self-harm (111 option 2, Samaritans) and a review.', pts:1 }
+    { t:'Opens and explores the child’s sleep', d:'Open question; bedtime routine, sleep associations, snoring/apnoea, growth and development.', pts:1, dom:'dg' },
+    { t:'Explores the family context', d:'Mother’s exhaustion, support at home, partner, and “the worst since he was born”.', pts:1, dom:'dg' },
+    { t:'Identifies and follows cues', d:'Maternal tearfulness, low mood and a sense of hopelessness.', pts:1, dom:'ro' },
+    { t:'Discovers ICE', d:'Mother’s idea (something is wrong with the child), concern, and expectation (a sleep medicine?).', pts:2, dom:'ro' },
+    { t:'Examines/assesses appropriately', d:'A well, thriving child points to a behavioural difficulty; screened the mother’s mood (PHQ-9).', pts:1, dom:'dg' },
+    { t:'Generates & tests hypotheses', d:'Behavioural sleep-onset association vs organic (apnoea/red flags); maternal depression.', pts:1, dom:'dg' },
+    { t:'Rules in/out serious concerns', d:'Spotted the real patient — screened maternal depression/self-harm; checked child red flags.', pts:2, dom:'dg' },
+    { t:'Reaches a working analysis', d:'Behavioural sleep difficulty; recognised the mother needs assessment in her own right.', pts:2, dom:'dg' },
+    { t:'Offers a safe, patient-centred plan', d:'Behavioural strategy (consistent routine, graduated extinction/gradual retreat); melatonin not routine/specialist-only; addressed maternal mood.', pts:2, dom:'cm' },
+    { t:'Mobilises support', d:'Health Visitor, ICON, The Sleep Charity; offered the mother her own appointment.', pts:1, dom:'cm' },
+    { t:'Provides follow-up and safety net', d:'Routes for worsening mood/self-harm (111 option 2, Samaritans) and a review.', pts:1, dom:'cm' }
   ]
+};
+
+/* Build the scorecard in the three RCGP SCA domains — Data gathering & diagnosis (dg),
+   Clinical management & medical complexity (cm), Relating to others (ro). Every item
+   carries its own dom; legacy items without one default by list (ro list → ro). */
+window.SCA_BUILD_SCORECARD = function(tasks, ro, gs){
+  var o = { dg:[], cm:[], ro:[] };
+  function add(list, def){ (list || []).forEach(function(x){ var d = x.dom || def; if (d === 'tasks') d = 'dg'; if (d === 'rto' || d === 'gs') d = 'ro'; (o[d] || o.dg).push(x); }); }
+  add(tasks, 'dg'); add(ro, 'ro'); add(gs, 'ro');
+  var sum = function(a){ return a.reduce(function(s, x){ return s + x.pts; }, 0); };
+  o.maxDg = sum(o.dg); o.maxCm = sum(o.cm); o.maxRo = sum(o.ro);
+  o.total = o.maxDg + o.maxCm + o.maxRo;
+  try { Object.defineProperty(o, 'roStd', { value: ro, enumerable: false, writable: true }); } catch(e){ o.roStd = ro; }
+  return o;
 };
 
 /* Assemble the full scorecard object onto each case */
 (function(){
   if (!window.SCA_CASES) return;
-  function clone(arr){ return arr.map(function(x){ return { t:x.t, d:x.d, pts:x.pts }; }); }
+  function clone(arr){ return arr.map(function(x){ return { t:x.t, d:x.d, pts:x.pts, dom:x.dom }; }); }
 
   /* ----------------------------------------------------------------
      Auto-generate the bespoke 11-item / 15-point clinical Tasks list
@@ -423,8 +536,8 @@ window.SCA_SC_TASKS = {
   }
   function genTasks(c){
     var cps = (c.checkpoints || []).slice();
-    var taskCps = cps.filter(function(x){ return x.dom === 'tasks'; }).map(function(x){ return x.text; });
-    var gsCp    = cps.filter(function(x){ return x.dom === 'gs'; }).map(function(x){ return x.text; })[0];
+    var taskCps = cps.filter(function(x){ return x.dom === 'tasks' || x.dom === 'dg' || (x.dom === 'cm' && !/^\W*safety[- ]?net/i.test(x.text)); }).map(function(x){ return x.text; });
+    var gsCp    = cps.filter(function(x){ return x.dom === 'gs' || (x.dom === 'cm' && /safety[- ]?net|follow/i.test(x.text)); }).map(function(x){ return x.text; }).pop();
     var cues = (c.script && c.script.cues) || [];
     var ice  = (c.script && c.script.ice) || {};
 
@@ -449,21 +562,23 @@ window.SCA_SC_TASKS = {
       : 'Explores the patient\u2019s ideas, concerns and expectations directly and weaves them into the plan.';
 
     return [
-      { t:'Opens and explores the problem', d:'Opens with an open question and lets the patient tell their story before narrowing down; uses what is already known without re-asking.', pts:1 },
-      { t:'Explores psychosocial context', d:'Explores work, home, relationships, beliefs and the practical barriers relevant to this presentation.', pts:1 },
-      { t:'Identifies and follows cues', d:clip(cueText, 230), pts:1 },
-      { t:'Discovers ICE', d:clip(iceText, 250), pts:2 },
-      { t:'Plans appropriate examination & tests', d:clip(examTests, 240), pts:1 },
-      { t:'Generates & tests hypotheses', d:clip(hypotheses, 240), pts:1 },
-      { t:'Rules in/out serious disease', d:clip(serious || 'Screens for the red flags and serious differentials this presentation can hide, and acts on them.', 240), pts:2 },
-      { t:'Reaches a working diagnosis', d:clip(diagnosis, 240), pts:2 },
-      { t:'Offers a safe, patient-centred plan', d:clip(plan || 'Offers a safe, patient-centred management plan tailored to this person and their circumstances.', 240), pts:2 },
-      { t:'Manages comorbidity & contributors', d:clip(comorbid, 240), pts:1 },
-      { t:'Provides follow-up and safety net', d:clip(gsCp || 'Gives a clear, specific safety-net and follow-up, with explicit escalation advice.', 240), pts:1 }
+      { t:'Opens and explores the problem', d:'Opens with an open question and lets the patient tell their story before narrowing down; uses what is already known without re-asking.', pts:1, dom:'dg' },
+      { t:'Explores psychosocial context', d:'Explores work, home, relationships, beliefs and the practical barriers relevant to this presentation.', pts:1, dom:'dg' },
+      { t:'Identifies and follows cues', d:clip(cueText, 230), pts:1, dom:'ro' },
+      { t:'Discovers ICE', d:clip(iceText, 250), pts:2, dom:'ro' },
+      { t:'Plans appropriate examination & tests', d:clip(examTests, 240), pts:1, dom:'dg' },
+      { t:'Generates & tests hypotheses', d:clip(hypotheses, 240), pts:1, dom:'dg' },
+      { t:'Rules in/out serious disease', d:clip(serious || 'Screens for the red flags and serious differentials this presentation can hide, and acts on them.', 240), pts:2, dom:'dg' },
+      { t:'Reaches a working diagnosis', d:clip(diagnosis, 240), pts:2, dom:'dg' },
+      { t:'Offers a safe, patient-centred plan', d:clip(plan || 'Offers a safe, patient-centred management plan tailored to this person and their circumstances.', 240), pts:2, dom:'cm' },
+      { t:'Manages comorbidity & contributors', d:clip(comorbid, 240), pts:1, dom:'cm' },
+      { t:'Provides follow-up and safety net', d:clip(gsCp || 'Gives a clear, specific safety-net and follow-up, with explicit escalation advice.', 240), pts:1, dom:'cm' }
     ];
   }
 
   window.SCA_CASES.forEach(function(c){
+    // A case that already carries an authored RCGP scorecard (dg / cm / ro) keeps it.
+    if (c.scorecardRcgp || (c.scorecard && (c.scorecard.dg || c.scorecard.cm))) return;
     var tasks = window.SCA_SC_TASKS[c.id];
     if (!tasks) tasks = genTasks(c);
     var gs = clone(window.SCA_GS_STANDARD);
@@ -471,14 +586,9 @@ window.SCA_SC_TASKS = {
     // Weave this case's ICE concern into the "Shares and uses ICE" RO item
     var concern = (c.script && c.script.ice && c.script.ice.concerns) ? c.script.ice.concerns : '';
     if (concern) {
-      ro[7] = { t:ro[7].t, d:'Addressed the patient’s specific concern — ' + concern.replace(/\.$/, '') + ' — directly within the plan, rather than noting it and moving on.', pts:1 };
+      ro[7] = { t:ro[7].t, dom:'ro', d:'Addressed the patient’s specific concern — ' + concern.replace(/\.$/, '') + ' — directly within the plan, rather than noting it and moving on.', pts:1 };
     }
-    var sum = function(a){ return a.reduce(function(s,x){ return s + x.pts; }, 0); };
-    c.scorecard = {
-      tasks: tasks, ro: ro, gs: gs,
-      maxTasks: sum(tasks), maxRo: sum(ro), maxGs: sum(gs),
-      total: sum(tasks) + sum(ro) + sum(gs)
-    };
+    c.scorecard = window.SCA_BUILD_SCORECARD(tasks, ro, gs);
   });
 })();
 

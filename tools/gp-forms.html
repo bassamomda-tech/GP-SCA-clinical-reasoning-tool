@@ -148,6 +148,9 @@
   .lw-letter{ font-family:'Source Serif 4',Georgia,serif; font-size:14px; line-height:1.7; color:var(--ink); white-space:pre-wrap; background:#fff; border:1px solid var(--line); border-radius:11px; padding:22px 24px; }
   .lw-spin{ display:inline-block; width:15px; height:15px; border:2px solid rgba(255,255,255,.4); border-top-color:#fff; border-radius:50%; animation:lwspin .7s linear infinite; vertical-align:-2px; margin-right:7px; }
   @keyframes lwspin{ to{ transform:rotate(360deg); } }
+  .lw-warn{ display:flex; gap:10px; align-items:flex-start; font-size:13px; line-height:1.55; color:#7f1d1d; background:#fef2f2; border:1px solid #fca5a5; border-left:4px solid #b91c1c; border-radius:9px; padding:11px 14px; margin-top:14px; }
+  .lw-warn .ic{ flex-shrink:0; font-weight:800; }
+  .lw-warn b{ color:#7f1d1d; }
   .lw-err{ font-size:13px; line-height:1.55; color:#7f1d1d; background:#fef2f2; border:1px solid #fecaca; border-radius:9px; padding:11px 14px; margin-top:14px; }
   .lw-err b{ color:#7f1d1d; }
 
@@ -234,8 +237,8 @@
     </div>
     <div class="lw-body">
       <div class="lw-grid">
-        <div class="lw-field"><label>Patient name <span class="opt">(or leave as placeholder)</span></label><input id="lwName" placeholder="e.g. Mr John Smith"></div>
-        <div class="lw-field"><label>Date of birth <span class="opt">(optional)</span></label><input id="lwDob" placeholder="e.g. 12/03/1978"></div>
+        <div class="lw-field"><label>Patient name <span class="opt">(optional — stays on this device; added to the draft after it is written)</span></label><input id="lwName" placeholder="e.g. Mr John Smith"></div>
+        <div class="lw-field"><label>Date of birth <span class="opt">(optional — stays on this device)</span></label><input id="lwDob" placeholder="e.g. 12/03/1978"></div>
         <div class="lw-field"><label>Who is it for? <span class="opt">(recipient / purpose)</span></label><input id="lwRecipient" placeholder="e.g. local council housing team"></div>
         <div class="lw-field"><label>What is the patient requesting?</label><input id="lwRequest" placeholder="e.g. support for a housing transfer on health grounds"></div>
         <div class="lw-field full"><label>Relevant clinical facts <span class="opt">— diagnoses, dates, treatment (from the record only)</span></label><textarea id="lwFacts" placeholder="e.g. Diagnosed with severe COPD 2019, on triple inhaled therapy and home oxygen; two hospital admissions in the last year."></textarea></div>
@@ -251,6 +254,8 @@
           <button data-tone="Plain and factual">Plain &amp; factual</button>
         </div>
       </div>
+
+      <div class="lw-warn" role="note" id="lwWarn"><span class="ic" aria-hidden="true">⚠</span><span><b>Don't include patient identifiers (name, NHS number, date of birth, address). Check the letter before use.</b> The recipient, request, clinical facts, impact and notes you type are sent to an AI service to draft the letter; the name and date of birth boxes above are not sent — they are added to the draft on this device afterwards.</span></div>
 
       <div class="lw-actions">
         <button class="lw-gen" id="lwGen">Draft the letter</button>
@@ -500,11 +505,11 @@ const FORMS = [
       '- UK English. Warm but professional. No markdown, no bullet points, no placeholders in square brackets except where a real detail is genuinely missing (then use a clear [ ] placeholder the GP can fill).',
       '- Tone: '+tone+'.',
       '',
-      'Letter structure: practice letterhead line ("[GP Practice name and address]" placeholder), the date ('+today+'), "To whom it may concern", a re: line with the patient\u2019s name'+(v('#lwDob')?' and date of birth':'')+', 2\u20134 short paragraphs (who the patient is and your relationship to them as their GP; the relevant diagnosis/history; the functional impact; the request and a courteous ask to take it into account), then "Yours faithfully", and a signature block ("[Name], [Role], [GP Practice]"). End with a line noting the letter was prepared at the patient\u2019s request.',
+      'Letter structure: practice letterhead line ("[GP Practice name and address]" placeholder), the date ('+today+'), "To whom it may concern", a re: line with the exact placeholders [Patient name] and [Date of birth], 2\u20134 short paragraphs (who the patient is and your relationship to them as their GP; the relevant diagnosis/history; the functional impact; the request and a courteous ask to take it into account), then "Yours faithfully", and a signature block ("[Name], [Role], [GP Practice]"). End with a line noting the letter was prepared at the patient\u2019s request.',
       '',
       'DETAILS PROVIDED:',
-      'Patient name: '+(v('#lwName')||'[Patient name]'),
-      v('#lwDob')?('Date of birth: '+v('#lwDob')):'',
+      'Patient name: [Patient name] (placeholder \u2014 keep it exactly as written)',
+      'Date of birth: [Date of birth] (placeholder \u2014 keep it exactly as written)',
       'Recipient / purpose: '+(v('#lwRecipient')||'[not specified]'),
       'Patient is requesting: '+(v('#lwRequest')||'[not specified]'),
       'Relevant clinical facts (use only these): '+(v('#lwFacts')||'[none provided \u2014 keep clinical detail general and add a placeholder]'),
@@ -521,9 +526,14 @@ const FORMS = [
     let raw='';
     try{
       if(!(window.claude && window.claude.complete)) throw new Error('unavailable');
-      raw = await window.claude.complete({ messages:[{role:'user', content: buildLetterPrompt()}] });
+      raw = await window.claude.complete({ messages:[{role:'user', content: buildLetterPrompt()}], nosearch:true });
       if(!raw || !raw.trim()) throw new Error('empty');
-      $('#lwLetter').textContent = raw.trim();
+      /* identifiers are added here, on this device, after the AI has drafted the letter */
+      const nm=$('#lwName').value.trim(), dob=$('#lwDob').value.trim();
+      let letter=raw.trim();
+      if(nm) letter=letter.split('[Patient name]').join(nm);
+      if(dob) letter=letter.split('[Date of birth]').join(dob);
+      $('#lwLetter').textContent = letter;
       $('#lwOut').classList.add('on');
       $('#lwOut').scrollIntoView ? $('#lwLetter').focus() : null;
     }catch(err){

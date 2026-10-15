@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haemochromatosis — Protocol · Reasoning GP</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Haemochromatosis — Protocol">
+<meta property="og:description" content="HFE haemochromatosis in primary care on one page: when a raised ferritin needs a transferrin saturation (over 50% in men, over 40% in women), HFE genotyping for C282Y, who goes to haematology or hepatology and how fast, ferritin over 1000 and liver fibrosis assessment, venesection targets, family testing, and advice on alcohol, iron, vitamin C and raw shellfish.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/management/haemochromatosis.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<meta name="description" content="HFE haemochromatosis in primary care on one page: when a raised ferritin needs a transferrin saturation (over 50% in men, over 40% in women), HFE genotyping for C282Y, who goes to haematology or hepatology and how fast, ferritin over 1000 and liver fibrosis assessment, venesection targets, family testing, and advice on alcohol, iron, vitamin C and raw shellfish." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/haemochromatosis.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body data-screen-label="Haemochromatosis management card">
+<div class="mg-wrap" id="mgRoot"></div>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({ snapshot:"summaries/haemochromatosis.html",
+icon:"\u{1FA78}",
+  title:"Haemochromatosis (HFE)",
+  eyebrow:"Protocol · assess and manage in one place",
+  stemTitle:"Haemochromatosis: a raised ferritin needs a transferrin saturation, a raised saturation needs an HFE test, and a ferritin over 1000 needs the liver looked at",
+  stemSub:"One page for HFE (type 1) haemochromatosis in primary care. Decide whether a raised ferritin reflects iron overload or something commoner (alcohol, metabolic liver disease, inflammation). Check transferrin saturation, then HFE genotype. Refer C282Y homozygotes with iron overload for venesection, and fast-track anyone with a ferritin over 1000 µg/L or abnormal liver tests for a fibrosis assessment. Then test the family, give lifestyle advice and support long-term maintenance.",
+  guideline:"BSH guideline: diagnosis and therapy of genetic haemochromatosis (Fitzsimons et al., 2018) · EASL clinical practice guidelines on haemochromatosis (2022) · NICE NG50 cirrhosis (2016, updated 2023) · NICE CKS haemochromatosis · NHS Blood and Transplant",
+  reviewed:"15 October 2026",
+  nextReview:"15 April 2027",
+  meta:[
+    {t:"BSH 2018 · diagnosis, thresholds and venesection"},
+    {t:"EASL 2022 · international comparison"},
+    {t:"NICE NG50 · HCC surveillance in cirrhosis"},
+    {t:"No NICE guideline covers haemochromatosis itself", tone:"tw"},
+    {t:"v1.0 · reviewed Oct 2026", tone:"ok"}
+  ],
+  lead:"<div class='mg-layers'><a href='#confirm'><b>Diagnose</b><small>ferritin → saturation → HFE</small></a><a href='#redflags'><b>Liver first</b><small>ferritin over 1000</small></a><a href='#manage'><b>Venesection</b><small>specialist-led targets</small></a><a href='#family'><b>Family</b><small>test first-degree relatives</small></a></div>",
+  quickSub:"The six points that change what you do today. Each one is traced to a named source under <a href='#provenance'>Evidence</a>.",
+  quick:[
+    {tone:"cream", h:"A raised ferritin alone is not haemochromatosis", html:"Most raised ferritins in primary care are from <b>alcohol, metabolic-dysfunction-associated liver disease, obesity and diabetes, inflammation or infection</b>, not iron overload. Repeat the ferritin with a <b>transferrin saturation</b>, CRP and LFTs. Haemochromatosis is suggested when <b>both</b> are raised. Work through the <a href='../algorithms/high-ferritin.html'>high ferritin</a> pathway for the other causes."},
+    {tone:"cream", h:"Transferrin saturation: over 50% in men, over 40% in women", html:"The BSH thresholds for HFE testing with a raised ferritin are a transferrin saturation <b>above 50% in men</b> and <b>above 40% in women</b> (EASL uses above 45% for everyone). A fasting sample is <b>not essential</b>, but repeat a raised or borderline saturation to confirm it before acting, ideally as a morning sample if your laboratory asks for one."},
+    {tone:"amber", h:"HFE genotype: C282Y homozygosity is the diagnosis", html:"<b>C282Y homozygous</b> plus raised saturation and ferritin = HFE haemochromatosis. <b>C282Y/H63D compound heterozygotes</b> rarely load significant iron on their own: look hard for alcohol, metabolic liver disease or another cause. A single C282Y or H63D copy is carrier status and does not cause iron overload. A raised saturation with no C282Y homozygosity needs specialist advice (rarer genetic forms)."},
+    {tone:"red", h:"Ferritin over 1000 µg/L or abnormal liver tests: assess the liver", html:"In a C282Y homozygote, a <b>ferritin above 1000 µg/L</b>, raised transaminases, hepatomegaly or a low platelet count mark a higher risk of <b>cirrhosis</b>. Refer to <b>hepatology</b> for fibrosis assessment (usually transient elastography, sometimes biopsy) rather than straight to venesection alone. Cirrhosis needs <b>6-monthly liver ultrasound</b> for hepatocellular carcinoma (NICE NG50)."},
+    {tone:"cream", h:"Venesection is specialist-led and works", html:"Usually <b>450–500 mL</b> weekly or fortnightly as tolerated until iron stores are reduced (BSH: ferritin about 20–30 µg/L with saturation below 50%), then maintenance, typically every 1–4 months, keeping the ferritin below about 50 µg/L (EASL: 50–100 µg/L). Fatigue and arthralgia may not improve; cirrhosis, diabetes and arthropathy that are already established do not reverse fully."},
+    {tone:"green", h:"Test the family and give the lifestyle advice", html:"Offer <b>adult first-degree relatives</b> (siblings especially, with a 1 in 4 chance of being homozygous) HFE genotype, ferritin and transferrin saturation. Advise <b>keeping alcohol low</b> (none with cirrhosis or advanced fibrosis), <b>no iron or vitamin C supplements</b>, and avoiding <b>raw shellfish</b> (Vibrio infection). No strict low-iron diet is needed."}
+  ],
+  pathwaySub:"The consultation in five moves. The liver step is where harm happens if it is missed.",
+  pathway:[
+    {title:"Repeat and widen the bloods", html:"Repeat ferritin with transferrin saturation, CRP, LFTs, FBC and HbA1c or glucose. Ask about alcohol (AUDIT-C), weight, joint pain, fatigue, diabetes and family history."},
+    {title:"Interpret the saturation", html:"Saturation above 50% (men) or above 40% (women) with a raised ferritin → HFE genotype. A normal saturation points away from HFE haemochromatosis: look for the commoner causes."},
+    {title:"Check the liver", html:"C282Y homozygote with ferritin above 1000 µg/L, abnormal LFTs, hepatomegaly or low platelets → hepatology for fibrosis assessment. Decompensated liver disease is an emergency."},
+    {title:"Refer for venesection", html:"C282Y homozygotes with iron overload go to the local haematology, hepatology or haemochromatosis service. Agree who monitors ferritin and full blood count, and how often."},
+    {title:"Family and lifestyle", html:"Offer testing to adult first-degree relatives. Advise on alcohol, supplements and raw shellfish. Review diabetes, joints and mood at least yearly."}
+  ],
+  sections:[
+    {id:"redflags", nav:"Red flags", title:"Red flags: advanced iron overload and the conditions that mimic it", sub:"Haemochromatosis is slow, but its end-organ complications are not.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Decompensated liver disease", html:"Jaundice, ascites, confusion (encephalopathy), haematemesis or melaena in someone with known or suspected iron overload → <b>999 or same-day admission</b>, depending on severity.", src:"NICE NG50 (2016, updated 2023)"},
+         {tone:"red", h:"🔴 Heart failure or arrhythmia", html:"New breathlessness, oedema or palpitations with very high ferritin can be <b>iron cardiomyopathy</b>, mostly in young men with severe overload. Arrange <b>urgent cardiology and haematology</b> assessment; same-day if unwell.", src:"BSH (2018) · EASL (2022)"},
+         {tone:"amber", h:"🟠 Ferritin above 1000 µg/L", html:"In a C282Y homozygote, this marks a higher risk of cirrhosis. Refer to <b>hepatology</b> for fibrosis assessment; mark it urgent if there are abnormal LFTs, hepatomegaly or a low platelet count.", src:"BSH (2018) · EASL (2022)"},
+         {tone:"amber", h:"🟠 Very high ferritin in an unwell patient", html:"A very high ferritin (often well above 10,000 µg/L) with fever, cytopenias, splenomegaly or liver dysfunction suggests <b>haemophagocytic lymphohistiocytosis</b> or Still's disease, not haemochromatosis → same-day haematology or acute medicine discussion (see <a href='../algorithms/high-ferritin.html'>high ferritin</a>).", src:"BSH (2018)"},
+         {tone:"amber", h:"🟠 Known cirrhosis", html:"Haemochromatosis with cirrhosis carries a high risk of hepatocellular carcinoma, even after venesection. Check <b>6-monthly ultrasound</b> surveillance is happening; new weight loss, right upper quadrant pain or a mass → urgent hepatology.", src:"NICE NG50 (2016, updated 2023)"},
+         {tone:"amber", h:"🟠 Secondary iron overload", html:"People with repeated transfusions (thalassaemia, sickle cell disease, myelodysplasia) or haemolysis do not have HFE haemochromatosis and are not venesected: they need their haematology team (chelation).", src:"BSH (2018)"}
+       ]},
+       {b:"why", html:"Iron is deposited silently over decades. By the time the classic triad of liver disease, diabetes and skin pigmentation appears, damage is often permanent. Picking up the raised saturation, checking the liver in those with very high ferritin, and testing relatives is how primary care changes the outcome."}
+     ]},
+
+    {id:"confirm", nav:"Diagnose", title:"Diagnose: ferritin, saturation, then genotype", sub:"Ferritin measures stores but rises with inflammation, alcohol and fatty liver. Transferrin saturation rises early in HFE haemochromatosis.",
+     blocks:[
+       {b:"table", head:["Result","Interpretation","Next step"], rows:[
+         ["<b>Ferritin raised, saturation normal</b>","Usually alcohol, metabolic-dysfunction-associated liver disease, obesity, inflammation, infection, malignancy or renal disease","Treat the cause (see <a href='fatty-liver.html'>fatty liver</a>, <a href='alcohol-problem-drinking.html'>alcohol</a>); HFE testing is not routinely needed."],
+         ["<b>Saturation above 50% (men) or above 40% (women), ferritin raised</b>","Possible iron overload (BSH thresholds; EASL uses above 45%)","Repeat to confirm, then <b>HFE genotype</b>."],
+         ["<b>C282Y homozygous</b>","HFE haemochromatosis if iron overload is confirmed","Refer for venesection; liver assessment if ferritin above 1000 µg/L or LFTs abnormal."],
+         ["<b>C282Y/H63D compound heterozygous</b>","Mild loading at most; other factors usually explain the ferritin","Address alcohol and metabolic factors; specialist advice if ferritin keeps rising."],
+         ["<b>One copy of C282Y or H63D; H63D homozygous</b>","Not usually a cause of iron overload","Look for another cause; specialist advice if saturation and ferritin stay high."],
+         ["<b>Raised saturation, no C282Y homozygosity</b>","Rarer genetic haemochromatosis or other iron disorder","Haematology or hepatology advice."]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"🧪 Who to test", html:"Unexplained raised ferritin; abnormal LFTs without a clear cause; type 2 diabetes with hepatomegaly or abnormal LFTs; arthropathy of the 2nd and 3rd metacarpophalangeal joints; hypogonadism; cardiomyopathy; persistent fatigue with raised saturation; a first-degree relative with haemochromatosis.", src:"BSH (2018) · NICE CKS haemochromatosis"},
+         {tone:"blue", h:"🧾 The sample", html:"A fasting sample is not essential. Avoid testing during an acute illness, which raises ferritin. Repeat a raised saturation before genotyping. Recent iron supplements or transfusion distort the results.", src:"BSH (2018)"},
+         {tone:"cream", h:"🩺 Symptoms and signs", html:"Often none. Fatigue, arthralgia (especially the hands), erectile dysfunction or loss of libido, abdominal pain, skin pigmentation, hepatomegaly, diabetes.", src:"EASL (2022)"},
+         {tone:"cream", h:"🧬 Consent for the genetic test", html:"Explain that the result has implications for relatives, and that a homozygous result does not mean the person will become unwell: many never develop significant overload, especially women.", src:"BSH (2018)"}
+       ]}
+     ]},
+
+    {id:"manage", nav:"Manage", title:"Management: venesection and the liver", sub:"Treatment is led by haematology, hepatology or a dedicated service. Primary care often shares monitoring.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", tone:"cream", title:"Stage the disease", when:"at referral", fromLabel:"then",
+          html:"Specialist assessment of iron overload and organ damage: LFTs, platelets, HbA1c, and fibrosis assessment if ferritin is above 1000 µg/L or LFTs are abnormal. A C282Y homozygote with normal ferritin and saturation needs no venesection; recheck periodically."},
+         {step:"2", tone:"cream", title:"Induction venesection", when:"iron overload confirmed", fromLabel:"until stores are depleted",
+          html:"Usually <b>450–500 mL weekly or fortnightly</b> as tolerated, with a haemoglobin check before each session and ferritin about monthly. BSH target: ferritin about <b>20–30 µg/L</b> with saturation below 50%. Pre-hydrate; stop or space sessions if anaemia, symptomatic hypotension or frailty develop."},
+         {step:"3", tone:"green", title:"Maintenance", when:"lifelong", fromLabel:"",
+          html:"Typically every 1–4 months, keeping the ferritin below about 50 µg/L (BSH) or 50–100 µg/L (EASL), with more relaxed targets for older or frail people. Avoid a persistent ferritin below 20 µg/L. Eligible people can donate at NHS Blood and Transplant sessions, so maintenance blood is used."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"🟠 When venesection is not possible", html:"Severe anaemia, cardiac disease or poor venous access: iron chelation (for example deferasirox) is a specialist option.", src:"EASL (2022)"},
+         {tone:"blue", h:"🫀 Associated conditions", html:"Manage diabetes, osteoporosis risk, hypogonadism and arthropathy as usual (NSAIDs with care in liver disease). Arthropathy and fatigue often persist despite venesection, so set expectations early.", src:"BSH (2018) · EASL (2022)"},
+         {tone:"red", h:"🔴 Cirrhosis", html:"Abstain from alcohol, hepatitis A and B vaccination if not immune, <b>6-monthly ultrasound</b> for hepatocellular carcinoma, and variceal assessment as NICE NG50 sets out.", src:"NICE NG50 (2016, updated 2023)"},
+         {tone:"green", h:"✅ Prognosis", html:"Treated before cirrhosis or diabetes develop, life expectancy is normal.", src:"EASL (2022)"}
+       ]},
+       {b:"say", html:"Your body absorbs too much iron from food, and over many years it can build up in the liver, joints and pancreas. The treatment is simple: taking off blood regularly, like giving blood, which uses up the extra iron. Once your levels are down, you'll need it only a few times a year. You don't need a special diet, but don't take iron or vitamin C tablets, keep alcohol low and avoid raw shellfish."}
+     ]},
+
+    {id:"family", nav:"Family", title:"Family testing", sub:"Cascade testing is the most effective prevention primary care can offer.",
+     blocks:[
+       {b:"table", head:["Relative","Offer","Notes"], rows:[
+         ["<b>Siblings</b>","HFE genotype, ferritin and transferrin saturation","1 in 4 chance of being C282Y homozygous if both parents are carriers."],
+         ["<b>Adult children</b>","HFE genotype, ferritin and transferrin saturation","Alternatively test the other parent: if they carry no C282Y, the children cannot be homozygous."],
+         ["<b>Parents</b>","Testing if they wish","Usually carriers; they may be homozygous."],
+         ["<b>Children under 18</b>","Usually defer testing until adulthood","Iron overload rarely matters before adulthood."]
+       ]},
+       {b:"info", html:"Homozygous relatives with normal iron studies need <b>ferritin and saturation repeated periodically</b> (for example every 1–3 years), not venesection. Carriers need no follow-up."}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Special groups", sub:"Groups where the default plan changes.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"amber", h:"🤰 Pregnancy", html:"Pregnancy reduces iron stores. Venesection is usually paused; avoid iron supplements unless iron deficiency is proven. Seek specialist advice.", src:"EASL (2022)"},
+         {tone:"cream", h:"👩 Women before the menopause", html:"Menstrual and pregnancy losses delay iron loading, so women present later and less often. Recheck iron studies after the menopause in homozygous women.", src:"BSH (2018)"},
+         {tone:"cream", h:"🧓 Older and frail people", html:"Less aggressive targets; weigh the burden of venesection against the remaining risk.", src:"EASL (2022)"},
+         {tone:"blue", h:"🍺 Alcohol and metabolic liver disease", html:"Both accelerate liver damage in haemochromatosis. AUDIT-C, brief intervention, weight management and diabetes care are part of treatment (see <a href='alcohol-problem-drinking.html'>alcohol</a> and <a href='fatty-liver.html'>fatty liver</a> protocols).", src:"EASL (2022)"}
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Monitoring and follow-up", sub:"Shared with the specialist service; agree who does what.",
+     blocks:[
+       {b:"table", head:["Test","When","Action"], rows:[
+         ["<b>Haemoglobin</b>","Before each venesection","Low → space or pause sessions per the service."],
+         ["<b>Ferritin</b>","About monthly in induction; every 3–6 months in maintenance (per service)","Adjust frequency to the agreed target."],
+         ["<b>Transferrin saturation</b>","Periodically, often every 1–3 months","Persistently above 50% → discuss with the service."],
+         ["<b>LFTs, HbA1c</b>","Yearly, or as the service sets","New abnormality → review the liver plan."],
+         ["<b>Liver ultrasound</b>","Every 6 months if cirrhosis","Per NICE NG50 and hepatology."]
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer: who, where and how fast", sub:"Most referral is routine; the liver and heart set the urgency.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"999 or same-day admission", html:"Decompensated liver disease (jaundice, ascites, encephalopathy, GI bleeding); heart failure with very high ferritin if unwell; possible haemophagocytic lymphohistiocytosis.", src:"NICE NG50 · BSH (2018)"},
+         {tone:"amber", h:"Urgent hepatology", html:"C282Y homozygote with ferritin above 1000 µg/L and abnormal LFTs, hepatomegaly or low platelets; suspected hepatocellular carcinoma.", src:"BSH (2018) · EASL (2022)"},
+         {tone:"amber", h:"Haematology, hepatology or haemochromatosis service", html:"C282Y homozygotes with raised ferritin and saturation (venesection); ferritin above 1000 µg/L without the urgent features (fibrosis assessment); raised saturation without C282Y homozygosity.", src:"BSH (2018)"},
+         {tone:"green", h:"Stays in primary care", html:"Carriers; compound heterozygotes with mild ferritin rise and a clear lifestyle cause; homozygous relatives with normal iron studies (periodic recheck); maintenance monitoring by agreement.", src:"BSH (2018)"}
+       ]}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"Patient information and safety-netting", sub:"Say it, give it in writing, document it.",
+     blocks:[
+       {b:"say", html:"Call 999 if you vomit blood or pass black stools, become very confused or very yellow. Contact us the same day if your tummy swells, your skin or eyes turn yellow, or you get breathless or your ankles swell. Tell your brothers and sisters about the result so they can be tested."},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"📄 Information", html:"Haemochromatosis UK; NHS: haemochromatosis.", src:"NHS haemochromatosis information"},
+         {tone:"green", h:"🦪 Infection risk", html:"Avoid raw or undercooked shellfish: Vibrio vulnificus infection is more severe with iron overload. Seek urgent help for fever after eating seafood or a wound exposed to seawater.", src:"EASL (2022)"}
+       ]}
+     ]},
+
+    {id:"sca", nav:"SCA", title:"SCA consultation practice", sub:"A short practice card only.",
+     blocks:[{b:"cards", cols:2, items:[
+       {tone:"cream", h:"Classic scenario", html:"A 52-year-old man with type 2 diabetes and aching knuckles has a ferritin of 1350 µg/L, transferrin saturation 78% and an ALT of 82. He drinks 30 units a week. He asks if he can 'just give blood' and whether his children are affected.", src:"BSH (2018)"},
+       {tone:"cream", h:"Examiner-style checkpoints", html:"Explains the likely diagnosis and arranges <b>HFE genotype</b>. Recognises that a <b>ferritin above 1000 µg/L with abnormal LFTs</b> needs urgent hepatology fibrosis assessment. Addresses alcohol with a brief intervention. Explains specialist-led venesection. Plans <b>family testing</b> (siblings; children as adults, or test their mother). Advises no iron or vitamin C supplements, and safety-nets.", src:"BSH (2018) · EASL (2022)"}
+     ]}]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence", sub:"Every recommendation on this page traces to a named source.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>Fitzsimons EJ et al. Diagnosis and therapy of genetic haemochromatosis (review and 2017 update). British Society for Haematology guideline. Br J Haematol 2018;181:293–303</b><br><a href="https://b-s-h.org.uk/guidelines/guidelines/diagnosis-and-therapy-of-genetic-haemochromatosis" rel="noopener">b-s-h.org.uk — BSH haemochromatosis guideline</a><span class="rd"> — transferrin saturation above 50% (men) and above 40% (women) with raised ferritin, C282Y homozygosity, ferritin above 1000 µg/L and liver assessment, venesection targets, family testing</span></li>'+
+         '<li><b>EASL Clinical Practice Guidelines on haemochromatosis. J Hepatol 2022;77:479–502</b> (international)<br><a href="https://easl.eu/publication/easl-clinical-practice-guidelines-on-haemochromatosis/" rel="noopener">easl.eu — haemochromatosis CPG 2022</a><span class="rd"> — saturation above 45%, maintenance ferritin 50–100 µg/L, chelation, pregnancy, Vibrio advice</span></li>'+
+         '<li><b>NICE NG50 — Cirrhosis in over 16s: assessment and management (2016, updated 2023)</b><br><a href="https://www.nice.org.uk/guidance/ng50" rel="noopener">nice.org.uk/guidance/ng50</a><span class="rd"> — 6-monthly ultrasound for hepatocellular carcinoma, variceal surveillance</span></li>'+
+         '<li><b>NICE CKS — Haemochromatosis</b><br><a href="https://cks.nice.org.uk/topics/haemochromatosis/" rel="noopener">cks.nice.org.uk — haemochromatosis</a><span class="rd"> — who to test, primary care role, referral</span></li>'+
+         '<li><b>NHS Blood and Transplant — Haemochromatosis and blood donation</b><br><a href="https://www.blood.co.uk/who-can-give-blood/haemochromatosis/" rel="noopener">blood.co.uk — haemochromatosis</a><span class="rd"> — donation as maintenance venesection for eligible people</span></li>'+
+         '<li><b>NHS — Haemochromatosis</b><br><a href="https://www.nhs.uk/conditions/haemochromatosis/" rel="noopener">nhs.uk — haemochromatosis</a><span class="rd"> — patient information</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"HFE haemochromatosis in primary care — BSH guideline (Fitzsimons et al., 2018), EASL 2022, NICE NG50 and NICE CKS. Thresholds differ between BSH and EASL; local laboratories and services may use their own. Venesection is specialist-led. Not a substitute for clinical judgement."
+});
+</script>
+<script src="../../assets/mgmt-nav.js"></script>
+<script src="../../assets/topic-links.js?v=8"></script>
+</body>
+</html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Prescribing Hub · GP / SCA Clinical Reasoning Tool</title>
-<meta name="description" content="Prescribing Hub — write it, get the admin right, keep it safe when they're ill.">
+<meta name="description" content="Prescribing Hub — ready prescriptions, eligibility, FP10, RAG, sick-day rules, CKD, pregnancy, medication review, MHRA safety updates, antibiotic stewardship, children, remote prescribing, DOAC dosing, controlled drugs and shared care.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Reasoning GP">
 <meta property="og:locale" content="en_GB">
@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="../assets/site.css?v=14" />
-<link rel="stylesheet" href="../assets/prescriptions.css" />
+<link rel="stylesheet" href="../assets/prescriptions.css?v=127" />
 <style>
   .tool-page{ padding:0; }
   .panel{ padding:28px 32px 80px; max-width:1040px; margin:0 auto; }
@@ -45,6 +45,14 @@
   .phub-btn.on .ic{ background:var(--teal); }
   .phub-btn .tx b{ display:block; font-size:14.5px; font-weight:800; color:var(--ink); line-height:1.2; }
   .phub-btn .tx span{ display:block; font-size:12px; color:var(--muted); line-height:1.4; margin-top:3px; }
+  /* Upload 128: twelve sections — compact two-column buttons on phones */
+  @media (max-width:560px){
+    .phub-nav{ gap:8px; }
+    .phub-btn{ flex:1 1 calc(50% - 4px); padding:10px 11px; gap:9px; align-items:center; }
+    .phub-btn .ic{ width:32px; height:32px; font-size:17px; border-radius:9px; }
+    .phub-btn .tx b{ font-size:13px; }
+    .phub-btn .tx span{ display:none; }
+  }
   .phub-section{ display:none; }
   .phub-section.on{ display:block; animation:phubfade .22s ease; }
   @keyframes phubfade{ from{ opacity:0; transform:translateY(4px);} to{ opacity:1; transform:none;} }
@@ -65,6 +73,7 @@
   .pg-cards{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-bottom:18px; }
   @media (max-width:720px){ .pg-cards{ grid-template-columns:1fr; } }
   .pg-card{ border:1px solid var(--line); border-radius:13px; background:var(--surface); padding:16px 18px; }
+  .pg-cards > *, .sd-cards > *{ min-width:0; } /* Upload 128: let wide tables scroll inside a card, not widen the page */
   .pg-card.full{ grid-column:1 / -1; }
   .pg-card h4{ font-size:12.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--teal); margin-bottom:11px; display:flex; align-items:center; gap:8px; }
   .pg-card.warn{ border-color:#fed7aa; background:#fffdfa; }
@@ -227,6 +236,22 @@
   .rx-group-head h2{font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:1.35rem;line-height:1.1;color:var(--ink);letter-spacing:-.01em}
   .rx-group-count{font-size:11px;font-weight:700;color:var(--muted);background:var(--bg-soft);border:1px solid var(--line);border-radius:99px;padding:2px 9px;font-feature-settings:"tnum"}
 
+  /* ===== MHRA Drug Safety Update list (Upload 128) ===== */
+  .dsu-list{ display:flex; flex-direction:column; gap:10px; margin-bottom:18px; }
+  .dsu{ display:flex; gap:14px; align-items:flex-start; border:1px solid var(--line); border-radius:12px; background:var(--surface); padding:14px 16px; scroll-margin-top:90px; }
+  .dsu-date{ flex-shrink:0; min-width:78px; font-size:11px; font-weight:800; letter-spacing:.03em; text-transform:uppercase; color:var(--rust); line-height:1.35; padding-top:2px; }
+  .dsu-body{ min-width:0; }
+  .dsu-body h4{ font-size:14.5px; font-weight:700; line-height:1.35; margin-bottom:6px; }
+  .dsu-body h4 a{ color:var(--teal); text-decoration:none; }
+  .dsu-body h4 a:hover{ color:var(--rust); text-decoration:underline; }
+  .dsu-body p{ font-size:13.3px; line-height:1.58; color:var(--ink-2); margin-bottom:6px; overflow-wrap:anywhere; }
+  .dsu-body p.dsu-act{ background:var(--surface-2); border:1px solid var(--line); border-radius:8px; padding:8px 11px; margin-bottom:0; }
+  .dsu-body p.dsu-act b{ color:var(--ink); }
+  @media (max-width:560px){ .dsu{ flex-direction:column; gap:6px; } }
+  .phub-section .pg-card a, .phub-section .pg-info a, .phub-section .pg-note a, .phub-section .sd-alert a, .phub-section .phub-secp a{ color:var(--teal); font-weight:600; }
+  .doac-table td{ font-size:12.8px; }
+  .phub-section [id]{ scroll-margin-top:90px; }
+
   .footer-disclaimer{ margin-top:40px; font-size:12.5px; line-height:1.6; color:var(--ink-2); background:var(--surface-2); border:1px solid var(--line); border-radius:12px; padding:16px 18px; }
   .footer-disclaimer strong{ color:var(--ink); }
 </style>
@@ -253,8 +278,8 @@
         <header class="tool-head" data-screen-label="Tool head">
           <span class="eyebrow">Reasoning Tool · Everything around the prescription pad</span>
           <h1>Prescribing Hub — <em>write it, get the admin right, keep it safe when they're ill</em></h1>
-          <p>One place for the three jobs that surround a prescription: look up <b>reference wording for a common regimen</b> (dose, duration, counselling, sources), settle the <b>prescribing admin</b> (free-prescription eligibility, a valid FP10, what not to prescribe, the traffic-light RAG), and apply the <b>sick-day rules</b> that keep long-term medicines safe in acute illness.</p>
-          <div class="review-stamp"><span class="dot"></span> Last reviewed June 2026 <span class="src">· NICE / NG · SPC (emc) · NHSBSA · NHS England · GMMMG · Society for Endocrinology · MHRA</span></div>
+          <p>One place for everything around a prescription: <b>reference wording for common regimens</b> (dose, duration, counselling, sources); the <b>prescribing admin</b> (free-prescription eligibility, a valid FP10, what not to prescribe, the traffic-light RAG); <b>sick-day rules</b>, CKD, pregnancy and medication review; the latest <b>MHRA safety updates</b>; <b>antibiotic stewardship</b>; prescribing for <b>children</b> and <b>remotely</b>; a <b>DOAC dosing</b> reference; and the practical rules for <b>controlled drugs, shared care, off-label use, liver disease and PGDs</b>.</p>
+          <div class="review-stamp"><span class="dot"></span> Last reviewed October 2026 <span class="src">· NICE / NG · SPC (emc) · NHSBSA · NHS England · GMMMG · Society for Endocrinology · MHRA · GMC · UKHSA/RCGP TARGET</span></div>
         </header>
 
         <!-- ===== TOP-LEVEL SECTION NAV ===== -->
@@ -282,6 +307,30 @@
           <button class="phub-btn" data-sec="review">
             <span class="ic">🔁</span>
             <span class="tx"><b>Medication review</b><span>Interactions · deprescribe · STOPP/START</span></span>
+          </button>
+          <button class="phub-btn" data-sec="mhra">
+            <span class="ic">🛡️</span>
+            <span class="tx"><b>MHRA safety updates</b><span>2024–26 Drug Safety Updates · Yellow Card</span></span>
+          </button>
+          <button class="phub-btn" data-sec="antibiotics">
+            <span class="ic">🦠</span>
+            <span class="tx"><b>Antibiotic stewardship</b><span>Back-up Rx · 5-day courses · penicillin allergy</span></span>
+          </button>
+          <button class="phub-btn" data-sec="children">
+            <span class="ic">🧒</span>
+            <span class="tx"><b>Prescribing for children</b><span>Age vs mg/kg · liquids · off-label · BNFC</span></span>
+          </button>
+          <button class="phub-btn" data-sec="remote">
+            <span class="ic">📞</span>
+            <span class="tx"><b>Remote prescribing</b><span>GMC duties · identity · photos · CDs</span></span>
+          </button>
+          <button class="phub-btn" data-sec="doac">
+            <span class="ic">🩸</span>
+            <span class="tx"><b>DOAC dosing</b><span>AF · VTE treatment · prophylaxis · CrCl</span></span>
+          </button>
+          <button class="phub-btn" data-sec="practice">
+            <span class="ic">🔒</span>
+            <span class="tx"><b>Prescribing practicalities</b><span>CDs · shared care · off-label · liver · PGD</span></span>
           </button>
         </nav>
 
@@ -311,7 +360,7 @@
           <!-- FREE PRESCRIPTION ELIGIBILITY -->
           <div class="pg-panel on" id="tab-free">
             <h2 class="pg-sec-h">Who gets <em>free</em> NHS prescriptions (England)</h2>
-            <p class="pg-sec-p">Prescriptions are <b>free for everyone in Wales, Scotland and Northern Ireland</b>. In England a charge applies (around <b>£9.90 per item, 2025/26 — verify current</b>) unless the patient falls into an exemption below, or holds a prepayment certificate.</p>
+            <p class="pg-sec-p">Prescriptions are <b>free for everyone in Wales, Scotland and Northern Ireland</b>. In England a charge applies (around <b>£9.90 per item, 2025/26 and 2026/27 — verify current</b>) unless the patient falls into an exemption below, or holds a prepayment certificate.</p>
 
             <div class="pg-cards">
               <div class="pg-card">
@@ -1623,6 +1672,511 @@
           </div>
         </section>
 
+        <!-- ================================================================ -->
+        <!-- SECTION · MHRA DRUG SAFETY UPDATES (Upload 128)                   -->
+        <!-- ================================================================ -->
+        <section class="phub-section" id="sec-mhra" data-screen-label="MHRA safety updates">
+          <p class="phub-secp">The MHRA Drug Safety Updates from 2024 to 2026 that change what a GP does. Each one is summarised in our own words with its date and a link to the MHRA page itself. Read the full update before acting on it, and check the gov.uk index for anything newer.</p>
+
+          <div class="sd-alert amber" id="mhra-yellowcard">
+            <div class="ic">🟨</div>
+            <div><h3>Report suspected side effects — Yellow Card</h3>
+              <p>Report on the <a href="https://yellowcard.mhra.gov.uk/" target="_blank" rel="noopener noreferrer">Yellow Card website ↗</a> (or from the clinical system, or the Yellow Card app). Report <b>any</b> suspected reaction to a black-triangle (▼) medicine or a vaccine. For established medicines, report <b>serious</b> reactions, including those in <b>children</b>, in <b>pregnancy</b> and with <b>herbal or unlicensed products</b>. Also report medical device problems, suspected fake or defective medicines, and e-cigarette reactions. You do not need to be sure the medicine caused it, and patients can report too.</p></div>
+          </div>
+
+          <div class="dsu-list">
+            <article class="dsu" id="dsu-domperidone"><div class="dsu-date">Jul 2026</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/domperidone-new-contraindication-in-patients-with-phaeochromocytoma-due-to-the-risk-of-severe-hypertension" target="_blank" rel="noopener noreferrer">Domperidone: new contraindication in phaeochromocytoma ↗</a></h4>
+              <p>Domperidone can set off severe hypertension in confirmed or suspected phaeochromocytoma, so it is now contraindicated there. A hypertensive crisis after domperidone should prompt a check for phaeochromocytoma. Still use the lowest dose for the shortest time, usually no more than a week.</p>
+              <p class="dsu-act"><b>GP action:</b> check anyone on repeat domperidone; stop and switch if phaeochromocytoma is known or suspected.</p></div></article>
+
+            <article class="dsu" id="dsu-finasteride-2026"><div class="dsu-date">May 2026</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/government/news/mhra-strengthens-safety-warnings-for-finasteride-and-dutasteride" target="_blank" rel="noopener noreferrer">Finasteride and dutasteride: stronger warnings on psychiatric and sexual side effects ↗</a></h4>
+              <p>After a review of suicidal thoughts and behaviour, the warnings for finasteride 1 mg (hair loss) were strengthened: sexual dysfunction may contribute to mood problems. Dutasteride now carries a precautionary warning too. The patient alert card for finasteride (2024) stays in place.</p>
+              <p class="dsu-act"><b>GP action:</b> ask about depression or suicidal thoughts before prescribing. Patients who develop low mood or suicidal thoughts should stop and seek advice.</p></div></article>
+
+            <article class="dsu" id="dsu-glp1-pancreatitis"><div class="dsu-date">Jan 2026</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/glp-1-receptor-agonists-and-dual-glp-1-slash-gip-receptor-agonists-strengthened-warnings-on-acute-pancreatitis-including-necrotising-and-fatal-cases" target="_blank" rel="noopener noreferrer">GLP-1 and GIP/GLP-1 receptor agonists: acute pancreatitis, including necrotising and fatal cases ↗</a></h4>
+              <p>Warnings are now the same across semaglutide, liraglutide, dulaglutide and tirzepatide. Suspect pancreatitis with severe, persistent abdominal pain. Stop the drug, and do not restart it if pancreatitis is confirmed. Many people buy these privately, so the drug may not be on the GP record.</p>
+              <p class="dsu-act"><b>GP action:</b> ask about privately obtained weight-loss injections when someone has abdominal pain; record private GLP-1 use on the record.</p></div></article>
+
+            <article class="dsu" id="dsu-dependence"><div class="dsu-date">Jan 2026</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/improving-information-supplied-with-gabapentinoids-pregabalin-slash-gabapentin-benzodiazepines-and-z-drugs" target="_blank" rel="noopener noreferrer">Gabapentinoids, benzodiazepines and Z-drugs: addiction, dependence and withdrawal ↗</a></h4>
+              <p>Packs and leaflets will carry the warning “may cause addiction, dependence and withdrawal reactions”. Dependence can happen at licensed doses and with short courses. The risk is higher with past or current substance misuse, including alcohol, or a mental health disorder.</p>
+              <p class="dsu-act"><b>GP action:</b> agree a plan for review, reducing and stopping <i>before</i> starting (see NICE NG215), and give the MHRA patient resource.</p></div></article>
+
+            <article class="dsu" id="dsu-isotretinoin"><div class="dsu-date">Oct 2023 · updated Jan 2026</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/isotretinoin-changes-to-prescribing-guidance-and-additional-risk-minimisation-measures" target="_blank" rel="noopener noreferrer">Isotretinoin: changes to the safeguards ↗</a></h4>
+              <p>The 2023 measures added mental-health and sexual-function checks and a two-prescriber agreement for under-18s, and the Pregnancy Prevention Programme continued. In 2025–26 the Commission on Human Medicines found that the two-prescriber rule delayed treatment without clear benefit. It has been replaced by other safeguards. The mental-health, sexual-function and pregnancy-prevention requirements remain.</p>
+              <p class="dsu-act"><b>GP action:</b> isotretinoin is specialist (dermatology) initiated. In primary care, look out for mood change and pregnancy, and record the drug as hospital-prescribed. (<a href="https://www.gov.uk/drug-safety-update/isotretinoin-roaccutanev-introduction-of-new-safety-measures-including-additional-oversight-of-the-initiation-of-treatment-for-patients-under-18-years-of-age" target="_blank" rel="noopener noreferrer">2023 update ↗</a>)</p></div></article>
+
+            <article class="dsu" id="dsu-paracetamol-pregnancy"><div class="dsu-date">Sep 2025</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/paracetamol-and-pregnancy-reminder-that-taking-paracetamol-during-pregnancy-remains-safe" target="_blank" rel="noopener noreferrer">Paracetamol in pregnancy remains the first choice for pain and fever ↗</a></h4>
+              <p>There is no evidence that paracetamol in pregnancy causes autism. It remains the first-choice painkiller in pregnancy, at the lowest effective dose for the shortest time. Untreated fever and pain can themselves harm the baby.</p>
+              <p class="dsu-act"><b>GP action:</b> reassure; do not advise stopping paracetamol.</p></div></article>
+
+            <article class="dsu" id="dsu-glp1-pregnancy"><div class="dsu-date">Jun 2025</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/government/publications/glp-1-medicines-for-weight-loss-and-diabetes-what-you-need-to-know" target="_blank" rel="noopener noreferrer">GLP-1 medicines: pregnancy, breastfeeding, contraception and tirzepatide with oral contraceptives ↗</a></h4>
+              <p>These medicines should not be used in pregnancy, when trying to conceive, or when breastfeeding. Use effective contraception, and stop before trying to conceive; the washout is in the SPC, roughly 2 months for semaglutide and 1 month for tirzepatide. Tirzepatide may make oral contraceptives less effective in people who are overweight or obese. Switch to a non-oral method, or add a barrier method for 4 weeks after starting and after each dose increase. Buy only from regulated sources.</p>
+              <p class="dsu-act"><b>GP action:</b> ask anyone of childbearing potential using a GLP-1 (including privately) about contraception and pregnancy plans.</p></div></article>
+
+            <article class="dsu" id="dsu-valproate-2025"><div class="dsu-date">Feb 2025 · Jun 2025</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/valproate-belvo-convulex-depakote-dyzantil-epilim-epilim-chrono-or-chronosphere-episenta-epival-and-syonellv-review-by-two-specialists-is-required-for-initiating-valproate-but-not-for-male-patients-already-taking-valproate" target="_blank" rel="noopener noreferrer">Valproate: two-specialist review for starting, not for men already on it ↗</a></h4>
+              <p>Starting valproate in anyone under 55 still needs two specialists to agree independently. Men already taking it do not need the two-specialist review. Updated patient and professional materials followed in June 2025 (<a href="https://www.gov.uk/drug-safety-update/valproate-belvo-convulex-depakote-dyzantil-epilim-epilim-chrono-or-chronosphere-episenta-epival-and-syonellv-updated-safety-and-educational-materials-to-support-patient-discussion-on-reproductive-risks" target="_blank" rel="noopener noreferrer">materials update ↗</a>).</p>
+              <p class="dsu-act"><b>GP action:</b> do not start or switch valproate yourself. Patients should keep taking it until the specialist reviews them.</p></div></article>
+
+            <article class="dsu" id="dsu-glp1-aspiration"><div class="dsu-date">Jan 2025</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/glp-1-and-dual-gip-slash-glp-1-receptor-agonists-potential-risk-of-pulmonary-aspiration-during-general-anaesthesia-or-deep-sedation" target="_blank" rel="noopener noreferrer">GLP-1 and GIP/GLP-1 receptor agonists: aspiration risk during general anaesthesia or deep sedation ↗</a></h4>
+              <p>Slower gastric emptying can leave food in the stomach despite fasting. The MHRA did not set a fixed pause before surgery; the anaesthetist decides case by case. The June 2025 guidance (above) repeats this advice.</p>
+              <p class="dsu-act"><b>GP action:</b> include GLP-1 use (private too) in referral letters for procedures; tell patients to inform the anaesthetist or endoscopy unit.</p></div></article>
+
+            <article class="dsu" id="dsu-valproate-men"><div class="dsu-date">Sep 2024</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/valproate-use-in-men-as-a-precaution-men-and-their-partners-should-use-effective-contraception" target="_blank" rel="noopener noreferrer">Valproate in men: precautionary contraception advice ↗</a></h4>
+              <p>A study suggested a possible link between a father taking valproate around conception and neurodevelopmental disorders in his children. This is an association, not proven cause. As a precaution, men and their partners should use effective contraception during treatment and for 3 months after stopping, and men should not donate sperm. Counsel male patients at the start of treatment or at their next review.</p>
+              <p class="dsu-act"><b>GP action:</b> tell men who may father children; refer to the specialist if they are planning a family. They must not stop valproate suddenly.</p></div></article>
+
+            <article class="dsu" id="dsu-topiramate"><div class="dsu-date">Jun 2024</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/topiramate-topamax-introduction-of-new-safety-measures-including-a-pregnancy-prevention-programme" target="_blank" rel="noopener noreferrer">Topiramate: Pregnancy Prevention Programme ↗</a></h4>
+              <p>Topiramate in pregnancy raises the risk of major malformations and low birth weight, and possibly of neurodevelopmental disorders. It is now contraindicated in women who could become pregnant unless they meet the Pregnancy Prevention Programme: highly effective contraception, a negative pregnancy test before starting, and an annual risk acknowledgement form. It is contraindicated in pregnancy for migraine, and allowed for epilepsy only if nothing else is suitable.</p>
+              <p class="dsu-act"><b>GP action:</b> review every woman of childbearing potential on topiramate, especially for migraine. If she is pregnant and taking it for migraine, stop it; if for epilepsy, do not stop it and get urgent specialist advice.</p></div></article>
+
+            <article class="dsu" id="dsu-montelukast"><div class="dsu-date">Apr 2024</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/montelukast-reminder-of-the-risk-of-neuropsychiatric-reactions" target="_blank" rel="noopener noreferrer">Montelukast: reminder of neuropsychiatric reactions ↗</a></h4>
+              <p>The risk is unchanged since 2019 but is still not widely known. It includes nightmares, sleep disturbance, depression, anxiety, aggression and behaviour change, and rarely suicidal thoughts; these are reported more in children. The warnings are now boxed in the leaflet and SPC.</p>
+              <p class="dsu-act"><b>GP action:</b> warn patients and parents when prescribing; review response after a trial and stop if not helping.</p></div></article>
+
+            <article class="dsu" id="dsu-finasteride-2024"><div class="dsu-date">Apr 2024</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/finasteride-reminder-of-the-risk-psychiatric-side-effects-and-of-sexual-side-effects-which-may-persist-after-discontinuation-of-treatment" target="_blank" rel="noopener noreferrer">Finasteride: patient alert card for psychiatric and sexual side effects ↗</a></h4>
+              <p>Each pack now contains a patient card. It warns about depression, suicidal thoughts and sexual dysfunction, which may persist after stopping. Friends and family may notice mood change first.</p>
+              <p class="dsu-act"><b>GP action:</b> ask about a history of depression or suicidal thoughts before prescribing, and monitor.</p></div></article>
+
+            <article class="dsu" id="dsu-fluoroquinolones"><div class="dsu-date">Jan 2024</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/fluoroquinolone-antibiotics-must-now-only-be-prescribed-when-other-commonly-recommended-antibiotics-are-inappropriate" target="_blank" rel="noopener noreferrer">Fluoroquinolones: only when other recommended antibiotics are inappropriate ↗</a></h4>
+              <p>Systemic ciprofloxacin, levofloxacin, moxifloxacin and ofloxacin should be used only when the usual antibiotics are inappropriate: resistance, contraindication, side effects that forced stopping, or treatment failure. The 2019 precautions still apply. These are the risk of disabling and possibly irreversible tendon, nerve, joint and psychiatric effects, aortic aneurysm, and extra caution in over-60s, kidney disease, transplants and steroid use.</p>
+              <p class="dsu-act"><b>GP action:</b> record why a fluoroquinolone was needed. Advise stopping at the first sign of tendon pain, numbness or mood change.</p></div></article>
+
+            <article class="dsu" id="dsu-valproate-2024"><div class="dsu-date">Jan 2024</div><div class="dsu-body">
+              <h4><a href="https://www.gov.uk/drug-safety-update/valproate-belvo-convulex-depakote-dyzantil-epilim-epilim-chrono-or-chronosphere-episenta-epival-and-syonellv-new-safety-and-educational-materials-to-support-regulatory-measures-in-men-and-women-under-55-years-of-age" target="_blank" rel="noopener noreferrer">Valproate: new measures for anyone under 55 ↗</a></h4>
+              <p>New patients under 55, male or female, should not start valproate unless two specialists independently agree that no other treatment is effective or tolerated, or that the reproductive risks do not apply. Women and girls who could become pregnant stay on the Pregnancy Prevention Programme with an annual risk acknowledgement form. These measures followed a National Patient Safety Alert.</p>
+              <p class="dsu-act"><b>GP action:</b> run regular searches for valproate patients under 55 and make sure each has had a specialist review and, where needed, has highly effective contraception.</p></div></article>
+          </div>
+
+          <div class="pg-info">The full index of updates is at <a href="https://www.gov.uk/drug-safety-update" target="_blank" rel="noopener noreferrer">gov.uk/drug-safety-update ↗</a>. The MHRA also publishes a monthly <a href="https://www.gov.uk/drug-device-alerts" target="_blank" rel="noopener noreferrer">Safety Roundup and alerts ↗</a>. Updates listed here were checked in October 2026.</div>
+          <div class="footer-disclaimer">
+            <strong>Educational use only.</strong> These are summaries of MHRA Drug Safety Updates and related MHRA guidance in our own words, for education. The MHRA page linked from each item is the authority. Check the current SPC, BNF/BNFC and local guidance before acting.
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SECTION · ANTIBIOTIC STEWARDSHIP (Upload 128)                     -->
+        <!-- ================================================================ -->
+        <section class="phub-section" id="sec-antibiotics" data-screen-label="Antibiotic stewardship">
+          <p class="phub-secp">Good antibiotic prescribing in general practice means three things: no antibiotic when the illness will settle, a back-up prescription when it might not, and the shortest effective course of the narrowest suitable drug when it is needed. This section covers how to do that, with the NICE course lengths, penicillin-allergy assessment, <i>C. difficile</i> risk and the national toolkits.</p>
+
+          <div class="pg-tabs" id="abxTabs">
+            <button class="pg-tab on" data-tab="abx-backup">⏳ Back-up prescribing</button>
+            <button class="pg-tab" data-tab="abx-duration">📅 Course lengths</button>
+            <button class="pg-tab" data-tab="abx-allergy">🏷️ Penicillin allergy</button>
+            <button class="pg-tab" data-tab="abx-cdiff">🦠 C. difficile risk</button>
+            <button class="pg-tab" data-tab="abx-tools">🧰 TARGET &amp; guidance</button>
+          </div>
+
+          <div class="pg-panel on" id="abx-backup">
+            <h3 class="pg-sec-h">Back-up (<em>delayed</em>) antibiotic prescribing</h3>
+            <p class="pg-sec-p">NICE's antimicrobial prescribing guidelines offer three choices for many self-limiting infections: no antibiotic, a back-up prescription, or an immediate prescription. A back-up prescription is for use only if symptoms do not improve or get worse within a stated time.</p>
+            <div class="pg-cards">
+              <div class="pg-card"><h4>✅ When a back-up prescription fits</h4><ul>
+                <li><b>Acute sore throat</b> with FeverPAIN 2–3 (NICE NG84).</li>
+                <li><b>Acute otitis media</b> in a child who is not systemically unwell (NG91).</li>
+                <li><b>Acute sinusitis</b> lasting 10 days or more with no improvement (NG79).</li>
+                <li><b>Acute cough</b> where the person is not systemically unwell and not at higher risk (NG120).</li>
+                <li><b>Lower UTI</b> in non-pregnant women with mild symptoms (NG109).</li>
+              </ul></div>
+              <div class="pg-card"><h4>🗣️ How to do it well</h4><ul>
+                <li>Agree the plan and say how long the illness usually lasts (cough about 3 weeks, sore throat about a week, otitis media about 3 days, sinusitis 2–3 weeks).</li>
+                <li>Say <b>when</b> to use it: for example, no better after 3 days, or worse at any time.</li>
+                <li>Give a TARGET <b>“Treating your infection”</b> leaflet with self-care and when to come back.</li>
+                <li>Choose post-dating, collection at reception, or a prescription to keep at home, as the practice prefers.</li>
+                <li>Code it, for example “delayed prescription of antibiotics”, so audit captures it.</li>
+              </ul></div>
+              <div class="pg-card warn full"><h4>⚠️ Do not use a back-up prescription when</h4><ul>
+                <li>The person is <b>systemically very unwell</b>, has signs of a serious illness or complications (for example sepsis, mastoiditis, peritonsillar abscess, pneumonia), or is at high risk of complications because of comorbidity.</li>
+                <li>Give an immediate antibiotic, or refer or admit, as the NICE guideline for that infection says.</li>
+              </ul></div>
+            </div>
+          </div>
+
+          <div class="pg-panel mon-stack" id="abx-duration">
+            <h3 class="pg-sec-h">Shortest effective course — <em>NICE durations</em></h3>
+            <p class="pg-sec-p">Where NICE recommends a 5-day course, prescribe 5 days, not the old 7-day default. Choose the drug and dose from the NICE guideline and the SPC, and check your local formulary, which may differ for resistance reasons.</p>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Infection (adults unless stated)</th><th>Usual course</th><th>Source</th></tr></thead>
+              <tbody>
+                <tr><td>Acute sore throat</td><td data-label="Usual course">5–10 days phenoxymethylpenicillin (5 days may be enough for symptom relief)</td><td data-label="Source">NICE NG84</td></tr>
+                <tr><td>Acute otitis media (child)</td><td data-label="Usual course">5–7 days</td><td data-label="Source">NICE NG91</td></tr>
+                <tr><td>Acute sinusitis</td><td data-label="Usual course">5 days</td><td data-label="Source">NICE NG79</td></tr>
+                <tr><td>Acute cough / bronchitis (if an antibiotic is needed)</td><td data-label="Usual course">5 days</td><td data-label="Source">NICE NG120</td></tr>
+                <tr><td>Community-acquired pneumonia (low severity)</td><td data-label="Usual course">5 days, then review</td><td data-label="Source">NICE NG250 (replaced NG138)</td></tr>
+                <tr><td>Acute exacerbation of COPD</td><td data-label="Usual course">5 days</td><td data-label="Source">NICE NG114</td></tr>
+                <tr><td>Lower UTI — non-pregnant women</td><td data-label="Usual course">3 days</td><td data-label="Source">NICE NG109</td></tr>
+                <tr><td>Lower UTI — men, pregnant women</td><td data-label="Usual course">7 days</td><td data-label="Source">NICE NG109</td></tr>
+                <tr><td>Acute pyelonephritis</td><td data-label="Usual course">7–10 days, depending on the drug</td><td data-label="Source">NICE NG111</td></tr>
+                <tr><td>Cellulitis / erysipelas</td><td data-label="Usual course">5–7 days, guided by clinical review</td><td data-label="Source">NICE NG141</td></tr>
+                <tr><td>Impetigo (if an antibiotic is needed)</td><td data-label="Usual course">5 days (7 if needed)</td><td data-label="Source">NICE NG153</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pg-note"><b>Fluoroquinolones:</b> since January 2024 these are only for when the usual antibiotics are inappropriate (resistance, contraindication, intolerance or treatment failure); see <a href="#dsu-fluoroquinolones">the MHRA item</a>.</div>
+          </div>
+
+          <div class="pg-panel" id="abx-allergy">
+            <h3 class="pg-sec-h">Penicillin allergy — <em>assess, record, de-label</em></h3>
+            <p class="pg-sec-p">About 1 in 10 people have a penicillin allergy label, but most of them are not allergic when tested. A wrong label pushes prescribers to broader-spectrum second-line antibiotics. Those drugs work less well and carry more <i>C. difficile</i> and resistance risk. NICE CG183 (Drug allergy) sets out how to assess and record an allergy.</p>
+            <div class="pg-cards">
+              <div class="pg-card"><h4>📝 Take the history (CG183)</h4><ul>
+                <li><b>What drug</b>, and what for.</li>
+                <li><b>What happened</b>: rash, urticaria, angioedema, wheeze, anaphylaxis, blistering, or just GI upset.</li>
+                <li><b>When</b>: within an hour of a dose (immediate) or days later (delayed); and how long ago.</li>
+                <li><b>Since then</b>: has the person taken amoxicillin, co-amoxiclav or flucloxacillin without a problem?</li>
+                <li>Record the drug, the reaction, the date and whether it is an <b>allergy or an intolerance</b>. Tell the patient what was recorded.</li>
+              </ul></div>
+              <div class="pg-card"><h4>🔍 Probably not allergy</h4><ul>
+                <li>Nausea, vomiting or diarrhoea alone: an <b>intolerance</b>, so record it as such.</li>
+                <li>A family history of penicillin allergy only.</li>
+                <li>A non-itchy rash during a viral illness in childhood, especially amoxicillin given with glandular fever.</li>
+                <li>Such low-risk histories can be considered for <b>de-labelling</b> through local direct oral challenge pathways (BSACI), where available.</li>
+              </ul></div>
+              <div class="pg-card warn full"><h4>⛔ Higher risk — specialist or microbiology advice</h4><ul>
+                <li><b>Immediate reactions</b> (anaphylaxis, angioedema, urticaria within an hour): avoid penicillins. Seek advice before giving any other beta-lactam (cephalosporins, carbapenems).</li>
+                <li><b>Severe delayed reactions</b> (SJS/TEN, DRESS, AGEP, blistering, organ involvement): avoid all beta-lactams and refer.</li>
+                <li><b>Mild delayed rash</b>: cephalosporins are often usable with caution, depending on local policy.</li>
+                <li>NICE CG183: refer to a specialist drug-allergy service when someone needs a penicillin and has a history suggesting allergy, or when the label prevents essential treatment.</li>
+              </ul></div>
+            </div>
+          </div>
+
+          <div class="pg-panel" id="abx-cdiff">
+            <h3 class="pg-sec-h"><em>C. difficile</em> — who is at risk</h3>
+            <div class="pg-cards">
+              <div class="pg-card"><h4>⚠️ Higher-risk antibiotics</h4><ul>
+                <li>Clindamycin, cephalosporins, co-amoxiclav and fluoroquinolones carry the most risk. Any antibiotic can cause it.</li>
+                <li>Longer courses and multiple courses add to the risk, which is a reason to keep courses short.</li>
+              </ul></div>
+              <div class="pg-card"><h4>👤 Higher-risk people</h4><ul>
+                <li>Age over 65, recent hospital stay or care home, previous <i>C. difficile</i>, and immunosuppression.</li>
+                <li><b>PPIs</b> also increase the risk, so review whether they are still needed.</li>
+              </ul></div>
+              <div class="pg-card full"><h4>🩺 Diarrhoea after antibiotics</h4><ul>
+                <li>Send a stool sample for <i>C. difficile</i> in anyone with diarrhoea (Bristol type 5–7) during or within about 12 weeks of an antibiotic, especially older patients.</li>
+                <li>If confirmed, review and stop antibiotics, PPIs and antimotility drugs where possible, and treat per <b>NICE NG199</b>: oral vancomycin first-line, fidaxomicin second-line. Assess severity and admit if severe.</li>
+              </ul></div>
+            </div>
+          </div>
+
+          <div class="pg-panel" id="abx-tools">
+            <h3 class="pg-sec-h">National <em>toolkits and summaries</em></h3>
+            <div class="pg-cards">
+              <div class="pg-card"><h4>🎯 RCGP TARGET antibiotics toolkit</h4><ul>
+                <li><a href="https://www.rcgp.org.uk/targetantibiotics" target="_blank" rel="noopener noreferrer">TARGET antibiotics toolkit hub ↗</a> (RCGP with UKHSA): audits, training, self-assessment and resources for practices.</li>
+                <li><b>“Treating your infection”</b> patient leaflets for respiratory tract infection and UTI, plus a UTI leaflet for older adults and carers. They are in many languages and give self-care, expected duration and when to come back.</li>
+              </ul></div>
+              <div class="pg-card"><h4>📋 Summary of antimicrobial prescribing guidance</h4><ul>
+                <li>The NICE/UKHSA <a href="https://elearning.rcgp.org.uk/mod/book/view.php?id=14887" target="_blank" rel="noopener noreferrer">Summary of antimicrobial prescribing guidance — managing common infections ↗</a> is a one-table summary of drug, dose and duration for common infections. It is now hosted on TARGET, and the old gov.uk page is marked withdrawn.</li>
+                <li>Stewardship principles: <a href="https://www.nice.org.uk/guidance/ng15" target="_blank" rel="noopener noreferrer">NICE NG15 — Antimicrobial stewardship ↗</a>. Each infection has its own NICE antimicrobial prescribing guideline (NG84, NG91, NG79, NG109 and others).</li>
+              </ul></div>
+            </div>
+            <div class="pg-info">The <a href="#rx">Ready prescriptions</a> cards give the regimen wording for each infection, and Pharmacy First covers several of these infections. See <a href="#practice-pgd">PGD, PSD and pharmacy routes</a>.</div>
+          </div>
+
+          <div class="footer-disclaimer">
+            <strong>Educational use only.</strong> Course lengths and principles follow the NICE antimicrobial prescribing guidelines cited, NICE CG183 (drug allergy) and NICE NG199 (<i>C. difficile</i>). Check the current guideline, the SPC, BNF/BNFC and your local antimicrobial formulary before prescribing.
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SECTION · PRESCRIBING FOR CHILDREN (Upload 128)                   -->
+        <!-- ================================================================ -->
+        <section class="phub-section" id="sec-children" data-screen-label="Prescribing for children">
+          <p class="phub-secp">These are the principles behind a safe children's prescription. This page is for reference and does not calculate doses. Work out every dose from the <a href="https://bnfc.nice.org.uk/" target="_blank" rel="noopener noreferrer">BNFC ↗</a> or the product SPC for the child in front of you, using a weight measured today when you can.</p>
+
+          <div class="pg-cards">
+            <div class="pg-card" id="paeds-dosing"><h4>⚖️ Age bands or mg/kg?</h4><ul>
+              <li><b>Age-banded doses</b> (for example “1–4 years”) are common for everyday medicines such as paracetamol, ibuprofen and many antibiotics. They assume a typical weight for that age.</li>
+              <li><b>Weight-based doses</b> (mg/kg) are more precise. Use them when the BNFC or SPC gives them, and when a child is small or large for their age.</li>
+              <li>Weigh the child, and record the <b>weight and date</b> on the prescription record.</li>
+              <li>Doses given per m² of body surface area are for specialist settings.</li>
+            </ul></div>
+            <div class="pg-card warn"><h4>⛔ Never exceed the adult dose</h4><ul>
+              <li>A weight-calculated dose for an older or heavier child can come out <b>higher than the adult dose</b>. Cap it at the adult maximum unless a specialist says otherwise.</li>
+              <li>Double-check any calculation; a tenfold decimal error is the classic paediatric prescribing error.</li>
+            </ul></div>
+            <div class="pg-card"><h4>🍔 Children living with obesity</h4><ul>
+              <li>The BNFC warns that dosing on actual weight in an overweight child can give much higher doses than needed. For many drugs, calculate from the <b>ideal weight for height and age</b>.</li>
+              <li>Check the drug-specific advice in the BNFC or SPC. Some drugs are dosed on actual weight, and specialist or pharmacist advice helps here.</li>
+            </ul></div>
+            <div class="pg-card"><h4>🧴 Liquids — strength and mL wording</h4><ul>
+              <li>Liquids come in <b>several strengths</b> (for example paracetamol 120 mg/5 mL and 250 mg/5 mL). Always state the strength.</li>
+              <li>Write the dose in <b>mg and in mL</b>, for example “240 mg (10 mL) four times daily”, and use an oral syringe for doses that are not whole 5 mL spoonfuls.</li>
+              <li>Prefer <b>sugar-free</b> liquids for long-term use (dental health), unless the child needs the sugar form.</li>
+              <li>Check excipients (alcohol, propylene glycol) in neonates and young infants, and consider whether a tablet can be dispersed or crushed for an older child.</li>
+            </ul></div>
+            <div class="pg-card full"><h4>📜 Licensed, off-label and unlicensed medicines in children</h4><ul>
+              <li>Many medicines used in children are <b>off-label</b> (outside the licensed age, dose, indication or route) or <b>unlicensed</b>, because trials in children are limited. The BNFC includes many of these uses. This is normal practice where it is supported by evidence and accepted paediatric practice.</li>
+              <li>The GMC's off-label principles still apply: be satisfied there is enough evidence, take responsibility for the prescription, and record the reason. Where off-label use is routine in paediatrics, a short explanation to parents is usually enough. Explain that the leaflet in the pack may not match the instructions you have given. See <a href="#practice-offlabel">Off-label prescribing</a>.</li>
+              <li>Medicines for Children (RCPCH and NPPG) publishes <a href="https://www.medicinesforchildren.org.uk/" target="_blank" rel="noopener noreferrer">parent leaflets ↗</a> that explain off-label use in plain language.</li>
+            </ul></div>
+            <div class="pg-card full warn"><h4>🚩 Children's medicines to watch</h4><ul>
+              <li><b>Codeine</b>: not for under-12s. For 12–18s, only for short-term acute moderate pain when paracetamol and ibuprofen have not worked, and never after tonsillectomy or adenoidectomy for obstructive sleep apnoea (MHRA 2013).</li>
+              <li><b>Aspirin</b>: avoid under 16 because of the risk of Reye's syndrome, unless a specialist has started it for a specific condition.</li>
+              <li><b>Montelukast</b>: neuropsychiatric effects such as nightmares and behaviour change (<a href="#dsu-montelukast">MHRA 2024</a>).</li>
+              <li><b>Topical steroids</b>: use the right potency for the site and age, and say how much (fingertip units).</li>
+              <li><b>Over-the-counter cough and cold medicines</b>: not for under-6s (MHRA 2009).</li>
+            </ul></div>
+          </div>
+          <div class="footer-disclaimer">
+            <strong>Reference only — no dose calculator.</strong> These principles are from the BNFC guidance on prescribing for children, MHRA advice and the GMC prescribing guidance, in our own words. Always calculate and check a child's dose from the current BNFC or SPC, using a recent weight, and follow local paediatric guidance.
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SECTION · REMOTE / PHONE PRESCRIBING (Upload 128)                 -->
+        <!-- ================================================================ -->
+        <section class="phub-section" id="sec-remote" data-screen-label="Remote prescribing">
+          <p class="phub-secp">Prescribing after a phone, video or online consultation is routine in general practice. It follows the same professional standards as prescribing face to face, plus extra duties because you cannot examine the patient. The two key sources are the GMC's <a href="https://www.gmc-uk.org/professional-standards/the-professional-standards/good-practice-in-prescribing-and-managing-medicines-and-devices" target="_blank" rel="noopener noreferrer">Good practice in prescribing and managing medicines and devices (2021) ↗</a> and the multi-professional <a href="https://www.gmc-uk.org/professional-standards/learning-materials/remote-prescribing-high-level-principles" target="_blank" rel="noopener noreferrer">High level principles for good practice in remote consultations and prescribing ↗</a>, agreed by the UK healthcare regulators.</p>
+
+          <div class="pg-cards">
+            <div class="pg-card"><h4>📏 GMC 2021 — what the guidance expects</h4><ul>
+              <li>Prescribe remotely only when you have <b>enough information about the patient's health</b>, and are satisfied the medicine meets their needs and is safe.</li>
+              <li>Think about the <b>limits of the medium</b>: whether you can assess properly without an examination, and whether you have access to the records.</li>
+              <li>If you are not the patient's GP, get <b>consent to share</b> the prescription with their GP. If they refuse, consider whether it is safe to prescribe, especially for long-term conditions and medicines liable to misuse.</li>
+              <li>Take particular care with medicines that are <b>liable to misuse, abuse or overuse</b>, or that need monitoring, and with patients who may be <b>vulnerable</b>.</li>
+              <li>You must not prescribe <b>injectable cosmetic medicines</b> (such as botulinum toxin) without a face-to-face assessment.</li>
+            </ul></div>
+            <div class="pg-card"><h4>🤝 The shared high-level principles (summary)</h4><ul>
+              <li>Protect vulnerable patients and recognise <b>safeguarding</b> concerns.</li>
+              <li>Do a <b>clinical assessment</b> and check the medical records so the medicine is safe and appropriate.</li>
+              <li><b>Identify the patient</b> and make sure they understand and can consent.</li>
+              <li>Work within your <b>competence</b>, follow national guidance, and <b>share information</b> with the patient's other prescribers.</li>
+              <li>Speak up when systems and safeguards are not good enough.</li>
+            </ul></div>
+            <div class="pg-card"><h4>🪪 Identity checks</h4><ul>
+              <li>At the start, confirm <b>full name, date of birth and address</b> (or another identifier) and check them against the record. Ask the patient to state them rather than confirming what you read out.</li>
+              <li>If you are speaking to a third party, such as a parent, carer or relative, record who they are and check they are entitled to speak for the patient. Has the patient consented, or do they lack capacity?</li>
+              <li>Be more careful when the number is not the one on the record, when prescriptions are being collected by someone else, or with requests for CDs or medicines liable to misuse.</li>
+            </ul></div>
+            <div class="pg-card"><h4>📸 Photos and video</h4><ul>
+              <li>Images help for rashes, wounds and eyes, but lighting, focus and colour can mislead. Arrange to see the patient if you are unsure.</li>
+              <li><b>Intimate images</b>: avoid them where possible and never ask for them as routine. Do not request or accept intimate images of children unless it is clinically essential, consent is in place and local policy allows it. Follow the NHS England guidance on online consultation images and your practice policy.</li>
+              <li>Only use approved systems, never personal devices. Store images in the record only if they are clinically needed.</li>
+            </ul></div>
+            <div class="pg-card warn full"><h4>🏥 When the patient needs to be seen face to face</h4><ul>
+              <li>An examination will change the decision: chest signs, abdominal pain, a lump, a child with fever, ear examination, or a skin problem you cannot assess on a photo.</li>
+              <li>Red flags, an unclear diagnosis, or the patient getting worse or coming back again.</li>
+              <li>You cannot confirm identity or capacity, there are safeguarding concerns, or a communication barrier makes remote assessment unsafe (for example, no interpreter or hearing impairment).</li>
+              <li>The medicine needs a measurement first: BP before starting or titrating an antihypertensive, weight for a weight-loss medicine, or a pregnancy test before a teratogen.</li>
+              <li>The patient asks to be seen in person.</li>
+            </ul></div>
+            <div class="pg-card full"><h4>💊 Controlled drugs and medicines liable to misuse — remotely</h4><ul>
+              <li>Avoid <b>starting</b> opioids, benzodiazepines, Z-drugs or gabapentinoids remotely for a patient you do not know or cannot verify, unless you have their records and a clear clinical reason.</li>
+              <li>For <b>continuing</b> supply, check the record, the last review date, the usual quantity and any early requests. Use the same prescriber or a small team, and a set interval, to reduce the risk of “doctor shopping”.</li>
+              <li>Prescribe no more than <b>30 days</b> of a CD and use EPS to the patient's nominated pharmacy (see <a href="#practice-cd">Controlled drugs</a>).</li>
+              <li>Document the indication, the quantity and the plan for review and stopping.</li>
+            </ul></div>
+          </div>
+          <div class="footer-disclaimer">
+            <strong>Educational use only.</strong> This section summarises the GMC's Good practice in prescribing and managing medicines and devices (2021) and the multi-professional High level principles for good practice in remote consultations and prescribing, in our own words. Read the source guidance, your practice remote-consultation and imaging policies, and local safeguarding procedures.
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SECTION · DOAC DOSING REFERENCE (Upload 128)                      -->
+        <!-- ================================================================ -->
+        <section class="phub-section" id="sec-doac" data-screen-label="DOAC dosing">
+          <p class="phub-secp">The licensed DOAC doses side by side for <b>stroke prevention in AF</b>, <b>VTE treatment</b> and <b>VTE prophylaxis after hip or knee replacement</b>, with the criteria for dose reduction. This is a reference table only and takes no patient details. Doses are in our own words from each product's SPC, with NICE NG196 (AF), NG158 (VTE) and NG89 (VTE prophylaxis). Always check the current SPC.</p>
+
+          <div class="sd-alert red">
+            <div class="ic">🧮</div>
+            <div><h3>Use creatinine clearance (Cockcroft–Gault), not eGFR</h3>
+              <p>The DOAC licences use <b>CrCl from the Cockcroft–Gault equation</b> with <b>actual body weight</b> (MHRA Drug Safety Update, October 2019). eGFR can overestimate kidney function in older, lighter people and lead to overdosing. Use a recent creatinine and weight. Cockcroft–Gault is less reliable at extremes of weight (BMI under 18 or over 40, or weight over 120 kg), with unstable renal function or with oedema, so get specialist or pharmacist advice there. <b>No DOAC is recommended below CrCl 15 mL/min</b>, and dabigatran not below 30. The <a href="calculators.html#crcl">CrCl calculator</a> gives the number only.</p></div>
+          </div>
+
+          <div class="mon-stack">
+          <div class="pg-table-wrap"><table class="pg-table doac-table">
+            <thead><tr><th>DOAC</th><th>AF — stroke prevention</th><th>VTE — treatment</th><th>VTE prophylaxis (elective hip/knee replacement)</th><th>Renal (CrCl, mL/min)</th></tr></thead>
+            <tbody>
+              <tr><td>Apixaban</td>
+                <td data-label="AF — stroke prevention">5 mg twice daily. <b>2.5 mg twice daily</b> if <b>2 or more</b> of: age ≥80, weight ≤60 kg, serum creatinine ≥133 µmol/L; <b>or</b> CrCl 15–29.</td>
+                <td data-label="VTE — treatment">10 mg twice daily for 7 days, then 5 mg twice daily. After 6 months, 2.5 mg twice daily for extended prevention. No age or weight reduction.</td>
+                <td data-label="VTE prophylaxis">2.5 mg twice daily, starting 12–24 h after surgery: hip 32–38 days, knee 10–14 days.</td>
+                <td data-label="Renal (CrCl)">15–29: caution (AF dose criteria above). Below 15: not recommended.</td></tr>
+              <tr><td>Rivaroxaban</td>
+                <td data-label="AF — stroke prevention">20 mg once daily <b>with food</b>. <b>15 mg once daily</b> if CrCl 15–49.</td>
+                <td data-label="VTE — treatment">15 mg twice daily with food for 21 days, then 20 mg once daily with food. After 6 months, 10 mg once daily (or 20 mg if higher recurrence risk). CrCl 15–49: consider 15 mg once daily after day 21 if bleeding risk outweighs recurrence risk.</td>
+                <td data-label="VTE prophylaxis">10 mg once daily, starting 6–10 h after surgery: hip 5 weeks, knee 2 weeks.</td>
+                <td data-label="Renal (CrCl)">15–49: reduced AF dose. Below 15: not recommended.</td></tr>
+              <tr><td>Edoxaban</td>
+                <td data-label="AF — stroke prevention">60 mg once daily. <b>30 mg once daily</b> if <b>any</b> of: CrCl 15–50, weight ≤60 kg, or taking ciclosporin, dronedarone, erythromycin or ketoconazole. Use in AF with <b>high CrCl</b> only after careful evaluation (lower efficacy seen at high CrCl).</td>
+                <td data-label="VTE — treatment">After at least 5 days of parenteral heparin: 60 mg once daily. 30 mg once daily on the same criteria as AF.</td>
+                <td data-label="VTE prophylaxis">Not licensed for this use in the UK.</td>
+                <td data-label="Renal (CrCl)">15–50: 30 mg. Below 15: not recommended.</td></tr>
+              <tr><td>Dabigatran</td>
+                <td data-label="AF — stroke prevention">150 mg twice daily. <b>110 mg twice daily</b> if age ≥80 or taking verapamil. <b>Consider</b> 110 mg twice daily at age 75–80, CrCl 30–50 with high bleeding risk, or gastritis, oesophagitis or reflux.</td>
+                <td data-label="VTE — treatment">After at least 5 days of parenteral anticoagulant: 150 mg twice daily, with the same reduction criteria as AF.</td>
+                <td data-label="VTE prophylaxis">110 mg 1–4 h after surgery, then 220 mg once daily. 75 mg then 150 mg once daily if CrCl 30–50, age ≥75, or taking verapamil, amiodarone or quinidine: hip 28–35 days, knee 10 days.</td>
+                <td data-label="Renal (CrCl)">30–50: consider a reduced dose. <b>Below 30: contraindicated.</b></td></tr>
+            </tbody>
+          </table></div>
+          </div>
+
+          <div class="pg-cards">
+            <div class="pg-card warn"><h4>⚠️ Interactions to check</h4><ul>
+              <li><b>Avoid</b> with strong inhibitors of both CYP3A4 and P-gp: azole antifungals (ketoconazole, itraconazole, voriconazole, posaconazole) and HIV protease inhibitors. <b>Dabigatran</b> is contraindicated with ketoconazole, itraconazole, ciclosporin and dronedarone.</li>
+              <li><b>Avoid</b> strong inducers, which lower DOAC levels: rifampicin, carbamazepine, phenytoin, phenobarbital and St John's wort.</li>
+              <li><b>Bleeding risk</b> rises with antiplatelets, NSAIDs, SSRIs and SNRIs; avoid NSAIDs.</li>
+              <li>Clarithromycin, erythromycin, verapamil, diltiazem, amiodarone and dronedarone: dose rules differ by DOAC, so check the SPC.</li>
+            </ul></div>
+            <div class="pg-card"><h4>🩺 Before starting and at review</h4><ul>
+              <li>Baseline FBC, U&amp;E with CrCl, LFTs, weight, and a bleeding-risk assessment (NICE NG196 suggests ORBIT for AF).</li>
+              <li>Recheck renal function at least yearly. Check more often if CrCl is under 60, the patient is 75 or over, or frail: roughly every (CrCl ÷ 10) months is a common rule of thumb.</li>
+              <li>Recalculate CrCl when weight or renal function changes. DOACs are not used in pregnancy, mechanical heart valves, moderate–severe mitral stenosis, or triple-positive antiphospholipid syndrome.</li>
+              <li>Weight over 120 kg or BMI over 40: ISTH guidance (2021) supports apixaban or rivaroxaban for VTE. Get specialist advice for AF and at very low weight.</li>
+            </ul></div>
+          </div>
+          <div class="pg-info">The protocols at <a href="management/atrial-fibrillation.html">Atrial fibrillation</a>, <a href="management/dvt.html">DVT</a> and <a href="management/pulmonary-embolism.html">Pulmonary embolism</a> cover when to anticoagulate. The <a href="medication-chooser.html#vte-treatment">Medication options — VTE treatment</a> card lists the NG158 order.</div>
+          <div class="footer-disclaimer">
+            <strong>Reference only — not a dose calculator.</strong> Doses are summarised in our own words from the apixaban, rivaroxaban, edoxaban and dabigatran SPCs, NICE NG196, NG158 and NG89, and the MHRA Drug Safety Updates on renal function (2019) and DOAC dose adjustment (2023). Check the current SPC, BNF and local anticoagulation guidance, and calculate CrCl for the patient, before prescribing.
+          </div>
+        </section>
+
+        <!-- ================================================================ -->
+        <!-- SECTION · PRESCRIBING PRACTICALITIES (Upload 128)                 -->
+        <!-- ================================================================ -->
+        <section class="phub-section" id="sec-practice" data-screen-label="Prescribing practicalities">
+          <p class="phub-secp">Practical rules for common questions in general practice: controlled drugs, shared care (including requests from private providers), prescribing off-label, liver disease, and the routes by which other professionals supply or prescribe medicines.</p>
+
+          <div class="pg-tabs" id="practiceTabs">
+            <button class="pg-tab on" data-tab="practice-cd">🔒 Controlled drugs</button>
+            <button class="pg-tab" data-tab="practice-shared">🤝 Shared care</button>
+            <button class="pg-tab" data-tab="practice-offlabel">🏷️ Off-label &amp; unlicensed</button>
+            <button class="pg-tab" data-tab="practice-hepatic">🟤 Hepatic impairment</button>
+            <button class="pg-tab" data-tab="practice-pgd">🧾 PGD · PSD · pharmacy</button>
+          </div>
+
+          <div class="pg-panel on" id="practice-cd">
+            <h3 class="pg-sec-h">Controlled drugs — <em>the practical rules</em></h3>
+            <div class="pg-cards">
+              <div class="pg-card"><h4>📅 Validity and quantity</h4><ul>
+                <li>Prescriptions for <b>Schedule 2, 3 and 4</b> CDs are valid for <b>28 days</b> from the appropriate date.</li>
+                <li>The Department of Health and Social Care expects no more than <b>30 days' supply</b> of Schedule 2, 3 and 4 CDs. More is possible with a clear clinical reason, which you should document.</li>
+                <li>Schedule 2 and 3 CDs <b>cannot</b> be put on repeatable (repeat-dispensing) prescriptions. Schedule 4 and 5 can.</li>
+              </ul></div>
+              <div class="pg-card"><h4>✍️ Writing a Schedule 2 or 3 prescription</h4><ul>
+                <li>Include the drug, <b>form</b>, <b>strength</b> and <b>dose</b>, and the <b>total quantity in words and figures</b>. “As directed” is not acceptable.</li>
+                <li>Instalment prescriptions (for example for opioid substitution) use the specific FP10 forms and wording.</li>
+                <li>The <b>Electronic Prescription Service</b> can carry Schedule 2 and 3 CDs. Use EPS with the patient's nominated pharmacy where possible.</li>
+              </ul></div>
+              <div class="pg-card"><h4>💊 Gabapentinoids are Schedule 3</h4><ul>
+                <li>Since April 2019, <b>pregabalin and gabapentin</b> are Schedule 3 CDs (exempt from safe custody), so all the rules above apply.</li>
+                <li>They carry a risk of dependence and misuse, and of respiratory depression with opioids. See the <a href="#dsu-dependence">MHRA January 2026 update</a>.</li>
+                <li>Tramadol is Schedule 3; benzodiazepines and Z-drugs are Schedule 4 (part 1).</li>
+              </ul></div>
+              <div class="pg-card"><h4>🗣️ Opioid counselling</h4><ul>
+                <li>Agree a goal (function, not zero pain), a <b>trial period</b> and a plan for stopping before starting. Opioids work poorly for chronic primary pain (NICE NG193).</li>
+                <li>Warn about <b>dependence, tolerance and withdrawal</b>, constipation (co-prescribe a laxative), drowsiness and falls, and the danger with alcohol, benzodiazepines and gabapentinoids.</li>
+                <li><b>Driving</b>: it is an offence to drive while impaired. Patients taking medicines as prescribed have a statutory medical defence only if they are not impaired.</li>
+                <li>Store safely away from children, and return unused supplies to a pharmacy. Review regularly; above about 120 mg oral morphine equivalent a day, harms rise without added benefit (Opioids Aware, FPM).</li>
+              </ul></div>
+            </div>
+          </div>
+
+          <div class="pg-panel" id="practice-shared">
+            <h3 class="pg-sec-h">Shared care — <em>responsibility and the right to decline</em></h3>
+            <div class="pg-cards">
+              <div class="pg-card"><h4>📘 NHS England (2018) principles</h4><ul>
+                <li><a href="https://www.england.nhs.uk/publication/responsibility-for-prescribing-between-primary-and-secondary-tertiary-care/" target="_blank" rel="noopener noreferrer">Responsibility for prescribing between primary &amp; secondary/tertiary care ↗</a>: the prescriber who signs takes <b>clinical and legal responsibility</b> for that prescription.</li>
+                <li>Transfer to primary care only when the patient is <b>stable</b>, the GP <b>agrees</b>, and there is a clear agreement on monitoring, who does what, and how to get specialist advice.</li>
+                <li>If shared care is not agreed, prescribing stays with the specialist who started it.</li>
+              </ul></div>
+              <div class="pg-card"><h4>🙅 The right to decline</h4><ul>
+                <li>Shared care is <b>voluntary</b>. A GP can decline on <b>clinical grounds</b> (outside your competence, inadequate monitoring or specialist support) or <b>capacity grounds</b>, even when a local agreement exists (BMA). The GMC expects you to prescribe only within your competence.</li>
+                <li>Decide on the request, not the patient. Apply a consistent practice policy to avoid discrimination, explain the decision to the patient and the specialist, and record it.</li>
+                <li>Do not leave the patient without supply. Tell the specialist promptly so they can continue to prescribe.</li>
+              </ul></div>
+              <div class="pg-card full warn"><h4>🏷️ Requests from private providers</h4><ul>
+                <li><b>Check the provider</b>: is it registered with the CQC (or equivalent)? Is the clinician on the right register or specialist register? Is there a written shared-care protocol with monitoring and a named contact? NHS shared-care agreements are commissioned for NHS patients; for private patients, prescribing and monitoring usually stay with the private provider unless the ICB says otherwise (BMA).</li>
+                <li><b>ADHD</b>: Right to Choose providers are NHS-commissioned, but shared care is still by agreement. Check your local ICB policy. Stimulants are Schedule 2 CDs that need regular monitoring.</li>
+                <li><b>Testosterone</b>: for women in the menopause it is off-label; continue only if you are competent and it follows NICE NG23 (low sexual desire, HRT already optimised), with monitoring. For men, check that hypogonadism has been confirmed and the monitoring plan is clear.</li>
+                <li><b>Gender services</b>: shared care with NHS gender services follows local agreements. Be cautious with requests from unregulated or overseas providers. GnRH analogues (puberty blockers) for gender incongruence in under-18s are restricted to clinical trials in the UK by law (indefinite restriction from January 2025).</li>
+                <li><b>Weight-loss injections</b>: there is no duty to take over private GLP-1 prescribing. Record private use on the record, share information with the private prescriber when the patient consents, and be alert to safety issues (<a href="#dsu-glp1-pregnancy">MHRA June 2025</a>).</li>
+              </ul></div>
+            </div>
+          </div>
+
+          <div class="pg-panel" id="practice-offlabel">
+            <h3 class="pg-sec-h">Off-label and <em>unlicensed</em> prescribing (GMC)</h3>
+            <div class="pg-cards">
+              <div class="pg-card"><h4>📖 The terms</h4><ul>
+                <li><b>Off-label</b>: a licensed medicine used outside its licence (a different indication, age, dose or route). Examples are amitriptyline for neuropathic pain and many children's uses.</li>
+                <li><b>Unlicensed</b>: a medicine with no UK licence at all, such as a “special” or an imported product.</li>
+              </ul></div>
+              <div class="pg-card"><h4>✅ GMC (2021) expectations</h4><ul>
+                <li>Prefer a licensed medicine for its licensed use where one will meet the patient's needs.</li>
+                <li>When prescribing off-label or unlicensed, be satisfied there is <b>enough evidence or experience</b> of safety and efficacy, take <b>responsibility</b> for prescribing and overseeing care, and <b>record</b> the reasons.</li>
+                <li>Give the patient enough information to make an informed decision. Where off-label use is routine (for example in paediatrics or palliative care), a less detailed explanation may be enough. Warn that the leaflet may not match your instructions.</li>
+                <li>Be careful with shared-care requests for off-label use: the person who signs the prescription carries the responsibility.</li>
+              </ul></div>
+            </div>
+          </div>
+
+          <div class="pg-panel mon-stack" id="practice-hepatic">
+            <h3 class="pg-sec-h">Hepatic impairment — <em>pointer table</em></h3>
+            <p class="pg-sec-p">No single blood test predicts how a drug will be handled in liver disease. Coagulopathy, low albumin, ascites and encephalopathy (the Child–Pugh components) are better guides than transaminases alone. This table points to the common problem drugs. Check section 4.2/4.3 of the SPC and the BNF hepatic-impairment advice for every drug.</p>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Drug / class</th><th>Concern in liver disease</th><th>Pointer</th></tr></thead>
+              <tbody>
+                <tr><td>Opioids</td><td data-label="Concern">Accumulation, sedation, constipation precipitating encephalopathy</td><td data-label="Pointer">Avoid or use reduced doses with longer intervals; laxatives; avoid in decompensated disease if possible</td></tr>
+                <tr><td>Benzodiazepines, Z-drugs</td><td data-label="Concern">Can precipitate encephalopathy</td><td data-label="Pointer">Avoid; if essential, a short-acting option at a low dose after specialist advice</td></tr>
+                <tr><td>NSAIDs</td><td data-label="Concern">GI bleeding (varices, coagulopathy), renal failure and fluid retention in cirrhosis</td><td data-label="Pointer">Avoid in cirrhosis</td></tr>
+                <tr><td>Paracetamol</td><td data-label="Concern">Usually the preferred analgesic, but toxicity risk is higher with low body weight, malnutrition or alcohol misuse</td><td data-label="Pointer">Consider a reduced daily maximum in those risk groups (check SPC/BNF)</td></tr>
+                <tr><td>Diuretics</td><td data-label="Concern">Hypokalaemia and hyponatraemia can precipitate encephalopathy</td><td data-label="Pointer">Monitor electrolytes; spironolactone is often specialist-led in ascites</td></tr>
+                <tr><td>Statins</td><td data-label="Concern">Contraindicated in active liver disease or unexplained persistently raised transaminases</td><td data-label="Pointer">Stable NAFLD/MASLD is not a contraindication; check LFTs per NICE</td></tr>
+                <tr><td>Metformin, sulfonylureas</td><td data-label="Concern">Lactic acidosis (metformin); hypoglycaemia (sulfonylureas, reduced gluconeogenesis)</td><td data-label="Pointer">Avoid metformin in severe impairment; reduce or avoid sulfonylureas</td></tr>
+                <tr><td>Anticoagulants</td><td data-label="Concern">Coagulopathy and bleeding; DOAC exposure rises</td><td data-label="Pointer">Rivaroxaban contraindicated with coagulopathy-associated liver disease (including Child–Pugh B and C); apixaban and edoxaban not recommended in severe impairment — check SPC</td></tr>
+                <tr><td>Methotrexate, leflunomide, azathioprine</td><td data-label="Concern">Hepatotoxic</td><td data-label="Pointer">Specialist; shared-care LFT monitoring</td></tr>
+                <tr><td>Co-amoxiclav, flucloxacillin</td><td data-label="Concern">Cholestatic jaundice, which can appear weeks after the course</td><td data-label="Pointer">Use only when indicated; ask about recent courses when jaundice presents</td></tr>
+                <tr><td>PPIs</td><td data-label="Concern">Higher exposure; association with infections in cirrhosis</td><td data-label="Pointer">Review the need; SPC dose limits in severe impairment</td></tr>
+              </tbody>
+            </table></div>
+          </div>
+
+          <div class="pg-panel" id="practice-pgd">
+            <h3 class="pg-sec-h">PGD, PSD and independent prescribing — <em>and the pharmacy routes</em></h3>
+            <div class="pg-table-wrap"><table class="pg-table">
+              <thead><tr><th>Route</th><th>What it is</th><th>Who / example</th></tr></thead>
+              <tbody>
+                <tr><td>Patient Group Direction (PGD)</td><td>A written instruction for supplying or giving a named medicine to a defined <b>group</b> of patients who are not individually identified beforehand. It is signed by a doctor and a pharmacist and authorised by the organisation.</td><td>Registered professionals named in law, for example nurses, pharmacists, paramedics and physiotherapists. <b>Not</b> healthcare assistants. Examples: practice-nurse travel vaccines; Pharmacy First.</td></tr>
+                <tr><td>Patient Specific Direction (PSD)</td><td>A prescriber's written instruction to give a medicine to a <b>named patient</b> after the prescriber has assessed them.</td><td>Lets a trained HCA or other staff member give it, for example B12 injections or flu vaccine under a named list.</td></tr>
+                <tr><td>Independent prescribing</td><td>A prescriber who takes full responsibility for assessment and the prescribing decision, within their competence.</td><td>Doctors, dentists, and annotated nurse, pharmacist, physiotherapist, paramedic and podiatrist independent prescribers (with some CD limits for some groups).</td></tr>
+                <tr><td>Supplementary prescribing</td><td>Prescribing within an agreed Clinical Management Plan with an independent prescriber, after the IP's diagnosis.</td><td>For example dietitians, radiographers, or IP-eligible professions under a plan.</td></tr>
+              </tbody>
+            </table></div>
+            <div class="pg-cards" style="margin-top:16px">
+              <div class="pg-card"><h4>🏪 Pharmacy First (England, from January 2024)</h4><ul>
+                <li>Community pharmacists can assess and supply under PGDs for seven conditions: <b>sinusitis</b> (12 and over), <b>sore throat</b> (5 and over), <b>acute otitis media</b> (1–17), <b>infected insect bite</b> (1 and over), <b>impetigo</b> (1 and over), <b>shingles</b> (18 and over), and <b>uncomplicated UTI</b> in women aged 16–64.</li>
+                <li>Pharmacy First also covers urgent repeat-medicine supply and minor illness referrals from NHS 111 and practices. Check the current NHS England service specification for age bands and exclusions.</li>
+              </ul></div>
+              <div class="pg-card"><h4>💊 Pharmacy Contraception Service</h4><ul>
+                <li>Community pharmacies can <b>continue</b> (from 2023) and <b>start</b> (from December 2023) oral contraception under PGD.</li>
+                <li><b>Oral emergency contraception</b> (levonorgestrel and ulipristal) was added to the service from <b>29 October 2025</b>.</li>
+                <li>Refer complex cases back, for example UKMEC 3–4, interacting medicines, or LARC requests.</li>
+              </ul></div>
+            </div>
+          </div>
+
+          <div class="footer-disclaimer">
+            <strong>Educational use only.</strong> Sources: Misuse of Drugs Regulations 2001 (as amended) and DHSC/NHS England CD guidance; NHS England, <i>Responsibility for prescribing between primary &amp; secondary/tertiary care</i> (2018); BMA shared-care guidance; GMC <i>Good practice in prescribing and managing medicines and devices</i> (2021); SPCs and BNF hepatic-impairment advice; NHS England Pharmacy First and Pharmacy Contraception Service specifications. Check current local policies.
+          </div>
+        </section>
+
       </div>
     </div>
   </main>
@@ -1630,21 +2184,23 @@
 
 <!-- Ready-prescriptions data + renderer -->
 <script src="../assets/case-related.js?v=2"></script>
-<script src="../assets/prescriptions-data.js?v=121"></script>
-<script src="../assets/prescriptions-data-infections.js?v=121"></script>
-<script src="../assets/prescriptions-data-skin-sexual.js?v=121"></script>
-<script src="../assets/prescriptions-data-common.js?v=121"></script>
-<script src="../assets/prescriptions-data-extra.js?v=121"></script>
-<script src="../assets/prescriptions-data-paeds-eyes.js?v=121"></script>
-<script src="../assets/prescriptions-data-batch6.js?v=121"></script>
-<script src="../assets/prescriptions-data-batch7.js?v=121"></script>
-<script src="../assets/prescriptions-data-batch8.js?v=117"></script>
-<script src="../assets/prescriptions-data-batch9.js?v=121"></script>
-<script src="../assets/prescriptions-data-batch10.js?v=121"></script>
-<script src="../assets/prescriptions-data-batch11.js?v=114"></script>
-<script src="../assets/prescriptions-data-batch12.js?v=121"></script>
-<script src="../assets/topic-links.js?v=9"></script>
-<script src="../assets/prescriptions.js?v=20261014u114"></script>
+<script src="../assets/prescriptions-data.js?v=127"></script>
+<script src="../assets/prescriptions-data-infections.js?v=127"></script>
+<script src="../assets/prescriptions-data-skin-sexual.js?v=127"></script>
+<script src="../assets/prescriptions-data-common.js?v=127"></script>
+<script src="../assets/prescriptions-data-extra.js?v=127"></script>
+<script src="../assets/prescriptions-data-paeds-eyes.js?v=127"></script>
+<script src="../assets/prescriptions-data-batch6.js?v=127"></script>
+<script src="../assets/prescriptions-data-batch7.js?v=127"></script>
+<script src="../assets/prescriptions-data-batch8.js?v=127"></script>
+<script src="../assets/prescriptions-data-batch9.js?v=127"></script>
+<script src="../assets/prescriptions-data-batch10.js?v=127"></script>
+<script src="../assets/prescriptions-data-batch11.js?v=127"></script>
+<script src="../assets/prescriptions-data-batch12.js?v=127"></script>
+<script src="../assets/prescriptions-data-batch13.js?v=127"></script>
+<script src="../assets/prescriptions-data-zz-fields.js?v=127"></script>
+<script src="../assets/topic-links.js?v=127"></script>
+<script src="../assets/prescriptions.js?v=127"></script>
 
 <!-- RAG dataset + area picker -->
 <script src="../assets/rag-data.js"></script>
@@ -1657,7 +2213,7 @@
   const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
   /* ---- top-level section nav ---- */
-  const SECTIONS = ['guide','rx','sickday','ckd','pregnancy','review'];
+  const SECTIONS = ['guide','rx','sickday','ckd','pregnancy','review','mhra','antibiotics','children','remote','doac','practice'];
   function showSection(sec){
     if(SECTIONS.indexOf(sec)<0) sec='guide';
     $$('.phub-btn').forEach(b=>b.classList.toggle('on', b.dataset.sec===sec));
@@ -1771,8 +2327,43 @@
   });
 
   /* ---- open the right section from the URL hash (deep links / redirects) ---- */
-  const h=(location.hash||'').replace('#','').toLowerCase();
-  if(SECTIONS.indexOf(h)>=0) showSection(h);
+  /* Accepts #<section> (e.g. #ckd), #sec-<section> (e.g. #sec-ckd), and any element id
+     inside a section — a sub-tab panel (#tab-fp10, #ckd-dose, #practice-cd) or an item
+     (#dsu-topiramate). Old prescribing-guide.html links arrive as #tab-free/#tab-fp10/
+     #tab-avoid/#tab-rag (or #free/#fp10/#avoid/#rag). Upload 128. */
+  function openPanel(panel){
+    const scope = panel.closest('.phub-section'); if(!scope) return;
+    const key = panel.id.replace(/^tab-/,'');
+    const tab = scope.querySelector('.pg-tab[data-tab="'+key+'"]');
+    if(!tab) return;
+    scope.querySelectorAll('.pg-tab').forEach(x=>x.classList.toggle('on', x===tab));
+    scope.querySelectorAll('.pg-panel').forEach(x=>x.classList.toggle('on', x===panel));
+  }
+  function openHash(){
+    let h=decodeURIComponent((location.hash||'').replace('#',''));
+    if(!h) return;
+    const lc=h.toLowerCase();
+    if(SECTIONS.indexOf(lc)>=0){ showSection(lc); return; }
+    if(/^sec-/.test(lc) && SECTIONS.indexOf(lc.slice(4))>=0){ showSection(lc.slice(4)); return; }
+    if(['free','fp10','avoid','rag'].indexOf(lc)>=0) h='tab-'+lc;
+    const el=document.getElementById(h);
+    const sec=el && el.closest('.phub-section');
+    if(!sec) return;
+    const key=sec.id.replace(/^sec-/,'');
+    $$('.phub-btn').forEach(b=>b.classList.toggle('on', b.dataset.sec===key));
+    $$('.phub-section').forEach(s=>s.classList.toggle('on', s===sec));
+    const panel=el.closest('.pg-panel');
+    if(panel) openPanel(panel);
+    if(el!==sec) requestAnimationFrame(()=>scrollToEl(el));
+  }
+  openHash();
+  window.addEventListener('hashchange', openHash);
+  /* in-page links such as href="#dsu-fluoroquinolones" or "#rx" switch section */
+  document.addEventListener('click', e=>{
+    const a=e.target.closest('a[href^="#"]'); if(!a) return;
+    const id=a.getAttribute('href').slice(1); if(!id) return;
+    if(location.hash==='#'+id){ e.preventDefault(); openHash(); }
+  });
 })();
 </script>
 

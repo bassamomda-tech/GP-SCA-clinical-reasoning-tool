@@ -29,7 +29,7 @@
 - Don't squeeze/scratch; avoid sharing towels/bath water.
 - Surrounding eczema: emollient \u00b1 short mild topical steroid.
 - Immunocompromised/extensive/facial in adult \u2192 consider HIV/refer. Eyelid + conjunctivitis \u2192 ophthalmology.`,
-    sources:[{ label:'PCDS', url:'https://www.pcds.org.uk' }],
+    sources:[{ label:'NICE CKS — Molluscum contagiosum', url:'https://cks.nice.org.uk/topics/molluscum-contagiosum/' }],
   },
 
   { id:'contact-dermatitis', title:'Contact dermatitis (irritant / allergic)', category:'Dermatology',
@@ -60,7 +60,7 @@
 - Emollients generous + soap substitute; topical steroid (match potency to site) short burst.
 - Secondary infection \u2192 flucloxacillin.
 - Persistent/recurrent/occupational \u2192 dermatology for patch testing; document occupational cases.`,
-    sources:[{ label:'British Association of Dermatologists', url:'https://www.bad.org.uk' }],
+    sources:[{ label:'NICE CKS — Dermatitis (contact)', url:'https://cks.nice.org.uk/topics/dermatitis-contact/' }],
   },
 
   { id:'folliculitis-boils', title:'Folliculitis & boils (furuncles)', category:'Dermatology',
@@ -122,7 +122,7 @@
 - Flucloxacillin 500 mg QDS 5d (clarithromycin 500 mg BD if pen-allergic) if cellulitis/not settling.
 - Chronic paronychia: keep dry, avoid irritants, topical steroid \u00b1 antifungal (not abx).
 - Vesicles = herpetic whitlow \u2192 aciclovir; do NOT incise.`,
-    sources:[{ label:'PCDS', url:'https://www.pcds.org.uk' }],
+    sources:[{ label:'NICE CKS — Paronychia (acute)', url:'https://cks.nice.org.uk/topics/paronychia-acute/' }],
   },
 
   { id:'intertrigo', title:'Intertrigo', category:'Dermatology',
@@ -153,7 +153,7 @@
 - Barrier prep; candidal \u2192 topical imidazole BD 2-4 wks (\u00b1 short mild hydrocortisone).
 - Bacterial \u2192 antibiotic. Recurrent \u2192 screen diabetes.
 - Atypical \u2192 consider flexural psoriasis/erythrasma/tinea.`,
-    sources:[{ label:'PCDS', url:'https://www.pcds.org.uk' }],
+    sources:[{ label:'NICE CKS — Candida (skin), including intertrigo', url:'https://cks.nice.org.uk/topics/candida-skin/' }],
   },
 
   { id:'pompholyx', title:'Pompholyx (dyshidrotic eczema)', category:'Dermatology',
@@ -182,7 +182,7 @@
 - Manage as eczema: emollients generous + soap substitute; avoid irritants (gloves for wet work).
 - Potent topical steroid short bursts (palms/soles); sedating antihistamine ON if itch.
 - Secondary infection \u2192 flucloxacillin. Refractory \u2192 dermatology (patch test/phototherapy/systemics).`,
-    sources:[{ label:'NICE CKS — Eczema: pompholyx', url:'https://cks.nice.org.uk/topics/eczema-pompholyx/' },{ label:'British Association of Dermatologists — pompholyx', url:'https://www.bad.org.uk' }],
+    sources:[{ label:'NICE CKS — Eczema: pompholyx', url:'https://cks.nice.org.uk/topics/eczema-pompholyx/' }],
   },
 
   { id:'sunburn', title:'Sunburn', category:'Dermatology',
@@ -211,7 +211,7 @@
 - Cool skin (cool showers/compresses), fluids, rest in shade; paracetamol \u00b1 ibuprofen; after-sun/emollient; leave blisters intact (avoid topical LA).
 - Extensive blistering/heat illness/dehydration \u2192 assess as burn.
 - Prevent: SPF 30+ broad-spectrum, cover up, avoid peak sun, no sunbeds (skin-cancer risk).`,
-    sources:[{ label:'British Association of Dermatologists', url:'https://www.bad.org.uk' }],
+    sources:[{ label:'NHS — Sunburn', url:'https://www.nhs.uk/conditions/sunburn/' }],
   },
 
   { id:'perioral-dermatitis', title:'Perioral dermatitis', category:'Dermatology',
@@ -240,7 +240,7 @@
 - KEY: STOP topical (and review inhaled) corticosteroids on face; \u201czero therapy\u201d (stop cosmetics/occlusives). Warn re initial flare on stopping.
 - Topical metronidazole or azelaic acid (mild); oral lymecycline 408 mg OD or oxytetracycline 500 mg BD (or doxycycline 100 mg OD) 6-12 wks (moderate-severe).
 - Children/pregnancy: topical \u00b1 oral erythromycin (avoid tetracyclines).`,
-    sources:[{ label:'PCDS', url:'https://www.pcds.org.uk' }],
+    sources:[{ label:'PCDS — perioral / periorificial dermatitis', url:'https://www.pcds.org.uk/clinical-guidance/perioral-dermatitis-periocular-dermatitis-syn-periorifacial-dermatitis' }],
   }
 
   );

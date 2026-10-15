@@ -11,33 +11,68 @@
   /* ============ 113. VIDEO — The sick note the assessment doesn't support ============ */
   const c113 = {
     id:'sicknote-unsupported', title:'"I just need you to sign me off for three months"', type:'video', duration:12,
-    meta:{ age:44, sex:'M', setting:'Video consultation \u2014 a fit-note request that doesn\u2019t fit.', system:'Ethics / Fit notes & honest assessment' },
+    meta:{ age:44, sex:'M', setting:'Video consultation \u2014 a fit-note request that doesn\u2019t fit.', system:'Ethics / Fit notes & honest assessment', checked:'October 2026' },
     brief:'Mr Carl Dobbs, 44, warehouse operative. Requests a fit note signing him off "for three months" for a back strain that, on assessment, is mild, mechanical and improving \u2014 he is moving freely on camera, no red flags. He is insistent and a little aggressive. If explored gently: a grievance/disciplinary process at work he is avoiding, and money worries; the back is partly real but the agenda is escaping a workplace conflict. Wants a long certificate, no questions.',
     script:{
-      opening:'"Right, doc, I just need you to sign me off for three months with my back. It\u2019s killing me. Just write it down and I\u2019ll be on my way \u2014 I don\u2019t need an examination or twenty questions, I know my own body. Three months, that\u2019s what I need. My mate\u2019s GP does it no problem. Can you just do it?"',
-      facts:[
-        { topic:'The clinical reality', text:'On assessment: a mild, mechanical, improving back strain \u2014 moving freely, no neurological or red-flag features. There is no clinical basis for a three-month total sign-off; the evidence would support, at most, a short period and/or a phased/adjusted return, not a blanket long certificate.' },
-        { topic:'What a fit note is',     text:'A fit note (Statement of Fitness for Work) is the GP\u2019s honest clinical OPINION about the effect of a condition on the patient\u2019s ability to work \u2014 it is not a benefit the patient dictates, and "may be fit with adjustments" (phased return, amended duties) is often more appropriate than "not fit". The GP must be truthful; signing a certificate the assessment doesn\u2019t support is dishonest and a probity issue.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 the real driver isn\u2019t the back: there is a workplace grievance/disciplinary process he wants to avoid, plus money worries. He\u2019s using a long sick note as an escape route. There may also be genuine STRESS/low mood from the conflict that IS legitimate \u2014 the skill is to separate the (unsupported) three-month back certificate from the real, addressable issue (work stress, the dispute, signposting).' },
-        { topic:'The relationship risk', text:'Refusing a demand from an insistent, slightly aggressive patient risks confrontation; the GP must hold the probity line WITHOUT being defensive or dismissive, explore what\u2019s really going on, and offer legitimate help \u2014 keeping the therapeutic relationship intact.' },
-        { topic:'What he needs',       text:'Officially: a three-month sign-off, no questions. What he needs: an honest fit note reflecting the actual assessment (short and/or "may be fit with adjustments"/phased return), the real issue surfaced (work conflict, stress, money), legitimate support and signposting, and the probity line held kindly \u2014 not a dishonest certificate.' },
+      "opening": "\"Right, doc, I just need you to sign me off for three months with my back. It's killing me. Just write it down and I'll be on my way — I don't need an examination or twenty questions, I know my own body. Three months, that's what I need. My mate's GP does it no problem. Can you just do it?\"",
+      "facts": [
+        {
+          "topic": "The back",
+          "text": "If asked: lower back, started 10 days ago lifting boxes at work. Was bad for the first few days; \"it's easing now, to be fair\". Aches after sitting a long time. No pain down the legs."
+        },
+        {
+          "topic": "Red-flag questions (answer honestly if asked)",
+          "text": "No numbness between the legs or around the bottom, no problems passing urine or opening bowels, no weakness or pins and needles in the legs, no fever, no weight loss, no night pain, no history of cancer."
+        },
+        {
+          "topic": "On video",
+          "text": "If asked to show movements: you can bend forward to your knees, twist and walk around the room without difficulty, though you wince a bit bending."
+        },
+        {
+          "topic": "Painkillers",
+          "text": "Paracetamol and ibuprofen from the shop, \"they take the edge off\". No regular medicines, no allergies."
+        },
+        {
+          "topic": "Work",
+          "text": "Warehouse operative, 44, eight years with the same firm. You have been off since the injury, self-certified for the first week."
+        },
+        {
+          "topic": "The real problem — hold back",
+          "text": "You raised a grievance against your new supervisor, who you say has been \"picking on\" you. Now YOU are facing a disciplinary hearing next week for \"attitude\". You are dreading it. Say this only if the doctor asks what is going on at work, or asks gently what three months would give you."
+        },
+        {
+          "topic": "Stress and money (if asked)",
+          "text": "Sleeping badly, short-tempered with your partner, worried about money — \"I can't afford to lose this job.\" You are not depressed in the sense of feeling hopeless, and you have no thoughts of harming yourself. Drinking a few more cans than usual."
+        },
+        {
+          "topic": "Home",
+          "text": "Live with your partner Jade and her two children. Smoke 10 a day."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Pushy, a bit aggressive at first. If the doctor just refuses (\"I can't do that\"), escalate: \"So you think I'm lying?\" If they acknowledge your pain and ask what is really going on, settle and tell them about work. Accept an honest note — a shorter one or \"may be fit with adjustments\" — if they explain their reasons and offer help with the work situation. Grumble but accept."
+        }
       ],
-      ice:{
-        ideas:'He\u2019s entitled to dictate a three-month sign-off for his back, and the GP should just sign it.',
-        concerns:'HIDDEN AGENDA \u2014 a workplace grievance/disciplinary he\u2019s avoiding and money worries; the back is partly real but the long note is an escape route; there may be genuine work-related stress/low mood.',
-        expectations:'A three-month total sign-off, no questions. What he actually needs: an honest fit note matching the assessment (short / phased return), the real work-conflict and stress surfaced and supported, and the probity line held kindly.'
+      "ice": {
+        "ideas": "\"My back's bad and I need three months off — that's what my mate got.\"",
+        "concerns": "Underneath: the disciplinary hearing, losing your job and money.",
+        "expectations": "\"Just sign me off for three months.\" You will accept a shorter or \"fit with adjustments\" note if you feel heard and are offered real help with the work problem."
       },
-      cues:['"Just sign me off for three months, no examination" \u2014 dictating a certificate the assessment can\u2019t support; probity line.','Moving freely, mild improving strain \u2014 clinical evidence doesn\u2019t match the request.','Insistent/aggressive about a long note + money worries \u2014 a hidden work conflict driving it; surface it.']
+      "cues": [
+        "\"I know my own body.\" — say in the opening.",
+        "\"Work's been a nightmare anyway.\" — say when asked about your job.",
+        "\"I can't afford to lose this job.\" — say if money or work is explored."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Understands the fit note is the GP\u2019s HONEST clinical opinion, not a patient-dictated entitlement: declines to sign a three-month total sign-off that the assessment does not support, explaining why truthfully \u2014 a probity/honesty issue' },
-      { dom:'tasks', text:'Offers the clinically-appropriate alternative: a SHORT certificate if any and/or "may be fit for work with adjustments" (phased return, amended duties, avoiding heavy lifting) reflecting a mild, improving, mechanical strain with no red flags' },
-      { dom:'tasks', text:'Assesses the back properly (briefly) to confirm the absence of red flags and the mild/improving picture, rather than refusing blindly \u2014 grounding the decision in assessment' },
-      { dom:'tasks', text:'Surfaces and addresses the REAL issue: explores the work situation (the grievance/disciplinary, money worries, stress/low mood) non-judgementally, and recognises that genuine work-related stress, if present, is a legitimate reason for support \u2014 separating it from the unsupported back certificate' },
-      { dom:'tasks', text:'Offers LEGITIMATE help and signposting: occupational health, the phased-return/adjustments route, support for stress/mood (and a proportionate certificate if a genuine condition warrants it), workplace/union/Citizens Advice signposting for the dispute' },
-      { dom:'rto',   text:'Holds the probity line WITHOUT being defensive, dismissive or confrontational; de-escalates the insistence/aggression, validates the underlying difficulty, and keeps the therapeutic relationship intact' },
-      { dom:'rto',   text:'Explores rather than simply refuses \u2014 "help me understand what\u2019s really going on" \u2014 so the patient feels heard even when the specific request is declined' },
-      { dom:'gs',    text:'Safety-nets and follows up: a plan that addresses the real need (OH, phased return, stress support, signposting), review of the back/mood, documentation of the assessment and the honest rationale, and an open door \u2014 declining the dishonest request while genuinely helping' },
+      { dom:'dg', text:'Understands the fit note is the GP\u2019s HONEST clinical opinion, not a patient-dictated entitlement: declines to sign a three-month total sign-off that the assessment does not support, explaining why truthfully \u2014 a probity/honesty issue' },
+      { dom:'cm', text:'Offers the clinically-appropriate alternative: a SHORT certificate if any and/or "may be fit for work with adjustments" (phased return, amended duties, avoiding heavy lifting) reflecting a mild, improving, mechanical strain with no red flags' },
+      { dom:'dg', text:'Assesses the back properly (briefly) to confirm the absence of red flags and the mild/improving picture, rather than refusing blindly \u2014 grounding the decision in assessment' },
+      { dom:'ro', text:'Surfaces and addresses the REAL issue: explores the work situation (the grievance/disciplinary, money worries, stress/low mood) non-judgementally, and recognises that genuine work-related stress, if present, is a legitimate reason for support \u2014 separating it from the unsupported back certificate' },
+      { dom:'cm', text:'Offers LEGITIMATE help and signposting: occupational health, the phased-return/adjustments route, support for stress/mood (and a proportionate certificate if a genuine condition warrants it), workplace/union/Citizens Advice signposting for the dispute' },
+      { dom:'ro',   text:'Holds the probity line WITHOUT being defensive, dismissive or confrontational; de-escalates the insistence/aggression, validates the underlying difficulty, and keeps the therapeutic relationship intact' },
+      { dom:'ro',   text:'Explores rather than simply refuses \u2014 "help me understand what\u2019s really going on" \u2014 so the patient feels heard even when the specific request is declined' },
+      { dom:'cm',    text:'Safety-nets and follows up: a plan that addresses the real need (OH, phased return, stress support, signposting), review of the back/mood, documentation of the assessment and the honest rationale, and an open door \u2014 declining the dishonest request while genuinely helping' },
     ],
     worked:[
       { lbl:'Hear it, assess it',   txt:'"I can hear your back\u2019s really getting you down, and I do want to help \u2014 so let me quickly check how it\u2019s moving, because what I put on a fit note has to be honest and based on what I actually find. \u2026 The good news is there\u2019s nothing sinister, and it\u2019s a mild strain that\u2019s settling. That\u2019s genuinely reassuring."' },
@@ -47,7 +82,7 @@
       { lbl:'Legitimate help',      txt:'"If the situation at work is grinding you down to the point it\u2019s affecting your health \u2014 your sleep, your mood \u2014 that\u2019s real and I\u2019d take it seriously and support it honestly. Let\u2019s get occupational health involved, look at whether stress is part of this, and I can point you to people who help with workplace disputes and money worries. That\u2019s a far better answer than a sick note that wouldn\u2019t hold up anyway."' },
       { lbl:'Hold the line, kindly', txt:'"So I\u2019m not going to sign the three months \u2014 and I hope you can see it\u2019s because I\u2019m being straight with you, not because I don\u2019t care. What I AM going to do is sort a fit-for-adjustments note, take the work stress seriously, and get you the right support. Come back and let\u2019s tackle the actual problem. My door\u2019s open."' },
     ],
-    learning:'A fit note is the GP\u2019s honest clinical OPINION about how a condition affects work \u2014 not a patient-dictated entitlement \u2014 so signing a three-month total sign-off that the assessment does not support is dishonest and a probity issue, and must be declined. But "declining" is not the consultation: assess the back (confirming the mild, improving, red-flag-free picture grounds the decision), offer the clinically-appropriate alternative ("may be fit with adjustments"/phased return / a short certificate), and \u2014 crucially \u2014 surface the REAL driver, the hidden agenda of a workplace grievance/disciplinary, money worries and possible genuine work-related stress/low mood, which IS a legitimate, addressable need separate from the unsupported certificate. Offer legitimate help (occupational health, phased return, stress/mood support, union/Citizens Advice signposting). The examinable skill is holding the probity line WITHOUT being defensive, dismissive or confrontational \u2014 de-escalating, exploring rather than just refusing, and keeping the therapeutic relationship intact while being honest.',
+    learning:"A fit note is the GP’s honest clinical OPINION about how a condition affects work — not a patient-dictated entitlement — so signing a three-month total sign-off that the assessment does not support is dishonest and a probity issue, and must be declined. But \"declining\" is not the consultation: assess the back (confirming the mild, improving, red-flag-free picture grounds the decision), offer the clinically-appropriate alternative (\"may be fit with adjustments\"/phased return / a short certificate), and — crucially — surface the REAL driver, the hidden agenda of a workplace grievance/disciplinary, money worries and possible genuine work-related stress/low mood, which IS a legitimate, addressable need separate from the unsupported certificate. Offer legitimate help (occupational health, phased return, stress/mood support, union/Citizens Advice signposting). The examinable skill is holding the probity line WITHOUT being defensive, dismissive or confrontational — de-escalating, exploring rather than just refusing, and keeping the therapeutic relationship intact while being honest. On assessment: a mild, mechanical, improving back strain — moving freely, no neurological or red-flag features. There is no clinical basis for a three-month total sign-off; the evidence would support, at most, a short period and/or a phased/adjusted return, not a blanket long certificate.",
     knowledge:{
       guideline:'DWP Getting the most out of the fit note: guidance for healthcare professionals · Social Security (Medical Evidence) Regulations 1976 (as amended) · GMC Good Medical Practice (2024; probity/honesty) · NICE NG59 Low back pain and sciatica in over 16s (2016, updated 2026)',
       points:[
@@ -66,33 +101,68 @@
   /* ============ 114. TELEPHONE — "Don't put it in my notes" ============ */
   const c114 = {
     id:'dont-record-this', title:'"You can\u2019t write this down \u2014 promise me it stays off my record"', type:'telephone', duration:12,
-    meta:{ age:34, sex:'M', setting:'Telephone \u2014 a disclosure with a recording condition.', system:'Ethics / Records, confidentiality & its limits' },
+    meta:{ age:34, sex:'M', setting:'Telephone \u2014 a disclosure with a recording condition.', system:'Ethics / Records, confidentiality & its limits', checked:'October 2026' },
     brief:'Mr Aiden Frost, 34, airline pilot. Rings, agitated, wanting to discuss low mood and recent heavy drinking, but only if the GP "promises it stays off my record" \u2014 he is terrified for his career (medical licensing). As it unfolds: significant depressive symptoms, escalating alcohol, and \u2014 if explored \u2014 fleeting thoughts he\u2019s "better off not here". He flies commercial aircraft. He wants help but is trying to dictate that nothing is documented and nothing reaches his aviation medical examiner.',
     script:{
-      opening:'"Before I say anything \u2014 I need you to promise me this goes no further and you won\u2019t write it in my notes. If this gets back to my licensing people my career\u2019s finished. Can you promise me that? Because if you can\u2019t, I\u2019ll just hang up and deal with it myself. I need help, but I can\u2019t have it on any record. Promise me first."',
-      facts:[
-        { topic:'The records principle',  text:'The GP CANNOT promise to keep a clinically-relevant disclosure entirely out of the record \u2014 good, contemporaneous, accurate records are a professional duty (and protect the patient); the record is confidential but it must exist. The skill is to explain confidentiality honestly (it stays within the team and is not shared without consent EXCEPT where there is a risk to the patient or others) rather than agreeing to an impossible promise.' },
-        { topic:'The safety/public-risk dimension', text:'CRITICAL \u2014 he is a commercial PILOT with depression, escalating alcohol, and possible suicidal thoughts. There is a genuine PUBLIC-SAFETY duty: conditions affecting fitness to fly must be managed honestly, and there are parallels to the DVLA duty \u2014 if he is unfit to fly and continues, and cannot be persuaded to stop and self-report to his aeromedical examiner/regulator, GMC Confidentiality (2017) permits breaking confidentiality to protect the public. This must be navigated sensitively.' },
-        { topic:'The risk assessment',  text:'His mood and the "better off not here" thoughts require direct, explicit questions about suicidal thoughts (ideation, plan, intent, means, protective factors) and a safety plan — not a risk score, since NICE NG225 (2022) advises against using risk assessment tools or scales to predict suicide or to decide who gets treatment \u2014 and that, plus the alcohol, bears directly on both his health and his fitness to fly.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 beneath the "promise me" ultimatum is terror of losing the career that is his entire identity, and shame; he genuinely wants help but believes the only way is secrecy. The skill is to engage and retain him (so he gets treatment) while being honest that you cannot offer the impossible promise \u2014 framing honesty and proper management (occupational/aeromedical pathways often support treated, recovered pilots back to flying) as the route that actually protects his career AND others, rather than secrecy that risks both.' },
-        { topic:'What he needs',       text:'Officially: a promise of total secrecy. What he needs: an honest explanation of confidentiality and its limits (record kept; not shared without consent except for serious risk), explicit, direct questions about suicidal thoughts with a safety plan (not a risk score — NICE NG225), treatment for depression/alcohol, sensitive handling of the fitness-to-fly/public-safety duty (encourage self-report; disclosure as a last resort if unfit and continuing), and to be retained in care rather than driven away.' },
+      "opening": "(Agitated, speaking low and fast.) \"Before I say anything — I need you to promise me this goes no further and you won't write it in my notes. If this gets back to my licensing people my career's finished. Can you promise me that? Because if you can't, I'll just hang up and deal with it myself. I need help, but I can't have it on any record. Promise me first.\"",
+      "facts": [
+        {
+          "topic": "Mood (once you agree to talk)",
+          "text": "Low for about four months, worse in the last six weeks. Waking at 4am, can't switch off. Lost interest in running and in seeing friends. Feel \"flat and grey\" most days. Appetite down; lost about half a stone."
+        },
+        {
+          "topic": "Alcohol (if asked)",
+          "text": "Drinking most nights now, \"half a bottle of wine, sometimes the whole bottle, more on days off\". Started to help you sleep. Once or twice you have had a drink the morning after a bad night. You are \"careful\" before duty — \"never within the rules\" — but you have flown feeling rough and hung over."
+        },
+        {
+          "topic": "Suicidal thoughts — only if asked directly",
+          "text": "\"Sometimes I think everyone would be better off if I wasn't here.\" These thoughts come a few times a week at night. No plan, you have not researched methods, you have not done anything to harm yourself and you would not do it \"because of my sister\". No firearms at home. If asked: you have never thought about harming others or about doing anything while flying — \"God, no.\""
+        },
+        {
+          "topic": "Trigger (if asked)",
+          "text": "Your long-term relationship ended five months ago; your partner moved out. Long-haul rosters and jet lag make it worse."
+        },
+        {
+          "topic": "Work",
+          "text": "34, first officer with a commercial airline, flying long-haul. Next duty is in four days. You have not told your aviation medical examiner or your company. \"If I declare depression they'll ground me and that's it.\""
+        },
+        {
+          "topic": "Medical history",
+          "text": "No previous mental health problems. No regular medicines, no allergies. Non-smoker, no drugs."
+        },
+        {
+          "topic": "Support",
+          "text": "Close to your older sister, who lives nearby. You have not told her how bad it is."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "Flying is \"the only thing I've ever wanted to do\". Losing it feels like losing yourself. You have heard pilots can return after treatment but you do not believe it. Say this only if asked what flying means to you."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Guarded and testing the doctor. If they promise total secrecy, open up fully (that is a fail for them, but play it). If they refuse flatly, threaten to hang up. If they explain honestly what confidentiality means and its limits, and say they want to help you keep flying safely in the long run, hesitate — then talk. You are not ready to agree to stop flying at first; you agree to not fly this week and to come back if the doctor is honest and supportive."
+        }
       ],
-      ice:{
-        ideas:'If the GP just promises total secrecy and writes nothing down, he can get help without risking his career.',
-        concerns:'HIDDEN AGENDA \u2014 terror of losing the career that is his identity, and shame; he believes secrecy is the only way to get help; underneath, real depression, escalating alcohol and possible suicidal thoughts.',
-        expectations:'A promise it stays off the record and away from licensing. What he actually needs: honest confidentiality-with-limits, direct questions about suicidal thoughts and a safety plan, treatment, sensitive handling of the fitness-to-fly duty, and to be kept in care.'
+      "ice": {
+        "ideas": "\"If nobody writes it down, I can get help without losing my licence.\"",
+        "concerns": "\"If this gets out, my career's over.\" Underneath: you are frightened of how low you have got.",
+        "expectations": "\"Promise me it stays off my record.\" You will accept honest limits on confidentiality if you feel the doctor is on your side."
       },
-      cues:['"Promise it stays off my record or I hang up" \u2014 an impossible promise; explain confidentiality + its limits honestly, don\u2019t agree.','Commercial pilot + depression + escalating alcohol + "better off not here" \u2014 public-safety/fitness-to-fly duty + suicide risk.','Career-terror and shame driving the secrecy demand \u2014 engage and retain him; frame honesty as protecting his career too.']
+      "cues": [
+        "\"If you can't promise, I'll just hang up.\" — say in the opening.",
+        "\"Some nights I think everyone would be better off without me.\" — say only if asked directly about how low you feel.",
+        "\"Flying is all I've got.\" — say when your work is discussed."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Does NOT promise to keep a clinically-relevant disclosure off the record or guarantee total secrecy: explains honestly that accurate records are a professional duty and that confidentiality means information stays within the care team and is not shared without consent EXCEPT where there is a serious risk to the patient or others' },
-      { dom:'tasks', text:'Recognises the PUBLIC-SAFETY / fitness-to-fly dimension: a commercial pilot with depression, escalating alcohol and possible suicidal thoughts may be unfit to fly; there is a duty (paralleling DVLA) to manage this honestly \u2014 encourage self-reporting to his aeromedical examiner/regulator, and know that disclosure to protect the public is permissible as a last resort if he is unfit and continues to fly against advice' },
-      { dom:'tasks', text:'Explores SUICIDAL THOUGHTS explicitly and directly (the "better off not here" thoughts — plan, intent, means, protective factors) and agrees a safety plan, without relying on a risk tool or score (NICE NG225) and assesses the depression and alcohol, recognising these bear on both his health and his fitness to fly' },
-      { dom:'tasks', text:'Offers TREATMENT and a constructive pathway: management of depression (therapy \u00b1 medication) and alcohol, occupational/aeromedical support \u2014 framing honest engagement and proper treatment as the route that protects BOTH his career (treated/recovered pilots are often supported back) and public safety' },
-      { dom:'tasks', text:'Navigates the regulatory/confidentiality issue proportionately: tries to persuade him to self-report and stop flying if unfit, involves him in any necessary disclosure, and does not breach confidentiality beyond what is necessary \u2014 nor collude with concealment that endangers the public' },
-      { dom:'rto',   text:'Engages and RETAINS the frightened patient: validates the career terror and shame, and is honest about the impossible promise WITHOUT driving him away \u2014 so he stays in care and gets help' },
-      { dom:'rto',   text:'Frames honesty and proper management as protective rather than punitive, reducing the sense that secrecy is his only option' },
-      { dom:'gs',    text:'Safety-nets and follows up: crisis routes if suicidal thoughts escalate (urgent/111/A&E), a treatment and review plan, the self-report/aeromedical pathway, clear (honest) documentation, and continued engagement \u2014 balancing the patient\u2019s welfare, confidentiality and public safety' },
+      { dom:'cm', text:'Does NOT promise to keep a clinically-relevant disclosure off the record or guarantee total secrecy: explains honestly that accurate records are a professional duty and that confidentiality means information stays within the care team and is not shared without consent EXCEPT where there is a serious risk to the patient or others' },
+      { dom:'dg', text:'Recognises the PUBLIC-SAFETY / fitness-to-fly dimension: a commercial pilot with depression, escalating alcohol and possible suicidal thoughts may be unfit to fly; there is a duty (paralleling DVLA) to manage this honestly \u2014 encourage self-reporting to his aeromedical examiner/regulator, and know that disclosure to protect the public is permissible as a last resort if he is unfit and continues to fly against advice' },
+      { dom:'dg', text:'Explores SUICIDAL THOUGHTS explicitly and directly (the "better off not here" thoughts — plan, intent, means, protective factors) and agrees a safety plan, without relying on a risk tool or score (NICE NG225) and assesses the depression and alcohol, recognising these bear on both his health and his fitness to fly' },
+      { dom:'cm', text:'Offers TREATMENT and a constructive pathway: management of depression (therapy \u00b1 medication) and alcohol, occupational/aeromedical support \u2014 framing honest engagement and proper treatment as the route that protects BOTH his career (treated/recovered pilots are often supported back) and public safety' },
+      { dom:'cm', text:'Navigates the regulatory/confidentiality issue proportionately: tries to persuade him to self-report and stop flying if unfit, involves him in any necessary disclosure, and does not breach confidentiality beyond what is necessary \u2014 nor collude with concealment that endangers the public' },
+      { dom:'ro',   text:'Engages and RETAINS the frightened patient: validates the career terror and shame, and is honest about the impossible promise WITHOUT driving him away \u2014 so he stays in care and gets help' },
+      { dom:'ro',   text:'Frames honesty and proper management as protective rather than punitive, reducing the sense that secrecy is his only option' },
+      { dom:'cm',    text:'Safety-nets and follows up: crisis routes if suicidal thoughts escalate (urgent/111/A&E), a treatment and review plan, the self-report/aeromedical pathway, clear (honest) documentation, and continued engagement \u2014 balancing the patient\u2019s welfare, confidentiality and public safety' },
     ],
     worked:[
       { lbl:'Honest about the promise', txt:'"I really want to help you, and I\u2019m glad you rang \u2014 so let me be straight with you first, because trust matters here: I can\u2019t promise to keep something medical entirely out of your record or guarantee total secrecy. Good records are part of looking after you safely. What I CAN promise is that what you tell me is confidential \u2014 it stays within the team and isn\u2019t shared with anyone, including your licensing people, without your consent, unless there were a serious risk to you or others."' },
@@ -121,33 +191,64 @@
   /* ============ 115. TELEPHONE — Covert medication in food ============ */
   const c115 = {
     id:'covert-medication', title:'"I\u2019ve been crushing Mum\u2019s tablets into her tea \u2014 is that okay?"', type:'telephone', duration:12,
-    meta:{ age:58, sex:'F', setting:'Telephone \u2014 daughter disclosing covert medication of her mother.', system:'Ethics / Covert medication, capacity & best interests' },
+    meta:{ age:58, sex:'F', setting:'Telephone \u2014 daughter disclosing covert medication of her mother.', system:'Ethics / Covert medication, capacity & best interests', checked:'October 2026' },
     brief:'Caller: Mrs Janet Pugh, 58, daughter and main carer of her mother (84, advanced dementia) who lives with her. She rings, exhausted, admitting she has been crushing her mother\u2019s tablets (incl. an antipsychotic and BP meds) into her tea because her mother refuses them. She wants reassurance "that\u2019s fine". The mother lacks capacity for medication decisions. No formal best-interests process or care-home/MDT involvement has occurred. The daughter is well-meaning and overwhelmed.',
     script:{
-      opening:'"Doctor, I need to be honest about something and I hope I\u2019m not in trouble. Mum won\u2019t take her tablets \u2014 she clamps her mouth shut, throws them \u2014 so I\u2019ve been crushing them up and putting them in her tea so she gets them. She needs them, don\u2019t she? I\u2019m just doing what\u2019s best for her. That\u2019s alright, isn\u2019t it? I can\u2019t keep fighting her three times a day."',
-      facts:[
-        { topic:'The legal framework', text:'Covert administration (disguising medication in food/drink) is sometimes lawful \u2014 but ONLY for a patient who does NOT HAVE CAPACITY for the specific decision, in their BEST INTERESTS, with a proper MULTIDISCIPLINARY best-interests process: capacity assessment (Mental Capacity Act), confirmation there is no valid advance refusal/LPA objection, involvement of family/carers, the prescriber and PHARMACIST (crushing can alter how a drug works and may be unlicensed/unsafe), and a documented covert-medication management plan that is reviewed. It is NOT a decision a carer makes alone.' },
-        { topic:'Why "just crushing" isn\u2019t okay yet', text:'Done informally by a carer without this process, covert medication is problematic: it may breach the patient\u2019s rights, some drugs are dangerous or ineffective when crushed (modified-release, certain antipsychotics), and it bypasses safeguards. The daughter\u2019s instinct (Mum needs her meds) is understandable, but the PROCESS must be put in place \u2014 not simply endorsed over the phone.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 beneath "is that okay?" is an EXHAUSTED, possibly burning-out carer at the end of her tether ("I can\u2019t keep fighting her three times a day"), feeling guilty and alone, and quietly desperate for support. The covert-medication question is partly a cry for help with an unsustainable caring situation. Addressing carer strain and support is as important as the legal/clinical process.' },
-        { topic:'Reviewing the medication itself', text:'Also worth questioning: does the mother still NEED all these medicines? In advanced dementia, deprescribing (especially of an antipsychotic \u2014 with its mortality risk \u2014 and some preventive BP meds) may be appropriate, reducing the need for any covert administration. The refusal is also a prompt to review necessity.' },
-        { topic:'What\u2019s needed',      text:'Officially: reassurance it\u2019s fine. What\u2019s needed: NOT to simply endorse or condemn, but to explain covert medication can be lawful only via a proper capacity/best-interests/MDT process (including pharmacist advice on crushing and a documented plan), to review whether the medicines are still needed (deprescribing), and \u2014 crucially \u2014 to recognise and support the exhausted carer.' },
+      "opening": "\"Doctor, I need to be honest about something and I hope I'm not in trouble. Mum won't take her tablets — she clamps her mouth shut, throws them — so I've been crushing them up and putting them in her tea so she gets them. She needs them, don't she? I'm just doing what's best for her. That's alright, isn't it? I can't keep fighting her three times a day.\"",
+      "facts": [
+        {
+          "topic": "Your mum",
+          "text": "Doreen, 84, advanced dementia for six years. She lives with you. She no longer knows what the tablets are for, sometimes does not recognise you, and needs help with washing, dressing and eating."
+        },
+        {
+          "topic": "The tablets (if asked)",
+          "text": "\"Her blood pressure ones — amlodipine and ramipril — the water tablet, a statin, and the risperidone the memory clinic started last year for her agitation.\" You crush all of them, including a \"slow-release\" one — you are not sure which."
+        },
+        {
+          "topic": "How long and how",
+          "text": "About six weeks. You crush them with a spoon and stir them into her morning and evening tea. She drinks most of it."
+        },
+        {
+          "topic": "What happens when you try (if asked)",
+          "text": "She spits them out, clamps her mouth shut, once slapped your hand. She gets very upset and so do you."
+        },
+        {
+          "topic": "Her wishes (if asked)",
+          "text": "There is no lasting power of attorney and no advance decision. \"Mum always said she didn't like taking pills — she was never one for doctors.\" Nobody from the memory clinic has been involved since last year."
+        },
+        {
+          "topic": "How Mum is otherwise (if asked)",
+          "text": "Eating less, sleeping more in the day. No falls recently. She has not been unwell or had an infection that you know of."
+        },
+        {
+          "topic": "You — only if asked how you are",
+          "text": "58, gave up your job at the council to care for her two years ago. No help apart from your brother who visits once a month. You are exhausted, sleeping badly, \"some days I just sit in the car and cry\". Not suicidal. You have never had a carer's assessment."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Defensive and worried you are in trouble. If the doctor tells you off, get upset: \"I'm doing my best!\" If they reassure you that you did it out of love and are not in trouble, and explain that there is a proper safe way to do this with the pharmacist and memory team, you are relieved. If they ask how YOU are, break down a little and say how tired you are. Welcome practical help."
+        }
       ],
-      ice:{
-        ideas:'She\u2019s doing what\u2019s best for Mum by crushing the tablets into her tea, and the GP will reassure her it\u2019s fine.',
-        concerns:'HIDDEN AGENDA \u2014 she\u2019s exhausted and at the end of her tether ("can\u2019t keep fighting her three times a day"), guilty and alone; the question is partly a cry for help with an unsustainable caring situation; fear of being "in trouble".',
-        expectations:'Reassurance that crushing the tablets is fine. What she actually needs: an explanation of the proper covert-medication process, a review of whether the drugs are still needed, and \u2014 above all \u2014 support for her carer strain.'
+      "ice": {
+        "ideas": "\"She needs her tablets, so crushing them in her tea is doing what's best for her.\"",
+        "concerns": "\"Am I in trouble?\" Underneath: you are exhausted and cannot carry on like this alone.",
+        "expectations": "\"Just tell me it's alright.\" You will welcome a proper plan and some help for yourself."
       },
-      cues:['"Crushing Mum\u2019s tablets into her tea \u2014 that\u2019s okay isn\u2019t it?" \u2014 covert medication; lawful only via a capacity/best-interests/MDT process, not a carer\u2019s solo call.','Antipsychotic + BP meds crushed \u2014 some drugs are unsafe/ineffective crushed; pharmacist input needed; review necessity/deprescribing.','"I can\u2019t keep fighting her three times a day" \u2014 an exhausted, burning-out carer; support her.']
+      "cues": [
+        "\"I hope I'm not in trouble.\" — say in the opening.",
+        "\"I can't keep fighting her three times a day.\" — say in the opening.",
+        "\"Some days I just sit in the car and cry.\" — say if asked how you are coping."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Does NOT simply endorse (or harshly condemn) the covert administration: explains it can be lawful ONLY for a patient lacking capacity for the decision, in their best interests, via a proper MULTIDISCIPLINARY best-interests process \u2014 not a decision a carer makes alone' },
-      { dom:'tasks', text:'Sets out the proper PROCESS: a Mental Capacity Act capacity assessment for the specific decision, checking for any valid advance decision/LPA, involving family/carers, the prescriber and crucially the PHARMACIST (whether each drug can be safely/effectively crushed; licensing), and a DOCUMENTED, reviewed covert-medication management plan' },
-      { dom:'tasks', text:'Flags the safety issue with crushing specific drugs (modified-release, certain antipsychotics) \u2014 some are dangerous or ineffective when crushed \u2014 hence the need for pharmacist advice before continuing' },
-      { dom:'tasks', text:'Reviews whether the medicines are still NEEDED: prompts deprescribing consideration in advanced dementia (e.g. the antipsychotic with its mortality risk, some preventive BP meds), recognising the refusal as a trigger to review necessity \u2014 which may reduce/remove the need for covert administration' },
-      { dom:'tasks', text:'Recognises and addresses CARER STRAIN: explores the daughter\u2019s exhaustion/burnout and guilt, offers a carer\u2019s assessment and support (respite, social services, community/dementia services), and treats the unsustainable caring situation as a key issue' },
-      { dom:'rto',   text:'Responds non-judgementally to a well-meaning, frightened carer ("you\u2019re not in trouble") while being honest that the practice must change to the proper process; validates her exhaustion and good intentions' },
-      { dom:'rto',   text:'Frames the process and support as helping her and protecting her mother, not as criticism, so she stays engaged and supported' },
-      { dom:'gs',    text:'Safety-nets and follows up: arranges the capacity/best-interests/MDT process and pharmacist review, a medication/deprescribing review, carer support/respite, and documentation \u2014 turning an informal, risky practice into a safe, lawful, supported plan' },
+      { dom:'ro', text:'Does NOT simply endorse (or harshly condemn) the covert administration: explains it can be lawful ONLY for a patient lacking capacity for the decision, in their best interests, via a proper MULTIDISCIPLINARY best-interests process \u2014 not a decision a carer makes alone' },
+      { dom:'cm', text:'Sets out the proper PROCESS: a Mental Capacity Act capacity assessment for the specific decision, checking for any valid advance decision/LPA, involving family/carers, the prescriber and crucially the PHARMACIST (whether each drug can be safely/effectively crushed; licensing), and a DOCUMENTED, reviewed covert-medication management plan' },
+      { dom:'cm', text:'Flags the safety issue with crushing specific drugs (modified-release, certain antipsychotics) \u2014 some are dangerous or ineffective when crushed \u2014 hence the need for pharmacist advice before continuing' },
+      { dom:'cm', text:'Reviews whether the medicines are still NEEDED: prompts deprescribing consideration in advanced dementia (e.g. the antipsychotic with its mortality risk, some preventive BP meds), recognising the refusal as a trigger to review necessity \u2014 which may reduce/remove the need for covert administration' },
+      { dom:'dg', text:'Recognises and addresses CARER STRAIN: explores the daughter\u2019s exhaustion/burnout and guilt, offers a carer\u2019s assessment and support (respite, social services, community/dementia services), and treats the unsustainable caring situation as a key issue' },
+      { dom:'ro',   text:'Responds non-judgementally to a well-meaning, frightened carer ("you\u2019re not in trouble") while being honest that the practice must change to the proper process; validates her exhaustion and good intentions' },
+      { dom:'ro',   text:'Frames the process and support as helping her and protecting her mother, not as criticism, so she stays engaged and supported' },
+      { dom:'cm',    text:'Safety-nets and follows up: arranges the capacity/best-interests/MDT process and pharmacist review, a medication/deprescribing review, carer support/respite, and documentation \u2014 turning an informal, risky practice into a safe, lawful, supported plan' },
     ],
     worked:[
       { lbl:'Reassure, don\u2019t condemn', txt:'"First \u2014 you\u2019re not in trouble, and I can hear you\u2019re doing this out of love and exhaustion, trying to make sure Mum gets what she needs. Thank you for being honest with me, because that lets me help you do this properly and safely. Let\u2019s sort it together."' },
@@ -157,7 +258,7 @@
       { lbl:'See the carer',         txt:'"Can I ask how YOU are doing? \u2018I can\u2019t keep fighting her three times a day\u2019 \u2014 that sounds like you\u2019re running on empty. Caring for someone with advanced dementia, alone, around the clock, is one of the hardest things there is. You matter here too. Let\u2019s get you a carer\u2019s assessment and look at respite and support \u2014 you can\u2019t pour from an empty cup."' },
       { lbl:'Plan + safety-net',     txt:'"So: I\u2019ll arrange the capacity and best-interests process and a pharmacist review of what can be given and how, look at simplifying Mum\u2019s medicines, and get you proper carer support and a break. Please don\u2019t change anything dangerous on your own meanwhile \u2014 keep her safe and ring us if she\u2019s unwell. You came worried you\u2019d done wrong; what\u2019s actually happened is you\u2019ve let us put the right help in place \u2014 for Mum and for you."' },
     ],
-    learning:'Covert administration (disguising medication in food/drink) can be LAWFUL \u2014 but only for a patient who lacks capacity for the specific decision, in their best interests, via a proper MULTIDISCIPLINARY best-interests process under the Mental Capacity Act: capacity assessment, checking for any valid advance decision/LPA objection, involving family/carers, the prescriber and crucially the PHARMACIST (whether each drug can be safely/effectively crushed \u2014 modified-release and certain antipsychotics may be dangerous or ineffective crushed), and a documented, reviewed covert-medication plan. It is NOT a decision a carer makes alone, so the GP must neither simply endorse nor harshly condemn the daughter\u2019s informal crushing, but put the proper process in place. The refusal is also a prompt to REVIEW necessity \u2014 deprescribing in advanced dementia (the antipsychotic\u2019s mortality risk, some preventive BP meds) may reduce the need for covert administration altogether. The examinable hidden agenda is an exhausted, guilt-ridden, burning-out carer for whom "is that okay?" is a cry for help: recognise and support the carer strain (carer\u2019s assessment, respite, social services) non-judgementally \u2014 it is as important as the legal/clinical process.',
+    learning:"Covert administration (disguising medication in food/drink) can be LAWFUL — but only for a patient who lacks capacity for the specific decision, in their best interests, via a proper MULTIDISCIPLINARY best-interests process under the Mental Capacity Act: capacity assessment, checking for any valid advance decision/LPA objection, involving family/carers, the prescriber and crucially the PHARMACIST (whether each drug can be safely/effectively crushed — modified-release and certain antipsychotics may be dangerous or ineffective crushed), and a documented, reviewed covert-medication plan. It is NOT a decision a carer makes alone, so the GP must neither simply endorse nor harshly condemn the daughter’s informal crushing, but put the proper process in place. The refusal is also a prompt to REVIEW necessity — deprescribing in advanced dementia (the antipsychotic’s mortality risk, some preventive BP meds) may reduce the need for covert administration altogether. The examinable hidden agenda is an exhausted, guilt-ridden, burning-out carer for whom \"is that okay?\" is a cry for help: recognise and support the carer strain (carer’s assessment, respite, social services) non-judgementally — it is as important as the legal/clinical process. Done informally by a carer without this process, covert medication is problematic: it may breach the patient’s rights, some drugs are dangerous or ineffective when crushed (modified-release, certain antipsychotics), and it bypasses safeguards. The daughter’s instinct (Mum needs her meds) is understandable, but the PROCESS must be put in place — not simply endorsed over the phone.",
     knowledge:{
       guideline:'Mental Capacity Act 2005 (capacity & best interests) · NICE SC1 Managing medicines in care homes (2014) — covert administration process, principles applied at home · NICE NG97 Dementia (2018) · NICE NG5 Medicines optimisation (2015) · carers support: Care Act 2014 carer’s assessment and NICE NG150 Supporting adult carers (2020)',
       points:[
@@ -176,33 +277,60 @@
   /* ============ 116. TELEPHONE — Medication error reached the patient (candour) ============ */
   const c116 = {
     id:'medication-error-candour', title:'The wrong dose went out \u2014 and they\u2019ve been taking it', type:'telephone', duration:12,
-    meta:{ age:67, sex:'F', setting:'Telephone \u2014 proactively disclosing a prescribing error.', system:'Ethics / Duty of candour & medication safety' },
+    meta:{ age:67, sex:'F', setting:'Telephone \u2014 proactively disclosing a prescribing error.', system:'Ethics / Duty of candour & medication safety', checked:'October 2026' },
     brief:'You are ringing Mrs Maureen Selby, 67, because a prescribing error has come to light: her methotrexate was issued at a DAILY dose instead of WEEKLY (a classic dangerous error) and she has taken it daily for ~6 days. You must disclose this honestly (duty of candour), assess and act on the clinical risk urgently (methotrexate toxicity \u2014 bloods, mucositis, marrow suppression, possible folinic acid/admission), apologise, and put things right \u2014 without being defensive or minimising. She is well so far but this is potentially serious.',
     script:{
-      opening:'(You are calling her.) "Hello Mrs Selby, it\u2019s Dr \u2014 from the surgery. Thank you for taking my call. I\u2019m ringing because I need to be honest with you about a mistake we\u2019ve made with your medication, and to sort it out with you straight away. Is now an okay time to talk?" \u2014 (She:) "A mistake? What do you mean? Is it serious? I\u2019ve been taking my tablets like it said\u2026"',
-      facts:[
-        { topic:'The error & danger',  text:'Methotrexate prescribed/dispensed DAILY instead of WEEKLY is a well-recognised, potentially fatal error. Six days of daily methotrexate risks toxicity: mucositis/mouth ulcers, GI upset, bone-marrow suppression (infection/bleeding risk), hepatotoxicity, pneumonitis. This needs URGENT clinical action \u2014 stop the drug, urgent bloods (FBC, U&E, LFTs), assess for toxicity, and likely specialist/toxicology advice (folinic acid rescue, possible admission), even though she feels well so far.' },
-        { topic:'Duty of candour',     text:'There is a professional and statutory DUTY OF CANDOUR: when something goes wrong that could cause (or has caused) harm, you must tell the patient promptly, honestly and fully, APOLOGISE (an apology is not an admission of legal liability — Compensation Act 2006, s2), explain what happened and what you’ll do, and put it right. Under CQC Regulation 20, for a notifiable safety incident (one that has caused, or might cause, moderate or severe harm or death) the practice must tell the person in person as soon as reasonably practicable, give a true account, apologise and explain what further enquiries will follow, then confirm this in writing (with the apology and an update on enquiries) and keep a secure record. Here an urgent phone call is right because of the clinical risk, followed by an offer to meet face to face and the written account. Defensiveness, minimising or hiding it is both unethical and unsafe.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 from the patient\u2019s side, beneath the shock she may feel FRIGHTENED ("am I going to be harmed/die?") and possibly ANGRY/betrayed, and may blame herself ("I took it like it said"). She needs honest reassurance about what\u2019s being done, the self-blame lifted (it was the system\u2019s error, not hers), and to feel taken seriously. From the doctor\u2019s side, the "agenda" trap is the urge to minimise/defend to protect the practice \u2014 which must be resisted.' },
-        { topic:'System response',     text:'Beyond this patient: the error needs reporting and a SYSTEM fix (significant event analysis, checking how it happened \u2014 prescribing alert, dispensing check \u2014 to prevent recurrence), and checking whether other patients are affected. Candour includes saying what will change.' },
-        { topic:'What\u2019s needed',      text:'Disclose honestly and promptly, apologise sincerely, act URGENTLY on the clinical risk (stop drug, urgent bloods, toxicity assessment, specialist advice/admission as needed), lift her self-blame, keep her informed, and commit to a system fix \u2014 the full duty-of-candour package delivered with compassion, not defensiveness.' },
+      "opening": "(The doctor rings you and starts by saying there has been a mistake with your medication.) \"A mistake? What do you mean? Is it serious? I've been taking my tablets like it said on the box…\"",
+      "facts": [
+        {
+          "topic": "Who you are",
+          "text": "Maureen Selby, 67. You have rheumatoid arthritis and have taken methotrexate \"once a week, on a Monday\" for three years, with folic acid on another day."
+        },
+        {
+          "topic": "What happened",
+          "text": "Your new box from the chemist last week said \"take ONE tablet DAILY\". You thought the dose had been changed, so you have taken one every day for six days. You are holding the box while you talk."
+        },
+        {
+          "topic": "How you feel (if asked)",
+          "text": "A couple of mouth ulcers since yesterday, a bit queasy, more tired than usual. No fever, no sore throat, no bruising or bleeding, no breathlessness or cough, no diarrhoea."
+        },
+        {
+          "topic": "Other medicines",
+          "text": "Folic acid once a week, paracetamol when needed. No allergies."
+        },
+        {
+          "topic": "Social",
+          "text": "Lives with your husband Bill, who can drive. Retired dinner lady."
+        },
+        {
+          "topic": "Feelings — reveal as the call goes on",
+          "text": "First shock and fear: \"Am I going to be alright?\" Then self-blame: \"I should have known — it's always been weekly.\" Then some anger: \"How did nobody notice?\" If the doctor is defensive or vague, the anger grows: \"I want to make a complaint.\""
+        },
+        {
+          "topic": "How to play it",
+          "text": "Listen. If the doctor explains clearly what happened, says sorry plainly, tells you it was not your fault and tells you exactly what to do now (stop the tablets, blood test today, what symptoms to watch for), you calm down and cooperate. Ask: \"Will this have damaged anything?\" and \"How do I know it won't happen again?\" If they minimise (\"it's probably fine\") or blame the pharmacy without taking responsibility, become angry."
+        }
       ],
-      ice:{
-        ideas:'(Patient) She\u2019s been taking her tablets correctly "like it said" \u2014 now hearing there\u2019s a mistake.',
-        concerns:'HIDDEN AGENDA \u2014 fear of being harmed ("is it serious, am I going to be alright?"), possible anger/betrayal, and self-blame ("I just took what I was given"); she needs honesty, reassurance about the plan, and the blame lifted.',
-        expectations:'To understand what happened and whether she\u2019s in danger. What she needs: honest full disclosure, a sincere apology, urgent clinical action on the methotrexate risk, self-blame lifted, and to be kept informed.'
+      "ice": {
+        "ideas": "\"I've been taking them exactly as the box said.\"",
+        "concerns": "\"Is it serious? Have I poisoned myself?\" Also: \"Was this my fault?\" and anger that it happened at all.",
+        "expectations": "To know exactly what happened, whether you are in danger and what to do now. You also want to know it will not happen again to you or anyone else."
       },
-      cues:['Methotrexate DAILY instead of WEEKLY for ~6 days \u2014 a classic dangerous error; urgent toxicity action even though she feels well.','Duty of candour \u2014 disclose promptly, fully, apologise, put it right; resist the urge to minimise/defend.','Patient frightened + self-blaming ("I took it like it said") \u2014 lift the blame, reassure about the plan, keep her informed.']
+      "cues": [
+        "\"I took them like it said on the box.\" — say early.",
+        "\"I've got a couple of mouth ulcers, actually.\" — say when asked how you feel.",
+        "\"How do I know it won't happen again?\" — ask near the end."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Acts URGENTLY on the clinical risk: recognises daily methotrexate for ~6 days as potentially serious toxicity \u2014 advises STOPPING the drug immediately, arranges urgent bloods (FBC, U&E, LFTs), assesses for toxicity (mucositis, GI, infection/bleeding, breathlessness), and seeks urgent specialist/toxicology advice (folinic acid rescue, possible admission) even though she feels well so far' },
-      { dom:'tasks', text:'Fulfils the DUTY OF CANDOUR (CQC Regulation 20; GMC/NMC professional duty of candour 2015): discloses the error promptly, honestly and FULLY \u2014 what happened, that it was a mistake, and the potential consequences \u2014 without minimising, hiding or being defensive' },
-      { dom:'tasks', text:'APOLOGISES sincerely and clearly (recognising an apology is not an admission of legal liability), and explains what will be done now and to prevent recurrence' },
-      { dom:'tasks', text:'LIFTS the patient\u2019s self-blame: makes explicit that this was the system/prescriber\u2019s error, NOT her fault \u2014 she took it exactly as labelled \u2014 countering the "I took it like it said" self-blame' },
-      { dom:'tasks', text:'Commits to the SYSTEM response: reporting/significant event analysis, understanding how it happened and fixing it (prescribing/dispensing safeguards), and checking no other patients are affected \u2014 and tells her this' },
-      { dom:'rto',   text:'Delivers the disclosure with compassion and calm, takes responsibility on behalf of the practice without defensiveness, and manages her fear/anger empathically' },
-      { dom:'rto',   text:'Keeps her informed and supported throughout, checks her understanding and feelings, and gives her a clear point of contact \u2014 treating her as a partner in putting it right, not a problem to be managed' },
-      { dom:'gs',    text:'Safety-nets robustly: urgent bloods/assessment and the toxicity red flags to act on (mouth ulcers, fever/infection, bruising/bleeding, breathlessness \u2192 urgent/999), the plan and follow-up, written information, named contact, documentation of the candour conversation, an offer to meet in person, and the written notification with the apology and an update on enquiries (CQC Regulation 20)' },
+      { dom:'cm', text:'Acts URGENTLY on the clinical risk: recognises daily methotrexate for ~6 days as potentially serious toxicity \u2014 advises STOPPING the drug immediately, arranges urgent bloods (FBC, U&E, LFTs), assesses for toxicity (mucositis, GI, infection/bleeding, breathlessness), and seeks urgent specialist/toxicology advice (folinic acid rescue, possible admission) even though she feels well so far' },
+      { dom:'cm', text:'Fulfils the DUTY OF CANDOUR (CQC Regulation 20; GMC/NMC professional duty of candour 2015): discloses the error promptly, honestly and FULLY \u2014 what happened, that it was a mistake, and the potential consequences \u2014 without minimising, hiding or being defensive' },
+      { dom:'ro', text:'APOLOGISES sincerely and clearly (recognising an apology is not an admission of legal liability), and explains what will be done now and to prevent recurrence' },
+      { dom:'ro', text:'LIFTS the patient\u2019s self-blame: makes explicit that this was the system/prescriber\u2019s error, NOT her fault \u2014 she took it exactly as labelled \u2014 countering the "I took it like it said" self-blame' },
+      { dom:'cm', text:'Commits to the SYSTEM response: reporting/significant event analysis, understanding how it happened and fixing it (prescribing/dispensing safeguards), and checking no other patients are affected \u2014 and tells her this' },
+      { dom:'ro',   text:'Delivers the disclosure with compassion and calm, takes responsibility on behalf of the practice without defensiveness, and manages her fear/anger empathically' },
+      { dom:'ro',   text:'Keeps her informed and supported throughout, checks her understanding and feelings, and gives her a clear point of contact \u2014 treating her as a partner in putting it right, not a problem to be managed' },
+      { dom:'cm',    text:'Safety-nets robustly: urgent bloods/assessment and the toxicity red flags to act on (mouth ulcers, fever/infection, bruising/bleeding, breathlessness \u2192 urgent/999), the plan and follow-up, written information, named contact, documentation of the candour conversation, an offer to meet in person, and the written notification with the apology and an update on enquiries (CQC Regulation 20)' },
     ],
     worked:[
       { lbl:'Disclose honestly',    txt:'"I\u2019m really sorry, Mrs Selby \u2014 I need to be completely straight with you. Your methotrexate should be taken just ONCE A WEEK, but because of a mistake on our side it was issued as a DAILY dose, and you\u2019ve been taking it every day for about six days. That\u2019s our error, not yours, and I\u2019m telling you straight away so we can put it right immediately."' },

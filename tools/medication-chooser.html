@@ -88,7 +88,7 @@
       <div class="alg-controls">
         <div class="alg-search">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="search" id="medSearch" placeholder="Search conditions — e.g. hypertension, asthma, gout…" autocomplete="off" />
+          <input type="search" id="medSearch" placeholder="Search conditions — e.g. hypertension, epilepsy, obesity…" autocomplete="off" />
         </div>
         <span class="alg-count-pill"><b id="medShown">0</b> / <span id="medTotal">0</span> conditions</span>
       </div>
@@ -143,6 +143,17 @@
 <script src="../assets/meds/allergic-rhinitis.js?v=20261015u121"></script>
 <script src="../assets/meds/psoriasis.js?v=20261015u121"></script>
 <script src="../assets/meds/erectile-dysfunction.js?v=20261015u121"></script>
+<script src="../assets/meds/epilepsy.js?v=20261015u128"></script>
+<script src="../assets/meds/psychosis-schizophrenia.js?v=20261015u128"></script>
+<script src="../assets/meds/adhd.js?v=20261015u128"></script>
+<script src="../assets/meds/dementia.js?v=20261015u128"></script>
+<script src="../assets/meds/parkinsons.js?v=20261015u128"></script>
+<script src="../assets/meds/obesity.js?v=20261015u128"></script>
+<script src="../assets/meds/vte-treatment.js?v=20261015u128"></script>
+<script src="../assets/meds/smoking-cessation.js?v=20261015u128"></script>
+<script src="../assets/meds/alcohol-dependence.js?v=20261015u128"></script>
+<script src="../assets/meds/pcos.js?v=20261015u128"></script>
+<script src="../assets/meds/endometriosis.js?v=20261015u128"></script>
 
 <!-- Condition directory: casebook-style category cards + filter rail -->
 <script>
@@ -151,17 +162,19 @@
   if (!DIR || !window.MedChooser) return;
 
   const GROUPS = [
-    { name:'Cardiometabolic',     icon:'🫀', ids:['hypertension','type-2-diabetes','type-1-diabetes','heart-failure','atrial-fibrillation','ckd','angina','hypercholesterolaemia'] },
+    { name:'Cardiometabolic',     icon:'🫀', ids:['hypertension','type-2-diabetes','type-1-diabetes','heart-failure','atrial-fibrillation','ckd','angina','hypercholesterolaemia','obesity'] },
+    { name:'Haematology',         icon:'🩸', ids:['vte-treatment'] },
     { name:'Respiratory',         icon:'🫁', ids:['asthma','copd'] },
     { name:'Gastroenterology',    icon:'🫃', ids:['ibs','constipation'] },
-    { name:'Mental health',       icon:'🧠', ids:['depression','anxiety'] },
+    { name:'Mental health',       icon:'🧠', ids:['depression','anxiety','psychosis-schizophrenia','adhd'] },
     { name:'Endocrine',           icon:'🦋', ids:['hypothyroidism','hyperthyroidism'] },
-    { name:"Women's health",      icon:'🌸', ids:['menopause','contraception','menorrhagia'] },
+    { name:"Women's health",      icon:'🌸', ids:['menopause','contraception','menorrhagia','pcos','endometriosis'] },
     { name:'Urology',             icon:'💧', ids:['male-luts','urinary-incontinence','erectile-dysfunction'] },
     { name:'Rheumatology / MSK',  icon:'🦴', ids:['gout','osteoporosis','low-back-pain','osteoarthritis'] },
-    { name:'Neurology',           icon:'🧩', ids:['migraine','tia-stroke','neuropathic-pain'] },
+    { name:'Neurology',           icon:'🧩', ids:['migraine','tia-stroke','neuropathic-pain','epilepsy','dementia','parkinsons'] },
     { name:'Dermatology',         icon:'🩹', ids:['eczema','psoriasis'] },
     { name:'Allergy / ENT',       icon:'👃', ids:['allergic-rhinitis'] },
+    { name:'Addictions',          icon:'🚭', ids:['smoking-cessation','alcohol-dependence'] },
   ];
   const esc = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   const get = id => { try { return window.MedChooser.get(id) || null; } catch(e){ return null; } };

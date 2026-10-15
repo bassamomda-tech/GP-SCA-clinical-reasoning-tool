@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI SCA Simulator: Practise With an AI Patient · Reasoning GP</title>
+<meta name="description" content="AI SCA practice: consult an AI patient by voice or text, get feedback across the three SCA domains, and understand what AI marking can and cannot judge.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="AI SCA simulator: practise with an AI patient">
+<meta property="og:description" content="AI SCA practice: consult an AI patient by voice or text, get feedback across the three SCA domains, and understand what AI marking can and cannot judge.">
+<meta property="og:url" content="https://gpreasoning.uk/sca/ai-simulator.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/sca/ai-simulator.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=14">
+<link rel="stylesheet" href="../assets/sca-landing.css?v=1">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "BreadcrumbList",
+ "itemListElement": [
+  {
+   "@type": "ListItem",
+   "position": 1,
+   "name": "Home",
+   "item": "https://gpreasoning.uk/"
+  },
+  {
+   "@type": "ListItem",
+   "position": 2,
+   "name": "The SCA Guide",
+   "item": "https://gpreasoning.uk/tools/sca-guide.html"
+  },
+  {
+   "@type": "ListItem",
+   "position": 3,
+   "name": "AI SCA simulator",
+   "item": "https://gpreasoning.uk/sca/ai-simulator.html"
+  }
+ ]
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "How does the AI SCA simulator work?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "You choose a case and a patient manner, read the records for 3 minutes, then consult for 12 minutes by voice or text. The AI plays the patient from the case script and reveals information only when asked. At the end you get feedback across the three SCA domains and the transcript."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is AI SCA feedback as good as an RCGP examiner?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. It is a practice tool mapped to the published domain descriptors, not an RCGP examiner. It cannot see body language or judge rapport the way a person does, it can make mistakes, and it cannot predict your result."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I use my voice with the AI patient?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Hands-free voice lets you speak naturally and the patient can reply aloud. It needs a microphone and works best in Chrome or Edge. You can also type, and the marking is the same."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is the AI simulator free?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Everyone gets one free run. Unlimited runs and the AI Mock Exam Circuit are part of the Gold and Platinum plans; see pricing."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is my consultation recorded or stored?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No audio is recorded or uploaded by the site. Text is sent via Cloudflare to Anthropic to generate replies and is not kept on our side beyond the request. Details are on the AI safety and data page."
+   }
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <nav class="sl-crumbs" aria-label="Breadcrumb"><ol>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../tools/sca-guide.html">The SCA Guide</a></li>
+        <li aria-current="page">AI SCA simulator</li>
+      </ol></nav>
+
+      <header class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · AI SCA practice</div>
+        <h1>AI SCA practice, <em>with honest limits</em></h1>
+        <p>An AI patient you can consult by voice or text at any hour, with feedback across the three SCA domains. This page explains how it works, what the feedback is good for, what it cannot judge and what happens to your data.</p>
+        
+      </header>
+
+      <div class="g-nums"><div class="g-num"><div class="v">Voice</div><div class="l">or text: same marking</div></div><div class="g-num"><div class="v">7</div><div class="l">patient manners to train</div></div><div class="g-num"><div class="v">3 + 12</div><div class="l">minutes: prep, then consult</div></div><div class="g-num"><div class="v">3</div><div class="l">domains in the feedback</div></div></div>
+      <section class="g-sec" id="how">
+        <h2>How the AI SCA simulator works</h2>
+        <p>The <a href="../tools/sca-simulator.html">AI Patient Simulator</a> lets you consult a simulated patient without a partner. You pick a case, by specialty and consultation type, and the AI takes on the patient's role from that case's script. It reveals the story only when you ask the right questions, keeps its ideas, concerns and expectations, and plants the cues a role-player would.</p>
+        <ol class="sl-steps">
+          <li><b>Choose a case and a patient manner.</b> As well as standard, you can train the human side with an angry, tearful, health-anxious or evasive patient, a dominant third party, or low health literacy.</li>
+          <li><b>Prepare for 3 minutes</b> with the records, as in the exam. Exam-day mode adds a connecting screen and a strict clock.</li>
+          <li><b>Consult for 12 minutes, by voice or text.</b> Hands-free voice lets you just talk (it needs a microphone, works best in Chrome or Edge, and the patient can speak aloud). Or type throughout. The marking is the same either way.</li>
+          <li><b>End and get feedback.</b> You get examiner-style feedback across the three domains, with specific points to change, plus the full transcript to reread.</li>
+        </ol>
+        <p>When you are ready for stamina, the <a href="../tools/sca-circuit-ai.html">AI Mock Exam Circuit</a> chains several AI patients back to back with one report card at the end. See <a href="mock-exam.html">how to run an SCA mock exam</a>.</p>
+      </section>
+      <section class="g-sec" id="feedback">
+        <h2>What the feedback covers</h2>
+        <p>Feedback is organised by the three domains the RCGP marks: <b>data gathering</b>, <b>clinical management</b> and <b>relating to others</b>. It is written against the published RCGP domain descriptors. It points to moments in your transcript: a cue left unanswered, a plan that was announced rather than shared, a safety-net that was too vague to act on. It is most useful for habits that show up in words, such as open questions, exploring ideas and concerns, explaining clearly, checking understanding and specific safety-netting.</p>
+      </section>
+      <section class="g-sec" id="limits">
+        <h2>What AI marking cannot do</h2>
+        <div class="g-callout"><b>Treat AI feedback as one practice opinion, not a mark.</b> The simulator is not an RCGP examiner and is not equivalent to one. It cannot predict your exam result, and it should not be used as evidence of competence.</div>
+        <ul>
+          <li><b>It cannot see you.</b> Eye contact, facial expression, pauses, warmth and the feel of rapport are a large part of how a real examiner experiences a consultation. The AI judges the words, not the room.</li>
+          <li><b>It can be wrong.</b> Like any language model, it can misread what you meant, give credit you did not earn, or miss something good you did. If feedback looks wrong, check it against the <a href="../tools/sca-domains.html">domain descriptors</a> and the case's model consultation.</li>
+          <li><b>The patient is fiction.</b> The AI may add clinical details that are not in the case. Never carry its clinical content into real practice; use the case's knowledge section and UK guidance for that.</li>
+          <li><b>It does not replace people.</b> Practise with colleagues too, through <a href="../tools/sca-group.html">group mocks</a> or <a href="../tools/sca-roleplay.html">role-play packs</a>, and get your trainer to watch real consultations. <a href="../tools/sca-real-feedback.html">Real-consultation feedback</a> can then help you find patterns in de-identified transcripts.</li>
+        </ul>
+      </section>
+      <section class="g-sec" id="privacy">
+        <h2>Privacy: what happens to what you say</h2>
+        <p>From our <a href="../pages/ai-safety.html">AI safety and data page</a> and <a href="../pages/privacy.html">privacy policy</a>:</p>
+        <ul>
+          <li>What you type or say is sent as text through our server (Cloudflare) to the AI provider (Anthropic) to generate the patient's replies and the feedback. Anthropic does not use data sent through its API to train its models.</li>
+          <li>Inputs and outputs of the simulator are not kept on our side beyond the request. Anything you choose to save stays in your own browser, or in your account if you sync it.</li>
+          <li>No tool on the site records or uploads audio. Voice mode uses your browser's own speech recognition to turn speech into text, and your browser provider's terms apply to that step.</li>
+          <li>The cases are fictional, so you never need real patient details. <b>Never enter anything that could identify a real patient.</b></li>
+        </ul>
+      </section>
+
+
+      <section class="sl-cta" aria-labelledby="cta-h">
+        <h2 id="cta-h">Start free</h2>
+        <p>Five sample Hot Seat cases, the full SCA Guide and one free run of the AI Patient Simulator are open to everyone, with no card needed. The whole SCA suite (all 342 cases, the AI mock circuit, group mocks and the Resit Clinic) is in the Gold plan.</p>
+        <div class="sl-btns"><a class="sl-btn sl-btn-light" href="../tools/sca-practice.html">Try the free Hot Seat cases</a><a class="sl-btn sl-btn-ghost" href="../tools/sca-guide.html">Read the free SCA Guide</a><a class="sl-btn sl-btn-ghost" href="../pages/pricing.html">See plans and pricing</a></div>
+        <small>Free means free: no card and no countdown. Paid plans can be cancelled or paused at any time.</small>
+      </section>
+
+      <section class="g-sec" id="faq">
+        <h2>Frequently asked questions</h2>
+<details class="g-faq"><summary>How does the AI SCA simulator work?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="a">You choose a case and a patient manner, read the records for 3 minutes, then consult for 12 minutes by voice or text. The AI plays the patient from the case script and reveals information only when asked. At the end you get feedback across the three SCA domains and the transcript.</div></details>
+<details class="g-faq"><summary>Is AI SCA feedback as good as an RCGP examiner?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="a">No. It is a practice tool mapped to the published domain descriptors, not an RCGP examiner. It cannot see body language or judge rapport the way a person does, it can make mistakes, and it cannot predict your result.</div></details>
+<details class="g-faq"><summary>Can I use my voice with the AI patient?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="a">Yes. Hands-free voice lets you speak naturally and the patient can reply aloud. It needs a microphone and works best in Chrome or Edge. You can also type, and the marking is the same.</div></details>
+<details class="g-faq"><summary>Is the AI simulator free?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="a">Everyone gets one free run. Unlimited runs and the AI Mock Exam Circuit are part of the Gold and Platinum plans; see <a href="../pages/pricing.html">pricing</a>.</div></details>
+<details class="g-faq"><summary>Is my consultation recorded or stored?<svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"></polyline></svg></summary><div class="a">No audio is recorded or uploaded by the site. Text is sent via Cloudflare to Anthropic to generate replies and is not kept on our side beyond the request. Details are on the <a href="../pages/ai-safety.html">AI safety and data page</a>.</div></details>
+      </section>
+
+      <section class="g-sec">
+        <h2>More SCA guides</h2>
+        <div class="sl-related"><a href="cases.html"><b>SCA cases</b><span>The case bank: 300+ SCA practice cases</span></a><a href="free-cases.html"><b>Free SCA cases</b><span>What you can practise without paying</span></a><a href="mock-exam.html"><b>SCA mock exam</b><span>Run a timed 12-case diet: AI, solo or with friends</span></a><a href="dates-and-fees.html"><b>SCA dates and fees</b><span>2026–27 diets, fees, booking and deadlines</span></a><a href="img.html"><b>SCA for IMGs</b><span>Honest advice for international graduates</span></a><a href="resit.html"><b>SCA resit</b><span>Failed the SCA? Reading feedback and a 4–8 week plan</span></a></div>
+      </section>
+
+      <p class="sl-indep">gpreasoning.uk is not affiliated with or endorsed by the RCGP. The SCA is run by the Royal College of General Practitioners; for anything official (dates, fees, rules, results) always check the <a href="https://www.rcgp.org.uk/mrcgp-exams/simulated-consultation-assessment" target="_blank" rel="noopener">RCGP SCA pages</a>. Our cases are original teaching material written for practice: they are not exam recalls and do not predict what you will meet on the day.</p>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=107"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

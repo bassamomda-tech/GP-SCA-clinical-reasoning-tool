@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Shared-Care Monitoring · GP / SCA Clinical Reasoning Tool</title>
+<meta name="description" content="Shared-care drug monitoring table for GPs: DMARDs (BSR 2025), lithium, ADHD medicines, antipsychotics and clozapine, amiodarone, denosumab, testosterone, GnRH analogues, warfarin and DOACs — tests, frequency and what to act on.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Shared-care drug monitoring">
+<meta property="og:description" content="Shared-care drug monitoring table for GPs: DMARDs (BSR 2025), lithium, ADHD medicines, antipsychotics and clozapine, amiodarone, denosumab, testosterone, GnRH analogues, warfarin and DOACs — tests, frequency and what to act on.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/shared-care-monitoring.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/shared-care-monitoring.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../assets/site.css?v=14" />
+<link rel="stylesheet" href="../assets/clinic-ref.css?v=1" />
+</head>
+<body>
+<button class="sb-toggle" aria-label="Open menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-clinicref"></aside>
+  <main class="main">
+    <div class="tool-page">
+      <div class="panel">
+
+        <div class="tool-breadcrumb">
+          <a href="../index.html">Reasoning GP</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <a href="clinic-reference.html">Clinic reference</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><polyline points="9 6 15 12 9 18"/></svg>
+          <span style="color:var(--ink-2)">Shared-care monitoring</span>
+        </div>
+
+        <header class="tool-head" data-screen-label="Tool head">
+          <span class="eyebrow">Clinic reference · SPS · BSR 2025 · NICE · MHRA</span>
+          <h1>Shared-care monitoring — <em>which tests, how often, what to act on</em></h1>
+          <p>Baseline tests, ongoing monitoring and the warning signs for the drugs GPs most often prescribe under shared care. Filter by group or search a drug or test. Your local shared-care protocol takes priority over this summary.</p>
+          <div class="review-stamp"><span class="dot"></span> Last checked: October 2026 <span class="src">· SPS drug monitoring · BSR 2025 csDMARD guideline · NICE · MHRA</span></div>
+        </header>
+        <script src="../assets/shared-care-monitoring-data.js?v=1"></script>
+
+
+<div class="cr-note new"><b>The 2025 change to know.</b> The <b>BSR 2025 csDMARD guideline</b> (November 2025) replaced BSR/BHPR 2017 with <b>risk-stratified monitoring</b>: close checks while starting, then usually 3-monthly, with the interval set by each person's toxicity risk and reviewed at least yearly. Local shared-care protocols are being updated to match — until yours is, follow the protocol you signed up to.</div>
+<div class="cr-note warn"><b>Shared care basics.</b> Only take on prescribing after specialist initiation and stabilisation, with a written shared-care protocol you have accepted. Record hospital-only drugs (clozapine, biologics) on the GP system so interactions and toxicity are visible. If monitoring is not done, do not keep issuing — contact the patient and specialist. Typical action thresholds and full schedules are in the protocol and the <a href="https://www.sps.nhs.uk/home/guidance/drug-monitoring/" target="_blank" rel="noopener">SPS drug monitoring pages</a>.</div>
+
+<div class="cr-filter" role="search">
+  <input type="search" id="scSearch" placeholder="Search drug or test… (e.g. lithium, haematocrit, TPMT)" autocomplete="off" aria-label="Search shared-care drugs">
+  <span id="scGroups"></span>
+</div>
+<div class="cr-count" id="scCount" aria-live="polite"></div>
+<table class="cr-table">
+  <thead><tr><th>Drug</th><th>Baseline</th><th>Ongoing monitoring</th><th>Watch for / act on</th></tr></thead>
+  <tbody id="scBody"></tbody>
+</table>
+<noscript><p class="cr-p">This table needs JavaScript. See the <a href="https://www.sps.nhs.uk/home/guidance/drug-monitoring/">SPS drug monitoring pages</a>.</p></noscript>
+
+<section class="cr-sources" id="sources">
+  <h2>Sources (checked October 2026)</h2>
+  <ol>
+    <li>British Society for Rheumatology. 2025 guideline for the prescription and monitoring of conventional synthetic DMARDs. Rheumatology 2026;65(2):keaf522. <a href="https://academic.oup.com/rheumatology/article/65/2/keaf522/8322743" target="_blank" rel="noopener">academic.oup.com</a></li>
+    <li>NHS Specialist Pharmacy Service. Drug monitoring pages (methotrexate, sulfasalazine, leflunomide, azathioprine, lithium, amiodarone, DOACs, testosterone and others; being aligned with BSR 2025). <a href="https://www.sps.nhs.uk/home/guidance/drug-monitoring/" target="_blank" rel="noopener">sps.nhs.uk</a></li>
+    <li>Royal College of Ophthalmologists. Hydroxychloroquine and chloroquine retinopathy: recommendations on monitoring (2020). <a href="https://www.rcophth.ac.uk/resources-listing/hydroxychloroquine-and-chloroquine-retinopathy-recommendations-on-monitoring/" target="_blank" rel="noopener">rcophth.ac.uk</a></li>
+    <li>NICE CG185 Bipolar disorder (updated 2023); NICE CG178 Psychosis and schizophrenia in adults (2014); NICE NG87 ADHD (updated 2019). <a href="https://www.nice.org.uk/guidance/cg185" target="_blank" rel="noopener">nice.org.uk</a></li>
+    <li>MHRA Drug Safety Updates: denosumab — multiple vertebral fractures after stopping or delaying treatment (2020); clozapine — constipation and plasma level monitoring (2020); mycophenolate — pregnancy prevention; leuprorelin — reconstitution errors (2021). <a href="https://www.gov.uk/drug-safety-update" target="_blank" rel="noopener">gov.uk/drug-safety-update</a></li>
+    <li>NICE NG196 Atrial fibrillation (2021); NICE NG131 Prostate cancer (2019, updated 2021). <a href="https://www.nice.org.uk/guidance/ng196" target="_blank" rel="noopener">nice.org.uk</a></li>
+    <li>British Society for Sexual Medicine. Guidelines on adult testosterone deficiency (2023). <a href="https://www.bssm.org.uk/" target="_blank" rel="noopener">bssm.org.uk</a></li>
+  </ol>
+</section>
+
+<script>
+(function(){
+  var DATA = window.RGP_SHARED_CARE || [];
+  var $ = function(q){ return document.querySelector(q); };
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var strip = function(s){ return String(s).replace(/<[^>]+>/g,''); };
+  var grp = 'all', groups = [];
+  DATA.forEach(function(d){ if(groups.indexOf(d.grp) < 0) groups.push(d.grp); });
+  function renderGroups(){
+    $('#scGroups').innerHTML = ['all'].concat(groups).map(function(g){
+      return '<button type="button" class="cr-fbtn'+(grp===g?' on':'')+'" data-g="'+esc(g)+'">'+(g==='all'?'All':esc(g))+'</button>';
+    }).join(' ');
+  }
+  function render(){
+    var q = $('#scSearch').value.trim().toLowerCase();
+    var rows = DATA.filter(function(d){
+      if(grp !== 'all' && d.grp !== grp) return false;
+      if(q && strip(d.drug+' '+d.grp+' '+d.base+' '+d.mon+' '+d.act+' '+d.src).toLowerCase().indexOf(q) < 0) return false;
+      return true;
+    });
+    var html = '', last = '';
+    rows.forEach(function(d){
+      if(d.grp !== last){ html += '<tr class="grp"><td colspan="4">'+esc(d.grp)+'</td></tr>'; last = d.grp; }
+      var links = (d.links||[]).map(function(l){ return '<a class="cr-chip" href="'+esc(l[0])+'">'+esc(l[1])+'</a>'; }).join(' ');
+      html += '<tr><td>'+esc(d.drug)+(d.spec?' <span class="pill spec">Specialist only</span>':'')+'<div style="font-weight:500;font-size:11.5px;color:var(--muted);margin-top:6px">Source: '+esc(d.src)+'</div><div style="margin-top:6px;display:flex;flex-wrap:wrap;gap:5px">'+links+'</div></td>'+
+        '<td data-l="Baseline">'+d.base+'</td><td data-l="Ongoing monitoring">'+d.mon+'</td><td data-l="Watch for / act on">'+d.act+'</td></tr>';
+    });
+    $('#scBody').innerHTML = html || '<tr><td colspan="4" class="cr-empty">No drugs match. Check the SPS drug monitoring pages.</td></tr>';
+    $('#scCount').textContent = rows.length + ' of ' + DATA.length + ' drugs or groups shown';
+  }
+  renderGroups(); render();
+  $('#scGroups').addEventListener('click', function(e){ var b = e.target.closest('.cr-fbtn'); if(!b) return; grp = b.dataset.g; renderGroups(); render(); });
+  $('#scSearch').addEventListener('input', render);
+})();
+</script>
+
+        <div class="footer-disclaimer">
+          <strong>Educational reference only — not a substitute for the source guidance or clinical judgement.</strong> Summarised in our own words from the national sources listed, last checked October 2026. Rules, eligibility and thresholds change, and local commissioning (ICB) arrangements vary: always check the live guidance, the product SPC, the BNF/BNFC and your local formulary or protocol before acting. No patient-specific dosing is given here.
+        </div>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=105"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

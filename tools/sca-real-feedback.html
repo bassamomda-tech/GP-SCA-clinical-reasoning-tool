@@ -212,9 +212,10 @@
       .replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]))
       .replace(/^### (.*)$/gm, '<h3>$1</h3>')
       .replace(/^## (.*)$/gm, '<h3>$1</h3>')
-      .replace(/\*\*(GREEN)\*\*/g, '<span class="tl-g">GREEN</span>')
-      .replace(/\*\*(AMBER)\*\*/g, '<span class="tl-a">AMBER</span>')
-      .replace(/\*\*(RED)\*\*/g, '<span class="tl-r">RED</span>')
+      .replace(/\*\*(Clear pass)\*\*/gi, '<span class="tl-g">Clear pass</span>')
+      .replace(/\*\*(Pass)\*\*/g, '<span class="tl-g">Pass</span>')
+      .replace(/\*\*(Fail)\*\*/g, '<span class="tl-a">Fail</span>')
+      .replace(/\*\*(Clear fail)\*\*/gi, '<span class="tl-r">Clear fail</span>')
       .replace(/\*\*(.+?)\*\*/g, '<b>$1</b>')
       .replace(/^[-•] (.*)$/gm, '<li>$1</li>')
       .replace(/(<li>[\s\S]*?<\/li>)(?!\s*<li>)/g, '<ul>$1</ul>')
@@ -241,13 +242,13 @@ Write the report in EXACTLY this structure (markdown, ## headings):
 ## Overall impression
 2-3 sentences. The single dominant pattern in this consultation, good or bad.
 
-## Data Gathering & Diagnosis — **GREEN/AMBER/RED**
-(pick one rating) Then 3-4 bullets: hypothesis-driven vs template questioning; cues noticed or missed (quote them); red-flag coverage; whether a working diagnosis was committed to out loud.
+## Data Gathering & Diagnosis — **Clear pass/Pass/Fail/Clear fail**
+(pick one RCGP grade, in bold, and use no other grade words) Then 3-4 bullets: hypothesis-driven vs template questioning; cues noticed or missed (quote them); red-flag coverage; whether a working diagnosis was committed to out loud.
 
-## Clinical Management & Medical Complexity — **GREEN/AMBER/RED**
+## Clinical Management & Medical Complexity — **Clear pass/Pass/Fail/Clear fail**
 3-4 bullets: was the plan specific to THIS patient or generic; correct urgency; options shared vs dictated; safety-net quality (named symptoms + timeframe + route back, or vague).
 
-## Relating to Others — **GREEN/AMBER/RED**
+## Relating to Others — **Clear pass/Pass/Fail/Clear fail**
 3-4 bullets: cue responses (quote the patient's offer and what the trainee did with it); formulaic vs genuine empathy; jargon; whether the patient's agenda shaped the plan.
 
 ## The habit to break first

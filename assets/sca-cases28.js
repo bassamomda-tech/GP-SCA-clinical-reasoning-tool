@@ -11,33 +11,68 @@
   /* ============ 105. TELEPHONE — Swollen calf: DVT vs cellulitis ============ */
   const c105 = {
     id:'dvt-calf', title:'"My leg\u2019s swollen and sore \u2014 I think I\u2019ve pulled something"', type:'telephone', duration:12,
-    meta:{ age:58, sex:'F', setting:'Telephone \u2014 unilateral swollen, painful calf.', system:'Urgent / DVT vs cellulitis' },
+    meta:{ age:58, sex:'F', setting:'Telephone \u2014 unilateral swollen, painful calf.', system:'Urgent / DVT vs cellulitis', checked:'October 2026' },
     brief:'Mrs Lorraine Beckett, 58, office manager. Rings about her LEFT calf, swollen, tender and warm for 3 days, getting worse. She blames "pulling something" gardening. On questioning: returned 5 days ago from a long-haul flight (Australia), the calf is bigger than the right, no skin break/spreading redness with fever. Recently started ORAL combined HRT (oestrogen and progestogen tablets — the oral route raises VTE risk, whereas transdermal HRT at standard doses does not add to baseline risk: NICE NG23); ex-smoker. She wants "a strong anti-inflammatory gel" and to avoid going anywhere. If asked: mild breathlessness she dismisses, and a fleeting sharp chest pain on breathing in. Meds: oral HRT.',
     script:{
-      opening:'"Hello \u2014 sorry to bother you. My left calf\u2019s gone all swollen and achy, been three days, and it\u2019s a bit warm. I\u2019m sure I\u2019ve just pulled a muscle doing the garden, or maybe it\u2019s a touch of that cellulitis my neighbour had. Could you pop a prescription through for one of those strong anti-inflammatory gels, or some antibiotics, so I don\u2019t have to traipse anywhere? I\u2019m rushed off my feet this week."',
-      facts:[
-        { topic:'The DVT picture',     text:'If explored: UNILATERAL calf swelling (measurably bigger than the other side), tenderness along the deep veins, warmth, worsening over days, in the context of recent LONG-HAUL FLIGHT (immobility) and oral HRT (oestrogen by mouth — a prothrombotic risk factor; NICE NG23: transdermal HRT at standard doses does not raise VTE risk above baseline). This is a deep vein thrombosis until proven otherwise \u2014 not a pulled muscle, and usually not cellulitis (which is typically a spreading red area, often with a skin break/fever).' },
-        { topic:'The PE red flag',      text:'CRITICAL \u2014 on direct questioning she has mild BREATHLESSNESS (and, if asked, a fleeting sharp chest pain). DVT can embolise to the lungs; any breathlessness, pleuritic chest pain, haemoptysis, syncope or tachycardia raises PULMONARY EMBOLISM — which escalates urgency to emergency assessment. She dismisses it as "being unfit". With breathlessness PLUS pleuritic pain she has suspected PE: NICE NG158 — two-level PE Wells score; if PE is likely (more than 4 points) CTPA immediately, or interim therapeutic anticoagulation if CTPA cannot be done straight away. In practice this means same-day hospital assessment (999 if acutely unwell), not the outpatient DVT clinic.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 the "just a pull, give me a gel" is driven by being overwhelmed (caring for an unwell husband, can\u2019t take time off) and a wish for the simplest possible answer, plus she\u2019s frightened that her HRT \u2014 which transformed her menopause \u2014 might be "the cause" and that she\u2019ll be told to stop it. So she\u2019s minimising and steering to a benign explanation. The risk-factor history must be actively drawn out.' },
-        { topic:'Why not gel/antibiotics', text:'An anti-inflammatory gel or antibiotics over the phone would miss a DVT (and a possible PE). The presentation needs a structured assessment (Wells score) and, on a likely/clinical-suspicion basis, urgent same-day pathway for D-dimer/Doppler ultrasound ± interim anticoagulation — and, because she also has breathlessness and pleuritic chest pain, same-day hospital assessment for suspected PE (NICE NG158: PE Wells; CTPA) — not remote symptomatic treatment.' },
-        { topic:'What she needs',       text:'Officially: a gel/antibiotics and no appointment. What she needs: recognition of probable DVT (with the flight + HRT risk factors), same-day HOSPITAL assessment for suspected PE (breathlessness plus pleuritic chest pain — NICE NG158 PE Wells, CTPA, which also covers the leg), the HRT paused now pending investigation (BNF) and addressed honestly, and her caring/time barriers acknowledged.' },
+      "opening": "\"Hello — sorry to bother you. My left calf's gone all swollen and achy, been three days, and it's a bit warm. I'm sure I've just pulled a muscle doing the garden, or maybe it's a touch of that cellulitis my neighbour had. Could you pop a prescription through for one of those strong anti-inflammatory gels, or some antibiotics, so I don't have to traipse anywhere? I'm rushed off my feet this week.\"",
+      "facts": [
+        {
+          "topic": "The leg",
+          "text": "If asked: left calf, a tight, bursting ache, worse when walking. Started three days ago and getting worse. Your left ankle and calf look fatter than the right — \"my trouser leg is tighter\". Warm to touch. A bit pinkish all over the calf but no red streak, no blister or cut, no insect bite."
+        },
+        {
+          "topic": "Injury",
+          "text": "You were weeding at the weekend but cannot remember a moment when you pulled anything."
+        },
+        {
+          "topic": "Travel — only if asked about recent travel or long journeys",
+          "text": "You flew back from Australia five days ago (24 hours of flights via Singapore) after visiting your daughter. \"I didn't get up much — I had the window seat.\""
+        },
+        {
+          "topic": "Breathing — downplay",
+          "text": "Only if asked directly about breathing or chest: \"I have been a bit puffed going upstairs the last day or so — I'm just unfit.\" If asked about chest pain: \"Funny you should say — I got a sharp pain here (right side of the chest) when I breathed in deeply last night. It went off.\" No coughing blood, no fainting. You feel your heart is \"going a bit quicker\" than usual."
+        },
+        {
+          "topic": "HRT",
+          "text": "Started HRT tablets (oestrogen and progestogen by mouth) three months ago — \"it's been life-changing, I'm sleeping again\"."
+        },
+        {
+          "topic": "Medical background",
+          "text": "Otherwise well. Ex-smoker (stopped 8 years ago, 20 a day for 25 years). No previous clots, no cancer. No family history of clots that you know of. No allergies. No other medicines."
+        },
+        {
+          "topic": "Social",
+          "text": "58, office manager. Your husband Graham has COPD and needs help with most things; you are his main carer. Your neighbour could sit with him."
+        },
+        {
+          "topic": "Hidden worries — hold back",
+          "text": "You cannot see how you can leave Graham for hours. And you are frightened the HRT has caused this and you will be told to stop it: \"Please don't say it's the HRT.\" Say these when hospital or the HRT are mentioned."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Busy, apologetic, wanting a quick fix. Minimise the breathlessness at first. If the doctor asks about travel and breathing carefully, give the answers. If they explain this could be a clot that has travelled to the lung and needs checking today, you are frightened but agree — once the doctor helps you think through who can be with Graham and is honest but kind about the HRT."
+        }
       ],
-      ice:{
-        ideas:'It\u2019s a pulled muscle from gardening, or maybe cellulitis; a gel or antibiotics over the phone will sort it.',
-        concerns:'HIDDEN AGENDA \u2014 overwhelmed (caring for an unwell husband, can\u2019t take time off) so wants the simplest answer; and frightened the HRT (which transformed her menopause) is "the cause" and she\u2019ll be told to stop it \u2014 so she minimises.',
-        expectations:'A gel/antibiotics and no appointment. What she actually needs: same-day hospital assessment for suspected PE given her breathlessness and pleuritic pain (NICE NG158: PE Wells, CTPA ± interim anticoagulation), the HRT paused pending investigation (BNF), and the HRT addressed honestly.'
+      "ice": {
+        "ideas": "\"I've pulled a muscle gardening — or maybe it's cellulitis.\"",
+        "concerns": "Getting away from Graham. Underneath: that the HRT has caused this and you will lose it.",
+        "expectations": "\"Can you just send a gel or antibiotics to the chemist?\" You will go in today if the reason is clear and your worries are heard."
       },
-      cues:['Unilateral swollen, warm, tender calf worsening over days + recent long-haul flight + HRT \u2014 DVT until proven otherwise, not a pulled muscle.','Dismissed breathlessness plus a fleeting sharp chest pain on breathing — suspected PE; same-day hospital assessment (NICE NG158), 999 if acutely unwell.','"Just give me a gel, can\u2019t take time off, is it my HRT?" \u2014 minimisation driven by overwhelm + HRT fear; draw out the risk factors.']
+      "cues": [
+        "\"I'm sure I've just pulled a muscle.\" — say in the opening.",
+        "\"I've been a bit puffed, but I'm just unfit.\" — say when asked about breathing.",
+        "\"Please don't tell me it's my HRT.\" — say when the cause is discussed."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises a unilateral swollen, warm, tender calf worsening over days as possible DEEP VEIN THROMBOSIS \u2014 and does NOT accept "pulled muscle" or treat as cellulitis with antibiotics/anti-inflammatory gel over the phone' },
-      { dom:'tasks', text:'Actively elicits and weights the RISK FACTORS: recent long-haul flight/immobility and HRT (oestrogen), plus smoking history \u2014 and uses a structured assessment (two-level Wells DVT score) to guide the pathway' },
-      { dom:'tasks', text:'Screens for PULMONARY EMBOLISM and escalates accordingly: asks about breathlessness, pleuritic chest pain, haemoptysis, syncope, tachycardia \u2014 and recognises that PE features — here breathlessness plus pleuritic chest pain — mandate same-day HOSPITAL assessment for suspected PE (NICE NG158: two-level PE Wells score; if more than 4 points, CTPA immediately or interim therapeutic anticoagulation if CTPA is delayed), not the routine DVT pathway; 999 if acutely unwell' },
-      { dom:'tasks', text:'Arranges the correct SAME-DAY pathway: knows the NICE NG158 DVT pathway (Wells 2 or more: proximal leg vein ultrasound with the result within 4 hours, or D-dimer plus interim therapeutic anticoagulation and a scan within 24 hours; Wells 1 or less: D-dimer, then ultrasound within 4 hours if positive) — but because she has PE features, sends her for same-day hospital assessment where the PE and DVT work-up happen together — rather than remote symptomatic treatment' },
-      { dom:'tasks', text:'Addresses the HRT honestly without blame: advises her to PAUSE the HRT now, pending investigation (BNF: unexplained calf swelling or pain in one leg, and sudden breathlessness or chest pain, are reasons to stop HRT immediately pending investigation); explains that oral oestrogen is a risk factor, that if VTE is confirmed future options (e.g. transdermal HRT, which at standard doses does not raise VTE risk — NICE NG23) are decided with specialist advice, and does not moralise — and considers the broader provoked/unprovoked work-up later' },
-      { dom:'rto',   text:'Hears the minimisation as overwhelm and HRT fear, draws out the risk-factor history, and does NOT collude with "just a gel"; acknowledges the caring/time barriers while holding the urgency' },
-      { dom:'rto',   text:'Conveys the seriousness (clot, possible lung involvement) clearly but calmly, so she accepts same-day assessment despite wanting to avoid it' },
-      { dom:'gs',    text:'Safety-nets and acts: same-day hospital assessment for suspected PE/DVT, with 999 if she deteriorates (worse breathlessness, chest pain, collapse), what to do meanwhile, confirms she will attend, addresses the HRT plan, and documents/follows up' },
+      { dom:'dg', text:'Recognises a unilateral swollen, warm, tender calf worsening over days as possible DEEP VEIN THROMBOSIS \u2014 and does NOT accept "pulled muscle" or treat as cellulitis with antibiotics/anti-inflammatory gel over the phone' },
+      { dom:'dg', text:'Actively elicits and weights the RISK FACTORS: recent long-haul flight/immobility and HRT (oestrogen), plus smoking history \u2014 and uses a structured assessment (two-level Wells DVT score) to guide the pathway' },
+      { dom:'dg', text:'Screens for PULMONARY EMBOLISM and escalates accordingly: asks about breathlessness, pleuritic chest pain, haemoptysis, syncope, tachycardia \u2014 and recognises that PE features — here breathlessness plus pleuritic chest pain — mandate same-day HOSPITAL assessment for suspected PE (NICE NG158: two-level PE Wells score; if more than 4 points, CTPA immediately or interim therapeutic anticoagulation if CTPA is delayed), not the routine DVT pathway; 999 if acutely unwell' },
+      { dom:'cm', text:'Arranges the correct SAME-DAY pathway: knows the NICE NG158 DVT pathway (Wells 2 or more: proximal leg vein ultrasound with the result within 4 hours, or D-dimer plus interim therapeutic anticoagulation and a scan within 24 hours; Wells 1 or less: D-dimer, then ultrasound within 4 hours if positive) — but because she has PE features, sends her for same-day hospital assessment where the PE and DVT work-up happen together — rather than remote symptomatic treatment' },
+      { dom:'cm', text:'Addresses the HRT honestly without blame: advises her to PAUSE the HRT now, pending investigation (BNF: unexplained calf swelling or pain in one leg, and sudden breathlessness or chest pain, are reasons to stop HRT immediately pending investigation); explains that oral oestrogen is a risk factor, that if VTE is confirmed future options (e.g. transdermal HRT, which at standard doses does not raise VTE risk — NICE NG23) are decided with specialist advice, and does not moralise — and considers the broader provoked/unprovoked work-up later' },
+      { dom:'ro',   text:'Hears the minimisation as overwhelm and HRT fear, draws out the risk-factor history, and does NOT collude with "just a gel"; acknowledges the caring/time barriers while holding the urgency' },
+      { dom:'ro',   text:'Conveys the seriousness (clot, possible lung involvement) clearly but calmly, so she accepts same-day assessment despite wanting to avoid it' },
+      { dom:'cm',    text:'Safety-nets and acts: same-day hospital assessment for suspected PE/DVT, with 999 if she deteriorates (worse breathlessness, chest pain, collapse), what to do meanwhile, confirms she will attend, addresses the HRT plan, and documents/follows up' },
     ],
     worked:[
       { lbl:'Refuse the gel',       txt:'"I\u2019m glad you rang \u2014 and I\u2019m not going to send a gel or antibiotics, because I don\u2019t think this is a pull or cellulitis, and I\u2019d be doing you a disservice to treat it as one. A calf that\u2019s swollen, warm and sore on one side, getting worse over days, can be a clot in the deep veins of the leg \u2014 a DVT \u2014 and that needs checking today, not soothing with a cream."' },
@@ -66,33 +101,64 @@
   /* ============ 106. TELEPHONE — Acute limb ischaemia behind "claudication" ============ */
   const c106 = {
     id:'acute-limb-ischaemia', title:'"My leg\u2019s gone cold and dead \u2014 it\u2019s just my circulation"', type:'telephone', duration:12,
-    meta:{ age:71, sex:'M', setting:'Telephone \u2014 sudden cold, painful, pale leg.', system:'Urgent / Acute limb ischaemia' },
+    meta:{ age:71, sex:'M', setting:'Telephone \u2014 sudden cold, painful, pale leg.', system:'Urgent / Acute limb ischaemia', checked:'October 2026' },
     brief:'Mr Derek Hammond, 71. Known peripheral arterial disease (claudication \u2014 calf pain on walking). Rings because over the last few hours his RIGHT leg/foot has become suddenly COLD, PALE, very PAINFUL (even at rest), and "pins and needles / a bit numb". He has atrial fibrillation (not anticoagulated \u2014 declined). He frames it as "my circulation playing up worse than usual" and wants "stronger painkillers / a water tablet". Smoker, diabetic. No skin break. Wants to avoid hospital.',
     script:{
-      opening:'"Morning. It\u2019s my dodgy leg again \u2014 you know I get the cramp when I walk, the circulation. But it\u2019s worse today, it\u2019s gone proper cold and pale and it\u2019s aching even sitting still, and it\u2019s tingly, a bit numb. I just need some stronger painkillers really, maybe a water tablet for the swelling. I don\u2019t want to be packed off to hospital at my age over a bad leg day. Can you sort me something?"',
-      facts:[
-        { topic:'The 6 Ps \u2014 emergency',  text:'Sudden onset of a leg that is PAINFUL (rest pain), PALE, PERISHINGLY COLD, with PARAESTHESIA (pins and needles/numbness) \u2014 and potentially PULSELESS and PARALYSED \u2014 is ACUTE LIMB ISCHAEMIA, a surgical EMERGENCY (limb-threatening: ESVS 2020, international — muscle and nerve are damaged within hours; a window of about 6 hours is commonly quoted as a clinical rule of thumb). This is NOT his usual claudication (which is exertional and relieved by rest — NICE CG147, which covers chronic PAD), but a sudden arterial occlusion.' },
-        { topic:'The embolic source',    text:'He has ATRIAL FIBRILLATION and is NOT anticoagulated (declined) \u2014 a classic source of an arterial embolus to the leg. Plus established PAD (in-situ thrombosis). The AF + sudden cold leg is the give-away of an embolic acute limb ischaemia.' },
-        { topic:'The minimisation trap', text:'He reframes a limb-threatening emergency as "my circulation worse than usual" and asks for painkillers/a diuretic \u2014 exactly the wrong, dangerous response. The numbness/paralysis and rest pain are advanced features; delay costs the limb (and risks the patient).' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 his hospital avoidance is driven by fear (a previous bad hospital experience / fear of amputation \u2014 he\u2019s seen a friend lose a leg and is terrified that\u2019s where this leads, so paradoxically avoids the very thing that could save it), and stoicism/independence ("at my age"). There may also be regret/defensiveness about declining the anticoagulation that might have prevented this. Overcoming the avoidance fast is the consultation.' },
-        { topic:'What he needs',       text:'Officially: painkillers/a water tablet, no hospital. What he needs: immediate recognition of acute limb ischaemia and EMERGENCY vascular assessment (999/urgent vascular referral) NOW \u2014 the limb is on a clock \u2014 with his amputation fear addressed honestly (early treatment SAVES limbs) so he accepts it.' },
+      "opening": "\"Morning. It's my dodgy leg again — you know I get the cramp when I walk, the circulation. But it's worse today, it's gone proper cold and pale and it's aching even sitting still, and it's tingly, a bit numb. I just need some stronger painkillers really, maybe a water tablet for the swelling. I don't want to be packed off to hospital at my age over a bad leg day. Can you sort me something?\"",
+      "facts": [
+        {
+          "topic": "When it started",
+          "text": "If asked: \"About four hours ago, after breakfast. I stood up to put the kettle on and it just went.\" Before today, your usual cramp came on after walking about 100 yards and went off with a rest."
+        },
+        {
+          "topic": "What the leg is like now",
+          "text": "Right leg, from the shin down. Constant, severe ache even sitting still — 8/10. If asked to look or touch: the foot is white and mottled, \"like marble\", and stone cold compared with the left. Pins and needles across the foot and the toes feel numb. If asked to wiggle your toes: \"They're not moving much — they feel heavy.\" There is no real swelling; you said \"water tablet\" because you thought it might help."
+        },
+        {
+          "topic": "Heart rhythm",
+          "text": "You know you have \"an irregular heartbeat\" — diagnosed last year. They wanted you on a blood thinner and you said no: \"I didn't want to be bleeding everywhere.\""
+        },
+        {
+          "topic": "Relevant negatives (if asked)",
+          "text": "No injury, no chest pain, no breathlessness, no fainting. No face or arm weakness, speech normal. The left leg is fine."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "Poor circulation in the legs, irregular heartbeat, type 2 diabetes. You take metformin, a statin \"sometimes\", and a blood pressure tablet. No allergies."
+        },
+        {
+          "topic": "Social",
+          "text": "71, retired lorry driver, lives with your wife Pat. Smoke 15 a day. A couple of pints on a Friday."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "Your mate Ken had a leg off two years ago \"after they kept fiddling with his circulation in hospital\". You are terrified that if you go in, they will take your leg. Say this only if the doctor asks why you do not want to go to hospital. If the blood thinner comes up, get a bit defensive: \"Don't start on that.\""
+        },
+        {
+          "topic": "How to play it",
+          "text": "Stoical and gruff, playing it down. Ask for painkillers twice. If the doctor says plainly this is an emergency where the blood supply is blocked and that going NOW is the best chance of saving the leg, go quiet, then say: \"Ken lost his leg, you know.\" If they respond to that fear honestly, agree to the ambulance. If you are blamed for refusing the blood thinner, become defensive and harder to persuade."
+        }
       ],
-      ice:{
-        ideas:'It\u2019s his usual circulation/claudication, just a worse day; painkillers or a water tablet will do.',
-        concerns:'HIDDEN AGENDA \u2014 hospital avoidance driven by fear of amputation (saw a friend lose a leg) and stoicism/independence ("at my age"); possibly defensiveness about having declined anticoagulation; so he minimises a limb-threatening emergency.',
-        expectations:'Stronger painkillers / a diuretic and to avoid hospital. What he actually needs: immediate recognition of acute limb ischaemia and EMERGENCY vascular assessment now, with his amputation fear addressed so he accepts it.'
+      "ice": {
+        "ideas": "\"It's just my circulation playing up worse than usual.\"",
+        "concerns": "Underneath (only if asked): \"If I go in, they'll take my leg off like Ken's.\"",
+        "expectations": "\"Stronger painkillers and maybe a water tablet.\" You will accept an ambulance if the urgency and your fear are both dealt with."
       },
-      cues:['SUDDEN cold, pale, painful-at-rest, numb/tingly leg \u2014 the 6 Ps of acute limb ischaemia; a surgical emergency, not claudication.','Atrial fibrillation, not anticoagulated \u2014 a classic embolic source; the AF + sudden cold leg is the give-away.','"Just my circulation, painkillers, no hospital" \u2014 dangerous minimisation driven by amputation fear; overcome it fast.']
+      "cues": [
+        "\"It's aching even sitting still, and it's gone cold and pale.\" — say in the opening.",
+        "\"I don't want to be packed off to hospital at my age.\" — say in the opening and again when hospital is mentioned.",
+        "\"My mate Ken lost his leg.\" — say if the doctor asks what worries you about hospital."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises SUDDEN onset of a painful (rest pain), pale, perishingly cold, paraesthetic \u00b1 pulseless/paralysed leg as ACUTE LIMB ISCHAEMIA \u2014 a limb-threatening surgical EMERGENCY \u2014 and distinguishes it from his usual exertional claudication; does NOT offer painkillers/a diuretic' },
-      { dom:'tasks', text:'Identifies the likely embolic source: ATRIAL FIBRILLATION not anticoagulated (and established PAD), recognising the AF + acute cold leg points to an arterial embolus' },
-      { dom:'tasks', text:'Acts on the TIME-CRITICAL window: arranges IMMEDIATE emergency assessment — a 999 ambulance to emergency vascular care, with a phone handover to the on-call vascular team where possible (ESVS 2020, international) — conveying that the limb can be lost within hours and that delay is the danger' },
-      { dom:'tasks', text:'Recognises the advanced features (fixed numbness/paralysis, rest pain) as signs of a threatened limb needing the fastest possible vascular intervention, and does not attempt to manage it in primary care' },
-      { dom:'tasks', text:'Plans the broader issues for after the emergency (anticoagulation for AF — NICE NG196: offer a DOAC when CHA₂DS₂-VASc is 2 or more, taking bleeding risk into account; secondary prevention for PAD — NICE CG147; smoking cessation — NICE NG209; cardiovascular risk) without letting them delay emergency transfer' },
-      { dom:'rto',   text:'Overcomes the hospital avoidance and the amputation fear rapidly and compassionately: names the emergency plainly, addresses the fear (early treatment SAVES limbs; delay loses them), and does not collude with "just painkillers"' },
-      { dom:'rto',   text:'Conveys urgency without inducing panic-paralysis, supports him through the fear (and any regret about declining anticoagulation, without blame), so he accepts immediate transfer' },
-      { dom:'gs',    text:'Safety-nets and acts now: 999/emergency vascular pathway immediately, keep the leg dependent/not elevated and warm the body (not the leg directly), nil by mouth in case of surgery, confirms transfer, and documents \u2014 a same-minute emergency, not a wait' },
+      { dom:'dg', text:'Recognises SUDDEN onset of a painful (rest pain), pale, perishingly cold, paraesthetic \u00b1 pulseless/paralysed leg as ACUTE LIMB ISCHAEMIA \u2014 a limb-threatening surgical EMERGENCY \u2014 and distinguishes it from his usual exertional claudication; does NOT offer painkillers/a diuretic' },
+      { dom:'dg', text:'Identifies the likely embolic source: ATRIAL FIBRILLATION not anticoagulated (and established PAD), recognising the AF + acute cold leg points to an arterial embolus' },
+      { dom:'cm', text:'Acts on the TIME-CRITICAL window: arranges IMMEDIATE emergency assessment — a 999 ambulance to emergency vascular care, with a phone handover to the on-call vascular team where possible (ESVS 2020, international) — conveying that the limb can be lost within hours and that delay is the danger' },
+      { dom:'dg', text:'Recognises the advanced features (fixed numbness/paralysis, rest pain) as signs of a threatened limb needing the fastest possible vascular intervention, and does not attempt to manage it in primary care' },
+      { dom:'cm', text:'Plans the broader issues for after the emergency (anticoagulation for AF — NICE NG196: offer a DOAC when CHA₂DS₂-VASc is 2 or more, taking bleeding risk into account; secondary prevention for PAD — NICE CG147; smoking cessation — NICE NG209; cardiovascular risk) without letting them delay emergency transfer' },
+      { dom:'ro',   text:'Overcomes the hospital avoidance and the amputation fear rapidly and compassionately: names the emergency plainly, addresses the fear (early treatment SAVES limbs; delay loses them), and does not collude with "just painkillers"' },
+      { dom:'ro',   text:'Conveys urgency without inducing panic-paralysis, supports him through the fear (and any regret about declining anticoagulation, without blame), so he accepts immediate transfer' },
+      { dom:'cm',    text:'Safety-nets and acts now: 999/emergency vascular pathway immediately, keep the leg dependent/not elevated and warm the body (not the leg directly), nil by mouth in case of surgery, confirms transfer, and documents \u2014 a same-minute emergency, not a wait' },
     ],
     worked:[
       { lbl:'Refuse the reframe',   txt:'"Derek, I have to stop you there, because this isn\u2019t your usual circulation \u2014 and I need to be very straight because it matters. A leg that\u2019s suddenly gone cold, pale, painful even at rest, and now numb and tingly \u2014 that\u2019s a blocked artery cutting off the blood supply. That\u2019s an emergency, and it\u2019s the opposite of something a painkiller or water tablet would fix."' },
@@ -121,33 +187,64 @@
   /* ============ 107. VIDEO — Incidental AAA on a scan ============ */
   const c107 = {
     id:'aaa-incidental', title:'"The scan found a bulge on my aorta \u2014 is it about to burst?"', type:'video', duration:12,
-    meta:{ age:69, sex:'M', setting:'Video consultation \u2014 explaining an incidental AAA finding.', system:'Vascular / Abdominal aortic aneurysm' },
+    meta:{ age:69, sex:'M', setting:'Video consultation \u2014 explaining an incidental AAA finding.', system:'Vascular / Abdominal aortic aneurysm', checked:'October 2026' },
     brief:'Mr Brian Castle, 69. An ultrasound for something else (or the AAA screening programme) found an abdominal aortic aneurysm measuring 4.3 cm. Asymptomatic. He has read the letter, is terrified it will "burst any moment", and hasn\u2019t slept. Smoker (trying to quit), hypertension (on amlodipine), high cholesterol. He wants to know if he needs an emergency operation and whether he should avoid all activity. No abdominal/back pain. Brother died of a "burst aorta".',
     script:{
-      opening:'"Doctor, this letter\u2019s frightened the life out of me. It says I\u2019ve got an aneurysm on my aorta, 4.3 centimetres. My brother died when his aorta burst \u2014 just dropped dead \u2014 so I\u2019m convinced mine\u2019s going to do the same any minute. Do I need an operation right now? Should I stop driving, stop lifting, stop everything? I\u2019ve been too scared to even go for a walk."',
-      facts:[
-        { topic:'What 4.3 cm means',     text:'A 4.3 cm AAA is a SMALL aneurysm. The rupture risk at this size is LOW; the management is referral to the regional vascular service (NICE NG156, 2020: an AAA of 3.0–5.4 cm is referred to be seen within 12 weeks of diagnosis), SURVEILLANCE (ultrasound every 12 months for 3.0–4.4 cm, per the NHS AAA Screening Programme intervals that NG156 adopts) and risk-factor modification — not emergency surgery. Surgery (repair) is generally considered when the aneurysm reaches ~5.5 cm, or grows rapidly (e.g. >1 cm/year), or becomes symptomatic. He is far from that threshold.' },
-        { topic:'The genuine red flags',  text:'What WOULD be an emergency: sudden severe abdominal/back/flank pain, a pulsatile abdominal mass with pain, collapse/syncope, or shock \u2014 suggesting rupture or symptomatic AAA (a surgical emergency, 999). He is currently asymptomatic \u2014 the message is surveillance now, but know-and-act on these red flags.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 his terror is driven entirely by his BROTHER\u2019S sudden death from a ruptured aorta, mapped onto himself, and a cold letter with no conversation. He has stopped all activity out of fear and is barely functioning. He needs the catastrophic certainty dismantled (small, low-risk, monitored) and to be given permission to live normally \u2014 plus the genuinely empowering message that the BEST thing he can do — stop smoking — is the modifiable factor linked to faster growth and rupture (RESCAN meta-analysis, Sweeting et al., Br J Surg 2012), and that controlling BP and cholesterol lowers his overall cardiovascular risk (NICE NG136, NG238).' },
-        { topic:'The empowerment',     text:'If reached: stopping smoking is the lever linked to slower aneurysm growth and lower rupture risk (Sweeting et al., Br J Surg 2012), and blood-pressure and cholesterol control reduce his heart-attack and stroke risk — so he is not helpless; he has real levers. And normal activity/exercise is encouraged, not forbidden. This converts dread into agency.' },
-        { topic:'What he needs',       text:'Officially: to know if he needs an emergency operation and whether to stop everything. What he needs: accurate reassurance (4.3 cm is small, low-risk, surveillance not surgery), referral to the regional vascular service to be seen within 12 weeks (NICE NG156), the surveillance plan, risk-factor modification framed as empowering, the rupture red flags to act on, permission to live normally, and his brother-driven fear addressed.' },
+      "opening": "\"Doctor, this letter's frightened the life out of me. It says I've got an aneurysm on my aorta, 4.3 centimetres. My brother died when his aorta burst — just dropped dead — so I'm convinced mine's going to do the same any minute. Do I need an operation right now? Should I stop driving, stop lifting, stop everything? I've been too scared to even go for a walk.\"",
+      "facts": [
+        {
+          "topic": "How it was found",
+          "text": "If asked: you had an ultrasound of your tummy for a gallstone check, and the report mentioned \"abdominal aortic aneurysm 4.3 cm\". The letter came on Monday asking you to see the GP. Nobody has explained it."
+        },
+        {
+          "topic": "Symptoms (if asked)",
+          "text": "None. No tummy or back pain, no pulsing lump you have noticed, no fainting, no breathlessness, no chest pain. You feel physically well."
+        },
+        {
+          "topic": "What has changed since the letter",
+          "text": "You have barely slept for four nights. You have stopped your daily walk with the dog, stopped lifting your grandson and won't drive \"in case it goes at the wheel\"."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "High blood pressure (amlodipine), high cholesterol — \"they offered me a statin, I didn't fancy it\". No allergies. Last BP at the nurse: \"about 150 over 90\"."
+        },
+        {
+          "topic": "Smoking (if asked)",
+          "text": "15 a day for 50 years. \"I've cut down a bit since the letter, to be honest.\" You have tried patches before."
+        },
+        {
+          "topic": "Social",
+          "text": "69, retired bus mechanic, married to Sue, three grandchildren. Drinks a few pints at the weekend."
+        },
+        {
+          "topic": "Your brother",
+          "text": "Your older brother Jim \"dropped dead\" at 72, five years ago, at home. The post-mortem said a burst aorta. \"Nobody knew he had anything.\""
+        },
+        {
+          "topic": "How to play it",
+          "text": "Very frightened, talking quickly, convinced you are a ticking bomb. If the doctor gives you clear, simple facts (small, low risk at this size, checked by scans, operation only if it grows much bigger), visibly relax and say: \"So I can walk the dog?\" Become interested once smoking is framed as something you can actually do to help. If they say \"don't worry\" without facts, stay frightened: \"That's what they told Jim.\""
+        }
       ],
-      ice:{
-        ideas:'A 4.3 cm aneurysm is about to burst "any minute" (like his brother\u2019s), needs an emergency operation, and means he must stop all activity.',
-        concerns:'HIDDEN AGENDA \u2014 terror from his brother\u2019s sudden death from a ruptured aorta mapped onto himself, amplified by a cold letter; he has stopped all activity and is barely functioning.',
-        expectations:'To know if he needs emergency surgery and whether to stop everything. What he actually needs: accurate reassurance (small, low-risk, surveillance not surgery), the monitoring plan, empowering risk-factor advice, rupture red flags, permission to live normally, and the brother-fear addressed.'
+      "ice": {
+        "ideas": "\"It's going to burst any minute, like Jim's did.\"",
+        "concerns": "\"I keep thinking I'll drop dead in front of Sue or the grandkids.\"",
+        "expectations": "\"Do I need an operation now? Should I stop everything?\" You want honest facts and to know what you can do."
       },
-      cues:['"Is it about to burst? Do I need an operation now?" \u2014 catastrophic reading of a small aneurysm; reframe accurately.','4.3 cm, asymptomatic \u2014 small, low-risk; surveillance + risk-factor control, not surgery.','Brother died of a ruptured aorta \u2014 the specific fear; dismantle it and give permission to live normally.']
+      "cues": [
+        "\"My brother died when his burst.\" — say in the opening.",
+        "\"I've been too scared to even go for a walk.\" — say in the opening.",
+        "\"I've cut down on the cigs since the letter.\" — say when lifestyle comes up."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Explains accurately that a 4.3 cm AAA is SMALL and LOW rupture-risk, managed by SURVEILLANCE (regular ultrasound) and risk-factor modification \u2014 NOT emergency surgery \u2014 and that repair is generally considered only at ~5.5 cm, rapid growth (>1 cm/year), or if symptomatic' },
-      { dom:'tasks', text:'Refers to the regional vascular service to be seen within 12 weeks of diagnosis (NICE NG156: 3.0–5.4 cm; 5.5 cm or more within 2 weeks; symptomatic = emergency) and sets out the SURVEILLANCE plan clearly (ultrasound every 12 months at 3.0–4.4 cm, every 3 months at 4.5–5.4 cm — NHS AAA Screening Programme, adopted by NG156) and what the thresholds for repair are, so the patient understands the watch-and-monitor logic' },
-      { dom:'tasks', text:'Frames RISK-FACTOR modification as empowering and effective: smoking cessation (a major modifiable factor, consistently linked to faster growth and higher rupture rates — Sweeting et al., Br J Surg 2012; stop-smoking support per NICE NG209) and blood-pressure control (NICE NG136), plus statin/cardiovascular risk (NICE NG238) — framing BP and lipids as protecting his heart and circulation overall rather than claiming they shrink the aneurysm \u2014 giving him genuine agency rather than helplessness' },
-      { dom:'tasks', text:'Gives the genuine RED FLAGS that would be an emergency: sudden severe abdominal/back/flank pain, collapse/syncope, a painful pulsatile mass \u2192 999 (possible rupture) \u2014 distinguishing these from his current asymptomatic, low-risk state' },
-      { dom:'tasks', text:'Gives permission to LIVE NORMALLY: normal activity and exercise are encouraged, not forbidden; corrects the "stop everything" misconception (reasonable to avoid only very heavy isometric straining if advised, but not normal life/walking)' },
-      { dom:'rto',   text:'Responds to the distress and sleeplessness first, dismantles the brother-driven catastrophe with empathy and accurate information, and replaces dread with an accurate, empowering narrative' },
-      { dom:'rto',   text:'Acknowledges the harm of a cold letter without a conversation, validates the fear given the family history, and reassures without either minimising or feeding the catastrophe' },
-      { dom:'gs',    text:'Safety-nets and follows up: the surveillance schedule, rupture red flags \u2192 999, smoking-cessation and BP support, permission to resume normal life, and a follow-up that leaves him reassured and engaged rather than paralysed by fear' },
+      { dom:'ro', text:'Explains accurately that a 4.3 cm AAA is SMALL and LOW rupture-risk, managed by SURVEILLANCE (regular ultrasound) and risk-factor modification \u2014 NOT emergency surgery \u2014 and that repair is generally considered only at ~5.5 cm, rapid growth (>1 cm/year), or if symptomatic' },
+      { dom:'cm', text:'Refers to the regional vascular service to be seen within 12 weeks of diagnosis (NICE NG156: 3.0–5.4 cm; 5.5 cm or more within 2 weeks; symptomatic = emergency) and sets out the SURVEILLANCE plan clearly (ultrasound every 12 months at 3.0–4.4 cm, every 3 months at 4.5–5.4 cm — NHS AAA Screening Programme, adopted by NG156) and what the thresholds for repair are, so the patient understands the watch-and-monitor logic' },
+      { dom:'ro', text:'Frames RISK-FACTOR modification as empowering and effective: smoking cessation (a major modifiable factor, consistently linked to faster growth and higher rupture rates — Sweeting et al., Br J Surg 2012; stop-smoking support per NICE NG209) and blood-pressure control (NICE NG136), plus statin/cardiovascular risk (NICE NG238) — framing BP and lipids as protecting his heart and circulation overall rather than claiming they shrink the aneurysm \u2014 giving him genuine agency rather than helplessness' },
+      { dom:'dg', text:'Gives the genuine RED FLAGS that would be an emergency: sudden severe abdominal/back/flank pain, collapse/syncope, a painful pulsatile mass \u2192 999 (possible rupture) \u2014 distinguishing these from his current asymptomatic, low-risk state' },
+      { dom:'cm', text:'Gives permission to LIVE NORMALLY: normal activity and exercise are encouraged, not forbidden; corrects the "stop everything" misconception (reasonable to avoid only very heavy isometric straining if advised, but not normal life/walking)' },
+      { dom:'ro',   text:'Responds to the distress and sleeplessness first, dismantles the brother-driven catastrophe with empathy and accurate information, and replaces dread with an accurate, empowering narrative' },
+      { dom:'ro',   text:'Acknowledges the harm of a cold letter without a conversation, validates the fear given the family history, and reassures without either minimising or feeding the catastrophe' },
+      { dom:'cm',    text:'Safety-nets and follows up: the surveillance schedule, rupture red flags \u2192 999, smoking-cessation and BP support, permission to resume normal life, and a follow-up that leaves him reassured and engaged rather than paralysed by fear' },
     ],
     worked:[
       { lbl:'Defuse the catastrophe', txt:'"I\u2019m so sorry that letter has terrified you and stolen your sleep \u2014 let me put this in proportion straightaway, because the reality is far less frightening than it feels. Yes, you have a small bulge on the main blood vessel \u2014 an aneurysm \u2014 but at 4.3 centimetres it is SMALL, and the risk of it bursting at this size is LOW. You do not need an emergency operation, and it is not about to go \u2018any minute\u2019."' },
@@ -157,7 +254,7 @@
       { lbl:'Permission to live',   txt:'"And please \u2014 go back to your life. Walk, garden, drive, enjoy yourself. Stopping everything won\u2019t protect you and is robbing you of living. Normal activity and exercise are actually GOOD for you here. You don\u2019t need to wrap yourself in cotton wool."' },
       { lbl:'Red flags + net',      txt:'"One thing to know, just in case \u2014 not to scare you, but so you\u2019re informed: if you ever got sudden severe pain in your tummy or back, or felt faint or collapsed, that\u2019s a 999 emergency. That\u2019s the only scenario to act on urgently, and it\u2019s not where you are. Otherwise: I’ll send the vascular referral today, set up your monitoring scans, help you with the smoking, and see you to go through it all. Please, sleep tonight \u2014 this is small, watched, and largely in your hands."' },
     ],
-    learning:'A 4.3 cm abdominal aortic aneurysm is SMALL and LOW rupture-risk \u2014 managed by SURVEILLANCE (periodic ultrasound) and risk-factor modification, NOT emergency surgery; repair is generally considered only at ~5.5 cm, rapid growth (>1 cm/year), or if symptomatic. The consultation is largely RISK COMMUNICATION: a cold letter and a brother\u2019s death from a ruptured aorta have produced catastrophic certainty and total activity avoidance. Dismantle it accurately (small, low-risk, found early, monitored), refer to the regional vascular service to be seen within 12 weeks (NICE NG156, 2020), set out the surveillance plan and the repair thresholds, and — crucially — frame risk-factor modification (above all smoking cessation, linked to growth and rupture; plus BP/cholesterol control for his overall cardiovascular risk) as empowering and effective, giving agency rather than helplessness. Give explicit permission to live normally (normal activity/exercise encouraged), correcting the "stop everything" misconception, and give the genuine rupture red flags (sudden severe abdominal/back/flank pain, collapse \u2192 999) to act on. Respond to the distress first, validate the family-history fear, and reassure without minimising or feeding the catastrophe.',
+    learning:"A 4.3 cm abdominal aortic aneurysm is SMALL and LOW rupture-risk — managed by SURVEILLANCE (periodic ultrasound) and risk-factor modification, NOT emergency surgery; repair is generally considered only at ~5.5 cm, rapid growth (>1 cm/year), or if symptomatic. The consultation is largely RISK COMMUNICATION: a cold letter and a brother’s death from a ruptured aorta have produced catastrophic certainty and total activity avoidance. Dismantle it accurately (small, low-risk, found early, monitored), refer to the regional vascular service to be seen within 12 weeks (NICE NG156, 2020), set out the surveillance plan and the repair thresholds, and — crucially — frame risk-factor modification (above all smoking cessation, linked to growth and rupture; plus BP/cholesterol control for his overall cardiovascular risk) as empowering and effective, giving agency rather than helplessness. Give explicit permission to live normally (normal activity/exercise encouraged), correcting the \"stop everything\" misconception, and give the genuine rupture red flags (sudden severe abdominal/back/flank pain, collapse → 999) to act on. Respond to the distress first, validate the family-history fear, and reassure without minimising or feeding the catastrophe. What WOULD be an emergency: sudden severe abdominal/back/flank pain, a pulsatile abdominal mass with pain, collapse/syncope, or shock — suggesting rupture or symptomatic AAA (a surgical emergency, 999). He is currently asymptomatic — the message is surveillance now, but know-and-act on these red flags.",
     knowledge:{
       guideline:'NICE NG156 Abdominal aortic aneurysm: diagnosis and management (2020) · NHS AAA Screening Programme surveillance intervals (GOV.UK) · DVLA Assessing fitness to drive (aortic aneurysm) · NICE NG209 Tobacco (2021) · NICE NG136 Hypertension in adults (2019) · NICE NG238 Cardiovascular disease: risk assessment and reduction (2023) · Sweeting et al., Br J Surg 2012 (RESCAN: growth and rupture of small AAAs)',
       points:[
@@ -176,33 +273,64 @@
   /* ============ 108. VIDEO — AF anticoagulation: the refusal/decision ============ */
   const c108 = {
     id:'af-anticoag-decision', title:'“I’m not going on blood thinners”', type:'video', duration:12,
-    meta:{ age:74, sex:'M', setting:'Video consultation \u2014 anticoagulation decision in AF.', system:'Cardiology / AF & shared anticoagulation decision' },
+    meta:{ age:74, sex:'M', setting:'Video consultation \u2014 anticoagulation decision in AF.', system:'Cardiology / AF & shared anticoagulation decision', checked:'October 2026' },
     brief:'Mr Frank Ostrowski, 74. Recently diagnosed atrial fibrillation; CHA₂DS₂-VASc 3 (age 65–74, hypertension, diabetes) — NICE NG196 says offer anticoagulation with a DOAC at a score of 2 or more, whatever the sex, taking bleeding risk into account. He is refusing: "I\u2019m not taking blood thinners, they killed my father \u2014 he bled to death." He is otherwise well, active, terrified of bleeding, and has heard "warfarin is rat poison". He doesn\u2019t know about DOACs or that modern options differ. Falls risk often over-stated to him. Wants to "just take an aspirin and leave it".',
     script:{
-      opening:'"Look, I know you want me on blood thinners for this heart rhythm thing, but I\u2019m telling you now \u2014 no. My father was on warfarin and he bled to death, it was horrific. I\u2019m not going through that. Isn\u2019t it basically rat poison anyway? I\u2019ll take a daily aspirin if you insist, that thins the blood a bit, and we\u2019ll call it quits. I\u2019d rather take my chances than end up like my dad."',
-      facts:[
-        { topic:'The stroke-prevention case', text:'In AF with a CHA₂DS₂-VASc of 2 or more (his is 3), NICE NG196 says offer anticoagulation, and it substantially reduces the risk of a devastating, often disabling or fatal stroke — the dominant risk to address. ASPIRIN is NOT effective for stroke prevention in AF (NICE NG196: do not offer aspirin monotherapy solely for stroke prevention in AF) \u2014 a key misconception to correct; "just an aspirin" gives a false sense of protection.' },
-        { topic:'Modern options vs his fear', text:'His refusal is anchored on his father\u2019s warfarin death and "rat poison". DOACs (e.g. apixaban, rivaroxaban, edoxaban, dabigatran — NICE NG196; NICE TA249, TA256, TA275, TA355) are now first-line for most: no routine INR monitoring, fewer interactions, and generally a lower intracranial-bleed risk than warfarin (Ruff et al., Lancet 2014 meta-analysis) \u2014 a genuinely different proposition from what his father had. The bleeding risk is real but usually far outweighed by the stroke-prevention benefit at his risk level.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 beneath the flat refusal is genuine TRAUMA: he witnessed his father\u2019s bleeding death and is terrified of repeating it; "I\u2019d rather take my chances" is fear, not informed choice. He also fears losing independence (a stroke that leaves him dependent is, ironically, exactly what anticoagulation prevents \u2014 a reframe he hasn\u2019t heard). The consultation is shared decision-making that honours his autonomy while correcting misconceptions and addressing the trauma.' },
-        { topic:'Respecting autonomy',  text:'He is entitled to decline after a genuinely informed discussion \u2014 the goal is not to coerce but to ensure his decision is informed (correct the aspirin myth, explain DOACs vs warfarin, put the bleeding vs stroke risks in real terms, address falls-risk over-statement), and to keep the door open.' },
-        { topic:'What he needs',       text:'Officially: to refuse anticoagulation and take aspirin. What he needs: an honest, non-coercive shared decision \u2014 the stroke-prevention benefit, the ineffectiveness of aspirin, how DOACs differ from his father\u2019s warfarin, the bleeding risk in proportion, the trauma acknowledged, and the reframe that anticoagulation protects the independence he fears losing \u2014 with his autonomy respected.' },
+      "opening": "\"Look, I know you want me on blood thinners for this heart rhythm thing, but I'm telling you now — no. My father was on warfarin and he bled to death, it was horrific. I'm not going through that. Isn't it basically rat poison anyway? I'll take a daily aspirin if you insist, that thins the blood a bit, and we'll call it quits. I'd rather take my chances than end up like my dad.\"",
+      "facts": [
+        {
+          "topic": "The AF",
+          "text": "If asked: found two weeks ago at a diabetic check when the nurse felt an irregular pulse; the heart tracing confirmed it. You do not feel it at all — no palpitations, no breathlessness, no chest pain, no dizziness or fainting."
+        },
+        {
+          "topic": "Strokes and bleeding (if asked)",
+          "text": "Never had a stroke or mini-stroke. Never had a stomach ulcer or serious bleed. No blood in stools or urine."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "High blood pressure (ramipril), type 2 diabetes (metformin). No allergies. You do not take ibuprofen or aspirin at present."
+        },
+        {
+          "topic": "Falls and lifestyle (if asked)",
+          "text": "No falls. Fit and active: you walk 3 miles a day and do your allotment. A couple of pints at the weekend. Never smoked."
+        },
+        {
+          "topic": "Your father",
+          "text": "He was on warfarin \"for his heart\" in the 1990s, had a fall at 78, and bled into his brain. You were with him in hospital for the three days before he died. \"He was confused and bruised all over. The INR was all over the place.\""
+        },
+        {
+          "topic": "What you have heard",
+          "text": "\"Warfarin is rat poison.\" You have never heard of the newer tablets (DOACs). You assume aspirin does the same job, only safer."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "What you fear most is ending up dependent, like your dad in his last days: \"I'd rather go quickly than be a vegetable.\" Say this only if the doctor asks what matters most to you or what a good outcome looks like."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Firm and a bit defensive at first. If the doctor argues or quotes numbers at you before acknowledging your father, dig in: \"You're not listening.\" If they ask about your father with genuine interest, soften. You become curious if told the newer tablets work differently from warfarin and that aspirin does not protect against stroke in AF. You do NOT have to agree today — you may ask for a leaflet and time to think, and say you will talk to your daughter."
+        }
       ],
-      ice:{
-        ideas:'Blood thinners are dangerous "rat poison" that killed his father; an aspirin is a safe enough alternative; he\u2019d rather risk it.',
-        concerns:'HIDDEN AGENDA \u2014 trauma from witnessing his father bleed to death on warfarin, and terror of repeating it; fear of losing independence; "I\u2019d rather take my chances" is fear, not informed choice.',
-        expectations:'To refuse anticoagulation and take aspirin. What he actually needs: a non-coercive shared decision \u2014 stroke-prevention benefit, aspirin\u2019s ineffectiveness, DOACs vs warfarin, bleeding in proportion, trauma acknowledged, and autonomy respected.'
+      "ice": {
+        "ideas": "\"Blood thinners are rat poison. Aspirin will do the job.\"",
+        "concerns": "\"I watched Dad bleed to death. I won't go through that.\" Underneath: losing your independence.",
+        "expectations": "\"I'll take an aspirin and we'll call it quits.\" You will consider a newer blood thinner if you feel listened to and given honest information."
       },
-      cues:['"Warfarin killed my father, I\u2019ll just take aspirin" \u2014 trauma-driven refusal + the aspirin misconception to correct.','High CHA\u2082DS\u2082-VASc AF \u2014 strong stroke-prevention indication; the dominant risk is a disabling stroke.','"I\u2019d rather take my chances / end up like my dad" \u2014 fear, not informed choice; honour autonomy but inform it.']
+      "cues": [
+        "\"My father bled to death on warfarin.\" — say in the opening.",
+        "\"I'll take an aspirin — that thins the blood.\" — say in the opening.",
+        "\"I'd rather go quickly than end up helpless.\" — say if asked what matters to you."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Makes the STROKE-PREVENTION case clearly: NICE NG196 — offer a DOAC at a CHA₂DS₂-VASc of 2 or more, whatever the person’s sex (his is 3: age 65–74, hypertension, diabetes), taking bleeding risk into account; anticoagulation substantially reduces the risk of a disabling/fatal stroke — the dominant risk — and he quantifies it in understandable terms (stroke vs bleeding risk: CHA₂DS₂-VASc and the ORBIT score that NG196 recommends, with modifiable factors)' },
-      { dom:'tasks', text:'Corrects the ASPIRIN misconception: aspirin is NOT effective for stroke prevention in AF and is not a safe substitute \u2014 "just an aspirin" gives false reassurance while carrying its own bleeding risk' },
-      { dom:'tasks', text:'Distinguishes modern DOACs from his father\u2019s warfarin: first-line for most, no routine INR monitoring, fewer interactions, generally lower intracranial-bleed risk \u2014 a genuinely different option from the warfarin that traumatised him' },
-      { dom:'tasks', text:'Puts the BLEEDING risk in proportion and addresses modifiable bleeding factors (BP control, alcohol, concomitant NSAIDs/antiplatelets), and counters the commonly over-stated falls-risk argument (NICE NG196: do not withhold anticoagulation solely because of age or falls risk)' },
-      { dom:'tasks', text:'Practises genuine SHARED DECISION-MAKING: respects his autonomy to decline after an informed discussion, does not coerce, checks understanding, and keeps the door open for reconsideration' },
-      { dom:'rto',   text:'Acknowledges and explores the TRAUMA of his father\u2019s death with compassion, recognising the refusal as fear rather than informed choice, and addresses it directly rather than arguing past it' },
-      { dom:'rto',   text:'Reframes empathically: a stroke is a leading cause of exactly the dependency/loss of independence he fears, so anticoagulation protects what he values \u2014 offered as information, not pressure' },
-      { dom:'gs',    text:'Safety-nets and follows up: provides written information and the NICE NG196 patient decision aid, agrees a plan (trial/think-about-it/specialist input as needed), what to do re symptoms, and a follow-up to revisit the decision \u2014 honouring autonomy while keeping him engaged and safe' },
+      { dom:'cm', text:'Makes the STROKE-PREVENTION case clearly: NICE NG196 — offer a DOAC at a CHA₂DS₂-VASc of 2 or more, whatever the person’s sex (his is 3: age 65–74, hypertension, diabetes), taking bleeding risk into account; anticoagulation substantially reduces the risk of a disabling/fatal stroke — the dominant risk — and he quantifies it in understandable terms (stroke vs bleeding risk: CHA₂DS₂-VASc and the ORBIT score that NG196 recommends, with modifiable factors)' },
+      { dom:'ro', text:'Corrects the ASPIRIN misconception: aspirin is NOT effective for stroke prevention in AF and is not a safe substitute \u2014 "just an aspirin" gives false reassurance while carrying its own bleeding risk' },
+      { dom:'dg', text:'Distinguishes modern DOACs from his father\u2019s warfarin: first-line for most, no routine INR monitoring, fewer interactions, generally lower intracranial-bleed risk \u2014 a genuinely different option from the warfarin that traumatised him' },
+      { dom:'ro', text:'Puts the BLEEDING risk in proportion and addresses modifiable bleeding factors (BP control, alcohol, concomitant NSAIDs/antiplatelets), and counters the commonly over-stated falls-risk argument (NICE NG196: do not withhold anticoagulation solely because of age or falls risk)' },
+      { dom:'cm', text:'Practises genuine SHARED DECISION-MAKING: respects his autonomy to decline after an informed discussion, does not coerce, checks understanding, and keeps the door open for reconsideration' },
+      { dom:'ro',   text:'Acknowledges and explores the TRAUMA of his father\u2019s death with compassion, recognising the refusal as fear rather than informed choice, and addresses it directly rather than arguing past it' },
+      { dom:'ro',   text:'Reframes empathically: a stroke is a leading cause of exactly the dependency/loss of independence he fears, so anticoagulation protects what he values \u2014 offered as information, not pressure' },
+      { dom:'cm',    text:'Safety-nets and follows up: provides written information and the NICE NG196 patient decision aid, agrees a plan (trial/think-about-it/specialist input as needed), what to do re symptoms, and a follow-up to revisit the decision \u2014 honouring autonomy while keeping him engaged and safe' },
     ],
     worked:[
       { lbl:'Hear the trauma first', txt:'"Before anything about tablets \u2014 what happened to your father sounds genuinely horrific, and watching that would frighten anyone off blood thinners for life. I\u2019m not going to brush past that or push you. I just want to make sure that whatever you decide, you\u2019re deciding with the full, accurate picture \u2014 because some things have changed a lot since your dad\u2019s day."' },

@@ -44,7 +44,7 @@
 - Treat non-oral causes: sinusitis/post-nasal drip, tonsilloliths, GORD.
 - Persistent + systemic features → consider DKA/hepatic/renal → investigate.`,
     sources: [
-      { label:'SDCEP', url:'https://www.sdcep.org.uk' },
+      { label:'NICE CKS — Halitosis', url:'https://cks.nice.org.uk/topics/halitosis/' },
     ],
   },
 
@@ -85,7 +85,7 @@
 - Refractory: antiandrogen (spironolactone/cyproterone/finasteride) — TERATOGENIC, need reliable contraception; often specialist.
 - Rapid onset/virilisation/very high testosterone → exclude androgen tumour → urgent.`,
     sources: [
-      { label:'Endocrine Society · Society for Endocrinology', url:'https://www.endocrinology.org' },
+      { label:'NICE CKS — Hirsutism', url:'https://cks.nice.org.uk/topics/hirsutism/' },
     ],
   },
 

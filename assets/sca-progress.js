@@ -17,10 +17,11 @@ window.RGPScaProgress = (function () {
   function save(a) { try { localStorage.setItem(KEY, JSON.stringify(a)); } catch (e) {} }
 
   function band(pct) {
-    if (pct < 0.33) return { key: 'below', label: 'Below pass', icon: '🔴' };
-    if (pct < BORDER) return { key: 'borderline', label: 'Borderline', icon: '🟠' };
-    if (pct < PASS) return { key: 'pass', label: 'Pass standard', icon: '🟢' };
-    return { key: 'strong', label: 'Strong pass', icon: '🟢' };
+    // RCGP grade words only: Clear fail / Fail / Pass / Clear pass
+    if (pct < 0.33) return { key: 'below', label: 'Clear fail', icon: '🔴' };
+    if (pct < BORDER) return { key: 'borderline', label: 'Fail', icon: '🟠' };
+    if (pct < PASS) return { key: 'pass', label: 'Pass', icon: '🟢' };
+    return { key: 'strong', label: 'Clear pass', icon: '🟢' };
   }
 
   // Spaced-repetition interval (ms) from performance — weaker = sooner
@@ -31,6 +32,15 @@ window.RGPScaProgress = (function () {
     return 14 * DAY;                    // strong → a fortnight
   }
 
+  // Map a saved legacy record (gs / tasks / ro) onto the RCGP domains on read:
+  // 'tasks' covered data gathering AND management, so it counts towards both dg and cm;
+  // the old 'gs' consultation-skills items count towards relating to others.
+  function norm(o) {
+    o = o || {};
+    if (o.dg != null || o.cm != null) return { dg: o.dg || 0, cm: o.cm || 0, ro: o.ro || 0 };
+    return { dg: o.tasks || 0, cm: o.tasks || 0, ro: (o.ro || 0) + (o.gs || 0) };
+  }
+
   function logAttempt(a) {
     var all = load();
     all.push({
@@ -38,8 +48,8 @@ window.RGPScaProgress = (function () {
       caseId: a.caseId || '',
       title: a.title || '',
       system: a.system || '',
-      got: a.got || { gs: 0, tasks: 0, ro: 0 },
-      max: a.max || { gs: 0, tasks: 0, ro: 0 },
+      got: a.got || { dg: 0, cm: 0, ro: 0 },   // RCGP domains (older saves used gs/tasks/ro)
+      max: a.max || { dg: 0, cm: 0, ro: 0 },
       total: a.total || 0,
       maxTotal: a.maxTotal || 0
     });
@@ -61,16 +71,17 @@ window.RGPScaProgress = (function () {
 
   function domainStats() {
     var a = load();
-    var acc = { gs: { g: 0, m: 0 }, tasks: { g: 0, m: 0 }, ro: { g: 0, m: 0 } };
+    var acc = { dg: { g: 0, m: 0 }, cm: { g: 0, m: 0 }, ro: { g: 0, m: 0 } };
     a.forEach(function (r) {
-      ['gs', 'tasks', 'ro'].forEach(function (k) {
-        acc[k].g += (r.got && r.got[k]) || 0;
-        acc[k].m += (r.max && r.max[k]) || 0;
+      var got = norm(r.got), max = norm(r.max);
+      ['dg', 'cm', 'ro'].forEach(function (k) {
+        acc[k].g += got[k] || 0;
+        acc[k].m += max[k] || 0;
       });
     });
     var out = {};
     var weakest = null, weakPct = 2;
-    ['gs', 'tasks', 'ro'].forEach(function (k) {
+    ['dg', 'cm', 'ro'].forEach(function (k) {
       var pct = acc[k].m ? acc[k].g / acc[k].m : 0;
       out[k] = { got: acc[k].g, max: acc[k].m, pct: pct };
       if (acc[k].m && pct < weakPct) { weakPct = pct; weakest = k; }

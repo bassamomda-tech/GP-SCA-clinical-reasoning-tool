@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Widespread or Blistering Rash in Adults Algorithm · Reasoning GP</title>
+<meta name="description" content="Widespread or Blistering Rash in Adults: Emergencies first: SJS/TEN, erythroderma, eczema herpeticum, DRESS, necrotising infection, meningococcal disease · then pemphigoid, pemphigus, dermatitis herpetiformis, drug eruptions, viral exanthems, urticaria and the papulosquamous rashes">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Widespread or Blistering Rash in Adults Algorithm">
+<meta property="og:description" content="Widespread or Blistering Rash in Adults: Emergencies first: SJS/TEN, erythroderma, eczema herpeticum, DRESS, necrotising infection, meningococcal disease · then pemphigoid, pemphigus, dermatitis herpetiformis, drug eruptions, viral exanthems, urticaria and the papulosquamous rashes">
+<meta property="og:url" content="https://gpreasoning.uk/tools/algorithms/blistering-rash.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/blistering-rash.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+.alg-next{margin:12px 0 2px;padding:9px 12px;background:var(--treat-bg);border:1px solid #bbf7d0;border-radius:8px;font-size:.84rem;line-height:1.55}
+.alg-next a{color:#0f766e;font-weight:600}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body>
+
+<div class="alg-header">
+  <h1>🫧 Widespread or Blistering Rash in Adults</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta">
+    <span>BAD SJS/TEN</span><span>BAD pemphigoid</span><span>BAD pemphigus</span><span>NICE NG240</span><span>NICE NG153</span><span>BASHH</span><span>10-min consult</span>
+  </div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🫧</div>
+  <div>
+    <b>Widespread or Blistering Rash — Adults, New Presentation</b>
+    <small>Emergencies first: SJS/TEN, erythroderma, eczema herpeticum, DRESS, necrotising infection, meningococcal disease · then pemphigoid, pemphigus, dermatitis herpetiformis, drug eruptions, viral exanthems, urticaria and the papulosquamous rashes</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/blistering-rash.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/blistering-rash.html">⬇ Download PDF</button><a class="sum-open" href="one-page/blistering-rash.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/blistering-rash.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1" id="node1">
+  <div class="node-header">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Skin Failure, Infection and Drug Reactions First</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<p class="intro-note">Look at the whole skin, the mouth, eyes and genitals, and take observations before naming the rash. Painful skin, mucosal erosions, a recent new drug or a systemically unwell patient make it an emergency. Non-blistering maculopapular rashes: see the <a href="maculopapular-rash.html">maculopapular rash algorithm</a>; itch without rash: <a href="widespread-itch.html">widespread itch</a>.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Mucosal erosions + painful dusky skin, blisters or skin peeling</b> Usually 4–28 days after a new drug (allopurinol, carbamazepine, lamotrigine, phenytoin, sulfonamides including co-trimoxazole, NSAIDs, nevirapine) → SJS/TEN → <span class="pill pill-red">999</span> or same-day emergency admission (dermatology or burns unit); stop the culprit drug now</div>
+      <div class="rftile"><b>Non-blanching rash in an unwell patient</b> Fever, purpura, rapid deterioration → suspected meningococcal disease → <span class="pill pill-red">999</span>; give IM or IV benzylpenicillin or ceftriaxone if it will not delay transfer (NICE NG240)</div>
+      <div class="rftile"><b>Pain out of proportion, dusky or necrotic skin, crepitus, rapid spread</b> Necrotising soft tissue infection → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Erythroderma</b> Red, inflamed skin over most of the body surface (90% or more), shivering, fluid loss → <span class="pill pill-red">Same-day</span> dermatology or admission; 999 if haemodynamically unstable</div>
+      <div class="rftile"><b>Eczema herpeticum</b> Painful, rapidly spreading clusters of punched-out erosions or vesicles on eczema, often febrile → <span class="pill pill-red">Same-day</span>: start oral aciclovir today and arrange same-day dermatology advice; eye involvement → same-day ophthalmology</div>
+      <div class="rftile"><b>Fever, facial swelling, widespread rash, lymphadenopathy 2–8 weeks after a new drug</b> DRESS (anticonvulsants, allopurinol, sulfonamides, minocycline) → <span class="pill pill-red">Same-day</span> admission or dermatology; FBC (eosinophilia), LFT, U&amp;E; stop the drug</div>
+      <div class="rftile"><b>Flaccid blisters, raw erosions and painful mouth ulcers</b> Possible pemphigus vulgaris → <span class="pill pill-red">Same-day</span> dermatology discussion; admit if extensive or unable to eat and drink</div>
+      <div class="rftile"><b>Chickenpox or zoster in a pregnant or immunocompromised adult, or disseminated zoster</b> → <span class="pill pill-red">Same-day</span> specialist advice (antivirals ± immunoglobulin); pneumonitis (breathlessness, cough) → 999</div>
+      <div class="rftile"><b>Blistering with sepsis or skin loss</b> Staphylococcal scalded skin (adults with renal failure or immunosuppression), extensive bullous impetigo with systemic upset → <span class="pill pill-red">Same-day</span>; 999 if NG253 high-risk features</div>
+      <div class="rftile"><b>Urticaria with airway, breathing or circulation compromise</b> Anaphylaxis → <span class="pill pill-red">999</span> and IM adrenaline 500 micrograms (adult) — see <a href="../management/anaphylaxis.html">anaphylaxis</a></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>SJS/TEN carries a substantial mortality that rises with the area of skin detachment and with delay in stopping the culprit drug; early withdrawal of the drug and transfer to a unit used to managing skin failure are the two interventions that matter (BAD 2016). Skin pain out of proportion to the appearance, mucosal involvement at two or more sites and a positive Nikolsky sign are the clues.</p>
+      <p>Erythroderma, from any cause, is "acute skin failure" with risks of hypothermia, fluid and protein loss, high-output cardiac failure and sepsis. Eczema herpeticum can be fatal and causes herpetic keratitis; antiviral treatment should not wait for swab results.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2" id="node2">
+  <div class="node-header">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>History — Timing, Drugs and Systemic Features</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Drug history (last 8 weeks)</div><div>Every new or restarted drug with start date, including over-the-counter, herbal and recent antibiotics — SJS/TEN 4–28 days, DRESS 2–8 weeks, fixed drug eruption within hours to days of re-exposure, gliptins (DPP-4 inhibitors) and bullous pemphigoid, vancomycin (linear IgA disease)</div>
+      <div>Onset &amp; evolution</div><div>Hours (urticaria, contact dermatitis, burns, insect bites) · days (drug eruption, viral exanthem, impetigo) · weeks to months with itch first (bullous pemphigoid, dermatitis herpetiformis)</div>
+      <div>Symptoms</div><div>Itch (urticaria, pemphigoid, dermatitis herpetiformis, scabies) vs pain or burning (SJS/TEN, pemphigus, herpes, urticarial vasculitis, necrotising infection)</div>
+      <div>Mucosa</div><div>Mouth ulcers, sore eyes, genital erosions, painful swallowing — SJS/TEN, pemphigus, erythema multiforme major, mucous membrane pemphigoid</div>
+      <div>Systemic</div><div>Fever, malaise, sore throat (guttate psoriasis after streptococcal throat), arthralgia, weight loss, diarrhoea or bloating (coeliac disease with dermatitis herpetiformis)</div>
+      <div>Contacts &amp; exposures</div><div>Chickenpox or shingles contacts, recent herpes simplex (erythema multiforme), new sexual partner (secondary syphilis, mpox), travel, insect bites, plants or chemicals (contact or phytophotodermatitis), sun exposure (porphyria, drug photosensitivity)</div>
+      <div>Background</div><div>Atopic eczema (eczema herpeticum), psoriasis (erythrodermic or pustular flare after steroid withdrawal), diabetes, immunosuppression, pregnancy (pemphigoid gestationis, varicella), HIV</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>The drug history decides more emergencies here than any test. Record every drug started in the previous 8 weeks with dates, because the latency between starting a drug and the reaction points to the culprit and the type of reaction.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3" id="node3">
+  <div class="node-header">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Examination — Describe the Lesion, Then Look Everywhere</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Observations</div><div>Temperature, pulse, BP, RR, SpO₂, NEWS2; hydration</div>
+      <div>Blister type</div><div><b>Tense</b> blisters on red or urticated skin → bullous pemphigoid. <b>Flaccid</b> blisters and erosions → pemphigus, bullous impetigo, SJS/TEN. <b>Grouped vesicles</b> → herpes simplex, zoster, dermatitis herpetiformis. <b>Crops</b> at different stages → chickenpox</div>
+      <div>Distribution</div><div>Dermatomal (zoster) · flexures, trunk and limbs (pemphigoid) · elbows, knees, buttocks, scalp (dermatitis herpetiformis) · palms and soles (secondary syphilis, erythema multiforme, pompholyx, hand foot and mouth) · sun-exposed (photosensitivity, porphyria) · on eczema (eczema herpeticum)</div>
+      <div>Nikolsky sign</div><div>Skin shears off with gentle lateral pressure → SJS/TEN, pemphigus, scalded skin syndrome — treat as an emergency</div>
+      <div>Mucosa &amp; eyes</div><div>Mouth, conjunctivae, genitals — erosions or crusting</div>
+      <div>Target lesions</div><div>Typical three-ring targets on hands and limbs → erythema multiforme; atypical flat dusky targets on the trunk → SJS/TEN</div>
+      <div>Wheals</div><div>Transient (under 24 h) itchy wheals → urticaria; lesions lasting over 24 h, burning, leaving bruising → urticarial vasculitis</div>
+      <div>Surface area</div><div>Estimate % body surface involved (the patient's palm with fingers is about 1%) — record it</div>
+      <div>Other</div><div>Lymph nodes, liver and spleen (DRESS, syphilis), throat, nails and scalp (psoriasis), burrows (scabies)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>The level of the split in the skin explains the clinical appearance: subepidermal blisters (pemphigoid, dermatitis herpetiformis) are tense and stay intact; intraepidermal blisters (pemphigus, impetigo) are fragile and quickly become erosions. Mucosal involvement and a positive Nikolsky sign push the differential towards the dangerous conditions.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4" id="node4">
+  <div class="node-header">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — Mostly to Support the Specialist</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Unwell or drug reaction suspected</div><div><span class="pill pill-blue">FBC with eosinophils</span>, <span class="pill pill-blue">U&amp;E</span>, <span class="pill pill-blue">LFT</span>, <span class="pill pill-blue">CRP</span>; usually in hospital — do not delay admission for bloods</div>
+      <div>Infection</div><div><span class="pill pill-blue">Viral PCR swab</span> of a blister base (HSV, VZV); <span class="pill pill-blue">bacterial swab</span> if crusted or pustular; do not delay aciclovir for results</div>
+      <div>Immunobullous</div><div>Skin biopsy for histology and direct immunofluorescence is done by dermatology; <span class="pill pill-blue">BP180/BP230</span> and desmoglein antibodies supportive only</div>
+      <div>Dermatitis herpetiformis</div><div><span class="pill pill-blue">tTG IgA with total IgA</span> while eating gluten (NICE NG20)</div>
+      <div>Sexual health</div><div><span class="pill pill-blue">Syphilis serology</span> and <span class="pill pill-blue">HIV test</span> if rash on palms and soles, atypical pityriasis rosea, or sexual risk; mpox PCR via sexual health or UKHSA pathway</div>
+      <div>Urticarial vasculitis</div><div><span class="pill pill-blue">ESR/CRP</span>, <span class="pill pill-blue">urine dipstick</span>, U&amp;E, complement (C3/C4) and dermatology biopsy</div>
+      <div>Guttate psoriasis</div><div><span class="pill pill-blue">Throat swab</span> or ASO titre if recent sore throat (supportive only)</div>
+      <div>Photosensitive blisters</div><div>LFT, ferritin, hepatitis C serology and urine or plasma porphyrins (porphyria cutanea tarda)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Most blistering diagnoses are confirmed by a dermatology biopsy, so the GP's tests are aimed at safety (organ involvement in DRESS, eosinophilia, renal function), at treatable infections (HSV and VZV PCR) and at the associations that change management (coeliac disease, syphilis, HIV).</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5" id="node5">
+  <div class="node-header">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Differential Diagnosis</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">Severe drug reactions</div><div class="b-drug">SJS/TEN · DRESS · AGEP</div><div class="b-note">New drug, fever, painful skin, mucosal erosions; DRESS with facial oedema and eosinophilia; AGEP with sheets of tiny pustules</div></div>
+      <div class="b-card"><div class="b-cond">Older adult, itchy, tense blisters</div><div class="b-drug">Bullous pemphigoid</div><div class="b-note">Often over 70; urticated plaques then tense blisters; mucosa spared or mild; check for gliptins — see <a href="../management/bullous-pemphigoid.html">bullous pemphigoid</a></div></div>
+      <div class="b-card"><div class="b-cond">Erosions + mouth ulcers</div><div class="b-drug">Pemphigus vulgaris</div><div class="b-note">Middle age, painful oral erosions often first, flaccid blisters, Nikolsky positive</div></div>
+      <div class="b-card"><div class="b-cond">Very itchy grouped vesicles</div><div class="b-drug">Dermatitis herpetiformis</div><div class="b-note">Elbows, knees, buttocks, scalp; excoriated; gluten-sensitive — coeliac serology</div></div>
+      <div class="b-card"><div class="b-cond">Viral</div><div class="b-drug">Chickenpox · disseminated zoster · HSV · mpox</div><div class="b-note">Crops of vesicles, fever, contacts; dermatomal plus scattered lesions = disseminated; umbilicated pustules with genital or anal lesions → mpox</div></div>
+      <div class="b-card"><div class="b-cond">Wheals</div><div class="b-drug">Urticaria vs urticarial vasculitis</div><div class="b-note">Transient itchy wheals vs fixed, burning lesions over 24 h with bruising — see <a href="../management/urticaria.html">urticaria</a></div></div>
+      <div class="b-card"><div class="b-cond">Papulosquamous</div><div class="b-drug">Guttate psoriasis · pityriasis rosea</div><div class="b-note">Drop-like scaly papules after a sore throat; herald patch then "Christmas tree" oval patches on the trunk</div></div>
+      <div class="b-card"><div class="b-cond">Must-not-miss mimic</div><div class="b-drug">Secondary syphilis</div><div class="b-note">Non-itchy rash including palms and soles, mucous patches, lymphadenopathy, malaise — serology</div></div>
+      <div class="b-card"><div class="b-cond">Local and other</div><div class="b-drug">Bullous impetigo · contact dermatitis · bites</div><div class="b-note">Also erythema multiforme (targets, HSV), fixed drug eruption, pompholyx, porphyria cutanea tarda, pemphigoid gestationis in pregnancy</div></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>In older patients the commonest blistering disease is bullous pemphigoid, which often starts with weeks of itch and urticated plaques before blisters appear and is often labelled eczema or scabies. Pemphigus is rarer but more dangerous and usually involves the mouth. Secondary syphilis is "the great imitator" and should be considered in any unexplained widespread rash, particularly with palm and sole involvement.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6" id="node6">
+  <div class="node-header">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Referral Criteria</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Suspected SJS/TEN with skin detachment or systemic upset, meningococcal disease, necrotising infection, anaphylaxis, varicella pneumonitis, haemodynamically unstable erythroderma</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Suspected SJS/TEN without instability (emergency dermatology admission), erythroderma, eczema herpeticum (with aciclovir started), DRESS, suspected pemphigus, extensive or rapidly progressive bullous pemphigoid or unable to cope at home, chickenpox or zoster in pregnancy or immunosuppression, disseminated zoster, erythema multiforme with mucosal involvement, pemphigoid gestationis</div>
+      <div><span class="pill pill-amber">Urgent</span> dermatology</div><div>Localised bullous pemphigoid, dermatitis herpetiformis with positive serology or high suspicion, suspected urticarial vasculitis, unexplained blistering</div>
+      <div>Sexual health</div><div>Suspected secondary syphilis or mpox — within a week, sooner if unwell; partner notification through the clinic (BASHH)</div>
+      <div>Routine dermatology</div><div>Guttate psoriasis that is extensive or not responding; pityriasis rosea lasting over 3 months or atypical; chronic urticaria not controlled on up to four times the licensed antihistamine dose</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Severe cutaneous adverse reactions should also be reported to the MHRA through the Yellow Card scheme, and the culprit drug recorded prominently as an allergy in the record. Dermatology departments generally offer same-day telephone or photo advice for suspected immunobullous disease, which is often the quickest route.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7" id="node7">
+  <div class="node-header">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Management at This Consultation</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">Any suspected drug reaction</div><div class="b-drug">Stop the culprit drug <span class="pill pill-teal">Today</span></div><div class="b-note">Stop all non-essential new drugs started in the last 8 weeks; record as a suspected allergy; Yellow Card. Do not rechallenge</div></div>
+      <div class="b-card"><div class="b-cond">Eczema herpeticum</div><div class="b-drug">Oral aciclovir</div><div class="b-note">Usual adult dose: 400 mg five times a day for 5–10 days, or as advised by dermatology (SPC/local guidance); same-day dermatology advice; stop topical steroid on affected areas until advised</div></div>
+      <div class="b-card"><div class="b-cond">Chickenpox in an adult</div><div class="b-drug">Aciclovir if within 24 h of rash</div><div class="b-note">Usual adult dose: 800 mg five times a day for 7 days (SPC); paracetamol, not NSAIDs; avoid contact with pregnant women, neonates and the immunosuppressed until all lesions crust</div></div>
+      <div class="b-card"><div class="b-cond">Bullous pemphigoid (localised, awaiting dermatology)</div><div class="b-drug">Very potent topical steroid</div><div class="b-note">Clobetasol propionate 0.05% to lesions on dermatology advice, plus emollient as soap substitute; stop a gliptin after discussion; leave blister roofs intact, drain large tense blisters with a sterile needle</div></div>
+      <div class="b-card"><div class="b-cond">Urticaria</div><div class="b-drug">Non-sedating antihistamine</div><div class="b-note">For example cetirizine usual adult dose 10 mg once daily (SPC); in persistent urticaria the dose may be increased up to four times (off-label, BAD/EAACI); avoid NSAIDs and codeine if they trigger it</div></div>
+      <div class="b-card"><div class="b-cond">Bullous or widespread impetigo</div><div class="b-drug">Oral flucloxacillin (NICE NG153)</div><div class="b-note">Usual adult dose: 500 mg four times a day for 5 days; penicillin allergy: clarithromycin 250–500 mg twice a day for 5 days</div></div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Skin care</span><span class="rt"><b>Emollients</b> liberally and as a soap substitute for eczematous and blistering conditions; non-adherent dressings for erosions; analgesia</span></div>
+      <div class="rung"><span class="rn">Eczema / dermatitis</span><span class="rt"><b>Potent topical steroid</b> for a short course on inflamed (non-infected) eczema or contact dermatitis, once herpes and impetigo are excluded; avoid the face and flexures</span></div>
+      <div class="rung"><span class="rn">Guttate psoriasis</span><span class="rt"><b>Emollient ± vitamin D analogue</b> or a short course of a moderate-to-potent steroid; treat streptococcal throat if present per NICE NG84</span></div>
+      <div class="rung"><span class="rn">Pityriasis rosea</span><span class="rt"><b>Reassure</b> — self-limiting over 6–12 weeks; emollient and a mild to moderate steroid for itch; check syphilis serology if atypical or at risk</span></div>
+      <div class="rung"><span class="rn">Systemic steroids</span><span class="rt"><b>Do not start oral steroids</b> for an undiagnosed blistering rash, or for suspected SJS/TEN or pemphigus, without specialist advice — they can mask infection and the diagnosis</span></div>
+    </div>
+    <p class="alg-next"><b>Next steps:</b> see <a href="../management/bullous-pemphigoid.html">Bullous pemphigoid (and pemphigus)</a> · <a href="../management/urticaria.html">Urticaria</a> · <a href="../management/eczema.html">Atopic eczema</a> · <a href="../management/psoriasis.html">Psoriasis</a> · <a href="../management/pityriasis-rosea.html">Pityriasis rosea</a> · <a href="../management/shingles.html">Shingles</a> · <a href="../management/impetigo.html">Impetigo</a> · <a href="../management/coeliac-disease.html">Coeliac disease</a> · <a href="../management/anaphylaxis.html">Anaphylaxis</a></p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Stopping the culprit drug early is the single intervention that most improves outcome in severe drug reactions. Topical clobetasol is effective and safer than oral prednisolone for localised bullous pemphigoid in frail older people (BAD 2012), but the diagnosis should be confirmed by dermatology. Oral antivirals for chickenpox in adults are most useful within 24 hours of the rash; eczema herpeticum is treated on clinical suspicion.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8" id="node8">
+  <div class="node-header">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Self-Care and Preventing Spread</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="lsgrid">
+      <div class="lstile"><b>Blister care</b> Keep blisters intact where possible, cover erosions with non-stick dressings, watch for infection.</div>
+      <div class="lstile"><b>Emollients</b> Use liberally and instead of soap; warn about fire risk with paraffin-containing products on dressings and clothing.</div>
+      <div class="lstile"><b>Infection control</b> Chickenpox: stay off work or school until all lesions have crusted; avoid pregnant women, newborns and the immunosuppressed. Impetigo: until lesions crust or 48 h after starting antibiotics.</div>
+      <div class="lstile"><b>Drug allergy</b> Know the name of the culprit drug; tell pharmacists; consider a medical alert card or bracelet after SJS/TEN or DRESS.</div>
+      <div class="lstile"><b>Triggers</b> Urticaria: avoid NSAIDs, alcohol and heat if they worsen it. Dermatitis herpetiformis: keep eating gluten until tested, then a strict gluten-free diet.</div>
+      <div class="lstile"><b>Sexual health</b> Syphilis or mpox suspected: avoid sex until assessed and treated; partner notification through the clinic.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>UKHSA advises exclusion from school or work for chickenpox until all vesicles have crusted, and for impetigo until lesions are crusted or 48 hours after starting antibiotics. People recovering from SJS/TEN or DRESS must never be re-exposed to the culprit or closely related drugs.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9" id="node9">
+  <div class="node-header">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up and Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>Skin peeling or blistering spreading quickly, sore red eyes with mouth or genital sores, a rash that does not fade under a glass with feeling very unwell, difficulty breathing or swelling of the lips or tongue</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>New fever, painful skin, blisters spreading, eye pain or redness, unable to eat or drink, facial swelling, rash around the eye with shingles, breathlessness or cough with chickenpox</div>
+      <div>48–72 hours</div><div>Review any undiagnosed widespread rash, a stopped drug reaction, or eczema herpeticum after starting aciclovir (if not already under dermatology)</div>
+      <div>1–2 weeks</div><div>Bullous pemphigoid on topical steroid: response, skin thinning, and whether dermatology has seen the patient; urticaria response to antihistamine</div>
+      <div>Results</div><div>Act on coeliac serology, syphilis and HIV tests, eosinophil count and LFT; record confirmed drug allergies</div>
+      <div>Remote consultations</div><div>A photo helps triage but does not replace examination of the mouth, eyes and whole skin — see the patient face to face the same day if blistering is widespread</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>SJS/TEN and DRESS can evolve over days, so a patient who seems mildly unwell with an early drug rash needs a short review interval and explicit warning signs. Photographs alone miss mucosal involvement and the Nikolsky sign.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: British Association of Dermatologists (BAD) guidelines for Stevens–Johnson syndrome/toxic epidermal necrolysis in adults (2016), bullous pemphigoid (2012) and pemphigus vulgaris (2017), BAD/EAACI chronic urticaria guidance (2021/2022), NICE NG240 (Bacterial meningitis and meningococcal disease, 2024), NICE NG253 (Suspected sepsis in over-16s, 2025), NICE NG153 (Impetigo: antimicrobial prescribing, 2020), NICE NG20 (Coeliac disease, 2015), NICE CKS Chickenpox, Shingles, Eczema — atopic and Erythroderma, UKHSA guidance on varicella in pregnancy and mpox, BASHH UK guidelines on syphilis (2024), MHRA Drug Safety Updates (severe cutaneous adverse reactions), product SPCs. Children: use the children's pathways and the BNFC. Check doses against the current SPC, BNF and local formulary. Not a substitute for clinical judgement.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.blistering-rash.v1';
+  const nodes=document.querySelectorAll('.node[data-step]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state={};
+    nodes.forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});
+    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+  function load(){
+    try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');
+      nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(s[n.dataset.step]){cb.checked=true;n.classList.add('done');}});}catch(e){}
+  }
+  function updateProgress(){
+    const done=document.querySelectorAll('.node.done').length;
+    pDone.textContent=done;
+    pFill.style.width=((done/total)*100)+'%';
+  }
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{
+      n.classList.toggle('done',cb.checked);
+      save();updateProgress();
+    });
+  });
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!expanded));
+      btn.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    if(!confirm('Reset all progress?'))return;
+    nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});
+    localStorage.removeItem(KEY);updateProgress();
+  });
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=3"></script>
+<script src="../../assets/topic-links.js?v=10"></script>
+<script src="../../assets/alg-diagram.js"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+</body>
+</html>

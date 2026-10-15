@@ -28,6 +28,8 @@ MG.render({
   stemTitle:"The last days of life — recognise that someone may be dying, plan with the family, prescribe ahead, and make the death go well",
   stemSub:"One page for the dying adult at home or in a care home: recognising that someone may be in the last days of life, the conversation, reviewing every medicine individually, anticipatory (‘just-in-case’) medicines, the syringe pump, hydration, ReSPECT and capacity, and what happens after death under the statutory medical examiner system. Built on NICE NG31 and QS144, NICE NG142 and the five Priorities for Care of the Dying Person (One Chance to Get it Right, 2014). Symptom-specific detail lives on the palliative symptom protocols linked below.",
   guideline:"NICE NG31 (2015) · QS144 (2017) · NG142 (2019) · One Chance to Get it Right (2014)",
+  reviewed:"15 October 2026",
+  nextReview:"15 April 2027",
   meta:[
     {t:"NICE NG31 (2015) · last days of life"},
     {t:"NICE QS144 (2017) · quality standard"},
@@ -35,7 +37,8 @@ MG.render({
     {t:"LACDP One Chance to Get it Right (2014)"},
     {t:"Medical examiner system · statutory 9 Sep 2024", tone:"tw"},
     {t:"Doses: local formulary / BNF"},
-    {t:"GM Palliative Care Pain & Symptom Control Guidelines (2025)"}
+    {t:"GM Palliative Care Pain & Symptom Control Guidelines (2025)"},
+    {t:"v2.1 · reviewed Oct 2026", tone:"ok"}
   ],
   lead:'<div class="mg-layers"><a href="#recognise"><b>Recognise</b><small>NG31 signs + uncertainty</small></a><a href="#anticipatory"><b>Just-in-case meds</b><small>Individualised, not a bundle</small></a><a href="#pump"><b>Syringe pump</b><small>When and how</small></a><a href="#afterdeath"><b>After death</b><small>Verification, MCCD, ME</small></a></div>',
   glance:[
@@ -163,6 +166,15 @@ MG.render({
          {tone:"cream", h:"Antimuscarinics for secretions", html:"NG31 names atropine, glycopyrronium bromide, hyoscine butylbromide and hyoscine hydrobromide; the choice in practice follows the local formulary. Monitor regularly for side effects — NG31 highlights <b>delirium, agitation or excessive sedation with atropine or hyoscine hydrobromide</b> (both cross the blood–brain barrier); dry mouth can occur with any.", src:"NICE NG31 s1.5"},
          {tone:"cream", h:"Non-drug measures first", html:"Repositioning for secretions; a fan, window and calm presence for breathlessness; a familiar voice, lighting and routine for agitation; mouth care for thirst; treat urinary retention and constipation before sedating.", src:"NICE NG31 s1.4–1.5"}
        ]},
+       {b:"table", head:["Anticipatory medicines checklist","Done?"], rows:[
+         ["<b>Discussed</b> with the person (if able) and those important to them: what the medicines are for, that they are there ‘just in case’, and that they do not hasten death","☐"],
+         ["<b>Individualised</b> to likely symptoms — drug, route, indication, dose range and maximum frequency in 24 hours written for each; opioid derived from current dose if already on one; renal function, frailty and Parkinson’s disease considered","☐"],
+         ["<b>Prescription</b> issued (controlled drug requirements met) and <b>community administration authorisation chart</b> completed and signed, in line with local policy","☐"],
+         ["<b>Dispensed and in the home</b> — confirmed, not assumed; ancillaries (water for injection, syringes, needles, sharps bin) present; stockist pharmacy used if needed","☐"],
+         ["<b>Handed over</b>: district nurses informed; OOH/111 record updated (EPaCCS or local shared record) with diagnosis, ceiling of care, ReSPECT/DNACPR and medicines in the home","☐"],
+         ["<b>Reviewed</b> at least daily while being used, and as needs or renal function change; syringe pump considered (not automatic) if more than 2–3 PRN doses in 24 hours","☐"],
+         ["<b>After death</b>: plan for safe return or disposal of controlled drugs according to local policy","☐"]
+       ]},
        {b:"warn", html:"<b>Never use anticipatory sedation to manage a problem you have not examined.</b> A full bladder, faecal impaction, pain or opioid toxicity presenting as agitation needs a different treatment. Seek specialist palliative care advice for refractory agitation or if continuous sedation is being considered. <b>Continuous sedation is a specialist decision for refractory symptoms</b> after assessment, treatment of reversible causes and discussion with the person/family where possible. It is not the same as routine anticipatory prescribing and is not intended to hasten death — a distinction that matters whenever midazolam is used for agitation, anxiety or seizures."}
      ]},
 
@@ -221,8 +233,31 @@ MG.render({
        {b:"timeline", items:[
          {n:"1", when:"Death occurs", title:"Expected death at home", html:"For a clearly expected natural death with an agreed community plan, the family contacts the district nurse, practice or OOH service rather than 999. Contact emergency services or the police if the death is unexpected, traumatic, suspicious, unexplained, associated with a reportable incident, or if local policy requires this. Undertakers can be called after verification."},
          {n:"2", when:"Hours", title:"Verification of death", html:"Confirmation that death has occurred, by a doctor or a <b>registered nurse assessed as competent</b> under the local verification-of-death policy. Record the examination, time of death and of verification, who verified it, the circumstances and any implanted devices. The verifier does not certify the medical cause of death unless they are also the appropriate medical practitioner."},
-         {n:"3", when:"Promptly", title:"MCCD and the medical examiner", html:"A medical practitioner who attended the person <b>during their lifetime</b> and can certify the cause of death completes the MCCD; the medical examiner reviews deaths not referred to the coroner and offers the bereaved a conversation before registration."},
+         {n:"3", when:"Next working day", title:"MCCD and the medical examiner", html:"A medical practitioner who attended the person <b>during their lifetime</b> and can certify the cause of death completes the MCCD; the medical examiner reviews deaths not referred to the coroner and offers the bereaved a conversation before registration."},
          {n:"4", when:"After ME or coroner", title:"Registration", html:"The family registers the death once the ME has agreed the cause (or the coroner has been involved). Time limits can be affected by medical examiner or coroner processes — follow current registrar guidance."}
+       ]},
+       {b:"table", head:["Verification of expected death — the examination","Detail"], rows:[
+         ["<b>Who can verify</b>","A doctor, or a registered nurse (or other registered professional where local policy allows) who has been trained and assessed as competent under the local verification-of-expected-death policy. Verification is not certification: anyone competent can verify; only a medical practitioner completes the MCCD. Verification is not usually urgent at night for an expected death unless the family needs it or local policy says otherwise — national nurse-verification guidance suggests aiming for within about 4 hours in the community"],
+         ["<b>Before you start</b>","Confirm the person’s identity (name band, family or carer identification). Check that the death was expected (documented plan, ReSPECT/DNACPR or expected-death notification) and that nothing suggests it is unexpected, suspicious or reportable — if it does, stop, do not move the body or remove lines, and contact the police or coroner as local policy says"],
+         ["<b>Observe for at least 5 minutes</b>","Irreversible cardiorespiratory arrest is confirmed by observation over a <b>minimum of 5 minutes</b> (Academy of Medical Royal Colleges code of practice). Within that period check: <b>no central (carotid) pulse for 1 minute</b>; <b>no heart sounds on auscultation for 1 minute</b>; <b>no respiratory effort or breath sounds for 1 minute</b>"],
+         ["<b>Then confirm</b>","<b>Pupils fixed and dilated</b>, not reacting to light; <b>no motor response to a painful stimulus</b> (supraorbital or trapezius pressure)"],
+         ["<b>Record</b>","Date and time of death (as reported by those present) and the time of verification; the findings of each check; who was present; the name and role of the verifier; implanted devices (pacemaker, ICD — arrange deactivation according to local policy — other implants or radioactive implants) and infection risks; whether the death is to be reported to the coroner. Inform the GP practice the next working day so the MCCD and medical examiner process can start"]
+       ]},
+       {b:"table", head:["MCCD and the medical examiner — the practical steps","Detail"], rows:[
+         ["<b>Who completes it</b>","Any registered medical practitioner who <b>attended the person during their lifetime</b> (in person or by video, at any time — the 28-day rule no longer applies) and can state the cause of death to the best of their knowledge and belief. If no such doctor is available, the death must be notified to the coroner"],
+         ["<b>How</b>","Complete the current MCCD (the form introduced on 9 September 2024), usually electronically, and send it — with the relevant records — to the <b>medical examiner office</b>, not to the family. Do this promptly (the next working day where possible): the bereaved normally have 5 days to register the death, and the registrar can only register once the ME has agreed the cause (or the coroner has released it)"],
+         ["<b>The cause of death</b>","Part I: the disease or condition leading directly to death, then the conditions that led to it, ending with the underlying cause; Part II: other conditions that contributed. Avoid a mode of death on its own (for example ‘cardiac arrest’ or ‘organ failure’). ‘Old age’ or ‘frailty of old age’ is acceptable only in limited circumstances (usually aged 80 or over, with a gradual decline observed by the certifying doctor and no identifiable disease or injury contributing) — follow current ONS/medical examiner guidance"],
+         ["<b>The medical examiner’s role</b>","An independent senior doctor reviews the records, agrees the cause of death with the certifying doctor, speaks with the bereaved (who can ask questions or raise concerns about care) and may advise coroner notification. ME offices can expedite release for urgent faith burials or repatriation — contact them early"],
+         ["<b>Implants and disposal</b>","Record implanted devices on the MCCD; Cremation Form 4 is no longer used. The cremation authority relies on the MCCD and ME review"]
+       ]},
+       {b:"table", head:["Notify the coroner when the death may be due to — Notification of Deaths Regulations 2019","Notes"], rows:[
+         ["Poisoning, including by an otherwise benign substance; exposure to or contact with a toxic substance","Includes carbon monoxide, alcohol poisoning"],
+         ["The use of a medicinal product, a controlled drug or a psychoactive substance","Including an unexpected medication error or overdose — not the expected use of anticipatory medicines in a natural death"],
+         ["Violence, trauma or injury, or self-harm","Including a fall or fracture contributing to death, however long before"],
+         ["Neglect, including self-neglect","Including a failure of care"],
+         ["A treatment or procedure of a medical or similar nature","Where the death may be related to it"],
+         ["An injury or disease attributable to any employment held during the person’s lifetime","For example mesothelioma, asbestosis, pneumoconiosis"],
+         ["The cause of death is unknown; the person died in custody or otherwise in state detention; no attending medical practitioner is available; or the person’s identity is unknown","Notify in writing via the local coroner’s process; the medical examiner can advise. ‘Expected’ does not exempt a death from notification"]
        ]},
        {b:"cards", cols:2, items:[
          {tone:"cream", h:"Verification by registered nurses", html:"Hospice UK guidance supports competent registered nurses verifying an expected adult death, with a competency framework and a checklist of the examination. The nurse must be trained and assessed as competent, work within local policy, document the examination and time of verification, know when coroner referral is required, record implanted devices, and communicate with the practice and medical examiner pathway. Check who is authorised locally — and whether the ReSPECT/DNACPR and expected-death documentation is in the home.", src:"Hospice UK RNVoEAD guidance (6th ed, 2025)"},
@@ -281,7 +316,10 @@ MG.render({
          '<li><b>Medical Examiners (England) Regulations 2024; Medical Examiners (Wales) Regulations 2024</b> — statutory ME system from 9 September 2024. <b>Death certification reforms (DHSC; Chief Coroner Guidance No. 47, 2024)</b> — MCCD by a medical practitioner who attended the deceased in their lifetime; 28-day rule removed; Cremation Form 4 no longer required<br><a href="https://www.england.nhs.uk/patient-safety/medical-examiners/the-national-medical-examiner-system/" rel="noopener">NHS England — national medical examiner system</a></li>'+
          '<li><b>British National Formulary — Prescribing in palliative care</b><span class="rd"> — breakthrough and SC conversion from the current 24-hour opioid dose</span></li>'+
          '<li><b>NICE NG71 — Parkinson’s disease in adults (2017)</b><span class="rd"> — antipsychotics such as butyrophenones and phenothiazines can worsen motor features</span></li>'+
-         '<li><b>Notification of Deaths Regulations 2019</b> — when a doctor must notify the coroner</li>'+
+         '<li><b>Notification of Deaths Regulations 2019 (SI 2019/1112), regulation 3</b> — the categories of death a registered medical practitioner must notify to the senior coroner, in writing<br><a href="https://www.legislation.gov.uk/uksi/2019/1112/regulation/3" rel="noopener">legislation.gov.uk</a></li>'+
+         '<li><b>Academy of Medical Royal Colleges — A code of practice for the diagnosis and confirmation of death (2008)</b><span class="rd"> — confirmation of irreversible cardiorespiratory arrest after a minimum of 5 minutes’ observation; absence of central pulse, heart sounds and respiratory effort; fixed dilated pupils and no motor response to pain</span></li>'+
+         '<li><b>RCN / Hospice UK — Care after death: registered nurse verification of expected adult death</b><span class="rd"> — competence, the examination checklist, documentation and suggested timeliness (about 1 hour in hospital, 4 hours in the community)</span></li>'+
+         '<li><b>DHSC / NHS England — Death certification reforms and the statutory medical examiner system (from 9 September 2024); ONS guidance for doctors completing medical certificates of cause of death</b><br><a href="https://www.gov.uk/government/publications/death-certification-reforms-information-for-health-professionals" rel="noopener">gov.uk — death certification reforms</a><span class="rd"> — who may complete the MCCD, sending it to the ME office, 5-day registration, wording of the cause of death including ‘old age’</span></li>'+
          '<li><b>Greater Manchester Medicines Management Group — Palliative Care Pain and Symptom Control Guidelines for Adults (modified April 2025, review April 2028)</b><br><a href="https://gmmmg.nhs.uk" rel="noopener">gmmmg.nhs.uk</a><span class="rd"> — local palliative formulary, syringe-pump compatibility and 24-hour access arrangements</span></li>'+
          '<li><b>Doses</b> — not given on this page: use the local palliative care formulary, the BNF and a recognised palliative drug reference</li>'+
          '</ul></div>'}

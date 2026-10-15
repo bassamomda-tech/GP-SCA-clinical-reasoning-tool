@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bipolar disorder and lithium — Protocol · Reasoning GP</title>
+<meta name="description" content="Bipolar disorder in primary care: recognising mania and hypomania, urgent referral, never an antidepressant without an antimanic drug, lithium shared care (levels every 3 months in the first year then 6-monthly, renal, thyroid, calcium and weight), toxicity, interactions with NSAIDs, ACE inhibitors and diuretics, valproate restrictions, pregnancy and the annual physical health check — NICE CG185." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/bipolar-lithium.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1791879515288965">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+</head>
+<body data-screen-label="Bipolar disorder and lithium protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"\u{1F319}",
+  title:"Bipolar disorder and lithium",
+  eyebrow:"Protocol · recognise · refer · share the care · keep lithium safe",
+  stemTitle:"Bipolar disorder: recognise mania early, refer urgently when there is risk, never start an antidepressant on its own, and run lithium monitoring like a high-risk drug",
+  stemSub:"One page for the GP's part of bipolar care under NICE CG185: who to suspect, when to refer and how fast, what not to prescribe, lithium shared care (levels, renal, thyroid, calcium and weight on a schedule), toxicity and the interactions that cause it, valproate and pregnancy restrictions, and the annual physical health check.",
+  guideline:"NICE CG185 (2014, updated 2025) · NICE CG192 (2014, updated 2020) · MHRA valproate (2024–2025) · NPSA lithium (2009)",
+  reviewed:"15 October 2026",
+  nextReview:"15 April 2027",
+  meta:[
+    {t:"NICE CG185 — bipolar disorder (updated 2025)"},
+    {t:"NICE QS95 — bipolar disorder in adults"},
+    {t:"NICE CG192 — antenatal and postnatal mental health"},
+    {t:"MHRA — valproate safety measures"},
+    {t:"Lithium is a shared-care, specialist-initiated drug", tone:"tw"},
+    {t:"v1.0 · reviewed Oct 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Red flags</b><small>Mania · risk · toxicity</small></a><a href="#confirm"><b>Recognise</b><small>Mania vs hypomania</small></a><a href="#ladder"><b>Lithium</b><small>Start · levels · targets</small></a><a href="#monitor"><b>Monitoring</b><small>The schedule</small></a><a href="#special"><b>Pregnancy</b><small>Lithium · valproate</small></a><a href="depression.html"><b>Depression protocol</b><small>Unipolar depression →</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Suspected mania or severe depression with risk → urgent referral", html:"If mania, or severe depression, is suspected and the person is a danger to themselves or others, <b>refer urgently to secondary mental health services</b> (crisis or home treatment team) — same day. Psychotic features, not eating or drinking, reckless behaviour or suicidal ideas raise the urgency. Hypomania without risk → refer for specialist assessment."},
+    {tone:"red", h:"⚠ Lithium toxicity is an emergency", html:"Coarse tremor, vomiting or diarrhoea, ataxia, slurred speech, confusion, drowsiness or seizures in someone on lithium → <b>same-day hospital assessment</b> and an urgent level. Toxicity can occur within the usual range, especially with dehydration, intercurrent illness or a new interacting drug."},
+    {tone:"amber", h:"Never an antidepressant alone", html:"In bipolar depression, <b>do not start an antidepressant without an antimanic drug</b> (lithium, an antipsychotic or valproate where permitted). If someone on an antidepressant develops mania or hypomania, consider stopping it and seek specialist advice."},
+    {tone:"blue", h:"Lithium — the monitoring schedule", html:"Plasma lithium <b>12 hours post-dose</b>: weekly after starting and after each dose change until stable, then <b>every 3 months for the first year</b>, then <b>every 6 months</b> (every 3 months in higher-risk groups). <b>Every 6 months</b>: weight or BMI, U&amp;E and eGFR, thyroid function and calcium. Usual target <b>0.6–0.8 mmol/L</b>."},
+    {tone:"cream", h:"The interactions that cause toxicity", html:"<b>NSAIDs, ACE inhibitors, angiotensin-II receptor blockers and diuretics</b> (especially thiazides) raise lithium levels. Avoid starting them if possible; if essential, check a level and renal function within about a week and adjust with specialist advice. Dehydration does the same."},
+    {tone:"green", h:"Physical health is part of the job", html:"People with bipolar disorder die earlier, mostly from cardiovascular disease. Offer an <b>annual physical health check</b> (weight or BMI, BP and pulse, HbA1c or glucose, lipids, smoking, alcohol, LFTs, and renal, thyroid and calcium if on lithium) and act on the results."}
+  ],
+  pathwaySub:"The GP's part of bipolar care in five moves. The red step is where people come to harm.",
+  pathway:[
+    {title:"Recognise", html:"Depression with past elevated mood, or current overactivity, reduced need for sleep, pressured speech, grandiosity, disinhibition. Ask family. Don't use screening questionnaires in primary care."},
+    {title:"Assess risk", html:"Suicide, harm to others, psychosis, not eating or drinking, financial or sexual risk, safeguarding (children, dependants), driving. Risk → urgent crisis referral.", alert:true},
+    {title:"Refer", html:"Suspected bipolar disorder → secondary mental health assessment (urgent if mania or severe depression with risk). Don't start an antidepressant alone; consider stopping one if mania emerges."},
+    {title:"Share the care", html:"Specialist starts lithium or other mood stabiliser; GP continues under shared care with levels, renal, thyroid, calcium and weight on schedule and a record book."},
+    {title:"Keep well", html:"Annual physical health check, relapse signature and crisis plan, interactions checked at every new prescription, contraception and pregnancy planning, re-referral when relapse signs appear."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Red flags", title:"Red flags — risk, mania and lithium toxicity", sub:"Three emergencies: risk to life, acute mania, and toxicity from the drug that keeps people well.",
+     blocks:[
+       {b:"warn", html:"<b>Suspected mania or severe depression with danger to self or others → urgent referral to the crisis or home treatment team the same day</b>; if there is imminent risk to life or the person is uncontactable or violent → 999 / police. <b>Suspected lithium toxicity → same-day hospital assessment</b> (emergency department if severe: confusion, ataxia, seizures, reduced consciousness)."},
+       {b:"cards", items:[
+         {tone:"red", h:"Mania", html:"Elevated or irritable mood with overactivity, reduced need for sleep, pressured speech, flight of ideas, grandiosity, disinhibition, reckless spending or sexual behaviour, often with poor insight; may have psychotic features. Lasting at least a week, or needing admission.", src:"NICE CG185"},
+         {tone:"red", h:"Suicide risk", html:"Highest in depressive and mixed episodes and after discharge. Ask directly about thoughts, plans and access to means (including stockpiled lithium). Safety plan; limit quantities prescribed when risk is raised — lithium is very toxic in overdose.", src:"NICE CG185 · NG225"},
+         {tone:"red", h:"Lithium toxicity", html:"Early: coarse tremor, nausea, vomiting, diarrhoea, muscle weakness. Severe: ataxia, dysarthria, confusion, drowsiness, myoclonus, seizures, arrhythmia, renal failure. Withhold lithium and arrange same-day assessment with an urgent level.", src:"Lithium SPC · NICE CG185"},
+         {tone:"amber", h:"Postpartum psychosis", html:"Bipolar disorder carries a high risk of postpartum psychosis. Sudden onset of confusion, mania or psychosis in the weeks after birth → same-day perinatal mental health or crisis assessment.", src:"NICE CG192"}
+       ]},
+       {b:"why", html:"Lithium has a narrow therapeutic index: the difference between an effective and a toxic level is small, and anything that reduces renal sodium and water clearance — dehydration, diarrhoea, NSAIDs, ACE inhibitors, ARBs, thiazides — raises the level. Chronic toxicity often presents with neurological and gastrointestinal symptoms at levels that look only modestly raised."}
+     ]},
+
+    {id:"confirm", nav:"Recognise", title:"Recognising bipolar disorder", sub:"The diagnosis is made by specialists; the GP's job is to suspect it and to avoid treatments that make it worse.",
+     blocks:[
+       {b:"table", head:["Episode","Features","Duration and impact"], rows:[
+         ["<b>Mania</b>","Elevated, expansive or irritable mood; increased energy; reduced need for sleep; pressured speech; grandiosity; distractibility; risky behaviour; may be psychotic","At least 1 week (or any duration if admission needed); marked impairment"],
+         ["<b>Hypomania</b>","Same features, milder, no psychosis","At least 4 days; noticeable change but not severe impairment"],
+         ["<b>Bipolar depression</b>","As unipolar depression; often hypersomnia, early onset, recurrent, postpartum onset, family history of bipolar","Often the commonest presentation — mania may never have been asked about"],
+         ["<b>Mixed features</b>","Depressive and manic symptoms together","High suicide risk"]
+       ]},
+       {b:"cards", items:[
+         {tone:"blue", h:"In someone presenting with depression", html:"Ask about past periods of elevated or irritable mood, overactivity, needing little sleep, or others noticing a change. Ask a family member with consent. <b>Refer for specialist assessment</b> if there is a history of overactivity or disinhibited behaviour lasting 4 days or more, with or without depression.", src:"NICE CG185 1.2"},
+         {tone:"blue", h:"Do not", html:"Do not use questionnaires in primary care to identify bipolar disorder in adults. Ask about bipolar disorder before starting an antidepressant in anyone with depression.", src:"NICE CG185"},
+         {tone:"cream", h:"Differentials and causes", html:"Substance misuse (stimulants, cannabis), steroids, levodopa, hyperthyroidism, ADHD, emotionally unstable personality disorder, organic brain disease (new mania after 50 needs a medical cause looked for)."}
+       ]}
+     ]},
+
+    {id:"workup", nav:"Work-up", title:"Work-up — before referral and before lithium", sub:"Bloods that rule out a physical cause, and the baseline the specialist will need.",
+     blocks:[
+       {b:"dl", rows:[
+         ["Physical cause","TFTs, FBC, U&amp;E, calcium, glucose or HbA1c; drug and alcohol history; urine drug screen if relevant; neurological examination if new onset after 50 or atypical"],
+         ["Before lithium","Weight or BMI, U&amp;E and eGFR, thyroid function, calcium, FBC; <b>ECG</b> if there are cardiovascular risk factors or existing cardiovascular disease; pregnancy test and contraception discussion where relevant"],
+         ["Before an antipsychotic","Weight, waist, BP and pulse, HbA1c or fasting glucose, lipids, prolactin where relevant, ECG if cardiovascular risk or the SPC requires it"]
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Lithium", title:"Treatment — the specialist starts, the GP sustains", sub:"Long-term treatment reduces relapse. Lithium is first-line for long-term management under NICE CG185; most of its safety depends on the GP's monitoring.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Acute", title:"Mania or hypomania", when:"specialist-led",
+          html:"Refer. If the person takes an antidepressant, consider stopping it. Specialists offer an antipsychotic (haloperidol, olanzapine, quetiapine or risperidone), then consider lithium if ineffective. GPs should not start antipsychotics or lithium for suspected mania without specialist advice."},
+         {step:"Depression", title:"Bipolar depression", when:"specialist-led",
+          fromLabel:"no antidepressant alone",
+          html:"Options include fluoxetine combined with olanzapine, quetiapine alone, olanzapine alone or lamotrigine alone, with psychological therapy. <b>An antidepressant is never used without an antimanic drug.</b>"},
+         {step:"Long term", title:"Lithium first-line", when:"specialist-initiated, shared care",
+          fromLabel:"prevent relapse",
+          html:"Lithium first-line for long-term treatment; if ineffective, add valproate (where permitted) or switch to an antipsychotic. Prescribe lithium <b>by brand</b> — preparations are not interchangeable. <span class=mg-dose>Usual adult dose: lithium carbonate (Priadel) is titrated to the plasma level, commonly starting at 400 mg once daily at night, lower in older people or those under 50 kg (NICE CG185/SPC; check the SPC, BNF and local formulary; <a href=\"https://www.medicines.org.uk/emc/search?q=lithium\" target=_blank rel=noopener>SPC: lithium</a>).</span>"},
+         {step:"Target", title:"Plasma lithium 0.6–0.8 mmol/L", when:"12 hours post-dose",
+          fromLabel:"aim for the range",
+          html:"Aim for <b>0.6–0.8 mmol/L</b> in people prescribed lithium for the first time. Consider <b>0.8–1.0 mmol/L</b> for people who have relapsed previously on lithium or still have subthreshold symptoms with functional impairment. Older people often need lower doses and may be managed at the lower end — follow the specialist plan."},
+         {step:"Stop", title:"Stopping lithium", when:"never abruptly",
+          fromLabel:"rebound mania risk",
+          html:"Reduce gradually over <b>at least 4 weeks</b> (preferably longer) with specialist input, and monitor for early relapse for 2 years. Abrupt stopping carries a high risk of rebound mania."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Valproate — restricted", html:"Must not be started for the first time in anyone <b>under 55</b> unless two specialists independently document that there is no other effective or tolerated treatment, or that the reproductive risks do not apply. Women and girls who can become pregnant: only with the <b>Pregnancy Prevention Programme</b> and annual specialist review. Men: advise effective contraception during treatment and for 3 months after stopping.", src:"MHRA 2024–2025 · CG185 (updated 2025)"},
+         {tone:"cream", h:"Other options", html:"Lamotrigine (bipolar depression; rash warning, slow titration), quetiapine, olanzapine, aripiprazole. Antipsychotic physical monitoring as for psychosis — see the <a href=\"psychosis-schizophrenia.html\">psychosis protocol</a>."}
+       ]}
+     ]},
+
+    {id:"interactions", nav:"Interactions", title:"Interactions and sick-day advice", sub:"Check every new prescription and every OTC purchase against lithium.",
+     blocks:[
+       {b:"table", head:["Drug or situation","Effect","Action"], rows:[
+         ["<b>NSAIDs</b> (including OTC ibuprofen, naproxen)","Raise lithium levels","Avoid; paracetamol instead. If essential, level and U&amp;E within about a week"],
+         ["<b>ACE inhibitors, ARBs</b>","Raise lithium levels; AKI risk","Avoid starting if possible; if needed, specialist advice, level and U&amp;E after starting and each dose change"],
+         ["<b>Diuretics</b> (thiazides most; loop less)","Raise levels (sodium depletion)","Avoid thiazides; if any diuretic is started, recheck level and U&amp;E"],
+         ["<b>Dehydration</b>: vomiting, diarrhoea, fever, heat, low salt intake","Raise levels quickly","Sick-day advice: fluids; if unable to keep fluids down, contact the practice the same day — lithium may need to be withheld and a level checked"],
+         ["<b>Carbamazepine, SSRIs, antipsychotics</b>","Neurotoxicity or serotonin syndrome risk","Use with specialist advice; counsel on symptoms"],
+         ["<b>Theophylline, sodium bicarbonate, high salt intake</b>","Lower levels","Recheck level if started or stopped"]
+       ]},
+       {b:"say", html:"“Lithium is a very good medicine but your kidneys control its level, so anything that dries you out or stops the kidneys clearing it — a stomach bug, very hot weather, or painkillers like ibuprofen — can push it up. If you're being sick, can't keep fluids down or feel shaky, unsteady or muddled, contact us the same day.”"}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Pregnancy, contraception and other special groups", sub:"Plan pregnancy before it happens: half of pregnancies are unplanned.",
+     blocks:[
+       {b:"table", head:["Group","What to do"], rows:[
+         ["<b>Planning pregnancy or pregnant on lithium</b>","Do not stop abruptly. Urgent referral to the perinatal mental health team. If well and at low risk of relapse, specialists may stop lithium gradually over 4 weeks; if continued, levels are monitored every 4 weeks and then weekly from 36 weeks, with dose adjustment and delivery in hospital. Lithium is associated with fetal cardiac malformations — specialist counselling", ],
+         ["<b>Valproate and pregnancy</b>","Valproate must not be used in pregnancy for bipolar disorder. If a woman on valproate is pregnant, refer urgently to the specialist; do not stop without advice. Make sure the Pregnancy Prevention Programme is in place for anyone who could become pregnant"],
+         ["<b>Postpartum</b>","High risk of postpartum psychosis and relapse; perinatal plan in late pregnancy; lithium in breastfeeding is generally avoided — specialist advice"],
+         ["<b>Older people</b>","More sensitive to lithium; lower doses and levels, monitor every 3 months; frequent interactions and dehydration"],
+         ["<b>Renal impairment</b>","Declining eGFR or rising creatinine on two or more tests → discuss with the specialist; lithium may need to stop (balance against relapse risk)"],
+         ["<b>Children and young people</b>","Specialist CAMHS care only; doses per BNFC"],
+         ["<b>Driving</b>","Advise the person to tell the DVLA about bipolar disorder where DVLA guidance requires it, and not to drive during an acute episode"]
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Monitoring", title:"Lithium and physical health monitoring", sub:"Run it as a recall system with a lithium record book; every result has an action.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["<b>Plasma lithium</b> (12 h post-dose)","1 week after starting and after each dose change, until stable; then <b>every 3 months for the first year</b>; then <b>every 6 months</b>","Keep every 3 months for older people, interacting drugs, risk of impaired renal or thyroid function or raised calcium, poor symptom control or adherence, or a last level of 0.8 mmol/L or higher"],
+         ["<b>Weight or BMI</b>","Every 6 months","Weight gain is common — lifestyle advice; review"],
+         ["<b>U&amp;E and eGFR</b>","Every 6 months; more often if renal function deteriorates or interacting drugs are started","Falling eGFR → discuss with specialist; avoid nephrotoxins"],
+         ["<b>Thyroid function</b>","Every 6 months","Hypothyroidism is common — treat with levothyroxine; lithium usually continues"],
+         ["<b>Calcium</b>","Every 6 months (or as the specialist plan states)","Hypercalcaemia (hyperparathyroidism) — check PTH and seek advice"],
+         ["<b>Level above range</b>","Any time","Above 1.0 mmol/L → check timing (12 h), symptoms and interactions; seek specialist advice same day. Above 1.5 mmol/L or symptoms → same-day hospital assessment"],
+         ["<b>Annual physical health check</b>","At least yearly","Weight or BMI, diet, activity, smoking, alcohol, pulse and BP, HbA1c or glucose, lipids, LFTs; act on cardiovascular risk"]
+       ]},
+       {b:"cards", items:[
+         {tone:"amber", h:"Record book and alert card", html:"Give the patient information pack, lithium record book and alert card (NPSA 2009); record each level. Check every dispensed prescription is the same brand."},
+         {tone:"blue", h:"Shared care", html:"Follow the local shared care agreement. Do not continue lithium without monitoring results — if the person has not had a level, arrange it before issuing more."}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer and re-refer", sub:"Discharged people with bipolar disorder can be re-referred quickly when early warning signs appear.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day (urgent)", html:"Mania or severe depression with risk to self or others; psychosis; suicidal ideas with intent or plan; postpartum psychosis; suspected lithium toxicity (hospital)."},
+         {tone:"amber", h:"Urgent (within days)", html:"Hypomania or emerging mania without immediate risk; relapse signs in a known patient; a woman on lithium or valproate who is pregnant or planning pregnancy."},
+         {tone:"blue", h:"Routine specialist assessment or advice", html:"Suspected bipolar disorder in someone with depression and a history of overactivity; poor response; side effects; a lithium level persistently out of range; falling eGFR; thyroid or calcium problems; considering stopping treatment."}
+       ]}
+     ]},
+
+    {id:"safety", nav:"Safety-net", title:"Patient information and safety-netting", sub:"A relapse signature and a crisis plan written with the person, and lithium advice in their own words.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Toxicity", html:"“If you get bad shaking, sickness or diarrhoea, feel unsteady, slurred or confused while on lithium, stop the lithium and get seen the same day — A&amp;E if you're very unwell.”"},
+         {tone:"red", h:"🔴 Crisis", html:"“If you have thoughts of ending your life, or feel unsafe, contact your crisis team or NHS 111 (option 2 for mental health), or call 999 in an emergency.”"},
+         {tone:"amber", h:"🟠 Early warning signs", html:"“If you notice your early signs — sleeping less, racing thoughts, spending more — contact your care team or us within a day or two; acting early prevents a full episode.”"},
+         {tone:"green", h:"💊 Every new medicine", html:"“Tell every doctor, dentist and pharmacist you take lithium, and don't take ibuprofen or other anti-inflammatories without checking.”"}
+       ]}
+     ]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence and references", sub:"Every recommendation on this page is traceable to these sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE CG185 — Bipolar disorder: assessment and management (2014, last updated September 2025)</b><br><a href="https://www.nice.org.uk/guidance/cg185" rel="noopener">nice.org.uk/guidance/cg185</a><span class="rd"> — recognition and referral in primary care (1.2), acute and long-term treatment, lithium levels and monitoring (1.10), stopping lithium, valproate restrictions (updated 2023 and 2025 in line with MHRA advice), physical health monitoring</span></li>'+
+         '<li><b>NICE QS95 — Bipolar disorder in adults (2015)</b><br><a href="https://www.nice.org.uk/guidance/qs95" rel="noopener">nice.org.uk/guidance/qs95</a><span class="rd"> — lithium dose adjustment to the optimum range, annual physical health check</span></li>'+
+         '<li><b>NICE CG192 — Antenatal and postnatal mental health (2014, updated 2020)</b><br><a href="https://www.nice.org.uk/guidance/cg192" rel="noopener">nice.org.uk/guidance/cg192</a><span class="rd"> — lithium and valproate in pregnancy and breastfeeding, postpartum psychosis</span></li>'+
+         '<li><b>MHRA Drug Safety Update — valproate: new safety and educational materials, two-specialist initiation and use in men (2024–2025)</b><br><a href="https://www.gov.uk/drug-safety-update" rel="noopener">gov.uk/drug-safety-update</a><span class="rd"> — under-55 initiation, Pregnancy Prevention Programme, advice to men</span></li>'+
+         '<li><b>NPSA Patient Safety Alert — Safer lithium therapy (2009)</b><br><a href="https://www.sps.nhs.uk/articles/npsa-alert-safer-lithium-therapy-2009/" rel="noopener">sps.nhs.uk — safer lithium therapy</a><span class="rd"> — patient information pack, record book, alert card, monitoring systems</span></li>'+
+         '<li><b>Lithium carbonate product information (SPC)</b><br><a href="https://www.medicines.org.uk/emc/search?q=lithium" rel="noopener">medicines.org.uk — lithium</a><span class="rd"> — dosing, toxicity, interactions, brand prescribing</span></li>'+
+         '<li><b>NICE NG225 — Self-harm (2022)</b><br><a href="https://www.nice.org.uk/guidance/ng225" rel="noopener">nice.org.uk/guidance/ng225</a><span class="rd"> — risk assessment and safety planning</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Bipolar disorder and lithium — NICE CG185 (2014, updated 2025), CG192 and MHRA valproate advice. Lithium is initiated by specialists and continued under shared care. Verify all doses against the current SPC, BNF and local shared care agreement."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

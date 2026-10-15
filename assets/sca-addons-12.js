@@ -24,7 +24,7 @@
    "reason": "Video consultation: frightened by the letter; asking whether she has cancer."
   },
   "knowledge": {
-   "guideline": "[1] GOV.UK Cervical screening: programme and colposcopy management (NHS Cervical Screening Programme) · [2] NHS England: cervical screening changes from 1 July 2025 · [3] UKHSA Green Book, chapter 18a (HPV, June 2023) · [4] NICE NG12 (updated April 2026) · [5] NHS Digital Cervical Screening Programme, England, colposcopy standards",
+   "guideline": "[1] GOV.UK Cervical screening: programme and colposcopy management (NHS Cervical Screening Programme) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NHS England: cervical screening changes from 1 July 2025 · [3] UKHSA Green Book, chapter 18a (HPV, June 2023) · [5] NHS Digital Cervical Screening Programme, England, colposcopy standards",
    "summary": "An HPV-positive result with low-grade cell changes is a screening finding, not a cancer diagnosis. Colposcopy looks closer and treats any significant area to prevent cancer. Lead with that, explain HPV without blame, and make sure she attends.",
    "points": [
     {
@@ -53,7 +53,7 @@
     },
     {
      "h": "Symptoms change the pathway",
-     "t": "NICE NG12 (updated April 2026) [4]: consider a suspected cancer pathway referral if, on examination, the appearance of the cervix is consistent with cervical cancer. Post-coital or intermenstrual bleeding or unusual discharge need examination in their own right, whatever the screening history."
+     "t": "NICE NG12 [4]: consider a suspected cancer pathway referral if, on examination, the appearance of the cervix is consistent with cervical cancer. Post-coital or intermenstrual bleeding or unusual discharge need examination in their own right, whatever the screening history."
     },
     {
      "h": "Relationships and blame",
@@ -67,7 +67,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Miss Nunez, I’m Dr Clarke. Can you hear me okay, and are you somewhere private? … Thank you. What’s been happening?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks privacy; open question"
    },
    {
@@ -77,7 +77,7 @@
    {
     "who": "dr",
     "text": "I can see how frightening that letter has been. Let me answer the biggest question straight away: this result does not mean you have cancer. I’ll explain exactly what it does mean, and I’ll come back to your partner too. Is that okay?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Leads with the key reassurance; acknowledges all her questions"
    },
    {
@@ -89,7 +89,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Can you read me the exact wording on the letter, so I explain your result and not someone else’s?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Confirms the actual result before explaining"
    },
    {
@@ -99,7 +99,7 @@
    {
     "who": "dr",
     "text": "Thank you, that matches what I see in your record. Have you had any bleeding between periods or after sex, or any unusual discharge or pain?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens symptoms that would change the pathway"
    },
    {
@@ -109,7 +109,7 @@
    {
     "who": "dr",
     "text": "Have you had an abnormal result before, or been to colposcopy?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screening history"
    },
    {
@@ -121,7 +121,7 @@
     "clock": "4–5 min",
     "who": "dr",
     "text": "When you read the letter, what went through your mind?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores her ideas"
    },
    {
@@ -131,7 +131,7 @@
    {
     "who": "dr",
     "text": "That’s a very common reaction, and understandable. What would you most like to leave today knowing?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Elicits expectation"
    },
    {
@@ -143,7 +143,7 @@
     "clock": "5–9 min",
     "who": "dr",
     "text": "The screening test looks first for a virus called HPV. Only if HPV is found does the lab look at the cells. In your sample they found HPV and some mild changes in the cells. Mild changes are not cancer. They’re early changes that often go back to normal by themselves. The whole point of screening is to find them years before anything could become cancer.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains HPV primary screening and low-grade changes accurately"
    },
    {
@@ -153,7 +153,7 @@
    {
     "who": "dr",
     "text": "Because the virus and the changes are both there, the rules are to have a closer look rather than just repeat the test. At colposcopy, a nurse or doctor uses a speculum like a smear, then looks at the cervix through a magnifier. They may take a tiny sample. You’re awake, and it doesn’t usually take long. It’s a preventive check.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Demystifies colposcopy; explains why referral follows"
    },
    {
@@ -163,7 +163,7 @@
    {
     "who": "dr",
     "text": "If there’s an area that needs treatment, it’s usually removed with a thin wire loop under local anaesthetic, often at the same or a later visit. Then you’d have a check about six months later. If it’s only mild, they’ll usually just repeat your test in a year. Either way, this is the system catching things early.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Outlines outcomes: LLETZ with test of cure, or 12-month repeat"
    },
    {
@@ -173,7 +173,7 @@
    {
     "who": "dr",
     "text": "HPV is extremely common. Most people who have ever had sex will catch it at some point, usually without knowing. It can stay silent for years before a test picks it up, so this result can’t tell us when you caught it or who from. It isn’t a sign that your partner has cheated, or that you’ve done anything wrong.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains HPV latency and removes blame"
    },
    {
@@ -183,7 +183,7 @@
    {
     "who": "dr",
     "text": "If it helps, you could tell your partner exactly that: it’s a very common virus that can be carried for years, and the screening is doing its job.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Offers words for a difficult conversation"
    },
    {
@@ -191,7 +191,7 @@
     "clock": "9–11 min",
     "who": "dr",
     "text": "The most important thing is going to the colposcopy appointment. The hospital will contact you directly. If you haven’t heard within a few weeks, ring us and we’ll chase it. Can I ask: is there anything that might make it hard to go?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Stresses attendance; offers to chase; explores barriers"
    },
    {
@@ -201,7 +201,7 @@
    {
     "who": "dr",
     "text": "That’s normal. You can take someone with you, and you can ask them to stop at any point. The hospital leaflet explains each step as well. One more thing you might read about is the HPV vaccine. It prevents new infections but doesn’t treat an existing one, so it doesn’t change your plan now.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Practical support; accurate HPV vaccine message"
    },
    {
@@ -209,7 +209,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If before your appointment you notice bleeding after sex or between periods, or an unusual discharge, contact us so we can examine you. Could you tell me in your own words what the result means?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific symptom safety-net; teach-back"
    },
    {
@@ -219,7 +219,7 @@
    {
     "who": "dr",
     "text": "Perfect. And if more questions come up after we finish, which they often do, book back in with me.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Open door for later questions"
    },
    {
@@ -231,57 +231,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Checked privacy; open question; let her voice all three questions.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Relationship worry and distress since the letter explored without judgement.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “does the HPV thing mean my partner’s cheated?” and returned to it.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (cancer; someone gave her something), concern (being okay; the relationship), expectation (to understand and know what to say to her partner).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Confirmed the exact result wording; screening history; symptom check for bleeding or discharge.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
-    "d": "Screening abnormality vs symptomatic disease; knows NICE NG12 (updated April 2026) applies only to a suspicious-looking cervix.",
-    "pts": 1
+    "d": "Screening abnormality vs symptomatic disease; knows NICE NG12 applies only to a suspicious-looking cervix.",
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Screened post-coital and intermenstrual bleeding and discharge; knows high-grade referrals are seen within 2 weeks.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "High-risk HPV with low-grade changes: screening abnormality, not cancer.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Colposcopy explained; LLETZ and test of cure or 12-month repeat outlined; offer to chase the appointment.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Barriers to attending explored; partner conversation supported; accurate HPV vaccine message at 29.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Symptom safety-net before colposcopy; chase if no appointment; open door for later questions.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -400,7 +400,7 @@
      "Post-coital or intermenstrual bleeding",
      "Persistent unusual or bloodstained discharge",
      "Pelvic pain",
-     "Cervix that looks suspicious on examination (NICE NG12 (updated April 2026): consider suspected cancer pathway referral)"
+     "Cervix that looks suspicious on examination (NICE NG12: consider suspected cancer pathway referral)"
     ],
     "psychosocial": [
      "Fear of cancer since the letter arrived",
@@ -461,37 +461,37 @@
    "intro": "The trap is explaining the science before answering her real question. Marks sit in answering “is it cancer?” first, explaining HPV without blame, and securing attendance.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Starting with the biology of HPV and CIN before answering “do I have cancer?”",
      "why": "She cannot absorb anything while that question is unanswered.",
      "fix": "“This result does not mean you have cancer.” Then explain."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Describing the old smear-first system.",
      "why": "England uses HPV primary screening; cytology is only read when HPV is found.",
      "fix": "“The test looks for HPV first, then at the cells.”"
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Advising the HPV vaccine as treatment.",
      "why": "She is outside NHS eligibility at 29 and the vaccine doesn’t clear an existing infection.",
      "fix": "Explain that it prevents new infections only."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Ignoring or rushing the partner question.",
      "why": "It is her hidden agenda and a source of real harm.",
      "fix": "Explain HPV latency and offer words she can use."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Minimising (“it’s nothing”).",
      "why": "She may not attend colposcopy.",
      "fix": "Reassure accurately and stress that attending is what keeps her safe."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No plan if the appointment doesn’t arrive, and no symptom safety-net.",
      "why": "Lost referrals and new symptoms are the real risks.",
      "fix": "Offer to chase; name post-coital and intermenstrual bleeding."
@@ -561,7 +561,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mrs Drake, I’m Dr Morgan. Can you hear and see me all right? I’m sorry you’ve been so unwell. Tell me what’s been happening.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks the video link and opens with empathy"
    },
    {
@@ -571,7 +571,7 @@
    {
     "who": "dr",
     "text": "That’s a fair question and I’ll answer it honestly. I have your result in front of me. Can I ask a few quick questions first, then explain what it means and what we need to do today?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Sets an agenda and signals urgency without alarm"
    },
    {
@@ -583,7 +583,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Over the last day, how much have you managed to keep down? And how often are you passing water — less than usual?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Assesses oral intake and urine output"
    },
    {
@@ -593,7 +593,7 @@
    {
     "who": "dr",
     "text": "When you stand, do you feel faint or need to hold on? Have you felt drowsy or muddled, had a racing or irregular heartbeat, any breathlessness, or a temperature or shivers?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens postural hypovolaemia, confusion, hyperkalaemia symptoms, sepsis"
    },
    {
@@ -603,7 +603,7 @@
    {
     "who": "dr",
     "text": "Any blood in the diarrhoea or vomit, or bad tummy pain? And do you have a way of checking your sugar or ketones at home?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens complications and SGLT2-related ketoacidosis risk"
    },
    {
@@ -613,7 +613,7 @@
    {
     "who": "dr",
     "text": "And your tablets — are you still taking the ramipril, the metformin and the diabetes tablet that makes you pass sugar in the urine, alongside the ibuprofen?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Confirms each risk drug is still being taken"
    },
    {
@@ -625,7 +625,7 @@
     "clock": "4–5 min",
     "who": "dr",
     "text": "What have you been thinking this blood test means?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores her ideas"
    },
    {
@@ -637,7 +637,7 @@
     "clock": "5–7 min",
     "who": "dr",
     "text": "It makes complete sense to think it’s just the bug. What’s happened is that the bug has dried you out, and some tablets — the ramipril and the ibuprofen especially — make it harder for dry kidneys to keep working. Together they’ve caused what we call an acute kidney injury. It’s common, and it usually recovers when the fluids and tablets are sorted out.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains the illness–drug link in plain words"
    },
    {
@@ -647,7 +647,7 @@
    {
     "who": "dr",
     "text": "I’m concerned enough that I want you seen in hospital today. You can’t keep fluids down, you’re dizzy when you stand and passing very little urine. At this stage you need a drip, repeat blood tests including your potassium, and a check for a build-up of acid in the blood that your diabetes tablet can cause even when the sugar isn’t high. I can’t check any of that safely over video.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Clear same-day hospital disposition with reasons"
    },
    {
@@ -657,7 +657,7 @@
    {
     "who": "dr",
     "text": "I understand — nobody wants to go in. If you could drink and were only mildly affected, we’d manage it at home with a recheck in a day or two. But with this much fluid loss, I’d be taking a risk with your kidneys to keep you home. Most people with this recover well once they’re rehydrated. Is that all right with you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges reluctance, explains the threshold, seeks agreement"
    },
    {
@@ -669,7 +669,7 @@
     "clock": "7–10 min",
     "who": "dr",
     "text": "Thank you. Until you’re seen, stop the ibuprofen completely, and don’t take the ramipril, the metformin or the SGLT2 tablet. Keep sipping fluids if you can. I’ll speak to the medical team at the hospital now and send them a letter with your results and the tablets we’ve stopped. Can someone take you, or shall we arrange transport?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Sick-day holds, handover to the acute team, practical transport"
    },
    {
@@ -679,7 +679,7 @@
    {
     "who": "dr",
     "text": "When you’re better, the hospital or I will recheck your kidney test before restarting the tablets — they’re important for your blood pressure and diabetes, so we won’t just leave them off. For aches in future, use paracetamol rather than ibuprofen. And I’ll give you a sick-day card: whenever you have vomiting, diarrhoea or can’t eat and drink, pause these tablets and ring us.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Restart plan, NSAID avoidance, future sick-day rules (Think Kidneys)"
    },
    {
@@ -691,7 +691,7 @@
     "clock": "10–12 min",
     "who": "dr",
     "text": "Could you tell me back which tablets you’re stopping and what happens next?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Teach-back on the medication holds"
    },
    {
@@ -701,7 +701,7 @@
    {
     "who": "dr",
     "text": "Exactly. If before you get there you become drowsy or confused, faint, feel your heart racing or fluttering, or become breathless, call 999. I’ll follow up after you’re discharged to restart your tablets safely. Is there anything else worrying you?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific 999 triggers and a defined follow-up"
    },
    {
@@ -713,57 +713,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question after checking the video link; let her describe the illness and ask ‘should I be worried?’",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Explored her wish to stay home and how she will get to hospital; checked what she thought the result meant.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up ‘hardly keep anything down’, ‘dizzy when I stand’ and ibuprofen use as the key cues.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea: just the bug. Concern: whether it’s serious. Expectation: something to stop the sickness.",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Checked the previous creatinine and potassium on the record; stated what video cannot assess; hospital to do U&E, ketones, urine dip, obs.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Pre-renal AKI from volume depletion with ACE inhibitor and NSAID; considered sepsis, ketoacidosis on SGLT2 inhibitor and hyperkalaemia.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Screened urine output, postural symptoms, confusion, palpitations, breathlessness, fever, blood in stool.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "AKI (NICE NG148 criteria) in a 72-year-old with diabetes, unable to maintain oral fluids.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Same-day hospital assessment with handover; stop ibuprofen; pause ramipril, metformin and SGLT2 inhibitor (Think Kidneys; MHRA 2020).",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Planned restart after recheck so ramipril and diabetes treatment are not lost; NSAID avoidance; sick-day card.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999 triggers before arrival; teach-back of the holds; GP follow-up after discharge.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -932,43 +932,43 @@
    "intro": "This station is failed by treating the tummy bug and missing the kidneys, or by recognising the AKI and still keeping an older patient at home who cannot drink.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Antiemetic and ‘push fluids’ with no medicine changes.",
      "why": "Continuing ramipril and ibuprofen during dehydration worsens AKI.",
      "fix": "Stop the NSAID and pause the ACE inhibitor, metformin and SGLT2 inhibitor."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Managing at home when she cannot keep fluids down.",
      "why": "She is 72, diabetic, on an SGLT2 inhibitor, with postural symptoms and AKI.",
      "fix": "Same-day hospital assessment with a handover."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Forgetting ketoacidosis on the SGLT2 inhibitor.",
      "why": "MHRA March 2020: ketoacidosis can occur with near-normal glucose.",
      "fix": "Pause it and make sure ketones are checked."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "No restart plan.",
      "why": "Held ACE inhibitors are often never restarted.",
      "fix": "Recheck U&E and restart deliberately; reconcile medicines after discharge."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Insisting on admission without explaining why.",
      "why": "She wanted to stay home; an unexplained order undermines trust.",
      "fix": "Give the specific reasons and what would have made home safe."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Claiming to assess hydration over video.",
      "why": "Postural BP, mucosa and urine output cannot be examined remotely.",
      "fix": "Use history, name the limits, and send her for assessment."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No future sick-day advice.",
      "why": "The next bug will cause the same injury.",
      "fix": "Written sick-day card, paracetamol not NSAIDs, and a clear ‘pause and ring us’ rule."
@@ -991,16 +991,16 @@
    "reason": "Mother: “Her eye turns in sometimes, and in some photos one eye looks white instead of red. Is that anything?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG12 (updated April 2026) Suspected cancer: recognition and referral (updated April 2026), children and young people: retinoblastoma · [2] NICE NG127 Suspected neurological conditions: recognition and referral (2019), children: new-onset squint · [3] NHS Newborn and Infant Physical Examination (NIPE) screening programme: eye examination at birth and 6 to 8 weeks · [4] UK National Screening Committee: child vision screening (orthoptist-led, age 4 to 5)",
-   "summary": "A white pupil in flash photographs (leukocoria) in a toddler is a retinoblastoma warning sign until an eye specialist says otherwise. Take the mother’s observation seriously, look at the photos, arrange for the red reflex to be checked face to face, and refer to ophthalmology: an absent fundal reflex needs a suspected cancer pathway referral (NICE NG12 (updated April 2026)), and a new squint with loss of the red reflex needs an immediate referral (NG127). The squint needs specialist assessment in its own right because of the amblyopia risk. “She’ll grow out of it” is not safe advice here.",
+   "guideline": "[2] NICE NG127 Suspected neurological conditions: recognition and referral (2019), children: new-onset squint · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] NHS Newborn and Infant Physical Examination (NIPE) screening programme: eye examination at birth and 6 to 8 weeks · [4] UK National Screening Committee: child vision screening (orthoptist-led, age 4 to 5)",
+   "summary": "A white pupil in flash photographs (leukocoria) in a toddler is a retinoblastoma warning sign until an eye specialist says otherwise. Take the mother’s observation seriously, look at the photos, arrange for the red reflex to be checked face to face, and refer to ophthalmology: an absent fundal reflex needs a suspected cancer pathway referral (NICE NG12), and a new squint with loss of the red reflex needs an immediate referral (NG127). The squint needs specialist assessment in its own right because of the amblyopia risk. “She’ll grow out of it” is not safe advice here.",
    "points": [
     {
      "h": "Leukocoria means look now",
      "t": "A white, pale or “cat’s eye” reflection in one pupil on flash photos, or an absent or abnormal red reflex on examination, can be caused by retinoblastoma, congenital cataract, Coats’ disease or other serious eye disease. Parents often notice it in photos first. The report alone is enough to act on."
     },
     {
-     "h": "NICE NG12 (updated April 2026): absent fundal reflex",
-     "t": "NICE NG12 (updated April 2026) [1]: consider a suspected cancer pathway referral to ophthalmology for retinoblastoma in a child with an absent fundal (“red”) reflex. NICE NG12 (updated April 2026) now says “fundal” reflex because the normal reflex can look a different colour in children with darker skin."
+     "h": "NICE NG12: absent fundal reflex",
+     "t": "NICE NG12 [1]: consider a suspected cancer pathway referral to ophthalmology for retinoblastoma in a child with an absent fundal (“red”) reflex. NICE NG12 now says “fundal” reflex because the normal reflex can look a different colour in children with darker skin."
     },
     {
      "h": "NG127: squint plus loss of red reflex",
@@ -1030,7 +1030,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello, I’m Dr Osei. Can you hear and see me all right? And is that Aria with you? Tell me what’s been happening.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks the video link and opens openly"
    },
    {
@@ -1040,7 +1040,7 @@
    {
     "who": "dr",
     "text": "You’re not being daft at all. You’ve mentioned two things, the eye turning in and the white look in photos, and I want to go through both properly. Is that all right?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Names both problems and agrees the agenda"
    },
    {
@@ -1052,7 +1052,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "Let’s start with the photos. Could you show me one on your screen, or send it through to the practice?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks to see the photographs"
    },
    {
@@ -1062,7 +1062,7 @@
    {
     "who": "dr",
     "text": "Thank you, that’s really helpful. I can see what you mean. How many photos show it, and do you ever notice it in normal light, for example a pale glint in her eye?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Clarifies how often and whether it is seen outside photos"
    },
    {
@@ -1072,7 +1072,7 @@
    {
     "who": "dr",
     "text": "And the turning in: when did you first notice it, and is it there all the time or does it come and go?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Onset and pattern of the squint"
    },
    {
@@ -1082,7 +1082,7 @@
    {
     "who": "dr",
     "text": "That’s fine. Does she seem to see well? For example, does she bump into things on one side, tilt her head, or get upset if you cover one eye?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for reduced vision"
    },
    {
@@ -1092,7 +1092,7 @@
    {
     "who": "dr",
     "text": "Has she had headaches, been sick in the mornings, been unsteady on her feet or more sleepy than usual? Any redness, pain or a change in the size of the eye?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for NG127 features and other eye disease"
    },
    {
@@ -1102,7 +1102,7 @@
    {
     "who": "dr",
     "text": "Has anyone in the family had an eye problem as a child, or had an eye removed or treated for a tumour?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Family history relevant to retinoblastoma"
    },
    {
@@ -1114,7 +1114,7 @@
     "clock": "5–6 min",
     "who": "dr",
     "text": "When you saw that white eye in the photo, what went through your mind?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the mother’s idea and fear"
    },
    {
@@ -1124,7 +1124,7 @@
    {
     "who": "dr",
     "text": "You did exactly the right thing booking. Noticing that in a photo is often how these things are found, and I’m glad you didn’t leave it. What were you hoping I could do today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates her instinct and asks her expectation"
    },
    {
@@ -1136,7 +1136,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "It does matter, and I’ll be honest with you. The white look means light isn’t bouncing back off the back of that eye in the normal way. Most of the time that turns out to be something like a cloudy lens or another eye condition that can be treated, but occasionally it’s a rare eye tumour called retinoblastoma. That’s why we never wait on it. Eye specialists need to look at the back of her eye soon.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains leukocoria honestly, names the serious cause without catastrophising"
    },
    {
@@ -1146,7 +1146,7 @@
    {
     "who": "dr",
     "text": "I know that’s a frightening word to hear. I’m not saying she has it. I’m saying it needs to be ruled out quickly, and if it were found, it’s one of the childhood cancers that’s treated most successfully when it’s caught early. Checking quickly is the careful thing to do.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Responds to distress with honesty and hope"
    },
    {
@@ -1156,7 +1156,7 @@
    {
     "who": "dr",
     "text": "The squint needs the specialists too. If an eye keeps turning, the brain can start ignoring it and it becomes a lazy eye, which is much easier to treat when she’s young. So “she’ll grow out of it” isn’t safe for Aria. The same eye team can look at both.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains amblyopia risk and why the squint needs referral"
    },
    {
@@ -1164,8 +1164,8 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "I can’t check the red reflex properly over video, so I’d like to see her in person today, in a dim room with my ophthalmoscope. I’ll also phone the eye doctors at the hospital today. If the reflex is missing in that eye with the squint, they’ll want to see her within hours. Otherwise I’ll send an urgent referral on the fast-track pathway for suspected eye cancer, which means an appointment within two weeks. Either way, the referral goes today.",
-    "dom": "tasks",
-    "why": "Face-to-face red reflex, same-day ophthalmology discussion, NG127 immediate or NICE NG12 (updated April 2026) suspected cancer pathway"
+    "dom": "cm",
+    "why": "Face-to-face red reflex, same-day ophthalmology discussion, NG127 immediate or NICE NG12 suspected cancer pathway"
    },
    {
     "who": "pt",
@@ -1174,7 +1174,7 @@
    {
     "who": "dr",
     "text": "Good, we’ll book a time this afternoon. Please bring the photos on your phone, because the specialists find them helpful. Would it help to have someone with you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Practical support for attending"
    },
    {
@@ -1184,7 +1184,7 @@
    {
     "who": "dr",
     "text": "Good. Is there anything you’d like me to say differently to your mum? Some families find it helps to hear that the doctor asked for this, not that you overreacted.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Addresses the family pressure respectfully"
    },
    {
@@ -1196,7 +1196,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Can you tell me in your own words what we’ve agreed, so I know I’ve explained it well?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Checks understanding with teach-back"
    },
    {
@@ -1206,7 +1206,7 @@
    {
     "who": "dr",
     "text": "That’s exactly right. If you haven’t heard about the eye appointment within a few days, ring me and I’ll chase it. Before then, if she gets headaches, morning vomiting, becomes unsteady or drowsy, or the eye becomes red, painful or looks bigger, call us straight away or take her to A&E. I’ll also check with the hospital that she was seen.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Timed follow-up, specific safety-net and ownership of the referral"
    }
   ],
@@ -1214,57 +1214,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open start by video; heard both concerns; named the squint and the white reflex as separate items.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Family pressure (“she’ll grow out of it”), who can support the mother, practical barriers to attending today.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “white, not red” in photos and “am I being daft” and explored both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (grandmother: normal), concern (a tumour after searching online, fear of overreacting), expectation (to know if it matters).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Asked to see the photos; arranged face-to-face red reflex, corneal light reflex and cover test, fixation and following.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Retinoblastoma, congenital cataract and other retinal disease versus benign squint; amblyopia risk.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about headache, vomiting, unsteadiness, drowsiness, eye pain or redness, reduced vision and family history.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Named leukocoria as a warning sign needing urgent specialist eye assessment; explained the squint risk.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Same-day phone call to ophthalmology; NG127 immediate if new squint with loss of red reflex, otherwise NICE NG12 (updated April 2026) suspected cancer pathway referral; squint assessed by the same team.",
-    "pts": 2
+    "d": "Same-day phone call to ophthalmology; NG127 immediate if new squint with loss of red reflex, otherwise NICE NG12 suspected cancer pathway referral; squint assessed by the same team.",
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Supported the mother, offered support for attending, helped her explain the plan to the family.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Teach-back; chase if no appointment in a few days; red flags for same-day review; practice confirms attendance.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -1310,13 +1310,13 @@
     {
      "t": "9–12",
      "h": "Act and close",
-     "d": "Face-to-face red reflex today; call ophthalmology; NG127 or NICE NG12 (updated April 2026) route; bring photos; teach-back; chase the appointment; safety-net."
+     "d": "Face-to-face red reflex today; call ophthalmology; NG127 or NICE NG12 route; bring photos; teach-back; chase the appointment; safety-net."
     }
    ],
    "wordPics": {
     "fail": "Agrees she will grow out of it or plans to review in a few months; never asks to see the photos; says the red reflex cannot be checked on video and stops there; no referral.",
     "pass": "Recognises leukocoria as a red flag, arranges a red reflex check, refers to ophthalmology urgently and refers the squint, with a basic safety-net.",
-    "exc": "All of the above, plus: looks at the photos; knows the NICE NG12 (updated April 2026) suspected cancer pathway for an absent fundal reflex and the NG127 immediate route for a new squint with loss of the red reflex; phones ophthalmology the same day; names retinoblastoma honestly with its good prognosis; supports the mother against family pressure; owns and chases the referral."
+    "exc": "All of the above, plus: looks at the photos; knows the NICE NG12 suspected cancer pathway for an absent fundal reflex and the NG127 immediate route for a new squint with loss of the red reflex; phones ophthalmology the same day; names retinoblastoma honestly with its good prognosis; supports the mother against family pressure; owns and chases the referral."
    },
    "avoid": [
     {
@@ -1364,7 +1364,7 @@
     },
     {
      "h": "Parental concern",
-     "t": "NICE NG12 (updated April 2026) asks clinicians to take persistent parental concern seriously and consider referral. Here there is a specific red flag as well."
+     "t": "NICE NG12 asks clinicians to take persistent parental concern seriously and consider referral. Here there is a specific red flag as well."
     }
    ],
    "community": [
@@ -1400,7 +1400,7 @@
     "psychosocial": "Credit the mother, offer someone to come with her, give her words for the family, and plan around transport.",
     "sharedPlan": [
      "Face-to-face red reflex, corneal light reflex and cover test today",
-     "Same-day call to ophthalmology: immediate if new squint with loss of red reflex (NICE NG127); otherwise suspected cancer pathway referral (NICE NG12 (updated April 2026))",
+     "Same-day call to ophthalmology: immediate if new squint with loss of red reflex (NICE NG127); otherwise suspected cancer pathway referral (NICE NG12)",
      "Squint and amblyopia assessed by the eye team; bring the photos"
     ],
     "safetyNet": [
@@ -1414,7 +1414,7 @@
    {
     "ic": "🗺️",
     "t": "Suspected cancer in children",
-    "s": "Visual algorithm · NICE NG12 (updated April 2026) and NG127",
+    "s": "Visual algorithm · NICE NG12 and NG127",
     "href": "algorithms/paediatric-cancer-referral.html"
    },
    {
@@ -1434,37 +1434,37 @@
    "intro": "This station tests whether you act on a parent’s photo of a white pupil. Candidates often focus on the squint, reassure, and forget that the red reflex cannot be checked on video.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Reassuring that she will grow out of the squint.",
      "why": "A persisting squint in a toddler risks amblyopia and can be the first sign of eye disease, including retinoblastoma.",
      "fix": "Refer the squint for orthoptic and ophthalmology assessment."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Not asking to see the photographs.",
      "why": "The photos are the key evidence of leukocoria and help the specialists.",
      "fix": "“Can you show me the photo, or send it to the practice?”"
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Giving the wrong urgency.",
-     "why": "NICE NG127: new squint with loss of the red reflex → immediate referral. NICE NG12 (updated April 2026): absent fundal reflex → suspected cancer pathway referral. A routine referral or review in months is unsafe.",
+     "why": "NICE NG127: new squint with loss of the red reflex → immediate referral. NICE NG12: absent fundal reflex → suspected cancer pathway referral. A routine referral or review in months is unsafe.",
      "fix": "Check the reflex face to face today and phone ophthalmology to agree the route."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Accepting that the red reflex cannot be examined on video and moving on.",
      "why": "An essential examination that cannot be done remotely must be arranged, not skipped.",
      "fix": "Bring her in the same day, and refer on the history even if the reflex looks equivocal."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Saying “cancer” bluntly, or avoiding any mention of why it is urgent.",
      "why": "Either panic or unexplained urgency damages trust and engagement.",
      "fix": "Name the rare serious cause calmly, with the common treatable causes and the good outcome of early treatment."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No plan to confirm the appointment happens.",
      "why": "Referral safety-netting is expected of the referring GP.",
      "fix": "“If you haven’t heard in a few days, ring me, and we’ll check she was seen.”"
@@ -1523,7 +1523,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Daniel, it’s Dr Patel. Thanks for booking. Tell me what’s been going on with your skin.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question"
    },
    {
@@ -1533,7 +1533,7 @@
    {
     "who": "dr",
     "text": "That sounds really frustrating, and the effect on your confidence matters to me as much as the skin. You’ve also mentioned the stiffness, which I want to come back to. Can we look at the skin, the joints, and how it’s affecting you, and then decide on a plan together?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Acknowledges impact and sets an agenda that includes the joints"
    },
    {
@@ -1545,7 +1545,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Could you show me the elbows and knees on camera, in good light? And tell me which creams you’ve used and how you put them on.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Remote look and treatment history"
    },
    {
@@ -1555,7 +1555,7 @@
    {
     "who": "dr",
     "text": "Thank you. The patches are well defined, red with silvery scale, which fits psoriasis. Is the scalp itchy or flaky under the hair? Any patches in the skin folds or groin? And have you noticed pitting or lifting of your nails?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks difficult sites and nails"
    },
    {
@@ -1565,7 +1565,7 @@
    {
     "who": "dr",
     "text": "Has anything set off this flare, such as stress, an illness, sore throat, or any new tablets?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks triggers including drugs and infection"
    },
    {
@@ -1577,7 +1577,7 @@
     "clock": "4–6 min",
     "who": "dr",
     "text": "Now the stiffness. How long does it last in the morning? Does it ease with moving or get worse? Any swollen fingers or toes, or pain at the heel?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for inflammatory arthritis, dactylitis and enthesitis"
    },
    {
@@ -1587,7 +1587,7 @@
    {
     "who": "dr",
     "text": "And the back: when did that start, and does it wake you in the second half of the night or improve with exercise?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks inflammatory back pain features (NG65)"
    },
    {
@@ -1597,7 +1597,7 @@
    {
     "who": "dr",
     "text": "Morning stiffness that eases with movement, in someone with psoriasis and nail changes, can be psoriatic arthritis. It’s important because early treatment protects the joints. I’ll ask you to fill in a short questionnaire, and I’d like to examine your hands, feet and back in person this week.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names PsA risk; PEST and face-to-face joint examination"
    },
    {
@@ -1609,7 +1609,7 @@
     "clock": "6–7 min",
     "who": "dr",
     "text": "You said it’s wrecking your confidence. How is it affecting you day to day, and how has your mood been?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores psychosocial impact and screens mood"
    },
    {
@@ -1619,7 +1619,7 @@
    {
     "who": "dr",
     "text": "Thank you for being open. Has it ever got so low that you’ve had thoughts of harming yourself?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Safely completes the mood screen"
    },
    {
@@ -1629,7 +1629,7 @@
    {
     "who": "dr",
     "text": "What were you hoping a stronger cream would do?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores expectation"
    },
    {
@@ -1641,7 +1641,7 @@
     "clock": "7–11 min",
     "who": "dr",
     "text": "Creams often seem not to work because they’re used only in flares or not long enough, and that’s really common. There is no cure, but good control is realistic. I’d like to set you up with a clear routine: a strong steroid once a day and a vitamin D cream once a day, one in the morning and one at night, for four weeks, with a moisturiser as well. If the two separately don’t fit your day, there’s a combined gel once a day.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains CG153 sequence and addresses adherence"
    },
    {
@@ -1651,13 +1651,13 @@
    {
     "who": "dr",
     "text": "Then we’ll use the combined one at night. For the scalp, a steroid scalp application once a day for four weeks, softening the scale first. I’ll review you in four weeks.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Site-appropriate scalp treatment and review"
    },
    {
     "who": "dr",
     "text": "Because it’s having such a big effect on you, I’d also like to refer you to dermatology. They can offer light treatment, tablets or injections if the creams aren’t enough. And I’ll refer you to rheumatology about the joints once I’ve examined you.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Dermatology referral for major impact; rheumatology for suspected PsA"
    },
    {
@@ -1667,7 +1667,7 @@
    {
     "who": "dr",
     "text": "Psoriasis is linked with heart and circulation risk too, so when you come in I’ll check your blood pressure and weight and arrange cholesterol and sugar tests. We can also talk about smoking and alcohol, which can make psoriasis worse.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Addresses cardiometabolic comorbidity"
    },
    {
@@ -1679,7 +1679,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "One safety point: moisturisers soaked into clothes or bedding can catch fire easily, so keep away from flames. If your skin becomes red all over, you get pus spots across it, or you feel unwell with it, that needs same-day care. And if your mood drops, please tell me. What will you do differently from tonight?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Emollient fire risk, emergency red flags, mood safety-net, teach-back"
    },
    {
@@ -1689,7 +1689,7 @@
    {
     "who": "dr",
     "text": "Spot on. I’ll send you the questionnaire and book the examination this week, then review in four weeks.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Clear follow-up"
    }
   ],
@@ -1697,57 +1697,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Let him describe the skin, the impact and the joints before narrowing; acknowledged frustration.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Work and routine, covering up, summer avoidance, smoking and alcohol flagged for review.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up the morning stiffness and “wrecking my confidence” and explored both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (creams don’t work, needs stronger), concern (confidence, joints), expectation (to clear it and stop hiding).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Camera look at plaques, scalp and nails; PEST; face-to-face joint and back examination; BP, weight, lipids, HbA1c.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Plaque psoriasis with suboptimal topical use; psoriatic arthritis; axial spondyloarthritis; triggers.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Screened for erythroderma and pustular psoriasis, and for low mood and self-harm.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Named chronic plaque psoriasis, likely under-treated, with possible psoriatic arthritis.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "CG153 topical sequence with a combined product for adherence, scalp treatment, dermatology referral for major impact.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Rheumatology referral if PsA confirmed on examination; cardiovascular risk and mood addressed.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Review at 4 weeks, same-day triggers, emollient fire safety, mood safety-net.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -1924,37 +1924,37 @@
    "intro": "This station is not about naming the strongest cream. It tests whether you find the adherence problem, catch the joints, and take the psychological impact seriously.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Stepping up to a very potent steroid on request.",
      "why": "CG153 keeps very potent steroids for specialist settings on the trunk and limbs; the problem here is intermittent use.",
      "fix": "Ask how the creams were used, then give the CG153 routine with a 4-week review."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Ignoring the morning stiffness.",
      "why": "Psoriatic arthritis can damage joints if treatment is delayed; CG153 advises referral as soon as it is suspected.",
      "fix": "Ask about duration, relief with movement, dactylitis, enthesitis and back pain; examine face to face."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Using PEST alone for the back pain.",
      "why": "PEST does not detect axial disease.",
      "fix": "Ask the NG65 inflammatory back pain questions too."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Treating the confidence issue as cosmetic.",
      "why": "CG153 asks for assessment of impact and depression; major impact is itself a referral criterion.",
      "fix": "Ask about mood and daily impact, and let the answer shape the plan."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No review date or safety-net.",
      "why": "Topical plans need a 4-week review; erythroderma and pustular psoriasis need same-day care.",
      "fix": "Book the review and name the red flags."
     },
     {
-     "dom": "gs",
+     "dom": "ro",
      "fail": "Jargon: “calcipotriol, PASI, DLQI”.",
      "why": "The patient needs a routine he understands.",
      "fix": "“One gel every night for four weeks, then we check.”"
@@ -1978,7 +1978,7 @@
    "reason": "Video consultation: “Just a chest infection. Can you call in some antibiotics so I can stay at home?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG250 Pneumonia: diagnosis and management (2025) · [2] NICE NG253 Suspected sepsis in people aged 16 or over (2025) · [3] NICE NG115 COPD in over 16s · [4] NICE NG12 (updated April 2026) Suspected cancer: recognition and referral (updated April 2026): lung · [5] British Thoracic Society guideline for the management of community acquired pneumonia in adults (2009) · [6] Mental Capacity Act 2005 Code of Practice",
+   "guideline": "[1] NICE NG250 Pneumonia: diagnosis and management (2025) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NICE NG253 Suspected sepsis in people aged 16 or over (2025) · [3] NICE NG115 COPD in over 16s · [5] British Thoracic Society guideline for the management of community acquired pneumonia in adults (2009) · [6] Mental Capacity Act 2005 Code of Practice",
    "summary": "Cough, fever, pleuritic pain and breathlessness in a 71-year-old with COPD who is newly confused is suspected pneumonia with a CRB65 score of at least 2 before respiratory rate or blood pressure are even measured. NICE NG250 says consider hospital referral at a score of 2 or more and refer if sepsis or cardiorespiratory failure is suspected; new confusion also needs sepsis assessment (NG253). The skill is making and explaining that disposition decision kindly, checking he can weigh it up, and planning a follow-up chest X-ray because he is an older ex-smoker.",
    "points": [
     {
@@ -2003,7 +2003,7 @@
     },
     {
      "h": "Follow-up chest X-ray",
-     "t": "NICE NG250 [1] does not support routine follow-up X-rays for everyone, but the committee noted their value for people at higher risk of lung cancer such as smokers and those over 50. BTS 2009 [5] advises a chest X-ray at about 6 weeks for persisting symptoms or signs or higher malignancy risk. NICE NG12 (updated April 2026) [4]: consider an urgent chest X-ray in people aged 40 and over with persistent or recurrent chest infection, and offer one to people aged 40 and over with 2 or more unexplained symptoms from cough, fatigue, breathlessness, chest pain, weight loss and appetite loss, or 1 or more if they have ever smoked."
+     "t": "NICE NG250 [1] does not support routine follow-up X-rays for everyone, but the committee noted their value for people at higher risk of lung cancer such as smokers and those over 50. BTS 2009 [5] advises a chest X-ray at about 6 weeks for persisting symptoms or signs or higher malignancy risk. NICE NG12 [4]: consider an urgent chest X-ray in people aged 40 and over with persistent or recurrent chest infection, and offer one to people aged 40 and over with 2 or more unexplained symptoms from cough, fatigue, breathlessness, chest pain, weight loss and appetite loss, or 1 or more if they have ever smoked."
     },
     {
      "h": "Refusal and capacity",
@@ -2017,7 +2017,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mr Halloran, I’m Dr Singh. I can see you’re not feeling great. Tell me what’s been happening.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open start"
    },
    {
@@ -2027,7 +2027,7 @@
    {
     "who": "dr",
     "text": "I hear that you want to stay at home, and I’ll keep that in mind. Can I ask some questions first, and perhaps speak to your wife as well, so we get the plan right?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Acknowledges his wish and agrees the agenda, including a collateral history"
    },
    {
@@ -2039,7 +2039,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "How long has this been going on, and how is your breathing compared with your usual COPD?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Onset and breathlessness against baseline"
    },
    {
@@ -2049,7 +2049,7 @@
    {
     "who": "dr",
     "text": "Mrs Halloran, what have you noticed about him being muddled?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Collateral history of new confusion"
    },
    {
@@ -2059,7 +2059,7 @@
    {
     "who": "dr",
     "text": "Thank you. Mr Halloran, do you know what day it is today, and where you are?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Brief orientation check for CRB65 confusion"
    },
    {
@@ -2069,7 +2069,7 @@
    {
     "who": "dr",
     "text": "That’s okay. Have you coughed up any blood? Any shivering fits, dizziness when you stand, or passing much less urine?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Haemoptysis and sepsis features"
    },
    {
@@ -2079,7 +2079,7 @@
    {
     "who": "dr",
     "text": "Are you managing to drink? And have you used any extra inhalers or a rescue pack for your chest?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Hydration and COPD treatment so far"
    },
    {
@@ -2089,7 +2089,7 @@
    {
     "who": "dr",
     "text": "Do you have anything at home to check your oxygen or blood pressure? And any allergies to antibiotics?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Remote observations and allergy"
    },
    {
@@ -2101,7 +2101,7 @@
     "clock": "5–6 min",
     "who": "dr",
     "text": "You said you don’t want to go into hospital. Can you tell me what worries you about that?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the fear behind the refusal"
    },
    {
@@ -2111,7 +2111,7 @@
    {
     "who": "dr",
     "text": "That’s a very understandable fear, and I’m glad you told me. I want to be honest with you about what I’m seeing.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the fear and signals honesty"
    },
    {
@@ -2119,7 +2119,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "With the cough, fever and pain on breathing, I think you may have pneumonia, an infection deeper in the lung. We use a score to judge how serious it is. You score a point for being over 65, and another for the new muddle. That already puts you in the group where we usually want hospital assessment, and I can’t measure your breathing rate, blood pressure or oxygen over video.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains suspected pneumonia and CRB65 out loud (NICE NG250)"
    },
    {
@@ -2129,7 +2129,7 @@
    {
     "who": "dr",
     "text": "In someone your age, new confusion with an infection can mean the infection is affecting the whole body, which we call sepsis. Along with your COPD, being more breathless and not passing much water, that worries me. Antibiotic tablets at home may not be enough or quick enough.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Sepsis lens (NICE NG253), COPD and hydration inform disposition"
    },
    {
@@ -2141,7 +2141,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "I do. I’d like the hospital team to check your oxygen and blood pressure, do a chest X-ray and bloods, and start the right antibiotics, possibly into a vein, and oxygen if you need it. With the confusion and breathlessness I’ll arrange an ambulance rather than you going by car. Many people with pneumonia go home within a few days once it’s under control. Could you tell me in your own words why I’m suggesting hospital?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Clear disposition with rationale; begins a capacity check"
    },
    {
@@ -2151,7 +2151,7 @@
    {
     "who": "dr",
     "text": "That’s exactly it. What do you think about going?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks he can weigh the information and invites his decision"
    },
    {
@@ -2161,7 +2161,7 @@
    {
     "who": "dr",
     "text": "Thank you, I know that wasn’t easy. I’ll ring the ambulance and send the hospital a summary now. Mrs Halloran, please pack his inhalers and a list of his medicines. Is someone able to be with you both?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Practical support and involves his wife"
    },
    {
@@ -2173,7 +2173,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "While you wait, sit him upright and give sips of water. If he gets much more breathless, drowsy or hard to wake, his lips go blue, or he collapses, call 999 straight away and say it’s urgent.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Safety-net while awaiting transfer"
    },
    {
@@ -2183,65 +2183,65 @@
    {
     "who": "dr",
     "text": "One more thing for later. Because you used to smoke, once you’ve recovered I’d like a repeat chest X-ray in about six weeks to make sure it has fully cleared. Sometimes an infection hides something else in the lung, and we want to be sure. If you ever cough up blood or lose weight, tell me. I’ll check in with you after you’re discharged.",
-    "dom": "gs",
-    "why": "Follow-up chest X-ray and review (NICE NG250, BTS, NICE NG12 (updated April 2026))"
+    "dom": "ro",
+    "why": "Follow-up chest X-ray and review (NICE NG250, BTS, NICE NG12)"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
     "d": "Open start; acknowledged his wish to stay at home before exploring.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Wife’s observations, fear of hospital, fluid intake, who can support him.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “the wife says I’ve been muddled” and explored it with a collateral history and orientation check.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (just a chest infection), concern (going into hospital and not coming out the same), expectation (oral antibiotics at home).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Recognised that respiratory rate, BP and saturations cannot be measured on video; hospital assessment with observations, NEWS2, chest X-ray and bloods.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Pneumonia versus COPD exacerbation; sepsis; older ex-smoker so underlying lung cancer in mind.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "New confusion, breathlessness beyond baseline, rigors, reduced urine and haemoptysis screened.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Named suspected pneumonia with CRB65 of at least 2 (new confusion, age 65 or over) and a sepsis concern.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Hospital referral by ambulance (NICE NG250 CRB65 2 or more; NICE NG253 sepsis assessment); no delay for oral antibiotics.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "COPD taken into account; his fear addressed; capacity to decide checked through teach-back and his reasoning; wife involved.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Safety-net while waiting; follow-up chest X-ray at about 6 weeks as an ex-smoker; review after discharge.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -2384,7 +2384,7 @@
     ],
     "safetyNet": [
      "Worse breathing, drowsiness, blue lips or collapse while waiting: 999",
-     "Haemoptysis or weight loss later: tell the GP (NICE NG12 (updated April 2026))",
+     "Haemoptysis or weight loss later: tell the GP (NICE NG12)",
      "Review after discharge"
     ]
    }
@@ -2425,37 +2425,37 @@
    "intro": "This station tests whether you let the patient’s framing (“just a chest infection”) override a severity assessment. The confusion is the cue most candidates underplay.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Prescribing oral antibiotics by phone without a severity assessment.",
      "why": "New confusion and age 65 or over give CRB65 of at least 2: NICE NG250 says consider hospital referral.",
      "fix": "Score CRB65 out loud and arrange hospital assessment."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Explaining away the confusion.",
      "why": "New confusion with infection is a sepsis warning sign (NICE NG253).",
      "fix": "Take a collateral history and check orientation."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Forgetting that video cannot measure the observations that decide the plan.",
      "why": "Respiratory rate, blood pressure and saturations are needed; guessing is unsafe.",
      "fix": "Arrange same-day face-to-face or hospital assessment."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "No follow-up chest X-ray plan for an older ex-smoker.",
-     "why": "Non-resolving consolidation can hide lung cancer (NICE NG250 committee discussion; BTS 2009; NICE NG12 (updated April 2026)).",
+     "why": "Non-resolving consolidation can hide lung cancer (NICE NG250 committee discussion; BTS 2009; NICE NG12).",
      "fix": "Plan a chest X-ray at about 6 weeks and review."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Overriding his refusal without exploring it, or colluding with it.",
      "why": "Both fail the patient. Capacity must be considered when a confused patient refuses.",
      "fix": "Explore the fear, explain, ask him to reason it back, and document."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No safety-net while he waits for transport.",
      "why": "Deterioration can happen within hours.",
      "fix": "Tell his wife exactly when to call 999."
@@ -2514,7 +2514,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Robyn, it’s Dr Okoye. I can see you’re really upset. I’m here with you now, and I’d like to hear what’s happened.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Calm, warm opening that contains distress"
    },
    {
@@ -2524,7 +2524,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me all of that. It sounds unbearable right now, and I’m really glad you reached out instead of staying alone with it. I want to understand it properly, and then we’ll work out together what happens today. Is that okay?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates before any agenda; sets a shared structure"
    },
    {
@@ -2536,7 +2536,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "You said you’ve been cutting again. Can you tell me about the most recent time: when it was, and how bad the cuts are?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Starts risk assessment with the recent self-harm"
    },
    {
@@ -2546,7 +2546,7 @@
    {
     "who": "dr",
     "text": "Thank you. I’d like you to show me on camera in a moment, so I know whether they need any care. When you cut last night, was it to cope with the feelings, or were you trying to end your life?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Distinguishes self-harm to cope from suicidal intent"
    },
    {
@@ -2556,7 +2556,7 @@
    {
     "who": "dr",
     "text": "You said earlier, if I can’t help you, you don’t know what you’ll do. I need to ask you directly, and it’s okay to be honest: are you having thoughts of ending your life at the moment?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Explores the ambiguous statement with direct suicide questioning"
    },
    {
@@ -2566,7 +2566,7 @@
    {
     "who": "dr",
     "text": "I’m glad you told me. Have you thought about how, or got anything ready, like saved-up tablets? And is there anything you use to cut that’s near you now?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks about plans, preparation and access to means"
    },
    {
@@ -2576,7 +2576,7 @@
    {
     "who": "dr",
     "text": "When things have felt this bad before, what’s helped you get through, even a little? And what’s kept you going so far?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks about past coping and protective factors"
    },
    {
@@ -2586,7 +2586,7 @@
    {
     "who": "dr",
     "text": "That part of you matters, and it’s the part I want to work with. Are you on your own at the moment?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Reflects the protective factor back; checks immediate support"
    },
    {
@@ -2598,7 +2598,7 @@
     "clock": "5–6 min",
     "who": "dr",
     "text": "You said you need me to fix it today. What would fixing it look like for you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the expectation behind “fix this now”"
    },
    {
@@ -2608,7 +2608,7 @@
    {
     "who": "dr",
     "text": "So underneath it is a fear of being dropped, on top of losing your partner. That makes a lot of sense of how desperate today feels.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Names the hidden agenda: fear of abandonment"
    },
    {
@@ -2616,7 +2616,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I want to be honest with you, because you deserve that. I can’t make these feelings go away today, and it wouldn’t be fair to you if I tried to be the only person helping. That’s not me giving up. It’s me wanting a proper team around you, so help doesn’t depend on one person being available.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Compassionate boundary: no instant fix, not the sole rescuer"
    },
    {
@@ -2626,7 +2626,7 @@
    {
     "who": "dr",
     "text": "No. I’m staying involved, and I’m adding people, not swapping. I’ll speak to you again at a time we agree, and I’ll still be your GP. What I can do today is make sure you’re safe tonight and get the mental health team involved.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Responds to feared rejection without over-promising; models reliability"
    },
    {
@@ -2636,7 +2636,7 @@
    {
     "who": "dr",
     "text": "The feelings you describe, the emptiness, the fear of people leaving, and cutting to make it stop, fit with the diagnosis you already have. The treatment that helps most in the long run is a structured talking therapy, such as DBT, through the mental health team. Tablets don’t treat this condition itself, so I won’t be starting something new today just because it’s a crisis.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains EUPD without stigma; psychological therapy first; avoids reflex prescribing"
    },
    {
@@ -2646,7 +2646,7 @@
    {
     "who": "dr",
     "text": "I understand why. Sedating tablets can leave you feeling worse, and they’re risky at home when you feel like this. Let’s put the effort into a plan that gets you through tonight.",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Explains the reasoning in plain language"
    },
    {
@@ -2654,7 +2654,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Because you cut last night, you’re alone tonight and you’ve had thoughts of not being here, I’d like the crisis team to contact you today. They can see you or call you. Would you agree to me referring you now?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Proportionate escalation, based on what she has said"
    },
    {
@@ -2664,7 +2664,7 @@
    {
     "who": "dr",
     "text": "I’ll phone them myself after we finish. Now let’s write your plan together. What are the warning signs that things are getting worse for you?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Collaborative safety plan: triggers"
    },
    {
@@ -2674,7 +2674,7 @@
    {
     "who": "dr",
     "text": "And what could you do then, before cutting? You said talking helps.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Coping strategies drawn from her own experience"
    },
    {
@@ -2684,7 +2684,7 @@
    {
     "who": "dr",
     "text": "Those are good. Could you put the blade somewhere hard to get to, or give it to someone, for now? And if the feelings get stronger, the numbers go on the plan: the crisis team, NHS 111 with the mental health option, and Samaritans on 116 123, any time. If you feel you can’t keep yourself safe, call 999 or go to A&E.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Means safety and named crisis contacts"
    },
    {
@@ -2696,7 +2696,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Could you tell me the plan back, so I know I’ve explained it well?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Teach-back of the safety plan"
    },
    {
@@ -2706,7 +2706,7 @@
    {
     "who": "dr",
     "text": "That’s exactly it. I’ll send you the plan in writing. Please show me the cuts on camera now so I can check them. I’ll call you tomorrow afternoon to see how you are, and I’ll book a regular appointment with me. You’re not a burden, Robyn.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Written plan, wound check, fixed follow-up and continuity"
    }
   ],
@@ -2714,57 +2714,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Let her speak first; stayed calm; acknowledged her distress and her courage in asking for help.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Relationship ending, being alone tonight, support network, what has helped before.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “I don’t know what I’ll do” and “everyone gives up on me” and explored both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (the GP can fix it now), concern (being abandoned), expectation (rescue today).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Recent self-harm: method, depth and wound care (checked on camera); suicidal thoughts, plans, preparation, means; protective factors.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Crisis in EUPD after a loss, versus a depressive episode or rising suicidal intent; asked without using a risk score.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked directly about suicide and means; decided on escalation from her answers, not from a label.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Linked her feelings to her known diagnosis without stigma; explained why therapy, not tablets, treats it.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Same-day crisis team referral with GP-to-team phone call; written safety plan; means reduction.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "No reflex sedative or new drug in crisis (CG78, NG225); comorbid depression or anxiety to be assessed on its own terms.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Named crisis contacts, 999 or A&E if unsafe, GP call next day, and a regular appointment for continuity.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -2942,43 +2942,43 @@
    "intro": "This station is failed by candidates who either rescue or reject. The marks go to a calm, warm consultation that asks directly about suicide, acts in proportion to what she says, and holds a kind boundary with a real plan.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Never asking directly about suicidal thoughts, plans or means.",
      "why": "“I don’t know what I’ll do” is an ambiguous threat. Without direct questions the plan has no basis.",
      "fix": "“Are you having thoughts of ending your life? Any plan? Anything saved up or to hand?”"
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Calling an ambulance or arranging admission as a reflex, or prescribing a sedative to end the call.",
      "why": "Over-reaction can reinforce the crisis cycle. CG78 advises against drug treatment for the disorder itself; NG225 advises against drugs to reduce self-harm.",
      "fix": "Decide from her answers. Here, same-day crisis team contact and a safety plan fit what she says."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Assigning a “low risk” label and closing.",
      "why": "NG225 advises against low, medium or high risk labels to decide care.",
      "fix": "Base the plan on her needs: alone tonight, cut last night, passive suicidal thoughts."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Promising to always be available, or agreeing that everyone else has failed her.",
      "why": "It feeds splitting and sets up the next abandonment.",
      "fix": "“I’ll stay involved, and I want a team around you too.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "A cold boundary: “I can’t fix this, you need the mental health team.”",
      "why": "Limits without warmth feel like rejection to someone afraid of being dropped.",
      "fix": "Say what you can do today and when you will next speak."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "A vague safety-net: “ring if things get worse.”",
      "why": "She needs names, numbers and steps she can follow at 2 am.",
      "fix": "A written plan built from her own coping strategies, with crisis numbers, and teach-back."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Forgetting the wounds.",
      "why": "Recent cuts may need care, and the video view is limited.",
      "fix": "Look on camera and arrange face-to-face review if needed."
@@ -3046,7 +3046,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mrs Rahman, I’m Dr Evans. Can you hear me clearly, and is now a good time to talk? … What would you like to talk about today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks connection; open question"
    },
    {
@@ -3056,7 +3056,7 @@
    {
     "who": "dr",
     "text": "I can hear how worried you are, and I’m glad you called. I’ll answer all three of those questions, starting with whether your baby is in danger. Can I first check a few things?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges fear; commits to answering her questions"
    },
    {
@@ -3068,7 +3068,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "What have you been told so far, and by whom?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes existing information before explaining"
    },
    {
@@ -3078,7 +3078,7 @@
    {
     "who": "dr",
     "text": "How are you feeling in yourself? Is the baby moving as normal for you?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks current wellbeing and fetal movements"
    },
    {
@@ -3088,7 +3088,7 @@
    {
     "who": "dr",
     "text": "Any headaches, problems with your vision, or swelling in your face or hands?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens pre-eclampsia symptoms"
    },
    {
@@ -3098,7 +3098,7 @@
    {
     "who": "dr",
     "text": "And are you very thirsty or passing lots of urine?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens marked hyperglycaemia"
    },
    {
@@ -3110,7 +3110,7 @@
     "clock": "4–5 min",
     "who": "dr",
     "text": "You asked whether you’d done something wrong. What’s made you think that?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores self-blame explicitly"
    },
    {
@@ -3120,7 +3120,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me. What’s your biggest fear about the baby?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Elicits the core concern"
    },
    {
@@ -3132,7 +3132,7 @@
     "clock": "5–8 min",
     "who": "dr",
     "text": "First, you haven’t done anything wrong. During pregnancy the placenta makes hormones that make it harder for your body to control sugar. Some women, especially with a family history, can’t keep up, so the sugar rises. That’s gestational diabetes. Weight and family history make it more likely, but it isn’t something you caused, and it usually goes away after the birth.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains the mechanism and removes blame"
    },
    {
@@ -3142,7 +3142,7 @@
    {
     "who": "dr",
     "text": "No. Now your main question. If the sugar stays high, the baby can grow larger than usual, which can make the birth harder, and the baby may need sugar checks after birth. There’s also a higher chance of high blood pressure in pregnancy. But keeping your sugar in the target range greatly reduces those risks. So your baby is not in danger now, and what we do next protects the baby.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Honest risks balanced with the controllable message"
    },
    {
@@ -3154,7 +3154,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "You’ll be seen in a joint clinic with a diabetes team and the maternity team, ideally within a week. They’ll teach you to check your sugar with a finger-prick, before breakfast and after meals, against targets. You’ll see a dietitian, and a walk after meals helps a lot.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "NG3 joint clinic within a week, monitoring, diet and activity"
    },
    {
@@ -3164,7 +3164,7 @@
    {
     "who": "dr",
     "text": "If the numbers aren’t on target within a week or two, the next step is a tablet called metformin, and some women need insulin. Both are used widely in pregnancy. Needing them isn’t failing; it just means the pregnancy hormones are strong.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "NG3 escalation; reassures about safety; reframes treatment"
    },
    {
@@ -3174,7 +3174,7 @@
    {
     "who": "dr",
     "text": "Not necessarily. You’ll have extra scans to check the baby’s growth and the fluid around the baby, every four weeks from 28 weeks. The team will talk with you about when and how to have the baby, and if all is going well that’s by 40 weeks and 6 days at the latest, earlier if needed. Many women with gestational diabetes have a vaginal birth.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "NG3 scans every 4 weeks from 28 to 36; birth planning"
    },
    {
@@ -3184,7 +3184,7 @@
    {
     "who": "dr",
     "text": "Usually the sugar goes back to normal straight after birth. We’ll do a fasting blood test here between 6 and 13 weeks after the birth. Because this raises your chance of type 2 diabetes later, we’ll check a blood test every year. If you have another pregnancy, we’d test you early.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "NG3 postnatal FPG, annual HbA1c, early testing next pregnancy"
    },
    {
@@ -3192,7 +3192,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Contact the maternity unit straight away if the baby’s movements slow down or change, or if you get a bad headache, problems with your vision, pain under your ribs, vomiting or sudden swelling. Can you tell me in your own words what happens now?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net: reduced movements, pre-eclampsia symptoms; teach-back"
    },
    {
@@ -3202,7 +3202,7 @@
    {
     "who": "dr",
     "text": "Exactly right. I’ll make sure the clinic referral has gone, and let’s speak again after your first appointment.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Checks the referral; arranges follow-up"
    },
    {
@@ -3214,57 +3214,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; let her voice all three fears before explaining.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Self-blame about weight and family history explored; emotional impact acknowledged.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “have I done something wrong?” and answered it explicitly.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (her baby is in danger and she caused it), concern (problems at birth, baby born ill), expectation (to understand and know what happens next).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Fetal movements, pre-eclampsia symptoms and symptomatic hyperglycaemia checked; HbA1c at diagnosis via the team.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Gestational diabetes vs possible pre-existing type 2 diabetes (HbA1c at diagnosis).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Screened reduced fetal movements and pre-eclampsia; knows fasting glucose 7.0 or more means immediate insulin.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Gestational diabetes at 27 weeks.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Joint clinic within 1 week, self-monitoring targets, diet and activity, metformin then insulin, growth scans, birth planning.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Blame removed; long-term type 2 risk; next-pregnancy testing; follow-up after first clinic.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Reduced movements and pre-eclampsia symptoms to maternity urgently; postnatal FPG at 6–13 weeks; annual HbA1c.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -3439,37 +3439,37 @@
    "intro": "The trap is either frightening her with a list of complications or falsely reassuring her. The marks sit in honest risk anchored on control, removing blame, and a concrete plan she can repeat.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Listing complications with no reassuring message.",
      "why": "She leaves more frightened and less able to engage.",
      "fix": "Name the main risks, then: “Keeping your sugar on target greatly reduces them.”"
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "No mention of the joint clinic or its timing.",
      "why": "NG3 asks for review in a joint diabetes and antenatal clinic within 1 week.",
      "fix": "Confirm the referral and the timescale."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Forgetting life after the birth.",
      "why": "The postnatal fasting glucose at 6–13 weeks and annual HbA1c are commonly missed.",
      "fix": "“A fasting blood test 6 to 13 weeks after the birth, then every year.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Answering the medical questions but ignoring “Have I done something wrong?”",
      "why": "Self-blame is her hidden agenda.",
      "fix": "“You haven’t done anything wrong. Pregnancy hormones cause this.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Presenting insulin as a failure.",
      "why": "Adds guilt and may reduce acceptance later.",
      "fix": "“Needing metformin or insulin just means the hormones are strong.”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No safety-net for fetal movements or pre-eclampsia.",
      "why": "Pregnancy safety-netting must be specific.",
      "fix": "Name reduced movements and pre-eclampsia symptoms, and who to call."
@@ -3492,7 +3492,7 @@
    "reason": "Video consultation: “Sore throat and wiped out. Can I have antibiotics so I can play rugby on Saturday?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG84 Sore throat (acute): antimicrobial prescribing (2018) · [2] Amoxicillin summary of product characteristics, section 4.4 (avoid if infectious mononucleosis suspected) · [3] BNF: phenoxymethylpenicillin, paracetamol, ibuprofen · [4] Ebell MH et al. JAMA 2016 (diagnosis of infectious mononucleosis) · [5] Sylvester JE et al. Am Fam Physician 2023 (infectious mononucleosis: rapid evidence review) · [6] BHIVA/BASHH/BIA Adult HIV testing guidelines (2020) · [7] NICE NG12 Suspected cancer (updated April 2026): lymphoma · [8] NICE NG206 ME/CFS (2021)",
+   "guideline": "[1] NICE NG84 Sore throat (acute): antimicrobial prescribing (2018) · [2] Amoxicillin summary of product characteristics, section 4.4 (avoid if infectious mononucleosis suspected) · [3] BNF: phenoxymethylpenicillin, paracetamol, ibuprofen · [4] Ebell MH et al. JAMA 2016 (diagnosis of infectious mononucleosis) · [5] Sylvester JE et al. Am Fam Physician 2023 (infectious mononucleosis: rapid evidence review) · [6] BHIVA/BASHH/BIA Adult HIV testing guidelines (2020) · [8] NICE NG206 ME/CFS (2021)",
    "summary": "A young adult with more than a week of severe sore throat, fever, marked fatigue and posterior as well as anterior neck nodes most likely has glandular fever (EBV). Confirm with FBC and film and EBV serology (or a heterophile antibody (Monospot) test, per the local laboratory pathway), with LFTs if clinically indicated. It is viral: antibiotics will not help, and amoxicillin causes a florid rash. The key safety message is the spleen: no contact sport or heavy lifting for at least 4 weeks and until reviewed, so no rugby on Saturday. Safety-net for airway obstruction and splenic rupture.",
    "points": [
     {
@@ -3521,7 +3521,7 @@
     },
     {
      "h": "If it doesn’t settle",
-     "t": "Persistent or enlarging nodes, night sweats, weight loss or splenomegaly without explanation need reassessment: NICE NG12 (updated April 2026) [7] lymphoma criteria. Fatigue beyond 6 weeks with post-exertional symptoms: consider ME/CFS assessment per NICE NG206 [8]."
+     "t": "Persistent or enlarging nodes, night sweats, weight loss or splenomegaly without explanation need reassessment: [7] lymphoma criteria. Fatigue beyond 6 weeks with post-exertional symptoms: consider ME/CFS assessment per NICE NG206 [8]."
     }
    ]
   },
@@ -3531,7 +3531,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hi Theo, I’m Dr Hughes. What’s been going on?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open start"
    },
    {
@@ -3541,7 +3541,7 @@
    {
     "who": "dr",
     "text": "That sounds really rough, and I can hear the match matters. Let me ask a few questions and have a look on camera, then we’ll talk about antibiotics and rugby properly. Okay?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Acknowledges the request and agrees an agenda"
    },
    {
@@ -3553,7 +3553,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "Can you swallow fluids and your own saliva all right? Any drooling, noisy breathing or trouble breathing?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Airway red flags first"
    },
    {
@@ -3563,7 +3563,7 @@
    {
     "who": "dr",
     "text": "Good. Could you open wide and point the camera at your throat, then run your fingers down the sides and back of your neck and show me where the glands are?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Remote look at the tonsils and node distribution"
    },
    {
@@ -3573,7 +3573,7 @@
    {
     "who": "dr",
     "text": "Your tonsils look big with white patches, and the glands at the back of the neck matter. How tired are you compared to a normal cold?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Notes posterior nodes and quantifies fatigue"
    },
    {
@@ -3583,7 +3583,7 @@
    {
     "who": "dr",
     "text": "Any pain in your tummy, especially the upper left side, or yellow eyes or skin? Any rashes, or small spots on the roof of your mouth?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Spleen, liver and petechiae"
    },
    {
@@ -3593,7 +3593,7 @@
    {
     "who": "dr",
     "text": "Have you taken any antibiotics already, or any other medicines? And any allergies?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks for prior amoxicillin and allergies"
    },
    {
@@ -3603,7 +3603,7 @@
    {
     "who": "dr",
     "text": "How are you managing with eating, drinking and your course? Anyone around to help if you get worse?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Hydration and support at university"
    },
    {
@@ -3615,7 +3615,7 @@
     "clock": "5–6 min",
     "who": "dr",
     "text": "What do you think is going on, and what worries you most?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores ideas and concerns"
    },
    {
@@ -3625,7 +3625,7 @@
    {
     "who": "dr",
     "text": "So it’s the match and falling behind with lectures. That makes sense. Let me tell you what I think.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Summarises concerns in his words"
    },
    {
@@ -3633,7 +3633,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I think this is most likely glandular fever rather than ordinary tonsillitis. The week-plus of sore throat, the fevers, the glands at the back of your neck and being this exhausted fit it well. It’s caused by a virus, so antibiotics won’t help. One of the common ones, amoxicillin, gives people with glandular fever a nasty rash, so we specifically avoid it.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names glandular fever, explains no antibiotics and the amoxicillin rash"
    },
    {
@@ -3643,7 +3643,7 @@
    {
     "who": "dr",
     "text": "Not for this. If a blood test showed something different we’d rethink, but antibiotics would give you the side-effects without the benefit. What will help is rest, fluids, and regular paracetamol or ibuprofen, plus salty water gargles.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Resists the request with a clear reason and gives supportive care"
    },
    {
@@ -3653,7 +3653,7 @@
    {
     "who": "dr",
     "text": "This is the important bit, and I’m sorry. Glandular fever often swells the spleen, an organ under your left ribs. A swollen spleen can tear with a knock or a tackle, which is rare but can be life-threatening. So no rugby Saturday, no contact sport and no heavy gym lifting for at least four weeks from when this started, and longer if your spleen is still big or you’re still unwell.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Splenic rupture risk and the sport rule"
    },
    {
@@ -3665,7 +3665,7 @@
    {
     "who": "dr",
     "text": "I get how frustrating that is. The risk is highest in these first weeks, and it only takes one tackle. I’d rather you miss one match than risk your spleen. When we review, I’ll check your tummy and we’ll decide together when it’s safe to get back to contact, rather than guessing. Many people are back to light training sooner than they fear.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Empathy while holding the safety line, with a route back"
    },
    {
@@ -3675,7 +3675,7 @@
    {
     "who": "dr",
     "text": "I’d like you to come in today or tomorrow for a quick blood test, a blood count, the glandular fever test and liver tests, and I’ll feel your tummy for the spleen at the same time. If the glandular fever test is negative, I may repeat it or do other tests, including an HIV test, which we offer routinely for this kind of illness.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "FBC, Monospot, LFTs, face-to-face spleen check; repeat or HIV test if negative"
    },
    {
@@ -3685,7 +3685,7 @@
    {
     "who": "dr",
     "text": "I can explain what the diagnosis is once the test is back. Most universities have their own process for missed work when you’re ill, so let your tutor or student support know now. Pace yourself, as the tiredness can take a few weeks to lift.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Practical support for his studies with realistic expectations"
    },
    {
@@ -3693,7 +3693,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Just so I know I’ve explained it well, what are you going to do?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Checks understanding with teach-back"
    },
    {
@@ -3703,7 +3703,7 @@
    {
     "who": "dr",
     "text": "Spot on. Call 999 if you get sudden bad pain in the upper left of your tummy or the tip of your left shoulder, or feel faint. Go to A&E if you start drooling, can’t swallow fluids or your breathing gets noisy or hard. Let someone near you know about these signs too. I’ll see you with the results, and again before any return to contact sport.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net for spleen and airway; planned review and return-to-sport check"
    }
   ],
@@ -3711,57 +3711,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open start; heard the antibiotic and rugby requests without dismissing them.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "University pressures, who is around to help, missed lectures, sport as identity.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “wiped out for weeks” and the big match, and explored both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (tonsillitis needing antibiotics), concern (the big match, falling behind), expectation (antibiotics and clearance to play).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Remote throat and neck-node look; face-to-face spleen check; FBC, Monospot and LFTs; repeat or EBV serology and HIV test if negative.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Glandular fever versus streptococcal tonsillitis, HIV seroconversion and, if persistent, lymphoma.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Airway compromise, splenic enlargement or rupture, jaundice, dehydration screened.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Named glandular fever and explained why antibiotics do not help.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "No antibiotics; amoxicillin specifically avoided; analgesia and fluids; no contact sport or heavy lifting for at least 4 weeks and until reviewed.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Support with university process; realistic fatigue expectations; alcohol advice while LFTs pending.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Teach-back; 999 and A&E triggers for spleen and airway; results review; return-to-sport review.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -3937,37 +3937,37 @@
    "intro": "This station tests whether you give the spleen advice to a young rugby player who wants antibiotics. Many candidates recognise glandular fever but forget the sport rule, or prescribe amoxicillin under pressure.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Prescribing amoxicillin or another antibiotic to satisfy the request.",
      "why": "EBV is viral; amoxicillin causes a florid rash; the SPC advises avoiding it when glandular fever is suspected.",
      "fix": "Explain the virus and the rash, and offer effective symptom relief."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "No advice about contact sport.",
      "why": "Splenic rupture is rare but most cases occur in the first 3 to 4 weeks.",
      "fix": "No contact sport or heavy lifting for at least 4 weeks, and until reviewed."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Taking a negative Monospot as the final answer.",
      "why": "The heterophile test can be negative early and misses some cases (Ebell, JAMA 2016).",
      "fix": "Repeat or request EBV serology, and offer an HIV test (BHIVA/BASHH/BIA 2020)."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Never checking the airway or the spleen.",
      "why": "Airway obstruction and splenic enlargement are the dangerous complications.",
      "fix": "Ask about drooling and breathing first; arrange a face-to-face abdominal check."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Flatly refusing antibiotics and rugby with no empathy.",
      "why": "He leaves feeling dismissed and may ignore the safety advice.",
      "fix": "Name the loss of the match, explain the reason and give a route back."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Vague safety-net.",
      "why": "Splenic rupture needs 999, and the patient must recognise it.",
      "fix": "“Sudden pain under your left ribs or in your left shoulder tip, or feeling faint: call 999.”"
@@ -3992,7 +3992,7 @@
    "reason": "“My neighbour had hers bandaged up tight and it sorted it. Can you just do that for me?”"
   },
   "knowledge": {
-   "guideline": "[1] National Wound Care Strategy Programme (NWCSP) Leg ulcer recommendations (2020, updated 2023) · [2] NICE CG168 Varicose veins: diagnosis and management (2013) · [3] NICE NG152 Leg ulcer infection: antimicrobial prescribing (2020) · [4] NICE NG12 (updated April 2026) Suspected cancer: recognition and referral (updated April 2026) · [5] NICE CG147 Peripheral arterial disease (2012, updated 2020)",
+   "guideline": "[1] National Wound Care Strategy Programme (NWCSP) Leg ulcer recommendations (2020, updated 2023) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NICE CG168 Varicose veins: diagnosis and management (2013) · [3] NICE NG152 Leg ulcer infection: antimicrobial prescribing (2020) · [5] NICE CG147 Peripheral arterial disease (2012, updated 2020)",
    "summary": "A classic venous leg ulcer in the gaiter area. Compression heals it, but strong compression must wait for an ABPI to exclude arterial disease. Mild compression can start now if there are no red flags. Refer to the vascular service, treat infection only if present, and keep malignancy in mind if it does not heal.",
    "points": [
     {
@@ -4017,7 +4017,7 @@
     },
     {
      "h": "Atypical or non-healing",
-     "t": "Rolled or everted edges, overgrown tissue, bleeding, an unusual site, or failure to heal despite good treatment should prompt reassessment and biopsy. NICE NG12 (updated April 2026) [4]: consider a suspected cancer pathway referral for a skin lesion that raises the suspicion of squamous cell carcinoma."
+     "t": "Rolled or everted edges, overgrown tissue, bleeding, an unusual site, or failure to heal despite good treatment should prompt reassessment and biopsy. NICE NG12 [4]: consider a suspected cancer pathway referral for a skin lesion that raises the suspicion of squamous cell carcinoma."
     }
    ]
   },
@@ -4027,7 +4027,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mrs Hart, I’m Dr Evans. What can I do for you today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question"
    },
    {
@@ -4036,8 +4036,8 @@
    },
    {
     "who": "dr",
-    "text": "It sounds like it’s been a real nuisance for weeks. Your neighbour may well be right that a bandage is the answer, and I want to make sure it’s the right one for your leg. Can I ask a few questions and have a look?",
-    "dom": "rto",
+    "text": "It sounds like it’s been a real nuisance for weeks. Your neighbour may well be right that a bandage is the answer, and I want to make sure it’s the right one for your leg. Can I ask a few questions and have a look on the camera?",
+    "dom": "ro",
     "why": "Takes the request seriously; signals a plan"
    },
    {
@@ -4049,7 +4049,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "How did it start, and has it changed at all: bigger, bleeding, or looking different at the edges?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "History of the ulcer, including atypical features"
    },
    {
@@ -4059,7 +4059,7 @@
    {
     "who": "dr",
     "text": "Is it painful? Does your foot or calf hurt at night in bed, or when you put the leg up, and feel better hanging the leg over the side?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for arterial rest pain"
    },
    {
@@ -4069,7 +4069,7 @@
    {
     "who": "dr",
     "text": "Any pain in your calves when you walk that makes you stop? And do you have diabetes, or has anyone mentioned your circulation before?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Claudication, diabetes and known arterial disease"
    },
    {
@@ -4079,7 +4079,7 @@
    {
     "who": "dr",
     "text": "Has the area become hot, redder, or more painful, or have you felt feverish?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for infection"
    },
    {
@@ -4087,18 +4087,18 @@
     "text": "No. Just itchy around it."
    },
    {
-    "phase": "Examination",
+    "phase": "Video inspection and recorded findings",
     "clock": "4–6 min",
     "who": "dr",
-    "text": "Let me look at both legs and feel the pulses in your feet. I’ll also check the feeling in your feet.",
-    "dom": "tasks",
-    "why": "Examines both legs, pulses and sensation"
+    "text": "Can you show me both legs on the camera, close up on the sore? I can also see the nurse’s check of your foot pulses and the feeling in your feet in your notes.",
+    "dom": "dg",
+    "why": "Inspects both legs on video and uses the recorded pulses and sensation"
    },
    {
     "who": "dr",
-    "text": "The sore is shallow, just above the inside ankle bone, with brown staining and dry, itchy skin around it, and your ankle is swollen. That fits a venous ulcer, where the leg veins don’t drain properly. The edges look flat, which is reassuring. I can feel the pulses, but swelling makes them hard to judge.",
-    "dom": "tasks",
-    "why": "Describes venous features; notes the limits of pulse palpation"
+    "text": "The sore is shallow, just above the inside ankle bone, with brown staining and dry, itchy skin around it, and your ankle is swollen. That fits a venous ulcer, where the leg veins don’t drain properly. The edges look flat, which is reassuring. The nurse could feel the pulses, but swelling makes them hard to judge.",
+    "dom": "ro",
+    "why": "Describes venous features; notes the limits of the recorded pulse check"
    },
    {
     "who": "pt",
@@ -4109,7 +4109,7 @@
     "clock": "6–7 min",
     "who": "dr",
     "text": "We’re getting there. Before I explain, what worries you most about it?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Elicits concerns"
    },
    {
@@ -4119,7 +4119,7 @@
    {
     "who": "dr",
     "text": "That makes sense. With the right treatment most of these do heal, although it takes time.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates and gives realistic hope"
    },
    {
@@ -4127,7 +4127,7 @@
     "clock": "7–11 min",
     "who": "dr",
     "text": "Firm bandaging is the main treatment for this kind of ulcer. But a tight bandage squeezes the leg, and if the arteries bringing blood to the foot are narrowed, it can cut off the blood supply and do real harm. So first we measure the blood pressure at your ankles and arms and compare them. It’s called an ABPI.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains why ABPI must precede strong compression"
    },
    {
@@ -4137,7 +4137,7 @@
    {
     "who": "dr",
     "text": "The nurse can put on a light support bandage from today, which is safe because you don’t have signs of circulation problems. The proper tight bandaging starts once the test confirms the blood supply is good. I’ll book the test in the next week or two.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Mild compression now, full compression after ABPI (NWCSP)"
    },
    {
@@ -4147,7 +4147,7 @@
    {
     "who": "dr",
     "text": "I’d also like to refer you to the vascular team to look at your veins with a scan, as treating them can help the ulcer heal and stop it coming back. The nurses will do the dressings, and I’ll suggest a moisturiser for the itchy skin.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Vascular referral (CG168), wound care, varicose eczema"
    },
    {
@@ -4157,13 +4157,13 @@
    {
     "who": "dr",
     "text": "Not at the moment. Almost all ulcers have germs on the surface, but antibiotics only help if it becomes infected: spreading redness, heat, more pain or fever.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Antibiotic stewardship (NG152)"
    },
    {
     "who": "dr",
     "text": "Raising your leg when you sit, and gentle ankle movements help the swelling. If you ever want support with weight, we can help with that too. How does that sound?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Lifestyle advice offered, not imposed; checks agreement"
    },
    {
@@ -4175,7 +4175,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If the foot goes cold, pale or blue, or becomes very painful under the bandage, take the bandage off and contact us the same day. The same applies if the area goes red and hot or you feel feverish. If it’s not getting smaller after a few weeks, or the edges change or it bleeds, we’ll take a small sample to check the cause. Can you tell me what the plan is?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Compression and infection safety-net; malignancy awareness; teach-back"
    },
    {
@@ -4185,7 +4185,7 @@
    {
     "who": "dr",
     "text": "Perfect. I’ll see you after the test to go through the result.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Follow-up"
    }
   ],
@@ -4193,57 +4193,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Let her explain and took the neighbour’s bandage request seriously.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Mobility, weight, how she manages dressings and the embarrassment of exudate.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “bandaged tight” as the key safety issue, and the worry that it will never heal.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (tight bandage will cure it), concern (never healing, embarrassment), expectation (bandage today).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Examined both legs, pulses, sensation and the wound; planned ABPI; considered bloods including HbA1c.",
-    "pts": 1
+    "d": "Inspected both legs and the wound on video, used the recorded pulses and sensation; planned ABPI; considered bloods including HbA1c.",
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Venous versus arterial, mixed, neuropathic and malignant ulcers.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Screened for arterial rest pain, claudication, infection and atypical features.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Named a venous leg ulcer and explained why pulses alone cannot clear her for strong compression.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Mild compression now if no red flags; strong compression after ABPI; leg-ulcer nursing and vascular referral.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Antibiotics only if infected; emollient for varicose eczema; weight and mobility support offered.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Remove bandage and call for a cold, pale or painful foot; infection signs; biopsy if not healing; review after ABPI.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -4263,7 +4263,7 @@
      "Check repeat record"
     ],
     "allergy": "None recorded",
-    "recent": "Non-healing weeping sore, inner ankle, several weeks; leg swelling and itch.",
+    "recent": "Non-healing weeping sore, inner ankle, several weeks; leg swelling and itch. Practice nurse (dressing clinic), this morning: 3 × 2 cm shallow ulcer above the right medial malleolus, sloping edges, sloughy base, heavy exudate; surrounding brown staining and varicose eczema; pitting oedema to mid-calf; dorsalis pedis and posterior tibial pulses palpable both feet; foot warm, capillary refill under 2 seconds; no rolled edges; no spreading redness; temperature 36.8 °C; photo on record. ABPI not yet done.",
     "reason": "“Can you just bandage it up tight?”"
    },
    "timeMap": [
@@ -4279,7 +4279,7 @@
     },
     {
      "t": "4–7",
-     "h": "Examine and ICE",
+     "h": "Look and ICE",
      "d": "Both legs, ulcer, pulses, sensation. Her worry that it will never heal."
     },
     {
@@ -4294,7 +4294,7 @@
     }
    ],
    "wordPics": {
-    "fail": "Applies tight compression on request without an ABPI, or refuses any bandage without explanation; prescribes antibiotics for a colonised ulcer; does not examine pulses; no safety-net.",
+    "fail": "Applies tight compression on request without an ABPI, or refuses any bandage without explanation; prescribes antibiotics for a colonised ulcer; does not check the pulses; no safety-net.",
     "pass": "Recognises a venous ulcer, explains that ABPI is needed before strong compression, refers to the leg-ulcer nurses, and safety-nets for infection and ischaemia.",
     "exc": "All of the above, plus: explains the risk in plain words; offers safe mild compression now in line with NWCSP; refers to vascular per CG168; applies NG152 stewardship; keeps malignancy in mind; sets realistic healing expectations; checks understanding with teach-back."
    },
@@ -4418,37 +4418,37 @@
    "intro": "This station hinges on one safety step. Candidates fail by bandaging on request or by refusing without explaining. The marks go to a safe compression plan, clear reasons, and stewardship.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Applying strong compression without an ABPI.",
      "why": "Compression on a leg with arterial disease can cause necrosis.",
      "fix": "Mild compression now if no red flags; strong compression after the ABPI."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Relying on palpable pulses.",
      "why": "Oedema and obesity make pulses unreliable, and ABPI quantifies supply.",
      "fix": "Arrange ABPI and ask about rest pain and claudication."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Antibiotics for a weepy ulcer.",
      "why": "NG152: offer antibiotics only for signs of infection.",
      "fix": "Explain colonisation and give infection signs."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "No vascular referral.",
      "why": "CG168 recommends referral for an ulcer not healed within 2 weeks.",
      "fix": "Refer for duplex and venous treatment."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Refusing the bandage bluntly.",
      "why": "She hears “no” and loses trust.",
      "fix": "Agree that compression is the treatment and explain the safe order."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No advice on what to do if the bandage causes problems.",
      "why": "Ischaemia under compression needs immediate action.",
      "fix": "“If the foot goes cold, pale or very painful, take it off and call us.”"
@@ -4510,7 +4510,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mr Crowther, I’m Dr Patel. How can I help today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open start"
    },
    {
@@ -4520,7 +4520,7 @@
    {
     "who": "dr",
     "text": "Thanks, that’s a really clear description. I’d like to ask a few questions, have a look at the rash on the camera, and then we’ll decide together what it is and what to do. Is that okay?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Agrees an agenda including a remote look at the rash"
    },
    {
@@ -4532,7 +4532,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "Could you point the camera at your calf, with something next to it for size, maybe a coin or a ruler?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Remote examination with a size reference"
    },
    {
@@ -4542,7 +4542,7 @@
    {
     "who": "dr",
     "text": "I can see a large round red patch with a paler centre. Is the edge scaly or raised, and is it hot or tender to touch?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Discriminates from tinea and cellulitis"
    },
    {
@@ -4552,7 +4552,7 @@
    {
     "who": "dr",
     "text": "When did you first notice it, and how fast has it grown?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Timing and rate of spread"
    },
    {
@@ -4562,7 +4562,7 @@
    {
     "who": "dr",
     "text": "On the walk, were you in long grass, bracken, woodland or around deer or sheep?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Tick-habitat exposure"
    },
    {
@@ -4572,7 +4572,7 @@
    {
     "who": "dr",
     "text": "Have you had fevers, aches, headaches or felt run down? Any drooping of your face, a stiff neck, palpitations or dizzy turns, or a swollen joint?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for systemic and disseminated features"
    },
    {
@@ -4582,7 +4582,7 @@
    {
     "who": "dr",
     "text": "Any other rashes elsewhere? Do you take any medicines, have any allergies, or have any reason you couldn’t take an antibiotic?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Other lesions and prescribing safety"
    },
    {
@@ -4594,7 +4594,7 @@
     "clock": "5–6 min",
     "who": "dr",
     "text": "You wondered about ringworm. Was anything else on your mind?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the idea and hidden concerns"
    },
    {
@@ -4604,7 +4604,7 @@
    {
     "who": "dr",
     "text": "That’s a very natural worry, and I’m glad you’ve said it. Let me tell you what I think, and why the news is actually good.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges the fear and signals a clear answer"
    },
    {
@@ -4612,7 +4612,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I don’t think this is ringworm. A ringworm patch usually has a scaly, itchy edge. A big, slowly spreading red ring that isn’t very itchy, coming up a week or two after walking through tick country, is the typical rash of early Lyme disease. It’s called erythema migrans. Ticks are tiny, so most people never notice the bite.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names erythema migrans and explains the discriminating features"
    },
    {
@@ -4622,7 +4622,7 @@
    {
     "who": "dr",
     "text": "Good question. With this rash, the national guidance says we diagnose and treat it on what we see. Blood tests are often negative this early, so waiting for one would only delay treatment. The good news is that caught at this stage, Lyme disease responds very well to antibiotics, and most people get completely better.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Clinical diagnosis without serology (NICE NG95) with proportionate reassurance"
    },
    {
@@ -4632,7 +4632,7 @@
    {
     "who": "dr",
     "text": "Those usually come from people whose infection wasn’t recognised early. You’re in the best position: we’ve spotted it and we’re treating it now.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Addresses media-driven anxiety proportionately"
    },
    {
@@ -4640,7 +4640,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "I’ll prescribe doxycycline, one tablet twice a day for 21 days. Take it with a full glass of water and stay upright for a while afterwards, as it can irritate the gullet. It also makes skin burn easily in the sun, so cover up or use sunscreen. Try to finish the whole course.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Doxycycline per NICE NG95 with BNF counselling"
    },
    {
@@ -4650,7 +4650,7 @@
    {
     "who": "dr",
     "text": "Keep walking, just be tick-aware. Long trousers tucked into socks, insect repellent, and check your skin when you get home, especially the backs of the knees, groin and waistband. If you find a tick, take it off quickly with fine tweezers or a tick tool, gripping close to the skin and pulling steadily, without squeezing it, then clean the spot.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Prevention and removal advice (UKHSA)"
    },
    {
@@ -4662,7 +4662,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Can you tell me back the plan, so I know I’ve explained it well?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Checks understanding with teach-back"
    },
    {
@@ -4672,7 +4672,7 @@
    {
     "who": "dr",
     "text": "Perfect. The rash may take a little while to fade. Contact us urgently if one side of your face droops, you get a severe headache or stiff neck, palpitations, dizzy spells or fainting, chest pain or breathlessness, or later a swollen joint. If the rash keeps spreading after a few days of treatment, or you’re not better when the course finishes, book to see me and we’ll review.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net for disseminated disease and planned review"
    }
   ],
@@ -4680,57 +4680,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open start; let him describe the rash and the trip fully before questions.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Walking hobby and future exposure; online stories feeding worry; practical ability to take a 21-day course.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “I don’t remember any bite” and the Highlands trip and explored both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (ringworm), concern (Lyme “horror stories”), expectation (an antifungal cream).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Remote look at the rash with a size reference; edge, scale, warmth, tenderness; no blood test needed with erythema migrans.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Erythema migrans versus tinea, cellulitis, tick-bite reaction and insect bite.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about facial palsy, meningism, palpitations, dizziness, fainting, joint swelling and systemic illness.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Named erythema migrans as early Lyme disease and explained why no test is needed.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Doxycycline 100 mg twice a day for 21 days (NICE NG95) with BNF counselling; allergy and contraindications checked.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Tick prevention and removal advice; encouraged to keep walking safely; supported his worry with a clear plan if symptoms persist.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Teach-back; red flags for disseminated disease; review if the rash spreads on treatment or symptoms persist.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -4896,37 +4896,37 @@
    "intro": "This station tests whether you recognise erythema migrans and treat it on the rash. Many candidates accept the patient’s ringworm label, or order a Lyme test and wait.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Agreeing it is ringworm and prescribing an antifungal.",
      "why": "Erythema migrans is expanding, usually not itchy or scaly, and follows tick exposure. Missing it delays treatment.",
      "fix": "Ask about the edge, itch, timing and where he walked."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Sending serology and waiting to treat.",
      "why": "NICE NG95: diagnose and treat without laboratory testing when erythema migrans is present. Early serology is often negative.",
      "fix": "“With this rash, I treat today, no blood test needed.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Ruling out Lyme because he does not remember a bite.",
      "why": "Many patients never notice the tick.",
      "fix": "Ask about tick habitat instead."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Wrong antibiotic course, or no counselling.",
      "why": "NICE NG95: doxycycline 100 mg twice a day for 21 days first line. Photosensitivity and oesophageal irritation are common avoidable problems (BNF).",
      "fix": "Give the full regimen and how to take it."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Ignoring or amplifying his fear from online stories.",
      "why": "Unaddressed anxiety undermines trust; catastrophising is inaccurate for early treated disease.",
      "fix": "Ask what he has read, then give the honest, good prognosis."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "A generic “come back if worse”.",
      "why": "The later features of Lyme disease are specific and time-critical, such as carditis and facial palsy.",
      "fix": "Name facial droop, severe headache, palpitations, fainting and joint swelling."
@@ -4947,7 +4947,7 @@
    ],
    "allergy": "None recorded",
    "recent": "Headache now nearly every day. Frequent requests for co-codamol and triptan on the repeat record. No headache diary on file.",
-   "reason": "Face-to-face. “Nothing touches it — can I have something stronger?”"
+   "reason": "Video consultation. “Nothing touches it — can I have something stronger?”"
   },
   "knowledge": {
    "guideline": "[1] NICE CG150 (headaches in over 12s: diagnosis and management, 2012, updated June 2025) · [2] MHRA Drug Safety Update June 2024 (topiramate: pregnancy prevention programme) · [3] British Association for the Study of Headache (BASH) National headache management system for adults (2019) · [4] UK Medical Eligibility Criteria for Contraceptive Use (CoSRH UKMEC 2025) · [5] BNF monographs for propranolol, amitriptyline and topiramate",
@@ -4992,8 +4992,8 @@
     "phase": "Opening and agenda",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello Miss Page, I’m Dr Evans. Come and sit down. What’s been happening?",
-    "dom": "rto",
+    "text": "Hello Miss Page, I’m Dr Evans. Thanks for joining the video call. What’s been happening?",
+    "dom": "ro",
     "why": "Open question"
    },
    {
@@ -5003,7 +5003,7 @@
    {
     "who": "dr",
     "text": "That sounds exhausting — a headache nearly every day would wear anyone down. I do want to help you get out of this. Can I ask some questions first, check a few things, and then we’ll work out a plan together?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Empathy first, then a clear agenda"
    },
    {
@@ -5015,7 +5015,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "Tell me about the headaches now compared with your usual migraines. Is it the same kind of headache, just more often, or something new?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes the change in pattern"
    },
    {
@@ -5025,7 +5025,7 @@
    {
     "who": "dr",
     "text": "How long has it been nearly every day? And roughly how many days a month do you take co-codamol, and how many the migraine tablets?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Counts headache days and acute-medication days against the CG150 thresholds"
    },
    {
@@ -5035,7 +5035,7 @@
    {
     "who": "dr",
     "text": "Thank you — that helps a lot. Some safety questions I ask everyone. Has any headache come on suddenly, like a thunderclap? Is it worse lying down or in the morning, or with coughing or straining? Any weakness, numbness, changes in vision or speech, fever, or feeling muddled?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens the CG150 red flags"
    },
    {
@@ -5044,9 +5044,9 @@
    },
    {
     "who": "dr",
-    "text": "Good. I’d like to check your blood pressure, look at the backs of your eyes and do a quick check of your nerves — is that all right?",
-    "dom": "tasks",
-    "why": "Blood pressure, fundoscopy and neurological examination"
+    "text": "Good. The nurse checked your blood pressure yesterday and the optometrist looked at the backs of your eyes last month — can I go through those with you, and ask a few quick questions about your nerves?",
+    "dom": "dg",
+    "why": "Reviews recorded BP and fundoscopy; screens neurological symptoms"
    },
    {
     "who": "pt",
@@ -5054,8 +5054,8 @@
    },
    {
     "who": "dr",
-    "text": "(after examining) Your blood pressure is fine, the backs of your eyes look healthy and your nerves are working normally. That’s reassuring.",
-    "dom": "tasks",
+    "text": "(reviewing the recorded findings) Your blood pressure was normal and the optometrist found the backs of your eyes healthy, with no sign of raised pressure. And you’ve no weakness, numbness, double vision or problems with balance or speech. That’s reassuring.",
+    "dom": "dg",
     "why": "Shares normal findings to support a primary headache diagnosis"
    },
    {
@@ -5063,7 +5063,7 @@
     "clock": "5–6 min",
     "who": "dr",
     "text": "What have you been thinking is going on? And what worries you most?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Elicits ideas and concerns"
    },
    {
@@ -5075,7 +5075,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I can hear how much this is costing you. I’m going to say something that sounds back to front, so bear with me. I think your daily headache is now being caused by the painkillers themselves. It’s called medication-overuse headache. When codeine or migraine tablets are taken on most days for months, the brain becomes more sensitive and a daily headache sets in.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names medication-overuse headache and explains the mechanism simply"
    },
    {
@@ -5085,7 +5085,7 @@
    {
     "who": "dr",
     "text": "They give a little relief for a few hours, and then the headache comes back, so you take more. That’s the cycle. Something stronger would deepen it. The way out is to stop the tablets that are being overused. I know that’s frightening to hear when you’re in pain.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explains why ‘stronger’ would harm, without dismissing her"
    },
    {
@@ -5095,7 +5095,7 @@
    {
     "who": "dr",
     "text": "You won’t be doing it alone. Let me show you what the plan looks like, and you tell me what feels possible.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Responds to her fear and invites partnership"
    },
    {
@@ -5103,7 +5103,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "The advice is to stop both the co-codamol and the migraine tablets completely for at least a month — all at once rather than slowly. I must be honest: for a week or two the headache usually gets worse, and you may feel a bit rough, before it gets better. That’s the medicine clearing, not a sign it’s failing.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "NICE CG150 withdrawal advice with an honest warning about short-term worsening"
    },
    {
@@ -5113,7 +5113,7 @@
    {
     "who": "dr",
     "text": "We start a daily preventer now so it’s working underneath. Propranolol or amitriptyline are the usual first choices — both reduce how often migraines come. Before we pick, I need to check a few things: any asthma, and your contraception and pregnancy plans, because some preventers aren’t safe in pregnancy. And we’ll keep a headache diary so we can both see progress.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Starts prophylaxis, checks contraindications and contraception, uses a diary"
    },
    {
@@ -5123,7 +5123,7 @@
    {
     "who": "dr",
     "text": "Then we rebuild a proper plan for migraine attacks — a triptan, maybe with an anti-inflammatory, used early, but on fewer than ten days a month. Codeine isn’t a good migraine treatment, so we’ll take it off your repeat. I’ll see you in two weeks to see how you’re coping, and again at around six weeks to review everything.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Acute plan within limits; opioid removed; follow-up within the CG150 4–8 week review window"
    },
    {
@@ -5135,7 +5135,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Can you tell me back the plan in your own words, so I know I’ve explained it well?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Teach-back"
    },
    {
@@ -5145,7 +5145,7 @@
    {
     "who": "dr",
     "text": "Perfect. If you get a sudden, severe headache that peaks within minutes, weakness, numbness, trouble speaking or seeing, fever with a stiff neck, or feel confused, seek urgent help the same day — 999 for the sudden severe one. And if you’re struggling before two weeks, call us.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific red-flag safety net and an open door"
    },
    {
@@ -5157,57 +5157,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; let her finish the request for ‘something stronger’ and acknowledged the toll first.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Explored the impact on her life and her fear it will never stop; checked what matters before planning.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up ‘nothing touches it’ and daily use of two acute drugs as the cue to count medication days.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea: migraines worse, needs stronger drug. Concern: it will never stop. Expectation: stronger painkiller.",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Blood pressure, fundoscopy and neurological examination; headache and medication diary.",
-    "pts": 1
+    "d": "Reviews the recorded blood pressure and optometrist’s fundoscopy; screens neurological symptoms (in-person examination if any); headache and medication diary.",
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Migraine with superimposed medication-overuse headache versus secondary headache; tested with the CG150 red-flag list.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Screened thunderclap, raised-pressure features, neurological deficit, fever, cough or exertion triggers; normal examination.",
-    "pts": 2
+    "d": "Screened thunderclap, raised-pressure features, neurological deficit, fever, cough or exertion triggers; recorded BP and fundi normal, no neurological symptoms.",
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Medication-overuse headache: opioid or combination analgesic and triptan on most days for months (CG150 thresholds).",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Abrupt withdrawal of all overused drugs for at least 1 month with warning; preventer started; opioid off repeat; acute plan under 10 days a month.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Checked asthma before propranolol, contraception and pregnancy plans before any preventer (topiramate MHRA 2024).",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Review at 2 weeks and within 4–8 weeks of starting withdrawal; teach-back; specific red flags.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -5226,7 +5226,7 @@
      "Triptan — most days"
     ],
     "allergy": "None recorded",
-    "recent": "⚠ Frequent co-codamol and triptan requests on repeat record. No headache diary.",
+    "recent": "⚠ Frequent co-codamol and triptan requests on repeat record. No headache diary. Practice nurse, yesterday: BP 122/76, pulse 72 regular, temperature 36.6 °C. Optometrist, last month (routine eye examination): optic discs healthy, no papilloedema.",
     "reason": "Daily headache. “Can I have something stronger?”"
    },
    "timeMap": [
@@ -5238,7 +5238,7 @@
     {
      "t": "1–5",
      "h": "Count and screen",
-     "d": "Pattern change; headache days; acute-medication days; CG150 red flags; BP, fundi, neuro exam."
+     "d": "Pattern change; headache days; acute-medication days; CG150 red flags; recorded BP and fundi; neurological symptom screen."
     },
     {
      "t": "5–6",
@@ -5258,7 +5258,7 @@
    ],
    "wordPics": {
     "fail": "Prescribes a stronger opioid or another triptan; never counts medication days; skips red flags; tells her to ‘cut down’ with no plan or warning; starts topiramate without asking about contraception.",
-    "pass": "Excludes red flags, examines, diagnoses medication-overuse headache, advises withdrawal with a warning of short-term worsening, starts a preventer and books follow-up.",
+    "pass": "Excludes red flags, uses the recorded examination, diagnoses medication-overuse headache, advises withdrawal with a warning of short-term worsening, starts a preventer and books follow-up.",
     "exc": "All of that, plus: counts the numbers against the CG150 thresholds; explains the cycle so she agrees rather than submits; knows CG150 says stop abruptly for at least a month and not to use opioids for migraine; checks asthma, contraception and pregnancy plans before choosing a preventer; plans a 2-week check-in and a 4–8 week review; she leaves hopeful."
    },
    "avoid": [
@@ -5331,7 +5331,7 @@
      "Expectation: a stronger painkiller today"
     ]
    },
-   "diagnosis": "Medication-overuse headache superimposed on long-standing migraine: near-daily headache for months with co-codamol and triptan on most days (above the NICE CG150 threshold of 10 days a month). No red flags; examination normal.",
+   "diagnosis": "Medication-overuse headache superimposed on long-standing migraine: near-daily headache for months with co-codamol and triptan on most days (above the NICE CG150 threshold of 10 days a month). No red flags; recorded BP and fundi normal, no neurological symptoms.",
    "diagnosisLay": "“The painkillers and migraine tablets, taken on most days, have started causing a daily headache of their own. Stopping them breaks the cycle — it gets worse for a short time, then much better.”",
    "management": {
     "reflectIce": "“You came for something stronger because you’re desperate. I understand — but stronger would keep you stuck, and there is a way out.”",
@@ -5372,43 +5372,43 @@
    "intro": "This station rewards the doctor who turns down the request for a stronger drug and still leaves the patient feeling helped. It is failed by prescribing, by preaching, or by a withdrawal plan with no support.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Prescribing a stronger opioid or an extra triptan.",
      "why": "Escalation deepens medication-overuse headache; NICE CG150 advises against opioids for migraine.",
      "fix": "Diagnose medication-overuse headache and plan withdrawal."
     },
     {
-     "dom": "tasks",
-     "fail": "Diagnosing medication-overuse headache without a red-flag screen or examination.",
+     "dom": "dg",
+     "fail": "Diagnosing medication-overuse headache without a red-flag screen or checking the examination findings.",
      "why": "Secondary headache must be excluded first.",
      "fix": "Run the CG150 red-flag questions and check BP, fundi and neurology."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "“Try to cut down the co-codamol slowly.”",
      "why": "NICE CG150 advises stopping all overused drugs abruptly for at least a month; specialist referral is for strong opioids.",
      "fix": "Stop both overused drugs, warn about worsening, and follow up closely."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Starting topiramate with no contraception or pregnancy discussion.",
      "why": "MHRA June 2024: topiramate needs the pregnancy prevention programme and reduces hormonal contraceptive effect.",
      "fix": "Ask first; propranolol or amitriptyline are usual first choices."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Telling her she is ‘addicted’ or ‘taking far too many tablets’.",
      "why": "Blame makes her defensive and less likely to succeed.",
      "fix": "Explain the cycle as a common trap and offer support."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No warning that the headache will worsen before it improves.",
      "why": "Without the warning she will restart the tablets in the first week.",
      "fix": "Warn clearly and book an early check-in."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No follow-up date.",
      "why": "CG150 asks for review 4–8 weeks after withdrawal starts.",
      "fix": "Book a 2-week contact and a 4–8 week review."
@@ -5432,7 +5432,7 @@
   },
   "knowledge": {
    "guideline": "[1] NICE NG42 Motor neurone disease: assessment and management (2016, updated 2019) · [2] NICE TA20 Riluzole for motor neurone disease (2001) · [3] DVLA Assessing fitness to drive: a guide for medical professionals (neurological disorders) · [4] GMC Decision making and consent (2020)",
-   "summary": "Progressive, painless, purely motor weakness with wasting, fasciculations and bulbar symptoms is MND until a neurologist says otherwise. Examine for mixed upper and lower motor neurone signs with normal sensation, refer without delay naming the possible diagnosis, and be honest if he asks, without giving a firm diagnosis.",
+   "summary": "Progressive, painless, purely motor weakness with wasting, fasciculations and bulbar symptoms is MND until a neurologist says otherwise. Look for mixed upper and lower motor neurone signs with normal sensation (on video and in any recorded examination; arrange a face-to-face neurological examination if it would change the plan, without delaying referral), refer without delay naming the possible diagnosis, and be honest if he asks, without giving a firm diagnosis.",
    "points": [
     {
      "h": "The pattern",
@@ -5465,8 +5465,8 @@
     "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello Mr Pereira, I’m Dr Ahmed. Come and have a seat. What’s been happening?",
-    "dom": "rto",
+    "text": "Hello Mr Pereira, I’m Dr Ahmed. Thanks for joining on video. What’s been happening?",
+    "dom": "ro",
     "why": "Open question"
    },
    {
@@ -5475,8 +5475,8 @@
    },
    {
     "who": "dr",
-    "text": "Thank you for explaining it so clearly. You’ve noticed a lot of changes, and I can hear it’s unsettling. I’d like to ask a few questions and then examine you, and after that I’ll tell you honestly what I think. Is that okay?",
-    "dom": "gs",
+    "text": "Thank you for explaining it so clearly. You’ve noticed a lot of changes, and I can hear it’s unsettling. I’d like to ask a few questions and look at a few things on the camera, and after that I’ll tell you honestly what I think. Is that okay?",
+    "dom": "ro",
     "why": "Structures the consultation and promises honesty"
    },
    {
@@ -5488,7 +5488,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "Has it come on gradually, or were there sudden changes at any point?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Distinguishes progressive from sudden (stroke)"
    },
    {
@@ -5498,7 +5498,7 @@
    {
     "who": "dr",
     "text": "Does the weakness get worse as the day goes on or with repeated use, and better with rest? Any double vision or drooping eyelids?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for myasthenia"
    },
    {
@@ -5508,7 +5508,7 @@
    {
     "who": "dr",
     "text": "Any neck pain, or pins and needles or numbness anywhere? Any problems with your bladder or bowels?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for myelopathy and sphincter involvement"
    },
    {
@@ -5518,7 +5518,7 @@
    {
     "who": "dr",
     "text": "You mentioned swallowing. Do you cough or choke when you eat or drink?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Assesses bulbar safety"
    },
    {
@@ -5528,7 +5528,7 @@
    {
     "who": "dr",
     "text": "Have you lost weight, had chest infections, or felt breathless lying flat, or woken with headaches?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for nutritional and respiratory involvement"
    },
    {
@@ -5536,17 +5536,17 @@
     "text": "I haven’t weighed myself. Breathing seems fine."
    },
    {
-    "phase": "Examination",
+    "phase": "Video observation",
     "clock": "4–6 min",
     "who": "dr",
-    "text": "I’m going to examine your arms and legs, your speech and tongue, and your sensation. Please tell me if anything is uncomfortable.",
-    "dom": "tasks",
-    "why": "Explains a focused neurological examination"
+    "text": "Could you hold both hands up to the camera, then rest them still on the table? And stick your tongue out for me and leave it resting in your mouth.",
+    "dom": "dg",
+    "why": "Uses focused video observation"
    },
    {
     "who": "dr",
-    "text": "The muscles in your right hand are thinner, and I can see the twitching you described. I’m testing your strength, tone and reflexes in all four limbs and looking at your tongue. Your sensation is normal everywhere I’ve tested.",
-    "dom": "tasks",
+    "text": "The muscles in your right hand look thinner, and I can see the twitching you described. Your speech sounds slurred to me too. The physiotherapist also found weakness at your right ankle, twitching in your calf and brisk reflexes, with normal feeling. I don’t want anything to hold up getting you to a specialist.",
+    "dom": "dg",
     "why": "Looks for combined UMN and LMN signs; confirms intact sensation"
    },
    {
@@ -5558,7 +5558,7 @@
     "clock": "6–7 min",
     "who": "dr",
     "text": "Before I answer, what have you been thinking it might be?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Elicits ideas before explaining"
    },
    {
@@ -5568,7 +5568,7 @@
    {
     "who": "dr",
     "text": "I’m sorry you’ve been carrying that on your own. What were you hoping to get from today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges worry; elicits expectation"
    },
    {
@@ -5580,7 +5580,7 @@
     "clock": "7–10 min",
     "who": "dr",
     "text": "I’ll be honest with you. The pattern you have, weakness and thinning of muscles with twitching, slurred speech, and no pain or numbness, points to a problem with the nerves that control the muscles, rather than a trapped nerve or anything in the joints. It isn’t something I can diagnose here. It needs a neurologist, and I want you seen urgently.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Honest about significance; no premature label; urgent referral"
    },
    {
@@ -5590,7 +5590,7 @@
    {
     "who": "dr",
     "text": "I won’t dodge that. Motor neurone disease is one of the conditions the neurologist will be looking for, and I’ll say so in my letter. There are other conditions that can look like this, and some are treatable, so I can’t tell you it is MND. What I can promise is that you’ll be seen quickly and not left waiting in the dark.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Answers a direct question honestly without confirming an unconfirmed diagnosis"
    },
    {
@@ -5600,7 +5600,7 @@
    {
     "who": "dr",
     "text": "It is. Take a moment. Would you like me to go over anything again, or is there someone you’d like with you when you see the specialist?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Allows silence; offers support"
    },
    {
@@ -5612,7 +5612,7 @@
     "clock": "10–11 min",
     "who": "dr",
     "text": "I’ll refer you to the neurologist today and phone them to ask for an urgent appointment. They’ll do nerve tests and other checks. Whatever it turns out to be, early specialist care means treatment and support start sooner. In the meantime, take small sips and sit upright to drink, and with the tripping and your hand, please don’t drive until the specialist has seen you and advised.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Urgent neurology with direct contact (NG42); practical safety"
    },
    {
@@ -5624,7 +5624,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If you start choking on food, get chest infections, feel short of breath, or things get worse quickly, contact us straight away. Book to see me after the neurology appointment and we’ll go through what they found together. Can you tell me what we’ve agreed?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net, continuity and teach-back"
    },
    {
@@ -5634,7 +5634,7 @@
    {
     "who": "dr",
     "text": "Exactly. I’m here if anything comes up before then.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Ongoing support"
    }
   ],
@@ -5642,57 +5642,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Let him give the full story; acknowledged the uncertainty he has been living with.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Who can come with him, driving, worry, practical support.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up swallowing and “no pain at all” as significant cues and explored them.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (something serious), concern (a serious cause), expectation (an explanation, even bad news).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Focused neurological examination: wasting, fasciculations, tone, reflexes, plantars, tongue, speech and sensation.",
-    "pts": 1
+    "d": "Video observation of wasting, fasciculations, tongue and speech, plus the physiotherapist’s recorded UMN and LMN signs; further examination never delays referral.",
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "MND versus cervical myelopathy, myasthenia, multifocal motor neuropathy, stroke and benign fasciculations.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Screened for choking, weight loss, chest infections and respiratory symptoms.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Stated that the pattern is serious and neurological without giving a diagnosis he cannot confirm.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Referral without delay, naming the possible diagnosis, with direct contact with the neurologist (NG42).",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Swallow safety advice and driving advice; bloods not allowed to delay referral.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Clear triggers for faster review; follow-up after neurology; support offered.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -5710,7 +5710,7 @@
      "Check repeat record"
     ],
     "allergy": "None recorded",
-    "recent": "Months of slurred speech, swallowing difficulty, weak wasted right hand with twitching, tripping. No pain or numbness.",
+    "recent": "Months of slurred speech, swallowing difficulty, weak wasted right hand with twitching, tripping. No pain or numbness. MSK physiotherapist letter, 10 days ago (self-referred for tripping): right ankle dorsiflexion weak (MRC 3/5); fasciculations in the right calf; knee and ankle reflexes brisk, right plantar upgoing; sensation intact to light touch and pinprick; advised to see GP. On video: wasting of the right first dorsal interosseous visible, fasciculations visible in the forearm, mild dysarthria audible.",
     "reason": "“Something’s not right. What’s going on?”"
    },
    "timeMap": [
@@ -5726,7 +5726,7 @@
     },
     {
      "t": "4–7",
-     "h": "Examine and ICE",
+     "h": "Observe and ICE",
      "d": "Mixed UMN and LMN signs, tongue, sensation. What he fears and wants."
     },
     {
@@ -5742,7 +5742,7 @@
    ],
    "wordPics": {
     "fail": "Reassures that it is probably a trapped nerve or age; routine referral or watch and wait; or announces “you have MND” as fact; avoids the question when he asks directly.",
-    "pass": "Recognises the progressive painless motor pattern, examines for UMN and LMN signs, refers urgently to neurology, and is honest that it is serious.",
+    "pass": "Recognises the progressive painless motor pattern, looks for UMN and LMN signs on video and arranges an examination, refers urgently to neurology, and is honest that it is serious.",
     "exc": "All of the above, plus: rules out mimics in the history; asks about swallow and breathing; answers the direct question honestly without confirming; names the possible diagnosis in the referral and phones the neurologist; allows silence; gives swallow and driving advice; arranges follow-up."
    },
    "avoid": [
@@ -5867,37 +5867,37 @@
    "intro": "This station tests whether you recognise a red-flag pattern without the usual cancer signs, and whether you can be honest under uncertainty. Candidates fail by reassuring, by delaying, or by announcing a diagnosis they cannot confirm.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Attributing the symptoms to a trapped nerve, age or anxiety.",
      "why": "Progressive painless motor weakness with fasciculations and bulbar symptoms is a red flag.",
      "fix": "Name the pattern and refer urgently."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Ordering tests and reviewing in a month before referring.",
      "why": "NG42: refer without delay; tests must not hold up referral.",
      "fix": "Refer today and phone the neurologist."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Skipping the swallow and breathing questions.",
      "why": "Choking and respiratory weakness need faster action.",
      "fix": "Ask about choking, weight, chest infections, orthopnoea and morning headaches."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Dodging the direct question about MND.",
      "why": "Evasion breaks trust and increases fear.",
      "fix": "“It’s one of the things being looked for. I can’t confirm it, and you’ll be seen quickly.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Stating “you have MND”.",
      "why": "NG42: the diagnosis should come from a neurologist, and mimics exist.",
      "fix": "Be honest about seriousness, not certain about the label."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No driving or safety advice.",
      "why": "Hand weakness and tripping affect safe driving and falls.",
      "fix": "Advise no driving until assessed, and DVLA notification if diagnosed."
@@ -5964,7 +5964,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello, I’m Dr Patel. Can I check who I’m speaking to? … Mr Friske, it’s good to see you — are you happy for your son to be with you and to talk about your health today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Addresses the patient first and seeks his consent for the son to share"
    },
    {
@@ -5978,7 +5978,7 @@
    {
     "who": "dr",
     "text": "Thank you both. There is a point, and I’ll explain why. First, can I ask some questions — Mr Friske, some to you and some to your son?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Answers the headline question briefly and sets an inclusive agenda"
    },
    {
@@ -5986,7 +5986,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "Mr Friske, how do you find your walking?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Engages the patient directly"
    },
    {
@@ -5996,7 +5996,7 @@
    {
     "who": "dr",
     "text": "(to son) Which came first — the walking, the memory, or the wetting? And over how long?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Establishes that gait led, and the time course over months"
    },
    {
@@ -6006,13 +6006,13 @@
    {
     "who": "dr",
     "text": "Could you both stand up and let me watch Mr Friske walk across the room and turn, if it’s safe with someone beside him? … Thank you. Those are short, slow steps with his feet close to the floor, and turning looks hard.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Uses video to observe gait safely; describes what is seen without over-claiming"
    },
    {
     "who": "dr",
     "text": "Has anything changed suddenly — a sudden turn for the worse, being very muddled one day and better the next, a fever or burning when passing water? Did he hit his head in the falls? Any tremor?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for delirium, UTI, subdural haematoma after falls and parkinsonism"
    },
    {
@@ -6022,7 +6022,7 @@
    {
     "who": "dr",
     "text": "With the waterworks, does it come on as a sudden rush that he can’t hold, or is he dribbling all the time? Is he passing water often or feeling he hasn’t emptied?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Distinguishes urgency from overflow or retention"
    },
    {
@@ -6034,7 +6034,7 @@
     "clock": "5–6 min",
     "who": "dr",
     "text": "(to son) You asked if there’s any point. What worries you most at the moment?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the fatalism and the carer’s worry"
    },
    {
@@ -6044,7 +6044,7 @@
    {
     "who": "dr",
     "text": "Mr Friske, how do you feel about all this?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Keeps the patient at the centre"
    },
    {
@@ -6056,7 +6056,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "You’re not a nuisance at all. Here’s why this is worth looking into. The combination you describe — the walking going first and badly, then the memory, then the bladder — can be caused by a build-up of fluid in the brain called normal-pressure hydrocephalus. Unlike most types of dementia, it can sometimes be improved, especially the walking.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names the NPH triad as potentially treatable and challenges ‘just dementia’"
    },
    {
@@ -6066,7 +6066,7 @@
    {
     "who": "dr",
     "text": "It might not, or there might be more than one thing going on. I want to be honest: not everyone with this improves. But it would be wrong not to look, when there’s a real chance of helping.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Balances hope with realistic expectations"
    },
    {
@@ -6074,7 +6074,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "So, the plan. I’d like to see you in person, Mr Friske — at the surgery or at home — to examine your nerves and balance, check your blood pressure lying and standing, test your urine, check your bladder is emptying and your prostate, and do some memory questions. I’ll also go through your medicines, as some can affect memory and balance.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Face-to-face examination, continence assessment and medication review"
    },
    {
@@ -6084,7 +6084,7 @@
    {
     "who": "dr",
     "text": "I’ll arrange blood tests for vitamins, thyroid, calcium, kidneys and sugar, which can cause similar problems. And I’ll refer you for a brain scan and a specialist opinion. If it is this condition, the specialist may test whether draining a little fluid helps, and some people then have a small operation to drain it permanently.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "NG97 reversible-cause bloods, imaging and specialist referral"
    },
    {
@@ -6094,7 +6094,7 @@
    {
     "who": "dr",
     "text": "It would be your decision, with the specialist, and only if tests suggest it would help. Nothing is decided today. Meanwhile, I’ll refer you to the falls team for balance work and home safety, and to the continence service for practical help. (to son) And how are you and the family coping? You can have a carer’s assessment from the council, which can bring more support.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Interim falls and continence support, patient autonomy, carer’s assessment"
    },
    {
@@ -6106,7 +6106,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If he has a fall with a head injury, especially if he becomes drowsy, has a headache or is sick, or if he becomes suddenly much more confused, call 111 or 999 the same day. Could one of you tell me the plan?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety net for head injury and acute confusion; teach-back"
    },
    {
@@ -6116,7 +6116,7 @@
    {
     "who": "dr",
     "text": "That’s it exactly. I’ll book the visit this week and review everything once the results are in. Thank you for bringing him — you were right to ask.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Defined follow-up; validates the son"
    }
   ],
@@ -6124,57 +6124,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Addressed Mr Friske first, gained consent for the son; let the son tell the story in full.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Explored falls impact, dignity, family fatalism and carer strain; kept Mr Friske in the conversation.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up ‘the walking changed first’ and ‘is there any point?’ as the diagnostic and emotional cues.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea: just dementia or old age. Concern: falls, loss of dignity. Expectation: nothing can be done.",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Observed gait on video; arranged face-to-face neuro, lying/standing BP, cognition, urine dip, bladder emptying, prostate; NG97 bloods.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "NPH versus Alzheimer’s, vascular disease, parkinsonism, depression, delirium, UTI, overflow incontinence, subdural after falls.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about sudden change, head injury in falls and infection; knew when same-day assessment was needed.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Probable NPH triad with gait-led onset; potentially reversible; coexisting pathology possible.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Brain imaging and specialist referral; medication review; falls service (NICE NG249); continence service; realistic shunt information.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Considered prostate, UTI and medicines as contributors; carer’s assessment (Care Act 2014).",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Head injury and acute confusion safety net; face-to-face visit this week; results review; teach-back.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -6343,43 +6343,43 @@
    "intro": "This station tests whether you will challenge ‘just dementia’. The candidate who agrees with the family, or who talks only to the son, fails even with perfect knowledge.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Accepting ‘just dementia’ and referring to the memory clinic without comment.",
      "why": "A gait-led triad suggests a potentially reversible cause.",
      "fix": "Name the triad, explain why it matters and request imaging with specialist review."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Skipping the reversible-cause bloods and medication review once NPH is suspected.",
      "why": "NICE NG97 work-up still applies, and several causes may coexist.",
      "fix": "Order the NG97 bloods and review anticholinergics and sedatives."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Assuming the incontinence is part of NPH.",
      "why": "Overflow from prostatic enlargement and UTI are common in older men.",
      "fix": "Urine dip, bladder emptying and prostate examination (NICE CG97)."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Talking about Mr Friske in the third person throughout.",
      "why": "It removes his dignity and ignores his capacity and consent.",
      "fix": "Address him first, ask his permission, ask his view."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Promising that a shunt will fix it.",
      "why": "Not all improve and other pathology often coexists.",
      "fix": "Offer realistic hope: worth investigating, outcome uncertain."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Claiming a neurological examination over video.",
      "why": "Remote findings are limited and examiners notice over-claiming.",
      "fix": "Observe gait on screen, then arrange a face-to-face review."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No interim help for falls, continence or the carer.",
      "why": "Investigation takes weeks; harm happens meanwhile.",
      "fix": "Falls and continence referrals and a carer’s assessment now."
@@ -6402,7 +6402,7 @@
    "reason": "Video consultation: urgency, frequency day and night and occasional leaking; asking for a tablet to stop it."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG123 (urinary incontinence and pelvic organ prolapse in women, 2019) · [2] NICE QS77 (urinary incontinence in women) · [3] NICE TA290 (mirabegron) · [4] MHRA Drug Safety Update, mirabegron (October 2015) · [5] NICE NG12 (updated April 2026) · [6] BNF",
+   "guideline": "[1] NICE NG123 (urinary incontinence and pelvic organ prolapse in women, 2019) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NICE QS77 (urinary incontinence in women) · [3] NICE TA290 (mirabegron) · [4] MHRA Drug Safety Update, mirabegron (October 2015) · [6] BNF",
    "summary": "Urgency, frequency, nocturia and urge leakage suggest overactive bladder. Exclude infection, haematuria and other causes, confirm the type of incontinence, and start with a bladder diary, lifestyle change and at least 6 weeks of bladder training before medication.",
    "points": [
     {
@@ -6414,8 +6414,8 @@
      "t": "NICE NG123 [1] and QS77 [2]: a bladder diary for at least 3 days, covering both working and leisure days, at initial assessment. It shows frequency, volumes, fluid and caffeine intake and leak episodes."
     },
     {
-     "h": "NICE NG12 (updated April 2026) routes",
-     "t": "NICE NG12 (updated April 2026) [5]: aged 45 and over with unexplained visible haematuria without UTI, or visible haematuria that persists or recurs after successful UTI treatment → suspected cancer pathway referral (bladder and kidney). Persistent or frequent urinary urgency or frequency together with bloating, early satiety, loss of appetite or pelvic or abdominal pain is an ovarian cancer pattern in NICE NG12 (updated April 2026), but isolated urgency with a clear OAB picture does not need CA125: in women aged 40 and over with that pattern, measure CA125; at 50–59, arrange urgent direct-access pelvic and abdominal ultrasound if CA125 is 31 IU/mL or more. Ask about bloating, early satiety, pelvic pain and weight loss."
+     "h": "NICE NG12 routes",
+     "t": "NICE NG12 [5]: aged 45 and over with unexplained visible haematuria without UTI, or visible haematuria that persists or recurs after successful UTI treatment → suspected cancer pathway referral (bladder and kidney). Persistent or frequent urinary urgency or frequency together with bloating, early satiety, loss of appetite or pelvic or abdominal pain is an ovarian cancer pattern in NICE NG12, but isolated urgency with a clear OAB picture does not need CA125: in women aged 40 and over with that pattern, measure CA125; at 50–59, arrange urgent direct-access pelvic and abdominal ultrasound if CA125 is 31 IU/mL or more. Ask about bloating, early satiety, pelvic pain and weight loss."
     },
     {
      "h": "Conservative first",
@@ -6445,7 +6445,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mrs Foster, I’m Dr Patel. Can you hear me okay, and are you somewhere private? … Good. What can I help with today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks privacy; open question"
    },
    {
@@ -6455,7 +6455,7 @@
    {
     "who": "dr",
     "text": "Thank you for telling me. This is very common and you’re right to come; it’s clearly taking a lot out of you, stopping you going out and wrecking your sleep. I do want to help you get it under control. Can I ask some questions so we treat the right problem?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Normalises, reflects impact, sets agenda"
    },
    {
@@ -6467,7 +6467,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "When you leak, is it that you get a sudden, desperate urge and can’t get there in time, or does it happen when you cough, sneeze or lift something?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Distinguishes urge from stress incontinence"
    },
    {
@@ -6477,7 +6477,7 @@
    {
     "who": "dr",
     "text": "Roughly how often do you go in the day, and how many times do you get up at night?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Quantifies frequency and nocturia"
    },
    {
@@ -6487,8 +6487,8 @@
    {
     "who": "dr",
     "text": "Have you seen any blood in your urine, or had burning or stinging when you go?",
-    "dom": "tasks",
-    "why": "Screens NICE NG12 (updated April 2026) visible haematuria and infection"
+    "dom": "dg",
+    "why": "Screens NICE NG12 visible haematuria and infection"
    },
    {
     "who": "pt",
@@ -6497,8 +6497,8 @@
    {
     "who": "dr",
     "text": "Have you been unusually thirsty, or lost weight without trying? And any bloating, feeling full quickly, or pain low in your tummy?",
-    "dom": "tasks",
-    "why": "Screens diabetes and NICE NG12 (updated April 2026) ovarian symptoms"
+    "dom": "dg",
+    "why": "Screens diabetes and NICE NG12 ovarian symptoms"
    },
    {
     "who": "pt",
@@ -6507,7 +6507,7 @@
    {
     "who": "dr",
     "text": "Any numbness or weakness in your legs, back problems, or change in your bowels?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens neurological causes"
    },
    {
@@ -6517,7 +6517,7 @@
    {
     "who": "dr",
     "text": "What do you tend to drink through the day: tea, coffee, fizzy drinks, alcohol? And are you taking any tablets or medicines from anywhere?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Fluid, caffeine and medication contributors"
    },
    {
@@ -6529,7 +6529,7 @@
     "clock": "5–6 min",
     "who": "dr",
     "text": "You mentioned your friend’s tablet. What do you know about it, and what are you hoping it would do?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the idea behind the request"
    },
    {
@@ -6539,7 +6539,7 @@
    {
     "who": "dr",
     "text": "That sounds really isolating. Is there anything else you’re worried this might be?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks for hidden fears"
    },
    {
@@ -6551,7 +6551,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "From what you describe, this sounds like an overactive bladder. The bladder muscle squeezes before it’s full, which gives that sudden urge. It’s very common and very treatable. You haven’t mentioned blood or anything worrying, which is reassuring, but I’ll still check a urine sample.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Working diagnosis in plain words; proportionate reassurance"
    },
    {
@@ -6561,7 +6561,7 @@
    {
     "who": "dr",
     "text": "Tablets are an option, and I’m not ruling them out. But the steps that work best come first, and tablets are added if those aren’t enough. The first steps often work well, and tablets can cause dry mouth, constipation and, for some, fuzziness. Would it be okay if I explain the plan?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Validates the request while explaining conservative-first"
    },
    {
@@ -6573,7 +6573,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "First, a bladder diary for at least three days, including a work day and a day off if that applies: what you drink, when you go and roughly how much, and any leaks. Second, caffeine in tea, coffee and fizzy drinks irritates the bladder, so it’s worth trying decaf versions for a few weeks. And don’t cut back on fluids overall, because very concentrated urine irritates the bladder too.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "NG123 diary for at least 3 days; caffeine reduction; sensible fluid intake"
    },
    {
@@ -6583,7 +6583,7 @@
    {
     "who": "dr",
     "text": "A lot of people do cut back, so it’s worth knowing. Third, bladder training: when the urge comes, you hold on a little longer, using squeezes of your pelvic floor muscles, and gradually stretch the time between visits. It takes at least six weeks to work, so it needs patience, but most people improve. I can refer you to the continence service to support you.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "NG123 bladder training for at least 6 weeks; continence service"
    },
    {
@@ -6593,7 +6593,7 @@
    {
     "who": "dr",
     "text": "Then we add a tablet. There are two main types, and I’d go through the side effects and check your blood pressure before one of them. I’d also like you to come in for a urine test and a quick examination, to check for anything like a prolapse or dryness that we could treat directly.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Medication as next step, BP before mirabegron, in-person examination"
    },
    {
@@ -6601,7 +6601,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Please let me know promptly if you see any blood in your urine, get burning or a fever, notice bloating or tummy pain that doesn’t go away, or any numbness or weakness. Can you tell me back what we’re going to do?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net: haematuria, infection, ovarian and neurological symptoms"
    },
    {
@@ -6611,7 +6611,7 @@
    {
     "who": "dr",
     "text": "Perfect. Let’s review your diary together in a few weeks. The continence service can advise on pads for now, so you can get out and about again while this starts working.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Review booked; containment products while treatment starts"
    },
    {
@@ -6623,57 +6623,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Checked privacy; open question; let her describe urgency, leakage and the impact on going out and sleep.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Social withdrawal, embarrassment and exhaustion from nocturia explored.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “avoiding going out” and “my friend takes something” and used both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (a tablet will stop it, like her friend), concern (embarrassment, being caught short), expectation (a prescription today).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Urine dipstick and culture if indicated; in-person abdominal and pelvic examination; bladder diary for at least 3 days.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "OAB vs stress or mixed incontinence, UTI, diabetes, neurological causes, medicines, caffeine and fluid habits.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Screened visible haematuria (NICE NG12 (updated April 2026) bladder at 45+), NICE NG12 (updated April 2026) ovarian symptoms, diabetes and neurological red flags.",
-    "pts": 2
+    "d": "Screened visible haematuria (NICE NG12 bladder at 45+), NICE NG12 ovarian symptoms, diabetes and neurological red flags.",
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Urgency-predominant incontinence consistent with overactive bladder.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Caffeine reduction, fluid advice, bladder training for at least 6 weeks, continence service; antimuscarinic or mirabegron as the next step.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Advice not to restrict fluids; anticholinergic burden and BP considered before medication; containment products meanwhile.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Clear return triggers (haematuria, infection, bloating or pain, neurology); diary review booked.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -6724,7 +6724,7 @@
    "wordPics": {
     "fail": "Prescribes oxybutynin on request without a urine test, haematuria question or type of incontinence; or refuses a tablet flatly with no plan; ignores the social impact.",
     "pass": "Distinguishes urge from stress, checks urine and haematuria, starts caffeine reduction and bladder training, and offers medication as the next step with a review.",
-    "exc": "All of the above, plus: explores the friend’s tablet and her isolation; warns against restricting fluids; screens NICE NG12 (updated April 2026) ovarian symptoms as well as haematuria; explains the 3-day diary and 6-week timescale so she persists; mentions BP before mirabegron and anticholinergic effects; arranges containment support meanwhile; teach-back."
+    "exc": "All of the above, plus: explores the friend’s tablet and her isolation; warns against restricting fluids; screens NICE NG12 ovarian symptoms as well as haematuria; explains the 3-day diary and 6-week timescale so she persists; mentions BP before mirabegron and anticholinergic effects; arranges containment support meanwhile; teach-back."
    },
    "avoid": [
     {
@@ -6785,8 +6785,8 @@
   "playbook": {
    "history": {
     "redFlags": [
-     "Visible haematuria at 45 or over (NICE NG12 (updated April 2026) bladder)",
-     "Persistent bloating, early satiety, pelvic pain or urinary urgency and frequency at 40 or over (NICE NG12 (updated April 2026) ovarian: CA125)",
+     "Visible haematuria at 45 or over (NICE NG12 bladder)",
+     "Persistent bloating, early satiety, pelvic pain or urinary urgency and frequency at 40 or over (NICE NG12 ovarian: CA125)",
      "Leg weakness, numbness or new back pain (neurological cause)",
      "Thirst, weight loss (diabetes)",
      "Recurrent UTI or a palpable bladder after voiding"
@@ -6816,7 +6816,7 @@
      "Intravaginal oestrogen if postmenopausal with vaginal atrophy"
     ],
     "safetyNet": [
-     "Visible blood in the urine: see us promptly (NICE NG12 (updated April 2026))",
+     "Visible blood in the urine: see us promptly (NICE NG12)",
      "Burning, fever, persistent bloating or pelvic pain, leg weakness or numbness: return",
      "Review the diary and progress in a few weeks"
     ]
@@ -6832,13 +6832,13 @@
    {
     "ic": "💠",
     "t": "Female urinary incontinence protocol",
-    "s": "Bladder training · drugs · NICE NG12 (updated April 2026)",
+    "s": "Bladder training · drugs · NICE NG12",
     "href": "management/female-urinary-incontinence.html"
    },
    {
     "ic": "🗺️",
     "t": "Haematuria pathway",
-    "s": "Visual algorithm · NICE NG12 (updated April 2026) urology",
+    "s": "Visual algorithm · NICE NG12 urology",
     "href": "algorithms/haematuria.html"
    },
    {
@@ -6852,37 +6852,37 @@
    "intro": "The trap is either giving the tablet on request or refusing it flatly. The marks sit in excluding red flags, conservative-first management explained well, and taking the impact seriously.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Prescribing an antimuscarinic at the first consultation without a urine test or type of incontinence.",
      "why": "NG123 puts assessment, a bladder diary and bladder training first.",
      "fix": "Characterise urge vs stress, dip the urine, start the diary."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Never asking about blood in the urine.",
-     "why": "Visible haematuria at 45 or over is an NICE NG12 (updated April 2026) suspected cancer pathway criterion.",
+     "why": "Visible haematuria at 45 or over is an NICE NG12 suspected cancer pathway criterion.",
      "fix": "“Have you seen any blood in your urine?”"
     },
     {
-     "dom": "tasks",
-     "fail": "Missing that urgency and frequency are also NICE NG12 (updated April 2026) ovarian symptoms.",
+     "dom": "dg",
+     "fail": "Missing that urgency and frequency are also NICE NG12 ovarian symptoms.",
      "why": "At 40 or over, persistent symptoms warrant a CA125 test.",
      "fix": "Ask about bloating, early satiety and pelvic pain."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Telling her to drink less.",
      "why": "Concentrated urine irritates the bladder; NG123 advises modifying only high or low intake, and a caffeine reduction trial.",
      "fix": "“Keep drinking normally, and swap to decaf.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "“It’s just part of getting older.”",
      "why": "Dismisses a treatable condition and her distress.",
      "fix": "“This is very common and very treatable, and it matters because it’s stopping you going out.”"
     },
     {
-     "dom": "gs",
+     "dom": "ro",
      "fail": "No timescale for bladder training.",
      "why": "Without the 6-week message she may stop after a week and feel it failed.",
      "fix": "“It takes at least six weeks. Let’s review your diary in a few weeks.”"
@@ -6903,7 +6903,7 @@
    ],
    "allergy": "None recorded",
    "recent": "No recent blood tests on file. No HbA1c recorded.",
-   "reason": "Face-to-face. Several months of numbness and tingling in both feet, spreading up the legs and now in the fingertips."
+   "reason": "Video consultation. Several months of numbness and tingling in both feet, spreading up the legs and now in the fingertips."
   },
   "knowledge": {
    "guideline": "[1] NICE NG239 (vitamin B12 deficiency in over 16s, 2024) · [2] NICE NG28 (type 2 diabetes in adults, updated) · [3] NICE NG19 (diabetic foot problems, 2015, updated) · [4] NICE CG115 (alcohol-use disorders: diagnosis, assessment and management of harmful drinking and alcohol dependence, 2011) · [5] NICE CG100 (alcohol-use disorders: physical complications, 2010, updated) · [6] NICE CG173 (neuropathic pain in adults: pharmacological management in non-specialist settings, 2013, updated 2020) · [7] UK Chief Medical Officers’ low-risk drinking guidelines (2016) · [8] DVLA Assessing fitness to drive: a guide for medical professionals (current edition)",
@@ -6949,7 +6949,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mr Oyelaran, I’m Dr Clarke. What’s brought you in today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open question"
    },
    {
@@ -6958,8 +6958,8 @@
    },
    {
     "who": "dr",
-    "text": "That sounds unsettling — especially not feeling that toe. I want to find out why. Can I ask some questions, examine you, and then we’ll plan the tests together?",
-    "dom": "gs",
+    "text": "That sounds unsettling — especially not feeling that toe. I want to find out why. Can I ask some questions, go through the examination recorded in your notes, and then we’ll plan the tests together?",
+    "dom": "ro",
     "why": "Acknowledges the concern and sets an agenda"
    },
    {
@@ -6971,7 +6971,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "Has it been slowly spreading over months, or has anything changed quickly in the last few days? Any actual weakness — tripping, dropping things, trouble with stairs?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Tempo and motor involvement — screens for Guillain–Barré and atypical features"
    },
    {
@@ -6981,7 +6981,7 @@
    {
     "who": "dr",
     "text": "Any trouble with breathing, swallowing or your face? Any problems with your bladder, bowels, or dizziness when you stand?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens bulbar, respiratory and autonomic red flags"
    },
    {
@@ -6991,7 +6991,7 @@
    {
     "who": "dr",
     "text": "Good. Some of the common causes are to do with blood sugar, vitamins, the thyroid, and alcohol, so I ask everyone about them. Have you ever been told your sugar was high? Do you take any tablets or remedies?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Starts a systematic cause search"
    },
    {
@@ -7001,7 +7001,7 @@
    {
     "who": "dr",
     "text": "And alcohol — I’m asking because it can affect nerves, not to tell you off. What would you drink in a typical week?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Raises alcohol honestly and without judgement"
    },
    {
@@ -7011,7 +7011,7 @@
    {
     "who": "dr",
     "text": "Thank you for being straight with me — that really helps. I’ll ask a few more questions about drinking in a moment, because it matters for how we cut down safely. Does anyone in your family have nerve problems like this?",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Acknowledges honesty; plans AUDIT and dependence check; family history"
    },
    {
@@ -7019,12 +7019,12 @@
     "text": "Not that I know of."
    },
    {
-    "phase": "Examination",
+    "phase": "Recorded examination and video",
     "clock": "5–6 min",
     "who": "dr",
-    "text": "(after examining) The feeling is reduced in both feet and lower legs, and a little in your fingertips, in the same pattern on both sides. Your ankle reflexes are weaker, but your strength is normal. I’ve had a good look at your feet, including that toe. This fits a nerve problem called a peripheral neuropathy.",
-    "dom": "tasks",
-    "why": "Examination supports a symmetrical length-dependent sensory neuropathy with no motor weakness"
+    "text": "(reviewing the recorded examination) The nurse’s foot check this morning found you couldn’t feel the fine filament at several points on both feet, and vibration was absent at both big toes — the same pattern on both sides. Your foot pulses and skin are fine. Your strength and reflexes haven’t been checked yet, so I’ll arrange that, though from what you describe your strength sounds normal. Could you hold your feet up to the camera so I can see that toe? This fits a nerve problem called a peripheral neuropathy.",
+    "dom": "dg",
+    "why": "Recorded foot check supports a symmetrical length-dependent sensory neuropathy; power and reflexes to be examined"
    },
    {
     "who": "pt",
@@ -7035,7 +7035,7 @@
     "clock": "6–7 min",
     "who": "dr",
     "text": "That’s the key question. Before I answer — what have you been wondering yourself? Is there anything you’re worried it might be?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Elicits ideas and concerns before explaining"
    },
    {
@@ -7047,7 +7047,7 @@
     "clock": "7–11 min",
     "who": "dr",
     "text": "Those are fair worries. Alcohol is one possible cause, but not the only one. High blood sugar is the commonest cause of this pattern, and low vitamin B12 or an underactive thyroid can do the same. Several of these are treatable, and treating the cause often stops it spreading. The slow, sensation-only pattern you have is the common kind, not the kind that leads quickly to weakness.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains the differential and addresses the wheelchair fear honestly"
    },
    {
@@ -7057,7 +7057,7 @@
    {
     "who": "dr",
     "text": "A blood test for sugar, B12 and folate, thyroid, kidneys and liver, a blood count, an inflammation marker, and a protein test that picks up a rarer cause. If the results don’t explain it, or it keeps spreading, I’ll refer you to neurology for nerve conduction tests.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Targeted investigations with a clear referral threshold"
    },
    {
@@ -7067,7 +7067,7 @@
    {
     "who": "dr",
     "text": "Cutting down is one of the most useful things you can do for your nerves. But if you drink every day, stopping suddenly can be dangerous, so let’s go through a short questionnaire and agree a safe plan together — there’s help available if you want it. I’d also like to start a vitamin called thiamine, which nerves need.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Safe alcohol plan (AUDIT, avoid abrupt withdrawal if dependent) and thiamine"
    },
    {
@@ -7077,7 +7077,7 @@
    {
     "who": "dr",
     "text": "Meanwhile, protect your feet. Check them every day for cuts or blisters, wear shoes that fit well, and test bath water with your hand or a thermometer, not your feet. I’ll ask a podiatrist to see you too.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Foot protection and podiatry"
    },
    {
@@ -7085,7 +7085,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "If you develop weakness that spreads over days, trouble walking, breathing or swallowing, or your face goes weak, go to A&E or call 999 — that would be a different, urgent problem. Can you tell me back what we’ve agreed?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific Guillain–Barré safety net, then teach-back"
    },
    {
@@ -7095,7 +7095,7 @@
    {
     "who": "dr",
     "text": "Exactly. Let’s book a review in two weeks for the results and the drinking plan. You did the right thing coming in.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Defined follow-up and a supportive close"
    },
    {
@@ -7107,57 +7107,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; let him describe the pattern and the stubbed toe in his own words.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Explored alcohol (non-judgemental, with AUDIT planned), weight, medication and family history.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up ‘barely felt it’ as a foot-safety cue and ‘what’s causing it’ as his main agenda.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea: maybe the drink. Concern: spreading to a wheelchair. Expectation: a cause and a fix.",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Sensation (touch, pinprick, vibration, proprioception), reflexes, power, gait and Romberg, feet; targeted bloods.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Length-dependent sensory polyneuropathy; tested against mononeuropathy, radiculopathy, central causes and Guillain–Barré.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about tempo, weakness, bulbar, respiratory and autonomic symptoms; knew GBS needs same-day assessment.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Symmetrical glove-and-stocking sensory neuropathy; cause to be found — diabetes and alcohol lead.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "HbA1c, B12/folate, FBC, U&E, LFT/GGT, TFT, ESR/CRP, protein electrophoresis; thiamine; neurology if unclear or progressing.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Addressed alcohol safely (dependence check, no abrupt stop if dependent) and weight; foot care and podiatry.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999/A&E for spreading weakness, breathing or swallowing problems; review in 2 weeks; teach-back.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -7176,7 +7176,7 @@
      "None"
     ],
     "allergy": "None recorded",
-    "recent": "⚠ No bloods or HbA1c on file.",
+    "recent": "⚠ No bloods or HbA1c on file. Practice nurse (foot check), this morning: 10 g monofilament not felt at 6 of 10 sites on each foot; vibration (128 Hz tuning fork) absent at both great toes; feet warm, foot pulses palpable, skin intact, no ulcers; BP 138/86; BMI 31. Reflexes, power and gait not yet examined.",
     "reason": "Numb, tingling feet for months, spreading up; fingertips now affected."
    },
    "timeMap": [
@@ -7192,7 +7192,7 @@
     },
     {
      "t": "5–7",
-     "h": "Examine and ICE",
+     "h": "Findings and ICE",
      "d": "Sensation, reflexes, power, gait, feet. His fear: the wheelchair. His idea: the drink."
     },
     {
@@ -7208,7 +7208,7 @@
    ],
    "wordPics": {
     "fail": "Labels it ‘neuropathy’ and stops; orders a random set of tests or none; never asks about alcohol, or lectures about it; misses the red flags for Guillain–Barré; no foot-care advice after he describes an unnoticed injury.",
-    "pass": "Recognises the glove-and-stocking pattern, examines, orders HbA1c, B12, folate, TFT, U&E, LFTs and FBC, asks about alcohol, gives foot-care advice and safety-nets for weakness.",
+    "pass": "Recognises the glove-and-stocking pattern, uses the recorded examination and video inspection of the feet, orders HbA1c, B12, folate, TFT, U&E, LFTs and FBC, asks about alcohol, gives foot-care advice and safety-nets for weakness.",
     "exc": "All of that, plus: includes protein electrophoresis and a clear neurology threshold; handles alcohol with curiosity and warns against sudden withdrawal if dependent; offers thiamine; answers the wheelchair fear honestly; specific GBS safety net; teach-back; he leaves feeling helped, not judged."
    },
    "avoid": [
@@ -7328,43 +7328,43 @@
    "intro": "This station is passed by a systematic hunt for the cause and failed by stopping at the label. Alcohol is the obvious lead; the examiner is watching whether you test for the others and raise it well.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Diagnosing ‘neuropathy’ with no cause search.",
      "why": "The treatable causes — diabetes, B12, thyroid — are the point of the station.",
      "fix": "Order the targeted bloods, including HbA1c, B12/folate and protein electrophoresis."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Blaming alcohol and testing nothing else.",
      "why": "Anchoring on the obvious misses diabetes, the commonest cause.",
      "fix": "Keep alcohol as one hypothesis and test for the others."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Not asking about weakness, breathing or swallowing.",
      "why": "Guillain–Barré is rare but an emergency.",
      "fix": "Screen tempo and motor, bulbar and autonomic symptoms."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Telling a daily drinker to stop at once.",
      "why": "Sudden withdrawal in dependence can cause seizures (NICE CG115).",
      "fix": "Assess dependence and plan a safe reduction or assisted withdrawal."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Moralising about drinking.",
      "why": "Judgement shuts down disclosure.",
      "fix": "Explain why you ask, thank him for honesty, and offer help."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No foot advice after he mentions an unfelt injury.",
      "why": "Missed ulcers and burns are the commonest harm.",
      "fix": "Daily checks, footwear, water temperature, podiatry."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "“We’ll see what the bloods show.”",
      "why": "No follow-up or referral threshold is unsafe.",
      "fix": "Book the review and state when you would refer to neurology."
@@ -7430,7 +7430,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mr Beckett, I’m Dr Shah. Can you hear and see me clearly, and are you somewhere you can talk privately? … Good. What’s been going on?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks connection and privacy before an intimate history"
    },
    {
@@ -7440,7 +7440,7 @@
    {
     "who": "dr",
     "text": "Thank you for being so clear, I know some of that isn’t easy to say. You sound quite unwell with it. I’ll definitely help you get treated. Can I ask some questions first, so we get the right treatment for the right length of time?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges embarrassment and illness; signposts the plan"
    },
    {
@@ -7452,7 +7452,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "First, the most important one: are you able to pass urine at the moment, or are you straining, or feel you can’t empty?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens acute urinary retention first"
    },
    {
@@ -7462,7 +7462,7 @@
    {
     "who": "dr",
     "text": "And the fever: have you had shaking chills, or felt faint, confused or breathless? Have you been able to check your temperature?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens sepsis features (NICE NG253)"
    },
    {
@@ -7472,7 +7472,7 @@
    {
     "who": "dr",
     "text": "Any blood in the urine, pain in your testicles or scrotum, or discharge from the penis?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens haematuria, epididymo-orchitis and urethritis"
    },
    {
@@ -7482,7 +7482,7 @@
    {
     "who": "dr",
     "text": "Have you had anything like this before, or any pelvic pain lasting months?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Separates acute from chronic prostatitis"
    },
    {
@@ -7492,7 +7492,7 @@
    {
     "who": "dr",
     "text": "I ask everyone this with these symptoms, because some infections caught through sex look very similar: is there any chance of a sexually transmitted infection?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Non-judgemental sexual history to decide on STI testing"
    },
    {
@@ -7502,7 +7502,7 @@
    {
     "who": "dr",
     "text": "Any medical problems, regular medicines or allergies to antibiotics?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks allergies and interactions before prescribing"
    },
    {
@@ -7514,7 +7514,7 @@
     "clock": "5–6 min",
     "who": "dr",
     "text": "You mentioned a water infection. What were you expecting today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores expectation behind the request"
    },
    {
@@ -7524,7 +7524,7 @@
    {
     "who": "dr",
     "text": "That makes sense. Is anything else worrying you about it, for example the pain when you ejaculate?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Gently opens the embarrassing concern"
    },
    {
@@ -7536,7 +7536,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "Here’s what I think. The pain between your legs and in your back, the burning, going often, pain on ejaculating and the fever all fit an infection of the prostate gland, called acute prostatitis. It explains the ejaculation pain, so that isn’t a separate worry. It’s more than a simple water infection, and it needs a longer course of treatment than cystitis would.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Clear working diagnosis linked to his symptoms and concern"
    },
    {
@@ -7546,7 +7546,7 @@
    {
     "who": "dr",
     "text": "Usually two weeks, and then we review. The prostate is harder for antibiotics to reach, and stopping early risks it coming back or grumbling on.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains NG110 14-day course and why"
    },
    {
@@ -7554,7 +7554,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Because you have a fever I need to check you properly today, not just over video. I’d like you to come in this afternoon so we can check your temperature, pulse and blood pressure, feel your tummy, and gently examine the prostate with a chaperone offered. Please bring a urine sample so we can send it to the lab before you start antibiotics.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Same-day face-to-face: observations, examination, MSU before antibiotics"
    },
    {
@@ -7564,7 +7564,7 @@
    {
     "who": "dr",
     "text": "I understand you wanted to avoid a trip in. The honest reason is that if your observations show the infection is spreading into your blood, you’d need hospital treatment through a drip, and I can’t tell that on a screen. If everything is stable, you’ll go home with tablets today.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Negotiates the visit with a transparent reason"
    },
    {
@@ -7574,7 +7574,7 @@
    {
     "who": "dr",
     "text": "For the antibiotic, there are two main options. One group, like ciprofloxacin, gets into the prostate well, but the medicines regulator now asks us to use it only when other antibiotics aren’t suitable, because of rare but serious side effects on tendons, nerves and mood. The other option is trimethoprim. I’ll choose with you when I’ve seen you and the urine test, and we can switch if the lab result points elsewhere.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "NG110 options with MHRA January 2024 restriction; culture-guided"
    },
    {
@@ -7584,7 +7584,7 @@
    {
     "who": "dr",
     "text": "It’s uncommon, and I’ll tell you exactly what to watch for if you do need it. Paracetamol or ibuprofen will help the pain. I’ll also send the test for chlamydia and gonorrhoea. One thing I won’t do now is a PSA prostate blood test: infection pushes it up and it would give a misleading result.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Analgesia, STI test, avoids PSA in acute infection"
    },
    {
@@ -7592,7 +7592,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Two things mean go straight to A&E: if you can’t pass urine at all, or you get shaking, feel faint, confused or much more unwell. You should feel better within two days of starting antibiotics. If not, ring us that day, as that would also mean hospital. Can you tell me back the plan?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific safety-net: retention, sepsis, no improvement at 48 hours"
    },
    {
@@ -7602,7 +7602,7 @@
    {
     "who": "dr",
     "text": "Exactly. I’ll ring you with the urine result and see you again at two weeks to decide whether to stop or carry on. If the pain were to carry on for months afterwards, that’s a different condition we’d manage differently, so do come back.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Results, 14-day review, chronic pelvic pain signposted"
    },
    {
@@ -7614,57 +7614,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Private setting checked; open question; let him describe the pain, urinary symptoms and fever fully.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "The wish for a quick fix; embarrassment about ejaculatory pain; sexual history asked without judgement.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “feverish and rough” and “hurts when I ejaculate” and linked both to prostatitis.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (a simple water infection), concern (painful ejaculation meaning something serious), expectation (a few days of tablets).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Same-day face-to-face: observations, abdominal and gentle prostate examination with chaperone; MSU before antibiotics; STI NAAT; no PSA.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Acute prostatitis vs lower UTI, urethritis or STI, epididymo-orchitis, chronic pelvic pain syndrome.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Screened retention, sepsis (NG253 features) and haematuria; recognised that hospital referral applies to sepsis, retention or abscess.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Acute bacterial prostatitis, more than simple cystitis.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "14-day course per NG110; fluoroquinolone only if other options inappropriate (MHRA January 2024), counselling if used; analgesia; culture-guided.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Allergies and medicines checked; the wish to avoid a visit acknowledged; plan for chronic symptoms if they follow.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "A&E for retention or sepsis signs; ring if not improving by 48 hours; results call; review at 14 days to stop or extend.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -7849,37 +7849,37 @@
    "intro": "The trap is agreeing to his framing. A febrile man with perineal pain is not a three-day cystitis prescription over video. Marks sit in the red-flag screen, the same-day assessment and an evidence-based course.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Prescribing a 3-day or 7-day lower-UTI course.",
      "why": "NG110 treats acute prostatitis for 14 days with review; a short course risks relapse or chronic infection.",
      "fix": "“This needs a two-week course and a review.”"
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Never asking whether he can pass urine or about rigors and faintness.",
      "why": "Retention and sepsis are the reasons for hospital referral in NG110 and must be screened.",
      "fix": "Ask retention first, then sepsis features, out loud."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Prescribing remotely with no observations or urine culture.",
      "why": "A fever needs NG253 observations; NG110 asks for an MSU before antibiotics.",
      "fix": "Arrange a same-day face-to-face and ask him to bring urine."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Choosing ciprofloxacin reflexively with no counselling.",
      "why": "MHRA January 2024: fluoroquinolones only when other recommended antibiotics are inappropriate; patients must know what to report.",
      "fix": "Discuss both NG110 options, record the reason, and counsel on tendon, nerve and mood effects if used."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Ignoring the painful ejaculation because it is awkward.",
      "why": "It is his hidden worry and part of the diagnosis.",
      "fix": "“That pain is part of the same prostate infection, not a separate problem.”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "“Come back if it’s not better.”",
      "why": "Vague safety-netting is standard failing feedback.",
      "fix": "A&E for retention or sepsis signs; ring if not better by 48 hours; review at 14 days."
@@ -7938,7 +7938,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Niall, it’s Dr Morgan. I can see you’re in a lot of pain. Tell me what’s happening.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges pain and opens"
    },
    {
@@ -7948,7 +7948,7 @@
    {
     "who": "dr",
     "text": "I’m sorry, that sounds awful. I’ll keep this quick and focused so we can get you pain relief. Is that okay?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Prioritises; keeps consultation brief and targeted"
    },
    {
@@ -7960,7 +7960,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "When did it start, and have you been sick?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Onset and vomiting"
    },
    {
@@ -7970,7 +7970,7 @@
    {
     "who": "dr",
     "text": "Have you felt hot or shivery, or had shaking attacks?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for infection with obstruction"
    },
    {
@@ -7980,7 +7980,7 @@
    {
     "who": "dr",
     "text": "Are you still passing urine? Any burning?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks urine output and infection symptoms"
    },
    {
@@ -7990,7 +7990,7 @@
    {
     "who": "dr",
     "text": "Has any doctor told you that you have one kidney, kidney problems, or problems with your heart or circulation? Any asthma or stomach ulcers?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Single kidney, vascular history, NSAID contraindications"
    },
    {
@@ -8000,7 +8000,7 @@
    {
     "who": "dr",
     "text": "Is the pain in your tummy or back as well, or have you felt faint or collapsed at any point?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Screens for a leaking aneurysm and peritonism"
    },
    {
@@ -8012,7 +8012,7 @@
     "clock": "5–6 min",
     "who": "dr",
     "text": "What have you been thinking this might be?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Elicits ideas"
    },
    {
@@ -8022,7 +8022,7 @@
    {
     "who": "dr",
     "text": "That’s understandable. Blood in the urine is common with a stone, but I’ll make sure it gets properly checked.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Responds to the specific concern"
    },
    {
@@ -8030,7 +8030,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "I think you’re most likely passing a kidney stone down the tube from the kidney to the bladder. The waves of pain, not being able to keep still, and the blood all fit. Other conditions can look similar, and your answers make those less likely, but I can’t examine you on video, so you need to be seen in person.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Names the likely diagnosis, notes mimics considered and the limits of video"
    },
    {
@@ -8040,7 +8040,7 @@
    {
     "who": "dr",
     "text": "The best painkiller for this is an anti-inflammatory, and because you can’t keep tablets down it needs to go in by injection or suppository. You also need a special scan within 24 hours to see the stone and whether it’s blocking the kidney.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "NSAID by non-oral route (NG118) and CT within 24 hours"
    },
    {
@@ -8050,7 +8050,7 @@
    {
     "who": "dr",
     "text": "Not today, I’m afraid. Because you’re being sick, the pain isn’t controlled, and you need the scan quickly, the safest place is the hospital’s same-day team. They can give strong pain relief, check your kidneys and blood, and do the scan.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Recognises referral criteria: uncontrolled pain and vomiting"
    },
    {
@@ -8062,7 +8062,7 @@
     "clock": "8–10 min",
     "who": "dr",
     "text": "I’ll call the hospital team now and send them my notes. Please don’t drive. Is there someone who can take you straight away? If not, I’ll arrange transport.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Handover and safe transport"
    },
    {
@@ -8072,7 +8072,7 @@
    {
     "who": "dr",
     "text": "Good. Take a list of any medicines you take, and if you can, collect a urine sample in a clean container.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Practical preparation"
    },
    {
@@ -8080,7 +8080,7 @@
     "clock": "10–12 min",
     "who": "dr",
     "text": "If before you get there you develop a fever or shivering, the pain moves into your back or tummy and you feel faint, or you collapse, call 999 straight away.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Specific safety-net for sepsis and aneurysm"
    },
    {
@@ -8090,7 +8090,7 @@
    {
     "who": "dr",
     "text": "Many stones pass on their own over a few days to weeks. Once this is over, drinking two and a half to three litres of water a day helps prevent more, and if you catch the stone, we can send it for analysis. Can you tell me what you’re going to do now?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Realistic expectations, prevention, teach-back"
    },
    {
@@ -8100,7 +8100,7 @@
    {
     "who": "dr",
     "text": "Exactly. I’ll call you tomorrow to see how you got on and what the scan showed.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Follow-up arranged"
    }
   ],
@@ -8108,57 +8108,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Let him describe the pain; acknowledged how severe it was; kept the consultation focused.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Who can take him, not driving, practical barriers to getting to hospital.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up the vomiting (cannot take oral analgesia) and the blood in the urine as a worry.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (kidney stone), concern (the blood), expectation (pain relief and an answer).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Honest about video limits; urine sample; CT within 24 hours; renal function, FBC and CRP arranged through hospital.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Ureteric colic versus leaking AAA, infected obstructed kidney, pyelonephritis, other acute abdomen.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about fever, rigors, collapse, back or abdominal pain, single kidney and vascular history.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Named likely ureteric stone and explained why the other causes are less likely.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "NSAID by a non-oral route as first-line (NG118); same-day hospital assessment because of vomiting and uncontrolled pain.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Checked NSAID contraindications and cardiovascular history (MHRA June 2013 for diclofenac).",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999 triggers for fever, faintness or collapse; call next day; hydration and stone analysis for prevention.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -8328,37 +8328,37 @@
    "intro": "This station is failed by candidates who anchor on “kidney stone” and send oral tablets. The marks go to screening for the dangerous mimics, choosing the right analgesia route, and arranging CT within 24 hours.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "No question about fever or rigors.",
      "why": "An infected obstructed kidney is an emergency needing decompression.",
      "fix": "Ask directly and put fever in the safety-net."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Not considering a leaking aneurysm.",
      "why": "It can mimic loin pain and is rapidly fatal, more so in older people with vascular risk.",
      "fix": "Ask about collapse, faintness, back or abdominal pain and vascular history."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Oral analgesia for a vomiting patient, or opioid first.",
      "why": "NG118: NSAID by any route first-line; the route must work.",
      "fix": "Non-oral NSAID and same-day assessment."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Routine ultrasound or no imaging plan.",
      "why": "NG118: low-dose non-contrast CT within 24 hours in adults.",
      "fix": "Name the scan and the timeframe."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Claiming findings on video.",
      "why": "Examination is not possible remotely.",
      "fix": "Say what you cannot assess and act on the history."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Ignoring his worry about the blood.",
      "why": "Unanswered concerns undermine the plan.",
      "fix": "Acknowledge it and say it will be checked."
@@ -8420,7 +8420,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mr Pryce, I’m Dr Ahmed. What can I do for you today?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Open start"
    },
    {
@@ -8430,7 +8430,7 @@
    {
     "who": "dr",
     "text": "Sounds miserable, especially with a busy week. I’d like to check a few things and have a look at your throat on camera, then we’ll decide together what will help most. Is that okay?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Acknowledges the request and agrees an agenda"
    },
    {
@@ -8442,7 +8442,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "First, a few safety questions. Can you swallow your own saliva, and are you drooling at all? Any noisy breathing or trouble breathing?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Airway red flags first"
    },
    {
@@ -8452,7 +8452,7 @@
    {
     "who": "dr",
     "text": "Is it much worse on one side, any trouble opening your mouth, or has your voice gone muffled?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Quinsy features"
    },
    {
@@ -8462,7 +8462,7 @@
    {
     "who": "dr",
     "text": "Have you had a temperature? And any cough, runny nose or cold symptoms?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "FeverPAIN and Centor items"
    },
    {
@@ -8472,7 +8472,7 @@
    {
     "who": "dr",
     "text": "Could you open wide and point your camera at your throat with the torch on?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Remote look for purulence and inflamed tonsils"
    },
    {
@@ -8482,7 +8482,7 @@
    {
     "who": "dr",
     "text": "Perfect. It looks red, but I can’t see pus or very swollen tonsils. Are you eating and drinking okay? Do you take any regular medicines, or have any illness that affects your immune system? Any allergies?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Hydration, immunosuppression and agranulocytosis risk, allergies"
    },
    {
@@ -8494,7 +8494,7 @@
     "clock": "5–6 min",
     "who": "dr",
     "text": "You said you always end up needing antibiotics. Tell me what’s happened before, and what you’re hoping they’ll do this time.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the belief and expectation"
    },
    {
@@ -8504,7 +8504,7 @@
    {
     "who": "dr",
     "text": "So the real worry is work and getting better fast. That makes complete sense. Let me tell you what I’m finding.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Reflects the concern behind the request"
    },
    {
@@ -8512,7 +8512,7 @@
     "clock": "6–8 min",
     "who": "dr",
     "text": "The good news is there’s nothing dangerous going on. We use a score called FeverPAIN to judge how likely a bacterial infection is. You get a point for the fever and one for coming in early, but the cough and runny nose, and no pus on your tonsils, point towards a virus. Your score is 2, which is on the low side.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains the score out loud (NICE NG84)"
    },
    {
@@ -8522,7 +8522,7 @@
    {
     "who": "dr",
     "text": "It may feel like that, but most sore throats get better within about a week whether or not you take antibiotics. For a throat like this they make very little difference to how quickly you feel better, and they can cause diarrhoea, thrush and rashes, and make future infections harder to treat. I’m not trying to hold anything back. I just want what will actually help.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Natural course, limited benefit and harms, framed without lecturing"
    },
    {
@@ -8534,7 +8534,7 @@
     "clock": "8–11 min",
     "who": "dr",
     "text": "Two things. First, feeling better now: paracetamol or ibuprofen, taken regularly as the pack says, plenty of fluids, and a medicated lozenge can take the edge off. Second, because your score is in the middle range, I could give you a back-up prescription for penicillin. You’d only collect it if you’re not starting to improve in 3 to 5 days, or if you get significantly worse. What do you think?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Self-care per NG84 and a negotiated back-up prescription"
    },
    {
@@ -8544,7 +8544,7 @@
    {
     "who": "dr",
     "text": "Exactly. If you do use it, it’s penicillin four times a day, and take the whole course. On work, you can self-certify for up to seven days if you need time off, so you don’t need a note from me. Good pain relief will help you judge how you’re feeling day to day.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Back-up instructions and honest work advice"
    },
    {
@@ -8554,7 +8554,7 @@
    {
     "who": "dr",
     "text": "I appreciate you hearing me out. Is there anything about this plan that doesn’t sit right with you?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Checks for residual dissatisfaction respectfully"
    },
    {
@@ -8566,7 +8566,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "Can you tell me when you would use the back-up prescription and when you’d need to be seen sooner?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Teach-back of the back-up plan"
    },
    {
@@ -8576,7 +8576,7 @@
    {
     "who": "dr",
     "text": "Spot on. Get urgent help if you can’t swallow your saliva, start drooling, have trouble breathing, get severe pain on one side with trouble opening your mouth, or feel very unwell with shivering or confusion. If it isn’t settling after about a week, book to see us. I’ll send a leaflet with this plan to your phone.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific red flags, one-week review point and written information (NICE NG15)"
    }
   ],
@@ -8584,57 +8584,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open start; acknowledged the request and the busy week before assessing.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Work pressure and money, past experiences with antibiotics, eating and drinking.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “I always need antibiotics” and “can’t be off work” and explored both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (antibiotics always cure it), concern (missing work), expectation (an immediate course).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Remote throat look for purulence and tonsil swelling; FeverPAIN scored out loud; no tests needed.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Viral versus streptococcal pharyngitis; quinsy, epiglottitis and neutropenia considered.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Asked about saliva, drooling, breathing, trismus, unilateral pain, voice, systemic illness, immunosuppressing drugs.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Named a likely viral sore throat with FeverPAIN 2.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Self-care per NICE NG84; back-up phenoxymethylpenicillin offered as FeverPAIN 2 to 3 allows; allergies checked.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Work concern addressed honestly with self-certification; dissatisfaction checked respectfully.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Teach-back of when to use the back-up script; red flags; review if not settling in about a week; written information.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -8803,37 +8803,37 @@
    "intro": "This station tests whether you can negotiate an antibiotic request respectfully. The trap is either giving in to the demand or refusing so bluntly that the patient leaves unhappy and unsafe.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Not using FeverPAIN or Centor.",
      "why": "NICE NG84 bases the decision on a validated score.",
      "fix": "Ask about fever, cough and coryza, look at the tonsils on camera, and say the score out loud."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Skipping the red-flag screen.",
      "why": "Epiglottitis, quinsy and neutropenic sepsis are rare but dangerous.",
      "fix": "Ask about saliva, breathing, one-sided pain, trismus and immunosuppressing medicines first."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Refusing a back-up prescription that NG84 allows, or giving an immediate course on demand.",
      "why": "NICE NG84: FeverPAIN 2 or 3, consider no antibiotic or a back-up prescription.",
      "fix": "Offer the back-up option with clear instructions."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Inaccurate self-care advice.",
      "why": "NICE NG84 supports paracetamol or ibuprofen and medicated lozenges; there is no evidence for non-medicated products.",
      "fix": "Give specific, evidence-based self-care."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Lecturing about resistance without hearing his reasons.",
      "why": "He feels judged and dismissed.",
      "fix": "Explore past experience and the work pressure, then explain."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No clear rule for when to use the back-up prescription.",
      "why": "Unclear instructions lead to immediate use.",
      "fix": "“Only if you’re not starting to improve in 3 to 5 days, or you get much worse.”"
@@ -8900,7 +8900,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mr Cole, I’m Dr Ahmed. Thank you for joining the video call. Can I just check you’re somewhere private, and that I can see and hear you clearly? What’s been happening?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Confirms the video set-up and opens with an open question"
    },
    {
@@ -8910,7 +8910,7 @@
    {
     "who": "dr",
     "text": "I’m really glad your wife pushed you, and I want to take this seriously with you. Can I ask a few quick questions about exactly what happened, and then tell you honestly what I think?",
-    "dom": "gs",
+    "dom": "ro",
     "why": "Validates the wife’s prompt and sets a clear, brief agenda"
    },
    {
@@ -8922,7 +8922,7 @@
     "clock": "1–4 min",
     "who": "dr",
     "text": "When it started, was it sudden? And was it only the right arm, or the face or leg too? When you say slurred — was it that your words were thick, or that you couldn’t find or understand the words?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Characterises onset, distribution and type of speech disturbance"
    },
    {
@@ -8932,7 +8932,7 @@
    {
     "who": "dr",
     "text": "Has it gone completely — the arm strong, the speech normal, no numbness left? Any loss of vision in one eye, double vision, headache, or jerking before or after?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Confirms full resolution; screens for amaurosis fugax and mimics such as seizure or migraine"
    },
    {
@@ -8942,7 +8942,7 @@
    {
     "who": "dr",
     "text": "Your speech sounds clear to me now, and your face looks even on the screen. Could you hold both arms straight out in front of you with your eyes closed for ten seconds? … That looks steady. I can’t check your pulse or blood pressure over video, so the clinic will do that today.",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Uses what video allows and names what it cannot do"
    },
    {
@@ -8952,7 +8952,7 @@
    {
     "who": "dr",
     "text": "Have you had anything like this before? Any fluttering or racing heartbeat? And do you take any blood thinners, or have any problem with aspirin or bleeding?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Asks about previous episodes, symptoms of AF and aspirin contraindications"
    },
    {
@@ -8964,7 +8964,7 @@
     "clock": "4–5 min",
     "who": "dr",
     "text": "You said ‘no harm done’. What went through your mind while it was happening?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Explores the fear behind the minimisation"
    },
    {
@@ -8974,7 +8974,7 @@
    {
     "who": "dr",
     "text": "That must have been frightening, and it’s very human to want it to be nothing. Thank you for telling me.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Acknowledges the unspoken fear with empathy"
    },
    {
@@ -8982,7 +8982,7 @@
     "clock": "5–7 min",
     "who": "dr",
     "text": "I think this was a TIA — a mini-stroke. A blood vessel to the brain was briefly blocked, then cleared. The fact it cleared is good news, but it’s also a warning: the risk of a full stroke is highest in the next few days. That’s why we act today, not next week.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Names TIA and explains why resolution means urgency, in plain words"
    },
    {
@@ -8992,7 +8992,7 @@
    {
     "who": "dr",
     "text": "I know, and that’s exactly the point — this is the chance to prevent a stroke before it happens. Treatment started early greatly reduces that risk.",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Firm but supportive correction of the minimisation"
    },
    {
@@ -9000,7 +9000,7 @@
     "clock": "7–10 min",
     "who": "dr",
     "text": "Two things now. First, unless there’s a reason not to, take 300 milligrams of aspirin today. Do you have aspirin in the house? If not, I’ll send a prescription to your pharmacy straight away.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Aspirin 300 mg immediately, having checked for contraindications (NICE NG128)"
    },
    {
@@ -9010,7 +9010,7 @@
    {
     "who": "dr",
     "text": "Check the strength on the pack before you take it — I’ll stay on while you do if you like. Second, I’m referring you now to the stroke team’s TIA clinic, to be seen within 24 hours of when it started. They’ll check your heart rhythm and blood pressure, do bloods and a heart tracing, scan the arteries in your neck, and decide if you need a brain scan.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Immediate referral to be seen within 24 hours of onset; no ABCD2 delay"
    },
    {
@@ -9020,7 +9020,7 @@
    {
     "who": "dr",
     "text": "They’ll usually start a blood-thinning tablet for the long term, a strong cholesterol tablet, and tighten up your blood pressure. If they find an irregular heartbeat, the treatment changes to an anticoagulant. And staying off cigarettes, as you have, really helps.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Outlines the secondary-prevention package"
    },
    {
@@ -9030,7 +9030,7 @@
    {
     "who": "dr",
     "text": "This is the part you may not like: you must not drive for at least a month after a TIA. That’s the DVLA rule, not just my advice. If you’ve fully recovered at a month you don’t have to tell the DVLA, but if you have another episode the rules become stricter. If you ever drive a bus or lorry, tell me, because then you must stop and inform the DVLA. Could someone else take you to the clinic?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Correct DVLA Group 1 and Group 2 rules; advice documented"
    },
    {
@@ -9042,7 +9042,7 @@
     "clock": "10–12 min",
     "who": "dr",
     "text": "If any weakness, face droop, slurred speech or loss of vision comes back, even for a few minutes, call 999 straight away — don’t wait for the clinic, and don’t wait to see if it passes. Could you tell me back what you’re going to do today?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Specific 999 advice, then teach-back"
    },
    {
@@ -9052,7 +9052,7 @@
    {
     "who": "dr",
     "text": "Exactly right. If you haven’t heard from the clinic by this afternoon, ring the surgery and we’ll chase it. I’ll record our conversation, including the driving advice, and see you after the clinic to carry on the prevention. Thank your wife for me.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Closes the loop on the referral and documents the plan"
    },
    {
@@ -9064,57 +9064,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; let him give the full story and his ‘no harm done’ view before questioning.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Acknowledged the wife’s role; explored his fear of stroke; asked about driving and who could take him to clinic.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up ‘it’s passed’ as minimisation and the hidden fear behind it; explored rather than argued.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea: resolved means harmless. Concern: unspoken fear of stroke. Expectation: permission to ignore it.",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Used video to observe speech, face and arm drift; stated that BP, pulse, bruits, ECG and bloods need the TIA clinic today.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Considered mimics (hypoglycaemia, seizure, migraine aura, syncope) and amaurosis fugax; kept TIA as the working diagnosis.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Checked for persisting deficit (999 if present) and for anticoagulant, bleeding risk and aspirin allergy.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Suspected anterior-circulation TIA; explained as a mini-stroke and a warning with the highest risk in the next few days.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Aspirin 300 mg now; immediate referral to be seen within 24 hours of onset; no ABCD2 triage; outlined clopidogrel, statin, BP and AF plan.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Linked hypertension and smoking history to prevention; AF to be sought; driving advice with DVLA rules documented.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "999 for any recurrence; chase the clinic if no call today; review after clinic; teach-back.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -9277,43 +9277,43 @@
    "intro": "This station is failed by reassurance. The candidate who is comforted by full recovery, or who lets the patient’s calm set the pace, misses the whole point of a TIA.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "“It’s resolved — let’s do some bloods and review next week.”",
      "why": "The stroke risk is highest in the first days; NICE NG128 wants specialist assessment within 24 hours of onset.",
      "fix": "Refer immediately and make sure he is seen today."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Using an ABCD2 score to decide the referral can wait.",
      "why": "NICE NG128 advises against scoring systems to set urgency.",
      "fix": "Treat every suspected TIA as urgent."
     },
     {
-     "dom": "tasks",
+     "dom": "dg",
      "fail": "Advising aspirin without asking about anticoagulants or aspirin allergy.",
      "why": "Aspirin is contraindicated in some patients and anticoagulated patients need specialist advice.",
      "fix": "Ask first, then give 300 mg immediately if safe."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Saying “avoid driving for a bit” or giving the Group 2 rule to a car driver.",
      "why": "The DVLA rules are specific and the advice must be documented.",
      "fix": "Group 1: 1 month, notify only if not fully recovered or multiple TIAs; Group 2: stop, notify, 1 year."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Scolding him for waiting a day, or frightening him into agreement.",
      "why": "Fear or blame reduces engagement with long-term prevention.",
      "fix": "Acknowledge the fear, credit his wife, and present the plan as prevention."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "Claiming to check pulse, BP or carotids over video.",
      "why": "Examiners mark down findings that cannot be obtained remotely.",
      "fix": "Observe what you can, and state that the TIA clinic will examine him today."
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "“Come back if you’re worried.”",
      "why": "Recurrence needs 999, not a GP appointment.",
      "fix": "Name the symptoms, say 999, and check with teach-back."
@@ -9379,7 +9379,7 @@
     "clock": "0–1 min",
     "who": "dr",
     "text": "Hello Mrs Hill, I’m Dr Morgan. Can you hear me okay? … Thanks for booking to talk this through. What would you like to discuss?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Welcomes the discussion; open question"
    },
    {
@@ -9389,7 +9389,7 @@
    {
     "who": "dr",
     "text": "I’m really glad you’re asking rather than just deciding either way. You clearly care about getting this right for Mia. I will tell you what I think, but it would help me to understand your worries properly first. Is that okay?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Affirms her motive; asks permission to explore before informing"
    },
    {
@@ -9401,7 +9401,7 @@
     "clock": "1–5 min",
     "who": "dr",
     "text": "What have you read, and where did you come across it?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Elicits specific concerns and sources"
    },
    {
@@ -9411,7 +9411,7 @@
    {
     "who": "dr",
     "text": "That must be really unsettling to read when you’re the one deciding. Which worry sits heaviest with you: autism, or the number of vaccines?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Empathy; prioritises her concerns"
    },
    {
@@ -9421,7 +9421,7 @@
    {
     "who": "dr",
     "text": "I understand that. It sounds like you’re worried about harming her whichever way you choose. Is that fair?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Names the underlying fear of making the wrong choice"
    },
    {
@@ -9431,7 +9431,7 @@
    {
     "who": "dr",
     "text": "Is Mia well at the moment? Any medical conditions, treatments that affect her immunity, or a serious reaction to a vaccine before?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Checks for genuine contraindications"
    },
    {
@@ -9441,7 +9441,7 @@
    {
     "who": "dr",
     "text": "And what do you already know about measles and the other illnesses the jab protects against?",
-    "dom": "tasks",
+    "dom": "dg",
     "why": "Elicits her understanding of disease risk"
    },
    {
@@ -9453,7 +9453,7 @@
     "clock": "5–9 min",
     "who": "dr",
     "text": "Let me start with autism, since it matters most to you. The idea came from one small study in 1998. It was later found to be dishonest and was withdrawn by the journal, and the doctor behind it was struck off. Since then, studies of hundreds of thousands of children, including one in Denmark of over 650,000, found no link at all, even in children with an autistic brother or sister.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Accurate, non-defensive account of the autism evidence"
    },
    {
@@ -9463,7 +9463,7 @@
    {
     "who": "dr",
     "text": "That’s a fair question. Signs of autism often become noticeable in the second year, which is also when this jab is given, so the timing can look connected even though it isn’t. Parents who notice those signs after a jab are describing something real; the cause just isn’t the vaccine.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Explains coincidence of timing respectfully"
    },
    {
@@ -9473,7 +9473,7 @@
    {
     "who": "dr",
     "text": "On overloading: every day Mia’s immune system meets huge numbers of germs from food, toys and other children. A vaccine adds a tiny amount. One more thing to mention: since January the jab at this age is called MMRV, which also protects against chickenpox. It’s still one injection.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Addresses overload; explains the current MMRV schedule"
    },
    {
@@ -9483,13 +9483,13 @@
    {
     "who": "dr",
     "text": "It’s the same idea: a tiny amount for her immune system, and protection from chickenpox as well. The second dose is now at 18 months.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Responds to the concern without dismissing it"
    },
    {
     "who": "dr",
     "text": "About measles: it isn’t just a rash. It can cause ear and chest infections, and sometimes swelling of the brain, and it can kill. Mumps can cause meningitis, and rubella in pregnancy can harm an unborn baby. We’ve seen outbreaks in the UK as fewer children are vaccinated. So it’s a very small risk from the vaccine against a real risk from the disease.",
-    "dom": "tasks",
+    "dom": "ro",
     "why": "Balances with real disease risks and outbreaks"
    },
    {
@@ -9501,7 +9501,7 @@
     "clock": "9–11 min",
     "who": "dr",
     "text": "My honest recommendation is that Mia has the vaccine. But it’s your decision, and I won’t pressure you. What are you thinking now?",
-    "dom": "rto",
+    "dom": "ro",
     "why": "Clear recommendation; respects autonomy"
    },
    {
@@ -9511,7 +9511,7 @@
    {
     "who": "dr",
     "text": "That’s completely reasonable. I’ll send you the NHS and UKHSA information, and the nurse can book her in whenever you’re ready. If you have more questions, we can talk again. If you decide to wait, she can still have it later.",
-    "dom": "tasks",
+    "dom": "cm",
     "why": "Written information, follow-up, catch-up available"
    },
    {
@@ -9519,7 +9519,7 @@
     "clock": "11–12 min",
     "who": "dr",
     "text": "While she isn’t protected, if Mia has a high temperature with a spreading rash, or contact with someone who has measles, ring us before coming in, so we can protect other patients. Can I check what you’re taking away from today?",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Safety-net for measles exposure; teach-back"
    },
    {
@@ -9529,7 +9529,7 @@
    {
     "who": "dr",
     "text": "That’s it exactly. I’ll note our conversation so whoever you see next knows where we got to. Thank you for asking these questions.",
-    "dom": "gs",
+    "dom": "cm",
     "why": "Documents the discussion; ends warmly with the door open"
    },
    {
@@ -9541,57 +9541,57 @@
    {
     "t": "Opens and explores the problem",
     "d": "Open question; welcomed the discussion; asked permission to explore before advising.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
     "d": "Online articles and posts as the source; fear of harming her child either way explored.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
     "d": "Picked up “I just want to do the right thing” and “what do you think?” and answered both.",
-    "pts": 1
+    "pts": 1, "dom": "ro"
    },
    {
     "t": "Discovers ICE",
     "d": "Idea (MMR may cause autism, immune overload), concern (being responsible for harm), expectation (trustworthy guidance).",
-    "pts": 2
+    "pts": 2, "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
     "d": "Checked Mia’s health, immunosuppression and previous vaccine reactions (genuine contraindications).",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
     "d": "Separated evidence-based concerns from misinformation; explained coincidental timing of autism signs.",
-    "pts": 1
+    "pts": 1, "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
     "d": "Real disease risks named: measles complications, mumps, congenital rubella; outbreaks.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
     "d": "Vaccine hesitancy in a caring parent; Mia due MMRV under the January 2026 schedule.",
-    "pts": 2
+    "pts": 2, "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
     "d": "Clear recommendation, reliable written information, time to decide, easy booking, catch-up available.",
-    "pts": 2
+    "pts": 2, "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
     "d": "Trust preserved; discussion documented; 18-month second dose mentioned.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
     "d": "Measles exposure and rash advice; follow-up conversation offered; door left open.",
-    "pts": 1
+    "pts": 1, "dom": "cm"
    }
   ],
   "extras": {
@@ -9771,37 +9771,37 @@
    "intro": "The trap is winning the argument and losing the parent. Marks sit in exploring first, accurate information delivered warmly, and respecting her decision with the door open.",
    "items": [
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Giving the evidence before finding out what she has read and fears.",
      "why": "Information that misses her actual concern doesn’t land.",
      "fix": "“Tell me what you’ve read and what worries you most.”"
     },
     {
-     "dom": "tasks",
+     "dom": "ro",
      "fail": "Vague reassurance (“it’s perfectly safe”) without the evidence.",
      "why": "She needs a credible reason to trust you over what she has read.",
      "fix": "Retracted study, author struck off, large studies with no link."
     },
     {
-     "dom": "tasks",
+     "dom": "cm",
      "fail": "Talking about MMR at 3 years 4 months as the second dose.",
      "why": "The schedule changed: MMRV at 12 and 18 months for children born from 2025.",
      "fix": "Know the current UKHSA schedule."
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Mocking what she has read online.",
      "why": "Dismissing her sources dismisses her.",
      "fix": "“It’s understandable that worried you. Let me share what the large studies found.”"
     },
     {
-     "dom": "rto",
+     "dom": "ro",
      "fail": "Pushing for a decision today.",
      "why": "Pressure breaks trust and makes consent involuntary.",
      "fix": "“It’s your decision. Take the information home; book whenever you’re ready.”"
     },
     {
-     "dom": "gs",
+     "dom": "cm",
      "fail": "No plan if she declines.",
      "why": "A closed door lowers future uptake.",
      "fix": "Document, offer follow-up, remind her catch-up is possible."
@@ -9828,12 +9828,10 @@
     if (a.playbook) c.playbook = a.playbook;
     if (a.links) c.links = a.links;
     if (a.pitfalls) c.pitfalls = a.pitfalls;
-    if (a.scTasks && window.SCA_GS_STANDARD && window.SCA_RO_STANDARD) {
+    if (a.scTasks && window.SCA_GS_STANDARD && window.SCA_RO_STANDARD && window.SCA_BUILD_SCORECARD) {
       var ro = clone(window.SCA_RO_STANDARD), gs = clone(window.SCA_GS_STANDARD);
-      if (c.scorecard && c.scorecard.ro) ro = c.scorecard.ro;
-      c.scorecard = { tasks: a.scTasks, ro: ro, gs: gs,
-        maxTasks: sum(a.scTasks), maxRo: sum(ro), maxGs: sum(gs),
-        total: sum(a.scTasks) + sum(ro) + sum(gs) };
+      if (c.scorecard && c.scorecard.roStd) ro = c.scorecard.roStd;
+      c.scorecard = window.SCA_BUILD_SCORECARD(a.scTasks, ro, gs);
     }
   });
 })();

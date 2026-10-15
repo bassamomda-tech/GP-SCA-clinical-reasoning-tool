@@ -12,33 +12,68 @@
   /* ============ 137. VIDEO — Early rheumatoid arthritis: the window of opportunity ============ */
   const c137 = {
     id:'early-rheumatoid', title:'"My hands are stiff and swollen \u2014 I\u2019ll just take some ibuprofen"', type:'video', duration:12,
-    meta:{ age:42, sex:'F', setting:'Video consultation \u2014 small-joint pain and stiffness.', system:'Rheumatology / Early rheumatoid arthritis' },
+    meta:{ age:42, sex:'F', setting:'Video consultation \u2014 small-joint pain and stiffness.', system:'Rheumatology / Early rheumatoid arthritis', checked:'October 2026' },
     brief:'Mrs Priya Sehgal, 42, teacher. ~8 weeks of pain, stiffness and SWELLING in the small joints of both hands (MCPs/PIPs) and wrists, SYMMETRICAL, with EARLY-MORNING STIFFNESS lasting ~2 hours, fatigue. Tender, boggy swelling of several MCPs on video/exam. She wants "stronger anti-inflammatories" and to carry on. Family history: her mother had rheumatoid arthritis and "ended up in a wheelchair". This is likely EARLY RHEUMATOID ARTHRITIS \u2014 needing URGENT rheumatology referral within the window of opportunity, not just NSAIDs.',
     script:{
-      opening:'"Thanks doctor. My hands have been really achy and stiff for a couple of months \u2014 worse in the mornings, takes ages to get going, and the knuckles look a bit puffy. I\u2019m sure it\u2019s just wear and tear or too much marking. Could you give me some stronger anti-inflammatories so I can push through? I really can\u2019t take time off work for achy hands."',
-      facts:[
-        { topic:'Why this isn\u2019t \"wear and tear\"', text:'The pattern \u2014 SYMMETRICAL small-joint (MCP/PIP/wrist) pain WITH SWELLING, prolonged EARLY-MORNING STIFFNESS (>30 min, here ~2 hours), fatigue, over weeks \u2014 is INFLAMMATORY, not osteoarthritis/"wear and tear" (which is worse with use, brief stiffness, larger/weight-bearing or DIP joints). This is likely early RHEUMATOID ARTHRITIS. Boggy, tender joint swelling (synovitis) is the key sign.' },
-        { topic:'The window of opportunity', text:'CRITICAL \u2014 early RA has a "window of opportunity": starting disease-modifying treatment (DMARDs) EARLY prevents joint damage and disability. NICE NG100 (2018, updated 2020): refer for specialist opinion anyone with suspected persistent synovitis of undetermined cause — and refer URGENTLY (NICE QS33: within 3 working days of presenting) if the small joints of hands/feet are involved, more than one joint is affected, or there has been a delay of \u22653 months. Do NOT just give NSAIDs and "review in a few months" \u2014 delay costs joints.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 her "just push through with ibuprofen" masks a deep, specific FEAR rooted in her mother\u2019s RA ("ended up in a wheelchair") \u2014 she half-suspects this is the same and is terrified of disability, losing her job and independence, so she\u2019s minimising to avoid facing it. There may also be a fertility consideration (RA, and some treatments like methotrexate, affect pregnancy planning). The reframe is powerful: unlike her mother\u2019s era, modern early treatment changes the outcome dramatically \u2014 catching it now is the opposite of her mother\u2019s fate.' },
-        { topic:'Initial management',   text:'While referring urgently: bloods (FBC, ESR/CRP, rheumatoid factor, anti-CCP), consider an NSAID at the lowest effective dose for the shortest time with a PPI (NICE NG100) for symptom relief — oral steroids before rheumatology assessment only if agreed with the rheumatology team, as they can mask synovitis — and X-rays of hands/feet \u2014 but the priority is the urgent referral, not waiting on results.' },
-        { topic:'What she needs',       text:'Officially: stronger anti-inflammatories to carry on. What she needs: recognition of likely early RA (inflammatory pattern, synovitis), URGENT rheumatology referral within the window of opportunity, baseline bloods/X-rays and symptom relief, the mother-driven disability fear surfaced and reframed (early treatment changes the outcome), and fertility/work considerations acknowledged \u2014 not "NSAIDs and review".' },
+      "opening": "\"Thanks doctor. My hands have been really achy and stiff for a couple of months — worse in the mornings, takes ages to get going, and the knuckles look a bit puffy. I'm sure it's just wear and tear or too much marking. Could you give me some stronger anti-inflammatories so I can push through? I really can't take time off work for achy hands.\"",
+      "facts": [
+        {
+          "topic": "The joints (if asked)",
+          "text": "About eight weeks. Both hands — the knuckles and middle finger joints — and both wrists. Painful and swollen. Balls of your feet ache when you first walk in the morning."
+        },
+        {
+          "topic": "Stiffness (if asked)",
+          "text": "Mornings are worst: \"It takes a good two hours before I can do my buttons or open a jar.\" Better as the day goes on and with movement."
+        },
+        {
+          "topic": "On video (if asked)",
+          "text": "You hold your hands up: the knuckles of both hands look puffy and you cannot make a full fist. Squeezing across your knuckles is painful."
+        },
+        {
+          "topic": "Other symptoms (if asked)",
+          "text": "Very tired. No rash, no psoriasis, no mouth ulcers, no dry eyes, no back pain, no recent infection or diarrhoea, no fever, no weight loss."
+        },
+        {
+          "topic": "Medicines",
+          "text": "Ibuprofen 400 mg from the chemist two or three times a day \"which takes the edge off\". No allergies. No asthma or stomach ulcers."
+        },
+        {
+          "topic": "Family history — say if asked",
+          "text": "Your mother had rheumatoid arthritis from her forties."
+        },
+        {
+          "topic": "Social and plans",
+          "text": "42, secondary school English teacher. Married, one daughter aged 8. Smoke \"a few a day\" (about 5). If asked about pregnancy: you and your husband are thinking about trying for a second baby next year."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "Your mum \"ended up in a wheelchair with twisted hands\" and could not hold her grandchild. You have been avoiding thinking it could be the same thing. Say this only if asked about family or what you are worried about."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Brisk and minimising — you want to keep going. If the doctor suggests rheumatoid arthritis, go quiet and then say: \"That's what Mum had.\" If they explain that early treatment today is very different and can prevent damage, you are frightened but hopeful and accept an urgent referral. Ask: \"Can I still try for another baby?\""
+        }
       ],
-      ice:{
-        ideas:'It\u2019s just wear and tear / overwork; stronger anti-inflammatories will let her push through.',
-        concerns:'HIDDEN AGENDA \u2014 her mother had RA and "ended up in a wheelchair"; she half-suspects this is the same and is terrified of disability, losing her job and independence, so she minimises; possible fertility considerations.',
-        expectations:'Stronger anti-inflammatories to carry on. What she actually needs: recognition of likely early RA, urgent rheumatology referral within the window, baseline tests/symptom relief, and the disability fear surfaced and reframed (early treatment changes the outcome).'
+      "ice": {
+        "ideas": "\"It's wear and tear from all the marking.\"",
+        "concerns": "Underneath (only if asked): ending up like your mum.",
+        "expectations": "\"Stronger anti-inflammatories so I can push through.\" You will accept urgent referral if the reason is clear."
       },
-      cues:['Symmetrical small-joint swelling + prolonged morning stiffness over weeks \u2014 inflammatory (early RA), not "wear and tear".','Boggy MCP/wrist synovitis \u2014 the key sign; this needs URGENT referral within the window of opportunity, not just NSAIDs.','Mother with RA "in a wheelchair" \u2014 the disability fear driving the minimisation; reframe with modern outcomes.']
+      "cues": [
+        "\"It takes ages to get going in the mornings.\" — say in the opening.",
+        "\"I really can't take time off work.\" — say in the opening.",
+        "\"That's what Mum had.\" — say if rheumatoid arthritis is mentioned."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises the INFLAMMATORY pattern \u2014 symmetrical small-joint (MCP/PIP/wrist) pain WITH SWELLING/synovitis and prolonged early-morning stiffness over weeks \u2014 as likely EARLY RHEUMATOID ARTHRITIS, distinguishing it from osteoarthritis/"wear and tear", and does NOT just prescribe stronger NSAIDs to "push through"' },
-      { dom:'tasks', text:'Refers URGENTLY to rheumatology, understanding the "window of opportunity": NICE NG100 recommends urgent referral for suspected persistent synovitis (especially small joints of hands/feet, >1 joint, or delay ≥3 months; NICE QS33: within 3 working days) \u2014 BEFORE bloods/X-ray results, because early DMARD treatment prevents joint damage' },
-      { dom:'tasks', text:'Arranges baseline INVESTIGATIONS without delaying referral: FBC, ESR/CRP, rheumatoid factor and anti-CCP antibodies, and hand/feet X-rays \u2014 and knows a normal RF/CRP does NOT exclude RA (seronegative RA exists), so a negative test must not reassure away the referral' },
-      { dom:'tasks', text:'Provides symptom relief appropriately as a bridge: NSAID at the lowest effective dose for the shortest time with a PPI (NICE NG100), with a short course of corticosteroid only if agreed with the rheumatology team (steroids before assessment can mask synovitis) — while making clear this is not the definitive treatment' },
-      { dom:'tasks', text:'Considers the wider implications: impact on work/function, and FERTILITY/pregnancy planning (RA and some DMARDs \u2014 e.g. methotrexate \u2014 affect conception/pregnancy) \u2014 flagging these for the specialist pathway' },
-      { dom:'rto',   text:'Surfaces the mother-driven DISABILITY fear and reframes it powerfully: unlike her mother\u2019s era, modern early treatment changes the outcome dramatically \u2014 catching it now is the opposite of her mother\u2019s fate \u2014 rather than colluding with "just push through"' },
-      { dom:'rto',   text:'Validates the work/independence worries and engages her in the urgency, so she accepts referral rather than minimising' },
-      { dom:'gs',    text:'Safety-nets and follows up: the urgent referral and baseline tests, symptom relief, what the specialist will do (DMARDs), fertility/work considerations, and a follow-up \u2014 treating likely early RA as the urgent, outcome-changing diagnosis it is, not "NSAIDs and review in a few months"' },
+      { dom:'dg', text:'Recognises the INFLAMMATORY pattern \u2014 symmetrical small-joint (MCP/PIP/wrist) pain WITH SWELLING/synovitis and prolonged early-morning stiffness over weeks \u2014 as likely EARLY RHEUMATOID ARTHRITIS, distinguishing it from osteoarthritis/"wear and tear", and does NOT just prescribe stronger NSAIDs to "push through"' },
+      { dom:'cm', text:'Refers URGENTLY to rheumatology, understanding the "window of opportunity": NICE NG100 recommends urgent referral for suspected persistent synovitis (especially small joints of hands/feet, >1 joint, or delay ≥3 months; NICE QS33: within 3 working days) \u2014 BEFORE bloods/X-ray results, because early DMARD treatment prevents joint damage' },
+      { dom:'cm', text:'Arranges baseline INVESTIGATIONS without delaying referral: FBC, ESR/CRP, rheumatoid factor and anti-CCP antibodies, and hand/feet X-rays \u2014 and knows a normal RF/CRP does NOT exclude RA (seronegative RA exists), so a negative test must not reassure away the referral' },
+      { dom:'cm', text:'Provides symptom relief appropriately as a bridge: NSAID at the lowest effective dose for the shortest time with a PPI (NICE NG100), with a short course of corticosteroid only if agreed with the rheumatology team (steroids before assessment can mask synovitis) — while making clear this is not the definitive treatment' },
+      { dom:'dg', text:'Considers the wider implications: impact on work/function, and FERTILITY/pregnancy planning (RA and some DMARDs \u2014 e.g. methotrexate \u2014 affect conception/pregnancy) \u2014 flagging these for the specialist pathway' },
+      { dom:'ro',   text:'Surfaces the mother-driven DISABILITY fear and reframes it powerfully: unlike her mother\u2019s era, modern early treatment changes the outcome dramatically \u2014 catching it now is the opposite of her mother\u2019s fate \u2014 rather than colluding with "just push through"' },
+      { dom:'ro',   text:'Validates the work/independence worries and engages her in the urgency, so she accepts referral rather than minimising' },
+      { dom:'cm',    text:'Safety-nets and follows up: the urgent referral and baseline tests, symptom relief, what the specialist will do (DMARDs), fertility/work considerations, and a follow-up \u2014 treating likely early RA as the urgent, outcome-changing diagnosis it is, not "NSAIDs and review in a few months"' },
     ],
     worked:[
       { lbl:'Reframe \"wear and tear\"', txt:'"I can see why you\u2019d think wear and tear or overwork \u2014 but the pattern you\u2019re describing tells a different story. Pain and SWELLING in the small joints of both hands, symmetrical, with two hours of morning stiffness \u2014 that\u2019s not the picture of wear and tear, which eases with rest and stiffens only briefly. That\u2019s INFLAMMATION in the joints, and it needs taking seriously and quickly."' },
@@ -67,33 +102,68 @@
   /* ============ 138. VIDEO — Reactive arthritis & the hidden STI trigger ============ */
   const c138 = {
     id:'reactive-arthritis', title:'"My knee blew up out of nowhere \u2014 I haven\u2019t even injured it"', type:'video', duration:12,
-    meta:{ age:27, sex:'M', setting:'Video consultation \u2014 acute knee swelling, no injury.', system:'Rheumatology / Reactive arthritis' },
+    meta:{ age:27, sex:'M', setting:'Video consultation \u2014 acute knee swelling, no injury.', system:'Rheumatology / Reactive arthritis', checked:'October 2026' },
     brief:'Mr Jordan Eze, 27. A few days of a painful, SWOLLEN, warm right KNEE (and a sore Achilles/heel), with no injury. He blames "twisting it at football". On exploration: ~3 weeks ago a bout of "food poisoning" (dysenteric diarrhoea) on a lads\u2019 holiday \u2014 and, if asked sensitively, unprotected sex with a new partner on that trip; possibly some gritty, red eyes and mild dysuria he\u2019s ignored. This is likely REACTIVE ARTHRITIS (post-GI or post-STI), with septic arthritis to exclude. He won\u2019t volunteer the sexual history.',
     script:{
-      opening:'"Alright doc. My knee\u2019s come up massive and it\u2019s really sore \u2014 I reckon I twisted it at football last week. Could you give me some strong anti-inflammatories or maybe drain it? It\u2019s killing me. There\u2019s no need for a big examination or anything, I just need it sorted so I can get back to five-a-side. It\u2019s just a footy knee, right?"',
-      facts:[
-        { topic:'Exclude septic arthritis first', text:'A hot, swollen, acutely painful single joint must ALWAYS have SEPTIC ARTHRITIS excluded first \u2014 a joint-destroying emergency. Fever, marked systemic upset, inability to weight-bear and a very hot joint heighten concern; the safe pathway for a genuinely hot swollen joint is urgent assessment \u00b1 joint aspiration. Reactive arthritis is a diagnosis made alongside excluding sepsis, not instead of it.' },
-        { topic:'The reactive-arthritis picture', text:'If the history is taken: an acute (oligo)arthritis, often a large joint (knee), days\u2013weeks AFTER a triggering infection \u2014 GASTROINTESTINAL (dysentery) or SEXUALLY transmitted (chlamydia) \u2014 \u00b1 enthesitis (Achilles/heel pain), conjunctivitis (gritty red eyes) and urethritis (dysuria): the classic reactive-arthritis triad ("can\u2019t see, can\u2019t pee, can\u2019t climb a tree"). The recent "food poisoning" and the (hidden) new sexual partner are the triggers.' },
-        { topic:'The hidden agenda \u2014 the STI', text:'HIDDEN AGENDA \u2014 he attributes it to football and resists examination/history partly because he does NOT want to disclose the unprotected sex with a new partner on holiday (embarrassment, a girlfriend at home, guilt) \u2014 which is directly relevant (chlamydia-triggered reactive arthritis) and needs an STI screen and partner notification. A non-judgemental sexual history is essential and is the crux of the consultation.' },
-        { topic:'Management',           text:'Once sepsis is excluded: confirm/treat the trigger (STI screen and treat chlamydia if found; the arthritis itself is managed with NSAIDs \u00b1 intra-articular steroid, usually self-limiting), treat any conjunctivitis/urethritis, screen contacts, and safety-net. HLA-B27 association; usually resolves over weeks\u2013months.' },
-        { topic:'What he needs',         text:'Officially: anti-inflammatories / drainage for a "footy knee". What he needs: SEPTIC arthritis excluded (urgent assessment/aspiration if genuinely hot/septic-looking), recognition of likely reactive arthritis, a non-judgemental sexual and GI history that uncovers the trigger, an STI screen and partner notification, eye/urinary assessment, and appropriate arthritis management \u2014 not just symptomatic treatment of a "twisted knee".' },
+      "opening": "\"Alright doc. My knee's come up massive and it's really sore — I reckon I twisted it at football last week. Could you give me some strong anti-inflammatories or maybe drain it? It's killing me. There's no need for a big examination or anything, I just need it sorted so I can get back to five-a-side. It's just a footy knee, right?\"",
+      "facts": [
+        {
+          "topic": "The knee (if asked)",
+          "text": "Right knee, swollen over four days, warm, sore — 6/10. You can walk on it with a limp and bend it about halfway. If asked about football: you played last Thursday but cannot remember a twist or a tackle. On video: the right knee is visibly bigger than the left."
+        },
+        {
+          "topic": "Heel (if asked)",
+          "text": "The back of your left heel has been sore for a week, especially first thing."
+        },
+        {
+          "topic": "Fever and general (if asked)",
+          "text": "No fever, no shakes; feel well in yourself. Checked your temperature this morning: 37.4°C. No rash. No other joints hot or swollen."
+        },
+        {
+          "topic": "Gut — only if asked about recent illness or travel",
+          "text": "Three weeks ago in Ibiza you had \"bad food poisoning\" — diarrhoea with some blood for three days. It settled on its own."
+        },
+        {
+          "topic": "Eyes and waterworks (if asked)",
+          "text": "Both eyes were red and gritty last week, settled now. A bit of stinging when you pass urine for about a week. No discharge you have noticed."
+        },
+        {
+          "topic": "Sex — only if asked sensitively and with a reason",
+          "text": "\"There was a girl on the holiday. We didn't use anything.\" You have a girlfriend at home; you have had sex with her since you got back. You are embarrassed and anxious about this."
+        },
+        {
+          "topic": "Medical history",
+          "text": "Nothing. No medicines. No allergies. No injections into the joint. No IV drug use."
+        },
+        {
+          "topic": "Social",
+          "text": "27, electrician. Lives alone, girlfriend Chloe stays over often. Smoke socially, drink at weekends."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Cheerful, keen to minimise. Steer back to football. If the doctor asks about your love life in a judgemental way, deny anything. If they explain why they are asking (this kind of swollen knee can follow an infection, including from sex) and keep it confidential, tell them. Then ask anxiously: \"Do I have to tell Chloe?\" Accept being seen in person today if the doctor explains they need to check it is not an infected joint."
+        }
       ],
-      ice:{
-        ideas:'He twisted it at football; it\u2019s a mechanical "footy knee" needing anti-inflammatories or draining.',
-        concerns:'HIDDEN AGENDA \u2014 unprotected sex with a new partner on holiday (embarrassment, a girlfriend at home, guilt) that he won\u2019t volunteer, despite it being directly relevant (chlamydia-triggered reactive arthritis); resists examination/history to avoid it.',
-        expectations:'Anti-inflammatories or drainage for a twisted knee. What he actually needs: septic arthritis excluded, recognition of reactive arthritis, a non-judgemental sexual/GI history, an STI screen and partner notification, eye/urinary assessment, and proper management.'
+      "ice": {
+        "ideas": "\"It's a footy knee — I must have twisted it.\"",
+        "concerns": "Underneath (only if asked): that you have caught something on holiday and passed it to Chloe.",
+        "expectations": "\"Strong anti-inflammatories or drain it.\" You will accept tests and an in-person check if they are explained and kept confidential."
       },
-      cues:['Acute hot swollen single joint, no real injury \u2014 exclude SEPTIC arthritis first; don\u2019t accept "twisted it at football".','Knee + Achilles/heel pain days\u2013weeks after "food poisoning" \u2014 reactive arthritis; ask about GI and SEXUAL triggers.','Resists history/exam; possible gritty eyes + dysuria \u2014 the hidden STI trigger; take a non-judgemental sexual history.']
+      "cues": [
+        "\"It's just a footy knee, right?\" — say in the opening.",
+        "\"I did have a bad stomach bug on holiday.\" — say if asked about recent illness.",
+        "\"Is this going to go any further?\" — ask before talking about sex."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Excludes SEPTIC ARTHRITIS first: recognises a hot, swollen, acutely painful single joint as a potential joint-destroying emergency \u2014 assesses for fever/systemic upset/inability to weight-bear and a very hot joint, and arranges urgent assessment \u00b1 joint aspiration if a septic picture \u2014 rather than just giving NSAIDs/draining for a "twisted knee"' },
-      { dom:'tasks', text:'Recognises the REACTIVE ARTHRITIS pattern: acute (oligo)arthritis (often a knee) days\u2013weeks after a GI (dysentery) or STI trigger, \u00b1 enthesitis (Achilles/heel), conjunctivitis and urethritis ("can\u2019t see, can\u2019t pee, can\u2019t climb a tree")' },
-      { dom:'tasks', text:'Takes a thorough, NON-JUDGEMENTAL history that elicits BOTH the recent GI infection AND the sexual history (new partner, unprotected sex) \u2014 recognising the patient will not volunteer the sexual trigger \u2014 plus the eye and urinary symptoms' },
-      { dom:'tasks', text:'Arranges an STI SCREEN (chlamydia/gonorrhoea NAAT, full screen) and PARTNER NOTIFICATION if an STI trigger is found/likely, treats chlamydia if confirmed, and assesses/manages conjunctivitis and urethritis' },
-      { dom:'tasks', text:'Manages the reactive arthritis appropriately once sepsis excluded: NSAIDs \u00b1 intra-articular corticosteroid, explains it is usually self-limiting (weeks\u2013months), HLA-B27 association, and refers/escalates if severe, persistent or diagnostic uncertainty' },
-      { dom:'rto',   text:'Creates a safe, non-judgemental space (and the right to be seen alone / asked sensitively) so the hidden sexual history can be disclosed, rather than accepting the "football" explanation and resistance to examination' },
-      { dom:'rto',   text:'Handles the embarrassment/guilt and partner-notification conversation with compassion and without moralising, so the STI trigger is addressed' },
-      { dom:'gs',    text:'Safety-nets and follows up: urgent assessment/aspiration if any septic features, the STI screen/partner notification and arthritis management, eye/urinary review, return advice if worsening/fever, and a follow-up \u2014 excluding the emergency and treating the real cause' },
+      { dom:'dg', text:'Excludes SEPTIC ARTHRITIS first: recognises a hot, swollen, acutely painful single joint as a potential joint-destroying emergency \u2014 assesses for fever/systemic upset/inability to weight-bear and a very hot joint, and arranges urgent assessment \u00b1 joint aspiration if a septic picture \u2014 rather than just giving NSAIDs/draining for a "twisted knee"' },
+      { dom:'dg', text:'Recognises the REACTIVE ARTHRITIS pattern: acute (oligo)arthritis (often a knee) days\u2013weeks after a GI (dysentery) or STI trigger, \u00b1 enthesitis (Achilles/heel), conjunctivitis and urethritis ("can\u2019t see, can\u2019t pee, can\u2019t climb a tree")' },
+      { dom:'dg', text:'Takes a thorough, NON-JUDGEMENTAL history that elicits BOTH the recent GI infection AND the sexual history (new partner, unprotected sex) \u2014 recognising the patient will not volunteer the sexual trigger \u2014 plus the eye and urinary symptoms' },
+      { dom:'cm', text:'Arranges an STI SCREEN (chlamydia/gonorrhoea NAAT, full screen) and PARTNER NOTIFICATION if an STI trigger is found/likely, treats chlamydia if confirmed, and assesses/manages conjunctivitis and urethritis' },
+      { dom:'cm', text:'Manages the reactive arthritis appropriately once sepsis excluded: NSAIDs \u00b1 intra-articular corticosteroid, explains it is usually self-limiting (weeks\u2013months), HLA-B27 association, and refers/escalates if severe, persistent or diagnostic uncertainty' },
+      { dom:'ro',   text:'Creates a safe, non-judgemental space (and the right to be seen alone / asked sensitively) so the hidden sexual history can be disclosed, rather than accepting the "football" explanation and resistance to examination' },
+      { dom:'ro',   text:'Handles the embarrassment/guilt and partner-notification conversation with compassion and without moralising, so the STI trigger is addressed' },
+      { dom:'cm',    text:'Safety-nets and follows up: urgent assessment/aspiration if any septic features, the STI screen/partner notification and arthritis management, eye/urinary review, return advice if worsening/fever, and a follow-up \u2014 excluding the emergency and treating the real cause' },
     ],
     worked:[
       { lbl:'Exclude the emergency first', txt:'"Before we call it a footy knee, I have to be careful: a hot, swollen, very painful joint that came up without a real injury, I always have to make sure there\u2019s no infection IN the joint, because that\u2019s an emergency that can damage it fast. So I do need to examine it properly, and if it looks infected we get it assessed and possibly a sample taken today \u2014 that comes first."' },
@@ -122,33 +192,68 @@
   /* ============ 139. TELEPHONE — Carpal tunnel syndrome & its systemic associations ============ */
   const c139 = {
     id:'carpal-tunnel', title:'"My hand goes numb at night \u2014 I\u2019m scared it\u2019s the start of MS"', type:'telephone', duration:12,
-    meta:{ age:48, sex:'F', setting:'Telephone \u2014 nocturnal hand numbness and tingling.', system:'Neurology / Carpal tunnel syndrome' },
+    meta:{ age:48, sex:'F', setting:'Telephone \u2014 nocturnal hand numbness and tingling.', system:'Neurology / Carpal tunnel syndrome', checked:'October 2026' },
     brief:'Mrs Donna Whitfield, 48, supermarket worker. Several weeks of TINGLING/NUMBNESS in the right hand \u2014 thumb, index, middle fingers \u2014 worst AT NIGHT, waking her, relieved by shaking the hand; some clumsiness dropping things. Likely CARPAL TUNNEL SYNDROME. If asked: she\u2019s gained weight, feels tired and cold (?hypothyroid), and \u2014 the real reason she called \u2014 she has googled it and is terrified the numbness means MULTIPLE SCLEROSIS or a stroke. Repetitive scanning at work. No red flags for cord/brain.',
     script:{
-      opening:'"Hi, I\u2019m really worried. My right hand keeps going numb and tingly, especially at night \u2014 it wakes me up and I have to shake it to get the feeling back. I\u2019ve been dropping things too. I looked it up and now I\u2019m petrified it\u2019s the start of MS, or that I\u2019m heading for a stroke. My hand going numb has to mean something\u2019s wrong with my nerves or brain, doesn\u2019t it?"',
-      facts:[
-        { topic:'The carpal-tunnel picture', text:'Tingling/numbness in the MEDIAN nerve distribution (thumb, index, middle, half ring finger), worst AT NIGHT, waking the patient and relieved by shaking/hanging the hand, with clumsiness/weakness \u2014 is classic CARPAL TUNNEL SYNDROME (median nerve compression at the wrist), common and benign. The nocturnal, hand-specific, median pattern is reassuringly NOT the diffuse/CNS pattern of MS or the sudden focal deficit of stroke.' },
-        { topic:'The associations to check', text:'CTS has treatable ASSOCIATIONS to screen for: HYPOTHYROIDISM (her weight gain, tiredness, cold intolerance), DIABETES, PREGNANCY, obesity, rheumatoid arthritis, and repetitive wrist use/occupation. Checking these (e.g. TFTs, HbA1c) is part of good management \u2014 the hand symptom can be the flag for an underlying condition.' },
-        { topic:'The hidden agenda \u2014 the MS/stroke fear', text:'HIDDEN AGENDA \u2014 the REAL reason for the call is the googled terror of MS/stroke, not the hand itself. She needs confident, reasoned reassurance (the pattern is classic carpal tunnel, NOT MS/stroke \u2014 explained, not dismissed), which is the crux. There may also be a specific trigger (a relative/colleague with MS or a stroke). Reassurance here is a skilled task; "it\u2019s just carpal tunnel" without explaining why it isn\u2019t MS/stroke will fail.' },
-        { topic:'Management',           text:'CTS management ladder: wrist splints (especially nocturnal), activity/ergonomic modification, treat associations; corticosteroid injection; and referral for nerve conduction studies/surgical decompression for severe/persistent symptoms or motor signs (thenar wasting). Red flags warranting different thinking: bilateral/diffuse symptoms, CNS signs, sudden focal deficit.' },
-        { topic:'What she needs',        text:'Officially: to know if it\u2019s MS/a stroke. What she needs: confident, reasoned reassurance that this is carpal tunnel (a benign nerve compression at the wrist), an explanation of WHY it isn\u2019t MS/stroke, screening for treatable associations (esp. hypothyroidism), the management ladder (splints first), her specific fear addressed, and safety-netting \u2014 not a dismissive "it\u2019s nothing".' },
+      "opening": "\"Hi, I'm really worried. My right hand keeps going numb and tingly, especially at night — it wakes me up and I have to shake it to get the feeling back. I've been dropping things too. I looked it up and now I'm petrified it's the start of MS, or that I'm heading for a stroke. My hand going numb has to mean something's wrong with my nerves or brain, doesn't it?\"",
+      "facts": [
+        {
+          "topic": "Which fingers (if asked)",
+          "text": "Thumb, index and middle finger of the right hand, and \"maybe half the ring finger\". The little finger is fine."
+        },
+        {
+          "topic": "Pattern (if asked)",
+          "text": "About six weeks. Wakes you two or three times a night; you hang your hand over the side of the bed and shake it and the feeling comes back in a few minutes. Also when holding the phone or driving. Daytime it is mostly fine."
+        },
+        {
+          "topic": "Weakness (if asked)",
+          "text": "Dropping cups, fumbling with buttons. If asked whether the muscle at the base of your thumb looks thinner: \"I don't think so — they look the same.\""
+        },
+        {
+          "topic": "Red-flag questions (if asked)",
+          "text": "Left hand fine. No neck pain. No numbness or weakness in the legs, face or anywhere else. No problems with speech, vision, balance, bladder or bowels. Nothing came on suddenly. Never had episodes like this before."
+        },
+        {
+          "topic": "General health (if asked)",
+          "text": "Put on about a stone this year, always tired, \"always cold — I wear a cardigan when everyone else is in T-shirts\", skin dry. Periods irregular lately. Not pregnant (you had a test because of the irregular periods — negative). Not thirsty, not passing more urine."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "Nothing significant. No regular medicines. No allergies."
+        },
+        {
+          "topic": "Work and social",
+          "text": "48, works on the checkout at a supermarket — scanning all day. Married, two grown-up children. Non-smoker."
+        },
+        {
+          "topic": "Why MS — hold back",
+          "text": "A woman at work, Julie, was diagnosed with MS last year \"and it started with numbness\". Say this only if asked what made you think of MS."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Anxious and fixed on MS or stroke. If the doctor just says \"it's carpal tunnel, don't worry\", stay unconvinced: \"But how do you know it's not MS?\" If they explain WHY the pattern fits a trapped nerve at the wrist and not MS or stroke, visibly relax. Be interested in the thyroid link: \"I have been feeling rubbish.\""
+        }
       ],
-      ice:{
-        ideas:'Hand numbness means a serious nerve/brain problem \u2014 MS or a stroke.',
-        concerns:'HIDDEN AGENDA \u2014 googled terror of MS/stroke is the real reason for the call (possibly triggered by a relative/colleague); needs reasoned reassurance, not dismissal; plus unrecognised possible hypothyroidism.',
-        expectations:'To find out if it\u2019s MS/a stroke. What she actually needs: confident reasoned reassurance that it\u2019s carpal tunnel (and why it isn\u2019t MS/stroke), screening for associations (esp. thyroid), the management ladder, and her fear addressed.'
+      "ice": {
+        "ideas": "\"Numbness means something wrong with my nerves or brain — MS or a stroke.\"",
+        "concerns": "\"I'm scared I'll end up like Julie at work.\"",
+        "expectations": "To be told honestly whether it is MS or a stroke, and to get your sleep back."
       },
-      cues:['Night-time median-nerve tingling, relieved by shaking the hand \u2014 classic carpal tunnel, not MS/stroke.','Weight gain, tiredness, cold intolerance \u2014 possible hypothyroidism (a treatable CTS association); screen for it.','"I\u2019m terrified it\u2019s MS / a stroke" \u2014 the real reason for the call; reasoned reassurance is the task, not "it\u2019s nothing".']
+      "cues": [
+        "\"I have to shake it to get the feeling back.\" — say in the opening.",
+        "\"I'm petrified it's the start of MS.\" — say in the opening.",
+        "\"I'm always cold these days.\" — say if asked about general health."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises CARPAL TUNNEL SYNDROME from the classic history (median-nerve distribution tingling/numbness, worst at night, relieved by shaking the hand, clumsiness) and makes a confident POSITIVE diagnosis rather than an open-ended "could be anything"' },
-      { dom:'tasks', text:'Gives REASONED reassurance that distinguishes it from MS and stroke: the nocturnal, hand-specific, median pattern is the picture of a trapped nerve at the wrist \u2014 NOT the diffuse/relapsing CNS pattern of MS nor the sudden focal deficit of a stroke \u2014 explaining WHY, not just saying "it\u2019s nothing"' },
-      { dom:'tasks', text:'Screens for treatable ASSOCIATIONS: hypothyroidism (her weight gain/tiredness/cold \u2014 check TFTs), diabetes (HbA1c), and considers pregnancy, obesity, rheumatoid arthritis and occupational/repetitive use \u2014 recognising the hand symptom can flag an underlying condition' },
-      { dom:'tasks', text:'Offers the MANAGEMENT ladder: nocturnal wrist splints first-line, activity/ergonomic modification and treating associations; corticosteroid injection; and referral for nerve conduction studies/decompression if severe, persistent, or motor signs (thenar wasting)' },
-      { dom:'tasks', text:'Knows the genuine red flags that would change the picture (bilateral/diffuse symptoms, CNS signs, sudden focal deficit, rapidly progressive weakness/wasting) and safety-nets for them \u2014 so reassurance is safe' },
-      { dom:'rto',   text:'Identifies the MS/stroke fear as the REAL reason for the call and addresses it directly and warmly (exploring any specific trigger), treating reassurance as a skilled, specific task rather than a brush-off' },
-      { dom:'rto',   text:'Validates the worry and the impact (sleep, dropping things, work) and engages her in the plan, so she feels heard and reassured' },
-      { dom:'gs',    text:'Safety-nets and follows up: the splint/management plan and association screening (TFTs/HbA1c), what new symptoms would warrant review (spreading/diffuse symptoms, weakness/wasting, CNS features), referral criteria, and a follow-up \u2014 confident diagnosis, treatable associations checked, fear resolved' },
+      { dom:'dg', text:'Recognises CARPAL TUNNEL SYNDROME from the classic history (median-nerve distribution tingling/numbness, worst at night, relieved by shaking the hand, clumsiness) and makes a confident POSITIVE diagnosis rather than an open-ended "could be anything"' },
+      { dom:'ro', text:'Gives REASONED reassurance that distinguishes it from MS and stroke: the nocturnal, hand-specific, median pattern is the picture of a trapped nerve at the wrist \u2014 NOT the diffuse/relapsing CNS pattern of MS nor the sudden focal deficit of a stroke \u2014 explaining WHY, not just saying "it\u2019s nothing"' },
+      { dom:'dg', text:'Screens for treatable ASSOCIATIONS: hypothyroidism (her weight gain/tiredness/cold \u2014 check TFTs), diabetes (HbA1c), and considers pregnancy, obesity, rheumatoid arthritis and occupational/repetitive use \u2014 recognising the hand symptom can flag an underlying condition' },
+      { dom:'cm', text:'Offers the MANAGEMENT ladder: nocturnal wrist splints first-line, activity/ergonomic modification and treating associations; corticosteroid injection; and referral for nerve conduction studies/decompression if severe, persistent, or motor signs (thenar wasting)' },
+      { dom:'dg', text:'Knows the genuine red flags that would change the picture (bilateral/diffuse symptoms, CNS signs, sudden focal deficit, rapidly progressive weakness/wasting) and safety-nets for them \u2014 so reassurance is safe' },
+      { dom:'ro',   text:'Identifies the MS/stroke fear as the REAL reason for the call and addresses it directly and warmly (exploring any specific trigger), treating reassurance as a skilled, specific task rather than a brush-off' },
+      { dom:'ro',   text:'Validates the worry and the impact (sleep, dropping things, work) and engages her in the plan, so she feels heard and reassured' },
+      { dom:'cm',    text:'Safety-nets and follows up: the splint/management plan and association screening (TFTs/HbA1c), what new symptoms would warrant review (spreading/diffuse symptoms, weakness/wasting, CNS features), referral criteria, and a follow-up \u2014 confident diagnosis, treatable associations checked, fear resolved' },
     ],
     worked:[
       { lbl:'Confident positive diagnosis', txt:'"Let me start with the answer, because I can hear how frightened you are: what you\u2019re describing is a classic picture of carpal tunnel syndrome \u2014 a nerve that gets squeezed where it passes through the wrist. The tingling in your thumb and first two fingers, worse at night, waking you, eased by shaking your hand \u2014 that\u2019s textbook. I\u2019m not guessing or being kind; the pattern really fits it."' },
@@ -160,7 +265,7 @@
     ],
     learning:'Tingling/numbness in the MEDIAN nerve distribution (thumb, index, middle, half ring finger), worst AT NIGHT, waking the patient and relieved by shaking the hand, with clumsiness, is classic CARPAL TUNNEL SYNDROME \u2014 a benign median-nerve compression at the wrist \u2014 and warrants a confident POSITIVE diagnosis. The examinable communication task is REASONED reassurance that distinguishes it from the patient\u2019s googled fears: the nocturnal, hand-specific, median pattern is NOT the diffuse/relapsing CNS pattern of MS nor the sudden focal deficit of a stroke \u2014 explained, not dismissed ("it\u2019s just carpal tunnel" without the why will fail). Screen for treatable ASSOCIATIONS (hypothyroidism \u2014 her weight gain/tiredness/cold \u2014 diabetes, pregnancy, obesity, RA, occupational use), since the hand symptom can flag an underlying condition. Offer the management ladder (nocturnal wrist splints first, ergonomic modification and treating associations; steroid injection; nerve conduction studies/decompression for severe/persistent/motor signs), and safety-net the genuine red flags (diffuse/bilateral symptoms, CNS signs, sudden focal deficit, progressive wasting) so reassurance is safe.',
     knowledge:{
-      guideline:'BSSH/GIRFT Best practice pathway for carpal tunnel syndrome (2022) · NICE NG145 Thyroid disease (2019; TSH for associated hypothyroidism) · NICE NG127 Suspected neurological conditions (2019) · NICE NG220 Multiple sclerosis in adults (2022, updated August 2026) · median nerve compression · CTS associations',
+      guideline:'BSSH/GIRFT Best practice pathway for carpal tunnel syndrome (2022) · NICE NG145 Thyroid disease (2019; TSH for associated hypothyroidism) · NICE NG127 Suspected neurological conditions (2019) · NICE NG220 Multiple sclerosis in adults (2022, updated June 2026) · median nerve compression · CTS associations',
       points:[
         { h:'Recognise CTS', t:'Carpal tunnel syndrome: paraesthesia/numbness in the median-nerve distribution (thumb, index, middle, radial half of ring finger), characteristically worse at night and waking the patient, relieved by shaking/flicking the hand (the "flick sign"); may have clumsiness/weak grip and, when advanced, thenar wasting. Phalen’s and Tinel’s tests support it when she is seen in person. On this telephone call the diagnosis rests on the history; make a confident clinical diagnosis, and if she is dropping things arrange a face-to-face check of thumb abduction and the thenar muscles.' },
         { h:'Distinguish from CNS causes', t:'The hand-specific, nocturnal, median pattern is NOT multiple sclerosis (diffuse, relapsing-remitting CNS symptoms over time) or stroke (sudden focal deficit, usually more than a few fingers). MS typically causes episodes lasting days to weeks, often with vision, balance or bladder symptoms (NICE NG220). Reasoned reassurance \u2014 explaining why the pattern points to the wrist not the brain \u2014 is essential; bare "it\u2019s nothing" fails the anxious patient.' },
@@ -177,33 +282,68 @@
   /* ============ 140. VIDEO — "Degenerative changes" on a knee X-ray: un-frightening the words ============ */
   const c140 = {
     id:'knee-xray-degenerative', title:'"The X-ray says I\u2019m \u2018bone on bone\u2019 \u2014 am I crippled?"', type:'video', duration:12,
-    meta:{ age:58, sex:'M', setting:'Video consultation \u2014 explaining a knee X-ray report.', system:'MSK / Osteoarthritis & imaging reframing' },
+    meta:{ age:58, sex:'M', setting:'Video consultation \u2014 explaining a knee X-ray report.', system:'MSK / Osteoarthritis & imaging reframing', checked:'October 2026' },
     brief:'Mr Trevor Nash, 58, plumber. A knee X-ray (for chronic knee pain) reports "moderate degenerative changes / osteoarthritis, reduced joint space". He has read the report and is alarmed by the words ("degenerative", "bone on bone") \u2014 convinced his knee is "crumbling/wearing out", that he\u2019ll need a replacement soon, and that exercise will "wear it out faster", so he has STOPPED activity and is becoming deconditioned, low and frightened for his livelihood. His pain is moderate, function fairly preserved. No red flags.',
     script:{
-      opening:'"Doctor, I got the X-ray report and it\u2019s frightened me to death. It says \u2018degenerative changes\u2019 and the receptionist mentioned \u2018reduced joint space\u2019 \u2014 so basically my knee\u2019s worn out, bone on bone, isn\u2019t it? I\u2019ve stopped walking and stopped work bits because I don\u2019t want to wear it out any faster. Am I going to end up crippled? Do I need a new knee? I\u2019m only 58 and I\u2019m a plumber \u2014 this is my livelihood."',
-      facts:[
-        { topic:'The words frighten more than the reality', text:'X-ray reports use alarming language \u2014 "degenerative", "reduced joint space", "bone on bone" \u2014 that patients interpret catastrophically. The key reframe: radiographic OA changes are COMMON, correlate POORLY with pain and prognosis, do NOT mean the joint is "crumbling away", and are NOT a sentence to disability or imminent replacement. Many people with these X-ray changes have little pain and good function.' },
-        { topic:'Exercise is treatment, not harm', text:'CRITICAL misconception to correct: he believes activity will "wear it out faster" and has stopped \u2014 but EXERCISE (strengthening, especially the quadriceps, plus aerobic activity and weight management) is a CORE, evidence-based TREATMENT for knee OA that REDUCES pain and improves function. Rest/deconditioning makes it WORSE. "Motion is lotion." Stopping activity is the harmful path.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 beneath the imaging fear is terror for his LIVELIHOOD (a plumber who can\u2019t kneel/work), loss of identity, and a developing low mood and catastrophic belief that he\u2019s heading for disability. The avoidance of activity is fear-driven and is deconditioning him into exactly the disability he fears. The reframe \u2014 X-ray words \u2260 destiny; exercise protects the knee and his job \u2014 restores agency and hope.' },
-        { topic:'Management & when to refer', text:'OA management: education/reframing, exercise and weight loss (core), analgesia (topical/oral NSAIDs per pathway, etc.), and addressing function/work. Joint replacement is considered for severe, refractory symptoms substantially affecting quality of life \u2014 based on the PERSON, not the X-ray \u2014 not an inevitability at 58 with moderate symptoms. Address mood and work support.' },
-        { topic:'What he needs',         text:'Officially: to know if he\u2019s "crippled" / needs a new knee. What he needs: the X-ray words un-frightened (common changes, poor correlation with pain/prognosis, not "crumbling"), the crucial reframe that exercise is TREATMENT not harm, an active management plan (strengthening, weight, analgesia, work modification), his livelihood fear and low mood addressed, and realistic info on replacement \u2014 restoring agency.' },
+      "opening": "\"Doctor, I got the X-ray report and it's frightened me to death. It says 'degenerative changes' and the receptionist mentioned 'reduced joint space' — so basically my knee's worn out, bone on bone, isn't it? I've stopped walking and stopped work bits because I don't want to wear it out any faster. Am I going to end up crippled? Do I need a new knee? I'm only 58 and I'm a plumber — this is my livelihood.\"",
+      "facts": [
+        {
+          "topic": "The knee (if asked)",
+          "text": "Right knee, aching for about two years, worse after kneeling and on stairs, stiff for 10 minutes in the morning. Pain about 5/10. No locking, no giving way, no hot swollen episodes."
+        },
+        {
+          "topic": "Function (if asked)",
+          "text": "Before the report you walked the dog 3 miles a day without much trouble. Since reading it two weeks ago you have stopped walking and turned down two bathroom jobs."
+        },
+        {
+          "topic": "Red-flag questions (if asked)",
+          "text": "No fever, no weight loss, no night pain, no other joints badly affected, no injury."
+        },
+        {
+          "topic": "Painkillers",
+          "text": "Paracetamol sometimes; ibuprofen gel \"helps a bit\". No allergies, no stomach ulcers, no kidney problems."
+        },
+        {
+          "topic": "Weight and lifestyle (if asked)",
+          "text": "Put on a stone since stopping the dog walks and five-a-side years ago. BMI about 30. Non-smoker. A few pints at the weekend."
+        },
+        {
+          "topic": "Mood (if asked)",
+          "text": "Low and worried, sleeping badly, snappy at home. No thoughts of harming yourself."
+        },
+        {
+          "topic": "Social",
+          "text": "58, self-employed plumber. Married to Jan; mortgage paid off in four years. \"If I can't kneel, I can't work.\""
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "Your dad was a bricklayer who had to give up work at 60 with his knees and \"sat in a chair for the rest of his life\". Say this only if asked what worries you most."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Alarmed and convinced the knee is \"crumbling\". If the doctor uses more jargon, get more frightened. If they explain that X-ray words sound worse than they are and that exercise actually helps the knee, you are surprised and sceptical at first (\"But won't it wear it out?\"), then relieved. Engage well with a practical plan for work and a physio referral."
+        }
       ],
-      ice:{
-        ideas:'"Degenerative changes / bone on bone" means his knee is crumbling/worn out, he\u2019ll be crippled and need a replacement, and exercise will wear it out faster (so he\u2019s stopped).',
-        concerns:'HIDDEN AGENDA \u2014 terror for his livelihood (a plumber who can\u2019t kneel/work), loss of identity, and developing low mood; the activity-avoidance is fear-driven and deconditioning him into the disability he fears.',
-        expectations:'To know if he\u2019s crippled / needs a new knee. What he actually needs: the X-ray words reframed, the crucial message that exercise is treatment not harm, an active management plan, and his livelihood fear/low mood addressed.'
+      "ice": {
+        "ideas": "\"My knee's worn out — bone on bone — and using it will make it worse.\"",
+        "concerns": "\"I'll end up crippled and lose my business, like Dad.\"",
+        "expectations": "\"Do I need a new knee?\" You want to know what you should and should not do."
       },
-      cues:['"Bone on bone / degenerative" \u2014 alarming X-ray words read catastrophically; reframe (changes are common, correlate poorly with pain).','"I\u2019ve stopped activity so I don\u2019t wear it out" \u2014 the key misconception; exercise is TREATMENT, rest makes it worse.','"I\u2019m a plumber, this is my livelihood" + stopping work \u2014 the real fear and low mood; restore agency.']
+      "cues": [
+        "\"Bone on bone, isn't it?\" — say in the opening.",
+        "\"I've stopped walking so I don't wear it out.\" — say in the opening.",
+        "\"Dad ended up in a chair.\" — say if asked what worries you."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Reframes the X-ray REPORT language: explains that "degenerative changes / reduced joint space / bone on bone" are COMMON radiographic findings that correlate POORLY with pain and prognosis, do NOT mean the joint is "crumbling away", and are NOT a sentence to disability or imminent replacement \u2014 un-frightening the words rather than reinforcing them' },
-      { dom:'tasks', text:'Corrects the crucial EXERCISE misconception: activity does NOT "wear the joint out faster" \u2014 EXERCISE (quadriceps/strengthening, aerobic activity) and WEIGHT management are core, evidence-based TREATMENTS for knee OA that reduce pain and improve function; rest/deconditioning makes it worse ("motion is lotion")' },
-      { dom:'tasks', text:'Offers an ACTIVE management plan: education, a structured exercise/strengthening and weight programme (physio referral), appropriate analgesia (e.g. topical/oral NSAIDs per pathway, etc.), and walking aids/adjuncts as needed \u2014 a positive plan, not "rest it"' },
-      { dom:'tasks', text:'Gives realistic information on JOINT REPLACEMENT: considered for severe, refractory symptoms substantially affecting quality of life, based on the PERSON and their symptoms \u2014 NOT an inevitability dictated by the X-ray at 58 with moderate symptoms' },
-      { dom:'tasks', text:'Addresses the WORK/livelihood and MOOD impact: occupational modification/advice (kneeling, load), function, and screens/supports the developing low mood and catastrophic beliefs \u2014 recognising the deconditioning spiral' },
-      { dom:'rto',   text:'Responds to the fear and catastrophic beliefs first, dismantles the "crumbling/crippled" narrative with empathy and accurate information, and restores agency and hope' },
-      { dom:'rto',   text:'Engages him as an active partner in his own recovery (he can influence this), framing exercise and weight as protecting his knee AND his livelihood' },
-      { dom:'gs',    text:'Safety-nets and follows up: the exercise/weight/analgesia plan and physio referral, work advice, mood support, what would prompt orthopaedic referral (severe refractory symptoms/QoL), and a follow-up \u2014 turning catastrophic avoidance into an active, hopeful plan' },
+      { dom:'ro', text:'Reframes the X-ray REPORT language: explains that "degenerative changes / reduced joint space / bone on bone" are COMMON radiographic findings that correlate POORLY with pain and prognosis, do NOT mean the joint is "crumbling away", and are NOT a sentence to disability or imminent replacement \u2014 un-frightening the words rather than reinforcing them' },
+      { dom:'ro', text:'Corrects the crucial EXERCISE misconception: activity does NOT "wear the joint out faster" \u2014 EXERCISE (quadriceps/strengthening, aerobic activity) and WEIGHT management are core, evidence-based TREATMENTS for knee OA that reduce pain and improve function; rest/deconditioning makes it worse ("motion is lotion")' },
+      { dom:'cm', text:'Offers an ACTIVE management plan: education, a structured exercise/strengthening and weight programme (physio referral), appropriate analgesia (e.g. topical/oral NSAIDs per pathway, etc.), and walking aids/adjuncts as needed \u2014 a positive plan, not "rest it"' },
+      { dom:'dg', text:'Gives realistic information on JOINT REPLACEMENT: considered for severe, refractory symptoms substantially affecting quality of life, based on the PERSON and their symptoms \u2014 NOT an inevitability dictated by the X-ray at 58 with moderate symptoms' },
+      { dom:'cm', text:'Addresses the WORK/livelihood and MOOD impact: occupational modification/advice (kneeling, load), function, and screens/supports the developing low mood and catastrophic beliefs \u2014 recognising the deconditioning spiral' },
+      { dom:'ro',   text:'Responds to the fear and catastrophic beliefs first, dismantles the "crumbling/crippled" narrative with empathy and accurate information, and restores agency and hope' },
+      { dom:'ro',   text:'Engages him as an active partner in his own recovery (he can influence this), framing exercise and weight as protecting his knee AND his livelihood' },
+      { dom:'cm',    text:'Safety-nets and follows up: the exercise/weight/analgesia plan and physio referral, work advice, mood support, what would prompt orthopaedic referral (severe refractory symptoms/QoL), and a follow-up \u2014 turning catastrophic avoidance into an active, hopeful plan' },
     ],
     worked:[
       { lbl:'Un-frighten the words', txt:'"Let me take the fear out of those words first, because they sound far worse than they are. \u2018Degenerative changes\u2019 just means the normal wear most knees show by our age \u2014 if we X-rayed everyone in their fifties, loads would say the same, including people with no pain at all. It does NOT mean your knee is crumbling away or that you\u2019re heading for a wheelchair. The X-ray words and how a knee actually does are only loosely connected."' },

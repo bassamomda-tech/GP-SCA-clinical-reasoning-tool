@@ -319,7 +319,7 @@ Safety-net: diabetic + severe pain/granulation → urgent ENT (necrotising OE).`
 - If troublesome: Chloramphenicol 0.5% drops 1 drop every 2 h for the first 48 h, then every 4 h (waking hours) (or 1% ointment 3–4 times a day, or at night with drops by day); continue for 48 h after healing (check product SPC/BNF). Allergy → fusidic acid 1% BD.
 Avoid contact lenses. Safety-net: pain / photophobia / reduced vision / lens-wearer → same-day ophthalmology.`,
     sources: [
-      { label:'College of Optometrists', url:'https://www.college-optometrists.org/clinical-guidance' },
+      { label:'NICE CKS — Conjunctivitis (infective)', url:'https://cks.nice.org.uk/topics/conjunctivitis-infective/' },
       { label:'SPC — chloramphenicol', url:'https://www.medicines.org.uk/emc/search?q=chloramphenicol' },
     ],
   },
@@ -377,7 +377,7 @@ Hygiene + exclusion until crusted/48 h on antibiotics. Safety-net: spreading/sys
       { name: 'OR Doxycycline (alt)', dose: '200 mg day 1 then 100 mg', freq: 'OD', route: 'PO', days: '5–7' },
       { name: 'Penicillin allergy in pregnancy: Erythromycin', dose: '500 mg', freq: 'QDS', route: 'PO', days: '5–7' },
       { name: 'Near the eyes or nose: Co-amoxiclav', dose: '500/125 mg', freq: 'TDS', route: 'PO', days: '7' },
-      { name: 'Near the eyes or nose + penicillin allergy: Clarithromycin + Metronidazole', dose: '500 mg + 400 mg', freq: 'BD + TDS', route: 'PO', days: '7' },
+      { name: 'Near the eyes or nose + penicillin allergy: Clarithromycin + Metronidazole', dose: '500 mg / 400 mg', freq: 'BD / TDS', route: 'PO', days: '7' },
     ],
     altRegimens: [
       { label: 'Facial — near the eyes or nose', drugs: 'Co-amoxiclav 500/125 mg TDS × 7 days (penicillin allergy: clarithromycin 500 mg BD + metronidazole 400 mg TDS × 7 days) (NICE NG141); low threshold for admission (periorbital/orbital).' },
@@ -441,7 +441,7 @@ Safety-net: spreading beyond mark / systemic / severe pain → urgent (exclude n
 - Analgesia: ibuprofen 400 mg TDS + paracetamol 1 g QDS; warm saltwater rinses.
 Urgent dental referral. Safety-net: facial/floor-of-mouth swelling, trismus, dysphagia → 999.`,
     sources: [
-      { label:'SDCEP', url:'https://www.sdcep.org.uk' },
+      { label:'SDCEP — Drug Prescribing for Dentistry', url:'https://www.sdcep.org.uk/published-guidance/drug-prescribing/' },
     ],
   },
 

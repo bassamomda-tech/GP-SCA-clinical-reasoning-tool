@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Acute Diarrhoea in Adults Algorithm · Reasoning GP</title>
+<meta name="description" content="Acute Diarrhoea in Adults: Diarrhoea for less than 14 days · dehydration and sepsis first · bloody diarrhoea, C. difficile, travel, immunosuppression, public health and sick-day rules">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Acute Diarrhoea in Adults Algorithm">
+<meta property="og:description" content="Acute Diarrhoea in Adults: Diarrhoea for less than 14 days · dehydration and sepsis first · bloody diarrhoea, C. difficile, travel, immunosuppression, public health and sick-day rules">
+<meta property="og:url" content="https://gpreasoning.uk/tools/algorithms/acute-diarrhoea.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/acute-diarrhoea.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+.alg-next{margin:12px 0 2px;padding:9px 12px;background:var(--treat-bg);border:1px solid #bbf7d0;border-radius:8px;font-size:.84rem;line-height:1.55}
+.alg-next a{color:#0f766e;font-weight:600}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body>
+
+<div class="alg-header">
+  <h1>🚽 Acute Diarrhoea in Adults</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta">
+    <span>UKHSA</span><span>NICE NG199</span><span>NICE NG253</span><span>NICE NG12</span><span>10-min consult</span>
+  </div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🚽</div>
+  <div>
+    <b>Acute Diarrhoea — Adults, New Presentation</b>
+    <small>Diarrhoea for less than 14 days · dehydration and sepsis first · bloody diarrhoea, C. difficile, travel, immunosuppression, public health and sick-day rules</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/acute-diarrhoea.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/acute-diarrhoea.html">⬇ Download PDF</button><a class="sum-open" href="one-page/acute-diarrhoea.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/acute-diarrhoea.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1" id="node1">
+  <div class="node-header">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Dehydration, Sepsis and the Surgical Mimic First</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<p class="intro-note">Acute diarrhoea is usually self-limiting infective gastroenteritis. The work of this consultation is to find the patient who is dehydrated, septic, bleeding, has C. difficile or STEC, or has a surgical or metabolic cause wearing a diarrhoea label. Chronic (4 weeks or more) diarrhoea follows the <a href="chronic-diarrhoea.html">chronic diarrhoea algorithm</a>.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Shock or high-risk sepsis</b> Hypotension, new confusion, mottled skin, RR ≥25, HR &gt;130, no urine for 18 h, NEWS2 ≥7 → <span class="pill pill-red">999</span> Do not wait for stool results; follow NICE NG253 sepsis criteria</div>
+      <div class="rftile"><b>Severe dehydration or unable to keep fluids down</b> Postural dizziness or syncope, oliguria, dry mucosae, tachycardia, persistent vomiting preventing oral rehydration, frail or pregnant → <span class="pill pill-red">Same-day</span> assessment ± admission for IV fluids and U&amp;E</div>
+      <div class="rftile"><b>Bloody diarrhoea with severe abdominal pain</b> Possible STEC (E. coli O157) → <span class="pill pill-red">Same-day</span> discussion; stool labelled "suspected STEC". <b>No loperamide and no antibiotic</b> without microbiology or Health Protection Team advice</div>
+      <div class="rftile"><b>Possible haemolytic uraemic syndrome</b> Reduced urine output, pallor, bruising, oedema, confusion after bloody diarrhoea → <span class="pill pill-red">Same-day</span> hospital assessment; FBC, platelets, renal function, notify HPT on suspicion</div>
+      <div class="rftile"><b>Severe or rapidly worsening C. difficile</b> Recent antibiotics or hospital stay with fever, marked abdominal pain or distension, rising WCC, AKI, or ileus with few stools → <span class="pill pill-red">Same-day</span> admission (NICE NG199)</div>
+      <div class="rftile"><b>Acute abdomen</b> Severe or localised pain, guarding, distension, bilious vomiting, pain out of proportion in an older patient (mesenteric ischaemia) → <span class="pill pill-red">Same-day</span> surgical assessment — 999 if peritonitic or shocked</div>
+      <div class="rftile"><b>Diabetes and vomiting or diarrhoea</b> Check capillary glucose and blood ketones; DKA, including euglycaemic DKA on an SGLT2 inhibitor → <span class="pill pill-red">Same-day</span> per sick-day/DKA pathway (999 if drowsy or Kussmaul breathing)</div>
+      <div class="rftile"><b>Fever after travel to a malaria area</b> Diarrhoea is a common presentation of malaria and enteric fever → <span class="pill pill-red">Same-day</span> malaria films; enteric fever needs hospital assessment</div>
+      <div class="rftile"><b>Immunocompromised or neutropenic</b> Chemotherapy within 6 weeks with fever → <span class="pill pill-red">Same-day</span> neutropenic sepsis pathway. HIV, transplant, biologics → same-day specialist advice</div>
+      <div class="rftile"><b>Adrenal insufficiency or on long-term steroids</b> Diarrhoea and vomiting risk adrenal crisis → <span class="pill pill-red">Same-day</span> — follow steroid sick-day rules; IM hydrocortisone and 999 if unable to take oral steroid and unwell</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Most deaths from gastroenteritis in adults are from dehydration and its complications in older, frail or comorbid people — not from the organism itself. Tachycardia can reflect fever, pain or anxiety, and skin turgor is unreliable in older adults, so judge the whole picture, including urine output and the ability to drink.</p>
+      <p>Loperamide and antibiotics in STEC may increase the risk of haemolytic uraemic syndrome, so bloody diarrhoea with severe abdominal pain is managed on specialist or Health Protection Team advice (UKHSA). C. difficile can be severe with few stools when ileus develops — a quiet bowel in an ill patient is not reassuring. In diabetes, SGLT2 inhibitors can cause DKA with near-normal glucose (MHRA), so check ketones rather than relying on the glucose.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2" id="node2">
+  <div class="node-header">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Focused History — Onset, Exposures and Organism Clues</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Duration &amp; pattern</div><div>Acute: under 14 days. Persistent: 14 days to 4 weeks. Chronic: 4 weeks or more (see the <a href="chronic-diarrhoea.html">chronic diarrhoea algorithm</a>). Stool frequency, volume, watery or bloody, nocturnal stools, urgency, tenesmus</div>
+      <div>Blood &amp; fever</div><div>Bloody diarrhoea + fever → invasive organism (Campylobacter, Shigella, Salmonella, STEC) or first presentation of IBD; bloody without fever + severe pain → think STEC or ischaemic colitis</div>
+      <div>Vomiting first</div><div>Vomiting-predominant, short incubation (1–6 h) → preformed toxin (Staphylococcus aureus, Bacillus cereus). Vomiting and diarrhoea in an outbreak (care home, cruise, ward) → norovirus</div>
+      <div>Food &amp; contacts</div><div>Suspect meal, barbecue, poultry, eggs, shellfish, unpasteurised milk; others ill after the same food → <b>suspected food poisoning is notifiable</b>; household or institutional contacts</div>
+      <div>Travel</div><div>Where, when, food and water exposure, fever. Travellers' diarrhoea is usually self-limiting; persisting diarrhoea after travel → Giardia, Cryptosporidium, amoebiasis; fever → malaria and enteric fever first</div>
+      <div>Antibiotics &amp; hospital</div><div>Antibiotics in the last 12 weeks (clindamycin, cephalosporins, co-amoxiclav, quinolones), recent admission or care-home residence, PPI use → <b>C. difficile</b> until the stool test says otherwise</div>
+      <div>Medication review</div><div>New or increased metformin, magnesium-containing antacids, laxatives (including covert or overuse), PPI, SSRIs, colchicine, NSAIDs, mycophenolate, chemotherapy, orlistat; also drugs that become dangerous with dehydration (see the sick-day rules in step 7)</div>
+      <div>Host factors</div><div>Age, frailty, pregnancy, diabetes, CKD, heart failure, IBD, immunosuppression (HIV, transplant, biologics, chemotherapy, long-term steroids), adrenal insufficiency</div>
+      <div>Occupation &amp; setting</div><div>Food handler, healthcare or social-care worker, nursery or school staff, or a child under 5 at nursery — these change exclusion and clearance advice (UKHSA risk groups)</div>
+      <div>Sexual history</div><div>Men who have sex with men: Shigella and other sexually transmitted enteric infections — ask sensitively; test and advise on transmission</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Incubation and the dominant symptom narrow the organism: vomiting within hours of a meal suggests a toxin; bloody diarrhoea with fever suggests an invasive bacterium; prolonged watery diarrhoea after travel suggests a parasite. Most of the time the exact organism does not change management, so the history matters most for spotting the patient who needs a stool sample, a public-health action or a different diagnosis.</p>
+      <p>C. difficile risk persists for weeks after an antibiotic course and is increased by PPIs. A new diarrhoea in an older patient recently started on metformin, or after a laxative dose increase, needs a medication fix, not a stool sample.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3" id="node3">
+  <div class="node-header">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Examination — Hydration, Sepsis and the Abdomen</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Observations</div><div>Temperature, pulse, BP (lying and standing if dizzy), respiratory rate, SpO₂, capillary refill, mental state — calculate NEWS2 where the local pathway uses it</div>
+      <div>Hydration</div><div>Mucous membranes, urine output in the last 24 h, postural symptoms, weight change. In older adults skin turgor and sunken eyes are unreliable — urine output and postural BP matter more</div>
+      <div>Abdomen</div><div>Tenderness (localised or diffuse), guarding, distension, bowel sounds, masses, hernial orifices. Right iliac fossa pain → appendicitis can present with diarrhoea; left iliac fossa → diverticulitis</div>
+      <div>Rectal examination</div><div>When the history suggests: overflow in an older or immobile patient (faecal loading), rectal mass, or blood not yet seen</div>
+      <div>Extra-intestinal clues</div><div>Rash or jaundice (hepatitis A, enteric fever), joint swelling or red eye (reactive arthritis, IBD), mouth ulcers or perianal disease (Crohn's), pallor and bruising (HUS)</div>
+      <div>Capillary glucose</div><div>In anyone with diabetes, and blood ketones if on insulin or an SGLT2 inhibitor, or unwell</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>The examination answers two questions: how dry and how septic is this person, and is there something in the abdomen that is not gastroenteritis? Diarrhoea is common in appendicitis, pelvic sepsis and mesenteric ischaemia, and "gastroenteritis" is a frequent label on delayed surgical diagnoses — particularly in older adults with pain out of proportion to the signs.</p>
+      <p>Overflow diarrhoea around impacted stool is a common and easily missed cause in frail, immobile or opioid-treated older people; giving loperamide makes it worse.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4" id="node4">
+  <div class="node-header">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — Stool Only When the Result Changes Something</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Send a stool sample if</div><div>Blood or pus in the stool · systemically unwell or fever · immunocompromised · recent antibiotics or hospital admission (request <b>C. difficile</b> testing) · diarrhoea persisting beyond 7 days · recent foreign travel · suspected food poisoning or outbreak · risk-group occupation or setting (food handler, health or social care, nursery) where clearance may be needed</div>
+      <div>How to request</div><div>One sample for <span class="pill pill-blue">MC&amp;S / PCR</span>; add <span class="pill pill-blue">ova, cysts and parasites</span> after travel or diarrhoea beyond 14 days; label "suspected STEC" if bloody; give travel and antibiotic history on the form. Do not send formed stool for C. difficile</div>
+      <div>Bloods if</div><div><span class="pill pill-blue">U&amp;E</span> and <span class="pill pill-blue">FBC</span> when dehydration is more than mild, vomiting is persistent, the patient is older, frail, on diuretics, ACE inhibitor/ARB, lithium or with CKD; <span class="pill pill-blue">CRP</span> if bloody or systemic; FBC, platelets and renal function if HUS is possible; <span class="pill pill-blue">malaria films</span> if fever after travel to a malaria area (same day)</div>
+      <div>Blood cultures</div><div>Septic, febrile after travel (enteric fever) or immunocompromised — usually in hospital</div>
+      <div>Not routinely</div><div>Stool testing for short, non-bloody diarrhoea in a well adult with no risk factor; imaging (unless an acute abdomen); faecal calprotectin during an acute infection (falsely raised)</div>
+      <div>Persistent or bloody after infection excluded</div><div>Consider first presentation of IBD — <span class="pill pill-blue">calprotectin</span> once the infection has settled, and same-day advice if acute severe colitis (6 or more bloody stools a day with tachycardia, fever, anaemia or raised CRP). Persistent change in bowel habit or rectal bleeding meeting NICE NG12 → FIT and the colorectal suspected cancer pathway (see <a href="chronic-diarrhoea.html">chronic diarrhoea</a>)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Most acute diarrhoea does not need a stool sample, but the indications above identify the patients in whom the result changes management (antibiotic choice, C. difficile treatment, IBD work-up) or public-health action (outbreak control, exclusion and clearance of food handlers and care workers). Positive laboratory results for notifiable organisms are reported by the laboratory, but clinicians must still notify suspected cases (UKHSA).</p>
+      <p>Calprotectin is raised by infective colitis, so testing during the acute episode generates false positives; test once the infection has settled if symptoms persist. Severe bloody diarrhoea meeting Truelove and Witts criteria is a medical emergency whatever the eventual cause.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5" id="node5">
+  <div class="node-header">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Differential Diagnosis — Infective, Drug, Surgical and Inflammatory</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">Viral gastroenteritis</div><div class="b-drug">Norovirus, rotavirus, adenovirus</div><div class="b-note">Vomiting prominent, outbreaks, watery stools, settles in 1–3 days. Commonest cause</div></div>
+      <div class="b-card"><div class="b-cond">Bacterial</div><div class="b-drug">Campylobacter, Salmonella, Shigella, STEC</div><div class="b-note">Fever, abdominal pain, blood or mucus; poultry, eggs, barbecues, unpasteurised milk, contacts</div></div>
+      <div class="b-card"><div class="b-cond">Toxin-mediated food poisoning</div><div class="b-drug">S. aureus, B. cereus, C. perfringens</div><div class="b-note">Onset within 1–16 h of a meal, others affected, short illness</div></div>
+      <div class="b-card"><div class="b-cond">C. difficile</div><div class="b-drug">Antibiotic-associated</div><div class="b-note">Recent antibiotics, hospital or care home, PPI, older age; watery diarrhoea ± fever, pain, raised WCC</div></div>
+      <div class="b-card"><div class="b-cond">Travel-related</div><div class="b-drug">ETEC, Giardia, amoebiasis</div><div class="b-note">Persistent watery diarrhoea, bloating (Giardia); bloody with liver abscess risk (amoebiasis); exclude malaria and enteric fever</div></div>
+      <div class="b-card"><div class="b-cond">Drug-induced</div><div class="b-drug">Metformin, laxatives, PPI, magnesium</div><div class="b-note">Timing with a new drug or dose change; also SSRIs, colchicine, NSAIDs, mycophenolate, chemotherapy</div></div>
+      <div class="b-card"><div class="b-cond">Inflammatory</div><div class="b-drug">IBD first presentation</div><div class="b-note">Bloody diarrhoea beyond 7 days, nocturnal stools, mouth ulcers, perianal disease, weight loss, family history</div></div>
+      <div class="b-card"><div class="b-cond">Older adults</div><div class="b-drug">Overflow · ischaemic colitis</div><div class="b-note">Faecal loading with leakage; sudden left-sided pain then bloody diarrhoea in a vascular patient; also diverticulitis, microscopic colitis</div></div>
+      <div class="b-card"><div class="b-cond">Surgical &amp; systemic mimics</div><div class="b-drug">Appendicitis, pelvic abscess, sepsis</div><div class="b-note">Also thyrotoxicosis, adrenal crisis, DKA, toxic shock, early hepatitis — look for the feature that does not fit</div></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Classifying by mechanism keeps the dangerous categories in view: the infective causes usually need fluids and time, the drug causes need a medication change, and the surgical, ischaemic and inflammatory causes need a different pathway altogether. In older adults the combination of sudden abdominal pain followed by bloody diarrhoea should prompt thought of ischaemic colitis, and leakage around impacted stool is the commonest cause of "diarrhoea" in the frail and immobile.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6" id="node6">
+  <div class="node-header">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Referral, Notification and Public Health</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Shock, high-risk sepsis, peritonitis, reduced consciousness, DKA with drowsiness, adrenal crisis</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Severe dehydration or unable to retain fluids · AKI or significant electrolyte disturbance · suspected HUS · severe or worsening C. difficile · acute severe colitis · acute abdomen · fever after travel to a malaria area · neutropenic sepsis · unsafe home circumstances, especially in older or frail adults</div>
+      <div>Health Protection Team</div><div>Notify on clinical suspicion — do not wait for results: <b>food poisoning</b>, infectious bloody diarrhoea, HUS, cholera, typhoid and paratyphoid, and any outbreak or cluster (for example two or more linked cases, or cases in a care home). Phone the local HPT for urgent cases; the proper officer form for the rest (UKHSA)</div>
+      <div>Microbiology / ID advice</div><div>Confirmed organism in an unwell, immunocompromised or older patient; suspected STEC; enteric fever; persistent traveller's diarrhoea with negative results</div>
+      <div>Gastroenterology</div><div>Suspected first presentation of IBD — <span class="pill pill-amber">Urgent</span> (same-day if acute severe colitis); persisting diarrhoea with negative stool tests → follow the <a href="chronic-diarrhoea.html">chronic diarrhoea algorithm</a></div>
+      <div><span class="pill pill-purple">Suspected cancer · NICE NG12</span></div><div>Not for a short infective illness — but a persistent change in bowel habit, rectal bleeding, iron-deficiency anaemia, weight loss or an abdominal or rectal mass → FIT and the colorectal suspected cancer pathway per NG12</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Registered medical practitioners have a statutory duty to notify suspected food poisoning and other notifiable diseases to the proper officer, on clinical suspicion and without waiting for laboratory confirmation (Health Protection (Notification) Regulations 2010). Early notification lets the HPT identify outbreaks, trace contaminated food and arrange clearance testing for people in risk groups.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7" id="node7">
+  <div class="node-header">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Management at This Consultation</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">Everyone</div><div class="b-drug">Fluids first <span class="pill pill-teal">First-line</span></div><div class="b-note">Small frequent drinks; ordinary fluids if not dehydrated. <b>Oral rehydration salts</b> if dehydration risk is higher (older, frail, comorbid, pregnant, high stool output): usual adult use is 200–400 mL after each loose stool, per the product SPC. Eat normally as tolerated</div></div>
+      <div class="b-card"><div class="b-cond">Symptom relief (selected adults)</div><div class="b-drug">Loperamide <span class="pill pill-amber">Only if no blood or fever</span></div><div class="b-note">Usual adult dose: 4 mg first, then 2 mg after each loose stool, maximum 16 mg in 24 h, for up to 5 days (SPC). <b>Not</b> with blood in the stool, fever, suspected C. difficile or STEC, or IBD flare</div></div>
+      <div class="b-card"><div class="b-cond">Suspected C. difficile</div><div class="b-drug">Stop the trigger, send stool</div><div class="b-note">Review and stop the causative antibiotic if possible; review PPI. Avoid loperamide and opioids. Confirmed: oral vancomycin first-line per NICE NG199 — usual adult dose 125 mg four times a day for 10 days (SPC); severe → same-day</div></div>
+      <div class="b-card"><div class="b-cond">Antibiotics</div><div class="b-drug">Not routine</div><div class="b-note">Do not prescribe empirically for acute infective diarrhoea. Septic, severely immunocompromised, suspected enteric fever or cholera, or a confirmed organism that needs treatment → discuss with microbiology and follow local antimicrobial guidance</div></div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Step 1</span><span class="rt"><b>Assess and document hydration</b> — decide home, supervised oral rehydration, or same-day assessment. Give the patient a clear drinking plan</span></div>
+      <div class="rung"><span class="rn">Step 2</span><span class="rt"><b>Sick-day rules</b> — while unable to keep fluids down or with significant diarrhoea, temporarily pause metformin, SGLT2 inhibitors, ACE inhibitors and ARBs, diuretics, NSAIDs and (on the local plan) sulfonylureas; restart 24–48 h after eating and drinking normally. Insulin: never stop — check glucose and ketones. Steroid-dependent: double the oral glucocorticoid dose per steroid sick-day rules. Lithium, DOACs and other renally cleared drugs: consider checking U&amp;E</span></div>
+      <div class="rung"><span class="rn">Step 3</span><span class="rt"><b>Medication cause</b> — reduce or stop the culprit (metformin dose reduction or modified-release; stop or reduce laxatives; review PPI, magnesium, colchicine)</span></div>
+      <div class="rung"><span class="rn">Step 4</span><span class="rt"><b>Exclusion and notification</b> — stay off work, school or care settings until <b>48 hours</b> after the last episode of diarrhoea or vomiting; longer or with clearance samples for risk-group occupations and some organisms (STEC, typhoid, Shigella) on HPT advice. Notify suspected food poisoning</span></div>
+      <div class="rung"><span class="rn">Step 5</span><span class="rt"><b>Contraception</b> — severe diarrhoea or vomiting can reduce oral contraceptive absorption: follow FSRH missed-pill advice and use condoms</span></div>
+    </div>
+    <p class="alg-next"><b>Next steps:</b> see <a href="../management/gastroenteritis.html">Gastroenteritis</a> · <a href="../management/sick-day-rules.html">Sick day rules</a> · <a href="../management/ibs.html">Irritable bowel syndrome</a> · <a href="../management/ulcerative-colitis.html">Ulcerative colitis</a> · <a href="../management/crohns-disease.html">Crohn's disease</a></p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Rehydration is the treatment; feeding should continue. Loperamide shortens watery diarrhoea in adults but should be avoided when there is blood, fever or a possible C. difficile or STEC infection, where slowing the bowel may worsen toxin-mediated disease. Antibiotics shorten some bacterial infections by about a day but drive resistance and C. difficile and may increase HUS risk in STEC, so they are kept for specific indications on microbiology advice.</p>
+      <p>Dehydration plus metformin, SGLT2 inhibitors, ACE inhibitors/ARBs, diuretics and NSAIDs is a common route to AKI, lactic acidosis or DKA; a temporary pause with a clear restart instruction prevents most of these admissions. The 48-hour exclusion rule reflects continued shedding after symptoms stop, especially with norovirus.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8" id="node8">
+  <div class="node-header">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Self-Care, Hygiene and Preventing Spread</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="lsgrid">
+      <div class="lstile"><b>Hand hygiene</b> Wash hands with soap and water after the toilet and before preparing food — alcohol gel does not kill norovirus or C. difficile spores.</div>
+      <div class="lstile"><b>Household</b> Do not share towels; clean toilet seats, flush handles and taps daily with bleach-based products; wash soiled laundry on a hot cycle.</div>
+      <div class="lstile"><b>Food handling</b> Do not prepare food for others until 48 hours symptom-free (longer if HPT advises for a food handler).</div>
+      <div class="lstile"><b>Swimming</b> No swimming for 48 hours after symptoms stop, and 14 days after Cryptosporidium.</div>
+      <div class="lstile"><b>Diet</b> Eat normally as tolerated; small, plain meals help. Avoid alcohol until recovered. Temporary lactose intolerance after infection can prolong loose stools.</div>
+      <div class="lstile"><b>Travel</b> Before future travel: food and water hygiene, ORS sachets in the travel kit; standby antibiotics are not routinely advised.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Norovirus is highly infectious, survives on surfaces and is not killed by alcohol gel; soap and water and bleach-based cleaning are the effective measures. Cryptosporidium oocysts resist chlorine, hence the longer swimming restriction (UKHSA).</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9" id="node9">
+  <div class="node-header">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up and Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>Collapse, confusion or drowsiness, cold mottled skin, severe abdominal pain, vomiting blood or passing large amounts of blood</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Unable to keep fluids down for 24 h (sooner if older, frail, pregnant or diabetic), passing very little urine, dizziness on standing, blood in the stool, high fever, worsening abdominal pain, blood glucose or ketones rising, or after bloody diarrhoea: passing less urine, pallor, bruising or swelling</div>
+      <div>Review</div><div>If not settling in 7 days, or sooner if risk factors — send stool if not already done. Persisting beyond 14 days → persistent diarrhoea work-up; 4 weeks or more → <a href="chronic-diarrhoea.html">chronic diarrhoea algorithm</a></div>
+      <div>Results</div><div>Act on stool results (C. difficile, notifiable organisms, parasites); check U&amp;E if drugs were paused or AKI risk; confirm restart of paused medicines</div>
+      <div>Remote consultations</div><div>Convert to face-to-face or same-day assessment if hydration cannot be judged, the patient is older, frail or has red flags, or a second contact for the same illness</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Most acute infective diarrhoea settles within 7 days. Persistence beyond this prompts stool testing and reconsideration of C. difficile, parasites, IBD and drug causes. A clear, specific safety-net — especially about urine output and blood in the stool — is the main protection against delayed recognition of dehydration, HUS and colitis.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: UKHSA guidance on gastrointestinal infections, notifiable diseases and exclusion (current), UKHSA/NICE NG199 (Clostridioides difficile infection: antimicrobial prescribing, 2021), NICE NG253 (Suspected sepsis in over-16s, 2025), NICE NG12 (Suspected cancer: recognition and referral, updated April 2026), NICE CKS Gastroenteritis (2024), NICE CG84 (Diarrhoea and vomiting in under-5s — children are not covered here), Think Kidneys / NHS sick-day guidance, MHRA Drug Safety Updates (SGLT2 inhibitors and diabetic ketoacidosis), product SPCs for loperamide and oral rehydration salts. Children: use the children's pathway and the BNFC. Check doses against the current SPC, BNF and local formulary. Not a substitute for clinical judgement.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.acute-diarrhoea.v1';
+  const nodes=document.querySelectorAll('.node[data-step]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state={};
+    nodes.forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});
+    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+  function load(){
+    try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');
+      nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(s[n.dataset.step]){cb.checked=true;n.classList.add('done');}});}catch(e){}
+  }
+  function updateProgress(){
+    const done=document.querySelectorAll('.node.done').length;
+    pDone.textContent=done;
+    pFill.style.width=((done/total)*100)+'%';
+  }
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{
+      n.classList.toggle('done',cb.checked);
+      save();updateProgress();
+    });
+  });
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!expanded));
+      btn.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    if(!confirm('Reset all progress?'))return;
+    nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});
+    localStorage.removeItem(KEY);updateProgress();
+  });
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=3"></script>
+<script src="../../assets/topic-links.js?v=10"></script>
+<script src="../../assets/alg-diagram.js"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+</body>
+</html>

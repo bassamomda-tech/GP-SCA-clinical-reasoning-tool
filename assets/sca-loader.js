@@ -5,7 +5,7 @@
       enrichment files) in exactly the same order as
       tools/sca-practice.html, so every SCA tool sees the same cases.
       Use it as a plain (non-async) script, after site.js:
-        <script src="../assets/sca-loader.js?v=1"></script>
+        <script src="../assets/sca-loader.js?v=2"></script>
       Add data-cases="none" when the page already lists the case
       files itself (sca-practice.html) and only wants the helpers.
       KEEP THE FILE LIST BELOW IN STEP WITH sca-practice.html: when
@@ -25,32 +25,32 @@
   'use strict';
 
   var FILES = [
-    'sca-cases.js?v=3', 'sca-extras.js?v=3',
-    'sca-cases2.js?v=4', 'sca-cases3.js?v=3', 'sca-cases4.js?v=3', 'sca-cases5.js?v=2',
-    'sca-cases6.js?v=2', 'sca-cases7.js?v=3', 'sca-cases8.js?v=3', 'sca-cases9.js?v=2',
-    'sca-cases10.js?v=3', 'sca-cases11.js?v=3', 'sca-cases12.js?v=4', 'sca-cases13.js?v=2',
-    'sca-cases14.js?v=5', 'sca-cases15.js?v=4', 'sca-cases16.js?v=3', 'sca-cases17.js?v=3',
-    'sca-cases18.js?v=3', 'sca-cases19.js?v=3', 'sca-cases20.js?v=3', 'sca-cases21.js?v=4',
-    'sca-cases22.js?v=4', 'sca-cases23.js?v=2', 'sca-cases24.js?v=4', 'sca-cases25.js?v=3',
-    'sca-cases26.js?v=4', 'sca-cases27.js?v=3', 'sca-cases28.js?v=4', 'sca-cases29.js?v=2',
-    'sca-cases30.js?v=3', 'sca-cases31.js?v=3', 'sca-cases32.js?v=4', 'sca-cases33.js?v=4',
-    'sca-cases34.js?v=3', 'sca-cases35.js?v=3', 'sca-cases36.js?v=3', 'sca-cases37.js?v=3',
-    'sca-cases38.js?v=3', 'sca-cases39.js?v=4', 'sca-cases40.js?v=2', 'sca-cases41.js?v=3',
-    'sca-cases42.js?v=2', 'sca-cases43.js?v=3', 'sca-cases44.js?v=2', 'sca-cases45.js?v=3',
-    'sca-cases46.js?v=3', 'sca-cases47.js?v=3', 'sca-cases48.js?v=2', 'sca-cases49.js?v=4',
-    'sca-cases50.js?v=3', 'sca-cases51.js?v=2', 'sca-cases52.js?v=3', 'sca-cases53.js?v=2',
-    'sca-cases54.js?v=4', 'sca-cases55.js?v=2', 'sca-cases56.js?v=2', 'sca-cases57.js?v=3',
-    'sca-cases58.js?v=4', 'sca-cases59.js?v=3', 'sca-cases60.js?v=2', 'sca-cases61.js?v=4',
-    'sca-cases62.js?v=2', 'sca-cases63.js?v=2', 'sca-cases64.js?v=4', 'sca-cases65.js?v=3',
-    'sca-cases66.js?v=3', 'sca-cases67.js?v=3', 'sca-cases68.js?v=2', 'sca-cases69.js?v=2',
-    'sca-cases70.js?v=3', 'sca-cases71.js?v=2', 'sca-cases72.js?v=3', 'sca-cases73.js?v=2',
-    'sca-cases74.js?v=3', 'sca-cases75.js?v=5', 'sca-cases76.js?v=3', 'sca-cases77.js?v=3',
-    'sca-cases78.js?v=6', 'sca-cases79.js?v=3', 'sca-cases80.js?v=4',
-    'sca-models.js?v=10', 'sca-enrich.js?v=13', 'sca-knowledge.js?v=10', 'sca-pitfalls.js?v=3',
-    'sca-addons-1.js?v=5', 'sca-addons-2.js?v=4', 'sca-addons-3.js?v=6', 'sca-addons-4.js?v=7',
-    'sca-addons-5.js?v=5', 'sca-addons-6.js?v=4', 'sca-addons-7.js?v=5', 'sca-addons-8.js?v=3',
-    'sca-addons-9.js?v=4', 'sca-addons-10.js?v=4', 'sca-addons-11.js?v=4', 'sca-addons-12.js?v=2',
-    'sca-addons-13.js?v=3', 'sca-addons-14.js?v=3', 'sca-addons-15.js?v=6'
+    'sca-cases.js?v=4', 'sca-extras.js?v=4',
+    'sca-cases2.js?v=5', 'sca-cases3.js?v=4', 'sca-cases4.js?v=4', 'sca-cases5.js?v=3',
+    'sca-cases6.js?v=3', 'sca-cases7.js?v=4', 'sca-cases8.js?v=4', 'sca-cases9.js?v=3',
+    'sca-cases10.js?v=4', 'sca-cases11.js?v=4', 'sca-cases12.js?v=5', 'sca-cases13.js?v=3',
+    'sca-cases14.js?v=6', 'sca-cases15.js?v=5', 'sca-cases16.js?v=4', 'sca-cases17.js?v=4',
+    'sca-cases18.js?v=4', 'sca-cases19.js?v=4', 'sca-cases20.js?v=4', 'sca-cases21.js?v=5',
+    'sca-cases22.js?v=5', 'sca-cases23.js?v=3', 'sca-cases24.js?v=5', 'sca-cases25.js?v=4',
+    'sca-cases26.js?v=5', 'sca-cases27.js?v=4', 'sca-cases28.js?v=5', 'sca-cases29.js?v=3',
+    'sca-cases30.js?v=4', 'sca-cases31.js?v=4', 'sca-cases32.js?v=5', 'sca-cases33.js?v=5',
+    'sca-cases34.js?v=4', 'sca-cases35.js?v=4', 'sca-cases36.js?v=4', 'sca-cases37.js?v=4',
+    'sca-cases38.js?v=4', 'sca-cases39.js?v=5', 'sca-cases40.js?v=3', 'sca-cases41.js?v=4',
+    'sca-cases42.js?v=3', 'sca-cases43.js?v=4', 'sca-cases44.js?v=3', 'sca-cases45.js?v=4',
+    'sca-cases46.js?v=4', 'sca-cases47.js?v=4', 'sca-cases48.js?v=3', 'sca-cases49.js?v=5',
+    'sca-cases50.js?v=4', 'sca-cases51.js?v=3', 'sca-cases52.js?v=4', 'sca-cases53.js?v=3',
+    'sca-cases54.js?v=5', 'sca-cases55.js?v=3', 'sca-cases56.js?v=3', 'sca-cases57.js?v=4',
+    'sca-cases58.js?v=5', 'sca-cases59.js?v=4', 'sca-cases60.js?v=3', 'sca-cases61.js?v=5',
+    'sca-cases62.js?v=3', 'sca-cases63.js?v=3', 'sca-cases64.js?v=5', 'sca-cases65.js?v=4',
+    'sca-cases66.js?v=4', 'sca-cases67.js?v=4', 'sca-cases68.js?v=3', 'sca-cases69.js?v=3',
+    'sca-cases70.js?v=4', 'sca-cases71.js?v=3', 'sca-cases72.js?v=4', 'sca-cases73.js?v=3',
+    'sca-cases74.js?v=4', 'sca-cases75.js?v=6', 'sca-cases76.js?v=4', 'sca-cases77.js?v=4',
+    'sca-cases78.js?v=7', 'sca-cases79.js?v=4', 'sca-cases80.js?v=5', 'sca-cases-new-p.js?v=1', 'sca-cases-new-q.js?v=1', 'sca-cases-new-r.js?v=1',
+    'sca-models.js?v=11', 'sca-enrich.js?v=14', 'sca-knowledge.js?v=10', 'sca-pitfalls.js?v=4',
+    'sca-addons-1.js?v=6', 'sca-addons-2.js?v=5', 'sca-addons-3.js?v=7', 'sca-addons-4.js?v=8',
+    'sca-addons-5.js?v=6', 'sca-addons-6.js?v=5', 'sca-addons-7.js?v=6', 'sca-addons-8.js?v=4',
+    'sca-addons-9.js?v=5', 'sca-addons-10.js?v=5', 'sca-addons-11.js?v=5', 'sca-addons-12.js?v=3',
+    'sca-addons-13.js?v=4', 'sca-addons-14.js?v=4', 'sca-addons-15.js?v=7'
   ];
 
   var me = document.currentScript;
@@ -132,10 +132,11 @@
     stem:stemOf, isFree:isFree, freeFirst:freeFirst, freeOnly:freeOnly, freeIds:freeIds, files:FILES.slice() };
 
   /* ---------- load the case library ---------- */
-  if (me && me.getAttribute('data-cases') === 'none') return;
+  if (me && me.getAttribute('data-cases') === 'none') { if (window.SCA_RCGP) window.SCA_RCGP.normaliseAll(); return; }
   if (document.readyState !== 'loading') { if (window.console) console.warn('sca-loader.js must be a plain script tag in the page'); return; }
   var base = (me && me.src) ? me.src.replace(/sca-loader\.js[^\/]*$/, '') : '../assets/';
   var html = '';
   for (var i = 0; i < FILES.length; i++) html += '<script src="' + base + FILES[i] + '"><\/script>';
+  html += '<script>window.SCA_RCGP && window.SCA_RCGP.normaliseAll();<\/script>';
   document.write(html);
 })();

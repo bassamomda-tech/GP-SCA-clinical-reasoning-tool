@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Urinary Frequency, Urgency and Nocturia Algorithm · Reasoning GP</title>
+<meta name="description" content="Urinary Frequency, Urgency and Nocturia: Separate polyuria from small-volume frequency · UTI, overactive bladder, diabetes, hypercalcaemia, drugs, heart failure and nocturnal polyuria, prostate, prolapse, bladder pain syndrome · NG12 haematuria criteria">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Urinary Frequency, Urgency and Nocturia Algorithm">
+<meta property="og:description" content="Urinary Frequency, Urgency and Nocturia: Separate polyuria from small-volume frequency · UTI, overactive bladder, diabetes, hypercalcaemia, drugs, heart failure and nocturnal polyuria, prostate, prolapse, bladder pain syndrome · NG12 haematuria criteria">
+<meta property="og:url" content="https://gpreasoning.uk/tools/algorithms/urinary-frequency.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/urinary-frequency.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+.alg-next{margin:12px 0 2px;padding:9px 12px;background:var(--treat-bg);border:1px solid #bbf7d0;border-radius:8px;font-size:.84rem;line-height:1.55}
+.alg-next a{color:#0f766e;font-weight:600}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body>
+
+<div class="alg-header">
+  <h1>🚻 Urinary Frequency, Urgency and Nocturia</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta">
+    <span>NICE NG123</span><span>NICE CG97</span><span>NICE NG12</span><span>NICE TA290</span><span>MHRA</span><span>10-min consult</span>
+  </div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🚻</div>
+  <div>
+    <b>Urinary Frequency, Urgency and Nocturia — Adults</b>
+    <small>Separate polyuria from small-volume frequency · UTI, overactive bladder, diabetes, hypercalcaemia, drugs, heart failure and nocturnal polyuria, prostate, prolapse, bladder pain syndrome · NG12 haematuria criteria</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/urinary-frequency.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/urinary-frequency.html">⬇ Download PDF</button><a class="sum-open" href="one-page/urinary-frequency.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/urinary-frequency.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1" id="node1">
+  <div class="node-header">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Retention, Cord Compression, Sepsis and the Cancer Routes</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<p class="intro-note">Frequency is a symptom with two quite different mechanisms: passing large volumes (polyuria — diabetes, hypercalcaemia, drugs, fluid intake, nocturnal polyuria) or passing small volumes often (bladder or outlet problem). Screen for the dangerous causes first.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Saddle anaesthesia, new bladder or bowel dysfunction, bilateral leg weakness</b> Cauda equina or spinal cord compression → <span class="pill pill-red">999</span> or same-day emergency assessment per local pathway</div>
+      <div class="rftile"><b>Acute urinary retention</b> Painful inability to pass urine, palpable tender bladder → <span class="pill pill-red">Same-day</span> catheterisation / urology</div>
+      <div class="rftile"><b>Chronic retention with renal impairment</b> Painless palpable bladder, overflow dribbling, nocturnal enuresis, rising creatinine → <span class="pill pill-red">Same-day</span> urology (high-pressure retention)</div>
+      <div class="rftile"><b>Fever, rigors, loin pain</b> Pyelonephritis or urosepsis → <span class="pill pill-red">Same-day</span>; 999 if high-risk sepsis criteria (NICE NG253). Men with febrile UTI → think acute prostatitis</div>
+      <div class="rftile"><b>Polyuria, thirst, weight loss, ketones</b> New diabetes with possible DKA or hyperosmolar state → <span class="pill pill-red">Same-day</span> (999 if drowsy, vomiting, Kussmaul breathing)</div>
+      <div class="rftile"><b>Visible haematuria aged 45 or over</b> Unexplained without UTI, or persisting or recurring after successful UTI treatment → <span class="pill pill-purple">Suspected cancer</span> bladder and renal suspected cancer pathway referral (NICE NG12)</div>
+      <div class="rftile"><b>Non-visible haematuria aged 60 or over</b> With dysuria or a raised white cell count → <span class="pill pill-purple">Suspected cancer</span> bladder suspected cancer pathway referral (NICE NG12) — see the <a href="haematuria.html">haematuria algorithm</a></div>
+      <div class="rftile"><b>Hard, irregular or craggy prostate</b> → <span class="pill pill-purple">Suspected cancer</span> prostate suspected cancer pathway referral regardless of PSA</div>
+      <div class="rftile"><b>Persistent urgency or frequency with bloating, early satiety or pelvic pain</b> Woman aged 40 or over → <span class="pill pill-purple">Suspected cancer</span> CA125 and ultrasound per NICE NG12 ovarian criteria; pelvic mass → suspected cancer pathway referral</div>
+      <div class="rftile"><b>Polyuria with confusion, constipation, abdominal pain</b> Possible hypercalcaemia → <span class="pill pill-red">Same-day</span> calcium; adjusted calcium above 3.5 mmol/L, or 3.0–3.5 mmol/L with symptoms → same-day admission (see the <a href="hypercalcaemia.html">hypercalcaemia algorithm</a>)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Chronic retention is often painless and presents as frequency, nocturia or "incontinence"; a palpable bladder with renal impairment is high-pressure retention that threatens the kidneys. New bladder symptoms with back pain or neurological symptoms must prompt questions about saddle sensation and leg weakness.</p>
+      <p>NICE NG12 (updated April 2026) uses visible haematuria at 45 or over (unexplained, or persisting after UTI treatment) and non-visible haematuria at 60 or over with dysuria or a raised white cell count as suspected cancer pathway criteria; a hard, irregular prostate needs referral regardless of the PSA; and persistent urinary urgency or frequency is one of the ovarian cancer symptoms that should prompt a CA125 in women aged 40 or over.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2" id="node2">
+  <div class="node-header">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>History — Volume, Pattern and Bother</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Big or small volumes?</div><div>Large volumes each time with thirst → <b>polyuria</b> (diabetes mellitus, hypercalcaemia, diuretics, lithium, high fluid or caffeine intake, rarely diabetes insipidus). Small volumes with urgency → <b>bladder or outlet</b> cause</div>
+      <div>Storage symptoms</div><div>Urgency, frequency (more than 8 voids a day), nocturia, urgency incontinence → overactive bladder (OAB), UTI, bladder pain syndrome, bladder stone or tumour</div>
+      <div>Voiding symptoms</div><div>Hesitancy, weak or intermittent stream, straining, terminal dribble, incomplete emptying → bladder outlet obstruction (prostate in men; prolapse or urethral stricture), underactive bladder</div>
+      <div>Acute with dysuria</div><div>Dysuria, new urgency, cloudy or offensive urine, suprapubic pain → UTI (see the <a href="dysuria.html">dysuria algorithm</a>); in younger adults consider STIs (urethritis)</div>
+      <div>Nocturia</div><div>How many times; volumes at night; ankle swelling, breathlessness lying flat (heart failure); snoring and apnoeas (OSA); evening fluids, alcohol and caffeine; timing of diuretics</div>
+      <div>Pain</div><div>Bladder pain relieved by voiding, worse with filling, with frequency and no infection → <b>bladder pain syndrome / interstitial cystitis</b>; pelvic pain in women → endometriosis</div>
+      <div>Women</div><div>Vaginal bulge or dragging (prolapse), stress leakage, menopausal symptoms (genitourinary syndrome of menopause), pregnancy, previous pelvic surgery or radiotherapy</div>
+      <div>Men</div><div>Prostate symptoms; use the <span class="pill pill-blue">IPSS</span> to quantify; erectile dysfunction; family history of prostate cancer; Black ethnicity (higher prostate cancer risk)</div>
+      <div>Drugs &amp; intake</div><div>Diuretics, SGLT2 inhibitors, lithium, calcium channel blockers (nocturia via oedema), anticholinergics or opioids (retention), ketamine use (ulcerative cystitis); daily fluid, caffeine and alcohol intake</div>
+      <div>Neurological</div><div>MS, Parkinson's, stroke, spinal disease, diabetes (neuropathic bladder), cognitive impairment</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>The first question — "large or small amounts?" — divides the differential in half. A 3-day frequency-volume chart answers it objectively and also shows total intake, functional bladder capacity and the proportion of urine passed at night. In men, splitting voiding from storage symptoms decides whether an alpha-blocker or an OAB treatment is likely to help (NICE CG97).</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3" id="node3">
+  <div class="node-header">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Examination</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>General</div><div>BP, pulse, temperature; weight and BMI; oedema, JVP and chest if nocturia (heart failure); signs of dehydration in polyuria</div>
+      <div>Abdomen</div><div>Palpable bladder (retention), renal angle tenderness, pelvic or abdominal mass</div>
+      <div>Men</div><div>External genitalia (phimosis, meatal stenosis) and <b>digital rectal examination</b> — prostate size, consistency, nodules, tenderness (prostatitis)</div>
+      <div>Women</div><div>Vaginal examination with consent if prolapse, atrophy, pelvic mass or pain: prolapse (bulge on straining), vaginal atrophy, pelvic floor contraction, pelvic mass</div>
+      <div>Neurological</div><div>When suggested by history: lower-limb power, reflexes, sensation including saddle area; anal tone if cauda equina is a concern (in the emergency setting)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>NICE CG97 asks for an examination of the abdomen, external genitalia and a digital rectal examination in men with LUTS; NG123 asks for a pelvic examination in women with urinary symptoms to look for prolapse, atrophy and pelvic floor function. A palpable bladder after voiding changes the whole plan.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4" id="node4">
+  <div class="node-header">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Everyone</div><div><span class="pill pill-blue">Urine dipstick</span>: nitrites and leucocytes (UTI), blood (haematuria criteria), glucose, protein. Send <span class="pill pill-blue">urine culture</span> if UTI suspected in men, pregnancy, over 65, recurrent or treatment failure (NICE NG109)</div>
+      <div>Frequency-volume chart</div><div><span class="pill pill-blue">3-day bladder diary</span>: voids, volumes, intake, leakage. <b>Nocturnal polyuria</b> if more than about 33% of 24-hour output is passed at night in older adults; global polyuria if more than about 40 mL/kg in 24 h</div>
+      <div>Polyuria</div><div><span class="pill pill-blue">HbA1c or glucose</span>, <span class="pill pill-blue">U&amp;E</span>, <span class="pill pill-blue">adjusted calcium</span>; lithium level if on lithium. Consider <span class="pill pill-blue">NT-proBNP</span> if heart failure is suspected (NICE NG106)</div>
+      <div>Men</div><div><span class="pill pill-blue">U&amp;E</span> if renal impairment or retention suspected. <b>PSA</b>: offer counselling on the benefits and limits (Prostate Cancer Risk Management Programme) and test if LUTS suggest bladder outlet obstruction from an enlarged prostate, the prostate feels abnormal, or the patient wants it after counselling; in men with LUTS, NG12 asks you to consider PSA and DRE — use NG12 age-specific thresholds (see the <a href="high-psa.html">high PSA algorithm</a>)</div>
+      <div>Post-void residual</div><div><span class="pill pill-blue">Bladder scan</span> if incomplete emptying, palpable bladder, neurological disease or before an antimuscarinic in at-risk patients</div>
+      <div>Not routinely</div><div>Cystoscopy, urodynamics or imaging before initial conservative treatment (unless red flags); urine cytology</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>The bladder diary is the most informative free test in this presentation (NICE NG123 and CG97): it separates high intake, global polyuria and nocturnal polyuria from OAB, which need completely different treatments. PSA testing in men with LUTS is offered after a balanced discussion of false positives and negatives; a hard or irregular prostate needs referral whatever the PSA.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5" id="node5">
+  <div class="node-header">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Differential Diagnosis — Polyuria or Bladder?</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">Infection</div><div class="b-drug">UTI · prostatitis · urethritis</div><div class="b-note">Acute dysuria, urgency, positive nitrites; fever or perineal pain in men → prostatitis</div></div>
+      <div class="b-card"><div class="b-cond">Overactive bladder</div><div class="b-drug">Urgency ± urge incontinence</div><div class="b-note">Small volumes, normal urine, often idiopathic; worse with caffeine and alcohol</div></div>
+      <div class="b-card"><div class="b-cond">Polyuria</div><div class="b-drug">Diabetes · hypercalcaemia · drugs</div><div class="b-note">Large volumes and thirst; diuretics, SGLT2 inhibitors, lithium (nephrogenic DI), high fluid or caffeine intake</div></div>
+      <div class="b-card"><div class="b-cond">Nocturnal polyuria</div><div class="b-drug">Heart failure · OSA · evening fluids</div><div class="b-note">Diary: much of the output at night; oedema redistribution, CKD, older age</div></div>
+      <div class="b-card"><div class="b-cond">Men — outlet</div><div class="b-drug">Benign prostatic enlargement</div><div class="b-note">Voiding symptoms, enlarged smooth prostate; often mixed with OAB — see <a href="../management/male-luts.html">male LUTS</a></div></div>
+      <div class="b-card"><div class="b-cond">Women — pelvic</div><div class="b-drug">Prolapse · atrophy · pregnancy</div><div class="b-note">Bulge, incomplete emptying; vaginal dryness and urgency after menopause; early pregnancy</div></div>
+      <div class="b-card"><div class="b-cond">Bladder pain syndrome</div><div class="b-drug">Interstitial cystitis</div><div class="b-note">Pain with filling relieved by voiding, sterile urine, often for months; consider ketamine cystitis</div></div>
+      <div class="b-card"><div class="b-cond">Must-not-miss</div><div class="b-drug">Retention · tumour · stone · neuro</div><div class="b-note">Chronic retention, bladder carcinoma (haematuria, smoker), carcinoma in situ (irritative symptoms, sterile pyuria), bladder stone, MS or cord lesion</div></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Persistent irritative symptoms with sterile pyuria or non-visible haematuria in a smoker should make you think of bladder carcinoma in situ, which mimics OAB. In older adults nocturia is commonly multifactorial: nocturnal polyuria, reduced bladder capacity, prostate disease and sleep disturbance all contribute, so the diary guides which factor to treat first.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6" id="node6">
+  <div class="node-header">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Referral Criteria</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Suspected cauda equina or cord compression (or same-day emergency pathway locally); high-risk sepsis</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Acute retention; chronic retention with renal impairment; pyelonephritis not manageable at home; suspected DKA or hyperosmolar state; symptomatic hypercalcaemia</div>
+      <div><span class="pill pill-purple">Suspected cancer · NICE NG12</span></div><div>Visible haematuria aged 45 or over (unexplained, or after UTI treated); non-visible haematuria aged 60 or over with dysuria or raised white cell count; abnormal prostate on DRE or PSA above the age-specific threshold; pelvic mass; raised CA125 with abnormal ultrasound</div>
+      <div>Urology</div><div>Recurrent or persistent UTI in men, bladder pain syndrome not settling, suspected stone, palpable bladder after voiding, LUTS not responding to conservative and drug treatment, men wanting to discuss surgery (NICE CG97)</div>
+      <div>Urogynaecology</div><div>Symptomatic prolapse at or beyond the introitus, OAB failing conservative and two drug options, previous pelvic surgery, voiding dysfunction in women (NICE NG123)</div>
+      <div>Other</div><div>Diabetes insipidus suspected (normal glucose and calcium with dilute polyuria) → endocrinology; heart failure → NT-proBNP pathway; OSA → sleep service</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Most frequency and nocturia is managed in primary care after excluding infection, polyuria and red flags. Specialist referral is for retention, suspected cancer, persistent or recurrent infection in men, refractory OAB and women with significant prolapse or voiding problems.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7" id="node7">
+  <div class="node-header">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Management at This Consultation</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">UTI</div><div class="b-drug">Treat per NICE NG109</div><div class="b-note">Non-pregnant women: nitrofurantoin (if eGFR 45 or more) or trimethoprim for 3 days per local resistance; men: 7 days and send culture. Doses per local antimicrobial guidance</div></div>
+      <div class="b-card"><div class="b-cond">Overactive bladder</div><div class="b-drug">Bladder training <span class="pill pill-teal">First-line</span></div><div class="b-note">At least 6 weeks of scheduled voiding with gradually longer intervals; women — supervised pelvic floor training if mixed incontinence; reduce caffeine</div></div>
+      <div class="b-card"><div class="b-cond">OAB not helped by training</div><div class="b-drug">Antimuscarinic — mind the anticholinergic burden</div><div class="b-note">Lowest-burden choice from the local formulary, for example solifenacin usual adult dose 5 mg once daily (SPC). Avoid oxybutynin immediate-release in frail older women (NICE NG123). Check post-void residual and cognitive status; review at 4 weeks</div></div>
+      <div class="b-card"><div class="b-cond">Antimuscarinic unsuitable, ineffective or not tolerated</div><div class="b-drug">Mirabegron (or vibegron)</div><div class="b-note">Mirabegron usual adult dose 50 mg once daily; 25 mg in moderate renal or hepatic impairment (SPC, NICE TA290). Check BP before and during — contraindicated in severe uncontrolled hypertension, 180/110 mmHg or more (MHRA)</div></div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">Polyuria</span><span class="rt"><b>Treat the cause</b> — new diabetes (start the diabetes pathway same day if symptomatic hyperglycaemia), hypercalcaemia work-up, review diuretic timing (take in the morning), lithium review with the mental health team</span></div>
+      <div class="rung"><span class="rn">Nocturia</span><span class="rt"><b>Diary-led</b> — reduce evening fluid, caffeine and alcohol; raise legs in the afternoon if oedema; treat heart failure or OSA. Desmopressin for nocturnal polyuria only after excluding other causes and with sodium checks (hyponatraemia risk — extra caution and sodium monitoring at 65 or over, per MHRA and the SPC; often on specialist advice)</span></div>
+      <div class="rung"><span class="rn">Men — voiding</span><span class="rt"><b>Moderate to severe voiding symptoms</b> — offer an alpha-blocker, for example tamsulosin modified-release usual adult dose 400 micrograms once daily (SPC); warn about postural hypotension and floppy iris syndrome before cataract surgery. 5-alpha reductase inhibitor if prostate is large or PSA raised and high progression risk — see <a href="../management/male-luts.html">male LUTS</a></span></div>
+      <div class="rung"><span class="rn">Women — atrophy</span><span class="rt"><b>Vaginal oestrogen</b> for OAB with vaginal atrophy in postmenopausal women (NICE NG123); <b>prolapse</b> — pelvic floor training, pessary or referral</span></div>
+      <div class="rung"><span class="rn">Bladder pain</span><span class="rt"><b>Bladder pain syndrome</b> — exclude infection and carcinoma in situ; diet trial, analgesia, refer if persistent</span></div>
+    </div>
+    <p class="alg-next"><b>Next steps:</b> see <a href="../management/female-urinary-incontinence.html">Female urinary incontinence</a> · <a href="../management/male-luts.html">Male LUTS</a> · <a href="../management/benign-prostate-enlargement.html">Benign prostate enlargement</a> · <a href="../management/uti-women.html">UTI in women</a> · <a href="../management/uti-men.html">UTI in men</a> · <a href="../management/recurrent-uti.html">Recurrent UTI</a> · <a href="../management/pelvic-organ-prolapse.html">Pelvic organ prolapse</a> · <a href="../management/prostatitis.html">Prostatitis</a></p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Bladder training is first-line for OAB in women and men and works for many without medication (NICE NG123, CG97). Antimuscarinics add a cumulative anticholinergic load that is linked with cognitive impairment, falls and constipation in older people; NICE NG123 asks clinicians to consider the anticholinergic burden and not to offer immediate-release oxybutynin to frail older women. Mirabegron avoids the anticholinergic effect but can raise BP, hence the MHRA advice to measure it before and during treatment.</p>
+      <p>Nocturia is often nocturnal polyuria, which an antimuscarinic will not fix; desmopressin causes hyponatraemia, particularly in older people.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8" id="node8">
+  <div class="node-header">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Conservative Measures</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="lsgrid">
+      <div class="lstile"><b>Fluids</b> Aim for about 1.5–2 L a day unless advised otherwise; not too little (concentrated urine irritates) and not too much.</div>
+      <div class="lstile"><b>Caffeine &amp; alcohol</b> Reduce or stop tea, coffee, cola, energy drinks and alcohol, especially in the evening.</div>
+      <div class="lstile"><b>Bladder diary</b> Repeat the 3-day chart after changes — it shows progress and keeps motivation.</div>
+      <div class="lstile"><b>Weight</b> Weight loss if BMI over 30 improves urgency and leakage.</div>
+      <div class="lstile"><b>Constipation</b> Treat it — a loaded rectum worsens urgency and emptying.</div>
+      <div class="lstile"><b>Men</b> Double voiding, urethral milking for post-micturition dribble, evening fluid timing.</div>
+      <div class="lstile"><b>Smoking</b> Stop — reduces bladder cancer risk and cough-related leakage.</div>
+      <div class="lstile"><b>Night-time safety</b> Night light, clear route to the toilet, commode if needed — nocturia is a falls risk.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Conservative measures are first-line in both NICE NG123 and CG97 and should be tried properly, with a review, before drug treatment unless symptoms are severe. Many people restrict fluids to control frequency, which concentrates the urine and can worsen urgency.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9" id="node9">
+  <div class="node-header">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up and Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>Numbness between the legs or around the back passage, new weakness of the legs, or loss of bladder or bowel control</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Unable to pass urine, fever with loin pain or shivering, blood in the urine, extreme thirst with weight loss or vomiting, confusion</div>
+      <div>4 weeks</div><div>Review an antimuscarinic or mirabegron for benefit and side effects (dry mouth, constipation, confusion; BP on mirabegron); alpha-blocker response (NICE CG97 suggests 4–6 weeks)</div>
+      <div>6 weeks to 3 months</div><div>Bladder training review with a repeat diary; switch drug or refer if inadequate</div>
+      <div>Results</div><div>Act on glucose, calcium, U&amp;E, PSA and culture; repeat dipstick after UTI treatment if haematuria was present</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+<p>Antimuscarinics and alpha-blockers both show their effect within a month, so an early review finds non-responders and side effects. Haematuria that persists after a treated UTI is one of the NG12 triggers and is easily lost if the dipstick is not repeated.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE NG123 (Urinary incontinence and pelvic organ prolapse in women, 2019, updated 2023), NICE CG97 (Lower urinary tract symptoms in men: management, 2010, updated 2015; under update), NICE NG12 (Suspected cancer: recognition and referral, updated April 2026), NICE TA290 (Mirabegron, 2013) and TA999 (Vibegron), NICE NG109 (UTI lower: antimicrobial prescribing, 2018), NICE NG28 (Type 2 diabetes in adults), NICE NG106 (Chronic heart failure), MHRA Drug Safety Updates (mirabegron and blood pressure, 2015; desmopressin and hyponatraemia), UKHSA Prostate Cancer Risk Management Programme, NICE CKS LUTS in men and Interstitial cystitis. Children: use the children's pathways and the BNFC. Check doses against the current SPC, BNF and local formulary. Not a substitute for clinical judgement.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.urinary-frequency.v1';
+  const nodes=document.querySelectorAll('.node[data-step]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state={};
+    nodes.forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});
+    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+  function load(){
+    try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');
+      nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(s[n.dataset.step]){cb.checked=true;n.classList.add('done');}});}catch(e){}
+  }
+  function updateProgress(){
+    const done=document.querySelectorAll('.node.done').length;
+    pDone.textContent=done;
+    pFill.style.width=((done/total)*100)+'%';
+  }
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{
+      n.classList.toggle('done',cb.checked);
+      save();updateProgress();
+    });
+  });
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!expanded));
+      btn.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    if(!confirm('Reset all progress?'))return;
+    nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});
+    localStorage.removeItem(KEY);updateProgress();
+  });
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=3"></script>
+<script src="../../assets/topic-links.js?v=10"></script>
+<script src="../../assets/alg-diagram.js"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+</body>
+</html>

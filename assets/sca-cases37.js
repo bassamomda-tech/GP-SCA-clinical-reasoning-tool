@@ -12,33 +12,72 @@
   /* ============ 141. VIDEO — Generalised itch, no rash: the systemic screen ============ */
   const c141 = {
     id:'generalised-itch', title:'"I itch all over but there\u2019s no rash \u2014 just give me a cream"', type:'video', duration:12,
-    meta:{ age:64, sex:'M', setting:'Video consultation \u2014 weeks of generalised itch, no rash.', system:'Dermatology / Pruritus without rash' },
+    meta:{ age:64, sex:'M', setting:'Video consultation \u2014 weeks of generalised itch, no rash.', system:'Dermatology / Pruritus without rash', checked:'October 2026' },
     brief:'Mr Alan Pickering, 64. ~10 weeks of GENERALISED itching, worse at night, with NO primary rash (just scratch marks). Wants "a strong cream/antihistamine". On directed history: drenching NIGHT SWEATS, unintentional weight loss (~5 kg), fatigue, and \u2014 if asked \u2014 itch notably after a hot bath. No jaundice. Ex-smoker. This pattern (generalised pruritus without rash + B-symptoms) raises a SYSTEMIC cause \u2014 notably HAEMATOLOGICAL MALIGNANCY (lymphoma) \u2014 plus iron deficiency, thyroid, liver, renal and drug causes. He minimises the systemic symptoms.',
     script:{
-      opening:'"Afternoon doctor. I\u2019ve been itching like mad for weeks, all over, worst at night \u2014 driving me up the wall. There\u2019s nothing to see, no rash, just where I\u2019ve scratched. Can you just prescribe me a strong cream or some antihistamines and I\u2019ll be on my way? It\u2019s just dry skin or my age, I expect \u2014 nothing to make a fuss about."',
-      facts:[
-        { topic:'Itch without rash = think systemic', text:'GENERALISED pruritus WITHOUT a primary rash (only excoriations) is a flag to look for a SYSTEMIC cause rather than just treating the skin. Causes: iron deficiency, thyroid disease, chronic kidney/liver disease (cholestasis), drugs, polycythaemia (classically itch after a hot bath \u2014 aquagenic pruritus), and \u2014 importantly \u2014 HAEMATOLOGICAL MALIGNANCY, especially LYMPHOMA (Hodgkin\u2019s). "Just dry skin" is the misconception when there are systemic features.' },
-        { topic:'The B-symptoms / red flags', text:'CRITICAL \u2014 directed questioning reveals drenching NIGHT SWEATS, unintentional WEIGHT LOSS and fatigue \u2014 "B-symptoms" \u2014 plus itch after a hot bath (aquagenic itch — classically polycythaemia vera, so check the FBC/haematocrit). Generalised itch WITH the B-symptoms strongly raises lymphoma/haematological malignancy and mandates a prompt face-to-face examination (lymph nodes, hepatosplenomegaly — not possible on video) and an urgent work-up, not a cream.' },
-        { topic:'The hidden agenda',    text:'HIDDEN AGENDA \u2014 he minimises ("just dry skin/my age", "give me a cream") partly to avoid a conversation he half-dreads: he has noticed a LUMP in his neck/armpit (lymph node) and the night sweats, has quietly worried about cancer, but is frightened to name it and hopes a cream makes it go away. The skill is to take a proper directed history, examine, surface the fear, and act on the red flags \u2014 not collude with "just a cream".' },
-        { topic:'The work-up',          text:'History/exam-directed: examine for lymphadenopathy/hepatosplenomegaly; bloods (FBC + film, ferritin, U&E, LFTs, TFTs, ESR/LDH, calcium); consider CXR/imaging. Urgent referral / suspected-cancer pathway if lymphoma is suspected (e.g. unexplained lymphadenopathy with B-symptoms). Treat the cause; symptomatic itch relief alongside, not instead.' },
-        { topic:'What he needs',         text:'Officially: a strong cream/antihistamine. What he needs: recognition that generalised itch WITHOUT rash and WITH night sweats/weight loss is a systemic red flag, a directed history and EXAMINATION (nodes/organomegaly), an urgent work-up (bloods, imaging, urgent referral if lymphoma suspected), the cancer fear surfaced and addressed, and symptomatic relief alongside \u2014 not instead of \u2014 the work-up.' },
+      "opening": "\"Afternoon doctor. I've been itching like mad for weeks, all over, worst at night — driving me up the wall. There's nothing to see, no rash, just where I've scratched. Can you just prescribe me a strong cream or some antihistamines and I'll be on my way? It's just dry skin or my age, I expect — nothing to make a fuss about.\"",
+      "facts": [
+        {
+          "topic": "The itch (if asked)",
+          "text": "About ten weeks, all over — back, legs, arms. Worst at night. \"After a hot bath it's unbearable for half an hour.\" No new soaps, washing powder or pets. Wife does not itch."
+        },
+        {
+          "topic": "Skin (if asked to show)",
+          "text": "Only scratch marks on your arms and shins; no rash, no blisters, no burrows between the fingers."
+        },
+        {
+          "topic": "Night sweats — only if asked directly",
+          "text": "\"Now you mention it — I've been waking up soaked. Wife's had to change the sheets.\" For about six weeks."
+        },
+        {
+          "topic": "Weight and energy (if asked)",
+          "text": "Lost about 5 kg (most of a stone) without trying in two months. Tired, \"no puff\"."
+        },
+        {
+          "topic": "Lumps (if asked)",
+          "text": "\"I haven't noticed any lumps — but I've never really checked.\" If asked to feel your neck on camera you are unsure: \"I can't tell, to be honest.\""
+        },
+        {
+          "topic": "Other questions (if asked)",
+          "text": "No yellow skin or eyes, urine normal colour, no change in bowels, no blood anywhere. Not thirsty. No cough. No fevers you have measured."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "Ex-smoker (stopped 10 years ago). No regular medicines; no new tablets. No allergies."
+        },
+        {
+          "topic": "Social",
+          "text": "64, retired postman, married to Sue. A couple of pints a week."
+        },
+        {
+          "topic": "Hidden — hold back",
+          "text": "You have noticed the weight loss and the sweats and quietly wondered, but \"I don't like doctors and I didn't want to make a fuss\". Say this only if asked what you think is going on."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Jokey, minimising, wanting a cream. Answer the night sweats and weight questions honestly when asked. If the doctor explains that itching without a rash with sweats and weight loss needs blood tests and an in-person check, you go quiet and ask: \"You think it's something serious?\" Respond well to honesty."
+        }
       ],
-      ice:{
-        ideas:'It\u2019s just dry skin or his age; a strong cream or antihistamines will fix it.',
-        concerns:'HIDDEN AGENDA \u2014 he\u2019s noticed a lump (node) and the night sweats and has quietly feared cancer, but is frightened to name it and hopes a cream makes it go away; minimises the systemic symptoms.',
-        expectations:'A cream/antihistamine and to leave. What he actually needs: recognition of the systemic red flags, a directed history + examination, an urgent work-up (bloods/imaging/referral), the cancer fear addressed, and symptomatic relief alongside.'
+      "ice": {
+        "ideas": "\"It's dry skin, or my age.\"",
+        "concerns": "Underneath (only if asked): the weight loss and sweats have been niggling at you.",
+        "expectations": "\"A strong cream or antihistamines.\" You will accept tests and an examination if the reasons are explained honestly."
       },
-      cues:['Generalised itch with NO primary rash \u2014 think systemic cause, not just dry skin.','Night sweats + weight loss + fatigue (B-symptoms) raise lymphoma/haematological malignancy; itch after a hot bath points classically to polycythaemia — face-to-face examination + urgent work-up.','"Just give me a cream, it\u2019s nothing" \u2014 minimisation possibly masking a noticed lump and cancer fear; surface it.']
+      "cues": [
+        "\"Nothing to make a fuss about.\" — say in the opening.",
+        "\"It's worse after a hot bath.\" — say if asked what makes it worse.",
+        "\"I've been waking up soaked.\" — say only if asked about sweats."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises that GENERALISED pruritus WITHOUT a primary rash (only excoriations) is a flag for a SYSTEMIC cause \u2014 and does NOT just prescribe a cream/antihistamine without assessment' },
-      { dom:'tasks', text:'Elicits the SYSTEMIC red flags by directed questioning \u2014 drenching night sweats, unintentional weight loss, fatigue (B-symptoms), itch after a hot bath — and recognises that the B-symptoms raise HAEMATOLOGICAL MALIGNANCY (lymphoma) and aquagenic itch classically polycythaemia vera (also a haematological disorder), warranting urgent work-up' },
-      { dom:'tasks', text:'Arranges a prompt FACE-TO-FACE EXAMINATION (a video call cannot exclude lymphadenopathy or organomegaly): lymph nodes (cervical/axillary/inguinal), liver/spleen (hepatosplenomegaly), and the skin — rather than managing remotely on the symptom alone' },
-      { dom:'tasks', text:'Plans the structured work-up: bloods (FBC + film, ferritin, U&E, LFTs, TFTs, ESR/LDH, calcium), CXR/imaging as indicated, and a suspected cancer pathway referral if lymphoma or another malignancy is suspected — NICE NG12 (updated April 2026): consider a suspected cancer pathway referral for Hodgkin or non-Hodgkin lymphoma in adults with unexplained lymphadenopathy, taking into account fever, night sweats, shortness of breath, pruritus and weight loss; also an urgent chest X-ray (NICE NG12 (updated April 2026)) as he is 40 or over, an ex-smoker, with unexplained weight loss and fatigue' },
-      { dom:'tasks', text:'Covers the broader differential (iron deficiency, thyroid, liver/renal, drugs, polycythaemia) and offers SYMPTOMATIC itch relief alongside \u2014 not instead of \u2014 the cause work-up' },
-      { dom:'rto',   text:'Surfaces the patient\u2019s fear and the possibly-noticed lump, rather than colluding with "just a cream"; names the concern honestly and proportionately' },
-      { dom:'rto',   text:'Balances honest reassurance (many causes are benign and treatable) with taking the red flags seriously, so he accepts the work-up' },
-      { dom:'gs',    text:'Safety-nets and follows up: the urgent work-up/referral and examination, symptomatic relief, what would prompt sooner review (enlarging nodes, fevers, weight loss), and a follow-up \u2014 pursuing the cause, not patching the symptom' },
+      { dom:'dg', text:'Recognises that GENERALISED pruritus WITHOUT a primary rash (only excoriations) is a flag for a SYSTEMIC cause \u2014 and does NOT just prescribe a cream/antihistamine without assessment' },
+      { dom:'dg', text:'Elicits the SYSTEMIC red flags by directed questioning \u2014 drenching night sweats, unintentional weight loss, fatigue (B-symptoms), itch after a hot bath — and recognises that the B-symptoms raise HAEMATOLOGICAL MALIGNANCY (lymphoma) and aquagenic itch classically polycythaemia vera (also a haematological disorder), warranting urgent work-up' },
+      { dom:'cm', text:'Arranges a prompt FACE-TO-FACE EXAMINATION (a video call cannot exclude lymphadenopathy or organomegaly): lymph nodes (cervical/axillary/inguinal), liver/spleen (hepatosplenomegaly), and the skin — rather than managing remotely on the symptom alone' },
+      { dom:'cm', text:"Plans the structured work-up: bloods (FBC + film, ferritin, U&E, LFTs, TFTs, ESR/LDH, calcium), CXR/imaging as indicated, and a suspected cancer pathway referral if lymphoma or another malignancy is suspected — NICE NG12: consider a suspected cancer pathway referral for Hodgkin or non-Hodgkin lymphoma in adults with unexplained lymphadenopathy, taking into account fever, night sweats, shortness of breath, pruritus and weight loss; also an urgent chest X-ray (NICE NG12) as he is 40 or over, an ex-smoker, with unexplained weight loss and fatigue" },
+      { dom:'dg', text:'Covers the broader differential (iron deficiency, thyroid, liver/renal, drugs, polycythaemia) and offers SYMPTOMATIC itch relief alongside \u2014 not instead of \u2014 the cause work-up' },
+      { dom:'ro',   text:'Surfaces the patient\u2019s fear and the possibly-noticed lump, rather than colluding with "just a cream"; names the concern honestly and proportionately' },
+      { dom:'ro',   text:'Balances honest reassurance (many causes are benign and treatable) with taking the red flags seriously, so he accepts the work-up' },
+      { dom:'cm',    text:'Safety-nets and follows up: the urgent work-up/referral and examination, symptomatic relief, what would prompt sooner review (enlarging nodes, fevers, weight loss), and a follow-up \u2014 pursuing the cause, not patching the symptom' },
     ],
     worked:[
       { lbl:'Reframe \"just dry skin\"', txt:'"I can give you something for the itch \u2014 but I don\u2019t want to just hand you a cream and miss something, because there\u2019s an important rule here: when someone itches all over WITHOUT any actual rash, just scratch marks, that can be a sign of something going on inside the body rather than a skin problem. So let me ask a few questions first, and then I want you examined properly in person."' },
@@ -50,12 +89,12 @@
     ],
     learning:'Generalised pruritus WITHOUT a primary rash (only excoriations) is a flag to look for a SYSTEMIC cause, not just to treat the skin. The differential includes iron deficiency, thyroid and chronic kidney/liver disease (cholestasis), drugs, polycythaemia (classically itch after a hot bath — aquagenic pruritus), and — importantly — HAEMATOLOGICAL MALIGNANCY, especially lymphoma. The examinable core is directed questioning that uncovers the B-symptoms (drenching night sweats, unintentional weight loss, fatigue) the patient minimised, which with generalised itch strongly raise lymphoma and mandate EXAMINATION (lymph nodes, hepatosplenomegaly) and an urgent structured work-up (FBC + film, ferritin, U&E, LFTs, TFTs, ESR/LDH, calcium, imaging) with urgent/suspected-cancer referral where the threshold is met \u2014 not a cream. The hidden agenda is a noticed lump and an unvoiced cancer fear driving the "just give me a cream" minimisation; surface and address it, examine and act on the red flags, balance honest reassurance with taking them seriously, and give symptomatic itch relief ALONGSIDE \u2014 not instead of \u2014 the cause work-up.',
     knowledge:{
-      guideline:'BAD guidelines for the management of generalised pruritus in adults without an underlying dermatosis (2018) · NICE NG12 (updated April 2026) — lymphoma with unexplained lymphadenopathy; urgent chest X-ray · BNF · systemic itch work-up',
+      guideline:"BAD guidelines for the management of generalised pruritus in adults without an underlying dermatosis (2018) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BNF · systemic itch work-up",
       points:[
         { h:'Itch without rash \u2014 think systemic', t:'Generalised pruritus with no primary skin lesion (only secondary excoriations) should prompt a search for a systemic cause. Key causes: iron deficiency, thyroid disease, chronic kidney disease, cholestatic liver disease, drugs, polycythaemia vera (aquagenic pruritus \u2014 itch after warm water), and haematological malignancy (especially Hodgkin lymphoma).' },
         { h:'Hunt the B-symptoms', t:'Ask directly about drenching night sweats, unexplained weight loss and persistent fatigue/fever ("B-symptoms"), and about lymph node pain after alcohol. Generalised itch with B-symptoms strongly raises lymphoma and warrants urgent assessment. Examine for lymphadenopathy and hepatosplenomegaly — in person, since a video consultation cannot exclude them.' },
         { h:'Structured work-up', t:'Bloods: FBC and blood film, ferritin/iron studies, U&E, LFTs, TFTs, ESR, LDH, calcium, glucose/HbA1c (BAD 2018: FBC and ferritin in everyone with chronic generalised itch without a rash, plus renal, liver and thyroid function); consider CXR/imaging. Review medications. Tailor to the clinical picture rather than a random scatter.' },
-        { h:'Refer per NICE NG12 (updated April 2026) thresholds', t:'NICE NG12 (updated April 2026): consider a suspected cancer pathway referral for Hodgkin or non-Hodgkin lymphoma in adults with unexplained lymphadenopathy, taking into account associated symptoms — particularly fever, night sweats, shortness of breath, pruritus and weight loss (and, for Hodgkin lymphoma, alcohol-induced lymph node pain). Hepatosplenomegaly or a strong suspicion of haematological malignancy also warrants urgent investigation; offer an urgent chest X-ray to people aged 40 and over who have ever smoked with an unexplained symptom such as weight loss or fatigue. Persistent unexplained pruritus with systemic features should not be dismissed.' },
+        { h:"Refer per NICE NG12 thresholds", t:"NICE NG12: consider a suspected cancer pathway referral for Hodgkin or non-Hodgkin lymphoma in adults with unexplained lymphadenopathy, taking into account associated symptoms — particularly fever, night sweats, shortness of breath, pruritus and weight loss (and, for Hodgkin lymphoma, alcohol-induced lymph node pain). Hepatosplenomegaly or a strong suspicion of haematological malignancy also warrants urgent investigation; offer an urgent chest X-ray to people aged 40 and over who have ever smoked with an unexplained symptom such as weight loss or fatigue. Persistent unexplained pruritus with systemic features should not be dismissed." },
         { h:'Treat cause + symptom', t:'Identify and treat the underlying cause; provide symptomatic relief alongside (emollients, cool showers rather than hot baths, short nails, a sedating antihistamine at night short term — choice and dose per BNF, with caution in older adults — manage dry skin) \u2014 but symptomatic treatment must not replace the cause work-up when red flags are present.' },
         { h:'Surface the fear', t:'Minimisation ("just dry skin/my age, give me a cream") may mask a noticed lump and an unvoiced cancer fear. Surface it, name the concern proportionately, and use it to motivate the work-up rather than colluding with a cream-only request.' },
         { h:'Never do', t:'Never treat generalised itch-without-rash with a cream alone when systemic features are present; never skip the B-symptom screen and examination for nodes/organomegaly; never miss the lymphoma/haematological-malignancy possibility; never collude with minimisation; never give false reassurance over red flags.' },
@@ -67,33 +106,68 @@
   /* ============ 142. VIDEO — Shingles: the antiviral window and the eye emergency ============ */
   const c142 = {
     id:'shingles-ophthalmic', title:'"A painful rash on my forehead \u2014 it\u2019s near my eye"', type:'video', duration:12,
-    meta:{ age:67, sex:'F', setting:'Video consultation \u2014 a painful unilateral rash, day 2.', system:'Dermatology / Herpes zoster (shingles)' },
+    meta:{ age:67, sex:'F', setting:'Video consultation \u2014 a painful unilateral rash, day 2.', system:'Dermatology / Herpes zoster (shingles)', checked:'October 2026' },
     brief:'Mrs Glenda Hart, 67. ~2 days of a painful, burning, BLISTERING rash in a band on the RIGHT FOREHEAD and scalp, NOT crossing the midline, preceded by a day of tingling/pain. Likely SHINGLES (herpes zoster). CRUCIAL: the rash extends to the SIDE/TIP OF THE NOSE and she has a red, watery, gritty right eye \u2014 this is OPHTHALMIC zoster with Hutchinson\u2019s sign, a sight-threatening emergency. She thinks it\u2019s "a bad cold sore / an allergy" and wants a cream. Within the 72-hour antiviral window. Mildly immunosuppressed (on methotrexate).',
     script:{
-      opening:'"Hello doctor. I\u2019ve got this horrible painful rash come up on one side of my forehead, all blistery, and it really burns and stings. I thought maybe it was a bad reaction to a new face cream, or a cold sore gone mad. My eye on that side\u2019s a bit red and watery too. Could you give me a cream for it? It\u2019s only been a couple of days."',
-      facts:[
-        { topic:'Recognise shingles', text:'A painful, burning, blistering/vesicular rash in a DERMATOMAL band, UNILATERAL and NOT crossing the midline, preceded by a prodrome of pain/tingling, is HERPES ZOSTER (shingles) \u2014 reactivated varicella. "Cold sore/allergy/face-cream reaction" is the misconception. She is ~day 2, within the antiviral window.' },
-        { topic:'The OPHTHALMIC emergency \u2014 KEY', text:'CRITICAL \u2014 the rash is in the OPHTHALMIC (V1) distribution and involves the SIDE/TIP OF THE NOSE (HUTCHINSON\u2019S SIGN \u2014 nasociliary nerve involvement), with a red, gritty, watery eye \u2014 i.e. HERPES ZOSTER OPHTHALMICUS, which threatens the eye (keratitis, uveitis, vision loss). This needs URGENT antivirals AND same-day OPHTHALMOLOGY assessment. The eye involvement transforms a "give me a cream" consultation into a sight-saving one.' },
-        { topic:'The antiviral window', text:'Oral ANTIVIRALS (aciclovir/valaciclovir/famciclovir) should be started promptly \u2014 ideally within 72 hours of rash onset (and considered later if new vesicles, ophthalmic/complicated zoster, or immunosuppression). She is within the window AND immunosuppressed (methotrexate) AND has ophthalmic involvement \u2014 all strong indications to treat now and refer.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 she\u2019s minimising ("just a cream") partly because she\u2019s frightened by how painful it is and by the eye symptom but doesn\u2019t want to "make a fuss", and partly because she\u2019s worried about disrupting an upcoming family event/holiday. There may also be anxiety about the methotrexate ("did my arthritis tablet cause this?"). The skill is to recognise the emergency, convey the eye risk clearly without panicking her, and act \u2014 plus address pain and post-herpetic neuralgia risk.' },
-        { topic:'What she needs',       text:'Officially: a cream for a "cold sore/allergy". What she needs: recognition of shingles in the ophthalmic distribution with Hutchinson\u2019s sign (eye-threatening), URGENT oral antivirals AND same-day ophthalmology referral, adequate analgesia and post-herpetic-neuralgia awareness, infection-control advice, and her fear/methotrexate concern addressed \u2014 not a cream.' },
+      "opening": "\"Hello doctor. I've got this horrible painful rash come up on one side of my forehead, all blistery, and it really burns and stings. I thought maybe it was a bad reaction to a new face cream, or a cold sore gone mad. My eye on that side's a bit red and watery too. Could you give me a cream for it? It's only been a couple of days.\"",
+      "facts": [
+        {
+          "topic": "The rash (if asked)",
+          "text": "Started two days ago on the right side of your forehead going up into the scalp, after a day of burning, tingling pain there. Clusters of small blisters on red skin. It stops at the middle of your forehead. On video: right forehead and scalp, and if asked to look in a mirror — \"Oh, there are a couple of blisters on the side and tip of my nose too.\""
+        },
+        {
+          "topic": "The eye (if asked)",
+          "text": "Right eye red, watery, gritty since yesterday. Mild ache. If asked to check: vision slightly blurry in the right eye compared with the left. Light is a bit uncomfortable."
+        },
+        {
+          "topic": "Pain",
+          "text": "\"Burning, stabbing\" — 7/10. Paracetamol barely helps. Not sleeping."
+        },
+        {
+          "topic": "General (if asked)",
+          "text": "Feel a bit run down, no high fever, no headache apart from the rash area, no confusion, no neck stiffness, no vomiting."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "Rheumatoid arthritis on methotrexate weekly (and folic acid). No allergies. Had chickenpox as a child. Not had the shingles vaccine — \"I kept meaning to.\""
+        },
+        {
+          "topic": "Contacts (if asked)",
+          "text": "Your daughter is 30 weeks pregnant and was planning to visit at the weekend. You look after your granddaughter, aged 4, on Tuesdays."
+        },
+        {
+          "topic": "Social",
+          "text": "67, retired. Lives with husband, who can drive you."
+        },
+        {
+          "topic": "Hidden fear — hold back",
+          "text": "You are worried the methotrexate \"caused\" it and that you will have to stop it — \"my hands were awful before\". Say this only if asked what worries you, or if the doctor mentions the methotrexate."
+        },
+        {
+          "topic": "How to play it",
+          "text": "In pain, keen on a cream. When asked to check your nose and eye, report honestly. If told it is shingles near the eye and needs an eye specialist today and antiviral tablets, you are shocked but cooperative. Ask: \"Can I still see my daughter at the weekend?\" and \"Do I stop the methotrexate?\""
+        }
       ],
-      ice:{
-        ideas:'It\u2019s a bad cold sore / an allergic reaction to a face cream; a cream will sort it.',
-        concerns:'HIDDEN AGENDA \u2014 frightened by the pain and the eye symptom but doesn\u2019t want to "make a fuss"; worried about an upcoming family event; possible anxiety that her methotrexate caused it.',
-        expectations:'A cream and to carry on. What she actually needs: recognition of ophthalmic shingles with Hutchinson\u2019s sign, urgent antivirals + same-day ophthalmology, analgesia + PHN awareness, infection-control advice, and her fear addressed.'
+      "ice": {
+        "ideas": "\"A reaction to my new face cream, or a cold sore gone mad.\"",
+        "concerns": "The pain, and (only if asked) the methotrexate and seeing your pregnant daughter.",
+        "expectations": "\"A cream for it.\" You will go to the eye clinic today if the reason is explained."
       },
-      cues:['Painful blistering unilateral band not crossing the midline + prodromal pain \u2014 shingles, not a cold sore/allergy.','Rash to the tip/side of the nose + red gritty eye (Hutchinson\u2019s sign) \u2014 ophthalmic zoster, sight-threatening; same-day ophthalmology.','Day 2 + immunosuppressed (methotrexate) \u2014 within the antiviral window; start antivirals now.']
+      "cues": [
+        "\"My eye on that side's a bit red and watery too.\" — say in the opening.",
+        "\"It's only been a couple of days.\" — say in the opening.",
+        "\"I'm on methotrexate — is that a problem?\" — say when tablets are discussed."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises SHINGLES (herpes zoster): a painful, dermatomal, unilateral, blistering rash not crossing the midline with a prodrome \u2014 NOT a cold sore/allergy/cream reaction \u2014 and identifies the OPHTHALMIC (V1) distribution' },
-      { dom:'tasks', text:'Identifies HERPES ZOSTER OPHTHALMICUS with HUTCHINSON\u2019S SIGN (rash on the side/tip of the nose) and eye involvement (red, gritty, watery eye) as a SIGHT-THREATENING emergency requiring SAME-DAY ophthalmology assessment' },
-      { dom:'tasks', text:'Starts oral ANTIVIRALS promptly (within the ~72-hour window; and indicated regardless here given ophthalmic involvement and immunosuppression) at the correct dose, recognising the methotrexate/immunosuppression as a further indication' },
-      { dom:'tasks', text:'Manages PAIN adequately and counsels POST-HERPETIC NEURALGIA risk (common, especially older patients), and gives infection-control advice (avoid contact with the immunosuppressed, pregnant women, and non-immune neonates until lesions crust)' },
-      { dom:'tasks', text:'Addresses the methotrexate concern appropriately (it did not "cause" shingles but immunosuppression raises risk/severity; do not stop it without advice) and considers the broader picture' },
-      { dom:'rto',   text:'Conveys the eye-risk and urgency CLEARLY but calmly so she accepts same-day ophthalmology, without inducing panic; surfaces the "don\u2019t want to make a fuss"/event worry' },
-      { dom:'rto',   text:'Validates the pain and fear and explains why this is more than a cream, engaging her in the urgent plan' },
-      { dom:'gs',    text:'Safety-nets emphatically: same-day ophthalmology for the eye; any visual change/severe eye pain \u2192 emergency eye care; antivirals started; analgesia and PHN safety-net; infection-control advice; and follow-up \u2014 sight protected, shingles treated' },
+      { dom:'dg', text:'Recognises SHINGLES (herpes zoster): a painful, dermatomal, unilateral, blistering rash not crossing the midline with a prodrome \u2014 NOT a cold sore/allergy/cream reaction \u2014 and identifies the OPHTHALMIC (V1) distribution' },
+      { dom:'dg', text:'Identifies HERPES ZOSTER OPHTHALMICUS with HUTCHINSON\u2019S SIGN (rash on the side/tip of the nose) and eye involvement (red, gritty, watery eye) as a SIGHT-THREATENING emergency requiring SAME-DAY ophthalmology assessment' },
+      { dom:'cm', text:'Starts oral ANTIVIRALS promptly (within the ~72-hour window; and indicated regardless here given ophthalmic involvement and immunosuppression) at the correct dose, recognising the methotrexate/immunosuppression as a further indication' },
+      { dom:'cm', text:'Manages PAIN adequately and counsels POST-HERPETIC NEURALGIA risk (common, especially older patients), and gives infection-control advice (avoid contact with the immunosuppressed, pregnant women, and non-immune neonates until lesions crust)' },
+      { dom:'dg', text:'Addresses the methotrexate concern appropriately (it did not "cause" shingles but immunosuppression raises risk/severity; do not stop it without advice) and considers the broader picture' },
+      { dom:'ro',   text:'Conveys the eye-risk and urgency CLEARLY but calmly so she accepts same-day ophthalmology, without inducing panic; surfaces the "don\u2019t want to make a fuss"/event worry' },
+      { dom:'ro',   text:'Validates the pain and fear and explains why this is more than a cream, engaging her in the urgent plan' },
+      { dom:'cm',    text:'Safety-nets emphatically: same-day ophthalmology for the eye; any visual change/severe eye pain \u2192 emergency eye care; antivirals started; analgesia and PHN safety-net; infection-control advice; and follow-up \u2014 sight protected, shingles treated' },
     ],
     worked:[
       { lbl:'Name it (not a cold sore)', txt:'"This isn\u2019t a cold sore or a cream reaction \u2014 it\u2019s shingles: the chickenpox virus reactivating in one nerve, which is why it\u2019s painful, blistery, and in a band on just one side. The good news is you\u2019ve come early, which matters for treatment. But there\u2019s one thing about WHERE yours is that makes me want to act urgently."' },
@@ -122,33 +196,68 @@
   /* ============ 143. VIDEO — The non-healing lesion: skin-cancer 2WW behind "just a sore" ============ */
   const c143 = {
     id:'non-healing-lesion', title:'"It\u2019s just a sore that won\u2019t heal \u2014 a bit of cream\u2019ll do"', type:'video', duration:12,
-    meta:{ age:74, sex:'M', setting:'Video consultation \u2014 a non-healing lesion on the ear/face.', system:'Dermatology / Non-melanoma skin cancer' },
+    meta:{ age:74, sex:'M', setting:'Video consultation \u2014 a non-healing lesion on the ear/face.', system:'Dermatology / Non-melanoma skin cancer', checked:'October 2026' },
     brief:'Mr Stanley Cooke, 74, retired farmer (decades of sun exposure). A scaly, crusting, sometimes-bleeding lesion on the top of his RIGHT EAR for ~4 months that "won\u2019t heal" \u2014 he\u2019s tried antiseptic cream. It\u2019s tender, has grown, with a raised, indurated edge. Likely a non-melanoma skin cancer (SCC > BCC given the ear/sun-exposed site, growth, tenderness). He dismisses it as "an old man\u2019s scab / where my glasses rub" and wants "a stronger cream". Lifelong outdoor worker; multiple actinic keratoses.',
     script:{
-      opening:'"Afternoon. I\u2019ve got this little scab on the top of my ear that just won\u2019t heal up \u2014 had it a few months. I keep knocking the crust off and it bleeds a bit, then it comes back. I\u2019ve been putting antiseptic cream on but it\u2019s not shifting. I reckon it\u2019s just where my glasses rub, or an old man\u2019s scab. Could you give me something stronger to heal it? I don\u2019t want any fuss made."',
-      facts:[
-        { topic:'A non-healing lesion is a flag', text:'A lesion that FAILS TO HEAL over weeks\u2013months (here ~4 months), especially on SUN-EXPOSED skin in an older person with chronic sun exposure, that is scaly/crusting, bleeding, growing, tender, with a raised/indurated edge, is a NON-MELANOMA SKIN CANCER until proven otherwise \u2014 squamous cell carcinoma (SCC) or basal cell carcinoma (BCC). "An old man\u2019s scab / where my glasses rub / a stronger cream" is the dangerous misconception; non-healing is the red flag.' },
-        { topic:'SCC vs BCC & urgency', text:'On the ear (a high-risk site) with growth, tenderness, crusting/keratin and bleeding, SCC is likely \u2014 SCC can metastasise and warrants an URGENT suspected cancer pathway referral. BCC (pearly, rolled edge, telangiectasia, slow-growing) is usually referred routinely. NICE NG12 (updated April 2026): consider a suspected cancer pathway referral for a skin lesion that raises the suspicion of squamous cell carcinoma; for suspected basal cell carcinoma consider routine referral, using the suspected cancer pathway only if a delay could have a significant impact because of factors such as site or size. The job is to recognise it needs assessment/biopsy and refer \u2014 not to cream it.' },
-        { topic:'The hidden agenda',   text:'HIDDEN AGENDA \u2014 his "don\u2019t want a fuss / old man\u2019s scab" minimisation masks a stoical reluctance to bother anyone and a quiet fear (he\u2019s noticed it growing and bleeding and half-suspects it\u2019s serious, perhaps after a friend had skin cancer), plus possibly worry about disfiguring surgery on his face. The skill is to gently challenge the minimisation, examine, name the concern honestly, and refer \u2014 while reassuring that non-melanoma skin cancers are usually very treatable, especially caught early.' },
-        { topic:'Reassurance available', text:'Genuinely reassuring: most non-melanoma skin cancers (BCC, and SCC caught early) are highly treatable/curable with minor surgery, especially when caught early \u2014 so urgent referral is precautionary and good news, not a catastrophe. Also screen/advise on his other sun damage (actinic keratoses) and sun protection.' },
-        { topic:'What he needs',        text:'Officially: a stronger cream for a "scab". What he needs: recognition that a non-healing, growing, bleeding lesion on sun-exposed skin is a likely skin cancer, EXAMINATION (a close video view and photographs now, with the nodes palpated face to face), an urgent suspected cancer pathway referral (SCC suspicion, NICE NG12 (updated April 2026)), the minimisation/fear addressed, reassurance that these are usually very treatable, and sun-damage advice \u2014 not a cream.' },
+      "opening": "\"Afternoon. I've got this little scab on the top of my ear that just won't heal up — had it a few months. I keep knocking the crust off and it bleeds a bit, then it comes back. I've been putting antiseptic cream on but it's not shifting. I reckon it's just where my glasses rub, or an old man's scab. Could you give me something stronger to heal it? I don't want any fuss made.\"",
+      "facts": [
+        {
+          "topic": "The lesion (if asked)",
+          "text": "Top of the right ear, about four months. Started like a rough, scaly spot; now \"the size of a fingernail\" and bigger than it was. Crusty, bleeds when you catch it on the pillow or a towel. Tender to touch. Your glasses arm sits lower down, behind the ear, not on the top."
+        },
+        {
+          "topic": "On video (if asked to show)",
+          "text": "You turn your head and hold the phone close in good light: a raised, crusty lump with a hard, rolled edge and a scab in the middle, about 1 cm. If asked, your wife can take a clear photo and send it in."
+        },
+        {
+          "topic": "Lumps (if asked)",
+          "text": "You have not noticed any lumps in front of or behind the ear or in the neck, but \"I wouldn't know what I was feeling for\"."
+        },
+        {
+          "topic": "Other skin (if asked)",
+          "text": "Lots of rough \"sun spots\" on your scalp and the backs of your hands — \"the doctor froze a few years back\". No other sore that will not heal. No dark moles changing."
+        },
+        {
+          "topic": "Sun exposure",
+          "text": "Farmer for 50 years, outdoors in all weathers, \"never wore a hat till my wife made me\". Sunburnt many times as a young man."
+        },
+        {
+          "topic": "Medical history and medicines",
+          "text": "No regular medicines. No allergies. No transplant or immune problems. Ex-smoker."
+        },
+        {
+          "topic": "Social",
+          "text": "74, retired farmer, married to Mary, lives on the farm still. Son runs the farm."
+        },
+        {
+          "topic": "Hidden — hold back",
+          "text": "Your neighbour had \"a skin cancer on his face\" and had a big operation that left a scar; you do not want \"them cutting bits off me\". Say this only if asked what worries you, or when referral is mentioned."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Stoical, a bit gruff, dismissive. If the doctor explains clearly why a sore that will not heal needs a specialist to look at it, and that most are treated with a small operation, you grumble but agree: \"Mary'll be pleased, she's been on at me.\" Ask: \"Will they have to take my ear off?\""
+        }
       ],
-      ice:{
-        ideas:'It\u2019s an old man\u2019s scab / where his glasses rub; a stronger cream will heal it.',
-        concerns:'HIDDEN AGENDA \u2014 stoical "don\u2019t want a fuss", plus a quiet fear (it\u2019s growing/bleeding; maybe after a friend\u2019s skin cancer) and worry about disfiguring facial surgery.',
-        expectations:'A stronger cream for a scab. What he actually needs: recognition of a likely skin cancer, examination, an urgent suspected cancer pathway referral, the fear addressed, reassurance these are usually very treatable, and sun-damage advice.'
+      "ice": {
+        "ideas": "\"It's an old man's scab, or my glasses rubbing.\"",
+        "concerns": "Underneath (only if asked): a big operation and scar like your neighbour.",
+        "expectations": "\"Something stronger to heal it.\" You will accept referral if it is explained plainly."
       },
-      cues:['A lesion that won\u2019t heal over months on sun-exposed skin, growing/bleeding/crusting \u2014 skin cancer (SCC/BCC), not a scab; don\u2019t cream it.','Ear/high-risk site + growth + tenderness + keratin/crust + bleeding \u2014 SCC suspicion → urgent suspected cancer pathway referral (NICE NG12 (updated April 2026)).','"Old man\u2019s scab, don\u2019t want a fuss" \u2014 stoical minimisation masking fear; gently challenge and refer.']
+      "cues": [
+        "\"It bleeds a bit, then it comes back.\" — say in the opening.",
+        "\"I don't want any fuss made.\" — say in the opening.",
+        "\"Will they have to cut a lot off?\" — ask if referral is mentioned."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Recognises that a lesion FAILING TO HEAL over weeks\u2013months on sun-exposed skin (scaly/crusting, bleeding, growing, tender, indurated edge) in an older sun-exposed person is a NON-MELANOMA SKIN CANCER until proven otherwise \u2014 and does NOT prescribe "a stronger cream" for it' },
-      { dom:'tasks', text:'EXAMINES the lesion and surrounding skin as far as video allows (close view, good light, photographs) and arranges palpation of the regional nodes (pre- and post-auricular, cervical) face to face for suspected SCC, and assesses its features, recognising the ear as a high-risk site and the SCC-suspicious features (growth, tenderness, keratin, bleeding)' },
-      { dom:'tasks', text:'Refers on the appropriate pathway: URGENT suspected cancer pathway referral for suspected SCC; recognises BCC is usually routine unless delay could matter because of site or size — and acts on the NICE NG12 (updated April 2026) criteria rather than treating empirically' },
-      { dom:'tasks', text:'Gives accurate, reassuring information: most non-melanoma skin cancers (BCC, and SCC caught early) are highly treatable/curable with minor surgery, especially early \u2014 so the urgent referral is precautionary, not a catastrophe' },
-      { dom:'tasks', text:'Addresses the wider SUN-DAMAGE picture: examines for/advises on actinic keratoses and other lesions, and gives sun-protection advice, recognising field damage in a lifelong outdoor worker' },
-      { dom:'rto',   text:'Gently challenges the "old man\u2019s scab/don\u2019t want a fuss" minimisation and surfaces the underlying fear, rather than colluding with the cream request; names the concern honestly and proportionately' },
-      { dom:'rto',   text:'Balances honesty (this needs urgent checking) with genuine reassurance (these are very treatable), so the stoical patient accepts referral; addresses any disfigurement worry' },
-      { dom:'gs',    text:'Safety-nets and follows up: the urgent referral and what to expect (biopsy/excision), reassurance and sun-protection advice, what to report (rapid growth, bleeding, new lesions), and a follow-up \u2014 referring the likely cancer, not creaming it' },
+      { dom:'dg', text:'Recognises that a lesion FAILING TO HEAL over weeks\u2013months on sun-exposed skin (scaly/crusting, bleeding, growing, tender, indurated edge) in an older sun-exposed person is a NON-MELANOMA SKIN CANCER until proven otherwise \u2014 and does NOT prescribe "a stronger cream" for it' },
+      { dom:'dg', text:'EXAMINES the lesion and surrounding skin as far as video allows (close view, good light, photographs) and arranges palpation of the regional nodes (pre- and post-auricular, cervical) face to face for suspected SCC, and assesses its features, recognising the ear as a high-risk site and the SCC-suspicious features (growth, tenderness, keratin, bleeding)' },
+      { dom:'cm', text:"Refers on the appropriate pathway: URGENT suspected cancer pathway referral for suspected SCC; recognises BCC is usually routine unless delay could matter because of site or size — and acts on the NICE NG12 criteria rather than treating empirically" },
+      { dom:'cm', text:'Gives accurate, reassuring information: most non-melanoma skin cancers (BCC, and SCC caught early) are highly treatable/curable with minor surgery, especially early \u2014 so the urgent referral is precautionary, not a catastrophe' },
+      { dom:'dg', text:'Addresses the wider SUN-DAMAGE picture: examines for/advises on actinic keratoses and other lesions, and gives sun-protection advice, recognising field damage in a lifelong outdoor worker' },
+      { dom:'ro',   text:'Gently challenges the "old man\u2019s scab/don\u2019t want a fuss" minimisation and surfaces the underlying fear, rather than colluding with the cream request; names the concern honestly and proportionately' },
+      { dom:'ro',   text:'Balances honesty (this needs urgent checking) with genuine reassurance (these are very treatable), so the stoical patient accepts referral; addresses any disfigurement worry' },
+      { dom:'cm',    text:'Safety-nets and follows up: the urgent referral and what to expect (biopsy/excision), reassurance and sun-protection advice, what to report (rapid growth, bleeding, new lesions), and a follow-up \u2014 referring the likely cancer, not creaming it' },
     ],
     worked:[
       { lbl:'Reframe \"old man\u2019s scab\"', txt:'"I\u2019m really glad you mentioned it, even if it feels like nothing. Here\u2019s the important rule: a sore or scab that DOESN\u2019T heal over a few months \u2014 keeps bleeding and crusting and coming back \u2014 isn\u2019t just an old scab, especially on a sun-exposed spot like the top of your ear. A cream won\u2019t fix that, because it\u2019s likely something we need to look at properly. So let me take a proper look on the video, get some clear photos, and check the glands around your ear in person."' },
@@ -158,18 +267,18 @@
       { lbl:'The wider sun damage', txt:'"While we\u2019re here \u2014 a lifetime farming means a lot of sun on your skin, so I\u2019d like to check for any other rough or scaly patches, and talk about protecting your skin going forward, hat and sunscreen. There may be a few spots worth treating."' },
       { lbl:'Safety-net',          txt:'"I know you didn\u2019t want a fuss \u2014 but this is worth it, and you\u2019ve done the right thing. If it grows quickly, bleeds a lot, or you spot new ones, tell me sooner. I\u2019ll get the urgent referral done and follow it up with you. You came in for a stronger cream; what you actually needed was to get this looked at properly \u2014 and most likely sorted simply."' },
     ],
-    learning:'A lesion that FAILS TO HEAL over weeks\u2013months on sun-exposed skin in an older person with chronic sun exposure \u2014 scaly/crusting, bleeding, growing, tender, with a raised/indurated edge \u2014 is a NON-MELANOMA SKIN CANCER until proven otherwise (SCC or BCC), so "an old man\u2019s scab / a stronger cream" is the dangerous misconception and non-healing is the red flag. On a high-risk site like the ear with growth, tenderness, keratin and bleeding, SCC (which can metastasise) is likely and warrants an URGENT suspected cancer pathway referral per NICE NG12 (updated April 2026), while BCC (pearly, rolled edge, telangiectasia, slow) is usually routine \u2014 the job is to examine, recognise it needs assessment/biopsy, and refer, not to cream it. Reassure genuinely (most non-melanoma skin cancers, and early SCC, are highly treatable/curable with minor surgery), address the field sun-damage (actinic keratoses, sun protection), and \u2014 the hidden agenda \u2014 gently challenge the stoical "don\u2019t want a fuss" minimisation masking a quiet fear, naming the concern honestly while reassuring, so the patient accepts the urgent referral.',
+    learning:"A lesion that FAILS TO HEAL over weeks–months on sun-exposed skin in an older person with chronic sun exposure — scaly/crusting, bleeding, growing, tender, with a raised/indurated edge — is a NON-MELANOMA SKIN CANCER until proven otherwise (SCC or BCC), so \"an old man’s scab / a stronger cream\" is the dangerous misconception and non-healing is the red flag. On a high-risk site like the ear with growth, tenderness, keratin and bleeding, SCC (which can metastasise) is likely and warrants an URGENT suspected cancer pathway referral per NICE NG12, while BCC (pearly, rolled edge, telangiectasia, slow) is usually routine — the job is to examine, recognise it needs assessment/biopsy, and refer, not to cream it. Reassure genuinely (most non-melanoma skin cancers, and early SCC, are highly treatable/curable with minor surgery), address the field sun-damage (actinic keratoses, sun protection), and — the hidden agenda — gently challenge the stoical \"don’t want a fuss\" minimisation masking a quiet fear, naming the concern honestly while reassuring, so the patient accepts the urgent referral.",
     knowledge:{
-      guideline:'NICE NG12 (updated April 2026) Suspected cancer: recognition and referral — skin · BAD guidelines for the management of primary cutaneous squamous cell carcinoma (2020) · BAD guidelines for the management of actinic keratosis (2017) · non-melanoma skin cancer pathways',
+      guideline:"BAD guidelines for the management of primary cutaneous squamous cell carcinoma (2020) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BAD guidelines for the management of actinic keratosis (2017) · non-melanoma skin cancer pathways",
       points:[
         { h:'Non-healing = red flag', t:'A skin lesion that does not heal within the expected time (weeks), or that grows, bleeds, crusts, ulcerates or is tender \u2014 especially on sun-exposed skin in older/sun-damaged patients \u2014 should be regarded as a possible skin cancer, not treated as a benign "scab" with creams.' },
-        { h:'SCC features and urgency', t:'Squamous cell carcinoma: a keratinising/crusting, often tender, enlarging nodule or non-healing ulcer on sun-exposed sites (face, ears, scalp, hands, lower lip). SCC can metastasise to nodes (BAD 2020) — NICE NG12 (updated April 2026): consider a suspected cancer pathway referral for a skin lesion that raises the suspicion of squamous cell carcinoma. High-risk sites (ear, lip) and immunosuppression raise concern.' },
-        { h:'BCC features and pathway', t:'Basal cell carcinoma: pearly/translucent papule or nodule with a rolled edge and surface telangiectasia, slow-growing, may ulcerate ("rodent ulcer"). Usually low metastatic risk — NICE NG12 (updated April 2026): consider routine referral (or per local pathway/skin-cancer service), using the suspected cancer pathway only if there is concern about SCC or a delay could have a significant impact because of factors such as site or size.' },
+        { h:'SCC features and urgency', t:"Squamous cell carcinoma: a keratinising/crusting, often tender, enlarging nodule or non-healing ulcer on sun-exposed sites (face, ears, scalp, hands, lower lip). SCC can metastasise to nodes (BAD 2020) — NICE NG12: consider a suspected cancer pathway referral for a skin lesion that raises the suspicion of squamous cell carcinoma. High-risk sites (ear, lip) and immunosuppression raise concern." },
+        { h:'BCC features and pathway', t:"Basal cell carcinoma: pearly/translucent papule or nodule with a rolled edge and surface telangiectasia, slow-growing, may ulcerate (\"rodent ulcer\"). Usually low metastatic risk — NICE NG12: consider routine referral (or per local pathway/skin-cancer service), using the suspected cancer pathway only if there is concern about SCC or a delay could have a significant impact because of factors such as site or size." },
         { h:'Examine and assess', t:'Examine the lesion (size, edge, surface, ulceration, induration) and surrounding skin; examine regional lymph nodes (pre- and post-auricular, cervical) for suspected SCC — a video view or photograph helps triage but does not replace palpation of the nodes in person. Dermoscopy/structured assessment supports the decision. Biopsy/excision is done in secondary care \u2014 refer rather than treating empirically.' },
         { h:'Reassure proportionately', t:'Most non-melanoma skin cancers (BCC, and early SCC) are highly treatable and often cured with minor surgery, especially when caught early. Frame urgent referral as precautionary and good news, not a catastrophe \u2014 this helps a stoical patient accept it.' },
         { h:'Field damage & prevention', t:'Lifelong sun exposure causes field change \u2014 actinic keratoses (premalignant) and multiple lesions. Examine for and manage these (BAD 2017), and give sun-protection advice (hat, sunscreen, avoidance), with surveillance for further lesions.' },
-        { h:'Never do', t:'Never treat a non-healing, growing or bleeding lesion as a benign scab with creams; never miss the NICE NG12 (updated April 2026) suspected cancer pathway criterion for SCC (especially high-risk sites); never skip examination/regional nodes; never collude with "don\u2019t want a fuss"; never frighten without the genuine reassurance these are usually very treatable.' },
-        { h:'Safety-net & follow-up', t:'Urgent suspected cancer pathway referral for SCC suspicion (routine for BCC per NICE NG12 (updated April 2026) unless site or size makes delay significant); examine and manage field damage; sun protection; report rapid growth/bleeding/new lesions; follow up the referral and outcome.' }
+        { h:'Never do', t:"Never treat a non-healing, growing or bleeding lesion as a benign scab with creams; never miss the NICE NG12 suspected cancer pathway criterion for SCC (especially high-risk sites); never skip examination/regional nodes; never collude with \"don’t want a fuss\"; never frighten without the genuine reassurance these are usually very treatable." },
+        { h:'Safety-net & follow-up', t:"Urgent suspected cancer pathway referral for SCC suspicion (routine for BCC per NICE NG12 unless site or size makes delay significant); examine and manage field damage; sun protection; report rapid growth/bleeding/new lesions; follow up the referral and outcome." }
       ]
     }
   };
@@ -177,33 +286,64 @@
   /* ============ 144. VIDEO — Acne and its psychological weight: the ladder + isotretinoin/mental-health ============ */
   const c144 = {
     id:'acne-psychological', title:'"My acne\u2019s ruining my life \u2014 I want the strong tablets that cure it"', type:'video', duration:12,
-    meta:{ age:19, sex:'M', setting:'Video consultation \u2014 acne with major psychological impact.', system:'Dermatology / Acne & mental health' },
+    meta:{ age:19, sex:'M', setting:'Video consultation \u2014 acne with major psychological impact.', system:'Dermatology / Acne & mental health', checked:'October 2026' },
     brief:'Mr Reece Holloway, 19, student. Moderate-to-severe inflammatory acne (face, chest, back), with early scarring, despite OTC products and a previous topical. He wants "the strong tablets \u2014 Roaccutane \u2014 to cure it". CRUCIAL: on exploration the psychological impact is profound \u2014 he\u2019s stopped going out, missing lectures, low mood, and \u2014 if asked sensitively \u2014 some fleeting thoughts that "life\u2019s not worth it" because of how he looks. The acne is genuinely severe AND the mental-health impact (and the isotretinoin mood/safety discussion) is central.',
     script:{
-      opening:'"Doctor, please \u2014 my skin is ruining my life. I\u2019ve tried everything from the chemist and it\u2019s just got worse, and now it\u2019s scarring. I just want the strong tablets, Roaccutane, the ones that actually cure it. I can\u2019t keep living like this. Can you just refer me for it or prescribe it? I\u2019ll do anything to make it stop."',
-      facts:[
-        { topic:'Assess severity & the ladder', text:'Moderate-to-severe inflammatory acne with SCARRING that has failed adequate topical treatment warrants stepping UP the ladder: topical retinoid + benzoyl peroxide/antibiotic combinations, a course of oral antibiotics (e.g. lymecycline/doxycycline) WITH a topical (not antibiotic monotherapy), hormonal options where relevant \u2014 and, for severe/scarring/treatment-resistant or psychologically-significant acne, REFERRAL to dermatology for ISOTRETINOIN (which is specialist-prescribed, not GP-prescribed).' },
-        { topic:'Isotretinoin realities', text:'Isotretinoin is dermatologist-prescribed and highly effective but requires specialist supervision: TERATOGENICITY (Pregnancy Prevention Programme \u2014 critical in females; relevant to counsel), monitoring (lipids/LFTs), mucocutaneous side effects, and the MOOD/MENTAL-HEALTH consideration \u2014 a careful mental-health assessment is part of isotretinoin care (MHRA guidance on mood/suicidality monitoring). The GP\u2019s role: optimise/step up treatment, refer appropriately, and \u2014 crucially \u2014 assess and address the mental-health impact.' },
-        { topic:'The hidden agenda \u2014 mental health', text:'HIDDEN AGENDA \u2014 the consultation is NOT just about a prescription: the acne\u2019s PSYCHOLOGICAL impact is severe (social withdrawal, missing lectures, low mood) and, if explored sensitively, there are fleeting suicidal thoughts driven by his appearance. This MUST be assessed explicitly \u2014 both because his mental health needs support in its own right, and because it bears directly on (and is part of) safe isotretinoin care. Reaching the suicidal ideation behind the "ruining my life" is the crux.' },
-        { topic:'Validate, don\u2019t minimise', text:'Acne is too often dismissed as trivial/cosmetic. The skill is to take BOTH the skin AND its psychological toll seriously, treat the acne effectively (and early, to limit scarring), and assess/support mental health \u2014 not to brush off "it\u2019s just spots" nor to simply refer for tablets without addressing the distress and risk.' },
-        { topic:'What he needs',        text:'Officially: isotretinoin to cure his skin. What he needs: his acne severity and scarring taken seriously with an effective step-up and a dermatology referral for isotretinoin, the isotretinoin realities explained (specialist-prescribed, monitoring, teratogenicity, mood), and \u2014 above all \u2014 an explicit, sensitive MENTAL-HEALTH assessment (the suicidal thoughts) with support and safety-netting \u2014 not just a prescription request processed.' },
+      "opening": "\"Doctor, please — my skin is ruining my life. I've tried everything from the chemist and it's just got worse, and now it's scarring. I just want the strong tablets, Roaccutane, the ones that actually cure it. I can't keep living like this. Can you just refer me for it or prescribe it? I'll do anything to make it stop.\"",
+      "facts": [
+        {
+          "topic": "The acne (if asked)",
+          "text": "Since 15, much worse in the last year. Face, chest and back. Lots of red, painful spots and some deep lumps on your jaw and back. Leaving pitted scars on your cheeks. On video you can show your face: many inflamed spots, several nodules on the jaw, and small pitted scars."
+        },
+        {
+          "topic": "Treatments tried (if asked)",
+          "text": "Benzoyl peroxide washes, salicylic acid, tea tree. The GP gave you a gel (adapalene) a year ago — used it for two months, it stung and did not help much. Never had antibiotic tablets."
+        },
+        {
+          "topic": "Impact (if asked)",
+          "text": "You have stopped going to lectures in person, you keep your camera off on online seminars, you avoid mirrors and photos, you have stopped going out with friends and the gym. You turned down a part-time job because it was customer-facing."
+        },
+        {
+          "topic": "Mood — only if asked directly and kindly",
+          "text": "Low most days for about three months. Sleeping a lot. If asked about suicidal thoughts: \"Sometimes I think there's no point to anything. I've thought it'd be easier not to be here.\" No plan, no actions, no self-harm. You would not act on it \"because of my mum\". Nobody knows."
+        },
+        {
+          "topic": "Medical history",
+          "text": "No other illnesses. No regular medicines. No allergies. No previous mental health problems. Not on any medicines that affect mood."
+        },
+        {
+          "topic": "Social",
+          "text": "19, second-year engineering student, lives in a shared house. Drinks occasionally, no drugs, non-smoker. Close to your mum, who lives an hour away."
+        },
+        {
+          "topic": "What you have read",
+          "text": "Roaccutane \"cures it\" — you have also read it can affect mood, \"but I don't care, I'm already miserable\"."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Desperate and pleading, focused on getting the tablets. If the doctor dismisses it (\"it's just spots\", \"you'll grow out of it\"), go quiet and withdraw. If they take your skin seriously and ask how it is affecting you, open up slowly. Disclose the suicidal thoughts only if asked directly. Respond well to a plan that treats the skin now, refers to a dermatologist, and gets support for your mood."
+        }
       ],
-      ice:{
-        ideas:'Isotretinoin ("Roaccutane") is the cure and he just needs it prescribed/referred.',
-        concerns:'HIDDEN AGENDA \u2014 the acne\u2019s psychological impact is severe (withdrawal, missing lectures, low mood) with fleeting suicidal thoughts about his appearance; "ruining my life / I\u2019ll do anything" carries real distress and risk.',
-        expectations:'A prescription/referral for isotretinoin. What he actually needs: effective acne treatment + dermatology referral for isotretinoin, the realities explained, and an explicit mental-health assessment with support \u2014 not just a script.'
+      "ice": {
+        "ideas": "\"Roaccutane is the only thing that will cure it.\"",
+        "concerns": "\"It's scarring and it's ruining my life.\" Underneath (only if asked): how low you have got.",
+        "expectations": "\"Refer me or prescribe it.\" You will accept a step-up plan and referral if you feel taken seriously."
       },
-      cues:['Moderate-severe scarring acne failing topicals \u2014 step up + dermatology referral for isotretinoin; treat early to limit scarring.','"It\u2019s ruining my life / I\u2019ll do anything" \u2014 explore the psychological impact; assess mood and suicide risk explicitly.','Isotretinoin request \u2014 specialist-prescribed; teratogenicity + mood monitoring; the mental-health assessment is part of safe care.']
+      "cues": [
+        "\"I can't keep living like this.\" — say in the opening.",
+        "\"I don't really go out any more.\" — say if asked about the impact.",
+        "\"Sometimes I think there's no point.\" — say only if asked about your mood directly."
+      ]
     },
     checkpoints:[
-      { dom:'tasks', text:'Takes the acne seriously (moderate-to-severe inflammatory acne with SCARRING failing topicals) and steps UP treatment appropriately \u2014 combination topicals, oral antibiotics WITH a topical (not antibiotic monotherapy) \u2014 and refers to DERMATOLOGY for ISOTRETINOIN given severity/scarring/psychological impact, recognising isotretinoin is specialist-prescribed (not GP-prescribed)' },
-      { dom:'tasks', text:'Explicitly ASSESSES MENTAL HEALTH and SUICIDE RISK: explores the profound psychological impact and asks directly about low mood and suicidal thoughts/plans/intent \u2014 recognising this is central, not incidental, and a safety issue' },
-      { dom:'tasks', text:'Explains isotretinoin REALITIES accurately: highly effective but dermatologist-prescribed with monitoring (lipids/LFTs), teratogenicity/Pregnancy Prevention Programme, mucocutaneous effects, and the MOOD/mental-health monitoring (MHRA) \u2014 so the mental-health assessment is part of safe isotretinoin care' },
-      { dom:'tasks', text:'Treats early to LIMIT SCARRING and validates that acne and its impact are NOT trivial \u2014 avoiding dismissive "it\u2019s just spots" \u2014 while not simply processing a prescription request without addressing the distress' },
-      { dom:'tasks', text:'Makes a mental-health management plan: support for low mood (and risk management/crisis routes if suicidal ideation), and coordinates this with the acne/dermatology plan' },
-      { dom:'rto',   text:'Reaches the suicidal ideation behind "ruining my life", validates the genuine distress (without minimising the acne), and responds with compassion and a safety plan' },
-      { dom:'rto',   text:'Engages him as more than a prescription request \u2014 treating the whole young person \u2014 and explains why the mental-health side matters for him and for safe treatment' },
-      { dom:'gs',    text:'Safety-nets and follows up: the acne step-up and dermatology/isotretinoin referral, the mental-health support and crisis routes (urgent/111/crisis/A&E if risk), early follow-up, and coordination \u2014 treating the skin AND the mind, not a script in isolation' },
+      { dom:'dg', text:'Takes the acne seriously (moderate-to-severe inflammatory acne with SCARRING failing topicals) and steps UP treatment appropriately \u2014 combination topicals, oral antibiotics WITH a topical (not antibiotic monotherapy) \u2014 and refers to DERMATOLOGY for ISOTRETINOIN given severity/scarring/psychological impact, recognising isotretinoin is specialist-prescribed (not GP-prescribed)' },
+      { dom:'ro', text:'Explicitly ASSESSES MENTAL HEALTH and SUICIDE RISK: explores the profound psychological impact and asks directly about low mood and suicidal thoughts/plans/intent \u2014 recognising this is central, not incidental, and a safety issue' },
+      { dom:'ro', text:'Explains isotretinoin REALITIES accurately: highly effective but dermatologist-prescribed with monitoring (lipids/LFTs), teratogenicity/Pregnancy Prevention Programme, mucocutaneous effects, and the MOOD/mental-health monitoring (MHRA) \u2014 so the mental-health assessment is part of safe isotretinoin care' },
+      { dom:'cm', text:'Treats early to LIMIT SCARRING and validates that acne and its impact are NOT trivial \u2014 avoiding dismissive "it\u2019s just spots" \u2014 while not simply processing a prescription request without addressing the distress' },
+      { dom:'cm', text:'Makes a mental-health management plan: support for low mood (and risk management/crisis routes if suicidal ideation), and coordinates this with the acne/dermatology plan' },
+      { dom:'ro',   text:'Reaches the suicidal ideation behind "ruining my life", validates the genuine distress (without minimising the acne), and responds with compassion and a safety plan' },
+      { dom:'ro',   text:'Engages him as more than a prescription request \u2014 treating the whole young person \u2014 and explains why the mental-health side matters for him and for safe treatment' },
+      { dom:'cm',    text:'Safety-nets and follows up: the acne step-up and dermatology/isotretinoin referral, the mental-health support and crisis routes (urgent/111/crisis/A&E if risk), early follow-up, and coordination \u2014 treating the skin AND the mind, not a script in isolation' },
     ],
     worked:[
       { lbl:'Validate, don\u2019t minimise', txt:'"First \u2014 I\u2019m not going to brush this off as \u2018just spots\u2019. Your acne is genuinely severe, it\u2019s scarring, and I can hear it\u2019s having a huge effect on your life. That\u2019s real, and we\u2019re going to treat it properly. You were right to come and push for help."' },
@@ -213,7 +353,7 @@
       { lbl:'Support the mind',     txt:'"So we treat your skin AND look after you. I\u2019d like to get you some support for your mood \u2014 there\u2019s real help \u2014 and if those darker thoughts ever get stronger, here are the numbers to call, and that\u2019s an urgent/A&E thing if you ever feel unsafe. You don\u2019t have to carry this alone, and your skin clearing will help, but I don\u2019t want to wait on that for your wellbeing."' },
       { lbl:'Plan + safety-net',    txt:'"Plan: I\u2019ll start the step-up treatment, refer you to dermatology for isotretinoin, and sort some support for your mood, and I want to see you again soon \u2014 not leave it long. Come back sooner if you\u2019re struggling. You came in asking for tablets to fix your skin; what you\u2019re getting is your skin treated properly AND someone looking after how you\u2019re feeling \u2014 because both matter."' },
     ],
-    learning:'Acne is too often dismissed as trivial/cosmetic \u2014 the skill is to take BOTH the skin AND its psychological toll seriously. Moderate-to-severe inflammatory acne with scarring failing topicals warrants stepping up (combination topicals; oral antibiotics WITH a topical, never antibiotic monotherapy) and DERMATOLOGY referral for ISOTRETINOIN (specialist-prescribed, not GP-prescribed), treating early to limit scarring. Isotretinoin\u2019s realities must be explained: high efficacy but monitoring (lipids/LFTs), teratogenicity/Pregnancy Prevention Programme, mucocutaneous effects, and MOOD/mental-health monitoring (MHRA) \u2014 so the mental-health assessment is part of safe isotretinoin care. The examinable hidden agenda is that the consultation is NOT just a prescription request: the psychological impact is severe (social withdrawal, missing lectures, low mood) with fleeting suicidal thoughts about appearance, which MUST be assessed explicitly \u2014 reaching the suicidal ideation behind "it\u2019s ruining my life" is the crux \u2014 with mood support and safety-netting. Treat the skin AND the mind, validate the distress without minimising the acne, and never process the script in isolation.',
+    learning:"Acne is too often dismissed as trivial/cosmetic — the skill is to take BOTH the skin AND its psychological toll seriously. Moderate-to-severe inflammatory acne with scarring failing topicals warrants stepping up (combination topicals; oral antibiotics WITH a topical, never antibiotic monotherapy) and DERMATOLOGY referral for ISOTRETINOIN (specialist-prescribed, not GP-prescribed), treating early to limit scarring. Isotretinoin’s realities must be explained: high efficacy but monitoring (lipids/LFTs), teratogenicity/Pregnancy Prevention Programme, mucocutaneous effects, and MOOD/mental-health monitoring (MHRA) — so the mental-health assessment is part of safe isotretinoin care. The examinable hidden agenda is that the consultation is NOT just a prescription request: the psychological impact is severe (social withdrawal, missing lectures, low mood) with fleeting suicidal thoughts about appearance, which MUST be assessed explicitly — reaching the suicidal ideation behind \"it’s ruining my life\" is the crux — with mood support and safety-netting. Treat the skin AND the mind, validate the distress without minimising the acne, and never process the script in isolation. Isotretinoin is dermatologist-prescribed and highly effective but requires specialist supervision: TERATOGENICITY (Pregnancy Prevention Programme — critical in females; relevant to counsel), monitoring (lipids/LFTs), mucocutaneous side effects, and the MOOD/MENTAL-HEALTH consideration — a careful mental-health assessment is part of isotretinoin care (MHRA guidance on mood/suicidality monitoring). The GP’s role: optimise/step up treatment, refer appropriately, and — crucially — assess and address the mental-health impact.",
     knowledge:{
       guideline:'NICE NG198 Acne vulgaris: management (2021) · MHRA Drug Safety Update, October 2023 (isotretinoin: mental health and sexual function monitoring) · MHRA Drug Safety Update, January 2026 (isotretinoin: under-18 second-prescriber requirement replaced by revised risk minimisation measures) · isotretinoin Pregnancy Prevention Programme · NICE NG225 Self-harm (2022) · NICE NG222 Depression in adults (2022, updated December 2025) · BNF · acne & mental health',
       points:[
@@ -248,7 +388,7 @@
         { t:'0–2',  h:'Reframe "dry skin"',  d:'Itch all over with NO rash → think systemic, not skin. Don\u2019t just hand over a cream.' },
         { t:'2–4',  h:'Directed history',    d:'Night sweats? weight loss? fatigue? — B-symptoms raise lymphoma; itch after a hot bath — think polycythaemia. Examine nodes/spleen face to face.' },
         { t:'4–6',  h:'Surface the fear',    d:'Noticed a lump? cancer crossed your mind? Name it honestly; that\u2019s why a cream alone is wrong.' },
-        { t:'6–9',  h:'Work-up',             d:'FBC + film, ferritin, U&E, LFTs, TFTs, ESR/LDH, calcium; imaging; suspected cancer pathway referral (NICE NG12 (updated April 2026)) if lymphoma suspected. Symptomatic relief alongside.' },
+        { t:'6–9',  h:'Work-up',             d:"FBC + film, ferritin, U&E, LFTs, TFTs, ESR/LDH, calcium; imaging; suspected cancer pathway referral (NICE NG12) if lymphoma suspected. Symptomatic relief alongside." },
         { t:'9–12', h:'Safety-net',          d:'Enlarging nodes/fevers/weight loss → sooner. Chase results; treat the itch too. Find the cause, don\u2019t patch it.' }
       ],
       wordPics: {
@@ -306,13 +446,13 @@
         { t:'0–2',  h:'Reframe "scab"',      d:'A sore that won\u2019t heal over months on sun-exposed skin, growing/bleeding, isn\u2019t a scab — a cream won\u2019t fix it. Examine.' },
         { t:'2–4',  h:'Name it honestly',    d:'Growth, raised edge, crusting/bleeding on the ear after years outdoors → likely skin cancer (SCC). Be straight, then reassure.' },
         { t:'4–6',  h:'The reassurance',     d:'Sun-damage skin cancers are usually very treatable, often cured by minor surgery, especially early. Urgent referral is precautionary.' },
-        { t:'6–8',  h:'Urgent suspected cancer pathway referral', d:'Ear/SCC suspicion → urgent suspected cancer pathway referral; biopsy/excision in secondary care. Tag NICE NG12 (updated April 2026).' },
+        { t:'6–8',  h:'Urgent suspected cancer pathway referral', d:"Ear/SCC suspicion → urgent suspected cancer pathway referral; biopsy/excision in secondary care. Tag NICE NG12." },
         { t:'8–12', h:'Field damage + net',  d:'Check for other actinic lesions; sun protection. Rapid growth/bleeding/new lesions → sooner. Follow up the referral.' }
       ],
       wordPics: {
         fail: 'Prescribes a stronger cream for "an old man\u2019s scab"; never examines or recognises the non-healing lesion as a likely skin cancer; misses the SCC suspected cancer pathway referral; colludes with "no fuss".',
         pass: 'Recognises the non-healing lesion as a likely skin cancer, examines, refers urgently (suspected cancer pathway), and reassures + advises on sun damage.',
-        exc:  'Reframes the non-healing "scab" as a likely skin cancer and examines it (with the nodes checked in person for SCC); refers urgently on the NICE NG12 (updated April 2026) suspected cancer pathway for SCC suspicion; reassures genuinely that these are usually very treatable; addresses the field sun-damage and protection; and gently challenges the stoical minimisation and underlying fear.'
+        exc:  "Reframes the non-healing \"scab\" as a likely skin cancer and examines it (with the nodes checked in person for SCC); refers urgently on the NICE NG12 suspected cancer pathway for SCC suspicion; reassures genuinely that these are usually very treatable; addresses the field sun-damage and protection; and gently challenges the stoical minimisation and underlying fear."
       },
       avoid: [
         { dont:'"It\u2019s probably just an old scab where your glasses rub — try a stronger cream."', instead:'"A sore that won\u2019t heal over months on a sun-exposed ear, growing and bleeding, isn\u2019t a scab — it needs looking at properly, because it could be a skin cancer. A cream won\u2019t fix that."', why:'Creaming a non-healing, growing, bleeding lesion misses a likely skin cancer (often SCC).' },

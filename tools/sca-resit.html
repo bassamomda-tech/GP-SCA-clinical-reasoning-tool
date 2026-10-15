@@ -209,7 +209,7 @@
 
   /* Build checklists */
   $('#rcStmts').innerHTML = R.statements.map(s => `
-    <label class="rc-check"><input type="checkbox" data-stmt="${s.id}"${state.stmts.includes(s.id) ? ' checked' : ''}><span class="dompill ${s.dom}">${s.dom === 'gs' ? 'Global' : DOMN[s.dom].split(' ')[0]}</span><span>${esc(s.t)}</span></label>`).join('');
+    <label class="rc-check"><input type="checkbox" data-stmt="${s.id}"${state.stmts.includes(s.id) ? ' checked' : ''}><span class="dompill ${s.dom}">${s.dom === 'gs' ? 'Whole exam' : DOMN[s.dom].split(' ')[0]}</span><span>${esc(s.t)}</span></label>`).join('');
   $('#rcSymps').innerHTML = R.symptoms.map(s => `
     <label class="rc-check"><input type="checkbox" data-symp="${s.id}"${state.symps.includes(s.id) ? ' checked' : ''}><span>${esc(s.t)}</span></label>`).join('');
 

@@ -216,7 +216,7 @@
 <script src="../assets/site.js?v=107"></script>
 <script src="../assets/tts-voice.js?v=1"></script>
 <!-- the full 312-case library, same files and order as The Hot Seat -->
-<script src="../assets/sca-loader.js?v=1"></script>
+<script src="../assets/sca-loader.js?v=3"></script>
 <script>
 (function(){
   'use strict';
@@ -318,7 +318,7 @@
     const s=c.script||{}, facts=(s.facts||[]).map(f=>`- ${f.topic}: ${f.text}`).join('\n'),
       cues=(s.cues||[]).map((x,i)=>`- Cue ${i+1}: ${x}`).join('\n'), ice=s.ice||{};
     return ['You are a simulated PATIENT in a UK GP consultation for an RCGP SCA mock. Stay strictly in role — never act as doctor, narrator or examiner.',
-      'WHO YOU ARE: '+(c.brief||''),'CONSULTATION TYPE: '+(TYPE_LBL[c.type]||'Face-to-face')+'.',
+      'WHO YOU ARE: '+(c.brief||''),'CONSULTATION TYPE: '+(TYPE_LBL[c.type]||'Video consultation')+'.',
       'YOUR STORY — reveal each piece ONLY when asked a relevant question; never dump it all:',facts||'(none)',
       'INNER WORLD — share only if genuinely explored: Ideas: '+(ice.ideas||'—')+' | Concerns: '+(ice.concerns||'—')+' | Expectations: '+(ice.expectations||'—'),
       'CUES — drop each ONCE, naturally, then move on:',cues||'(none)',
@@ -369,7 +369,7 @@
 
   // ---- end a case → mark in background → interstitial ----
   function examinerPrompt(c){
-    const cps=(c.checkpoints||[]).map(cp=>`- [${cp.dom}] ${cp.text}`).join('\n');
+    const DL={dg:'Data gathering & diagnosis',cm:'Clinical management & medical complexity',ro:'Relating to others'}; const cps=(c.checkpoints||[]).map(cp=>{ const d=window.SCA_RCGP?window.SCA_RCGP.dom(cp.dom,cp.text):cp.dom; return `- [${DL[d]||d}] ${cp.text}`; }).join('\n');
     const cues=((c.script&&c.script.cues)||[]).map((q,i)=>`- Cue ${i+1}: ${q}`).join('\n');
     const convo=transcript.map(m=>(m.role==='dr'?'DOCTOR':'PATIENT')+': '+m.text).join('\n');
     return ['You are an RCGP SCA examiner. Mark this consultation. Be fair and specific.',

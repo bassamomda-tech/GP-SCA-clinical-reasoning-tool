@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frailty and medication review — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/frailty-medication-review.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/frailty-medication-review.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../frailty-medication-review.html">← Full frailty and medication review protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+<header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Frailty and medication review</h1>
+      <div class="scope"><b>For:</b> adults aged 65 and over with frailty, multimorbidity or polypharmacy in primary care. <b>Not for:</b> acute delirium management (same-day assessment), people under 65 (describe function; NG56 principles), or the last days of life (<a href="../care-of-the-dying.html">care of the dying</a>).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>NICE NG56 (2016)</span><span>NICE NG249 (2025)</span><span>NICE NG5 (2015)</span><span>STOPP/START v3 (2023)</span><span>CFS v2 · eFI</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> a sudden decline is acute illness until proved otherwise; frailty is the background, not the diagnosis — then review every medicine against what matters to the person, one change at a time.</div>
+
+  <div class="grid">
+
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now <small>— acute illness hiding behind frailty</small></h2>
+      <div class="body">
+        <ul>
+          <li><b>NEWS2 5 or more, suspected sepsis, hypotension, hypoxia or reduced consciousness</b> → <span class="when w999">999</span> unless an agreed treatment-escalation plan says otherwise.</li>
+          <li><b>New confusion, drowsiness, falls or “off legs” over hours to days</b> → 4AT and look for the cause (infection, AKI, retention, constipation, pain, medicines) <span class="when wsd">Same-day</span></li>
+          <li><b>Fall with possible fracture, head injury on anticoagulant, long lie or syncope</b> → <span class="when wsd">Same-day</span> or emergency assessment.</li>
+          <li><b>Medication harm</b> — bleeding, hypoglycaemia, bradycardia, postural hypotension with falls, hyponatraemia, lithium or digoxin toxicity → hold the culprit, review <span class="when wsd">Same-day</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— screen, then grade face to face</small></h2>
+        <div class="body">
+          <p><b>eFI</b> flags people aged 65 and over who <b>may</b> have moderate or severe frailty — never code from the eFI alone.</p>
+          <table>
+            <tr><th>Confirm with</th><th>Suggests frailty</th></tr>
+            <tr><td>Clinical Frailty Scale (1–9)</td><td>5 mild · 6 moderate · 7 severe</td></tr>
+            <tr><td>Gait speed / Timed Up and Go</td><td>&lt;0.8 m/s / &gt;10 seconds</td></tr>
+            <tr><td>PRISMA-7</td><td>Score 3 or more</td></tr>
+          </table>
+        </div>
+      </section>
+
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— primary-care CGA</small></h2>
+        <div class="body">
+          <p>☐ What matters most ☐ Falls in 12 months, gait, postural BP ☐ Cognition (6CIT/Mini-Cog), mood ☐ Full medicines list incl. OTC ☐ Weight, MUST ☐ Continence ☐ Vision, hearing, feet ☐ Function, carer ☐ FBC, U&amp;E/eGFR, LFT, TFT, bone profile. <b>Don't miss:</b> delirium, cancer, depression.</p>
+        </div>
+      </section>
+
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— NG56 approach to care</small></h2>
+        <div class="body">
+          <ul>
+            <li>For frailty, falls, many services or many medicines: establish goals and treatment burden, then one individualised plan with a <b>named coordinator</b>.</li>
+            <li><b>Consider a medicines review</b> for 15 or more regular medicines, or 10–14 with additional risk.</li>
+            <li>Weigh <b>time to benefit</b> of preventive drugs against prognosis and wishes. Strength and balance exercise for falls.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="blk teal">
+        <h2><span class="n">4</span>Target <small>— individualised goals</small></h2>
+        <div class="body">
+          <table>
+            <tr><th>Area</th><th>Goal</th></tr>
+            <tr><td>HbA1c, BP</td><td>Relax targets; avoid hypoglycaemia and postural drop</td></tr>
+            <tr><td>Anticholinergic burden</td><td>Reduce it; 3 or more linked to falls, confusion, death</td></tr>
+            <tr><td>Antipsychotic in dementia</td><td>Review at least every 6 weeks, aim to stop</td></tr>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <div class="col">
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— the structured medication review</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">1 Reconcile</span>What is actually taken; side effects, adherence, beliefs.</div>
+            <div class="step"><span class="sl">2 Indication</span>Still needed? Working? Time to benefit? Renal dose?</div>
+            <div class="step"><span class="sl">3 Screen</span>STOPP/START v3, anticholinergic burden, falls-risk drugs.</div>
+            <div class="step s4"><span class="sl">4 Change one</span>Agreed with the person; taper drugs with withdrawal effects.</div>
+          </div>
+          <ul>
+            <li><b>START:</b> anticoagulation in AF (falls alone are not a contraindication), bone protection, laxative with opioid, vaccines.</li>
+            <li><b>Never stop for frailty alone:</b> anticoagulants, heart-failure drugs, antiepileptics, Parkinson's drugs, steroid replacement.</li>
+            <li>Creatinine clearance for narrow-margin drugs. Doses per BNF and local formulary.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor</h2>
+        <div class="body">
+          <ul>
+            <li><b>After each change:</b> review at 2–6 weeks (sooner for antihypertensives, diuretics, heart-failure drugs); restart if symptoms recur.</li>
+            <li><b>Severe frailty:</b> medication review at least annually, after discharge and after any fall.</li>
+            <li><b>Re-grade frailty</b> annually and after admission; review ReSPECT after any change.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— involve</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Falls service</b>, community therapy, frailty MDT or community geriatrician, clinical pharmacist <span class="when wrt">Routine</span></li>
+            <li><b>Memory service</b> for suspected dementia; social care and carer's assessment; palliative care when needs are complex.</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Call a sudden decline “just frailty” without looking for delirium, sepsis or a drug.</li>
+          <li>Code frailty from the eFI score alone.</li>
+          <li>Stop several medicines at once, or stop without the person's agreement and a restart plan.</li>
+          <li>Withhold anticoagulation in AF because of frailty or falls alone.</li>
+          <li>Leave advance care planning until the crisis.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Very unwell, struggling to breathe or can't be woken — call 999.”</span> &nbsp;
+        <span class="when wsd">Same-day</span> <span class="say">“Suddenly more confused, drowsy or unable to stand over a day or two — contact us today, or 111 out of hours.”</span> &nbsp;
+        <b>After a change:</b> <span class="say">“If symptoms come back after we stop a medicine, don't restart it yourself — tell us within a few days.”</span> &nbsp;
+        <b>Falls:</b> <span class="say">“Tell us about any fall, even without injury.”</span></p>
+      </div>
+    </section>
+
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Acute illness and delirium excluded</span>
+        <span>Frailty confirmed with CFS, not eFI alone</span>
+        <span>CGA domains, renal function and falls reviewed</span>
+        <span>Medicines changed one at a time; review dated; ReSPECT offered</span>
+        <span>Safety-net given and documented</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../frailty-medication-review.html">Reasoning GP frailty and medication review protocol</a>, which holds the detail, evidence and recommendation numbers. Sources: NICE NG56 (2016), NG249 (2025), NG5 (2015), CG103, NG97; STOPP/START v3 (2023); Clinical Frailty Scale v2; NHS England eFI; BGS Fit for Frailty; ReSPECT. Clinical reference for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+</main>
+</body>
+</html>

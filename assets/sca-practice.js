@@ -47,7 +47,7 @@
     timerSec: 12 * 60,
     timerRunning: false,
     timerInterval: null,
-    scores: { tasks:null, rto:null, gs:null },
+    scores: { dg:null, cm:null, ro:null },
     checkpoints: {},
     mediaStream: null,
     recorder: null,
@@ -68,12 +68,20 @@
     timeChecks: {},
   };
 
+  /* RCGP SCA marking domains (dg / cm / ro). Legacy keys (tasks / rto / gs) on any
+     older item are mapped through SCA_RCGP.dom so nothing breaks. */
   const DOM_META = {
-    tasks:{ic:'🎯', title:'Tasks', sub:'Data gathering, diagnosis & management'},
-    rto:  {ic:'🤝', title:'Relating to others', sub:'ICE, rapport, shared decisions'},
-    gs:   {ic:'🌐', title:'Global skills', sub:'Structure, language, safety, time'}
+    dg:{ic:'🔎', title:'Data gathering & diagnosis', sub:'History, examination findings, tests, interpretation, diagnosis'},
+    cm:{ic:'💊', title:'Clinical management & medical complexity', sub:'Plan, prescribing, referral, safety-netting, follow-up, risk, ethics'},
+    ro:{ic:'🤝', title:'Relating to others', sub:'Rapport, ICE, cues, explanation, shared decisions, structure'}
   };
-  function domMeta(d){ return DOM_META[d] || {ic:'•',title:d,sub:''}; }
+  const DOM_ORDER = ['dg','cm','ro'];
+  const DOM_SHORT = { dg:'Data gathering', cm:'Clinical management', ro:'Relating to others' };
+  const DOM_COL = { dg:'#15803d', cm:'#1d4ed8', ro:'#be185d' };
+  function normDom(d, text){ return (window.SCA_RCGP && window.SCA_RCGP.dom) ? window.SCA_RCGP.dom(d, text) : (d === 'rto' || d === 'gs' ? 'ro' : d === 'tasks' ? 'dg' : d); }
+  function rcgpCard(c){ if (!c) return null; if (window.SCA_RCGP && window.SCA_RCGP.normaliseCase) window.SCA_RCGP.normaliseCase(c); const sc = (c.scorecardRcgp && c.scorecardRcgp.dg) ? c.scorecardRcgp : c.scorecard; return (sc && sc.dg) ? sc : (window.SCA_RCGP ? window.SCA_RCGP.scorecard(c) : sc); }
+  function domGrade(n, t){ if (window.SCA_RCGP && window.SCA_RCGP.grade) return window.SCA_RCGP.grade(n, t); if (!t) return ''; const p = n/t; return p >= 0.8 ? 'Clear pass' : p >= 0.6 ? 'Pass' : p >= 0.35 ? 'Fail' : 'Clear fail'; }
+  function domMeta(d){ return DOM_META[d] || DOM_META[normDom(d, '')] || {ic:'•',title:d,sub:''}; }
 
   /* ---------- Case picker ---------- */
   // Specialty = one canonical RCGP clinical topic (official list), classified from the
@@ -197,7 +205,7 @@
     if (!section || section.querySelector('.dir-layout')) return;
 
     const TYPES = [
-      ['video','Video'], ['telephone','Telephone (audio-only)'], ['f2f','Face to face']
+      ['video','Video'], ['telephone','Telephone (audio-only)']
     ];
     const counts = {};
     CASES.forEach(c => { counts[c.type] = (counts[c.type]||0) + 1; });
@@ -272,7 +280,7 @@
     if (caseLocked(id)){ showCaseUpsell(); return; }
     state.case = c;
     state.timerSec = (c.duration || 12) * 60;
-    state.scores = { tasks:null, rto:null, gs:null };
+    state.scores = { dg:null, cm:null, ro:null };
     state.checkpoints = {};
     state.cueChecks = {};
     state.timeChecks = {};
@@ -312,7 +320,7 @@
     $('#shTitle').textContent = UI.title(c);
     // Neutral label until the candidate moves past the consultation (see goToStep).
     state.revealed = false;
-    $('#shMeta').textContent = `${UI.who(c)} — ${c.meta.setting || ''}`;
+    $('#shMeta').textContent = `${UI.who(c)} — ${c.meta.setting || ''}${c.meta.checked ? ' · Last checked: ' + c.meta.checked : ''}`;
     $('#briefText').innerHTML = renderStem(c);
 
     // Reset subnav to step 1
@@ -454,23 +462,20 @@
     const c = state.case;
     const mount = $('#scorecardMount');
     if (!mount) return;
-    const sc = c.scorecard;
+    const sc = rcgpCard(c);
 
     // Fallback to the simple checkpoint card if no full scorecard authored
     if (!sc) { renderScorecardSimple(); return; }
 
-    const DOMS = [
-      { key:'gs',    cls:'gs-domain',   ic:'🌐', title:'Global Skills',     sub:'Structure, language, responsiveness',        items:sc.gs,    max:sc.maxGs,    scoreId:'sc-gs-score' },
-      { key:'tasks', cls:'task-domain', ic:'📋', title:'Tasks',             sub:'Data gathering, diagnosis, management',       items:sc.tasks, max:sc.maxTasks, scoreId:'sc-tasks-score' },
-      { key:'ro',    cls:'ro-domain',   ic:'🤝', title:'Relating to Others', sub:'Communication, rapport, shared decisions',  items:sc.ro,    max:sc.maxRo,    scoreId:'sc-ro-score' }
-    ];
+    const MAX = { dg:sc.maxDg, cm:sc.maxCm, ro:sc.maxRo };
+    const DOMS = DOM_ORDER.map(k => ({ key:k, cls:k + '-domain', ic:DOM_META[k].ic, title:DOM_META[k].title, sub:DOM_META[k].sub, items:sc[k], max:MAX[k], scoreId:'sc-' + k + '-score' }));
 
     mount.innerHTML = `
       <div class="scwrap">
         <div class="scwrap-hdr">
           <div>
             <div class="scwrap-title">${escapeHtml(c.title)} — SCA Consultation Scorecard</div>
-            <div class="scwrap-sub">Based on the official SCA Consultation Tool · tick what you demonstrated · use after every practice consultation</div>
+            <div class="scwrap-sub">Marked in the three RCGP SCA domains — Data gathering &amp; diagnosis · Clinical management &amp; medical complexity · Relating to others — each graded Clear pass / Pass / Fail / Clear fail · tick what you demonstrated</div>
           </div>
           <div style="display:flex;gap:8px;align-items:center">
             <div class="scwrap-total-wrap"><span class="scwrap-total" id="sc-total">0</span><span class="scwrap-total-label">/ ${sc.total} pts</span></div>
@@ -484,7 +489,7 @@
               <div class="sc-domain-hdr ${d.cls}">
                 <span class="sc-domain-icon">${d.ic}</span>
                 <div><div class="sc-domain-title">${d.title}</div><div class="sc-domain-sub">${d.sub}</div></div>
-                <div class="sc-domain-score"><span id="${d.scoreId}">0</span><span class="sc-domain-max">/${d.max}</span></div>
+                <div class="sc-domain-score"><span id="${d.scoreId}">0</span><span class="sc-domain-max">/${d.max}</span><div class="sc-domain-grade" id="${d.scoreId}-grade"></div></div>
               </div>
               <div class="sc-items">
                 ${d.items.map((it, i) => `
@@ -511,8 +516,8 @@
             <div class="interp-bar-track"><div class="interp-bar-fill" id="sc-bar-fill" style="width:0%"></div></div>
             <div class="interp-labels"><span>0</span><span>${Math.round(sc.total*0.33)}</span><span>${Math.round(sc.total*0.515)}</span><span>${Math.round(sc.total*0.758)}</span><span>${sc.total}</span></div>
             <div class="interp-zones">
-              <div class="interp-zone iz-r">Fail</div><div class="interp-zone iz-a">Borderline</div>
-              <div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Strong pass</div>
+              <div class="interp-zone iz-r">Clear fail</div><div class="interp-zone iz-a">Fail</div>
+              <div class="interp-zone iz-g">Pass</div><div class="interp-zone iz-gg">Clear pass</div>
             </div>
           </div>
           <div class="interp-msg" id="sc-interp-msg">
@@ -545,15 +550,14 @@
   }
 
   function currentScoreSnapshot(){
-    const c = state.case; if (!c || !c.scorecard) return null;
-    const sc = c.scorecard;
-    const groups = { gs:sc.gs, tasks:sc.tasks, ro:sc.ro };
-    const got = { gs:0, tasks:0, ro:0 }; let total = 0;
-    Object.keys(groups).forEach(key => groups[key].forEach((it,i) => {
+    const c = state.case; if (!c || !rcgpCard(c)) return null;
+    const sc = rcgpCard(c);
+    const got = { dg:0, cm:0, ro:0 }; let total = 0;
+    DOM_ORDER.forEach(key => (sc[key] || []).forEach((it,i) => {
       if (state.checkpoints[key+':'+i]) { got[key]+=it.pts; total+=it.pts; }
     }));
     return { caseId:c.id, title:c.title, system:(c.meta&&c.meta.system)||'',
-      got:got, max:{ gs:sc.maxGs, tasks:sc.maxTasks, ro:sc.maxRo },
+      got:got, max:{ dg:sc.maxDg, cm:sc.maxCm, ro:sc.maxRo },
       total:total, maxTotal:sc.total };
   }
 
@@ -578,10 +582,10 @@
   }
 
   function computeScore(){
-    const c = state.case; if (!c || !c.scorecard) return;
-    const sc = c.scorecard;
-    const groups = { gs:sc.gs, tasks:sc.tasks, ro:sc.ro };
-    const got = { gs:0, tasks:0, ro:0 };
+    const c = state.case; if (!c || !rcgpCard(c)) return;
+    const sc = rcgpCard(c);
+    const groups = { dg:sc.dg, cm:sc.cm, ro:sc.ro };
+    const got = { dg:0, cm:0, ro:0 };
     let total = 0;
     Object.keys(groups).forEach(key => {
       groups[key].forEach((it, i) => {
@@ -590,16 +594,18 @@
     });
     const setT = (id, v) => { const e = $('#' + id); if (e) e.textContent = v; };
     setT('sc-total', total);
-    setT('sc-gs-score', got.gs); setT('sc-tasks-score', got.tasks); setT('sc-ro-score', got.ro);
+    setT('sc-dg-score', got.dg); setT('sc-cm-score', got.cm); setT('sc-ro-score', got.ro);
+    const MAXD = { dg:sc.maxDg, cm:sc.maxCm, ro:sc.maxRo };
+    DOM_ORDER.forEach(k => setT('sc-' + k + '-score-grade', total ? domGrade(got[k], MAXD[k]) : ''));
     const fill = $('#sc-bar-fill'); if (fill) fill.style.width = Math.round(total / sc.total * 100) + '%';
 
     const t = sc.total;
     let icon, msg;
     if (total === 0) { icon = '📋'; msg = 'Complete the checklist above to see your score interpretation and feedback.'; }
-    else if (total < t*0.33) { icon = '🔴'; msg = '<strong>Below pass standard.</strong> Key parts of the consultation are missing — revisit the model consultation and the unticked items below before your next attempt.'; }
-    else if (total < t*0.515) { icon = '🟠'; msg = '<strong>Borderline.</strong> The structure is there but important marks are being dropped. Focus on the unticked items, especially data gathering and ICE.'; }
-    else if (total < t*0.758) { icon = '🟢'; msg = '<strong>Pass standard.</strong> Sound clinical reasoning and patient-centred consulting. Close the remaining gaps below for a strong pass.'; }
-    else { icon = '🟢'; msg = '<strong>Strong pass.</strong> Comprehensive across all three domains — data gathering, relating to others and clinical management.'; }
+    else if (total < t*0.33) { icon = '🔴'; msg = '<strong>Clear fail.</strong> Key parts of the consultation are missing — revisit the model consultation and the unticked items below before your next attempt.'; }
+    else if (total < t*0.515) { icon = '🟠'; msg = '<strong>Fail.</strong> The structure is there but important marks are being dropped. Focus on the unticked items, especially data gathering and ICE.'; }
+    else if (total < t*0.758) { icon = '🟢'; msg = '<strong>Pass.</strong> Sound clinical reasoning and patient-centred consulting. Close the remaining gaps below for a clear pass.'; }
+    else { icon = '🟢'; msg = '<strong>Clear pass.</strong> Comprehensive across all three RCGP domains — data gathering &amp; diagnosis, clinical management &amp; medical complexity, and relating to others.'; }
     const im = $('#sc-interp-msg');
     if (im) im.innerHTML = `<div class="interp-icon">${icon}</div><div class="interp-text">${msg}</div>`;
 
@@ -608,7 +614,7 @@
       groups[key].forEach((it, i) => { if (!state.checkpoints[key + ':' + i]) missed.push(it.t); });
     });
     const ms = $('#sc-missed-section');
-    const totalItems = sc.gs.length + sc.tasks.length + sc.ro.length;
+    const totalItems = sc.dg.length + sc.cm.length + sc.ro.length;
     if (ms) {
       if (missed.length && missed.length < totalItems) {
         ms.style.display = 'block';
@@ -621,9 +627,9 @@
   function renderScorecardSimple(){
     const c = state.case;
     const mount = $('#scorecardMount');
-    const order = ['tasks','rto','gs'];
-    const byDom = { tasks:[], rto:[], gs:[] };
-    c.checkpoints.forEach((cp, i) => { (byDom[cp.dom] || byDom.gs).push({ ...cp, i }); });
+    const order = DOM_ORDER;
+    const byDom = { dg:[], cm:[], ro:[] };
+    c.checkpoints.forEach((cp, i) => { (byDom[normDom(cp.dom, cp.text)] || byDom.ro).push({ ...cp, i }); });
     const max = c.checkpoints.length;
     mount.innerHTML = `
       <div class="sccard">
@@ -659,12 +665,12 @@
 
   function computeScoreSimple(){
     const c = state.case; if (!c) return;
-    const doms = { tasks:{n:0,t:0}, rto:{n:0,t:0}, gs:{n:0,t:0} };
+    const doms = { dg:{n:0,t:0}, cm:{n:0,t:0}, ro:{n:0,t:0} };
     let total = 0; const max = c.checkpoints.length;
-    c.checkpoints.forEach((cp, i) => { const d = doms[cp.dom] || doms.gs; d.t++; if (state.checkpoints[i]) { d.n++; total++; } });
+    c.checkpoints.forEach((cp, i) => { const d = doms[normDom(cp.dom, cp.text)] || doms.ro; d.t++; if (state.checkpoints[i]) { d.n++; total++; } });
     const setT = (sel, v) => { const e = $(sel); if (e) e.textContent = v; };
     setT('#scTotal', total);
-    ['tasks','rto','gs'].forEach(d => setT('#scDom-'+d, doms[d].n));
+    DOM_ORDER.forEach(d => setT('#scDom-'+d, doms[d].n));
     const bar = $('#scBar'); if (bar) bar.style.width = Math.round(total/max*100) + '%';
     const missed = c.checkpoints.filter((cp, i) => !state.checkpoints[i]);
     const ms = $('#scMissed');
@@ -683,7 +689,7 @@
         <div class="kn-pit-items">
           ${c.pitfalls.items.map(p => `
             <div class="kn-pit-i">
-              <span class="kn-pit-dom ${p.dom}">${({tasks:'Tasks', rto:'Relating to others', gs:'Global skills'})[p.dom] || ''}</span>
+              <span class="kn-pit-dom ${normDom(p.dom, p.fail)}">${escapeHtml((DOM_META[normDom(p.dom, p.fail)] || {}).title || '')}</span>
               <div class="kn-pit-fail">✗ ${escapeHtml(p.fail)}</div>
               <div class="kn-pit-why">${escapeHtml(p.why)}</div>
               <div class="kn-pit-fix">✓ ${escapeHtml(p.fix)}</div>
@@ -696,7 +702,7 @@
     const c = state.case; const mount = $('#knowledgeMount');
     if (!mount) return;
     const k = c.knowledge;
-    if (!k) { mount.innerHTML = '<div class="kn-wrap"><p style="color:var(--muted)">No structured knowledge note for this case yet.</p></div>'; return; }
+    if (!k) { mount.innerHTML = '<div class="kn-wrap"><p style="color:var(--muted)">No structured knowledge note for this case yet.' + ((c.meta && c.meta.checked) ? ' Case last checked: ' + escapeHtml(c.meta.checked) + '.' : '') + '</p></div>'; return; }
     const kb = c.kb || {};
     const pb = c.playbook || {};
     const hist = (pb.history && !Array.isArray(pb.history)) ? pb.history : {};
@@ -772,7 +778,7 @@
       <div class="kn-wrap">
         <div class="kn-eyebrow">SCA knowledge · what you’re expected to know</div>
         <div class="kn-h">${escapeHtml(c.title)}</div>
-        <div class="kn-guideline">📘 ${escapeHtml(k.guideline)}</div>
+        <div class="kn-guideline">📘 ${escapeHtml(k.guideline)}${(c.meta && c.meta.checked) ? ` <span class="kn-checked">· Last checked: ${escapeHtml(c.meta.checked)}</span>` : ''}</div>
         <div class="kn-summary">${escapeHtml(k.summary)}</div>
         ${tasksHtml ? `<div class="kn-sec-h">🎯 In the room — what this station rewards</div><div class="kn-tasks">${tasksHtml}</div>` : ''}
         <div class="kn-sec-h">🗂 Knowledge by theme — tap a theme to expand</div>
@@ -834,20 +840,20 @@ CASE: ${c.title} — ${c.meta.age}${c.meta.sex}, ${c.meta.system}. ${c.brief}`;
     // Line-based format (NOT JSON): one turn per line, pipe-delimited, so a
     // truncated response (1024-token cap) only loses the final partial line
     // instead of breaking the whole parse.
-    const prompt = `You are an RCGP SCA examiner writing a GOLD-STANDARD model consultation for a GP trainee: the whole ~12-minute station performed at clear/excellent-pass standard.
+    const prompt = `You are an RCGP SCA examiner writing a GOLD-STANDARD model consultation for a GP trainee: the whole ~12-minute station performed at clear-pass standard.
 
 OUTPUT FORMAT — one turn per line, pipe-delimited, nothing else (no preamble, no markdown, no numbering):
 WHO | spoken line | DOMAIN | why-this-scores
 - WHO is DR or PT.
-- DOMAIN is one of tasks, rto, gs for the strongest ~6 DOCTOR lines (the ones that earn marks); use "-" for every other line.
+- DOMAIN is one of dg (Data gathering & diagnosis), cm (Clinical management & medical complexity), ro (Relating to others) for the strongest ~6 DOCTOR lines (the ones that earn marks); use "-" for every other line.
 - why-this-scores: a SHORT phrase, only when a DOMAIN is given; otherwise leave empty.
 - Keep lines concise so the whole consultation fits. Aim for 12–16 turns: open → ICE → focused history → red-flag/exam → explanation in plain English → shared management plan → safety-net → close.
 - UK-idiomatic, warm, clinically correct to current UK guidance.
 
 EXAMPLE LINES:
-DR | Hello, I'm Dr Lee — thanks for coming in. What's brought you today? | rto | Open question, builds rapport
+DR | Hello, I'm Dr Lee — thanks for joining the call. What's brought you today? | ro | Open question, builds rapport
 PT | I've had this cough for weeks and it's not shifting. | - |
-DR | Before we go on, what's been worrying you most about it? | tasks | Elicits ICE early
+DR | Has the cough changed at all — any blood, weight loss or breathlessness? | dg | Screens red flags
 
 CASE: ${c.title} (${c.type}) — ${c.meta.age}${c.meta.sex}, ${c.meta.system}. ${c.brief}
 PATIENT OPENING: ${c.script.opening}
@@ -890,7 +896,8 @@ ${worked}`;
       const text = parts[1] || '';
       if (!text) return;
       let dom = (parts[2] || '').toLowerCase();
-      if (['tasks','rto','gs'].indexOf(dom) === -1) dom = null;
+      if (['tasks','rto','gs'].indexOf(dom) > -1) dom = normDom(dom, (parts[3] || '') + ' ' + text);
+      if (DOM_ORDER.indexOf(dom) === -1) dom = null;
       const why = parts[3] || '';
       turns.push({ who, text, hl: who === 'dr' && !!dom, dom, why: dom ? why : '' });
     });
@@ -900,9 +907,10 @@ ${worked}`;
   function renderModel(turns){
     const domEl = $('#modelOut');
     if (!domEl) return;
-    const dlbl = { tasks:'Tasks', rto:'Relating', gs:'Global' };
+    const dlbl = DOM_SHORT;
+    turns.forEach(t => { if (t.dom) t.dom = normDom(t.dom, (t.why || '') + ' ' + (t.text || '')); });
     // Domain coverage across highlighted doctor lines
-    const cov = { tasks:0, rto:0, gs:0 };
+    const cov = { dg:0, cm:0, ro:0 };
     turns.forEach(t => { if (t.who === 'dr' && t.dom && cov[t.dom] != null) cov[t.dom]++; });
     const drCount = turns.filter(t => t.who === 'dr').length;
     const ptCount = turns.filter(t => t.who === 'pt').length;
@@ -910,9 +918,9 @@ ${worked}`;
       <div class="mt-cover">
         <div class="mt-cover-h">This model run demonstrates all three marking domains</div>
         <div class="mt-cover-row">
-          <span class="mt-cov tasks">📋 Tasks · ${cov.tasks} marking points</span>
-          <span class="mt-cov rto">🤝 Relating to others · ${cov.rto}</span>
-          <span class="mt-cov gs">🌐 Global skills · ${cov.gs}</span>
+          <span class="mt-cov dg">🔎 Data gathering &amp; diagnosis · ${cov.dg} marking points</span>
+          <span class="mt-cov cm">💊 Clinical management · ${cov.cm}</span>
+          <span class="mt-cov ro">🤝 Relating to others · ${cov.ro}</span>
         </div>
         <div class="mt-cover-sub">${drCount} doctor turns · ${ptCount} patient turns · a full ~12-minute consultation. Tinted lines are the ones an examiner would award marks for.</div>
         <div class="mt-cover-note"><b>Examiner’s note — how to use this:</b> don’t memorise the lines; rehearsed scripts are explicitly flagged in SCA feedback. Steal the <i>skeleton</i> — the phase headings and their clock — and the scored moves, then say them in your own words. Cross-check against “Why candidates fail this station” in the Knowledge step: every trap listed there is dodged somewhere in this run.</div>
@@ -924,7 +932,7 @@ ${worked}`;
       const cls = t.who === 'dr' ? 'dr' : 'pt';
       const isHl = (t.hl || (t.who === 'dr' && !!t.dom));
       const hl = isHl ? ' hl' : '';
-      const why = (isHl && t.why) ? `<div class="mt-why ${t.dom||'gs'}"><span class="mw-tag">${dlbl[t.dom||'gs']||'Global'}</span>${escapeHtml(t.why)}</div>` : '';
+      const why = (isHl && t.why) ? `<div class="mt-why ${t.dom||'ro'}"><span class="mw-tag">${dlbl[t.dom||'ro']||'Relating to others'}</span>${escapeHtml(t.why)}</div>` : '';
       return `${phase}<div class="mt-turn ${cls}${hl}"><span class="mt-who">${who}</span><div class="mt-line">${escapeHtml(t.text)}</div>${why}</div>`;
     }).join('');
     domEl.innerHTML = coverHtml + body;
@@ -1434,7 +1442,7 @@ RULES:
     }
     $('#examinerOut').textContent = 'Examiner is watching…';
     const c = state.case;
-    const prompt = `You are an experienced RCGP SCA examiner watching a 12-minute simulated consultation. Read the transcript so far and give ONE concise nudge — one sentence — that would unlock the next mark. Do not give a full critique; just the single best thing to do next. Anchor to the RCGP three-domain framework (Tasks / Relating to Others / Global) but only name the domain if it clarifies the nudge. Keep it warm, not patronising.
+    const prompt = `You are an experienced RCGP SCA examiner watching a 12-minute simulated consultation. Read the transcript so far and give ONE concise nudge — one sentence — that would unlock the next mark. Do not give a full critique; just the single best thing to do next. Anchor to the three RCGP SCA domains (Data gathering & diagnosis / Clinical management & medical complexity / Relating to others) but only name the domain if it clarifies the nudge. Keep it warm, not patronising.
 
 CASE: ${c.title} (${c.type})
 HIDDEN PATIENT CONCERN: ${c.script.ice.concerns}
@@ -1465,7 +1473,7 @@ Your one-sentence nudge:`;
     if (!state.revealed && state.case && ['knowledge','score','model','feedback'].indexOf(step) > -1) {
       state.revealed = true;
       $('#shTitle').textContent = state.case.title;
-      $('#shMeta').textContent = `${UI.fullMeta(state.case)} — ${state.case.meta.setting || ''}`;
+      $('#shMeta').textContent = `${UI.fullMeta(state.case)} — ${state.case.meta.setting || ''}${state.case.meta.checked ? ' · Last checked: ' + state.case.meta.checked : ''}`;
     }
     if (step !== 'model' && audio.playing) stopAudio(false);
     if (step === 'feedback') {
@@ -1498,13 +1506,13 @@ Your one-sentence nudge:`;
   // the brief checkpoints if a case has no full scorecard authored.
   function scorecardResult(){
     const c = state.case;
-    const sc = c.scorecard;
+    const sc = rcgpCard(c);
     if (sc) {
-      const groups = { gs:sc.gs, tasks:sc.tasks, rto:sc.ro };
+      const groups = { dg:sc.dg, cm:sc.cm, ro:sc.ro };
       const out = { byDom:{}, total:0, max:sc.total, met:[], missed:[] };
       Object.keys(groups).forEach(dom => {
-        const items = groups[dom];
-        const tickDom = (dom === 'rto') ? 'ro' : dom; // scorecard ticks are keyed 'ro:i'
+        const items = groups[dom] || [];
+        const tickDom = dom; // scorecard ticks are keyed 'dom:i'
         let n = 0, t = 0;
         items.forEach((it, i) => {
           t += it.pts;
@@ -1517,11 +1525,11 @@ Your one-sentence nudge:`;
       return out;
     }
     // Fallback: brief checkpoints (1pt each, integer keys)
-    const out = { byDom:{ tasks:{n:0,t:0}, rto:{n:0,t:0}, gs:{n:0,t:0} }, total:0, max:c.checkpoints.length, met:[], missed:[] };
+    const out = { byDom:{ dg:{n:0,t:0}, cm:{n:0,t:0}, ro:{n:0,t:0} }, total:0, max:c.checkpoints.length, met:[], missed:[] };
     c.checkpoints.forEach((cp, i) => {
-      const d = out.byDom[cp.dom] || out.byDom.gs; d.t++;
-      if (state.checkpoints[i]) { d.n++; out.total++; out.met.push({ dom:cp.dom, text:cp.text, pts:1 }); }
-      else out.missed.push({ dom:cp.dom, text:cp.text, pts:1 });
+      const dk = normDom(cp.dom, cp.text); const d = out.byDom[dk] || out.byDom.ro; d.t++;
+      if (state.checkpoints[i]) { d.n++; out.total++; out.met.push({ dom:dk, text:cp.text, pts:1 }); }
+      else out.missed.push({ dom:dk, text:cp.text, pts:1 });
     });
     return out;
   }
@@ -1535,8 +1543,8 @@ Your one-sentence nudge:`;
     state.notesB      = $('#notesArea2').value;
 
     const res = scorecardResult();
-    const DOM = { tasks:{lbl:'Tasks', col:'#1e40af'}, rto:{lbl:'Relating', col:'#9d174d'}, gs:{lbl:'Global', col:'#15803d'} };
-    const ORDER = ['gs','tasks','rto'];
+    const DOM = { dg:{lbl:'Data gathering & diagnosis', col:DOM_COL.dg}, cm:{lbl:'Clinical management', col:DOM_COL.cm}, ro:{lbl:'Relating to others', col:DOM_COL.ro} };
+    const ORDER = DOM_ORDER;
 
     // Part 1 — "What you should do" playbook (History / Diagnosis / Management)
     const pbMount = $('#playbookMount');
@@ -1606,10 +1614,10 @@ Your one-sentence nudge:`;
     // Headline score out of 33 (or the case max) + band
     const pct = res.max ? res.total / res.max : 0;
     let band, bandCol;
-    if (pct < 0.33) { band = 'Below pass standard'; bandCol = '#dc2626'; }
-    else if (pct < 0.515) { band = 'Borderline'; bandCol = '#d97706'; }
-    else if (pct < 0.758) { band = 'Pass standard'; bandCol = '#15803d'; }
-    else { band = 'Strong pass'; bandCol = '#15803d'; }
+    if (pct < 0.33) { band = 'Clear fail'; bandCol = '#dc2626'; }
+    else if (pct < 0.515) { band = 'Fail'; bandCol = '#d97706'; }
+    else if (pct < 0.758) { band = 'Pass'; bandCol = '#15803d'; }
+    else { band = 'Clear pass'; bandCol = '#15803d'; }
     const score = $('#fbScore');
     if (score) score.innerHTML = `
       <div class="fb-score-num"><span class="fb-score-big">${res.total}</span><span class="fb-score-max">/ ${res.max} pts</span></div>
@@ -1623,6 +1631,7 @@ Your one-sentence nudge:`;
       <div class="heat-cell" style="background:${cellColor(res.byDom[d].n,res.byDom[d].t)}">
         <div class="hc-lbl">${DOM[d].lbl}</div>
         <div class="hc-val">${res.byDom[d].n}/${res.byDom[d].t}</div>
+        <div class="hc-grade">${res.total ? domGrade(res.byDom[d].n, res.byDom[d].t) : ''}</div>
       </div>`).join('');
 
     // Score summary + missed items (grouped by domain)
@@ -1635,9 +1644,7 @@ Your one-sentence nudge:`;
       }).join('');
       cp.innerHTML = `
         <b>Total score:</b> ${res.total}/${res.max} points across the three SCA domains.<br>
-        <span style="color:${DOM.tasks.col}">Tasks:</span> ${res.byDom.tasks.n}/${res.byDom.tasks.t} ·
-        <span style="color:${DOM.rto.col}">Relating:</span> ${res.byDom.rto.n}/${res.byDom.rto.t} ·
-        <span style="color:${DOM.gs.col}">Global:</span> ${res.byDom.gs.n}/${res.byDom.gs.t}
+        ${ORDER.map(d => `<span style="color:${DOM[d].col}">${DOM[d].lbl}:</span> ${res.byDom[d].n}/${res.byDom[d].t}${res.total ? ' (' + domGrade(res.byDom[d].n, res.byDom[d].t) + ')' : ''}`).join(' · ')}
         ${res.missed.length && res.missed.length < (res.met.length + res.missed.length) ? missedByDom : (res.missed.length ? '' : '<br><br>✓ Every scorecard point ticked — a comprehensive consultation.')}`;
     }
 
@@ -1645,18 +1652,24 @@ Your one-sentence nudge:`;
     const wpMount = $('#wordPicMount');
     if (wpMount) {
       if (c.wordPics) {
-        const hl = pct < 0.515 ? 'fail' : pct < 0.758 ? 'pass' : 'exc';
+        // Four RCGP grades. Case data may use clearPass / pass / fail / clearFail,
+        // or the legacy pass / fail / exc (exc = the clear-pass picture).
+        const W = c.wordPics;
+        const txt = { clearPass: W.clearPass || W.exc || '', pass: W.pass || '', fail: W.fail || '', clearFail: W.clearFail || '' };
+        let hl = pct < 0.33 ? 'clearFail' : pct < 0.515 ? 'fail' : pct < 0.758 ? 'pass' : 'clearPass';
+        if (!txt[hl]) hl = hl === 'clearFail' ? 'fail' : hl === 'clearPass' ? 'pass' : hl;
         const WP = [
+          ['clearFail','⛔','What a Clear fail sounds like','#7f1d1d','#fef2f2'],
           ['fail','🔴','What a Fail sounds like','#b91c1c','#fef2f2'],
           ['pass','🟢','What a Pass sounds like','#15803d','#f0fdf4'],
-          ['exc','🏆','What Excellent sounds like','#7e22ce','#faf5ff']
-        ];
+          ['clearPass','🏆','What a Clear pass sounds like','#7e22ce','#faf5ff']
+        ].filter(k => txt[k[0]]);
         wpMount.innerHTML = `
-          <div class="wp-title">Examiner word-pictures — where does your attempt honestly sit?</div>
+          <div class="wp-title">Examiner word-pictures — where does your attempt honestly sit? (RCGP grades: Clear pass · Pass · Fail · Clear fail)</div>
           <div class="wp-grid">${WP.map(k => `
             <div class="wp-card${(res.total > 0 && k[0] === hl) ? ' wp-here' : ''}" style="--wc:${k[3]};--wb:${k[4]}">
               <div class="wp-h">${k[1]} ${k[2]}</div>
-              <div class="wp-t">${escapeHtml(c.wordPics[k[0]])}</div>
+              <div class="wp-t">${escapeHtml(txt[k[0]])}</div>
               ${(res.total > 0 && k[0] === hl) ? '<div class="wp-flag">Your scorecard ticks put you here</div>' : ''}
             </div>`).join('')}</div>`;
       } else wpMount.innerHTML = '';
@@ -1674,7 +1687,7 @@ Your one-sentence nudge:`;
       ];
       ctMount.innerHTML = `
         <div class="ct-block">
-          <div class="ct-block-h"><span class="ctb-ic">🎭</span><div><b>Cue recognition</b><small>This station planted ${cues.length} cues. The Relating-to-Others differentiator is noticing them AND responding out loud — tick only if you did both.</small></div></div>
+          <div class="ct-block-h"><span class="ctb-ic">🎭</span><div><b>Cue recognition</b><small>This station planted ${cues.length} cues. The Relating-to-others differentiator is noticing them AND responding out loud — tick only if you did both.</small></div></div>
           <div class="ct-items">${cues.map((cu, i) => `<label class="ct-item"><input type="checkbox" data-cue="${i}"${state.cueChecks[i] ? ' checked' : ''}><span>${escapeHtml(cu)}</span></label>`).join('')}</div>
           <div class="ct-verdict" id="cueVerdict"></div>
         </div>
@@ -1687,14 +1700,14 @@ Your one-sentence nudge:`;
         const n = Object.values(state.cueChecks).filter(Boolean).length;
         const v = $('#cueVerdict'); if (!v) return;
         if (!cues.length) { v.textContent = ''; return; }
-        if (n === cues.length) { v.className = 'ct-verdict ok'; v.innerHTML = '✓ All ' + cues.length + ' cues caught and answered — this is what Excellent sounds like in Relating to Others.'; }
-        else if (n === 0) { v.className = 'ct-verdict bad'; v.innerHTML = '✗ No cues responded to. However good the medicine, Relating to Others caps at borderline when the planted cues go unanswered. Re-read the patient script and re-run the station.'; }
+        if (n === cues.length) { v.className = 'ct-verdict ok'; v.innerHTML = '✓ All ' + cues.length + ' cues caught and answered — this is what a Clear pass sounds like in Relating to others.'; }
+        else if (n === 0) { v.className = 'ct-verdict bad'; v.innerHTML = '✗ No cues responded to. However good the medicine, Relating to others is unlikely to pass when the planted cues go unanswered. Re-read the patient script and re-run the station.'; }
         else { v.className = 'ct-verdict mid'; v.innerHTML = n + '/' + cues.length + ' cues caught — go back to the script and find the ones that floated past you.'; }
       };
       const timeVerdict = () => {
         const v = $('#timeVerdict'); if (!v) return;
         const t = state.timeChecks;
-        if (!t[2]) { v.className = 'ct-verdict bad'; v.innerHTML = '⚠ <b>Management not reached by minute 7.</b> This is the single commonest mechanical fail: a beautiful history with no plan scores nothing in Clinical Management. Practise closing the history at 5–6 minutes.'; }
+        if (!t[2]) { v.className = 'ct-verdict bad'; v.innerHTML = '⚠ <b>Management not reached by minute 7.</b> This is the single commonest mechanical fail: a beautiful history with no plan scores nothing in Clinical management &amp; medical complexity. Practise closing the history at 5–6 minutes.'; }
         else if (!t[3]) { v.className = 'ct-verdict mid'; v.innerHTML = 'Management on time — but a consultation without a specific safety-net (named symptoms + timeframe + route back) drops marks at the close.'; }
         else if (t[0] && t[1] && t[2] && t[3]) { v.className = 'ct-verdict ok'; v.innerHTML = '✓ Exam-shaped pacing — open start, summary by 6, management by 7, safety-netted close.'; }
         else { v.className = 'ct-verdict mid'; v.innerHTML = 'Management arrived on time — tighten the opening and the mid-consultation summary to buy yourself more planning minutes.'; }
@@ -1737,10 +1750,10 @@ Your one-sentence nudge:`;
 
     const c = state.case;
     const res = scorecardResult();
-    const dl = { tasks:'Tasks', rto:'Relating to others', gs:'Global skills' };
+    const dl = DOM_SHORT;
     const ticked = res.met.map(m => `- [${dl[m.dom]||m.dom}] ${m.text}${m.pts>1?` (${m.pts}pt)`:''}`);
     const missed = res.missed.map(m => `- [${dl[m.dom]||m.dom}] ${m.text}${m.pts>1?` (${m.pts}pt)`:''}`);
-    const scoreLine = `Total ${res.total}/${res.max} points — Tasks ${res.byDom.tasks.n}/${res.byDom.tasks.t}, Relating ${res.byDom.rto.n}/${res.byDom.rto.t}, Global ${res.byDom.gs.n}/${res.byDom.gs.t}.`;
+    const scoreLine = `Total ${res.total}/${res.max} points — Data gathering & diagnosis ${res.byDom.dg.n}/${res.byDom.dg.t}, Clinical management & medical complexity ${res.byDom.cm.n}/${res.byDom.cm.t}, Relating to others ${res.byDom.ro.n}/${res.byDom.ro.t}.`;
     // Prefer the chat transcript if the user used AI patient mode
     const chatTranscript = state.chatMessages
       .filter(m => m.role !== 'system')
@@ -1752,10 +1765,10 @@ Your one-sentence nudge:`;
     // vs the model answer", so the examiner must actually see the model)
     const modelMoves = (c.model || [])
       .filter(t => t.who === 'dr' && t.dom)
-      .map(t => `- [${dl[t.dom]||t.dom}] ${t.text.length > 150 ? t.text.slice(0,150) + '…' : t.text}`);
+      .map(t => `- [${dl[normDom(t.dom, t.text)]||t.dom}] ${t.text.length > 150 ? t.text.slice(0,150) + '…' : t.text}`);
     // Known failure patterns for this station (examiner pitfall library)
     const failPatterns = ((c.pitfalls && c.pitfalls.items) || [])
-      .map(p => `- [${dl[p.dom]||p.dom}] ${p.fail.length > 120 ? p.fail.slice(0,120) + '…' : p.fail}`);
+      .map(p => `- [${dl[normDom(p.dom, p.fail)]||p.dom}] ${p.fail.length > 120 ? p.fail.slice(0,120) + '…' : p.fail}`);
 
     const prompt = `You are an RCGP SCA examiner giving structured, constructive feedback to a GP trainee after a 12-minute simulated consultation.
 
@@ -1779,7 +1792,7 @@ SELF-REFLECTION — KEEP: ${state.keepText || '(empty)'}
 SELF-REFLECTION — IMPROVE: ${state.improveText || '(empty)'}
 TRANSCRIPT (if any): ${(transcript || '').slice(0, 3500) || '(none provided)'}
 
-Give feedback in exactly this format, using the RCGP three domains. If there is no transcript, base it on the scorecard ticks and reflections and say so in one short sentence first.
+Give feedback in exactly this format, using ONLY the three RCGP SCA domains and the four RCGP grades. If there is no transcript, base it on the scorecard ticks and reflections and say so in one short sentence first.
 
 **Three things to keep**
 1. (specific, behavioural — name where it matched a model-answer move)
@@ -1791,10 +1804,10 @@ Give feedback in exactly this format, using the RCGP three domains. If there is 
 2. (specific)
 3. (specific)
 
-**Domain grades** (grade each Clear Fail / Fail / Pass / Clear Pass, as in the real SCA)
-- Data gathering & diagnosis (Tasks): grade — 1 sentence
-- Relating to Others: grade — 1 sentence
-- Clinical management (Global): grade — 1 sentence
+**Domain grades** (grade each Clear pass / Pass / Fail / Clear fail, as in the real SCA — no other grade words)
+- Data gathering & diagnosis: grade — 1 sentence
+- Clinical management & medical complexity: grade — 1 sentence
+- Relating to others: grade — 1 sentence
 
 **Single most important learning** (one sentence).
 

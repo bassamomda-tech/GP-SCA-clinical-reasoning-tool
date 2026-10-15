@@ -649,7 +649,7 @@ function renderSidebar(host, opts={}){
 
       <a class="sb-item ${activeId==='__algorithms'?'active':''}" href="${PRE}tools/algorithms.html" data-search="algorithms pathways flowchart decision tree quick visual print printable diagnosis triage">
         <span class="sb-i-dot" style="background:var(--rust)"></span>
-        <span class="sb-i-text"><b>Diagnostic Algorithms</b><div class="sb-i-meta">180+ visual pathways · red flags &amp; differential</div></span>
+        <span class="sb-i-text"><b>Diagnostic Algorithms</b><div class="sb-i-meta">200+ visual pathways · red flags &amp; differential</div></span>
       </a>
 
       <a class="sb-item ${activeId==='__tools-management'?'active':''}" href="${PRE}tools/management.html" data-search="management algorithms stepwise treatment drug ladder already diagnosed confirmed monitoring follow-up safety netting referral hypertension">
@@ -658,7 +658,7 @@ function renderSidebar(host, opts={}){
       </a>
 
       <div class="sb-section">
-        <div class="sb-section-t">Tools<span class="sb-count">7</span></div>
+        <div class="sb-section-t">Tools<span class="sb-count">8</span></div>
         <a class="sb-item ${activeId==='__tools-decision'?'active':''}" href="${PRE}tools/decision-support.html" data-search="guidance explorer decision support diagnostic tool workup triage differential symptom presentation 2ww ng12 medication chooser drug nice bnf which drug lab results actioning blood tests fbc lft tft hba1c interpretation diagnose investigate treat">
           <span class="sb-i-dot" style="background:var(--rust)"></span>
           <span class="sb-i-text">
@@ -678,6 +678,13 @@ function renderSidebar(host, opts={}){
           <span class="sb-i-text">
             <b>GP Admin</b>
             <div class="sb-i-meta">Fit Note · DVLA · forms &amp; certificates</div>
+          </span>
+        </a>
+        <a class="sb-item ${activeId==='__tools-clinicref'?'active':''}" href="${PRE}tools/clinic-reference.html" data-search="clinic reference pharmacy first immunisation schedule vaccines mmrv shingrix rsv ng12 suspected cancer referral shared care monitoring dmard lithium travel health malaria qof">
+          <span class="sb-i-dot" style="background:var(--rust)"></span>
+          <span class="sb-i-text">
+            <b>Clinic Reference</b>
+            <div class="sb-i-meta">Pharmacy First · vaccines · NG12 · shared care · travel · QOF</div>
           </span>
         </a>
         <a class="sb-item ${activeId==='__tools-calc'?'active':''}" href="${PRE}tools/calculators.html" data-search="calculators chads vasc has-bled orbit wells crb-65 news2 feverpain centor gad-7 phq-9 audit epworth stop-bang egfr cockcroft bmi abcd2 ipss must das28 6cit qrisk frax qfracture">
@@ -833,6 +840,7 @@ let RGP_TOOLS = [
   {id:'__tools-decision',  label:'Guidance Explorer',      meta:'Work-up · lab results · medication options — reference',  path:'tools/decision-support.html',   icon:'🩺'},
   {id:'__tools-prescribing',label:'Prescribing',           meta:'Ready Rx · eligibility/FP10/RAG · sick-day rules', path:'tools/prescribing.html', icon:'💊'},
   {id:'__tools-admin',     label:'GP Admin',               meta:'Fit Note · DVLA · forms & certificates',  path:'tools/gp-admin.html',           icon:'📋'},
+  {id:'__tools-clinicref', label:'Clinic Reference',      meta:'Pharmacy First · immunisations · NG12 · shared care · travel · QOF', path:'tools/clinic-reference.html', icon:'📚'},
   {id:'__tools-spine',     label:'Consultation Spine',     meta:'Consultation structure by presentation — reference',  path:'tools/consultation-spine.html', icon:'🧬'},
   {id:'__tools-scribe',    label:'Consult Scribe',         meta:'Record → EMIS / SystmOne / SOAP note · AI', path:'tools/scribe.html',           icon:'🎙️'},
   {id:'__tools-calc',      label:'Medical Calculators',    meta:'55 scores · CV · VTE · MH · renal & more', path:'tools/calculators.html',        icon:'🧮'},
@@ -922,7 +930,7 @@ window.rgpSlug = rgpSlug;
 const RGP_ROOT_PRE = (function(){ try { var s=document.currentScript&&document.currentScript.getAttribute('src'); var m=s&&s.match(/^((?:\.\.\/)*)assets\/site\.js/); if(m) return m[1]; } catch(e){} return null; })();
 function getPathPrefix(){
   if (RGP_ROOT_PRE !== null) return RGP_ROOT_PRE;
-  return /\/(cases|tools|pages)\//.test(location.pathname) ? '../' : '';
+  return /\/(cases|tools|pages|sca)\//.test(location.pathname) ? '../' : '';
 }
 
 function renderTopNav(activeId){
@@ -976,6 +984,7 @@ function renderTopNav(activeId){
   // SCA Tools mega — the SCA candidate suite, ordered by the prep journey
   const scaToolsList = [
     { ic:'🧾', label:'The SCA Guide',         meta:'Format · marking · 12-week plan', path:'tools/sca-guide.html' },
+    { ic:'📅', label:'SCA dates & fees',      meta:'2026–27 diets · fee · booking', path:'sca/dates-and-fees.html' },
     { ic:'🗺️', label:'Ultimate Consultation Guide', meta:'The 7 phases · move · phrases · trap', path:'tools/sca-consultation-guide.html' },
     { ic:'📑', label:'Worked Examples',       meta:'Pass vs fail · annotated turn-by-turn', path:'tools/sca-worked-examples.html' },
     { ic:'⚖️', label:'Examiner Marking',      meta:'The domains · self-mark /126', path:'tools/sca-domains.html' },
@@ -1085,7 +1094,7 @@ function renderTopNav(activeId){
 `;
 
   // Clinic Toolkit — single ordered list (clinical tools first, then reference).
-  const TOOLKIT_IDS = ['__updates','__tools-scribe','__tools-spine','__tools-decision','__tools-exam','__tools-admin','__tools-calc','__leaflets','__tools-basicsci','__ebm','__resources'];
+  const TOOLKIT_IDS = ['__updates','__tools-scribe','__tools-spine','__tools-decision','__tools-exam','__tools-admin','__tools-clinicref','__tools-calc','__leaflets','__tools-basicsci','__ebm','__resources'];
   const toolkitMap = {};
   RGP_TOOLS.forEach(t => { toolkitMap[t.id] = t; });
   RGP_NAV_SECTIONS.forEach(s => { toolkitMap[s.id] = s; });
@@ -2047,6 +2056,7 @@ window.RGPAuth = RGPAuth;
   const isPublic =
     /(^|\/)(index\.html)?$/.test(p) ||
     /(pages\/)?(terms|privacy|about|contact)\.html$/.test(p) ||
+    /\/sca\/[a-z0-9-]+\.html$/.test(p) ||   // SCA search landing pages: public
     // Every member must always be able to see the plans and manage or cancel
     // their own plan, whatever their tier (a Gold member was locked out of
     // pricing.html because it counts as a Clinic page).
@@ -2057,7 +2067,7 @@ window.RGPAuth = RGPAuth;
   if (isPublic) return;
 
   function pre(){ // path prefix back to site root
-    const m = location.pathname.match(/\/(cases|tools|pages)\//);
+    const m = location.pathname.match(/\/(cases|tools|pages|sca)\//);
     if (!m) return '';
     return location.pathname.indexOf('/tools/algorithms/') > -1 || location.pathname.indexOf('/tools/management/') > -1 ? '../../' : '../';
   }
@@ -2156,6 +2166,7 @@ window.RGPAuth = RGPAuth;
   // Returns null if a free account may open this page, else a short reason code.
   function bronzeReason(){
     const path = location.pathname, base = (path.split('/').pop()||'');
+    if (/\/sca\/[a-z0-9-]+\.html$/.test(path)) return null;   // SCA landing pages are public
     // Consult Scribe is NOT in this list: it is a paid feature, and it is also
     // withheld pending its legal/information-governance requirements (see
     // RGP_HIDDEN_TOOLS). Handled by its own branch below so the gate can say so.
@@ -2844,7 +2855,7 @@ function injectFooter(){
   const PRE = getPathPrefix();
   // Mission/vision + subscriptions belong only on the main home page.
   const path = location.pathname;
-  const isHome = !/\/(cases|tools|pages)\//.test(path) &&
+  const isHome = !/\/(cases|tools|pages|sca)\//.test(path) &&
                  (/(?:^|\/)(index\.html)?$/.test(path));
   const footer = document.createElement('footer');
   footer.className = 'rgp-footer';
@@ -3060,6 +3071,11 @@ function injectFooter(){
         <summary><h5>SCA</h5></summary>
         <ul>
           <li><a href="${PRE}tools/sca-guide.html">The SCA Guide</a></li>
+          <li><a href="${PRE}sca/free-cases.html">Free SCA cases</a></li>
+          <li><a href="${PRE}sca/dates-and-fees.html">SCA dates and fees</a></li>
+          <li><a href="${PRE}sca/mock-exam.html">SCA mock exam</a></li>
+          <li><a href="${PRE}sca/img.html">SCA for IMGs</a></li>
+          <li><a href="${PRE}sca/resit.html">SCA resit</a></li>
           <li><a href="${PRE}tools/sca-practice.html">The Hot Seat</a></li>
           <li><a href="${PRE}tools/sca-simulator.html">AI Patient Simulator</a></li>
           <li><a href="${PRE}tools/sca-circuit-ai.html">AI Mock Exam Circuit</a></li>

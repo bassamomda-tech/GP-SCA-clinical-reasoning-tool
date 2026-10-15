@@ -4,12 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>The Hot Seat · SCA Practice · Reasoning GP</title>
-<meta name="description" content="312 original SCA-style cases spanning the formats you'll meet in practice and the exam — video, audio-only telephone &amp; face-to-face.">
+<meta name="description" content="312 original SCA-style cases spanning the formats you'll meet in practice and the exam — video and audio-only telephone, as in the remote SCA.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Reasoning GP">
 <meta property="og:locale" content="en_GB">
 <meta property="og:title" content="The Hot Seat · SCA Practice">
-<meta property="og:description" content="312 original SCA-style cases spanning the formats you'll meet in practice and the exam — video, audio-only telephone &amp; face-to-face.">
+<meta property="og:description" content="312 original SCA-style cases spanning the formats you'll meet in practice and the exam — video and audio-only telephone, as in the remote SCA.">
 <meta property="og:url" content="https://gpreasoning.uk/tools/sca-practice.html">
 <meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
 <link rel="canonical" href="https://gpreasoning.uk/tools/sca-practice.html">
@@ -90,7 +90,7 @@
 
 /* Examiner word-pictures (Feedback part 1) */
 .wp-title{ font-size:13px; font-weight:700; color:var(--ink); margin:18px 0 10px; }
-.wp-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.wp-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; }
 @media (max-width:860px){ .wp-grid{ grid-template-columns:1fr; } }
 .wp-card{ border:1px solid var(--line); border-top:3px solid var(--wc); border-radius:12px; background:linear-gradient(180deg,var(--wb),#fff 60%); padding:12px 14px; }
 .wp-card.wp-here{ box-shadow:0 0 0 2px var(--wc); }
@@ -722,6 +722,20 @@
 .mt-cover-row{ display:flex; flex-wrap:wrap; gap:8px; }
 .mt-cov{ font-size:11.5px; font-weight:600; padding:5px 11px; border-radius:20px; }
 .mt-cov.tasks{ background:#f0fdf4; color:#15803d; } .mt-cov.rto{ background:#fdf2f8; color:#be185d; } .mt-cov.gs{ background:#eff6ff; color:#1d4ed8; }
+/* RCGP SCA domains: dg = Data gathering & diagnosis (green), cm = Clinical management & medical complexity (blue), ro = Relating to others (pink) */
+.mt-cov.dg{ background:#f0fdf4; color:#15803d; } .mt-cov.cm{ background:#eff6ff; color:#1d4ed8; } .mt-cov.ro{ background:#fdf2f8; color:#be185d; }
+.mt-why.dg{ background:#f0fdf4; color:#15803d; border-left:3px solid #15803d; }
+.mt-why.cm{ background:#eff6ff; color:#1d4ed8; border-left:3px solid #1d4ed8; }
+.mt-why.ro{ background:#fdf2f8; color:#be185d; border-left:3px solid #be185d; }
+.ml-chip.ml-dg{ color:#15803d; } .ml-chip.ml-cm{ color:#1d4ed8; } .ml-chip.ml-ro{ color:#be185d; }
+.kn-pit-dom.dg{ background:#eef6ee; color:#15803d; } .kn-pit-dom.cm{ background:#e7eef7; color:#1d4ed8; } .kn-pit-dom.ro{ background:#fdeef4; color:#be185d; }
+.sc-domain-hdr.dg-domain{ background:#f0fdf4; } .sc-domain-hdr.cm-domain{ background:#eff6ff; }
+.dg-domain .sc-domain-score span:first-child{ color:#15803d; } .cm-domain .sc-domain-score span:first-child{ color:#1d4ed8; }
+.sc-domain-grade{ font-size:10.5px; font-weight:700; letter-spacing:.03em; color:var(--ink-2); text-align:right; min-height:1em; }
+.hc-grade{ font-size:11px; font-weight:700; margin-top:2px; }
+.scd-hdr.dom-dg{ background:#f0fdf4; } .scd-hdr.dom-cm{ background:#eff6ff; } .scd-hdr.dom-ro{ background:#fdf2f8; }
+.dom-dg .scd-score b{ color:#15803d; } .dom-cm .scd-score b{ color:#1d4ed8; } .dom-ro .scd-score b{ color:#be185d; }
+.cp-dom-dg{ background:#f0fdf4; color:#15803d; } .cp-dom-cm{ background:#eff6ff; color:#1e40af; } .cp-dom-ro{ background:#fdf2f8; color:#9d174d; }
 .mt-cover-sub{ font-size:11.5px; color:var(--muted); margin-top:9px; line-height:1.5; }
 .mt-cover-note{ font-size:12.3px; color:#7a5a2e; background:#fffaf1; border:1px solid #f2ddba; border-radius:9px; padding:10px 13px; margin-top:10px; line-height:1.55; }
 .mt-phase{ display:flex; align-items:center; gap:10px; margin:16px 0 4px; }
@@ -818,7 +832,7 @@ body.tel-mode #phoneModeBtn{ background:#0c4a47; color:#f6f2e9; border-color:#0c
           <div>
             <div class="tool-eyebrow">Reasoning GP · The Hot Seat</div>
             <h1>The Hot Seat</h1>
-            <p><span id="hsTotal">312</span> <em>original</em> SCA-style cases spanning the formats you'll meet in practice and the exam — <strong id="hsBreak">202 video · 81 audio-only telephone · 29 face-to-face</strong>. Every case carries a hidden agenda and full ICE. 12-minute timer. RCGP scorecard. Audio/video recording. <strong>AI plays the patient</strong> for live practice and <strong>AI plays an RCGP examiner</strong> for feedback.</p>
+            <p><span id="hsTotal">312</span> <em>original</em> SCA-style cases spanning the formats you'll meet in practice and the exam — <strong id="hsBreak">231 video · 81 audio-only telephone</strong>. Every case carries a hidden agenda and full ICE. 12-minute timer. RCGP scorecard. Audio/video recording. <strong>AI plays the patient</strong> for live practice and <strong>AI plays an RCGP examiner</strong> for feedback.</p>
           </div>
           <div class="head-actions">
             <a class="head-btn" href="sca-domains.html">⚖️ Examiner marking — the real SCA domains →</a>
@@ -1019,14 +1033,14 @@ body.tel-mode #phoneModeBtn{ background:#0c4a47; color:#f6f2e9; border-color:#0c
             <div class="model-head">
               <div>
                 <h3 style="font-family:'Source Serif 4',Georgia,serif;font-weight:500;font-size:22px">Expert RCGP examiner consultation</h3>
-                <p style="font-size:13.5px;color:var(--ink-2);margin-top:6px;max-width:64ch">A worked, gold-standard run of this exact station — the whole consultation written the way an examiner would mark as a clear/excellent pass, with the high-scoring moments highlighted and tagged to a domain. Use it to model structure and language, not to memorise.</p>
+                <p style="font-size:13.5px;color:var(--ink-2);margin-top:6px;max-width:64ch">A worked, gold-standard run of this exact station — the whole consultation written the way an examiner would mark as a clear pass, with the high-scoring moments highlighted and tagged to a domain. Use it to model structure and language, not to memorise.</p>
               </div>
               <button class="head-btn ghost" id="genModel" type="button">✨ Regenerate a fresh variation (AI)</button>
             </div>
             <div class="model-legend" id="modelLegend">
-              <span class="ml-chip ml-tasks">● Tasks — data gathering &amp; diagnosis</span>
-              <span class="ml-chip ml-rto">● Relating to others</span>
-              <span class="ml-chip ml-gs">● Global — clinical management</span>
+              <span class="ml-chip ml-dg">● Data gathering &amp; diagnosis</span>
+              <span class="ml-chip ml-cm">● Clinical management &amp; medical complexity</span>
+              <span class="ml-chip ml-ro">● Relating to others</span>
               <span class="ml-note">Highlighted lines are the ones that trigger marks.</span>
             </div>
             <p class="ai-status" id="modelStatus"></p>
@@ -1147,110 +1161,113 @@ body.tel-mode #phoneModeBtn{ background:#0c4a47; color:#f6f2e9; border-color:#0c
 
 <script src="../assets/site.js?v=107"></script>
 <script src="../assets/case-related.js?v=2"></script>
-<script src="../assets/sca-cases.js?v=3"></script>
-<script src="../assets/sca-extras.js?v=3"></script>
-<script src="../assets/sca-cases2.js?v=4"></script>
-<script src="../assets/sca-cases3.js?v=3"></script>
-<script src="../assets/sca-cases4.js?v=3"></script>
-<script src="../assets/sca-cases5.js?v=2"></script>
-<script src="../assets/sca-cases6.js?v=2"></script>
-<script src="../assets/sca-cases7.js?v=3"></script>
-<script src="../assets/sca-cases8.js?v=3"></script>
-<script src="../assets/sca-cases9.js?v=2"></script>
-<script src="../assets/sca-cases10.js?v=3"></script>
-<script src="../assets/sca-cases11.js?v=3"></script>
-<script src="../assets/sca-cases12.js?v=4"></script>
-<script src="../assets/sca-cases13.js?v=2"></script>
-<script src="../assets/sca-cases14.js?v=5"></script>
-<script src="../assets/sca-cases15.js?v=4"></script>
-<script src="../assets/sca-cases16.js?v=3"></script>
-<script src="../assets/sca-cases17.js?v=3"></script>
-<script src="../assets/sca-cases18.js?v=3"></script>
-<script src="../assets/sca-cases19.js?v=3"></script>
-<script src="../assets/sca-cases20.js?v=3"></script>
-<script src="../assets/sca-cases21.js?v=4"></script>
-<script src="../assets/sca-cases22.js?v=4"></script>
-<script src="../assets/sca-cases23.js?v=2"></script>
-<script src="../assets/sca-cases24.js?v=4"></script>
-<script src="../assets/sca-cases25.js?v=3"></script>
-<script src="../assets/sca-cases26.js?v=4"></script>
-<script src="../assets/sca-cases27.js?v=3"></script>
-<script src="../assets/sca-cases28.js?v=4"></script>
-<script src="../assets/sca-cases29.js?v=2"></script>
-<script src="../assets/sca-cases30.js?v=3"></script>
-<script src="../assets/sca-cases31.js?v=3"></script>
-<script src="../assets/sca-cases32.js?v=4"></script>
-<script src="../assets/sca-cases33.js?v=4"></script>
-<script src="../assets/sca-cases34.js?v=3"></script>
-<script src="../assets/sca-cases35.js?v=3"></script>
-<script src="../assets/sca-cases36.js?v=3"></script>
-<script src="../assets/sca-cases37.js?v=3"></script>
-<script src="../assets/sca-cases38.js?v=3"></script>
-<script src="../assets/sca-cases39.js?v=4"></script>
-<script src="../assets/sca-cases40.js?v=2"></script>
-<script src="../assets/sca-cases41.js?v=3"></script>
-<script src="../assets/sca-cases42.js?v=2"></script>
-<script src="../assets/sca-cases43.js?v=3"></script>
-<script src="../assets/sca-cases44.js?v=2"></script>
-<script src="../assets/sca-cases45.js?v=3"></script>
-<script src="../assets/sca-cases46.js?v=3"></script>
-<script src="../assets/sca-cases47.js?v=3"></script>
-<script src="../assets/sca-cases48.js?v=2"></script>
-<script src="../assets/sca-cases49.js?v=4"></script>
-<script src="../assets/sca-cases50.js?v=3"></script>
-<script src="../assets/sca-cases51.js?v=2"></script>
-<script src="../assets/sca-cases52.js?v=3"></script>
-<script src="../assets/sca-cases53.js?v=2"></script>
-<script src="../assets/sca-cases54.js?v=4"></script>
-<script src="../assets/sca-cases55.js?v=2"></script>
-<script src="../assets/sca-cases56.js?v=2"></script>
-<script src="../assets/sca-cases57.js?v=3"></script>
-<script src="../assets/sca-cases58.js?v=4"></script>
-<script src="../assets/sca-cases59.js?v=3"></script>
-<script src="../assets/sca-cases60.js?v=2"></script>
-<script src="../assets/sca-cases61.js?v=4"></script>
-<script src="../assets/sca-cases62.js?v=2"></script>
-<script src="../assets/sca-cases63.js?v=2"></script>
-<script src="../assets/sca-cases64.js?v=4"></script>
-<script src="../assets/sca-cases65.js?v=3"></script>
-<script src="../assets/sca-cases66.js?v=3"></script>
-<script src="../assets/sca-cases67.js?v=3"></script>
-<script src="../assets/sca-cases68.js?v=2"></script>
-<script src="../assets/sca-cases69.js?v=2"></script>
-<script src="../assets/sca-cases70.js?v=3"></script>
-<script src="../assets/sca-cases71.js?v=2"></script>
-<script src="../assets/sca-cases72.js?v=3"></script>
-<script src="../assets/sca-cases73.js?v=2"></script>
-<script src="../assets/sca-cases74.js?v=3"></script>
-<script src="../assets/sca-cases75.js?v=5"></script>
-<script src="../assets/sca-cases76.js?v=3"></script>
-<script src="../assets/sca-cases77.js?v=3"></script>
-<script src="../assets/sca-cases78.js?v=6"></script>
-<script src="../assets/sca-cases79.js?v=3"></script>
-<script src="../assets/sca-cases80.js?v=4"></script>
-<script src="../assets/sca-models.js?v=10"></script>
-<script src="../assets/sca-enrich.js?v=13"></script>
+<script src="../assets/sca-cases.js?v=4"></script>
+<script src="../assets/sca-extras.js?v=4"></script>
+<script src="../assets/sca-cases2.js?v=5"></script>
+<script src="../assets/sca-cases3.js?v=4"></script>
+<script src="../assets/sca-cases4.js?v=4"></script>
+<script src="../assets/sca-cases5.js?v=3"></script>
+<script src="../assets/sca-cases6.js?v=3"></script>
+<script src="../assets/sca-cases7.js?v=4"></script>
+<script src="../assets/sca-cases8.js?v=4"></script>
+<script src="../assets/sca-cases9.js?v=3"></script>
+<script src="../assets/sca-cases10.js?v=4"></script>
+<script src="../assets/sca-cases11.js?v=4"></script>
+<script src="../assets/sca-cases12.js?v=5"></script>
+<script src="../assets/sca-cases13.js?v=3"></script>
+<script src="../assets/sca-cases14.js?v=6"></script>
+<script src="../assets/sca-cases15.js?v=5"></script>
+<script src="../assets/sca-cases16.js?v=4"></script>
+<script src="../assets/sca-cases17.js?v=4"></script>
+<script src="../assets/sca-cases18.js?v=4"></script>
+<script src="../assets/sca-cases19.js?v=4"></script>
+<script src="../assets/sca-cases20.js?v=4"></script>
+<script src="../assets/sca-cases21.js?v=5"></script>
+<script src="../assets/sca-cases22.js?v=5"></script>
+<script src="../assets/sca-cases23.js?v=3"></script>
+<script src="../assets/sca-cases24.js?v=5"></script>
+<script src="../assets/sca-cases25.js?v=4"></script>
+<script src="../assets/sca-cases26.js?v=5"></script>
+<script src="../assets/sca-cases27.js?v=4"></script>
+<script src="../assets/sca-cases28.js?v=5"></script>
+<script src="../assets/sca-cases29.js?v=3"></script>
+<script src="../assets/sca-cases30.js?v=4"></script>
+<script src="../assets/sca-cases31.js?v=4"></script>
+<script src="../assets/sca-cases32.js?v=5"></script>
+<script src="../assets/sca-cases33.js?v=5"></script>
+<script src="../assets/sca-cases34.js?v=4"></script>
+<script src="../assets/sca-cases35.js?v=4"></script>
+<script src="../assets/sca-cases36.js?v=4"></script>
+<script src="../assets/sca-cases37.js?v=4"></script>
+<script src="../assets/sca-cases38.js?v=4"></script>
+<script src="../assets/sca-cases39.js?v=5"></script>
+<script src="../assets/sca-cases40.js?v=3"></script>
+<script src="../assets/sca-cases41.js?v=4"></script>
+<script src="../assets/sca-cases42.js?v=3"></script>
+<script src="../assets/sca-cases43.js?v=4"></script>
+<script src="../assets/sca-cases44.js?v=3"></script>
+<script src="../assets/sca-cases45.js?v=4"></script>
+<script src="../assets/sca-cases46.js?v=4"></script>
+<script src="../assets/sca-cases47.js?v=4"></script>
+<script src="../assets/sca-cases48.js?v=3"></script>
+<script src="../assets/sca-cases49.js?v=5"></script>
+<script src="../assets/sca-cases50.js?v=4"></script>
+<script src="../assets/sca-cases51.js?v=3"></script>
+<script src="../assets/sca-cases52.js?v=4"></script>
+<script src="../assets/sca-cases53.js?v=3"></script>
+<script src="../assets/sca-cases54.js?v=5"></script>
+<script src="../assets/sca-cases55.js?v=3"></script>
+<script src="../assets/sca-cases56.js?v=3"></script>
+<script src="../assets/sca-cases57.js?v=4"></script>
+<script src="../assets/sca-cases58.js?v=5"></script>
+<script src="../assets/sca-cases59.js?v=4"></script>
+<script src="../assets/sca-cases60.js?v=3"></script>
+<script src="../assets/sca-cases61.js?v=5"></script>
+<script src="../assets/sca-cases62.js?v=3"></script>
+<script src="../assets/sca-cases63.js?v=3"></script>
+<script src="../assets/sca-cases64.js?v=5"></script>
+<script src="../assets/sca-cases65.js?v=4"></script>
+<script src="../assets/sca-cases66.js?v=4"></script>
+<script src="../assets/sca-cases67.js?v=4"></script>
+<script src="../assets/sca-cases68.js?v=3"></script>
+<script src="../assets/sca-cases69.js?v=3"></script>
+<script src="../assets/sca-cases70.js?v=4"></script>
+<script src="../assets/sca-cases71.js?v=3"></script>
+<script src="../assets/sca-cases72.js?v=4"></script>
+<script src="../assets/sca-cases73.js?v=3"></script>
+<script src="../assets/sca-cases74.js?v=4"></script>
+<script src="../assets/sca-cases75.js?v=6"></script>
+<script src="../assets/sca-cases76.js?v=4"></script>
+<script src="../assets/sca-cases77.js?v=4"></script>
+<script src="../assets/sca-cases78.js?v=7"></script>
+<script src="../assets/sca-cases79.js?v=4"></script>
+<script src="../assets/sca-cases80.js?v=5"></script>
+<script src="../assets/sca-cases-new-p.js?v=1"></script>
+<script src="../assets/sca-cases-new-q.js?v=1"></script>
+<script src="../assets/sca-cases-new-r.js?v=1"></script>
+<script src="../assets/sca-models.js?v=11"></script>
+<script src="../assets/sca-enrich.js?v=14"></script>
 <script src="../assets/sca-knowledge.js?v=10"></script>
-<script src="../assets/sca-pitfalls.js?v=3"></script>
-<script src="../assets/sca-addons-1.js?v=5"></script>
-<script src="../assets/sca-addons-2.js?v=4"></script>
-<script src="../assets/sca-addons-3.js?v=6"></script>
-<script src="../assets/sca-addons-4.js?v=7"></script>
-<script src="../assets/sca-addons-5.js?v=5"></script>
-<script src="../assets/sca-addons-6.js?v=4"></script>
-<script src="../assets/sca-addons-7.js?v=5"></script>
-<script src="../assets/sca-addons-8.js?v=3"></script>
-<script src="../assets/sca-addons-9.js?v=4"></script>
-<script src="../assets/sca-addons-10.js?v=4"></script>
-<script src="../assets/sca-addons-11.js?v=4"></script>
-<script src="../assets/sca-addons-12.js?v=2"></script>
-<script src="../assets/sca-addons-13.js?v=3"></script>
-<script src="../assets/sca-addons-14.js?v=3"></script>
-<script src="../assets/sca-addons-15.js?v=6"></script>
+<script src="../assets/sca-pitfalls.js?v=4"></script>
+<script src="../assets/sca-addons-1.js?v=6"></script>
+<script src="../assets/sca-addons-2.js?v=5"></script>
+<script src="../assets/sca-addons-3.js?v=7"></script>
+<script src="../assets/sca-addons-4.js?v=8"></script>
+<script src="../assets/sca-addons-5.js?v=6"></script>
+<script src="../assets/sca-addons-6.js?v=5"></script>
+<script src="../assets/sca-addons-7.js?v=6"></script>
+<script src="../assets/sca-addons-8.js?v=4"></script>
+<script src="../assets/sca-addons-9.js?v=5"></script>
+<script src="../assets/sca-addons-10.js?v=5"></script>
+<script src="../assets/sca-addons-11.js?v=5"></script>
+<script src="../assets/sca-addons-12.js?v=3"></script>
+<script src="../assets/sca-addons-13.js?v=4"></script>
+<script src="../assets/sca-addons-14.js?v=4"></script>
+<script src="../assets/sca-addons-15.js?v=7"></script>
 <script src="../assets/sca-library.js?v=3"></script>
-<script src="../assets/sca-progress.js?v=1"></script>
-<script src="../assets/sca-loader.js?v=1" data-cases="none"></script>
-<script src="../assets/sca-practice.js?v=19"></script>
+<script src="../assets/sca-progress.js?v=2"></script>
+<script src="../assets/sca-loader.js?v=3" data-cases="none"></script>
+<script src="../assets/sca-practice.js?v=20"></script>
 <script>
 (function(){
   // Dynamic Hot Seat counts so the intro never goes stale

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Influenza and COVID-19 antivirals — 1-page summary · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<meta name="rgp-summary-of" content="tools/management/influenza-covid-antivirals.html">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/influenza-covid-antivirals.html">
+<style>
+/* ==== Reasoning GP · Protocol 1-page summary · template v1.0 ====
+   Fixed block order (see governance/ONE-PAGE-SUMMARY-SPEC.md):
+   0 Act now · 1 Confirm · 2 Check · 3 Decide · 4 Target · 5 Treat · 6 Monitor · 7 Refer · 8 Never · 9 Safety-net · ✓ Safe-consultation check
+   Colours carry meaning and are the same on every protocol summary. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:13.5px/1.42 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+.bar a:hover,.bar button:hover{background:rgba(255,255,255,.26)}
+.sheet{max-width:1120px;margin:14px auto 40px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+/* header */
+.hdr{display:flex;gap:12px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:6px;margin-bottom:8px;flex-wrap:wrap}
+.hdr>div:first-child{flex:1 1 520px}
+.brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:24px;line-height:1.1;margin:2px 0}
+.scope{font-size:12.5px;color:var(--ink2)}
+.meta{text-align:right;font-size:11.5px;color:var(--muted)}
+.meta b{color:var(--ink)}
+.chips span{display:inline-block;border:1px solid var(--line);border-radius:4px;padding:0 5px;margin:2px 0 0 3px;font-size:11px;color:var(--ink2);background:#fff}
+.rule{background:var(--ink);color:#fff;border-radius:6px;padding:6px 10px;margin-bottom:8px;font-size:13px}
+.rule b{color:#ffd166}
+/* grid */
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 10px;align-items:start}
+.col{display:flex;flex-direction:column;gap:8px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+/* blocks */
+.blk{border:1px solid var(--line);border-left:5px solid var(--c);border-radius:6px;background:#fff;overflow:hidden}
+.blk h2{display:flex;align-items:center;gap:7px;margin:0;padding:4px 8px;background:var(--cs);font-size:13px;line-height:1.25;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:19px;height:19px;border-radius:4px;background:var(--c);color:#fff;font-size:11.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:12px}
+.body{padding:5px 9px 6px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:16px} li{margin:1px 0}
+p{margin:2px 0}
+.when{display:inline-block;font-weight:700;font-size:10.5px;line-height:1.35;padding:0 5px;border-radius:3px;color:#fff;vertical-align:1px;white-space:nowrap}
+.w999{background:#7f1712} .wsd{background:var(--red)} .wurg{background:var(--amber)} .w7{background:#8a6d00} .wrt{background:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th,td{border:1px solid var(--line);padding:2px 5px;text-align:left;vertical-align:top}
+th{background:#f4f1ea;font-size:11.5px}
+.ladder{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin:3px 0}
+.step{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;font-size:12px;background:#fbfdfc}
+.step .sl{display:block;font-weight:700;color:var(--teal);font-size:11px;text-transform:uppercase;letter-spacing:.04em}
+.step.s4{border-top-color:var(--amber)}
+@media screen and (max-width:420px){.ladder{grid-template-columns:1fr}}
+.never li{list-style:none;margin-left:-16px;break-inside:avoid}
+.cols2{columns:2;column-gap:22px}
+@media screen and (max-width:820px){.cols2{columns:1}}
+.never li::before{content:"✗ ";color:var(--red);font-weight:700}
+.check{display:grid;grid-template-columns:repeat(5,1fr);gap:4px 10px;font-size:12.5px}
+.check span::before{content:"☐ ";font-size:14px;color:var(--green)}
+@media screen and (max-width:820px){.check{grid-template-columns:1fr 1fr}}
+.say{font-style:italic;color:var(--ink2)}
+.foot{margin-top:8px;border-top:1px solid var(--line);padding-top:4px;font-size:11px;color:var(--muted)}
+
+/* Shown inside the Snapshot tab of its source page: hide this page's own top bar */
+html.in-frame .bar{display:none}
+html.in-frame body{background:transparent}
+html.in-frame .sheet{margin:0 auto 8px}
+/* ===== Print: exactly one A4 page ===== */
+@page{size:A4;margin:7mm}
+@media print{
+  body{background:#fff;font-size:8.1pt;line-height:1.2}
+  .bar{display:none}
+  .sheet{margin:0;max-width:none;border:0;border-radius:0;padding:0;background:#fff}
+  .grid{grid-template-columns:1fr 1fr;gap:4px 6px}
+  .col{gap:4px}
+  h1{font-size:15pt} .scope{font-size:7.8pt} .brand,.meta{font-size:7pt} .chips span{font-size:6.6pt}
+  .hdr{padding-bottom:3px;margin-bottom:4px}
+  .rule{font-size:8pt;padding:3px 7px;margin-bottom:4px}
+  .blk h2{font-size:8.1pt;padding:2px 6px} .blk h2 small{font-size:7.4pt} .blk h2 .n{min-width:13px;height:13px;font-size:7pt}
+  .body{padding:2px 6px 3px}
+  table{font-size:7.7pt} th{font-size:7pt} th,td{padding:1px 3px}
+  .step{font-size:7.6pt;padding:2px 3px} .step .sl{font-size:6.8pt}
+  .when{font-size:6.6pt}
+  .check{font-size:7.8pt;grid-template-columns:repeat(5,1fr)}
+  .foot{font-size:6.6pt;margin-top:4px}
+  .blk,.step{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+<script>if(window.self!==window.top)document.documentElement.classList.add("in-frame")</script>
+</head>
+<body>
+
+<div class="bar">
+  <a href="../influenza-covid-antivirals.html">← Full influenza and COVID-19 antivirals protocol</a>
+  <button type="button" onclick="window.print()">Print / save PDF (1 page)</button>
+</div>
+
+<main class="sheet">
+
+  <header class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Protocol · 1-page summary</div>
+      <h1>Influenza and COVID-19 antivirals</h1>
+      <div class="scope"><b>For:</b> adults with suspected influenza or confirmed COVID-19 in primary care, including pregnancy and kidney disease. <b>Not for:</b> children's doses (use the BNFC), patients needing oxygen or hospital care (block 0), or COVID-19 treatment for children (specialist-led).</div>
+    </div>
+    <div class="meta">
+      <div><b>Reviewed October 2026</b> · next review April 2027</div>
+      <div class="chips"><span>UKHSA influenza antivirals (2025)</span><span>NICE TA878</span><span>NICE TA1056</span><span>Green Book ch.19 · ch.14a</span><span>SPCs</span></div>
+    </div>
+  </header>
+
+  <div class="rule"><b>Core rule:</b> assess severity first; an antiviral never replaces admission. Then match the drug to the virus, the risk group and the clock: 48 hours for influenza, 5 days for COVID-19.</div>
+
+  <div class="grid">
+
+    <section class="blk red span">
+      <h2><span class="n">0</span>Act now</h2>
+      <div class="body">
+        <ul>
+          <li><b>Severe breathlessness, cyanosis, can't complete sentences, reduced consciousness, shock or seizure</b> → <span class="when w999">999</span></li>
+          <li><b>Saturation &lt;94% on air</b> (or below own target), <b>respiratory rate ≥25</b>, <b>heart rate &gt;130</b>, <b>systolic ≤90</b>, new confusion, sepsis or pneumonia with systemic upset → <span class="when wsd">Same-day hospital</span></li>
+          <li><b>Severely immunosuppressed with complicated influenza</b>, severe dehydration, or rapid deterioration on day 5 to 10 of COVID-19 → <span class="when wsd">Same-day hospital</span></li>
+          <li><b>Suspected outbreak in a care home</b> (two or more linked cases within 48 hours) → <span class="when wsd">Same-day health protection team</span></li>
+          <li><b>Febrile child</b> → NICE NG143 traffic-light assessment; red features → <span class="when wsd">Same-day</span> paediatric assessment.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="col">
+
+      <section class="blk amber">
+        <h2><span class="n">1</span>Confirm <small>— which virus, and is it circulating?</small></h2>
+        <div class="body">
+          <p><b>Influenza:</b> treat on clinical grounds in at-risk patients when UKHSA surveillance shows flu circulating or there is a local outbreak; no test needed. <b>COVID-19:</b> treatment needs a <b>positive test</b> and symptom onset within <b>5 days</b>.</p>
+        </div>
+      </section>
+
+      <section class="blk blue">
+        <h2><span class="n">2</span>Check <small>— every patient</small></h2>
+        <div class="body">
+          <p>☐ Saturation, respiratory rate, pulse, BP, mental state &nbsp;☐ Day of symptom onset &nbsp;☐ Risk group &nbsp;☐ Creatinine clearance or eGFR &nbsp;☐ Pregnancy &nbsp;☐ Full medicines list, including herbal (Paxlovid) &nbsp;☐ Vaccination status.</p>
+        </div>
+      </section>
+
+      <section class="blk teal">
+        <h2><span class="n">3</span>Decide <small>— who gets an antiviral</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Influenza, at-risk group</b> (65 or over, pregnant, under 6 months, chronic disease, diabetes, immunosuppression, BMI 40 or more) → <b>offer oseltamivir</b>, ideally within 48 hours.</li>
+            <li><b>Influenza, previously healthy</b> → usually no antiviral, unless at serious risk of complications.</li>
+            <li><b>COVID-19</b> → only NICE TA878 highest-risk groups (for example transplant, immunosuppression, cancer on treatment, CKD stage 4 or 5). Age 70 or over, BMI 35 or more, diabetes or heart failure alone <b>no longer qualify</b>.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="blk teal">
+        <h2><span class="n">4</span>Prophylaxis and vaccines</h2>
+        <div class="body">
+          <ul>
+            <li><b>Flu contact in an at-risk group</b>, unvaccinated or unlikely to be protected → offer oseltamivir 75 mg once daily for 10 days (within 48 hours) or zanamivir (within 36 hours).</li>
+            <li>Check <b>flu</b> and <b>COVID-19</b> vaccine eligibility for the current season (Green Book chapters 19 and 14a).</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+    <div class="col">
+
+      <section class="blk teal">
+        <h2><span class="n">5</span>Treat <small>— adults; doses per BNF and local formulary</small></h2>
+        <div class="body">
+          <div class="ladder">
+            <div class="step"><span class="sl">Influenza first line</span><b>Oseltamivir 75 mg twice daily</b> for 5 days. CrCl 30–60: 30 mg twice daily; 10–30: 30 mg once daily</div>
+            <div class="step"><span class="sl">Influenza resistance</span><b>Zanamivir 10 mg inhaled twice daily</b> for 5 days; caution in asthma and COPD (bronchospasm)</div>
+            <div class="step"><span class="sl">COVID-19 first line</span><b>Nirmatrelvir 300 mg + ritonavir 100 mg twice daily</b> for 5 days; eGFR 30–60: 150 mg + 100 mg; not if eGFR &lt;30</div>
+            <div class="step s4"><span class="sl">COVID-19 if Paxlovid unsuitable</span><b>Molnupiravir 800 mg twice daily</b> for 5 days; not in pregnancy; contraception advice</div>
+          </div>
+          <ul>
+            <li><b>COVID-19:</b> refer the same day to the local <b>COVID-19 treatment service</b>, following the local route. Sotrovimab was discontinued in the UK in February 2026.</li>
+            <li><b>Paxlovid interactions:</b> amiodarone, simvastatin, some anti-epileptics, rifampicin, St John's wort are contraindicated; plan for DOACs, tacrolimus, ciclosporin, statins (Liverpool checker).</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="blk purple">
+        <h2><span class="n">6</span>Monitor</h2>
+        <div class="body">
+          <ul>
+            <li><b>Paused drugs</b> (for example atorvastatin) → restart usually 3 days after the last Paxlovid dose.</li>
+            <li><b>Warfarin</b> → check INR after the course. <b>Combined hormonal contraception</b> → extra precautions.</li>
+            <li><b>Worse after initial improvement</b> → think secondary bacterial pneumonia (NICE NG138).</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="blk amber">
+        <h2><span class="n">7</span>Refer <small>— non-emergency</small></h2>
+        <div class="body">
+          <ul>
+            <li><b>Severely immunosuppressed</b>, or suspected oseltamivir resistance → virology or specialist advice on zanamivir.</li>
+            <li><b>Pregnant with COVID-19</b> considered for treatment → obstetric and COVID-19 treatment service advice.</li>
+            <li><b>Transplant drugs</b> interacting with Paxlovid → transplant team.</li>
+          </ul>
+        </div>
+      </section>
+
+    </div>
+
+    <section class="blk slate span">
+      <h2><span class="n">8</span>Never</h2>
+      <div class="body">
+        <ul class="never cols2">
+          <li>Send home a hypoxic or septic patient because an antiviral has been prescribed.</li>
+          <li>Prescribe Paxlovid without checking every medicine for interactions.</li>
+          <li>Give molnupiravir in pregnancy.</li>
+          <li>Withhold oseltamivir from an at-risk patient while waiting for a flu test.</li>
+          <li>Stop an anticoagulant for Paxlovid without an individual plan.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="blk green span">
+      <h2><span class="n">9</span>Safety-net <small>— say it, then document it</small></h2>
+      <div class="body">
+        <p><span class="when w999">999</span> <span class="say">“Struggling to breathe, lips going blue, or very drowsy or confused — call 999.”</span> &nbsp;
+        <span class="when wsd">Same day</span> <span class="say">“More breathless, chest pain, can't keep fluids down, or worse after getting better — contact us or NHS 111 the same day.”</span> &nbsp;
+        <b>Medicines:</b> <span class="say">“No new medicines or herbal remedies while on Paxlovid without checking with a pharmacist.”</span></p>
+      </div>
+    </section>
+
+    <section class="blk green span">
+      <h2><span class="n">✓</span>Safe consultation check <small>— all five done, case safely managed</small></h2>
+      <div class="body check">
+        <span>Severity assessed; red flags excluded</span>
+        <span>Virus and timing established (circulating flu, positive COVID-19 test)</span>
+        <span>Risk group, renal function, pregnancy and interactions checked</span>
+        <span>Antiviral or referral to the COVID-19 service arranged today</span>
+        <span>Safety-net, prophylaxis for contacts and vaccines covered</span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="foot">Summary of the full <a href="../influenza-covid-antivirals.html">Reasoning GP influenza and COVID-19 antivirals protocol</a>, which holds the detail and evidence. Sources: UKHSA influenza antiviral guidance (2025); NICE TA878, TA1056, TA971; NICE NG51, NG143; Green Book chapters 19 and 14a; oseltamivir, zanamivir, Paxlovid and molnupiravir SPCs. Clinical reference for UK primary care — use clinical judgement and check doses in the current BNF and local formulary.</div>
+
+</main>
+</body>
+</html>

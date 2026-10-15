@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Syphilis — Protocol · Reasoning GP</title>
+<meta name="description" content="Syphilis in primary care under the BASHH 2024 UK guideline: rising incidence, recognising primary, secondary, latent and tertiary syphilis, ocular and neurosyphilis at any stage, serology, same-day or next-day referral to sexual health for treatment with benzathine penicillin and partner notification, HIV and STI testing, antenatal screening and congenital syphilis." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/syphilis.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1791879515288965">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+</head>
+<body data-screen-label="Syphilis protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"\u{1F52C}",
+  title:"Syphilis",
+  eyebrow:"Protocol · suspect · test · refer to sexual health · trace partners",
+  stemTitle:"Syphilis: think of it with any painless genital or oral ulcer and any unexplained rash, test serology and HIV, and refer to sexual health for benzathine penicillin and partner notification — eye, ear or neurological symptoms are same-day",
+  stemSub:"One page for syphilis in general practice under the BASHH 2024 UK guideline: why incidence is the highest in decades, the stages and their great-imitator presentations, ocular, otological and neurosyphilis at any stage, serology and lesion PCR, referral to sexual health (GUM) for treatment with benzathine penicillin and partner notification, follow-up serology, pregnancy screening and congenital syphilis, HIV testing and prevention.",
+  guideline:"BASHH UK guidelines for the management of syphilis (2024) · BASHH syphilis in pregnancy and children (2024) · UKHSA STI data · NHS Infectious Diseases in Pregnancy Screening",
+  reviewed:"15 October 2026",
+  nextReview:"15 April 2027",
+  meta:[
+    {t:"BASHH — management of syphilis (2024)"},
+    {t:"BASHH — syphilis in pregnancy and children (2024)"},
+    {t:"UKHSA — STI annual data"},
+    {t:"NHS IDPS — antenatal screening"},
+    {t:"Treatment is by sexual health services", tone:"tw"},
+    {t:"v1.0 · reviewed Oct 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Red flags</b><small>Eye · ear · neuro</small></a><a href="#confirm"><b>Stages</b><small>The great imitator</small></a><a href="#workup"><b>Testing</b><small>Serology · PCR</small></a><a href="#ladder"><b>Treatment</b><small>Benzathine penicillin</small></a><a href="#special"><b>Pregnancy</b><small>Screening · congenital</small></a><a href="../algorithms/anogenital-ulcers.html"><b>Anogenital ulcers</b><small>Algorithm →</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ Eye, ear or nerve symptoms → same day", html:"<b>Ocular syphilis</b> (blurred vision, red or painful eye, floaters), <b>otosyphilis</b> (sudden hearing loss, tinnitus, vertigo) and <b>neurosyphilis</b> (headache, cranial nerve palsy, confusion, stroke-like symptoms) can occur at <b>any stage</b>. With possible syphilis → <b>same-day</b> ophthalmology, ENT or medical assessment plus sexual health advice."},
+    {tone:"amber", h:"Suspect it widely", html:"Syphilis diagnoses in England are at their highest since the late 1940s. Consider it with a <b>painless anogenital or oral ulcer</b>, a <b>non-itchy rash including palms and soles</b>, mucous patches, condylomata lata, patchy hair loss, unexplained lymphadenopathy or hepatitis — especially in gay, bisexual and other men who have sex with men, but in anyone sexually active."},
+    {tone:"blue", h:"Test, then refer", html:"Send <b>syphilis serology</b> (treponemal antibody screen, with RPR/VDRL if reactive) <b>and an HIV test</b>. Refer anyone with suspected or confirmed syphilis to a <b>sexual health (GUM) clinic</b> for confirmation, staging, treatment and partner notification — same or next working day for a lesion or symptoms."},
+    {tone:"cream", h:"Treatment is benzathine penicillin", html:"BASHH 2024: <b>benzathine penicillin</b> by IM injection (now licensed with lidocaine) — a single dose for early syphilis, three weekly doses for late latent. Ceftriaxone is the main alternative; macrolides are no longer recommended because of resistance. Treatment is given by sexual health services."},
+    {tone:"green", h:"Partners, pregnancy and HIV", html:"Partner notification is done with the sexual health clinic (look-back depends on stage). Every pregnant woman is screened antenatally; a positive result is an urgent referral. <b>Congenital syphilis is notifiable</b>; acquired syphilis is reported through sexual health surveillance, not by GP notification."}
+  ],
+  pathwaySub:"The syphilis consultation in five moves. The red step is where people lose sight or hearing.",
+  pathway:[
+    {title:"Suspect", html:"Ulcer, rash, lymphadenopathy, hair loss, hepatitis, unexplained eye, ear or neurological symptoms in a sexually active person. Take a sexual history."},
+    {title:"Eye, ear, nerve?", html:"Visual symptoms, hearing loss, tinnitus, vertigo, headache, cranial nerve palsy, confusion → same-day specialist assessment with sexual health input.", alert:true},
+    {title:"Test", html:"Syphilis serology, HIV, full STI screen (chlamydia and gonorrhoea NAAT from relevant sites), hepatitis B and C as appropriate. Do not delay referral for results if a lesion is present."},
+    {title:"Refer", html:"Sexual health clinic: lesion PCR, staging, benzathine penicillin, partner notification, follow-up serology. Pregnant → urgent referral via the antenatal screening pathway."},
+    {title:"Prevent", html:"Condoms, regular testing for those at risk (at least annually, every 3 months for higher-risk MSM), PrEP for HIV, doxycycline post-exposure prophylaxis where offered by sexual health services."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Red flags", title:"Red flags — ocular, otological and neurosyphilis", sub:"Syphilis can damage the eye, ear and nervous system early, not only after decades.",
+     blocks:[
+       {b:"warn", html:"<b>Possible syphilis with visual symptoms (uveitis, retinitis, optic neuritis), sudden hearing loss, tinnitus or vertigo, or neurological symptoms → same-day assessment</b> by ophthalmology (eye casualty), ENT or the acute medical team, and contact the sexual health clinic the same day. These need IV treatment and can cause permanent loss of sight or hearing."},
+       {b:"cards", items:[
+         {tone:"red", h:"Ocular syphilis", html:"Blurred vision, floaters, red or painful eye, photophobia — any stage, often with secondary syphilis.", src:"BASHH 2024"},
+         {tone:"red", h:"Otosyphilis", html:"Sudden or fluctuating hearing loss, tinnitus, vertigo.", src:"BASHH 2024"},
+         {tone:"red", h:"Neurosyphilis", html:"Headache, meningism, cranial nerve palsies, stroke in a young person, confusion, personality change, dementia, tabes dorsalis (sensory ataxia, lightning pains).", src:"BASHH 2024"},
+         {tone:"amber", h:"Pregnancy", html:"A reactive antenatal screen or suspected syphilis in pregnancy → urgent referral (screening programme standard: seen by the specialist team within 10 working days), sooner with symptoms. Untreated syphilis causes miscarriage, stillbirth and congenital syphilis.", src:"NHS IDPS · BASHH 2024"}
+       ]}
+     ]},
+
+    {id:"confirm", nav:"Stages", title:"Recognising the stages", sub:"“The great imitator”: a high index of suspicion finds it.",
+     blocks:[
+       {b:"table", head:["Stage","Typical timing","Features"], rows:[
+         ["<b>Primary</b>","9–90 days after exposure (usually about 3 weeks)","Chancre: usually single, painless, indurated ulcer at the site of inoculation (genital, anal, oral) with regional lymphadenopathy; heals in 3–8 weeks — may be missed, especially anal or cervical"],
+         ["<b>Secondary</b>","Weeks to months after infection","Non-itchy maculopapular rash, often on palms and soles; mucous patches and snail-track oral ulcers; condylomata lata; generalised lymphadenopathy; patchy (“moth-eaten”) alopecia; fever, malaise; hepatitis; eye, ear and neurological involvement"],
+         ["<b>Early latent</b>","Infection within the past 2 years, no signs","Serology positive only — infectious relapses possible"],
+         ["<b>Late latent</b>","More than 2 years, or unknown duration","Serology positive only — not sexually infectious, but can still be passed to a fetus"],
+         ["<b>Tertiary</b>","Years to decades","Gummatous disease (skin, bone), cardiovascular (aortitis, aortic regurgitation, aneurysm), neurosyphilis"]
+       ]},
+       {b:"why", html:"Diagnoses of infectious syphilis in England have risen steadily over the past decade, mainly but not only in gay, bisexual and other men who have sex with men, with rising numbers in heterosexual men and women and a resurgence of congenital syphilis. Because primary lesions are often painless and secondary rashes are non-specific, many cases present to general practice first."}
+     ]},
+
+    {id:"workup", nav:"Testing", title:"Testing and interpreting results", sub:"Serology in primary care; lesion testing in sexual health.",
+     blocks:[
+       {b:"table", head:["Test","What it shows","Notes"], rows:[
+         ["<b>Treponemal antibody screen</b> (EIA or CLIA)","Exposure to syphilis at any time","Stays positive for life after treatment; a reactive screen is confirmed with a second treponemal test by the laboratory (TPPA has been withdrawn in the UK)"],
+         ["<b>RPR or VDRL</b> (non-treponemal)","Disease activity; titre used to monitor treatment","A fourfold fall after treatment indicates response; false positives occur in pregnancy, autoimmune disease and other infections"],
+         ["<b>Treponemal IgM</b>","Supports recent infection","Interpretation by the sexual health team or virology"],
+         ["<b>Lesion PCR</b> (or dark-ground microscopy)","Direct detection in a chancre or moist secondary lesion","Done in sexual health; serology can be negative in early primary syphilis"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"Window period", html:"Serology may be negative in the first weeks after exposure. If a lesion or recent exposure raises suspicion and the screen is negative, refer anyway and repeat serology at 6 and 12 weeks after the last exposure.", src:"BASHH 2024"},
+         {tone:"blue", h:"Always test for HIV", html:"Syphilis increases HIV transmission and acquisition. Offer HIV testing (repeat after the window period) and a full STI screen, and hepatitis B and C testing as appropriate. See the <a href=\"hiv.html\">HIV protocol</a>.", src:"BASHH 2024"}
+       ]}
+     ]},
+
+    {id:"ladder", nav:"Treatment", title:"Treatment — given by sexual health services", sub:"The GP's part is recognition, testing, referral, and support with follow-up and partner notification.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"Refer", title:"Sexual health (GUM) clinic", when:"same or next working day with a lesion or symptoms",
+          html:"Confirmation, staging, examination, lesion PCR, treatment, partner notification and follow-up. Patients can self-refer; many clinics offer urgent slots. Do not start antibiotics for a genital ulcer before swabs unless advised — it can make diagnosis harder."},
+         {step:"Early", title:"Early syphilis (primary, secondary, early latent)", when:"BASHH 2024",
+          fromLabel:"first-line",
+          html:"<b>Benzathine penicillin</b> as a single deep IM injection (licensed with lidocaine). <span class=mg-dose>Usual adult dose: benzathine benzylpenicillin 2.4 million units by deep IM injection, single dose for early syphilis; once weekly for 3 doses for late latent syphilis (BASHH 2024/SPC; check the SPC, BNF and local formulary; <a href=\"https://www.medicines.org.uk/emc/search?q=benzathine%20benzylpenicillin\" target=_blank rel=noopener>SPC: benzathine benzylpenicillin</a>).</span>"},
+         {step:"Late", title:"Late latent and tertiary (non-neurological)", when:"BASHH 2024",
+          fromLabel:"longer course",
+          html:"Benzathine penicillin weekly for 3 doses. Neurosyphilis, ocular syphilis and otosyphilis need IV or daily IM treatment under specialist care."},
+         {step:"Allergy", title:"Penicillin allergy", when:"specialist choice",
+          fromLabel:"alternatives",
+          html:"Ceftriaxone is the main alternative in most cases; doxycycline may be used in some situations. Macrolides (azithromycin) are no longer recommended because of widespread resistance. Penicillin allergy labels should be assessed — many are not true allergy."}
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"amber", h:"Jarisch–Herxheimer reaction", html:"Fever, headache, myalgia and worsening rash within 24 hours of treatment, especially in early syphilis — usually settles with rest and paracetamol. In pregnancy it can trigger contractions or fetal distress; pregnant women are advised accordingly by the treating team."},
+         {tone:"cream", h:"Abstain until cured", html:"Avoid sexual contact until treatment is complete, lesions have healed and partners have been treated (the clinic advises — usually at least 2 weeks after treatment)."}
+       ]}
+     ]},
+
+    {id:"partners", nav:"Partners", title:"Partner notification", sub:"Led by the sexual health clinic's health advisers; patients can choose patient or provider referral.",
+     blocks:[
+       {b:"table", head:["Stage","Look-back period (BASHH)"], rows:[
+         ["Primary","3 months before symptom onset"],
+         ["Secondary","6 months before symptom onset"],
+         ["Early latent","12 months before diagnosis"],
+         ["Late latent","Long-term partners and any children (congenital infection) — as far back as is relevant"]
+       ]},
+       {b:"say", html:"“Syphilis is completely treatable, usually with one injection. The clinic will help you let partners know — anonymously if you'd prefer — so they can be tested and treated and you don't get it back.”"}
+     ]},
+
+    {id:"special", nav:"Pregnancy", title:"Pregnancy, congenital syphilis and other special groups", sub:"Screening every pregnancy prevents congenital syphilis — but only if positives are acted on quickly.",
+     blocks:[
+       {b:"table", head:["Group","What to do"], rows:[
+         ["<b>Pregnancy</b>","Antenatal screening offered at booking (NHS Infectious Diseases in Pregnancy Screening). Reactive screen → urgent referral to the specialist sexual health and maternity team. Treatment with benzathine penicillin (BASHH 2024 pregnancy guideline: single dose in the first and second trimesters, two doses a week apart in the third trimester for early syphilis). Women who decline or book late, or have ongoing risk, should be offered repeat testing (for example at 28 weeks or at delivery)"],
+         ["<b>Congenital syphilis</b>","Notifiable. Babies of mothers with syphilis are assessed and followed up by paediatrics. Consider congenital syphilis in an infant with snuffles, rash, hepatosplenomegaly, failure to thrive or in a child of a mother found positive later"],
+         ["<b>HIV</b>","Same treatment in most cases; neurological and ocular involvement more common — low threshold for specialist assessment"],
+         ["<b>Children and young people</b>","Syphilis in a child beyond the neonatal period raises safeguarding concerns; follow local safeguarding procedures. Doses per BNFC"]
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Follow-up and prevention", sub:"Follow-up serology confirms cure; prevention stops the next infection.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["RPR or VDRL titre","Usually 3, 6 and 12 months after treatment (clinic schedule)","Fourfold fall expected; fourfold rise → reinfection or relapse, re-refer"],
+         ["HIV and STI screen","At diagnosis and after the window period","Repeat if exposure was recent"],
+         ["Regular testing","At least annually for sexually active people at risk; every 3 months for higher-risk MSM","Offer in primary care or signpost to sexual health or online testing"],
+         ["Prevention","Every contact","Condoms; HIV PrEP via sexual health; doxycycline post-exposure prophylaxis for selected people via sexual health services (BASHH 2025)"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Same day", html:"“If you notice blurred vision, a painful red eye, sudden hearing loss, ringing in the ears, dizziness, a bad headache or weakness — get seen the same day and tell them you may have syphilis.”"},
+         {tone:"amber", h:"🟠 After the injection", html:"“You may feel feverish with aches or a worse rash in the first day — that's an expected reaction and settles. Contact the clinic if you're pregnant and get tummy pains or reduced movements.”"},
+         {tone:"green", h:"🟢 Protect yourself", html:"“Use condoms, test regularly, and ask about PrEP — syphilis can come back if you're exposed again.”"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer and notify", title:"Refer and notify", sub:"Everyone with suspected or confirmed syphilis is managed with a sexual health clinic.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day", html:"Ocular, otological or neurological symptoms (eye casualty, ENT or acute medicine plus sexual health); a pregnant woman with symptoms."},
+         {tone:"amber", h:"Same or next working day", html:"Anogenital or oral ulcer, secondary-syphilis rash or positive serology — sexual health clinic. Reactive antenatal screen — urgent specialist referral."},
+         {tone:"purple", h:"Notification", html:"Acquired syphilis is not on the list of diseases notifiable by clinicians in England; sexual health services report diagnoses through GUMCAD surveillance. <b>Congenital syphilis is notifiable</b> (routine notification)."}
+       ]}
+     ]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence and references", sub:"Every recommendation on this page is traceable to these sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>BASHH — UK guidelines for the management of syphilis 2024 (Int J STD AIDS 2024)</b><br><a href="https://www.bashh.org/resources/25/syphilis_2024" rel="noopener">bashh.org — syphilis 2024</a><span class="rd"> — stages, serology (TPPA withdrawn), lesion PCR, benzathine penicillin with lidocaine, ceftriaxone alternative, macrolides removed, partner notification, follow-up</span></li>'+
+         '<li><b>BASHH — UK guidelines for the management of syphilis in pregnancy and children 2024</b><br><a href="https://doi.org/10.1177/09564624241280406" rel="noopener">doi.org/10.1177/09564624241280406</a><span class="rd"> — treatment by trimester, Jarisch–Herxheimer reaction in pregnancy, congenital syphilis</span></li>'+
+         '<li><b>UKHSA — Sexually transmitted infections and chlamydia screening in England: annual data</b><br><a href="https://www.gov.uk/government/statistics/sexually-transmitted-infections-stis-annual-data-tables" rel="noopener">gov.uk — STI annual data</a><span class="rd"> — rising syphilis diagnoses</span></li>'+
+         '<li><b>NHS Infectious Diseases in Pregnancy Screening programme</b><br><a href="https://www.gov.uk/guidance/infectious-diseases-in-pregnancy-screening-programme-overview" rel="noopener">gov.uk — IDPS</a><span class="rd"> — antenatal syphilis screening and referral standards</span></li>'+
+         '<li><b>UKHSA — Notifiable diseases and causative organisms: how to report</b><br><a href="https://www.gov.uk/guidance/notifiable-diseases-and-causative-organisms-how-to-report" rel="noopener">gov.uk — notifiable diseases</a><span class="rd"> — congenital syphilis (routine)</span></li>'+
+         '<li><b>BASHH — doxycycline post-exposure prophylaxis guideline (2025)</b><br><a href="https://www.bashh.org/" rel="noopener">bashh.org</a><span class="rd"> — doxy-PEP for selected people through sexual health services</span></li>'+
+         '<li><b>Benzathine benzylpenicillin product information (SPC)</b><br><a href="https://www.medicines.org.uk/emc/search?q=benzathine%20benzylpenicillin" rel="noopener">medicines.org.uk — benzathine benzylpenicillin</a></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Syphilis — BASHH UK guidelines 2024 (adults; pregnancy and children). Treatment, staging and partner notification are provided by sexual health services. Verify doses against the current SPC and BASHH guideline."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

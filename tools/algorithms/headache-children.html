@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Headache in Children Algorithm · Reasoning GP</title>
+<meta name="description" content="Headache in children: HeadSmart brain tumour red flags, raised intracranial pressure, meningitis, migraine, tension-type headache, medication overuse, sinusitis, vision and blood pressure checks, and NICE NG12 referral urgency.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Headache in Children Algorithm">
+<meta property="og:description" content="Headache in children: HeadSmart brain tumour red flags, raised intracranial pressure, meningitis, migraine, tension-type headache, medication overuse, sinusitis, vision and blood pressure checks, and NICE NG12 referral urgency.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/algorithms/headache-children.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/headache-children.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+.alg-next{margin:12px 0 2px;padding:9px 12px;background:var(--treat-bg);border:1px solid #bbf7d0;border-radius:8px;font-size:.84rem;line-height:1.55}
+.alg-next a{color:#166534;font-weight:600}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body>
+
+<div class="alg-header">
+  <h1>🧒 Headache in Children</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta">
+    <span>NICE NG12</span><span>HeadSmart</span><span>NICE CG150</span><span>NICE NG240</span><span>10-min consult</span>
+  </div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🧒</div>
+  <div>
+    <b>Headache in Children — Assessment &amp; Management</b>
+    <small>Brain tumour red flags (HeadSmart) · raised ICP · meningitis · migraine · tension-type · medication overuse | Children and young people under 16</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/headache-children.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/headache-children.html">⬇ Download PDF</button><a class="sum-open" href="one-page/headache-children.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/headache-children.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1" id="node1">
+  <div class="node-header">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Meningitis, Raised Pressure &amp; Brain Tumour</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-note">Most childhood headache is migraine, tension-type or part of a viral illness. Every child needs a neurological examination, fundoscopy where possible, a visual check, BP, and growth plotted. For adults see the <a href="headache.html">Headache algorithm</a>.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Fever + headache + neck stiffness, photophobia, drowsiness or rash</b> Suspected bacterial meningitis or meningococcal disease → <span class="pill pill-red">999</span>; antibiotic before transfer only if it will not delay it (NICE NG240)</div>
+      <div class="rftile"><b>Sudden severe "worst ever" headache</b> Peak within minutes, or with collapse, seizure or reduced consciousness → <span class="pill pill-red">999</span> (haemorrhage, venous sinus thrombosis)</div>
+      <div class="rftile"><b>Acute focal neurology or reduced consciousness</b> New weakness, speech or visual loss, confusion, new seizure → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Features of raised intracranial pressure</b> Headache waking the child or present on waking with vomiting, worse lying down, coughing or straining; papilloedema; bradycardia with high BP → <span class="pill pill-red">Same-day</span> paediatric assessment (999 if drowsy)</div>
+      <div class="rftile"><b>Newly abnormal cerebellar or other central neurological function</b> Ataxia, clumsiness, nystagmus, new squint, head tilt, loss of skills → consider <span class="pill pill-purple">Very urgent referral (48 h)</span> for suspected brain tumour (NICE NG12); same-day discussion with paediatrics if progressing</div>
+      <div class="rftile"><b>Head injury</b> Headache after head injury with vomiting, drowsiness, amnesia or a bleeding risk → <span class="pill pill-red">A&amp;E</span> per NICE NG232</div>
+      <div class="rftile"><b>Orbital or sinus complication</b> Swollen red eyelid, painful or restricted eye movements, reduced vision with sinusitis → <span class="pill pill-red">Same-day</span> ENT / ophthalmology / paediatrics</div>
+      <div class="rftile"><b>Raised BP for age</b> Confirmed with the right cuff size; severe hypertension with headache or visual symptoms → <span class="pill pill-red">Same-day</span> paediatric assessment</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Brain tumours are the commonest solid tumours of childhood and are notoriously slow to diagnose: symptoms are often intermittent and appear in different combinations over time. HeadSmart (RCPCH-endorsed supporting guidance) emphasises that symptoms which resolve and recur do not exclude a tumour. NICE NG12 recommends considering a very urgent referral (appointment within 48 hours) for children and young people with newly abnormal cerebellar or other central neurological function.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2" id="node2">
+  <div class="node-header">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>History — From the Child and the Parent</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Pattern</div><div>Acute single episode, recurrent episodes with normal health between (migraine), daily or near-daily, or progressive (getting more frequent or severe — a warning pattern)</div>
+      <div>Timing</div><div>On waking or waking the child from sleep; worse lying down, coughing or straining; time of day; school days versus holidays</div>
+      <div>Character</div><div>Site, severity (missing school or play), duration (migraine in children can last 2–72 hours and is often bilateral and frontal), throbbing or pressing</div>
+      <div>Associated features</div><div>Nausea, vomiting (especially morning), photophobia, phonophobia, aura, abdominal pain, dizziness; fever, nasal symptoms</div>
+      <div>HeadSmart brain tumour symptoms</div><div>Persistent or recurrent vomiting; balance, coordination or walking problems; abnormal eye movements, blurred or double vision, new squint; behaviour change or lethargy; fits; abnormal head position; delayed or arrested puberty or slow growth; increasing head circumference in infants; excessive thirst and urination (diabetes insipidus)</div>
+      <div>Medicines</div><div>Analgesic use — days per month (medication overuse); caffeine drinks; new medicines (e.g. isotretinoin, tetracyclines — raised pressure)</div>
+      <div>Triggers and lifestyle</div><div>Sleep, missed meals, dehydration, screen time, exercise, stress, bullying, exams, mood, family conflict</div>
+      <div>Background</div><div>Family history of migraine; head injury; VP shunt (shunt blockage → same-day); recent infection; travel; others at home with headaches (carbon monoxide)</div>
+      <div>Child's own account</div><div>Ask the child to draw or point to the pain; explore worries and safeguarding where relevant</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Migraine is common in children and often has prominent nausea, vomiting and abdominal pain; attacks may be shorter than in adults. A short history that is progressing, a headache associated with sleep or posture, and any other HeadSmart symptom should move you towards early specialist assessment. A headache diary over 2–4 weeks clarifies pattern and analgesic use.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3" id="node3">
+  <div class="node-header">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Examination — Every Child, Every Time</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Observations</div><div>Temperature, HR, RR; <b>BP with an age-appropriate cuff</b> (compare with centile charts)</div>
+      <div>Growth</div><div>Height and weight on a centile chart; head circumference in under-2s; pubertal stage if relevant</div>
+      <div>Eyes</div><div>Visual acuity (Snellen or age-appropriate chart), eye movements and squint, pupils, visual fields to confrontation, fundoscopy for papilloedema (if not possible, refer to an optometrist or eye service the same day when raised pressure is suspected)</div>
+      <div>Neurology</div><div>Gait (walk, heel–toe, hop), coordination (finger–nose), cranial nerves, tone, power, reflexes, head tilt; meningism if febrile</div>
+      <div>Local causes</div><div>Sinus tenderness, ears, teeth, temporomandibular joint, neck muscles</div>
+      <div>Skin</div><div>Rash (meningococcal), café-au-lait patches (neurofibromatosis), bruising (safeguarding)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>A normal neurological and fundoscopic examination is reassuring but does not exclude a tumour — repeat it if symptoms persist. Fundoscopy is hard in young children; community optometrists can examine the fundi and test acuity, and NHS sight tests are free for under-16s.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4" id="node4">
+  <div class="node-header">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — Few, Targeted</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Headache diary</div><div>2–4 weeks: frequency, duration, triggers, analgesic days, school missed</div>
+      <div>Eye test</div><div>Optometrist sight test for blurred vision, eye strain or headache with reading or screens; same-day eye assessment if papilloedema is possible</div>
+      <div>Urine dipstick</div><div>If BP is raised (renal cause)</div>
+      <div>Bloods</div><div>Not routine. FBC if pallor or fatigue; others only by clinical picture</div>
+      <div>Brain imaging</div><div>Not requested from primary care for typical migraine or tension-type headache. Children with red flags or persistent HeadSmart features are assessed and imaged via the paediatric / neuroimaging pathway — do not delay referral to arrange a scan</div>
+      <div>Carbon monoxide</div><div>If several household members have headaches, worse at home: advise appliance checks and seek same-day advice if symptomatic</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Imaging children with typical primary headache and a normal examination rarely helps and can find incidental abnormalities that cause anxiety. The decision to scan rests on red flags and HeadSmart features, made with the paediatric team.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5" id="node5">
+  <div class="node-header">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Differential Diagnosis</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Migraine</div><div>Recurrent attacks, often bilateral or frontal in children, throbbing, with nausea, vomiting, pallor, light and noise sensitivity; wants to lie down in a dark room and sleeps; normal between attacks; family history common. Variants: abdominal migraine, benign paroxysmal vertigo</div>
+      <div>Tension-type headache</div><div>Pressing, band-like, mild to moderate, no vomiting, carries on with activities; stress, posture, sleep</div>
+      <div>Viral illness / fever</div><div>Headache with fever and a clear source in a well child</div>
+      <div>Medication-overuse headache</div><div>Daily headache with analgesics on 15 or more days a month (10 or more for triptans or combinations) for more than 3 months</div>
+      <div>Acute sinusitis</div><div>Older children: nasal blockage, discharge, facial pain after a cold; sinusitis is an uncommon cause of chronic recurrent headache</div>
+      <div>Refractive error / eye strain</div><div>Frontal ache after reading or screens, eases with rest</div>
+      <div>Raised intracranial pressure</div><div>Brain tumour, hydrocephalus or shunt failure, idiopathic intracranial hypertension (overweight adolescent girls, visual obscurations, pulsatile tinnitus, papilloedema), venous sinus thrombosis</div>
+      <div>Other</div><div>Post-traumatic headache, hypertension, dental or TMJ pain, caffeine withdrawal, sleep disorder, anxiety or depression, carbon monoxide</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Use ICHD-3 criteria for migraine without aura in children: at least 5 attacks lasting 2–72 hours, with 2 of unilateral or bilateral location, pulsating, moderate or severe, worse with activity; and nausea/vomiting or photophobia with phonophobia. Idiopathic intracranial hypertension threatens sight and needs same-day assessment when papilloedema is found.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6" id="node6">
+  <div class="node-header">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Referral — Urgency</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Suspected meningitis or meningococcal disease, thunderclap headache, reduced consciousness, new seizure, acute focal deficit</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Raised intracranial pressure features or papilloedema; suspected shunt malfunction; orbital complication of sinusitis; severe hypertension; progressive neurological signs</div>
+      <div><span class="pill pill-purple">Very urgent · 48 h · NICE NG12</span></div><div>Consider for newly abnormal cerebellar or other central neurological function — suspected brain or CNS tumour (local paediatric pathway)</div>
+      <div><span class="pill pill-purple">Urgent paediatric</span></div><div>HeadSmart features: persistent headache that wakes the child or is present on waking; persistent headache in a young child (under 4); persistent headache with any other HeadSmart symptom (vomiting, visual, motor, growth, behaviour) — discuss or refer via the local paediatric / neuroimaging pathway</div>
+      <div>Paediatric (non-urgent)</div><div>Frequent migraine needing prophylaxis, diagnostic uncertainty, migraine with atypical aura, chronic daily headache not settling after medication withdrawal</div>
+      <div>Other routes</div><div>Optometrist (vision); CAMHS or school support for anxiety, low mood or bullying; dentist</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>HeadSmart imaging timeframes are supporting guidance, not NG12 timeframes; the NG12 trigger is the newly abnormal neurological examination. Primary care should not arrange brain imaging independently for every child with persistent headache — discuss with the paediatric team.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7" id="node7">
+  <div class="node-header">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Management at This Consultation</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">Migraine attack</div>
+        <div class="b-drug">Ibuprofen or paracetamol <span class="pill pill-teal">First-line</span></div>
+        <div class="b-note">Ibuprofen (often more effective) or paracetamol at the start of the attack, dose by age or weight per BNFC; rest in a dark, quiet room. Anti-emetic for marked nausea per BNFC. Analgesia on no more than 2–3 days a week</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Migraine, aged 12–17</div>
+        <div class="b-drug">Consider a nasal triptan</div>
+        <div class="b-note">If simple analgesia fails: consider a nasal triptan, with ibuprofen or paracetamol if needed (NICE CG150; sumatriptan nasal spray is licensed from 12 years — check the SPC). Triptans under 12 and any prophylaxis → specialist advice</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Tension-type headache</div>
+        <div class="b-drug">Reassure, simple analgesia</div>
+        <div class="b-note">Paracetamol or ibuprofen on limited days; address sleep, hydration, screens, stress and school issues. No opioids</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Medication-overuse headache</div>
+        <div class="b-drug">Stop the overused analgesic</div>
+        <div class="b-note">Explain it will get worse before better (usually 1–2 weeks), stop abruptly with support, diary, review in 4–8 weeks; refer if not settling</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Acute sinusitis</div>
+        <div class="b-drug">Self-care; no routine antibiotic</div>
+        <div class="b-note">Paracetamol or ibuprofen; most settle within 2–3 weeks (NICE NG79). Antibiotic only if systemically very unwell or high risk; any orbital or neurological sign → same-day</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Eye strain · raised BP</div>
+        <div class="b-drug">Sight test · repeat BP</div>
+        <div class="b-note">Optometrist sight test. Raised BP: repeat with the correct cuff; persistent raised BP in a child → paediatric referral (urgency by level and symptoms)</div>
+      </div>
+    </div>
+    <p class="alg-next"><b>Next steps:</b> see <a href="../management/migraine.html">Migraine</a> · <a href="../management/tension-headache.html">Tension-type headache</a> · <a href="../management/sinusitis.html">Sinusitis</a></p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>NICE CG150 covers young people aged 12 and over; for younger children, ibuprofen and paracetamol are the mainstay, and triptans and prophylaxis are specialist decisions. Aspirin must not be given to children under 16 (Reye's syndrome). Codeine is contraindicated for pain in children under 12 and should be avoided in headache.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8" id="node8">
+  <div class="node-header">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Self-Care &amp; Trigger Management</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Regular routine</b> Regular sleep and wake times, regular meals (no skipped breakfast), enough fluids.</div>
+      <div class="lstile"><b>Caffeine</b> Cut down energy drinks, cola and coffee gradually.</div>
+      <div class="lstile"><b>Screens and posture</b> Breaks from screens, good lighting, eye test if reading triggers headache.</div>
+      <div class="lstile"><b>Exercise</b> Regular physical activity; maintain a healthy weight (also lowers IIH risk).</div>
+      <div class="lstile"><b>Stress and school</b> Talk about worries, bullying, exams; agree a school plan so attacks can be managed in school.</div>
+      <div class="lstile"><b>Headache diary</b> Records triggers and medicine days; bring it to review.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Lifestyle regularity reduces attack frequency in many children with migraine and tension-type headache. School absence feeds anxiety; a written plan for school helps.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9" id="node9">
+  <div class="node-header">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up &amp; Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>2–4 weeks</div><div>Review the diary, analgesic use and examination (including fundi and gait) for new or persistent headache</div>
+      <div>Persistent or changing</div><div>Re-examine at each visit — a new neurological sign or HeadSmart feature changes the urgency; multiple attendances for the same symptom are themselves a flag</div>
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>Sudden very severe headache, headache with fever and a stiff neck, dislike of light or a rash that does not fade, very drowsy or confused, a fit, new weakness</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Headaches waking your child or present on waking with being sick, getting worse quickly, new double vision, squint or blurred vision, unsteady walking or clumsiness, a head tilt, or a change in behaviour</div>
+      <div>Return</div><div>Headaches becoming more frequent, school being missed, or painkillers needed on more than 2–3 days a week</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Children with brain tumours often present several times before diagnosis; scheduled review with repeat examination, and specific safety-net advice, reduce delay. Document the neurological and eye examination at each visit.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE NG12 (Suspected cancer: recognition and referral, 2015, updated April 2026) — children and young people, HeadSmart / RCPCH-endorsed clinical guideline: The diagnosis of brain tumours in children (Children's Brain Tumour Research Centre, Nottingham, updated 2017), NICE CG150 (Headaches in over 12s: diagnosis and management, updated 2021), NICE NG240 (Meningitis (bacterial) and meningococcal disease, 2024), NICE NG143 (Fever in under 5s, updated 2021), NICE CKS Migraine and Headache — tension-type, NICE NG136 / NICE CKS Hypertension (children: refer), British Association for the Study of Headache (BASH) guidance, IHS International Classification of Headache Disorders (ICHD-3). Check doses against the current SPC, BNF/BNFC and local formulary. Always adapt to individual patient context, comorbidities, and local pathways. Not a substitute for clinical judgement.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.headache-children.v1';
+  const nodes=document.querySelectorAll('.node[data-step]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state={};
+    nodes.forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});
+    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+  function load(){
+    try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');
+      nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(s[n.dataset.step]){cb.checked=true;n.classList.add('done');}});}catch(e){}
+  }
+  function updateProgress(){
+    const done=document.querySelectorAll('.node.done').length;
+    pDone.textContent=done;
+    pFill.style.width=((done/total)*100)+'%';
+  }
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{
+      n.classList.toggle('done',cb.checked);
+      save();updateProgress();
+    });
+  });
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!expanded));
+      btn.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    if(!confirm('Reset all progress?'))return;
+    nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});
+    localStorage.removeItem(KEY);updateProgress();
+  });
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=3"></script>
+<script src="../../assets/topic-links.js?v=10"></script>
+<script src="../../assets/alg-diagram.js"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+</body>
+</html>

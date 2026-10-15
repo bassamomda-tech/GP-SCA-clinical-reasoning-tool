@@ -124,7 +124,7 @@
 - Persistent/inflamed: topical antifungal (ketoconazole/clotrimazole) or short mild steroid (hydrocortisone 1%).
 - Very itchy/widespread \u2192 consider atopic eczema; weeping/pustular \u2192 ?infection.`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'NICE CKS — Seborrhoeic dermatitis (infantile)', url:'https://cks.nice.org.uk/topics/seborrhoeic-dermatitis/' },
     ],
   },
 

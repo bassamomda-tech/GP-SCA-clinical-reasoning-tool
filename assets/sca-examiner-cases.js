@@ -127,7 +127,7 @@ window.SCA_EXAMINER_CASES = [
   },
 
   /* ============================================================
-     C. Knee OA — the "almost excellent" candidate
+     C. Knee OA — the "almost clear pass" candidate
      ============================================================ */
   {
     id:'exm-knee', caseRef:'knee-pain-walker',

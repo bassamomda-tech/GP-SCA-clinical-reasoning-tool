@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Frailty and medication review — Protocol · Reasoning GP</title>
+<meta name="description" content="Frailty and medication review in primary care: identify frailty with the eFI and Clinical Frailty Scale, a primary-care comprehensive geriatric assessment, NICE NG56 multimorbidity care, NG249 falls assessment, a structured medication review using STOPP/START v3 and anticholinergic burden, safe deprescribing, advance care planning and ReSPECT." />
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/frailty-medication-review.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/management.css?v=15">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+<link rel="stylesheet" href="../../assets/management-print.css?v=3">
+<meta name="omelette-print-source" content="v1791879515288965">
+<style>doc-page:not(:defined){visibility:hidden}</style>
+</head>
+<body data-screen-label="Frailty and medication review protocol">
+<doc-page margin="0.6in"><div class="mg-wrap" id="mgRoot"></div></doc-page>
+<script src="../../assets/management-engine.js?v=22"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+<script>
+MG.render({
+  icon:"\u{1F9D3}",
+  title:"Frailty and medication review",
+  eyebrow:"Protocol · identify · assess · review the medicines · plan ahead",
+  stemTitle:"Frailty: find it, rule out the acute cause, then review every medicine against what matters to the person and agree a plan for the future",
+  stemSub:"One page for the frail older adult in primary care: identification (eFI and Clinical Frailty Scale), the sudden change that is not frailty (delirium, sepsis, a new drug), a comprehensive geriatric assessment adapted for general practice, NICE NG56 multimorbidity care, NG249 falls assessment, the structured medication review (STOPP/START v3 and anticholinergic burden), deprescribing one drug at a time, and advance care planning with ReSPECT.",
+  guideline:"NICE NG56 (2016) · NICE NG249 (2025) · NICE NG5 (2015) · STOPP/START v3 (2023) · BGS Fit for Frailty",
+  reviewed:"15 October 2026",
+  nextReview:"15 April 2027",
+  meta:[
+    {t:"NICE NG56 — multimorbidity (2016)"},
+    {t:"NICE NG249 — falls (2025)"},
+    {t:"NICE NG5 — medicines optimisation (2015)"},
+    {t:"STOPP/START v3 (2023)"},
+    {t:"Clinical Frailty Scale v2 · eFI"},
+    {t:"No NG12 criterion applies", tone:"tw"},
+    {t:"v1.0 · reviewed Oct 2026", tone:"ok"}
+  ],
+  lead:'<div class="mg-layers"><a href="#severe"><b>Red flags</b><small>Acute change ≠ frailty</small></a><a href="#confirm"><b>Identify</b><small>eFI → CFS</small></a><a href="#workup"><b>Assess</b><small>CGA domains</small></a><a href="#ladder"><b>Medication review</b><small>STOPP/START · ACB</small></a><a href="#plan"><b>Plan ahead</b><small>ReSPECT · ACP</small></a><a href="../../cases/multimorbidity-polypharmacy.html"><b>Casebook chapter</b><small>Multimorbidity case →</small></a></div>',
+  quickSub:"If you read nothing else on this page, read these cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
+  quick:[
+    {tone:"red", h:"⚠ A sudden decline is not “just frailty”", html:"New confusion, falls, immobility or incontinence over hours to days is an acute illness until proved otherwise — <b>delirium, sepsis, dehydration, AKI, hypoglycaemia, urinary retention, a fracture or a new or changed medicine</b>. Assess the same day; NEWS2 and the 4AT help. Frailty is the background, not the diagnosis."},
+    {tone:"amber", h:"Identify, then confirm", html:"The <b>electronic Frailty Index (eFI)</b> is a population screen run on the record: it flags people aged 65 or over who <b>may</b> have moderate or severe frailty. Confirm clinically with the <b>Clinical Frailty Scale (CFS, 1–9)</b> or gait speed / Timed Up and Go before coding. Do not label from the eFI alone."},
+    {tone:"blue", h:"Ask what matters", html:"NICE NG56: an approach to care that takes account of multimorbidity is for people who find their treatment burden hard, use many services, have frailty or falls, or take many regular medicines. Establish the person's goals, values and priorities first; then decide which treatments still serve them."},
+    {tone:"cream", h:"Structured medication review", html:"Reconcile, then review each medicine against its indication, benefit within the person's likely time horizon, harms and burden. Use <b>STOPP/START v3</b> and an <b>anticholinergic burden</b> score. Stop or reduce <b>one medicine at a time</b>, with a plan to monitor and restart if needed. Shared decision — never a unilateral cull."},
+    {tone:"green", h:"Plan for the future while the person can", html:"Offer advance care planning: what matters, preferred place of care, lasting power of attorney, and a <b>ReSPECT</b> or locally used emergency care plan including a CPR recommendation. Share it with OOH, ambulance and care home through the local shared record."}
+  ],
+  pathwaySub:"The frailty review in five moves. The red step is where people come to harm — do not skip it.",
+  pathway:[
+    {title:"Exclude the acute change", html:"Sudden deterioration → delirium screen (4AT), observations and NEWS2, sepsis, AKI, retention, constipation, pain, fracture, new medicine. Treat the cause; frailty is not a diagnosis of exclusion.", alert:true},
+    {title:"Identify and grade", html:"eFI flag (65 and over) or clinical concern → Clinical Frailty Scale, gait speed or Timed Up and Go. Code the confirmed severity."},
+    {title:"Assess (primary-care CGA)", html:"Function, mobility and falls, cognition and mood, continence, nutrition and weight, vision and hearing, skin, social support and carer strain, medicines, and the person's priorities."},
+    {title:"Review the medicines", html:"Reconcile → indication → STOPP/START v3 → anticholinergic burden → falls-risk drugs → renal dosing → agree changes one at a time with a follow-up date."},
+    {title:"Plan and share", html:"Individualised care plan with named coordinator, falls and bone health actions, advance care planning (ReSPECT), carer support, and a review date — annual as a minimum for severe frailty."}
+  ],
+  sections:[
+
+    {id:"severe", nav:"Red flags", title:"Red flags — acute illness hiding behind frailty", sub:"People with frailty present atypically. A change in function is often the only sign of serious illness.",
+     blocks:[
+       {b:"warn", html:"<b>Sudden (hours to days) new confusion, drowsiness, falls, immobility or “off legs”</b> → same-day assessment for delirium and its cause. <b>NEWS2 5 or more, suspected sepsis, hypotension, hypoxia or reduced consciousness</b> → 999 / emergency admission unless an agreed treatment-escalation plan says otherwise. A ReSPECT form guides decisions; it does not replace assessment."},
+       {b:"cards", items:[
+         {tone:"red", h:"Delirium", html:"Acute onset, fluctuating attention and awareness. Use the <b>4AT</b>. Look for infection, dehydration, AKI, hypo- or hyperglycaemia, hyponatraemia, retention, constipation, pain, alcohol withdrawal and <b>medicines</b> (anticholinergics, opioids, benzodiazepines, Z-drugs, antipsychotics, recent changes). Same-day assessment; admit if unsafe at home.", src:"NICE CG103"},
+         {tone:"red", h:"Fall with injury or a long lie", html:"Possible fracture (hip, wrist, vertebra, head injury on anticoagulant), unable to get up, rhabdomyolysis or pressure damage after a long lie, or a fall with syncope → same-day or emergency assessment.", src:"NICE NG249"},
+         {tone:"amber", h:"Medication-related harm", html:"Bleeding on anticoagulants, hypoglycaemia on sulfonylurea or insulin, symptomatic bradycardia, postural hypotension with falls, hyponatraemia (SSRIs, diuretics), lithium or digoxin toxicity → same-day review; stop or hold the culprit as appropriate."},
+         {tone:"amber", h:"Rapid unexplained decline", html:"Weight loss, functional decline or new symptoms without explanation may be cancer or another treatable illness — apply NG12 criteria as you would for anyone, and discuss with the person whether investigation fits their goals."}
+       ]},
+       {b:"why", html:"Frailty reduces physiological reserve, so a minor stressor (a urinary infection, a new drug, constipation) causes a large functional change. The classic “frailty syndromes” — falls, immobility, delirium, incontinence and susceptibility to medication side effects — are therefore both markers of frailty and the commonest way acute illness presents in it."}
+     ]},
+
+    {id:"confirm", nav:"Identify", title:"Identifying and grading frailty", sub:"Screen with the record, confirm face to face, code the severity, and use it to plan care rather than to ration it.",
+     blocks:[
+       {b:"table", head:["Tool","What it is","How to use it"], rows:[
+         ["<b>eFI</b> (electronic Frailty Index)","Cumulative-deficit score built from coded data in the GP record; categories fit, mild, moderate and severe frailty. Many systems now offer the updated eFI2","Population <b>screen</b> for people aged 65 and over; it flags who <b>may</b> have moderate or severe frailty. Confirm clinically before coding — record quality drives the score"],
+         ["<b>Clinical Frailty Scale</b> (CFS v2, 1–9)","Clinician judgement of function in the past 2 weeks: 1 very fit → 4 living with very mild frailty → 5 mild → 6 moderate → 7 severe → 8 very severe → 9 terminally ill","Use to confirm and grade frailty in people aged 65 and over. Not validated under 65 or in stable single disabilities (for example learning disability) — describe function instead"],
+         ["<b>Gait speed</b> or <b>Timed Up and Go</b>","Walking speed over 4 m, or rise–walk 3 m–turn–sit","Gait speed under 0.8 m/s or a Timed Up and Go over 10 seconds suggests frailty (BGS Fit for Frailty) — quick in clinic or at home"],
+         ["<b>PRISMA-7</b>","Seven-question self-report","Alternative brief screen (score 3 or more → further assessment)"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"blue", h:"GP contract duty", html:"NHS England expects practices to identify people aged 65 and over living with moderate or severe frailty (the eFI is available in all systems). For <b>severe frailty</b>: an annual medication review, a falls assessment where clinically appropriate, and offer of the enriched Summary Care Record. Consider the same for moderate frailty."},
+         {tone:"cream", h:"Frailty is dynamic", html:"Frailty can improve with exercise, nutrition and medication review, and worsens with acute illness and admission. Re-grade after a crisis and at least annually. Record it with consent and explain what it means — “frailty” can feel like a label."}
+       ]},
+       {b:"why", html:"The eFI was designed for population stratification, not individual diagnosis; its positive predictive value depends on how thoroughly the record is coded. The Clinical Frailty Scale is a quick, validated clinical judgement that predicts outcomes after acute illness and is the language used by hospitals and ambulance services — so recording a CFS score helps everyone who sees the person later."}
+     ]},
+
+    {id:"workup", nav:"Assess", title:"Comprehensive geriatric assessment in primary care", sub:"A multidomain assessment leading to an individualised plan. Spread it across the team — practice nurse, clinical pharmacist, care coordinator, community therapy — rather than one long appointment.",
+     blocks:[
+       {b:"table", head:["Domain","Ask / check","Act on"], rows:[
+         ["<b>Priorities</b>","What matters most? What would the person like to be able to do? Who helps?","Goals drive every decision below (NICE NG56)"],
+         ["<b>Mobility and falls</b>","Falls in the past 12 months, fear of falling, gait and balance, footwear, home hazards","Multifactorial falls assessment (NG249); strength and balance programme; bone health (fracture-risk assessment)"],
+         ["<b>Cognition and mood</b>","Memory concerns (6CIT or Mini-Cog), past delirium, low mood, loneliness","Dementia pathway (NG97) if concerned; treat depression; social prescribing"],
+         ["<b>Medicines</b>","Full list including OTC and herbal; adherence; who manages them","Structured medication review — see <a href=\"#ladder\">Medication review</a>"],
+         ["<b>Nutrition</b>","Weight trend, appetite, MUST score, teeth and swallowing","Food-first advice; dietitian; check B12, folate, vitamin D where indicated"],
+         ["<b>Continence</b>","Urinary and faecal incontinence, constipation, retention","Treat reversible causes; continence service"],
+         ["<b>Senses and skin</b>","Vision, hearing, feet, pressure areas","Optician, audiology, podiatry, pressure-area advice"],
+         ["<b>Function and support</b>","Washing, dressing, meals, stairs; carer and carer strain; living alone","Social care referral (Care Act assessment), carer's assessment, equipment, telecare/pendant alarm"],
+         ["<b>Basic bloods</b>","FBC, U&amp;E and eGFR, LFT, TFT, HbA1c if diabetic, bone profile, B12/folate and vitamin D only when indicated","Renal function guides dosing; avoid testing that will not change management"]
+       ]},
+       {b:"why", html:"Comprehensive geriatric assessment is the intervention with the best evidence in frailty: it improves the chance of being alive and at home after acute illness. In general practice the principles — multidomain, multidisciplinary, goal-led and producing a written plan — are delivered by the primary care team over several contacts."}
+     ]},
+
+    {id:"ng56", nav:"Multimorbidity", title:"Multimorbidity — NICE NG56 approach to care", sub:"For people with frailty, multiple long-term conditions or polypharmacy, replace disease-by-disease reviews with one coordinated plan.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Who benefits", html:"People who find it hard to manage treatments or daily life; who get care from many services; who have frailty or falls; frequent unplanned or emergency care; or who take many regular medicines (NG56 suggests considering a review for 15 or more, or 10–14 with additional risk).", src:"NICE NG56"},
+         {tone:"blue", h:"What the review covers", html:"Discuss the purpose of the approach; establish disease and treatment burden; find out goals, values and priorities; review medicines and other treatments, weighing benefit and harm; agree an individualised management plan with a <b>named coordinator</b> and follow-up; share it with the person and services involved.", src:"NICE NG56"},
+         {tone:"cream", h:"Interpreting guidelines", html:"Single-disease guidance may not apply. Consider the absolute benefit and the <b>time to benefit</b> of preventive drugs (statins, bisphosphonates, tight glycaemic or BP targets) against remaining life expectancy and what matters to the person.", src:"NICE NG56"}
+       ]},
+       {b:"warn", html:"<b>Do not stop a medicine because of frailty alone.</b> Stopping is a clinical decision made with the person: some drugs (for example anticoagulants in atrial fibrillation, heart-failure medicines, antiepileptics, Parkinson's medicines, steroid replacement) still bring large benefit or cause harm when stopped suddenly."}
+     ]},
+
+    {id:"ladder", nav:"Medication review", title:"The structured medication review — step by step", sub:"Shared decision-making across a series of steps (NICE NG5). Document the reason for every change and the restart plan.",
+     blocks:[
+       {b:"ladder", steps:[
+         {step:"1", title:"Reconcile and understand", when:"before anything changes",
+          html:"Confirm what the person actually takes (brown-bag review, dosette or care-home MAR chart, hospital letters, OTC and herbal). Ask about side effects, swallowing, dexterity, adherence and what they believe each medicine is for."},
+         {step:"2", title:"Check indication, benefit and time horizon", when:"each medicine in turn",
+          fromLabel:"is it still doing a job?",
+          html:"Is there a current indication? Is it achieving its goal? Will the person live long enough to benefit (preventive drugs)? Is the dose right for renal function, weight and age? Are targets still appropriate (for example HbA1c, BP — relax them in moderate–severe frailty and avoid hypoglycaemia and postural hypotension)?"},
+         {step:"3", title:"Screen with STOPP/START v3 and anticholinergic burden", when:"explicit criteria",
+          fromLabel:"structured tools",
+          html:"<b>STOPP/START version 3 (2023)</b> lists potentially inappropriate medicines and potential prescribing omissions in people aged 65 and over. Add an <b>anticholinergic burden</b> score (for example ACB calculator): a cumulative score of 3 or more is associated with cognitive impairment, falls and mortality. Flag <b>falls-risk-increasing drugs</b> (sedatives, antipsychotics, antidepressants, opioids, antihypertensives with postural drop, alpha-blockers)."},
+         {step:"4", title:"Agree changes — one at a time", when:"shared decision",
+          fromLabel:"deprescribe safely",
+          html:"Prioritise drugs causing harm, then those with no indication, then the highest burden. Taper drugs with withdrawal or rebound effects (benzodiazepines, Z-drugs, opioids, antidepressants, gabapentinoids, PPIs at high dose, beta-blockers, antipsychotics) rather than stopping abruptly. Change one thing at a time so effects can be attributed."},
+         {step:"5", title:"Follow up and code", when:"2–6 weeks after each change",
+          fromLabel:"close the loop",
+          html:"Review symptoms, BP, weight, bloods as relevant. Record the medication review, the outcome and the next review date; tell the community pharmacy and care home. Severe frailty: medication review at least annually."}
+       ]},
+       {b:"table", head:["Common STOPP-type problem","Why it harms in frailty","Consider"], rows:[
+         ["Long-term benzodiazepine or Z-drug","Falls, fractures, cognitive impairment, delirium","Slow taper with support — see the <a href=\"benzodiazepines-z-drugs.html\">benzodiazepine protocol</a>"],
+         ["Strongly anticholinergic drugs (oxybutynin, amitriptyline, chlorphenamine, promethazine, some antipsychotics)","Confusion, constipation, retention, falls; additive burden","Lower-burden alternative or stop; recalculate the burden score"],
+         ["NSAID with CKD, heart failure, anticoagulant or without gastroprotection","GI bleeding, AKI, fluid retention","Paracetamol, topical NSAID, non-drug measures"],
+         ["Antipsychotic for behavioural symptoms of dementia","Stroke, death, falls, sedation","Review at least every 6 weeks with the aim of stopping; non-drug approaches first (NICE NG97)"],
+         ["Sulfonylurea or insulin with tight HbA1c target","Hypoglycaemia, falls","Relax the target; reduce or switch"],
+         ["Several antihypertensives with postural hypotension","Falls, syncope","Measure lying and standing BP; reduce or stop the least necessary"],
+         ["PPI at high dose beyond the indicated course","C. difficile, fractures, hyponatraemia, hypomagnesaemia","Step down or stop — see the <a href=\"ppi-prescribing.html\">PPI protocol</a>"],
+         ["Statin or bisphosphonate near the end of life","Pill burden with little time to benefit","Discuss stopping in the context of prognosis and goals"]
+       ]},
+       {b:"cards", cols:2, items:[
+         {tone:"green", h:"START — omissions worth checking", html:"Anticoagulation in atrial fibrillation (frailty and falls alone are not contraindications), bone protection after fragility fracture, vitamin D where deficient or housebound, laxative with regular opioid, ACE inhibitor or ARB in heart failure, and vaccines (influenza, pneumococcal, shingles, RSV, COVID-19 per current programmes)."},
+         {tone:"amber", h:"Renal dosing", html:"Use creatinine clearance (Cockcroft–Gault, actual body weight) rather than eGFR for drugs with narrow therapeutic windows (DOACs, digoxin, sotalol, aminoglycosides) and in people at extremes of weight, as the SPC specifies."}
+       ]},
+       {b:"why", html:"STOPP/START v3 (O'Mahony et al., 2023) was updated by a European Delphi panel and now contains 190 criteria. Applying explicit criteria within a structured, person-centred review reduces inappropriate prescribing; deprescribing trials show it is usually safe when changes are planned, gradual and monitored. Anticholinergic load is cumulative across drugs that are individually “mildly” anticholinergic."}
+     ]},
+
+    {id:"falls", nav:"Falls and bones", title:"Falls and bone health — NICE NG249", sub:"Falls are the commonest frailty presentation and the commonest route to losing independence.",
+     blocks:[
+       {b:"dl", rows:[
+         ["Ask","Ask people aged 65 and over (and people aged 50–64 at higher risk) about falls in the past 12 months as part of routine contact, and about fear of falling"],
+         ["Multifactorial assessment","For people who have fallen or are at increased risk: falls history, gait, balance and strength, medicines, postural BP, vision, continence, cognition, feet and footwear, home hazards, bone health — and refer on to a falls service where available"],
+         ["Interventions","Strength and balance exercise programmes (for example FaME or Otago) are the core intervention; medication review targeting falls-risk drugs; home hazard assessment; vision and footwear; treat postural hypotension"],
+         ["Bone health","Assess fracture risk (FRAX or QFracture) and treat osteoporosis where indicated — see the <a href=\"osteoporosis.html\">osteoporosis protocol</a>"]
+       ]},
+       {b:"why", html:"NICE NG249 (April 2025) replaced CG161. It widened the target population to include people aged 50–64 at higher risk and emphasises identification as part of routine care, a person-centred multifactorial assessment and sustained participation in exercise interventions."}
+     ]},
+
+    {id:"plan", nav:"Plan ahead", title:"Advance care planning and ReSPECT", sub:"Have the conversation early, while the person can take part — not in the crisis.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"blue", h:"Advance care planning", html:"Explore what matters, worries, preferred place of care and death, and who should be involved. Record wishes; offer information on <b>lasting power of attorney</b> (health and welfare; property and financial affairs) and on an <b>advance decision to refuse treatment</b> where wanted."},
+         {tone:"blue", h:"ReSPECT or local equivalent", html:"The ReSPECT process records the person's priorities, recommended clinical care and a <b>CPR recommendation</b> for an emergency. It is a recommendation, not a legally binding order. Review after admission or a change in health; share via the local shared care record so ambulance and OOH can see it."},
+         {tone:"cream", h:"Capacity", html:"If the person lacks capacity for a decision, follow the Mental Capacity Act 2005: involve any attorney or deputy and those close to them, and act in the person's best interests. Consider an IMCA if there is nobody to consult."},
+         {tone:"cream", h:"Recognise the last year of life", html:"Severe frailty, recurrent admissions and declining function suggest the person may be in their last year of life: add to the palliative care register, plan anticipatory care and support carers — see <a href=\"care-of-the-dying.html\">care of the dying</a>."}
+       ]},
+       {b:"say", html:"“Some people find it helpful to think ahead about what they would and wouldn't want if they became more unwell — where they'd like to be cared for, and who should speak for them. Would that be something you'd like to talk about, today or another time?”"}
+     ]},
+
+    {id:"special", nav:"Special groups", title:"Special groups", sub:"Adjust the approach to the setting and the person.",
+     blocks:[
+       {b:"table", head:["Group","What changes"], rows:[
+         ["<b>Care home residents</b>","Use the Enhanced Health in Care Homes multidisciplinary review; involve the care home team and pharmacist; check covert administration has a best-interests decision and pharmacist advice"],
+         ["<b>Dementia</b>","Involve family or attorney; minimise anticholinergic and sedative load; review antipsychotics regularly; prefer simple regimens and compliance aids only where they help"],
+         ["<b>Under 65 with frailty</b>","The CFS and eFI are not validated; describe function and use NG56 principles. Frailty in younger people often accompanies learning disability, severe mental illness or multimorbidity"],
+         ["<b>Housebound</b>","Home visit for the CGA, medication review with the community pharmacist; check vaccinations and long-term-condition reviews are not missed"],
+         ["<b>End of life</b>","Shift from prevention to comfort: stop preventive drugs with the person's agreement, simplify regimens, plan anticipatory medicines"]
+       ]}
+     ]},
+
+    {id:"monitor", nav:"Follow-up", title:"Monitoring, follow-up and safety-netting", sub:"Every change gets a review date; every frail person gets an annual review as a minimum.",
+     blocks:[
+       {b:"table", head:["What","When","Action"], rows:[
+         ["Frailty grade (CFS / eFI)","At least annually and after any admission","Re-grade; update the care plan"],
+         ["Structured medication review","At least annually in severe frailty; after discharge; after any fall","Full STOPP/START and anticholinergic review"],
+         ["After each deprescribing change","2–6 weeks (sooner for antihypertensives, diuretics or heart-failure drugs)","Check symptoms, BP, weight, U&amp;E as relevant; restart if symptoms recur"],
+         ["Falls","Every contact","New fall → multifactorial review and medication check"],
+         ["Care plan and ReSPECT","After admission or significant change","Review and re-share"]
+       ]},
+       {b:"cards", items:[
+         {tone:"red", h:"🔴 Sudden change", html:"“If they suddenly become more confused, drowsy, unable to stand or are not themselves over a day or two, contact us the same day — or 111 out of hours. If they are very unwell, struggling to breathe or can't be woken, call 999.”"},
+         {tone:"amber", h:"💊 After a medicine change", html:"“If symptoms come back after we stop a medicine — breathlessness, ankle swelling, palpitations, worse pain or sleep — don't restart it yourself; let us know within a few days so we can review.”"},
+         {tone:"green", h:"🏠 Falls", html:"“If you fall, tell us even if you aren't hurt — it often means something can be changed. If you can't get up, use your alarm or call 999.”"}
+       ]}
+     ]},
+
+    {id:"refer", nav:"Refer", title:"Refer and involve", sub:"Most frailty care is delivered by the primary care team; use these services where they add value.",
+     blocks:[
+       {b:"cards", items:[
+         {tone:"red", h:"Same day / 999", html:"Delirium with unclear cause or unsafe at home, sepsis, suspected fracture, acute medication toxicity — acute medical or frailty assessment (same-day emergency care, virtual ward or hospital at home where available, or admission)."},
+         {tone:"blue", h:"Community services", html:"Falls service; community therapy (physiotherapy, occupational therapy); district nursing; community geriatrician or frailty MDT; clinical pharmacist for complex polypharmacy; social care and carer support; dietitian."},
+         {tone:"blue", h:"Specialist", html:"Memory service for suspected dementia; old-age psychiatry for complex mood or behavioural symptoms; palliative care for complex symptoms or uncertainty near the end of life."}
+       ]}
+     ]},
+
+    {id:"provenance", nav:"Evidence", title:"Evidence and references", sub:"Every recommendation on this page is traceable to these sources.",
+     blocks:[
+       {b:"html", html:'<div class="card"><h3>Evidence panel</h3><ul class="evlist">'+
+         '<li><b>NICE NG56 — Multimorbidity: clinical assessment and management (2016)</b><br><a href="https://www.nice.org.uk/guidance/ng56" rel="noopener">nice.org.uk/guidance/ng56</a><span class="rd"> — who benefits from an approach to care that takes account of multimorbidity, the components of the review, medicines review, eFI and gait speed for frailty</span></li>'+
+         '<li><b>NICE NG249 — Falls: assessment and prevention in older people and in people 50 and over at higher risk (2025)</b><br><a href="https://www.nice.org.uk/guidance/ng249" rel="noopener">nice.org.uk/guidance/ng249</a><span class="rd"> — identification, multifactorial assessment, exercise and other interventions; replaces CG161</span></li>'+
+         '<li><b>NICE NG5 — Medicines optimisation (2015)</b><br><a href="https://www.nice.org.uk/guidance/ng5" rel="noopener">nice.org.uk/guidance/ng5</a><span class="rd"> — structured medication review, medicines reconciliation, shared decision-making</span></li>'+
+         '<li><b>NICE CG103 — Delirium (2010, updated 2023)</b><br><a href="https://www.nice.org.uk/guidance/cg103" rel="noopener">nice.org.uk/guidance/cg103</a><span class="rd"> — recognition and causes of delirium</span></li>'+
+         '<li><b>NICE NG97 — Dementia (2018)</b><br><a href="https://www.nice.org.uk/guidance/ng97" rel="noopener">nice.org.uk/guidance/ng97</a><span class="rd"> — antipsychotic review, anticholinergic burden</span></li>'+
+         '<li><b>O’Mahony D et al. STOPP/START criteria version 3 (2023)</b><br><a href="https://doi.org/10.1007/s41999-023-00777-y" rel="noopener">doi.org/10.1007/s41999-023-00777-y</a><span class="rd"> — 190 explicit criteria for potentially inappropriate prescribing and omissions in people aged 65 and over</span></li>'+
+         '<li><b>Rockwood K, Theou O. Clinical Frailty Scale version 2.0 (2020)</b><br><a href="https://doi.org/10.5770/cgj.23.463" rel="noopener">doi.org/10.5770/cgj.23.463</a><span class="rd"> — 9-point clinical scale and its limits of validity</span></li>'+
+         '<li><b>NHS England — Electronic Frailty Index and GP contract frailty requirements</b><br><a href="https://www.england.nhs.uk/ourwork/clinical-policy/older-people/frailty/efi/" rel="noopener">england.nhs.uk — eFI</a><span class="rd"> — identification of moderate and severe frailty; annual medication review and falls assessment in severe frailty</span></li>'+
+         '<li><b>British Geriatrics Society — Fit for Frailty (2014) and CGA in primary care toolkit</b><br><a href="https://www.bgs.org.uk/resources/resource-series/fit-for-frailty" rel="noopener">bgs.org.uk — Fit for Frailty</a><span class="rd"> — gait speed, Timed Up and Go, PRISMA-7, CGA domains</span></li>'+
+         '<li><b>Resuscitation Council UK — ReSPECT</b><br><a href="https://www.resus.org.uk/respect" rel="noopener">resus.org.uk/respect</a><span class="rd"> — the ReSPECT process and form</span></li>'+
+         '</ul></div>'}
+     ]}
+  ],
+  foot:"Frailty and medication review — NICE NG56 (2016), NG249 (2025), NG5 (2015) and STOPP/START v3 (2023). Verify medicines decisions against the current SPC, BNF and local formulary, and make them with the person."
+});
+</script>
+<script src="../../assets/doc-page.js"></script>
+</body>
+</html>

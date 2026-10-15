@@ -1,15 +1,594 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Insomnia &middot; now the Insomnia protocol &middot; Reasoning GP</title>
-<link rel="canonical" href="https://gpreasoning.uk/tools/management/insomnia.html">
-<meta http-equiv="refresh" content="0; url=../management/insomnia.html" />
-<style>body{font-family:system-ui,sans-serif;background:#f6f2e9;color:#1c1917;display:grid;place-items:center;min-height:100vh;margin:0}p{font-size:15px;line-height:1.6;max-width:46ch;text-align:center;padding:0 20px}a{color:#0c4a47;font-weight:700}</style>
+<title>Insomnia and Sleep Problems Algorithm · Reasoning GP</title>
+<meta name="description" content="Insomnia and Sleep Problems: Insomnia and sleep problems in adults: red flags, sleep diary, the differential (OSA, restless legs, mood, pain, nocturia, substances, shift work, circadian and thyroid), CBT-I first-line, gated hypnotics with stop dates, melatonin, daridorexant (NICE TA922) and deprescribing.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Insomnia and Sleep Problems Algorithm">
+<meta property="og:description" content="Insomnia and Sleep Problems: Insomnia and sleep problems in adults: red flags, sleep diary, the differential (OSA, restless legs, mood, pain, nocturia, substances, shift work, circadian and thyroid), CBT-I first-line, gated hypnotics with stop dates, melatonin, daridorexant (NICE TA922) and deprescribing.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/algorithms/insomnia.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/insomnia.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body>
-<p>Insomnia is now covered end to end by the <a href="../management/insomnia.html">Insomnia protocol</a> &mdash; diagnosis, prescribing, monitoring and referral on one page. Taking you there now&hellip;</p>
-<script>location.replace('../management/insomnia.html');</script>
+
+<div class="alg-header">
+  <h1>🌙 Insomnia and Sleep Problems in Adults</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta">
+    <span>NICE TA922</span><span>NICE HTG624</span><span>NICE TA77</span><span>NICE NG202</span><span>DVLA</span>
+  </div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🌙</div>
+  <div>
+    <b>Insomnia and Sleep Problems in Adults</b>
+    <small>Find the cause, deliver CBT-I, use hypnotics only when clearly indicated — and agree the way off. Children: see the sleep problems in children pathway</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">12</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/insomnia.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/insomnia.html">⬇ Download PDF</button><a class="sum-open" href="one-page/insomnia.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/insomnia.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1" id="node1">
+  <div class="node-header">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Do Not Manage These as Routine Insomnia</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<p class="intro-note">Look for the dangerous and treatable causes first: mood and suicide risk, mania, OSA and driving, night sweats with systemic features, nocturnal chest pain or breathlessness, nocturnal seizures, substance withdrawal.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Suicide risk</b> Ask about mood, hopelessness and suicidal thoughts when insomnia is severe, persistent, or comes with depression, acute stress, substance use or functional decline. A positive answer needs a direct assessment of thoughts, intent, plan, means, previous attempts and protective factors — PHQ-9 item 9 is not one. Active intent, imminent risk, inability to maintain safety or severe self-neglect → <span class="pill pill-red">Same-day</span> local mental-health crisis assessment; immediate danger to life → <span class="pill pill-red">999</span></div>
+      <div class="rftile"><b>Mania</b> Reduced need for sleep — not merely inability to sleep — with elevated or irritable mood, increased energy, pressured speech, grandiosity, impulsivity or psychotic symptoms → <span class="pill pill-red">Same-day</span> mental-health assessment when there is acute mania, psychosis, risk-taking, inability to self-care or risk to others. Insomnia with tiredness and a desire to sleep is not mania by itself</div>
+      <div class="rftile"><b>Nocturnal chest pain or breathlessness</b> Assess according to the acute chest pain, breathlessness or suspected heart-failure pathway — do not attribute these to insomnia</div>
+      <div class="rftile"><b>OSA and sleepiness</b> Assess for OSA with two or more relevant features (NICE NG202). If excessive sleepiness has, or is likely to have, an adverse effect on driving, the patient must not drive until it is satisfactorily controlled (DVLA) — snoring alone is not a reason to stop driving. Group 2 drivers and safety-critical workers with sleepiness and suspected OSA need rapid sleep-service assessment</div>
+      <div class="rftile"><b>Night sweats and systemic features</b> Do not attribute persistent drenching night sweats to menopause or poor sleep without assessment. Focused history and examination; investigate according to the presentation (see step 4 for the NG12 route)</div>
+      <div class="rftile"><b>Nocturnal seizures</b> Tongue biting, witnessed tonic-clonic movements, injury, incontinence or post-ictal confusion → <span class="pill pill-amber">Urgent</span> first-seizure or neurology referral, seen by an epilepsy specialist within 2 weeks (NICE NG217); DVLA restrictions may apply</div>
+      <div class="rftile"><b>Substance withdrawal</b> Alcohol, benzodiazepine or opioid withdrawal causes severe rebound insomnia — manage the withdrawal rather than sedating over it</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Insomnia is a common symptom of depression, mania, OSA, pain and withdrawal states. Treating the sleep with a hypnotic while missing the cause can be dangerous — sedatives worsen untreated OSA, mask withdrawal and add overdose risk in someone who is suicidal.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2" id="node2">
+  <div class="node-header">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>History — Characterise the Problem, Then Find the Cause</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Type</div><div>Sleep-onset vs sleep-maintenance vs early-morning waking. Onset with racing thoughts suggests anxiety, hyperarousal or delayed phase; maintenance suggests depression, pain, OSA, nocturia or alcohol. Early-morning waking should prompt assessment of mood, alcohol, circadian timing and medical symptoms — depression is one possible cause</div>
+      <div>Duration</div><div><b>Acute</b> (under 3 months, often triggered) vs <b>chronic</b> (3+ nights a week for 3+ months with daytime impairment). Chronic insomnia is treated with CBT-I</div>
+      <div>2-week sleep diary</div><div>Bedtime, time to fall asleep, time awake in the night, total sleep, rise time, naps, caffeine and alcohol — estimates sleep efficiency and sets the sleep-restriction window</div>
+      <div>The cause list</div><div>OSA · restless legs · depression, anxiety, PTSD · pain · nocturia · GORD · menopause · thyroid disease · shift work or circadian mismatch · bipolar history · parasomnias, narcolepsy, seizures. Causes change over time — re-check at review</div>
+      <div>Substances</div><div>Caffeine (including later in the day, tea, cola, energy drinks, caffeine-containing analgesics) · alcohol (fragments the second half of the night) · nicotine · cannabis — common maintaining factors</div>
+      <div>Medicines</div><div>SSRIs (consider morning dosing) · corticosteroids (morning) · beta-blockers · diuretics late in the day · decongestants · stimulants · recently stopped sedatives (rebound). Adjust timing before adding anything</div>
+      <div>Partner's account</div><div>Snoring, witnessed apnoeas, leg movements, dream enactment, sleep-walking</div>
+      <div>Work and driving</div><div>Shift pattern, occupational driving, safety-critical work, near misses</div>
+      <div>Expectations</div><div>Sleep need varies and falls with age; brief waking in the night is normal — unrealistic targets fuel sleep anxiety</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>The sleep diary is the single most useful tool: it shows the pattern, separates time in bed from time asleep, and provides the numbers for sleep restriction in CBT-I.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3" id="node3">
+  <div class="node-header">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Differentials — Beyond Chronic Insomnia</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Chronic insomnia disorder</div><div>Hyperarousal, conditioned arousal, unhelpful sleep beliefs, compensatory behaviours → CBT-I first-line</div>
+      <div>Obstructive sleep apnoea</div><div>Two or more of: snoring, witnessed apnoeas, choking, unrefreshing sleep, morning headache, nocturia, fragmented sleep, cognitive impairment, sleepiness → assess and refer per NICE NG202; sedatives only with individual caution; driving advice if sleepy</div>
+      <div>Restless legs syndrome</div><div>Evening urge to move the legs, relieved by movement; linked to iron deficiency, pregnancy, CKD, neuropathy → check ferritin and iron status; correct iron deficiency and review contributory medicines, caffeine and alcohol. Persistent or troublesome symptoms → specialist advice on alpha-2-delta ligands versus dopamine agonists, explaining augmentation and impulse-control risks</div>
+      <div>Periodic limb movements</div><div>Partner reports repetitive leg movements. Periodic limb movements on a sleep study are not automatically a disorder; treat clinically significant RLS or another cause, with specialist interpretation</div>
+      <div>Depression or anxiety</div><div>Common comorbidity; insomnia is both symptom and risk factor. CBT-I can be delivered alongside treatment for depression or anxiety; assess suicide risk and prioritise mental-health treatment where risk is significant</div>
+      <div>Pain, nocturia, GORD, menopause</div><div>Treat the driver: analgesia timing, nocturia assessment, reflux measures, HRT discussion</div>
+      <div>Thyroid disease</div><div>Hyperthyroidism (heat intolerance, tremor, weight loss) → TFTs if symptoms or signs suggest it</div>
+      <div>Circadian rhythm disorders and shift work</div><div>Delayed phase (young people) or advanced phase (older adults); normal sleep on their own schedule → timing, not sedation — light and melatonin timing depend on the disorder and schedule; sleep-specialist advice for complex shift-work or delayed-phase cases</div>
+      <div>Paradoxical insomnia</div><div>Severe reported insomnia with near-normal objective sleep → CBT-I with cognitive work on sleep-state misperception</div>
+      <div>REM sleep behaviour disorder</div><div>Dream enactment with injury risk → sleep or neurology assessment — isolated RBD may precede an α-synuclein disorder; give safety advice and avoid over-stating future risk</div>
+      <div>Narcolepsy</div><div>Excessive daytime sleepiness with cataplexy, sleep paralysis or hypnagogic hallucinations → neurology or sleep medicine; also a DVLA issue</div>
+      <div>Drug or alcohol related</div><div>Alcohol dependence; benzodiazepine rebound → treat the dependence; see deprescribing (step 9)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Causes change over time, so the differential is re-run at every review — especially before any further prescription. Restless legs, OSA and circadian disorders each have their own treatment, and none responds well to a hypnotic.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4" id="node4">
+  <div class="node-header">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Examination, Scores and Targeted Tests</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>BMI, neck, upper airway</div><div>Obesity, large neck, crowded oropharynx, tonsils — part of the OSA assessment</div>
+      <div>Epworth Sleepiness Scale</div><div>8 items — part of the assessment, not the sole referral criterion; some people with OSA are not sleepy</div>
+      <div>STOP-BANG</div><div>Snoring, tiredness, observed apnoea, pressure, BMI, age, neck, male sex — risk stratification, not diagnosis</div>
+      <div>Insomnia Severity Index (ISI)</div><div>7 items — quantify severity and monitor response alongside daytime function and the patient's goals</div>
+      <div>PHQ-9 / GAD-7</div><div>Mood and anxiety — screening aids, not a suicide-risk assessment</div>
+      <div>Targeted tests</div><div><span class="pill pill-blue">Ferritin and iron status</span> if RLS is suspected · <span class="pill pill-blue">TFTs</span> if symptoms or signs suggest thyroid disease · others only for a specific clinical indication. No fixed "insomnia blood panel"</div>
+      <div>Not routinely</div><div>Polysomnography for insomnia alone — reserve for suspected OSA, PLMD, narcolepsy or parasomnia per the sleep service</div>
+      <div><span class="pill pill-purple">Suspected cancer · NICE NG12</span></div><div>Insomnia itself has no NG12 criterion. Night sweats come in through the lymphoma recommendations: consider a suspected cancer pathway referral for lymphoma in adults with unexplained lymphadenopathy or splenomegaly, taking into account associated symptoms such as fever, night sweats, weight loss, pruritus or breathlessness. Persistent night sweats alone do not automatically meet the lymphoma pathway</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Scores support but do not replace clinical judgement: an Epworth score alone does not decide OSA referral, and the ISI tracks response rather than making the diagnosis.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5" id="node5">
+  <div class="node-header">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Classify — Acute, Chronic or Long-Term Hypnotic Use</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">Acute insomnia — under 3 months</div><div class="b-drug">Find the trigger</div><div class="b-note">1. Identify the precipitant and treat it. 2. Assess mood, suicidality, substance use, mania and daytime safety. 3. Targeted behavioural advice, and a sleep diary if persistent. 4. Consider a very short hypnotic course only where impairment or distress is severe, the cause is likely to resolve, non-drug measures have been considered, and OSA, respiratory risk, alcohol/opioid use and driving risk have been assessed. 5. Defined quantity and stop date. 6. Review within 2–4 weeks</div></div>
+      <div class="b-card"><div class="b-cond">Chronic — 3+ nights a week for 3+ months with daytime impairment</div><div class="b-drug">CBT-I</div><div class="b-note">1. Confirm the diagnosis and exclude OSA, RLS, circadian disorder, depression, bipolar disorder, substance-related insomnia and medical causes. 2. Offer structured CBT-I. 3. Offer Sleepio only where appropriate and commissioned — not as a substitute for available face-to-face CBT-I. 4. Consider daridorexant only if NICE TA922 criteria are met. 5. Do not use routine hypnotic repeats as maintenance treatment. 6. Review response, function, driving and adverse effects</div></div>
+      <div class="b-card"><div class="b-cond">Long-term benzodiazepine or Z-drug use</div><div class="b-drug">Plan the way off</div><div class="b-note">1. Engage and agree the goal. 2. Assess dose, duration, alcohol, opioids, pregabalin/gabapentin, seizure history, psychiatric comorbidity and OSA. 3. Use a patient-paced taper. 4. Provide CBT-I or another evidence-based insomnia intervention. 5. Refer for specialist input if high dose, polypharmacy, complicated withdrawal, alcohol dependence, pregnancy or previous withdrawal seizures (step 9)</div></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>The three situations need different plans. Acute insomnia usually settles once the trigger passes; chronic insomnia is maintained by behaviours and beliefs that CBT-I targets; long-term hypnotic users need a planned, patient-paced reduction rather than abrupt cessation.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6" id="node6">
+  <div class="node-header">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Refer — Who, When, How Urgently</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div><span class="pill pill-red">999 / Same-day</span></div><div>Active suicidal intent or imminent risk → same-day local crisis pathway (immediate danger → 999) · suspected mania with psychosis, risk-taking, inability to self-care or risk to others → same-day mental-health assessment</div>
+      <div><span class="pill pill-amber">Urgent</span></div><div>First suspected seizure → urgent referral, seen within 2 weeks (NICE NG217)</div>
+      <div>Sleep service</div><div>Suspected OSA per NICE NG202, prioritising Group 2 (vocational) drivers and safety-critical workers with daytime sleepiness — rapid assessment, not routine referral — near misses or unstable cardiovascular disease · severe parasomnias · circadian disorders not responding to primary-care measures</div>
+      <div>Neurology or sleep medicine</div><div>Suspected narcolepsy (cataplexy, sleep paralysis, hypnagogic hallucinations) — also a DVLA issue · probable REM sleep behaviour disorder · RLS needing specialist treatment decisions</div>
+      <div>Mental health</div><div>Depression, anxiety or PTSD driving the insomnia (nightmares with hypervigilance → trauma-focused care) · bipolar disorder · risk. NHS Talking Therapies where CBT-I is commissioned</div>
+      <div>Refractory insomnia</div><div>Chronic insomnia despite genuine CBT-I and consideration of daridorexant → sleep or insomnia service. Endocrine drivers → the relevant specialty or the HRT protocol</div>
+      <div>Complex dependence</div><div>High-dose or multiple sedatives, alcohol co-dependence, or failed tapers → community drug service or specialist prescribing support</div>
+      <div>GP manages</div><div>The cause assessment, referral or signposting to locally available CBT-I (face-to-face, or commissioned digital CBT-I — availability varies), gated prescriptions with stop dates, the taper programme and the reviews</div>
+      <div>Local pathways</div><div>NHS Talking Therapies (self-referral via nhs.uk/talking-therapies) or the locally commissioned face-to-face or digital CBT-I service · the local sleep service via e-Referral · mental-health crisis — the local crisis team, or NHS 111 (option 2 for mental health)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Most insomnia is managed in primary care. Referral is for the dangerous causes, for specific sleep disorders that need a study or specialist treatment decisions, and for insomnia that persists despite genuine CBT-I.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7" id="node7">
+  <div class="node-header">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>CBT-I — the First-Line Treatment for Chronic Insomnia</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">Sleep restriction or compression</div><div class="b-drug">⏱️ Core component</div><div class="b-note">Calculate the initial window from the sleep diary (time actually asleep); in structured CBT-I programmes the window is usually not set below 5 hours — a trained CBT-I principle, not a do-it-yourself instruction. Fixed wake time 7 days a week; go to bed only when the window opens; extend by 15–30 minutes when sleep efficiency is consistently good. The first 1–2 weeks may be difficult — daytime sleepiness can increase. Use gradual compression rather than abrupt restriction where there is frailty, marked sleepiness or safety concern</div></div>
+      <div class="b-card"><div class="b-cond">Stimulus control</div><div class="b-drug">🪑 Re-link bed and sleep</div><div class="b-note">Bed for sleep and sex only. If awake and frustrated for a period that feels prolonged, get up, keep lights dim, do something quiet, and return when sleepy. No clock-watching</div></div>
+      <div class="b-card"><div class="b-cond">Cognitive work and relaxation</div><div class="b-drug">🧠 Reduce arousal</div><div class="b-note">Address catastrophic beliefs about sleep and next-day function; teach a specific relaxation technique such as progressive muscle relaxation or slow breathing</div></div>
+      <div class="b-card"><div class="b-cond">Delivery</div><div class="b-drug">💻 Face-to-face preferred, digital where appropriate</div><div class="b-note">Face-to-face CBT-I is preferred where available and suitable. NICE HTG624 (formerly MTG70) recommends Sleepio as a cost-saving primary-care option for people who would otherwise receive sleep-hygiene advice or hypnotics; there is limited direct evidence comparing it with face-to-face CBT-I, so do not present it as equivalent. Other digital products depend on local commissioning; NHS Talking Therapies deliver CBT-I in some areas. Complete a medical assessment first where OSA, pregnancy, significant comorbidity or another sleep disorder is possible</div></div>
+    </div>
+    <div class="kv">
+      <div>Needs care or supervision</div><div>Bipolar disorder or recent mania · epilepsy (sleep loss can worsen seizure control) · untreated OSA or significant sleepiness · pregnancy · severe depression or suicidality · older or frail adults · safety-critical occupations · unable to keep a fixed wake time · already severely sleep-deprived. Sleep restriction/compression should be supervised or modified in these groups; use sleep compression or another CBT-I component while awaiting specialist input. Reassess driving and occupational risk</div>
+      <div>Must not delay urgent care</div><div>Do not let CBT-I delay urgent assessment of active suicidality, mania or psychosis, severe substance withdrawal, severe depression or acute medical illness</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>CBT-I addresses the maintaining factors and its benefit can last after treatment ends; hypnotics mainly give short-term symptom relief and do not treat them — which is why CBT-I comes first for chronic insomnia.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="TREAT" data-step="8" id="node8">
+  <div class="node-header">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Drug Options — Short, Gated, With Stop Dates</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Short-term insomnia — severe</div><div><b>Z-drug (or short-acting benzodiazepine).</b> Prescribe only for severe, disabling or markedly distressing insomnia interfering with normal daily life, after non-drug measures have been considered. Lowest effective dose, defined quantity, agreed stop date. Greater Manchester formulary: zopiclone first choice, zolpidem or temazepam alternatives — local sequencing; NICE TA77 found no compelling difference and advises cost and patient factors guide the choice. Switch only when adverse effects are directly attributable to the specific drug — not for lack of efficacy alone. Use usually for a few days and rarely beyond 2 weeks in primary care; any longer course up to the licensed maximum of 28 days should be exceptional, clearly justified and include tapering where appropriate. Usual adult dose: zopiclone 7.5 mg at bedtime; zolpidem 10 mg at bedtime. Zopiclone 3.75 mg or zolpidem 5 mg in older or frail adults (SPC)</div>
+      <div>Primary insomnia, aged 55+</div><div><b>Melatonin MR 2 mg</b> — not routine in Greater Manchester. Licensed for short-term primary insomnia in adults aged 55 years and over, usually for up to 13 weeks, but not routinely supported by the Greater Manchester formulary for this indication (adult melatonin MR is listed for Parkinson-related REM sleep behaviour disorder). Do not present it as standard primary-care treatment unless local commissioning or formulary criteria are met. If used: 1–2 hours before bed after food; review benefit and adverse effects (somnolence, dizziness, headache, abnormal dreams); stop if ineffective. Check the SPC for hepatic impairment</div>
+      <div>Chronic insomnia (NICE TA922)</div><div><b>Daridorexant</b> — adults with symptoms on at least 3 nights per week for at least 3 months, with considerable daytime impairment, when CBT-I has been tried and has not worked, or is unavailable or unsuitable. Usual adult dose: 50 mg once nightly within 30 minutes of bed; 25 mg in moderate hepatic impairment or with moderate CYP3A4 inhibitors — not simply an "older or cautious" dose; check the current SPC. Contraindicated in narcolepsy and with strong CYP3A4 inhibitors (e.g. clarithromycin, itraconazole, ritonavir); not recommended in severe hepatic impairment; no renal adjustment; avoid grapefruit in the evening. Review within 3 months and stop if the response is inadequate; if continued, review periodically</div>
+      <div>Depression with insomnia</div><div><b>Mirtazapine</b> — only where there is a clear depressive indication. Sedation, appetite and weight gain, morning impairment; lower doses are often more sedating, but response varies. Not for insomnia alone</div>
+      <div>Not routine</div><div>Sedating antihistamines, amitriptyline and quetiapine are not routine treatments for insomnia — anticholinergic, cardiovascular, cognitive and falls risks. Benzodiazepines offer no advantage over Z-drugs</div>
+    </div>
+    <div class="rfgrid">
+      <div class="rftile"><b>Driving and next-day impairment</b> All hypnotics can cause next-day impairment, especially with alcohol, opioids, other sedatives, older age or sleep deprivation. Do not drive or operate machinery if drowsy or not fully alert. Zolpidem — at least 8 hours after a 10 mg dose (MHRA); daridorexant — driving was impaired 9 hours after the first dose in studies, so do not drive unless fully alert, with extra caution in the first days (SPC). Discuss occupational driving and document it</div>
+      <div class="rftile"><b>Daridorexant — misuse and sedation</b> Does not generally require a planned taper when stopped, but monitor for recurrence of insomnia, next-day impairment, misuse and additive CNS depression. Avoid alcohol; caution with opioids and other sedatives. Abuse liability similar to zolpidem was seen at supratherapeutic doses in recreational drug users — caution with addiction histories</div>
+    </div>
+    <p class="intro-note">At every hypnotic prescription: the stop date agreed now, no automatic repeat, the next-day impairment warning. New prescribing: avoid combining with alcohol, opioids or other sedatives wherever possible. Existing co-prescribing (for example a hypnotic with an opioid) needs prompt medication review, risk assessment, a deprescribing plan and clear safety-netting — warn about respiratory depression and overdose, particularly with OSA, COPD, frailty or alcohol use. Take extra care in older adults (falls), respiratory disease and suspected OSA. Check doses against the current SPC, BNF and local formulary.</p>
+    <p><i>What to say:</i> "Sleeping tablets can help for a short spell, but they tend to stop working if taken every night and can be hard to stop. The sleep programme is harder for the first week or two, but it's the treatment that keeps working after it ends."</p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>NICE TA77 limits Z-drugs to severe insomnia, at the lowest dose, for short periods, and found no compelling difference between them. NICE TA922 recommends daridorexant for long-term insomnia only when CBT-I has been tried and not worked or is unavailable or unsuitable, with assessment within 3 months. The repeat prescription is where long-term use starts — no automatic repeats.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="TREAT" data-step="9" id="node9">
+  <div class="node-header">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Deprescribing — Long-Term Benzodiazepine and Z-Drug Users</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="ladder">
+      <div class="rung"><span class="rn">1st</span><span class="rt"><b>The invitation, not the ambush.</b> Continuous use beyond 2–4 weeks makes tolerance, physical dependence and withdrawal more likely. Assess each person's dose, duration, pattern of use, comorbidity and any previous withdrawal symptoms — dependence is not addiction, and not everyone is dependent. Z-drugs can also cause dependence and withdrawal (anxiety, insomnia, tremor, sweating, perceptual symptoms, seizures). Frame reduction as protection: falls, memory, driving, and the drug no longer working</span></div>
+      <div class="rung"><span class="rn">2nd</span><span class="rt"><b>Taper the current drug, or switch selectively.</b> A direct taper of the current drug is often appropriate, particularly for uncomplicated low-dose Z-drug use. Consider a diazepam transition only in selected patients, after checking age, liver function, interactions, misuse risk and local policy — diazepam accumulates and is not automatically safer in older adults or liver impairment. Dose-equivalence tables are approximate (SPS)</span></div>
+      <div class="rung"><span class="rn">3rd</span><span class="rt"><b>Small steps, patient-paced.</b> A common starting point is a 5–10% reduction of the current dose every 2–4 weeks, slower for long-term or high-dose use, short half-life drugs, previous severe withdrawal, older adults or significant psychiatric comorbidity; slow or hold according to withdrawal symptoms. Smaller reductions at lower doses. Weeks for short use; many months for years-long use</span></div>
+      <div class="rung"><span class="rn">4th</span><span class="rt"><b>Support alongside.</b> CBT-I alongside the taper. Rebound insomnia may occur during reduction and does not necessarily mean the original condition has returned — review the symptoms and the pace before increasing the dose. Agree a plan for out-of-hours requests</span></div>
+    </div>
+    <div class="rfgrid">
+      <div class="rftile"><b>Never stop abruptly</b> Seizure and delirium risk is highest with high-dose, long-duration benzodiazepine use, short half-life agents, alcohol dependence, previous withdrawal seizures and epilepsy; take extra care in older adults. Avoid flumazenil in routine primary-care withdrawal management</div>
+      <div class="rftile"><b>Opioids and other CNS depressants</b> Benzodiazepines or Z-drugs with opioids risk respiratory depression and overdose (MHRA), particularly with OSA, COPD, frailty or alcohol use. Avoid starting the combination; if already co-prescribed, prioritise prompt medication review, a deprescribing plan and safety-netting. Same caution with pregabalin, gabapentin, sedating antihistamines and alcohol</div>
+    </div>
+    <div class="kv">
+      <div>Specialist advice</div><div>High doses, several drugs, alcohol dependence, seizure history, significant psychiatric comorbidity, pregnancy, or previous complicated withdrawal → community drug service or specialist prescribing support</div>
+      <div>Older adults</div><div>Often the biggest gain in falls and cognition; same method, gentler pace, clear written chart</div>
+      <div>Driving</div><div>Document the conversation; daytime sedation → advise not to drive and apply DVLA rules</div>
+    </div>
+    <p class="alg-next"><b>Next steps:</b> see <a href="../management/benzodiazepines-z-drugs.html">Benzodiazepines and z-drugs</a> · <a href="../management/osa.html">Snoring and sleep apnoea</a> · <a href="../management/restless-legs.html">Restless legs syndrome</a> · <a href="../management/depression.html">Depression</a> · <a href="../management/anxiety.html">Anxiety disorders</a> · <a href="../management/hrt-prescribing.html">Menopause and HRT</a> · <a href="../management/driving-diseases.html">Driving and the DVLA</a></p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Gradual, symptom-led tapering with psychological support is more successful than abrupt withdrawal and avoids withdrawal seizures. The pace belongs to the patient; the direction is agreed together.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 10 -->
+<div class="node" data-type="LIFESTYLE" data-step="10" id="node10">
+  <div class="node-header">
+    <div class="node-num">10</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Sleep Hygiene and Special Groups</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="lsgrid">
+      <div class="lstile"><b>Sleep hygiene — supportive, not a treatment on its own</b> Fixed wake time; limit caffeine later in the day; avoid alcohol near bedtime; daytime light and exercise; a cool, dark, quiet room; limit screens before bed; avoid long or late naps</div>
+      <div class="lstile"><b>Older or frail adults</b> Falls and next-day impairment with hypnotics — lower doses (zopiclone 3.75 mg, zolpidem 5 mg), gradual sleep compression rather than abrupt restriction, gentler taper</div>
+      <div class="lstile"><b>Pregnancy</b> Sleep restriction needs supervision or modification; medical assessment before digital CBT-I; specialist input for tapering</div>
+      <div class="lstile"><b>Bipolar disorder, epilepsy</b> Sleep loss can trigger mania or seizures — supervised or modified sleep restriction</div>
+      <div class="lstile"><b>OSA, COPD, opioids, alcohol</b> Additive respiratory depression with sedatives — avoid new co-prescribing; review existing combinations promptly</div>
+      <div class="lstile"><b>Drivers and safety-critical workers</b> Next-day impairment, sleepiness and DVLA duties — discuss and document</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Sleep hygiene alone is rarely enough for chronic insomnia, but it supports CBT-I. The special groups are where sleep restriction and hypnotics carry the most risk.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 11 -->
+<div class="node" data-type="DIAGNOSE" data-step="11" id="node11">
+  <div class="node-header">
+    <div class="node-num">11</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Still Not Sleeping? Re-Run This Loop Before Any More Tablets</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>1 · The cause</div><div>OSA assessed properly? RLS and iron status? Mood re-checked? Nocturia, pain, menopause, thyroid?</div>
+      <div>2 · Real CBT-I?</div><div>Structured sleep restriction or compression and stimulus control — or only a hygiene leaflet? Engagement checked?</div>
+      <div>3 · Substances</div><div>Caffeine, alcohol, cannabis, nicotine — honestly counted?</div>
+      <div>4 · Medicine timing</div><div>SSRI or steroid in the morning? Diuretic earlier in the day?</div>
+      <div>5 · Rebound</div><div>Recently reduced a sedative — withdrawal-related insomnia rather than relapse?</div>
+      <div>6 · The clock</div><div>Shift work or delayed phase? Circadian — a different toolkit. All addressed → daridorexant criteria, or the sleep service</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Persistent insomnia most often reflects a missed cause, CBT-I that was never really delivered, or a maintaining factor such as caffeine, alcohol or medicine timing — not the need for another hypnotic.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 12 -->
+<div class="node" data-type="SAFETY" data-step="12" id="node12">
+  <div class="node-header">
+    <div class="node-num">12</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Review Rhythm and Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>2–4 weeks</div><div>After starting CBT-I or a hypnotic: diary and ISI against baseline, daytime function, driving, mood, adverse effects, adherence and goals. Earlier review after a sedative in frailty, respiratory disease, opioid use, alcohol dependence or occupational driving</div>
+      <div>6–8 weeks</div><div>CBT-I progress: sleep efficiency above about 85% is a useful guide, not a universal target. Not improving → re-check the causes, depression and OSA</div>
+      <div>Z-drug</div><div>At the agreed stop date: stopped, or the CBT-I conversation again — not a repeat</div>
+      <div>Melatonin MR</div><div>By 13 weeks: stop if ineffective</div>
+      <div>Daridorexant</div><div>Within 3 months: stop if response is inadequate; if continued, review periodically</div>
+      <div>Tapering</div><div>Every 1–2 steps: symptoms versus pace</div>
+      <div><span class="pill pill-red">999 / Same-day</span></div><div>Hypnotic overdose, especially with alcohol, or immediate danger to life → 999 · suicidal crisis, suspected acute mania or psychosis, new suicidal thoughts or functional collapse mid-taper → same day · first suspected seizure → urgent referral, seen within 2 weeks</div>
+      <div>Safety-net scripts</div><div>"If you feel drowsy the morning after a sleeping tablet, don't drive." · "These tablets tend to stop working if taken every night, and can be hard to stop — we've agreed the stop date." · "Loud snoring with pauses in breathing and daytime sleepiness needs its own assessment — tell us." · "If low mood or hopeless thoughts come with the bad nights, tell us. If you have thoughts of ending your life or feel you can't keep yourself safe, call NHS 111 (option 2) the same day — or 999 if you are in immediate danger." · "Avoid alcohol with sleeping tablets, and tell us if you take strong painkillers or other sedating medicines."</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Fixed review points stop short courses becoming long-term repeats, and each review is a chance to re-check mood, OSA and driving.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE TA922 (Daridorexant for treating long-term insomnia, 2023), NICE HTG624 (Sleepio, formerly MTG70), NICE TA77 (Zaleplon, zolpidem and zopiclone for the short-term management of insomnia, 2004), NICE NG202 (Obstructive sleep apnoea/hypopnoea syndrome and obesity hypoventilation syndrome in over 16s, 2021), NICE NG217 (Epilepsies, 2022), NICE NG12 (Suspected cancer, updated April 2026), DVLA Assessing fitness to drive (miscellaneous and neurological conditions), MHRA (zolpidem driving advice; benzodiazepines and opioids), MHRA SPCs (Quviviq, zopiclone, zolpidem, melatonin MR), Greater Manchester formulary and benzodiazepine/Z-drug resource pack, NHS Specialist Pharmacy Service benzodiazepine equivalents, BAP consensus on insomnia. Content merged from the former Insomnia protocol (reviewed September 2026). Check doses against the current SPC, BNF and local formulary. Not a substitute for clinical judgement.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.insomnia.v1';
+  const nodes=document.querySelectorAll('.node[data-step]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state={};
+    nodes.forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});
+    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+  function load(){
+    try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');
+      nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(s[n.dataset.step]){cb.checked=true;n.classList.add('done');}});}catch(e){}
+  }
+  function updateProgress(){
+    const done=document.querySelectorAll('.node.done').length;
+    pDone.textContent=done;
+    pFill.style.width=((done/total)*100)+'%';
+  }
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{
+      n.classList.toggle('done',cb.checked);
+      save();updateProgress();
+    });
+  });
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!expanded));
+      btn.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    if(!confirm('Reset all progress?'))return;
+    nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});
+    localStorage.removeItem(KEY);updateProgress();
+  });
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=3"></script>
+<script src="../../assets/topic-links.js?v=10"></script>
+<script src="../../assets/alg-diagram.js"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 </body>
 </html>

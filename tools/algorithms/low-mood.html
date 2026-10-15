@@ -1,15 +1,498 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Low mood &middot; now the Depression protocol &middot; Reasoning GP</title>
-<link rel="canonical" href="https://gpreasoning.uk/tools/management/depression.html">
-<meta http-equiv="refresh" content="0; url=../management/depression.html" />
-<style>body{font-family:system-ui,sans-serif;background:#f6f2e9;color:#1c1917;display:grid;place-items:center;min-height:100vh;margin:0}p{font-size:15px;line-height:1.6;max-width:46ch;text-align:center;padding:0 20px}a{color:#0c4a47;font-weight:700}</style>
+<title>Low Mood Algorithm · Reasoning GP</title>
+<meta name="description" content="Low Mood: Undifferentiated low mood in adults: suicide risk and safeguarding first, then depression, bipolar disorder, grief, adjustment, perinatal, substance and organic causes, with first-consultation management per NICE NG222.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Low Mood Algorithm">
+<meta property="og:description" content="Low Mood: Undifferentiated low mood in adults: suicide risk and safeguarding first, then depression, bipolar disorder, grief, adjustment, perinatal, substance and organic causes, with first-consultation management per NICE NG222.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/algorithms/low-mood.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/low-mood.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
 </head>
 <body>
-<p>Low mood is assessed and managed as depression &mdash; the diagnostic reasoning and the management are both in the <a href="../management/depression.html">Depression protocol</a>, which carries the full differential including bipolar disorder, the organic and drug causes, PHQ-9 and GAD-7, risk assessment, the antidepressant ladder and the perinatal considerations. Taking you there now&hellip;</p>
-<script>location.replace('../management/depression.html');</script>
+
+<div class="alg-header">
+  <h1>🌧️ Low Mood</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta">
+    <span>NICE NG222</span><span>NICE NG225</span><span>NICE CG192</span><span>10-min consult</span>
+  </div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🌧️</div>
+  <div>
+    <b>Low Mood — New Presentation in Adults</b>
+    <small>Suicide risk and safeguarding first · depression, bipolar disorder, grief, adjustment, perinatal, alcohol and drugs, organic and medication causes, dementia in older people</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/low-mood.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/low-mood.html">⬇ Download PDF</button><a class="sum-open" href="one-page/low-mood.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/low-mood.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1" id="node1">
+  <div class="node-header">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags — Suicide Risk, Psychosis, Mania and Safeguarding First</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<p class="intro-note">Ask about suicidal thoughts directly at the first contact — asking does not increase risk. A positive answer needs a clinical conversation, not a score.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Overdose taken, serious self-injury or attempt in progress</b> Any ingestion with intent, or injury needing treatment → <span class="pill pill-red">999</span> Emergency department; do not wait for symptoms after an overdose</div>
+      <div class="rftile"><b>Suicidal intent, a plan, or unable to stay safe</b> Active plan, preparation, access to means, recent attempt, hopelessness, intoxication → <span class="pill pill-red">Same-day</span> Local mental-health crisis team (NHS 111 option 2 out of hours); 999 if immediate danger to life</div>
+      <div class="rftile"><b>Psychotic symptoms</b> Delusions of guilt, poverty or illness, hallucinations, severe agitation or stupor → <span class="pill pill-red">Same-day</span> Crisis or community mental-health assessment</div>
+      <div class="rftile"><b>Possible mania or hypomania</b> Elevated or irritable mood, reduced need for sleep, pressured speech, grandiosity, risky behaviour → <span class="pill pill-red">Same-day</span> Mental-health assessment if acutely manic, psychotic or at risk; do not start an antidepressant alone</div>
+      <div class="rftile"><b>Perinatal warning signs</b> Rapidly changing mental state, new thoughts or acts of violent self-harm, new feelings of incompetence as a mother or estrangement from the baby → <span class="pill pill-red">Same-day</span> Specialist perinatal mental-health assessment (NICE CG192); postpartum psychosis → 999 or crisis team</div>
+      <div class="rftile"><b>Not eating or drinking, severe self-neglect</b> Marked weight loss, dehydration, stupor, unable to care for self or dependants → <span class="pill pill-red">Same-day</span> Crisis assessment; consider medical admission</div>
+      <div class="rftile"><b>Safeguarding concern</b> Children or dependants at risk, domestic abuse, exploitation, a vulnerable adult being harmed → <span class="pill pill-red">Same-day</span> Act under local safeguarding procedures; record who else lives at home</div>
+      <div class="rftile"><b>Older adult with acute confusion</b> New fluctuating attention, drowsiness or agitation → <span class="pill pill-red">Same-day</span> Delirium until shown otherwise — find the medical cause</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>NICE NG225 (2022) advises against using risk assessment tools and scales to predict future suicide or repetition of self-harm, against using them to decide who should or should not be offered treatment, and against global low/medium/high risk stratification. Instead, have a person-centred conversation about the person's thoughts, intent, plan, means, previous self-harm, alcohol and drugs, circumstances and protective factors, and agree a safety plan. PHQ-9 item 9 is a prompt, not a risk assessment.</p>
+      <p>Most people who die by suicide after self-harm had been judged "low risk" on standard tools — which is why the conversation, not the score, decides the plan.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2" id="node2">
+  <div class="node-header">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>History — The Mood, the Risk and the Context</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Core symptoms</div><div>Persistent low mood and/or loss of interest or pleasure (anhedonia) on most days for at least 2 weeks</div>
+      <div>Associated symptoms</div><div>Sleep (early waking, or too much), appetite and weight change, fatigue, poor concentration, worthlessness or guilt, psychomotor change, thoughts of death</div>
+      <div>Duration and impact</div><div>Onset, triggers, course; work, relationships, self-care, caring responsibilities. Number and severity of symptoms decide severity, not the label</div>
+      <div>Suicide and self-harm</div><div>Thoughts of death or suicide, plans, intent, preparation, means at home (stockpiled medicines, firearms), previous self-harm or attempts, hopelessness, protective factors (people, faith, pets, future plans)</div>
+      <div>Mania screen</div><div>Ever had days of feeling high or irritable with little need for sleep, racing thoughts, overspending or risk-taking? Family history of bipolar disorder or suicide</div>
+      <div>Losses and life events</div><div>Bereavement (when, whom, how), relationship breakdown, job loss, debt, housing, caring stress, discrimination, trauma</div>
+      <div>Perinatal</div><div>Pregnant or within a year of birth: mood, anxiety, bonding, thoughts of harm to self or baby, past perinatal illness, partner and family support</div>
+      <div>Alcohol and drugs</div><div>AUDIT-C; cannabis, stimulants, opioids, benzodiazepines; withdrawal states. Alcohol is the commonest modifiable driver of low mood</div>
+      <div>Medicines</div><div>Corticosteroids, isotretinoin, hormonal contraception, levetiracetam and some antiepileptics, interferon, efavirenz, finasteride, montelukast, beta-blockers, opioids, benzodiazepines; recent stopping of an antidepressant</div>
+      <div>Physical symptoms</div><div>Weight loss, cold intolerance, breathlessness, pain, snoring with daytime sleepiness, memory problems, menopausal or premenstrual pattern</div>
+      <div>PHQ-9</div><div><span class="pill pill-blue">Measure, not diagnosis</span> Records severity and gives a baseline to track response; diagnosis rests on the clinical interview</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Screening for past mania before prescribing matters: an antidepressant alone can tip someone with bipolar disorder into mania or a mixed state. Asking who lives at home is both a protective-factor question and a safeguarding question — depression in a parent or carer can affect children and dependants.</p>
+      <p>Drug-induced mood change is easy to miss because the temporal link is weeks to months. Do not stop an important medicine without weighing risk and benefit.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3" id="node3">
+  <div class="node-header">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Examination and Targeted Investigations</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Mental state</div><div>Appearance and self-care, eye contact, psychomotor slowing or agitation, speech, mood and affect, thought content (guilt, hopelessness, delusions), perceptions, cognition, insight</div>
+      <div>Physical examination</div><div>Weight and BMI, pulse, BP; thyroid signs, pallor, signs of alcohol misuse, neurological signs where the history suggests; injuries or self-harm marks when appropriate</div>
+      <div>Bloods by indication</div><div><span class="pill pill-blue">TSH</span> <span class="pill pill-blue">FBC + ferritin</span> <span class="pill pill-blue">B12 + folate</span> <span class="pill pill-blue">HbA1c</span> <span class="pill pill-blue">U&amp;E, LFTs, calcium</span> — guided by history, age, medicines and atypical features, not a universal panel</div>
+      <div>Older adults</div><div>Brief cognitive assessment; sodium before an SSRI if at risk of hyponatraemia; consider dementia and delirium; review anticholinergic and sedative load</div>
+      <div>Other tests</div><div>Pregnancy test where relevant; ECG before citalopram or escitalopram with cardiac disease, QT-prolonging drugs or electrolyte disturbance</div>
+      <div>Not routine</div><div>Brain imaging is not needed for depression without neurological signs, new cognitive decline or atypical features</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Hypothyroidism, anaemia, B12 deficiency, hypercalcaemia and diabetes can all present as low mood and fatigue. Test when the history points to them, rather than ordering a fixed panel for everyone. A new depression in later life with cognitive change warrants looking for dementia, vascular disease and medication effects.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4" id="node4">
+  <div class="node-header">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Differentials — What Kind of Low Mood Is This?</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">Depression</div><div class="b-drug">2+ weeks, most days</div><div class="b-note">Low mood or anhedonia with associated symptoms and impaired function. NICE NG222 grades it as less severe (PHQ-9 under 16) or more severe (16 or over), alongside clinical judgement</div></div>
+      <div class="b-card"><div class="b-cond">Bipolar depression</div><div class="b-drug">Past highs</div><div class="b-note">Previous mania or hypomania, early onset, family history, postpartum onset, antidepressant-induced highs. Seek specialist advice before treating</div></div>
+      <div class="b-card"><div class="b-cond">Grief</div><div class="b-drug">After a loss</div><div class="b-note">Waves of yearning and sadness linked to reminders, self-esteem preserved. Prolonged grief: intense, disabling grief persisting beyond about 6–12 months</div></div>
+      <div class="b-card"><div class="b-cond">Adjustment disorder</div><div class="b-drug">After a stressor</div><div class="b-note">Distress out of proportion to an identifiable stressor, starting soon after it, expected to settle as the person adapts</div></div>
+      <div class="b-card"><div class="b-cond">Perinatal depression</div><div class="b-drug">Pregnancy to 1 year</div><div class="b-note">Same features plus worries about the baby and bonding. Distinguish from the "baby blues" (first 2 weeks, mild, self-limiting) and postpartum psychosis (emergency)</div></div>
+      <div class="b-card"><div class="b-cond">Alcohol or substance-related</div><div class="b-drug">Drinking, drugs, withdrawal</div><div class="b-note">Mood often lifts within weeks of stopping heavy drinking; treat both together</div></div>
+      <div class="b-card"><div class="b-cond">Organic or drug-induced</div><div class="b-drug">Physical cause</div><div class="b-note">Hypothyroidism, anaemia, B12 or folate deficiency, hypercalcaemia, OSA, Parkinson's disease, stroke, cancer, chronic pain; medicines listed in step 2</div></div>
+      <div class="b-card"><div class="b-cond">Dementia or delirium (older people)</div><div class="b-drug">Cognitive change</div><div class="b-note">Apathy and withdrawal can mimic depression; depression can mimic dementia. Delirium fluctuates and has a medical cause</div></div>
+      <div class="b-card"><div class="b-cond">Other mental-health conditions</div><div class="b-drug">Comorbidity</div><div class="b-note">Anxiety disorders, PTSD, eating disorders, premenstrual dysphoric disorder, menopause-related low mood, personality-related difficulties</div></div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Grief and adjustment are normal responses that usually need support rather than medicines; depression can develop on top of either, so reassess if symptoms persist or deepen. Bipolar depression is commonly first diagnosed as unipolar depression — the mania screen is the safeguard.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5" id="node5">
+  <div class="node-header">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Formulate — Severity, Risk Plan and Shared Decision</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>Severity</div><div><b>Less severe</b> (PHQ-9 under 16, fewer symptoms, function largely preserved) or <b>more severe</b> (PHQ-9 16 or over, many symptoms, marked impairment) — NICE NG222</div>
+      <div>Risk formulation</div><div>Summarise in words: thoughts, intent, plan, means, triggers, protective factors, who knows. No low/medium/high label (NICE NG225)</div>
+      <div>Safety plan</div><div>Warning signs, coping steps, people and places, professional and crisis contacts, making the environment safer (reduce access to means)</div>
+      <div>Choice</div><div>Discuss the options for the severity, previous response, preference and practical access — and agree what happens next</div>
+      <div>Who else is affected</div><div>Children or dependants at home, caring responsibilities, a vulnerable adult — consider safeguarding and carer support</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>NICE NG222 asks for a shared decision on treatment: the least intrusive effective option first for less severe depression, and a combination of psychological therapy and an antidepressant as the most effective option for more severe depression.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6" id="node6">
+  <div class="node-header">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Referral — Who, Where and How Fast</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Overdose or serious self-injury, immediate danger to life, postpartum psychosis with risk</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Suicidal intent or plan or unable to stay safe; psychotic depression; acute mania; severe self-neglect; perinatal warning signs (perinatal mental-health team); safeguarding concerns</div>
+      <div>Urgent</div><div>Suspected bipolar disorder without acute risk (specialist assessment); more severe depression not responding, or with complex comorbidity → community mental-health team per local pathway</div>
+      <div>NHS Talking Therapies</div><div>Self-referral (nhs.uk/talking-therapies) or GP referral for guided self-help, CBT, behavioural activation, counselling, interpersonal therapy</div>
+      <div>Perinatal mental health</div><div>Moderate or severe illness in pregnancy or the first year, past severe perinatal illness or bipolar disorder (NICE CG192)</div>
+      <div>Under 18</div><div>CAMHS — see NICE NG134; do not start an antidepressant in primary care</div>
+      <div>Memory service</div><div>Older adults with cognitive impairment once delirium, depression and reversible causes are considered</div>
+      <div>Other routes</div><div>Drug and alcohol services, bereavement support (e.g. Cruse), social prescribing, debt and housing advice</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Most low mood is managed in primary care with NHS Talking Therapies. Specialist mental-health input is for risk, psychosis, bipolar disorder, severe or treatment-resistant depression and complex comorbidity.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7" id="node7">
+  <div class="node-header">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Treatment at This Consultation — NICE NG222</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="branch">
+      <div class="b-card"><div class="b-cond">Less severe depression</div><div class="b-drug">Guided self-help or group therapy <span class="pill pill-teal">First-line</span></div><div class="b-note">Least intrusive option first: guided self-help, group CBT or behavioural activation via NHS Talking Therapies (self-referral today). Do not routinely offer an antidepressant first-line unless that is the person's preference</div></div>
+      <div class="b-card"><div class="b-cond">More severe depression</div><div class="b-drug">Therapy + antidepressant <span class="pill pill-teal">Offer</span></div><div class="b-note">Combination of individual CBT and an antidepressant is the most effective option; individual CBT or behavioural activation, or an antidepressant alone, are alternatives by preference</div></div>
+      <div class="b-card"><div class="b-cond">Grief or adjustment</div><div class="b-drug">Support and review <span class="pill pill-green">No routine drugs</span></div><div class="b-note">Normalise, signpost bereavement or practical support, address sleep and alcohol, review in 2–4 weeks; treat depression if it develops</div></div>
+      <div class="b-card"><div class="b-cond">Suspected bipolar</div><div class="b-drug">Specialist advice <span class="pill pill-amber">Caution</span></div><div class="b-note">Do not start an antidepressant alone; seek specialist assessment (urgent, or same-day if risk)</div></div>
+    </div>
+    <div class="ladder">
+      <div class="rung"><span class="rn">If starting</span><span class="rt"><b>An SSRI is usually first choice</b> (safety and tolerability). Sertraline — usual adult dose 50 mg once daily, taken in the morning with food; check the SPC, BNF and local formulary. Older adults: baseline sodium if at risk; with NSAIDs, anticoagulants or antiplatelets consider gastroprotection</span></div>
+      <div class="rung"><span class="rn">Counsel</span><span class="rt">Benefit builds over 2–4 weeks; early nausea, jitteriness or agitation; possible increase in suicidal thoughts early on — contact the same day if this happens; do not stop suddenly; avoid alcohol</span></div>
+      <div class="rung"><span class="rn">Overdose risk</span><span class="rt">Prescribe limited quantities (for example 1–2 weeks) where there is suicide risk; avoid tricyclics; involve family in holding medicines where agreed</span></div>
+      <div class="rung"><span class="rn">Perinatal</span><span class="rt">Weigh the risks of untreated illness against treatment; sertraline has the most data in pregnancy and breastfeeding — discuss with perinatal mental health for moderate or severe illness (NICE CG192)</span></div>
+      <div class="rung"><span class="rn">Cause found</span><span class="rt">Treat the organic cause; brief alcohol intervention with AUDIT-C; review any culprit medicine with the prescriber</span></div>
+      <div class="rung"><span class="rn">Today</span><span class="rt">Safety plan and crisis numbers saved in the phone; fit note if needed; Talking Therapies self-referral details; review date booked</span></div>
+    </div>
+    <p class="alg-next"><b>Next steps:</b> see <a href="../management/depression.html">Depression</a> · <a href="../management/anxiety.html">Anxiety disorders</a> · <a href="../management/postnatal-depression.html">Postnatal depression</a> · <a href="../management/alcohol-problem-drinking.html">Harmful drinking and alcohol dependence</a> · <a href="../management/hypothyroidism.html">Hypothyroidism</a> · <a href="../management/dementia.html">Dementia</a></p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>NICE NG222 (2022) ranks guided self-help first for less severe depression and advises against routinely offering antidepressants first-line unless the person prefers them; SSRIs are the preferred antidepressant because of safety and tolerability. For more severe depression, combined individual CBT and an antidepressant is the most clinically and cost-effective option. Second-line choices, switching and long-term continuation are in the Depression protocol.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8" id="node8">
+  <div class="node-header">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Self-Care and Support</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="lsgrid">
+      <div class="lstile"><b>Activity and routine</b> Regular physical activity and a daily structure — small, planned, pleasurable or useful activities (behavioural activation)</div>
+      <div class="lstile"><b>Sleep</b> Fixed wake time, limit daytime napping, caffeine and evening alcohol; see the insomnia pathway if sleep is the main problem</div>
+      <div class="lstile"><b>Alcohol and drugs</b> Cutting down often lifts mood within weeks; no more than 14 units a week spread over 3 or more days</div>
+      <div class="lstile"><b>Connection</b> Talk to trusted people; peer support, community groups, social prescribing link workers</div>
+      <div class="lstile"><b>Practical problems</b> Debt, housing, benefits and work advice; Citizens Advice; occupational health or a phased return</div>
+      <div class="lstile"><b>Support lines</b> Samaritans 116 123 (24 hours), Shout text 85258, NHS 111 option 2; Every Mind Matters for self-help</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Behavioural activation and exercise both have evidence in depression and give the person something active to do while waiting for therapy. Practical stressors such as debt are strongly linked with depression and suicide risk.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9" id="node9">
+  <div class="node-header">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up and Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+<div class="kv">
+      <div>1 week</div><div>After starting an antidepressant if aged 18–25 or at increased risk of suicide (NICE NG222)</div>
+      <div>2 weeks</div><div>After starting an antidepressant for everyone else; then regularly — about every 2–4 weeks for the first 3 months</div>
+      <div>2–4 weeks</div><div>No drug started: review mood, risk, engagement with therapy and test results; repeat PHQ-9 as a measure of change</div>
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>Immediate danger to life, overdose or serious self-injury</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Suicidal thoughts getting stronger, a plan, or feeling unable to stay safe → crisis line, NHS 111 option 2 or the surgery today; new agitation or restlessness after starting a tablet; feeling high or not needing sleep; in pregnancy or after birth, any thoughts of harm to self or baby</div>
+      <div>Continuity</div><div>Same clinician where possible; check that Talking Therapies contact happened; follow up missed appointments in people at risk</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>The early weeks after starting an antidepressant, and after a crisis or discharge, are periods of higher risk. A named follow-up date, a written safety plan and crisis numbers in the person's phone are simple, high-value safety measures.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE NG222 (Depression in adults: treatment and management, 2022), NICE NG225 (Self-harm: assessment, management and preventing recurrence, 2022), NICE CG192 (Antenatal and postnatal mental health, updated 2020), NICE CG185 (Bipolar disorder, updated 2023), NICE NG134 (Depression in children and young people, 2019), MHRA drug safety updates, UK Chief Medical Officers' low-risk drinking guidelines (2016), sertraline SPC. Check doses against the current SPC, BNF and local formulary. Always adapt to individual patient context. Not a substitute for clinical judgement.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.low-mood.v1';
+  const nodes=document.querySelectorAll('.node[data-step]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state={};
+    nodes.forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});
+    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+  function load(){
+    try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');
+      nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(s[n.dataset.step]){cb.checked=true;n.classList.add('done');}});}catch(e){}
+  }
+  function updateProgress(){
+    const done=document.querySelectorAll('.node.done').length;
+    pDone.textContent=done;
+    pFill.style.width=((done/total)*100)+'%';
+  }
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{
+      n.classList.toggle('done',cb.checked);
+      save();updateProgress();
+    });
+  });
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!expanded));
+      btn.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    if(!confirm('Reset all progress?'))return;
+    nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});
+    localStorage.removeItem(KEY);updateProgress();
+  });
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=3"></script>
+<script src="../../assets/topic-links.js?v=10"></script>
+<script src="../../assets/alg-diagram.js"></script>
+<script src="../../assets/provenance.js?v=15"></script>
 </body>
 </html>

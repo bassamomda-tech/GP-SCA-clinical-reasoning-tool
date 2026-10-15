@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Breast Lump & Breast Symptoms Algorithm · Reasoning GP</title>
+<meta name="description" content="Breast lump and breast symptoms: lump, pain, nipple change, skin change, axillary lump and male breast (gynaecomastia vs cancer) — NICE NG12 suspected cancer criteria, breast clinic referral and first-consultation management.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Breast Lump & Breast Symptoms Algorithm">
+<meta property="og:description" content="Breast lump and breast symptoms: lump, pain, nipple change, skin change, axillary lump and male breast (gynaecomastia vs cancer) — NICE NG12 suspected cancer criteria, breast clinic referral and first-consultation management.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/algorithms/breast-symptoms.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/breast-symptoms.html">
+<script type="application/ld+json" data-rgp-paywall="1">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f7f6f2;--surface:#ffffff;--border:#e2dfd6;--text:#1a1917;--muted:#6b6760;
+  --safety:#dc2626;--safety-bg:#fef2f2;
+  --diagnose:#2563eb;--diagnose-bg:#eff6ff;
+  --treat:#16a34a;--treat-bg:#f0fdf4;
+  --refer:#7c3aed;--refer-bg:#f5f3ff;
+  --lifestyle:#d97706;--lifestyle-bg:#fffbeb;
+  --radius:10px;--shadow:0 2px 8px rgba(0,0,0,.08);
+  --font-sans:'DM Sans',system-ui,sans-serif;
+  --font-serif:'Source Serif 4',Georgia,serif;
+}
+body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-height:1.55;font-size:15px;min-height:100vh;padding:0 0 60px}
+.alg-header{background:var(--text);color:#fff;padding:20px 24px 16px;position:sticky;top:0;z-index:100;box-shadow:0 2px 12px rgba(0,0,0,.2)}
+.alg-header h1{font-family:var(--font-serif);font-size:1.25rem;font-weight:600}
+.alg-header p{font-size:.8rem;opacity:.7;margin-top:2px}
+.alg-meta{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap}
+.alg-meta span{font-size:.72rem;background:rgba(255,255,255,.15);padding:2px 10px;border-radius:20px}
+.stem-banner{display:flex;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin:16px 16px 0;padding:14px 18px;box-shadow:var(--shadow)}
+.sb-icon{font-size:2rem;line-height:1}
+.stem-banner b{display:block;font-size:.95rem;font-weight:600}
+.stem-banner small{color:var(--muted);font-size:.78rem}
+.alg-progress{display:flex;align-items:center;gap:10px;margin:12px 16px;font-size:.8rem;color:var(--muted)}
+.alg-progress span:first-child{font-weight:600;color:var(--text)}
+.pcount{font-weight:700;color:var(--text);min-width:32px}
+.pbar{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--treat),#22c55e);border-radius:3px;transition:width .4s ease;width:0%}
+.reset{margin-left:auto;font-size:.72rem;padding:3px 10px;border:1px solid var(--border);border-radius:20px;background:#fff;cursor:pointer;color:var(--muted);transition:all .2s}
+.reset:hover{background:var(--text);color:#fff;border-color:var(--text)}
+.alg-flow{max-width:720px;margin:0 auto;padding:0 12px}
+.connector{width:2px;height:24px;background:var(--border);margin:0 auto;position:relative}
+.connector::after{content:'▼';position:absolute;left:50%;bottom:-4px;transform:translateX(-50%);font-size:10px;color:var(--border)}
+.node{background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:box-shadow .2s}
+.node:hover{box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.node[data-type="SAFETY"]{border-top:3px solid var(--safety)}
+.node[data-type="DIAGNOSE"]{border-top:3px solid var(--diagnose)}
+.node[data-type="TREAT"]{border-top:3px solid var(--treat)}
+.node[data-type="REFER"]{border-top:3px solid var(--refer)}
+.node[data-type="LIFESTYLE"]{border-top:3px solid var(--lifestyle)}
+.node-header{display:flex;align-items:flex-start;gap:12px;padding:14px 16px 10px}
+.node-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem;flex-shrink:0;margin-top:1px}
+.node[data-type="SAFETY"] .node-num{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-num{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-num{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-num{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-num{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head{flex:1}
+.node-tag{font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:20px;display:inline-block;margin-bottom:4px}
+.node[data-type="SAFETY"] .node-tag{background:var(--safety-bg);color:var(--safety)}
+.node[data-type="DIAGNOSE"] .node-tag{background:var(--diagnose-bg);color:var(--diagnose)}
+.node[data-type="TREAT"] .node-tag{background:var(--treat-bg);color:var(--treat)}
+.node[data-type="REFER"] .node-tag{background:var(--refer-bg);color:var(--refer)}
+.node[data-type="LIFESTYLE"] .node-tag{background:var(--lifestyle-bg);color:var(--lifestyle)}
+.node-head h3{font-size:1rem;font-weight:600;line-height:1.3;font-family:var(--font-serif)}
+.node-tick{padding:0 16px 0 0;margin-top:14px}
+.node-tick label{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:.78rem;color:var(--muted);white-space:nowrap}
+.node-tick input[type=checkbox]{width:16px;height:16px;accent-color:var(--treat);cursor:pointer}
+.tlbl{transition:color .2s}
+.node.done .tlbl{color:var(--treat);font-weight:600}
+.node-body{padding:0 16px 14px;font-size:.875rem;line-height:1.6}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:10px 0;font-size:.84rem}
+.kv>div{background:var(--surface);padding:8px 12px;line-height:1.5}
+.kv>div:nth-child(odd){background:#fafaf8;font-weight:600;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;white-space:nowrap}
+.rfgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.rfgrid{grid-template-columns:1fr}}
+.rftile{background:var(--safety-bg);border:1px solid #fecaca;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--safety)}
+.rftile b{display:block;color:var(--safety);margin-bottom:2px;font-size:.85rem}
+.branch{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin:10px 0}
+.b-card{background:#f8faff;border:1px solid #dbeafe;border-radius:8px;padding:12px;border-top:3px solid var(--diagnose)}
+.b-cond{font-size:.75rem;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.b-drug{font-weight:700;font-size:.9rem;margin-bottom:4px;color:var(--text)}
+.b-note{font-size:.78rem;color:var(--muted);line-height:1.5}
+.ladder{margin:10px 0;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.rung{display:flex;align-items:flex-start;gap:12px;padding:10px 14px;border-bottom:1px solid var(--border);font-size:.84rem}
+.rung:last-child{border-bottom:none}
+.rung:hover{background:#fafafa}
+.rn{font-size:.72rem;font-weight:700;color:var(--treat);background:var(--treat-bg);padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0;margin-top:1px}
+.rt{flex:1;line-height:1.55}
+.lsgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+@media(max-width:500px){.lsgrid{grid-template-columns:1fr}}
+.lstile{background:var(--lifestyle-bg);border:1px solid #fde68a;border-radius:8px;padding:10px 12px;font-size:.83rem;line-height:1.5;border-left:3px solid var(--lifestyle)}
+.lstile b{display:block;color:#92400e;margin-bottom:2px}
+.pill{display:inline-block;font-size:.7rem;font-weight:700;padding:1px 8px;border-radius:20px;white-space:nowrap;margin:0 2px}
+.pill-red{background:#fef2f2;color:#dc2626;border:1px solid #fecaca}
+.pill-purple{background:#f5f3ff;color:#7c3aed;border:1px solid #ddd6fe}
+.pill-blue{background:#eff6ff;color:#2563eb;border:1px solid #bfdbfe}
+.pill-teal{background:#f0fdfa;color:#0f766e;border:1px solid #99f6e4}
+.pill-amber{background:#fffbeb;color:#d97706;border:1px solid #fde68a}
+.pill-green{background:#f0fdf4;color:#16a34a;border:1px solid #bbf7d0}
+.pill-grey{background:#f9fafb;color:#6b7280;border:1px solid #e5e7eb}
+.why-row{border-top:1px solid var(--border);background:#fafaf8}
+.why-btn{width:100%;text-align:left;padding:9px 16px;font-size:.8rem;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:6px;transition:color .2s}
+.why-btn:hover{color:var(--text)}
+.why-btn[aria-expanded="true"]{color:var(--text)}
+.caret{transition:transform .2s;display:inline-block}
+.why-btn[aria-expanded="true"] .caret{transform:rotate(180deg)}
+.why-drawer{display:none;padding:0 16px 14px;font-size:.82rem;color:var(--muted);line-height:1.65;border-top:1px solid var(--border)}
+.why-drawer.open{display:block}
+.why-drawer p{margin-bottom:6px}
+.why-drawer p:last-child{margin-bottom:0}
+.alg-foot{max-width:720px;margin:24px auto 0;padding:16px 24px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);font-size:.78rem;color:var(--muted);line-height:1.6}
+.alg-foot strong{color:var(--text)}
+.node.done{opacity:.85}
+.node.done .node-head h3{text-decoration:line-through;text-decoration-color:var(--border);color:var(--muted)}
+.intro-note{font-size:.84rem;color:var(--muted);margin-bottom:10px;padding:8px 12px;background:#fafaf8;border-radius:6px;border-left:3px solid var(--border)}
+.alg-next{margin:12px 0 2px;padding:9px 12px;background:var(--treat-bg);border:1px solid #bbf7d0;border-radius:8px;font-size:.84rem;line-height:1.55}
+.alg-next a{color:#166534;font-weight:600}
+</style>
+<link rel="stylesheet" href="../../assets/alg-diagram.css">
+<link rel="stylesheet" href="../../assets/provenance.css?v=14">
+</head>
+<body>
+
+<div class="alg-header">
+  <h1>🎗️ Breast Lump &amp; Breast Symptoms</h1>
+  <p>RCGP SCA Algorithm — UK Primary Care</p>
+  <div class="alg-meta">
+    <span>NICE NG12</span><span>NICE CKS</span><span>NICE CG164</span><span>10-min consult</span>
+  </div>
+</div>
+
+<div class="stem-banner">
+  <div class="sb-icon">🎗️</div>
+  <div>
+    <b>Breast Lump &amp; Breast Symptoms — Assessment &amp; Referral</b>
+    <small>Lump · pain · nipple change · skin change · axillary lump · men (gynaecomastia vs cancer) | NICE NG12 (updated April 2026)</small>
+  </div>
+</div>
+
+<div class="alg-progress"><div class="view-toggle" role="tablist" aria-label="View"><button class="vt-btn" data-view="steps" role="tab" aria-selected="true">Steps</button><button class="vt-btn" data-view="summary" role="tab" aria-selected="false">Snapshot</button></div>
+  <span>Progress</span>
+  <span class="pcount"><span id="pDone">0</span> / <span id="pTotal">9</span></span>
+  <div class="pbar"><div class="pbar-fill" id="pFill"></div></div>
+  <button class="reset" id="resetBtn">Reset</button>
+</div>
+
+<!-- SNAPSHOT VIEW — embeds the one-page summary one-page/breast-symptoms.html (spec: governance/ONE-PAGE-SUMMARY-SPEC.md). -->
+<div id="viewSummary"><div class="snap"><div class="sum-bar"><p><b>⚡ Snapshot.</b> The whole pathway on one page: act now, triage, classify, treat today and safety-net. The Steps tab holds the detail.</p><div class="sum-actions"><button type="button" class="sum-dl" data-src="one-page/breast-symptoms.html">⬇ Download PDF</button><a class="sum-open" href="one-page/breast-symptoms.html" target="_blank" rel="noopener">Open full screen ↗</a></div></div><iframe class="snap-frame" src="one-page/breast-symptoms.html" title="Snapshot" style="display:block;width:100%;max-width:1160px;min-height:1150px;margin:10px auto 0;border:0;background:transparent" onload="var f=this;function h(){try{f.style.height=f.contentDocument.documentElement.scrollHeight+'px'}catch(e){}}h();try{new ResizeObserver(h).observe(f.contentDocument.body)}catch(e){}"></iframe></div>
+</div>
+
+<div class="alg-flow" id="flow">
+
+<!-- STEP 1 -->
+<div class="node" data-type="SAFETY" data-step="1" id="node1">
+  <div class="node-header">
+    <div class="node-num">1</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Red Flags &amp; NICE NG12 Breast Criteria — Act First</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <p class="intro-note">Most breast symptoms are benign, but the referral decision is made on age and examination findings — not on how benign the lump feels. If an NG12 criterion is met, refer first; do not arrange imaging first.</p>
+    <div class="rfgrid">
+      <div class="rftile"><b>Unexplained breast lump, aged 30 and over</b> With or without pain, women and men → <span class="pill pill-purple">Suspected cancer pathway</span> breast referral (NICE NG12)</div>
+      <div class="rftile"><b>Nipple change in one nipple only, aged 50 and over</b> Discharge, retraction or other change of concern → <span class="pill pill-purple">Suspected cancer pathway</span> (NICE NG12). Applies to men too</div>
+      <div class="rftile"><b>Skin change suggestive of breast cancer</b> Peau d'orange, dimpling, tethering, ulceration, a red, swollen breast that does not behave like infection → <span class="pill pill-purple">Consider suspected cancer pathway</span> (NICE NG12) at any age</div>
+      <div class="rftile"><b>Unexplained axillary lump, aged 30 and over</b> → <span class="pill pill-purple">Consider suspected cancer pathway</span> breast referral (NICE NG12); generalised nodes or splenomegaly → see the lymphadenopathy pathway</div>
+      <div class="rftile"><b>Hot, tender breast with systemic illness</b> Fever, rigors, tachycardia, spreading cellulitis or a fluctuant mass → <span class="pill pill-red">Same-day</span> assessment (abscess / sepsis); <span class="pill pill-red">999</span> if signs of septic shock</div>
+      <div class="rftile"><b>Known breast cancer + new back pain with leg weakness, sensory level or sphincter change</b> → <span class="pill pill-red">999</span> / immediate MSCC pathway (NICE NG234). New persistent bone pain, confusion or thirst (hypercalcaemia) → <span class="pill pill-red">Same-day</span> acute oncology</div>
+      <div class="rftile"><b>Male breast: eccentric, hard or fixed lump</b> Or nipple retraction, bloodstained discharge or ulceration → <span class="pill pill-purple">Suspected cancer pathway</span>; do not label as gynaecomastia without examining</div>
+      <div class="rftile"><b>"Mastitis" in a woman who is not breastfeeding, not settling</b> No improvement after one course of antibiotics, or an underlying mass → refer to the breast clinic to exclude inflammatory breast cancer (<span class="pill pill-purple">Suspected cancer pathway</span> if a lump or suspicious skin change)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>NICE NG12 (updated April 2026) sets the breast criteria by age: an unexplained lump at 30 and over, or a change of concern in one nipple at 50 and over, warrants a suspected cancer pathway referral; skin changes and an unexplained axillary lump at 30 and over warrant consideration of one. The criteria apply to men as well as women.</p>
+      <p>Inflammatory breast cancer is easily mistaken for mastitis — a red, swollen, peau d'orange breast in a woman who is not lactating, or one that fails to settle with antibiotics, needs specialist assessment. Breast cancer is the commonest source of metastatic spinal cord compression; new back pain in a patient with a breast cancer history needs a low threshold for urgent assessment.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 2 -->
+<div class="node" data-type="DIAGNOSE" data-step="2" id="node2">
+  <div class="node-header">
+    <div class="node-num">2</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Focused History — What Is the Symptom?</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Lump</div><div>When noticed, how found, change in size, relation to the menstrual cycle, pain, single or multiple, previous lumps or cysts, trauma (fat necrosis)</div>
+      <div>Pain</div><div>Cyclical (bilateral, premenstrual, diffuse) or non-cyclical (focal, one-sided, persistent); chest wall pain. Pain alone with a normal examination → see the <a href="mastalgia.html">Mastalgia algorithm</a></div>
+      <div>Nipple</div><div>Discharge: spontaneous or only on squeezing, one or both sides, single or multiple ducts, colour (bloodstained, clear, milky, green). Retraction: new or longstanding, one-sided. Eczema, scaling or erosion of the nipple itself → see the <a href="nipple-problems.html">Nipple problems algorithm</a></div>
+      <div>Skin</div><div>Dimpling, puckering, peau d'orange, redness, swelling, ulceration; how quickly it appeared</div>
+      <div>Axilla</div><div>Lump, recent infection, vaccination in that arm, shaving folliculitis, hidradenitis, systemic symptoms (fever, night sweats, weight loss)</div>
+      <div>Lactation and pregnancy</div><div>Breastfeeding (mastitis, galactocoele, abscess), possible pregnancy, recent weaning</div>
+      <div>Risk factors</div><div>Age; previous breast cancer, atypical hyperplasia or DCIS; family history (first-degree relatives, young age, bilateral, male breast or ovarian cancer, known BRCA — NICE CG164); chest radiotherapy (e.g. for Hodgkin lymphoma); HRT; alcohol; smoking (periductal mastitis)</div>
+      <div>Men</div><div>Drugs (spironolactone, anti-androgens, finasteride, digoxin, anabolic steroids, cannabis, opioids), alcohol and liver disease, testicular symptoms, weight change, puberty; family history of male breast or BRCA-related cancer</div>
+      <div>Screening</div><div>Last mammogram (NHS Breast Screening Programme invites women aged 50 to their 71st birthday every 3 years); a recent normal mammogram does not exclude cancer in a new symptom</div>
+      <div>Ideas, concerns, expectations</div><div>Most attend worried about cancer — ask directly; explain what the referral pathway means</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Spontaneous, single-duct, one-sided or bloodstained discharge is pathological; bilateral, multi-duct discharge produced only on squeezing is usually physiological. Galactorrhoea (milky, bilateral) needs a pregnancy test, prolactin and drug review rather than a breast referral. Screening mammography is for women without symptoms — a woman with a new symptom needs a symptomatic referral even if her last screen was recent.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 3 -->
+<div class="node" data-type="DIAGNOSE" data-step="3" id="node3">
+  <div class="node-header">
+    <div class="node-num">3</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Examination — Both Breasts, Axillae and Nodes</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Chaperone</div><div>Offer a chaperone and document the offer and the response (GMC). Examine even when the patient is sure it is "only a cyst"</div>
+      <div>Inspection</div><div>Sitting, arms by the side, then hands pressed on hips and arms raised: asymmetry, skin dimpling or tethering, peau d'orange, redness, nipple retraction or deviation, eczema or ulceration</div>
+      <div>Palpation</div><div>Lying with the arm behind the head: all four quadrants, the axillary tail and behind the nipple, both breasts. Describe any lump: site (clock face and distance from the nipple), size in cm, shape, consistency, mobility, tethering to skin or muscle, tenderness</div>
+      <div>Nodes</div><div>Axillary, supraclavicular and cervical nodes on both sides</div>
+      <div>Nipple discharge</div><div>Note colour and whether single or multiple ducts if it is seen; do not repeatedly squeeze the nipple to produce discharge</div>
+      <div>Men</div><div><b>Gynaecomastia:</b> rubbery or firm disc of tissue centred under the areola, often bilateral and sometimes tender. <b>Pseudogynaecomastia:</b> soft fat without a disc. <b>Cancer:</b> hard, eccentric, painless, may be fixed, with nipple or skin change. Examine the testes and abdomen (liver) in gynaecomastia</div>
+      <div>Systemic</div><div>Spine and bone tenderness, liver, chest, if a history of breast cancer or advanced disease is suspected</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Benign and malignant lumps cannot be reliably told apart clinically — a smooth, mobile lump in a woman over 30 still needs triple assessment. A careful description lets the breast team and any later GP compare. Testicular examination in a man with gynaecomastia screens for a hormone-secreting testicular tumour.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 4 -->
+<div class="node" data-type="DIAGNOSE" data-step="4" id="node4">
+  <div class="node-header">
+    <div class="node-num">4</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Investigations — Refer, Do Not Image First</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Breast lump or suspicious change</div><div>No imaging from primary care: the breast clinic does <b>triple assessment</b> (clinical examination, imaging — ultrasound under 40, mammography plus ultrasound from 40 — and core biopsy). Arranging a scan first only delays the pathway</div>
+      <div>Possible pregnancy</div><div>Urine hCG before attributing breast change to pregnancy, and before any drug</div>
+      <div>Milky bilateral discharge (galactorrhoea)</div><div>Pregnancy test, prolactin, TSH, renal function; drug review (antipsychotics, metoclopramide, domperidone, SSRIs) — see the <a href="nipple-problems.html">Nipple problems algorithm</a></div>
+      <div>Gynaecomastia (men)</div><div>Usually: LFTs, U&amp;Es, TSH, morning testosterone, LH, FSH, oestradiol, prolactin, hCG and AFP — see the <a href="gynecomastia.html">Gynaecomastia algorithm</a>. Raised hCG or AFP, or a testicular lump → urgent urology referral (testicular tumour)</div>
+      <div>Lactational mastitis</div><div>No routine tests. Milk culture if not responding at 48 hours, recurrent, hospital-acquired or atypical</div>
+      <div>Do not</div><div>Do not request mammography for a symptomatic patient, do fine-needle aspiration of a lump in primary care, or use a normal ultrasound or mammogram to avoid a referral that meets NG12</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>One-stop breast clinics are designed to complete triple assessment at the first visit. Ultrasound is preferred under 40 because dense breast tissue limits mammography. In men, gynaecomastia bloods screen for liver, thyroid, gonadal and tumour causes; a raised hCG suggests a germ-cell tumour.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 5 -->
+<div class="node" data-type="DIAGNOSE" data-step="5" id="node5">
+  <div class="node-header">
+    <div class="node-num">5</div>
+    <div class="node-head">
+      <span class="node-tag">Diagnose</span>
+      <h3>Differential Diagnosis — Common Patterns</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Fibroadenoma</div><div>Commonest lump under 30: smooth, firm, rubbery, very mobile, painless. Under 30 → consider non-urgent breast clinic referral</div>
+      <div>Breast cyst</div><div>Commonest from 35 to the menopause (or on HRT): smooth, well defined, may appear suddenly and be tender. Over 30 → still a suspected cancer pathway referral; the clinic aspirates</div>
+      <div>Fibrocystic change / nodularity</div><div>Diffuse, bilateral, lumpy, often tender before periods; no discrete lump. A discrete lump is not "nodularity"</div>
+      <div>Breast cancer</div><div>Hard, irregular, painless, fixed or tethered; skin or nipple change; axillary nodes. Can be smooth and mobile — examination alone cannot exclude it</div>
+      <div>Mastitis / abscess</div><div><b>Lactational:</b> painful, hot, red wedge, flu-like symptoms. <b>Periductal (non-lactational):</b> smokers, subareolar, recurrent, may form a fistula. Abscess: fluctuant, tender mass</div>
+      <div>Fat necrosis</div><div>After trauma or surgery: firm, may tether skin — mimics cancer; refer by the NG12 age criteria</div>
+      <div>Duct ectasia / intraductal papilloma</div><div>Discharge: ectasia (green-brown, multiple ducts, often bilateral, perimenopausal); papilloma (single duct, often bloodstained) — refer, as cancer cannot be excluded clinically</div>
+      <div>Skin and axillary lumps</div><div>Sebaceous cyst, lipoma, hidradenitis suppurativa, reactive axillary node (infection, recent vaccination), accessory breast tissue; lymphoma</div>
+      <div>Men</div><div>Gynaecomastia (puberty, older age, drugs, liver disease, hypogonadism, hyperthyroidism, testicular tumour), pseudogynaecomastia, male breast cancer (rare, usually over 60, BRCA2 carriers)</div>
+      <div>Chest wall</div><div>Costochondritis, rib injury, Mondor's disease (thrombophlebitis of a superficial vein — tender cord)</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Age is the biggest single discriminator: under 30, breast cancer is rare and fibroadenoma is common, which is why NICE uses age 30 as the lump threshold. Even so, a young woman with a lump that is hard, fixed, enlarging, or with a strong family history needs prompt specialist assessment on clinical judgement.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 6 -->
+<div class="node" data-type="REFER" data-step="6" id="node6">
+  <div class="node-header">
+    <div class="node-num">6</div>
+    <div class="node-head">
+      <span class="node-tag">Refer</span>
+      <h3>Referral — Which Route and How Fast</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div><span class="pill pill-red">999</span></div><div>Septic shock from breast infection; suspected spinal cord compression in known cancer (immediate MSCC pathway)</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Breast abscess or mastitis with systemic illness or spreading cellulitis (surgical / breast on-call); suspected hypercalcaemia in known cancer (acute oncology)</div>
+      <div><span class="pill pill-purple">Suspected cancer pathway · NICE NG12</span></div><div><b>Refer:</b> aged 30 and over with an unexplained breast lump, with or without pain; aged 50 and over with discharge, retraction or other change of concern in one nipple only. <b>Consider:</b> skin changes suggestive of breast cancer; aged 30 and over with an unexplained axillary lump. Male breast: an unexplained lump at 30 and over, or a suspicious mass, also qualifies</div>
+      <div>Non-urgent breast clinic</div><div>Consider for: under 30 with an unexplained breast lump with or without pain (sooner on clinical judgement if hard, fixed, enlarging or with a strong family history); nipple discharge under 50 per the local pathway; persistent focal pain with a normal examination; recurrent periductal mastitis</div>
+      <div>Family history</div><div>Moderate or high risk on NICE CG164 criteria → secondary care breast family history service or genetics per the local pathway; no imaging from primary care for family history alone</div>
+      <div>Men</div><div>Gynaecomastia with abnormal bloods → endocrinology; raised hCG/AFP or testicular lump → urgent urology; persistent troublesome gynaecomastia → routine breast or endocrine clinic per the local pathway</div>
+      <div>Primary care manage</div><div>Cyclical mastalgia with a normal examination; lactational mastitis responding to treatment; pubertal gynaecomastia; physiological bilateral discharge on squeezing only</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>The NHS Faster Diagnosis Standard expects cancer to be diagnosed or ruled out within 28 days of a suspected cancer referral. Keep NICE's wording: "refer" for a lump at 30 and over and nipple change at 50 and over, "consider" for skin changes and axillary lumps. Many breast services also accept non-urgent symptomatic referrals for under-30s — follow your local pathway.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 7 -->
+<div class="node" data-type="TREAT" data-step="7" id="node7">
+  <div class="node-header">
+    <div class="node-num">7</div>
+    <div class="node-head">
+      <span class="node-tag">Treat</span>
+      <h3>Management at This Consultation</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="branch">
+      <div class="b-card">
+        <div class="b-cond">NG12 criterion met</div>
+        <div class="b-drug">Refer today <span class="pill pill-purple">Suspected cancer</span></div>
+        <div class="b-note">Explain why, that most referrals are not cancer, and that the clinic may do a scan and biopsy the same day. Check contact details and availability over the next 2 weeks; give written information. Simple analgesia if painful</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Lactational mastitis</div>
+        <div class="b-drug">Keep milk flowing ± flucloxacillin</div>
+        <div class="b-note">Continue breastfeeding or expressing from the affected side, paracetamol or ibuprofen, cold compresses. Antibiotics if systemically unwell, an infected nipple fissure, or no improvement after 12–24 hours of effective milk removal. Usual adult dose: flucloxacillin 500 mg four times daily for 10–14 days (NICE CKS; check the SPC and local formulary). Penicillin allergy: a macrolide per local guidance, checking interactions. Review at 48 hours</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Non-lactational / periductal mastitis</div>
+        <div class="b-drug">Antibiotic per local pathway</div>
+        <div class="b-note">Consider co-amoxiclav where appropriate (mixed and anaerobic organisms), per the local antimicrobial guideline. Smoking cessation. Not settling after one course, or any mass → breast clinic (exclude abscess and inflammatory cancer)</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Breast pain, normal examination</div>
+        <div class="b-drug">Reassure, supportive bra, analgesia</div>
+        <div class="b-note">Well-fitting supportive bra, paracetamol or a topical NSAID; pain diary for two cycles. Full pathway: <a href="mastalgia.html">Mastalgia algorithm</a></div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Gynaecomastia</div>
+        <div class="b-drug">Find the cause</div>
+        <div class="b-note">Pubertal: reassure, most resolves within 2 years. Drug-related: review the culprit with the prescriber. Bloods and testicular examination as above. Tamoxifen or surgery only via specialists</div>
+      </div>
+      <div class="b-card">
+        <div class="b-cond">Under 30, discrete lump</div>
+        <div class="b-drug">Non-urgent breast clinic</div>
+        <div class="b-note">Consider non-urgent referral (NICE NG12). Re-examining after the next period is reasonable only for vague nodularity — not for a discrete lump</div>
+      </div>
+    </div>
+    <p class="alg-next"><b>Next steps:</b> see <a href="../management/breast-disorders.html">Benign breast disorders</a> · <a href="../management/breast-cancer.html">Breast cancer</a> · <a href="../management/mastitis-breast-abscess.html">Mastitis and breast abscess</a></p>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Effective milk removal is the core treatment of lactational mastitis — stopping feeding on the affected side increases the risk of abscess. Flucloxacillin is safe in breastfeeding. Repeated antibiotic courses for a breast that will not settle delay the diagnosis of abscess and inflammatory breast cancer.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 8 -->
+<div class="node" data-type="LIFESTYLE" data-step="8" id="node8">
+  <div class="node-header">
+    <div class="node-num">8</div>
+    <div class="node-head">
+      <span class="node-tag">Lifestyle</span>
+      <h3>Breast Awareness, Screening &amp; Risk Reduction</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="lsgrid">
+      <div class="lstile"><b>Breast awareness</b> Know what is normal: look and feel regularly, including the armpit; report any change promptly. Men can get breast cancer too.</div>
+      <div class="lstile"><b>NHS breast screening</b> Women are invited from 50 to their 71st birthday every 3 years; older women can self-refer. Screening is not for symptoms.</div>
+      <div class="lstile"><b>Alcohol</b> Breast cancer risk rises with alcohol; advise no more than 14 units a week, spread over 3 or more days (UK CMO).</div>
+      <div class="lstile"><b>Weight and activity</b> Healthy weight after the menopause and regular physical activity lower breast cancer risk.</div>
+      <div class="lstile"><b>Smoking</b> Strongly linked with periductal mastitis and its recurrence — offer stop-smoking support.</div>
+      <div class="lstile"><b>HRT</b> Discuss the small increase in breast cancer risk with combined HRT as part of shared decisions; do not stop HRT just because of a referral without discussion.</div>
+      <div class="lstile"><b>Breastfeeding</b> Good attachment, frequent feeding and avoiding sudden weaning reduce mastitis; infant feeding support if recurrent.</div>
+      <div class="lstile"><b>Family history</b> Record the family history; a moderate or high risk under NICE CG164 opens access to enhanced surveillance and genetic assessment.</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Breast awareness is preferred over formal monthly self-examination — the aim is prompt reporting of change. Alcohol, post-menopausal obesity and inactivity are the main modifiable risk factors for breast cancer.</p>
+    </div>
+  </div>
+</div>
+<div class="connector"></div>
+
+<!-- STEP 9 -->
+<div class="node" data-type="SAFETY" data-step="9" id="node9">
+  <div class="node-header">
+    <div class="node-num">9</div>
+    <div class="node-head">
+      <span class="node-tag">Safety</span>
+      <h3>Follow-Up &amp; Safety-Netting</h3>
+    </div>
+    <div class="node-tick"><label><input type="checkbox" /><span class="tlbl">Done</span></label></div>
+  </div>
+  <div class="node-body">
+    <div class="kv">
+      <div>Suspected cancer referral</div><div>Practice process to confirm the appointment was booked and attended; ask the patient to contact the practice if they have not heard within a week. Diagnosis or cancer ruled out within 28 days (Faster Diagnosis Standard)</div>
+      <div>Mastitis</div><div>Review at 48 hours if on antibiotics or not improving; ultrasound and breast assessment if a lump persists or abscess is suspected</div>
+      <div>Non-urgent referral or watchful waiting</div><div>Review if the lump grows, hardens or a new symptom appears; re-refer or upgrade the referral if criteria are later met</div>
+      <div>After a benign clinic result</div><div>Back to breast awareness; return with any new or different symptom — a previous benign result does not cover a new change</div>
+      <div><span class="pill pill-red">Safety-net 999</span></div><div>Hot, painful breast with high fever, shivering, confusion or feeling faint; new leg weakness or loss of bladder or bowel control with back pain in someone with breast cancer</div>
+      <div><span class="pill pill-red">Safety-net same-day</span></div><div>Breast redness spreading quickly, a hot painful swelling, or feeling unwell with a breast infection; on antibiotics and worse after 48 hours</div>
+      <div>Return soon</div><div>Any new lump, skin dimpling, nipple turning in, bloodstained or one-sided discharge, or a lump that does not go after a period</div>
+    </div>
+  </div>
+  <div class="why-row">
+    <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
+    <div class="why-drawer">
+      <p>Failure to follow up referrals is a recurrent theme in delayed cancer diagnosis. Document examination findings, the chaperone offer, the referral route and the safety-net advice.</p>
+    </div>
+  </div>
+</div>
+
+</div><!-- end alg-flow -->
+
+<div class="alg-foot">
+  <strong>Educational use only.</strong> Based on: NICE NG12 (Suspected cancer: recognition and referral, 2015, updated April 2026), NICE CKS Breast cancer — recognition and referral and Breast pain (cyclical and non-cyclical) and Mastitis and breast abscess, NICE CG164 (Familial breast cancer, updated 2023), Association of Breast Surgery guidance for the management of symptomatic breast disease, NHS Breast Screening Programme (NHS England), NHS England Faster Diagnosis Standard. Check doses against the current SPC, BNF/BNFC and local formulary. Always adapt to individual patient context, comorbidities, and local pathways. Not a substitute for clinical judgement.
+</div>
+
+<script>
+(function(){
+  const KEY='rgp.alg.breast-symptoms.v1';
+  const nodes=document.querySelectorAll('.node[data-step]');
+  const pDone=document.getElementById('pDone');
+  const pFill=document.getElementById('pFill');
+  const total=nodes.length;
+  document.getElementById('pTotal').textContent=total;
+
+  function save(){
+    const state={};
+    nodes.forEach(n=>{state[n.dataset.step]=n.querySelector('input[type=checkbox]').checked;});
+    localStorage.setItem(KEY,JSON.stringify(state));
+  }
+  function load(){
+    try{const s=JSON.parse(localStorage.getItem(KEY)||'{}');
+      nodes.forEach(n=>{const cb=n.querySelector('input[type=checkbox]');if(s[n.dataset.step]){cb.checked=true;n.classList.add('done');}});}catch(e){}
+  }
+  function updateProgress(){
+    const done=document.querySelectorAll('.node.done').length;
+    pDone.textContent=done;
+    pFill.style.width=((done/total)*100)+'%';
+  }
+  nodes.forEach(n=>{
+    const cb=n.querySelector('input[type=checkbox]');
+    cb.addEventListener('change',()=>{
+      n.classList.toggle('done',cb.checked);
+      save();updateProgress();
+    });
+  });
+  document.querySelectorAll('.why-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded',String(!expanded));
+      btn.nextElementSibling.classList.toggle('open',!expanded);
+    });
+  });
+  document.getElementById('resetBtn').addEventListener('click',()=>{
+    if(!confirm('Reset all progress?'))return;
+    nodes.forEach(n=>{n.querySelector('input[type=checkbox]').checked=false;n.classList.remove('done');});
+    localStorage.removeItem(KEY);updateProgress();
+  });
+  load();updateProgress();
+})();
+</script>
+<script src="../../assets/alg-nav.js?v=3"></script>
+<script src="../../assets/topic-links.js?v=10"></script>
+<script src="../../assets/alg-diagram.js"></script>
+<script src="../../assets/provenance.js?v=15"></script>
+</body>
+</html>
