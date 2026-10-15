@@ -130,7 +130,7 @@ def segments(texts):
     segs = []
     for t in texts:
         t = clean(t)
-        for s in re.split(r'(?<=[.;])\s+|\s+·\s+|\s+—\s+(?=[A-Z])', t):
+        for s in re.split(r'(?<=[.])\s+|\s+·\s+|\s+—\s+(?=[A-Z])', t):
             if s: segs.append(s)
     return segs
 
@@ -147,9 +147,18 @@ def mentions(text, lex):
             taken.append((m.start(), m.end())); out.append((m.start(), ALIAS.get(w, w)))
     return sorted(out)
 
-def per_drug(text, lex, default=None):
-    """amounts in text, each given to the nearest drug named before it (or to `default`)"""
+def per_drug(text, lex, default=None, names=None):
+    """amounts in text, each given to the nearest drug named before it (or to `default`).
+    A card line such as "Paracetamol ± ibuprofen — 1 g / 400 mg" (no drug named in the dose, two in the
+    name, amounts split by " / ") gives the amounts to the named drugs in order."""
     ms = mentions(text, lex); res = {}
+    if not ms and names and len(names) > 1:
+        groups = re.split(r'\s+/\s+', re.split(r'\s{2,}|\s(?=[A-Z]{2,}\b)', text)[0])
+        if len(groups) == len(names):
+            for g, d in zip(groups, names):
+                a = amounts(g)
+                if a: res.setdefault(d, set()).update(a)
+            return res
     for m in DOSE_RE.finditer(text):
         prev = [w for p, w in ms if p < m.start()]
         d = prev[-1] if prev else default
@@ -195,7 +204,12 @@ def main():
         for d in p.get('drugs') or []:
             name = clean(d.get('name', '')); dose = clean(' '.join(str(d.get(k) or '') for k in ('dose', 'freq', 'days')))
             first = mentions(name, lex)
-            for drug, am in per_drug(dose, lex, first[0][1] if first else None).items():
+            dose_only = clean(str(d.get('dose') or ''))
+            got = per_drug(dose_only, lex, first[0][1] if first else None, [w for _, w in first])
+            got2 = per_drug(dose, lex, first[0][1] if first else None)
+            for k2, v2 in got2.items():
+                if k2 not in got: got[k2] = v2
+            for drug, am in got.items():
                 compare(slug, drug, am, name + ' — ' + dose, 'Ready Prescription', p['id'])
     # Medication options
     for topic, t in D['meds'].items():

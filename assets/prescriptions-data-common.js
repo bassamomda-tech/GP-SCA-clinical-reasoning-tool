@@ -212,7 +212,7 @@ Safety-net: weight loss, bleeding, nocturnal/anaemia, ≥60 change in habit → 
     duration: 'Cyclical (during periods) or device (LNG-IUS)',
     drugs: [
       { name: 'LNG-IUS (Mirena) — 1st line', dose: '1 device', freq: 'Fit', route: 'IU', days: '5 years for HMB (licence); may continue up to 8 years if symptoms controlled' },
-      { name: 'Tranexamic acid (no dysmenorrhoea)', dose: 'Exact dose per the current SPC and the Greater Manchester formulary', freq: 'Started when bleeding begins', route: 'PO', days: 'During the period; stop if no improvement after 3 cycles' },
+      { name: 'Tranexamic acid (no dysmenorrhoea)', dose: '1 g', freq: 'TDS', route: 'PO', days: 'During heavy days (up to 4 days)' },
       { name: 'Mefenamic acid (if pain too)', dose: '500 mg', freq: 'TDS', route: 'PO', days: 'During period' },
     ],
     altRegimens: [
@@ -231,7 +231,7 @@ Safety-net: weight loss, bleeding, nocturnal/anaemia, ≥60 change in habit → 
     ],
     emisText: `Heavy menstrual bleeding (no sinister cause):
 - 1st line: LNG-IUS (Mirena). Check FBC/ferritin, treat iron deficiency.
-- Non-hormonal during periods: Tranexamic acid, started when bleeding begins — exact dose per the current SPC and the Greater Manchester formulary (no dysmenorrhoea) OR Mefenamic acid 500 mg TDS (if pain).
+- Non-hormonal during periods: Tranexamic acid 1 g TDS (no dysmenorrhoea) OR Mefenamic acid 500 mg TDS (if pain).
 - Alternatives: CHC or norethisterone 5 mg TDS days 5–26.
 Safety-net/suspected cancer pathway referral: PMB, persistent IMB/PCB, ≥45 treatment failure → gynae + TV USS.`,
     sources: [

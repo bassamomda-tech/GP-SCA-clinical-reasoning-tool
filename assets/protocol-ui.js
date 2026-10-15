@@ -1310,12 +1310,13 @@ PX.ready(function(){
      START — after the layout (A/B/C/D) has run, if any
      ========================================================= */
   function start(){
-    if(isPrintCopy() || !root() || API._started) return;
-    if(!sections().length) return;
+    if(API._started) return;
+    if(isPrintCopy() || !root() || !sections().length){ if(W.__pxReveal) W.__pxReveal(); return; }
     API._started = true;
     D.documentElement.classList.add('pxa');
     var steps = [applyRedFlags, addUrgency, addDrugBoxes, addCopy, addGive, addSearch, addBadge];
     steps.forEach(function(fn){ try{ fn(); }catch(e){ if(W.console) console.warn('protocol add-on skipped:', fn.name, e); } });
+    W.__pxDone = true; if(W.__pxReveal) W.__pxReveal();
   }
   API.start = start;
   function wait(){
@@ -1328,8 +1329,7 @@ PX.ready(function(){
     })();
   }
   function boot(){
-    if(W.PROTOCOL_UI_NO_BOOT || isPrintCopy()) return;
-    if(!root()) return;                                   /* not a protocol page: do nothing */
+    if(W.PROTOCOL_UI_NO_BOOT || isPrintCopy() || !root()){ if(W.__pxReveal) W.__pxReveal(); return; }                                   /* not a protocol page: do nothing */
     if(W.PX && W.PX.ready) W.PX.ready(function(){ setTimeout(start, 0); });   /* after the layout */
     else wait();
   }

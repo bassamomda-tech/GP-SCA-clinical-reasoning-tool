@@ -176,7 +176,18 @@ var ALG_STEPPER_SKIP = [];
           t.querySelector('.st-tog-l').textContent = on ? 'Close' : 'Open step'; }
       });
     }
-    function setCur(n, scroll){ cur = n; sync(); if(scroll && n) scrollToEl(n); }
+    function setCur(n, scroll, keep){
+      /* keep: the header the user clicked stays where it was on screen, so closing a
+         longer step above it never pushes it off the top of the page */
+      var y0 = keep ? keep.getBoundingClientRect().top : 0;
+      cur = n; sync();
+      if(scroll && n){ scrollToEl(n); return; }
+      if(keep){
+        var y1 = keep.getBoundingClientRect().top;
+        if(Math.abs(y1 - y0) > 1) W.scrollBy(0, y1 - y0);
+        if(keep.getBoundingClientRect().top < stickyTop() - 14) scrollToEl(keep);
+      }
+    }
 
     nodes.forEach(function(n, i){
       var hdr = n.firstElementChild, body = n.querySelector('.node-body');
@@ -189,10 +200,10 @@ var ALG_STEPPER_SKIP = [];
       tog.setAttribute('aria-label', 'Step ' + no + ': ' + title(n));
       tog.innerHTML = '<span class="st-tog-l">Open step</span><span class="st-chev" aria-hidden="true">▾</span>';
       var tk = hdr.querySelector(':scope > .node-tick'); hdr.insertBefore(tog, tk || null);
-      tog.addEventListener('click', function(e){ e.stopPropagation(); setCur(cur === n ? null : n, false); });
+      tog.addEventListener('click', function(e){ e.stopPropagation(); setCur(cur === n ? null : n, false, n); });
       hdr.addEventListener('click', function(e){
         if(e.target.closest('.node-tick, a, button, input, label')) return;
-        if(cur !== n) setCur(n, false);
+        if(cur !== n) setCur(n, false, n);
       });
       var nx = nodes[i + 1];
       if(nx){

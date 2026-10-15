@@ -622,8 +622,30 @@
     var me = document.currentScript && document.currentScript.src;
     if(!me) return;
     if(document.querySelector('meta[name="omelette-print-source"]') || /-print\.html$/i.test(location.pathname)) return;
-    var base = me.replace(/[^\/]*$/, ''), V = '?v=5';
+    var base = me.replace(/[^\/]*$/, ''), V = '?v=6';
     var head = document.head || document.documentElement;
+    /* No flicker: keep the page hidden until protocol-ui.js has laid it out, so the
+       old layout never shows for a moment. protocol-ui.js calls __pxReveal when done;
+       a 2.5 s timer and a 3 s CSS fallback show the page whatever happens. */
+    var de = document.documentElement;
+    if(!window.__pxReveal){
+      de.classList.add('px-boot');
+      var bs = document.createElement('style'); bs.id = 'pxBootCss';
+      bs.textContent = '@media screen{html.px-boot body{opacity:0;animation:pxBootFailsafe 0s linear 3s forwards}}@keyframes pxBootFailsafe{to{opacity:1}}';
+      head.appendChild(bs);
+      var shown = false;
+      window.__pxReveal = function(){
+        if(shown) return;
+        var n = 0;
+        (function go(){
+          var css = document.querySelector('link[href*="protocol-ui.css"]');
+          if(css && !css.sheet && ++n < 40){ setTimeout(go, 30); return; }
+          shown = true;
+          requestAnimationFrame(function(){ de.classList.remove('px-boot'); });
+        })();
+      };
+      setTimeout(window.__pxReveal, 2500);
+    }
     if(!document.querySelector('link[href*="protocol-ui.css"]')){
       var l = document.createElement('link'); l.rel = 'stylesheet'; l.href = base + 'protocol-ui.css' + V; head.appendChild(l);
     }

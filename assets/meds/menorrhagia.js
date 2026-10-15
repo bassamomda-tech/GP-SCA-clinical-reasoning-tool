@@ -50,14 +50,14 @@ MedChooser.register('menorrhagia', {
     {
       id:'tranexamic',
       name:'Tranexamic acid',
-      examples:'Tranexamic acid, started when bleeding begins — exact dose per the current SPC and the Greater Manchester formulary',
+      examples:'Tranexamic acid 1 g TDS during menses',
       step:'1st-line non-hormonal',
       source:'NICE NG88 §1.4',
       sideEffects:'GI upset; theoretical thrombosis risk (avoid in active VTE)',
       monitor:'Take only on heavy days; stop if no benefit after 3 cycles',
       counsel:'"A non-hormonal tablet you take only during your period to reduce the flow by about a third — it doesn\'t affect your cycle or fertility, so it\'s ideal if you\'re trying for a baby."',
       detail:{
-        'Dose': 'Tranexamic acid, started when bleeding begins. Exact doses per the current SPC and the Greater Manchester formulary',
+        'Dose': 'Tranexamic acid 1 g TDS for up to 4 days, starting when bleeding begins',
         'Key teaching': 'First-line where hormonal treatment is declined or contraindicated, or when trying to conceive. Does not provide contraception.'
       },
       conditions: [

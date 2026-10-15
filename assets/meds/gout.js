@@ -46,14 +46,14 @@ MedChooser.register('gout', {
     {
       id:'colchicine',
       name:'Colchicine',
-      examples:'Dose per current UK product information/local formulary — lowest effective dose',
+      examples:'500 mcg 2–4× daily until symptoms settle (max 6 mg/course)',
       step:'Acute — first-line (NSAID-unsuitable)',
       source:'NICE NG219 · BNF',
       sideEffects:'Diarrhoea (dose-limiting), nausea; toxicity in renal/hepatic impairment',
       monitor:'Reduce dose in CKD; beware interactions',
       counsel:'"Take it 2–4 times a day until the pain eases. The main side effect is diarrhoea — if that happens, drop the dose."',
       detail:{
-        'Dose':'Dose per current UK product information/local formulary — lowest effective dose; check renal and hepatic function and interacting medicines first. Do not repeat courses without reviewing cumulative exposure. Works best started early.',
+        'Dose':'500 mcg 2–4 times daily until the attack settles; do not exceed 6 mg per course and do not repeat within 3 days.',
         'Interactions':'Statins (myopathy), clarithromycin/erythromycin, diltiazem/verapamil, ciclosporin — reduce dose / avoid.',
         'Key teaching':'Preferred acute option when NSAIDs are contraindicated. Lower dose and caution in CKD; avoid in severe renal/hepatic impairment.'
       },
@@ -106,7 +106,7 @@ MedChooser.register('gout', {
       detail:{
         'Dose':'Start 100 mg OD (50 mg if eGFR <60); titrate by 100 mg every ~4 weeks against serum urate. Treat-to-target urate <360 µmol/L (<300 if tophi/chronic).',
         'Interactions':'Azathioprine/6-MP (avoid — myelosuppression), capecitabine; caution with amoxicillin (rash).',
-        'Key teaching':'First-line ULT. Co-prescribe colchicine (low dose per product information, by renal function) (or low-dose NSAID/steroid) as flare prophylaxis for up to 6 months. Do not start during an acute attack, but never stop established ULT during a flare.'
+        'Key teaching':'First-line ULT. Co-prescribe colchicine 500 mcg OD/BD (or low-dose NSAID/steroid) as flare prophylaxis for up to 6 months. Do not start during an acute attack, but never stop established ULT during a flare.'
       },
       conditions: [
         {"kind":"avoid","label":"Transplant / on azathioprine","text":"On azathioprine — allopurinol blocks its metabolism → severe myelosuppression. Avoid; specialist advice."},

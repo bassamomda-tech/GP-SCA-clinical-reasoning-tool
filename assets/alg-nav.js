@@ -195,7 +195,7 @@
       };
       var both = function(){ ui(); head(); };
       if (window.__algStepper) both();
-      else { var st = document.createElement('script'); st.src = base + 'alg-stepper.js?v=2'; st.onload = both; st.onerror = both; document.head.appendChild(st); }
+      else { var st = document.createElement('script'); st.src = base + 'alg-stepper.js?v=3'; st.onload = both; st.onerror = both; document.head.appendChild(st); }
     }
   })();
 })();
