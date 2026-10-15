@@ -1,51 +1,22 @@
 /* ============================================
    Medication Chooser — Migraine (acute + prophylaxis)
    NICE CG150 Headache · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('migraine', {
   title: 'Migraine — acute treatment & prophylaxis',
-  subtitle: 'Two decisions sit side by side: abort the attack, and decide whether prophylaxis is warranted. NICE CG150 recommends a triptan + NSAID/paracetamol for the acute attack, and (since June 2025) advises considering propranolol, topiramate or amitriptyline for prevention — choice is driven by comorbidity, contraception, and pregnancy. Tick the profile; cards re-tier live.',
+  subtitle: 'Two decisions sit side by side: abort the attack, and decide whether prophylaxis is warranted. NICE CG150 recommends a triptan + NSAID/paracetamol for the acute attack, and (since June 2025) advises considering propranolol, topiramate or amitriptyline for prevention — choice is driven by comorbidity, contraception, and pregnancy.',
   guideline: 'NICE CG150 · BNF',
 
-  factors: [
-    { group:'Decision', id:'phase', label:'Which decision?', options:[
-      { value:'acute', label:'Acute attack — abort the headache' },
-      { value:'prevent', label:'Prophylaxis — reduce frequency' }
-    ]},
 
-    { group:'Migraine pattern', id:'aura', label:'Migraine WITH aura', note:'Avoid oestrogen contraception' },
-    { group:'Migraine pattern', id:'frequent', label:'≥4 migraine days/month or significant disability', note:'Offer prophylaxis' },
-    { group:'Migraine pattern', id:'menstrual', label:'Clear menstrual pattern' },
-    { group:'Migraine pattern', id:'overuse', label:'Acute meds ≥10–15 days/month', note:'Medication-overuse headache' },
-
-    { group:'Demographics', id:'preg', label:'Pregnant or planning pregnancy' },
-    { group:'Demographics', id:'bf', label:'Breastfeeding' },
-    { group:'Demographics', id:'cbp', label:'Woman of childbearing potential', note:'Topiramate / valproate teratogenicity' },
-    { group:'Demographics', id:'elderly', label:'Age ≥65 / vascular risk factors' },
-
-    { group:'Cardiovascular', id:'ihd', label:'IHD / cerebrovascular / PAD', note:'Triptans contraindicated' },
-    { group:'Cardiovascular', id:'uncontrolled_htn', label:'Uncontrolled hypertension', note:'Triptans contraindicated' },
-    { group:'Cardiovascular', id:'asthma', label:'Asthma', note:'Propranolol contraindicated' },
-    { group:'Cardiovascular', id:'lowbp', label:'Low BP / bradycardia' },
-
-    { group:'Other comorbidity', id:'depression', label:'Depression / low mood' },
-    { group:'Other comorbidity', id:'anxiety_insomnia', label:'Anxiety or insomnia' },
-    { group:'Other comorbidity', id:'epilepsy', label:'Coexisting epilepsy' },
-    { group:'Other comorbidity', id:'gibleed', label:'Peptic ulcer / GI bleed risk', note:'NSAID caution' },
-    { group:'Other comorbidity', id:'ckd', label:'CKD / eGFR <30', note:'NSAID caution' },
-    { group:'Other comorbidity', id:'nausea', label:'Prominent nausea / vomiting' },
-    { group:'Other comorbidity', id:'glaucoma', label:'Narrow-angle glaucoma / renal stones', note:'Avoid topiramate' }
+  safety: [
+    {"tone":"red","label":"Migraine WITH aura","text":"Migraine with aura — combined hormonal (oestrogen) contraception is contraindicated (stroke risk); switch to progestogen-only / non-hormonal"},
+    {"tone":"amber","label":"Acute meds ≥10–15 days/month","text":"Medication-overuse headache — withdraw the overused acute drug (abrupt for simple analgesics/triptans; consider prophylaxis cover) rather than escalating it"},
+    {"tone":"amber","label":"Pregnant or planning pregnancy","text":"Pregnancy — paracetamol first-line acute; avoid NSAIDs in 3rd trimester and triptans where avoidable (sumatriptan has most data if needed)"},
+    {"tone":"red","label":"Pregnant or planning pregnancy","text":"Topiramate and sodium valproate are teratogenic — do not use for prevention in pregnancy or without highly effective contraception (valproate effectively avoided in women of childbearing potential)"},
+    {"tone":"red","label":"IHD / cerebrovascular / PAD","text":"Triptans are contraindicated in ischaemic heart/cerebrovascular/peripheral arterial disease and uncontrolled hypertension"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.aura) out.push({ tone:'red', text:'Migraine with aura — combined hormonal (oestrogen) contraception is contraindicated (stroke risk); switch to progestogen-only / non-hormonal' });
-    if ((f.ihd || f.uncontrolled_htn) ) out.push({ tone:'red', text:'Triptans are contraindicated in ischaemic heart/cerebrovascular/peripheral arterial disease and uncontrolled hypertension' });
-    if (f.overuse) out.push({ tone:'amber', text:'Medication-overuse headache — withdraw the overused acute drug (abrupt for simple analgesics/triptans; consider prophylaxis cover) rather than escalating it' });
-    if (f.preg && f.phase!=='prevent') out.push({ tone:'amber', text:'Pregnancy — paracetamol first-line acute; avoid NSAIDs in 3rd trimester and triptans where avoidable (sumatriptan has most data if needed)' });
-    if ((f.preg || f.cbp) ) out.push({ tone:'red', text:'Topiramate and sodium valproate are teratogenic — do not use for prevention in pregnancy or without highly effective contraception (valproate effectively avoided in women of childbearing potential)' });
-    return out;
-  },
 
   drugs: [
     // ---------- ACUTE ----------
@@ -62,17 +33,15 @@ MedChooser.register('migraine', {
         'Dose':'Sumatriptan 50–100 mg at headache onset; may repeat after ≥2 h if it recurs (max per BNF). Combine with naproxen 250–500 mg or ibuprofen 400 mg. Nasal/SC sumatriptan if vomiting.',
         'Key teaching':'First-line per NICE CG150 — a triptan plus an NSAID (or paracetamol) works better than either alone. Treat early. If one triptan fails, try an alternative triptan before abandoning the class.'
       },
-      evaluate(f){
-        if (f.phase === 'prevent') return { tier:'avoid', reasons:[{kind:'neutral', text:'Acute drug — switch the decision toggle to "prophylaxis"'}] };
-        if (f.ihd || f.uncontrolled_htn) return { tier:'avoid', reasons:[{kind:'bad', text:'Triptan contraindicated in IHD/cerebrovascular/PAD or uncontrolled hypertension — use NSAID/paracetamol ± antiemetic'}] };
-        const r = [];
-        if (f.preg) r.push({kind:'bad', text:'Pregnancy — prefer paracetamol; use sumatriptan only if needed (most pregnancy data)'});
-        if (f.elderly) r.push({kind:'bad', text:'Age ≥65 / vascular risk — assess cardiovascular risk before a triptan'});
-        if (f.gibleed || f.ckd) r.push({kind:'bad', text:'Use paracetamol rather than the NSAID component (GI/renal risk)'});
-        if (f.overuse) r.push({kind:'bad', text:'Triptan/analgesic overuse — limit days and withdraw; do not escalate'});
-        if (r.some(x=>x.kind==='bad')) return { tier:'acceptable', reasons:r };
-        return { tier:'preferred', reasons:[{kind:'good', text:'First-line: triptan + NSAID/paracetamol, taken early in the attack'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"IHD / cerebrovascular / PAD","text":"Triptan contraindicated in IHD/cerebrovascular/PAD or uncontrolled hypertension — use NSAID/paracetamol ± antiemetic"},
+        {"kind":"avoid","label":"Uncontrolled hypertension","text":"Triptan contraindicated in IHD/cerebrovascular/PAD or uncontrolled hypertension — use NSAID/paracetamol ± antiemetic"},
+        {"kind":"caution","label":"Acute meds ≥10–15 days/month","text":"Triptan/analgesic overuse — limit days and withdraw; do not escalate"},
+        {"kind":"caution","label":"Pregnant or planning pregnancy","text":"Pregnancy — prefer paracetamol; use sumatriptan only if needed (most pregnancy data)"},
+        {"kind":"caution","label":"Age ≥65 / vascular risk factors","text":"Age ≥65 / vascular risk — assess cardiovascular risk before a triptan"},
+        {"kind":"caution","label":"Peptic ulcer / GI bleed risk","text":"Use paracetamol rather than the NSAID component (GI/renal risk)"},
+        {"kind":"caution","label":"CKD / eGFR <30","text":"Use paracetamol rather than the NSAID component (GI/renal risk)"}
+      ]
     },
     {
       id:'simple_analgesia',
@@ -87,15 +56,15 @@ MedChooser.register('migraine', {
         'Dose':'Aspirin 900 mg, ibuprofen 400 mg or naproxen at onset; paracetamol 1 g if NSAID unsuitable. Soluble/effervescent preparations act faster.',
         'Key teaching':'Reasonable first step for milder attacks and the safe fallback when triptans are contraindicated. Paracetamol is the acute drug of choice in pregnancy.'
       },
-      evaluate(f){
-        if (f.phase === 'prevent') return { tier:'avoid', reasons:[{kind:'neutral', text:'Acute drug — switch to "prophylaxis"'}] };
-        const useParacetamol = f.gibleed || f.ckd || f.preg;
-        const r = [];
-        if (f.ihd || f.uncontrolled_htn) r.push({kind:'good', text:'Safe alternative where triptans are contraindicated'});
-        if (useParacetamol) r.push({kind:'neutral', text:'Use paracetamol rather than NSAID/aspirin here (GI/renal/pregnancy)'});
-        if (f.overuse) r.push({kind:'bad', text:'Overuse headache — keep simple analgesics <15 days/month and withdraw if exceeded'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Effective for milder attacks; combine with a triptan for better response'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Which decision?: Prophylaxis — reduce frequency","text":"Acute drug — switch to \"prophylaxis\""},
+        {"kind":"caution","label":"Acute meds ≥10–15 days/month","text":"Overuse headache — keep simple analgesics <15 days/month and withdraw if exceeded"},
+        {"kind":"favoured","label":"IHD / cerebrovascular / PAD","text":"Safe alternative where triptans are contraindicated"},
+        {"kind":"favoured","label":"Uncontrolled hypertension","text":"Safe alternative where triptans are contraindicated"},
+        {"kind":"note","label":"Pregnant or planning pregnancy","text":"Use paracetamol rather than NSAID/aspirin here (GI/renal/pregnancy)"},
+        {"kind":"note","label":"Peptic ulcer / GI bleed risk","text":"Use paracetamol rather than NSAID/aspirin here (GI/renal/pregnancy)"},
+        {"kind":"note","label":"CKD / eGFR <30","text":"Use paracetamol rather than NSAID/aspirin here (GI/renal/pregnancy)"}
+      ]
     },
     {
       id:'antiemetic',
@@ -110,38 +79,35 @@ MedChooser.register('migraine', {
         'Dose':'Metoclopramide 10 mg (max 5 days, avoid in young women where possible) or prochlorperazine. Buccal/IM useful if vomiting.',
         'Key teaching':'Add to acute treatment when nausea/vomiting is prominent — also improves absorption of oral analgesia. Offer even without vomiting per NICE CG150.'
       },
-      evaluate(f){
-        if (f.phase === 'prevent') return { tier:'avoid', reasons:[{kind:'neutral', text:'Acute adjunct — switch to "prophylaxis"'}] };
-        if (f.nausea) return { tier:'preferred', reasons:[{kind:'good', text:'Prominent nausea/vomiting — add an antiemetic and use a non-oral route if vomiting'}] };
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Useful adjunct; NICE CG150 advises offering even without nausea to aid analgesic absorption'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Which decision?: Prophylaxis — reduce frequency","text":"Acute adjunct — switch to \"prophylaxis\""},
+        {"kind":"favoured","label":"Prominent nausea / vomiting","text":"Prominent nausea/vomiting — add an antiemetic and use a non-oral route if vomiting"}
+      ]
     },
 
     // ---------- PROPHYLAXIS ----------
     {
       id:'propranolol',
       name:'Propranolol (beta-blocker)',
-      examples:'80 mg/day in divided doses, up to 160 mg',
+      examples:'Propranolol MR 80 mg → 160 mg/day',
       step:'Prophylaxis — CG150 option',
       source:'NICE CG150',
       sideEffects:'Fatigue, cold extremities, bradycardia, vivid dreams; bronchospasm',
       monitor:'HR/BP; review benefit at 2–3 months at adequate dose',
       counsel:'"This is a daily preventer — give it 2–3 months at a proper dose before we judge it. It can make you feel a bit tired or cold-handed at first."',
       detail:{
-        'Dose':'Start 80 mg/day (often 40 mg BD), titrate to 80–160 mg/day. Trial for at least 2–3 months at target dose.',
+        'Dose':'Propranolol MR 80 mg → 160 mg/day. Trial for at least 2–3 months at target dose.',
         'Key teaching':'A CG150 preventive to consider (June 2025 amendment) and the safest of the three in women of childbearing potential and pregnancy. Avoid in asthma.'
       },
-      evaluate(f){
-        if (f.phase === 'acute') return { tier:'avoid', reasons:[{kind:'neutral', text:'Daily preventer — switch to "acute attack" for abortive options'}] };
-        if (f.asthma) return { tier:'avoid', reasons:[{kind:'bad', text:'Asthma — non-selective beta-blocker contraindicated; use topiramate or amitriptyline'}] };
-        const r = [];
-        if (f.lowbp) r.push({kind:'bad', text:'Low BP/bradycardia — beta-blocker may worsen; consider alternative'});
-        if (f.preg || f.cbp) r.push({kind:'good', text:'Preferred preventer in pregnancy / childbearing potential (avoids teratogenic topiramate/valproate)'});
-        if (f.uncontrolled_htn) r.push({kind:'good', text:'Coexisting hypertension — dual benefit'});
-        if (f.depression) r.push({kind:'neutral', text:'Use with awareness of possible mood/fatigue effects'});
-        if (r.some(x=>x.kind==='bad')) return { tier:'acceptable', reasons:r };
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'CG150 prophylaxis option; trial 2–3 months at adequate dose'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Which decision?: Acute attack — abort the headache","text":"Daily preventer — switch to \"acute attack\" for abortive options"},
+        {"kind":"avoid","label":"Asthma","text":"Asthma — non-selective beta-blocker contraindicated; use topiramate or amitriptyline"},
+        {"kind":"caution","label":"Low BP / bradycardia","text":"Low BP/bradycardia — beta-blocker may worsen; consider alternative"},
+        {"kind":"favoured","label":"Pregnant or planning pregnancy","text":"Preferred preventer in pregnancy / childbearing potential (avoids teratogenic topiramate/valproate)"},
+        {"kind":"favoured","label":"Woman of childbearing potential","text":"Preferred preventer in pregnancy / childbearing potential (avoids teratogenic topiramate/valproate)"},
+        {"kind":"favoured","label":"Uncontrolled hypertension","text":"Coexisting hypertension — dual benefit"},
+        {"kind":"note","label":"Depression / low mood","text":"Use with awareness of possible mood/fatigue effects"}
+      ]
     },
     {
       id:'amitriptyline',
@@ -156,15 +122,14 @@ MedChooser.register('migraine', {
         'Dose':'Start 10 mg nocte, titrate slowly to 25–75 mg as tolerated. Off-label but well established.',
         'Key teaching':'Good choice where there is coexisting depression, anxiety, insomnia or tension-type headache. Anticholinergic load — caution in the elderly.'
       },
-      evaluate(f){
-        if (f.phase === 'acute') return { tier:'avoid', reasons:[{kind:'neutral', text:'Daily preventer — switch to "acute attack"'}] };
-        const r = [];
-        if (f.depression || f.anxiety_insomnia) r.push({kind:'good', text:'Coexisting low mood / anxiety / insomnia — single drug covers both'});
-        if (f.asthma) r.push({kind:'good', text:'Suitable where propranolol contraindicated by asthma'});
-        if (f.preg) r.push({kind:'neutral', text:'Used in pregnancy if needed (specialist/shared decision); propranolol generally preferred'});
-        if (f.elderly) r.push({kind:'bad', text:'Elderly — anticholinergic/sedation and falls risk; start very low or avoid'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'First-line option; particularly if sleep/mood symptoms coexist'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Which decision?: Acute attack — abort the headache","text":"Daily preventer — switch to \"acute attack\""},
+        {"kind":"caution","label":"Age ≥65 / vascular risk factors","text":"Elderly — anticholinergic/sedation and falls risk; start very low or avoid"},
+        {"kind":"favoured","label":"Asthma","text":"Suitable where propranolol contraindicated by asthma"},
+        {"kind":"favoured","label":"Depression / low mood","text":"Coexisting low mood / anxiety / insomnia — single drug covers both"},
+        {"kind":"favoured","label":"Anxiety or insomnia","text":"Coexisting low mood / anxiety / insomnia — single drug covers both"},
+        {"kind":"note","label":"Pregnant or planning pregnancy","text":"Used in pregnancy if needed (specialist/shared decision); propranolol generally preferred"}
+      ]
     },
     {
       id:'topiramate',
@@ -179,17 +144,15 @@ MedChooser.register('migraine', {
         'Dose':'Start 25 mg nocte, titrate to 50–100 mg/day in 2 divided doses.',
         'Key teaching':'Effective but teratogenic and reduces hormonal contraceptive efficacy at higher doses — subject to the MHRA Pregnancy Prevention Programme. Avoid with glaucoma/renal stones. Useful where weight loss is desirable.'
       },
-      evaluate(f){
-        if (f.phase === 'acute') return { tier:'avoid', reasons:[{kind:'neutral', text:'Daily preventer — switch to "acute attack"'}] };
-        if (f.preg) return { tier:'avoid', reasons:[{kind:'bad', text:'Teratogenic — contraindicated in pregnancy'}] };
-        if (f.glaucoma) return { tier:'avoid', reasons:[{kind:'bad', text:'Narrow-angle glaucoma / renal stones — avoid topiramate'}] };
-        const r = [];
-        if (f.cbp) r.push({kind:'bad', text:'Childbearing potential — only under the Pregnancy Prevention Programme with highly effective contraception; reduces hormonal contraceptive efficacy'});
-        if (f.epilepsy) r.push({kind:'good', text:'Coexisting epilepsy — single drug may treat both'});
-        if (f.asthma) r.push({kind:'good', text:'Suitable where propranolol contraindicated'});
-        if (f.depression) r.push({kind:'bad', text:'Can worsen mood/cognition — caution with depression'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Effective CG150 preventer option; weigh cognitive/teratogenic risks'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Which decision?: Acute attack — abort the headache","text":"Daily preventer — switch to \"acute attack\""},
+        {"kind":"avoid","label":"Pregnant or planning pregnancy","text":"Teratogenic — contraindicated in pregnancy"},
+        {"kind":"avoid","label":"Narrow-angle glaucoma / renal stones","text":"Narrow-angle glaucoma / renal stones — avoid topiramate"},
+        {"kind":"caution","label":"Woman of childbearing potential","text":"Childbearing potential — only under the Pregnancy Prevention Programme with highly effective contraception; reduces hormonal contraceptive efficacy"},
+        {"kind":"caution","label":"Depression / low mood","text":"Can worsen mood/cognition — caution with depression"},
+        {"kind":"favoured","label":"Asthma","text":"Suitable where propranolol contraindicated"},
+        {"kind":"favoured","label":"Coexisting epilepsy","text":"Coexisting epilepsy — single drug may treat both"}
+      ]
     },
     {
       id:'menstrual_prophylaxis',
@@ -204,12 +167,10 @@ MedChooser.register('migraine', {
         'Dose':'Frovatriptan 2.5 mg BD (or zolmitriptan) from 2 days before until 3 days after onset of menstruation; or naproxen perimenstrually.',
         'Key teaching':'Mini-prophylaxis for predictable, pure menstrual migraine. Standard daily prophylaxis remains the option if attacks are not confined to menstruation.'
       },
-      evaluate(f){
-        if (f.phase === 'acute') return { tier:'avoid', reasons:[{kind:'neutral', text:'Preventive strategy — switch to "prophylaxis"'}] };
-        if (!f.menstrual) return { tier:'acceptable', reasons:[{kind:'neutral', text:'Only relevant for a clear menstrual pattern — tick that factor'}] };
-        if (f.ihd || f.uncontrolled_htn) return { tier:'avoid', reasons:[{kind:'bad', text:'Triptan contraindicated — use perimenstrual NSAID instead'}] };
-        return { tier:'preferred', reasons:[{kind:'good', text:'Clear menstrual pattern — targeted perimenstrual prophylaxis avoids daily medication'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Which decision?: Acute attack — abort the headache","text":"Preventive strategy — switch to \"prophylaxis\""},
+        {"kind":"favoured","label":"Clear menstrual pattern","text":"Clear menstrual pattern — targeted perimenstrual prophylaxis avoids daily medication"}
+      ]
     }
   ],
 

@@ -1,37 +1,20 @@
 /* ============================================
    Medication Chooser — Hyperthyroidism
    NICE NG145 · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('hyperthyroidism', {
   title: 'Hyperthyroidism — antithyroid therapy',
-  subtitle: 'Carbimazole is first-line for most. The choices that move are: PTU in the first trimester of pregnancy and thyroid storm; block-and-replace vs titration; a beta-blocker for symptom relief; and when to favour radioiodine or surgery. Tick the profile; cards re-tier live.',
+  subtitle: 'Carbimazole is first-line for most. The choices that move are: PTU in the first trimester of pregnancy and thyroid storm; block-and-replace vs titration; a beta-blocker for symptom relief; and when to favour radioiodine or surgery.',
   guideline: 'NICE NG145 · BNF',
 
-  factors: [
-    { group:'Cause', id:'graves', label:'Graves\' disease' },
-    { group:'Cause', id:'nodular', label:'Toxic nodular goitre / adenoma' },
 
-    { group:'Pregnancy', id:'pregnant_t1', label:'Pregnant — 1st trimester' },
-    { group:'Pregnancy', id:'pregnant_late', label:'Pregnant — 2nd/3rd trimester' },
-    { group:'Pregnancy', id:'planning', label:'Planning pregnancy / breastfeeding' },
-
-    { group:'Symptoms / safety', id:'symptomatic', label:'Adrenergic symptoms (tremor, palpitations)' },
-    { group:'Symptoms / safety', id:'asthma', label:'Asthma' },
-    { group:'Symptoms / safety', id:'agranulo', label:'Sore throat/fever on antithyroid drug', note:'?agranulocytosis' },
-    { group:'Symptoms / safety', id:'storm', label:'Thyroid storm / very severe' },
-
-    { group:'Treatment route', id:'large_goitre', label:'Large goitre / compressive / suspicious nodule' },
-    { group:'Treatment route', id:'relapse', label:'Relapse after a drug course' },
-    { group:'Treatment route', id:'eye', label:'Active thyroid eye disease' }
+  safety: [
+    {"tone":"amber","label":"Pregnant — 1st trimester","text":"First trimester — PTU preferred (carbimazole embryopathy risk); switch to lowest effective dose with specialist endocrine/obstetric input."},
+    {"tone":"red","label":"Sore throat/fever on antithyroid drug","text":"Sore throat, mouth ulcers or fever on carbimazole/PTU → STOP the drug and check an urgent FBC TODAY — agranulocytosis. Counsel every patient on this before starting."},
+    {"tone":"red","label":"Thyroid storm / very severe","text":"Thyroid storm is a medical emergency — admit. PTU + beta-blocker + iodine (Lugol's, after PTU) + hydrocortisone under specialist care."}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.agranulo) out.push({ tone:'red', text:'Sore throat, mouth ulcers or fever on carbimazole/PTU → STOP the drug and check an urgent FBC TODAY — agranulocytosis. Counsel every patient on this before starting.' });
-    if (f.storm) out.push({ tone:'red', text:'Thyroid storm is a medical emergency — admit. PTU + beta-blocker + iodine (Lugol\'s, after PTU) + hydrocortisone under specialist care.' });
-    if (f.pregnant_t1) out.push({ tone:'amber', text:'First trimester — PTU preferred (carbimazole embryopathy risk); switch to lowest effective dose with specialist endocrine/obstetric input.' });
-    return out;
-  },
 
   drugs: [
     {
@@ -47,14 +30,13 @@ MedChooser.register('hyperthyroidism', {
         'Regimens':'Titration block: start higher, reduce to maintenance against TFTs. Block-and-replace: fixed carbimazole + levothyroxine (specialist, Graves\', ~12–18 months).',
         'Key teaching':'First-line for Graves\' and most hyperthyroidism. TSH stays suppressed for weeks — titrate on free T4/T3, not TSH. Counsel on agranulocytosis at every initiation.'
       },
-      evaluate(f){
-        if (f.pregnant_t1) return { tier:'avoid', reasons:[{kind:'bad', text:'First trimester — carbimazole embryopathy risk; use PTU'}] };
-        if (f.storm) return { tier:'acceptable', reasons:[{kind:'bad', text:'In storm, PTU preferred acutely (blocks T4→T3 conversion); carbimazole for ongoing control'}] };
-        const r = [];
-        if (f.graves || f.nodular) r.push({kind:'good', text:'First-line antithyroid drug; titration or block-and-replace'});
-        if (f.pregnant_late) r.push({kind:'good', text:'Can switch back to carbimazole after the first trimester (specialist-led)'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'First-line antithyroid therapy'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Pregnant — 1st trimester","text":"First trimester — carbimazole embryopathy risk; use PTU"},
+        {"kind":"caution","label":"Thyroid storm / very severe","text":"In storm, PTU preferred acutely (blocks T4→T3 conversion); carbimazole for ongoing control"},
+        {"kind":"favoured","label":"Graves' disease","text":"First-line antithyroid drug; titration or block-and-replace"},
+        {"kind":"favoured","label":"Toxic nodular goitre / adenoma","text":"First-line antithyroid drug; titration or block-and-replace"},
+        {"kind":"favoured","label":"Pregnant — 2nd/3rd trimester","text":"Can switch back to carbimazole after the first trimester (specialist-led)"}
+      ]
     },
     {
       id:'ptu',
@@ -66,12 +48,10 @@ MedChooser.register('hyperthyroidism', {
       monitor:'TFTs; warn re sore throat/fever; liver symptoms',
       counsel:'"We use this version in early pregnancy and in severe cases. Same urgent rule about sore throat/fever and a blood test — and tell us about any yellowing of the skin or severe tummy pain."',
       detail:{ 'Key teaching':'Preferred in the first trimester and in thyroid storm (also blocks peripheral T4→T3). Reserve otherwise because of a small risk of severe hepatotoxicity. Switch to carbimazole after the first trimester where possible.' },
-      evaluate(f){
-        if (f.pregnant_t1) return { tier:'preferred', reasons:[{kind:'good', text:'First trimester — preferred over carbimazole'}] };
-        if (f.storm) return { tier:'preferred', reasons:[{kind:'good', text:'Thyroid storm — blocks T4→T3 conversion; preferred acutely'}] };
-        const r = [{kind:'neutral', text:'Reserve for carbimazole intolerance — higher severe-hepatotoxicity risk'}];
-        return { tier:'acceptable', reasons:r };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Pregnant — 1st trimester","text":"First trimester — preferred over carbimazole"},
+        {"kind":"favoured","label":"Thyroid storm / very severe","text":"Thyroid storm — blocks T4→T3 conversion; preferred acutely"}
+      ]
     },
     {
       id:'betablocker',
@@ -83,11 +63,11 @@ MedChooser.register('hyperthyroidism', {
       monitor:'Short-term until antithyroid drug takes effect',
       counsel:'"While the main treatment kicks in, this quickly eases the racing heart, tremor and anxiety. It\'s usually short-term."',
       detail:{ 'Key teaching':'Adjunct for adrenergic symptoms while awaiting antithyroid effect / radioiodine. Non-selective propranolol also slightly reduces T4→T3 conversion.' },
-      evaluate(f){
-        if (f.asthma) return { tier:'acceptable', reasons:[{kind:'bad', text:'Asthma — avoid non-selective; if essential use cardioselective (e.g. bisoprolol) cautiously or a rate-limiting CCB (diltiazem)'}] };
-        if (f.symptomatic || f.storm) return { tier:'preferred', reasons:[{kind:'good', text:'Rapid symptom relief while antithyroid therapy takes effect'}] };
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Useful short-term symptomatic adjunct'}] };
-      }
+      conditions: [
+        {"kind":"caution","label":"Asthma","text":"Asthma — avoid non-selective; if essential use cardioselective (e.g. bisoprolol) cautiously or a rate-limiting CCB (diltiazem)"},
+        {"kind":"favoured","label":"Adrenergic symptoms (tremor, palpitations)","text":"Rapid symptom relief while antithyroid therapy takes effect"},
+        {"kind":"favoured","label":"Thyroid storm / very severe","text":"Rapid symptom relief while antithyroid therapy takes effect"}
+      ]
     },
     {
       id:'radioiodine',
@@ -99,14 +79,14 @@ MedChooser.register('hyperthyroidism', {
       monitor:'Lifelong TFTs; contraception advice',
       counsel:'"A one-off radioactive iodine treatment that\'s a permanent cure. It usually leaves the thyroid underactive, so you\'d take levothyroxine afterwards. There are pregnancy and contact precautions we\'d go through."',
       detail:{ 'Key teaching':'First-line definitive option for Graves\'/toxic nodular disease per NICE NG145, unless contraindicated. Avoid in pregnancy/breastfeeding; caution/relative contraindication in active thyroid eye disease (can worsen — steroid cover).' },
-      evaluate(f){
-        if (f.pregnant_t1 || f.pregnant_late || f.planning) return { tier:'avoid', reasons:[{kind:'bad', text:'Pregnancy/breastfeeding/planning — radioiodine contraindicated; avoid conception for months after'}] };
-        if (f.eye) return { tier:'acceptable', reasons:[{kind:'bad', text:'Active thyroid eye disease — can worsen; needs steroid cover / specialist decision'}] };
-        const r = [];
-        if (f.nodular) r.push({kind:'good', text:'Toxic nodular disease — effective definitive treatment'});
-        if (f.relapse) r.push({kind:'good', text:'Relapsed Graves\' after a drug course — consider definitive treatment'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Specialist definitive option; counsel re resulting hypothyroidism'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Pregnant — 1st trimester","text":"Pregnancy/breastfeeding/planning — radioiodine contraindicated; avoid conception for months after"},
+        {"kind":"avoid","label":"Pregnant — 2nd/3rd trimester","text":"Pregnancy/breastfeeding/planning — radioiodine contraindicated; avoid conception for months after"},
+        {"kind":"avoid","label":"Planning pregnancy / breastfeeding","text":"Pregnancy/breastfeeding/planning — radioiodine contraindicated; avoid conception for months after"},
+        {"kind":"caution","label":"Active thyroid eye disease","text":"Active thyroid eye disease — can worsen; needs steroid cover / specialist decision"},
+        {"kind":"favoured","label":"Toxic nodular goitre / adenoma","text":"Toxic nodular disease — effective definitive treatment"},
+        {"kind":"favoured","label":"Relapse after a drug course","text":"Relapsed Graves' after a drug course — consider definitive treatment"}
+      ]
     },
     {
       id:'surgery',
@@ -118,11 +98,10 @@ MedChooser.register('hyperthyroidism', {
       monitor:'Render euthyroid pre-op; lifelong levothyroxine + calcium check',
       counsel:'"Surgery to remove the thyroid is best when the gland is large and pressing, or there\'s a worrying nodule. You\'d be on thyroid replacement for life afterwards."',
       detail:{ 'Key teaching':'Preferred where there is a large/compressive goitre, suspicion of malignancy, or patient choice. Must be rendered euthyroid pre-operatively.' },
-      evaluate(f){
-        if (f.large_goitre) return { tier:'preferred', reasons:[{kind:'good', text:'Large/compressive goitre or suspicious nodule — surgery is the definitive choice'}] };
-        if (f.eye) return { tier:'acceptable', reasons:[{kind:'good', text:'Active eye disease — surgery avoids the radioiodine flare risk'}] };
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Definitive option for selected patients / patient choice'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Large goitre / compressive / suspicious nodule","text":"Large/compressive goitre or suspicious nodule — surgery is the definitive choice"},
+        {"kind":"favoured","label":"Active thyroid eye disease","text":"Active eye disease — surgery avoids the radioiodine flare risk"}
+      ]
     }
   ],
 

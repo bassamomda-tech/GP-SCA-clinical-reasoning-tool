@@ -253,7 +253,7 @@
         <header class="tool-head" data-screen-label="Tool head">
           <span class="eyebrow">Reasoning Tool · Everything around the prescription pad</span>
           <h1>Prescribing Hub — <em>write it, get the admin right, keep it safe when they're ill</em></h1>
-          <p>One place for the three jobs that surround a prescription: grab a <b>ready-made regimen</b> (dose, duration, counselling, EMIS copy-paste), settle the <b>prescribing admin</b> (free-prescription eligibility, a valid FP10, what not to prescribe, the traffic-light RAG), and apply the <b>sick-day rules</b> that keep long-term medicines safe in acute illness.</p>
+          <p>One place for the three jobs that surround a prescription: look up <b>reference wording for a common regimen</b> (dose, duration, counselling, sources), settle the <b>prescribing admin</b> (free-prescription eligibility, a valid FP10, what not to prescribe, the traffic-light RAG), and apply the <b>sick-day rules</b> that keep long-term medicines safe in acute illness.</p>
           <div class="review-stamp"><span class="dot"></span> Last reviewed June 2026 <span class="src">· NICE / NG · BNF · NHSBSA · NHS England · GMMMG · Society for Endocrinology · MHRA</span></div>
         </header>
 
@@ -265,7 +265,7 @@
           </button>
           <button class="phub-btn" data-sec="rx">
             <span class="ic">📝</span>
-            <span class="tx"><b>Ready prescriptions</b><span>Pre-built regimens · EMIS copy-paste</span></span>
+            <span class="tx"><b>Ready prescriptions</b><span>Common regimens · reference wording</span></span>
           </button>
           <button class="phub-btn" data-sec="sickday">
             <span class="ic">💉</span>
@@ -289,7 +289,8 @@
         <!-- SECTION 1 · READY PRESCRIPTIONS                                   -->
         <!-- ================================================================ -->
         <section class="phub-section" id="sec-rx" data-screen-label="Ready prescriptions">
-          <p class="phub-secp">Filterable grid of fully-formed prescription bundles. Each opens to the full plan — indication · contraindications · drug table (dose · freq · route · duration) · alternative regimens · counselling · follow-up · red flags · copy-paste text for EMIS / SystmOne · NICE source links.</p>
+          <p class="phub-secp">Reference wording for common primary-care regimens, by condition. Each card opens to what the cited guidance and the BNF state — indication · contraindications · drug table (dose · freq · route · duration) · alternative regimens · counselling · follow-up · red flags · example record wording · source links — with links to the full protocol where one exists.</p>
+          <p class="phub-secp" style="font-size:13px">💊 Doses here summarise usual adult doses from the BNF and the cited guidance, for reference. A few rows give a children’s dose (for example mg/kg); those rows say “Children: check the BNFC” and link to it. Check the BNF (BNFC for children) and the SPC, and the patient, before prescribing.</p>
           <div data-prescriptions></div>
           <div class="footer-disclaimer" style="margin-top:40px">
             <strong>Educational use only.</strong> Every prescription mirrors NICE NG / FSRH / BNF guidance as cited per card. Always verify dose, contraindications, drug interactions, and your local formulary before prescribing — and confirm patient-specific factors (renal function, pregnancy, allergies, concomitant medications). Not a substitute for clinical judgement.
@@ -1629,20 +1630,21 @@
 
 <!-- Ready-prescriptions data + renderer -->
 <script src="../assets/case-related.js?v=2"></script>
-<script src="../assets/prescriptions-data.js"></script>
-<script src="../assets/prescriptions-data-infections.js"></script>
-<script src="../assets/prescriptions-data-skin-sexual.js"></script>
-<script src="../assets/prescriptions-data-common.js"></script>
-<script src="../assets/prescriptions-data-extra.js"></script>
-<script src="../assets/prescriptions-data-paeds-eyes.js"></script>
-<script src="../assets/prescriptions-data-batch6.js"></script>
-<script src="../assets/prescriptions-data-batch7.js"></script>
-<script src="../assets/prescriptions-data-batch8.js"></script>
-<script src="../assets/prescriptions-data-batch9.js"></script>
-<script src="../assets/prescriptions-data-batch10.js"></script>
-<script src="../assets/prescriptions-data-batch11.js"></script>
-<script src="../assets/prescriptions-data-batch12.js"></script>
-<script src="../assets/prescriptions.js?v=20260924b"></script>
+<script src="../assets/prescriptions-data.js?v=114"></script>
+<script src="../assets/prescriptions-data-infections.js?v=114"></script>
+<script src="../assets/prescriptions-data-skin-sexual.js?v=114"></script>
+<script src="../assets/prescriptions-data-common.js?v=114"></script>
+<script src="../assets/prescriptions-data-extra.js?v=114"></script>
+<script src="../assets/prescriptions-data-paeds-eyes.js?v=114"></script>
+<script src="../assets/prescriptions-data-batch6.js?v=114"></script>
+<script src="../assets/prescriptions-data-batch7.js?v=114"></script>
+<script src="../assets/prescriptions-data-batch8.js?v=114"></script>
+<script src="../assets/prescriptions-data-batch9.js?v=114"></script>
+<script src="../assets/prescriptions-data-batch10.js?v=114"></script>
+<script src="../assets/prescriptions-data-batch11.js?v=114"></script>
+<script src="../assets/prescriptions-data-batch12.js?v=114"></script>
+<script src="../assets/topic-links.js?v=9"></script>
+<script src="../assets/prescriptions.js?v=20261014u114"></script>
 
 <!-- RAG dataset + area picker -->
 <script src="../assets/rag-data.js"></script>

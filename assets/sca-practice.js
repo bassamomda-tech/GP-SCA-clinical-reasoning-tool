@@ -186,7 +186,7 @@
     if (!section || section.querySelector('.dir-layout')) return;
 
     const TYPES = [
-      ['video','Video'], ['telephone','Telephone (audio-only)']
+      ['video','Video'], ['telephone','Telephone (audio-only)'], ['f2f','Face to face']
     ];
     const counts = {};
     CASES.forEach(c => { counts[c.type] = (counts[c.type]||0) + 1; });

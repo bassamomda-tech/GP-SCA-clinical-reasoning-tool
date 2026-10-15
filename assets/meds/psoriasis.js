@@ -1,44 +1,21 @@
 /* ============================================
    Medication Chooser — Psoriasis (topical)
    NICE CG153 · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('psoriasis', {
   title: 'Psoriasis — topical treatment selection',
-  subtitle: 'Topical choice by body site, with escalation thresholds (NICE CG153). Tick the presentation; cards re-tier live.',
+  subtitle: 'Topical choice by body site, with escalation thresholds (NICE CG153).',
   guideline: 'NICE CG153 · BNF',
 
-  factors: [
-    // Site
-    { group:'Site', id:'trunk_limb', label:'Trunk / limbs (plaque)' },
-    { group:'Site', id:'scalp', label:'Scalp' },
-    { group:'Site', id:'face_flexure', label:'Face / flexures / genitals', note:'Thin skin' },
-    { group:'Site', id:'nails', label:'Nail involvement' },
 
-    // Type / severity
-    { group:'Type & severity', id:'guttate', label:'Guttate (post-streptococcal)' },
-    { group:'Type & severity', id:'extensive', label:'Extensive (>10% BSA) / severe impact' },
-    { group:'Type & severity', id:'failed_topical', label:'Failed optimised topical therapy' },
-    { group:'Type & severity', id:'unstable', label:'Erythrodermic / pustular / unstable', note:'Urgent referral' },
-
-    // Comorbidity
-    { group:'Comorbidity', id:'psa', label:'Joint pain / ?psoriatic arthritis', note:'Screen (PEST); refer' },
-    { group:'Comorbidity', id:'cvd_metabolic', label:'Cardiometabolic risk factors' },
-
-    // Demographics
-    { group:'Demographics', id:'preg', label:'Pregnant or breastfeeding' },
-
-    // Preference / context
-    { group:'Preference / context', id:'steroid_concern', label:'Concern about long-term steroids' }
+  safety: [
+    {"tone":"amber","label":"Extensive (>10% BSA) / severe impact","text":"Extensive / topical-resistant disease — refer to dermatology for phototherapy or systemic therapy (methotrexate, ciclosporin, biologics)"},
+    {"tone":"red","label":"Erythrodermic / pustular / unstable","text":"Erythrodermic or generalised pustular psoriasis — same-day dermatology referral / admission"},
+    {"tone":"amber","label":"Joint pain / ?psoriatic arthritis","text":"Screen for psoriatic arthritis (PEST tool); refer to rheumatology if positive — early DMARDs prevent joint damage"},
+    {"tone":"amber","label":"Cardiometabolic risk factors","text":"Psoriasis is linked to cardiometabolic disease — assess CVD risk, weight, and lifestyle"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.unstable) out.push({ tone:'red', text:'Erythrodermic or generalised pustular psoriasis — same-day dermatology referral / admission' });
-    if (f.psa) out.push({ tone:'amber', text:'Screen for psoriatic arthritis (PEST tool); refer to rheumatology if positive — early DMARDs prevent joint damage' });
-    if (f.extensive || f.failed_topical) out.push({ tone:'amber', text:'Extensive / topical-resistant disease — refer to dermatology for phototherapy or systemic therapy (methotrexate, ciclosporin, biologics)' });
-    if (f.cvd_metabolic) out.push({ tone:'amber', text:'Psoriasis is linked to cardiometabolic disease — assess CVD risk, weight, and lifestyle' });
-    return out;
-  },
 
   drugs: [
     // -------- POTENT STEROID + VIT D (trunk/limb) --------
@@ -55,13 +32,11 @@ MedChooser.register('psoriasis', {
         'Dose': 'Combined product OD for up to 4 weeks; or apply potent steroid (AM) and vitamin D analogue (PM) separately',
         'Key teaching': 'NICE CG153 FIRST-LINE for trunk/limb plaques: potent corticosteroid + vitamin D analogue OD for up to 4 weeks. Then step to vitamin D analogue alone for maintenance.'
       },
-      evaluate(f){
-        if (f.face_flexure && !f.trunk_limb) return { tier:'avoid', reasons:[{kind:'bad', text:'Face/flexures — potent steroid inappropriate; use mild steroid or calcineurin inhibitor'}] };
-        const r = [];
-        if (f.trunk_limb) r.push({kind:'good', text:'Trunk/limb plaques — first-line per CG153'});
-        if (f.steroid_concern) r.push({kind:'neutral', text:'Steroid concern — time-limited (≤4 weeks) use then vitamin D maintenance'});
-        return { tier: f.trunk_limb ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'First-line for plaque psoriasis on trunk/limbs'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Face / flexures / genitals","text":"Face/flexures — potent steroid inappropriate; use mild steroid or calcineurin inhibitor"},
+        {"kind":"favoured","label":"Trunk / limbs (plaque)","text":"Trunk/limb plaques — first-line per CG153"},
+        {"kind":"note","label":"Concern about long-term steroids","text":"Steroid concern — time-limited (≤4 weeks) use then vitamin D maintenance"}
+      ]
     },
 
     // -------- VIT D ALONE (maintenance) --------
@@ -78,12 +53,10 @@ MedChooser.register('psoriasis', {
         'Dose': 'Calcipotriol OD–BD within max weekly limits',
         'Key teaching': 'Maintenance/steroid-sparing option once a flare is controlled; can be used long-term within dose limits.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.steroid_concern) r.push({kind:'good', text:'Avoids ongoing steroid — good maintenance choice'});
-        if (f.trunk_limb) r.push({kind:'good', text:'Trunk/limb maintenance after initial combined therapy'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Maintenance / steroid-sparing'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Trunk / limbs (plaque)","text":"Trunk/limb maintenance after initial combined therapy"},
+        {"kind":"favoured","label":"Concern about long-term steroids","text":"Avoids ongoing steroid — good maintenance choice"}
+      ]
     },
 
     // -------- SCALP --------
@@ -100,10 +73,9 @@ MedChooser.register('psoriasis', {
         'Dose': 'Potent corticosteroid scalp prep OD up to 4 weeks; consider a combined calcipotriol/betamethasone gel; use a descaling/keratolytic agent for thick scale',
         'Key teaching': 'First-line for scalp psoriasis: potent steroid preparation. Add a vitamin D analogue or descaling agent as needed.'
       },
-      evaluate(f){
-        if (!f.scalp) return { tier:'acceptable', reasons:[{kind:'neutral', text:'For scalp involvement'}] };
-        return { tier:'preferred', reasons:[{kind:'good', text:'Scalp psoriasis — potent steroid prep is first-line'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Scalp","text":"Scalp psoriasis — potent steroid prep is first-line"}
+      ]
     },
 
     // -------- FACE/FLEXURE --------
@@ -120,10 +92,9 @@ MedChooser.register('psoriasis', {
         'Dose': 'Short-term mild/moderate steroid (≤2 weeks); calcineurin inhibitor (tacrolimus/pimecrolimus) for maintenance (off-label but recommended)',
         'Key teaching': 'Delicate sites need low-potency steroids for short courses; calcineurin inhibitors are the steroid-sparing maintenance option.'
       },
-      evaluate(f){
-        if (!f.face_flexure) return { tier:'acceptable', reasons:[{kind:'neutral', text:'For face/flexures/genitals'}] };
-        return { tier:'preferred', reasons:[{kind:'good', text:'Face/flexures — low-potency steroid (short) or calcineurin inhibitor'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Face / flexures / genitals","text":"Face/flexures — low-potency steroid (short) or calcineurin inhibitor"}
+      ]
     },
 
     // -------- COAL TAR --------
@@ -140,12 +111,10 @@ MedChooser.register('psoriasis', {
         'Dose': 'Coal tar cream/ointment or shampoo (scalp)',
         'Key teaching': 'Alternative where vitamin D/steroid not suitable or as scalp adjunct; less cosmetically acceptable.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.scalp) r.push({kind:'good', text:'Scalp — useful adjunct/alternative'});
-        if (f.steroid_concern) r.push({kind:'good', text:'Non-steroid option'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Alternative / adjunct topical'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Scalp","text":"Scalp — useful adjunct/alternative"},
+        {"kind":"favoured","label":"Concern about long-term steroids","text":"Non-steroid option"}
+      ]
     },
 
     // -------- REFERRAL --------
@@ -162,14 +131,12 @@ MedChooser.register('psoriasis', {
         'Dose': 'Specialist-determined',
         'Key teaching': 'Refer for extensive (>10% BSA), high-impact, or topical-resistant disease, nail disease impacting function, or suspected psoriatic arthritis.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.extensive || f.failed_topical) r.push({kind:'good', text:'Extensive / topical-resistant — phototherapy or systemic therapy'});
-        if (f.nails) r.push({kind:'neutral', text:'Nail disease — often needs systemic therapy if impacting function'});
-        if (f.psa) r.push({kind:'good', text:'Psoriatic arthritis — rheumatology + systemic DMARDs'});
-        const preferred = f.extensive || f.failed_topical || f.psa;
-        return { tier: preferred ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Where topical therapy is insufficient'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Extensive (>10% BSA) / severe impact","text":"Extensive / topical-resistant — phototherapy or systemic therapy"},
+        {"kind":"favoured","label":"Failed optimised topical therapy","text":"Extensive / topical-resistant — phototherapy or systemic therapy"},
+        {"kind":"favoured","label":"Joint pain / ?psoriatic arthritis","text":"Psoriatic arthritis — rheumatology + systemic DMARDs"},
+        {"kind":"note","label":"Nail involvement","text":"Nail disease — often needs systemic therapy if impacting function"}
+      ]
     }
   ],
 

@@ -1,55 +1,22 @@
 /* ============================================
    Medication Chooser — Heart Failure (HFrEF)
    NICE NG106 · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('heart-failure', {
   title: 'Chronic heart failure — disease-modifying therapy',
-  subtitle: 'HFrEF prognosis rests on the "four pillars" (ACEi/ARB→ARNI, β-blocker, MRA, SGLT2i). Diuretics treat congestion but not mortality. Tick the profile; cards re-tier live.',
+  subtitle: 'HFrEF prognosis rests on the "four pillars" (ACEi/ARB→ARNI, β-blocker, MRA, SGLT2i). Diuretics treat congestion but not mortality.',
   guideline: 'NICE NG106 · BNF',
 
-  factors: [
-    // Phenotype
-    { group:'Phenotype', id:'type', label:'Ejection fraction', options:[
-      { value:'hfref', label:'HFrEF (reduced EF ≤40%)' },
-      { value:'hfpef', label:'HFpEF (preserved EF)' }
-    ]},
-    { group:'Phenotype', id:'congested', label:'Congestion / fluid overload', note:'Oedema, breathlessness' },
-    { group:'Phenotype', id:'nyha', label:'NYHA III–IV symptoms' },
-    { group:'Phenotype', id:'sinus75', label:'Sinus rhythm, HR ≥75 on max β-blocker', note:'Ivabradine niche' },
-    { group:'Phenotype', id:'afro', label:'Black African / Caribbean origin', note:'Hydralazine + nitrate evidence' },
 
-    // Bloods / haemodynamics
-    { group:'Bloods / haemodynamics', id:'egfr', label:'eGFR', numeric:{ min:5, max:120, step:5, unit:'mL/min' } },
-    { group:'Bloods / haemodynamics', id:'k_high', label:'K⁺ >5.0 mmol/L' },
-    { group:'Bloods / haemodynamics', id:'lowbp', label:'Symptomatic hypotension (SBP <100)' },
-    { group:'Bloods / haemodynamics', id:'dm', label:'Type 2 diabetes' },
-
-    // Comorbidities
-    { group:'Comorbidities', id:'asthma', label:'Asthma / reversible airways' },
-    { group:'Comorbidities', id:'ckd', label:'CKD / ACR raised' },
-    { group:'Comorbidities', id:'gout', label:'Active gout' },
-    { group:'Comorbidities', id:'af', label:'Atrial fibrillation' },
-
-    // Allergy / prior
-    { group:'Allergy / prior', id:'cough_acei', label:'ACEi-induced cough' },
-    { group:'Allergy / prior', id:'angioed', label:'Prior angioedema' },
-    { group:'Allergy / prior', id:'gynaeco', label:'Spironolactone gynaecomastia' },
-
-    // Current meds / context
-    { group:'Current meds / context', id:'nsaid', label:'Regular NSAIDs', note:'Worsen HF — review/stop' },
-    { group:'Current meds / context', id:'ccb_neg', label:'On verapamil/diltiazem', note:'Contraindicated in HFrEF' },
-    { group:'Current meds / context', id:'preg', label:'Pregnant or planning' }
+  safety: [
+    {"tone":"amber","label":"Ejection fraction: HFpEF (preserved EF)","text":"HFpEF — no drug proven to cut mortality; treat congestion + comorbidities; SGLT2i now recommended"},
+    {"tone":"red","label":"K⁺ >5.0 mmol/L","text":"K⁺ >5.0 — caution/avoid ACEi/ARB/ARNI/MRA; recheck and treat"},
+    {"tone":"amber","label":"Symptomatic hypotension (SBP <100)","text":"Hypotension — uptitrate slowly; prioritise prognostic drugs over diuretic dose"},
+    {"tone":"amber","label":"Regular NSAIDs","text":"NSAIDs cause fluid retention + AKI — stop where possible"},
+    {"tone":"red","label":"On verapamil/diltiazem","text":"Verapamil/diltiazem — negatively inotropic, contraindicated in HFrEF"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.k_high) out.push({ tone:'red', text:'K⁺ >5.0 — caution/avoid ACEi/ARB/ARNI/MRA; recheck and treat' });
-    if (f.ccb_neg) out.push({ tone:'red', text:'Verapamil/diltiazem — negatively inotropic, contraindicated in HFrEF' });
-    if (f.nsaid) out.push({ tone:'amber', text:'NSAIDs cause fluid retention + AKI — stop where possible' });
-    if (f.type === 'hfpef') out.push({ tone:'amber', text:'HFpEF — no drug proven to cut mortality; treat congestion + comorbidities; SGLT2i now recommended' });
-    if (f.lowbp) out.push({ tone:'amber', text:'Hypotension — uptitrate slowly; prioritise prognostic drugs over diuretic dose' });
-    return out;
-  },
 
   drugs: [
     // -------- ACEi --------
@@ -66,18 +33,14 @@ MedChooser.register('heart-failure', {
         'Dose': 'Ramipril titrated to max tolerated; enalapril 2.5 mg BD → 10–20 mg BD',
         'Key teaching': 'First-line with a β-blocker for all HFrEF unless contraindicated. Start one, then add the other.'
       },
-      evaluate(f){
-        if (f.type === 'hfpef') return { tier:'acceptable', reasons:[{kind:'neutral', text:'HFpEF — for comorbidity (HTN), not prognostic'}] };
-        if (f.preg) return { tier:'avoid', reasons:[{kind:'bad', text:'Pregnancy — teratogenic'}] };
-        if (f.angioed) return { tier:'avoid', reasons:[{kind:'bad', text:'Prior angioedema — contraindicated'}] };
-        if (f.cough_acei) return { tier:'avoid', reasons:[{kind:'bad', text:'ACEi cough — switch to ARB'}] };
-        if (f.k_high) return { tier:'avoid', reasons:[{kind:'bad', text:'K⁺ >5.0 — correct first'}] };
-        const r = [];
-        const egfr = Number(f.egfr) || 999;
-        if (egfr < 30) r.push({kind:'bad', text:'eGFR <30 — specialist input; cautious titration'});
-        if (f.nsaid) r.push({kind:'bad', text:'NSAID — triple-whammy AKI risk'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'Core first-line HFrEF therapy with a β-blocker'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"K⁺ >5.0 mmol/L","text":"K⁺ >5.0 — correct first"},
+        {"kind":"avoid","label":"ACEi-induced cough","text":"ACEi cough — switch to ARB"},
+        {"kind":"avoid","label":"Prior angioedema","text":"Prior angioedema — contraindicated"},
+        {"kind":"avoid","label":"Pregnant or planning","text":"Pregnancy — teratogenic"},
+        {"kind":"caution","label":"Regular NSAIDs","text":"NSAID — triple-whammy AKI risk"},
+        {"kind":"note","label":"Ejection fraction: HFpEF (preserved EF)","text":"HFpEF — for comorbidity (HTN), not prognostic"}
+      ]
     },
     // -------- ARB --------
     {
@@ -90,14 +53,12 @@ MedChooser.register('heart-failure', {
       monitor:'U&E + K⁺ as for ACEi',
       counsel:'"Same job as the first tablet but without the cough some people get."',
       detail:{ 'Key teaching':'Use when ACEi causes cough. Never combine ACEi + ARB.' },
-      evaluate(f){
-        if (f.type === 'hfpef') return { tier:'acceptable', reasons:[{kind:'neutral', text:'HFpEF — comorbidity indication only'}] };
-        if (f.preg) return { tier:'avoid', reasons:[{kind:'bad', text:'Pregnancy — teratogenic'}] };
-        if (f.k_high) return { tier:'avoid', reasons:[{kind:'bad', text:'K⁺ >5.0 — correct first'}] };
-        const r = [];
-        if (f.cough_acei) { r.push({kind:'good', text:'ACEi cough — ARB is the direct switch'}); return { tier:'preferred', reasons:r }; }
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Alternative to ACEi (cough/intolerance)'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"K⁺ >5.0 mmol/L","text":"K⁺ >5.0 — correct first"},
+        {"kind":"avoid","label":"Pregnant or planning","text":"Pregnancy — teratogenic"},
+        {"kind":"favoured","label":"ACEi-induced cough","text":"ACEi cough — ARB is the direct switch"},
+        {"kind":"note","label":"Ejection fraction: HFpEF (preserved EF)","text":"HFpEF — comorbidity indication only"}
+      ]
     },
     // -------- ARNI --------
     {
@@ -110,14 +71,9 @@ MedChooser.register('heart-failure', {
       monitor:'Specialist; 36-h washout from ACEi before starting',
       counsel:'"A newer combined tablet that replaces the first one and works even better for the heart — started by the heart-failure team."',
       detail:{ 'Key teaching':'For symptomatic HFrEF on optimal therapy. Replaces ACEi/ARB — needs 36-h ACEi washout to avoid angioedema. Specialist initiation.' },
-      evaluate(f){
-        if (f.type !== 'hfref') return { tier:'avoid', reasons:[{kind:'bad', text:'Only for HFrEF'}] };
-        if (f.angioed) return { tier:'avoid', reasons:[{kind:'bad', text:'Angioedema history — contraindicated'}] };
-        if (f.preg) return { tier:'avoid', reasons:[{kind:'bad', text:'Pregnancy — contraindicated'}] };
-        const r = [];
-        if (f.nyha) r.push({kind:'good', text:'Persistent symptoms (NYHA III–IV) on optimal therapy — escalate to ARNI'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Escalation when symptomatic despite ACEi + β-blocker + MRA'}] };
-      }
+      conditions: [
+        {"kind":"note","label":"Ejection fraction: HFrEF (reduced EF ≤40%)","text":"Escalation when symptomatic despite ACEi + β-blocker + MRA"}
+      ]
     },
     // -------- BETA-BLOCKER --------
     {
@@ -130,14 +86,12 @@ MedChooser.register('heart-failure', {
       monitor:'HR, BP; "start low, go slow"; do not start in decompensation',
       counsel:'"This protects the heart over time. You may feel a bit more tired at first — that settles. Never stop it suddenly."',
       detail:{ 'Key teaching':'Only bisoprolol, carvedilol or nebivolol are licensed for HF. Start when stable/euvolaemic, titrate slowly.' },
-      evaluate(f){
-        if (f.asthma) return { tier:'avoid', reasons:[{kind:'bad', text:'Asthma — bronchospasm risk (specialist may use cardioselective)'}] };
-        if (f.type === 'hfpef') return { tier:'acceptable', reasons:[{kind:'neutral', text:'HFpEF — rate control / comorbidity, not prognostic'}] };
-        const r = [];
-        if (f.af) r.push({kind:'good', text:'Coexisting AF — rate control + prognosis'});
-        if (f.congested) r.push({kind:'bad', text:'Decompensated/congested — stabilise first, do not start during acute overload'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'Core prognostic therapy with ACEi/ARB'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Asthma / reversible airways","text":"Asthma — bronchospasm risk (specialist may use cardioselective)"},
+        {"kind":"caution","label":"Congestion / fluid overload","text":"Decompensated/congested — stabilise first, do not start during acute overload"},
+        {"kind":"favoured","label":"Atrial fibrillation","text":"Coexisting AF — rate control + prognosis"},
+        {"kind":"note","label":"Ejection fraction: HFpEF (preserved EF)","text":"HFpEF — rate control / comorbidity, not prognostic"}
+      ]
     },
     // -------- MRA --------
     {
@@ -150,15 +104,11 @@ MedChooser.register('heart-failure', {
       monitor:'U&E + K⁺ at 1 week, 1 month, then regularly',
       counsel:'"A third tablet that adds extra protection. We watch your potassium closely; men sometimes get breast tenderness and we can switch."',
       detail:{ 'Key teaching':'Add if still symptomatic on ACEi/ARB + β-blocker. Eplerenone if gynaecomastia. Avoid if K⁺ high or eGFR <30.' },
-      evaluate(f){
-        if (f.type === 'hfpef') return { tier:'acceptable', reasons:[{kind:'neutral', text:'HFpEF — may help selected patients; not core prognostic'}] };
-        if (f.k_high) return { tier:'avoid', reasons:[{kind:'bad', text:'K⁺ >5.0 — contraindicated'}] };
-        const egfr = Number(f.egfr) || 999;
-        if (egfr < 30) return { tier:'avoid', reasons:[{kind:'bad', text:'eGFR <30 — avoid/specialist'}] };
-        const r = [];
-        if (f.gynaeco) r.push({kind:'bad', text:'Spiro gynaecomastia — switch to eplerenone'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'Add-on prognostic therapy for HFrEF'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"K⁺ >5.0 mmol/L","text":"K⁺ >5.0 — contraindicated"},
+        {"kind":"caution","label":"Spironolactone gynaecomastia","text":"Spiro gynaecomastia — switch to eplerenone"},
+        {"kind":"note","label":"Ejection fraction: HFpEF (preserved EF)","text":"HFpEF — may help selected patients; not core prognostic"}
+      ]
     },
     // -------- SGLT2i --------
     {
@@ -171,12 +121,10 @@ MedChooser.register('heart-failure', {
       monitor:'Counsel sick-day rules; works irrespective of diabetes status',
       counsel:'"A once-daily tablet that protects the heart and kidneys — even if you don\'t have diabetes. Keep good genital hygiene; pause it if you\'re acutely unwell."',
       detail:{ 'Key teaching':'Now a pillar of HFrEF therapy regardless of diabetes. Also recommended in HFpEF. Hold during acute illness (DKA risk).' },
-      evaluate(f){
-        const r = [];
-        if (f.dm) r.push({kind:'good', text:'Coexisting T2DM — dual cardiac + glycaemic benefit'});
-        if (f.type === 'hfpef') r.push({kind:'good', text:'HFpEF — SGLT2i is the recommended disease-modifying option'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'Prognostic across HFrEF and HFpEF, with or without diabetes'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Ejection fraction: HFpEF (preserved EF)","text":"HFpEF — SGLT2i is the recommended disease-modifying option"},
+        {"kind":"favoured","label":"Type 2 diabetes","text":"Coexisting T2DM — dual cardiac + glycaemic benefit"}
+      ]
     },
     // -------- LOOP DIURETIC --------
     {
@@ -189,13 +137,10 @@ MedChooser.register('heart-failure', {
       monitor:'U&E, weight, symptoms; use lowest effective dose',
       counsel:'"This tablet shifts the fluid off your lungs and legs so you breathe easier — it controls symptoms but it\'s the other tablets that prolong life."',
       detail:{ 'Key teaching':'Treats congestion, not mortality. Titrate to euvolaemia, then minimise. Teach flexible dosing by weight.' },
-      evaluate(f){
-        const r = [];
-        if (f.congested) r.push({kind:'good', text:'Fluid overload — loop diuretic for symptom relief'});
-        if (f.gout) r.push({kind:'bad', text:'Gout — diuretics precipitate flares; balance against congestion'});
-        if (!f.congested) r.push({kind:'neutral', text:'Use only for congestion; minimise when euvolaemic'});
-        return { tier:'acceptable', reasons: r };
-      }
+      conditions: [
+        {"kind":"caution","label":"Active gout","text":"Gout — diuretics precipitate flares; balance against congestion"},
+        {"kind":"favoured","label":"Congestion / fluid overload","text":"Fluid overload — loop diuretic for symptom relief"}
+      ]
     },
     // -------- HYDRALAZINE/NITRATE --------
     {
@@ -208,14 +153,12 @@ MedChooser.register('heart-failure', {
       monitor:'BP; specialist guided',
       counsel:'"An add-on combination that particularly helps certain patients, or when the usual tablets can\'t be used."',
       detail:{ 'Key teaching':'Consider in people of African/Caribbean origin with moderate–severe HFrEF, or where ACEi/ARB not tolerated (renal).' },
-      evaluate(f){
-        if (f.type === 'hfpef') return { tier:'avoid', reasons:[{kind:'bad', text:'Not indicated in HFpEF'}] };
-        const r = [];
-        if (f.afro) r.push({kind:'good', text:'African/Caribbean origin with moderate–severe HFrEF — added benefit'});
-        if (f.angioed || f.cough_acei) r.push({kind:'good', text:'Where ACEi/ARB not tolerated — alternative vasodilator combo'});
-        const preferred = f.afro;
-        return { tier: preferred ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Reserved for specific groups; specialist guided'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Ejection fraction: HFpEF (preserved EF)","text":"Not indicated in HFpEF"},
+        {"kind":"favoured","label":"Black African / Caribbean origin","text":"African/Caribbean origin with moderate–severe HFrEF — added benefit"},
+        {"kind":"favoured","label":"ACEi-induced cough","text":"Where ACEi/ARB not tolerated — alternative vasodilator combo"},
+        {"kind":"favoured","label":"Prior angioedema","text":"Where ACEi/ARB not tolerated — alternative vasodilator combo"}
+      ]
     },
     // -------- IVABRADINE --------
     {
@@ -228,13 +171,10 @@ MedChooser.register('heart-failure', {
       monitor:'HR; sinus rhythm only',
       counsel:'"An extra tablet that slows the heart rate when the beta-blocker alone isn\'t enough — only if your rhythm is regular."',
       detail:{ 'Key teaching':'Sinus rhythm + HR ≥75 + EF ≤35% on maximal β-blocker (or β-blocker intolerant). No effect in AF.' },
-      evaluate(f){
-        if (f.af) return { tier:'avoid', reasons:[{kind:'bad', text:'AF — ivabradine ineffective (needs sinus rhythm)'}] };
-        if (f.type !== 'hfref') return { tier:'avoid', reasons:[{kind:'bad', text:'HFrEF only'}] };
-        const r = [];
-        if (f.sinus75) { r.push({kind:'good', text:'Sinus rhythm, HR ≥75 on max β-blocker — licensed niche'}); return { tier:'acceptable', reasons:r }; }
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Only when sinus HR ≥75 persists on maximal β-blocker'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Atrial fibrillation","text":"AF — ivabradine ineffective (needs sinus rhythm)"},
+        {"kind":"note","label":"Ejection fraction: HFrEF (reduced EF ≤40%)","text":"Only when sinus HR ≥75 persists on maximal β-blocker"}
+      ]
     }
   ],
 

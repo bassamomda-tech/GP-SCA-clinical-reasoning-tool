@@ -2,52 +2,20 @@
    Medication Chooser — Atrial Fibrillation
    NICE NG196 · BNF
    Covers anticoagulation + rate control
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('atrial-fibrillation', {
   title: 'Atrial fibrillation — anticoagulation & rate control',
-  subtitle: 'Two decisions: stroke prevention (DOAC-first per NG196) and rate control (β-blocker or rate-limiting CCB first-line). Tick the profile; cards re-tier live.',
+  subtitle: 'Two decisions: stroke prevention (DOAC-first per NG196) and rate control (β-blocker or rate-limiting CCB first-line).',
   guideline: 'NICE NG196 · BNF',
 
-  factors: [
-    // Stroke / bleeding risk
-    { group:'Stroke / bleeding risk', id:'chadsvasc', label:'CHA₂DS₂-VASc score', numeric:{ min:0, max:9, step:1, unit:'pts' } },
-    { group:'Stroke / bleeding risk', id:'female', label:'Female (sex point only)', note:'Anticoagulate on the non-sex score' },
-    { group:'Stroke / bleeding risk', id:'highbleed', label:'High bleeding risk (ORBIT/HAS-BLED)', note:'Modify risk factors, don\'t withhold' },
-    { group:'Stroke / bleeding risk', id:'priorbleed', label:'Recent major / life-threatening bleed' },
 
-    // Valve / rhythm
-    { group:'Valve / structural', id:'mechvalve', label:'Mechanical heart valve' },
-    { group:'Valve / structural', id:'mitralsten', label:'Moderate–severe mitral stenosis' },
-    { group:'Valve / structural', id:'paroxysmal', label:'Paroxysmal / new-onset (<48h) AF' },
-
-    // Comorbidities
-    { group:'Comorbidities', id:'hf', label:'Heart failure (HFrEF)' },
-    { group:'Comorbidities', id:'asthma', label:'Asthma / reversible airways' },
-    { group:'Comorbidities', id:'ihd', label:'IHD / angina' },
-    { group:'Comorbidities', id:'sedentary', label:'Sedentary / elderly / non-paroxysmal', note:'Digoxin may suit' },
-    { group:'Comorbidities', id:'frail', label:'Frail / falls risk' },
-
-    // Renal / hepatic
-    { group:'Renal / hepatic', id:'egfr', label:'eGFR / CrCl', numeric:{ min:5, max:120, step:5, unit:'mL/min' } },
-    { group:'Renal / hepatic', id:'dialysis', label:'Dialysis / CrCl <15' },
-    { group:'Renal / hepatic', id:'hepatic', label:'Significant hepatic impairment' },
-
-    // Current meds / practical
-    { group:'Current meds / practical', id:'pgp', label:'Strong P-gp/CYP3A4 interacting drug', note:'azole, rifampicin, some antiepileptics' },
-    { group:'Current meds / practical', id:'dyspepsia', label:'Dyspepsia / upper-GI symptoms', note:'Dabigatran often poorly tolerated' },
-    { group:'Current meds / practical', id:'adherence', label:'Adherence concerns', note:'INR monitoring may aid oversight' },
-    { group:'Current meds / practical', id:'reversal', label:'Wants/needs rapid reversibility' }
+  safety: [
+    {"tone":"amber","label":"High bleeding risk (ORBIT/HAS-BLED)","text":"High bleeding risk — modify reversible factors; do not use as sole reason to withhold"},
+    {"tone":"red","label":"Recent major / life-threatening bleed","text":"Recent major bleed — pause/avoid anticoagulation; specialist input"},
+    {"tone":"red","label":"Mechanical heart valve","text":"Valvular AF (mechanical valve / mod–severe MS) — warfarin ONLY; DOACs contraindicated"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    const cv = Number(f.chadsvasc) || 0;
-    if (f.mechvalve || f.mitralsten) out.push({ tone:'red', text:'Valvular AF (mechanical valve / mod–severe MS) — warfarin ONLY; DOACs contraindicated' });
-    if (cv >= 2 || (cv >= 1 && !f.female)) out.push({ tone:'amber', text:'CHA₂DS₂-VASc ≥2 (or ≥1 in men) — offer anticoagulation' });
-    if (f.priorbleed) out.push({ tone:'red', text:'Recent major bleed — pause/avoid anticoagulation; specialist input' });
-    if (f.highbleed) out.push({ tone:'amber', text:'High bleeding risk — modify reversible factors; do not use as sole reason to withhold' });
-    return out;
-  },
 
   drugs: [
     // ============ ANTICOAGULATION ============
@@ -65,22 +33,15 @@ MedChooser.register('atrial-fibrillation', {
         'Interactions': 'Strong P-gp/CYP3A4 inducers/inhibitors; avoid with other anticoagulants',
         'Key teaching': 'NG196: offer a DOAC first-line. Apixaban often preferred when bleeding risk a concern. Reduce/avoid by CrCl.'
       },
-      evaluate(f){
-        if (f.mechvalve || f.mitralsten) return { tier:'avoid', reasons:[{kind:'bad', text:'Valvular AF — DOACs contraindicated; use warfarin'}] };
-        const cv = Number(f.chadsvasc) || 0;
-        const egfr = Number(f.egfr) || 999;
-        if (f.dialysis || egfr < 15) return { tier:'avoid', reasons:[{kind:'bad', text:'CrCl <15 / dialysis — DOACs not recommended'}] };
-        const r = [];
-        if (cv >= 2 || (cv >= 1 && !f.female)) r.push({kind:'good', text:'CHA₂DS₂-VASc indicates anticoagulation — DOAC is first-line'});
-        if (f.highbleed) r.push({kind:'good', text:'Bleeding risk — apixaban has the lowest GI/ICH bleed profile'});
-        if (f.reversal) r.push({kind:'good', text:'Reversal agents exist (idarucizumab/andexanet) where needed'});
-        if (egfr < 30) r.push({kind:'bad', text:'CrCl 15–29 — dose-reduce; apixaban/edoxaban preferred over dabigatran'});
-        if (f.dyspepsia) r.push({kind:'bad', text:'Dyspepsia — avoid dabigatran specifically'});
-        if (f.pgp) r.push({kind:'bad', text:'Interacting P-gp/CYP3A4 drug — check before choosing DOAC'});
-        const indicated = cv >= 2 || (cv >= 1 && !f.female);
-        if (indicated) return { tier:'preferred', reasons: r };
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Anticoagulant of choice once CHA₂DS₂-VASc indicates it'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Mechanical heart valve","text":"Valvular AF — DOACs contraindicated; use warfarin"},
+        {"kind":"avoid","label":"Moderate–severe mitral stenosis","text":"Valvular AF — DOACs contraindicated; use warfarin"},
+        {"kind":"avoid","label":"Dialysis / CrCl <15","text":"CrCl <15 / dialysis — DOACs not recommended"},
+        {"kind":"caution","label":"Strong P-gp/CYP3A4 interacting drug","text":"Interacting P-gp/CYP3A4 drug — check before choosing DOAC"},
+        {"kind":"caution","label":"Dyspepsia / upper-GI symptoms","text":"Dyspepsia — avoid dabigatran specifically"},
+        {"kind":"favoured","label":"High bleeding risk (ORBIT/HAS-BLED)","text":"Bleeding risk — apixaban has the lowest GI/ICH bleed profile"},
+        {"kind":"favoured","label":"Wants/needs rapid reversibility","text":"Reversal agents exist (idarucizumab/andexanet) where needed"}
+      ]
     },
     {
       id:'warfarin',
@@ -95,15 +56,13 @@ MedChooser.register('atrial-fibrillation', {
         'Dose': 'Variable; INR target 2.5 (2–3); mechanical valves often higher target',
         'Key teaching': 'Reserved for valvular AF or where DOACs are unsuitable. Vitamin K reversal. Assess TTR if INR control poor.'
       },
-      evaluate(f){
-        if (f.mechvalve || f.mitralsten) return { tier:'preferred', reasons:[{kind:'good', text:'Valvular AF — warfarin is the required anticoagulant'}] };
-        const egfr = Number(f.egfr) || 999;
-        const r = [];
-        if (f.dialysis || egfr < 15) r.push({kind:'good', text:'Severe renal impairment — warfarin where DOAC not recommended'});
-        if (f.adherence) r.push({kind:'good', text:'INR monitoring provides regular oversight/contact'});
-        if (f.pgp) r.push({kind:'good', text:'Complex interactions can be managed via INR titration'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Use when a DOAC is unsuitable; DOAC otherwise preferred'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Mechanical heart valve","text":"Valvular AF — warfarin is the required anticoagulant"},
+        {"kind":"favoured","label":"Moderate–severe mitral stenosis","text":"Valvular AF — warfarin is the required anticoagulant"},
+        {"kind":"favoured","label":"Dialysis / CrCl <15","text":"Severe renal impairment — warfarin where DOAC not recommended"},
+        {"kind":"favoured","label":"Strong P-gp/CYP3A4 interacting drug","text":"Complex interactions can be managed via INR titration"},
+        {"kind":"favoured","label":"Adherence concerns","text":"INR monitoring provides regular oversight/contact"}
+      ]
     },
     {
       id:'aspirin_af',
@@ -115,9 +74,7 @@ MedChooser.register('atrial-fibrillation', {
       monitor:'—',
       counsel:'"Aspirin isn\'t an effective blood thinner for this kind of irregular heartbeat — we use a proper anticoagulant instead."',
       detail:{ 'Key teaching':'NG196: do NOT offer aspirin monotherapy solely for stroke prevention in AF.' },
-      evaluate(f){
-        return { tier:'avoid', reasons:[{kind:'bad', text:'Not effective for AF stroke prevention — use a DOAC/warfarin'}] };
-      }
+      
     },
 
     // ============ RATE CONTROL ============
@@ -134,13 +91,11 @@ MedChooser.register('atrial-fibrillation', {
         'Dose': 'Bisoprolol 1.25–2.5 mg OD → 10 mg (titrate to HR)',
         'Key teaching': 'First-line rate control (standard β-blocker, NOT sotalol). Also prognostic in HFrEF.'
       },
-      evaluate(f){
-        if (f.asthma) return { tier:'avoid', reasons:[{kind:'bad', text:'Asthma — risk of bronchospasm; use rate-limiting CCB'}] };
-        const r = [];
-        if (f.hf) r.push({kind:'good', text:'HFrEF — β-blocker is prognostic and the rate-control choice'});
-        if (f.ihd) r.push({kind:'good', text:'IHD/angina — dual anti-anginal + rate benefit'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'First-line rate control for most patients'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Asthma / reversible airways","text":"Asthma — risk of bronchospasm; use rate-limiting CCB"},
+        {"kind":"favoured","label":"Heart failure (HFrEF)","text":"HFrEF — β-blocker is prognostic and the rate-control choice"},
+        {"kind":"favoured","label":"IHD / angina","text":"IHD/angina — dual anti-anginal + rate benefit"}
+      ]
     },
     {
       id:'rateccb',
@@ -155,12 +110,10 @@ MedChooser.register('atrial-fibrillation', {
         'Dose': 'Diltiazem MR titrated to HR; verapamil 40–120 mg TDS',
         'Key teaching': 'Good when β-blocker unsuitable (asthma). CONTRAINDICATED in HFrEF — negative inotrope. Never combine with β-blocker.'
       },
-      evaluate(f){
-        if (f.hf) return { tier:'avoid', reasons:[{kind:'bad', text:'HFrEF — negatively inotropic; contraindicated'}] };
-        const r = [];
-        if (f.asthma) { r.push({kind:'good', text:'Asthma — first choice where β-blocker avoided'}); return { tier:'preferred', reasons:r }; }
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'First-line alternative to β-blocker in non-HF patients'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Heart failure (HFrEF)","text":"HFrEF — negatively inotropic; contraindicated"},
+        {"kind":"favoured","label":"Asthma / reversible airways","text":"Asthma — first choice where β-blocker avoided"}
+      ]
     },
     {
       id:'digoxin',
@@ -175,15 +128,11 @@ MedChooser.register('atrial-fibrillation', {
         'Dose': 'Digoxin 125–250 µg OD (lower if elderly/renal)',
         'Key teaching': 'Monotherapy only in sedentary patients with non-paroxysmal AF, or as add-on. Poor exertional rate control. Caution in renal impairment.'
       },
-      evaluate(f){
-        const egfr = Number(f.egfr) || 999;
-        const r = [];
-        if (f.sedentary) r.push({kind:'good', text:'Sedentary / non-paroxysmal — reasonable monotherapy or add-on'});
-        if (f.hf) r.push({kind:'good', text:'HF with persistent symptoms — add-on for rate + symptoms'});
-        if (egfr < 30) r.push({kind:'bad', text:'Renal impairment — accumulation/toxicity; reduce dose + monitor'});
-        if (f.frail) r.push({kind:'bad', text:'Frail/elderly — toxicity risk; lower dose'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Add-on or for sedentary patients; not first-line'}] };
-      }
+      conditions: [
+        {"kind":"caution","label":"Frail / falls risk","text":"Frail/elderly — toxicity risk; lower dose"},
+        {"kind":"favoured","label":"Heart failure (HFrEF)","text":"HF with persistent symptoms — add-on for rate + symptoms"},
+        {"kind":"favoured","label":"Sedentary / elderly / non-paroxysmal","text":"Sedentary / non-paroxysmal — reasonable monotherapy or add-on"}
+      ]
     }
   ],
 

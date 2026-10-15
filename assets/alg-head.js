@@ -66,7 +66,7 @@ var AH_LAYOUT = function(api, p){
   var ASSETS = (function(){ var s = SCRIPT && SCRIPT.src; if(s) return s.replace(/[^\/]*$/, '');
     var x = D.querySelector('script[src*="assets/alg-nav.js"]'); return x ? x.src.replace(/[^\/]*$/, '') : '../../assets/'; })();
   var cssLink = D.querySelector('link[href*="assets/alg-head.css"]');
-  if(!cssLink){ cssLink = D.createElement('link'); cssLink.rel = 'stylesheet'; cssLink.href = ASSETS + 'alg-head.css?v=1'; D.head.appendChild(cssLink); }
+  if(!cssLink){ cssLink = D.createElement('link'); cssLink.rel = 'stylesheet'; cssLink.href = ASSETS + 'alg-head.css?v=2'; D.head.appendChild(cssLink); }
 
   function $$(s, r){ return Array.prototype.slice.call((r || D).querySelectorAll(s)); }
   var MOVED = [];          /* [node, placeholder] */

@@ -1,52 +1,21 @@
 /* ============================================
    Medication Chooser — Constipation (adults)
    BNF · NICE NG12 (updated April 2026)  (NICE NG12 (updated April 2026) colorectal red flags)
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('constipation', {
   title: 'Constipation — laxative selection',
-  subtitle: 'Stepwise laxative choice (BNF) by stool type, cause and special situations. Tick the patient profile; cards re-tier live.',
+  subtitle: 'Stepwise laxative choice (BNF) by stool type, cause and special situations.',
   guideline: 'BNF constipation treatment summary · NICE NG12 (updated April 2026) (red flags) · NICE TA211 · NICE TA345',
 
-  factors: [
-    // Stool / pattern
-    { group:'Stool & pattern', id:'hard', label:'Hard stools' },
-    { group:'Stool & pattern', id:'infrequent', label:'Infrequent but soft when passed' },
-    { group:'Stool & pattern', id:'impaction', label:'Faecal loading / impaction', note:'Disimpaction regimen needed' },
-    { group:'Stool & pattern', id:'rapid', label:'Needs rapid relief / very distressed' },
-    { group:'Stool & pattern', id:'chronic_fail', label:'Chronic — failed ≥2 laxatives (different classes)', note:'Consider prucalopride' },
 
-    // Cause / context
-    { group:'Cause & context', id:'opioid', label:'Opioid-induced constipation', note:'Avoid bulk-forming' },
-    { group:'Cause & context', id:'low_fibre', label:'Low fibre / fluid intake' },
-    { group:'Cause & context', id:'ibs', label:'IBS-related (avoid lactulose)' },
-    { group:'Cause & context', id:'secondary', label:'Possible secondary cause (hypothyroid, hyperCa, drugs)', note:'Treat the cause' },
-
-    // Red flags (NICE NG12 (updated April 2026))
-    { group:'Red flags (exclude cancer)', id:'change_60', label:'Change in bowel habit, age ≥60' },
-    { group:'Red flags (exclude cancer)', id:'rectal_bleed', label:'Rectal bleeding' },
-    { group:'Red flags (exclude cancer)', id:'weight_loss', label:'Unexplained weight loss' },
-    { group:'Red flags (exclude cancer)', id:'mass', label:'Abdominal / rectal mass' },
-    { group:'Red flags (exclude cancer)', id:'anaemia', label:'Iron-deficiency anaemia' },
-    { group:'Red flags (exclude cancer)', id:'obstruction', label:'Suspected obstruction (colic, vomiting, distension)' },
-
-    // Demographics
-    { group:'Demographics', id:'preg', label:'Pregnant or breastfeeding' },
-    { group:'Demographics', id:'elderly', label:'Elderly / frail' },
-
-    // Preference / context
-    { group:'Preference / context', id:'rectal_ok', label:'Rectal route acceptable' },
-    { group:'Preference / context', id:'bulk_intol', label:'Bloating / wind on bulk-forming' }
+  safety: [
+    {"tone":"amber","label":"Possible secondary cause (hypothyroid, hyperCa, drugs)","text":"Screen/treat secondary causes (hypothyroidism, hypercalcaemia, hypokalaemia, culprit drugs) alongside laxatives"},
+    {"tone":"red","label":"Change in bowel habit, age ≥60","text":"NICE NG12 (updated April 2026) — alarm feature: FIT + FBC/ferritin and refer on the suspected lower-GI cancer pathway. Abdominal/rectal mass → examine + urgent referral."},
+    {"tone":"red","label":"Suspected obstruction (colic, vomiting, distension)","text":"Suspected bowel obstruction — do NOT give oral laxatives/stimulants; assess for acute admission"},
+    {"tone":"amber","label":"Pregnant or breastfeeding","text":"Pregnancy — bulk-forming first, then osmotic (lactulose/macrogol); senna only short-term, avoid near term"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    const ng12 = f.change_60 || f.rectal_bleed || f.weight_loss || f.mass || f.anaemia;
-    if (ng12) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — alarm feature: FIT + FBC/ferritin and refer on the suspected lower-GI cancer pathway. Abdominal/rectal mass → examine + urgent referral.' });
-    if (f.obstruction) out.push({ tone:'red', text:'Suspected bowel obstruction — do NOT give oral laxatives/stimulants; assess for acute admission' });
-    if (f.secondary) out.push({ tone:'amber', text:'Screen/treat secondary causes (hypothyroidism, hypercalcaemia, hypokalaemia, culprit drugs) alongside laxatives' });
-    if (f.preg) out.push({ tone:'amber', text:'Pregnancy — bulk-forming first, then osmotic (lactulose/macrogol); senna only short-term, avoid near term' });
-    return out;
-  },
 
   drugs: [
     // -------- BULK-FORMING --------
@@ -63,16 +32,15 @@ MedChooser.register('constipation', {
         'Dose': 'Ispaghula husk one sachet BD with water',
         'Key teaching': 'First step when fibre/fluid is low and stool is hard. AVOID in opioid constipation and in faecal impaction (risk of obstruction).'
       },
-      evaluate(f){
-        if (f.opioid) return { tier:'avoid', reasons:[{kind:'bad', text:'Opioid-induced — bulk-forming risks obstruction; use osmotic ± stimulant'}] };
-        if (f.impaction) return { tier:'avoid', reasons:[{kind:'bad', text:'Faecal impaction — bulk-forming inappropriate (obstruction risk)'}] };
-        if (f.bulk_intol) return { tier:'avoid', reasons:[{kind:'bad', text:'Bloating/wind on bulk-forming — switch to an osmotic'}] };
-        const r = [];
-        if (f.low_fibre || f.hard) r.push({kind:'good', text:'Low fibre / hard stool — reasonable first step with good fluids'});
-        if (f.ibs) r.push({kind:'neutral', text:'IBS — soluble fibre (ispaghula) ok; some prefer macrogol for bloating'});
-        if (f.preg) r.push({kind:'good', text:'Pregnancy — bulk-forming is first-line'});
-        return { tier: (f.low_fibre || f.hard || f.preg) ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'First-line when fibre/fluid is low'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Faecal loading / impaction","text":"Faecal impaction — bulk-forming inappropriate (obstruction risk)"},
+        {"kind":"avoid","label":"Opioid-induced constipation","text":"Opioid-induced — bulk-forming risks obstruction; use osmotic ± stimulant"},
+        {"kind":"avoid","label":"Bloating / wind on bulk-forming","text":"Bloating/wind on bulk-forming — switch to an osmotic"},
+        {"kind":"favoured","label":"Hard stools","text":"Low fibre / hard stool — reasonable first step with good fluids"},
+        {"kind":"favoured","label":"Low fibre / fluid intake","text":"Low fibre / hard stool — reasonable first step with good fluids"},
+        {"kind":"favoured","label":"Pregnant or breastfeeding","text":"Pregnancy — bulk-forming is first-line"},
+        {"kind":"note","label":"IBS-related (avoid lactulose)","text":"IBS — soluble fibre (ispaghula) ok; some prefer macrogol for bloating"}
+      ]
     },
 
     // -------- MACROGOL --------
@@ -89,16 +57,14 @@ MedChooser.register('constipation', {
         'Dose': 'Maintenance 1–3 sachets/day; faecal impaction: up to 8 sachets/day (in 1 L water) over up to 3 days',
         'Key teaching': 'First-choice osmotic. Preferred over lactulose (less bloating, better evidence). The disimpaction workhorse.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.impaction) r.push({kind:'good', text:'Faecal impaction — high-dose macrogol is the disimpaction regimen of choice'});
-        if (f.opioid) r.push({kind:'good', text:'Opioid-induced — osmotic ± stimulant is standard'});
-        if (f.hard || f.infrequent) r.push({kind:'good', text:'Hard / infrequent stool — effective and well tolerated'});
-        if (f.ibs) r.push({kind:'good', text:'IBS — preferred osmotic (avoid lactulose)'});
-        if (f.elderly) r.push({kind:'good', text:'Elderly — well tolerated, titratable'});
-        const preferred = f.impaction || f.opioid || f.bulk_intol || f.ibs || f.hard;
-        return { tier: preferred ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Reliable osmotic for most adults'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Hard stools","text":"Hard / infrequent stool — effective and well tolerated"},
+        {"kind":"favoured","label":"Infrequent but soft when passed","text":"Hard / infrequent stool — effective and well tolerated"},
+        {"kind":"favoured","label":"Faecal loading / impaction","text":"Faecal impaction — high-dose macrogol is the disimpaction regimen of choice"},
+        {"kind":"favoured","label":"Opioid-induced constipation","text":"Opioid-induced — osmotic ± stimulant is standard"},
+        {"kind":"favoured","label":"IBS-related (avoid lactulose)","text":"IBS — preferred osmotic (avoid lactulose)"},
+        {"kind":"favoured","label":"Elderly / frail","text":"Elderly — well tolerated, titratable"}
+      ]
     },
 
     // -------- LACTULOSE --------
@@ -115,13 +81,11 @@ MedChooser.register('constipation', {
         'Dose': 'Lactulose 15 mL BD, adjust to response',
         'Key teaching': 'Alternative osmotic, useful in pregnancy. Avoid in IBS (bloating). Macrogol generally preferred where both suitable.'
       },
-      evaluate(f){
-        if (f.ibs) return { tier:'avoid', reasons:[{kind:'bad', text:'IBS — NICE CG61 advises against lactulose (worsens bloating)'}] };
-        const r = [];
-        if (f.preg) r.push({kind:'good', text:'Pregnancy — lactulose is a recommended osmotic option'});
-        if (f.bulk_intol) r.push({kind:'neutral', text:'Osmotic option, though macrogol usually preferred'});
-        return { tier: f.preg ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Osmotic alternative to macrogol'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"IBS-related (avoid lactulose)","text":"IBS — NICE CG61 advises against lactulose (worsens bloating)"},
+        {"kind":"favoured","label":"Pregnant or breastfeeding","text":"Pregnancy — lactulose is a recommended osmotic option"},
+        {"kind":"note","label":"Bloating / wind on bulk-forming","text":"Osmotic option, though macrogol usually preferred"}
+      ]
     },
 
     // -------- STIMULANT --------
@@ -138,15 +102,13 @@ MedChooser.register('constipation', {
         'Dose': 'Senna 7.5–15 mg at night; bisacodyl 5–10 mg nocte',
         'Key teaching': 'Add when stool is soft but movement is poor, and core of opioid-induced constipation (osmotic + stimulant). Avoid in suspected obstruction.'
       },
-      evaluate(f){
-        if (f.obstruction) return { tier:'avoid', reasons:[{kind:'bad', text:'Suspected obstruction — stimulants contraindicated'}] };
-        const r = [];
-        if (f.opioid) r.push({kind:'good', text:'Opioid-induced — stimulant + osmotic is standard combination'});
-        if (f.infrequent) r.push({kind:'good', text:'Soft stool but not moving — stimulant is the right add-on'});
-        if (f.rapid) r.push({kind:'good', text:'Needs quicker effect — works overnight'});
-        if (f.preg) r.push({kind:'neutral', text:'Pregnancy — senna short-term only, avoid near term'});
-        return { tier: (f.opioid || f.infrequent) ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Add-on when stool soft but transit slow'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Suspected obstruction (colic, vomiting, distension)","text":"Suspected obstruction — stimulants contraindicated"},
+        {"kind":"favoured","label":"Infrequent but soft when passed","text":"Soft stool but not moving — stimulant is the right add-on"},
+        {"kind":"favoured","label":"Needs rapid relief / very distressed","text":"Needs quicker effect — works overnight"},
+        {"kind":"favoured","label":"Opioid-induced constipation","text":"Opioid-induced — stimulant + osmotic is standard combination"},
+        {"kind":"note","label":"Pregnant or breastfeeding","text":"Pregnancy — senna short-term only, avoid near term"}
+      ]
     },
 
     // -------- RECTAL --------
@@ -163,14 +125,10 @@ MedChooser.register('constipation', {
         'Dose': 'Glycerol/bisacodyl suppository; phosphate or arachis-oil-retention enema for hard rectal loading',
         'Key teaching': 'For rapid relief or rectal (low) faecal loading when oral disimpaction is insufficient. Caution with phosphate enemas in the frail/renal-impaired.'
       },
-      evaluate(f){
-        if (!f.rectal_ok && !f.impaction && !f.rapid) return { tier:'acceptable', reasons:[{kind:'neutral', text:'If rectal route acceptable for rapid relief'}] };
-        const r = [];
-        if (f.impaction) r.push({kind:'good', text:'Hard rectal loading — suppository/enema clears the low rectum'});
-        if (f.rapid) r.push({kind:'good', text:'Rapid relief needed — acts within ~1 hour'});
-        if (f.elderly) r.push({kind:'bad', text:'Frail/elderly — avoid phosphate enemas (electrolyte risk); use gentler options'});
-        return { tier: (f.impaction || f.rapid) ? 'preferred' : 'acceptable', reasons: r };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Faecal loading / impaction","text":"Hard rectal loading — suppository/enema clears the low rectum"},
+        {"kind":"favoured","label":"Needs rapid relief / very distressed","text":"Rapid relief needed — acts within ~1 hour"}
+      ]
     },
 
     // -------- PRUCALOPRIDE --------
@@ -187,12 +145,9 @@ MedChooser.register('constipation', {
         'Dose': 'Prucalopride 2 mg OD (1 mg if >65 or renal impairment); review at 4 weeks',
         'Key teaching': 'A 5-HT4 agonist for chronic constipation when at least 2 laxatives from different classes (at adequate dose) have failed over ≥6 months.'
       },
-      evaluate(f){
-        if (!f.chronic_fail) return { tier:'acceptable', reasons:[{kind:'neutral', text:'Reserve for chronic constipation after ≥2 laxative classes have failed'}] };
-        const r = [{kind:'good', text:'Chronic constipation, ≥2 laxative classes failed — appropriate next step'}];
-        if (f.opioid) r.push({kind:'neutral', text:'Opioid-induced — consider a PAMORA (e.g. naloxegol) as well/instead'});
-        return { tier:'preferred', reasons: r };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Chronic — failed ≥2 laxatives (different classes)","text":"Chronic constipation, ≥2 laxative classes failed — appropriate next step"}
+      ]
     },
 
     // -------- PAMORA --------
@@ -209,13 +164,9 @@ MedChooser.register('constipation', {
         'Dose': 'Naloxegol 25 mg OD on an empty stomach',
         'Key teaching': 'For opioid-induced constipation with inadequate response to standard laxatives. Does not cross to reverse central analgesia.'
       },
-      evaluate(f){
-        if (!f.opioid) return { tier:'avoid', reasons:[{kind:'bad', text:'Only indicated in opioid-induced constipation'}] };
-        const r = [{kind:'good', text:'Opioid-induced constipation'}];
-        if (f.chronic_fail) r.push({kind:'good', text:'Standard laxatives inadequate — appropriate'});
-        else r.push({kind:'neutral', text:'Try osmotic + stimulant first before a PAMORA'});
-        return { tier: f.chronic_fail ? 'preferred' : 'acceptable', reasons: r };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Opioid-induced constipation","text":"Opioid-induced constipation · Try osmotic + stimulant first before a PAMORA"}
+      ]
     }
   ],
 

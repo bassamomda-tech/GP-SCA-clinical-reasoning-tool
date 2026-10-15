@@ -1,51 +1,22 @@
 /* ============================================
    Medication Chooser — Menopause / HRT
    NICE NG23 · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('menopause', {
   title: 'Menopause — HRT & symptom management',
-  subtitle: 'Choice turns on three questions: uterus or not (need a progestogen?), oral or transdermal oestrogen, and sequential vs continuous. Tick the profile; cards re-tier live.',
+  subtitle: 'Choice turns on three questions: uterus or not (need a progestogen?), oral or transdermal oestrogen, and sequential vs continuous.',
   guideline: 'NICE NG23 · BNF',
 
-  factors: [
-    // Anatomy / stage
-    { group:'Anatomy / stage', id:'uterus', label:'Uterus present', note:'Needs a progestogen (endometrial protection)' },
-    { group:'Anatomy / stage', id:'hysterectomy', label:'Hysterectomy (no uterus)', note:'Oestrogen-only HRT' },
-    { group:'Anatomy / stage', id:'perimeno', label:'Perimenopausal / still having periods' },
-    { group:'Anatomy / stage', id:'postmeno', label:'Postmenopausal >12 months' },
-    { group:'Anatomy / stage', id:'poi', label:'Premature ovarian insufficiency (<40)', note:'Replace to ≥51; do not withhold' },
 
-    // Symptoms
-    { group:'Symptoms', id:'vasomotor', label:'Vasomotor (flushes/sweats) dominant' },
-    { group:'Symptoms', id:'urogenital', label:'Urogenital / vaginal symptoms only' },
-    { group:'Symptoms', id:'libido', label:'Persistent low libido on HRT' },
-    { group:'Symptoms', id:'contraception', label:'Also needs contraception' },
-
-    // Risk factors
-    { group:'Risk factors', id:'vte', label:'VTE history / high VTE risk' },
-    { group:'Risk factors', id:'bmi', label:'High BMI / obesity' },
-    { group:'Risk factors', id:'migraine', label:'Migraine (esp. with aura)' },
-    { group:'Risk factors', id:'htn', label:'Hypertension' },
-    { group:'Risk factors', id:'malabsorption', label:'Malabsorption / on enzyme inducers' },
-    { group:'Risk factors', id:'gallbladder', label:'Gallbladder disease' },
-
-    // Contraindications
-    { group:'Contraindications', id:'breast_ca', label:'Current / past breast cancer' },
-    { group:'Contraindications', id:'hormone_ca', label:'Other oestrogen-dependent cancer' },
-    { group:'Contraindications', id:'liver', label:'Active liver disease' },
-    { group:'Contraindications', id:'undiagnosed_bleed', label:'Undiagnosed vaginal bleeding' },
-    { group:'Contraindications', id:'active_vte', label:'Active VTE / arterial event' }
+  safety: [
+    {"tone":"amber","label":"Uterus present","text":"Uterus present — oestrogen MUST be opposed by a progestogen to protect the endometrium"},
+    {"tone":"amber","label":"Premature ovarian insufficiency (<40)","text":"POI — offer HRT (or COC) until at least the natural age of menopause; benefits outweigh risks"},
+    {"tone":"red","label":"Current / past breast cancer","text":"Hormone-dependent cancer — systemic HRT contraindicated; consider non-hormonal options (vaginal oestrogen needs oncology input)"},
+    {"tone":"red","label":"Undiagnosed vaginal bleeding","text":"Undiagnosed PV bleeding — investigate before starting HRT"},
+    {"tone":"red","label":"Active VTE / arterial event","text":"Active VTE/arterial event — defer HRT; if needed later use transdermal"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.breast_ca || f.hormone_ca) out.push({ tone:'red', text:'Hormone-dependent cancer — systemic HRT contraindicated; consider non-hormonal options (vaginal oestrogen needs oncology input)' });
-    if (f.active_vte) out.push({ tone:'red', text:'Active VTE/arterial event — defer HRT; if needed later use transdermal' });
-    if (f.undiagnosed_bleed) out.push({ tone:'red', text:'Undiagnosed PV bleeding — investigate before starting HRT' });
-    if (f.uterus) out.push({ tone:'amber', text:'Uterus present — oestrogen MUST be opposed by a progestogen to protect the endometrium' });
-    if (f.poi) out.push({ tone:'amber', text:'POI — offer HRT (or COC) until at least the natural age of menopause; benefits outweigh risks' });
-    return out;
-  },
 
   drugs: [
     // -------- Transdermal oestrogen --------
@@ -59,16 +30,16 @@ MedChooser.register('menopause', {
       monitor:'Symptom response, BP; review at 3 months then annually',
       counsel:'"Through-the-skin oestrogen avoids the small clot risk of tablets — better if you have migraines, a higher BMI, or any clot history."',
       detail:{ 'Key teaching':'No increased VTE risk (unlike oral). Preferred with VTE risk, migraine, BMI ≥30, hypertension, malabsorption, gallbladder disease.' },
-      evaluate(f){
-        if (f.breast_ca || f.hormone_ca || f.active_vte) return { tier:'avoid', reasons:[{kind:'bad', text:'Systemic oestrogen contraindicated in this profile'}] };
-        const r = [];
-        if (f.vte) r.push({kind:'good', text:'VTE risk — transdermal carries no excess clot risk'});
-        if (f.migraine) r.push({kind:'good', text:'Migraine — transdermal preferred over oral'});
-        if (f.bmi) r.push({kind:'good', text:'High BMI — transdermal route preferred'});
-        if (f.htn) r.push({kind:'good', text:'Hypertension — transdermal has least BP/clot impact'});
-        if (f.malabsorption) r.push({kind:'good', text:'Malabsorption / enzyme inducers — bypasses gut/first-pass'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'Effective oestrogen with the safest risk profile for most'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Current / past breast cancer","text":"Systemic oestrogen contraindicated in this profile"},
+        {"kind":"avoid","label":"Other oestrogen-dependent cancer","text":"Systemic oestrogen contraindicated in this profile"},
+        {"kind":"avoid","label":"Active VTE / arterial event","text":"Systemic oestrogen contraindicated in this profile"},
+        {"kind":"favoured","label":"VTE history / high VTE risk","text":"VTE risk — transdermal carries no excess clot risk"},
+        {"kind":"favoured","label":"High BMI / obesity","text":"High BMI — transdermal route preferred"},
+        {"kind":"favoured","label":"Migraine (esp. with aura)","text":"Migraine — transdermal preferred over oral"},
+        {"kind":"favoured","label":"Hypertension","text":"Hypertension — transdermal has least BP/clot impact"},
+        {"kind":"favoured","label":"Malabsorption / on enzyme inducers","text":"Malabsorption / enzyme inducers — bypasses gut/first-pass"}
+      ]
     },
     // -------- Oral oestrogen --------
     {
@@ -81,12 +52,15 @@ MedChooser.register('menopause', {
       monitor:'BP, symptom response',
       counsel:'"A simple daily tablet — fine if you don\'t have clot risk factors and prefer not to use a patch or gel."',
       detail:{ 'Key teaching':'Reasonable when no VTE/migraine/BMI concerns and the patient prefers a tablet. Combined oral preparations simplify the progestogen.' },
-      evaluate(f){
-        if (f.breast_ca || f.hormone_ca || f.active_vte) return { tier:'avoid', reasons:[{kind:'bad', text:'Systemic oestrogen contraindicated'}] };
-        const r = [];
-        if (f.vte || f.migraine || f.bmi || f.malabsorption) r.push({kind:'bad', text:'VTE/migraine/high-BMI/malabsorption — prefer transdermal'});
-        return { tier: r.length ? 'acceptable' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Acceptable when no clot/migraine risk factors'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Current / past breast cancer","text":"Systemic oestrogen contraindicated"},
+        {"kind":"avoid","label":"Other oestrogen-dependent cancer","text":"Systemic oestrogen contraindicated"},
+        {"kind":"avoid","label":"Active VTE / arterial event","text":"Systemic oestrogen contraindicated"},
+        {"kind":"caution","label":"VTE history / high VTE risk","text":"VTE/migraine/high-BMI/malabsorption — prefer transdermal"},
+        {"kind":"caution","label":"High BMI / obesity","text":"VTE/migraine/high-BMI/malabsorption — prefer transdermal"},
+        {"kind":"caution","label":"Migraine (esp. with aura)","text":"VTE/migraine/high-BMI/malabsorption — prefer transdermal"},
+        {"kind":"caution","label":"Malabsorption / on enzyme inducers","text":"VTE/migraine/high-BMI/malabsorption — prefer transdermal"}
+      ]
     },
     // -------- Micronised progesterone --------
     {
@@ -99,15 +73,10 @@ MedChooser.register('menopause', {
       monitor:'Bleeding pattern; endometrial protection',
       counsel:'"This is the body-identical progesterone that protects your womb lining — taken at night as it can be a little sedating."',
       detail:{ 'Key teaching':'Needed if uterus present. Sequential (12 days/cycle) if perimenopausal/still bleeding; continuous (daily) if postmenopausal >12 months. Lower breast cancer/VTE signal than synthetic progestogens.' },
-      evaluate(f){
-        if (!f.uterus && !f.hysterectomy) return { tier:'acceptable', reasons:[{kind:'neutral', text:'Only required if uterus present'}] };
-        if (f.hysterectomy) return { tier:'avoid', reasons:[{kind:'bad', text:'No uterus — progestogen not needed (oestrogen-only)'}] };
-        const r = [];
-        if (f.uterus) r.push({kind:'good', text:'Uterus present — endometrial protection required'});
-        if (f.perimeno) r.push({kind:'neutral', text:'Perimenopausal — use sequential (cyclical) dosing'});
-        if (f.postmeno) r.push({kind:'neutral', text:'Postmenopausal >12 months — use continuous (no bleed)'});
-        return { tier:'preferred', reasons: r };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Hysterectomy (no uterus)","text":"No uterus — progestogen not needed (oestrogen-only)"},
+        {"kind":"favoured","label":"Uterus present","text":"Uterus present — endometrial protection required"}
+      ]
     },
     // -------- LNG-IUS --------
     {
@@ -120,13 +89,11 @@ MedChooser.register('menopause', {
       monitor:'Threads; licensed 5 years for HRT endometrial protection',
       counsel:'"The coil can double as the womb-lining protection for your HRT and gives contraception too — a neat two-in-one."',
       detail:{ 'Key teaching':'Provides the progestogen component AND contraception. Ideal when contraception still needed in perimenopause.' },
-      evaluate(f){
-        if (f.hysterectomy) return { tier:'avoid', reasons:[{kind:'bad', text:'No uterus — not required'}] };
-        const r = [];
-        if (f.contraception) { r.push({kind:'good', text:'Also needs contraception — IUS covers both roles'}); return { tier:'preferred', reasons:r }; }
-        if (f.uterus) r.push({kind:'good', text:'Endometrial protection with the convenience of a coil'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Progestogen option, especially if contraception wanted'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Hysterectomy (no uterus)","text":"No uterus — not required"},
+        {"kind":"favoured","label":"Uterus present","text":"Endometrial protection with the convenience of a coil"},
+        {"kind":"favoured","label":"Also needs contraception","text":"Also needs contraception — IUS covers both roles"}
+      ]
     },
     // -------- Vaginal oestrogen --------
     {
@@ -139,11 +106,9 @@ MedChooser.register('menopause', {
       monitor:'Can be used long-term; no progestogen needed',
       counsel:'"A local treatment for vaginal dryness and bladder symptoms — barely absorbed, so it\'s safe to use long-term, even alongside systemic HRT."',
       detail:{ 'Key teaching':'For urogenital atrophy. No systemic risks; no progestogen required. Can continue indefinitely. May be considered (with specialist input) even after breast cancer.' },
-      evaluate(f){
-        const r = [];
-        if (f.urogenital) { r.push({kind:'good', text:'Urogenital symptoms — local oestrogen is first-line and very safe'}); return { tier:'preferred', reasons:r }; }
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Add for vaginal/bladder symptoms; can combine with systemic HRT'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Urogenital / vaginal symptoms only","text":"Urogenital symptoms — local oestrogen is first-line and very safe"}
+      ]
     },
     // -------- Testosterone --------
     {
@@ -156,11 +121,9 @@ MedChooser.register('menopause', {
       monitor:'Baseline + periodic testosterone levels',
       counsel:'"If your sex drive stays low despite HRT, a small amount of testosterone can help — we\'d monitor levels."',
       detail:{ 'Key teaching':'Consider for low sexual desire if HRT alone ineffective. Off-label; specialist/experienced clinician.' },
-      evaluate(f){
-        const r = [];
-        if (f.libido) { r.push({kind:'good', text:'Persistent low libido despite HRT — testosterone add-on'}); return { tier:'acceptable', reasons:r }; }
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Only for low libido unresponsive to standard HRT'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Persistent low libido on HRT","text":"Persistent low libido despite HRT — testosterone add-on"}
+      ]
     },
     // -------- Non-hormonal --------
     {
@@ -173,12 +136,11 @@ MedChooser.register('menopause', {
       monitor:'Symptom response',
       counsel:'"If hormones aren\'t safe for you, there are tablets and talking therapies that can still take the edge off the flushes."',
       detail:{ 'Key teaching':'For vasomotor symptoms when HRT contraindicated (e.g. breast cancer) or declined. CBT also helps. Avoid SSRIs that inhibit CYP2D6 with tamoxifen.' },
-      evaluate(f){
-        const r = [];
-        if (f.breast_ca || f.hormone_ca) { r.push({kind:'good', text:'HRT contraindicated — non-hormonal options for vasomotor symptoms'}); return { tier:'preferred', reasons:r }; }
-        if (f.vasomotor) r.push({kind:'neutral', text:'Alternative if HRT declined'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Option when HRT contraindicated or declined'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Current / past breast cancer","text":"HRT contraindicated — non-hormonal options for vasomotor symptoms"},
+        {"kind":"favoured","label":"Other oestrogen-dependent cancer","text":"HRT contraindicated — non-hormonal options for vasomotor symptoms"},
+        {"kind":"note","label":"Vasomotor (flushes/sweats) dominant","text":"Alternative if HRT declined"}
+      ]
     }
   ],
 

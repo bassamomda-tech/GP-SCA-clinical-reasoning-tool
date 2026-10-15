@@ -40,8 +40,7 @@
 - Alginate PRN. Step down to lowest effective dose / PRN.
 Safety-net/urgent assessment: dysphagia, weight loss, GI bleed, vomiting, ≥55 new dyspepsia; suspected cancer pathway referral if dysphagia, or ≥55 with weight loss plus upper abdominal pain, reflux or dyspepsia (NICE NG12 (updated April 2026)). Review long-term PPI annually.`,
     sources: [
-      { label: 'NICE CG184 — Dyspepsia & GORD', url: 'https://www.nice.org.uk/guidance/cg184' },
-      { label:'NICE CG184 — GORD and dyspepsia', url:'https://www.nice.org.uk/guidance/cg184' },
+      { label:'NICE CG184 — Dyspepsia & GORD', url:'https://www.nice.org.uk/guidance/cg184' },
     ],
   },
 
@@ -82,7 +81,9 @@ Safety-net/urgent assessment: dysphagia, weight loss, GI bleed, vomiting, ≥55 
 - Opioid-induced: avoid bulk-forming; macrogol + senna.
 Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): new change in habit, bleeding, weight loss, mass, IDA; FIT ≥10 µg Hb/g or rectal mass → suspected cancer pathway referral. Taper once regular.`,
     sources: [
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
+      { label:'BNF — ispaghula husk', url:'https://bnf.nice.org.uk/drugs/ispaghula-husk/' },
+      { label:'BNF — macrogol 3350', url:'https://bnf.nice.org.uk/drugs/macrogol-3350/' },
+      { label:'BNF — senna', url:'https://bnf.nice.org.uk/drugs/senna/' },
     ],
   },
 
@@ -155,49 +156,11 @@ Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): new change i
 - Persistent/large → banding/surgery referral.
 Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): bleeding ≥50, change in habit, weight loss, IDA, abdominal mass; FIT ≥10 µg Hb/g, rectal or anal mass → suspected cancer pathway referral.`,
     sources: [
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
+      { label:'BNF — ispaghula husk', url:'https://bnf.nice.org.uk/drugs/ispaghula-husk/' },
     ],
   },
 
   // ---------------- Acute gastroenteritis / diarrhoea ----------------
-  {
-    id: 'gastroenteritis',
-    title: 'Acute gastroenteritis / diarrhoea',
-    category: 'Gastroenterology',
-    eyebrow: 'Rehydration · antibiotics rarely needed',
-    indication: 'Acute infective diarrhoea ± vomiting. Mainstay is fluid/electrolyte replacement; most are self-limiting and viral. Antibiotics only for specific bacterial/parasitic causes.',
-    contraindications: 'Avoid antimotility agents (loperamide) if bloody diarrhoea/fever (dysentery) or possible C. difficile. Avoid empirical antibiotics for routine cases.',
-    duration: 'Supportive; usually self-limiting (days)',
-    drugs: [
-      { name: 'Oral rehydration salts (Dioralyte)', dose: 'As directed', freq: 'After each loose stool', route: 'PO', days: 'Until recovered' },
-      { name: 'Loperamide (non-dysenteric only)', dose: '4 mg then 2 mg after each loose stool', freq: 'PRN (max 16 mg/day)', route: 'PO', days: 'Short-term symptom relief' },
-      { name: 'Antiemetic if needed: e.g. ondansetron/metoclopramide', dose: 'Standard', freq: 'PRN', route: 'PO', days: 'Short-term' },
-    ],
-    altRegimens: [
-      { label: 'Confirmed/strongly suspected specific cause', drugs: 'Targeted antibiotics per stool culture/advice (e.g. metronidazole for giardia; azithromycin for invasive Campylobacter/traveller\u2019s if severe).' },
-      { label: 'Traveller\u2019s diarrhoea (severe)', drugs: 'Consider single-dose azithromycin per travel-medicine guidance; rehydration mainstay.' },
-    ],
-    counselling: [
-      'Drink small, frequent sips of fluid / oral rehydration salts; continue eating as tolerated.',
-      'Strict hand hygiene; do not prepare food for others; stay off work/school until 48 h after the last episode.',
-      'Avoid anti-diarrhoeal tablets if there is blood in the stool or a high fever.',
-      'Seek help with signs of dehydration (reduced urine, dizziness), blood in stool, high fever, or symptoms >7 days.',
-    ],
-    followUp: 'No routine review. Notify/stool sample if: blood/mucus, recent travel, systemically unwell, immunocompromised, food-handler, suspected outbreak.',
-    redFlags: [
-      'Dehydration / shock, bloody diarrhoea + fever, severe abdominal pain → urgent assessment.',
-      'Recent hospital/antibiotics + diarrhoea → test for C. difficile.',
-    ],
-    emisText: `Acute gastroenteritis / diarrhoea (mostly self-limiting):
-- Oral rehydration (Dioralyte) after each loose stool; continue eating.
-- Loperamide 4 mg then 2 mg/stool (max 16 mg/day) ONLY if non-bloody, no fever.
-- Hand hygiene; off work/school until 48 h after last episode.
-Stool sample if blood/mucus, travel, systemic illness, immunocompromised, food-handler. Antibiotics only for specific causes.
-Safety-net: dehydration, bloody diarrhoea + fever → urgent.`,
-    sources: [
-      { label:'UKHSA · BNF (NICE CG84 applies to under 5s only)', url:'https://www.nice.org.uk/guidance/cg84' },
-    ],
-  },
 
   // ---------------- IBS ----------------
   {
@@ -234,7 +197,6 @@ Safety-net: dehydration, bloody diarrhoea + fever → urgent.`,
 - Refractory: Amitriptyline 10 mg ON (titrate).
 Safety-net: weight loss, bleeding, nocturnal/anaemia, ≥60 change in habit → investigate.`,
     sources: [
-      { label: 'NICE CG61 — Irritable bowel syndrome', url: 'https://www.nice.org.uk/guidance/cg61' },
       { label:'NICE CG61 — Irritable bowel syndrome', url:'https://www.nice.org.uk/guidance/cg61' },
     ],
   },
@@ -250,7 +212,7 @@ Safety-net: weight loss, bleeding, nocturnal/anaemia, ≥60 change in habit → 
     duration: 'Cyclical (during periods) or device (LNG-IUS)',
     drugs: [
       { name: 'LNG-IUS (Mirena) — 1st line', dose: '1 device', freq: 'Fit', route: 'IU', days: '5 years for HMB (licence); may continue up to 8 years if symptoms controlled' },
-      { name: 'Tranexamic acid (no dysmenorrhoea)', dose: '1 g', freq: 'TDS', route: 'PO', days: 'During heavy days (up to 4 days)' },
+      { name: 'Tranexamic acid (no dysmenorrhoea)', dose: 'Exact dose per the current SPC and the Greater Manchester formulary', freq: 'Started when bleeding begins', route: 'PO', days: 'During the period; stop if no improvement after 3 cycles' },
       { name: 'Mefenamic acid (if pain too)', dose: '500 mg', freq: 'TDS', route: 'PO', days: 'During period' },
     ],
     altRegimens: [
@@ -269,11 +231,10 @@ Safety-net: weight loss, bleeding, nocturnal/anaemia, ≥60 change in habit → 
     ],
     emisText: `Heavy menstrual bleeding (no sinister cause):
 - 1st line: LNG-IUS (Mirena). Check FBC/ferritin, treat iron deficiency.
-- Non-hormonal during periods: Tranexamic acid 1 g TDS (no dysmenorrhoea) OR Mefenamic acid 500 mg TDS (if pain).
+- Non-hormonal during periods: Tranexamic acid, started when bleeding begins — exact dose per the current SPC and the Greater Manchester formulary (no dysmenorrhoea) OR Mefenamic acid 500 mg TDS (if pain).
 - Alternatives: CHC or norethisterone 5 mg TDS days 5–26.
 Safety-net/suspected cancer pathway referral: PMB, persistent IMB/PCB, ≥45 treatment failure → gynae + TV USS.`,
     sources: [
-      { label: 'NICE NG88 — Heavy menstrual bleeding', url: 'https://www.nice.org.uk/guidance/ng88' },
       { label:'NICE NG88 — Heavy menstrual bleeding', url:'https://www.nice.org.uk/guidance/ng88' },
     ],
   },
@@ -311,7 +272,9 @@ Safety-net/suspected cancer pathway referral: PMB, persistent IMB/PCB, ≥45 tre
 - ± Combined hormonal contraception (if suitable / wants contraception). Heat pad, exercise.
 Safety-net: pain between periods, deep dyspareunia, worsening → consider endometriosis / gynae referral.`,
     sources: [
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
+      { label:'BNF — mefenamic acid', url:'https://bnf.nice.org.uk/drugs/mefenamic-acid/' },
+      { label:'BNF — ibuprofen', url:'https://bnf.nice.org.uk/drugs/ibuprofen/' },
+      { label:'BNF — naproxen', url:'https://bnf.nice.org.uk/drugs/naproxen/' },
     ],
   },
 
@@ -391,7 +354,6 @@ Safety-net: fluctuant lump (abscess → USS/drainage); persistent lump/skin chan
 Safety-net: eczema herpeticum (painful punched-out vesicles, unwell) → same-day aciclovir.`,
     sources: [
       { label:'NICE CG57 — Atopic eczema in under 12s', url:'https://www.nice.org.uk/guidance/cg57' },
-      { label: 'NICE CG57 — Atopic eczema in children', url: 'https://www.nice.org.uk/guidance/cg57' },
     ],
   },
 
@@ -470,8 +432,7 @@ Allergen avoidance advice. Unilateral/bloody discharge → ENT.`,
 - Codeine short-term only if NSAID unsuitable. Physiotherapy / stratified care (STarT Back).
 EMERGENCY safety-net: saddle anaesthesia, bladder/bowel change, bilateral/progressive leg weakness → cauda equina.`,
     sources: [
-      { label: 'NICE NG59 — Low back pain & sciatica', url: 'https://www.nice.org.uk/guidance/ng59' },
-      { label:'NICE NG59 — Low back pain and sciatica', url:'https://www.nice.org.uk/guidance/ng59' },
+      { label:'NICE NG59 — Low back pain & sciatica', url:'https://www.nice.org.uk/guidance/ng59' },
     ],
   },
 

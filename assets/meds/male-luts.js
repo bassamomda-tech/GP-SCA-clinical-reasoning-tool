@@ -1,49 +1,21 @@
 /* ============================================
    Medication Chooser — Male LUTS
    NICE CG97 · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('male-luts', {
   title: 'Male LUTS — drug selection',
-  subtitle: 'Match the drug to the dominant symptom: voiding (α-blocker ± 5-ARI), storage/OAB (antimuscarinic / mirabegron), or nocturnal polyuria. Tick the profile; cards re-tier live.',
+  subtitle: 'Match the drug to the dominant symptom: voiding (α-blocker ± 5-ARI), storage/OAB (antimuscarinic / mirabegron), or nocturnal polyuria.',
   guideline: 'NICE CG97 · BNF',
 
-  factors: [
-    // Symptom pattern
-    { group:'Dominant symptom', id:'pattern', label:'Predominant symptom', options:[
-      { value:'voiding', label:'Voiding (hesitancy, weak stream)' },
-      { value:'storage', label:'Storage / OAB (urgency, frequency)' },
-      { value:'mixed',   label:'Mixed voiding + storage' },
-      { value:'nocturia',label:'Nocturnal polyuria predominant' }
-    ]},
-    { group:'Dominant symptom', id:'bothersome', label:'Moderate–severe bothersome symptoms' },
 
-    // Prostate / objective
-    { group:'Prostate / objective', id:'large_prostate', label:'Enlarged prostate (>30 g) / PSA >1.4' },
-    { group:'Prostate / objective', id:'high_residual', label:'High post-void residual / retention risk' },
-    { group:'Prostate / objective', id:'progression_risk', label:'High risk of progression', note:'Large prostate + high PSA' },
-
-    // Comorbidities
-    { group:'Comorbidities', id:'ed', label:'Comorbid erectile dysfunction' },
-    { group:'Comorbidities', id:'postural', label:'Postural hypotension / frail / falls' },
-    { group:'Comorbidities', id:'elderly', label:'Elderly (>65)', note:'Antimuscarinic + desmopressin caution' },
-    { group:'Comorbidities', id:'cognitive', label:'Cognitive impairment / dementia', note:'Avoid anticholinergics' },
-    { group:'Comorbidities', id:'cataract', label:'Planned cataract surgery', note:'α-blocker → IFIS — tell surgeon' },
-    { group:'Comorbidities', id:'cvd', label:'Cardiovascular disease / uncontrolled HTN' },
-
-    // Bloods / context
-    { group:'Bloods / context', id:'na_low', label:'Hyponatraemia / Na⁺ risk' },
-    { group:'Bloods / context', id:'fertility', label:'Planning to father children', note:'5-ARI effects on fertility/teratogenicity' },
-    { group:'Bloods / context', id:'pde5_nitrate', label:'On nitrates', note:'PDE5 inhibitor contraindicated' }
+  safety: [
+    {"tone":"amber","label":"High post-void residual / retention risk","text":"High residual/retention risk — antimuscarinics can precipitate retention; ensure voiding adequate first"},
+    {"tone":"amber","label":"Cognitive impairment / dementia","text":"Cognitive impairment — minimise anticholinergic burden (antimuscarinics worsen cognition)"},
+    {"tone":"amber","label":"Planned cataract surgery","text":"Planned cataract surgery — α-blockers cause intra-operative floppy iris syndrome; inform the ophthalmologist"},
+    {"tone":"red","label":"Hyponatraemia / Na⁺ risk","text":"Hyponatraemia risk — desmopressin can cause dangerous hyponatraemia; check Na⁺"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.cataract) out.push({ tone:'amber', text:'Planned cataract surgery — α-blockers cause intra-operative floppy iris syndrome; inform the ophthalmologist' });
-    if (f.cognitive) out.push({ tone:'amber', text:'Cognitive impairment — minimise anticholinergic burden (antimuscarinics worsen cognition)' });
-    if (f.na_low) out.push({ tone:'red', text:'Hyponatraemia risk — desmopressin can cause dangerous hyponatraemia; check Na⁺' });
-    if (f.high_residual) out.push({ tone:'amber', text:'High residual/retention risk — antimuscarinics can precipitate retention; ensure voiding adequate first' });
-    return out;
-  },
 
   drugs: [
     // -------- Alpha-blocker --------
@@ -57,15 +29,12 @@ MedChooser.register('male-luts', {
       monitor:'Postural BP; review at 4–6 weeks',
       counsel:'"This relaxes the muscle at the bladder outlet so you pass water more easily — it works within days. It can cause dizziness on standing and dry orgasms."',
       detail:{ 'Key teaching':'First-line for bothersome moderate–severe voiding LUTS. Fast onset (days). Warn re cataract surgery (IFIS).' },
-      evaluate(f){
-        const r = [];
-        if (f.pattern === 'voiding' || f.pattern === 'mixed') r.push({kind:'good', text:'Voiding symptoms — α-blocker is first-line and fast-acting'});
-        if (f.postural) r.push({kind:'bad', text:'Postural hypotension / falls — dizziness risk; start cautiously'});
-        if (f.cataract) r.push({kind:'bad', text:'Cataract surgery planned — IFIS risk; inform surgeon'});
-        const preferred = (f.pattern === 'voiding' || f.pattern === 'mixed') && f.bothersome !== false;
-        if (preferred) return { tier:'preferred', reasons: r };
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'First-line for voiding symptoms'}] };
-      }
+      conditions: [
+        {"kind":"caution","label":"Postural hypotension / frail / falls","text":"Postural hypotension / falls — dizziness risk; start cautiously"},
+        {"kind":"caution","label":"Planned cataract surgery","text":"Cataract surgery planned — IFIS risk; inform surgeon"},
+        {"kind":"favoured","label":"Predominant symptom: Voiding (hesitancy, weak stream)","text":"Voiding symptoms — α-blocker is first-line and fast-acting"},
+        {"kind":"favoured","label":"Predominant symptom: Mixed voiding + storage","text":"Voiding symptoms — α-blocker is first-line and fast-acting"}
+      ]
     },
     // -------- 5-ARI --------
     {
@@ -78,15 +47,12 @@ MedChooser.register('male-luts', {
       monitor:'Slow onset (3–6 months); halve PSA reference range; ask about prior depression before starting and review mood (MHRA 2026)',
       counsel:'"This gradually shrinks the prostate over several months, so it works slowly but reduces the chance of needing surgery. It can affect sexual function, occasionally even after stopping, and has been linked to low mood — tell us promptly if your mood changes."',
       detail:{ 'Key teaching':'For enlarged prostate (>30 g / PSA >1.4) to reduce progression + retention/surgery risk. Teratogenic — handling caution. Halves PSA.' },
-      evaluate(f){
-        const r = [];
-        if (f.large_prostate || f.progression_risk) r.push({kind:'good', text:'Enlarged prostate / progression risk — 5-ARI reduces long-term retention + surgery'});
-        if (f.fertility) r.push({kind:'bad', text:'Fertility/teratogenicity concerns — counsel; avoid handling crushed tablets near pregnancy'});
-        if (f.ed) r.push({kind:'bad', text:'Existing ED — 5-ARI may worsen sexual function'});
-        const preferred = (f.large_prostate || f.progression_risk);
-        if (preferred) return { tier:'preferred', reasons: r };
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Indicated only with prostate enlargement'}] };
-      }
+      conditions: [
+        {"kind":"caution","label":"Comorbid erectile dysfunction","text":"Existing ED — 5-ARI may worsen sexual function"},
+        {"kind":"caution","label":"Planning to father children","text":"Fertility/teratogenicity concerns — counsel; avoid handling crushed tablets near pregnancy"},
+        {"kind":"favoured","label":"Enlarged prostate (>30 g) / PSA >1.4","text":"Enlarged prostate / progression risk — 5-ARI reduces long-term retention + surgery"},
+        {"kind":"favoured","label":"High risk of progression","text":"Enlarged prostate / progression risk — 5-ARI reduces long-term retention + surgery"}
+      ]
     },
     // -------- Combination --------
     {
@@ -99,12 +65,9 @@ MedChooser.register('male-luts', {
       monitor:'As above',
       counsel:'"We can combine the fast-acting relaxant with the prostate-shrinking tablet — quick relief now, plus protection against it getting worse."',
       detail:{ 'Key teaching':'Offer combination for bothersome moderate–severe LUTS WITH prostate enlargement — best of immediate + long-term benefit.' },
-      evaluate(f){
-        const r = [];
-        if ((f.large_prostate || f.progression_risk) && f.bothersome) { r.push({kind:'good', text:'Bothersome symptoms + enlarged prostate — combination is the NICE CG97 option'}); return { tier:'preferred', reasons:r }; }
-        if (f.large_prostate) r.push({kind:'neutral', text:'Reasonable if both rapid relief and progression-prevention wanted'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'For bothersome symptoms with prostate enlargement'}] };
-      }
+      conditions: [
+        {"kind":"note","label":"Enlarged prostate (>30 g) / PSA >1.4","text":"Reasonable if both rapid relief and progression-prevention wanted"}
+      ]
     },
     // -------- Antimuscarinic --------
     {
@@ -117,16 +80,13 @@ MedChooser.register('male-luts', {
       monitor:'Residual volume; cognition in elderly; review 4–6 weeks',
       counsel:'"This calms an overactive bladder to reduce urgency and frequency. It can give a dry mouth and constipation; tell us if you struggle to pass water."',
       detail:{ 'Key teaching':'For storage/OAB symptoms. Caution if high residual (retention risk) and in the elderly/cognitively impaired (anticholinergic load).' },
-      evaluate(f){
-        if (f.high_residual) return { tier:'avoid', reasons:[{kind:'bad', text:'High post-void residual — risk of acute retention'}] };
-        if (f.cognitive) return { tier:'avoid', reasons:[{kind:'bad', text:'Cognitive impairment — anticholinergic burden; prefer mirabegron'}] };
-        const r = [];
-        if (f.pattern === 'storage' || f.pattern === 'mixed') r.push({kind:'good', text:'Storage/OAB symptoms — antimuscarinic indicated'});
-        if (f.elderly) r.push({kind:'bad', text:'Elderly — anticholinergic side effects; consider mirabegron'});
-        const preferred = (f.pattern === 'storage') && !f.elderly;
-        if (preferred) return { tier:'preferred', reasons: r };
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'For storage symptoms; mind residual + cognition'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"High post-void residual / retention risk","text":"High post-void residual — risk of acute retention"},
+        {"kind":"avoid","label":"Cognitive impairment / dementia","text":"Cognitive impairment — anticholinergic burden; prefer mirabegron"},
+        {"kind":"caution","label":"Elderly (>65)","text":"Elderly — anticholinergic side effects; consider mirabegron"},
+        {"kind":"favoured","label":"Predominant symptom: Storage / OAB (urgency, frequency)","text":"Storage/OAB symptoms — antimuscarinic indicated"},
+        {"kind":"favoured","label":"Predominant symptom: Mixed voiding + storage","text":"Storage/OAB symptoms — antimuscarinic indicated"}
+      ]
     },
     // -------- Mirabegron --------
     {
@@ -139,13 +99,10 @@ MedChooser.register('male-luts', {
       monitor:'BP at baseline + during treatment',
       counsel:'"An alternative bladder medicine that avoids the dry mouth and confusion of the older drugs — but we\'ll keep an eye on your blood pressure."',
       detail:{ 'Key teaching':'Alternative to antimuscarinics for OAB, especially in the elderly or where anticholinergic load is a problem. Avoid in uncontrolled hypertension.' },
-      evaluate(f){
-        if (f.cvd) return { tier:'acceptable', reasons:[{kind:'bad', text:'Uncontrolled HTN — caution; monitor BP'}] };
-        const r = [];
-        if ((f.pattern === 'storage' || f.pattern === 'mixed') && (f.elderly || f.cognitive)) { r.push({kind:'good', text:'OAB in elderly / cognitive impairment — avoids anticholinergic burden'}); return { tier:'preferred', reasons:r }; }
-        if (f.pattern === 'storage') r.push({kind:'good', text:'Storage symptoms — effective antimuscarinic alternative'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Alternative for OAB; check BP'}] };
-      }
+      conditions: [
+        {"kind":"caution","label":"Cardiovascular disease / uncontrolled HTN","text":"Uncontrolled HTN — caution; monitor BP"},
+        {"kind":"favoured","label":"Predominant symptom: Storage / OAB (urgency, frequency)","text":"Storage symptoms — effective antimuscarinic alternative"}
+      ]
     },
     // -------- Desmopressin --------
     {
@@ -158,15 +115,11 @@ MedChooser.register('male-luts', {
       monitor:'Na⁺ at baseline, 3 days, 1 month; avoid >65 with cardiovascular risk',
       counsel:'"This concentrates your urine overnight so you\'re not up so often — but we must check your sodium because it can drop dangerously."',
       detail:{ 'Key teaching':'For troublesome nocturnal polyuria. Check sodium before and during. Caution/avoid in older men and cardiovascular disease.' },
-      evaluate(f){
-        if (f.na_low) return { tier:'avoid', reasons:[{kind:'bad', text:'Hyponatraemia risk — desmopressin contraindicated'}] };
-        const r = [];
-        if (f.pattern === 'nocturia') { r.push({kind:'good', text:'Nocturnal polyuria predominant — desmopressin targets this'}); }
-        if (f.elderly) r.push({kind:'bad', text:'Over 65 — higher hyponatraemia risk; caution'});
-        const preferred = f.pattern === 'nocturia' && !f.elderly;
-        if (preferred) return { tier:'preferred', reasons: r };
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Only for nocturnal polyuria; monitor sodium'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Hyponatraemia / Na⁺ risk","text":"Hyponatraemia risk — desmopressin contraindicated"},
+        {"kind":"caution","label":"Elderly (>65)","text":"Over 65 — higher hyponatraemia risk; caution"},
+        {"kind":"favoured","label":"Predominant symptom: Nocturnal polyuria predominant","text":"Nocturnal polyuria predominant — desmopressin targets this"}
+      ]
     },
     // -------- PDE5 (tadalafil) --------
     {
@@ -179,12 +132,10 @@ MedChooser.register('male-luts', {
       monitor:'Avoid with nitrates / nicorandil',
       counsel:'"A daily low dose can help both the waterworks symptoms and erections at the same time."',
       detail:{ 'Key teaching':'Daily tadalafil can improve both LUTS and erectile dysfunction. Absolutely contraindicated with nitrates.' },
-      evaluate(f){
-        if (f.pde5_nitrate) return { tier:'avoid', reasons:[{kind:'bad', text:'On nitrates — PDE5 inhibitor contraindicated'}] };
-        const r = [];
-        if (f.ed) { r.push({kind:'good', text:'Comorbid ED — tadalafil treats both LUTS and ED'}); return { tier:'preferred', reasons:r }; }
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Consider when LUTS coexist with erectile dysfunction'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"On nitrates","text":"On nitrates — PDE5 inhibitor contraindicated"},
+        {"kind":"favoured","label":"Comorbid erectile dysfunction","text":"Comorbid ED — tadalafil treats both LUTS and ED"}
+      ]
     }
   ],
 

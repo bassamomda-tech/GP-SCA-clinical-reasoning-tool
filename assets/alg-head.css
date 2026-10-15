@@ -107,3 +107,17 @@ html.ah .ah-card .rgp-ref-notice{grid-area:notice;margin-top:12px!important}
   html.ah .ah-card .rgp-ref-notice{margin-top:10px!important}
 }
 }
+
+/* ==== Oct 2026 (Upload 113): the same width and text rhythm as the protocol pages, and labels
+   that wrap instead of running into the text beside them. Screen only. ==== */
+html.ah{--ah-w:1180px}
+@media screen{
+  html.ah body{max-width:calc(var(--ah-w) + 40px)!important}
+  html.ah .alg-flow .node,
+  html.ah .alg-flow .node p,
+  html.ah .alg-flow .node li{font-size:15px!important;line-height:1.66!important}
+  html.au .alg-flow .kv{font-size:15px!important}
+  html.au .alg-flow .kv>div{line-height:1.66!important;min-width:0!important;overflow-wrap:anywhere}
+  html.au .alg-flow .kv>div:nth-child(odd){white-space:normal!important;font-size:14px!important}
+  html.ah .alg-flow table td,html.ah .alg-flow table th{white-space:normal}
+}

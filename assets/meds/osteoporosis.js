@@ -1,36 +1,19 @@
 /* ============================================
    Medication Chooser — Osteoporosis (fragility-fracture prevention)
    NICE NG259 (July 2026; replaced CG146) · NICE TA464 · NOGG 2024 · BNF · ROS
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('osteoporosis', {
   title: 'Osteoporosis — bone protection',
-  subtitle: 'Once treatment is indicated (FRAX/DXA, or a fragility fracture), an oral bisphosphonate is first-line for almost everyone. The decision shifts when swallowing/upper-GI factors, adherence, severe CKD, or very high fracture risk are present. Always optimise calcium/vitamin D first. Tick the profile; cards re-tier live.',
+  subtitle: 'Once treatment is indicated (FRAX/DXA, or a fragility fracture), an oral bisphosphonate is first-line for almost everyone. The decision shifts when swallowing/upper-GI factors, adherence, severe CKD, or very high fracture risk are present. Always optimise calcium/vitamin D first.',
   guideline: 'NICE NG259 (July 2026; replaced CG146) · NICE TA464 · NOGG 2024 · BNF',
 
-  factors: [
-    { group:'Risk / indication', id:'fracture', label:'Prior fragility fracture' },
-    { group:'Risk / indication', id:'veryhigh', label:'Very high risk / multiple vertebral fractures' },
-    { group:'Risk / indication', id:'steroid', label:'Long-term oral corticosteroid' },
 
-    { group:'GI / swallowing', id:'reflux', label:'GORD / oesophagitis / Barrett\'s' },
-    { group:'GI / swallowing', id:'swallow', label:'Cannot sit upright / swallowing difficulty' },
-    { group:'GI / swallowing', id:'malabsorption', label:'Malabsorption / bariatric surgery' },
-
-    { group:'Renal / dental', id:'ckd', label:'eGFR <35' },
-    { group:'Renal / dental', id:'dental', label:'Planned invasive dental work / poor dentition', note:'ONJ risk' },
-    { group:'Renal / dental', id:'hypocalc', label:'Uncorrected hypocalcaemia / low vitamin D' },
-
-    { group:'Practical', id:'adherence', label:'Adherence concerns / polypharmacy' },
-    { group:'Menopause', id:'menopausal', label:'Early menopause / vasomotor symptoms' },
-    { group:'Practical', id:'breast', label:'Breast cancer history / on aromatase inhibitor' }
+  safety: [
+    {"tone":"amber","label":"Planned invasive dental work / poor dentition","text":"Encourage a dental check and complete invasive dental work before starting; counsel on the (low) risk of osteonecrosis of the jaw."},
+    {"tone":"red","label":"Uncorrected hypocalcaemia / low vitamin D","text":"Correct hypocalcaemia and replete vitamin D BEFORE starting any antiresorptive (bisphosphonate/denosumab) — risk of symptomatic hypocalcaemia."}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.hypocalc) out.push({ tone:'red', text:'Correct hypocalcaemia and replete vitamin D BEFORE starting any antiresorptive (bisphosphonate/denosumab) — risk of symptomatic hypocalcaemia.' });
-    if (f.dental) out.push({ tone:'amber', text:'Encourage a dental check and complete invasive dental work before starting; counsel on the (low) risk of osteonecrosis of the jaw.' });
-    return out;
-  },
 
   drugs: [
     {
@@ -43,7 +26,7 @@ MedChooser.register('osteoporosis', {
       monitor:'Correct deficiency before antiresorptives',
       counsel:'"Before and during bone treatment we make sure your calcium and vitamin D are topped up — the bone tablets don\'t work properly without them."',
       detail:{ 'Key teaching':'Supplement vitamin D if deficient/insufficient and calcium if dietary intake is inadequate. Essential before any bisphosphonate or denosumab.' },
-      evaluate(f){ return { tier:'preferred', reasons:[{kind:'good', text:'Ensure adequate calcium and vitamin D in all patients on bone-protection therapy'}] }; }
+      
     },
     {
       id:'alendronate',
@@ -58,16 +41,15 @@ MedChooser.register('osteoporosis', {
         'Dose':'Alendronate 70 mg weekly (or risedronate 35 mg weekly). Take on rising, with water, sit/stand upright ≥30 min, before food/other drugs.',
         'Key teaching':'First-line and most cost-effective. Reassess after 5 years (oral) / 3 years (IV) — consider a drug holiday if risk has fallen.'
       },
-      evaluate(f){
-        if (f.reflux || f.swallow) return { tier:'avoid', reasons:[{kind:'bad', text:'Upper-GI disease / cannot stay upright — oral bisphosphonate contraindicated; use IV zoledronate or denosumab'}] };
-        if (f.ckd) return { tier:'avoid', reasons:[{kind:'bad', text:'eGFR <35 — bisphosphonates contraindicated; consider denosumab'}] };
-        const r = [];
-        if (f.malabsorption) r.push({kind:'bad', text:'Malabsorption/bariatric surgery — oral absorption poor; consider IV/SC route'});
-        if (f.adherence) r.push({kind:'bad', text:'Adherence concerns — weekly dosing regimen often poorly sustained; consider IV zoledronate (annual)'});
-        if (f.fracture || f.steroid) r.push({kind:'good', text:'Clear treatment indication — start first-line oral bisphosphonate'});
-        if (r.some(x=>x.kind==='bad')) return { tier:'acceptable', reasons:r };
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'First-line bone protection; counsel carefully on dosing instructions'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"GORD / oesophagitis / Barrett's","text":"Upper-GI disease / cannot stay upright — oral bisphosphonate contraindicated; use IV zoledronate or denosumab"},
+        {"kind":"avoid","label":"Cannot sit upright / swallowing difficulty","text":"Upper-GI disease / cannot stay upright — oral bisphosphonate contraindicated; use IV zoledronate or denosumab"},
+        {"kind":"avoid","label":"eGFR <35","text":"eGFR <35 — bisphosphonates contraindicated; consider denosumab"},
+        {"kind":"caution","label":"Malabsorption / bariatric surgery","text":"Malabsorption/bariatric surgery — oral absorption poor; consider IV/SC route"},
+        {"kind":"caution","label":"Adherence concerns / polypharmacy","text":"Adherence concerns — weekly dosing regimen often poorly sustained; consider IV zoledronate (annual)"},
+        {"kind":"favoured","label":"Prior fragility fracture","text":"Clear treatment indication — start first-line oral bisphosphonate"},
+        {"kind":"favoured","label":"Long-term oral corticosteroid","text":"Clear treatment indication — start first-line oral bisphosphonate"}
+      ]
     },
     {
       id:'zoledronate',
@@ -79,14 +61,14 @@ MedChooser.register('osteoporosis', {
       monitor:'Correct calcium/vit D and check renal function first',
       counsel:'"A once-a-year drip avoids the daily/weekly tablets and the gullet precautions. The first infusion can give a few days of flu-like aching — paracetamol helps."',
       detail:{ 'Key teaching':'Good where oral bisphosphonates are not tolerated, GI contraindication, or adherence is poor. Avoid if eGFR <35. Pre-medicate/hydrate; warn re acute-phase reaction.' },
-      evaluate(f){
-        if (f.ckd) return { tier:'avoid', reasons:[{kind:'bad', text:'eGFR <35 — zoledronate contraindicated; consider denosumab'}] };
-        const r = [];
-        if (f.reflux || f.swallow || f.malabsorption) r.push({kind:'good', text:'Avoids oral/upper-GI route — suitable alternative'});
-        if (f.adherence) r.push({kind:'good', text:'Annual dosing improves adherence'});
-        if (f.veryhigh) r.push({kind:'good', text:'Potent option in high fracture risk'});
-        return { tier: (r.length ? 'preferred':'acceptable'), reasons: r.length ? r : [{kind:'neutral', text:'Effective parenteral bisphosphonate where oral unsuitable'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"eGFR <35","text":"eGFR <35 — zoledronate contraindicated; consider denosumab"},
+        {"kind":"favoured","label":"Very high risk / multiple vertebral fractures","text":"Potent option in high fracture risk"},
+        {"kind":"favoured","label":"GORD / oesophagitis / Barrett's","text":"Avoids oral/upper-GI route — suitable alternative"},
+        {"kind":"favoured","label":"Cannot sit upright / swallowing difficulty","text":"Avoids oral/upper-GI route — suitable alternative"},
+        {"kind":"favoured","label":"Malabsorption / bariatric surgery","text":"Avoids oral/upper-GI route — suitable alternative"},
+        {"kind":"favoured","label":"Adherence concerns / polypharmacy","text":"Annual dosing improves adherence"}
+      ]
     },
     {
       id:'denosumab',
@@ -98,14 +80,13 @@ MedChooser.register('osteoporosis', {
       monitor:'Calcium/vit D before each dose; never delay/stop without follow-on therapy',
       counsel:'"A 6-monthly injection that suits kidney problems. The key rule: it must not be stopped abruptly — bone loss rebounds fast — so we plan ahead and keep the doses on time."',
       detail:{ 'Key teaching':'Useful when bisphosphonates contraindicated, including CKD. Do NOT stop without consolidating with a bisphosphonate — rebound fractures. Correct calcium/vit D first.' },
-      evaluate(f){
-        if (f.hypocalc) return { tier:'avoid', reasons:[{kind:'bad', text:'Correct hypocalcaemia/vit D first — denosumab can cause severe hypocalcaemia'}] };
-        const r = [];
-        if (f.ckd) r.push({kind:'good', text:'eGFR <35 — preferred over bisphosphonates (not renally cleared the same way)'});
-        if (f.reflux || f.swallow) r.push({kind:'good', text:'No oral/GI route — suitable where bisphosphonates contraindicated'});
-        if (f.breast) r.push({kind:'good', text:'Aromatase-inhibitor bone loss — recognised role'});
-        return { tier: (r.length ? 'preferred':'acceptable'), reasons: r.length ? r : [{kind:'neutral', text:'Second-line antiresorptive; mind the no-abrupt-stop rule'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Uncorrected hypocalcaemia / low vitamin D","text":"Correct hypocalcaemia/vit D first — denosumab can cause severe hypocalcaemia"},
+        {"kind":"favoured","label":"GORD / oesophagitis / Barrett's","text":"No oral/GI route — suitable where bisphosphonates contraindicated"},
+        {"kind":"favoured","label":"Cannot sit upright / swallowing difficulty","text":"No oral/GI route — suitable where bisphosphonates contraindicated"},
+        {"kind":"favoured","label":"eGFR <35","text":"eGFR <35 — preferred over bisphosphonates (not renally cleared the same way)"},
+        {"kind":"favoured","label":"Breast cancer history / on aromatase inhibitor","text":"Aromatase-inhibitor bone loss — recognised role"}
+      ]
     },
     {
       id:'hrt_raloxifene',
@@ -117,13 +98,11 @@ MedChooser.register('osteoporosis', {
       monitor:'Assess VTE/breast risk',
       counsel:'"In younger women around menopause, HRT both protects bone and treats flushes. Raloxifene is a bone-only option but can worsen flushes and carries a small clot risk."',
       detail:{ 'Key teaching':'HRT is appropriate for fracture prevention in younger post-/perimenopausal women, especially with vasomotor symptoms or early menopause. Raloxifene reduces vertebral fracture and breast-cancer risk but increases VTE and hot flushes.' },
-      evaluate(f){
-        if (f.breast) return { tier:'avoid', reasons:[{kind:'bad', text:'Breast cancer history — HRT generally avoided; raloxifee per specialist'}] };
-        const r = [];
-        if (f.menopausal) r.push({kind:'good', text:'Early menopause / vasomotor symptoms — HRT protects bone and treats symptoms'});
-        if (f.veryhigh) r.push({kind:'bad', text:'Very high fracture risk — these are not the most potent options; prefer bisphosphonate/denosumab ± specialist anabolic'});
-        return { tier: (f.menopausal ? 'acceptable':'avoid'), reasons: r.length ? r : [{kind:'neutral', text:'Niche role; consider in younger women, not as default bone protection'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Very high risk / multiple vertebral fractures","text":"Very high fracture risk — these are not the most potent options; prefer bisphosphonate/denosumab ± specialist anabolic"},
+        {"kind":"avoid","label":"Breast cancer history / on aromatase inhibitor","text":"Breast cancer history — HRT generally avoided; raloxifee per specialist"},
+        {"kind":"favoured","label":"Early menopause / vasomotor symptoms","text":"Early menopause / vasomotor symptoms — HRT protects bone and treats symptoms"}
+      ]
     }
   ],
 

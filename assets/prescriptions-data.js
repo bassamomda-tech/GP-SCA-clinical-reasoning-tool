@@ -40,7 +40,6 @@ window.RGP_PRESCRIPTIONS = [
 Counsel: take all 3 together, complete full course, avoid alcohol. Re-test only if relapse, ≥ 4 wks post-treatment and ≥ 2 wks off PPI.`,
     sources: [
       { label:'NICE CG184 — GORD and dyspepsia in adults', url:'https://www.nice.org.uk/guidance/cg184' },
-      { label:'NICE CG184 Dyspepsia', url:'https://www.nice.org.uk/guidance/cg184' },
     ],
   },
 
@@ -124,7 +123,6 @@ DISCUSS ALL 3 OPTIONS:
 Counsel: start/restart hormonal contraception 5 days after UPA / immediately after LNG. Pregnancy test if no period in 3 wks. Offer STI screen.`,
     sources: [
       { label:'FSRH Emergency Contraception 2017 (amended 2023)', url:'https://www.fsrh.org/standards-and-guidance/documents/ceu-clinical-guidance-emergency-contraception-march-2017/' },
-      { label:'FSRH — Emergency contraception guideline', url:'https://www.fsrh.org/standards-and-guidance/' },
     ],
   },
 
@@ -168,7 +166,6 @@ Counsel: start/restart hormonal contraception 5 days after UPA / immediately aft
 COUNSEL: take triptan EARLY in attack; avoid > 10 days/month use (MOH risk); keep a headache diary; review in 4 wks.`,
     sources: [
       { label:'NICE CG150 — Headaches in over 12s', url:'https://www.nice.org.uk/guidance/cg150' },
-      { label:'NICE CG150 Headaches', url:'https://www.nice.org.uk/guidance/cg150' },
     ],
   },
 
@@ -184,7 +181,7 @@ COUNSEL: take triptan EARLY in attack; avoid > 10 days/month use (MOH risk); kee
     contraindications: 'Propranolol: asthma, decompensated HF, AV block, peripheral vascular disease. Topiramate: pregnancy (teratogenic — use HIGHLY EFFECTIVE contraception), depression history, renal calculi.',
     duration: 'Trial for 3 months at target dose. Continue 6–12 months if effective, then trial withdrawal.',
     drugs: [
-      { name:'Propranolol (caution in depression — toxic in overdose)', dose:'40 mg BD → titrate to 80 mg BD over 4–6 wks', freq:'BD', route:'PO', days:'≥ 3 months' },
+      { name:'Propranolol (caution in depression — toxic in overdose)', dose:'Propranolol MR 80 mg → 160 mg/day', freq:'—', route:'PO', days:'≥ 3 months' },
       { name:'OR Topiramate (Pregnancy Prevention Programme)',   dose:'Start 25 mg ON; titrate weekly to 50 mg BD', freq:'BD', route:'PO', days:'≥ 3 months' },
       { name:'OR Amitriptyline (useful with tension-type headache / poor sleep)', dose:'10 mg ON; titrate to 25–75 mg ON', freq:'ON', route:'PO', days:'≥ 3 months' },
     ],
@@ -206,13 +203,12 @@ COUNSEL: take triptan EARLY in attack; avoid > 10 days/month use (MOH risk); kee
     ],
     emisText: `Migraine prevention (≥ 4 attacks/month):
 Options (NICE CG150, 2025 — choose by comorbidity and preference):
-- Propranolol 40 mg PO BD; titrate to 80 mg BD over 4–6 wks. Trial ≥ 3 months. Caution in depression (overdose toxicity).
+- Propranolol MR 80 mg → 160 mg/day. Trial ≥ 3 months. Caution in depression (overdose toxicity).
 - Topiramate 25 mg ON; titrate weekly to 50 mg BD. Pregnancy Prevention Programme: highly effective contraception required.
 - Amitriptyline 10 mg ON; titrate to 25–75 mg ON.
 COUNSEL: review at 3 months; aim ≥ 50% reduction; keep diary; lifestyle measures.`,
     sources: [
       { label:'NICE CG150 — Headaches in over 12s', url:'https://www.nice.org.uk/guidance/cg150' },
-      { label:'NICE CG150', url:'https://www.nice.org.uk/guidance/cg150' },
       { label:'MHRA Topiramate pregnancy warning 2024', url:'https://www.gov.uk/government/publications/topiramate-introduction-of-new-safety-measures' },
     ],
   },
@@ -226,17 +222,17 @@ COUNSEL: review at 3 months; aim ≥ 50% reduction; keep diary; lifestyle measur
     category: 'Musculoskeletal & Rheumatology',
     eyebrow: 'NSAID or colchicine; steroid if both unsuitable',
     indication: 'Acute monoarthritis (typically 1st MTP, midfoot, ankle, knee) with rapid onset, erythema, swelling.',
-    contraindications: 'NSAID: CKD eGFR < 30, peptic ulcer, HF, anticoag, elderly frail. Colchicine: eGFR < 10, severe hepatic impairment, drug interactions (clarithromycin, ciclosporin, statins).',
+    contraindications: 'NSAID: CKD eGFR < 30, peptic ulcer, HF, anticoag, elderly frail. Colchicine: renal impairment — reduce, avoid or seek specialist advice per the current SPC/local renal protocol; caution in hepatic impairment, older/frail patients and low body weight; interactions: clarithromycin, erythromycin, azole antifungals, ciclosporin, verapamil, diltiazem, some HIV medicines and other P-gp/CYP3A4 inhibitors; increased myotoxicity with statins, particularly in renal impairment.',
     duration: 'Until flare settles — usually 3–7 days. Continue allopurinol/febuxostat if already established.',
     drugs: [
       { name:'Naproxen (preferred if no CI)', dose:'500 mg BD × 5–7 days', freq:'BD', route:'PO', days:'5–7' },
       { name:'+ PPI (lansoprazole)',           dose:'15–30 mg OD',          freq:'OD', route:'PO', days:'During NSAID' },
-      { name:'Colchicine (alt to NSAID)',      dose:'500 µg BD–QDS (max 6 mg/course)', freq:'BD–QDS', route:'PO', days:'Until flare settles' },
+      { name:'Colchicine (alt to NSAID)',      dose:'Dose per current UK product information/local formulary — lowest effective dose; check renal and hepatic function and interacting medicines first', freq:'Per product information', route:'PO', days:'Works best started early; do not repeat courses without reviewing cumulative exposure' },
       { name:'Prednisolone (alt if both CI)',  dose:'30 mg OD × 5 days', freq:'OD', route:'PO', days:'5' },
     ],
     altRegimens: [
-      { label:'CKD eGFR 30–59', drugs:'Colchicine 500 µg BD (reduce frequency). Avoid NSAID if eGFR < 30.' },
-      { label:'Anticoagulated / peptic ulcer', drugs:'Colchicine 500 µg BD–QDS OR prednisolone 30 mg OD × 5 days. Skip NSAID.' },
+      { label:'CKD eGFR 30–59', drugs:'Colchicine: reduce, avoid or seek specialist advice per the current SPC/local renal protocol. Avoid NSAID if eGFR < 30.' },
+      { label:'Anticoagulated / peptic ulcer', drugs:'Colchicine (dose per current UK product information/local formulary) OR prednisolone 30 mg OD × 5 days. Skip NSAID.' },
       { label:'Septic joint suspected', drugs:'Do NOT inject steroid. Same-day orthopaedic referral for joint aspiration.' },
     ],
     counselling: [
@@ -256,7 +252,7 @@ COUNSEL: review at 3 months; aim ≥ 50% reduction; keep diary; lifestyle measur
 - Naproxen 500 mg PO BD × 5–7 days
 - Lansoprazole 30 mg PO OD (gastric cover)
 - Ice, rest, hydrate, avoid alcohol/purines.
-If NSAID contraindicated: Colchicine 500 µg BD–QDS until settled (max 6 mg/course) OR Prednisolone 30 mg PO OD × 5 days.
+If NSAID contraindicated: Colchicine — dose per current UK product information/local formulary, after checking renal and hepatic function and interacting medicines — OR Prednisolone 30 mg PO OD × 5 days.
 DO NOT STOP allopurinol if established. Check urate 4–6 wks after flare.`,
     sources: [
       { label:'NICE NG219 — Gout', url:'https://www.nice.org.uk/guidance/ng219' },
@@ -277,7 +273,7 @@ DO NOT STOP allopurinol if established. Check urate 4–6 wks after flare.`,
     duration: 'Lifelong once started (urate-lowering therapy is for life).',
     drugs: [
       { name:'Allopurinol', dose:'Start 100 mg OD (50 mg if eGFR < 60); titrate by 100 mg every 4 weeks (aim 200–600 mg OD)', freq:'OD', route:'PO', days:'Lifelong' },
-      { name:'Colchicine cover',  dose:'500 µg OD–BD',  freq:'OD–BD', route:'PO', days:'First 3–6 months while titrating' },
+      { name:'Colchicine cover',  dose:'Low dose per product information, by renal function',  freq:'Per product information', route:'PO', days:'First 3–6 months while titrating' },
       { name:'OR Naproxen cover', dose:'250 mg BD + PPI', freq:'BD',  route:'PO', days:'First 3–6 months while titrating' },
     ],
     altRegimens: [
@@ -299,13 +295,12 @@ DO NOT STOP allopurinol if established. Check urate 4–6 wks after flare.`,
     ],
     emisText: `Urate-lowering therapy (chronic gout):
 1st line: Allopurinol 100 mg PO OD (50 mg if eGFR < 60). Titrate by 100 mg every 4 wks. Target serum urate < 360 µmol/L (< 300 if tophi).
-Flare prophylaxis: Colchicine 500 µg PO OD–BD × 3–6 months while titrating.
+Flare prophylaxis: Colchicine (low dose per product information, by renal function) × 3–6 months while titrating.
 DO NOT STOP allopurinol during flares.
 Check urate + U&E every 4 wks until at target, then annual.
 Counsel: lifelong therapy; lifestyle (alcohol, weight, hydration); rash → STOP and review.`,
     sources: [
       { label:'NICE NG219 — Gout', url:'https://www.nice.org.uk/guidance/ng219' },
-      { label:'NICE NG219 Gout', url:'https://www.nice.org.uk/guidance/ng219' },
     ],
   },
 

@@ -44,7 +44,7 @@
 - Exclude tinea, guttate psoriasis, drug eruption; SYPHILIS serology if palms/soles/sexual risk/atypical.
 - Pregnancy onset \u2192 discuss possible adverse association.`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'PCDS — pityriasis rosea', url:'https://www.pcds.org.uk/clinical-guidance/pityriasis-rosea' },
     ],
   },
 
@@ -83,7 +83,7 @@
 - Recurrence common \u2192 intermittent prophylactic shampoo.
 - Counsel: pigment change persists weeks-months after cure (NOT failure).`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'PCDS — pityriasis versicolor', url:'https://www.pcds.org.uk/clinical-guidance/pityriasis-versicolor' },
     ],
   },
 
@@ -288,7 +288,7 @@
 - Antivirals don't eradicate virus. GUM referral + STI screen + partner notification.
 - PREGNANCY (esp 1st episode 3rd trimester) \u2192 urgent obstetric input (neonatal herpes; suppression from 32/40 \u00b1 CS).`,
     sources: [
-      { label:'BASHH — anogenital herpes (2024)', url:'https://www.bashh.org/guidelines' },
+      { label:'BASHH — anogenital herpes (2024)', url:'https://bashh.org/_userfiles/pages/files/pateletal2024britishassociationofsexualhealthandhivuknationalguidelineforthemanagementofanogenital.pdf' },
     ],
   },
 

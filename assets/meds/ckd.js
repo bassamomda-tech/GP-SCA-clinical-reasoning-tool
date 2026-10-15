@@ -1,36 +1,20 @@
 /* ============================================
    Medication Chooser — Chronic Kidney Disease (CKD)
    NICE NG203 · NG28 · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('ckd', {
   title: 'CKD — cardio-renal protection',
-  subtitle: 'CKD management is about slowing progression and cutting cardiovascular risk, not "a kidney tablet". The four pillars: an ACE inhibitor / ARB for albuminuria, an SGLT2 inhibitor for cardio-renal protection, a statin for everyone, and — in diabetic CKD with residual albuminuria — finerenone. Tick the profile; cards re-tier live.',
+  subtitle: 'CKD management is about slowing progression and cutting cardiovascular risk, not "a kidney tablet". The four pillars: an ACE inhibitor / ARB for albuminuria, an SGLT2 inhibitor for cardio-renal protection, a statin for everyone, and — in diabetic CKD with residual albuminuria — finerenone.',
   guideline: 'NICE NG203 · NG28 · BNF',
 
-  factors: [
-    { group:'Albuminuria / function', id:'acr3', label:'ACR ≥3 mg/mmol (albuminuria)' },
-    { group:'Albuminuria / function', id:'acr30', label:'ACR ≥30 mg/mmol' },
-    { group:'Albuminuria / function', id:'egfr', label:'eGFR <60' },
-    { group:'Albuminuria / function', id:'egfr_low', label:'eGFR <20–25 / advanced CKD' },
 
-    { group:'Comorbidity', id:'diabetes', label:'Type 2 diabetes' },
-    { group:'Comorbidity', id:'hf', label:'Heart failure' },
-    { group:'Comorbidity', id:'cvd', label:'Established cardiovascular disease' },
-    { group:'Comorbidity', id:'htn', label:'Hypertension' },
-
-    { group:'Cautions', id:'hyperkalaemia', label:'K⁺ ≥5.0 / hyperkalaemia tendency' },
-    { group:'Cautions', id:'pregnancy', label:'Pregnant / planning pregnancy', note:'ACEi/ARB & statin contraindicated' },
-    { group:'Cautions', id:'volume', label:'Recurrent UTI / volume depletion risk' },
-    { group:'Cautions', id:'frail', label:'Frail / recurrent AKI' }
+  safety: [
+    {"tone":"amber","label":"eGFR <20–25 / advanced CKD","text":"Advanced CKD (eGFR <20) — coordinate with nephrology before initiating/changing agents; \"sick-day rules\" for ACEi/ARB/SGLT2i/diuretics/NSAIDs/metformin."},
+    {"tone":"amber","label":"K⁺ ≥5.0 / hyperkalaemia tendency","text":"Check K⁺ and eGFR before and 1–2 weeks after starting/up-titrating ACEi/ARB or finerenone; a creatinine rise up to 30% / K⁺ up to 5.5 can be acceptable."},
+    {"tone":"red","label":"Pregnant / planning pregnancy","text":"Pregnancy — stop ACE inhibitor/ARB and statin; use pregnancy-safe antihypertensives (labetalol/nifedipine). Specialist renal–obstetric input."}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.pregnancy) out.push({ tone:'red', text:'Pregnancy — stop ACE inhibitor/ARB and statin; use pregnancy-safe antihypertensives (labetalol/nifedipine). Specialist renal–obstetric input.' });
-    if (f.hyperkalaemia) out.push({ tone:'amber', text:'Check K⁺ and eGFR before and 1–2 weeks after starting/up-titrating ACEi/ARB or finerenone; a creatinine rise up to 30% / K⁺ up to 5.5 can be acceptable.' });
-    if (f.egfr_low) out.push({ tone:'amber', text:'Advanced CKD (eGFR <20) — coordinate with nephrology before initiating/changing agents; "sick-day rules" for ACEi/ARB/SGLT2i/diuretics/NSAIDs/metformin.' });
-    return out;
-  },
 
   drugs: [
     {
@@ -47,15 +31,14 @@ MedChooser.register('ckd', {
         'Sick-day rules':'Withhold during intercurrent illness with dehydration (D&V, sepsis) to reduce AKI risk.',
         'Key teaching':'Do not combine an ACEi with an ARB. A small, stable creatinine rise (≤30%) or K⁺ ≤5.5 is expected and acceptable.'
       },
-      evaluate(f){
-        if (f.pregnancy) return { tier:'avoid', reasons:[{kind:'bad', text:'Contraindicated in pregnancy (fetotoxicity) — switch to a pregnancy-safe antihypertensive'}] };
-        if (f.hyperkalaemia) return { tier:'acceptable', reasons:[{kind:'bad', text:'K⁺ ≥5.0 — correct/recheck first; may still be appropriate with monitoring as it is renoprotective'}] };
-        const r = [];
-        if (f.acr30 || f.acr3) r.push({kind:'good', text:'Albuminuria — first-line renoprotection (reduces ACR and slows progression)'});
-        if (f.diabetes) r.push({kind:'good', text:'Diabetic CKD with albuminuria — strongly indicated'});
-        if (f.htn) r.push({kind:'good', text:'Also treats hypertension'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'Foundation of CKD protection where albuminuria present'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Pregnant / planning pregnancy","text":"Contraindicated in pregnancy (fetotoxicity) — switch to a pregnancy-safe antihypertensive"},
+        {"kind":"caution","label":"K⁺ ≥5.0 / hyperkalaemia tendency","text":"K⁺ ≥5.0 — correct/recheck first; may still be appropriate with monitoring as it is renoprotective"},
+        {"kind":"favoured","label":"ACR ≥3 mg/mmol (albuminuria)","text":"Albuminuria — first-line renoprotection (reduces ACR and slows progression)"},
+        {"kind":"favoured","label":"ACR ≥30 mg/mmol","text":"Albuminuria — first-line renoprotection (reduces ACR and slows progression)"},
+        {"kind":"favoured","label":"Type 2 diabetes","text":"Diabetic CKD with albuminuria — strongly indicated"},
+        {"kind":"favoured","label":"Hypertension","text":"Also treats hypertension"}
+      ]
     },
     {
       id:'sglt2',
@@ -71,14 +54,14 @@ MedChooser.register('ckd', {
         'Sick-day rules':'Withhold if acutely unwell, dehydrated, or perioperative (DKA risk).',
         'Key teaching':'The early eGFR dip is haemodynamic and not a reason to stop. Counsel on DKA symptoms; not for type 1 diabetes in primary care.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.acr30 || f.acr3) r.push({kind:'good', text:'Albuminuric CKD — adds cardio-renal protection on top of ACEi/ARB'});
-        if (f.diabetes) r.push({kind:'good', text:'Type 2 diabetes + CKD — clear indication'});
-        if (f.hf) r.push({kind:'good', text:'Heart failure — additional benefit'});
-        if (f.volume || f.frail) r.push({kind:'neutral', text:'Volume-depletion/UTI risk — counsel on sick-day rules and hygiene'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'Cardio-renal protection across CKD with albuminuria'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"ACR ≥3 mg/mmol (albuminuria)","text":"Albuminuric CKD — adds cardio-renal protection on top of ACEi/ARB"},
+        {"kind":"favoured","label":"ACR ≥30 mg/mmol","text":"Albuminuric CKD — adds cardio-renal protection on top of ACEi/ARB"},
+        {"kind":"favoured","label":"Type 2 diabetes","text":"Type 2 diabetes + CKD — clear indication"},
+        {"kind":"favoured","label":"Heart failure","text":"Heart failure — additional benefit"},
+        {"kind":"note","label":"Recurrent UTI / volume depletion risk","text":"Volume-depletion/UTI risk — counsel on sick-day rules and hygiene"},
+        {"kind":"note","label":"Frail / recurrent AKI","text":"Volume-depletion/UTI risk — counsel on sick-day rules and hygiene"}
+      ]
     },
     {
       id:'statin',
@@ -93,10 +76,9 @@ MedChooser.register('ckd', {
         'Indication':'Offer atorvastatin 20 mg for primary prevention of CVD to people with CKD; increase if >40% reduction in non-HDL not achieved and eGFR ≥30.',
         'Key teaching':'CKD is a CVD risk multiplier — statin benefit is independent of baseline cholesterol.'
       },
-      evaluate(f){
-        if (f.pregnancy) return { tier:'avoid', reasons:[{kind:'bad', text:'Statins contraindicated in pregnancy — stop'}] };
-        return { tier:'preferred', reasons:[{kind:'good', text:'Offer to essentially all CKD patients for CV protection (atorvastatin 20 mg)'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Pregnant / planning pregnancy","text":"Statins contraindicated in pregnancy — stop"}
+      ]
     },
     {
       id:'finerenone',
@@ -111,13 +93,9 @@ MedChooser.register('ckd', {
         'Indication':'Type 2 diabetes with CKD (ACR ≥3, eGFR appropriate per TA877) and residual albuminuria despite maximally tolerated ACEi/ARB. Reduces CKD progression and CV events.',
         'Key teaching':'Do not initiate if K⁺ >5.0 mmol/L. Distinct from spironolactone (steroidal MRA).'
       },
-      evaluate(f){
-        if (!f.diabetes) return { tier:'avoid', reasons:[{kind:'neutral', text:'Licensed for type 2 diabetic CKD — not for non-diabetic CKD here'}] };
-        if (f.hyperkalaemia) return { tier:'avoid', reasons:[{kind:'bad', text:'K⁺ ≥5.0 — do not start finerenone; correct potassium first'}] };
-        const r = [{kind:'good', text:'Type 2 diabetic CKD with residual albuminuria on ACEi/ARB — add-on cardio-renal protection'}];
-        if (f.acr3 || f.acr30) r.push({kind:'good', text:'Persistent albuminuria — target population for finerenone'});
-        return { tier:'acceptable', reasons:r };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Type 2 diabetes","text":"Type 2 diabetic CKD with residual albuminuria on ACEi/ARB — add-on cardio-renal protection"}
+      ]
     },
     {
       id:'nsaid_avoid',
@@ -131,9 +109,7 @@ MedChooser.register('ckd', {
       detail:{
         'Key teaching':'Avoid the "triple whammy" of ACEi/ARB + diuretic + NSAID. Prefer paracetamol/topical agents; review OTC NSAID use.'
       },
-      evaluate(f){
-        return { tier:'avoid', reasons:[{kind:'bad', text:'Nephrotoxic in CKD — avoid where possible; deprescribe and counsel on OTC ibuprofen'}] };
-      }
+      
     }
   ],
 

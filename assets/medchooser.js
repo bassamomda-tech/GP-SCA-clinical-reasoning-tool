@@ -22,30 +22,26 @@
    Or programmatically:
    MedChooser.mount(elem, 'hypertension');
 
-   TOPIC DATA SHAPE (unchanged — assets/meds/*.js)
+   TOPIC DATA SHAPE (assets/meds/*.js — fixed lists, no patient factors)
    ----------------
    MedChooser.register('hypertension', {
      title, subtitle, guideline,
-     factors: [{ group, id, label, note, options?, numeric? }, ...],
+     safety: [{ tone, label, text }, ...],          // safety points in the guidance
      drugs: [{ id, name, examples, step, source, sourceUrl,
                sideEffects, monitor, counsel, detail:{...},
-               evaluate(f) -> { tier, reasons:[{kind, text}] } }, ...],
+               conditions: [{ kind, label, text }, ...] }, ...],   // kind: avoid | caution | favoured | note
      sources: [{ label, url }, ...],
-     flags?: (f) => [{ tone, text }],
    });
 
-   How the fixed "cautions and conditions" list is built: each drug's
-   own evaluate() rules are read ONE FACTOR AT A TIME, with no patient
-   attached, and every statement a factor adds is written out next to
-   that factor's name ("Avoid — eGFR <30: …"). The reader sees all of
-   them at once; nothing is selected, hidden or re-ordered for anyone.
+   The "conditions" and "safety" lists are written out in each data file
+   (Upload 114, October 2026). The old patient-factor rules that once
+   produced them (factors, flags(f), evaluate(f)) were removed at source;
+   nothing here is selected, scored, hidden or re-ordered for anyone.
    ============================================ */
 (function(){
   const TOPICS = {};
 
   const esc = s => String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-  /* interface hints written for the old interactive tool ("switch the decision toggle") are not guidance */
-  const UI_HINT = /toggle|switch the decision/i;
 
   const MedChooser = {
     register(name, data){ TOPICS[name] = data; this._notify(name); },
@@ -76,72 +72,12 @@
       });
     },
     /* exposed for checking: the fixed list of cautions for one drug */
-    cautions(topic, drug){ return cautionsFor(topic, drug); }
+    cautions(topic, drug){ return (drug && drug.conditions) || []; }
   };
 
-  /* ---------- the fixed cautions list (no patient attached) ---------- */
-  function run(d, f){
-    try { const r = d.evaluate ? d.evaluate(f) : null; return r && r.tier ? r : { tier:'acceptable', reasons:(r && r.reasons) || [] }; }
-    catch(e){ return null; }
-  }
-  function cautionsFor(topic, d){
-    if (!d.evaluate) return [];
-    const base = run(d, {});
-    if (!base) return [];
-    const baseTexts = new Set((base.reasons || []).map(r => r.text));
-    const out = [], seen = new Set();
-    const consider = (label, f) => {
-      const r = run(d, f);
-      if (!r) return;
-      const texts = (r.reasons || []).filter(x => x && x.text && !baseTexts.has(x.text) && !UI_HINT.test(x.text));
-      if (!texts.length) return;
-      let kind;
-      if (r.tier === 'avoid') kind = 'avoid';
-      else if (texts.some(x => x.kind === 'bad')) kind = 'caution';
-      else if (texts.some(x => x.kind === 'good')) kind = 'favoured';
-      else kind = 'note';
-      const text = texts.map(x => x.text).join(' · ');
-      const key = label + '|' + text;
-      if (seen.has(key)) return;
-      seen.add(key);
-      out.push({ kind, label, text });
-    };
-    (topic.factors || []).forEach(f => {
-      if (f.numeric) return;                       /* numeric thresholds are stated in the card text itself */
-      if (f.options) { f.options.forEach(o => consider(f.label + ': ' + o.label, { [f.id]: o.value })); return; }
-      consider(f.label, { [f.id]: true });
-    });
-    const rank = { avoid:0, caution:1, favoured:2, note:3 };
-    return out.sort((a, b) => rank[a.kind] - rank[b.kind]);
-  }
-  function safetyPoints(topic){
-    if (typeof topic.flags !== 'function') return [];
-    const out = [], seen = new Set();
-    let always = [];
-    try { always = topic.flags({}) || []; } catch(e){ always = []; }
-    always.forEach(x => {
-      if (!x || !x.text || UI_HINT.test(x.text) || seen.has(x.text)) return;
-      seen.add(x.text);
-      out.push({ tone:x.tone || 'amber', label:'', text:x.text });
-    });
-    (topic.factors || []).forEach(f => {
-      if (f.numeric) return;
-      const vals = f.options ? f.options.map(o => ({ v:o.value, l:f.label + ': ' + o.label })) : [{ v:true, l:f.label }];
-      vals.forEach(({ v, l }) => {
-        let fl = [];
-        try { fl = topic.flags({ [f.id]: v }) || []; } catch(e){ fl = []; }
-        fl.forEach(x => {
-          if (!x || !x.text || UI_HINT.test(x.text) || seen.has(x.text)) return;
-          seen.add(x.text);
-          out.push({ tone:x.tone || 'amber', label:l, text:x.text });
-        });
-      });
-    });
-    return out;
-  }
-  function cleanSubtitle(s){
-    return String(s || '').replace(/\s*Tick the [^.]*\./g, '').trim();
-  }
+  /* ---------- the fixed lists, as written in the data file ---------- */
+  function cautionsFor(topic, d){ return (d && d.conditions) || []; }
+  function safetyPoints(topic){ return (topic && topic.safety) || []; }
 
   const KIND_LABEL = { avoid:'Avoid', caution:'Caution', favoured:'Favoured', note:'Note' };
 
@@ -162,7 +98,7 @@
     render(){
       if (!this.topic) return;
       const t = this.topic;
-      const sub = cleanSubtitle(t.subtitle);
+      const sub = String(t.subtitle || '').trim();
       const flags = safetyPoints(t);
       const drugs = t.drugs || [];
 

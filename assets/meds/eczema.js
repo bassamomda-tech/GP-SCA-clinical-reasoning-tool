@@ -1,46 +1,20 @@
 /* ============================================
    Medication Chooser — Atopic eczema
    NICE CG57 · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('eczema', {
   title: 'Atopic eczema — emollient & topical steroid selection',
-  subtitle: 'Steroid potency matched to site and severity, plus calcineurin and infection management (NICE CG57). Tick the patient profile; cards re-tier live.',
+  subtitle: 'Steroid potency matched to site and severity, plus calcineurin and infection management (NICE CG57).',
   guideline: 'NICE CG57 · BNF',
 
-  factors: [
-    // Site
-    { group:'Site', id:'face', label:'Face / eyelids' },
-    { group:'Flexural', id:'flexure', label:'Flexures / neck' },
-    { group:'Site', id:'body', label:'Trunk / limbs' },
-    { group:'Site', id:'hands', label:'Hands / thick lichenified skin' },
 
-    // Severity
-    { group:'Severity', id:'mild', label:'Mild (dryness, occasional itch)' },
-    { group:'Severity', id:'moderate', label:'Moderate (redness, frequent itch)' },
-    { group:'Severity', id:'severe', label:'Severe (widespread, excoriation, sleep loss)' },
-    { group:'Severity', id:'flare', label:'Acute flare' },
-    { group:'Severity', id:'frequent', label:'Frequent relapses (same sites)', note:'Proactive therapy' },
-
-    // Infection (red flags)
-    { group:'Infection', id:'bacterial', label:'Bacterial infection (weeping, crusting, pustules)' },
-    { group:'Infection', id:'herpeticum', label:'Eczema herpeticum (clustered, painful, punched-out)', note:'Emergency' },
-
-    // Demographics
-    { group:'Demographics', id:'infant', label:'Infant / young child' },
-    { group:'Demographics', id:'preg', label:'Pregnant or breastfeeding' },
-
-    // Preference / context
-    { group:'Preference / context', id:'steroid_phobia', label:'Steroid concern / phobia' },
-    { group:'Preference / context', id:'atrophy', label:'Skin thinning from prior steroid use' }
+  safety: [
+    {"tone":"amber","label":"Bacterial infection (weeping, crusting, pustules)","text":"Infected eczema — only use oral antibiotics (flucloxacillin) if unwell/spreading; most flares are not infected. Optimise steroid + emollient first."},
+    {"tone":"red","label":"Eczema herpeticum (clustered, painful, punched-out)","text":"Eczema herpeticum — same-day oral/IV aciclovir; ophthalmology if near eye. Do NOT treat as bacterial only."},
+    {"tone":"amber","label":"Steroid concern / phobia","text":"Address steroid phobia — explain fingertip units, that appropriate-potency short courses are safe, and undertreatment prolongs flares"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.herpeticum) out.push({ tone:'red', text:'Eczema herpeticum — same-day oral/IV aciclovir; ophthalmology if near eye. Do NOT treat as bacterial only.' });
-    if (f.bacterial) out.push({ tone:'amber', text:'Infected eczema — only use oral antibiotics (flucloxacillin) if unwell/spreading; most flares are not infected. Optimise steroid + emollient first.' });
-    if (f.steroid_phobia) out.push({ tone:'amber', text:'Address steroid phobia — explain fingertip units, that appropriate-potency short courses are safe, and undertreatment prolongs flares' });
-    return out;
-  },
 
   drugs: [
     // -------- EMOLLIENT --------
@@ -57,9 +31,7 @@ MedChooser.register('eczema', {
         'Dose': 'Apply liberally several times daily and after washing; prescribe in large quantities (250–500 g/week if extensive)',
         'Key teaching': 'Foundation of all eczema care — reduces flares and steroid need. Apply emollient and steroid at different times.'
       },
-      evaluate(f){
-        return { tier:'preferred', reasons:[{kind:'good', text:'Essential base therapy for every patient, used continuously'}] };
-      }
+      
     },
 
     // -------- MILD TCS --------
@@ -76,15 +48,12 @@ MedChooser.register('eczema', {
         'Dose': 'Apply OD–BD to active eczema; step down as it settles',
         'Key teaching': 'Match potency to site: MILD for face/flexures and in infants. Use the lowest potency that controls the flare.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.face || f.flexure) r.push({kind:'good', text:'Face/flexures — mild potency is the right match (skin is thin)'});
-        if (f.infant) r.push({kind:'good', text:'Infant — start with mild potency'});
-        if (f.mild) r.push({kind:'good', text:'Mild eczema — mild TCS appropriate'});
-        if ((f.body||f.hands) && (f.moderate||f.severe) && !f.face && !f.flexure) r.push({kind:'bad', text:'Moderate/severe on trunk/limbs — likely needs a stronger potency'});
-        const preferred = f.face || f.flexure || f.mild || f.infant;
-        return { tier: preferred ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'For mild eczema / delicate sites'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Face / eyelids","text":"Face/flexures — mild potency is the right match (skin is thin)"},
+        {"kind":"favoured","label":"Flexures / neck","text":"Face/flexures — mild potency is the right match (skin is thin)"},
+        {"kind":"favoured","label":"Mild (dryness, occasional itch)","text":"Mild eczema — mild TCS appropriate"},
+        {"kind":"favoured","label":"Infant / young child","text":"Infant — start with mild potency"}
+      ]
     },
 
     // -------- MODERATE/POTENT TCS --------
@@ -101,14 +70,11 @@ MedChooser.register('eczema', {
         'Dose': 'Moderate/potent OD–BD for a flare (e.g. up to 1–2 weeks), then step down',
         'Key teaching': 'Match potency to site & severity: moderate/potent for trunk and limbs and thicker/lichenified skin. Avoid potent steroids on face/flexures.'
       },
-      evaluate(f){
-        if ((f.face || f.flexure) && !f.body && !f.hands) return { tier:'avoid', reasons:[{kind:'bad', text:'Face/flexures — avoid potent steroids (atrophy); use mild TCS or a calcineurin inhibitor'}] };
-        const r = [];
-        if ((f.body || f.hands) && (f.moderate || f.severe || f.flare)) r.push({kind:'good', text:'Moderate–severe on trunk/limbs/thick skin — appropriate potency'});
-        if (f.atrophy) r.push({kind:'bad', text:'Existing skin thinning — limit potent steroid; consider calcineurin inhibitor'});
-        const preferred = (f.body || f.hands) && (f.moderate || f.severe || f.flare);
-        return { tier: preferred ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'For moderate–severe eczema on robust skin'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Face / eyelids","text":"Face/flexures — avoid potent steroids (atrophy); use mild TCS or a calcineurin inhibitor"},
+        {"kind":"avoid","label":"Flexures / neck","text":"Face/flexures — avoid potent steroids (atrophy); use mild TCS or a calcineurin inhibitor"},
+        {"kind":"caution","label":"Skin thinning from prior steroid use","text":"Existing skin thinning — limit potent steroid; consider calcineurin inhibitor"}
+      ]
     },
 
     // -------- CALCINEURIN INHIBITOR --------
@@ -125,15 +91,11 @@ MedChooser.register('eczema', {
         'Dose': 'Tacrolimus 0.03% (children)/0.1% (adults) or pimecrolimus BD; also for proactive twice-weekly use',
         'Key teaching': 'Second-line for moderate–severe eczema not controlled by/intolerant of steroids, especially face and flexures and to reduce steroid load.'
       },
-      evaluate(f){
-        const r = [];
-        if ((f.face || f.flexure) && (f.moderate || f.severe || f.atrophy || f.steroid_phobia)) r.push({kind:'good', text:'Face/flexures needing ongoing control — steroid-sparing choice'});
-        if (f.atrophy) r.push({kind:'good', text:'Prior steroid atrophy — avoids further thinning'});
-        if (f.frequent) r.push({kind:'good', text:'Frequent relapses — proactive twice-weekly use reduces flares'});
-        if (f.infant) r.push({kind:'neutral', text:'Young child — tacrolimus 0.03% (≥2y); specialist if younger'});
-        const preferred = (f.face||f.flexure) && (f.atrophy || f.steroid_phobia || f.severe);
-        return { tier: preferred ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Steroid-sparing second-line, esp. face/flexures'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Frequent relapses (same sites)","text":"Frequent relapses — proactive twice-weekly use reduces flares"},
+        {"kind":"favoured","label":"Skin thinning from prior steroid use","text":"Prior steroid atrophy — avoids further thinning"},
+        {"kind":"note","label":"Infant / young child","text":"Young child — tacrolimus 0.03% (≥2y); specialist if younger"}
+      ]
     },
 
     // -------- ANTIMICROBIAL --------
@@ -150,11 +112,10 @@ MedChooser.register('eczema', {
         'Dose': 'Oral flucloxacillin for significant bacterial infection; oral/IV aciclovir for eczema herpeticum',
         'Key teaching': 'Most flares are NOT infected — optimise steroid + emollient first. Reserve oral antibiotics for unwell/spreading infection. Herpeticum is an emergency.'
       },
-      evaluate(f){
-        if (f.herpeticum) return { tier:'preferred', reasons:[{kind:'good', text:'Eczema herpeticum — urgent antiviral (aciclovir)'}] };
-        if (f.bacterial) return { tier:'preferred', reasons:[{kind:'good', text:'Significant bacterial infection — oral flucloxacillin'}] };
-        return { tier:'avoid', reasons:[{kind:'bad', text:'No infection — antibiotics not indicated; optimise topical therapy'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Bacterial infection (weeping, crusting, pustules)","text":"Significant bacterial infection — oral flucloxacillin"},
+        {"kind":"favoured","label":"Eczema herpeticum (clustered, painful, punched-out)","text":"Eczema herpeticum — urgent antiviral (aciclovir)"}
+      ]
     },
 
     // -------- SEDATING ANTIHISTAMINE --------
@@ -171,10 +132,10 @@ MedChooser.register('eczema', {
         'Dose': 'Short-term (e.g. up to 2 weeks) at night during a severe flare',
         'Key teaching': 'NICE CG57: do NOT use routinely. A short course of a sedating antihistamine may help sleep in a severe flare. Non-sedating antihistamines are not routinely recommended.'
       },
-      evaluate(f){
-        if (f.severe || f.flare) return { tier:'acceptable', reasons:[{kind:'neutral', text:'Short-term night-time use if sleep badly disturbed by a severe flare'}] };
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Not routine — adjunct only for sleep in severe flares'}] };
-      }
+      conditions: [
+        {"kind":"note","label":"Severe (widespread, excoriation, sleep loss)","text":"Short-term night-time use if sleep badly disturbed by a severe flare"},
+        {"kind":"note","label":"Acute flare","text":"Short-term night-time use if sleep badly disturbed by a severe flare"}
+      ]
     }
   ],
 

@@ -1,39 +1,22 @@
 /* ============================================
    Medication Chooser — Hypothyroidism (levothyroxine & titration)
    NICE NG145 · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('hypothyroidism', {
   title: 'Hypothyroidism — levothyroxine replacement',
-  subtitle: 'Levothyroxine (LT4) is the treatment for primary hypothyroidism for virtually everyone — the real decisions are the starting dose, how fast to titrate, and the TSH target. Age, cardiac disease, pregnancy and the subclinical/overt distinction drive those choices. Tick the profile; cards re-tier and the starting-dose guidance updates live.',
+  subtitle: 'Levothyroxine (LT4) is the treatment for primary hypothyroidism for virtually everyone — the real decisions are the starting dose, how fast to titrate, and the TSH target. Age, cardiac disease, pregnancy and the subclinical/overt distinction drive those choices.',
   guideline: 'NICE NG145 · BNF',
 
-  factors: [
-    { group:'Presentation', id:'overt', label:'Overt (TSH high + low FT4)' },
-    { group:'Presentation', id:'subclinical', label:'Subclinical (TSH high, FT4 normal)' },
-    { group:'Presentation', id:'tsh10', label:'TSH ≥10 mU/L', note:'Treat even if subclinical' },
-    { group:'Presentation', id:'symptomatic', label:'Symptomatic' },
 
-    { group:'Patient', id:'age65', label:'Age ≥65 / frail' },
-    { group:'Patient', id:'ihd', label:'Ischaemic heart disease / angina', note:'Start low, go slow' },
-    { group:'Patient', id:'af', label:'Atrial fibrillation / arrhythmia' },
-
-    { group:'Pregnancy', id:'pregnant', label:'Pregnant' },
-    { group:'Pregnancy', id:'preconception', label:'Trying to conceive' },
-
-    { group:'Special', id:'central', label:'Secondary / central (pituitary)', note:'Use FT4 not TSH; exclude adrenal insufficiency first' },
-    { group:'Special', id:'persistent_sx', label:'Persistent symptoms despite normal TSH' },
-    { group:'Special', id:'malabsorption', label:'Malabsorption / interacting drugs', note:'Iron, calcium, PPI, levothyroxine timing' }
+  safety: [
+    {"tone":"amber","label":"Subclinical (TSH high, FT4 normal)","text":"Subclinical with TSH <10: treatment is optional — a 6-month trial if symptomatic and <65; otherwise watch-and-repeat. Avoid over-treatment."},
+    {"tone":"amber","label":"Ischaemic heart disease / angina","text":"IHD/angina: start at 25 mcg and titrate slowly (4–6 weekly) — too-rapid replacement can precipitate angina, arrhythmia or MI."},
+    {"tone":"red","label":"Pregnant","text":"Pregnancy: levothyroxine requirements rise early — increase the dose as soon as pregnancy is confirmed and check TSH each trimester (aim trimester-specific / TSH <2.5 mU/L)."},
+    {"tone":"red","label":"Secondary / central (pituitary)","text":"Central hypothyroidism: titrate to FT4 (TSH is unreliable) and exclude/treat adrenal insufficiency BEFORE starting levothyroxine — replacing thyroxine first can precipitate an adrenal crisis."},
+    {"tone":"amber","label":"Malabsorption / interacting drugs","text":"Separate levothyroxine from iron, calcium and antacids by ≥4 h; PPIs and coeliac disease reduce absorption — recheck TSH after any change."}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.central) out.push({ tone:'red', text:'Central hypothyroidism: titrate to FT4 (TSH is unreliable) and exclude/treat adrenal insufficiency BEFORE starting levothyroxine — replacing thyroxine first can precipitate an adrenal crisis.' });
-    if (f.pregnant) out.push({ tone:'red', text:'Pregnancy: levothyroxine requirements rise early — increase the dose as soon as pregnancy is confirmed and check TSH each trimester (aim trimester-specific / TSH <2.5 mU/L).' });
-    if (f.ihd) out.push({ tone:'amber', text:'IHD/angina: start at 25 mcg and titrate slowly (4–6 weekly) — too-rapid replacement can precipitate angina, arrhythmia or MI.' });
-    if (f.subclinical && !f.tsh10 && !f.pregnant) out.push({ tone:'amber', text:'Subclinical with TSH <10: treatment is optional — a 6-month trial if symptomatic and <65; otherwise watch-and-repeat. Avoid over-treatment.' });
-    if (f.malabsorption) out.push({ tone:'amber', text:'Separate levothyroxine from iron, calcium and antacids by ≥4 h; PPIs and coeliac disease reduce absorption — recheck TSH after any change.' });
-    return out;
-  },
 
   drugs: [
     // ---------- LEVOTHYROXINE — STANDARD START ----------
@@ -51,13 +34,13 @@ MedChooser.register('hypothyroidism', {
         'Target':'Primary hypothyroidism: TSH within reference range (often 0.5–2.5 mU/L if symptoms persist at the upper end). Take levothyroxine consistently relative to food.',
         'Key teaching':'Same time daily, empty stomach. Lifelong in most. Recheck TSH 6–8 weeks after any dose change — not sooner.'
       },
-      evaluate(f){
-        if (f.central) return { tier:'preferred', reasons:[{kind:'good', text:'Levothyroxine is still the drug — but titrate to FT4, and only after adrenal insufficiency is excluded/treated'}] };
-        if (f.subclinical && !f.tsh10 && !f.pregnant && !f.symptomatic) return { tier:'acceptable', reasons:[{kind:'neutral', text:'Subclinical, TSH <10, asymptomatic — treatment usually not needed; monitor instead'}] };
-        if (f.age65 || f.ihd) return { tier:'acceptable', reasons:[{kind:'bad', text:'Older / cardiac — do NOT start at full replacement; use the low-and-slow start instead'}] };
-        if (f.pregnant) return { tier:'acceptable', reasons:[{kind:'neutral', text:'Correct drug, but pregnancy needs a higher dose and tighter target — see the pregnancy option'}] };
-        return { tier:'preferred', reasons:[{kind:'good', text:'Young, fit, overt hypothyroidism — start at weight-based full replacement and titrate to TSH'}] };
-      }
+      conditions: [
+        {"kind":"caution","label":"Age ≥65 / frail","text":"Older / cardiac — do NOT start at full replacement; use the low-and-slow start instead"},
+        {"kind":"caution","label":"Ischaemic heart disease / angina","text":"Older / cardiac — do NOT start at full replacement; use the low-and-slow start instead"},
+        {"kind":"favoured","label":"Secondary / central (pituitary)","text":"Levothyroxine is still the drug — but titrate to FT4, and only after adrenal insufficiency is excluded/treated"},
+        {"kind":"note","label":"Subclinical (TSH high, FT4 normal)","text":"Subclinical, TSH <10, asymptomatic — treatment usually not needed; monitor instead"},
+        {"kind":"note","label":"Pregnant","text":"Correct drug, but pregnancy needs a higher dose and tighter target — see the pregnancy option"}
+      ]
     },
 
     // ---------- LEVOTHYROXINE — LOW & SLOW ----------
@@ -74,12 +57,12 @@ MedChooser.register('hypothyroidism', {
         'Dose':'Start 25 mcg OD (some use 25–50 mcg). Increase in 25 mcg steps every 4–6 weeks guided by TSH and tolerance.',
         'Key teaching':'"Start low, go slow" prevents precipitating angina, arrhythmia or MI in people with (or at risk of) ischaemic heart disease, and in the frail elderly. Accept a slightly higher TSH target in the very elderly.'
       },
-      evaluate(f){
-        if (f.pregnant) return { tier:'avoid', reasons:[{kind:'bad', text:'Pregnancy needs prompt full/increased replacement — do not under-treat; use the pregnancy option'}] };
-        if (f.ihd) return { tier:'preferred', reasons:[{kind:'good', text:'Ischaemic heart disease — start 25 mcg and titrate slowly to avoid precipitating angina/MI'}] };
-        if (f.age65 || f.af) return { tier:'preferred', reasons:[{kind:'good', text:'Older / arrhythmia-prone — cautious low-and-slow start is safest'}] };
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Cautious start is reasonable but unnecessary in a young, fit patient — full replacement is fine there'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Pregnant","text":"Pregnancy needs prompt full/increased replacement — do not under-treat; use the pregnancy option"},
+        {"kind":"favoured","label":"Age ≥65 / frail","text":"Older / arrhythmia-prone — cautious low-and-slow start is safest"},
+        {"kind":"favoured","label":"Ischaemic heart disease / angina","text":"Ischaemic heart disease — start 25 mcg and titrate slowly to avoid precipitating angina/MI"},
+        {"kind":"favoured","label":"Atrial fibrillation / arrhythmia","text":"Older / arrhythmia-prone — cautious low-and-slow start is safest"}
+      ]
     },
 
     // ---------- LEVOTHYROXINE — PREGNANCY ----------
@@ -96,11 +79,10 @@ MedChooser.register('hypothyroidism', {
         'Dose':'On confirmation of pregnancy, increase levothyroxine (commonly by ~25–50%, e.g. two extra doses per week as an interim step) and check TSH. Aim for trimester-specific range / TSH <2.5 mU/L. Optimise BEFORE conception if planning.',
         'Key teaching':'Requirements rise from early in the first trimester. Do not stop levothyroxine in pregnancy. Refer/seek specialist advice for overt disease in pregnancy.'
       },
-      evaluate(f){
-        if (f.pregnant) return { tier:'preferred', reasons:[{kind:'good', text:'Pregnant — increase dose promptly and check TSH each trimester, aim <2.5 mU/L'}] };
-        if (f.preconception) return { tier:'preferred', reasons:[{kind:'good', text:'Planning pregnancy — optimise TSH (<2.5) before conception and plan an early dose increase'}] };
-        return { tier:'avoid', reasons:[{kind:'neutral', text:'Pregnancy-specific dosing — not relevant unless pregnant or trying to conceive'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Pregnant","text":"Pregnant — increase dose promptly and check TSH each trimester, aim <2.5 mU/L"},
+        {"kind":"favoured","label":"Trying to conceive","text":"Planning pregnancy — optimise TSH (<2.5) before conception and plan an early dose increase"}
+      ]
     },
 
     // ---------- LIOTHYRONINE / COMBINATION ----------
@@ -116,10 +98,9 @@ MedChooser.register('hypothyroidism', {
       detail:{
         'Key teaching':'NICE NG145 / BTA do NOT recommend routine liothyronine or combination therapy. Consider specialist referral only for the small number with persistent symptoms despite biochemically adequate levothyroxine, after excluding other causes. Do not initiate T3 in primary care.'
       },
-      evaluate(f){
-        if (f.persistent_sx) return { tier:'acceptable', reasons:[{kind:'neutral', text:'Persistent symptoms despite normal TSH — first re-check adherence/timing, dose, and other diagnoses; refer before any T3 trial'}] };
-        return { tier:'avoid', reasons:[{kind:'bad', text:'Not recommended routinely — specialist-only and not initiated in primary care'}] };
-      }
+      conditions: [
+        {"kind":"note","label":"Persistent symptoms despite normal TSH","text":"Persistent symptoms despite normal TSH — first re-check adherence/timing, dose, and other diagnoses; refer before any T3 trial"}
+      ]
     },
 
     // ---------- WATCHFUL WAITING ----------
@@ -135,12 +116,13 @@ MedChooser.register('hypothyroidism', {
       detail:{
         'Key teaching':'For asymptomatic subclinical hypothyroidism with TSH <10 mU/L, repeat testing (e.g. 3–6 months) rather than treat. Consider a time-limited levothyroxine trial only if symptomatic and <65; stop if no benefit. Always treat if TSH ≥10 or pregnant/planning pregnancy.'
       },
-      evaluate(f){
-        if (f.overt || f.tsh10 || f.pregnant || f.preconception) return { tier:'avoid', reasons:[{kind:'bad', text:'Overt disease, TSH ≥10, or pregnancy — treat, do not just monitor'}] };
-        if (f.subclinical && !f.symptomatic) return { tier:'preferred', reasons:[{kind:'good', text:'Asymptomatic subclinical, TSH <10 — monitoring is preferred to avoid over-treatment'}] };
-        if (f.subclinical && f.symptomatic && f.age65) return { tier:'acceptable', reasons:[{kind:'neutral', text:'Older + symptomatic subclinical — monitoring or a cautious trial both reasonable'}] };
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Reasonable where treatment threshold not met'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Overt (TSH high + low FT4)","text":"Overt disease, TSH ≥10, or pregnancy — treat, do not just monitor"},
+        {"kind":"avoid","label":"TSH ≥10 mU/L","text":"Overt disease, TSH ≥10, or pregnancy — treat, do not just monitor"},
+        {"kind":"avoid","label":"Pregnant","text":"Overt disease, TSH ≥10, or pregnancy — treat, do not just monitor"},
+        {"kind":"avoid","label":"Trying to conceive","text":"Overt disease, TSH ≥10, or pregnancy — treat, do not just monitor"},
+        {"kind":"favoured","label":"Subclinical (TSH high, FT4 normal)","text":"Asymptomatic subclinical, TSH <10 — monitoring is preferred to avoid over-treatment"}
+      ]
     }
   ],
 

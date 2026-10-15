@@ -235,7 +235,7 @@
     drugs: [
       { name: 'Breastfed: breastfeeding assessment \u00b1 alginate trial', dose: 'Per product', freq: 'After feeds', route: 'PO', days: '1\u20132 weeks trial' },
       { name: 'Formula-fed: review feed volume/frequency; trial thickened feeds', dose: 'Smaller, more frequent', freq: 'Per feeds', route: 'PO', days: '1\u20132 weeks' },
-      { name: 'Alginate (e.g. Gaviscon Infant) \u2014 if measures fail (not with thickener)', dose: 'Per weight', freq: 'With feeds', route: 'PO', days: '1\u20132 weeks trial' },
+      { name: 'Alginate (e.g. Gaviscon Infant) \u2014 if measures fail (not with thickener)', dose: 'Per weight', freq: 'With feeds', route: 'PO', days: '1\u20132 weeks trial', child:true },
       { name: 'PPI or H2RA trial (GORD: distress/feeding difficulty/faltering growth)', dose: 'Weight-based (specialist dosing)', freq: 'OD\u2013BD', route: 'PO', days: '4 weeks then review' },
     ],
     altRegimens: [

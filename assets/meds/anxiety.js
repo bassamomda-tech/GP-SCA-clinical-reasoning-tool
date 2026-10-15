@@ -1,59 +1,21 @@
 /* ============================================
    Medication Chooser — Generalised Anxiety Disorder
    NICE CG113 · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('anxiety', {
   title: 'GAD — pharmacological selection',
-  subtitle: 'NICE CG113 stepped care: sertraline is first-line drug treatment for GAD. Psychological therapy runs alongside. Tick the profile; cards re-tier live.',
+  subtitle: 'NICE CG113 stepped care: sertraline is first-line drug treatment for GAD. Psychological therapy runs alongside.',
   guideline: 'NICE CG113 · BNF',
 
-  factors: [
-    // Demographics
-    { group:'Demographics', id:'under18', label:'Under 18', note:'Specialist (CAMHS) initiation' },
-    { group:'Demographics', id:'young',   label:'Age 18–25', note:'↑ suicidality monitoring; review at 1 week' },
-    { group:'Demographics', id:'elderly', label:'Elderly / frail', note:'Hyponatraemia + falls' },
-    { group:'Demographics', id:'preg',    label:'Pregnant' },
-    { group:'Demographics', id:'bf',      label:'Breastfeeding' },
 
-    // Pattern / severity
-    { group:'Pattern / severity', id:'step', label:'Stepped-care stage', options:[
-      { value:'mild', label:'Step 1–2: mild, no marked impairment' },
-      { value:'mod',  label:'Step 3: marked functional impairment' },
-      { value:'sev',  label:'Step 3: SSRI + SNRI failed / refractory' }
-    ]},
-    { group:'Pattern / severity', id:'comorbid_dep', label:'Comorbid depression' },
-    { group:'Pattern / severity', id:'panic', label:'Prominent panic disorder' },
-    { group:'Pattern / severity', id:'prior_response', label:'Previous good response to a drug' },
-
-    // Comorbidities
-    { group:'Comorbidities', id:'cardiac', label:'Cardiac disease / recent MI' },
-    { group:'Comorbidities', id:'longqt', label:'Long QT / QTc-prolonging risk' },
-    { group:'Comorbidities', id:'renal',  label:'Renal impairment (eGFR <60)' },
-    { group:'Comorbidities', id:'substance', label:'Substance / alcohol misuse history', note:'Caution with pregabalin & benzos' },
-    { group:'Comorbidities', id:'gibleed', label:'GI bleed / ulcer history' },
-
-    // Bloods
-    { group:'Bloods', id:'na_low', label:'Na⁺ <130 / SIADH risk' },
-
-    // Current medications
-    { group:'Current medications', id:'nsaid_anticoag', label:'NSAID / anticoagulant / antiplatelet' },
-    { group:'Current medications', id:'serotonergic', label:'Triptan / tramadol / other serotonergic' },
-    { group:'Current medications', id:'opioid', label:'Opioids / CNS depressants', note:'Pregabalin respiratory-depression risk' },
-    { group:'Current medications', id:'maoi', label:'MAOI (current or recent)' },
-
-    // Preference / context
-    { group:'Preference / context', id:'avoid_sexual', label:'Wants to avoid sexual dysfunction' },
-    { group:'Preference / context', id:'crisis', label:'Acute crisis / severe agitation', note:'Very short-term benzo only' }
+  safety: [
+    {"tone":"amber","label":"Under 18","text":"Under 18 — initiate via CAMHS, not routinely in primary care"},
+    {"tone":"amber","label":"Age 18–25","text":"18–25 / under 30 — review within 1 week (suicidality)"},
+    {"tone":"amber","label":"Substance / alcohol misuse history","text":"Substance misuse — pregabalin is misused/diverted; benzodiazepines best avoided"},
+    {"tone":"red","label":"MAOI (current or recent)","text":"MAOI — washout required; serotonin syndrome risk"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.maoi) out.push({ tone:'red', text:'MAOI — washout required; serotonin syndrome risk' });
-    if (f.under18) out.push({ tone:'amber', text:'Under 18 — initiate via CAMHS, not routinely in primary care' });
-    if (f.young) out.push({ tone:'amber', text:'18–25 / under 30 — review within 1 week (suicidality)' });
-    if (f.substance) out.push({ tone:'amber', text:'Substance misuse — pregabalin is misused/diverted; benzodiazepines best avoided' });
-    return out;
-  },
 
   drugs: [
     // -------- SERTRALINE --------
@@ -71,16 +33,15 @@ MedChooser.register('anxiety', {
         'Interactions': '↑ bleeding with NSAID/anticoagulant; serotonergic load',
         'Key teaching': 'NICE CG113-named first-line drug for GAD (most cost-effective SSRI). Start low to limit initial activation.'
       },
-      evaluate(f){
-        if (f.maoi) return { tier:'avoid', reasons:[{kind:'bad', text:'Recent MAOI — washout required'}] };
-        const r = [];
-        if (f.step === 'mild') r.push({kind:'bad', text:'Mild GAD — try low-intensity psychological intervention first'});
-        if (f.comorbid_dep) r.push({kind:'good', text:'Comorbid depression — SSRI treats both'});
-        if (f.cardiac) r.push({kind:'good', text:'Cardiac disease — sertraline is the safest SSRI'});
-        if (f.prior_response) r.push({kind:'good', text:'If it worked before — re-use it'});
-        if (f.gibleed || f.nsaid_anticoag) r.push({kind:'bad', text:'Bleeding risk — consider PPI cover'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'NICE CG113 first-line drug for GAD'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"MAOI (current or recent)","text":"Recent MAOI — washout required"},
+        {"kind":"caution","label":"Stepped-care stage: Step 1–2: mild, no marked impairment","text":"Mild GAD — try low-intensity psychological intervention first"},
+        {"kind":"caution","label":"GI bleed / ulcer history","text":"Bleeding risk — consider PPI cover"},
+        {"kind":"caution","label":"NSAID / anticoagulant / antiplatelet","text":"Bleeding risk — consider PPI cover"},
+        {"kind":"favoured","label":"Comorbid depression","text":"Comorbid depression — SSRI treats both"},
+        {"kind":"favoured","label":"Previous good response to a drug","text":"If it worked before — re-use it"},
+        {"kind":"favoured","label":"Cardiac disease / recent MI","text":"Cardiac disease — sertraline is the safest SSRI"}
+      ]
     },
 
     // -------- ALTERNATIVE SSRI --------
@@ -97,13 +58,11 @@ MedChooser.register('anxiety', {
         'Dose': 'Escitalopram 10 mg → 20 mg; paroxetine 20 mg → 50 mg',
         'Key teaching': 'Offer a different SSRI if sertraline ineffective/not tolerated. Paroxetine: most discontinuation symptoms, avoid in pregnancy.'
       },
-      evaluate(f){
-        if (f.maoi) return { tier:'avoid', reasons:[{kind:'bad', text:'Recent MAOI — washout required'}] };
-        const r = [];
-        if (f.longqt) r.push({kind:'bad', text:'Long QT — avoid escitalopram; choose non-QT SSRI'});
-        if (f.preg) r.push({kind:'bad', text:'Pregnancy — avoid paroxetine (cardiac malformation signal)'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Second SSRI if first ineffective/not tolerated'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"MAOI (current or recent)","text":"Recent MAOI — washout required"},
+        {"kind":"caution","label":"Pregnant","text":"Pregnancy — avoid paroxetine (cardiac malformation signal)"},
+        {"kind":"caution","label":"Long QT / QTc-prolonging risk","text":"Long QT — avoid escitalopram; choose non-QT SSRI"}
+      ]
     },
 
     // -------- SNRI --------
@@ -120,13 +79,11 @@ MedChooser.register('anxiety', {
         'Dose': 'Duloxetine 30 → 60 mg; venlafaxine MR 75 → 225 mg',
         'Key teaching': 'Offer an SNRI if SSRIs ineffective. Check BP, especially with venlafaxine.'
       },
-      evaluate(f){
-        if (f.maoi) return { tier:'avoid', reasons:[{kind:'bad', text:'Recent MAOI — washout required'}] };
-        const r = [];
-        if (f.cardiac) r.push({kind:'bad', text:'Cardiac disease / HTN — venlafaxine raises BP (prefer duloxetine, monitor)'});
-        if (f.step === 'sev') r.push({kind:'good', text:'SSRI failure — SNRI is the next evidence-based step'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Next step after SSRI non-response'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"MAOI (current or recent)","text":"Recent MAOI — washout required"},
+        {"kind":"caution","label":"Cardiac disease / recent MI","text":"Cardiac disease / HTN — venlafaxine raises BP (prefer duloxetine, monitor)"},
+        {"kind":"favoured","label":"Stepped-care stage: Step 3: SSRI + SNRI failed / refractory","text":"SSRI failure — SNRI is the next evidence-based step"}
+      ]
     },
 
     // -------- PREGABALIN --------
@@ -144,14 +101,12 @@ MedChooser.register('anxiety', {
         'Interactions': 'Opioids/CNS depressants — fatal respiratory depression reported',
         'Key teaching': 'Now a controlled drug (Class C). Offer if SSRIs/SNRIs unsuitable. Avoid in substance misuse.'
       },
-      evaluate(f){
-        if (f.substance) return { tier:'avoid', reasons:[{kind:'bad', text:'Substance misuse — high diversion/misuse potential'}] };
-        const r = [];
-        if (f.opioid) r.push({kind:'bad', text:'Concurrent opioids — risk of respiratory depression'});
-        if (f.renal) r.push({kind:'bad', text:'Renal impairment — dose reduction required'});
-        if (f.step === 'sev') r.push({kind:'good', text:'SSRI/SNRI not tolerated or failed — pregabalin is the NICE CG113 alternative'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Reserve for when antidepressants unsuitable'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Substance / alcohol misuse history","text":"Substance misuse — high diversion/misuse potential"},
+        {"kind":"caution","label":"Renal impairment (eGFR <60)","text":"Renal impairment — dose reduction required"},
+        {"kind":"caution","label":"Opioids / CNS depressants","text":"Concurrent opioids — risk of respiratory depression"},
+        {"kind":"favoured","label":"Stepped-care stage: Step 3: SSRI + SNRI failed / refractory","text":"SSRI/SNRI not tolerated or failed — pregabalin is the NICE CG113 alternative"}
+      ]
     },
 
     // -------- BENZODIAZEPINE --------
@@ -167,10 +122,9 @@ MedChooser.register('anxiety', {
       detail:{
         'Key teaching': 'NICE CG113: do NOT offer benzodiazepines for GAD except short-term during a crisis. Not for chronic use.'
       },
-      evaluate(f){
-        if (f.crisis) return { tier:'acceptable', reasons:[{kind:'neutral', text:'Very short-term (≤2–4 weeks) only, during acute crisis'}] };
-        return { tier:'avoid', reasons:[{kind:'bad', text:'Not for routine GAD — dependence; only short-term crisis use'}] };
-      }
+      conditions: [
+        {"kind":"note","label":"Acute crisis / severe agitation","text":"Very short-term (≤2–4 weeks) only, during acute crisis"}
+      ]
     },
 
     // -------- BETA-BLOCKER (symptomatic) --------
@@ -186,11 +140,9 @@ MedChooser.register('anxiety', {
       detail:{
         'Key teaching': 'Symptomatic relief of autonomic/somatic anxiety only. Not a substitute for SSRI/therapy.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.panic) r.push({kind:'good', text:'Prominent somatic / palpitation symptoms — useful adjunct'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Adjunct for physical symptoms; not core treatment'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Prominent panic disorder","text":"Prominent somatic / palpitation symptoms — useful adjunct"}
+      ]
     }
   ],
 

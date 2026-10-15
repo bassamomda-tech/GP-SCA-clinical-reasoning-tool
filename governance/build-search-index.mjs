@@ -20,9 +20,10 @@
      articles   assets/articles-data-*.js    (one entry per article)
      cases      cases/*.html
      sca        tools/sca-*.html             (the static text of each SCA tool page)
+                assets/sca-cases*.js         (Hot Seat case titles only — members-only, opened by ?case=<id>)
      rx         assets/prescriptions-data*.js (one entry per ready prescription)
      calc       assets/calculators-data*.js  (one entry per calculator)
-     audio      assets/audio-scripts-*.js    (one entry per audio briefing)
+     audio      assets/audio-scripts-*.js    (one entry per audio briefing, opened by #track-<id>)
      pages      pages/*.html, tools/*.html hub/tool pages, index.html
    Skipped: meta-refresh redirect stubs, *-print.html twins, noindex pages
    other than the Snapshots, robots-disallowed/admin pages (incl. the owner
@@ -378,8 +379,24 @@ for (const f of pageFiles){
   aud.forEach(a => {
     if (!a || !a.title || !a.body) return;
     const t = cleanTitle(a.title);
-    docs.push({ type: 'audio', url: 'pages/audios.html', title: t, gated: true, mode: 0, hs: a.title,
+    docs.push({ type: 'audio', url: 'pages/audios.html' + (a.id ? '#track-' + a.id : ''), title: t, gated: true, mode: 0,
       sections: [{ h: '', a: '', text: squash([a.cat, a.sub, stripTags(a.body)].filter(Boolean).join(' · ')) }] });
+  });
+}
+
+// Hot Seat cases (members) — the case TITLE, consultation type and system only; no case text is
+// indexed, so the members-only scenarios stay behind the paywall. Opened by tools/sca-practice.html?case=<id>,
+// where the page's own free-taster lock still applies.
+{
+  const page = readHtml('tools/sca-practice.html');
+  const order = [...page.matchAll(/src="\.\.\/assets\/(sca-cases\d*\.js|sca-extras\.js)[^"]*"/g)].map(m => path.join(ROOT, 'assets', m[1]));
+  const cases = loadData(order, 'SCA_CASES');
+  const TYPE = { video: 'Video consultation', telephone: 'Telephone consultation', phone: 'Telephone consultation', f2f: 'Face-to-face consultation', home: 'Home visit', data: 'Results review' };
+  cases.forEach(c => {
+    if (!c || !c.id || !c.title) return;
+    const meta = [ 'Hot Seat case', TYPE[c.type] || '', c.meta && c.meta.system ].filter(Boolean).join(' · ');
+    docs.push({ type: 'sca', url: 'tools/sca-practice.html?case=' + encodeURIComponent(c.id), title: cleanTitle(c.title), gated: true, mode: MODE_SCA,
+      sections: [{ h: '', a: '', text: squash(meta) }] });
   });
 }
 

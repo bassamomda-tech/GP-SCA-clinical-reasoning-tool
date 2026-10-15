@@ -1,52 +1,20 @@
 /* ============================================
    Medication Chooser — Irritable Bowel Syndrome
    NICE CG61 · BNF  (NICE NG12 (updated April 2026) colorectal red flags)
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('ibs', {
   title: 'IBS — symptom-targeted pharmacotherapy',
-  subtitle: 'Drug selection by predominant symptom once red flags are excluded (NICE CG61). Tick the patient profile; cards re-tier live.',
+  subtitle: 'Drug selection by predominant symptom once red flags are excluded (NICE CG61).',
   guideline: 'NICE CG61 · BNF',
 
-  factors: [
-    // Predominant pattern
-    { group:'Predominant symptom', id:'pain', label:'Pain / cramping predominant' },
-    { group:'Predominant symptom', id:'bloating', label:'Bloating predominant' },
-    { group:'Predominant symptom', id:'constip', label:'Constipation predominant (IBS-C)' },
-    { group:'Predominant symptom', id:'diarr', label:'Diarrhoea predominant (IBS-D)' },
-    { group:'Predominant symptom', id:'refractory', label:'Refractory ≥12 months despite first-line', note:'Consider 2nd-line / referral' },
 
-    // Red flags (NICE NG12 (updated April 2026))
-    { group:'Red flags (exclude cancer first)', id:'rectal_bleed', label:'Rectal bleeding' },
-    { group:'Red flags (exclude cancer first)', id:'weight_loss', label:'Unexplained weight loss' },
-    { group:'Red flags (exclude cancer first)', id:'change_60', label:'Persistent change in bowel habit (FIT)' },
-    { group:'Red flags (exclude cancer first)', id:'mass', label:'Abdominal / rectal mass' },
-    { group:'Red flags (exclude cancer first)', id:'anaemia', label:'Iron-deficiency anaemia' },
-    { group:'Red flags (exclude cancer first)', id:'fh_ca', label:'FH bowel or ovarian cancer' },
-    { group:'Red flags (exclude cancer first)', id:'night', label:'Nocturnal / progressive symptoms' },
-
-    // Demographics
-    { group:'Demographics', id:'preg', label:'Pregnant or breastfeeding' },
-    { group:'Demographics', id:'elderly', label:'Elderly / frail' },
-
-    // Comorbidities
-    { group:'Comorbidities', id:'mood', label:'Comorbid anxiety / depression' },
-    { group:'Comorbidities', id:'cardiac', label:'Ischaemic heart disease / arrhythmia', note:'TCA caution' },
-    { group:'Comorbidities', id:'glaucoma', label:'Closed-angle glaucoma / urinary retention', note:'Antimuscarinic caution' },
-    { group:'Comorbidities', id:'qt', label:'Long QT / on QT-prolonging drugs' },
-
-    // Preference / context
-    { group:'Preference / context', id:'avoid_sedation', label:'Needs to avoid sedation (driver / works at height)' },
-    { group:'Preference / context', id:'fodmap_tried', label:'Diet (FODMAP / fibre) already optimised' }
+  safety: [
+    {"tone":"red","label":"Rectal bleeding","text":"NICE NG12 (updated April 2026) — alarm feature present: this is NOT IBS until cancer excluded. FIT + FBC/ferritin; refer on the suspected lower-GI cancer pathway if FIT ≥10 µg Hb/g. Abdominal/rectal mass → examine + urgent referral."},
+    {"tone":"amber","label":"FH bowel or ovarian cancer","text":"FH bowel/ovarian cancer — consider CA-125 if ovarian features; lower threshold for FIT and referral"},
+    {"tone":"amber","label":"Pregnant or breastfeeding","text":"Pregnancy/breastfeeding — most IBS drugs restricted; bulk-forming laxatives + dietary measures first"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    const ng12 = f.rectal_bleed || f.weight_loss || f.change_60 || f.mass || f.anaemia || f.night;
-    if (ng12) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — alarm feature present: this is NOT IBS until cancer excluded. FIT + FBC/ferritin; refer on the suspected lower-GI cancer pathway if FIT ≥10 µg Hb/g. Abdominal/rectal mass → examine + urgent referral.' });
-    if (f.fh_ca) out.push({ tone:'amber', text:'FH bowel/ovarian cancer — consider CA-125 if ovarian features; lower threshold for FIT and referral' });
-    if (f.preg) out.push({ tone:'amber', text:'Pregnancy/breastfeeding — most IBS drugs restricted; bulk-forming laxatives + dietary measures first' });
-    return out;
-  },
 
   drugs: [
     // -------- ANTISPASMODIC --------
@@ -64,14 +32,12 @@ MedChooser.register('ibs', {
         'Interactions': 'Antimuscarinics add to anticholinergic burden',
         'Key teaching': 'First-line for abdominal pain/spasm. Peppermint oil is a useful non-antimuscarinic option.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.pain || f.bloating) r.push({kind:'good', text:'Pain/spasm or bloating predominant — first-line'});
-        if (f.glaucoma) r.push({kind:'bad', text:'Glaucoma/retention — avoid hyoscine; use mebeverine or peppermint oil'});
-        if (f.preg) r.push({kind:'neutral', text:'Pregnancy — peppermint oil generally preferred; check suitability'});
-        const preferred = f.pain || f.bloating;
-        return { tier: preferred ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'For abdominal pain / cramping'}] };
-      }
+      conditions: [
+        {"kind":"caution","label":"Closed-angle glaucoma / urinary retention","text":"Glaucoma/retention — avoid hyoscine; use mebeverine or peppermint oil"},
+        {"kind":"favoured","label":"Pain / cramping predominant","text":"Pain/spasm or bloating predominant — first-line"},
+        {"kind":"favoured","label":"Bloating predominant","text":"Pain/spasm or bloating predominant — first-line"},
+        {"kind":"note","label":"Pregnant or breastfeeding","text":"Pregnancy — peppermint oil generally preferred; check suitability"}
+      ]
     },
 
     // -------- LAXATIVE (IBS-C) --------
@@ -89,13 +55,11 @@ MedChooser.register('ibs', {
         'Interactions': 'Separate bulk-forming fibre from other meds by ~30 min',
         'Key teaching': 'NICE CG61 specifically advises AGAINST lactulose in IBS (worsens bloating). Soluble fibre (ispaghula), not insoluble bran.'
       },
-      evaluate(f){
-        if (f.diarr && !f.constip) return { tier:'avoid', reasons:[{kind:'bad', text:'Diarrhoea-predominant — laxative not indicated'}] };
-        const r = [];
-        if (f.constip) r.push({kind:'good', text:'IBS-C — first-line, titrate to effect (avoid lactulose)'});
-        if (f.bloating) r.push({kind:'neutral', text:'Bloating — prefer macrogol over bulk-forming if bloating troublesome'});
-        return { tier: f.constip ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'For constipation-predominant IBS'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Diarrhoea predominant (IBS-D)","text":"Diarrhoea-predominant — laxative not indicated"},
+        {"kind":"favoured","label":"Constipation predominant (IBS-C)","text":"IBS-C — first-line, titrate to effect (avoid lactulose)"},
+        {"kind":"note","label":"Bloating predominant","text":"Bloating — prefer macrogol over bulk-forming if bloating troublesome"}
+      ]
     },
 
     // -------- LOPERAMIDE --------
@@ -113,13 +77,11 @@ MedChooser.register('ibs', {
         'Interactions': 'QT-prolonging drugs at high dose',
         'Key teaching': 'First-line antimotility for IBS-D. Patient-adjusted dosing aiming for a soft well-formed stool.'
       },
-      evaluate(f){
-        if (f.constip && !f.diarr) return { tier:'avoid', reasons:[{kind:'bad', text:'Constipation-predominant — antimotility would worsen'}] };
-        const r = [];
-        if (f.diarr) r.push({kind:'good', text:'IBS-D — first-line antimotility'});
-        if (f.qt) r.push({kind:'bad', text:'Long QT — avoid high doses'});
-        return { tier: f.diarr ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'For diarrhoea-predominant IBS'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Constipation predominant (IBS-C)","text":"Constipation-predominant — antimotility would worsen"},
+        {"kind":"caution","label":"Long QT / on QT-prolonging drugs","text":"Long QT — avoid high doses"},
+        {"kind":"favoured","label":"Diarrhoea predominant (IBS-D)","text":"IBS-D — first-line antimotility"}
+      ]
     },
 
     // -------- LOW-DOSE TCA --------
@@ -137,17 +99,16 @@ MedChooser.register('ibs', {
         'Interactions': 'Other sedatives/anticholinergics, QT-prolonging drugs, SSRIs',
         'Key teaching': 'Second-line for pain not controlled by antispasmodics. The constipating effect can suit IBS-D, less so IBS-C.'
       },
-      evaluate(f){
-        if (f.qt) return { tier:'avoid', reasons:[{kind:'bad', text:'Long QT / QT drugs — TCA contraindicated'}] };
-        const r = [];
-        if (f.cardiac) r.push({kind:'bad', text:'IHD / arrhythmia — TCA caution, consider ECG / avoid'});
-        if (f.glaucoma) r.push({kind:'bad', text:'Glaucoma / retention — antimuscarinic effect, caution'});
-        if (f.refractory || f.pain) r.push({kind:'good', text:'Persistent pain despite first-line — 2nd-line option'});
-        if (f.diarr) r.push({kind:'good', text:'IBS-D — constipating effect can be helpful'});
-        if (f.constip) r.push({kind:'bad', text:'IBS-C — may worsen constipation; consider SSRI instead'});
-        if (f.avoid_sedation) r.push({kind:'bad', text:'Needs to avoid sedation — sedating; dose at night / reconsider'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Second-line for refractory pain'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Long QT / on QT-prolonging drugs","text":"Long QT / QT drugs — TCA contraindicated"},
+        {"kind":"caution","label":"Constipation predominant (IBS-C)","text":"IBS-C — may worsen constipation; consider SSRI instead"},
+        {"kind":"caution","label":"Ischaemic heart disease / arrhythmia","text":"IHD / arrhythmia — TCA caution, consider ECG / avoid"},
+        {"kind":"caution","label":"Closed-angle glaucoma / urinary retention","text":"Glaucoma / retention — antimuscarinic effect, caution"},
+        {"kind":"caution","label":"Needs to avoid sedation (driver / works at height)","text":"Needs to avoid sedation — sedating; dose at night / reconsider"},
+        {"kind":"favoured","label":"Pain / cramping predominant","text":"Persistent pain despite first-line — 2nd-line option"},
+        {"kind":"favoured","label":"Diarrhoea predominant (IBS-D)","text":"IBS-D — constipating effect can be helpful"},
+        {"kind":"favoured","label":"Refractory ≥12 months despite first-line","text":"Persistent pain despite first-line — 2nd-line option"}
+      ]
     },
 
     // -------- SSRI --------
@@ -165,14 +126,12 @@ MedChooser.register('ibs', {
         'Interactions': 'Other serotonergic drugs, QT drugs (citalopram), NSAIDs/anticoagulants (GI bleed)',
         'Key teaching': 'Considered when a TCA is ineffective or not tolerated; the loosening effect tends to suit IBS-C more than IBS-D.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.mood) r.push({kind:'good', text:'Comorbid anxiety/depression — dual benefit'});
-        if (f.constip) r.push({kind:'good', text:'IBS-C — SSRI loosening effect can help'});
-        if (f.diarr) r.push({kind:'bad', text:'IBS-D — may worsen diarrhoea'});
-        if (f.qt) r.push({kind:'bad', text:'Long QT — avoid citalopram; choose sertraline cautiously'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Where a TCA is ineffective or unsuitable'}] };
-      }
+      conditions: [
+        {"kind":"caution","label":"Diarrhoea predominant (IBS-D)","text":"IBS-D — may worsen diarrhoea"},
+        {"kind":"caution","label":"Long QT / on QT-prolonging drugs","text":"Long QT — avoid citalopram; choose sertraline cautiously"},
+        {"kind":"favoured","label":"Constipation predominant (IBS-C)","text":"IBS-C — SSRI loosening effect can help"},
+        {"kind":"favoured","label":"Comorbid anxiety / depression","text":"Comorbid anxiety/depression — dual benefit"}
+      ]
     },
 
     // -------- LINACLOTIDE --------
@@ -189,14 +148,9 @@ MedChooser.register('ibs', {
         'Dose': 'Linaclotide 290 mcg OD, 30 min before food; review at 3 months',
         'Key teaching': 'Reserve for IBS-C that has not responded to ≥12 months of optimised laxatives. Stop if no response by 3 months.'
       },
-      evaluate(f){
-        if (!f.constip) return { tier:'avoid', reasons:[{kind:'bad', text:'Only for constipation-predominant IBS'}] };
-        if (f.diarr) return { tier:'avoid', reasons:[{kind:'bad', text:'Diarrhoea features — would worsen'}] };
-        const r = [];
-        if (f.constip && f.refractory) r.push({kind:'good', text:'Refractory IBS-C after ≥12 months optimised laxatives'});
-        else if (f.constip) r.push({kind:'neutral', text:'IBS-C — reserve until laxatives optimised for 12 months'});
-        return { tier:'acceptable', reasons: r };
-      }
+      conditions: [
+        {"kind":"note","label":"Constipation predominant (IBS-C)","text":"IBS-C — reserve until laxatives optimised for 12 months"}
+      ]
     }
   ],
 

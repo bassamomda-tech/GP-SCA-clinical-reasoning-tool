@@ -128,7 +128,8 @@ Severe/refractory or ?Sjögren\u2019s → ophthalmology/rheumatology. Painful re
 - Marked inflammation: hydrocortisone 1% OD ≤7 days (mild only — avoid potent steroids).
 Not improving/atypical → reconsider seb/atopic dermatitis, psoriasis, bacterial infection.`,
     sources: [
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
+      { label:'BNF — clotrimazole', url:'https://bnf.nice.org.uk/drugs/clotrimazole/' },
+      { label:'BNF — hydrocortisone', url:'https://bnf.nice.org.uk/drugs/hydrocortisone/' },
     ],
   },
 
@@ -169,7 +170,7 @@ Not improving/atypical → reconsider seb/atopic dermatitis, psoriasis, bacteria
 - Secondary infection → antibiotics.
 Recurrent/atypical/ulcerating or young + systemic features → investigate underlying cause (SLE/PAD) / refer.`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'PCDS — perniosis (chilblains)', url:'https://www.pcds.org.uk/clinical-guidance/perniosis' },
     ],
   },
 
@@ -183,8 +184,8 @@ Recurrent/atypical/ulcerating or young + systemic features → investigate under
     contraindications: 'Do NOT examine the throat or distress the child if severe (risk of complete obstruction). Consider alternative diagnosis if drooling/toxic/unable to swallow (epiglottitis), sudden choking (foreign body), or no preceding coryza. Severe croup (stridor at rest, recession, agitation) = emergency.',
     duration: 'Single steroid dose; illness ~48 hours–few days',
     drugs: [
-      { name: 'Dexamethasone (oral)', dose: '0.15 mg/kg', freq: 'Single dose', route: 'PO', days: 'Once' },
-      { name: 'Alternative: Prednisolone', dose: '1–2 mg/kg', freq: 'OD', route: 'PO', days: '1 dose (± repeat next day) if dexamethasone unavailable' },
+      { name: 'Dexamethasone (oral)', dose: '0.15 mg/kg', freq: 'Single dose', route: 'PO', days: 'Once', child:true },
+      { name: 'Alternative: Prednisolone', dose: '1–2 mg/kg', freq: 'OD', route: 'PO', days: '1 dose (± repeat next day) if dexamethasone unavailable', child:true },
       { name: 'Hospital (moderate–severe): Nebulised budesonide / adrenaline', dose: 'Per protocol', freq: 'As needed', route: 'Nebulised', days: 'Acute (secondary care)' },
     ],
     altRegimens: [
@@ -212,7 +213,8 @@ Recurrent/atypical/ulcerating or young + systemic features → investigate under
 Do NOT examine throat / distress child if severe. 999 if stridor at rest, recession, cyanosis, drowsy, exhausted.
 Consider epiglottitis (drooling/toxic, no cough) / foreign body (sudden choking).`,
     sources: [
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
+      { label:'BNF — dexamethasone', url:'https://bnf.nice.org.uk/drugs/dexamethasone/' },
+      { label:'BNF — prednisolone', url:'https://bnf.nice.org.uk/drugs/prednisolone/' },
     ],
   }
   );

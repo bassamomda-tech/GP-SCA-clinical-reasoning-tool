@@ -270,7 +270,7 @@
 - Low threshold to treat empirically (protect fertility). Pregnancy test + STI NAATs but don't delay.
 - Ceftriaxone 1 g IM stat + doxycycline 100 mg BD + metronidazole 400 mg BD \u00d714d (alt ofloxacin+metro if low GC risk).
 - Avoid sex until treated; partner notification via GUM. Severe/pregnant/abscess \u2192 admit.`,
-    sources:[{ label:'BASHH', url:'https://www.bashh.org/guidelines' }],
+    sources:[{ label:'BASHH — PID (2019 update)', url:'https://www.bashh.org/_userfiles/pages/files/resources/pidupdate2019.pdf' }],
   },
 
   { id:'epididymo-orchitis', title:'Epididymo-orchitis', category:'Men\'s & Sexual Health',
@@ -301,7 +301,7 @@
 - STI likely: ceftriaxone 1 g IM stat + doxycycline 100 mg BD 10-14d (refer GUM).
 - Enteric likely (older/urinary): ofloxacin 200 mg BD 14d / levofloxacin 500 mg OD 10d (MHRA FQ cautions), or co-amoxiclav 500/125 mg TDS 10d.
 - Scrotal support, analgesia. Not improving/abscess \u2192 urology.`,
-    sources:[{ label:'BASHH', url:'https://www.bashh.org/guidelines' }],
+    sources:[{ label:'BASHH — epididymo-orchitis (2020)', url:'https://www.bashh.org/_userfiles/pages/files/resources/eo2020.pdf' }],
   },
 
   { id:'acute-prostatitis', title:'Acute bacterial prostatitis', category:'Men\'s & Sexual Health',
@@ -337,15 +337,17 @@
   { id:'chlamydia', title:'Genital chlamydia', category:'Men\'s & Sexual Health',
     eyebrow:'Doxycycline 1st line · partner notification',
     indication:'Uncomplicated genital Chlamydia trachomatis infection (often asymptomatic; or discharge, dysuria, pelvic pain). Treat, arrange partner notification and full STI screen — ideally via sexual health (GUM).',
-    contraindications:'Doxycycline contraindicated in pregnancy → azithromycin (per current guidance) with test of cure. Complicated infection (PID, epididymo-orchitis) → treat as such. Always offer full STI/HIV screen and partner notification.',
+    contraindications:'Pregnancy: doxycycline should generally be avoided unless specialist advice confirms that a complete course can be finished before 15 weeks\' gestation — use azithromycin, erythromycin or amoxicillin per BASHH 2026, with a test of cure no earlier than 3 weeks after finishing treatment. Complicated infection (PID, epididymo-orchitis) → treat as such. Always offer full STI/HIV screen and partner notification.',
     duration:'7 days',
     drugs:[
       { name:'Doxycycline (non-pregnant)', dose:'100 mg', freq:'BD', route:'PO', days:'7 days' },
-      { name:'Pregnancy/breastfeeding or doxycycline unsuitable: azithromycin', dose:'1 g, then 500 mg OD for 2 days', freq:'\u2014', route:'PO', days:'3 days (test of cure \u22653 weeks after in pregnancy)' },
+      { name:'Pregnant (doxycycline generally avoided): azithromycin, erythromycin or amoxicillin per BASHH', dose:'Azithromycin 1 g, then 500 mg once daily for 2 further days (the preferred azithromycin regimen); other BASHH 2026 regimens under Alternative regimens', freq:'\u2014', route:'PO', days:'Test of cure no earlier than 3 weeks after finishing treatment' },
       { name:'Full STI/HIV screen + partner notification + avoid sex 7 days (and until partners treated)', dose:'\u2014', freq:'\u2014', route:'Advice', days:'\u2014' },
     ],
     altRegimens:[
-      { label:'Pregnancy', drugs:'Azithromycin 1 g, then 500 mg OD for 2 days (BASHH 2026); test of cure \u22653 weeks after.' },
+      { label:'Pregnancy (BASHH 2026 recommended regimens)', drugs:'Recommended regimens (BASHH 2026): azithromycin 1 g orally, then 500 mg once daily for 2 further days (2 g over 3 days; the preferred azithromycin regimen, grade 1D) — azithromycin 1 g as a single dose is an alternative (grade 2A); or erythromycin 500 mg four times daily for 7 days; or erythromycin 500 mg twice daily for 14 days; or amoxicillin 500 mg three times daily for 7 days — confirm the regimen with your local sexual health service before prescribing. Doxycycline should generally be avoided unless specialist advice confirms that a complete course can be finished before 15 weeks\' gestation — discuss with sexual health, obstetric or medicines-in-pregnancy advice before prescribing it. Arrange a test of cure no earlier than 3 weeks after finishing treatment (later if the local service prefers).' },
+      { label:'Breastfeeding', drugs:'Use the current BASHH pregnancy/breastfeeding regimen. A short course of doxycycline may be considered where alternatives are unsuitable or unacceptable; monitor the infant for diarrhoea, vomiting or oral thrush.' },
+      { label:'Cannot take doxycycline', drugs:'Use the alternative regimen per BASHH 2026 — confirm the regimen with your local sexual health service, which will also decide whether a test of cure is needed; rectal infection responds less reliably to azithromycin than to doxycycline.' },
       { label:'Rectal chlamydia / LGV', drugs:'Doxycycline 7 days (longer for LGV) \u2014 manage via GUM.' },
       { label:'Complicated (PID / epididymo-orchitis)', drugs:'Treat as the complication; extended regimen.' },
     ],
@@ -356,12 +358,12 @@
       'Have a full check for other infections including HIV, and a re-test if you\u2019re under 25 or at ongoing risk.',
     ],
     followUp:'Partner notification + full STI screen (ideally GUM). Test of cure in pregnancy/rectal/persistent. Re-test at 3 months if <25 / ongoing risk.',
-    redFlags:['Complicated infection (PID, epididymo-orchitis) → treat accordingly.','Pregnancy → azithromycin + test of cure.'],
+    redFlags:['Complicated infection (PID, epididymo-orchitis) → treat accordingly.','Pregnancy → azithromycin, erythromycin or amoxicillin per BASHH 2026 + test of cure.'],
     emisText:`Genital chlamydia (uncomplicated):
 - Doxycycline 100 mg BD 7d (non-pregnant).
-- Pregnancy/unsuitable: azithromycin (per guidance) + test of cure.
+- Pregnancy: azithromycin, erythromycin or amoxicillin per BASHH 2026 (confirm with local sexual health) + test of cure no earlier than 3 weeks after finishing. Cannot take doxycycline: alternative per BASHH 2026, agreed with sexual health.
 - Full STI/HIV screen + partner notification (GUM); avoid sex 7d & until partners treated. Re-test 3/12 if <25/ongoing risk.`,
-    sources:[{ label:'BASHH', url:'https://www.bashh.org/guidelines' }],
+    sources:[{ label:'BASHH — UK national guideline for the management of infection with Chlamydia trachomatis (2026, final, July 2026)', url:'https://www.bashh.org/_userfiles/pages/files/bashh_chlamydia_guideline_july_2026.pdf' }],
   }
 
   );

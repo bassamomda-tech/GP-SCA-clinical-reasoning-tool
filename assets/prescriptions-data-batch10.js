@@ -46,7 +46,7 @@
 - Isolated hyperkeratotic: cryotherapy. Extensive/refractory \u2192 dermatology (PDT).
 - Induration/tender/rapid/ulcerated/bleeding \u2192 suspected SCC \u2192 suspected cancer pathway referral/biopsy.`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'PCDS — actinic keratosis', url:'https://www.pcds.org.uk/clinical-guidance/actinic-keratosis-syn.-solar-keratosis' },
     ],
   },
 
@@ -161,7 +161,7 @@
 - Facial/flexural: topical antifungal cream \u00b1 short mild steroid.
 - Relapsing/chronic \u2014 maintenance prevents recurrence. Atypical/scarring \u2192 reconsider psoriasis/tinea.`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'PCDS — seborrhoeic eczema', url:'https://www.pcds.org.uk/clinical-guidance/seborrhoeic-eczema' },
     ],
   },
 
@@ -239,7 +239,9 @@
 - Preventive (take BEFORE travel): hyoscine hydrobromide oral/patch (most effective; antimuscarinic cautions) OR sedating antihistamine (cinnarizine/promethazine \u2014 drowsiness).
 - Children/pregnancy: non-drug \u00b1 promethazine/cyclizine per licence.`,
     sources: [
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
+      { label:'BNF — hyoscine hydrobromide', url:'https://bnf.nice.org.uk/drugs/hyoscine-hydrobromide/' },
+      { label:'BNF — cinnarizine', url:'https://bnf.nice.org.uk/drugs/cinnarizine/' },
+      { label:'BNF — promethazine hydrochloride', url:'https://bnf.nice.org.uk/drugs/promethazine-hydrochloride/' },
     ],
   },
 

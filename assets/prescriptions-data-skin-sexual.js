@@ -40,7 +40,7 @@
 - Scalp/nail → ORAL terbinafine (confirm nail by clippings first).
 Keep dry; don\u2019t share towels; avoid steroid-only creams. Review if no better at 2–4 wks.`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'PCDS — tinea', url:'https://www.pcds.org.uk/clinical-guidance/tinea' },
     ],
   },
 
@@ -51,11 +51,11 @@ Keep dry; don\u2019t share towels; avoid steroid-only creams. Review if no bette
     category: 'Dermatology',
     eyebrow: 'Permethrin 5% or oral ivermectin · treat all contacts simultaneously',
     indication: 'Intensely itchy rash (worse at night), burrows in web spaces/wrists/genitalia. Treat the patient AND all household/close/sexual contacts at the same time, even if asymptomatic.',
-    contraindications: 'Permethrin: licensed from 2 months (<2 months → specialist advice). Oral ivermectin (BASHH 2025 alternative): not if <15 kg, pregnant or breastfeeding — in Greater Manchester not routinely commissioned in primary care; permethrin first-line, ivermectin specialist-directed or exceptional cases. Malathion if permethrin unsuitable (check local stock).',
+    contraindications: 'Permethrin: licensed from 2 months (<2 months → specialist advice). Oral ivermectin: national BASHH guidance includes it as a first-line option in suitable patients. Avoid oral ivermectin in pregnancy; it is generally avoided during breastfeeding, particularly of a young infant, unless specialist advice supports its use; in children under 15 kg it is specialist-directed only. In Greater Manchester, oral ivermectin is not routinely commissioned for scabies; use permethrin 5% cream first-line in primary care, and seek specialist advice for exceptional cases. Malathion if permethrin unsuitable (check local stock).',
     duration: '2 applications, 7 days apart',
     drugs: [
       { name: 'Permethrin 5% cream', dose: 'Whole body (neck-down; include scalp in young/elderly)', freq: '2 applications 7 days apart', route: 'Topical', days: 'Leave on 8–12 h (overnight)' },
-      { name: 'OR Ivermectin (oral; specialist-directed in GM; not <15 kg/pregnancy/breastfeeding)', dose: '200 micrograms/kg', freq: '2 doses 7–14 days apart', route: 'PO', days: 'Single dose ×2' },
+      { name: 'OR Ivermectin (oral; specialist-directed in GM; avoid in pregnancy; generally avoided when breastfeeding; under 15 kg specialist-directed only)', dose: '200 micrograms/kg', freq: '2 doses 7–14 days apart', route: 'PO', days: 'Single dose ×2', child:true },
       { name: 'Alt: Malathion 0.5% aqueous', dose: 'Whole body', freq: '2 applications 7 days apart', route: 'Topical', days: 'Leave on 24 h' },
       { name: 'Itch relief: antihistamine ± crotamiton', dose: 'Standard', freq: 'PRN', route: 'PO/Topical', days: 'Itch may persist 2–4 weeks' },
     ],
@@ -76,12 +76,12 @@ Keep dry; don\u2019t share towels; avoid steroid-only creams. Review if no bette
       'Secondary bacterial infection (impetiginised) → add antibiotic.',
     ],
     emisText: `Scabies (treat patient + ALL contacts same day):
-- Permethrin 5% cream to whole body (chin-down; scalp in young/elderly), leave 8–12 h, wash off; REPEAT after 7 days. (Alt: oral ivermectin 200 micrograms/kg, repeat after 7–14 days — specialist-directed in Greater Manchester; not <15 kg/pregnancy/breastfeeding; or malathion 0.5%, 24 h.)
+- Permethrin 5% cream to whole body (chin-down; scalp in young/elderly), leave 8–12 h, wash off; REPEAT after 7 days. (Alt: oral ivermectin 200 micrograms/kg, repeat after 7–14 days — specialist-directed in Greater Manchester; avoid in pregnancy, generally avoided when breastfeeding, under 15 kg specialist-directed only; or malathion 0.5%, 24 h.)
 - Wash bedding/clothing at 50°C+ (or bag 72 h) on treatment day.
 - Itch may persist 2–4 wks (antihistamine/crotamiton) — not failure.
 Review at 2–4 wks if persistent/new burrows.`,
     sources: [
-      { label:'BASHH — scabies (2025)', url:'https://www.bashh.org/guidelines' },
+      { label:'BASHH — scabies (2025)', url:'https://www.bashh.org/resources/135/updated_guideline_scabies_guideline_2025/' },
     ],
   },
 
@@ -156,7 +156,6 @@ Recheck by combing 2–3 days after 2nd application.`,
 - Pregnancy: avoid retinoids/tetracyclines → benzoyl peroxide/azelaic acid (+ erythromycin if needed).
 Counsel: 6–12 wks to work; BPO bleaches fabrics; don\u2019t pick. Refer if scarring/failed.`,
     sources: [
-      { label: 'NICE NG198 — Acne vulgaris', url: 'https://www.nice.org.uk/guidance/ng198' },
       { label:'NICE NG198 — Acne vulgaris', url:'https://www.nice.org.uk/guidance/ng198' },
     ],
   },
@@ -197,7 +196,7 @@ Counsel: 6–12 wks to work; BPO bleaches fabrics; don\u2019t pick. Refer if sca
 - Flushing/erythema: brimonidine 0.5% gel PRN; laser/IPL for telangiectasia.
 Avoid facial steroids. Ocular symptoms → ophthalmology.`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'PCDS — rosacea', url:'https://www.pcds.org.uk/clinical-guidance/rosacea' },
     ],
   },
 
@@ -242,42 +241,6 @@ Angioedema with airway/breathing compromise → IM adrenaline + 999.`,
   },
 
   // ---------------- Genital chlamydia ----------------
-  {
-    id: 'chlamydia',
-    title: 'Genital chlamydia',
-    category: "Women's & Sexual Health",
-    eyebrow: 'Doxycycline 7 days (1st line) · partner notification',
-    indication: 'Uncomplicated genital Chlamydia trachomatis (positive NAAT) in non-pregnant adults. Treat index + arrange partner notification; offer full STI screen.',
-    contraindications: 'Doxycycline: pregnancy/breastfeeding & children (avoid) → azithromycin. Avoid milk/antacids around doses.',
-    duration: '7 days',
-    drugs: [
-      { name: 'Doxycycline', dose: '100 mg', freq: 'BD', route: 'PO', days: '7' },
-      { name: 'Pregnancy/breastfeeding: Azithromycin', dose: '1 g then 500 mg OD ×2 days', freq: 'See dose', route: 'PO', days: '3' },
-    ],
-    altRegimens: [
-      { label: 'Doxycycline not tolerated/declined', drugs: 'Azithromycin 1 g stat then 500 mg OD × 2 days.' },
-      { label: 'Rectal chlamydia / LGV risk', drugs: 'Doxycycline 100 mg BD × 7 days (preferred); extend per GUM advice if LGV.' },
-    ],
-    counselling: [
-      'Avoid all sex (including oral/anal) until you have finished the 7-day doxycycline course (or for 7 days after starting azithromycin), symptoms have resolved and your partner(s) have been treated.',
-      'Inform recent sexual partners so they can be tested/treated (partner notification — GUM can help).',
-      'Complete the full course; doxycycline can cause photosensitivity — use sun protection.',
-      'Offer a full STI screen (HIV, syphilis, gonorrhoea) and contraception advice.',
-    ],
-    followUp: 'Test of cure NOT routinely needed (except pregnancy, rectal, or persistent symptoms — retest ≥3–4 weeks). Re-test under-25s at 3 months.',
-    redFlags: [
-      'Pelvic/abdominal pain + deep dyspareunia + cervical excitation → PID (treat empirically).',
-      'Pregnant + positive → test of cure at ≥3 weeks; obstetric awareness.',
-    ],
-    emisText: `Genital chlamydia (NAAT positive):
-- Doxycycline 100 mg PO BD × 7 days (1st line). Pregnancy/breastfeeding → Azithromycin 1 g then 500 mg OD × 2 days.
-- Abstain from sex 7 days after starting; partner notification; full STI screen.
-- Test of cure only if pregnant/rectal/persistent. Re-test under-25s at 3 months.`,
-    sources: [
-      { label: 'BASHH — Chlamydia 2018', url: 'https://www.bashh.org/guidelines' },
-      { label:'BASHH', url:'https://www.bashh.org/guidelines' },
-    ],
-  },
 
   // ---------------- Bacterial vaginosis ----------------
   {
@@ -313,50 +276,10 @@ Angioedema with airway/breathing compromise → IM adrenaline + 999.`,
 - Metronidazole 0.75% vaginal gel ON × 5 days OR Clindamycin 2% cream ON × 7 days.
 Avoid douching/perfumed products. Pregnancy → 5–7 day course (not 2 g stat). Recurrent → suppressive regimen.`,
     sources: [
-      { label: 'BASHH — Bacterial vaginosis 2012', url: 'https://www.bashh.org/guidelines' },
-      { label:'BASHH', url:'https://www.bashh.org/guidelines' },
+      { label:'BASHH — Bacterial vaginosis 2012', url:'https://www.bashh.org/_userfiles/pages/files/resources/bv_2012.pdf' },
     ],
   },
 
   // ---------------- Vaginal thrush ----------------
-  {
-    id: 'vaginal-thrush',
-    title: 'Vaginal candidiasis (thrush)',
-    category: "Women's & Sexual Health",
-    eyebrow: 'Oral fluconazole or clotrimazole pessary',
-    indication: 'Symptomatic vulvovaginal candidiasis (thick white discharge, vulval itch/soreness). Confirm clinically ± swab if recurrent/uncertain.',
-    contraindications: 'Oral fluconazole: pregnancy (avoid — use topical). Interactions (warfarin, statins). Clotrimazole damages latex condoms/diaphragms.',
-    duration: 'Single dose or short course',
-    drugs: [
-      { name: 'Fluconazole (non-pregnant)', dose: '150 mg', freq: 'Stat', route: 'PO', days: '1' },
-      { name: 'OR Clotrimazole pessary', dose: '500 mg', freq: 'Stat (ON)', route: 'PV', days: '1' },
-      { name: 'Vulval itch: + Clotrimazole 1–2% cream', dose: 'Apply', freq: 'BD–TDS', route: 'Topical', days: 'PRN' },
-    ],
-    altRegimens: [
-      { label: 'Pregnancy', drugs: 'Intravaginal imidazole for 7 days, e.g. clotrimazole 100 mg pessary ON × 7 nights (insert by hand, not applicator, late in pregnancy); AVOID oral fluconazole.' },
-      { label: 'Recurrent (≥4/year)', drugs: 'Confirm by swab; induction (fluconazole 150 mg every 72 h × 3 doses) then maintenance (150 mg weekly × 6 months).' },
-      { label: 'Severe symptoms', drugs: 'Fluconazole 150 mg repeated after 3 days; add topical for vulval symptoms.' },
-    ],
-    counselling: [
-      'Avoid soaps/shower gels on the vulva; use emollient washes; avoid tight synthetic underwear.',
-      'Antifungal pessaries/creams can weaken latex condoms and diaphragms.',
-      'Most improve within a few days; vulval cream helps the external itch.',
-      'Return if no better, recurrent, or if pregnant/uncertain diagnosis (swab).',
-    ],
-    followUp: 'No routine review. Recurrent or treatment failure → confirm species (non-albicans), check HbA1c, consider maintenance regimen.',
-    redFlags: [
-      'Recurrent/refractory thrush → check for diabetes; consider non-albicans Candida.',
-      'Pelvic pain / abnormal bleeding / atypical discharge → reconsider diagnosis / STI screen.',
-    ],
-    emisText: `Vaginal thrush:
-- Fluconazole 150 mg PO stat (non-pregnant) OR Clotrimazole 500 mg pessary ON stat.
-- Add clotrimazole 1–2% cream for vulval itch.
-- Pregnancy: clotrimazole 100 mg pessary ON × 7 nights (AVOID oral fluconazole).
-- Recurrent (≥4/yr): swab → fluconazole 150 mg every 72 h ×3 then 150 mg weekly × 6 months; check HbA1c.
-Avoid soaps; pessaries weaken latex condoms.`,
-    sources: [
-      { label:'BASHH — vulvovaginal candidiasis (2019)', url:'https://www.bashh.org/guidelines' },
-    ],
-  }
-  );
+);
 })();

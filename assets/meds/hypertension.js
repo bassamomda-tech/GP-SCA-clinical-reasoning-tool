@@ -1,66 +1,24 @@
 /* ============================================
    Medication Chooser — Hypertension
    NICE NG136 · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('hypertension', {
   title: 'Hypertension — antihypertensive selection',
-  subtitle: 'Tiered first-line drug selection from NICE NG136. Tick the patient profile on the left; cards re-tier live.',
+  subtitle: 'Tiered first-line drug selection from NICE NG136.',
   guideline: 'NICE NG136 · BNF',
 
-  factors: [
-    // Demographics
-    { group:'Demographics', id:'age55',  label:'Age ≥55 years' },
-    { group:'Demographics', id:'age80',  label:'Age ≥80 years', note:'BP target 150/90' },
-    { group:'Demographics', id:'afro',   label:'Black African / African-Caribbean family origin', note:'CCB preferred Step 1 (no DM)' },
-    { group:'Demographics', id:'preg',   label:'Pregnant or planning pregnancy' },
-    { group:'Demographics', id:'bf',     label:'Breastfeeding' },
-    { group:'Demographics', id:'frail',  label:'Frail / falls risk' },
-
-    // Comorbidities
-    { group:'Comorbidities', id:'dm',    label:'Type 2 diabetes' },
-    { group:'Comorbidities', id:'ckd',   label:'CKD / ACR >3', note:'Renoprotective drug needed' },
-    { group:'Comorbidities', id:'hf',    label:'Heart failure (HFrEF)' },
-    { group:'Comorbidities', id:'ihd',   label:'IHD / post-MI / stable angina' },
-    { group:'Comorbidities', id:'af',    label:'Atrial fibrillation' },
-    { group:'Comorbidities', id:'asthma',label:'Asthma / reversible airway disease' },
-    { group:'Comorbidities', id:'gout',  label:'Active gout' },
-    { group:'Comorbidities', id:'osa',   label:'OSA / resistant HTN' },
-    { group:'Comorbidities', id:'bph',   label:'BPH / LUTS' },
-    { group:'Comorbidities', id:'raynauds',label:'Raynaud\'s' },
-
-    // Bloods
-    { group:'Bloods', id:'k_high', label:'K⁺ >5.0 mmol/L' },
-    { group:'Bloods', id:'k_low',  label:'K⁺ <3.5 mmol/L' },
-    { group:'Bloods', id:'egfr_low', label:'eGFR <30 mL/min' },
-    { group:'Bloods', id:'na_low', label:'Na⁺ <130 mmol/L' },
-
-    // Allergies / prior
-    { group:'Allergy / prior intolerance', id:'cough_acei', label:'ACEi-induced cough' },
-    { group:'Allergy / prior intolerance', id:'angioed', label:'Prior angioedema (any cause)' },
-    { group:'Allergy / prior intolerance', id:'gynaeco', label:'Spironolactone gynaecomastia' },
-
-    // Current meds
-    { group:'Current medications', id:'nsaid', label:'Regular NSAIDs' },
-    { group:'Current medications', id:'pde5',  label:'PDE5 inhibitor (sildenafil etc.)', note:'Avoid α-blocker combination' },
-    { group:'Current medications', id:'lithium', label:'Lithium' },
-
-    // Lifestyle / preference
-    { group:'Preference / context', id:'once_daily', label:'Prefers once-daily' },
-    { group:'Preference / context', id:'hgv', label:'HGV / PCV driver', note:'BP must be <180/100' },
-    { group:'Preference / context', id:'lowmood', label:'Depression / low mood' }
-  ],
 
   // Global warnings shown above tiers
-  flags: (f) => {
-    const out = [];
-    if (f.preg) out.push({ tone:'red', text:'Pregnancy — labetalol/nifedipine/methyldopa only' });
-    if (f.k_high) out.push({ tone:'red', text:'K⁺ >5.0 — avoid ACEi/ARB/spiro' });
-    if (f.egfr_low) out.push({ tone:'amber', text:'eGFR <30 — most drugs need dose adjust + specialist input' });
-    if (f.angioed) out.push({ tone:'red', text:'Prior angioedema — ACEi contraindicated; ARB cautious' });
-    if (f.gout && !f.k_high) out.push({ tone:'amber', text:'Active gout — thiazide contraindicated' });
-    if (f.hf) out.push({ tone:'amber', text:'HFrEF — CCB (amlodipine) avoided; favour ACEi + β-blocker + spiro' });
-    return out;
-  },
+  safety: [
+    {"tone":"red","label":"Pregnant or planning pregnancy","text":"Pregnancy — labetalol/nifedipine/methyldopa only"},
+    {"tone":"amber","label":"Heart failure (HFrEF)","text":"HFrEF — CCB (amlodipine) avoided; favour ACEi + β-blocker + spiro"},
+    {"tone":"amber","label":"Active gout","text":"Active gout — thiazide contraindicated"},
+    {"tone":"red","label":"K⁺ >5.0 mmol/L","text":"K⁺ >5.0 — avoid ACEi/ARB/spiro"},
+    {"tone":"amber","label":"eGFR <30 mL/min","text":"eGFR <30 — most drugs need dose adjust + specialist input"},
+    {"tone":"red","label":"Prior angioedema (any cause)","text":"Prior angioedema — ACEi contraindicated; ARB cautious"}
+  ],
 
   drugs: [
     // -------- ACE INHIBITOR --------
@@ -78,30 +36,20 @@ MedChooser.register('hypertension', {
         'Interactions': 'NSAIDs (AKI), K-sparing diuretics + spiro (hyperK), lithium (toxicity)',
         'Key teaching': 'Never combine with ARB. Stop if creatinine rises >30% or K⁺ rise >0.5'
       },
-      evaluate(f){
-        const r = [];
-        if (f.preg) return { tier:'avoid', reasons:[{kind:'bad', text:'Contraindicated in pregnancy — teratogenic (oligohydramnios, renal agenesis)'}] };
-        if (f.angioed) return { tier:'avoid', reasons:[{kind:'bad', text:'Prior angioedema — ACEi absolutely contraindicated'}] };
-        if (f.cough_acei) return { tier:'avoid', reasons:[{kind:'bad', text:'Previous ACEi cough — switch to ARB'}] };
-        if (f.k_high) return { tier:'avoid', reasons:[{kind:'bad', text:'K⁺ >5.0 — risk of dangerous hyperkalaemia'}] };
-
-        if (f.dm)  r.push({kind:'good', text:'DM → ACEi/ARB renoprotective regardless of age/ethnicity (Black African/Caribbean: ARB preferred over ACEi — NICE NG136)'});
-        if (f.ckd) r.push({kind:'good', text:'CKD / ACR >3 → proteinuria reduction'});
-        if (f.hf)  r.push({kind:'good', text:'HFrEF → mortality benefit'});
-        if (f.ihd) r.push({kind:'good', text:'Post-MI / LV dysfunction → secondary prevention'});
-
-        if (f.afro && !f.dm) r.push({kind:'bad', text:'Black African/Caribbean (no DM) — CCB superior at Step 1'});
-        if (f.age55 && !f.dm && !f.ckd && !f.hf) r.push({kind:'bad', text:'Age ≥55 without DM/CKD/HF — CCB preferred Step 1'});
-
-        if (f.egfr_low) r.push({kind:'bad', text:'eGFR <30 — specialist input before starting'});
-        if (f.nsaid) r.push({kind:'bad', text:'Regular NSAID — triple-whammy AKI risk'});
-
-        const preferred = (f.dm || f.ckd || f.hf || f.ihd) ||
-                          (!f.afro && !f.age55);
-        if (preferred && !f.egfr_low) return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'First-line for under-55s without contraindications'}] };
-        if (f.egfr_low) return { tier:'acceptable', reasons: r };
-        return { tier:'acceptable', reasons: r };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Pregnant or planning pregnancy","text":"Contraindicated in pregnancy — teratogenic (oligohydramnios, renal agenesis)"},
+        {"kind":"avoid","label":"K⁺ >5.0 mmol/L","text":"K⁺ >5.0 — risk of dangerous hyperkalaemia"},
+        {"kind":"avoid","label":"ACEi-induced cough","text":"Previous ACEi cough — switch to ARB"},
+        {"kind":"avoid","label":"Prior angioedema (any cause)","text":"Prior angioedema — ACEi absolutely contraindicated"},
+        {"kind":"caution","label":"Age ≥55 years","text":"Age ≥55 without DM/CKD/HF — CCB preferred Step 1"},
+        {"kind":"caution","label":"Black African / African-Caribbean family origin","text":"Black African/Caribbean (no DM) — CCB superior at Step 1"},
+        {"kind":"caution","label":"eGFR <30 mL/min","text":"eGFR <30 — specialist input before starting"},
+        {"kind":"caution","label":"Regular NSAIDs","text":"Regular NSAID — triple-whammy AKI risk"},
+        {"kind":"favoured","label":"Type 2 diabetes","text":"DM → ACEi/ARB renoprotective regardless of age/ethnicity (Black African/Caribbean: ARB preferred over ACEi — NICE NG136)"},
+        {"kind":"favoured","label":"CKD / ACR >3","text":"CKD / ACR >3 → proteinuria reduction"},
+        {"kind":"favoured","label":"Heart failure (HFrEF)","text":"HFrEF → mortality benefit"},
+        {"kind":"favoured","label":"IHD / post-MI / stable angina","text":"Post-MI / LV dysfunction → secondary prevention"}
+      ]
     },
 
     // -------- ARB --------
@@ -119,23 +67,16 @@ MedChooser.register('hypertension', {
         'Interactions': 'Same family as ACEi — never combine. NSAIDs, K-sparing diuretics.',
         'Key teaching': 'Preferred over ACEi in Black African/Caribbean patients whenever a RAS blocker is used (Step 1 with T2DM, or Step 2) — NICE NG136.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.preg) return { tier:'avoid', reasons:[{kind:'bad', text:'Contraindicated in pregnancy (same class effect as ACEi)'}] };
-        if (f.k_high) return { tier:'avoid', reasons:[{kind:'bad', text:'K⁺ >5.0 — hyperkalaemia risk'}] };
-
-        if (f.cough_acei) r.push({kind:'good', text:'ACEi cough → ARB is the direct switch'});
-        if (f.angioed)    r.push({kind:'good', text:'Previous angioedema — cautious ARB use possible (specialist if ACEi-related)'});
-        if (f.dm)  r.push({kind:'good', text:'DM → equal renoprotection to ACEi'});
-        if (f.ckd) r.push({kind:'good', text:'CKD / ACR >3 — proteinuria reduction'});
-        if (f.afro && f.dm) r.push({kind:'good', text:'Black African/Caribbean with DM — ARB preferred over ACEi (NICE NG136)'});
-
-        if (f.afro && !f.dm) r.push({kind:'bad', text:'Black African/Caribbean (no DM) — CCB superior at Step 1'});
-
-        const preferred = f.cough_acei || (f.dm || f.ckd || f.hf) || (f.afro && f.dm);
-        if (preferred) return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'Direct alternative to ACEi'}] };
-        return { tier:'acceptable', reasons: r };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Pregnant or planning pregnancy","text":"Contraindicated in pregnancy (same class effect as ACEi)"},
+        {"kind":"avoid","label":"K⁺ >5.0 mmol/L","text":"K⁺ >5.0 — hyperkalaemia risk"},
+        {"kind":"caution","label":"Black African / African-Caribbean family origin","text":"Black African/Caribbean (no DM) — CCB superior at Step 1"},
+        {"kind":"favoured","label":"Type 2 diabetes","text":"DM → equal renoprotection to ACEi"},
+        {"kind":"favoured","label":"CKD / ACR >3","text":"CKD / ACR >3 — proteinuria reduction"},
+        {"kind":"favoured","label":"Heart failure (HFrEF)","text":"Direct alternative to ACEi"},
+        {"kind":"favoured","label":"ACEi-induced cough","text":"ACEi cough → ARB is the direct switch"},
+        {"kind":"favoured","label":"Prior angioedema (any cause)","text":"Previous angioedema — cautious ARB use possible (specialist if ACEi-related)"}
+      ]
     },
 
     // -------- CCB --------
@@ -153,20 +94,14 @@ MedChooser.register('hypertension', {
         'Interactions': 'Grapefruit (↑ levels), simvastatin (myopathy — switch to atorva)',
         'Key teaching': 'Avoid amlodipine in HFrEF — worsens outcomes. Verapamil/diltiazem + β-blocker = heart block.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.hf) return { tier:'avoid', reasons:[{kind:'bad', text:'HFrEF — amlodipine worsens outcomes; verapamil/diltiazem absolutely contraindicated'}] };
-
-        if (f.afro && !f.dm) r.push({kind:'good', text:'Black African/Caribbean (no DM) — superior efficacy at Step 1'});
-        if (f.age55 && !f.dm && !f.ckd) r.push({kind:'good', text:'Age ≥55 without DM/CKD — first-line CCB'});
-        if (f.raynauds) r.push({kind:'good', text:'Raynaud\'s — dual benefit (vasodilation)'});
-        if (f.ihd && !f.hf) r.push({kind:'good', text:'Stable angina — anti-anginal effect'});
-        if (f.preg) r.push({kind:'good', text:'Pregnancy — nifedipine MR is an option (specialist guided)'});
-
-        const preferred = (f.afro && !f.dm) || (f.age55 && !f.dm && !f.ckd && !f.hf) || f.raynauds;
-        if (preferred) return { tier:'preferred', reasons: r };
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Reasonable Step 1 or Step 2 add-on for most profiles'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Heart failure (HFrEF)","text":"HFrEF — amlodipine worsens outcomes; verapamil/diltiazem absolutely contraindicated"},
+        {"kind":"favoured","label":"Age ≥55 years","text":"Age ≥55 without DM/CKD — first-line CCB"},
+        {"kind":"favoured","label":"Black African / African-Caribbean family origin","text":"Black African/Caribbean (no DM) — superior efficacy at Step 1"},
+        {"kind":"favoured","label":"Pregnant or planning pregnancy","text":"Pregnancy — nifedipine MR is an option (specialist guided)"},
+        {"kind":"favoured","label":"IHD / post-MI / stable angina","text":"Stable angina — anti-anginal effect"},
+        {"kind":"favoured","label":"Raynaud's","text":"Raynaud's — dual benefit (vasodilation)"}
+      ]
     },
 
     // -------- THIAZIDE-LIKE --------
@@ -184,18 +119,15 @@ MedChooser.register('hypertension', {
         'Interactions': 'Digoxin (hypoK amplifies toxicity), lithium (toxicity), NSAIDs (reduce efficacy)',
         'Key teaching': 'Use SR formulation for HTN. Avoid in gout, eGFR <30, pregnancy.'
       },
-      evaluate(f){
-        if (f.gout) return { tier:'avoid', reasons:[{kind:'bad', text:'Active gout — thiazide raises urate and precipitates flares'}] };
-        if (f.preg) return { tier:'avoid', reasons:[{kind:'bad', text:'Pregnancy — contraindicated'}] };
-        if (f.egfr_low) return { tier:'avoid', reasons:[{kind:'bad', text:'eGFR <30 — ineffective'}] };
-        if (f.na_low) return { tier:'avoid', reasons:[{kind:'bad', text:'Na⁺ <130 — worsens hyponatraemia'}] };
-        if (f.k_low) return { tier:'avoid', reasons:[{kind:'bad', text:'K⁺ <3.5 — correct first or use alternative'}] };
-
-        const r = [];
-        if (f.afro) r.push({kind:'good', text:'Black African/Caribbean — more effective than ACEi alone'});
-        if (f.age80) r.push({kind:'good', text:'Elderly isolated systolic HTN'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Standard Step 3 add-on to ACEi/ARB + CCB'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Pregnant or planning pregnancy","text":"Pregnancy — contraindicated"},
+        {"kind":"avoid","label":"Active gout","text":"Active gout — thiazide raises urate and precipitates flares"},
+        {"kind":"avoid","label":"K⁺ <3.5 mmol/L","text":"K⁺ <3.5 — correct first or use alternative"},
+        {"kind":"avoid","label":"eGFR <30 mL/min","text":"eGFR <30 — ineffective"},
+        {"kind":"avoid","label":"Na⁺ <130 mmol/L","text":"Na⁺ <130 — worsens hyponatraemia"},
+        {"kind":"favoured","label":"Age ≥80 years","text":"Elderly isolated systolic HTN"},
+        {"kind":"favoured","label":"Black African / African-Caribbean family origin","text":"Black African/Caribbean — more effective than ACEi alone"}
+      ]
     },
 
     // -------- SPIRONOLACTONE --------
@@ -213,18 +145,14 @@ MedChooser.register('hypertension', {
         'Interactions': 'ACEi/ARB + spiro = hyperK; NSAIDs; lithium',
         'Key teaching': 'The K⁺ 4.5 pivot at Step 4 — ≤4.5 spiro; >4.5 use α/β-blocker.'
       },
-      evaluate(f){
-        if (f.k_high) return { tier:'avoid', reasons:[{kind:'bad', text:'K⁺ >5.0 — hyperkalaemia risk'}] };
-        if (f.egfr_low) return { tier:'avoid', reasons:[{kind:'bad', text:'eGFR <30 — contraindicated'}] };
-        if (f.preg) return { tier:'avoid', reasons:[{kind:'bad', text:'Pregnancy — anti-androgen effects, contraindicated'}] };
-        if (f.gynaeco) return { tier:'avoid', reasons:[{kind:'bad', text:'Prior gynaecomastia on spiro — switch to eplerenone'}] };
-
-        const r = [];
-        if (f.osa) r.push({kind:'good', text:'Resistant HTN / OSA — spiro most effective Step 4 add-on'});
-        if (f.hf) r.push({kind:'good', text:'HFrEF — independent mortality benefit'});
-
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Step 4 add-on if K⁺ ≤4.5'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Pregnant or planning pregnancy","text":"Pregnancy — anti-androgen effects, contraindicated"},
+        {"kind":"avoid","label":"K⁺ >5.0 mmol/L","text":"K⁺ >5.0 — hyperkalaemia risk"},
+        {"kind":"avoid","label":"eGFR <30 mL/min","text":"eGFR <30 — contraindicated"},
+        {"kind":"avoid","label":"Spironolactone gynaecomastia","text":"Prior gynaecomastia on spiro — switch to eplerenone"},
+        {"kind":"favoured","label":"Heart failure (HFrEF)","text":"HFrEF — independent mortality benefit"},
+        {"kind":"favoured","label":"OSA / resistant HTN","text":"Resistant HTN / OSA — spiro most effective Step 4 add-on"}
+      ]
     },
 
     // -------- ALPHA-BLOCKER --------
@@ -242,19 +170,12 @@ MedChooser.register('hypertension', {
         'Interactions': 'PDE5 inhibitors (sildenafil) — profound hypotension. Always ask.',
         'Key teaching': 'Phaeo prep: α-blocker MUST go before β-blocker.'
       },
-      evaluate(f){
-        if (f.pde5) return { tier:'avoid', reasons:[{kind:'bad', text:'Concurrent PDE5 inhibitor — risk of profound hypotension'}] };
-
-        const r = [];
-        if (f.bph) r.push({kind:'good', text:'BPH / LUTS — dual benefit'});
-        if (f.k_high && !f.egfr_low) r.push({kind:'good', text:'Step 4 with K⁺ >4.5 — alpha/β-blocker over spiro'});
-
-        if (f.frail) r.push({kind:'bad', text:'Frail / falls — postural hypotension risk'});
-
-        const preferred = f.bph;
-        if (preferred) return { tier:'preferred', reasons: r };
-        return { tier:'acceptable', reasons: r };
-      }
+      conditions: [
+        {"kind":"avoid","label":"PDE5 inhibitor (sildenafil etc.)","text":"Concurrent PDE5 inhibitor — risk of profound hypotension"},
+        {"kind":"caution","label":"Frail / falls risk","text":"Frail / falls — postural hypotension risk"},
+        {"kind":"favoured","label":"BPH / LUTS","text":"BPH / LUTS — dual benefit"},
+        {"kind":"favoured","label":"K⁺ >5.0 mmol/L","text":"Step 4 with K⁺ >4.5 — alpha/β-blocker over spiro"}
+      ]
     },
 
     // -------- BETA-BLOCKER --------
@@ -272,22 +193,15 @@ MedChooser.register('hypertension', {
         'Interactions': 'Verapamil/diltiazem — heart block. Insulin — masks hypos.',
         'Key teaching': 'No longer routine Step 4 — but first-line in AF rate control, post-MI, HFrEF, thyrotoxicosis, young women with HTN where ACEi/ARB CI\'d.'
       },
-      evaluate(f){
-        if (f.asthma) return { tier:'avoid', reasons:[{kind:'bad', text:'Asthma — risk of bronchospasm (cardioselective only with specialist input)'}] };
-
-        const r = [];
-        if (f.af) r.push({kind:'good', text:'AF — rate control + BP in one drug'});
-        if (f.ihd) r.push({kind:'good', text:'Post-MI / stable angina — secondary prevention'});
-        if (f.hf) r.push({kind:'good', text:'HFrEF — bisoprolol / carvedilol prognostic'});
-        if (f.preg) r.push({kind:'good', text:'Pregnancy — labetalol is first-line'});
-
-        if (f.dm) r.push({kind:'bad', text:'DM — masks hypoglycaemia awareness'});
-        if (f.raynauds) r.push({kind:'bad', text:'Raynaud\'s — worsens peripheral vasoconstriction'});
-
-        const preferred = f.af || f.ihd || f.hf || f.preg;
-        if (preferred) return { tier:'preferred', reasons: r };
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Reserved for specific indications, not routine Step 1'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Asthma / reversible airway disease","text":"Asthma — risk of bronchospasm (cardioselective only with specialist input)"},
+        {"kind":"caution","label":"Type 2 diabetes","text":"DM — masks hypoglycaemia awareness"},
+        {"kind":"caution","label":"Raynaud's","text":"Raynaud's — worsens peripheral vasoconstriction"},
+        {"kind":"favoured","label":"Pregnant or planning pregnancy","text":"Pregnancy — labetalol is first-line"},
+        {"kind":"favoured","label":"Heart failure (HFrEF)","text":"HFrEF — bisoprolol / carvedilol prognostic"},
+        {"kind":"favoured","label":"IHD / post-MI / stable angina","text":"Post-MI / stable angina — secondary prevention"},
+        {"kind":"favoured","label":"Atrial fibrillation","text":"AF — rate control + BP in one drug"}
+      ]
     },
 
     // -------- LABETALOL (pregnancy) --------
@@ -304,11 +218,11 @@ MedChooser.register('hypertension', {
         'Dose': 'Labetalol 100 mg BD → 800 mg',
         'Key teaching': 'Pregnancy options: labetalol first, then nifedipine MR, then methyldopa.'
       },
-      evaluate(f){
-        if (f.asthma) return { tier:'avoid', reasons:[{kind:'bad', text:'Asthma — even in pregnancy, choose nifedipine MR'}] };
-        if (f.preg || f.bf) return { tier:'preferred', reasons:[{kind:'good', text:'Pregnancy / breastfeeding — first-line'}] };
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Specialist use outside pregnancy'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Asthma / reversible airway disease","text":"Asthma — even in pregnancy, choose nifedipine MR"},
+        {"kind":"favoured","label":"Pregnant or planning pregnancy","text":"Pregnancy / breastfeeding — first-line"},
+        {"kind":"favoured","label":"Breastfeeding","text":"Pregnancy / breastfeeding — first-line"}
+      ]
     }
   ],
 

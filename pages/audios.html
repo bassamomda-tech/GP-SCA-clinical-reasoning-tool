@@ -86,6 +86,15 @@
   .log-track-s{ font-size:12px; color:var(--muted); margin-top:1px; }
   .log-track-dur{ flex-shrink:0; font-size:11.5px; font-weight:700; color:var(--muted); font-variant-numeric:tabular-nums; }
   .log-track.playing .log-track-dur{ color:var(--teal); }
+  .log-track-meta{ display:flex; flex-wrap:wrap; align-items:baseline; gap:4px 12px; padding:0 14px 10px 65px; font-size:11.5px; line-height:1.45; color:var(--muted); }
+  .log-track-meta .ltm-src{ flex:1 1 260px; min-width:0; overflow-wrap:anywhere; }
+  .log-track-meta .ltm-src b{ color:var(--ink-2); font-weight:700; }
+  .log-track-meta .ltm-rev{ white-space:nowrap; font-weight:700; color:var(--teal-2); }
+  .log-track-meta a{ white-space:nowrap; font-weight:700; color:var(--teal-2); text-decoration:none; }
+  .log-track-meta a:hover{ color:var(--teal); text-decoration:underline; }
+  @media (max-width:520px){ .log-track-meta{ padding-left:14px; } }
+  .log-item.log-target{ border-color:var(--teal); box-shadow:0 0 0 3px var(--teal-soft); }
+  .log-item{ scroll-margin-top:90px; }
   .log-script-toggle{ display:flex; align-items:center; justify-content:flex-end; gap:5px; width:100%; border:none; background:transparent; border-top:1px dashed var(--line); padding:7px 14px; cursor:pointer; font:inherit; font-size:11.5px; font-weight:700; letter-spacing:.03em; text-transform:uppercase; color:var(--muted); transition:.13s; }
   .log-script-toggle:hover{ color:var(--teal); background:var(--bg-soft); }
   .lst-chev{ width:14px; height:14px; transition:transform .18s; }
@@ -112,7 +121,7 @@
   <div class="page-hero-inner">
     <span class="eyebrow">Clinical Audios</span>
     <h1>Learn on the go — <em>hands-free</em> clinical audio</h1>
-    <p>A library of 100 common GP topics — each a tight clinical briefing covering the history, examination, investigations, a plain-language explanation of the diagnosis, and management — read aloud for the commute, the school run or the gym. No downloads: your device narrates each one hands-free, so you can keep your eyes on the road. Adjust speed, autoplay through a playlist, and pick up where you left off. Plus the UK primary-care podcasts worth subscribing to.</p>
+    <p>A library of 100 common GP topics — each a tight clinical briefing covering the history, examination, investigations, a plain-language explanation of the diagnosis, and management — read aloud for the commute, the school run or the gym. No downloads: your device’s own voice reads each one aloud, so you can keep your eyes on the road. Each track shows how long it runs at normal (1×) speed and, where it matches a protocol, that protocol’s sources and review date. Adjust the speed, autoplay through a playlist, and the page remembers your last track and speed. Plus the UK primary-care podcasts worth subscribing to.</p>
   </div>
 </section>
 
@@ -151,8 +160,8 @@
       <div class="log-meta-row">
         <div class="log-opts">
           <span style="font-size:12px;color:#bfeee3">Speed</span>
-          <button class="log-chip on" data-rate="0.75" type="button">Normal</button>
-          <button class="log-chip" data-rate="1" type="button">Fast</button>
+          <button class="log-chip on" data-rate="0.75" type="button">0.75×</button>
+          <button class="log-chip" data-rate="1" type="button">1×</button>
           <button class="log-chip" data-rate="1.25" type="button">1.25×</button>
           <button class="log-chip" data-rate="1.5" type="button">1.5×</button>
         </div>
@@ -231,22 +240,22 @@
   </section>
 
   <section class="page-section">
-    <h2><span class="eyebrow">Format</span>How the audios are built</h2>
+    <h2><span class="eyebrow">Format</span>How the audios are made</h2>
     <div class="page-grid">
       <div class="page-card">
-        <div class="page-card-eyebrow">AI narrated</div>
-        <h3>Fast, current, evidence-anchored</h3>
-        <p>Daily / weekly NICE update digests narrated by AI voice. Source citations on screen. 6–10 min typical.</p>
+        <div class="page-card-eyebrow">Available now</div>
+        <h3>Written briefings, read by your device</h3>
+        <p>Each of the 100 briefings is a written script that your browser’s own voice reads aloud — tap “Script” to read along. Track lengths are worked out from the script at about 150 words a minute (1× speed). Where a track matches a protocol, it shows that protocol’s sources and review date, with a link to the protocol.</p>
       </div>
       <div class="page-card">
-        <div class="page-card-eyebrow">Human recorded</div>
-        <h3>UK GP voice for "how I'd do it"</h3>
-        <p>Practising UK GPs walk through their actual reasoning on hard cases. Tone is colleague-to-colleague, not lecture.</p>
+        <div class="page-card-eyebrow">Planned · not yet available</div>
+        <h3>GP-recorded episodes</h3>
+        <p>Episodes recorded by a practising UK GP. None are available yet.</p>
       </div>
       <div class="page-card">
-        <div class="page-card-eyebrow">Topic streams</div>
-        <h3>Subscribe by clinical interest</h3>
-        <p>Cardiovascular · Respiratory · MH · Endocrine · Women's health · Acute. Pick the streams you want.</p>
+        <div class="page-card-eyebrow">Planned · not yet available</div>
+        <h3>NICE update digests and topic streams</h3>
+        <p>Regular audio digests of NICE updates, and the option to follow topics by clinical area. Neither is available yet.</p>
       </div>
     </div>
   </section>
@@ -264,11 +273,12 @@
 
 </main></div>
 <script src="../assets/site.js?v=105"></script>
-<script src="../assets/audio-scripts-1.js?v=4"></script>
-<script src="../assets/audio-scripts-2.js?v=5"></script>
-<script src="../assets/audio-scripts-3.js?v=5"></script>
-<script src="../assets/audio-scripts-4.js?v=4"></script>
-<script src="../assets/audio-scripts-5.js?v=4"></script>
+<script src="../assets/audio-scripts-1.js?v=5"></script>
+<script src="../assets/audio-scripts-2.js?v=6"></script>
+<script src="../assets/audio-scripts-3.js?v=6"></script>
+<script src="../assets/audio-scripts-4.js?v=5"></script>
+<script src="../assets/audio-scripts-5.js?v=5"></script>
+<script src="../assets/topic-links.js?v=9"></script>
 <script>
 /* ---- Learn on the Go: hands-free TTS player ----
    Narrates common GP scenarios + the latest guideline updates using the
@@ -286,23 +296,35 @@
   var STORE = 'rgp.audio.lastTrack.v1';
 
   var state = { i:-1, playing:false, rate:0.75, autoplay:true, charPos:0 };
-  try{ var saved = JSON.parse(localStorage.getItem(STORE)||'null'); if(saved){ state.rate=saved.rate||0.75; } }catch(e){}
+  var savedI = -1;
+  try{ var saved = JSON.parse(localStorage.getItem(STORE)||'null'); if(saved){ state.rate=saved.rate||0.75; if(typeof saved.i==='number') savedI = saved.i; } }catch(e){}
 
   if(!supported){ $('#logUnsupported').style.display='block'; }
 
   // ---- build playlist ----
   var catSlug = function(s){ return String(s).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); };
+  // True length at 1× speed: the script's word count at about 150 words a minute, to the nearest minute.
+  function trackMinutes(t){ var w = String(t.body||'').split(/\s+/).filter(Boolean).length; return Math.max(1, Math.round(w/150)); }
+  function trackMeta(t){
+    var T = window.RGP_TOPIC_LINKS, l = (T && T.linksFor) ? T.linksFor('audio', t.id) : null, out = [];
+    if (t.src) out.push('<span class="ltm-src"><b>Source:</b> '+esc(t.src)+'</span>');
+    if (t.src && t.reviewed) out.push('<span class="ltm-rev">Reviewed '+esc(t.reviewed)+'</span>');
+    if (l && l.m) out.push('<a href="../tools/management/'+l.m+'.html">Open the protocol →</a>');
+    else if (l && l.a) out.push('<a href="../tools/algorithms/'+l.a+'.html">Open the algorithm →</a>');
+    return out.length ? '<div class="log-track-meta">'+out.join('')+'</div>' : '';
+  }
   var cats = [];
   AUDIO_LIST.forEach(function(t){ if(cats.indexOf(t.cat)<0) cats.push(t.cat); });
   list.innerHTML = cats.map(function(cat){
     var rows = AUDIO_LIST.filter(function(t){return t.cat===cat;}).map(function(t){
       var idx = AUDIO_LIST.indexOf(t);
-      return '<div class="log-item" data-item="'+idx+'" data-cat="'+catSlug(cat)+'">'+
+      return '<div class="log-item" id="track-'+esc(t.id)+'" data-item="'+idx+'" data-cat="'+catSlug(cat)+'">'+
         '<button class="log-track" data-i="'+idx+'" type="button">'+
           '<span class="log-track-ic">'+t.ic+'</span>'+
           '<span class="log-track-body"><span class="log-track-t">'+t.title+'</span><span class="log-track-s">'+t.sub+'</span></span>'+
-          '<span class="log-track-dur">'+t.dur+'</span>'+
+          '<span class="log-track-dur" title="At 1× speed (about 150 words a minute)">'+trackMinutes(t)+' min</span>'+
         '</button>'+
+        trackMeta(t)+
         '<button class="log-script-toggle" data-toggle="'+idx+'" type="button" aria-expanded="false" aria-label="Show script">'+
           '<span class="lst-txt">Script</span>'+
           '<svg class="lst-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>'+
@@ -352,6 +374,22 @@
   list.querySelectorAll('.log-track').forEach(function(b){
     b.addEventListener('click', function(){ playIndex(parseInt(b.dataset.i,10)); });
   });
+  // #track-<id>: show all categories, bring that track into view, open its script and cue it in the player
+  function openTrackFromHash(){
+    var m = /^#track-(.+)$/.exec(location.hash || ''); if (!m) return;
+    var id = decodeURIComponent(m[1]);
+    var idx = -1; AUDIO_LIST.forEach(function(t, i){ if (t.id === id) idx = i; });
+    if (idx < 0) return;
+    applyAudioFilter('all');
+    var item = document.getElementById('track-'+id); if (!item) return;
+    list.querySelectorAll('.log-item.log-target').forEach(function(x){ x.classList.remove('log-target'); });
+    item.classList.add('log-target');
+    var panel = document.getElementById('script-'+idx), tog = item.querySelector('.log-script-toggle');
+    if (panel && panel.hasAttribute('hidden')){ panel.removeAttribute('hidden'); if (tog){ tog.setAttribute('aria-expanded','true'); tog.classList.add('open'); } }
+    if (!state.playing){ state.i = idx; setNow(AUDIO_LIST[idx]); highlight(); }
+    setTimeout(function(){ item.scrollIntoView({ block:'start' }); }, 30);
+  }
+  window.addEventListener('hashchange', openTrackFromHash);
   list.querySelectorAll('.log-script-toggle').forEach(function(b){
     b.addEventListener('click', function(){
       var id = b.dataset.toggle;
@@ -370,7 +408,7 @@
     });
   }
   function setNow(t){
-    $('#logNowLabel').textContent = t ? t.cat : 'Ready when you are';
+    $('#logNowLabel').textContent = t ? t.cat + ' · ' + trackMinutes(t) + ' min at 1×' : 'Ready when you are';
     $('#logNowTitle').textContent = t ? t.title : 'Pick a scenario or update below';
     $('#logNowSub').textContent = t ? t.sub : 'Tap any track, or hit play to listen to the whole playlist back-to-back.';
   }
@@ -801,6 +839,9 @@
     $('#logVoiceBanner').hidden=true;
     try{ localStorage.setItem('rgp.audio.voicebanner.dismiss','1'); }catch(e){}
   });
+  // cue the last track played (or the one in the address), ready for the play button
+  if(/^#track-/.test(location.hash||'')){ openTrackFromHash(); }
+  else if(savedI >= 0 && savedI < AUDIO_LIST.length){ state.i = savedI; setNow(AUDIO_LIST[savedI]); highlight(); }
   populateVoices();
   if(supported && synth.getVoices().length===0){
     synth.addEventListener('voiceschanged', populateVoices);

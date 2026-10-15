@@ -42,8 +42,7 @@
 Self-care: fluids, paracetamol. Safety-net: review if no better in 48 h / fever / loin pain.
 Send culture if treatment fails / recurrent / atypical.`,
     sources: [
-      { label: 'NICE NG109 — Lower UTI antimicrobial prescribing', url: 'https://www.nice.org.uk/guidance/ng109' },
-      { label:'NICE NG109 — UTI (lower)', url:'https://www.nice.org.uk/guidance/ng109' },
+      { label:'NICE NG109 — Lower UTI antimicrobial prescribing', url:'https://www.nice.org.uk/guidance/ng109' },
     ],
   },
 
@@ -81,8 +80,7 @@ Send culture if treatment fails / recurrent / atypical.`,
 Avoid trimethoprim in 1st trimester. Test of cure after treatment.
 Safety-net: fever/loin pain/reduced fetal movements → urgent maternity.`,
     sources: [
-      { label: 'NICE NG109 — Lower UTI', url: 'https://www.nice.org.uk/guidance/ng109' },
-      { label:'NICE NG109 — UTI (lower)', url:'https://www.nice.org.uk/guidance/ng109' },
+      { label:'NICE NG109 — Lower UTI', url:'https://www.nice.org.uk/guidance/ng109' },
     ],
   },
 
@@ -117,8 +115,7 @@ Safety-net: fever/loin pain/reduced fetal movements → urgent maternity.`,
 If prostatitis suspected: ciprofloxacin 500 mg BD (or trimethoprim) × 14 days then review (NICE NG110).
 Safety-net: fever / loin or perineal pain → same-day review. Investigate if recurrent.`,
     sources: [
-      { label: 'NICE NG109 — Lower UTI', url: 'https://www.nice.org.uk/guidance/ng109' },
-      { label:'NICE NG109 — UTI (lower)', url:'https://www.nice.org.uk/guidance/ng109' },
+      { label:'NICE NG109 — Lower UTI', url:'https://www.nice.org.uk/guidance/ng109' },
     ],
   },
 
@@ -156,7 +153,6 @@ Safety-net: fever / loin or perineal pain → same-day review. Investigate if re
 - High score / systemically unwell: Phenoxymethylpenicillin 500 mg QDS (or 1 g BD) × 5–10 days. Pen-allergic: clarithromycin 250–500 mg BD × 5 days.
 Safety-net: difficulty swallowing/breathing, drooling, trismus → same-day ENT.`,
     sources: [
-      { label: 'NICE NG84 — Sore throat (acute)', url: 'https://www.nice.org.uk/guidance/ng84' },
       { label:'NICE NG84 — Sore throat (acute)', url:'https://www.nice.org.uk/guidance/ng84' },
     ],
   },
@@ -171,7 +167,7 @@ Safety-net: difficulty swallowing/breathing, drooling, trismus → same-day ENT.
     contraindications: 'Penicillin allergy → clarithromycin (or erythromycin in pregnancy).',
     duration: '5–7 days',
     drugs: [
-      { name: 'Amoxicillin', dose: '(child weight/age-based; adult 500 mg)', freq: 'TDS', route: 'PO', days: '5–7' },
+      { name: 'Amoxicillin', dose: '(child weight/age-based; adult 500 mg)', freq: 'TDS', route: 'PO', days: '5–7', child:true },
       { name: 'Penicillin allergy: Clarithromycin', dose: '(weight/age-based; adult 250–500 mg)', freq: 'BD', route: 'PO', days: '5–7' },
       { name: 'Analgesia: Paracetamol / ibuprofen', dose: 'Weight-based', freq: 'Regular', route: 'PO', days: 'PRN pain' },
     ],
@@ -196,7 +192,6 @@ Safety-net: difficulty swallowing/breathing, drooling, trismus → same-day ENT.
 - Otherwise no/back-up antibiotic — use if not better in 3 days.
 Safety-net: mastoid swelling, facial palsy, neck stiffness → same-day.`,
     sources: [
-      { label: 'NICE NG91 — Otitis media (acute)', url: 'https://www.nice.org.uk/guidance/ng91' },
       { label:'NICE NG91 — Otitis media (acute)', url:'https://www.nice.org.uk/guidance/ng91' },
     ],
   },
@@ -236,7 +231,6 @@ Safety-net: mastoid swelling, facial palsy, neck stiffness → same-day.`,
 - Antibiotic (if needed): Phenoxymethylpenicillin 500 mg QDS × 5 days (pen-allergic: doxycycline 200 mg day 1 then 100 mg OD, 5 days total / clarithromycin 500 mg BD × 5).
 Safety-net: periorbital swelling, diplopia, severe headache → same-day.`,
     sources: [
-      { label: 'NICE NG79 — Sinusitis (acute)', url: 'https://www.nice.org.uk/guidance/ng79' },
       { label:'NICE NG79 — Sinusitis (acute)', url:'https://www.nice.org.uk/guidance/ng79' },
     ],
   },
@@ -332,7 +326,7 @@ Avoid contact lenses. Safety-net: pain / photophobia / reduced vision / lens-wea
     drugs: [
       { name: 'Hydrogen peroxide 1% cream (localised, 1st line)', dose: 'Apply', freq: 'BD–TDS', route: 'Topical', days: '5' },
       { name: 'OR Fusidic acid 2% cream (localised)', dose: 'Apply', freq: 'TDS', route: 'Topical', days: '5' },
-      { name: 'Widespread/bullous: Flucloxacillin', dose: '500 mg (child weight-based)', freq: 'QDS', route: 'PO', days: '5' },
+      { name: 'Widespread/bullous: Flucloxacillin', dose: '500 mg (child weight-based)', freq: 'QDS', route: 'PO', days: '5', child:true },
     ],
     altRegimens: [
       { label: 'Penicillin allergy (oral)', drugs: 'Clarithromycin 250–500 mg BD × 5 days (or erythromycin in pregnancy).' },
@@ -354,7 +348,6 @@ Avoid contact lenses. Safety-net: pain / photophobia / reduced vision / lens-wea
 - Widespread/bullous/systemic: Flucloxacillin 500 mg (weight-based in children) QDS × 5 days. Pen-allergic: clarithromycin × 5 days.
 Hygiene + exclusion until crusted/48 h on antibiotics. Safety-net: spreading/systemic → review.`,
     sources: [
-      { label: 'NICE NG153 — Impetigo', url: 'https://www.nice.org.uk/guidance/ng153' },
       { label:'NICE NG153 — Impetigo', url:'https://www.nice.org.uk/guidance/ng153' },
     ],
   },
@@ -395,8 +388,7 @@ Hygiene + exclusion until crusted/48 h on antibiotics. Safety-net: spreading/sys
 Mark margins; elevate; treat skin breaks. Review at 48 h.
 Safety-net: spreading beyond mark / systemic / severe pain → urgent (exclude necrotising fasciitis).`,
     sources: [
-      { label: 'NICE NG141 — Cellulitis & erysipelas', url: 'https://www.nice.org.uk/guidance/ng141' },
-      { label:'NICE NG141 — Cellulitis', url:'https://www.nice.org.uk/guidance/ng141' },
+      { label:'NICE NG141 — Cellulitis & erysipelas', url:'https://www.nice.org.uk/guidance/ng141' },
     ],
   },
 
@@ -436,7 +428,6 @@ Safety-net: spreading beyond mark / systemic / severe pain → urgent (exclude n
 Urgent dental referral. Safety-net: facial/floor-of-mouth swelling, trismus, dysphagia → 999.`,
     sources: [
       { label:'SDCEP', url:'https://www.sdcep.org.uk' },
-      { label: 'SDCEP — Drug prescribing for dentistry', url: 'https://www.sdcep.org.uk/' },
     ],
   },
 
@@ -475,8 +466,7 @@ Urgent dental referral. Safety-net: facial/floor-of-mouth swelling, trismus, dys
 - Pen-allergic: Doxycycline 100 mg BD + Metronidazole 400 mg TDS × 3–5 days.
 Safety-net: hand/joint involvement, spreading infection → same-day review.`,
     sources: [
-      { label: 'NICE NG184 — Human & animal bites', url: 'https://www.nice.org.uk/guidance/ng184' },
-      { label:'NICE NG184 — Human and animal bites', url:'https://www.nice.org.uk/guidance/ng184' },
+      { label:'NICE NG184 — Human & animal bites', url:'https://www.nice.org.uk/guidance/ng184' },
     ],
   }
   );

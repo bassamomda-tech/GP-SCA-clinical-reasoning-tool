@@ -1,55 +1,23 @@
 /* ============================================
    Medication Chooser — Low back pain & sciatica
    NICE NG59 · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('low-back-pain', {
   title: 'Low back pain & sciatica — analgesia selection',
-  subtitle: 'NICE NG59 analgesic options for low back pain and sciatica. Tick the patient profile; cards re-tier live.',
+  subtitle: 'NICE NG59 analgesic options for low back pain and sciatica.',
   guideline: 'NICE NG59 · BNF',
 
-  factors: [
-    // Presentation
-    { group:'Presentation', id:'acute', label:'Acute low back pain (<6 weeks)' },
-    { group:'Presentation', id:'sciatica', label:'Sciatica / radicular (neuropathic) pain', note:'Leg-dominant, dermatomal' },
-    { group:'Presentation', id:'chronic', label:'Persistent / chronic (>12 weeks)' },
-    { group:'Presentation', id:'spasm', label:'Prominent muscle spasm' },
 
-    // Red flags
-    { group:'Red flags', id:'cauda', label:'Cauda equina features', note:'Saddle anaesthesia · bladder/bowel · bilateral' },
-    { group:'Red flags', id:'myeloma', label:'?Myeloma (older, bone pain, ↑ESR, anaemia, ↑Ca, renal)' },
-    { group:'Red flags', id:'cancer_hx', label:'Cancer history / ?spinal metastasis' },
-    { group:'Red flags', id:'infection', label:'?Spinal infection (fever, IVDU, immunosuppressed)' },
-    { group:'Red flags', id:'fracture', label:'?Vertebral fracture (trauma, osteoporosis, steroids)' },
-    { group:'Red flags', id:'inflammatory', label:'?Inflammatory (age <40, morning stiffness, alternating buttock)' },
-
-    // Comorbidities / cautions
-    { group:'Comorbidities', id:'pud', label:'Peptic ulcer / GI bleed history', note:'NSAID caution' },
-    { group:'Comorbidities', id:'ckd', label:'CKD / renal impairment', note:'NSAID caution' },
-    { group:'Comorbidities', id:'cvd', label:'Cardiovascular disease / heart failure', note:'NSAID caution' },
-    { group:'Comorbidities', id:'asthma_nsaid', label:'NSAID-sensitive asthma' },
-    { group:'Comorbidities', id:'cardiac_tca', label:'IHD / arrhythmia / long QT', note:'TCA caution' },
-    { group:'Comorbidities', id:'elderly', label:'Elderly / falls risk', note:'Sedation, constipation' },
-    { group:'Comorbidities', id:'preg', label:'Pregnant or breastfeeding' },
-
-    // Current medications / risk
-    { group:'Current medications', id:'anticoag', label:'On anticoagulant / antiplatelet' },
-    { group:'Current medications', id:'opioid_risk', label:'Opioid dependence / misuse risk' },
-
-    // Preference / context
-    { group:'Preference / context', id:'avoid_sedation', label:'Needs to avoid sedation (driver / safety-critical)' },
-    { group:'Preference / context', id:'tried_nsaid', label:'NSAID tried / ineffective / contraindicated' }
+  safety: [
+    {"tone":"red","label":"Cauda equina features","text":"Cauda equina syndrome — EMERGENCY same-day spinal referral + urgent MRI. Do not manage as simple back pain."},
+    {"tone":"red","label":"?Myeloma (older, bone pain, ↑ESR, anaemia, ↑Ca, renal)","text":"NICE NG12 (updated April 2026) — ?myeloma: FBC, ESR/plasma viscosity, calcium, renal + serum protein electrophoresis / Bence-Jones protein (urine). Very urgent if hypercalcaemia/renal failure."},
+    {"tone":"red","label":"Cancer history / ?spinal metastasis","text":"Cancer history with new back pain — consider spinal metastasis / MSCC; urgent imaging + MSCC pathway if neurology"},
+    {"tone":"amber","label":"?Spinal infection (fever, IVDU, immunosuppressed)","text":"?Spinal infection (discitis/abscess) — inflammatory markers, blood cultures, urgent imaging/referral"},
+    {"tone":"amber","label":"?Vertebral fracture (trauma, osteoporosis, steroids)","text":"?Vertebral fragility fracture — imaging; assess osteoporosis (FRAX, DXA)"},
+    {"tone":"amber","label":"?Inflammatory (age <40, morning stiffness, alternating buttock)","text":"?Axial spondyloarthritis — inflammatory back pain criteria; consider rheumatology referral (see axSpA pathway)"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.cauda) out.push({ tone:'red', text:'Cauda equina syndrome — EMERGENCY same-day spinal referral + urgent MRI. Do not manage as simple back pain.' });
-    if (f.myeloma) out.push({ tone:'red', text:'NICE NG12 (updated April 2026) — ?myeloma: FBC, ESR/plasma viscosity, calcium, renal + serum protein electrophoresis / Bence-Jones protein (urine). Very urgent if hypercalcaemia/renal failure.' });
-    if (f.cancer_hx) out.push({ tone:'red', text:'Cancer history with new back pain — consider spinal metastasis / MSCC; urgent imaging + MSCC pathway if neurology' });
-    if (f.infection) out.push({ tone:'amber', text:'?Spinal infection (discitis/abscess) — inflammatory markers, blood cultures, urgent imaging/referral' });
-    if (f.fracture) out.push({ tone:'amber', text:'?Vertebral fragility fracture — imaging; assess osteoporosis (FRAX, DXA)' });
-    if (f.inflammatory) out.push({ tone:'amber', text:'?Axial spondyloarthritis — inflammatory back pain criteria; consider rheumatology referral (see axSpA pathway)' });
-    return out;
-  },
 
   drugs: [
     // -------- NSAID --------
@@ -67,19 +35,16 @@ MedChooser.register('low-back-pain', {
         'Interactions': 'Anticoagulants/antiplatelets (bleed), ACEi/ARB + diuretic (triple-whammy AKI), other NSAIDs',
         'Key teaching': 'NICE NG59: consider an oral NSAID for low back pain, at the lowest effective dose for the shortest time, taking GI, liver and cardiorenal risk into account (do NOT offer paracetamol alone). Evidence of NSAID benefit in sciatica is limited.'
       },
-      evaluate(f){
-        if (f.pud) return { tier:'avoid', reasons:[{kind:'bad', text:'Peptic ulcer / GI bleed history — NSAID contraindicated (or only with strong gastroprotection + specialist judgement)'}] };
-        if (f.ckd) return { tier:'avoid', reasons:[{kind:'bad', text:'Renal impairment — NSAID risks further AKI'}] };
-        if (f.asthma_nsaid) return { tier:'avoid', reasons:[{kind:'bad', text:'NSAID-sensitive asthma — risk of bronchospasm'}] };
-        const r = [];
-        if (f.cvd) r.push({kind:'bad', text:'Cardiovascular disease / HF — NSAID raises CV risk; avoid or use lowest dose briefly'});
-        if (f.anticoag) r.push({kind:'bad', text:'On anticoagulant/antiplatelet — increased bleeding; avoid if possible'});
-        if (f.preg) r.push({kind:'bad', text:'Pregnancy — avoid (esp. 3rd trimester)'});
-        if (f.elderly) r.push({kind:'neutral', text:'Elderly — higher GI/renal risk; PPI cover, short course'});
-        if (f.acute && !f.cvd && !f.elderly) r.push({kind:'good', text:'Acute low back pain — NSAID is the analgesic NG59 recommends considering'});
-        const safe = !f.cvd && !f.anticoag && !f.preg;
-        return { tier: safe ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'good', text:'NG59: consider for low back pain'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Peptic ulcer / GI bleed history","text":"Peptic ulcer / GI bleed history — NSAID contraindicated (or only with strong gastroprotection + specialist judgement)"},
+        {"kind":"avoid","label":"CKD / renal impairment","text":"Renal impairment — NSAID risks further AKI"},
+        {"kind":"avoid","label":"NSAID-sensitive asthma","text":"NSAID-sensitive asthma — risk of bronchospasm"},
+        {"kind":"caution","label":"Cardiovascular disease / heart failure","text":"Cardiovascular disease / HF — NSAID raises CV risk; avoid or use lowest dose briefly"},
+        {"kind":"caution","label":"Pregnant or breastfeeding","text":"Pregnancy — avoid (esp. 3rd trimester)"},
+        {"kind":"caution","label":"On anticoagulant / antiplatelet","text":"On anticoagulant/antiplatelet — increased bleeding; avoid if possible"},
+        {"kind":"favoured","label":"Acute low back pain (<6 weeks)","text":"Acute low back pain — NSAID is the analgesic NG59 recommends considering"},
+        {"kind":"note","label":"Elderly / falls risk","text":"Elderly — higher GI/renal risk; PPI cover, short course"}
+      ]
     },
 
     // -------- WEAK OPIOID --------
@@ -97,15 +62,16 @@ MedChooser.register('low-back-pain', {
         'Interactions': 'Other sedatives, CNS depressants',
         'Key teaching': 'NICE NG59: consider a weak opioid (± paracetamol) for acute low back pain ONLY if an NSAID is contraindicated, not tolerated, or ineffective. Do not offer opioids for chronic low back pain or chronic sciatica.'
       },
-      evaluate(f){
-        if (f.chronic && !f.acute) return { tier:'avoid', reasons:[{kind:'bad', text:'Chronic low back pain — NICE NG59: do not offer opioids (poor long-term benefit, harm)'}] };
-        if (f.opioid_risk) return { tier:'avoid', reasons:[{kind:'bad', text:'Opioid misuse risk — avoid'}] };
-        const r = [];
-        if (f.tried_nsaid || f.pud || f.ckd || f.asthma_nsaid) r.push({kind:'good', text:'NSAID unsuitable/ineffective — short acute opioid course is the NG59 fallback'});
-        if (f.elderly) r.push({kind:'bad', text:'Elderly — falls, constipation, confusion; use cautiously'});
-        if (f.avoid_sedation) r.push({kind:'bad', text:'Safety-critical role — sedation risk'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Short-term acute use when NSAID unsuitable'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Persistent / chronic (>12 weeks)","text":"Chronic low back pain — NICE NG59: do not offer opioids (poor long-term benefit, harm)"},
+        {"kind":"avoid","label":"Opioid dependence / misuse risk","text":"Opioid misuse risk — avoid"},
+        {"kind":"caution","label":"Elderly / falls risk","text":"Elderly — falls, constipation, confusion; use cautiously"},
+        {"kind":"caution","label":"Needs to avoid sedation (driver / safety-critical)","text":"Safety-critical role — sedation risk"},
+        {"kind":"favoured","label":"Peptic ulcer / GI bleed history","text":"NSAID unsuitable/ineffective — short acute opioid course is the NG59 fallback"},
+        {"kind":"favoured","label":"CKD / renal impairment","text":"NSAID unsuitable/ineffective — short acute opioid course is the NG59 fallback"},
+        {"kind":"favoured","label":"NSAID-sensitive asthma","text":"NSAID unsuitable/ineffective — short acute opioid course is the NG59 fallback"},
+        {"kind":"favoured","label":"NSAID tried / ineffective / contraindicated","text":"NSAID unsuitable/ineffective — short acute opioid course is the NG59 fallback"}
+      ]
     },
 
     // -------- ANTIDEPRESSANTS (amitriptyline / duloxetine) --------
@@ -123,12 +89,10 @@ MedChooser.register('low-back-pain', {
         'Interactions': 'TCA — QT drugs, other sedatives; duloxetine — serotonergic drugs, hepatic',
         'Key teaching': 'NICE NG59: do not offer SSRIs, SNRIs or tricyclic antidepressants for managing low back pain. For sciatica NG59 makes no antidepressant recommendation (research recommendation only) — any trial is a specialist or pain-service decision. NICE CG173 excludes sciatica, which is covered by NG59. Treat co-existing depression in its own right.'
       },
-      evaluate(f){
-        const r = [{kind:'bad', text:'NICE NG59 — do not offer SSRIs, SNRIs or TCAs for low back pain'}];
-        if (f.sciatica) r.push({kind:'neutral', text:'Sciatica — NG59 makes no antidepressant recommendation; specialist / pain-service decision only'});
-        if (f.cardiac_tca) r.push({kind:'bad', text:'IHD/arrhythmia/long QT — TCA caution'});
-        return { tier:'avoid', reasons: r };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Sciatica / radicular (neuropathic) pain","text":"Sciatica — NG59 makes no antidepressant recommendation; specialist / pain-service decision only"},
+        {"kind":"avoid","label":"IHD / arrhythmia / long QT","text":"IHD/arrhythmia/long QT — TCA caution"}
+      ]
     },
 
     // -------- GABAPENTINOID --------
@@ -145,10 +109,9 @@ MedChooser.register('low-back-pain', {
         'Dose': 'N/A for sciatica',
         'Key teaching': 'NICE NG59: do not offer gabapentinoids or other antiepileptics for low back pain, and do not offer gabapentinoids, other antiepileptics, oral corticosteroids or benzodiazepines for sciatica. They remain options in other neuropathic-pain conditions (NICE CG173).'
       },
-      evaluate(f){
-        if (f.sciatica) return { tier:'avoid', reasons:[{kind:'bad', text:'NICE NG59 — do not offer gabapentinoids for sciatica (no benefit, dependence risk)'}] };
-        return { tier:'avoid', reasons:[{kind:'bad', text:'NICE NG59 — do not offer gabapentinoids for low back pain'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Sciatica / radicular (neuropathic) pain","text":"NICE NG59 — do not offer gabapentinoids for sciatica (no benefit, dependence risk)"}
+      ]
     },
 
     // -------- PARACETAMOL --------
@@ -165,9 +128,7 @@ MedChooser.register('low-back-pain', {
         'Dose': 'Paracetamol 1 g QDS (reduce if <50 kg / frail)',
         'Key teaching': 'NICE NG59: do NOT offer paracetamol alone for low back pain. Reasonable only as part of combination analgesia.'
       },
-      evaluate(f){
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Only as a combination adjunct — not effective as monotherapy for low back pain'}] };
-      }
+      
     },
 
     // -------- AVOID: strong opioids / benzodiazepines --------
@@ -183,11 +144,9 @@ MedChooser.register('low-back-pain', {
       detail:{
         'Key teaching': 'NICE NG59: do not offer opioids for chronic low back pain or chronic sciatica, and do not offer benzodiazepines for sciatica. Benzodiazepines and muscle relaxants are avoided for low back pain in practice because of dependence and sedation.'
       },
-      evaluate(f){
-        const r = [{kind:'bad', text:'Not recommended for low back pain / sciatica — poor evidence, dependence and harm'}];
-        if (f.chronic) r.push({kind:'bad', text:'Chronic pain — particularly avoid escalation to strong opioids'});
-        return { tier:'avoid', reasons: r };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Persistent / chronic (>12 weeks)","text":"Chronic pain — particularly avoid escalation to strong opioids"}
+      ]
     }
   ],
 

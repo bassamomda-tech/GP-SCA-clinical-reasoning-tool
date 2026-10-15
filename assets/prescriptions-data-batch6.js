@@ -50,8 +50,11 @@
 Chronic PRIMARY pain (NG193): do NOT start opioids/NSAIDs/paracetamol/gabapentinoids; offer supervised group exercise; consider ACT or CBT for pain, acupuncture, or an antidepressant trial.
 Review function at each step; deprescribe if no benefit.`,
     sources: [
-      { label: 'NICE NG193 — Chronic pain (primary & secondary)', url: 'https://www.nice.org.uk/guidance/ng193' },
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
+      { label:'NICE NG193 — Chronic pain (primary & secondary)', url:'https://www.nice.org.uk/guidance/ng193' },
+      { label:'BNF — paracetamol', url:'https://bnf.nice.org.uk/drugs/paracetamol/' },
+      { label:'BNF — naproxen', url:'https://bnf.nice.org.uk/drugs/naproxen/' },
+      { label:'BNF — codeine phosphate', url:'https://bnf.nice.org.uk/drugs/codeine-phosphate/' },
+      { label:'BNF — morphine', url:'https://bnf.nice.org.uk/drugs/morphine/' },
     ],
   },
 
@@ -227,7 +230,7 @@ Review function at each step; deprescribe if no benefit.`,
 - Confirm nail/scalp before oral; check LFTs/interactions. Don't use steroid alone (tinea incognito).
 - Extensive or terbinafine-failed tinea: think terbinafine-resistant T. indotineae (UKHSA) - scrapings for mycology + specialist advice.`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'PCDS — tinea', url:'https://www.pcds.org.uk/clinical-guidance/tinea' },
     ],
   },
 
@@ -392,7 +395,7 @@ Review function at each step; deprescribe if no benefit.`,
 - Hyperandrogenism features \u2192 investigate (PCOS); antiandrogens specialist.
 - Scarring/patchy/rapid loss or virilisation \u2192 dermatology. Psychological support + camouflage.`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'PCDS — male and female pattern alopecia', url:'https://www.pcds.org.uk/clinical-guidance/alopecia-male-and-female-pattern-alopecia' },
     ],
   },
 

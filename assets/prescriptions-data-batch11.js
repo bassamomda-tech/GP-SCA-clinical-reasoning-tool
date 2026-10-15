@@ -91,7 +91,7 @@
 - Fluctuant boil/abscess \u2192 incision & drainage (not just abx).
 - Flucloxacillin 500 mg QDS 7d (clarithromycin 500 mg BD 7d if pen-allergic; erythromycin if pregnant) if systemic/spreading/cellulitis/high-risk site.
 - Recurrent \u2192 swab (incl MRSA) + decolonisation + diabetes screen.`,
-    sources:[{ label:'UKHSA — PVL-SA guidance', url:'https://www.gov.uk' }],
+    sources:[{ label:'UKHSA — PVL-SA guidance', url:'https://www.gov.uk/government/publications/pvl-staphylococcus-aureus-infections-diagnosis-and-management' }],
   },
 
   { id:'paronychia-acute', title:'Acute paronychia', category:'Dermatology',

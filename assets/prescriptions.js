@@ -66,6 +66,26 @@
     }
 
     const DATA = window.RGP_PRESCRIPTIONS;
+    if (!document.getElementById('rx-xlinks-css')){
+      const st = document.createElement('style'); st.id = 'rx-xlinks-css';
+      st.textContent = '.rx-xlinks{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}' +
+        '.rx-xlink{display:inline-flex;align-items:center;font-size:13px;font-weight:600;color:var(--teal-2);background:var(--bg-soft);border:1px solid var(--line);border-radius:99px;padding:5px 12px;text-decoration:none}' +
+        '.rx-xlink:hover{border-color:var(--teal);color:var(--teal)}' +
+        '.rx-bnfc{display:block;font-size:11.5px;font-weight:600;color:var(--teal-2);margin-top:3px}';
+      document.head.appendChild(st);
+    }
+    /* Old card addresses kept working after duplicate cards were merged (Upload 114):
+       #vaginal-thrush now opens the single vaginal candidiasis card. */
+    const ALIAS = { 'vaginal-thrush': 'vaginal-candidiasis' };
+    const BNFC = 'https://bnfc.nice.org.uk/';
+    const bnfcNote = d => d && d.child ? `<a class="rx-bnfc" href="${BNFC}" target="_blank" rel="noopener noreferrer">Children: check the BNFC ↗</a>` : '';
+    /* Same-topic links from the shared registry (assets/topic-links.js) */
+    function topicLinks(p){
+      const T = window.RGP_TOPIC_LINKS;
+      const l = T && T.linksFor ? T.linksFor('rx', p.id) : null;
+      if (!l || (!l.m && !l.a)) return '';
+      return `<div class="rx-xlinks">${l.m ? `<a class="rx-xlink" href="management/${l.m}.html">See the full protocol →</a>` : ''}${l.a ? `<a class="rx-xlink" href="algorithms/${l.a}.html">Diagnostic algorithm →</a>` : ''}</div>`;
+    }
     const state = { q:'', cats:new Set(), sort:'chapter', activeId:null };
 
     /* ---- category model (curated order, only those present) ---- */
@@ -182,7 +202,7 @@
     function cardHTML(p){
       if (state.activeId === p.id) return openCardHTML(p);
       const drugLines = (p.drugs||[]).slice(0, 4).map(d =>
-        `<li><b>${d.name}</b> <span>${[d.dose,d.freq,d.route].filter(Boolean).join(' ')}${d.days ? ` · ${d.days}` : ''}</span></li>`
+        `<li><b>${d.name}</b> <span>${[d.dose,d.freq,d.route].filter(Boolean).join(' ')}${d.days ? ` · ${d.days}` : ''}${d.child ? ' · children: check the BNFC' : ''}</span></li>`
       ).join('');
       const more = (p.drugs||[]).length > 4 ? `<li class="rx-more">+ ${p.drugs.length - 4} more</li>` : '';
       return `
@@ -214,7 +234,7 @@
 
     function renderDetail(p){
       const drugRows = (p.drugs||[]).map(d => `
-        <tr><td><b>${d.name}</b></td><td>${d.dose||''}</td><td>${d.freq||''}</td><td>${d.route||''}</td><td>${d.days||''}</td></tr>
+        <tr><td><b>${d.name}</b></td><td>${d.dose||''}${bnfcNote(d)}</td><td>${d.freq||''}</td><td>${d.route||''}</td><td>${d.days||''}</td></tr>
       `).join('');
       const altRows = (p.altRegimens||[]).map(a =>
         `<div class="rx-alt"><div class="rx-alt-l">${a.label}</div><div class="rx-alt-r">${a.drugs}</div></div>`
@@ -224,6 +244,7 @@
       const sources = (p.sources||[]).map(s => (s.url ? `<a href="${s.url}" target="_blank" rel="noopener noreferrer">${s.label} ↗</a>` : `<span>${s.label}</span>`)).join('');
       return `
         <div class="rx-detail">
+          ${topicLinks(p)}
           ${p.indication ? `<div class="rx-section"><h4>Indication</h4><p>${p.indication}</p></div>` : ''}
           ${p.contraindications ? `<div class="rx-section rx-section-warn"><h4>⚠ Contraindications / cautions</h4><p>${p.contraindications}</p></div>` : ''}
           <div class="rx-section">
@@ -240,7 +261,7 @@
           ${counsel ? `<div class="rx-section"><h4>💬 Counselling points</h4><ul class="rx-list">${counsel}</ul></div>` : ''}
           ${p.followUp ? `<div class="rx-section"><h4>🔁 Follow-up</h4><p>${p.followUp}</p></div>` : ''}
           ${reds ? `<div class="rx-section rx-section-red"><h4>🔴 Red flags</h4><ul class="rx-list">${reds}</ul></div>` : ''}
-          ${p.emisText ? `<div class="rx-section rx-section-emis"><h4>📋 EMIS / SystmOne copy-paste</h4><div class="rx-emis-wrap"><pre class="rx-emis-text" id="rx-emis-${p.id}">${p.emisText}</pre><button class="rx-copy-btn" data-copy="${p.id}" type="button">Copy</button></div></div>` : ''}
+          ${p.emisText ? `<div class="rx-section rx-section-emis"><h4>📋 Example record wording (EMIS / SystmOne)</h4><div class="rx-emis-wrap"><pre class="rx-emis-text" id="rx-emis-${p.id}">${p.emisText}</pre><button class="rx-copy-btn" data-copy="${p.id}" type="button">Copy</button></div></div>` : ''}
           ${sources ? `<div class="rx-section"><h4>Sources</h4><div class="rx-sources">${sources}</div></div>` : ''}
           <div class="rx-detail-foot"><button class="rx-close-btn" data-close="${p.id}" type="button">Close ▲</button></div>
         </div>
@@ -342,7 +363,11 @@
 
     /* ---- hash deep-link: #migraine-acute opens that rx ---- */
     function applyHash(){
-      const id = (location.hash || '').replace(/^#/, '').trim();
+      let id = (location.hash || '').replace(/^#/, '').trim();
+      if (ALIAS[id]){
+        id = ALIAS[id];
+        try { history.replaceState(history.state, '', location.pathname + location.search + '#' + id); } catch(e){}
+      }
       if (id && DATA.find(p => p.id === id)){
         state.activeId = id; state.q = ''; state.cats.clear(); state.sort = 'chapter';
         search.value = ''; sortSel.value = 'chapter';

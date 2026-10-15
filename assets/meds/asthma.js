@@ -1,54 +1,21 @@
 /* ============================================
    Medication Chooser — Adult Asthma
    NICE NG245 (2024 joint NICE/BTS/SIGN) · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('asthma', {
   title: 'Adult Asthma — pharmacological ladder',
   subtitle: 'NICE NG245 replaces the historical SABA-first model. AIR (low-dose ICS-formoterol PRN) is first-line; MART is the next step.',
   guideline: 'NICE NG245 · BNF',
 
-  factors: [
-    // Demographics
-    { group:'Demographics', id:'age12',   label:'Age 12–17 years', note:'NG245 paediatric pathway differs slightly' },
-    { group:'Demographics', id:'preg',    label:'Pregnant or breastfeeding', note:'Treat as in non-pregnancy — under-treatment is worse' },
-    { group:'Demographics', id:'older',   label:'Age ≥65 / frail' },
 
-    // Control / severity
-    { group:'Control / severity', id:'newdx', label:'Newly diagnosed, not on treatment' },
-    { group:'Control / severity', id:'saba_only',  label:'On SABA only, mild symptoms', note:'NG245: switch to AIR' },
-    { group:'Control / severity', id:'sx_3wk', label:'Symptoms / SABA ≥3×/week' },
-    { group:'Control / severity', id:'nocturnal', label:'Night-time waking from asthma' },
-    { group:'Control / severity', id:'exac_year', label:'≥1 exacerbation needing OCS in last year' },
-    { group:'Control / severity', id:'high_saba', label:'≥3 SABA inhalers/year', note:'Marker of poor control' },
-    { group:'Control / severity', id:'severe', label:'Difficult-to-treat / suspected severe asthma' },
-
-    // Comorbidities
-    { group:'Comorbidities', id:'copd_overlap', label:'COPD overlap / smoking history' },
-    { group:'Comorbidities', id:'rhinitis', label:'Allergic rhinitis' },
-    { group:'Comorbidities', id:'gord', label:'GORD / reflux' },
-    { group:'Comorbidities', id:'anxiety', label:'Anxiety / dysfunctional breathing' },
-    { group:'Comorbidities', id:'ihd_asth', label:'IHD / arrhythmia' },
-
-    // Allergies / prior intolerance
-    { group:'Allergy / prior', id:'aspirin_sens', label:'Aspirin/NSAID sensitivity (Samter\'s)' },
-    { group:'Allergy / prior', id:'ltra_intol', label:'Past LTRA neuropsychiatric effects' },
-
-    // Practical
-    { group:'Practical / preference', id:'dexterity', label:'Poor dexterity / coordination', note:'Favours DPI or spacer' },
-    { group:'Practical / preference', id:'low_inspiratory', label:'Low inspiratory flow', note:'Avoid DPI alone' },
-    { group:'Practical / preference', id:'eco', label:'Wants low-carbon inhaler', note:'DPI preferred over MDI' },
-    { group:'Practical / preference', id:'cost', label:'Cost-sensitive' },
-    { group:'Practical / preference', id:'pdic', label:'PDA / pregnancy / wants simple regimen' }
+  safety: [
+    {"tone":"amber","label":"On SABA only, mild symptoms","text":"NG245: SABA-only is no longer recommended — convert to AIR"},
+    {"tone":"amber","label":"≥1 exacerbation needing OCS in last year","text":"Exacerbation last year — step up + asthma plan + review trigger"},
+    {"tone":"red","label":"≥3 SABA inhalers/year","text":"≥3 SABA/year — poor control, high exacerbation/death risk"},
+    {"tone":"amber","label":"Difficult-to-treat / suspected severe asthma","text":"Suspected severe asthma — refer specialist (consider biologic)"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.high_saba) out.push({ tone:'red', text:'≥3 SABA/year — poor control, high exacerbation/death risk' });
-    if (f.exac_year) out.push({ tone:'amber', text:'Exacerbation last year — step up + asthma plan + review trigger' });
-    if (f.severe) out.push({ tone:'amber', text:'Suspected severe asthma — refer specialist (consider biologic)' });
-    if (f.saba_only) out.push({ tone:'amber', text:'NG245: SABA-only is no longer recommended — convert to AIR' });
-    return out;
-  },
 
   drugs: [
     // -------- AIR (anti-inflammatory reliever) --------
@@ -66,16 +33,12 @@ MedChooser.register('asthma', {
         'Interactions': 'β-blockers (avoid non-selective)',
         'Key teaching': 'NG245 replaces SABA-only as first-line. Even mild asthma needs ICS exposure.'
       },
-      evaluate(f){
-        if (f.copd_overlap) return { tier:'acceptable', reasons:[{kind:'bad', text:'Smoking / COPD overlap — consider COPD pathway / combined approach'}] };
-
-        const r = [];
-        if (f.newdx)     r.push({kind:'good', text:'Newly diagnosed adult — NG245 first-line'});
-        if (f.saba_only) r.push({kind:'good', text:'Switch from SABA-only to AIR per NG245'});
-        if (f.preg)      r.push({kind:'good', text:'Pregnancy — ICS-formoterol safe; under-treatment is the risk'});
-
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'First-line for most adults with new or mild asthma'}] };
-      }
+      conditions: [
+        {"kind":"caution","label":"COPD overlap / smoking history","text":"Smoking / COPD overlap — consider COPD pathway / combined approach"},
+        {"kind":"favoured","label":"Pregnant or breastfeeding","text":"Pregnancy — ICS-formoterol safe; under-treatment is the risk"},
+        {"kind":"favoured","label":"Newly diagnosed, not on treatment","text":"Newly diagnosed adult — NG245 first-line"},
+        {"kind":"favoured","label":"On SABA only, mild symptoms","text":"Switch from SABA-only to AIR per NG245"}
+      ]
     },
 
     // -------- MART --------
@@ -93,18 +56,13 @@ MedChooser.register('asthma', {
         'Interactions': 'β-blockers (avoid non-selective)',
         'Key teaching': 'Only formoterol-containing combinations can be used as MART — fast onset + long action.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.sx_3wk)    r.push({kind:'good', text:'Symptoms ≥3×/week — MART step'});
-        if (f.nocturnal) r.push({kind:'good', text:'Night-time waking — step up to MART'});
-        if (f.exac_year) r.push({kind:'good', text:'Exacerbation last year — MART reduces severe exacerbations'});
-        if (f.high_saba) r.push({kind:'good', text:'≥3 SABA/year — needs MART or fixed combination'});
-        if (f.anxiety)   r.push({kind:'bad', text:'Anxiety / over-use risk — give very clear written plan or use fixed-dose'});
-
-        const preferred = f.sx_3wk || f.nocturnal || f.exac_year || f.high_saba;
-        if (preferred) return { tier:'preferred', reasons: r };
-        return { tier:'acceptable', reasons: r };
-      }
+      conditions: [
+        {"kind":"caution","label":"Anxiety / dysfunctional breathing","text":"Anxiety / over-use risk — give very clear written plan or use fixed-dose"},
+        {"kind":"favoured","label":"Symptoms / SABA ≥3×/week","text":"Symptoms ≥3×/week — MART step"},
+        {"kind":"favoured","label":"Night-time waking from asthma","text":"Night-time waking — step up to MART"},
+        {"kind":"favoured","label":"≥1 exacerbation needing OCS in last year","text":"Exacerbation last year — MART reduces severe exacerbations"},
+        {"kind":"favoured","label":"≥3 SABA inhalers/year","text":"≥3 SABA/year — needs MART or fixed combination"}
+      ]
     },
 
     // -------- Moderate-dose MART --------
@@ -121,12 +79,9 @@ MedChooser.register('asthma', {
         'Dose': 'Moderate-dose ICS-formoterol BD + PRN',
         'Key teaching': 'Always check adherence + technique + trigger control before assuming step-up is needed.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.exac_year && f.sx_3wk) r.push({kind:'good', text:'Persistent symptoms despite low-dose MART — step up'});
-        if (f.severe) r.push({kind:'bad', text:'Possible severe asthma — refer specialist for assessment'});
-        return { tier:'acceptable', reasons: r };
-      }
+      conditions: [
+        {"kind":"caution","label":"Difficult-to-treat / suspected severe asthma","text":"Possible severe asthma — refer specialist for assessment"}
+      ]
     },
 
     // -------- LTRA add-on --------
@@ -144,15 +99,12 @@ MedChooser.register('asthma', {
         'Interactions': 'Minimal',
         'Key teaching': 'Add-on if poor control on moderate-dose MART, OR allergic rhinitis dominant, OR aspirin-sensitive asthma. MHRA 2024: explicit neuropsychiatric warning required.'
       },
-      evaluate(f){
-        if (f.ltra_intol) return { tier:'avoid', reasons:[{kind:'bad', text:'Previous neuropsychiatric reaction — contraindicated'}] };
-
-        const r = [];
-        if (f.aspirin_sens) r.push({kind:'good', text:'Aspirin-sensitive asthma (Samter\'s) — LTRA often effective'});
-        if (f.rhinitis) r.push({kind:'good', text:'Coexisting rhinitis — dual benefit'});
-        if (f.anxiety) r.push({kind:'bad', text:'Anxiety / low mood — caution; counsel re neuropsychiatric MHRA warning'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Reasonable add-on at Step 3 / 4 per NG245'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Past LTRA neuropsychiatric effects","text":"Previous neuropsychiatric reaction — contraindicated"},
+        {"kind":"caution","label":"Anxiety / dysfunctional breathing","text":"Anxiety / low mood — caution; counsel re neuropsychiatric MHRA warning"},
+        {"kind":"favoured","label":"Allergic rhinitis","text":"Coexisting rhinitis — dual benefit"},
+        {"kind":"favoured","label":"Aspirin/NSAID sensitivity (Samter's)","text":"Aspirin-sensitive asthma (Samter's) — LTRA often effective"}
+      ]
     },
 
     // -------- LAMA --------
@@ -170,12 +122,10 @@ MedChooser.register('asthma', {
         'Interactions': 'Other anti-muscarinics — additive effects',
         'Key teaching': 'Add when persistent symptoms despite moderate-dose MART, particularly if features of fixed obstruction or COPD overlap.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.copd_overlap) r.push({kind:'good', text:'COPD overlap — LAMA already indicated'});
-        if (f.older) r.push({kind:'bad', text:'Elderly — anti-muscarinic burden (urinary retention, cognition)'});
-        return { tier:'acceptable', reasons: r };
-      }
+      conditions: [
+        {"kind":"caution","label":"Age ≥65 / frail","text":"Elderly — anti-muscarinic burden (urinary retention, cognition)"},
+        {"kind":"favoured","label":"COPD overlap / smoking history","text":"COPD overlap — LAMA already indicated"}
+      ]
     },
 
     // -------- Fixed ICS-LABA --------
@@ -192,12 +142,10 @@ MedChooser.register('asthma', {
         'Dose': 'E.g. Fostair 100/6 — 1 puff BD; salbutamol 100 PRN',
         'Key teaching': 'Use if patient cannot manage the MART concept (cognitive, anxiety, language) or if formoterol-containing combination unsuitable.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.anxiety) r.push({kind:'good', text:'Anxiety / over-use risk — fixed regimen simpler than MART'});
-        if (f.pdic)    r.push({kind:'good', text:'Wants simple regimen — fixed BD easier to teach'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Alternative when MART not suitable'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Anxiety / dysfunctional breathing","text":"Anxiety / over-use risk — fixed regimen simpler than MART"},
+        {"kind":"favoured","label":"PDA / pregnancy / wants simple regimen","text":"Wants simple regimen — fixed BD easier to teach"}
+      ]
     },
 
     // -------- SABA only --------
@@ -214,11 +162,10 @@ MedChooser.register('asthma', {
         'Dose': 'Salbutamol 100 µg — 2 puffs PRN (max 8/day before review)',
         'Key teaching': 'NG245 explicit: SABA monotherapy is no longer a recommended treatment for asthma. Every patient should have ICS exposure.'
       },
-      evaluate(f){
-        if (f.saba_only) return { tier:'avoid', reasons:[{kind:'bad', text:'NG245: SABA-only is no longer recommended — convert to AIR'}] };
-        if (f.high_saba) return { tier:'avoid', reasons:[{kind:'bad', text:'≥3 SABA/year — marker of poor control + mortality risk'}] };
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Reserved for acute exacerbation rescue (e.g. nebulised in attack)'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"On SABA only, mild symptoms","text":"NG245: SABA-only is no longer recommended — convert to AIR"},
+        {"kind":"avoid","label":"≥3 SABA inhalers/year","text":"≥3 SABA/year — marker of poor control + mortality risk"}
+      ]
     },
 
     // -------- Oral corticosteroid (exacerbation) --------
@@ -235,11 +182,9 @@ MedChooser.register('asthma', {
         'Dose': 'Prednisolone 40 mg OD × 5 days (no tapering needed if course <2 weeks)',
         'Key teaching': 'Frequent OCS courses (≥2/year) = marker for severe asthma referral / biologic consideration.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.exac_year) r.push({kind:'good', text:'Recent exacerbation — short course indicated'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Reserved for acute exacerbation, not maintenance'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"≥1 exacerbation needing OCS in last year","text":"Recent exacerbation — short course indicated"}
+      ]
     },
 
     // -------- Biologic --------
@@ -255,10 +200,9 @@ MedChooser.register('asthma', {
       detail:{
         'Key teaching': 'Refer if: ≥2 OCS courses/year, maintenance OCS, FeNO + eosinophilia, frequent admissions despite optimal inhaler therapy.'
       },
-      evaluate(f){
-        if (f.severe) return { tier:'preferred', reasons:[{kind:'good', text:'Severe / difficult-to-treat asthma — refer for biologic assessment'}] };
-        return { tier:'acceptable', reasons:[{kind:'neutral', text:'Specialist initiation only'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Difficult-to-treat / suspected severe asthma","text":"Severe / difficult-to-treat asthma — refer for biologic assessment"}
+      ]
     }
   ],
 

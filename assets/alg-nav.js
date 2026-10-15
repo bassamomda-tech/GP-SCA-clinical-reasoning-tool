@@ -191,7 +191,7 @@
       /* Compact header card (Upload 112): after the stepper and the algorithm UI; guards itself too */
       var head = function(){
         if (window.__algHead || document.querySelector('script[src*="alg-head.js"]')) return;
-        var h = document.createElement('script'); h.src = base + 'alg-head.js?v=1'; document.head.appendChild(h);
+        var h = document.createElement('script'); h.src = base + 'alg-head.js?v=2'; document.head.appendChild(h);
       };
       var both = function(){ ui(); head(); };
       if (window.__algStepper) both();

@@ -27,7 +27,7 @@ window.SCA_CASES = [
 
   /* ============= 1. VIDEO — Hypertension in young Black man ============= */
   {
-    id:'htn-young-bp', title:'New diagnosis of hypertension', type:'video', duration:12,
+    id:'htn-young-bp', title:'New diagnosis of hypertension', type:'f2f', duration:12,
     meta:{ age:32, sex:'M', setting:'Routine well-man check, clinic BP 162/96 mmHg today.', system:'Cardiovascular' },
     brief:'Mr Marcus Whitfield, 32, attends following a routine well-man review last week where his clinic BP was 162/96. Repeat in the surgery this morning is 158/94. He has no past medical history. He works as a software engineer, plays football weekly, and is of African-Caribbean heritage. His father had a stroke at 51. He is married with a 6-month-old baby. He has come because the practice nurse asked him to.',
     script:{

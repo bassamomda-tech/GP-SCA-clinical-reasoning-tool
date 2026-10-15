@@ -167,7 +167,7 @@
   - Combination > either alone.
 - Assess 6-12 months (photos). Atypical/scarring/patchy → dermatology.`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'PCDS — male and female pattern alopecia', url:'https://www.pcds.org.uk/clinical-guidance/alopecia-male-and-female-pattern-alopecia' },
     ],
   },
 
@@ -253,8 +253,7 @@
 - Hyperemesis (>5% wt loss, dehydration, ketonuria) → thiamine + VTE assessment + IV fluids/admit.
 - Exclude UTI/thyroid/molar if atypical.`,
     sources: [
-      { label:'RCOG Green-top 69 (2024)', url:'https://www.rcog.org.uk/guidance/' },
-      { label: 'RCOG Green-top 69 — Hyperemesis', url: 'https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/the-management-of-nausea-and-vomiting-of-pregnancy-and-hyperemesis-gravidarum-green-top-guideline-no-69/' },
+      { label:'RCOG Green-top 69 — Hyperemesis', url:'https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/the-management-of-nausea-and-vomiting-of-pregnancy-and-hyperemesis-gravidarum-green-top-guideline-no-69/' },
     ],
   },
 
@@ -294,8 +293,7 @@
 - Titrate to effect; review; taper when settled. Refractory → pain service.
 - Prevention: zoster vaccine; early antivirals for shingles.`,
     sources: [
-      { label: 'NICE CG173 — Neuropathic pain in adults', url: 'https://www.nice.org.uk/guidance/cg173' },
-      { label:'NICE CG173 — Neuropathic pain', url:'https://www.nice.org.uk/guidance/cg173' },
+      { label:'NICE CG173 — Neuropathic pain in adults', url:'https://www.nice.org.uk/guidance/cg173' },
     ],
   },
 
@@ -336,7 +334,7 @@
 - >6 wks → physio/podiatry (orthotics, taping). Refractory → steroid injection (counsel risks) / shockwave.
 - Atypical (trauma, hot joint, inflammatory, neuro) → reconsider diagnosis.`,
     sources: [
-      { label:'JOSPT heel pain guideline (2023)', url:'https://www.jospt.org' },
+      { label:'JOSPT heel pain guideline (2023)', url:'https://www.jospt.org/doi/10.2519/jospt.2023.0303' },
     ],
   }
   );

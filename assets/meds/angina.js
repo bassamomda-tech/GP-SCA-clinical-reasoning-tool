@@ -1,55 +1,21 @@
 /* ============================================
    Medication Chooser — Stable Angina
    NICE CG126 · BNF
+   Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
+   "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('angina', {
   title: 'Stable angina — anti-anginal + secondary prevention',
-  subtitle: 'Anti-anginal selection (NICE CG126) plus the mandatory secondary-prevention pair. Tick the patient profile on the left; cards re-tier live.',
+  subtitle: 'Anti-anginal selection (NICE CG126) plus the mandatory secondary-prevention pair.',
   guideline: 'NICE CG126 · BNF',
 
-  factors: [
-    // Demographics
-    { group:'Demographics', id:'elderly', label:'Elderly / frail', note:'Start low, titrate slowly' },
-    { group:'Demographics', id:'driver',  label:'HGV / PCV or vocational driver', note:'DVLA implications' },
 
-    // Comorbidities
-    { group:'Comorbidities', id:'asthma',   label:'Asthma / reversible airway disease' },
-    { group:'Comorbidities', id:'copd',     label:'COPD' },
-    { group:'Comorbidities', id:'hf',       label:'Heart failure (HFrEF)' },
-    { group:'Comorbidities', id:'brady',    label:'Bradycardia / HR <50 or AV block', note:'No rate-limiting drugs' },
-    { group:'Comorbidities', id:'hypoten',  label:'Hypotension (SBP <100)' },
-    { group:'Comorbidities', id:'dm',       label:'Type 2 diabetes' },
-    { group:'Comorbidities', id:'htn',      label:'Hypertension' },
-    { group:'Comorbidities', id:'af',       label:'Atrial fibrillation' },
-    { group:'Comorbidities', id:'priormi',  label:'Prior MI / PCI / CABG' },
-    { group:'Comorbidities', id:'ckd',      label:'CKD / diabetic nephropathy' },
-    { group:'Comorbidities', id:'as',       label:'Severe aortic stenosis', note:'Nitrate caution' },
-    { group:'Comorbidities', id:'vasospastic', label:'Vasospastic / Prinzmetal angina', note:'β-blocker can worsen' },
-
-    // Allergy / prior intolerance
-    { group:'Allergy / prior intolerance', id:'asa_allergy', label:'Aspirin allergy / intolerance' },
-    { group:'Allergy / prior intolerance', id:'statin_myalgia', label:'Statin myalgia / prior intolerance' },
-    { group:'Allergy / prior intolerance', id:'nitrate_headache', label:'Disabling nitrate headache' },
-
-    // Current medications
-    { group:'Current medications', id:'pde5',  label:'PDE5 inhibitor (sildenafil, tadalafil)', note:'Nitrates contraindicated' },
-    { group:'Current medications', id:'on_bb', label:'Already on a β-blocker' },
-    { group:'Current medications', id:'on_ratelimit_ccb', label:'Already on verapamil / diltiazem' },
-    { group:'Current medications', id:'anticoag', label:'On an anticoagulant (DOAC / warfarin)' },
-
-    // Preference / context
-    { group:'Preference / context', id:'needs_addon', label:'Symptoms uncontrolled on one anti-anginal', note:'Step up to combination / 2nd-line' }
+  safety: [
+    {"tone":"amber","label":"Bradycardia / HR <50 or AV block","text":"Bradycardia / AV block — avoid all rate-limiting agents (β-blocker, verapamil, diltiazem, ivabradine)"},
+    {"tone":"amber","label":"Severe aortic stenosis","text":"Severe aortic stenosis — nitrates can cause syncope; use with caution"},
+    {"tone":"amber","label":"Vasospastic / Prinzmetal angina","text":"Vasospastic angina — β-blockers may worsen spasm; CCB is the anti-anginal of choice"},
+    {"tone":"red","label":"PDE5 inhibitor (sildenafil, tadalafil)","text":"PDE5 inhibitor on board — ALL nitrates (incl. GTN) contraindicated; profound hypotension"}
   ],
-
-  flags: (f) => {
-    const out = [];
-    if (f.pde5) out.push({ tone:'red', text:'PDE5 inhibitor on board — ALL nitrates (incl. GTN) contraindicated; profound hypotension' });
-    if (f.on_bb && f.on_ratelimit_ccb) out.push({ tone:'red', text:'β-blocker + verapamil/diltiazem = risk of severe bradycardia / asystole — never combine' });
-    if (f.vasospastic) out.push({ tone:'amber', text:'Vasospastic angina — β-blockers may worsen spasm; CCB is the anti-anginal of choice' });
-    if (f.brady) out.push({ tone:'amber', text:'Bradycardia / AV block — avoid all rate-limiting agents (β-blocker, verapamil, diltiazem, ivabradine)' });
-    if (f.as) out.push({ tone:'amber', text:'Severe aortic stenosis — nitrates can cause syncope; use with caution' });
-    return out;
-  },
 
   drugs: [
     // -------- GTN --------
@@ -67,13 +33,11 @@ MedChooser.register('angina', {
         'Interactions': 'PDE5 inhibitors (sildenafil/tadalafil) — absolute contraindication, profound hypotension',
         'Key teaching': 'Everyone with angina needs GTN, both as a reliever and for pre-emptive use before exertion.'
       },
-      evaluate(f){
-        if (f.pde5) return { tier:'avoid', reasons:[{kind:'bad', text:'PDE5 inhibitor — nitrates absolutely contraindicated'}] };
-        const r = [];
-        if (f.as) r.push({kind:'bad', text:'Severe aortic stenosis — caution, risk of syncope'});
-        if (f.nitrate_headache) r.push({kind:'neutral', text:'Nitrate headache — still indicated; paracetamol cover, tends to settle'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'First-line reliever for every angina patient — abortive + pre-emptive'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"PDE5 inhibitor (sildenafil, tadalafil)","text":"PDE5 inhibitor — nitrates absolutely contraindicated"},
+        {"kind":"caution","label":"Severe aortic stenosis","text":"Severe aortic stenosis — caution, risk of syncope"},
+        {"kind":"note","label":"Disabling nitrate headache","text":"Nitrate headache — still indicated; paracetamol cover, tends to settle"}
+      ]
     },
 
     // -------- BETA-BLOCKER --------
@@ -91,22 +55,19 @@ MedChooser.register('angina', {
         'Interactions': 'Verapamil/diltiazem (heart block — never combine), insulin (masks hypos)',
         'Key teaching': 'First-line anti-anginal with a β-blocker OR a rate-limiting CCB. Prognostic post-MI and in HFrEF.'
       },
-      evaluate(f){
-        if (f.asthma) return { tier:'avoid', reasons:[{kind:'bad', text:'Asthma — risk of life-threatening bronchospasm'}] };
-        if (f.brady) return { tier:'avoid', reasons:[{kind:'bad', text:'Bradycardia / AV block — contraindicated'}] };
-        if (f.on_ratelimit_ccb) return { tier:'avoid', reasons:[{kind:'bad', text:'Already on verapamil/diltiazem — adding a β-blocker risks asystole'}] };
-        const r = [];
-        if (f.priormi) r.push({kind:'good', text:'Post-MI — prognostic, reduces reinfarction'});
-        if (f.hf) r.push({kind:'good', text:'HFrEF — bisoprolol/carvedilol prognostic (start low when stable)'});
-        if (f.af) r.push({kind:'good', text:'AF — rate control + anti-anginal in one drug'});
-        if (f.htn) r.push({kind:'good', text:'Coexisting hypertension — dual benefit'});
-        if (f.vasospastic) r.push({kind:'bad', text:'Vasospastic angina — may worsen coronary spasm; prefer CCB'});
-        if (f.copd) r.push({kind:'neutral', text:'COPD — cardioselective (bisoprolol) usually tolerated; monitor'});
-        if (f.hypoten) r.push({kind:'bad', text:'Hypotension — may not tolerate'});
-        if (f.dm) r.push({kind:'neutral', text:'Diabetes — masks hypoglycaemia awareness; counsel'});
-        const preferred = !f.vasospastic;
-        return { tier: preferred ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'good', text:'First-line anti-anginal'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Asthma / reversible airway disease","text":"Asthma — risk of life-threatening bronchospasm"},
+        {"kind":"avoid","label":"Bradycardia / HR <50 or AV block","text":"Bradycardia / AV block — contraindicated"},
+        {"kind":"avoid","label":"Already on verapamil / diltiazem","text":"Already on verapamil/diltiazem — adding a β-blocker risks asystole"},
+        {"kind":"caution","label":"Hypotension (SBP <100)","text":"Hypotension — may not tolerate"},
+        {"kind":"caution","label":"Vasospastic / Prinzmetal angina","text":"Vasospastic angina — may worsen coronary spasm; prefer CCB"},
+        {"kind":"favoured","label":"Heart failure (HFrEF)","text":"HFrEF — bisoprolol/carvedilol prognostic (start low when stable)"},
+        {"kind":"favoured","label":"Hypertension","text":"Coexisting hypertension — dual benefit"},
+        {"kind":"favoured","label":"Atrial fibrillation","text":"AF — rate control + anti-anginal in one drug"},
+        {"kind":"favoured","label":"Prior MI / PCI / CABG","text":"Post-MI — prognostic, reduces reinfarction"},
+        {"kind":"note","label":"COPD","text":"COPD — cardioselective (bisoprolol) usually tolerated; monitor"},
+        {"kind":"note","label":"Type 2 diabetes","text":"Diabetes — masks hypoglycaemia awareness; counsel"}
+      ]
     },
 
     // -------- RATE-LIMITING CCB --------
@@ -124,17 +85,14 @@ MedChooser.register('angina', {
         'Interactions': 'β-blocker (heart block — never combine), statins, digoxin',
         'Key teaching': 'First-line alternative to a β-blocker, especially in asthma or vasospastic angina. NEVER with a β-blocker.'
       },
-      evaluate(f){
-        if (f.hf) return { tier:'avoid', reasons:[{kind:'bad', text:'HFrEF — negatively inotropic, worsens heart failure'}] };
-        if (f.brady) return { tier:'avoid', reasons:[{kind:'bad', text:'Bradycardia / AV block — contraindicated'}] };
-        if (f.on_bb) return { tier:'avoid', reasons:[{kind:'bad', text:'Already on a β-blocker — combination risks asystole'}] };
-        const r = [];
-        if (f.asthma) r.push({kind:'good', text:'Asthma — anti-anginal of choice (no bronchospasm)'});
-        if (f.vasospastic) r.push({kind:'good', text:'Vasospastic angina — CCB is first-line'});
-        if (f.af) r.push({kind:'good', text:'AF — rate control + anti-anginal'});
-        const preferred = f.asthma || f.vasospastic;
-        return { tier: preferred ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'First-line alternative to a β-blocker'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Heart failure (HFrEF)","text":"HFrEF — negatively inotropic, worsens heart failure"},
+        {"kind":"avoid","label":"Bradycardia / HR <50 or AV block","text":"Bradycardia / AV block — contraindicated"},
+        {"kind":"avoid","label":"Already on a β-blocker","text":"Already on a β-blocker — combination risks asystole"},
+        {"kind":"favoured","label":"Asthma / reversible airway disease","text":"Asthma — anti-anginal of choice (no bronchospasm)"},
+        {"kind":"favoured","label":"Atrial fibrillation","text":"AF — rate control + anti-anginal"},
+        {"kind":"favoured","label":"Vasospastic / Prinzmetal angina","text":"Vasospastic angina — CCB is first-line"}
+      ]
     },
 
     // -------- DIHYDROPYRIDINE CCB --------
@@ -152,14 +110,12 @@ MedChooser.register('angina', {
         'Interactions': 'Simvastatin (myopathy — use atorvastatin), grapefruit',
         'Key teaching': 'The CCB to use WITH a β-blocker (no heart-block risk). Avoid immediate-release nifedipine in angina.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.on_bb || f.needs_addon) r.push({kind:'good', text:'Combines safely with a β-blocker for dual anti-anginal therapy'});
-        if (f.htn) r.push({kind:'good', text:'Coexisting hypertension — dual benefit'});
-        if (f.hf) r.push({kind:'bad', text:'HFrEF — avoid amlodipine unless needed for BP/angina (least harmful CCB)'});
-        const preferred = f.on_bb && f.needs_addon;
-        return { tier: preferred ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Add-on when a β-blocker alone is insufficient'}] };
-      }
+      conditions: [
+        {"kind":"caution","label":"Heart failure (HFrEF)","text":"HFrEF — avoid amlodipine unless needed for BP/angina (least harmful CCB)"},
+        {"kind":"favoured","label":"Hypertension","text":"Coexisting hypertension — dual benefit"},
+        {"kind":"favoured","label":"Already on a β-blocker","text":"Combines safely with a β-blocker for dual anti-anginal therapy"},
+        {"kind":"favoured","label":"Symptoms uncontrolled on one anti-anginal","text":"Combines safely with a β-blocker for dual anti-anginal therapy"}
+      ]
     },
 
     // -------- LONG-ACTING NITRATE --------
@@ -177,14 +133,12 @@ MedChooser.register('angina', {
         'Interactions': 'PDE5 inhibitors — contraindicated',
         'Key teaching': 'Add when a β-blocker + CCB are insufficient or one is not tolerated. Nitrate tolerance is the key teaching point.'
       },
-      evaluate(f){
-        if (f.pde5) return { tier:'avoid', reasons:[{kind:'bad', text:'PDE5 inhibitor — nitrates contraindicated'}] };
-        const r = [];
-        if (f.as) r.push({kind:'bad', text:'Severe aortic stenosis — caution, syncope risk'});
-        if (f.needs_addon) r.push({kind:'good', text:'Uncontrolled on first-line — reasonable add-on'});
-        if (f.nitrate_headache) r.push({kind:'bad', text:'Disabling nitrate headache — limits use'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Second-line add-on or where β-blocker/CCB not tolerated'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"PDE5 inhibitor (sildenafil, tadalafil)","text":"PDE5 inhibitor — nitrates contraindicated"},
+        {"kind":"caution","label":"Severe aortic stenosis","text":"Severe aortic stenosis — caution, syncope risk"},
+        {"kind":"caution","label":"Disabling nitrate headache","text":"Disabling nitrate headache — limits use"},
+        {"kind":"favoured","label":"Symptoms uncontrolled on one anti-anginal","text":"Uncontrolled on first-line — reasonable add-on"}
+      ]
     },
 
     // -------- OTHER SECOND-LINE --------
@@ -202,13 +156,11 @@ MedChooser.register('angina', {
         'Interactions': 'Ivabradine — avoid with diltiazem/verapamil; Ranolazine — QT drugs',
         'Key teaching': 'Use when both first-line classes are tried/contraindicated, or while awaiting revascularisation assessment. Ivabradine needs sinus rhythm.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.needs_addon) r.push({kind:'good', text:'First-line options exhausted — reasonable third agent'});
-        if (f.af) r.push({kind:'bad', text:'AF — ivabradine ineffective (needs sinus rhythm)'});
-        if (f.brady) r.push({kind:'bad', text:'Bradycardia — ivabradine contraindicated'});
-        return { tier:'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Reserve for when first-line classes are insufficient or unsuitable'}] };
-      }
+      conditions: [
+        {"kind":"caution","label":"Bradycardia / HR <50 or AV block","text":"Bradycardia — ivabradine contraindicated"},
+        {"kind":"caution","label":"Atrial fibrillation","text":"AF — ivabradine ineffective (needs sinus rhythm)"},
+        {"kind":"favoured","label":"Symptoms uncontrolled on one anti-anginal","text":"First-line options exhausted — reasonable third agent"}
+      ]
     },
 
     // -------- ASPIRIN --------
@@ -226,13 +178,11 @@ MedChooser.register('angina', {
         'Interactions': 'Anticoagulants (bleeding), other antiplatelets, NSAIDs',
         'Key teaching': 'Clopidogrel 75 mg is the alternative if aspirin not tolerated or contraindicated. Do not routinely double-up with a DOAC.'
       },
-      evaluate(f){
-        if (f.asa_allergy) return { tier:'avoid', reasons:[{kind:'bad', text:'Aspirin allergy — use clopidogrel 75 mg instead'}] };
-        const r = [];
-        if (f.anticoag) r.push({kind:'bad', text:'On an anticoagulant — avoid routine dual therapy (bleeding); specialist decision'});
-        if (f.priormi) r.push({kind:'good', text:'Established CAD / post-MI — secondary prevention'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'Mandatory secondary prevention in stable angina'}] };
-      }
+      conditions: [
+        {"kind":"avoid","label":"Aspirin allergy / intolerance","text":"Aspirin allergy — use clopidogrel 75 mg instead"},
+        {"kind":"caution","label":"On an anticoagulant (DOAC / warfarin)","text":"On an anticoagulant — avoid routine dual therapy (bleeding); specialist decision"},
+        {"kind":"favoured","label":"Prior MI / PCI / CABG","text":"Established CAD / post-MI — secondary prevention"}
+      ]
     },
 
     // -------- STATIN --------
@@ -250,12 +200,10 @@ MedChooser.register('angina', {
         'Interactions': 'Diltiazem/verapamil and amlodipine ↑ statin levels (avoid simvastatin), macrolides, grapefruit',
         'Key teaching': 'Aim for ≥40% reduction in non-HDL cholesterol. Try a lower dose / alternative statin before abandoning.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.statin_myalgia) r.push({kind:'bad', text:'Prior myalgia — try lower dose / alternate-day / rosuvastatin before stopping'});
-        if (f.priormi) r.push({kind:'good', text:'Established CAD — high-intensity statin is standard of care'});
-        return { tier:'preferred', reasons: r.length ? r : [{kind:'good', text:'Mandatory secondary prevention — atorvastatin 80 mg'}] };
-      }
+      conditions: [
+        {"kind":"caution","label":"Statin myalgia / prior intolerance","text":"Prior myalgia — try lower dose / alternate-day / rosuvastatin before stopping"},
+        {"kind":"favoured","label":"Prior MI / PCI / CABG","text":"Established CAD — high-intensity statin is standard of care"}
+      ]
     },
 
     // -------- ACE INHIBITOR --------
@@ -273,15 +221,12 @@ MedChooser.register('angina', {
         'Interactions': 'NSAIDs, K-sparing diuretics, ARB (never combine)',
         'Key teaching': 'Not routine for every angina patient — add when there is diabetes, hypertension, CKD, or LV dysfunction.'
       },
-      evaluate(f){
-        const r = [];
-        if (f.dm)  r.push({kind:'good', text:'Diabetes — recommended in stable angina with diabetes'});
-        if (f.ckd) r.push({kind:'good', text:'CKD / nephropathy — renoprotective'});
-        if (f.htn) r.push({kind:'good', text:'Coexisting hypertension'});
-        if (f.hf)  r.push({kind:'good', text:'LV dysfunction / HFrEF — prognostic'});
-        const indicated = f.dm || f.ckd || f.htn || f.hf;
-        return { tier: indicated ? 'preferred' : 'acceptable', reasons: r.length ? r : [{kind:'neutral', text:'Add if diabetes, hypertension, CKD or LV dysfunction present'}] };
-      }
+      conditions: [
+        {"kind":"favoured","label":"Heart failure (HFrEF)","text":"LV dysfunction / HFrEF — prognostic"},
+        {"kind":"favoured","label":"Type 2 diabetes","text":"Diabetes — recommended in stable angina with diabetes"},
+        {"kind":"favoured","label":"Hypertension","text":"Coexisting hypertension"},
+        {"kind":"favoured","label":"CKD / diabetic nephropathy","text":"CKD / nephropathy — renoprotective"}
+      ]
     }
   ],
 

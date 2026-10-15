@@ -45,7 +45,9 @@
 - Not healed after 6–8 wks → colorectal referral (botulinum toxin / sphincterotomy).
 Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): bleeding + change in habit, weight loss, IDA, mass, ≥50; FIT ≥10 µg Hb/g, rectal or anal mass → suspected cancer pathway referral. Atypical fissure → exclude IBD/infection/cancer.`,
     sources: [
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
+      { label:'BNF — ispaghula husk', url:'https://bnf.nice.org.uk/drugs/ispaghula-husk/' },
+      { label:'BNF — macrogol 3350', url:'https://bnf.nice.org.uk/drugs/macrogol-3350/' },
+      { label:'BNF — glyceryl trinitrate', url:'https://bnf.nice.org.uk/drugs/glyceryl-trinitrate/' },
     ],
   },
 
@@ -130,8 +132,11 @@ Persistent/atypical lesion → refer (exclude malignancy/lichen sclerosus).`,
 - VERY POTENT: Clobetasol propionate 0.05% (Dermovate) — thick plaques, palms/soles (short/specialist).
 FTU: 1 FTU (~0.5 g) covers ~2 palms. Step UP to control then step DOWN/stop. Avoid potent on face/flexures. Recurrent facial/flexural → consider tacrolimus.`,
     sources: [
-      { label:'BNF', url:'https://bnf.nice.org.uk' },
-      { label: 'BNF — Topical corticosteroids', url: 'https://bnf.nice.org.uk/treatment-summaries/topical-corticosteroids/' },
+      { label:'BNF — hydrocortisone', url:'https://bnf.nice.org.uk/drugs/hydrocortisone/' },
+      { label:'BNF — clobetasone butyrate', url:'https://bnf.nice.org.uk/drugs/clobetasone-butyrate/' },
+      { label:'BNF — betamethasone', url:'https://bnf.nice.org.uk/drugs/betamethasone/' },
+      { label:'BNF — clobetasol propionate', url:'https://bnf.nice.org.uk/drugs/clobetasol-propionate/' },
+      { label:'BNF — Topical corticosteroids', url:'https://bnf.nice.org.uk/treatment-summaries/topical-corticosteroids/' },
     ],
   },
 
@@ -175,8 +180,7 @@ FTU: 1 FTU (~0.5 g) covers ~2 palms. Step UP to control then step DOWN/stop. Avo
 - Inadequate/extensive/nails/PsA → dermatology ± rheumatology.
 Annual review: severity, PsA screen (PEST), CV risk. Avoid abrupt withdrawal of potent steroid (pustular flare).`,
     sources: [
-      { label: 'NICE CG153 — Psoriasis: assessment & management', url: 'https://www.nice.org.uk/guidance/cg153' },
-      { label:'NICE CG153 — Psoriasis', url:'https://www.nice.org.uk/guidance/cg153' },
+      { label:'NICE CG153 — Psoriasis: assessment & management', url:'https://www.nice.org.uk/guidance/cg153' },
     ],
   },
 
@@ -218,7 +222,7 @@ Annual review: severity, PsA screen (PEST), CV risk. Avoid abrupt withdrawal of 
 - Infantile cradle cap: emollient + gentle washing.
 Severe/abrupt/resistant → offer HIV test.`,
     sources: [
-      { label:'PCDS', url:'https://www.pcds.org.uk' },
+      { label:'PCDS — seborrhoeic eczema', url:'https://www.pcds.org.uk/clinical-guidance/seborrhoeic-eczema' },
     ],
   }
   );
