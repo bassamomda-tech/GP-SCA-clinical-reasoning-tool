@@ -17,7 +17,7 @@ window.SCA_LIB_SPECS = {
 
 window.SCA_LIBRARY = [
 
-  { f:'Chronic cough', ic:'🫁', sp:'resp', ceg:['Long-term conditions & cancer'],
+  { f:'Chronic cough', ic:'🌬️', sp:'resp', ceg:['Long-term conditions & cancer'],
     note:'One symptom, four different exams: the age, the pack-years and the throwaway line decide whether this is asthma, reflux, an urgent chest X-ray or a palliative conversation.',
     v:[
       { t:'Persistent cough in a smoker, 56 — the suspected cancer pathway conversation', ty:'v', live:'cough-smoker-2ww' },
@@ -72,7 +72,7 @@ window.SCA_LIBRARY = [
       { t:'Unexplained hyperglycaemia — could this be type 1 / LADA?', ty:'t', src:176, live:'t2dm-lada' },
     ]},
 
-  { f:'The liver result', ic:'🫀', sp:'gi', ceg:['Investigations & results'],
+  { f:'The liver result', ic:'❤️', sp:'gi', ceg:['Investigations & results'],
     note:'LFT patterns + an honest exposure history. The variants change the conversation entirely.',
     v:[
       { t:'Abnormal LFTs in a stressed solicitor — the alcohol conversation', ty:'v', live:'lft-alcohol' },
@@ -328,7 +328,7 @@ window.SCA_LIBRARY = [
       { t:'HbA1c 47 — pre-diabetes as a fork in the road (prevention, not “fine”)', ty:'t', src:171, live:'prediabetes-fork' },
     ]},
 
-  { f:'Kidneys & inheritance', ic:'🫘', sp:'renal', ceg:['Long-term conditions & cancer'],
+  { f:'Kidneys & inheritance', ic:'💧', sp:'renal', ceg:['Long-term conditions & cancer'],
     v:[
       { t:'CKD stage 3 on a routine check — "disease" defused, filters protected', ty:'t', src:120, live:'ckd3-result' },
       { t:'Critical potassium recall — the emergency the patient feels fine through', ty:'t', live:'hyperkalaemia-recall', ceg:['Urgent & unscheduled care'] },
@@ -517,7 +517,7 @@ window.SCA_LIBRARY = [
       { t:'“Will you help me end my life?” — assisted-dying request, law, exploration & non-abandonment', ty:'v', live:'assisted-dying-request', ceg:['End-of-life & palliative care'] },
     ]},
 
-  { f:'More MSK, paeds & sexual health', ic:'🩻', sp:'msk', ceg:['New & undifferentiated presentations'],
+  { f:'More MSK, paeds & sexual health', ic:'🦴', sp:'msk', ceg:['New & undifferentiated presentations'],
     note:'Common presentations named precisely and managed conservatively or compassionately.',
     v:[
       { t:'Painful outer elbow, hurts to grip — tennis elbow (lateral epicondylitis), conservative care', ty:'v', live:'tennis-elbow' },

@@ -89,7 +89,7 @@ window.SCA_RESIT = {
       ]
     },
     nonet: {
-      name:'The vanishing safety-net', ic:'🪢', dom:'cm',
+      name:'The vanishing safety-net', ic:'🔗', dom:'cm',
       mech:'"Come back if it gets worse" is not a safety-net — it has no symptoms, no timeframe, no route. A complete net takes 25 seconds and is among the most mechanically fixable marks in the exam.',
       sign:'Safety-netting feedback; closes that trail off; no named symptoms in your endings.',
       rx:[

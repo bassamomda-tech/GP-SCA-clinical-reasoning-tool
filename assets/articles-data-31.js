@@ -255,7 +255,7 @@
       'Fertility concerns → fertility services + urology'],
     source:'BAUS / EAU guidelines on sexual and reproductive health (varicocele, international) / urology guidance' },
 
-  { id:'vasovagal-syncope', title:'Vasovagal syncope (fainting)', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'vasovagal-syncope', title:'Vasovagal syncope (fainting)', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'The commonest cause of transient loss of consciousness — a reflex (neurally mediated) faint from a sudden drop in heart rate and blood pressure. It is benign, but the essential task is distinguishing it from dangerous cardiac syncope and from seizures, using the history and a few key investigations.',
     features:[
       'Typical features: triggered (prolonged standing, heat, pain, emotion, the sight of blood, micturition/coughing), with a prodrome (light-headedness, nausea, sweating, visual greying, feeling hot) before brief loss of consciousness, and rapid recovery',

@@ -129,7 +129,7 @@
       'Confirmed tumour → neurosurgery / neuro-oncology MDT'],
     source:'NICE NG12 (updated April 2026) / NICE NG99 (Brain tumours (primary) and brain metastases)' },
 
-  { id:'schistosomiasis', title:'Schistosomiasis (bilharzia)', category:'Infectious diseases', icon:'🪱',
+  { id:'schistosomiasis', title:'Schistosomiasis (bilharzia)', category:'Infectious diseases', icon:'🐛',
     aka:'Bilharzia',
     overview:'A parasitic trematode (fluke) infection acquired through freshwater contact in endemic regions (sub-Saharan Africa especially). It ranges from an acute hypersensitivity illness to chronic urinary or intestinal disease. Long-standing urinary schistosomiasis is a recognised cause of bladder squamous-cell carcinoma.',
     features:[
@@ -455,7 +455,7 @@
       'Suspected non-accidental injury → follow safeguarding procedures'],
     source:'NICE NG38 (fractures) / NICE NG12 (updated April 2026)' },
 
-  { id:'bronchiolitis', title:'Bronchiolitis', category:'Paediatrics', icon:'🫁',
+  { id:'bronchiolitis', title:'Bronchiolitis', category:'Paediatrics', icon:'🌬️',
     overview:'A common lower-respiratory-tract viral infection of infants (usually <1 year, peak 3–6 months), most often RSV, causing inflammation of the small airways. Most is mild and self-limiting, but a minority — especially young or high-risk infants — develop respiratory distress or feeding failure needing admission.',
     features:[
       'Coryzal prodrome for 1–3 days, then cough, tachypnoea, wheeze and/or fine bibasal crackles',
@@ -480,7 +480,7 @@
       'High-risk infants for RSV prophylaxis → specialist paediatrics'],
     source:'NICE NG9 (Bronchiolitis in children)' },
 
-  { id:'acute-bronchitis', title:'Acute bronchitis', category:'Respiratory', icon:'🫁',
+  { id:'acute-bronchitis', title:'Acute bronchitis', category:'Respiratory', icon:'🌬️',
     overview:'Self-limiting inflammation of the large airways, usually viral, causing an acute cough (often productive) in an otherwise well person. The clinical skills are distinguishing it from pneumonia, resisting unnecessary antibiotics, and recognising the cough that needs a chest X-ray for possible cancer.',
     features:[
       'Acute cough (the dominant symptom), often productive of clear/discoloured sputum, frequently with a preceding coryzal illness',
@@ -530,7 +530,7 @@
       'Notify public health (statutorily notifiable)'],
     source:'UKHSA brucellosis guidance' },
 
-  { id:'brugada', title:'Brugada syndrome', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'brugada', title:'Brugada syndrome', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'An inherited (usually autosomal-dominant, often SCN5A) cardiac sodium-channelopathy causing a characteristic ECG pattern and a risk of polymorphic ventricular arrhythmia and sudden cardiac death in a structurally normal heart. It is an important cause of sudden death in young (often male) adults, frequently during sleep or fever.',
     features:[
       'Often asymptomatic and detected on an incidental ECG; may present with syncope, nocturnal agonal breathing, palpitations, or aborted sudden cardiac death',

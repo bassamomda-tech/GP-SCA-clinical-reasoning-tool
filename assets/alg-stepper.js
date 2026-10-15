@@ -41,7 +41,7 @@ var ALG_STEPPER_SKIP = [];
   var SCRIPT = D.currentScript;
   var ASSETS = (function(){ var s = SCRIPT && SCRIPT.src; if(s) return s.replace(/[^\/]*$/, '');
     var x = D.querySelector('script[src*="assets/alg-nav.js"]'); return x ? x.src.replace(/[^\/]*$/, '') : '../../assets/'; })();
-  var CSS_V = '?v=2';
+  var CSS_V = '?v=3';
   var cssLink = D.querySelector('link[href*="assets/alg-stepper.css"]');
   if(!cssLink){ cssLink = D.createElement('link'); cssLink.rel = 'stylesheet'; cssLink.href = ASSETS + 'alg-stepper.css' + CSS_V; D.head.appendChild(cssLink); }
 

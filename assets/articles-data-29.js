@@ -5,7 +5,7 @@
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
 
-  { id:'tapeworm', title:'Tapeworms', category:'Infectious diseases', icon:'🪱',
+  { id:'tapeworm', title:'Tapeworms', category:'Infectious diseases', icon:'🐛',
     overview:'Intestinal infestation with tapeworms (cestodes), usually acquired by eating undercooked meat or fish, or via the faecal-oral route. Intestinal infection is often mild, but some forms — notably the larval tissue infections (cysticercosis, hydatid disease) — cause serious disease, so the type and exposure history matter.',
     features:[
       'Intestinal tapeworm (e.g. Taenia from beef/pork, fish tapeworm, Hymenolepis): often asymptomatic, or mild abdominal discomfort, nausea, and passing visible proglottid segments in the stool',
@@ -155,7 +155,7 @@
       'Complications of iron overload or transfusion → haematology'],
     source:'NHS Sickle Cell and Thalassaemia Screening Programme / BSH haemoglobinopathy guidance' },
 
-  { id:'threadworms', title:'Threadworms (pinworms)', category:'Infectious diseases', icon:'🪱',
+  { id:'threadworms', title:'Threadworms (pinworms)', category:'Infectious diseases', icon:'🐛',
     overview:'A very common, benign intestinal worm infection (Enterobius vermicularis), especially in children, causing perianal itch (worse at night). It spreads easily by the faecal-oral route within households. Treatment is simple, but it must be combined with strict hygiene measures and treating the whole household to prevent reinfection.',
     features:[
       'Perianal (and, in girls, sometimes vulval) ITCHING, characteristically worse at night when the female worms lay eggs around the anus',

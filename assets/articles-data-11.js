@@ -255,7 +255,7 @@
       'Relatives of patients → routine optometric screening'],
     source:'NICE NG81 (Glaucoma)' },
 
-  { id:'glomerulonephritis', title:'Glomerulonephritis', category:'Cardiovascular & Renal', icon:'🫘',
+  { id:'glomerulonephritis', title:'Glomerulonephritis', category:'Cardiovascular & Renal', icon:'💧',
     overview:'A group of immune-mediated diseases causing inflammation of the glomeruli, presenting along a spectrum from nephritic (haematuria, hypertension, reduced kidney function) to nephrotic (heavy proteinuria, oedema). It is an important cause of acute kidney injury, chronic kidney disease and end-stage renal failure, and needs nephrology assessment.',
     features:[
       'NEPHRITIC syndrome: haematuria (often visible or "cola-coloured"), hypertension, oedema, and acute kidney impairment with red-cell casts/dysmorphic red cells',

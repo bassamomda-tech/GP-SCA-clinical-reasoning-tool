@@ -5,7 +5,7 @@
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
 
-  { id:'palpitations', title:'Heart palpitations', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'palpitations', title:'Heart palpitations', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'An awareness of the heartbeat — fast, forceful, irregular or skipped. Most palpitations are benign (ectopics, sinus tachycardia, anxiety), but the task is to identify the minority with a dangerous arrhythmia or structural/electrical heart disease, guided by the history, ECG, and crucially the company the palpitations keep (syncope, family history).',
     features:[
       'Characterise the palpitation: fast vs slow, regular vs irregular, sudden vs gradual onset/offset, duration, and triggers (exercise, caffeine, alcohol, stress)',

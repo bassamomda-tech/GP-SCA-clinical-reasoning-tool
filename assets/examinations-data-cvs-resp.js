@@ -2,7 +2,7 @@
 window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
 
 {
-  id:'cardiovascular', system:'Cardiovascular', icon:'🫀', title:'Cardiovascular examination',
+  id:'cardiovascular', system:'Cardiovascular', icon:'❤️', title:'Cardiovascular examination',
   blurb:'Peripheral signs → pulse & BP → precordium inspection, palpation and auscultation.',
   indications:['Chest pain, breathlessness, palpitations, syncope','Murmur on incidental auscultation','Heart-failure assessment / oedema','Hypertension or arrhythmia work-up'],
   equipment:['Stethoscope','Sphygmomanometer','Couch reclined to 45°'],
@@ -75,7 +75,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
 },
 
 {
-  id:'respiratory', system:'Respiratory', icon:'🫁', title:'Respiratory examination',
+  id:'respiratory', system:'Respiratory', icon:'🌬️', title:'Respiratory examination',
   blurb:'Inspection → palpation → percussion → auscultation, front and back.',
   indications:['Breathlessness, cough, wheeze, haemoptysis','Chest pain (pleuritic)','Monitoring of asthma/COPD','Suspected infection, effusion or malignancy'],
   equipment:['Stethoscope','Couch at 45°','SpO₂ probe'],

@@ -4,7 +4,7 @@
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
 
-  { id:'bullous-pemphigoid', title:'Bullous pemphigoid', category:'Dermatology', icon:'🫧',
+  { id:'bullous-pemphigoid', title:'Bullous pemphigoid', category:'Dermatology', icon:'💧',
     overview:'A chronic autoimmune sub-epidermal blistering disease, mainly of older adults, in which autoantibodies target the dermo-epidermal junction. It produces tense, often itchy blisters on an urticarial base. It is usually self-limiting over years but can be debilitating, and treatment carries its own risks in frail patients.',
     features:[
       'Tense, fluid-filled blisters on normal or erythematous/urticarial skin, typically on flexures, trunk and limbs; the mouth is usually spared',
@@ -129,7 +129,7 @@
       'Persisting neuropsychiatric symptoms → appropriate follow-up'],
     source:'NPIS (TOXBASE) / UKHSA carbon monoxide guidance' },
 
-  { id:'cardiomyopathy', title:'Cardiomyopathy', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'cardiomyopathy', title:'Cardiomyopathy', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'A heterogeneous group of diseases of the heart muscle — dilated, hypertrophic, restrictive and arrhythmogenic — causing heart failure, arrhythmia and sudden cardiac death. Hypertrophic cardiomyopathy is the commonest cause of sudden cardiac death in young people, so recognition and family screening matter.',
     features:[
       'Dilated (DCM): heart failure symptoms (breathlessness, oedema, fatigue), arrhythmia, and thromboembolism; causes include genetic, alcohol, viral, peripartum and toxins',
@@ -329,7 +329,7 @@
       'Sight-loss support → low-vision and voluntary services'],
     source:'Royal College of Ophthalmologists guidance' },
 
-  { id:'chest-infection', title:'Chest infection (lower respiratory tract infection)', category:'Respiratory', icon:'🫁',
+  { id:'chest-infection', title:'Chest infection (lower respiratory tract infection)', category:'Respiratory', icon:'🌬️',
     overview:'An umbrella term covering acute bronchitis and community-acquired pneumonia. The central skills are distinguishing self-limiting viral illness from pneumonia, using severity scoring to decide on antibiotics and admission, and recognising the cough that needs imaging for cancer.',
     features:[
       'Cough (often productive), breathlessness, fever, chest discomfort and malaise',

@@ -205,7 +205,7 @@
       'Confirmed/suspected liver cancer → hepatobiliary MDT'],
     source:'NICE NG12 (updated April 2026) / hepatocellular carcinoma surveillance guidance' },
 
-  { id:'long-qt', title:'Long QT syndrome', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'long-qt', title:'Long QT syndrome', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'A disorder of cardiac repolarisation (prolonged QT interval) that predisposes to a characteristic polymorphic ventricular tachycardia (torsades de pointes), causing syncope, seizures and sudden cardiac death. It may be inherited or acquired (commonly drug-induced) — and recognising and avoiding QT-prolonging drugs is a key, preventable safety issue.',
     features:[
       'Often asymptomatic and found on an ECG (a prolonged corrected QT interval, QTc)',

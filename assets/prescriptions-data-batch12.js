@@ -136,7 +136,7 @@
   { id:'recurrent-uti', title:'Recurrent UTI (women) — prevention', category:'Urology & Renal',
     eyebrow:'Self-care · vaginal oestrogen · prophylaxis last',
     indication:'Recurrent UTI in women (≥2 in 6 months or ≥3 in 12 months). Address behavioural/self-care measures, consider vaginal oestrogen (postmenopausal), then antibiotic prophylaxis if needed. Per NICE NG112.',
-    contraindications:'Confirm infections (cultures) before labelling recurrent. Investigate/refer if red flags (haematuria, suspected obstruction/stones), or in men. Antibiotic prophylaxis is a last resort — review at 6 months. Counsel re resistance. Nitrofurantoin: avoid if eGFR <45 (BNF); long-term use — monitor for pulmonary/hepatic reactions. Trimethoprim: avoid in 1st trimester of pregnancy (folate antagonist).',
+    contraindications:'Confirm infections (cultures) before labelling recurrent. Investigate/refer if red flags (haematuria, suspected obstruction/stones), or in men. Antibiotic prophylaxis is a last resort — review at 6 months. Counsel re resistance. Nitrofurantoin: avoid if eGFR <45 (NICE/SPC); long-term use — monitor for pulmonary/hepatic reactions. Trimethoprim: avoid in 1st trimester of pregnancy (folate antagonist).',
     duration:'Trial measures; prophylaxis reviewed at ~6 months',
     drugs:[
       { name:'Self-care: hydration, don\u2019t delay voiding, post-coital voiding; consider D-mannose / cranberry (patient choice)', dose:'\u2014', freq:'\u2014', route:'Advice', days:'Ongoing' },
@@ -199,7 +199,7 @@
   { id:'influenza', title:'Influenza (antiviral treatment)', category:'Infections',
     eyebrow:'At-risk + within 48 h + circulating flu',
     indication:'Antivirals (oseltamivir) for at-risk patients with influenza-like illness, when influenza is circulating and treatment can start within 48 h of symptom onset. Healthy non-at-risk adults: supportive care only.',
-    contraindications:'Only when flu is circulating (per UKHSA notification) and within 48 h (treatment) / 36 h (prophylaxis zanamivir). Doses below are for adults: dose-adjust oseltamivir in renal impairment (BNF), and use BNFC for children (weight/age-based). Zanamivir is inhaled \u2014 caution in asthma/COPD (risk of bronchospasm). Not a substitute for vaccination.',
+    contraindications:'Only when flu is circulating (per UKHSA notification) and within 48 h (treatment) / 36 h (prophylaxis zanamivir). Doses below are for adults: dose-adjust oseltamivir in renal impairment (NICE/SPC), and use BNFC for children (weight/age-based). Zanamivir is inhaled \u2014 caution in asthma/COPD (risk of bronchospasm). Not a substitute for vaccination.',
     duration:'5 days (treatment) \u00b7 10 days (post-exposure prophylaxis)',
     drugs:[
       { name:'At-risk + within 48 h + flu circulating: oseltamivir', dose:'75 mg (adjust if renal impairment)', freq:'BD', route:'PO', days:'5 days' },

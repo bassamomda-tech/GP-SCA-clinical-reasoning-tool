@@ -6,7 +6,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 
 /* ---------------- CARDIOVASCULAR / RENAL ---------------- */
 {
-  id:'pharma-acei', domain:'Pharmacology', class:'Cardiovascular', icon:'🫀',
+  id:'pharma-acei', domain:'Pharmacology', class:'Cardiovascular', icon:'❤️',
   title:'ACE inhibitors & ARBs', blurb:'Block the renin–angiotensin system to lower BP, protect the kidney and reverse cardiac remodelling.',
   examples:['Ramipril, lisinopril, enalapril, perindopril (ACEi)','Losartan, candesartan, irbesartan (ARB)'],
   moa:[
@@ -36,7 +36,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-hypertension', pathoLabel:'Hypertension', case:'cases/heart-failure.html', caseLabel:'Heart failure', case2:'cases/ckd.html', case2Label:'CKD' },
 },
 {
-  id:'pharma-betablocker', domain:'Pharmacology', class:'Cardiovascular', icon:'🫀',
+  id:'pharma-betablocker', domain:'Pharmacology', class:'Cardiovascular', icon:'❤️',
   title:'Beta-blockers', blurb:'Block β-adrenoceptors to slow the heart, reduce its work, and protect it in heart failure and post-MI.',
   examples:['Bisoprolol, atenolol, metoprolol (β1-selective)','Propranolol (non-selective)','Carvedilol (α+β)'],
   moa:[
@@ -64,7 +64,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-atrial-fibrillation', pathoLabel:'Atrial fibrillation', case:'cases/heart-failure.html', caseLabel:'Heart failure' },
 },
 {
-  id:'pharma-ccb', domain:'Pharmacology', class:'Cardiovascular', icon:'🫀',
+  id:'pharma-ccb', domain:'Pharmacology', class:'Cardiovascular', icon:'❤️',
   title:'Calcium channel blockers', blurb:'Block L-type calcium channels — dihydropyridines relax arteries; rate-limiting agents slow the heart.',
   examples:['Amlodipine, felodipine, nifedipine (dihydropyridine)','Verapamil, diltiazem (non-dihydropyridine / rate-limiting)'],
   moa:[
@@ -247,7 +247,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 
 /* ---------------- RESPIRATORY ---------------- */
 {
-  id:'pharma-ics', domain:'Pharmacology', class:'Respiratory', icon:'🫁',
+  id:'pharma-ics', domain:'Pharmacology', class:'Respiratory', icon:'🌬️',
   title:'Inhaled corticosteroids (ICS)', blurb:'The anti-inflammatory backbone of asthma — local steroid delivered to the airway.',
   examples:['Beclometasone, budesonide, fluticasone','+ formoterol (MART regimens)'],
   moa:[
@@ -271,7 +271,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-asthma', pathoLabel:'Asthma', case:'cases/asthma.html', caseLabel:'Asthma' },
 },
 {
-  id:'pharma-laba-lama', domain:'Pharmacology', class:'Respiratory', icon:'🫁',
+  id:'pharma-laba-lama', domain:'Pharmacology', class:'Respiratory', icon:'🌬️',
   title:'Bronchodilators (SABA/LABA & SAMA/LAMA)', blurb:'Open the airways via β2-agonism or antimuscarinic action — the backbone of COPD.',
   examples:['Salbutamol (SABA), salmeterol/formoterol (LABA)','Ipratropium (SAMA), tiotropium/umeclidinium (LAMA)'],
   moa:[

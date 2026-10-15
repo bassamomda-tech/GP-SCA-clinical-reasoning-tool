@@ -234,7 +234,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ case:'cases/hyponatraemia.html', caseLabel:'Hyponatraemia case', algorithm:'tools/algorithms/hyponatraemia.html', algorithmLabel:'Hyponatraemia pathway' } },
 
 /* ---------------- RENAL & UROLOGY ---------------- */
-{ id:'patho-aki', domain:'Pathophysiology', system:'Renal', icon:'🫘',
+{ id:'patho-aki', domain:'Pathophysiology', system:'Renal', icon:'💧',
   title:'Acute kidney injury', blurb:'The pre-renal, renal and post-renal logic of a rising creatinine.',
   mechanism:[
     'AKI is a sudden fall in filtration, classified by site: **pre-renal** (reduced perfusion — dehydration, sepsis, drugs), **intrinsic** (tubular/glomerular damage) or **post-renal** (obstruction).',
@@ -257,7 +257,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'Ask where the problem is — before, in, or after the kidney — and the cause (and the fix) usually follows.',
   links:{ case:'cases/aki.html', caseLabel:'AKI case', algorithm:'tools/algorithms/aki.html', algorithmLabel:'AKI pathway' } },
 
-{ id:'patho-nephrotic', domain:'Pathophysiology', system:'Renal', icon:'🫘',
+{ id:'patho-nephrotic', domain:'Pathophysiology', system:'Renal', icon:'💧',
   title:'Nephrotic syndrome', blurb:'Why a leaky glomerulus causes heavy proteinuria, oedema and clots.',
   mechanism:[
     'Damage to the glomerular **filtration barrier** lets large amounts of protein (especially albumin) escape into urine — heavy proteinuria.',
@@ -280,7 +280,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'One leaky barrier loses albumin — and from that single fact flow the oedema, the lipids and the clotting risk.',
   links:{} },
 
-{ id:'patho-nephritic', domain:'Pathophysiology', system:'Renal', icon:'🫘',
+{ id:'patho-nephritic', domain:'Pathophysiology', system:'Renal', icon:'💧',
   title:'Nephritic syndrome / glomerulonephritis', blurb:'Why glomerular inflammation causes blood in urine and hypertension.',
   mechanism:[
     'Immune-mediated **inflammation of the glomerulus** breaches the barrier — red cells leak into urine (haematuria, red-cell casts) with modest proteinuria.',
@@ -326,7 +326,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'Most UTIs are simply gut bacteria climbing the urinary tract; danger rises the higher they reach.',
   links:{ case:'cases/uti-women.html', caseLabel:'UTI case', algorithm:'tools/management/recurrent-uti.html', algorithmLabel:'Recurrent UTI pathway' } },
 
-{ id:'patho-renal-stones', domain:'Pathophysiology', system:'Renal', icon:'🪨',
+{ id:'patho-renal-stones', domain:'Pathophysiology', system:'Renal', icon:'💎',
   title:'Renal & ureteric stones', blurb:'Why a crystallising stone causes excruciating colic.',
   mechanism:[
     'Supersaturated urine (dehydration, hypercalciuria, hyperuricaemia) lets crystals precipitate and aggregate into **stones**, usually calcium oxalate.',
@@ -372,7 +372,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'A bigger prostate squeezes the urethra; the bladder first fights back, then gives up — the storage and voiding symptoms map directly onto that struggle.',
   links:{} },
 
-{ id:'patho-diabetic-nephropathy', domain:'Pathophysiology', system:'Renal', icon:'🫘',
+{ id:'patho-diabetic-nephropathy', domain:'Pathophysiology', system:'Renal', icon:'💧',
   title:'Diabetic nephropathy', blurb:'Why chronic hyperglycaemia silently destroys the glomerulus.',
   mechanism:[
     'Chronic hyperglycaemia and glomerular **hyperfiltration** damage the filtration barrier and thicken the basement membrane — letting albumin leak.',
@@ -511,7 +511,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'Enzymes meant for the gut switch on too early and digest the pancreas itself — and the inflammatory spillover is what makes severe cases dangerous.',
   links:{} },
 
-{ id:'patho-cld', domain:'Pathophysiology', system:'Gastrointestinal', icon:'🫛',
+{ id:'patho-cld', domain:'Pathophysiology', system:'Gastrointestinal', icon:'🌱',
   title:'Chronic liver disease & cirrhosis', blurb:'How scarring turns into portal hypertension and liver failure.',
   mechanism:[
     'Chronic injury (alcohol, fatty liver, viral hepatitis) drives **fibrosis**; architecture is replaced by regenerative nodules and scar — cirrhosis.',
@@ -534,7 +534,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'Cirrhosis does two things — it dams the portal circulation and starves the body of liver function — and every complication is one or the other.',
   links:{ algorithm:'tools/algorithms/jaundice.html', algorithmLabel:'Jaundice pathway' } },
 
-{ id:'patho-nafld', domain:'Pathophysiology', system:'Gastrointestinal', icon:'🫛',
+{ id:'patho-nafld', domain:'Pathophysiology', system:'Gastrointestinal', icon:'🌱',
   title:'Non-alcoholic fatty liver disease', blurb:'Why metabolic syndrome deposits fat — and then inflames — the liver.',
   mechanism:[
     'Insulin resistance drives fat accumulation in hepatocytes (**steatosis**). In some, this provokes inflammation (steatohepatitis, NASH) and progressive fibrosis.',

@@ -105,7 +105,7 @@
       'Survivors → audiology and neuro follow-up'],
     source:'NICE NG240 (Meningitis (bacterial) and meningococcal disease, 2024) / UKHSA meningococcal disease guidance' },
 
-  { id:'mesothelioma', title:'Mesothelioma', category:'Respiratory', icon:'🫁',
+  { id:'mesothelioma', title:'Mesothelioma', category:'Respiratory', icon:'🌬️',
     overview:'An aggressive cancer of the mesothelial lining (usually the pleura), almost always caused by past asbestos exposure after a long latency (often 30–40 years). Prognosis is poor and treatment largely palliative, so the priorities are prompt recognition of pleural symptoms with an asbestos history, urgent referral, and supporting compensation.',
     features:[
       'Progressive breathlessness and chest-wall pain (often a dull, persistent ache), with a pleural effusion the commonest presenting finding',

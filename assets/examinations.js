@@ -14,7 +14,7 @@
     'Skin','Lymphoreticular','Mental health & Cognitive','Paediatric',
   ];
   const SYSTEM_ICON = {
-    'Cardiovascular':'🫀','Respiratory':'🫁','Abdominal & GI':'🫃','Neurological':'🧠',
+    'Cardiovascular':'❤️','Respiratory':'🌬️','Abdominal & GI':'🤰','Neurological':'🧠',
     'Musculoskeletal':'🦴','ENT, Neck & Thyroid':'👂','Ophthalmology':'👁️','Breast':'🎗️',
     'Vascular & Diabetic foot':'🦶','Skin':'🔬','Lymphoreticular':'🩸',
     'Mental health & Cognitive':'🧩','Paediatric':'🧒',

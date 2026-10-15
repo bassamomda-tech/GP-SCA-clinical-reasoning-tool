@@ -110,7 +110,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-acs', pathoLabel:'Stable angina / ACS', case:'cases/chest-pain.html', caseLabel:'Chest pain' },
 },
 {
-  id:'pharma-digoxin', domain:'Pharmacology', class:'Cardiovascular', icon:'🫀',
+  id:'pharma-digoxin', domain:'Pharmacology', class:'Cardiovascular', icon:'❤️',
   title:'Digoxin', blurb:'A cardiac glycoside that slows the ventricular rate in AF and gives modest inotropy in heart failure.',
   examples:['Digoxin (narrow therapeutic index)'],
   moa:[
@@ -135,7 +135,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-af', pathoLabel:'Atrial fibrillation', case:'cases/heart-failure.html', caseLabel:'Heart failure' },
 },
 {
-  id:'pharma-amiodarone', domain:'Pharmacology', class:'Cardiovascular', icon:'🫀',
+  id:'pharma-amiodarone', domain:'Pharmacology', class:'Cardiovascular', icon:'❤️',
   title:'Amiodarone', blurb:'A broad-spectrum antiarrhythmic with a huge volume of distribution and multi-system toxicity.',
   examples:['Amiodarone (loading then maintenance)'],
   moa:[
@@ -161,7 +161,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-af', pathoLabel:'Atrial fibrillation' },
 },
 {
-  id:'pharma-ivabradine', domain:'Pharmacology', class:'Cardiovascular', icon:'🫀',
+  id:'pharma-ivabradine', domain:'Pharmacology', class:'Cardiovascular', icon:'❤️',
   title:'Ivabradine', blurb:'Slows the heart purely by acting on the sinus node — useful when beta-blockers are contraindicated or insufficient.',
   examples:['Ivabradine (in HF and chronic stable angina)'],
   moa:[
@@ -184,7 +184,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ case:'cases/heart-failure.html', caseLabel:'Heart failure' },
 },
 {
-  id:'pharma-mra', domain:'Pharmacology', class:'Cardiovascular', icon:'🫀',
+  id:'pharma-mra', domain:'Pharmacology', class:'Cardiovascular', icon:'❤️',
   title:'Mineralocorticoid receptor antagonists', blurb:'Spironolactone/eplerenone — potassium-sparing diuretics with major mortality benefit in heart failure.',
   examples:['Spironolactone','Eplerenone (more selective, less gynaecomastia)'],
   moa:[

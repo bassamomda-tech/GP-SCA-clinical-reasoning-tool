@@ -15,8 +15,8 @@
   const ALL = window.RGP_CALCULATORS;
 
   const CAT_ICONS = {
-    'Cardiovascular':'🫀', 'VTE':'🩸', 'Respiratory':'🫁',
-    'Diabetes / endocrine':'🦋', 'Renal / metabolic':'🧪', 'Gastro / hepatology':'🫃',
+    'Cardiovascular':'❤️', 'VTE':'🩸', 'Respiratory':'🌬️',
+    'Diabetes / endocrine':'🦋', 'Renal / metabolic':'🧪', 'Gastro / hepatology':'🤰',
     'Urology':'💧', 'Mental health':'🧠', 'Cognition':'🧩', 'Frailty':'🧓',
     "Women's / obstetric":'🌸', 'MSK / pain':'🦴', 'General / anthropometry':'📏', 'Paediatrics':'🧒',
     'Trauma / head injury':'🤕',

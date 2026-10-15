@@ -130,7 +130,7 @@
       'Post-illness cognitive/neurological sequelae → neuro-rehabilitation'],
     source:'ABN/BIA national encephalitis guidelines (2012)' },
 
-  { id:'endocarditis', title:'Infective endocarditis', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'endocarditis', title:'Infective endocarditis', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'Infection of the endocardial surface of the heart, usually a valve, with vegetations of organisms and fibrin. It is uncommon but serious, with high morbidity and mortality, and notoriously difficult to diagnose because of its varied, insidious presentation. Think of it in unexplained fever with a murmur or risk factors.',
     features:[
       'Fever (often low-grade and prolonged), malaise, night sweats and weight loss — a cause of "pyrexia of unknown origin"',

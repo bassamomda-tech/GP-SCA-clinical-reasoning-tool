@@ -155,7 +155,7 @@
       'Children with suspected hearing loss → paediatric audiology/ENT'],
     source:'NICE NG98 (Hearing loss in adults)' },
 
-  { id:'heart-attack', title:'Heart attack (acute coronary syndrome)', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'heart-attack', title:'Heart attack (acute coronary syndrome)', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'Acute coronary syndrome — unstable angina and myocardial infarction (STEMI/NSTEMI) — results from acute coronary artery occlusion/critical ischaemia, usually from atherosclerotic plaque rupture and thrombosis. It is a time-critical emergency: rapid recognition and emergency transfer ("time is muscle") save myocardium and lives.',
     features:[
       'Central/left-sided chest pain or tightness, often radiating to the arm(s), neck or jaw, with sweating, nausea, and breathlessness, typically lasting >15–20 minutes and not relieved by rest/GTN',
@@ -180,7 +180,7 @@
       'Post-MI care → cardiac rehabilitation and structured secondary prevention'],
     source:'NICE NG185 (Acute coronary syndromes)' },
 
-  { id:'heart-block', title:'Heart block (atrioventricular block)', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'heart-block', title:'Heart block (atrioventricular block)', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'A disorder of conduction between the atria and ventricles, ranging from benign first-degree block to life-threatening complete (third-degree) block. The clinical priority is recognising high-grade block, which causes syncope, bradycardia and sudden death and needs urgent assessment for pacing.',
     features:[
       'First-degree block: a prolonged PR interval only — usually asymptomatic and benign, often an incidental ECG finding',
@@ -205,7 +205,7 @@
       'Incidental first-degree/asymptomatic Mobitz I → review medications, routine monitoring'],
     source:'ESC bradycardia and pacing guidance (international) / DVLA' },
 
-  { id:'heart-failure', title:'Heart failure', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'heart-failure', title:'Heart failure', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'A clinical syndrome in which the heart cannot pump sufficiently for the body’s needs, causing breathlessness, fatigue and fluid retention. It is common, serious (worse prognosis than many cancers) and increasingly treatable. Accurate diagnosis (with natriuretic peptides and echocardiography) and guideline-based therapy transform outcomes.',
     features:[
       'Symptoms: exertional breathlessness, orthopnoea, paroxysmal nocturnal dyspnoea, fatigue, and ankle/leg swelling',

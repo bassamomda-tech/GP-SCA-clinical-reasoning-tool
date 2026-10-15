@@ -155,7 +155,7 @@
       'Disproportionate burning suggesting photosensitivity → review cause/dermatology'],
     source:'NICE NG34 (Sunlight exposure: risks and benefits, 2016) / NICE NG12 (updated April 2026)' },
 
-  { id:'svt', title:'Supraventricular tachycardia (SVT)', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'svt', title:'Supraventricular tachycardia (SVT)', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'A regular, rapid tachycardia arising above the ventricles (commonly AV nodal re-entrant tachycardia or AV re-entrant tachycardia, e.g. with an accessory pathway). It causes sudden-onset palpitations and is usually benign but distressing; the priorities are terminating the acute episode and arranging definitive assessment.',
     features:[
       'Sudden-onset, regular, rapid palpitations (often 140–250 bpm), starting and stopping abruptly',

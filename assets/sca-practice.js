@@ -766,7 +766,7 @@
       taskBlock('t-psy','🧩','Psychosocial & impact','tailor to this patient', (hist.psychosocial && hist.psychosocial.length) ? `<ul>${li(hist.psychosocial)}</ul>` : ''),
       taskBlock('t-ice','💭','ICE','draw it out — then use it in the plan', (hist.ice && hist.ice.length) ? `<ul>${li(hist.ice)}</ul>` : ''),
       taskBlock('t-dx','🗣️','Phrase the diagnosis','tailored wording', pb.diagnosis ? `<p class="kn-task-q">${escapeHtml(pb.diagnosis)}</p>${pb.diagnosisLay ? `<p class="kn-task-q lay">${escapeHtml(pb.diagnosisLay)}</p>` : ''}` : ''),
-      taskBlock('t-net','🛟','Safety-net','before they leave', (mgmt.safetyNet && mgmt.safetyNet.length) ? `<ul>${li(mgmt.safetyNet)}</ul>` : '')
+      taskBlock('t-net','🆘','Safety-net','before they leave', (mgmt.safetyNet && mgmt.safetyNet.length) ? `<ul>${li(mgmt.safetyNet)}</ul>` : '')
     ].join('');
 
     // Clinical points: classify into pathway stages and render in clinical order
@@ -1627,10 +1627,10 @@ Your one-sentence nudge:`;
         let mgmtBody;
         if (pb.management && !Array.isArray(pb.management)) {
           mgmtBody =
-            subText('🪞', 'Reflect back their ICE', pb.management.reflectIce) +
+            subText('👤', 'Reflect back their ICE', pb.management.reflectIce) +
             subText('🧩', 'Address the psychosocial aspect', pb.management.psychosocial) +
             subList('🤝', 'Build the plan together (shared decision)', pb.management.sharedPlan) +
-            subList('🛟', 'Safety-net & follow-up', pb.management.safetyNet);
+            subList('🆘', 'Safety-net & follow-up', pb.management.safetyNet);
         } else {
           mgmtBody = `<ul class="pb-list">${list(pb.management)}</ul>`;
         }

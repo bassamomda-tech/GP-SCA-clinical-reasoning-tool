@@ -31,7 +31,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ case:'cases/hypertension.html', caseLabel:'Hypertension case', drug:'pharma-acei', drugLabel:'ACE inhibitors', calculator:'tools/calculators.html#qrisk3', calculatorLabel:'QRISK3' },
 },
 {
-  id:'patho-heart-failure', domain:'Pathophysiology', system:'Cardiovascular', icon:'🫀',
+  id:'patho-heart-failure', domain:'Pathophysiology', system:'Cardiovascular', icon:'❤️',
   title:'Heart failure', blurb:'Why a failing pump triggers the very neurohormonal responses that make it worse — and why our drugs block them.',
   mechanism:[
     'Heart failure is the inability of the heart to deliver adequate output at normal filling pressures. In **HFrEF** systolic contractility falls (e.g. post-MI, dilated cardiomyopathy); in **HFpEF** a stiff ventricle cannot fill.',
@@ -111,7 +111,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 
 /* ---------------- RESPIRATORY ---------------- */
 {
-  id:'patho-asthma', domain:'Pathophysiology', system:'Respiratory', icon:'🫁',
+  id:'patho-asthma', domain:'Pathophysiology', system:'Respiratory', icon:'🌬️',
   title:'Asthma', blurb:'Why asthma is reversible airway inflammation — and why inhaled steroids, not relievers, are the treatment.',
   mechanism:[
     'Asthma is **chronic eosinophilic/Th2 airway inflammation** with bronchial hyper-responsiveness. Triggers (allergen, virus, exercise, cold air) cause mast-cell and eosinophil activation.',
@@ -271,7 +271,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 
 /* ---------------- RENAL ---------------- */
 {
-  id:'patho-ckd', domain:'Pathophysiology', system:'Renal', icon:'🫘',
+  id:'patho-ckd', domain:'Pathophysiology', system:'Renal', icon:'💧',
   title:'Chronic kidney disease', blurb:'Why nephron loss is self-perpetuating, and why ACEi and SGLT2i protect the kidney.',
   mechanism:[
     'CKD is progressive, usually irreversible loss of nephrons (commonly from diabetes and hypertension). Surviving nephrons **hyperfilter** to compensate.',

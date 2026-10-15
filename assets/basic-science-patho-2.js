@@ -49,7 +49,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'A DVT and a PE are the same disease in two places — treat the clot, find the trigger.',
   links:{ case:'cases/dvt.html', caseLabel:'DVT case', drug:'pharma-doac', drugLabel:'DOACs' } },
 
-{ id:'patho-pe', domain:'Pathophysiology', system:'Cardiovascular', icon:'🫁',
+{ id:'patho-pe', domain:'Pathophysiology', system:'Cardiovascular', icon:'🌬️',
   title:'Pulmonary embolism', blurb:'Why a clot in the lung causes breathlessness, hypoxia and strain on the right heart.',
   mechanism:[
     'An embolus (usually from a leg DVT) lodges in the pulmonary arteries, creating **dead space** — ventilated lung that is no longer perfused — and a ventilation/perfusion mismatch causing hypoxia.',
@@ -257,7 +257,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{} },
 
 /* ---------------- RESPIRATORY ---------------- */
-{ id:'patho-pneumonia', domain:'Pathophysiology', system:'Respiratory', icon:'🫁',
+{ id:'patho-pneumonia', domain:'Pathophysiology', system:'Respiratory', icon:'🌬️',
   title:'Pneumonia', blurb:'Why alveolar infection causes consolidation, hypoxia and systemic sepsis.',
   mechanism:[
     'Pathogens (commonly *Strep pneumoniae*) reach the alveoli and overwhelm local defences. The immune response floods alveoli with neutrophils, fluid and debris → **consolidation**.',

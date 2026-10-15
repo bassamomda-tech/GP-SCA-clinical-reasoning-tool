@@ -180,6 +180,8 @@
           var card = document.querySelector('.ah-card');
           var styled = card && getComputedStyle(card).borderTopLeftRadius === '18px';
           var skipped = window.__algHead && !R.classList.contains('ah') && Date.now() - t0 > 700;
+          /* Header card switched off (15 Oct 2026): show once the stepper and the algorithm UI have run */
+          if (!styled && window.__algUi && window.__algStepper && document.readyState !== 'loading') { if (!wait.ui) wait.ui = Date.now(); if (Date.now() - wait.ui > 120) skipped = true; }
           if (styled || skipped || Date.now() - t0 > 2500) { requestAnimationFrame(show); return; }
           setTimeout(wait, 40);
         })();
@@ -193,7 +195,8 @@
         if (window.__algHead || document.querySelector('script[src*="alg-head.js"]')) return;
         var h = document.createElement('script'); h.src = base + 'alg-head.js?v=2'; document.head.appendChild(h);
       };
-      var both = function(){ ui(); head(); };
+      /* Owner decision 15 Oct 2026: back to the previous header (dark title band); the compact header card (alg-head.js) is no longer loaded */
+      var both = function(){ ui(); };
       if (window.__algStepper) both();
       else { var st = document.createElement('script'); st.src = base + 'alg-stepper.js?v=3'; st.onload = both; st.onerror = both; document.head.appendChild(st); }
     }

@@ -509,7 +509,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 
 /* ==================== ALLERGY / RESPIRATORY / EMERGENCY / DERM ==================== */
 {
-  id:'pharma-saba', domain:'Pharmacology', class:'Allergy, Respiratory & Emergency', icon:'🫁',
+  id:'pharma-saba', domain:'Pharmacology', class:'Allergy, Respiratory & Emergency', icon:'🌬️',
   title:'Short-acting beta-agonists (SABA)', blurb:'Salbutamol — the reliever; rising use signals poor control.',
   examples:['Salbutamol','Terbutaline'],
   moa:[

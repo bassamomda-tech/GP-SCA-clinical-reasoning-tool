@@ -152,7 +152,7 @@
       'Considering GnRH analogues or surgical options → specialist'],
     source:'RCOG Green-top Guideline No. 48 (Premenstrual syndrome, 2016)' },
 
-  { id:'pkd', title:'Polycystic kidney disease', category:'Cardiovascular & Renal', icon:'🫘',
+  { id:'pkd', title:'Polycystic kidney disease', category:'Cardiovascular & Renal', icon:'💧',
     overview:'An inherited (usually autosomal-dominant) disorder characterised by progressive renal cyst formation with declining kidney function, hypertension, and important extrarenal features — notably intracranial (berry) aneurysms.',
     features:[
       'Hypertension (often at a young age), haematuria, loin/flank pain, palpable enlarged kidneys, and recurrent UTIs or cyst infections',
@@ -196,7 +196,7 @@
       'Any safeguarding concern → safeguarding pathway'],
     source:'NICE CG192 (antenatal & postnatal mental health)' },
 
-  { id:'pots', title:'Postural tachycardia syndrome (PoTS)', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'pots', title:'Postural tachycardia syndrome (PoTS)', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'A form of orthostatic intolerance defined by a sustained, excessive heart-rate rise on standing without significant orthostatic hypotension, with symptoms relieved by lying down. It is under-recognised, commoner in young women, and frequently overlaps with hypermobility.',
     features:[
       'On standing: palpitations, light-headedness, fatigue, "brain fog", tremulousness, breathlessness and sometimes presyncope — relieved by lying down',
@@ -469,7 +469,7 @@
       'Severe psychological distress → psychological support/psychosexual therapy'],
     source:'EAU guidelines (international)' },
 
-  { id:'pleural-effusion', title:'Pleural effusion', category:'Respiratory', icon:'🫁',
+  { id:'pleural-effusion', title:'Pleural effusion', category:'Respiratory', icon:'🌬️',
     overview:'An abnormal collection of fluid in the pleural space, classified as transudate or exudate using Light’s criteria. It is a sign of underlying disease — most commonly heart failure (transudate) or malignancy, infection or pulmonary embolism (exudate) — and the priority is to identify the cause.',
     features:[
       'Breathlessness, pleuritic chest pain and a dry cough; may be asymptomatic and found on imaging',

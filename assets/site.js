@@ -844,7 +844,7 @@ let RGP_TOOLS = [
   {id:'__tools-spine',     label:'Consultation Spine',     meta:'Consultation structure by presentation — reference',  path:'tools/consultation-spine.html', icon:'🧬'},
   {id:'__tools-scribe',    label:'Consult Scribe',         meta:'Record → EMIS / SystmOne / SOAP note · AI', path:'tools/scribe.html',           icon:'🎙️'},
   {id:'__tools-calc',      label:'Medical Calculators',    meta:'55 scores · CV · VTE · MH · renal & more', path:'tools/calculators.html',        icon:'🧮'},
-  {id:'__tools-exam',      label:'Examinations',           meta:'Indications · technique · interpretation · red flags', path:'tools/examinations.html',  icon:'🩻'},
+  {id:'__tools-exam',      label:'Examinations',           meta:'Indications · technique · interpretation · red flags', path:'tools/examinations.html',  icon:'🦴'},
 ];
 
 // Top-level sections (promoted out of Tools, plus new modules).
@@ -878,10 +878,10 @@ RGP_TOOLS = RGP_TOOLS.filter(t => RGP_HIDDEN_TOOLS.indexOf(t.id) === -1);
 // Algorithm specialties — surfaced as the Algorithms top-nav dropdown.
 // Counts + labels mirror the section headers in tools/algorithms.html.
 const RGP_ALG_SPECIALTIES = [
-  {label:'Cardiovascular',               icon:'🫀', n:4},
-  {label:'Respiratory',                  icon:'🫁', n:3},
-  {label:'Gastroenterology & Liver',     icon:'🫃', n:16},
-  {label:"Renal, Urology & Men's Health", icon:'🫈', n:13},
+  {label:'Cardiovascular',               icon:'❤️', n:4},
+  {label:'Respiratory',                  icon:'🌬️', n:3},
+  {label:'Gastroenterology & Liver',     icon:'🤰', n:16},
+  {label:"Renal, Urology & Men's Health", icon:'🐾', n:13},
   {label:'Endocrine & Metabolic',        icon:'🦋', n:10},
   {label:'Neurology',                    icon:'🧠', n:14},
   {label:'Mental Health',                icon:'🧩', n:3},
@@ -899,12 +899,12 @@ const RGP_ALG_SPECIALTIES = [
 // Management specialties — surfaced as the Management top-nav dropdown.
 // Counts + labels mirror the section headers in tools/management.html.
 const RGP_MGMT_SPECIALTIES = [
-  {label:'Cardiovascular & Renal',          icon:'🫀', n:15},
+  {label:'Cardiovascular & Renal',          icon:'❤️', n:15},
   {label:'Endocrine & Metabolic',           icon:'🦋', n:18},
-  {label:'Respiratory',                     icon:'🫁', n:5},
+  {label:'Respiratory',                     icon:'🌬️', n:5},
   {label:'Mental Health',                   icon:'🧩', n:13},
   {label:'Neurology',                       icon:'🧠', n:17},
-  {label:'Gastroenterology',                icon:'🫃', n:15},
+  {label:'Gastroenterology',                icon:'🤰', n:15},
   {label:'Musculoskeletal & Rheumatology',  icon:'🦴', n:15},
   {label:"Women's Health",                   icon:'🌸', n:15},
   {label:"Urology & Men's Health",           icon:'🚹', n:15},
@@ -944,10 +944,10 @@ function renderTopNav(activeId){
 
   // Cases mega — by specialty (tiles, not individual topics)
   const CASE_ICONS = {
-    "Cardiovascular & Renal":"🫀",
-    "Respiratory":"🫁",
+    "Cardiovascular & Renal":"❤️",
+    "Respiratory":"🌬️",
     "Endocrine & Metabolic":"🦋",
-    "Gastroenterology":"🫃",
+    "Gastroenterology":"🤰",
     "Mental Health":"🧠",
     "Women's Health":"🌸",
     "Urology & Continence":"💧",

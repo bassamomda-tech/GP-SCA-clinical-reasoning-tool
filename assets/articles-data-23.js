@@ -80,7 +80,7 @@
       'Diagnostic uncertainty → MSK assessment'],
     source:'Clinical practice (no NICE guideline); NICE IPG311 (Extracorporeal shockwave therapy for refractory plantar fasciitis, 2009)' },
 
-  { id:'pleurisy', title:'Pleurisy', category:'Respiratory', icon:'🫁',
+  { id:'pleurisy', title:'Pleurisy', category:'Respiratory', icon:'🌬️',
     overview:'Inflammation of the pleura causing sharp, localised chest pain that is characteristically worse on breathing in and coughing. It is a symptom/sign of an underlying process — most often viral, but the crucial task is to exclude dangerous causes, especially pulmonary embolism, pneumonia, and pneumothorax.',
     features:[
       'Sharp, well-localised chest pain that is worse on inspiration, coughing, and movement (pleuritic pain), and may be eased by shallow breathing/lying on the affected side',
@@ -105,7 +105,7 @@
       'Recurrent/unexplained pleurisy or pleural effusion → respiratory (exclude TB, autoimmune disease, malignancy)'],
     source:'NICE NG158 (Venous thromboembolic diseases) / BTS guideline for pleural disease (2023)' },
 
-  { id:'pneumonia', title:'Pneumonia', category:'Respiratory', icon:'🫁',
+  { id:'pneumonia', title:'Pneumonia', category:'Respiratory', icon:'🌬️',
     overview:'Infection of the lung parenchyma, usually bacterial (commonly Streptococcus pneumoniae), causing consolidation. It ranges from mild community-acquired illness to life-threatening sepsis. The core skills are severity assessment (CRB-65), prompt antibiotics, deciding who needs admission, and recognising the cough that needs imaging for cancer.',
     features:[
       'Cough (often productive), fever, breathlessness, and pleuritic chest pain; sometimes confusion (especially in older people) and systemic upset',
@@ -130,7 +130,7 @@
       'Recurrent pneumonia (especially same site) → respiratory (exclude obstruction/malignancy)'],
     source:'NICE NG250 (Pneumonia, 2025; replaced NG138, partly replaced CG191) / NICE NG12 (updated April 2026)' },
 
-  { id:'pneumothorax', title:'Pneumothorax (collapsed lung)', category:'Respiratory', icon:'🫁',
+  { id:'pneumothorax', title:'Pneumothorax (collapsed lung)', category:'Respiratory', icon:'🌬️',
     overview:'Air in the pleural space causing the lung to collapse. It ranges from a small spontaneous pneumothorax in a young, otherwise well person to a life-threatening tension pneumothorax. The cardinal presentation is sudden pleuritic chest pain with breathlessness, and the must-not-miss is tension pneumothorax — a clinical emergency.',
     features:[
       'Sudden-onset pleuritic chest pain and breathlessness; reduced/absent breath sounds and hyper-resonance on the affected side',

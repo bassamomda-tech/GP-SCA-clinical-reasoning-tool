@@ -230,7 +230,7 @@
       'Pubic lice in a child → consider safeguarding'],
     source:'BASHH pubic lice guidance / BNF (permethrin, malathion)' },
 
-  { id:'pulmonary-embolism', title:'Pulmonary embolism (PE)', category:'Cardiovascular & Renal', icon:'🫁',
+  { id:'pulmonary-embolism', title:'Pulmonary embolism (PE)', category:'Cardiovascular & Renal', icon:'🌬️',
     overview:'Obstruction of the pulmonary arteries, usually by thrombus embolising from a deep vein thrombosis. It ranges from small subsegmental clots to massive PE causing haemodynamic collapse and death. It is common, frequently missed, and a time-critical diagnosis — so maintain a high index of suspicion.',
     features:[
       'Acute breathlessness, pleuritic chest pain, cough, and sometimes haemoptysis; tachycardia and tachypnoea are common signs',
@@ -255,7 +255,7 @@
       'Unprovoked PE → investigate for underlying cause; recurrent VTE/anticoagulation problems → haematology'],
     source:'NICE NG158 (Venous thromboembolic diseases)' },
 
-  { id:'pulmonary-hypertension', title:'Pulmonary hypertension', category:'Cardiovascular & Renal', icon:'🫁',
+  { id:'pulmonary-hypertension', title:'Pulmonary hypertension', category:'Cardiovascular & Renal', icon:'🌬️',
     overview:'Raised pressure in the pulmonary arteries, which strains the right heart and, untreated, leads to right heart failure. It is often diagnosed late because early symptoms (breathlessness, fatigue) are non-specific. It may be idiopathic (pulmonary arterial hypertension) or, more commonly, secondary to lung or left-heart disease.',
     features:[
       'Progressive exertional breathlessness and fatigue are the usual early symptoms — easily attributed to other causes, leading to delay',

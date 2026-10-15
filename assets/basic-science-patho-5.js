@@ -280,7 +280,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'HIV slowly disarms the immune commander (CD4 cells) — which is why early treatment, before the count falls, preserves a normal life.',
   links:{} },
 
-{ id:'patho-tb', domain:'Pathophysiology', system:'Infection & Immunology', icon:'🫁',
+{ id:'patho-tb', domain:'Pathophysiology', system:'Infection & Immunology', icon:'🌬️',
   title:'Tuberculosis', blurb:'Why TB can lie latent for years then reactivate.',
   mechanism:[
     '*Mycobacterium tuberculosis* is contained by the immune system in **granulomas** (latent TB). If immunity wanes (age, HIV, immunosuppression), it reactivates into active disease.',

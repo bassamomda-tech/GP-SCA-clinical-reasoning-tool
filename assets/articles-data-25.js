@@ -205,7 +205,7 @@
       'Any "white eye"/parental concern about the pupil → low threshold for urgent referral'],
     source:'NICE NG12 (updated April 2026) / paediatric ophthalmic oncology guidance' },
 
-  { id:'rheumatic-fever', title:'Rheumatic fever', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'rheumatic-fever', title:'Rheumatic fever', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'An immune-mediated multisystem illness following a group A streptococcal (usually throat) infection, which can damage the heart valves (rheumatic heart disease). It is now rare in the UK but remains a major cause of acquired heart disease globally. Recognition and prevention of recurrence (prophylaxis) protect the heart.',
     features:[
       'Occurs typically 2–4 weeks after a streptococcal sore throat, mainly in children/young people',

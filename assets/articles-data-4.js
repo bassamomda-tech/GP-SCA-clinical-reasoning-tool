@@ -6,7 +6,7 @@
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
 
-  { id:'aaa', title:'Abdominal aortic aneurysm (AAA)', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'aaa', title:'Abdominal aortic aneurysm (AAA)', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'Focal dilatation of the abdominal aorta to ≥3 cm (≥1.5× normal). Usually asymptomatic and found on screening or incidentally; the catastrophe is rupture, which is rapidly fatal. Primary care leads on screening uptake, surveillance, risk-factor control and recognising the rupture presentation.',
     features:[
       'Strongest risk factors: male sex, age >65, current/ex-smoking, hypertension, family history of AAA, and existing atherosclerotic disease',
@@ -55,7 +55,7 @@
       'Suspected endocrinopathy (acromegaly, Cushing’s) → endocrinology'],
     source:'BAD guidance' },
 
-  { id:'achalasia', title:'Achalasia', category:'Gastroenterology', icon:'🫗',
+  { id:'achalasia', title:'Achalasia', category:'Gastroenterology', icon:'🥛',
     overview:'A primary oesophageal motility disorder: failure of lower-oesophageal-sphincter relaxation with loss of peristalsis, causing progressive dysphagia to solids AND liquids, regurgitation and weight loss. Crucially, it is a diagnosis of exclusion — pseudoachalasia from oesophago-gastric cancer can mimic it exactly, so dysphagia must trigger an urgent suspected cancer pathway referral.',
     features:[
       'Dysphagia to both solids and liquids from early on (in contrast to a mechanical stricture, which affects solids first) — often slowly progressive over months/years',
@@ -205,7 +205,7 @@
       'Recurrent attacks or suspected chronic pancreatitis → gastroenterology'],
     source:'NICE NG104 (Pancreatitis) / NICE NG12 (updated April 2026)' },
 
-  { id:'ards', title:'Acute respiratory distress syndrome (ARDS)', category:'Respiratory', icon:'🫁',
+  { id:'ards', title:'Acute respiratory distress syndrome (ARDS)', category:'Respiratory', icon:'🌬️',
     overview:'A syndrome of acute, diffuse inflammatory lung injury causing non-cardiogenic pulmonary oedema, refractory hypoxaemia and bilateral infiltrates. It is a critical-care diagnosis arising from a precipitant such as sepsis, pneumonia, aspiration or trauma. Primary-care relevance is recognising the rapidly deteriorating, hypoxic patient who needs emergency transfer.',
     features:[
       'Acute onset (within ~1 week of a known insult) of severe breathlessness, tachypnoea and profound hypoxaemia that is poorly responsive to oxygen',
@@ -406,7 +406,7 @@
       'Suspected co-existing autism/ADHD driving anxiety → neurodevelopmental assessment pathway'],
     source:'NICE CG159 (Social anxiety disorder, including children and young people)' },
 
-  { id:'asbestosis', title:'Asbestosis', category:'Respiratory', icon:'🫁',
+  { id:'asbestosis', title:'Asbestosis', category:'Respiratory', icon:'🌬️',
     overview:'Chronic diffuse interstitial pulmonary fibrosis caused by inhaled asbestos fibres, after a long latency (typically 15–40 years). It is one of several asbestos-related diseases; the dominant clinical concern is the strong associated risk of lung cancer and mesothelioma, making the cancer pathway central.',
     features:[
       'Progressive exertional breathlessness and a dry cough years to decades after significant asbestos exposure (e.g. construction, shipbuilding, lagging, demolition)',

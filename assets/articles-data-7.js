@@ -305,7 +305,7 @@
       'Established neurovascular deficit → emergency'],
     source:'BOAST (orthopaedic) guidance' },
 
-  { id:'congenital-heart-disease', title:'Congenital heart disease', category:'Cardiovascular & Renal', icon:'🫀',
+  { id:'congenital-heart-disease', title:'Congenital heart disease', category:'Cardiovascular & Renal', icon:'❤️',
     overview:'Structural heart abnormalities present from birth — the commonest group of congenital anomalies. They range from small defects that close spontaneously to complex, life-threatening lesions. With modern care most children survive to adulthood, creating a growing population of adults with congenital heart disease (ACHD) needing lifelong specialist follow-up.',
     features:[
       'Acyanotic (left-to-right shunts/obstructions): ventricular and atrial septal defects, patent ductus arteriosus, coarctation, aortic/pulmonary stenosis — may present with a murmur, heart failure, or poor feeding/faltering growth',
@@ -480,7 +480,7 @@
       'Young infant, recurrent/atypical croup, or significant comorbidity → paediatric assessment'],
     source:'BNFC (dexamethasone) / Clinical practice summary' },
 
-  { id:'cystic-fibrosis', title:'Cystic fibrosis', category:'Respiratory', icon:'🫁',
+  { id:'cystic-fibrosis', title:'Cystic fibrosis', category:'Respiratory', icon:'🌬️',
     overview:'An autosomal-recessive multisystem disease caused by CFTR gene mutations, producing thick secretions that damage the lungs, pancreas and other organs. Most UK cases are detected by newborn screening. Care is highly specialised; life expectancy has risen markedly, including with new CFTR-modulator drugs.',
     features:[
       'Respiratory: chronic productive cough, recurrent chest infections, bronchiectasis, and progressive obstructive lung disease with chronic Pseudomonas colonisation',

@@ -14,8 +14,8 @@
     'Neurology & Mental health','Musculoskeletal','Haematology','Infection & Immunology',
   ];
   const SYSTEM_ICON = {
-    'Cardiovascular':'🫀','Respiratory':'🫁','Endocrine & Metabolic':'🧬','Renal':'🫘',
-    'Gastrointestinal':'🫃','Neurology & Mental health':'🧠','Musculoskeletal':'🦴',
+    'Cardiovascular':'❤️','Respiratory':'🌬️','Endocrine & Metabolic':'🧬','Renal':'💧',
+    'Gastrointestinal':'🤰','Neurology & Mental health':'🧠','Musculoskeletal':'🦴',
     'Haematology':'🩸','Infection & Immunology':'🦠',
   };
 

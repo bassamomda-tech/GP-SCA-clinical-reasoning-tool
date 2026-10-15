@@ -403,7 +403,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
       { finding:'Positive Barlow/Ortolani, limited hip abduction, leg-length or skin-crease asymmetry; breech/FHx as risk', action:'refer', detail:'**Hip ultrasound** ± orthopaedics for DDH (urgent if frank clunk).' },
       { finding:'Soft hip "clicks" without clunk, full abduction', action:'reassure', detail:'Usually benign — document; safety-net for limp/asymmetry later.' },
     ]},
-    { group:'🫃 Hernias, umbilicus & genitalia', items:[
+    { group:'🤰 Hernias, umbilicus & genitalia', items:[
       { finding:'Umbilical hernia, reducible; umbilical granuloma', action:'reassure', detail:'Most umbilical hernias resolve by 2–4 years; granuloma — topical salt/silver nitrate. Review.' },
       { finding:'Inguinal hernia (esp. preterm) — reducible', action:'refer', detail:'Paediatric surgery (higher incarceration risk in infants) — relatively prompt.' },
       { finding:'Irreducible, tender, firm or discoloured inguinal/umbilical swelling; vomiting', action:'urgent', detail:'**Incarcerated hernia → same-day** paediatric surgery / A&E.' },
@@ -411,7 +411,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
       { finding:'Undescended testis at 6–8 weeks (unilateral)', action:'followup', detail:'Re-examine at 4–5 months (corrected age); if still undescended, refer to paediatric surgery/urology to be seen by 6 months (NICE CKS). Bilateral undescended testes at 6–8 weeks → urgent paediatric referral, seen within 2 weeks.' },
       { finding:'Bilateral undescended testes / any suspected ambiguous genitalia; hypospadias', action:'urgent', detail:'Bilateral UDT or ambiguity → **urgent senior/endocrine** review (exclude CAH); hypospadias → no circumcision, refer urology.' },
     ]},
-    { group:'🫁 Breathing, noises & snoring', items:[
+    { group:'🌬️ Breathing, noises & snoring', items:[
       { finding:'Nasal congestion / snuffles, intermittent snoring in a thriving, well baby', action:'reassure', detail:'Common; saline drops; reassure. Review if feeding/sleep affected.' },
       { finding:'Stridor that is positional and mild (?laryngomalacia), thriving', action:'followup', detail:'Usually self-limiting — monitor feeding/growth; refer ENT if severe or faltering growth.' },
       { finding:'Persistent tachypnoea, recurrent cyanosis, sweating/breathless on feeds, severe stridor or apnoea', action:'urgent', detail:'?Cardiac/respiratory cause → urgent paediatric/cardiology assessment.' },

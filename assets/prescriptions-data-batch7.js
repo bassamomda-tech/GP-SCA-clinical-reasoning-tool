@@ -67,7 +67,7 @@
       { name: 'Dietary deficiency (vegan): oral cyanocobalamin', dose: '50\u20131000 micrograms', freq: 'OD', route: 'PO', days: 'Ongoing / correct diet' },
     ],
     altRegimens: [
-      { label: 'Pernicious anaemia / malabsorption', drugs: 'Lifelong IM hydroxocobalamin maintenance every 2–3 months (neuro: 2-monthly) (BNF).' },
+      { label: 'Pernicious anaemia / malabsorption', drugs: 'Lifelong IM hydroxocobalamin maintenance every 2–3 months (neuro: 2-monthly) (NICE/SPC).' },
       { label: 'Dietary (vegan/vegetarian)', drugs: 'Oral B12 supplement and/or fortified foods; IM if symptomatic/anaemic until corrected.' },
       { label: 'Combined B12 + folate deficiency', drugs: 'Treat B12 first, then add folic acid 5 mg OD.' },
     ],
@@ -85,7 +85,7 @@
     ],
     emisText: `B12 deficiency:
 - Combined with folate \u2192 treat B12 FIRST.
-- No neuro: hydroxocobalamin 1 mg IM 3x/week for 2 weeks, then 1 mg IM every 2-3 months (lifelong if PA/malabsorption) (BNF).
+- No neuro: hydroxocobalamin 1 mg IM 3x/week for 2 weeks, then 1 mg IM every 2-3 months (lifelong if PA/malabsorption) (NICE/SPC).
 - Neuro involvement: 1 mg IM alternate days until no further improvement, then 2-monthly.
 - Dietary/vegan: oral cyanocobalamin 50-1000 mcg OD / fortified foods.
 - Check PA antibodies; recheck FBC; watch K+ early; check ferritin.`,
@@ -313,7 +313,7 @@
     category: 'Mental Health',
     eyebrow: 'De-escalate first · cause-led · drugs last resort',
     indication: 'Acute agitation/behavioural disturbance. ALWAYS look for and treat an underlying cause (delirium, hypoxia, hypoglycaemia, pain, infection, intoxication/withdrawal, urinary retention). De-escalation is first-line; medication is a last resort at the lowest effective dose. Covers delirium-related and palliative agitation.',
-    contraindications: 'Antipsychotics in dementia/delirium: increased stroke/death risk \u2014 use only if severe distress/risk, lowest dose, shortest time. AVOID antipsychotics in Parkinson\u2019s/Lewy body dementia (use lorazepam, or quetiapine/clozapine if essential). Benzodiazepines can worsen delirium (reserve for alcohol/benzo withdrawal, seizures, or where antipsychotics contraindicated). Haloperidol: QT prolongation \u2014 ECG before use where possible, avoid with other QT-prolonging drugs/hypokalaemia (BNF).',
+    contraindications: 'Antipsychotics in dementia/delirium: increased stroke/death risk \u2014 use only if severe distress/risk, lowest dose, shortest time. AVOID antipsychotics in Parkinson\u2019s/Lewy body dementia (use lorazepam, or quetiapine/clozapine if essential). Benzodiazepines can worsen delirium (reserve for alcohol/benzo withdrawal, seizures, or where antipsychotics contraindicated). Haloperidol: QT prolongation \u2014 ECG before use where possible, avoid with other QT-prolonging drugs/hypokalaemia (NICE/SPC).',
     duration: 'Single/short-term; review urgently',
     drugs: [
       { name: 'De-escalation + treat underlying cause (FIRST)', dose: '\u2014', freq: '\u2014', route: '\u2014', days: 'Always first' },

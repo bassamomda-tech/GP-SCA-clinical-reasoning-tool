@@ -2,7 +2,7 @@
 window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
 
 {
-  id:'abdominal', system:'Abdominal & GI', icon:'🫃', title:'Abdominal examination',
+  id:'abdominal', system:'Abdominal & GI', icon:'🤰', title:'Abdominal examination',
   blurb:'Peripheral signs → inspection → palpation (light/deep) → percussion → auscultation.',
   indications:['Abdominal pain, distension, mass','Altered bowel habit, weight loss','Jaundice / suspected liver disease','GI bleeding, suspected organomegaly or ascites'],
   equipment:['Couch laid flat, one pillow','Stethoscope','Expose xiphisternum to pubis (drape genitalia)'],

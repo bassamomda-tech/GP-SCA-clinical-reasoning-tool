@@ -130,7 +130,7 @@
       'Non-visible haematuria with risk factors → investigate/refer per local haematuria pathway'],
     source:'NICE NG12 (updated April 2026) / renal cancer guidance' },
 
-  { id:'pyelonephritis', title:'Kidney infection (pyelonephritis)', category:'Urology', icon:'🫘',
+  { id:'pyelonephritis', title:'Kidney infection (pyelonephritis)', category:'Urology', icon:'💧',
     overview:'Infection of the upper urinary tract (kidney), usually ascending from the bladder. It is more serious than a lower UTI — it can cause sepsis, renal abscess and lasting kidney damage. The key tasks are recognising it (loin pain, fever, systemic illness), treating promptly, and identifying who needs admission or imaging.',
     features:[
       'Loin/flank pain and tenderness, fever and rigors, and systemic illness (nausea/vomiting, malaise) — often with lower-urinary-tract symptoms (dysuria, frequency)',
@@ -155,7 +155,7 @@
       'Renal/perinephric abscess → urgent urology'],
     source:'NICE NG111 (Pyelonephritis — acute, antimicrobial prescribing)' },
 
-  { id:'kidney-stones', title:'Kidney stones (renal and ureteric stones)', category:'Urology', icon:'🪨',
+  { id:'kidney-stones', title:'Kidney stones (renal and ureteric stones)', category:'Urology', icon:'💎',
     overview:'Crystalline stones forming in the urinary tract, causing severe pain (renal/ureteric colic) when they obstruct. Most pass spontaneously, but the priorities are effective analgesia, imaging to confirm and assess obstruction, and recognising the emergency of an infected, obstructed kidney — plus preventing recurrence.',
     features:[
       'Renal/ureteric colic: sudden, severe, colicky loin-to-groin pain, with the patient typically restless and unable to get comfortable, often with nausea/vomiting',

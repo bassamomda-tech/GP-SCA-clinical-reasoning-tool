@@ -247,7 +247,7 @@
       'Diagnostic doubt — low platelets, atypical rash, or unwell child → urgent assessment to exclude meningococcal sepsis and ITP'],
     source:'SHARE IgA vasculitis recommendations (international, 2019) / Clinical practice summary' },
 
-  { id:'hiatus-hernia', title:'Hiatus hernia', category:'Gastroenterology', icon:'🫃',
+  { id:'hiatus-hernia', title:'Hiatus hernia', category:'Gastroenterology', icon:'🤰',
     overview:'Protrusion of part of the stomach through the diaphragmatic hiatus into the thorax. Most are sliding hernias, are often asymptomatic or associated with reflux, and are managed as for GORD. Rolling (para-oesophageal) hernias carry a small risk of obstruction or strangulation.',
     features:[
       'Frequently incidental; may cause reflux symptoms — heartburn, regurgitation, worse lying flat or bending',
@@ -356,7 +356,7 @@
       'Progressive disability and swallowing/nutrition concerns → MDT and palliative care as appropriate'],
     source:'Clinical genetics guidance' },
 
-  { id:'ipf', title:'Idiopathic pulmonary fibrosis (IPF)', category:'Respiratory', icon:'🫁',
+  { id:'ipf', title:'Idiopathic pulmonary fibrosis (IPF)', category:'Respiratory', icon:'🌬️',
     overview:'A progressive fibrosing interstitial lung disease of unknown cause, typically affecting older adults (especially ex-smokers, men), with a usual interstitial pneumonia (UIP) pattern and a poor prognosis. Early recognition and referral enable antifibrotic treatment and transplant assessment.',
     features:[
       'Progressive exertional breathlessness and a persistent dry cough over months',

@@ -28,7 +28,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-anaphylaxis', pathoLabel:'Anaphylaxis', case:'cases/allergic-rhinitis.html', caseLabel:'Allergic rhinitis' },
 },
 {
-  id:'pharma-montelukast', domain:'Pharmacology', class:'Respiratory', icon:'🫁',
+  id:'pharma-montelukast', domain:'Pharmacology', class:'Respiratory', icon:'🌬️',
   title:'Leukotriene receptor antagonists', blurb:'Montelukast — an oral add-on in asthma, particularly allergic or exercise-induced.',
   examples:['Montelukast (oral, evening)'],
   moa:[
@@ -49,7 +49,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-asthma', pathoLabel:'Asthma' },
 },
 {
-  id:'pharma-theophylline', domain:'Pharmacology', class:'Respiratory', icon:'🫁',
+  id:'pharma-theophylline', domain:'Pharmacology', class:'Respiratory', icon:'🌬️',
   title:'Theophylline', blurb:'An old oral bronchodilator with a narrow therapeutic index and many interactions.',
   examples:['Theophylline, aminophylline'],
   moa:[
@@ -70,7 +70,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-copd', pathoLabel:'COPD' },
 },
 {
-  id:'pharma-carbocisteine', domain:'Pharmacology', class:'Respiratory', icon:'🫁',
+  id:'pharma-carbocisteine', domain:'Pharmacology', class:'Respiratory', icon:'🌬️',
   title:'Mucolytics (carbocisteine)', blurb:'Thin tenacious sputum to ease clearance in chronic productive cough/COPD.',
   examples:['Carbocisteine'],
   moa:[

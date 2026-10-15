@@ -18,7 +18,7 @@
     category: 'Neurology & Pain',
     eyebrow: 'Stepwise non-opioid → opioid · review & deprescribe',
     indication: 'Stepwise analgesia for nociceptive pain (WHO-style ladder), adapted for primary care. For chronic primary pain, NICE NG193 (2021) advises AGAINST initiating opioids/NSAIDs/paracetamol/gabapentinoids — favour exercise, CBT/ACT, antidepressant. Use this ladder mainly for ongoing nociceptive (e.g. OA, mechanical) pain.',
-    contraindications: 'NSAIDs: GI/renal/cardiovascular risk, elderly, anticoagulants. Opioids: limited efficacy in chronic pain, dependence/tolerance — set a clear goal and review date; avoid escalating doses. Codeine: ultra-rapid CYP2D6 metabolisers, children, breastfeeding. Paracetamol: consider reduced dose (max 3 g/day or 15 mg/kg) if <50 kg, hepatic impairment, chronic alcohol excess or malnutrition (BNF).',
+    contraindications: 'NSAIDs: GI/renal/cardiovascular risk, elderly, anticoagulants. Opioids: limited efficacy in chronic pain, dependence/tolerance — set a clear goal and review date; avoid escalating doses. Codeine: ultra-rapid CYP2D6 metabolisers, children, breastfeeding. Paracetamol: consider reduced dose (max 3 g/day or 15 mg/kg) if <50 kg, hepatic impairment, chronic alcohol excess or malnutrition (NICE/SPC).',
     duration: 'Lowest effective dose, shortest time; scheduled review',
     drugs: [
       { name: 'Step 1: Paracetamol', dose: '1 g', freq: 'QDS', route: 'PO', days: 'Regular/PRN' },
