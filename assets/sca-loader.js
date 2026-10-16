@@ -45,7 +45,7 @@
     'sca-cases66.js?v=4', 'sca-cases67.js?v=4', 'sca-cases68.js?v=3', 'sca-cases69.js?v=3',
     'sca-cases70.js?v=4', 'sca-cases71.js?v=3', 'sca-cases72.js?v=4', 'sca-cases73.js?v=3',
     'sca-cases74.js?v=4', 'sca-cases75.js?v=6', 'sca-cases76.js?v=4', 'sca-cases77.js?v=4',
-    'sca-cases78.js?v=7', 'sca-cases79.js?v=4', 'sca-cases80.js?v=5', 'sca-cases-new-p.js?v=1', 'sca-cases-new-q.js?v=1', 'sca-cases-new-r.js?v=1', 'sca-cases-new-s.js?v=1', 'sca-cases-new-t.js?v=1', 'sca-setting-neutral.js?v=1',
+    'sca-cases78.js?v=7', 'sca-cases79.js?v=4', 'sca-cases80.js?v=5', 'sca-cases-new-p.js?v=1', 'sca-cases-new-q.js?v=1', 'sca-cases-new-r.js?v=1', 'sca-cases-new-s.js?v=1', 'sca-cases-new-t.js?v=1', 'sca-setting-neutral.js?v=1', 'sca-blueprint.js?v=1',
     'sca-models.js?v=11', 'sca-sc-tasks-extra.js?v=2', 'sca-enrich.js?v=17', 'sca-knowledge.js?v=10', 'sca-pitfalls.js?v=4',
     'sca-addons-1.js?v=6', 'sca-addons-2.js?v=5', 'sca-addons-3.js?v=7', 'sca-addons-4.js?v=8',
     'sca-addons-5.js?v=6', 'sca-addons-6.js?v=5', 'sca-addons-7.js?v=6', 'sca-addons-8.js?v=4',

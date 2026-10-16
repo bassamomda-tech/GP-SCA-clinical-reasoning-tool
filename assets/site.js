@@ -1147,7 +1147,7 @@ function renderTopNav(activeId){
           <span>Clinical Compass</span>
           <svg class="rgp-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
-        <a class="rgp-nav-btn rgp-nav-link ${activeId==='__ask'?'is-active':''}" data-navkey="ask" href="${PRE}pages/ask.html" title="Ask any clinical question in plain English — answered from the library, then NICE &amp; the BNF, with links to the matching pathway, protocol or case.">
+        <a class="rgp-nav-btn rgp-nav-link ${activeId==='__ask'?'is-active':''}" data-navkey="ask" href="${PRE}pages/ask.html" title="Ask any clinical question in plain English — answered from the library, then NICE, MHRA &amp; SPCs, with links to the matching pathway, protocol or case.">
           <span class="rgp-nav-sect-ic">💬</span>
           <span>Ask</span>
         </a>

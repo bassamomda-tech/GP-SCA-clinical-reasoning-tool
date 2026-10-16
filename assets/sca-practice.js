@@ -123,6 +123,18 @@
   })();
   function famOf(c){ return LIBFAM[c.id] || 'Other'; }
 
+  /* Blueprint filter keys (assets/sca-blueprint.js). Only themes that do not spoil the case are offered. */
+  const BP_SAFE_THEMES = ['results','prescribing','driving & work','long-term review','health promotion','end of life'];
+  const BP_DIFF = { 1:'Straightforward', 2:'Typical', 3:'Hard' };
+  const BP_LIFE = [['child','Child (under 13)'],['young person','Young person (13–17)'],['adult','Adult'],['older adult','Older adult']];
+  function bpOf(c){ return (c.meta && c.meta.blueprint) || null; }
+  function bpKeys(c){
+    const b = bpOf(c); if (!b) return [];
+    const k = ['d:' + b.difficulty, 'l:' + b.lifeStage];
+    if (b.thirdParty) k.push('p:third');
+    (b.themes || []).forEach(x => { if (BP_SAFE_THEMES.indexOf(x) > -1) k.push('t:' + x); });
+    return k;
+  }
   function renderCaseGrid(){
     const grid = $('#caseGrid');
     if(!document.getElementById('scaLockCss')){ const st=document.createElement('style'); st.id='scaLockCss'; st.textContent='.case-tile.ct-locked{opacity:.6}.case-tile.ct-locked:hover{opacity:.85}.case-tile.ct-locked .ct-cta{color:#b45309;font-weight:700}.ct-free{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#fff;background:#0c4a47;border-radius:999px;padding:3px 8px;margin-right:6px;vertical-align:1px}'; document.head.appendChild(st); }
@@ -134,7 +146,7 @@
       const spec = specOf(c), fam = famOf(c);
       const locked = caseLocked(c.id);
       return `
-      <button class="case-tile${locked?' ct-locked':''}" data-id="${c.id}" data-ceg="${(c.ceg||[]).map(escapeHtml).join('|')}" data-spec="${escapeHtml(spec)}" data-fam="${escapeHtml(fam)}">
+      <button class="case-tile${locked?' ct-locked':''}" data-id="${c.id}" data-ceg="${(c.ceg||[]).map(escapeHtml).join('|')}" data-bp="${escapeHtml(bpKeys(c).join('|'))}" data-spec="${escapeHtml(spec)}" data-fam="${escapeHtml(fam)}">
         <span class="ct-type" data-type="${c.type}">${typeLbl}</span>
         <h3>${escapeHtml(UI.title(c))}</h3>
         <div class="ct-meta">${escapeHtml(UI.who(c))}</div>
@@ -216,6 +228,21 @@
     CASES.forEach(c => (c.ceg||[]).forEach(g => { cegCounts[g] = (cegCounts[g]||0) + 1; }));
     const cegList = Object.keys(cegCounts).sort();
 
+    // Blueprint sections: difficulty, patient, someone else on the line, topic
+    const bpCount = {};
+    CASES.forEach(c => bpKeys(c).forEach(k => { bpCount[k] = (bpCount[k]||0) + 1; }));
+    const bpSec = (title, items) => {
+      const rows = items.filter(it => bpCount[it[0]]);
+      return rows.length ? '<div class="dir-rail-sec"><div class="dir-rail-h">' + title + '</div><div class="dir-rail-list">' +
+        rows.map(it => '<label class="dir-check"><input type="checkbox" data-bp-filter="' + it[0].charAt(0) + '" value="' + escapeHtml(it[0]) + '">' +
+          '<span class="dir-check-box"></span><span class="dir-check-label">' + escapeHtml(it[1]) + '</span>' +
+          '<span class="dir-check-n">' + bpCount[it[0]] + '</span></label>').join('') + '</div></div>' : '';
+    };
+    const bpRail = () =>
+      bpSec('Difficulty', [1,2,3].map(d => ['d:' + d, BP_DIFF[d]])) +
+      bpSec('Patient', BP_LIFE.map(l => ['l:' + l[0], l[1]]).concat([['p:third', 'Someone else speaking (parent, carer, relative)']])) +
+      bpSec('Topic', BP_SAFE_THEMES.map(x => ['t:' + x, x.charAt(0).toUpperCase() + x.slice(1)]));
+
     const layout = document.createElement('div'); layout.className = 'dir-layout';
     const rail = document.createElement('aside'); rail.className = 'dir-rail';
     const main = document.createElement('div'); main.className = 'dir-main';
@@ -233,6 +260,7 @@
           '<span class="dir-check-box"></span><span class="dir-check-label">'+t[1]+'</span>' +
           '<span class="dir-check-n">'+counts[t[0]]+'</span></label>').join('') +
       '</div></div>' +
+      bpRail() +
       (cegList.length ? '<div class="dir-rail-sec"><div class="dir-rail-h">RCGP experience group</div><div class="dir-rail-list">' +
         cegList.map(g => '<label class="dir-check dir-check-ceg"><input type="checkbox" data-ceg-filter value="'+escapeHtml(g)+'">' +
           '<span class="dir-check-box"></span><span class="dir-check-label">'+escapeHtml(g)+'</span>' +
@@ -257,15 +285,19 @@
 
     function typeOf(tile){ const b = tile.querySelector('.ct-type'); return b ? b.dataset.type : ''; }
     function apply(){
-      const selT = new Set(Array.prototype.slice.call(rail.querySelectorAll('.dir-check input:not([data-ceg-filter]):checked')).map(i => i.value));
+      const selT = new Set(Array.prototype.slice.call(rail.querySelectorAll('.dir-check input:not([data-ceg-filter]):not([data-bp-filter]):checked')).map(i => i.value));
+      const selB = {};
+      rail.querySelectorAll('.dir-check input[data-bp-filter]:checked').forEach(i => { (selB[i.dataset.bpFilter] = selB[i.dataset.bpFilter] || new Set()).add(i.value); });
       const selG = new Set(Array.prototype.slice.call(rail.querySelectorAll('.dir-check input[data-ceg-filter]:checked')).map(i => i.value));
       tiles.forEach(t => {
         const okT = selT.size === 0 || selT.has(typeOf(t));
         const groups = (t.dataset.ceg || '').split('|');
         const okG = selG.size === 0 || groups.some(g => selG.has(g));
-        t.style.display = (okT && okG) ? '' : 'none';
+        const keys = (t.dataset.bp || '').split('|');
+        const okB = Object.keys(selB).every(s => keys.some(k => selB[s].has(k)));
+        t.style.display = (okT && okG && okB) ? '' : 'none';
       });
-      const n = selT.size + selG.size;
+      const n = selT.size + selG.size + Object.keys(selB).reduce((s, k) => s + selB[k].size, 0);
       reset.hidden = n === 0;
       const tn = toggle.querySelector('.n');
       tn.hidden = n === 0; tn.textContent = n;

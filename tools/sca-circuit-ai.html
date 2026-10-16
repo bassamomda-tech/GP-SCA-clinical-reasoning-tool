@@ -142,7 +142,8 @@
         </div>
         <div class="lbl">2 · Case mix</div>
         <div class="cc-seg" id="mixSeg">
-          <button data-mix="random" class="sel">Random</button>
+          <button data-mix="blueprint" class="sel">Exam blueprint</button>
+          <button data-mix="random">Random</button>
           <button data-mix="weak">My weak groups</button>
         </div>
         <div class="lbl">3 · Options</div>
@@ -216,7 +217,7 @@
 <script src="../assets/site.js?v=107"></script>
 <script src="../assets/tts-voice.js?v=1"></script>
 <!-- the full 312-case library, same files and order as The Hot Seat -->
-<script src="../assets/sca-loader.js?v=8"></script>
+<script src="../assets/sca-loader.js?v=9"></script>
 <script>
 (function(){
   'use strict';
@@ -235,7 +236,7 @@
       d.innerHTML='\ud83d\udd13 <b style="color:#0c4a47">Free plan:</b> your circuit draws from the 5 free sample cases. <a href="../index.html#subscriptions" style="color:#0c4a47;font-weight:700">Unlock all 312 \u2192</a>'; h.insertAdjacentElement('afterend', d); }
   }
 
-  let nCases=3, mix='random', strict=true;
+  let nCases=3, mix='blueprint', strict=true;
   let order=[], idx=0, phase='setup', timerId=null, remain=0, busy=false, transcript=[], results=[];
 
   // ---- setup segments ----
@@ -256,6 +257,8 @@
   function pickOrder(){
     let pool=ALL.slice();
     if(mix==='weak'){ const wg=weakGroups(); if(wg.size){ const w=pool.filter(c=>(c.ceg||c.groups||[]).some(g=>wg.has(g))); if(w.length>=nCases) pool=w; } }
+    /* Exam blueprint (default): every experience group across a 12-case run, video/telephone mix, no body system twice */
+    if(mix==='blueprint' && window.SCA_BLUEPRINT) return window.SCA_BLUEPRINT.pick(pool, nCases, {});
     for(let i=pool.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
     return pool.slice(0, Math.min(nCases, pool.length));
   }
@@ -410,7 +413,7 @@
     if(interId){ clearInterval(interId); interId=null; }
     phase='done'; $('#run').classList.add('hidden'); $('#report').classList.remove('hidden');
     // wait briefly for any pending marks
-    $('#repSub').textContent=order.length+' cases · '+(mix==='weak'?'weak-group mix':'random mix');
+    $('#repSub').textContent=order.length+' cases · '+(mix==='weak'?'weak-group mix':mix==='blueprint'?'exam blueprint mix':'random mix');
     let tries=0; while(results.some(r=>r&&r.pending) && tries<20){ await new Promise(r=>setTimeout(r,400)); tries++; }
     renderReport();
     persist();

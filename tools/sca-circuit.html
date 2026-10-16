@@ -72,6 +72,25 @@
 .stem-k{ flex-shrink:0; width:110px; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--muted); padding-top:2px; }
 .stem-v{ flex:1; font-size:13.5px; line-height:1.55; color:var(--ink); }
 
+.cc-lbl{ font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:4px 0 8px; }
+.cc-opts{ display:flex; flex-wrap:wrap; gap:8px 18px; margin-bottom:16px; font-size:13.5px; color:var(--ink-2); }
+.cc-opt{ display:flex; gap:7px; align-items:center; cursor:pointer; }
+.cc-opt input{ width:16px; height:16px; accent-color:#0c4a47; }
+.cc-preview{ margin-top:18px; border-top:1px solid var(--line); padding-top:16px; }
+.cc-pv-h{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:19px; margin-bottom:10px; }
+.cc-pv-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin-bottom:12px; }
+.cc-pv-tile{ border:1px solid var(--line); border-radius:11px; padding:10px 12px; background:#f8fafc; }
+.cc-pv-tile .v{ font-family:'Source Serif 4',Georgia,serif; font-size:22px; font-weight:600; color:#0c4a47; }
+.cc-pv-tile .l{ font-size:11.5px; color:var(--muted); }
+.cc-pv-groups{ display:flex; flex-wrap:wrap; gap:6px; }
+.cc-pv-g{ font-size:12px; border-radius:999px; padding:4px 10px; border:1px solid #cfe3df; background:#ecf5f3; color:#0c4a47; font-weight:600; }
+.cc-pv-g.miss{ background:#fff; color:var(--muted); border-color:var(--line); font-weight:500; text-decoration:line-through; }
+.cc-pv-note{ font-size:12.5px; color:var(--muted); margin:10px 0 12px; }
+.cc-pv-btns{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.cc-pv-btns .cc-skip{ margin-top:0; }
+.cc-phase.brk{ background:#eef2ff; color:#3730a3; border:1px solid #c7d2fe; }
+.cc-list a small{ margin-left:auto; font-weight:500; color:var(--muted); font-size:12px; text-align:right; }
+.cc-list a .t{ font-size:11px; font-weight:700; color:var(--muted); text-transform:uppercase; letter-spacing:.05em; }
 /* Done */
 .cc-done{ display:none; }
 .cc-done.on{ display:block; }
@@ -95,22 +114,40 @@
       <div class="tool-head">
         <div class="tool-eyebrow">Reasoning GP · Exam conditions</div>
         <h1>Mock exam <em>circuit</em></h1>
-        <p>The real diet is a relay, not a sprint: cases arrive back-to-back with a 3-minute records window between them, and a bad station must not bleed into the next. This runs our Hot Seat cases under true exam timing — no pause button, no second look.</p>
+        <p>The real diet is a relay, not a sprint: cases arrive back-to-back with a 3-minute records window between them, and a bad station must not bleed into the next. This runs our Hot Seat cases under true exam timing, with each mock drawn to the exam blueprint: every RCGP experience group, a mix of video and telephone, children and older adults, and no body system twice.</p>
       </div>
 
       <div class="cc-setup" id="setup">
-        <h2>Build your circuit</h2>
+        <h2>Build your mock exam</h2>
+        <div class="cc-lbl">1 · Length</div>
         <div class="cc-len" id="lenPick">
-          <button data-n="3" class="sel">3 cases<small>~45 min · lunchtime drill</small></button>
-          <button data-n="6">6 cases<small>~90 min · half diet</small></button>
-          <button data-n="99">Full bank<small>~3 h · all 12 cases</small></button>
+          <button data-n="12" class="sel">12 cases<small>Full exam · about 3 hours</small></button>
+          <button data-n="6">6 cases<small>Half exam · about 1½ hours</small></button>
+          <button data-n="3">3 cases<small>About 45 minutes</small></button>
+        </div>
+        <div class="cc-lbl">2 · Case mix</div>
+        <div class="cc-len" id="mixPick">
+          <button data-mix="exam" class="sel">Exam blueprint<small>Spread like a real exam</small></button>
+          <button data-mix="harder">Harder<small>More high-risk and complex cases</small></button>
+        </div>
+        <div class="cc-lbl">3 · Options</div>
+        <div class="cc-opts">
+          <label class="cc-opt"><input type="checkbox" id="optFresh" checked> Leave out cases from my earlier mocks</label>
+          <label class="cc-opt"><input type="checkbox" id="optSound" checked> Sound at 2 minutes left and at time</label>
+          <label class="cc-opt"><input type="checkbox" id="optBreak" checked> Break after case 6 (12-case mock)</label>
         </div>
         <div class="cc-rules">
-          <b>Exam rules apply.</b> Each case: <b>3 minutes</b> with the medical record, then <b>12 minutes</b> consulting — speak out loud, to the empty chair or a study partner. The clock does not stop. When the buzzer goes, the next records appear, ready or not. Jot your domain grades on paper between cases if you can; you'll log them properly at the end.
+          <b>Exam rules apply.</b> Each case: <b>3 minutes</b> with the records, then <b>12 minutes</b> consulting. Speak out loud, to an empty chair or a study partner. The clock does not stop; when time is up the next records appear, ready or not. Jot your grades on paper between cases; you mark each case properly at the end.
         </div>
-        <button class="cc-start" id="startBtn">Start the circuit →</button>
+        <button class="cc-start" id="drawBtn">Draw my cases →</button>
+        <div class="cc-preview" id="preview" hidden>
+          <div class="cc-pv-h">Your mock exam</div>
+          <div class="cc-pv-grid" id="pvGrid"></div>
+          <div class="cc-pv-groups" id="pvGroups"></div>
+          <p class="cc-pv-note">The cases themselves stay hidden until each one starts, as in the exam. Struck-through groups are not in this draw.</p>
+          <div class="cc-pv-btns"><button class="cc-start" id="startBtn">Start the mock exam →</button><button class="cc-skip" id="redrawBtn">Draw again</button></div>
+        </div>
       </div>
-
       <div class="cc-run" id="run">
         <div class="cc-top">
           <div class="cc-prog" id="prog"></div>
@@ -118,15 +155,16 @@
             <span class="cc-phase read" id="phase">Reading</span>
             <span class="cc-clock" id="clock">3:00</span>
           </div>
-          <button class="cc-quit" id="quitBtn">Abandon circuit</button>
+          <button class="cc-quit" id="quitBtn">Abandon mock</button>
         </div>
         <div class="cc-stage" id="stage"></div>
       </div>
 
       <div class="cc-done" id="doneBox">
         <div class="cc-done-card">
-          <h2>Circuit complete</h2>
+          <h2>Mock exam complete</h2>
           <p>The most valuable ten minutes of a mock happen now, while the consultations are still warm. Grade each case against the real domains before the memory smooths itself over — candidates consistently remember their performance as better than it was.</p>
+          <div class="cc-pv-groups" id="doneGroups" style="margin-top:12px"></div>
           <div class="cc-list" id="doneList"></div>
           <p style="margin-top:14px"><a href="sca-weakspots.html" style="color:var(--teal);font-weight:600">Then check My Readiness →</a> to see which experience groups and domains need the next block of practice.</p>
         </div>
@@ -224,46 +262,96 @@
 <script src="../assets/sca-cases-new-s.js?v=1"></script>
 <script src="../assets/sca-cases-new-t.js?v=1"></script>
 <script src="../assets/sca-setting-neutral.js?v=1"></script>
+<script src="../assets/sca-blueprint.js?v=1"></script>
 <script>
 (function(){
   'use strict';
   const $ = q => document.querySelector(q);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+  const BP = window.SCA_BLUEPRINT;
+  const UI = window.SCA_UI || { title: c => String(c.title || '').replace(/\s*\([^()]*\)\s*$/, '') };
 
   const CASES = (window.SCA_CASES || []).map(c => Object.assign({}, c, (window.SCA_EXTRAS || {})[c.id] || {}));
-  /* Free tier: circuit draws only from the 5 sample cases */
-  if (window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier()){
+  /* Free tier: the mock draws only from the 5 sample cases */
+  const free = !!(window.RGP_PAYWALL && RGP_PAYWALL.isFreeTier && RGP_PAYWALL.isFreeTier());
+  if (free){
+    const total = CASES.length;
     CASES.splice(0, CASES.length, ...CASES.filter(c => (window.SCA_FREE_IDS || []).indexOf(c.id) > -1));
     if (!CASES.length) CASES.push(...(window.SCA_CASES || []).slice(0, 5)); // stale site.js fallback
     const h = document.querySelector('.tool-head');
     if (h){ const d = document.createElement('div'); d.style.cssText='margin:14px 0 4px;padding:11px 16px;border:1px solid #99c4bf;background:#ecf5f3;border-radius:11px;font-size:13px;line-height:1.55;color:#1c1917';
-      d.innerHTML='\ud83d\udd13 <b style="color:#0c4a47">Free plan:</b> your circuit draws from the 5 free sample cases. <a href="../index.html#subscriptions" style="color:#0c4a47;font-weight:700">Unlock all 312 \u2192</a>'; h.insertAdjacentElement('afterend', d); }
+      d.innerHTML='🔓 <b style="color:#0c4a47">Free plan:</b> your mock draws from the 5 free sample cases. <a href="../index.html#subscriptions" style="color:#0c4a47;font-weight:700">Unlock all ' + total + ' →</a>'; h.insertAdjacentElement('afterend', d); }
   }
-  const TYPE_LBL = { video:'Video consultation', phone:'Telephone', f2f:'Face-to-face', visit:'Home visit', data:'Results / data' };
+  const TYPE_LBL = { video:'Video consultation', telephone:'Telephone', phone:'Telephone' };
+  const HKEY = 'rgp-sca-circuit-history';
 
-  let order = [], idx = 0, phase = 'read', left = 0, timer = null, nCases = 3;
+  let order = [], idx = 0, phase = 'read', left = 0, timer = null, nCases = 12, mix = 'exam', drawn = null;
 
-  document.querySelectorAll('#lenPick button').forEach(b => b.addEventListener('click', () => {
-    document.querySelectorAll('#lenPick button').forEach(x => x.classList.remove('sel'));
-    b.classList.add('sel');
-    nCases = +b.dataset.n;
-  }));
+  function seg(sel, attr, cb){ document.querySelectorAll(sel + ' button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll(sel + ' button').forEach(x => x.classList.remove('sel')); b.classList.add('sel'); cb(b.dataset[attr]); $('#preview').hidden = true; })); }
+  seg('#lenPick', 'n', v => nCases = +v);
+  seg('#mixPick', 'mix', v => mix = v);
 
+  function history(){ try { return JSON.parse(localStorage.getItem(HKEY)) || []; } catch(e){ return []; } }
   function shuffle(a){ const x = a.slice(); for (let i = x.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [x[i], x[j]] = [x[j], x[i]]; } return x; }
 
+  function draw(){
+    const avoid = $('#optFresh').checked ? history().flatMap(h => h.ids || []) : [];
+    drawn = BP ? BP.pick(CASES, nCases, { harder: mix === 'harder', avoid }) : shuffle(CASES).slice(0, nCases);
+    showPreview();
+  }
+  function groupChips(list, el){
+    if (!BP) { el.innerHTML = ''; return; }
+    const cv = BP.coverage(list);
+    el.innerHTML = BP.GROUPS.map(g => `<span class="cc-pv-g${cv.groups[g] ? '' : ' miss'}">${esc(g)}</span>`).join('');
+  }
+  function showPreview(){
+    const cv = BP ? BP.coverage(drawn) : null;
+    const life = cv ? cv.life : {};
+    const tiles = cv ? [
+      [drawn.length, 'cases · about ' + Math.round(drawn.length * 15 / 60 * 10) / 10 + ' h'],
+      [cv.video + ' / ' + cv.telephone, 'video / telephone'],
+      [cv.groupsCovered + ' / ' + cv.groupsTotal, 'RCGP experience groups'],
+      [((life['child'] || 0) + (life['young person'] || 0)) + ' · ' + (life['older adult'] || 0), 'children · older adults'],
+      [(cv.difficulty[1] || 0) + ' · ' + (cv.difficulty[2] || 0) + ' · ' + (cv.difficulty[3] || 0), 'straightforward · typical · hard']
+    ] : [[drawn.length, 'cases']];
+    $('#pvGrid').innerHTML = tiles.map(t => `<div class="cc-pv-tile"><div class="v">${esc(t[0])}</div><div class="l">${esc(t[1])}</div></div>`).join('');
+    groupChips(drawn, $('#pvGroups'));
+    $('#preview').hidden = false;
+    $('#preview').scrollIntoView({ behavior:'smooth', block:'nearest' });
+  }
+  $('#drawBtn').addEventListener('click', draw);
+  $('#redrawBtn').addEventListener('click', draw);
+
   $('#startBtn').addEventListener('click', () => {
-    order = shuffle(CASES).slice(0, Math.min(nCases, CASES.length));
-    idx = 0;
+    if (!drawn || !drawn.length) draw();
+    order = drawn.slice(); idx = 0;
     $('#setup').style.display = 'none';
     $('#run').classList.add('on');
+    window.scrollTo(0, 0);
     beginRead();
   });
 
   $('#quitBtn').addEventListener('click', () => {
-    if (!confirm('Abandon the circuit? In the real exam there is no door.')) return;
+    if (!confirm('Abandon the mock? In the real exam there is no door.')) return;
     clearInterval(timer);
     location.reload();
   });
+
+  /* Sound: a short tone at 2 minutes left and a double tone at time (Web Audio, no files) */
+  let actx = null;
+  function beep(times){
+    if (!$('#optSound').checked) return;
+    try {
+      actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+      for (let i = 0; i < times; i++){
+        const o = actx.createOscillator(), g = actx.createGain(), t = actx.currentTime + i * 0.35;
+        o.frequency.value = 880; o.connect(g); g.connect(actx.destination);
+        g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.25, t + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.28);
+        o.start(t); o.stop(t + 0.3);
+      }
+    } catch(e){}
+  }
 
   function fmt(s){ return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
 
@@ -275,12 +363,14 @@
   function stemHtml(c){
     const s = c.stem;
     const typeLbl = TYPE_LBL[c.type] || 'Consultation';
-    if (!s) return `<div class="stem-card"><div class="stem-hdr"><span class="stem-type">${typeLbl}</span><div class="stem-name">${esc(c.title)}</div></div><div class="stem-row"><div class="stem-k">Doctor brief</div><div class="stem-v">${esc(c.brief)}</div></div></div>`;
+    const list = v => Array.isArray(v) ? v.map(esc).join('<br>') : esc(v);
+    if (!s) return `<div class="stem-card"><div class="stem-hdr"><span class="stem-type">${typeLbl}</span><div class="stem-name">${esc(UI.title(c))}</div></div><div class="stem-row"><div class="stem-k">Setting</div><div class="stem-v">${esc(c.meta && c.meta.setting)}</div></div></div>`;
     return `
       <div class="stem-card">
         <div class="stem-hdr"><span class="stem-type">${typeLbl}</span><div class="stem-name">${esc(s.name)} · ${esc(s.age)}</div></div>
-        <div class="stem-row"><div class="stem-k">Past history</div><div class="stem-v">${s.pmh.map(esc).join('<br>')}</div></div>
-        <div class="stem-row"><div class="stem-k">Medication</div><div class="stem-v">${s.meds.map(esc).join('<br>')}</div></div>
+        ${c.meta && c.meta.setting ? `<div class="stem-row"><div class="stem-k">Setting</div><div class="stem-v">${esc(c.meta.setting)}</div></div>` : ''}
+        <div class="stem-row"><div class="stem-k">Past history</div><div class="stem-v">${list(s.pmh || [])}</div></div>
+        <div class="stem-row"><div class="stem-k">Medication</div><div class="stem-v">${list(s.meds || [])}</div></div>
         <div class="stem-row"><div class="stem-k">Allergies</div><div class="stem-v">${esc(s.allergy)}</div></div>
         <div class="stem-row"><div class="stem-k">Recent notes</div><div class="stem-v">${esc(s.recent)}</div></div>
         <div class="stem-row"><div class="stem-k">Reason for contact</div><div class="stem-v">${esc(s.reason)}</div></div>
@@ -290,10 +380,10 @@
   function beginRead(){
     phase = 'read'; left = 180;
     renderProg();
-    $('#phase').className = 'cc-phase read'; $('#phase').textContent = 'Records · case ' + (idx + 1);
+    $('#phase').className = 'cc-phase read'; $('#phase').textContent = 'Records · case ' + (idx + 1) + ' of ' + order.length;
     $('#stage').innerHTML = `
       <div class="stem-wrap">
-        <div class="cc-read-note">📋 Three minutes with the records. Mine them — what's already answered? What's the trap? Where must you be by minute 7?</div>
+        <div class="cc-read-note">📋 Three minutes with the records. What is already answered? What might the trap be? Where do you need to be by minute 7?</div>
         ${stemHtml(order[idx])}
         <div style="text-align:center"><button class="cc-skip" id="skipRead">I'm ready — start consulting early</button></div>
       </div>`;
@@ -303,22 +393,41 @@
 
   function beginConsult(){
     phase = 'consult'; left = 720;
-    $('#phase').className = 'cc-phase consult'; $('#phase').textContent = 'Consulting · case ' + (idx + 1);
+    $('#phase').className = 'cc-phase consult'; $('#phase').textContent = 'Consulting · case ' + (idx + 1) + ' of ' + order.length;
     const c = order[idx];
     $('#stage').innerHTML = `
       <div class="cc-consult-note">
-        <div class="big">${esc(c.title)}</div>
-        <p>The patient has connected. Consult <b>out loud</b> — open, gather, share, manage, safety-net, close. The records are gone, just like the real thing.</p>
-        <p style="color:var(--muted)">If a station collapses, practise the exam skill that matters most: <b>leave it in this room.</b></p>
+        <div class="big">${esc(UI.title(c))}</div>
+        <p>The patient has connected (${esc((TYPE_LBL[c.type] || 'consultation').toLowerCase())}). Consult <b>out loud</b>: open, gather, share, manage, safety-net, close. The records are gone, just like the real thing.</p>
+        <p style="color:var(--muted)">If a case goes badly, practise the exam skill that matters most: <b>leave it in this room.</b></p>
         <button class="cc-skip" id="skipConsult">Finished early — next case</button>
       </div>`;
     $('#skipConsult').addEventListener('click', next);
     tick();
   }
 
+  function beginBreak(){
+    phase = 'break'; left = 0;
+    clearInterval(timer);
+    renderProg();
+    $('#phase').className = 'cc-phase brk'; $('#phase').textContent = 'Break';
+    $('#stage').innerHTML = `
+      <div class="cc-consult-note">
+        <div class="big">Halfway — take a break</div>
+        <p>Six cases done. Stand up, drink some water, and let the first half go. The second half starts when you are ready.</p>
+        <button class="cc-start" id="endBreak" style="margin-top:12px">Start case 7 →</button>
+      </div>`;
+    $('#endBreak').addEventListener('click', beginRead);
+    $('#clock').classList.remove('warn');
+    const t0 = Date.now();
+    timer = setInterval(() => { $('#clock').textContent = fmt(Math.floor((Date.now() - t0) / 1000)); }, 1000);
+    $('#clock').textContent = '0:00';
+  }
+
   function next(){
     idx++;
     if (idx >= order.length) return finish();
+    if (idx === 6 && order.length >= 12 && $('#optBreak').checked) return beginBreak();
     beginRead();
   }
 
@@ -331,7 +440,8 @@
     draw();
     timer = setInterval(() => {
       left--;
-      if (left < 0) { clearInterval(timer); phase === 'read' ? beginConsult() : next(); return; }
+      if (phase === 'consult' && left === 120) beep(1);
+      if (left < 0) { clearInterval(timer); if (phase === 'consult') beep(2); phase === 'read' ? beginConsult() : next(); return; }
       draw();
     }, 1000);
   }
@@ -340,13 +450,13 @@
     clearInterval(timer);
     $('#run').classList.remove('on');
     $('#doneBox').classList.add('on');
+    groupChips(order, $('#doneGroups'));
     $('#doneList').innerHTML = order.map((c, i) =>
-      `<a href="sca-domains.html"><span class="n">${i + 1}</span>${esc(c.title)}<small>grade it ↗</small></a>`).join('');
+      `<a href="sca-practice.html?case=${encodeURIComponent(c.id)}" target="_blank" rel="noopener"><span class="n">${i + 1}</span><span>${esc(UI.title(c))}<br><span class="t">${esc(TYPE_LBL[c.type] || '')}</span></span><small>Mark it in the Hot Seat ↗</small></a>`).join('');
     try {
-      const KEY = 'rgp-sca-circuit-history';
-      const h = JSON.parse(localStorage.getItem(KEY)) || [];
+      const h = history();
       h.push({ d: new Date().toISOString().slice(0, 10), n: order.length, ids: order.map(c => c.id) });
-      localStorage.setItem(KEY, JSON.stringify(h));
+      localStorage.setItem(HKEY, JSON.stringify(h.slice(-30)));
     } catch(e){}
   }
 })();
