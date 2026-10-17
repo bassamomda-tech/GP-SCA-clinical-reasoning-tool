@@ -21,7 +21,8 @@
   // Which plan id each card maps to, per billing period.
   var CARDS = [
     { sel: '.rgp-tier-silver',   monthly: 'silver_monthly',   yearly: 'silver_yearly',   name: 'Silver' },
-    { sel: '.rgp-tier-gold',     monthly: 'gold_monthly',     yearly: 'gold_yearly',     name: 'Gold' },
+    { sel: '.rgp-tier-gold',     monthly: 'gold_monthly',     yearly: 'gold_yearly',     name: 'Gold',
+      threeMonthly: 'gold_3monthly', threeLabel: 'Or \u00a340 every 3 months' },
     { sel: '.rgp-tier-platinum', monthly: 'platinum_monthly', yearly: 'platinum_yearly', name: 'Platinum' }
   ];
 
@@ -122,6 +123,8 @@
     function draw(card, host, c) {
       var planId = plans[c[billing()]];
       var cta = card.querySelector('.rgp-sub-cta');
+      var old3 = card.querySelector('.rgp-pp-host-3m');
+      if (old3) old3.parentNode.removeChild(old3);
       // No plan id for this period → keep the card's own CTA, say so plainly.
       if (!planId) {
         if (cta) cta.style.display = '';
@@ -131,7 +134,33 @@
       }
       if (!window.paypal || !window.paypal.Buttons) { fallback(card, c, 'blocked'); return; }
 
-      var btn = window.paypal.Buttons({
+      var btn = makeButtons(host, planId);
+
+      // Only hide the fallback CTA once a real button is on the page.
+      var done = btn.render(host);
+      if (done && typeof done.then === 'function') {
+        done.then(function(){ if (cta) cta.style.display = 'none'; })
+            .catch(function(){ fallback(card, c, 'render'); });
+      } else if (cta) {
+        cta.style.display = 'none';
+      }
+
+      // Extra billing option on this card (Gold every 3 months), monthly view only.
+      var threeId = c.threeMonthly && plans[c.threeMonthly];
+      if (threeId && billing() === 'monthly') {
+        var h3 = document.createElement('div');
+        h3.className = 'rgp-pp-host-3m';
+        h3.style.marginTop = '10px';
+        h3.innerHTML = '<p style="font-size:12.5px;font-weight:700;color:#0c4a47;margin:0 0 6px">' + c.threeLabel + '</p>';
+        host.parentNode.insertBefore(h3, host.nextSibling);
+        var b3 = makeButtons(h3, threeId).render(h3);
+        if (b3 && typeof b3.catch === 'function') b3.catch(function(){ h3.parentNode && h3.parentNode.removeChild(h3); });
+      }
+    }
+
+    // One PayPal subscribe button for planId; messages go to host.
+    function makeButtons(host, planId) {
+      return window.paypal.Buttons({
         style: { layout: 'vertical', shape: 'pill', label: 'subscribe' },
         onClick: function (data, actions) {
           if (!consented()) {
@@ -158,15 +187,6 @@
         },
         onError: function () { note(host, 'That didn\u2019t go through. Please try again — or email ' + SUPPORT + ' and I\u2019ll sort it out.'); }
       });
-
-      // Only hide the fallback CTA once a real button is on the page.
-      var done = btn.render(host);
-      if (done && typeof done.then === 'function') {
-        done.then(function(){ if (cta) cta.style.display = 'none'; })
-            .catch(function(){ fallback(card, c, 'render'); });
-      } else if (cta) {
-        cta.style.display = 'none';
-      }
     }
 
     function note(host, text) {

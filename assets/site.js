@@ -53,13 +53,8 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
   // Monthly-only for now. Add the *_yearly ids later to switch the yearly toggle back on.
   paypalPlans: {
     silver_monthly:'P-7W0981493D9643523NJFITGA', silver_yearly:'P-5JJ39495BS015630PNJFJA3A',
-    // OWNER: the £40 every-3-months Gold plan is NOT on sale yet (no PayPal plan ID).
-    // To switch it on: create the plan in PayPal (Gold, £40, billing every 3 months),
-    // paste its ID (it starts with "P-") between the quotes of gold_3monthly below,
-    // then ask Claude to add the 3-month button to assets/rgp-pay.js and put the
-    // "£40 / 3 months" wording back on pages/pricing.html and pages/terms.html.
-    // While it is empty, nothing on the site offers or sells the 3-month plan.
-    gold_monthly:'P-3FU28600XR036331XNJFIV2I',   gold_3monthly:'', gold_yearly:'P-1YB945321J846421DNJFJBIY',
+    // Gold £40 every 3 months: shown as a second button on the Gold card (monthly view).
+    gold_monthly:'P-3FU28600XR036331XNJFIV2I',   gold_3monthly:'P-9V823040N0778181PNLJ6VCI', gold_yearly:'P-1YB945321J846421DNJFJBIY',
     platinum_monthly:'P-85Y58353NJ528450PNJFIXBQ', platinum_yearly:'P-02W75567UM810814LNJVCD5Y'
   },
   // Member-only access. When true, content pages on the LIVE site require a
