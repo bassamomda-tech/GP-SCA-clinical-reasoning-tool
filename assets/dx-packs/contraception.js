@@ -1,6 +1,6 @@
 /* ============================================
    Diagnostic Tool pack — Women Requesting Contraception
-   Shared-id triage (UKMEC safety) + method-suitability ranking. FSRH 2023.
+   Shared-id triage (UKMEC safety) + method-suitability ranking. CoSRH (formerly FSRH).
    ============================================ */
 (function () {
   const INPUTS = [
@@ -31,7 +31,7 @@
         label: 'Emergency contraception needed',
         action: 'Cu-IUD most effective (up to 120h) — offer first; or ulipristal/levonorgestrel by timing. Quick-start ongoing method.',
         patientPhrase: '"The most effective emergency option is the copper coil — I can also offer a tablet depending on timing."',
-        source: 'FSRH Emergency contraception',
+        source: 'CoSRH Emergency contraception',
         when: i => i.emergency_need,
       },
       {
@@ -39,26 +39,26 @@
         label: 'Combined hormonal contraception contraindicated (UKMEC 4) — avoid oestrogen',
         action: 'Avoid CHC (migraine+aura, VTE, smoker ≥35, BP/BMI high, breast cancer). Offer progestogen-only / LARC / Cu-IUD.',
         patientPhrase: '"The oestrogen pill is not safe for you, but there are excellent alternatives without oestrogen."',
-        source: 'FSRH UKMEC', sourceUrl: 'https://www.fsrh.org/standards-and-guidance/',
+        source: 'CoSRH UKMEC 2025', sourceUrl: 'https://www.cosrh.org/Common/Uploaded%20files/documents/UKMEC_2025.pdf',
         when: i => i.migraine_aura || i.vte_history || i.smoker_35 || i.breast_cancer || i.bp_high_bmi,
       },
       {
         id: 'pregnant', tier: 'urgent',
         label: 'Could already be pregnant',
         action: 'Pregnancy test / pregnancy-risk assessment before starting hormonal method.',
-        source: 'FSRH',
+        source: 'CoSRH',
         when: i => i.pregnant_possible,
       },
       {
         id: 'choose', tier: 'routine',
         label: 'Choose & start a method',
         action: 'Discuss effectiveness (LARC first), non-contraceptive benefits, UKMEC; provide and safety-net.',
-        source: 'FSRH',
+        source: 'CoSRH',
         when: i => true,
       }
     ],
     sources: [
-      { label: 'CoSRH — UKMEC 2025', url: 'https://www.fsrh.org/standards-and-guidance/' }
+      { label: 'CoSRH — UKMEC 2025', url: 'https://www.cosrh.org/Common/Uploaded%20files/documents/UKMEC_2025.pdf' }
     ],
   });
 
@@ -117,7 +117,7 @@
       emergency: ['emergency_need'],
     },
     sources: [
-      { label: 'CoSRH — UKMEC 2025', url: 'https://www.fsrh.org/standards-and-guidance/' }
+      { label: 'CoSRH — UKMEC 2025', url: 'https://www.cosrh.org/Common/Uploaded%20files/documents/UKMEC_2025.pdf' }
     ],
   });
 

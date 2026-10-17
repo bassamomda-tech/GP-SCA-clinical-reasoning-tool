@@ -210,86 +210,159 @@
 
   /* ============ 104. VIDEO — Raised calcium: the work-up before the worry ============ */
   const c104 = {
-    id:'hypercalcaemia-workup', title:'"My calcium\u2019s high \u2014 my friend said that means cancer"', type:'video', duration:12,
-    meta:{ age:58, sex:'F', setting:'Video consultation \u2014 an incidental mildly raised calcium.', system:'Endocrine / Hypercalcaemia & hyperparathyroidism', checked:'October 2026' },
-    brief:'Mrs Carol Lindqvist, 58. A calcium checked for tiredness/aches is mildly raised (adjusted calcium 2.78 mmol/L; upper ~2.60), repeat confirms it. She is well, no cancer history, and volunteers no relevant medicines — but her record shows a thiazide for BP (a relevant drug: thiazides can raise calcium), and if asked she also takes high-dose vitamin D and calcium supplements she bought herself. PTH not yet done. A friend told her "high calcium means cancer" and she is very frightened. Mild thirst, occasional constipation. No bone pain/red flags volunteered.',
-    script:{
-      "opening": "\"Doctor, I'm really worried. My blood test showed my calcium's high, and my friend — she's usually right about these things — said high calcium means cancer, that it's often the first sign. I've been sick with worry. I feel mostly okay, bit tired and achy, but now I can't stop thinking the worst. Is she right? Have I got cancer?\"",
+    "id": "hypercalcaemia-workup",
+    "title": "“Another phone call about my bloods — just tell me straight. And I’m not having an operation.”",
+    "type": "telephone",
+    "duration": 12,
+    "meta": {
+      "age": 64,
+      "sex": "M",
+      "setting": "Telephone — to discuss the results of repeat blood tests.",
+      "system": "Endocrine / Results — confirmed primary hyperparathyroidism: explanation, NICE NG132 referral criteria, medicines review and a fear of surgery after bereavement",
+      "checked": "October 2026"
+    },
+    "brief": "Desmond Okoro, 64, retired bus driver, lives alone since his wife Grace died three years ago. Bloods taken for tiredness showed an albumin-adjusted calcium of 2.86 mmol/L, repeated at 2.88; PTH is 9.8 pmol/L (reference about 1.6–6.9), 25-hydroxyvitamin D 38 nmol/L, eGFR 72, phosphate low-normal, rest unremarkable. This is primary hyperparathyroidism. He had a kidney stone two years ago (A&E, passed spontaneously; nobody checked his calcium). He takes bendroflumethiazide and amlodipine for blood pressure, no lithium, and no supplements. On direct questioning: tired, thirsty, constipated, aching, “foggy” and low for months, which he put down to grief. He is calm on the phone until surgery is mentioned. His hidden concern: Grace died of sepsis after what was meant to be a “routine” bowel operation, and he has decided he will never have an operation. The task: confirm identity and that it is a good time; explain the result and the parathyroid gland in plain language; check symptoms and red flags; explain why he meets NICE NG132 criteria for referral to a specialist in parathyroid surgery (calcium of 2.85 mmol/L or above and a kidney stone); stop the thiazide and agree an alternative for his blood pressure; replace vitamin D; advise fluids; explore the fear of surgery with empathy, give honest information, respect his right to decide, and agree that he will at least see the specialist to hear the options (including monitoring or medical treatment if he declines surgery); screen his mood; and safety-net for symptoms of severe hypercalcaemia.",
+    "script": {
+      "opening": "“Hello. Another phone call about my bloods. Just tell me straight, doctor. And before you start, I’m not having an operation, whatever it is.”",
       "facts": [
         {
-          "topic": "Why you had the blood test",
-          "text": "If asked: tired and achy for a few months — \"general aches, nothing in particular\". The test was repeated last week and was still high."
+          "topic": "Identity and setting",
+          "text": "Confirms name and date of birth. At home on his own, happy to talk."
         },
         {
           "topic": "Symptoms (if asked)",
-          "text": "A bit more thirsty than usual, getting up once at night to pass water. Occasional constipation. No tummy pain, no vomiting, no confusion. No kidney stones ever. No bone pain in any one place."
+          "text": "Tired for months, thirsty, up once or twice at night to wee, constipated, aching in his back and legs, “foggy”, forgetting things. Low and not enjoying much since Grace died. No vomiting, no confusion that others have noticed, no abdominal pain, no bone fractures. Weight steady."
         },
         {
-          "topic": "Weight and red flags (if asked)",
-          "text": "Weight steady. No night sweats, no lumps, no cough or coughing blood, breasts checked — nothing new, mammogram normal last year. No change in bowel habit beyond the occasional constipation."
+          "topic": "Past history",
+          "text": "Kidney stone two years ago: severe left loin pain, A&E, passed the stone, no follow-up. Hypertension for ten years."
         },
         {
-          "topic": "Prescribed medicine",
-          "text": "Bendroflumethiazide for blood pressure for about five years. No allergies."
+          "topic": "Medicines",
+          "text": "Bendroflumethiazide and amlodipine. No lithium, no calcium or vitamin D supplements, no antacids. Drinks little water: “tea, mostly”."
         },
         {
-          "topic": "Supplements — only if asked about anything you buy yourself",
-          "text": "\"Oh — I take a vitamin D and calcium tablet, and a separate high-strength vitamin D, 4,000 units, because I read it was good for your bones and immunity.\" You started them about six months ago. You did not think to mention them."
+          "topic": "The fear (only if explored)",
+          "text": "Grace went in for a “routine” bowel operation and died of sepsis a week later. “They said it was routine. I watched her die.” He has decided he will never have surgery."
         },
         {
-          "topic": "Social",
-          "text": "58, librarian, married to Erik. Never smoked, a glass of wine at weekends."
-        },
-        {
-          "topic": "Family — hold back",
-          "text": "Your mother died of bowel cancer at 64 — \"it was everywhere by the time they found it\". Mention only if asked about family history or why you are so frightened."
+          "topic": "Mood (only if asked directly)",
+          "text": "Lonely, low most days, sleeps badly. Sees his daughter at weekends. No thoughts of ending his life: “Grace wouldn’t want that.”"
         },
         {
           "topic": "How to play it",
-          "text": "Very anxious and fixed on the word \"cancer\". If the doctor dodges the question, ask again: \"But could it be cancer?\" If they explain honestly that cancer is one possible cause but not the most likely one in someone who is well, and that a specific test will help sort it out, you calm noticeably. If asked about supplements you are surprised and a bit embarrassed: \"I thought they were good for me!\""
+          "text": "Courteous but guarded. Firm “no” to surgery. Softens if the doctor asks why, listens to his story about Grace, and does not push. Agrees to see the specialist “just to listen” and to the medicine changes."
         }
       ],
       "ice": {
-        "ideas": "\"My friend says high calcium means cancer — and it's often the first sign.\"",
-        "concerns": "\"I watched Mum go from cancer — I keep thinking it's my turn.\" You are hardly sleeping.",
-        "expectations": "A straight answer about cancer. You would like to know what happens next and how long until you know."
+        "ideas": "“It’s probably my age, or the grief making me tired.”",
+        "concerns": "HIDDEN AGENDA: his wife died after a ‘routine’ operation; he is terrified of surgery and of being pressured into it. Also feels foggy and worries it is dementia.",
+        "expectations": "“Tell me what it is, give me a tablet if there is one, and leave it at that.”"
       },
       "cues": [
-        "\"Have I got cancer?\" — say in the opening.",
-        "\"I've been sick with worry.\" — say in the opening.",
-        "\"I only take vitamins — they don't count, do they?\" — say if asked about medicines you buy."
+        "“I’m not having an operation, whatever it is” before anything has been said — a story behind it.",
+        "Lives alone since his wife died — grief, mood and the meaning of surgery.",
+        "A kidney stone two years ago — end-organ damage and a referral criterion.",
+        "“Foggy” and tired — possible symptoms of hypercalcaemia, and a fear of dementia."
       ]
     },
-    checkpoints:[
-      { dom:'ro', text:'Responds to the "is it cancer?" fear honestly and calmly: explains that hypercalcaemia has several causes, that in a WELL person with a mild, confirmed rise and no cancer history PRIMARY HYPERPARATHYROIDISM is the commonest cause \u2014 cancer is possible but not the most likely \u2014 and that the right thing is to work it up, not guess' },
-      { dom:'dg', text:'Orders the KEY work-up: PTH (the pivotal test) with renal function, vitamin D, phosphate, ALP; interprets the logic (raised/inappropriately-normal PTH = primary hyperparathyroidism; suppressed PTH \u2192 investigate for malignancy/other) and considers a myeloma screen / further work-up if indicated (NICE NG132: do not exclude primary hyperparathyroidism because the PTH is within the reference range)' },
-      { dom:'dg', text:'Identifies and addresses the REVERSIBLE contributors by taking a full history INCLUDING OTC/self-bought items: high-dose vitamin D + calcium supplements and the thiazide diuretic \u2014 advises stopping/adjusting and rechecking calcium' },
-      { dom:'dg', text:'Screens for hypercalcaemia symptoms/severity ("bones, stones, groans, moans" \u2014 bone pain, renal stones, abdominal/constipation, polyuria/polydipsia, confusion) and knows the Society for Endocrinology (2016) grading — under 3.0 mmol/L is often asymptomatic and does not usually need urgent correction, 3.0–3.5 usually needs prompt treatment, over 3.5 needs urgent correction, and symptomatic hypercalcaemia (vomiting, confusion, dehydration) needs same-day assessment whatever the level; here mild/stable, so structured outpatient work-up' },
-      { dom:'cm', text:'Avoids both false reassurance and feeding the catastrophe: does not promise "it\u2019s definitely not cancer", nor confirm the friend\u2019s claim \u2014 commits to finding the cause and explains what each result would mean' },
-      { dom:'ro',   text:'Defuses the catastrophic certainty (the friend\u2019s claim, the mother\u2019s death) with empathy and calm, accurate information, rather than dismissing her or amplifying the fear' },
-      { dom:'ro',   text:'Takes the supplement/OTC history non-judgementally and reframes the result as "a puzzle we solve", reducing her terror while staying honest' },
-      { dom:'cm',    text:'Safety-nets and follows up: the PTH-led work-up and a recheck off supplements/thiazide, symptoms that would need urgent review (marked thirst/confusion/vomiting/severe symptoms), a clear plan to go through results, and reassurance balanced with honesty' },
+    "checkpoints": [
+      {
+        "dom": "dg",
+        "text": "Confirms identity and privacy on the telephone, and asks what he already knows before explaining the results"
+      },
+      {
+        "dom": "dg",
+        "text": "Interprets the results: raised adjusted calcium on two occasions with an inappropriately raised PTH indicates primary hyperparathyroidism; checks symptoms, stone history, fractures and drugs (thiazide, lithium, supplements)"
+      },
+      {
+        "dom": "dg",
+        "text": "Screens for features of severe hypercalcaemia needing same-day care (vomiting, confusion, abdominal pain, dehydration, very high calcium)"
+      },
+      {
+        "dom": "cm",
+        "text": "Explains that he meets NICE NG132 criteria for referral to a specialist in parathyroid surgery (adjusted calcium 2.85 mmol/L or above and a previous renal stone), and what the specialist will do (exclude familial hypocalciuric hypercalcaemia, imaging, bone density, options)"
+      },
+      {
+        "dom": "cm",
+        "text": "Stops the thiazide (it reduces urinary calcium excretion) and agrees an alternative antihypertensive with a blood pressure check; offers vitamin D replacement for insufficiency; advises good fluid intake and not restricting dietary calcium"
+      },
+      {
+        "dom": "ro",
+        "text": "Explores the refusal of surgery, hears the bereavement story with empathy, gives honest information about parathyroid surgery, and respects his right to decide"
+      },
+      {
+        "dom": "cm",
+        "text": "Agrees a shared plan: referral to hear the options (including monitoring or medical treatment if he declines surgery), repeat bloods after the medicine changes, and mood support"
+      },
+      {
+        "dom": "cm",
+        "text": "Safety-nets clearly (vomiting, confusion, severe abdominal or loin pain, inability to keep fluids down) and arranges follow-up"
+      }
     ],
-    worked:[
-      { lbl:'Defuse, honestly',       txt:'"I can hear how frightened you are, and I\u2019m really glad you came rather than sitting with it. Let me be honest AND calm with you: a high calcium has several possible causes, and yes, cancer is one of them \u2014 but your friend\u2019s rule isn\u2019t right. In someone like you \u2014 well in yourself, only mildly up, no history of cancer \u2014 by far the commonest cause is a small, benign overactivity of a gland in your neck, not cancer. We just need to test to confirm which."' },
-      { lbl:'Name the key test',    txt:'"There\u2019s one test that sorts most of this out: a hormone called PTH, from the parathyroid glands. If it\u2019s up or even just \u2018normal when it shouldn\u2019t be\u2019, that\u2019s the benign gland problem \u2014 common and very manageable. If it\u2019s low, then we look further. So rather than worry in the dark, that one blood test points us the right way."' },
-      { lbl:'Find the hidden causes', txt:'"Now \u2014 a couple of things that can nudge calcium up that people often don\u2019t mention. Do you take any supplements you\u2019ve bought yourself? \u2026 High-dose vitamin D and calcium, yes \u2014 those absolutely can do it. And the water tablet for your blood pressure can too. None of that is your fault, but it\u2019s really useful: let\u2019s stop the supplements, I\u2019ll review the water tablet, and recheck \u2014 that alone might explain it."' },
-      { lbl:'Check for symptoms',   txt:'"Let me ask a few quick things: any bone pain, kidney-stone type pain, a lot of thirst or weeing, tummy upset or feeling muddled? \u2026 Mostly fine. Good \u2014 that\u2019s reassuring; it tells me this isn\u2019t a severe or urgent rise, so we\u2019ve time to work it up properly rather than rushing."' },
-      { lbl:'No false promises',    txt:'"I\u2019m not going to do what your friend did and give you a verdict without the facts \u2014 I won\u2019t say \u2018it\u2019s definitely not cancer\u2019 any more than I\u2019d say it is. What I CAN promise is we\u2019ll find out properly and quickly, and I\u2019ll explain exactly what each result means as we go. The odds are genuinely in your favour here."' },
-      { lbl:'Plan + safety-net',    txt:'"So: stop the calcium and vitamin D supplements now, I\u2019ll arrange the PTH and the other bloods and review your water tablet, and we\u2019ll recheck the calcium. If before then you get very thirsty and weeing lots, vomiting, confusion or severe tummy pain, contact us \u2014 that would need quicker attention. Otherwise, let\u2019s get the tests and I\u2019ll go through them with you. You came in braced for the worst; the most likely answer is something common, benign and fixable."' },
+    "worked": [
+      {
+        "lbl": "Ask before telling",
+        "txt": "“Before I go through them, what have you been told about these blood tests so far?”"
+      },
+      {
+        "lbl": "Plain explanation",
+        "txt": "“Your calcium is a bit high on two tests, and the hormone that controls calcium, called PTH, is high too. That usually means one of four tiny glands in your neck, the parathyroids, has become overactive. It’s common, and it isn’t cancer.”"
+      },
+      {
+        "lbl": "Explore the refusal",
+        "txt": "“You said you won’t have an operation before I’d mentioned one. Would you tell me what’s behind that?”"
+      },
+      {
+        "lbl": "Respond to grief",
+        "txt": "“I’m so sorry about Grace. After that, it makes complete sense that the word ‘operation’ feels terrifying. Nobody will make you have one.”"
+      },
+      {
+        "lbl": "Why referral",
+        "txt": "“Your calcium level and the kidney stone two years ago mean the national guidance recommends you see a specialist. Seeing them doesn’t commit you to anything; they’ll explain the choices, including not operating.”"
+      },
+      {
+        "lbl": "Things we can do now",
+        "txt": "“One of your blood pressure tablets can raise calcium, so I’ll swap it. Your vitamin D is low, so I’ll replace it. And plenty of water, not just tea.”"
+      }
     ],
-    learning:'A mild, confirmed hypercalcaemia in a WELL person with no cancer history most commonly reflects PRIMARY HYPERPARATHYROIDISM (NICE NG132, 2019), not malignancy \u2014 so the patient\u2019s "high calcium means cancer" certainty must be defused honestly and calmly (cancer is one cause, not the likeliest here), and the result worked up rather than guessed. The pivotal next test is PTH (with renal function, vitamin D, phosphate, ALP): a raised or inappropriately-normal PTH indicates primary hyperparathyroidism; a suppressed PTH points toward malignancy/other causes needing further work-up (including a myeloma screen if indicated). Crucially, take a full history INCLUDING self-bought items \u2014 high-dose vitamin D/calcium supplements and thiazide diuretics are common, reversible contributors that are easily missed \u2014 stop/adjust and recheck. Screen severity ("bones, stones, groans, moans"; Society for Endocrinology 2016: 3.0–3.5 mmol/L usually needs prompt treatment, over 3.5 urgent correction, and symptomatic hypercalcaemia same-day assessment whatever the level). The hidden agenda is catastrophic fear from a friend\u2019s claim amplified by a mother\u2019s cancer death; address it with empathy and accurate information, avoiding both false reassurance and feeding the catastrophe, and safety-net symptoms of severe hypercalcaemia.',
-    knowledge:{
-      guideline:"NICE NG132 Hyperparathyroidism (primary): diagnosis, assessment and initial management (2019) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · Society for Endocrinology emergency guidance: acute hypercalcaemia (2016) · BNF (thiazides, vitamin D, calcium)",
-      points:[
-        { h:'The two commonest causes', t:'In primary care, the large majority of hypercalcaemia is primary hyperparathyroidism (often mild, chronic, in well outpatients) or malignancy (often markedly raised, in unwell patients or with known cancer). A mild, stable rise in a well person without cancer history favours hyperparathyroidism \u2014 but confirm and work up.' },
-        { h:'PTH is the pivotal test', t:'NICE NG132: after confirming a raised ADJUSTED calcium on a repeat, measure PTH with a same-time adjusted calcium (with U&E, phosphate, vitamin D, ALP, and magnesium); do not rule out primary hyperparathyroidism because the PTH is within the reference range. Raised or inappropriately-normal PTH = primary hyperparathyroidism. SUPPRESSED PTH = PTH-independent hypercalcaemia \u2192 investigate for malignancy (incl. myeloma screen), vitamin D excess, granulomatous disease, etc.' },
-        { h:'Find reversible/iatrogenic contributors', t:'Thiazide diuretics, lithium, and excess vitamin D/calcium supplementation (often self-bought and unmentioned) raise calcium (BNF). Take a full drug AND supplement history; stop/adjust and recheck \u2014 these can be the whole explanation or a confounder.' },
-        { h:'Assess severity & symptoms', t:'"Bones, stones, abdominal groans, psychic moans, thrones (polyuria)": bone pain, renal stones, constipation/abdominal pain, polyuria/polydipsia, fatigue, confusion. Society for Endocrinology (2016): under 3.0 mmol/L is often asymptomatic and does not usually need urgent correction; 3.0–3.5 usually needs prompt treatment; over 3.5 needs urgent correction; symptomatic hypercalcaemia (vomiting, confusion, dehydration) needs same-day assessment (fluids, urgent treatment) whatever the level. Mild/asymptomatic → structured outpatient work-up.' },
-        { h:'Manage primary hyperparathyroidism', t:'Confirmed primary hyperparathyroidism: assess for end-organ effects (renal function, stones, DEXA for bone density) and refer; parathyroidectomy is curative. NICE NG132: refer to a surgeon with expertise in parathyroid surgery if there are symptoms (such as thirst, frequent urination or constipation), end-organ disease (renal stones, fragility fractures, osteoporosis), or an adjusted calcium of 2.85 mmol/L or above; consider referral for others. Her thirst and constipation may meet this. Where surgery is not chosen, it is often managed with monitoring.' },
-        { h:'Communicate without false poles', t:'Defuse "high calcium = cancer" certainty honestly \u2014 cancer is one cause, not the likeliest in a well person with a mild rise \u2014 without promising "definitely not cancer". Take supplement/OTC history non-judgementally; commit to a structured work-up and explain what each result means.' },
-        { h:'Never do', t:'Never confirm OR dismiss the cancer fear without working it up; never omit PTH or the supplement/thiazide history; never miss severe/symptomatic hypercalcaemia needing urgent care; never give false reassurance or feed the catastrophe.' },
-        { h:'Safety-net & follow-up', t:"Repeat adjusted calcium off supplements / with thiazide reviewed; PTH-led work-up ± myeloma screen (NICE NG12: hypercalcaemia is a myeloma criterion at 60 and over; below that, clinical judgement and a suppressed PTH); severe-hypercalcaemia symptoms (marked thirst/polyuria, vomiting, confusion) → urgent; planned review of results; referral per cause." }
+    "learning": "Primary hyperparathyroidism is the commonest cause of hypercalcaemia in primary care: a raised albumin-adjusted calcium with a PTH that is raised or inappropriately normal. NICE NG132 (2019) advises measuring PTH when adjusted calcium is 2.6 mmol/L or above on two occasions (or 2.5 or above with suspected primary hyperparathyroidism), and not excluding the diagnosis if PTH is in the upper half of the normal range. Refer people with confirmed primary hyperparathyroidism to a specialist with expertise in parathyroid surgery if they have symptoms, end-organ disease (renal stones, fragility fractures or osteoporosis), or an albumin-adjusted calcium of 2.85 mmol/L or above. Parathyroidectomy is the only cure and has a high success rate; the specialist will exclude familial hypocalciuric hypercalcaemia (urine calcium), arrange imaging and assess bone density. For people who decline or are unsuitable for surgery, monitoring and, in some circumstances, cinacalcet are options. In primary care: review drugs (thiazides reduce urinary calcium excretion; lithium causes hyperparathyroidism; stop calcium and vitamin D supplements unless deficient), measure vitamin D and replace deficiency, advise good hydration, and do not restrict dietary calcium. Safety-net for severe hypercalcaemia (vomiting, confusion, abdominal pain, dehydration), which needs same-day care. Symptoms such as tiredness, thirst, constipation, aches, low mood and poor concentration may be due to hypercalcaemia and can be mistaken for grief or ageing. The communication skill is exploring a pre-emptive refusal: understanding the bereavement behind it, giving honest information, respecting autonomy, and agreeing a step he can accept, such as hearing the specialist’s options.",
+    "knowledge": {
+      "guideline": "[1] NICE NG132 Hyperparathyroidism (primary): diagnosis, assessment and initial management (2019) · [2] NICE NG136 Hypertension in adults: diagnosis and management (2019, updated 2023) · [3] NICE CKS Hypercalcaemia (check current version) · [4] NICE NG222 Depression in adults: treatment and management (2022) · [5] Product SPCs for bendroflumethiazide and vitamin D preparations · [6] GMC Decision making and consent (2020)",
+      "summary": "Two raised calcium results with a raised PTH: primary hyperparathyroidism, with a previous kidney stone and calcium above 2.85 mmol/L, so NICE NG132 recommends referral to a parathyroid surgery specialist. He is on a thiazide and vitamin D insufficient. He refuses surgery because his wife died after a ‘routine’ operation. Explain, change the medicines, replace vitamin D, explore the fear, agree to hear the specialist’s options, check mood and safety-net.",
+      "points": [
+        {
+          "h": "Diagnosis",
+          "t": "Raised albumin-adjusted calcium on two occasions with raised or inappropriately normal PTH. Do not exclude PHPT if PTH is in the upper half of the reference range [1]."
+        },
+        {
+          "h": "Symptoms",
+          "t": "Often few. Tiredness, thirst, polyuria, constipation, aches, low mood and poor concentration; renal stones; fragility fractures."
+        },
+        {
+          "h": "Referral criteria (NG132)",
+          "t": "Refer to a specialist with expertise in parathyroid surgery if symptoms, end-organ disease (renal stones, fragility fractures, osteoporosis) or adjusted calcium of 2.85 mmol/L or above [1]."
+        },
+        {
+          "h": "What the specialist does",
+          "t": "Excludes familial hypocalciuric hypercalcaemia (urine calcium), localising imaging, bone density, renal imaging, and discusses parathyroidectomy versus monitoring or medical treatment such as cinacalcet if surgery is declined or unsuitable [1]."
+        },
+        {
+          "h": "Medicines",
+          "t": "Thiazides reduce urinary calcium excretion and can raise calcium; switch to an alternative antihypertensive in line with NG136 [2]. Ask about lithium and calcium or vitamin D supplements."
+        },
+        {
+          "h": "Vitamin D and diet",
+          "t": "Measure vitamin D and replace deficiency (check the SPC/local formulary). Do not restrict dietary calcium. Encourage good fluid intake [1]."
+        },
+        {
+          "h": "Severe hypercalcaemia",
+          "t": "Vomiting, confusion, drowsiness, abdominal pain, dehydration or very high calcium need same-day hospital assessment [3]."
+        },
+        {
+          "h": "Consent and autonomy",
+          "t": "A capacitous patient can decline surgery. Give balanced information and support his decision; seeing the specialist does not commit him [6]."
+        }
       ]
     }
   };
@@ -387,31 +460,73 @@
     },
 
     'hypercalcaemia-workup': {
-      ceg: ['Investigations & results', 'Long-term conditions & cancer'],
-      stem: {
-        name: 'Carol Lindqvist', age: '58 years · female',
-        pmh: ['Adjusted calcium 2.78 (mildly raised), confirmed on repeat; well', 'No cancer history; PTH not yet done', 'Self-bought high-dose vitamin D + calcium; thiazide for BP'],
-        meds: ['Thiazide', 'High-dose vitamin D + calcium (self-bought)'],
-        allergy: 'NKDA',
-        recent: 'Terrified — friend said "high calcium means cancer"; mother died of cancer.',
-        reason: 'Video consultation — incidental mildly raised calcium.'
-      },
-      timeMap: [
-        { t:'0–2',  h:'Defuse, honestly',    d:'Cancer is one cause, not the likeliest in a well person with a mild rise — the friend\u2019s rule is wrong. We test to confirm.' },
-        { t:'2–4',  h:'PTH is the key',       d:'PTH (+ U&E, phosphate, vit D, ALP): raised/inappropriately-normal = benign parathyroid cause; suppressed → look further.' },
-        { t:'4–6',  h:'Find hidden causes',   d:'Self-bought high-dose vitamin D/calcium + thiazide raise calcium — stop/adjust and recheck; may be the whole answer.' },
-        { t:'6–9',  h:'Severity + no false poles', d:'Screen bones/stones/groans/moans; mild here (Society for Endocrinology 2016: under 3.0 rarely urgent; symptomatic = same day). Won\u2019t promise "definitely not cancer" nor confirm the friend; commit to working it up.' },
-        { t:'9–12', h:'Plan + safety-net',    d:'Stop supplements, review thiazide, PTH-led bloods, recheck calcium; severe symptoms (thirst/polyuria/vomiting/confusion) → urgent; go through results.' }
+      "ceg": [
+        "Investigations & results",
+        "Long-term conditions & cancer"
       ],
-      wordPics: {
-        fail: 'Either confirms the cancer fear or falsely promises "it\u2019s not cancer"; never orders PTH; never asks about the self-bought vitamin D/calcium or the thiazide; misses the reversible contributors and the structured work-up.',
-        pass: 'Explains hyperparathyroidism is the commoner cause, orders PTH-led bloods, finds and stops the supplement/thiazide contributors, screens severity, and safety-nets.',
-        exc:  'Defuses the catastrophic certainty honestly without false reassurance; orders the PTH-led work-up and explains the logic; takes a non-judgemental supplement/OTC history and stops the reversible contributors with a recheck; screens severity; and addresses the friend/mother-driven fear with empathy while committing to find the cause.'
+      "stem": {
+        "name": "Desmond Okoro",
+        "age": "64 years · male",
+        "pmh": [
+          "Hypertension",
+          "Renal colic two years ago (A&E attendance; stone passed)"
+        ],
+        "meds": [
+          "Bendroflumethiazide",
+          "Amlodipine"
+        ],
+        "allergy": "None recorded",
+        "recent": "Adjusted calcium 2.86 mmol/L, repeat 2.88 mmol/L. PTH 9.8 pmol/L (ref 1.6–6.9). 25-OH vitamin D 38 nmol/L. eGFR 72. Phosphate low-normal. FBC and LFTs normal.",
+        "reason": "Telephone appointment booked by the practice to discuss results."
       },
-      avoid: [
-        { dont:'"Don\u2019t worry, high calcium almost never means cancer — it\u2019s definitely something minor."', instead:'"Cancer is one cause but not the likeliest in someone well with a mild rise — the commonest is a benign gland problem. I won\u2019t guess either way; one blood test, the PTH, points us the right direction."', why:'False reassurance ("definitely minor") is as unsafe as confirming the cancer fear; commit to the work-up instead.' },
-        { dont:'"Are you on any medication?" (and stopping there)', instead:'"Do you take any supplements you\u2019ve bought yourself? \u2026 High-dose vitamin D and calcium, and your water tablet, can all raise calcium — let\u2019s stop the supplements and recheck."', why:'Missing the self-bought vitamin D/calcium and the thiazide overlooks common reversible causes that may explain the result.' },
-        { dont:'"Let\u2019s just repeat the calcium in a few months and see."', instead:'"Let\u2019s do the PTH and the other bloods now, stop the supplements, review the thiazide, and recheck — that gets us an answer rather than just watching a worrying number."', why:'Passive repeat without PTH and without removing contributors leaves the cause unfound and the patient frightened.' }
+      "timeMap": [
+        {
+          "t": "0–1",
+          "h": "Open",
+          "d": "Identity and privacy. Note the refusal; say you’ll come back to it. What does he know?"
+        },
+        {
+          "t": "1–4",
+          "h": "Results and history",
+          "d": "Plain explanation; symptoms; severe features; stone; drugs."
+        },
+        {
+          "t": "4–7",
+          "h": "The refusal",
+          "d": "Ask why; Grace’s death; empathy; autonomy; mood and risk."
+        },
+        {
+          "t": "7–11",
+          "h": "Plan",
+          "d": "NG132 referral to hear options; stop thiazide, alternative; vitamin D; fluids; bereavement support."
+        },
+        {
+          "t": "11–12",
+          "h": "Close",
+          "d": "Teach-back; repeat bloods; same-day safety-net."
+        }
+      ],
+      "wordPics": {
+        "fail": "Reads out numbers; misses the thiazide and the stone; tells him he needs an operation; or accepts the refusal without exploring it and does not refer.",
+        "pass": "Explains primary hyperparathyroidism, recognises the referral criteria, stops the thiazide, replaces vitamin D and safety-nets.",
+        "exc": "All of the above, plus: explores the refusal and responds to his bereavement with real empathy; reframes referral as hearing options without commitment; explains symptoms that may improve; screens mood and offers support; clear teach-back."
+      },
+      "avoid": [
+        {
+          "dont": "“You’ll need an operation to remove the gland.”",
+          "instead": "“A specialist can explain the options, including not operating.”",
+          "why": "Leading with surgery ends the conversation with a frightened patient."
+        },
+        {
+          "dont": "“That’s fine, we’ll just keep an eye on it.”",
+          "instead": "“Your level and the kidney stone mean the guidance recommends seeing a specialist; it doesn’t commit you.”",
+          "why": "He meets NG132 referral criteria; not referring deprives him of an informed choice."
+        },
+        {
+          "dont": "(Not reviewing medicines) leaving the thiazide.",
+          "instead": "“One of your blood pressure tablets can raise calcium; I’ll switch it.”",
+          "why": "Thiazides reduce urinary calcium excretion."
+        }
       ]
     }
   });

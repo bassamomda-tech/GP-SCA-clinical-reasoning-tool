@@ -27,7 +27,7 @@
     var t = m[0].toUpperCase();
     if (t === 'BNFC')     return { url: 'https://bnfc.nice.org.uk/', title: 'Open the BNF for Children' };
     if (t === 'BNF')      return { url: 'https://bnf.nice.org.uk/', title: 'Open the BNF' };
-    if (t === 'UKMEC')    return { url: 'https://www.fsrh.org/ukmec', title: 'Open the UK Medical Eligibility Criteria (FSRH)' };
+    if (t === 'UKMEC')    return { url: 'https://www.cosrh.org/Common/Uploaded%20files/documents/UKMEC_2025.pdf', title: 'Open the UK Medical Eligibility Criteria (UKMEC 2025, CoSRH)' };
     return null;
   }
 

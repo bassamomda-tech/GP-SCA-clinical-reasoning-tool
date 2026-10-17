@@ -3702,7 +3702,7 @@
    "legal": [
     {
      "h": "DVLA",
-     "t": "Alcohol dependence is a notifiable condition for drivers. Group 1: licence refused or revoked until a year free of dependence (DVLA Assessing fitness to drive). If he drives, advise him of his duty to tell DVLA; GMC Confidentiality 2017 sets out what to do if he continues to drive against advice."
+     "t": "Alcohol dependence is a notifiable condition for drivers. With high-risk features (his previous withdrawal seizure; medication-assisted withdrawal): licence refused or revoked until at least 1 year (Group 1) or 3 years (Group 2) of abstinence (DVLA Assessing fitness to drive). If he drives, advise him of his duty to tell DVLA; GMC Confidentiality 2017 sets out what to do if he continues to drive against advice."
     },
     {
      "h": "Capacity",

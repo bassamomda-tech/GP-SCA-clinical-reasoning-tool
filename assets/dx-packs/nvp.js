@@ -8,7 +8,7 @@
 
     { group: 'Severity (PUQE / dehydration)', id: 'tolerating', kind: 'check', label: 'Tolerating some oral fluids' },
     { group: 'Severity (PUQE / dehydration)', id: 'unable_fluids', kind: 'check', label: 'Unable to keep fluids down' },
-    { group: 'Severity (PUQE / dehydration)', id: 'ketonuria', kind: 'check', label: 'Ketonuria / signs of dehydration' },
+    { group: 'Severity (PUQE / dehydration)', id: 'ketonuria', kind: 'check', label: 'Signs of dehydration (ketonuria alone does not grade severity)' },
     { group: 'Severity (PUQE / dehydration)', id: 'weight_loss', kind: 'check', label: 'Weight loss >5% of pre-pregnancy weight' },
 
     { group: 'Atypical features', id: 'late_onset', kind: 'check', label: 'New onset after 11 weeks / very severe' },
@@ -27,7 +27,7 @@
     rules: [
       {
         id: 'admit', tier: 'emergency',
-        label: 'Hyperemesis gravidarum — unable to keep fluids down + ketonuria / weight loss',
+        label: 'Hyperemesis gravidarum — unable to keep fluids down, or dehydration + weight loss',
         action: 'Same-day admission / ambulatory unit — IV fluids, IV antiemetics, thiamine, VTE prophylaxis.',
         patientPhrase: '"You are too dehydrated to manage at home — you need a drip and stronger anti-sickness treatment today."',
         source: 'RCOG GTG 69',
@@ -42,7 +42,7 @@
       },
       {
         id: 'moderate', tier: 'urgent',
-        label: 'Moderate NVP with some dehydration / ketonuria',
+        label: 'Moderate NVP with some dehydration',
         action: 'Oral/buccal antiemetic; consider ambulatory IV fluids; review next day.',
         source: 'RCOG GTG 69',
         when: i => i.ketonuria,
@@ -72,8 +72,8 @@
         keyExam: 'Well hydrated; no abdominal signs.', nextIx: 'Antiemetic ladder; dietary advice; reassure.',
         patientPhrase: 'Common early-pregnancy sickness, driven by pregnancy hormones. It usually eases by 16–20 weeks and treatment helps.',
         guideUrl: '', guideLabel: 'RCOG nausea and vomiting of pregnancy (GTG 69)' },
-      { id: 'hyperemesis', name: 'Hyperemesis gravidarum', summary: 'Protracted vomiting + dehydration + ketosis + >5% weight loss', baseline: 4, category: 'cant-miss',
-        keyExam: 'Dehydration, ketonuria, weight loss.', nextIx: '\u26A1 Admission / ambulatory IV fluids + antiemetics + thiamine; VTE prophylaxis.',
+      { id: 'hyperemesis', name: 'Hyperemesis gravidarum', summary: 'Protracted vomiting + >5% weight loss + dehydration and/or electrolyte imbalance', baseline: 4, category: 'cant-miss',
+        keyExam: 'Dehydration, weight loss, U&E (ketonuria does not grade severity).', nextIx: '\u26A1 Admission / ambulatory IV fluids + antiemetics + thiamine; VTE prophylaxis.',
         patientPhrase: 'This severe form causes dehydration and needs intravenous fluids and stronger treatment — usually in hospital.',
         guideUrl: '', guideLabel: 'RCOG nausea and vomiting of pregnancy (GTG 69)', redFlagAction: '\u26A1 Admit for IV therapy' },
       { id: 'uti', name: 'UTI', summary: 'Dysuria / loin pain', baseline: 3, category: 'common',

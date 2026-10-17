@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Trainer Mode · Reasoning GP</title>
+<meta name="description" content="Trainer Mode: plan and run an SCA teaching session for a GP training group. Session builder, rotation planner, printable candidate, role-player and examiner packs, and a room timer.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Trainer Mode">
+<meta property="og:description" content="Plan and run an SCA teaching session: stations, rotations, printable packs and a room timer.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/sca-trainer.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/sca-trainer.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=14">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:1000px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:18px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:6px; max-width:70ch; }
+
+.tr-jump{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:18px; }
+.tr-jump a{ font-size:12.5px; font-weight:700; padding:6px 12px; border-radius:999px; border:1px solid var(--line); background:#fff; color:var(--ink-2); text-decoration:none; }
+.tr-jump a:hover{ border-color:var(--ink-2); color:var(--ink); }
+
+.tr-card{ border:1px solid var(--line); border-radius:14px; background:#fff; margin-bottom:20px; padding:18px 20px; min-width:0; }
+@media (max-width:760px){ .tr-card{ padding:15px 14px; } }
+.tr-card > h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:21px; color:var(--ink); margin-bottom:4px; }
+.tr-card > .sub{ font-size:13.5px; color:var(--muted); margin-bottom:14px; line-height:1.55; }
+.tr-num{ display:inline-block; min-width:24px; height:24px; line-height:24px; text-align:center; border-radius:50%; background:var(--teal); color:#f6f2e9; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:700; margin-right:8px; vertical-align:3px; }
+
+.tr-grid{ display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:12px 14px; margin-bottom:14px; }
+.tr-f{ display:flex; flex-direction:column; gap:5px; min-width:0; }
+.tr-f label, .tr-lbl{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+.tr-f input[type=text], .tr-f input[type=number], .tr-f input[type=time], .tr-f input[type=date], .tr-f input[type=search], .tr-f select, .tr-f textarea{
+  font:inherit; font-size:14px; padding:8px 11px; border:1px solid var(--line-2); border-radius:9px; background:#fff; color:var(--ink); width:100%; min-width:0; box-sizing:border-box; }
+.tr-f textarea{ min-height:92px; resize:vertical; line-height:1.5; }
+.tr-f .hint{ font-size:12px; color:var(--muted); line-height:1.45; }
+.tr-check{ display:flex; gap:8px; align-items:center; font-size:13.5px; color:var(--ink-2); }
+.tr-check input{ width:18px; height:18px; accent-color:var(--teal); }
+
+.tr-seg{ display:inline-flex; border:1px solid var(--line-2); border-radius:10px; overflow:hidden; margin-bottom:14px; max-width:100%; }
+.tr-seg button{ font:inherit; font-size:13.5px; font-weight:700; padding:9px 16px; border:0; background:#fff; color:var(--ink-2); cursor:pointer; }
+.tr-seg button[aria-pressed="true"]{ background:var(--teal); color:#f6f2e9; }
+.tr-seg button + button{ border-left:1px solid var(--line-2); }
+
+.tr-btn{ font:inherit; font-size:13px; font-weight:700; padding:9px 16px; border-radius:9px; border:1px solid var(--line-2); background:#fff; color:var(--ink-2); cursor:pointer; }
+.tr-btn:hover{ border-color:var(--ink-2); color:var(--ink); }
+.tr-btn.pri{ background:var(--teal); border-color:var(--teal); color:#f6f2e9; }
+.tr-btn.pri:hover{ background:var(--teal-2); color:#fff; }
+.tr-btn.sm{ font-size:12px; padding:5px 11px; border-radius:7px; }
+.tr-btn:disabled{ opacity:.45; cursor:not-allowed; }
+.tr-btn:focus-visible, .tr-seg button:focus-visible, .tr-jump a:focus-visible, .tr-f :focus-visible, .tr-check input:focus-visible{ outline:3px solid #f59e0b; outline-offset:2px; }
+.tr-row{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+
+.tr-pool{ border:1px solid var(--line); border-radius:11px; max-height:330px; overflow-y:auto; overflow-x:hidden; }
+.tr-item{ display:flex; gap:10px; align-items:flex-start; padding:9px 12px; border-bottom:1px solid #f1ede4; min-width:0; }
+.tr-item:last-child{ border-bottom:0; }
+.tr-item .tx{ flex:1; min-width:0; }
+.tr-item .t{ font-size:13.5px; font-weight:700; color:var(--ink); overflow-wrap:anywhere; }
+.tr-item .m{ font-size:12px; color:var(--muted); line-height:1.45; overflow-wrap:anywhere; }
+.tr-count{ font-size:13px; color:var(--ink-2); font-weight:600; margin:8px 0; }
+.tr-sel{ list-style:none; margin:0; padding:0; counter-reset:st; }
+.tr-sel li{ display:flex; gap:10px; align-items:flex-start; border:1px solid var(--line); border-radius:11px; padding:9px 12px; margin-bottom:7px; background:var(--surface-2,#fbf8f1); min-width:0; }
+.tr-sel li .st{ flex-shrink:0; font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--teal); padding-top:2px; width:68px; }
+.tr-sel li .act{ display:flex; gap:4px; flex-shrink:0; flex-wrap:wrap; justify-content:flex-end; }
+@media (max-width:520px){ .tr-sel li{ flex-wrap:wrap; } .tr-sel li .st{ width:auto; } .tr-sel li .tx{ flex-basis:100%; } .tr-sel li .act{ width:100%; justify-content:flex-start; } }
+.tr-empty{ font-size:13.5px; color:var(--muted); padding:12px; border:1px dashed var(--line-2); border-radius:11px; }
+.tr-cov{ font-size:12.5px; color:var(--ink-2); line-height:1.55; margin-top:6px; }
+.tr-pill{ display:inline-block; font-size:10.5px; font-weight:700; border-radius:999px; padding:1px 8px; border:1px solid var(--line-2); color:var(--ink-2); margin:2px 3px 0 0; }
+.tr-pill.d3{ border-color:#fecaca; color:#b91c1c; } .tr-pill.d1{ border-color:#bbf7d0; color:#15803d; }
+
+/* Rotation */
+.tr-rota{ width:100%; border-collapse:collapse; font-size:13px; }
+.tr-rota th, .tr-rota td{ border:1px solid var(--line); padding:8px 10px; text-align:left; vertical-align:top; }
+.tr-rota thead th{ background:var(--surface-2,#fbf8f1); font-size:12px; }
+.tr-rota th[scope=row]{ background:var(--surface-2,#fbf8f1); white-space:nowrap; }
+.tr-rota .time{ display:block; font-weight:400; color:var(--muted); font-size:12px; }
+.tr-rota .grp{ font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; color:var(--teal); margin-bottom:3px; }
+.tr-rota .role{ display:block; line-height:1.55; }
+.tr-rota .role b{ display:inline-block; min-width:76px; font-size:11px; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); }
+.tr-rota .free{ color:var(--muted); font-style:italic; }
+.tr-rota .grp + .grp{ margin-top:8px; }
+.tr-rota .blk + .blk{ margin-top:10px; padding-top:8px; border-top:1px dashed var(--line); }
+@media (max-width:640px){
+  .tr-rota, .tr-rota thead, .tr-rota tbody, .tr-rota tr, .tr-rota th, .tr-rota td{ display:block; width:auto; }
+  .tr-rota thead{ position:absolute; left:-9999px; }
+  .tr-rota tr{ border:1px solid var(--line); border-radius:10px; margin-bottom:10px; overflow:hidden; }
+  .tr-rota th, .tr-rota td{ border:0; border-bottom:1px solid #f1ede4; }
+  .tr-rota td::before{ content:attr(data-label); display:block; font-size:12.5px; font-weight:700; color:var(--ink); margin-bottom:4px; line-height:1.4; }
+  .tr-rota th[scope=row]{ white-space:normal; }
+}
+.tr-turns{ font-size:12.5px; color:var(--ink-2); margin-top:10px; line-height:1.6; }
+.tr-warn{ font-size:12.8px; color:#92400e; background:#fffbeb; border:1px solid #fde68a; border-radius:9px; padding:8px 12px; margin-top:10px; line-height:1.5; }
+
+/* Sheets */
+.tr-status{ font-size:13px; color:var(--ink-2); margin:8px 0; min-height:1.2em; }
+.sheet{ border:1px solid var(--line); border-radius:12px; margin:14px 0; overflow:hidden; background:#fff; min-width:0; }
+.sheet-hdr{ padding:12px 16px; border-bottom:1px solid var(--line); display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.sheet-hdr .badge{ font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; border-radius:999px; padding:3px 11px; background:#fff; }
+.sheet-hdr h3{ font-family:'Source Serif 4',Georgia,serif; font-weight:600; font-size:18px; color:var(--ink); flex:1 1 220px; min-width:0; overflow-wrap:anywhere; }
+.sheet-hdr .warn{ font-size:11.5px; font-weight:800; color:#b91c1c; letter-spacing:.02em; }
+.sheet-hdr .ok{ font-size:11.5px; font-weight:700; color:#15803d; }
+.sheet-cand .sheet-hdr{ background:#f0fdf4; } .sheet-cand .badge{ border:1px solid #bbf7d0; color:#15803d; }
+.sheet-pt .sheet-hdr{ background:#fffbeb; } .sheet-pt .badge{ border:1px solid #fde68a; color:#92400e; }
+.sheet-ex .sheet-hdr{ background:#f0f5ff; } .sheet-ex .badge{ border:1px solid #d8e3f8; color:#3f5c93; }
+.sheet-body{ padding:14px 16px; }
+.sh-sec{ margin-bottom:14px; }
+.sh-h{ font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+.sh-sec p, .sh-sec li{ font-size:13px; line-height:1.6; color:var(--ink-2); }
+.sh-sec ul, .sh-sec ol{ margin:0; padding-left:18px; }
+.sh-sec li{ margin-bottom:4px; }
+.sh-open{ font-family:'Source Serif 4',Georgia,serif; font-style:italic; font-size:14.5px; line-height:1.55; color:var(--ink); background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:10px 13px; }
+.sh-fact{ display:flex; gap:10px; border-bottom:1px dashed #ece7dc; padding:6px 0; min-width:0; }
+.sh-fact .k{ flex-shrink:0; width:120px; font-size:11px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--muted); padding-top:2px; overflow-wrap:anywhere; }
+.sh-fact .v{ flex:1; min-width:0; font-size:13px; line-height:1.55; color:var(--ink-2); overflow-wrap:anywhere; }
+@media (max-width:480px){ .sh-fact{ flex-direction:column; gap:2px; } .sh-fact .k{ width:auto; } }
+.sh-cue{ background:#fdf2f8; border:1px solid #fbcfe8; border-radius:9px; padding:7px 11px; font-size:12.8px; color:#9d174d; line-height:1.5; margin-bottom:6px; }
+.sh-cue b{ font-size:10px; letter-spacing:.07em; text-transform:uppercase; display:block; margin-bottom:2px; }
+.sh-agenda{ background:#fff7ed; border:1.5px solid #fdba74; border-radius:10px; padding:10px 13px; font-size:13px; line-height:1.55; color:#7c2d12; }
+.sh-chk{ display:flex; gap:9px; align-items:flex-start; border:1px solid var(--line); border-radius:9px; padding:7px 11px; margin-bottom:5px; font-size:12.8px; line-height:1.5; color:var(--ink-2); min-width:0; }
+.sh-chk > span:last-child{ min-width:0; overflow-wrap:anywhere; }
+.sh-chk .box{ flex-shrink:0; width:14px; height:14px; border:1.5px solid #94a3b8; border-radius:4px; margin-top:3px; }
+.sh-chk .pts{ flex-shrink:0; margin-left:auto; font-size:11px; font-weight:700; color:var(--muted); padding-left:6px; }
+.sh-dom{ font-size:12px; font-weight:800; color:var(--ink); margin:10px 0 6px; display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; }
+.sh-dom span{ font-weight:600; color:var(--muted); }
+.sh-grades{ display:flex; gap:6px; font-size:11px; color:var(--muted); flex-wrap:wrap; margin:4px 0 10px; }
+.sh-grades span{ border:1.5px solid #cbd5e1; border-radius:7px; padding:2px 9px; font-weight:700; }
+.sh-data{ width:100%; border-collapse:collapse; font-size:12.5px; }
+.sh-data td{ border-bottom:1px dashed #ece7dc; padding:4px 6px 4px 0; vertical-align:top; overflow-wrap:anywhere; }
+.sh-instr{ font-size:13px; line-height:1.6; color:var(--ink-2); background:#f8fafc; border:1px solid var(--line); border-radius:10px; padding:10px 13px; }
+.sh-lines{ border-top:1px solid var(--line); height:110px; background:repeating-linear-gradient(#fff 0 27px, #e5e7eb 27px 28px); }
+.sh-foot{ font-size:11px; color:var(--muted); margin-top:8px; }
+.sheet .sca-rec{ font-size:13.5px; }
+
+/* Timer */
+.tm-wrap{ background:#0c4a47; color:#f6f2e9; border-radius:16px; padding:20px; text-align:center; }
+.tm-wrap:fullscreen{ display:flex; flex-direction:column; justify-content:center; border-radius:0; padding:40px; }
+.tm-round{ font-size:14px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; opacity:.85; }
+.tm-where{ font-size:13.5px; margin-top:6px; line-height:1.55; opacity:.92; overflow-wrap:anywhere; }
+.tm-phase{ font-family:'Source Serif 4',Georgia,serif; font-size:26px; font-weight:500; margin-top:12px; }
+.tm-clock{ font-family:'DM Sans',sans-serif; font-variant-numeric:tabular-nums; font-weight:700; font-size:clamp(64px, 19vw, 170px); line-height:1; margin:8px 0 10px; letter-spacing:-.02em; }
+.tm-wrap:fullscreen .tm-clock{ font-size:min(30vw, 40vh); }
+.tm-clock.low{ color:#fde68a; }
+.tm-clock.over{ color:#fca5a5; }
+.tm-bar{ display:flex; gap:4px; margin:0 auto 14px; max-width:520px; }
+.tm-bar div{ flex:1; font-size:11px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:5px 2px; border-radius:6px; background:rgba(255,255,255,.12); min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+@media (max-width:420px){ .tm-bar div{ font-size:10px; letter-spacing:0; } }
+.tm-bar div.on{ background:#f6f2e9; color:#0c4a47; }
+.tm-bar div.done{ opacity:.5; }
+.tm-ctl{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+.tm-ctl .tr-btn{ background:transparent; color:#f6f2e9; border-color:rgba(246,242,233,.5); }
+.tm-ctl .tr-btn.pri{ background:#f6f2e9; color:#0c4a47; border-color:#f6f2e9; }
+.tm-ctl .tr-btn:focus-visible{ outline-color:#fde68a; }
+.tm-opts{ display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-top:12px; }
+.tm-opts .tr-check{ color:#f6f2e9; }
+
+/* Notes */
+.tr-notes details{ border:1px solid var(--line); border-radius:11px; margin-bottom:8px; background:#fff; }
+.tr-notes summary{ cursor:pointer; padding:11px 14px; font-weight:700; font-size:14px; color:var(--ink); }
+.tr-notes summary:focus-visible{ outline:3px solid #f59e0b; outline-offset:2px; }
+.tr-notes .nb{ padding:0 16px 12px; font-size:13.5px; line-height:1.62; color:var(--ink-2); }
+.tr-notes .nb ul{ padding-left:18px; margin:4px 0 8px; } .tr-notes .nb li{ margin-bottom:5px; }
+.tr-notes .nb p{ margin:6px 0; }
+
+/* Summary (print only) */
+#summaryBlock{ display:none; }
+.sum-h{ font-family:'Source Serif 4',Georgia,serif; font-size:24px; font-weight:600; margin-bottom:4px; }
+.sum-t{ width:100%; border-collapse:collapse; font-size:12.5px; margin:8px 0 14px; }
+.sum-t th, .sum-t td{ border:1px solid #999; padding:5px 7px; text-align:left; vertical-align:top; }
+.print-only{ display:none; }
+.sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+@media print {
+  @page{ margin:14mm; }
+  .sidebar, .sb-overlay, .tool-head, .tr-jump, .no-print, #navBackBtn, .rgp-cookie{ display:none !important; }
+  .app, .main{ display:block !important; }
+  .tool-page{ padding:0; max-width:none; }
+  body{ background:#fff !important; }
+  .tr-card{ border:0; padding:0; margin:0; }
+  .print-only{ display:block; }
+  /* choose what prints */
+  body[data-print] .pblock{ display:none !important; }
+  body[data-print="rota"] #rotaBlock,
+  body[data-print="summary"] #summaryBlock,
+  body[data-print="packs"] #packsBlock, body[data-print="cand"] #packsBlock,
+  body[data-print="pt"] #packsBlock, body[data-print="ex"] #packsBlock{ display:block !important; }
+  body[data-print="cand"] .sheet:not(.sheet-cand),
+  body[data-print="pt"] .sheet:not(.sheet-pt),
+  body[data-print="ex"] .sheet:not(.sheet-ex){ display:none !important; }
+  body:not([data-print]) #summaryBlock{ display:none !important; }
+  .sheet{ border:1.5px solid #000; border-radius:6px; margin:0; break-after:page; page-break-after:always; }
+  .sheet:last-child{ break-after:auto; page-break-after:auto; }
+  .sh-chk, .sh-fact, .sh-cue{ break-inside:avoid; page-break-inside:avoid; }
+  .tr-rota{ font-size:11.5px; }
+  .tr-rota tr{ break-inside:avoid; page-break-inside:avoid; }
+}
+</style>
+</head>
+<body>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · For GP trainers and VTS programme directors</div>
+        <h1>Trainer <em>mode</em></h1>
+        <p>Run an SCA teaching session for a group in four steps: build a set of stations, plan who plays candidate, patient and examiner in each round, print a three-sheet pack for every station, then run the room from one big clock. Your plan is saved on this device.</p>
+      </div>
+
+      <nav class="tr-jump no-print" aria-label="Trainer mode sections">
+        <a href="#builder">1 · Session builder</a>
+        <a href="#rotaBlock">2 · Rotation plan</a>
+        <a href="#packsBlock">3 · Print packs</a>
+        <a href="#timerBlock">4 · Room timer</a>
+        <a href="#notesBlock">5 · Facilitator notes</a>
+        <a href="#saveBlock">6 · Save &amp; export</a>
+      </nav>
+
+      <!-- 1. Session builder -->
+      <section class="tr-card pblock no-print" id="builder" aria-labelledby="bH">
+        <h2 id="bH"><span class="tr-num" aria-hidden="true">1</span>Session builder</h2>
+        <p class="sub">Choose how many stations you will run and how the cases are chosen. Trainees work in threes: a candidate, a role-player patient and an examiner.</p>
+
+        <div class="tr-grid">
+          <div class="tr-f"><label for="sTitle">Session name</label><input type="text" id="sTitle" maxlength="80" placeholder="e.g. ST3 SCA teaching, Thursday" autocomplete="off"></div>
+          <div class="tr-f"><label for="sDate">Date</label><input type="date" id="sDate"></div>
+          <div class="tr-f"><label for="sStations">Number of stations</label>
+            <select id="sStations"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+          <div class="tr-f"><label for="sCount">Number of trainees</label><input type="number" id="sCount" min="1" max="36" step="1" inputmode="numeric">
+            <span class="hint" id="sGroupsHint"></span></div>
+        </div>
+
+        <div class="tr-f" style="margin-bottom:14px">
+          <label for="sNames">Trainee names (optional, one per line)</label>
+          <textarea id="sNames" placeholder="Leave blank to use Trainee 1, Trainee 2 …" aria-describedby="sNamesHint"></textarea>
+          <span class="hint" id="sNamesHint">First names are enough. Names stay on this device only.</span>
+        </div>
+
+        <div class="tr-lbl" id="modeLbl" style="margin-bottom:6px">How to choose cases</div>
+        <div class="tr-seg" role="group" aria-labelledby="modeLbl">
+          <button type="button" id="modeBp" aria-pressed="true">Draw to the blueprint</button>
+          <button type="button" id="modePick" aria-pressed="false">Pick cases</button>
+        </div>
+
+        <div id="bpPanel">
+          <div class="tr-row" style="margin-bottom:10px">
+            <button type="button" class="tr-btn pri" id="drawBtn">Draw stations</button>
+            <label class="tr-check"><input type="checkbox" id="sHarder"> Harder mix</label>
+          </div>
+          <p class="tr-f"><span class="hint">The draw spreads the stations across different RCGP experience groups and body systems, with a mix of video and telephone cases, as in the real exam.</span></p>
+        </div>
+
+        <div id="pickPanel" hidden>
+          <div class="tr-grid">
+            <div class="tr-f"><label for="fQ">Search</label><input type="search" id="fQ" placeholder="Title, system or theme" autocomplete="off"></div>
+            <div class="tr-f"><label for="fGroup">Experience group</label><select id="fGroup"><option value="">All groups</option></select></div>
+            <div class="tr-f"><label for="fType">Consultation type</label><select id="fType"><option value="">All types</option><option value="video">Video</option><option value="telephone">Telephone</option></select></div>
+            <div class="tr-f"><label for="fDiff">Difficulty</label><select id="fDiff"><option value="">Any difficulty</option><option value="1">Straightforward</option><option value="2">Typical</option><option value="3">Hard</option></select></div>
+          </div>
+          <div class="tr-count" id="poolCount" aria-live="polite"></div>
+          <div class="tr-pool" id="pool" role="list" aria-label="Matching cases"></div>
+        </div>
+
+        <h3 class="tr-lbl" style="margin:16px 0 8px">Your stations</h3>
+        <div id="selWrap"></div>
+        <div class="tr-cov" id="coverage"></div>
+      </section>
+
+      <!-- 2. Rotation -->
+      <section class="tr-card pblock" id="rotaBlock" aria-labelledby="rH">
+        <h2 id="rH"><span class="tr-num" aria-hidden="true">2</span>Rotation plan</h2>
+        <p class="sub no-print">Each group visits every station once and swaps roles each round, so everyone gets a turn in the hot seat. Timings are per round.</p>
+        <div class="print-only" id="rotaPrintHead"></div>
+        <div class="tr-grid no-print">
+          <div class="tr-f"><label for="tStart">Start time</label><input type="time" id="tStart"></div>
+          <div class="tr-f"><label for="tRead">Reading (minutes)</label><input type="number" id="tRead" min="1" max="10" step="1" inputmode="numeric"></div>
+          <div class="tr-f"><label for="tConsult">Consultation (minutes)</label><input type="number" id="tConsult" min="5" max="20" step="1" inputmode="numeric"></div>
+          <div class="tr-f"><label for="tFeedback">Feedback (minutes)</label><select id="tFeedback"><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+          <div class="tr-f"><label for="tChange">Changeover (minutes)</label><input type="number" id="tChange" min="0" max="10" step="1" inputmode="numeric"></div>
+        </div>
+        <div id="rota"></div>
+        <div class="tr-row no-print" style="margin-top:12px"><button type="button" class="tr-btn" id="printRota">Print rotation plan</button></div>
+      </section>
+
+      <!-- 3. Packs -->
+      <section class="tr-card pblock" id="packsBlock" aria-labelledby="pH">
+        <h2 id="pH" class="no-print"><span class="tr-num" aria-hidden="true">3</span>Print packs</h2>
+        <p class="sub no-print">Three sheets per station. The <b>candidate sheet</b> holds only the medical-record brief. The <b>patient sheet</b> and <b>examiner sheet</b> are marked “Do not show to the candidate”: hand them out face down.</p>
+        <div class="tr-row no-print" style="margin-bottom:6px">
+          <button type="button" class="tr-btn pri" id="printAll">Print all packs</button>
+          <button type="button" class="tr-btn" id="printCand">Candidate sheets</button>
+          <button type="button" class="tr-btn" id="printPt">Patient sheets</button>
+          <button type="button" class="tr-btn" id="printEx">Examiner sheets</button>
+        </div>
+        <div class="tr-f no-print" style="max-width:280px;margin:10px 0 4px"><label for="pShow">Show on screen</label>
+          <select id="pShow"><option value="all">All sheets</option><option value="cand">Candidate sheets</option><option value="pt">Patient sheets</option><option value="ex">Examiner sheets</option></select></div>
+        <div class="tr-status no-print" id="packStatus" role="status" aria-live="polite"></div>
+        <div id="packs"></div>
+      </section>
+
+      <!-- 4. Timer -->
+      <section class="tr-card pblock no-print" id="timerBlock" aria-labelledby="tH">
+        <h2 id="tH"><span class="tr-num" aria-hidden="true">4</span>Room timer</h2>
+        <p class="sub">Put this on the big screen. Reading runs straight into the consultation, then feedback. Press <b>Full screen</b> for a clock the whole room can see.</p>
+        <div class="tm-wrap" id="tmWrap">
+          <div class="tm-round" id="tmRound"></div>
+          <div class="tm-where" id="tmWhere"></div>
+          <div class="tm-phase" id="tmPhase" aria-live="polite"></div>
+          <div class="tm-clock" id="tmClock" role="timer" aria-label="Time remaining">0:00</div>
+          <div class="tm-bar" id="tmBar" aria-hidden="true"></div>
+          <div class="tm-ctl">
+            <button type="button" class="tr-btn" id="tmPrev">Previous station</button>
+            <button type="button" class="tr-btn pri" id="tmGo">Start</button>
+            <button type="button" class="tr-btn" id="tmSkip">Next phase</button>
+            <button type="button" class="tr-btn" id="tmReset">Reset round</button>
+            <button type="button" class="tr-btn" id="tmNext">Next station</button>
+          </div>
+          <div class="tm-opts">
+            <label class="tr-check"><input type="checkbox" id="tmSound"> Sound at 2 minutes left and at time</label>
+            <button type="button" class="tr-btn sm" id="tmFull" style="background:transparent;color:#f6f2e9;border-color:rgba(246,242,233,.5)">Full screen</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Notes -->
+      <section class="tr-card pblock no-print tr-notes" id="notesBlock" aria-labelledby="nH">
+        <h2 id="nH"><span class="tr-num" aria-hidden="true">5</span>Facilitator notes</h2>
+        <p class="sub">Short guidance for running SCA teaching that is useful and feels safe. Adapt it to your group.</p>
+        <details open>
+          <summary>Before the session</summary>
+          <div class="nb"><ul>
+            <li>Print the packs the day before. Put each station’s patient and examiner sheets in an envelope; keep candidate sheets separate.</li>
+            <li>One room or corner per group, with a table, two chairs and a clock everyone can see. For telephone stations, seat the candidate and patient back to back.</li>
+            <li>Give role-players five minutes to read their sheet before the first round. Ask them to play it straight: say the opening line, answer what is asked, plant each cue once.</li>
+            <li>Check timings out loud at the start: 3 minutes reading, 12 minutes consulting, then feedback. The consultation stops at 12 minutes, mid-sentence if need be, just as in the exam.</li>
+          </ul></div>
+        </details>
+        <details>
+          <summary>Setting the tone (psychological safety)</summary>
+          <div class="nb"><ul>
+            <li>Agree ground rules: what is said in the room stays in the room; we critique the consultation, not the person; anyone may pause a station.</li>
+            <li>Say plainly that this is practice. Getting it wrong here is the point, and is far cheaper than getting it wrong on the day.</li>
+            <li>Role-plays can touch on personal experience (bereavement, miscarriage, safeguarding, mental health). Name this at the start and let people swap a station without giving a reason.</li>
+            <li>Let role-players step out of role clearly before feedback (“I’m Sam again now”), and thank them.</li>
+            <li>Do not rank trainees or compare scores in front of the group. If you have concerns about someone’s progress, talk to them privately afterwards and involve their educational supervisor if needed.</li>
+            <li>Be alert to differential attainment. Trainees who qualified outside the UK may be judged on idiom and cultural shorthand rather than skill; give feedback on what the patient needed, not on accent or phrasing style.</li>
+          </ul></div>
+        </details>
+        <details>
+          <summary>Giving feedback by domain</summary>
+          <div class="nb">
+            <p>Start with the candidate: “How did that feel? What would you keep?” Then the patient: “How did you feel as the patient? When did you feel heard?” Then the examiner, by domain:</p>
+            <ul>
+              <li><b>Data gathering and diagnosis:</b> was the history focused and targeted to the likely problems, were red flags checked, and was a working diagnosis reached and shared?</li>
+              <li><b>Clinical management and medical complexity:</b> was the plan safe, current and specific, did it deal with the uncertainty or several problems, and was there a clear safety-net (what to look for, how soon, where to go)?</li>
+              <li><b>Relating to others:</b> were the patient’s ideas, concerns and expectations explored and then used in the plan, were cues picked up, and was the explanation in plain words with understanding checked?</li>
+            </ul>
+            <p>Keep it specific and observed: quote what the candidate actually said and at what minute. Two strengths, then one change to try next time. Finish by asking the candidate to say their one change in their own words.</p>
+          </div>
+        </details>
+        <details>
+          <summary>Using the RCGP feedback statements carefully</summary>
+          <div class="nb"><ul>
+            <li>The RCGP feedback statements describe patterns seen across many candidates. Use them as a shared vocabulary, not as a verdict on one practice station.</li>
+            <li>Always tie a statement to evidence: “You didn’t come back to her worry about her mum, so the plan didn’t address it” is useful; “Does not identify cues” on its own is not.</li>
+            <li>Avoid pass or fail language for a single role-play. One station tells you little; patterns across several stations and sessions tell you much more.</li>
+            <li>Do not suggest stock phrases or a script. Examiners reward consultations that respond to the patient in front of them, not rehearsed lines.</li>
+          </ul></div>
+        </details>
+        <details>
+          <summary>After the session</summary>
+          <div class="nb"><ul>
+            <li>Gather the patient and examiner sheets back in so the cases stay fresh for other groups.</li>
+            <li>Ask each trainee to note one learning point and one thing to practise, and to log it in their portfolio if they wish.</li>
+            <li>Note which domains came up most in feedback across the group; that is your topic for the next session.</li>
+          </ul></div>
+        </details>
+        <p class="sh-foot">These cases are original practice material written for teaching. They are not RCGP exam cases and the scorecards are an educational aid, not the official marking scheme.</p>
+      </section>
+
+      <!-- 6. Save & export -->
+      <section class="tr-card pblock no-print" id="saveBlock" aria-labelledby="sH">
+        <h2 id="sH"><span class="tr-num" aria-hidden="true">6</span>Save and export</h2>
+        <p class="sub">Your plan saves automatically on this device as you work. Print a one-page summary to share with co-facilitators.</p>
+        <div class="tr-row">
+          <button type="button" class="tr-btn pri" id="printSum">Print session summary</button>
+          <button type="button" class="tr-btn" id="clearPlan">Start a new plan</button>
+        </div>
+        <div class="tr-status" id="saveStatus" role="status" aria-live="polite"></div>
+      </section>
+
+      <!-- Printable summary (print only) -->
+      <section class="pblock" id="summaryBlock" aria-hidden="true"></section>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=107"></script>
+<!-- sca-enrich.js must load before the case index: its load-time passes then skip (Upload 148) -->
+<script src="../assets/sca-enrich.js?v=17"></script>
+<script src="../assets/sca-data/index.js?v=e571cdd92f64"></script>
+<script src="../assets/sca-blueprint.js?v=1"></script>
+<script src="../assets/sca-loader.js?v=10" data-cases="none"></script>
+<script>
+(function(){
+  'use strict';
+  var $ = function(q){ return document.querySelector(q); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); };
+
+  var KEY = 'rgp-trainer-session';
+  var ALL = window.SCA_CASES || [];
+  var UI = window.SCA_UI || { title:function(c){ return String((c && c.title) || '').replace(/\s*\([^()]*\)\s*$/, ''); }, meta:function(){ return ''; }, record:function(){ return ''; } };
+  var BP = window.SCA_BLUEPRINT;
+  var RC = window.SCA_RCGP;
+  var byId = function(id){ for (var i = 0; i < ALL.length; i++) if (ALL[i].id === id) return ALL[i]; return null; };
+  var bpOf = function(c){ return (BP && BP.tagsOf) ? BP.tagsOf(c) : ((c.meta && c.meta.blueprint) || { groups:c.ceg || [], difficulty:2, themes:[] }); };
+  var DIFF = { 1:'Straightforward', 2:'Typical', 3:'Hard' };
+  var TYPE = { video:'Video', telephone:'Telephone', phone:'Telephone', f2f:'Face-to-face', visit:'Home visit', home:'Home visit', data:'Results review' };
+  var DOM_LBL = { dg:'Data gathering & diagnosis', cm:'Clinical management & medical complexity', ro:'Relating to others' };
+  var ROMAN = 'ABCDEFGHIJKL';
+
+  /* ---------- plan state ---------- */
+  function defaults(){
+    return { v:1, title:'', date:'', stations:3, mode:'blueprint', harder:false, caseIds:[], count:6, names:'',
+             start:'14:00', read:3, consult:12, feedback:7, change:2, round:0, sound:true };
+  }
+  var clampInt = function(v, lo, hi, d){ v = parseInt(v, 10); if (isNaN(v)) return d; return Math.max(lo, Math.min(hi, v)); };
+  function sanitise(p){
+    var d = defaults(), o = {};
+    p = (p && typeof p === 'object') ? p : {};
+    o.v = 1;
+    o.title = typeof p.title === 'string' ? p.title.slice(0, 80) : '';
+    o.date = typeof p.date === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(p.date) ? p.date : '';
+    o.stations = clampInt(p.stations, 1, 6, d.stations);
+    o.mode = p.mode === 'pick' ? 'pick' : 'blueprint';
+    o.harder = !!p.harder;
+    o.caseIds = (Array.isArray(p.caseIds) ? p.caseIds : []).filter(function(id, i, a){ return typeof id === 'string' && byId(id) && a.indexOf(id) === i; }).slice(0, o.stations);
+    o.count = clampInt(p.count, 1, 36, d.count);
+    o.names = typeof p.names === 'string' ? p.names.slice(0, 2000) : '';
+    o.start = typeof p.start === 'string' && /^\d{2}:\d{2}$/.test(p.start) ? p.start : d.start;
+    o.read = clampInt(p.read, 1, 10, d.read);
+    o.consult = clampInt(p.consult, 5, 20, d.consult);
+    o.feedback = clampInt(p.feedback, 5, 8, d.feedback);
+    o.change = clampInt(p.change, 0, 10, d.change);
+    o.round = clampInt(p.round, 0, 5, 0);
+    o.sound = p.sound !== false;
+    return o;
+  }
+  function load(){
+    try { var raw = localStorage.getItem(KEY); if (raw) return sanitise(JSON.parse(raw)); } catch(e){}
+    return sanitise(null);
+  }
+  var saveTimer = null;
+  function save(){
+    try { localStorage.setItem(KEY, JSON.stringify(plan)); $('#saveStatus').textContent = 'Plan saved on this device.'; }
+    catch(e){ $('#saveStatus').textContent = 'Your browser is not allowing this page to save, so the plan will be lost when you close it. Print the summary to keep a copy.'; }
+  }
+  function saveSoon(){ clearTimeout(saveTimer); saveTimer = setTimeout(save, 250); }
+  var plan = load();
+
+  /* ---------- people and rotation ---------- */
+  function trainees(){
+    var lines = plan.names.split(/\r?\n/).map(function(s){ return s.trim(); }).filter(Boolean);
+    var n = Math.max(plan.count, lines.length);
+    var out = [];
+    for (var i = 0; i < n; i++) out.push(lines[i] || ('Trainee ' + (i + 1)));
+    return out;
+  }
+  function groups(){
+    var t = trainees(), T = t.length;
+    var G = Math.max(1, Math.floor(T / 3));
+    var out = [], idx = 0, base = Math.floor(T / G), extra = T % G;
+    for (var g = 0; g < G; g++){
+      var size = base + (g < extra ? 1 : 0);
+      out.push(t.slice(idx, idx + size)); idx += size;
+    }
+    return out;
+  }
+  function roles(members, r){
+    var m = members.length, F = 'Facilitator';
+    if (!m) return { candidate:F, patient:F, examiner:F, observers:[] };
+    var cand = members[r % m];
+    var pt = m >= 2 ? members[(r + 1) % m] : F;
+    var ex = m >= 3 ? members[(r + 2) % m] : F;
+    var obs = [];
+    for (var k = 3; k < m; k++) obs.push(members[(r + k) % m]);
+    return { candidate:cand, patient:pt, examiner:ex, observers:obs };
+  }
+  function stationOf(g, r, S){ return (g + r) % S; }
+  function roundMins(){ return plan.read + plan.consult + plan.feedback + plan.change; }
+  function hhmm(mins){
+    mins = ((mins % 1440) + 1440) % 1440;
+    var h = Math.floor(mins / 60), m = mins % 60;
+    return (h < 10 ? '0' : '') + h + ':' + (m < 10 ? '0' : '') + m;
+  }
+  function startMins(){ var p = plan.start.split(':'); return (+p[0]) * 60 + (+p[1]); }
+  function roundTime(r){
+    var s = startMins() + r * roundMins();
+    return hhmm(s) + '–' + hhmm(s + plan.read + plan.consult + plan.feedback);
+  }
+  function stations(){ return plan.caseIds.map(byId).filter(Boolean); }
+
+  /* ---------- builder ---------- */
+  function fillGroupSelect(){
+    var G = (BP && BP.GROUPS) || [];
+    $('#fGroup').innerHTML = '<option value="">All groups</option>' + G.map(function(g){ return '<option>' + esc(g) + '</option>'; }).join('');
+  }
+  function syncInputs(){
+    $('#sTitle').value = plan.title; $('#sDate').value = plan.date; $('#sStations').value = String(plan.stations);
+    $('#sCount').value = String(plan.count); $('#sNames').value = plan.names; $('#sHarder').checked = plan.harder;
+    $('#tStart').value = plan.start; $('#tRead').value = plan.read; $('#tConsult').value = plan.consult;
+    $('#tFeedback').value = String(plan.feedback); $('#tChange').value = plan.change; $('#tmSound').checked = plan.sound;
+    setMode(plan.mode, true);
+  }
+  function setMode(m, quiet){
+    plan.mode = m;
+    $('#modeBp').setAttribute('aria-pressed', String(m === 'blueprint'));
+    $('#modePick').setAttribute('aria-pressed', String(m === 'pick'));
+    $('#bpPanel').hidden = m !== 'blueprint';
+    $('#pickPanel').hidden = m !== 'pick';
+    if (m === 'pick') renderPool();
+    if (!quiet) saveSoon();
+  }
+  function caseLine(c){
+    var b = bpOf(c), d = b.difficulty || 2;
+    return '<span class="tr-pill' + (d === 3 ? ' d3' : d === 1 ? ' d1' : '') + '">' + esc(DIFF[d]) + '</span>' +
+      '<span class="tr-pill">' + esc(TYPE[c.type] || 'Consultation') + '</span>' +
+      (b.groups || []).map(function(g){ return '<span class="tr-pill">' + esc(g) + '</span>'; }).join('');
+  }
+  function renderPool(){
+    var q = $('#fQ').value.trim().toLowerCase(), g = $('#fGroup').value, t = $('#fType').value, d = $('#fDiff').value;
+    var list = ALL.filter(function(c){
+      var b = bpOf(c);
+      if (g && (b.groups || []).indexOf(g) === -1) return false;
+      if (t && c.type !== t) return false;
+      if (d && String(b.difficulty || 2) !== d) return false;
+      if (q){
+        var hay = [c.title, (c.meta && c.meta.system) || '', (b.themes || []).join(' '), (b.groups || []).join(' '), (c.stem && c.stem.reason) || ''].join(' ').toLowerCase();
+        if (q.split(/\s+/).some(function(w){ return hay.indexOf(w) === -1; })) return false;
+      }
+      return true;
+    });
+    $('#poolCount').textContent = list.length + (list.length === 1 ? ' case matches' : ' cases match') + (list.length > 80 ? ' (showing the first 80; narrow the filters to see more)' : '');
+    var full = plan.caseIds.length >= plan.stations;
+    $('#pool').innerHTML = list.slice(0, 80).map(function(c){
+      var on = plan.caseIds.indexOf(c.id) > -1;
+      return '<div class="tr-item" role="listitem"><div class="tx"><div class="t">' + esc(c.title) + '</div><div class="m">' + esc(UI.meta(c)) + '</div><div>' + caseLine(c) + '</div></div>' +
+        '<button type="button" class="tr-btn sm" data-add="' + esc(c.id) + '"' + (on || full ? ' disabled' : '') + ' aria-label="' + (on ? 'Already added: ' : 'Add station: ') + esc(c.title) + '">' + (on ? 'Added' : full ? 'Full' : 'Add') + '</button></div>';
+    }).join('') || '<div class="tr-empty">No cases match. Try clearing a filter.</div>';
+  }
+  function renderSelected(){
+    var S = stations();
+    var html = '';
+    if (!S.length){
+      html = '<div class="tr-empty">No stations yet. ' + (plan.mode === 'blueprint' ? 'Press <b>Draw stations</b>.' : 'Add cases from the list above.') + '</div>';
+    } else {
+      html = '<ol class="tr-sel">' + S.map(function(c, i){
+        return '<li><span class="st">Station ' + (i + 1) + '</span><div class="tx"><div class="t" style="font-weight:700;font-size:13.5px;overflow-wrap:anywhere">' + esc(c.title) + '</div><div class="m" style="font-size:12px;color:var(--muted)">' + esc(UI.meta(c)) + '</div><div>' + caseLine(c) + '</div></div>' +
+          '<div class="act"><button type="button" class="tr-btn sm" data-up="' + i + '"' + (i === 0 ? ' disabled' : '') + ' aria-label="Move station ' + (i + 1) + ' up">Up</button>' +
+          '<button type="button" class="tr-btn sm" data-down="' + i + '"' + (i === S.length - 1 ? ' disabled' : '') + ' aria-label="Move station ' + (i + 1) + ' down">Down</button>' +
+          '<button type="button" class="tr-btn sm" data-swap="' + i + '" aria-label="Swap station ' + (i + 1) + ' for another blueprint draw">Swap</button>' +
+          '<button type="button" class="tr-btn sm" data-rm="' + i + '" aria-label="Remove station ' + (i + 1) + '">Remove</button></div></li>';
+      }).join('') + '</ol>';
+      if (S.length < plan.stations) html += '<div class="tr-empty">' + (plan.stations - S.length) + ' more station' + (plan.stations - S.length === 1 ? '' : 's') + ' to choose.</div>';
+    }
+    $('#selWrap').innerHTML = html;
+    if (S.length && BP && BP.coverage){
+      var cv = BP.coverage(S);
+      $('#coverage').innerHTML = 'Covers <b>' + cv.groupsCovered + ' of ' + cv.groupsTotal + '</b> experience groups · ' + cv.telephone + ' telephone, ' + cv.video + ' video · difficulty: ' +
+        [1, 2, 3].filter(function(k){ return cv.difficulty[k]; }).map(function(k){ return cv.difficulty[k] + ' ' + DIFF[k].toLowerCase(); }).join(', ');
+    } else $('#coverage').textContent = '';
+  }
+  function draw(){
+    if (!BP || !BP.pick){ alert('The case blueprint has not loaded. Please refresh the page.'); return; }
+    plan.caseIds = BP.pick(ALL, plan.stations, { harder:plan.harder, avoid:plan.caseIds }).map(function(c){ return c.id; });
+    changed();
+  }
+  function swapOne(i){
+    if (!BP || !BP.pick) return;
+    var others = stations().filter(function(_, k){ return k !== i; });
+    var sys = {}; others.forEach(function(c){ var s = bpOf(c).system; if (s) sys[s] = 1; });
+    var pool = ALL.filter(function(c){ return plan.caseIds.indexOf(c.id) === -1 && !sys[bpOf(c).system]; });
+    if (plan.harder) { var hard = pool.filter(function(c){ return (bpOf(c).difficulty || 2) >= 2; }); if (hard.length) pool = hard; }
+    var got = BP.pick(pool, 1, { harder:plan.harder });
+    if (got[0]){ plan.caseIds[i] = got[0].id; changed(); }
+  }
+  function updateGroupsHint(){
+    var G = groups(), T = trainees().length;
+    var sizes = G.map(function(g){ return g.length; });
+    var msg = G.length + (G.length === 1 ? ' group' : ' groups') + ' (' + sizes.join(', ') + ')';
+    if (T < 3) msg += '. With fewer than three trainees, you or a colleague fill the missing roles.';
+    else if (sizes.some(function(s){ return s > 3; })) msg += '. Extra trainees observe and rotate in.';
+    $('#sGroupsHint').textContent = msg;
+  }
+
+  /* ---------- rotation table ---------- */
+  function renderRota(){
+    var S = stations(), G = groups(), nS = plan.stations;
+    var head = '<div class="sum-h" style="font-size:20px">' + esc(plan.title || 'SCA teaching session') + ' · rotation plan</div>' +
+      '<p style="font-size:12.5px;margin-bottom:8px">' + (plan.date ? esc(fmtDate(plan.date)) + ' · ' : '') + 'Start ' + esc(plan.start) + ' · reading ' + plan.read + ' min, consultation ' + plan.consult + ' min, feedback ' + plan.feedback + ' min' + (plan.change ? ', changeover ' + plan.change + ' min' : '') + '</p>';
+    $('#rotaPrintHead').innerHTML = head;
+    var th = '<tr><th scope="col">Round</th>';
+    for (var s = 0; s < nS; s++){
+      var c = S[s];
+      th += '<th scope="col">Station ' + (s + 1) + (c ? '<span class="time">' + esc(UI.title(c)) + ' · ' + esc(TYPE[c.type] || '') + '</span>' : '<span class="time">Case not chosen yet</span>') + '</th>';
+    }
+    th += '</tr>';
+    var rows = '';
+    for (var r = 0; r < nS; r++){
+      rows += '<tr><th scope="row">Round ' + (r + 1) + '<span class="time">' + roundTime(r) + '</span></th>';
+      for (var st = 0; st < nS; st++){
+        var cell = '';
+        G.forEach(function(mem, g){
+          if (stationOf(g, r, nS) !== st) return;
+          var ro = roles(mem, r);
+          cell += '<div class="blk"><div class="grp">Group ' + ROMAN[g] + '</div>' +
+            '<span class="role"><b>Candidate</b> ' + esc(ro.candidate) + '</span>' +
+            '<span class="role"><b>Patient</b> ' + esc(ro.patient) + '</span>' +
+            '<span class="role"><b>Examiner</b> ' + esc(ro.examiner) + '</span>' +
+            (ro.observers.length ? '<span class="role"><b>Observing</b> ' + esc(ro.observers.join(', ')) + '</span>' : '') + '</div>';
+        });
+        rows += '<td data-label="Station ' + (st + 1) + (S[st] ? ': ' + esc(UI.title(S[st])) : '') + '">' + (cell || '<span class="free">Empty this round</span>') + '</td>';
+      }
+      rows += '</tr>';
+    }
+    var turns = {};
+    trainees().forEach(function(n){ turns[n] = 0; });
+    for (var rr = 0; rr < nS; rr++) G.forEach(function(mem){ var ro = roles(mem, rr); if (turns[ro.candidate] != null) turns[ro.candidate]++; });
+    var none = Object.keys(turns).filter(function(n){ return !turns[n]; });
+    var warn = '';
+    if (G.length > nS) warn += '<div class="tr-warn">There are more groups (' + G.length + ') than stations (' + nS + '), so some stations run in more than one room at once. Print an extra pack for each of those stations, or add stations.</div>';
+    if (none.length) warn += '<div class="tr-warn">' + esc(none.join(', ')) + (none.length === 1 ? ' does' : ' do') + ' not get a turn as candidate. Add ' + (none.length === 1 ? 'a station' : 'stations') + ' so everyone has a go, or swap names between groups.</div>';
+    var total = nS * roundMins() - plan.change;
+    $('#rota').innerHTML = '<table class="tr-rota"><caption class="sr-only">Who is candidate, patient and examiner at each station in each round</caption><thead>' + th + '</thead><tbody>' + rows + '</tbody></table>' +
+      '<div class="tr-turns"><b>Turns as candidate:</b> ' + Object.keys(turns).map(function(n){ return esc(n) + ' ' + turns[n]; }).join(' · ') +
+      '<br><b>Total running time:</b> about ' + total + ' minutes (finishes ' + hhmm(startMins() + total) + '), plus your introduction and a closing debrief.</div>' + warn;
+  }
+  function fmtDate(iso){
+    try { var d = new Date(iso + 'T12:00:00'); return d.toLocaleDateString('en-GB', { weekday:'long', day:'numeric', month:'long', year:'numeric' }); } catch(e){ return iso; }
+  }
+
+  /* ---------- print packs ---------- */
+  var loaded = {};
+  var packToken = 0;
+  function loadStations(){
+    var S = stations();
+    if (!window.SCA_LOAD) return Promise.reject(new Error('loader missing'));
+    return Promise.all(S.map(function(c){ return window.SCA_LOAD(c.id).then(function(full){ if (full) loaded[c.id] = true; return full; }); }));
+  }
+  function list(a){ a = [].concat(a || []).filter(Boolean); return a.length ? '<ul>' + a.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>' : '<p>None recorded.</p>'; }
+  function hasHidden(c){ return (bpOf(c).themes || []).indexOf('hidden agenda') > -1; }
+
+  function candSheet(c, i){
+    return '<section class="sheet sheet-cand" data-station="' + (i + 1) + '" aria-label="Station ' + (i + 1) + ' candidate sheet">' +
+      '<div class="sheet-hdr"><span class="badge">Candidate sheet</span><h3>Station ' + (i + 1) + ' · ' + esc(UI.title(c)) + '</h3><span class="ok">Give to the candidate</span></div>' +
+      '<div class="sheet-body">' +
+        '<div class="sh-sec"><div class="sh-h">Consultation</div><p>' + esc(UI.meta(c)) + '</p></div>' +
+        '<div class="sh-sec"><div class="sh-h">Medical record</div>' + UI.record(c) + '</div>' +
+        '<div class="sh-sec"><div class="sh-instr">You have <b>' + plan.read + ' minutes</b> to read this record, then a <b>' + plan.consult + '-minute</b> ' + esc((TYPE[c.type] || 'consultation').toLowerCase()) + (c.type === 'telephone' || c.type === 'video' ? ' consultation' : '') + '. Manage the patient as you would in your own surgery. The consultation stops when time is called.</div></div>' +
+        '<div class="sh-sec"><div class="sh-h">Your notes</div><div class="sh-lines" aria-hidden="true"></div></div>' +
+      '</div></section>';
+  }
+  function ptSheet(c, i){
+    var s = c.script || {}, ice = s.ice || {};
+    var agenda = '<div class="sh-agenda"><p style="margin:0 0 4px"><b>What is really on your mind:</b> ' + esc(String(ice.concerns || 'See your concerns below.').replace(/^\s*hidden agenda\s*[\u2014:\-\u2013]*\s*/i, '')) + '</p>' +
+      '<p style="margin:0">' + (hasHidden(c) ? 'Hold this back at first. Bring it out only when the doctor gives you space, explores your worries, or picks up one of your cues. If they never do, leave it unsaid.' : 'Share this when the doctor asks about your worries or picks up a cue. Do not volunteer it in your opening.') + '</p></div>';
+    return '<section class="sheet sheet-pt" data-station="' + (i + 1) + '" aria-label="Station ' + (i + 1) + ' patient sheet">' +
+      '<div class="sheet-hdr"><span class="badge">Patient / role-player sheet</span><h3>Station ' + (i + 1) + ' · ' + esc(UI.title(c)) + '</h3><span class="warn">DO NOT SHOW TO THE CANDIDATE</span></div>' +
+      '<div class="sheet-body">' +
+        '<div class="sh-sec"><div class="sh-h">Who you are (background for you)</div><p>' + esc(c.brief || '') + '</p></div>' +
+        '<div class="sh-sec"><div class="sh-h">Opening line: say this first, then answer only what is asked</div><div class="sh-open">' + esc(s.opening || '') + '</div></div>' +
+        '<div class="sh-sec"><div class="sh-h">Facts: release each one only when the right question is asked</div>' +
+          ((s.facts || []).map(function(f){ return '<div class="sh-fact"><span class="k">' + esc(f.topic) + '</span><span class="v">' + esc(f.text) + '</span></div>'; }).join('') || '<p>None recorded.</p>') + '</div>' +
+        '<div class="sh-sec"><div class="sh-h">Ideas, concerns and expectations: give only if genuinely explored</div>' +
+          '<div class="sh-fact"><span class="k">Ideas</span><span class="v">' + esc(ice.ideas || '') + '</span></div>' +
+          '<div class="sh-fact"><span class="k">Concerns</span><span class="v">' + esc(ice.concerns || '') + '</span></div>' +
+          '<div class="sh-fact"><span class="k">Expectations</span><span class="v">' + esc(ice.expectations || '') + '</span></div></div>' +
+        '<div class="sh-sec"><div class="sh-h">Cues: plant each once, naturally, then move on</div>' +
+          ((s.cues || []).map(function(cu, k){ return '<div class="sh-cue"><b>Cue ' + (k + 1) + '</b>' + esc(cu) + '</div>'; }).join('') || '<p>None recorded.</p>') + '</div>' +
+        '<div class="sh-sec"><div class="sh-h">Hidden agenda</div>' + agenda + '</div>' +
+        '<p class="sh-foot">Play it straight. Do not rescue the candidate or offer information they have not asked for. Stop when time is called.</p>' +
+      '</div></section>';
+  }
+  function exSheet(c, i){
+    var s = c.script || {};
+    var cpBy = { dg:[], cm:[], ro:[] };
+    (c.checkpoints || []).forEach(function(cp){ var d = RC ? RC.dom(cp.dom, cp.text) : cp.dom; (cpBy[d] || cpBy.dg).push(cp.text); });
+    var sc = null; try { sc = RC && RC.scorecard ? RC.scorecard(c) : null; } catch(e){ sc = null; }
+    var keys = ['dg', 'cm', 'ro'];
+    var cps = keys.map(function(k){
+      if (!cpBy[k].length) return '';
+      return '<div class="sh-dom">' + esc(DOM_LBL[k]) + '</div>' + cpBy[k].map(function(t){ return '<div class="sh-chk"><span class="box" aria-hidden="true"></span><span>' + esc(t) + '</span></div>'; }).join('');
+    }).join('');
+    var scHtml = '';
+    if (sc && sc.dg){
+      var maxK = { dg:'maxDg', cm:'maxCm', ro:'maxRo' };
+      scHtml = '<p style="margin-bottom:6px">Items per domain: ' + keys.map(function(k){ return (sc[k] || []).length; }).join(' / ') + ' · points ' + keys.map(function(k){ return sc[maxK[k]]; }).join(' / ') + ' (total ' + sc.total + ')</p>' +
+        keys.map(function(k){
+          return '<div class="sh-dom">' + esc(DOM_LBL[k]) + ' <span>' + (sc[k] || []).length + ' items · ' + sc[maxK[k]] + ' points</span></div>' +
+            (sc[k] || []).map(function(it){ return '<div class="sh-chk"><span class="box" aria-hidden="true"></span><span><b>' + esc(it.t) + '</b>' + (it.d ? ' · ' + esc(it.d) : '') + '</span><span class="pts">' + it.pts + '</span></div>'; }).join('') +
+            '<div class="sh-grades" aria-label="Circle one grade"><span>Clear pass</span><span>Pass</span><span>Fail</span><span>Clear fail</span></div>';
+        }).join('');
+    } else {
+      scHtml = keys.map(function(k){ return '<div class="sh-dom">' + esc(DOM_LBL[k]) + '</div><div class="sh-grades"><span>Clear pass</span><span>Pass</span><span>Fail</span><span>Clear fail</span></div>'; }).join('');
+    }
+    var moves = (c.model || []).filter(function(t){ return t.who === 'dr' && t.why; }).slice(0, 10);
+    var movesHtml = moves.length ? '<ol>' + moves.map(function(t){ return '<li><b>' + esc(t.phase || '') + (t.clock ? ' (' + esc(t.clock) + ')' : '') + (t.phase || t.clock ? ':' : '') + '</b> ' + esc(t.why) + '</li>'; }).join('') + '</ol>' : '<p>Not available for this case.</p>';
+    var data = s.data && s.data.values && s.data.values.length ? '<div class="sh-sec"><div class="sh-h">' + esc(s.data.kind || 'Results on file') + '</div><table class="sh-data"><tbody>' +
+      s.data.values.map(function(v){ return '<tr><td><b>' + esc(v[0]) + '</b></td><td>' + esc(v[1]) + '</td><td>' + esc(v[2] || '') + '</td></tr>'; }).join('') + '</tbody></table></div>' : '';
+    return '<section class="sheet sheet-ex" data-station="' + (i + 1) + '" aria-label="Station ' + (i + 1) + ' examiner sheet">' +
+      '<div class="sheet-hdr"><span class="badge">Examiner sheet</span><h3>Station ' + (i + 1) + ' · ' + esc(c.title) + '</h3><span class="warn">DO NOT SHOW TO THE CANDIDATE</span></div>' +
+      '<div class="sheet-body">' +
+        '<div class="sh-sec"><div class="sh-h">Case</div><p><b>' + esc(UI.fullMeta ? UI.fullMeta(c) : '') + '</b> · ' + esc(TYPE[c.type] || '') + '</p><p>' + esc(c.brief || '') + '</p></div>' +
+        data +
+        '<div class="sh-sec"><div class="sh-h">Checkpoints by RCGP domain: tick each as it actually happens</div>' + (cps || '<p>None recorded.</p>') + '</div>' +
+        '<div class="sh-sec"><div class="sh-h">Cue audit: did the candidate respond to each cue out loud?</div>' +
+          ((s.cues || []).map(function(cu, k){ return '<div class="sh-chk"><span class="box" aria-hidden="true"></span><span><b>Cue ' + (k + 1) + ':</b> ' + esc(cu) + '</span></div>'; }).join('') || '<p>None recorded.</p>') + '</div>' +
+        '<div class="sh-sec"><div class="sh-h">Scorecard (educational aid)</div>' + scHtml + '</div>' +
+        '<div class="sh-sec"><div class="sh-h">Model consultation: key moves</div>' + movesHtml + '</div>' +
+        '<div class="sh-sec"><div class="sh-h">Learning points</div><p>' + esc(c.learning || '') + '</p></div>' +
+        '<p class="sh-foot">Feedback order: candidate first, then patient, then examiner by domain. Two specific strengths, then one change. Practice scorecard only, not the RCGP marking scheme.</p>' +
+      '</div></section>';
+  }
+  function renderPacks(){
+    var S = stations(), tok = ++packToken;
+    var st = $('#packStatus');
+    if (!S.length){ $('#packs').innerHTML = '<div class="tr-empty no-print">Choose your stations in step 1 to build the packs.</div>'; st.textContent = ''; return; }
+    var need = S.some(function(c){ return !loaded[c.id] && !c._full; });
+    if (need){ st.textContent = 'Loading case material for ' + S.length + ' station' + (S.length === 1 ? '' : 's') + '…'; $('#packs').setAttribute('aria-busy', 'true'); }
+    loadStations().then(function(){
+      if (tok !== packToken) return;
+      var html = '';
+      S.forEach(function(c, i){ html += candSheet(c, i) + ptSheet(c, i) + exSheet(c, i); });
+      $('#packs').innerHTML = html;
+      $('#packs').removeAttribute('aria-busy');
+      st.textContent = 'Packs ready: ' + S.length + ' station' + (S.length === 1 ? '' : 's') + ', ' + (S.length * 3) + ' sheets.';
+      applyShow();
+    }).catch(function(){
+      if (tok !== packToken) return;
+      $('#packs').removeAttribute('aria-busy');
+      st.textContent = 'Some case material could not be loaded. Check your connection, then choose “Print all packs” to try again.';
+    });
+  }
+  function applyShow(){
+    var v = $('#pShow').value;
+    document.querySelectorAll('#packs .sheet').forEach(function(el){
+      el.hidden = !(v === 'all' || el.classList.contains('sheet-' + v));
+    });
+  }
+  function doPrint(kind){
+    var go = function(){
+      document.querySelectorAll('#packs .sheet').forEach(function(el){ el.hidden = false; });
+      if (kind === 'summary') renderSummary();
+      document.body.setAttribute('data-print', kind);
+      window.print();
+    };
+    if (/^(packs|cand|pt|ex)$/.test(kind) && stations().some(function(c){ return !loaded[c.id] && !c._full; })){
+      loadStations().then(function(){ renderPacks(); setTimeout(go, 50); }).catch(function(){ $('#packStatus').textContent = 'Case material could not be loaded, so the packs cannot be printed yet.'; });
+    } else go();
+  }
+  window.addEventListener('afterprint', function(){ document.body.removeAttribute('data-print'); applyShow(); });
+
+  /* ---------- summary ---------- */
+  function renderSummary(){
+    var S = stations(), G = groups();
+    var html = '<div class="sum-h">' + esc(plan.title || 'SCA teaching session') + '</div>' +
+      '<p style="font-size:13px">' + (plan.date ? esc(fmtDate(plan.date)) + ' · ' : '') + 'Start ' + esc(plan.start) + ' · ' + plan.stations + ' station' + (plan.stations === 1 ? '' : 's') + ' · ' + trainees().length + ' trainees in ' + G.length + ' group' + (G.length === 1 ? '' : 's') + '</p>' +
+      '<p style="font-size:13px">Each round: reading ' + plan.read + ' min, consultation ' + plan.consult + ' min, feedback ' + plan.feedback + ' min' + (plan.change ? ', changeover ' + plan.change + ' min' : '') + '.</p>' +
+      '<h3 style="margin-top:12px;font-size:15px">Stations</h3><table class="sum-t"><thead><tr><th>Station</th><th>Case (as shown to candidates)</th><th>Type</th><th>Difficulty</th><th>Experience groups</th></tr></thead><tbody>' +
+      S.map(function(c, i){ var b = bpOf(c); return '<tr><td>' + (i + 1) + '</td><td>' + esc(UI.title(c)) + '</td><td>' + esc(TYPE[c.type] || '') + '</td><td>' + esc(DIFF[b.difficulty || 2]) + '</td><td>' + esc((b.groups || []).join('; ')) + '</td></tr>'; }).join('') +
+      '</tbody></table><h3 style="font-size:15px">Groups</h3><table class="sum-t"><tbody>' +
+      G.map(function(m, g){ return '<tr><th>Group ' + ROMAN[g] + '</th><td>' + esc(m.join(', ')) + '</td></tr>'; }).join('') + '</tbody></table>' +
+      '<h3 style="font-size:15px">Rotation</h3>' + $('#rota').innerHTML;
+    $('#summaryBlock').innerHTML = html;
+  }
+
+  /* ---------- timer ---------- */
+  var tm = { phase:0, remain:0, running:false, end:0, warned:false, iv:null, done:false };
+  function phases(){
+    var p = [ { k:'read', name:'Reading time', sh:'Read', s:plan.read * 60 }, { k:'consult', name:'Consultation', sh:'Consult', s:plan.consult * 60 }, { k:'feedback', name:'Feedback', sh:'Feedback', s:plan.feedback * 60 } ];
+    if (plan.change) p.push({ k:'change', name:'Change over', sh:'Move', s:plan.change * 60 });
+    return p;
+  }
+  var ac = null;
+  function audio(){
+    try {
+      if (!ac){ var A = window.AudioContext || window.webkitAudioContext; if (A) ac = new A(); }
+      if (ac && ac.state === 'suspended') ac.resume();
+    } catch(e){ ac = null; }
+    return ac;
+  }
+  function beep(n, freq, dur){
+    if (!plan.sound) return;
+    var a = audio(); if (!a) return;
+    try {
+      for (var i = 0; i < n; i++){
+        var t0 = a.currentTime + i * (dur + 0.15);
+        var o = a.createOscillator(), g = a.createGain();
+        o.type = 'sine'; o.frequency.value = freq;
+        g.gain.setValueAtTime(0.0001, t0);
+        g.gain.exponentialRampToValueAtTime(0.35, t0 + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+        o.connect(g); g.connect(a.destination); o.start(t0); o.stop(t0 + dur + 0.05);
+      }
+    } catch(e){}
+  }
+  function fmt(ms){
+    var s = Math.max(0, Math.ceil(ms / 1000)), m = Math.floor(s / 60), r = s % 60;
+    return m + ':' + (r < 10 ? '0' : '') + r;
+  }
+  function resetRound(){
+    stopTick();
+    tm.phase = 0; tm.remain = phases()[0].s * 1000; tm.warned = false; tm.done = false; tm.running = false;
+    renderTimer();
+  }
+  function stopTick(){ if (tm.iv){ clearInterval(tm.iv); tm.iv = null; } }
+  function startTick(){ stopTick(); tm.iv = setInterval(tick, 250); }
+  function tick(){
+    if (!tm.running) return;
+    tm.remain = tm.end - Date.now();
+    var P = phases(), ph = P[tm.phase];
+    if (ph && ph.k === 'consult' && !tm.warned && tm.remain <= 120000 && ph.s > 120){ tm.warned = true; beep(2, 660, 0.25); }
+    if (tm.remain <= 0){
+      beep(ph && ph.k === 'consult' ? 3 : 1, 880, 0.45);
+      if (tm.phase < P.length - 1){
+        tm.phase++; tm.warned = false;
+        tm.remain = P[tm.phase].s * 1000; tm.end = Date.now() + tm.remain;
+      } else {
+        tm.running = false; tm.done = true; tm.remain = 0; stopTick();
+      }
+    }
+    renderTimer();
+  }
+  function go(){
+    if (tm.done) resetRound();
+    audio();
+    if (tm.running){ tm.running = false; tm.remain = tm.end - Date.now(); stopTick(); }
+    else { tm.running = true; tm.end = Date.now() + tm.remain; startTick(); }
+    renderTimer();
+  }
+  function skip(){
+    var P = phases();
+    if (tm.phase < P.length - 1){ tm.phase++; tm.warned = false; tm.remain = P[tm.phase].s * 1000; tm.end = Date.now() + tm.remain; tm.done = false; }
+    else { tm.running = false; tm.done = true; tm.remain = 0; stopTick(); }
+    renderTimer();
+  }
+  function moveRound(d){
+    var n = plan.round + d;
+    if (n < 0 || n >= plan.stations) return;
+    plan.round = n; saveSoon(); resetRound();
+  }
+  var lastPhaseLabel = '';
+  function renderTimer(){
+    var P = phases(), ph = P[tm.phase], S = stations(), G = groups(), r = plan.round, nS = plan.stations;
+    if (r >= nS) { r = plan.round = 0; }
+    $('#tmRound').textContent = (nS > 1 ? 'Round ' + (r + 1) + ' of ' + nS : 'Station 1') + ' · ' + roundTime(r);
+    var where = G.map(function(m, g){
+      var st = stationOf(g, r, nS), c = S[st], ro = roles(m, r);
+      return 'Group ' + ROMAN[g] + ': Station ' + (st + 1) + (c ? ' (' + UI.title(c) + ')' : '') + ' · candidate ' + ro.candidate;
+    });
+    $('#tmWhere').innerHTML = where.slice(0, 6).map(esc).join('<br>') + (where.length > 6 ? '<br>…and ' + (where.length - 6) + ' more groups' : '');
+    var label = tm.done ? 'Round complete' : (ph ? ph.name : '');
+    if (label !== lastPhaseLabel){ $('#tmPhase').textContent = label; lastPhaseLabel = label; }
+    var clock = $('#tmClock');
+    clock.textContent = tm.done ? '0:00' : fmt(tm.remain);
+    clock.classList.toggle('low', !tm.done && ph && ph.k === 'consult' && tm.remain <= 120000);
+    clock.classList.toggle('over', tm.done);
+    $('#tmBar').innerHTML = P.map(function(p, i){ return '<div class="' + (i === tm.phase && !tm.done ? 'on' : (i < tm.phase || tm.done ? 'done' : '')) + '">' + esc(p.sh) + ' ' + Math.round(p.s / 60) + '</div>'; }).join('');
+    $('#tmGo').textContent = tm.running ? 'Pause' : (tm.done ? 'Restart round' : (tm.phase === 0 && tm.remain === P[0].s * 1000 ? 'Start' : 'Resume'));
+    $('#tmPrev').disabled = r <= 0;
+    $('#tmNext').disabled = r >= nS - 1;
+    $('#tmNext').textContent = 'Next station';
+  }
+
+  /* ---------- wiring ---------- */
+  function changed(){
+    plan.caseIds = plan.caseIds.slice(0, plan.stations);
+    if (plan.round >= plan.stations) plan.round = 0;
+    renderSelected(); if (plan.mode === 'pick') renderPool();
+    renderRota(); renderPacks(); updateGroupsHint();
+    if (!tm.running) resetRound(); else renderTimer();
+    saveSoon();
+  }
+  function bindText(sel, key, fn){
+    $(sel).addEventListener('input', function(e){ plan[key] = fn ? fn(e.target.value) : e.target.value; light(); });
+    $(sel).addEventListener('change', function(){ syncInputs(); light(); });
+  }
+  function light(){ renderRota(); updateGroupsHint(); renderTimer(); saveSoon(); }
+
+  bindText('#sTitle', 'title', function(v){ return v.slice(0, 80); });
+  bindText('#sNames', 'names', function(v){ return v.slice(0, 2000); });
+  $('#sDate').addEventListener('change', function(e){ plan.date = /^\d{4}-\d{2}-\d{2}$/.test(e.target.value) ? e.target.value : ''; light(); });
+  $('#sCount').addEventListener('input', function(e){ var v = parseInt(e.target.value, 10); if (!isNaN(v)) { plan.count = Math.max(1, Math.min(36, v)); light(); } });
+  $('#sCount').addEventListener('change', function(e){ plan.count = clampInt(e.target.value, 1, 36, plan.count); e.target.value = plan.count; light(); });
+  $('#sStations').addEventListener('change', function(e){ plan.stations = clampInt(e.target.value, 1, 6, 3); changed(); });
+  $('#sHarder').addEventListener('change', function(e){ plan.harder = e.target.checked; saveSoon(); });
+  $('#tStart').addEventListener('change', function(e){ if (/^\d{2}:\d{2}$/.test(e.target.value)) plan.start = e.target.value; light(); });
+  [['#tRead', 'read', 1, 10], ['#tConsult', 'consult', 5, 20], ['#tChange', 'change', 0, 10], ['#tFeedback', 'feedback', 5, 8]].forEach(function(a){
+    $(a[0]).addEventListener('change', function(e){ plan[a[1]] = clampInt(e.target.value, a[2], a[3], plan[a[1]]); e.target.value = plan[a[1]]; light(); if (!tm.running) resetRound(); renderPacks(); });
+  });
+  $('#modeBp').addEventListener('click', function(){ setMode('blueprint'); renderSelected(); });
+  $('#modePick').addEventListener('click', function(){ setMode('pick'); renderSelected(); });
+  $('#drawBtn').addEventListener('click', draw);
+  ['#fQ', '#fGroup', '#fType', '#fDiff'].forEach(function(s){ $(s).addEventListener('input', renderPool); $(s).addEventListener('change', renderPool); });
+  $('#pool').addEventListener('click', function(e){
+    var b = e.target.closest('[data-add]'); if (!b || b.disabled) return;
+    if (plan.caseIds.length < plan.stations && plan.caseIds.indexOf(b.dataset.add) === -1){ plan.caseIds.push(b.dataset.add); changed(); }
+  });
+  $('#selWrap').addEventListener('click', function(e){
+    var b = e.target.closest('button'); if (!b || b.disabled) return;
+    var ids = plan.caseIds, i;
+    if (b.dataset.up != null){ i = +b.dataset.up; ids.splice(i - 1, 0, ids.splice(i, 1)[0]); }
+    else if (b.dataset.down != null){ i = +b.dataset.down; ids.splice(i + 1, 0, ids.splice(i, 1)[0]); }
+    else if (b.dataset.rm != null){ ids.splice(+b.dataset.rm, 1); }
+    else if (b.dataset.swap != null){ swapOne(+b.dataset.swap); return; }
+    changed();
+  });
+  $('#printRota').addEventListener('click', function(){ doPrint('rota'); });
+  $('#printAll').addEventListener('click', function(){ doPrint('packs'); });
+  $('#printCand').addEventListener('click', function(){ doPrint('cand'); });
+  $('#printPt').addEventListener('click', function(){ doPrint('pt'); });
+  $('#printEx').addEventListener('click', function(){ doPrint('ex'); });
+  $('#printSum').addEventListener('click', function(){ doPrint('summary'); });
+  $('#pShow').addEventListener('change', applyShow);
+  $('#clearPlan').addEventListener('click', function(){
+    if (!confirm('Start a new plan? This clears the stations, names and timings saved on this device.')) return;
+    try { localStorage.removeItem(KEY); } catch(e){}
+    plan = sanitise(null); syncInputs(); changed();
+  });
+  $('#tmGo').addEventListener('click', go);
+  $('#tmSkip').addEventListener('click', function(){ audio(); skip(); });
+  $('#tmReset').addEventListener('click', resetRound);
+  $('#tmPrev').addEventListener('click', function(){ moveRound(-1); });
+  $('#tmNext').addEventListener('click', function(){ moveRound(1); });
+  $('#tmSound').addEventListener('change', function(e){ plan.sound = e.target.checked; if (plan.sound) { audio(); } saveSoon(); });
+  $('#tmFull').addEventListener('click', function(){
+    var el = $('#tmWrap');
+    try {
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (el.requestFullscreen) el.requestFullscreen();
+    } catch(e){}
+  });
+  document.addEventListener('fullscreenchange', function(){ $('#tmFull').textContent = document.fullscreenElement ? 'Exit full screen' : 'Full screen'; });
+  document.addEventListener('visibilitychange', function(){ if (!document.hidden && tm.running) tick(); });
+
+  /* ---------- start ---------- */
+  fillGroupSelect();
+  syncInputs();
+  if (!$('#tmWrap').requestFullscreen) $('#tmFull').hidden = true;
+  renderSelected(); renderRota(); updateGroupsHint(); renderPacks(); resetRound();
+  window.RGP_TRAINER = { plan:function(){ return JSON.parse(JSON.stringify(plan)); } };
+})();
+</script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

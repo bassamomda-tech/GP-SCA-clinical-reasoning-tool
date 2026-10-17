@@ -205,63 +205,159 @@
 
   /* ============ 168. VIDEO — Fatigue with abnormal LFTs & low vitamin D (NAFLD; interpreting the panel; no NG12 link) ============ */
   const c168 = {
-    id:'fatigue-lfts-vitd', title:'"Just give me the vitamin D and I\u2019ll be right \u2014 that\u2019s why I\u2019m tired, isn\u2019t it?"', type:'video', duration:12,
-    meta:{ age:48, sex:'M', setting:'Video consultation \u2014 results of a tiredness blood panel.', system:'GI / Metabolic \u2014 interpreting the LFT + vitamin D panel (NAFLD)', checked:'October 2026' },
-    brief:'Mr Paul Cresswell, 48, sedentary office manager, BMI 33. A "tiredness screen" he requested shows: mildly raised ALT (88, ~2\u00d7 upper limit) with normal bilirubin and near-normal ALP (a HEPATOCELLULAR pattern), an HbA1c in the pre-diabetes range, raised triglycerides, and a low vitamin D. He has fixed on the vitamin D as the cause of his fatigue and wants a high-dose prescription so he can "get back to normal". He drinks ~20 units/week, takes no regular meds, has no jaundice, abdominal pain or weight loss. The task is to interpret the PANEL as a whole rather than the one number he has latched onto: recognise the hepatocellular LFT pattern and the metabolic cluster as most likely NON-ALCOHOLIC FATTY LIVER DISEASE (NAFLD/MASLD), exclude other causes of a raised ALT, risk-stratify for fibrosis (FIB-4), address the alcohol and metabolic drivers, replace vitamin D appropriately WITHOUT pretending it explains everything, and avoid over-medicalising while not missing liver disease.',
-    script:{
-      opening:"(Breezy, in a rush, on a lunch break at his desk.) \"Cheers doc. So my bloods are back — the website said my vitamin D is low, and that explains the tiredness, right? I've read it makes you knackered. Can you just prescribe me a strong vitamin D and I'll be sorted? I haven't really got time to go down a rabbit hole — I just want my energy back.\"",
-      facts:[
-        { topic:"Tiredness", text:"\"Months. I'm flat by mid-afternoon. I sit at a desk all day, then I'm on the sofa all evening.\" Sleeps 7 hours: \"Not really refreshed, no. I don't know about snoring — nobody's complained\" (lives alone)." },
-        { topic:"Mood", text:"\"Work's busy but I'm fine. Just tired.\" Enjoys things, no low mood." },
-        { topic:"Liver and red flags", text:"If asked: \"No, none of that\" — no yellow skin or eyes, itch, dark urine, pale stools, abdominal pain or swelling, vomiting blood or black stools. Weight \"about right, yeah\" — steady; no weight loss." },
-        { topic:"Alcohol", text:"If asked: \"A few pints after work Thursday and Friday, and a bottle of wine over the weekend\" — about 20 units a week. No morning drinking; never felt he needed to cut down — \"no more than anyone else\"." },
-        { topic:"Other risk questions", text:"No tattoos done abroad, never injected drugs, no blood transfusions. Born in the UK. No travel recently. If asked about thirst or passing urine more: no." },
-        { topic:"Medicines", text:"\"Nothing\" — no prescribed medicines, supplements, herbal remedies or protein powders. No allergies." },
-        { topic:"History and family", text:"No past illnesses. Dad had type 2 diabetes and a heart attack at 62. No family liver disease." },
-        { topic:"Lifestyle", text:"Office manager. Takeaways three or four nights a week. No exercise since he stopped five-a-side years ago. Non-smoker. Lives alone since divorce two years ago." },
-        { topic:"How to play it", text:"Wants the quick fix; gently resists the bigger picture: \"Honestly, I just want to feel normal again. I know I should lose weight. I don't need a lecture.\" If told about fatty liver: \"Fatty liver? I thought that was drinkers.\" then \"Is it serious?\" Responds well to a doctor who asks what he could change: \"Probably cutting the drinking back a bit. And walking at lunch, maybe.\" If lectured, becomes short and defensive." }
+    "id": "fatigue-lfts-vitd",
+    "title": "“I paid for a full health MOT and it’s flagged nine things — I need you to go through every one and refer me”",
+    "type": "video",
+    "duration": 12,
+    "meta": {
+      "age": 48,
+      "sex": "M",
+      "setting": "Video consultation — to discuss the results of a privately arranged blood test.",
+      "system": "Results / Prevention — a private multi-marker blood panel: prioritising cardiovascular risk, fatty liver and glycaemia, declining low-value tests, and the NHS–private interface",
+      "checked": "October 2026"
+    },
+    "brief": "Paul Cresswell, 48, office manager, BMI 33, sedentary, drinks about 20 units a week, ex-smoker (stopped 5 years ago). He uploaded a private “health MOT” finger-prick panel (36 markers, taken at 4pm, non-fasting) with nine results flagged red: ALT 88 U/L, total cholesterol 6.4 mmol/L, HDL 0.9, triglycerides 3.1, HbA1c 45 mmol/mol, ferritin 380 µg/L, 25-OH vitamin D 32 nmol/L, testosterone 11.2 nmol/L (flagged “low-normal”), hs-CRP 4 mg/L. PSA 1.1 µg/L (normal) was included without any counselling. He wants the GP to “go through every one”, refer him to a liver specialist and a “hormone clinic”, prescribe high-dose vitamin D, and repeat the full panel on the NHS every three months. BP at the pharmacy last week 146/92. Hidden agenda, only if asked what prompted the test: his brother Mark had a heart attack at 50, three months ago. Paul has been lying awake with chest tightness when anxious (non-exertional, brief, no other features) and is frightened he is next. The task: explain the GP’s approach to private results (act on clinically significant findings; the NHS does not repeat private screening panels on request); prioritise cardiovascular risk (QRISK3 including family history of premature CVD, blood pressure confirmation, lipids, lifestyle, statin discussion per NICE NG238); assess the raised ALT with likely fatty liver (repeat venous LFTs, a liver screen, FIB-4, alcohol assessment); repeat HbA1c (non-diabetic hyperglycaemia, NICE PH38); check transferrin saturation for the raised ferritin; explain why the afternoon testosterone and the hs-CRP are not actionable; advise self-care vitamin D; explain the uncounselled PSA; screen the chest symptoms; and respond to the fear about his brother.",
+    "script": {
+      "opening": "“I paid for a full health MOT and it’s flagged nine things in red. I need you to go through every one, refer me to a liver specialist and a hormone clinic, and I’d like it repeated on the NHS every three months to keep an eye on it.”",
+      "facts": [
+        {
+          "topic": "The test",
+          "text": "Online company, finger-prick kit, posted at 4pm on a weekday, not fasting. 36 markers. The report flags nine results red with phrases like “seek medical advice”."
+        },
+        {
+          "topic": "Lifestyle",
+          "text": "Desk job, drives everywhere, no exercise. About 20 units a week (beer at weekends, wine midweek). Takeaways three times a week. Stopped smoking 5 years ago (20 pack-years). Sleeps badly, snores."
+        },
+        {
+          "topic": "Only if asked what prompted the test",
+          "text": "His brother Mark, 50, had a heart attack three months ago and had a stent. Their father died of a stroke at 64. Paul has been lying awake worrying he is next."
+        },
+        {
+          "topic": "Chest symptoms (only if asked)",
+          "text": "Brief tightness in his chest at night when he is worrying, lasting a minute or two, settles when he calms down. Never on exertion: walks up stairs and to the station without symptoms. No breathlessness, palpitations, fainting or sweating."
+        },
+        {
+          "topic": "Other symptoms",
+          "text": "Tired, which he blames on poor sleep. Libido fine. No erectile difficulty. No jaundice, no abdominal pain. No urinary symptoms."
+        },
+        {
+          "topic": "Medicines",
+          "text": "None prescribed. Bought a “testosterone booster” supplement online last month after seeing the result. No vitamin D yet."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Organised and slightly demanding, with the printout in hand. Irritated if told the results “don’t matter”. Softens and becomes emotional when asked about his brother. Accepts prioritisation if it is clearly about his heart risk and he has a concrete plan."
+        }
       ],
-      ice:{
-        ideas:"\"The low vitamin D is why I'm tired.\"",
-        concerns:"HIDDEN AGENDA — he knows his weight and drinking have crept up since the divorce and his dad had diabetes and a heart attack; he doesn't want a lecture or to face that, so a vitamin D tablet feels easier.",
-        expectations:"\"A prescription. And to hear I'm basically fine.\""
+      "ice": {
+        "ideas": "“The red flags mean something’s wrong with my liver and my hormones.”",
+        "concerns": "HIDDEN AGENDA: his brother’s heart attack at 50 and his father’s stroke; he is frightened he will have a heart attack and has been getting anxiety-related chest tightness at night.",
+        "expectations": "“Go through all nine, refer to a liver specialist and a hormone clinic, vitamin D on prescription, repeat every three months.”"
       },
-      cues:[
-        "\"No time to go down a rabbit hole.\" — avoidance of the bigger conversation.",
-        "\"I don't need a lecture.\" — needs a non-judgemental approach.",
-        "Dad's diabetes and heart attack — only if family history is asked; links to his own risk."
+      "cues": [
+        "“Every three months to keep an eye on it” — anxiety driving testing; ask what prompted it.",
+        "Lipids, HbA1c, BMI, BP 146/92 and an ex-smoker — the cardiovascular picture matters most.",
+        "A testosterone booster bought online — the harm of acting on an unreliable result.",
+        "PSA included without counselling — the downside of panels."
       ]
     },
-    checkpoints:[
-      { dom:'dg', text:'Interprets the PANEL as a whole rather than the single result the patient anchored on \u2014 recognises the raised ALT with normal bilirubin/ALP as a HEPATOCELLULAR pattern sitting within a metabolic cluster (high BMI, pre-diabetic HbA1c, raised triglycerides)' },
-      { dom:'dg', text:'Identifies NON-ALCOHOLIC FATTY LIVER DISEASE (NAFLD/MASLD) as the most likely cause and frames it as a marker of cardiometabolic risk, not a trivial finding' },
-      { dom:'dg', text:'Excludes other causes of a raised ALT with a focused LIVER SCREEN \u2014 alcohol (quantified honestly), viral hepatitis B/C serology, ferritin/transferrin saturation (haemochromatosis), \u00b1 autoimmune/drug causes \u2014 rather than assuming NAFLD' },
-      { dom:'dg', text:'Risk-stratifies for FIBROSIS using a non-invasive score (FIB-4 \u00b1 ELF / FibroScan), referring the minority with significant fibrosis to hepatology and managing low-risk patients in primary care' },
-      { dom:'cm', text:'Addresses the metabolic drivers (weight loss, activity, alcohol reduction, pre-diabetes and lipid/CV risk) and replaces vitamin D proportionately \u2014 WITHOUT pretending vitamin D explains the fatigue, and without over-medicalising' },
-      { dom:'ro',   text:'Engages a quick-fix-seeking, avoidant patient in the real story without lecturing \u2014 acknowledges the wish for a simple answer while reframing toward the panel and the metabolic picture' },
-      { dom:'ro',   text:'Explains the results in plain, non-frightening language (hepatocellular pattern, fatty liver, fibrosis risk) and checks understanding, neither catastrophising nor falsely reassuring' },
-      { dom:'cm',    text:'Safety-nets and follows up: arranges the liver screen and FIB-4, books review of results, sets a realistic lifestyle plan with one owned goal, gives proportionate vitamin D \u2014 and does not over-medicalise' },
+    "checkpoints": [
+      {
+        "dom": "ro",
+        "text": "Acknowledges the effort and anxiety behind the private test, and explains the approach: the GP will act on clinically significant results, but will not repeat private panels routinely"
+      },
+      {
+        "dom": "dg",
+        "text": "Asks what prompted the test and uncovers the brother’s heart attack at 50 and his own night-time chest tightness; screens for features of angina or other cardiac symptoms"
+      },
+      {
+        "dom": "cm",
+        "text": "Prioritises cardiovascular risk: confirms blood pressure (home or ambulatory readings), repeats lipids and HbA1c, calculates QRISK3 including family history of premature CVD, and discusses lifestyle and statin therapy in line with NICE NG238"
+      },
+      {
+        "dom": "dg",
+        "text": "Assesses the raised ALT: repeat venous LFTs, a liver screen (hepatitis serology, iron studies), FIB-4 to stratify fibrosis risk, and alcohol use (AUDIT-C), considering fatty liver (MASLD) as the likely cause"
+      },
+      {
+        "dom": "cm",
+        "text": "Checks transferrin saturation for the raised ferritin (likely inflammatory or fatty liver, but haemochromatosis to be excluded)"
+      },
+      {
+        "dom": "cm",
+        "text": "Explains why an afternoon finger-prick testosterone and an isolated hs-CRP are not actionable, advises stopping the testosterone booster, and offers a properly timed morning test only if symptoms of hypogonadism develop"
+      },
+      {
+        "dom": "cm",
+        "text": "Advises self-care vitamin D supplementation; explains that the PSA was done without counselling but is normal; signposts lifestyle support (weight, alcohol, activity, sleep)"
+      },
+      {
+        "dom": "cm",
+        "text": "Agrees a prioritised plan with timelines and a follow-up appointment, and safety-nets for exertional or prolonged chest pain (999)"
+      }
     ],
-    worked:[
-      { lbl:'Meet the anchor, widen the lens', txt:'"You\u2019re right that your vitamin D is low and we\u2019ll sort that \u2014 but if I just hand you that and stop, I\u2019d be doing you a disservice, because your results actually tell a bigger and more useful story. Can I walk you through the whole picture?"' },
-      { lbl:'Explain the pattern simply', txt:'"One of your liver readings, the ALT, is up \u2014 with the rest of the liver numbers normal, that points to the liver cells rather than a blockage. Put together with your weight, a blood sugar that\u2019s creeping up, and high blood fats, the most likely cause is a fatty liver \u2014 very common, and a signal worth listening to."' },
-      { lbl:'Exclude the rest honestly', txt:'"Before I settle on that, I want to be thorough \u2014 a few bloods to check it isn\u2019t the alcohol, a viral cause, or an iron problem. And can I ask honestly about your drinking? \u2026 Around 20 units; thanks for being straight \u2014 that\u2019s relevant and we can work with it."' },
-      { lbl:'The number that matters', txt:'"With a fatty liver, the question isn\u2019t really the ALT \u2014 it\u2019s whether there\u2019s any scarring. I can work that out with a simple score from your bloods, and a scan if needed. For most people it\u2019s low and very reversible; my job is to spot the few where it isn\u2019t."' },
-      { lbl:'The real fix, no lecture', txt:'"Here\u2019s the honest bit: the vitamin D will help a little, but the thing that would genuinely give you your energy back \u2014 and reverse the fatty liver \u2014 is shifting some weight and moving more. I\u2019m not going to lecture you; if we picked ONE realistic change to start with, what could you actually live with?"' },
-      { lbl:'Plan + follow-up', txt:'"So: vitamin D to replace it, a short set of liver bloods and a fibrosis score, one lifestyle goal we agree today, and a review to go through it all. No rabbit hole \u2014 a clear path. Sound fair?"' },
+    "worked": [
+      {
+        "lbl": "The approach",
+        "txt": "“I’m glad you’ve shared these. My job is to pick out what really matters for your health and act on that. Some of these flags are less important than they look. And we don’t repeat private panels every three months, but I will check the things that need checking.”"
+      },
+      {
+        "lbl": "What prompted it",
+        "txt": "“Can I ask what made you decide to get this test done now?”"
+      },
+      {
+        "lbl": "Respond to the brother",
+        "txt": "“That must have been a real shock, and I can see why you’re worried. So let’s focus on your heart and stroke risk first, because that’s what these results are really telling us about.”"
+      },
+      {
+        "lbl": "Priority one",
+        "txt": "“Your cholesterol, sugar, weight, blood pressure and your brother’s heart attack all add up. I’ll work out your ten-year risk properly, and we’ll talk about a statin and the changes that make the biggest difference.”"
+      },
+      {
+        "lbl": "The liver",
+        "txt": "“The liver test is most likely fat in the liver, which goes with the same picture. I’ll repeat it properly with a few extra checks and a score that tells us whether you need a specialist.”"
+      },
+      {
+        "lbl": "What not to chase",
+        "txt": "“The testosterone was taken in the afternoon, when levels are naturally lower, and you’ve no symptoms of it being low. I’d stop the booster. Vitamin D you can buy, it’s cheap and that’s what we recommend.”"
+      }
     ],
-    learning:'Interpreting a "tiredness panel" means reading the GESTALT, not handing over the single number the patient googled: a raised ALT with normal bilirubin and near-normal ALP is a HEPATOCELLULAR pattern, and when it sits with a high BMI, a pre-diabetic HbA1c and raised triglycerides, the most likely cause is NON-ALCOHOLIC FATTY LIVER DISEASE (NAFLD/MASLD) \u2014 a marker of insulin resistance and cardiometabolic risk, not a trivial finding, and the fatigue is far more likely multifactorial than caused by vitamin D alone. Do not diagnose NAFLD by assumption: exclude the alternatives with a focused liver screen \u2014 alcohol (quantified honestly, using AST:ALT), viral hepatitis B/C, haemochromatosis (ferritin + transferrin saturation), \u00b1 autoimmune and drug causes. In NAFLD the number that matters is FIBROSIS risk, not the ALT: use a non-invasive score (FIB-4 \u00b1 ELF or transient elastography) to identify the minority needing hepatology, managing the low-risk majority in primary care. Treat the drivers — weight loss (7–10% per international EASL guidance; no UK figure), activity, alcohol reduction, and pre-diabetes/lipid/cardiovascular risk \u2014 and replace the vitamin D proportionately without pretending it explains everything. The hidden agenda is the wish for a single quick fix that sidesteps the harder metabolic conversation; engage without lecturing and avoid over-medicalising. The duty is correct interpretation, fibrosis risk and lifestyle, not a cancer referral.',
-    knowledge:{
-      guideline:'NICE NG49 (2016; update to MASLD terminology in progress): assessment and management · BSG/BASL Guidelines on the management of abnormal liver blood tests (Newsome et al., 2018) — liver screen and FIB-4 · NICE PH38 Type 2 diabetes: prevention in people at high risk (2012) · NICE NG238 Cardiovascular disease: risk assessment and reduction (2023) · Royal Osteoporosis Society vitamin D guideline (2018) · UK Chief Medical Officers’ low-risk drinking guidelines (2016) ·',
-      points:[
-        { h:'Interpret the panel, not one number', t:'Read LFTs as a pattern: raised ALT with normal bilirubin/ALP = hepatocellular; raised ALP/GGT with bilirubin = cholestatic. Place it in context (BMI, HbA1c, lipids) rather than handing over the single googled result.' },
-        { h:'NAFLD/MASLD most likely', t:'A mildly raised ALT with a metabolic cluster (obesity, pre-diabetes, dyslipidaemia) most often reflects NAFLD/MASLD \u2014 a marker of insulin resistance and cardiovascular risk, not a trivial finding.' },
-        { h:'Liver screen to exclude others', t:'Before settling on NAFLD, exclude alcohol (quantify; AST:ALT — his ~20 units/week exceeds the UK CMO 2016 low-risk limit of 14 and may be contributing, so call it NAFLD only with that caveat), viral hepatitis B/C, haemochromatosis (ferritin, transferrin saturation), and where indicated autoimmune hepatitis (immunoglobulins/autoantibodies) and drug causes — the BSG/BASL 2018 standard liver aetiology screen, plus an ultrasound.' },
-        { h:'Fibrosis risk is the key metric', t:'In NAFLD the prognostic driver is fibrosis, not the ALT. Use FIB-4 first (age, AST, ALT, platelets; BSG/BASL 2018 — FIB-4 comes from BSG/BASL, not NICE NG49; above 3.25 suggests advanced fibrosis) ± ELF (NICE NG49: offer ELF to people with NAFLD; 10.51 or above means advanced fibrosis — refer to hepatology; below that, retest adults every 3 years) or transient elastography (FibroScan); refer significant fibrosis to hepatology, manage low-risk patients in primary care.' },
-        { h:'Treat the drivers', t:'Weight loss (7–10% markedly improves steatosis/fibrosis — an international EASL figure; there is no UK figure), physical activity, alcohol reduction, and management of pre-diabetes (NICE PH38: intensive lifestyle programme, recheck HbA1c at least yearly), lipids and cardiovascular risk (NICE NG238: QRISK3; transaminases raised but less than 3 times the upper limit do not exclude statins). Set one realistic, owned goal rather than a lecture.' },
-        { h:'Vitamin D in proportion', t:'Replace genuinely low vitamin D (Royal Osteoporosis Society 2018 loading then maintenance; doses per BNF), but do not attribute multifactorial fatigue to it alone; honest framing prevents both false reassurance and a missed metabolic/liver problem.' },
-        { h:'Proportion', t:'A mildly raised ALT within a metabolic picture is not a suspected-cancer presentation; the duty is interpretation, fibrosis risk and lifestyle. (Persistent unexplained derangement, jaundice, weight loss or a mass would change the assessment.)' },
-        { h:'Safety-net & follow-up', t:'Arrange the liver screen and FIB-4, book results review, agree a lifestyle goal, replace vitamin D, and avoid over-medicalising \u2014 with review to ensure the ALT trend and metabolic risk are followed.' }
+    "learning": "People increasingly bring results from private, direct-to-consumer blood panels. GMC guidance is that doctors must act on clinically significant information, whatever its source, but the NHS is not obliged to repeat private screening tests on request or provide follow-up for every flagged marker. The skill is prioritisation. Panels flag results that are statistically outside a range rather than clinically important, may use unsuitable samples (finger-prick, non-fasting, afternoon testosterone) and include tests that need counselling (PSA). Here the important signal is cardiovascular: raised non-HDL cholesterol, low HDL, high triglycerides, non-diabetic hyperglycaemia, obesity, raised blood pressure, ex-smoking and a brother with a heart attack at 50, which is a family history of premature CVD that QRISK3 includes. NICE NG238 (2023) recommends formal risk assessment with QRISK3, lifestyle advice, and offering atorvastatin for primary prevention when risk is 10% or more, after confirming lipids. Blood pressure should be confirmed with home or ambulatory monitoring (NICE NG136). A raised ALT with metabolic risk factors is most often metabolic dysfunction-associated steatotic liver disease (MASLD, previously NAFLD): repeat venous LFTs, a liver aetiology screen, assess alcohol, and use FIB-4 (with ELF if indeterminate) to decide on referral (NICE NG49). Raised ferritin is commonly inflammatory or metabolic, but transferrin saturation excludes haemochromatosis. HbA1c 42–47 mmol/mol is non-diabetic hyperglycaemia (NICE PH38): repeat annually and offer the NHS Diabetes Prevention Programme. Vitamin D supplementation is a self-care purchase for most adults. An isolated hs-CRP and an afternoon testosterone without symptoms are not actionable. The hidden agenda, fear after a sibling’s heart attack, explains the demand for repeated testing; addressing it directly and channelling it into risk reduction is the heart of the consultation.",
+    "knowledge": {
+      "guideline": "[1] NICE NG238 Cardiovascular disease: risk assessment and reduction, including lipid modification (2023) · [2] NICE NG136 Hypertension in adults: diagnosis and management (2019, updated 2023) · [3] NICE NG49 Non-alcoholic fatty liver disease (NAFLD): assessment and management (2016) and NICE CKS NAFLD/MASLD (check current) · [4] NICE PH38 Type 2 diabetes: prevention in people at high risk (2012, updated 2017) · [5] GMC Good medical practice (2024) and BMA guidance on the NHS–private interface · [6] UK NSC / NHS Prostate Cancer Risk Management Programme (PSA counselling)",
+      "summary": "A private finger-prick panel with nine flags. What matters: a high cardiovascular risk profile with premature CVD in his brother, raised BP, likely fatty liver, non-diabetic hyperglycaemia and a raised ferritin needing transferrin saturation. What does not: afternoon testosterone, isolated hs-CRP, routine repeat panels. Vitamin D is self-care; the uncounselled PSA is normal. His brother’s heart attack is the hidden driver.",
+      "points": [
+        {
+          "h": "Private results",
+          "t": "Act on clinically significant results whatever the source; explain what will and will not be followed up; the NHS does not repeat private screening panels on request [5]."
+        },
+        {
+          "h": "Cardiovascular risk",
+          "t": "QRISK3 (includes family history of CVD in a first-degree relative under 60). Repeat lipids; offer lifestyle advice and discuss atorvastatin if 10-year risk is 10% or more [1]."
+        },
+        {
+          "h": "Blood pressure",
+          "t": "Clinic or pharmacy reading of 140/90 or more needs confirmation with home or ambulatory monitoring [2]."
+        },
+        {
+          "h": "Raised ALT",
+          "t": "Repeat venous LFTs; liver screen (hepatitis B and C, iron studies, autoimmune if indicated); alcohol (AUDIT-C); FIB-4 to stratify fibrosis risk, ELF or specialist if indeterminate or high [3]."
+        },
+        {
+          "h": "Ferritin",
+          "t": "Often raised with fatty liver, alcohol or inflammation. Check transferrin saturation to exclude haemochromatosis."
+        },
+        {
+          "h": "HbA1c 42–47",
+          "t": "Non-diabetic hyperglycaemia. Confirm, then annual HbA1c and referral to the NHS Diabetes Prevention Programme [4]."
+        },
+        {
+          "h": "Low-value results",
+          "t": "Afternoon or finger-prick testosterone is unreliable; test at 9–11am only if symptoms. Isolated hs-CRP does not guide management. Vitamin D: self-care supplement."
+        },
+        {
+          "h": "PSA without counselling",
+          "t": "PSA testing should follow informed discussion. A normal result needs no action but explain its limits [6]."
+        }
       ]
     }
   };
@@ -359,31 +455,73 @@
     },
 
     'fatigue-lfts-vitd': {
-      ceg: ['Investigations & results', 'New & undifferentiated presentations'],
-      stem: {
-        name: 'Paul Cresswell', age: '48 years \u00b7 male',
-        pmh: ['Tiredness panel: ALT 88 (\u22482\u00d7 ULN), bilirubin normal, ALP near-normal (HEPATOCELLULAR); HbA1c pre-diabetic; raised triglycerides; low vitamin D', 'BMI 33, sedentary; alcohol ~20 units/week', 'No jaundice, abdominal pain or weight loss'],
-        meds: ['None regular'],
-        allergy: 'NKDA',
-        recent: '"The site said my vitamin D is low \u2014 that\u2019s the tiredness, right? Just give me strong vitamin D; no time for a rabbit hole."',
-        reason: 'Video consultation \u2014 results of a tiredness blood panel.'
-      },
-      timeMap: [
-        { t:'0\u20132',  h:'Meet anchor, widen lens', d:'Replace the vitamin D \u2014 but read the whole panel; the results tell a bigger, more useful story.' },
-        { t:'2\u20135',  h:'Explain the pattern', d:'Raised ALT, normal bilirubin/ALP = hepatocellular; with BMI/HbA1c/triglycerides = likely fatty liver (NAFLD/MASLD).' },
-        { t:'5\u20138',  h:'Liver screen', d:'Exclude alcohol (quantify honestly), viral hepatitis B/C, ferritin/transferrin sats \u00b1 autoimmune/drugs.' },
-        { t:'8\u201310', h:'Fibrosis risk', d:'FIB-4 \u00b1 ELF/FibroScan \u2014 the number that matters; refer the few with fibrosis, manage the rest.' },
-        { t:'10\u201312',h:'Drivers + proportion', d:'One owned lifestyle goal; vitamin D in proportion; no over-medicalising; follow up.' }
+      "ceg": [
+        "Investigations & results",
+        "Long-term conditions & cancer",
+        "Professional & ethical dilemmas"
       ],
-      wordPics: {
-        fail: 'Hands over high-dose vitamin D and attributes the fatigue to it; ignores the raised ALT and metabolic cluster; no liver screen or fibrosis assessment \u2014 or, conversely, makes an unwarranted urgent cancer referral.',
-        pass: 'Reads the panel, recognises likely NAFLD, does a liver screen and FIB-4, addresses metabolic drivers and replaces vitamin D proportionately.',
-        exc:  'Interprets the gestalt (hepatocellular ALT + metabolic cluster = NAFLD), excludes alcohol/viral/iron causes, risk-stratifies fibrosis with FIB-4, engages the avoidant patient in the metabolic conversation with one owned goal, keeps vitamin D in proportion, avoids over-medicalising, and avoids an unwarranted cancer referral.'
+      "stem": {
+        "name": "Paul Cresswell",
+        "age": "48 years · male",
+        "pmh": [
+          "Obesity (BMI 33)",
+          "Ex-smoker"
+        ],
+        "meds": [
+          "None prescribed"
+        ],
+        "allergy": "None recorded",
+        "recent": "Uploaded a private blood test report (36 markers, nine flagged). Pharmacy BP last week 146/92. No previous cardiovascular risk assessment recorded.",
+        "reason": "“Go through my private blood results.”"
       },
-      avoid: [
-        { dont:'"Your vitamin D is low \u2014 that\u2019ll be the tiredness. Here\u2019s a strong dose, you\u2019ll be sorted."', instead:'"We\u2019ll replace the vitamin D, but your results tell a bigger story \u2014 a liver reading is up alongside your weight and sugar, pointing to a fatty liver worth acting on."', why:'Handing over the one googled number misses NAFLD and the metabolic/fibrosis picture.' },
-        { dont:'(Assuming NAFLD) "It\u2019s just a fatty liver, nothing to do."', instead:'"Fatty liver is likely, but I want to be sure it isn\u2019t the alcohol, a viral cause or an iron problem \u2014 and then check there\u2019s no scarring with a simple score."', why:'Assuming NAFLD without a liver screen or fibrosis assessment misses treatable causes and the few with significant fibrosis.' },
-        { dont:'(Over-reacting) "A raised liver test \u2014 I\u2019d better refer you urgently for cancer tests."', instead:'"A mildly raised liver reading in this metabolic picture isn\u2019t a cancer-pathway situation \u2014 it\u2019s about the fatty liver and your overall health; we sort it in primary care."', why:'Inventing a cancer referral over-medicalises and misuses the pathway.' }
+      "timeMap": [
+        {
+          "t": "0–1",
+          "h": "Open",
+          "d": "His agenda; your approach to private results."
+        },
+        {
+          "t": "1–4",
+          "h": "Why now",
+          "d": "Brother’s heart attack; father’s stroke; chest tightness screened; alcohol and smoking."
+        },
+        {
+          "t": "4–8",
+          "h": "Prioritise",
+          "d": "Heart and stroke risk first; liver and ferritin plan; testosterone, hs-CRP, vitamin D, PSA explained."
+        },
+        {
+          "t": "8–11",
+          "h": "Plan",
+          "d": "Fasting bloods, home BP, QRISK3, statin discussion, FIB-4, lifestyle, DPP; no repeat panels."
+        },
+        {
+          "t": "11–12",
+          "h": "Close",
+          "d": "Teach-back; review in three weeks; chest pain safety-net."
+        }
+      ],
+      "wordPics": {
+        "fail": "Works through nine results one by one, refers to liver and endocrine clinics, prescribes vitamin D and agrees to repeat panels; or dismisses the whole report; never asks why he tested.",
+        "pass": "Explains the approach to private results, prioritises cardiovascular risk and the raised ALT, and declines low-value testing with reasons.",
+        "exc": "All of the above, plus: uncovers the brother’s heart attack and responds with empathy; screens his chest symptoms; QRISK3 including family history; FIB-4 and transferrin saturation; stops the booster; explains the uncounselled PSA; turns anxiety into a structured follow-up plan."
+      },
+      "avoid": [
+        {
+          "dont": "“Private tests aren’t our responsibility.”",
+          "instead": "“I’ll act on what matters for your health, and explain what doesn’t need action.”",
+          "why": "Doctors must act on clinically significant results whatever the source."
+        },
+        {
+          "dont": "“Let’s refer you to a liver specialist and an endocrinologist.”",
+          "instead": "“Let’s repeat the liver tests properly and use a score to see if you need a specialist.”",
+          "why": "Most raised ALT with metabolic risk is fatty liver managed in primary care."
+        },
+        {
+          "dont": "(Going through results in order)",
+          "instead": "“The most important thing these results tell us is about your heart and stroke risk.”",
+          "why": "Prioritising keeps the consultation focused on what changes outcomes."
+        }
       ]
     }
 

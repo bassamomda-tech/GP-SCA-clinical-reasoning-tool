@@ -272,86 +272,155 @@
 
   /* ============ 152. TELEPHONE — Flight-anxiety diazepam request: the policy and the alternative ============ */
   const c152 = {
-    id:'flight-anxiety-diazepam', title:'"I just need a few diazepam for the flight \u2014 my old GP always gave them"', type:'telephone', duration:12,
-    meta:{ age:38, sex:'F', setting:'Telephone \u2014 request for diazepam for fear of flying.', system:'Prescribing / Benzodiazepines & fear of flying', checked:'October 2026' },
-    brief:'Ms Bianca Foster, 38, rings two weeks before a long-haul flight requesting "a few diazepam" for her fear of flying \u2014 "my old GP always gave me them". She is otherwise well. There are several specific reasons GPs generally decline benzodiazepines for flight anxiety (sedation/paradoxical effects, VTE risk with immobility, impairment in an emergency, legality at some destinations, dependence, and that they hinder, not help, treating the phobia). The task: decline kindly with the reasons, validate the fear, and offer genuinely effective alternatives.',
-    script:{
-      "opening": "\"Hi, I've got a long-haul flight in a couple of weeks and I'm terrified — I really struggle with flying. My old GP used to just give me a few diazepam to get me through it, and it really helped. Could you do me a small prescription, like five tablets? I'm not after them for anything else, just the flight. It's the only thing that gets me on the plane.\"",
+    "id": "flight-anxiety-diazepam",
+    "title": "“I’ve got a long-haul flight on Saturday and I can’t do it without a few diazepam — my old GP always gave them”",
+    "type": "telephone",
+    "duration": 12,
+    "meta": {
+      "age": 36,
+      "sex": "F",
+      "setting": "Telephone — a medication request before a flight.",
+      "system": "Women’s health / Prescribing — a benzodiazepine request for flying in early pregnancy: safe decline, travel and VTE advice in pregnancy, and acute grief",
+      "checked": "October 2026"
+    },
+    "brief": "Bianca Foster, 36, office manager, rings asking for “a few diazepam” for a long-haul flight from Manchester to Toronto on Saturday (about 8 hours). Her previous GP in another area gave her diazepam for flights twice, years ago. She does not mention that she is pregnant; her record shows an antenatal booking at 10 weeks, a normal dating scan, now about 15 weeks, BMI 32, first pregnancy after IVF. If asked why she is travelling: her father died suddenly three days ago in Canada and the funeral is next week. They had not spoken for three years after an argument, and she feels overwhelming guilt. Since the news she has had panic attacks, has barely slept or eaten, and has been crying at work. No thoughts of harming herself. She has not told the midwife about the trip and has not checked her travel insurance. The task: notice the pregnancy and ask about it; explain kindly why diazepam is not advised (pregnancy, sedation and immobility increasing clot risk, impaired response in an emergency, airline and safety issues, it does not treat the fear); give practical non-drug strategies for the flight and for panic; give travel advice for pregnancy (VTE risk on flights over 4 hours with her additional risk factors — individual assessment and possible thromboprophylaxis via the midwife or obstetric team; mobilising, hydration, compression stockings; insurance; carrying maternity notes; when to seek care abroad); and respond to the bereavement and guilt with compassion, with support and follow-up.",
+    "script": {
+      "opening": "“Hi, I just need a quick prescription. I’ve got a long-haul flight on Saturday and I can’t do it without a few diazepam. My old GP always gave them. Five would do.”",
       "facts": [
         {
-          "topic": "The trip",
-          "text": "If asked: flying to Singapore via Dubai in two weeks for your sister's wedding. About 14 hours of flying each way."
+          "topic": "The request",
+          "text": "Flight on Saturday, Manchester to Toronto, about 8 hours. Terrified of flying since turbulence 10 years ago. Previous GP gave diazepam twice (2018 and 2019). Has never had psychological help for the fear."
         },
         {
-          "topic": "The fear (if asked)",
-          "text": "Since a bad bout of turbulence 10 years ago. Days before a flight you cannot sleep; on the plane your heart races, you feel trapped and sweat. You have never had a panic attack anywhere else."
+          "topic": "Pregnancy (only if asked)",
+          "text": "About 15 weeks. First pregnancy after two rounds of IVF. Booked with the midwife, dating scan normal. Some nausea. No bleeding or pain. “I didn’t think it mattered for this.”"
         },
         {
-          "topic": "Previous diazepam (if asked)",
-          "text": "Your old GP gave you 2 mg tablets for the last two trips. \"I took two each time and was a bit woozy but at least I got on.\" You did not drink with them. You have never taken them otherwise."
+          "topic": "Why she is travelling (if asked)",
+          "text": "Her father died suddenly of a heart attack in Toronto three days ago. Funeral next Thursday. Staying with her aunt for 10 days."
         },
         {
-          "topic": "Other anxiety (if asked)",
-          "text": "You are \"a bit of a worrier\" but cope fine day to day. No low mood, no other phobias, no thoughts of harming yourself. Never had therapy."
+          "topic": "Grief (only if explored)",
+          "text": "They had not spoken for three years after an argument about her mother. “I kept meaning to call.” Overwhelming guilt. Panic attacks since the news: racing heart, can’t breathe, shaking, lasting about 15 minutes. Barely sleeping or eating. Crying at work. No thoughts of harming herself; “I have the baby to think about.”"
         },
         {
-          "topic": "Health",
-          "text": "Fit and well. On the combined pill. No regular medicines otherwise. No allergies. Non-smoker; a few glasses of wine a week. Never had a blood clot."
-        },
-        {
-          "topic": "Social",
-          "text": "38, marketing manager. Partner will travel with you."
-        },
-        {
-          "topic": "Hidden — hold back",
-          "text": "Your sister has asked you to give a speech at the wedding; if you do not get on the plane \"I'll let her down and she'll never forgive me\". Say this only if asked why this trip matters so much."
+          "topic": "Travel preparations (if asked)",
+          "text": "Has not told the midwife. Has not checked whether her travel insurance covers pregnancy. No previous clots. No leg swelling. Her mother had a DVT after surgery years ago."
         },
         {
           "topic": "How to play it",
-          "text": "Polite, a bit anxious, expecting a quick yes. If refused bluntly, become upset: \"So I just miss my sister's wedding?\" If the doctor explains the specific reasons kindly (sedation, clot risk on long flights, being alert in an emergency, rules in some countries) and offers practical alternatives — a fear-of-flying course, techniques, support — you are disappointed but come round: \"I didn't know about the courses.\""
+          "text": "Brisk and practical at first; irritated when diazepam is questioned: “It’s only five tablets.” Becomes tearful when asked why she is travelling. Accepts the decline if it is explained in terms of the baby and her safety and if she gets real help instead."
         }
       ],
       "ice": {
-        "ideas": "\"Diazepam is the only thing that gets me on the plane.\"",
-        "concerns": "Not getting on the plane and missing your sister's wedding.",
-        "expectations": "\"Five tablets, like my old GP gave me.\" You will accept alternatives if your fear is taken seriously."
+        "ideas": "“Diazepam knocks me out, I sleep through it, problem solved.”",
+        "concerns": "HIDDEN AGENDA: guilt and grief after her estranged father’s sudden death; panic attacks since; fear of not getting to the funeral. Also a hidden worry that stress will harm the pregnancy.",
+        "expectations": "“A prescription for five diazepam today.”"
       },
       "cues": [
-        "\"My old GP always gave me them.\" — say in the opening.",
-        "\"It's the only thing that gets me on the plane.\" — say in the opening.",
-        "\"It's my sister's wedding.\" — say if asked why the trip matters."
+        "Antenatal booking in the record — ask about pregnancy before any prescribing.",
+        "“A long-haul flight” at short notice — why is she going?",
+        "Tearfulness or a catch in her voice when the trip is mentioned — grief.",
+        "“My old GP always gave them” — expectation to negotiate kindly."
       ]
     },
-    checkpoints:[
-      { dom:'cm', text:'Declines benzodiazepines for fear of flying and can give the REASONS: sedation/paradoxical effects, increased VTE risk with immobility, impaired response in an emergency/evacuation, illegality in some destination countries, dependence/misuse potential and not licensed, and that they hinder rather than treat the phobia \u2014 rather than prescribing because "the old GP did"' },
-      { dom:'ro', text:'VALIDATES that the fear is real and common and acknowledges the trip may matter greatly \u2014 declining the drug WITHOUT dismissing her or the importance of travelling' },
-      { dom:'cm', text:'Offers genuinely EFFECTIVE alternatives: fear-of-flying courses (often airline-run, CBT-based), CBT/psychological techniques for the phobia, breathing/relaxation/grounding skills, and self-help resources \u2014 treatments that address the problem' },
-      { dom:'dg', text:'Explores any BROADER anxiety disorder behind the flight phobia and considers appropriate management/support if present' },
-      { dom:'cm', text:'Avoids both failure modes: does NOT cave and prescribe (unsafe/poor practice) and does NOT issue a curt refusal that leaves her dismissed and stuck \u2014 holds the boundary kindly with alternatives' },
-      { dom:'ro',   text:'Handles the request with warmth: validates the fear and the importance of the flight, explains the decline as care/safety not bureaucracy, so she doesn\u2019t feel judged or abandoned' },
-      { dom:'ro',   text:'Engages her in the alternative plan and explores what the trip means/any wider anxiety, so she leaves with help rather than just a refusal' },
-      { dom:'cm',    text:'Safety-nets and follows up: signposting to a fear-of-flying course/CBT and self-help, breathing techniques to practise, an offer to explore broader anxiety, and a route back \u2014 a kind decline plus effective help, not a benzodiazepine and not a bare "no"' },
+    "checkpoints": [
+      {
+        "dom": "dg",
+        "text": "Notices the pregnancy in the record and confirms gestation and wellbeing before discussing any medicine"
+      },
+      {
+        "dom": "dg",
+        "text": "Explores the reason for travel and responds to the bereavement; assesses mood, panic, sleep and risk"
+      },
+      {
+        "dom": "cm",
+        "text": "Declines diazepam with clear, kind reasons: pregnancy, sedation and immobility increasing clot risk, impaired ability to respond in an emergency, airline safety, and that it does not treat the fear"
+      },
+      {
+        "dom": "cm",
+        "text": "Gives practical non-drug strategies for the flight and for panic (slow breathing, grounding, telling the crew, an aisle seat, distraction, self-help resources)"
+      },
+      {
+        "dom": "dg",
+        "text": "Assesses VTE risk for a flight over 4 hours in pregnancy (BMI 32, age over 35, IVF pregnancy, family history) and arranges same-week advice from the midwife or obstetric team on thromboprophylaxis"
+      },
+      {
+        "dom": "cm",
+        "text": "Gives travel advice for pregnancy: mobilise and do calf exercises, hydrate, avoid alcohol, graduated compression stockings, carry maternity notes, check insurance covers pregnancy, and know when to seek care abroad"
+      },
+      {
+        "dom": "cm",
+        "text": "Offers grief and panic support (bereavement services, NHS Talking Therapies self-referral, follow-up after return) and safety-nets for mood"
+      },
+      {
+        "dom": "ro",
+        "text": "Holds the boundary on diazepam without damaging rapport, and checks understanding of the plan"
+      }
     ],
-    worked:[
-      { lbl:'Validate first',       txt:'"I completely get it \u2014 fear of flying is real and horrible, and it sounds like this trip matters a lot to you. So I want to help you actually get on that plane. Let me be honest with you about the diazepam, though, and then let\u2019s find something that works better."' },
-      { lbl:'The kindly decline + reasons', txt:'"GPs have moved away from giving diazepam for flights, and there are good reasons I\u2019d want you to know \u2014 it\u2019s not me being awkward. It makes you drowsy and occasionally has the opposite effect and makes people agitated; sitting sedated and still on a long flight raises the risk of a clot in the leg or lung; it dulls you so you couldn\u2019t react well in an emergency; it\u2019s actually illegal to bring into some countries; and it can be habit-forming. On top of all that, it doesn\u2019t treat the fear \u2014 it just masks it, so the fear stays for next time."' },
-      { lbl:'What actually works',  txt:'"Here\u2019s the genuinely good news \u2014 there are things that really DO help, much more than a tablet. Lots of airlines run fear-of-flying courses, often with a pilot and a psychologist, and they\u2019re brilliant. There\u2019s a type of talking therapy (CBT) for exactly this, and some simple breathing and grounding techniques I can teach you and you can practise before you go. These actually shrink the fear rather than papering over it."' },
-      { lbl:'Explore the wider picture', txt:'"Can I ask \u2014 is it just flying, or do you find anxiety crops up in other areas too? \u2026 If there\u2019s a broader anxiety going on, that\u2019s very treatable and worth us looking at properly, separate from the flight."' },
-      { lbl:'Hold the boundary kindly', txt:'"So I\u2019m not going to prescribe the diazepam \u2014 not to leave you stuck, but because it\u2019s genuinely not the safe or effective answer. What I AM going to do is set you up with things that work. I\u2019d hate for you to just white-knuckle it again next time."' },
-      { lbl:'Plan + safety-net',    txt:'"Let me point you to a fear-of-flying course and some self-help, teach you a breathing technique now, and \u2014 if you\u2019d like \u2014 sort some proper anxiety support. Come back and we can go further if you want. You rang for five diazepam to survive the flight; I\u2019d rather give you the tools to actually feel okay on it \u2014 this time and every time."' },
+    "worked": [
+      {
+        "lbl": "Before any prescribing",
+        "txt": "“Before I think about medicines, I can see from your notes you’re pregnant. How far along are you, and how are you both doing?”"
+      },
+      {
+        "lbl": "Why the trip",
+        "txt": "“It sounds like this trip was arranged quickly. Can I ask what it’s for?”"
+      },
+      {
+        "lbl": "Respond to grief",
+        "txt": "“I’m so sorry about your dad. And carrying the guilt of not having spoken makes it so much heavier. That’s a lot to hold, especially while pregnant.”"
+      },
+      {
+        "lbl": "The decline",
+        "txt": "“I’m not going to prescribe diazepam, and I want to explain why. In pregnancy we avoid it where we can. It makes you sleep still for hours, which raises the risk of a clot, and that risk is already higher in pregnancy. And if anything happened on the plane, you’d need to be alert.”"
+      },
+      {
+        "lbl": "Instead",
+        "txt": "“Let’s plan the flight: an aisle seat, get up every hour, calf exercises, lots of water and no alcohol, flight socks. Tell the crew you’re a nervous flyer. And a breathing technique for the panic, which I’ll talk you through.”"
+      },
+      {
+        "lbl": "Clot assessment",
+        "txt": "“Because the flight is long and you have a few other risk factors, I’d like the maternity team to check today or tomorrow whether you need blood-thinning injections for the journey.”"
+      }
     ],
-    learning:'GPs generally do NOT prescribe benzodiazepines for fear of flying, and the examinable skill is to decline KINDLY with the reasons while offering genuinely effective help. The reasons: benzodiazepines cause sedation and can be paradoxically disinhibiting; sedation plus immobility raises VTE (DVT/PE) risk on long flights; reduced alertness impairs response in an emergency/evacuation; they are illegal/controlled in some destination countries (possession risk); they carry dependence/misuse potential and aren\u2019t licensed for this; and they hinder rather than treat the phobia (a safety behaviour that maintains avoidance). "My old GP always gave them" does not make it appropriate. The effective alternatives are fear-of-flying courses (often airline-run, CBT-based), CBT/psychological techniques, breathing/relaxation/grounding skills and self-help \u2014 which treat the problem. The hidden agenda is a genuine fear and a trip that may matter enormously, plus possible broader anxiety and worry about being left unable to travel; validate the fear and the trip\u2019s importance, explore any wider anxiety, and avoid both caving (unsafe) and a curt refusal (dismissive) \u2014 a kind, reasoned decline plus real, effective help.',
-    knowledge:{
-      guideline:'BNF (benzodiazepines: short-term relief, 2–4 weeks only, of severe, disabling anxiety) · NICE CG113 Generalised anxiety disorder and panic disorder in adults (2011, updated 2020) · GOV.UK travelling with medicine containing controlled drugs · GMC Good practice in prescribing and managing medicines and devices (2021) · fear-of-flying management',
-      points:[
-        { h:'Why not benzodiazepines for flights', t:'Common reasons GPs decline: sedation and possible paradoxical agitation/disinhibition; increased VTE (DVT/PE) risk from sedation + immobility on long flights; impaired ability to follow safety instructions/evacuate in an emergency; benzodiazepines are illegal/controlled in some countries (possession risk on arrival); dependence and misuse potential (BNF: benzodiazepines are for short-term relief, 2–4 weeks only, of anxiety that is severe, disabling or causing unacceptable distress); not licensed for this; diazepam is a UK controlled drug and GOV.UK advises checking the destination country’s rules with its embassy; and they hinder rather than treat the phobia (a safety/avoidance behaviour). Prior prescribing by another GP does not justify continuation.' },
-        { h:'Validate, don\u2019t dismiss', t:'Fear of flying is real, common and distressing, and the trip may matter greatly. Decline the drug without dismissing the patient or the importance of travelling \u2014 a curt refusal fails as much as caving does.' },
-        { h:'Offer effective alternatives', t:'Fear-of-flying courses (many airlines run them, often combining CBT and pilot input \u2014 effective), CBT/psychological therapy for specific phobia, breathing/relaxation and grounding techniques, graded exposure, and self-help resources/apps. These treat the phobia rather than sedating through it.' },
-        { h:'Explore broader anxiety', t:'Flight phobia may sit within a wider anxiety disorder. Explore and, if present, manage/support it appropriately (NICE CG113: stepped care with psychological therapy first, an SSRI if needed, and no benzodiazepines for generalised anxiety disorder except short term during a crisis, nor for panic disorder) — separate from the flight. NHS Talking Therapies accepts self-referral for anxiety problems, including specific phobias.' },
-        { h:'If pharmacological at all', t:'Benzodiazepines are best avoided; where any short-term option is considered it is generally discouraged, and non-sedating, non-dependence-forming approaches and behavioural techniques are preferred. The default answer for fear of flying is non-pharmacological.' },
-        { h:'Hold the boundary kindly', t:'Explain the decline as safety/care and offer alternatives, so the patient leaves with help and understanding rather than feeling judged or stuck. Avoid both collusion and a bare "no".' },
-        { h:'Never do', t:'Never prescribe benzodiazepines for fear of flying just because "the old GP did"; never dismiss the fear or the trip with a curt refusal; never omit the effective alternatives; never miss an underlying broader anxiety disorder; never leave the patient with neither the drug nor a plan.' },
-        { h:'Safety-net & follow-up', t:'Signpost a fear-of-flying course/CBT and self-help; teach a breathing/grounding technique; offer to explore and treat broader anxiety; provide a route back \u2014 a kind, reasoned decline plus genuinely effective help.' }
+    "learning": "Requests for benzodiazepines for flight anxiety are common. Many GPs decline them because of sedation and paradoxical reactions, impaired ability to respond in an emergency, increased risk of venous thromboembolism from prolonged immobility while sedated, legal restrictions in some countries, and because they do not treat the phobia. Pregnancy adds weight: benzodiazepines are avoided where possible in pregnancy (check the SPC), and pregnancy itself raises VTE risk. RCOG guidance on reducing the risk of VTE in pregnancy treats long-distance travel (over 4 hours) as a transient risk factor; with additional risk factors such as age over 35, BMI 30 or more, an IVF pregnancy or a family history of VTE, an individual assessment is needed and thromboprophylaxis may be advised by the maternity team. General travel advice in pregnancy: mobilise and do calf exercises, stay hydrated, avoid alcohol, wear well-fitted graduated compression stockings, choose an aisle seat, carry maternity notes, and check that travel insurance covers pregnancy; airlines may ask for a letter later in pregnancy (often after 28 weeks). Non-drug approaches to flight anxiety include slow breathing, grounding, distraction, telling the crew and, longer term, CBT-based courses. The hidden agenda is acute grief complicated by guilt after an estranged parent’s sudden death, with panic attacks: acknowledge it, assess mood and risk, offer bereavement support and NHS Talking Therapies, and follow up on return. Holding a prescribing boundary is easier when the patient feels heard and leaves with a better plan than the one she came for.",
+    "knowledge": {
+      "guideline": "[1] RCOG Green-top Guideline No. 37a Reducing the risk of venous thromboembolism during pregnancy and the puerperium (2015) · [2] RCOG Scientific Impact Paper: Air travel and pregnancy (check current version) · [3] NICE CKS Benzodiazepine and z-drug withdrawal / Generalized anxiety disorder (check current versions) · [4] NICE CG192 Antenatal and postnatal mental health (2014, updated 2020) · [5] Product SPC for diazepam (use in pregnancy) · [6] NHS Talking Therapies for anxiety and depression (self-referral) and national bereavement support services",
+      "summary": "A request for diazepam for an 8-hour flight from a woman who is 15 weeks pregnant after IVF, BMI 32, age 36, with a family history of VTE, travelling to her estranged father’s funeral with acute grief and panic attacks. Decline diazepam kindly with reasons, give non-drug strategies, arrange urgent maternity assessment of VTE risk for the flight, give pregnancy travel advice, and support her grief.",
+      "points": [
+        {
+          "h": "Why not benzodiazepines for flying",
+          "t": "Sedation and paradoxical agitation, impaired response in an emergency, immobility increasing VTE risk, possible legal issues abroad, dependence, and no effect on the underlying phobia."
+        },
+        {
+          "h": "Pregnancy",
+          "t": "Avoid benzodiazepines in pregnancy where possible; check the SPC [5]. Always ask about pregnancy before prescribing for a woman of reproductive age."
+        },
+        {
+          "h": "VTE risk with travel in pregnancy",
+          "t": "Long-distance travel over 4 hours is a transient risk factor. With other risk factors (age over 35, BMI 30 or more, IVF, family history), an individual assessment is needed; the maternity team may advise LMWH [1]."
+        },
+        {
+          "h": "Travel measures",
+          "t": "Aisle seat, walk regularly, calf exercises, hydration, avoid alcohol, graduated compression stockings, carry maternity notes [2]."
+        },
+        {
+          "h": "Insurance and airlines",
+          "t": "Check travel insurance covers pregnancy. Airlines often require a letter later in pregnancy, usually after 28 weeks; not needed at 15 weeks [2]."
+        },
+        {
+          "h": "Flight anxiety without drugs",
+          "t": "Slow breathing, grounding techniques, distraction, telling the crew, and longer term CBT-based fear-of-flying courses."
+        },
+        {
+          "h": "Grief and panic",
+          "t": "Acute grief with guilt after estrangement is common. Assess mood, sleep and risk; offer bereavement support and NHS Talking Therapies self-referral; consider perinatal mental health input if symptoms persist [4,6]."
+        },
+        {
+          "h": "Holding the boundary",
+          "t": "Decline clearly and kindly, explain the reasons in terms of her and the baby’s safety, and offer a concrete alternative plan."
+        }
       ]
     }
   };
@@ -449,31 +518,72 @@
     },
 
     'flight-anxiety-diazepam': {
-      ceg: ['Prescribing & pharmacology', 'Mental health & addiction'],
-      stem: {
-        name: 'Bianca Foster', age: '38 years · female',
-        pmh: ['Fear of flying; long-haul flight in 2 weeks', 'Otherwise well; "old GP always gave diazepam"', 'Possible broader anxiety'],
-        meds: ['None'],
-        allergy: 'NKDA',
-        recent: 'Requesting "a few diazepam" for the flight.',
-        reason: 'Telephone — diazepam request for fear of flying.'
-      },
-      timeMap: [
-        { t:'0–2',  h:'Validate first',      d:'Fear of flying is real and the trip matters. Goal: actually get her on the plane. Then be honest about the diazepam.' },
-        { t:'2–5',  h:'Kindly decline + reasons', d:'Sedation/paradoxical; VTE risk with immobility; impaired in an emergency; illegal in some countries; dependence; and it doesn\u2019t treat the fear.' },
-        { t:'5–7',  h:'What actually works',  d:'Fear-of-flying courses (airline/CBT), CBT for phobia, breathing/grounding, self-help — treat it, don\u2019t mask it.' },
-        { t:'7–9',  h:'Explore wider anxiety', d:'Just flying, or anxiety elsewhere too? Treatable and worth addressing separately.' },
-        { t:'9–12', h:'Boundary + plan + net', d:'No diazepam — not to leave her stuck, but because it\u2019s not safe or effective. Signpost course/CBT, teach a breathing technique; route back.' }
+      "ceg": [
+        "Gender, reproductive & sexual health",
+        "Mental health & addiction"
       ],
-      wordPics: {
-        fail: 'Either caves and prescribes diazepam "because the old GP did" (unsafe/poor practice) or issues a curt refusal that leaves her dismissed and stuck; never validates the fear or offers effective alternatives.',
-        pass: 'Declines benzodiazepines with the reasons, validates the fear, and signposts a fear-of-flying course / CBT / breathing techniques.',
-        exc:  'Validates the fear and the trip\u2019s importance; declines kindly with the full reasoning (sedation/VTE/emergency/legality/dependence/efficacy); offers genuinely effective alternatives (airline course, CBT, breathing/self-help); explores broader anxiety; and holds the boundary warmly so she leaves with real help, not a bare "no".'
+      "stem": {
+        "name": "Bianca Foster",
+        "age": "36 years · female",
+        "pmh": [
+          "Pregnancy: antenatal booking at 10 weeks (IVF pregnancy); dating scan normal",
+          "Anxiety (2019)"
+        ],
+        "meds": [
+          "Folic acid 400 micrograms daily"
+        ],
+        "allergy": "None recorded",
+        "recent": "Antenatal booking: BMI 32. Previous practice records show diazepam issued in 2018 and 2019 “for flights”.",
+        "reason": "Telephone request: “a few diazepam for a flight”."
       },
-      avoid: [
-        { dont:'"Okay, I\u2019ll do you five diazepam just for the flight then."', instead:'"I\u2019m going to be honest about why GPs don\u2019t give diazepam for flights — and set you up with things that actually work much better."', why:'Prescribing benzodiazepines for flight anxiety is unsafe and poor practice, regardless of prior prescribing.' },
-        { dont:'"We don\u2019t prescribe that — you\u2019ll have to manage without." (curt)', instead:'"I won\u2019t prescribe it — not to leave you stuck, but because it\u2019s not safe or effective. Here\u2019s what genuinely helps, starting now."', why:'A curt refusal leaves the patient feeling dismissed and stuck; the decline must come with validation and effective alternatives.' },
-        { dont:'"Just try to relax and have a drink on the plane." (dismissive)', instead:'"There are proper tools — a fear-of-flying course, a breathing technique I\u2019ll teach you, and talking therapy for the phobia — that really do help."', why:'Glib advice trivialises a real phobia and misses the effective, evidence-based options.' }
+      "timeMap": [
+        {
+          "t": "0–1",
+          "h": "Open",
+          "d": "Identity. Hear the request. Raise the pregnancy before medicines."
+        },
+        {
+          "t": "1–6",
+          "h": "History",
+          "d": "Why the trip: father’s death, estrangement, guilt. Panic, sleep, risk. The flying fear. ICE."
+        },
+        {
+          "t": "6–8",
+          "h": "Decline",
+          "d": "No diazepam: pregnancy, clot risk, alertness, doesn’t treat fear. Hold the boundary kindly."
+        },
+        {
+          "t": "8–11",
+          "h": "Plan",
+          "d": "VTE risk factors; maternity assessment before Saturday; travel measures; breathing and grounding; notes and insurance; grief support."
+        },
+        {
+          "t": "11–12",
+          "h": "Close",
+          "d": "Teach-back; urgent care abroad; crisis numbers; follow-up."
+        }
+      ],
+      "wordPics": {
+        "fail": "Prescribes diazepam without noticing the pregnancy, or refuses curtly without reasons or alternatives; never asks why she is travelling.",
+        "pass": "Notices the pregnancy, declines diazepam with reasons, gives non-drug strategies and travel advice, and responds to the bereavement.",
+        "exc": "All of the above, plus: links the decline to her and the baby’s safety; identifies multiple VTE risk factors and arranges maternity assessment before the flight; practical panic techniques; insurance and notes; acknowledges the guilt with compassion; follow-up after her return."
+      },
+      "avoid": [
+        {
+          "dont": "“Sure, five won’t hurt.”",
+          "instead": "“Before any medicine, I can see you’re pregnant. Let’s talk about that.”",
+          "why": "Benzodiazepines are avoided in pregnancy where possible and sedation increases clot risk."
+        },
+        {
+          "dont": "“We don’t prescribe that for flying. Anything else?”",
+          "instead": "“I’m not going to prescribe it, and here’s why. Let’s plan the flight another way.”",
+          "why": "A bare refusal damages trust and leaves her without help."
+        },
+        {
+          "dont": "(Not asking why she is travelling)",
+          "instead": "“It sounds like this came up quickly. What’s the trip for?”",
+          "why": "The bereavement is the hidden agenda."
+        }
       ]
     }
   });

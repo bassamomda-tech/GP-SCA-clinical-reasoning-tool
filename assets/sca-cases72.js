@@ -479,153 +479,158 @@
 
   /* ===== 263. Frozen shoulder (adhesive capsulitis) ===== */
   const c263 = {
-    id: 'frozen-shoulder',
-    title: '"My shoulder\u2019s become stiff and painful \u2014 I can\u2019t reach behind my back or do my bra up, and it\u2019s getting worse"',
-    type: 'video',
-    duration: 12,
-    meta: {
-      age: 54,
-      sex: 'F',
-      setting: 'Video consultation, with the active and passive range-of-movement examination arranged face to face \u2014 a painful, stiff shoulder.',
-      system: 'MSK \u2014 frozen shoulder (adhesive capsulitis): recognition, phases & management',
-      checked: 'October 2026'
+    "id": "frozen-shoulder",
+    "title": "“I need an injection in this shoulder before I lose my business — and I don’t want any blood tests”",
+    "type": "video",
+    "duration": 12,
+    "meta": {
+      "age": 54,
+      "sex": "F",
+      "setting": "Video consultation — a painful, stiff shoulder for four months; face-to-face examination can be arranged.",
+      "system": "Musculoskeletal / Endocrine — frozen shoulder: injection request, work as a self-employed hairdresser, and an avoided diabetes test",
+      "checked": "October 2026"
     },
-    brief: 'Mrs Denise Falk, 54 (type 2 diabetes, on metformin), has months of progressive shoulder PAIN and STIFFNESS with marked loss of movement \u2014 especially EXTERNAL ROTATION and reaching behind her back/overhead \u2014 affecting both active AND passive movement, with night pain. Recognise FROZEN SHOULDER (ADHESIVE CAPSULITIS) \u2014 painful global restriction of both active and passive glenohumeral movement (especially external rotation), in phases (painful/freezing \u2192 stiff/frozen \u2192 thawing), commoner in middle age and associated with DIABETES (and thyroid disease); distinguish from rotator cuff problems (weakness, active>passive restriction), glenohumeral OA (a plain X-ray is used to exclude it before labelling frozen shoulder \u2014 BESS pathway 2025), and referred pain, examining active and passive range face to face (it cannot be assessed properly on video); recognise it is usually self-limiting but can take 1\u20133 years; MANAGE \u2014 analgesia/NSAIDs, maintain movement with PHYSIOTHERAPY/exercises, intra-articular CORTICOSTEROID INJECTION (helpful especially in the painful phase, but the benefit is SHORT-TERM \u2014 long-term benefit beyond about 3 months is not shown, BESS 2025), with a warning that corticosteroids can RAISE BLOOD GLUCOSE (BNF), so she should monitor glucose more closely for several days afterwards and know what to do if it rises, reassurance about the natural history, and optimise DIABETES (glycaemic control affects outcome; check HbA1c and thyroid tests); refer to physiotherapy/orthopaedics for refractory cases or an uncertain diagnosis (hydrodilatation, manipulation, capsular release \u2014 in UK FROST, Lancet 2020, early structured physiotherapy with injection, manipulation and capsular release gave similar 12-month outcomes). Set realistic expectations about the prolonged course. The skill is recognising the active+passive global restriction (esp. external rotation), the diabetes link, and phase-appropriate management with realistic timelines.',
-    script: {
-      opening: '"My right shoulder\u2019s been getting stiffer and more painful over the last few months. I can\u2019t reach behind my back to do my bra up or get my arm into a coat, and it aches badly at night so I can\u2019t sleep on it. I didn\u2019t injure it \u2014 it just came on. I\u2019m diabetic, if that matters. Will it get better?"',
-      facts: [
+    "brief": "Lorraine Hart, 54, self-employed hairdresser with her own small salon, has four months of left shoulder pain, worse at night, and increasing stiffness: she cannot reach behind her back, fasten her bra or lift her arm to blow-dry. No injury. On video she can barely raise or rotate the arm outwards. She wants a steroid injection “like my client had” and asks about paying for an MRI. She has cut her hours, is losing clients and cannot afford to stop. Her record shows an HbA1c of 46 mmol/mol (non-diabetic hyperglycaemia) three years ago with a recall she never attended, and two letters inviting her for blood tests. If asked about general health she admits being thirsty, weeing at night and tired for months. Her hidden concern, only if explored: her mother had type 2 diabetes and lost a leg; Lorraine has avoided blood tests because she is frightened of being told she has diabetes, and the word makes her think of amputation. The task: make a clinical diagnosis of frozen shoulder (global restriction, especially external rotation) and screen for red flags; explain the phases and that most recover; discuss options honestly (analgesia, physiotherapy, an intra-articular steroid injection that can help pain in the early phase, and why MRI is not usually needed); explain the link between frozen shoulder and diabetes and the effect of a steroid injection on blood glucose; explore and address her fear so that she agrees to an HbA1c; and support work with practical adjustments and a fit note if needed.",
+    "script": {
+      "opening": "“I need a steroid injection in this shoulder. My client had one and it was like magic. I can’t lift my arm to blow-dry and I’m losing clients. And before you ask, I don’t want any blood tests.”",
+      "facts": [
         {
-          topic: 'The shoulder',
-          text: 'Right (dominant) shoulder, about 4 months. Pain first, then steadily stiffer. Aches all the time, worse at night lying on it. Can\u2019t reach behind her back, do her bra up, brush the back of her hair or reach a high shelf.'
+          "topic": "The shoulder",
+          "text": "Left shoulder. Started as an ache four months ago, then increasingly painful, worse at night, can’t lie on it. Over the last six weeks it has become stiff: cannot reach behind her back, fasten her bra, or lift her arm above shoulder height. No fall or injury. Right-handed."
         },
         {
-          topic: 'On video (if asked to move)',
-          text: 'Can lift the right arm forward only to about shoulder height, and out to the side less than that. Can\u2019t turn the arm outwards with the elbow tucked in \u2014 "it just stops, like it\u2019s stuck". Her husband tries gently moving it for her (if the doctor asks): "It won\u2019t go any further even when he does it."'
+          "topic": "Red flags (if asked)",
+          "text": "No weight loss she has noticed, no cough, no fever, no hot red joint, no arm weakness or numbness, no chest pain or breathlessness on exertion, no history of cancer. Neck is fine."
         },
         {
-          topic: 'Negatives (if asked)',
-          text: 'No injury, no fall. No neck pain, no tingling or numbness in the arm or hand. Arm not weak. No fever, no redness or heat. No weight loss. No previous cancer. Other shoulder fine.'
+          "topic": "Work and money",
+          "text": "Owns a two-chair salon; one junior. Cut her hours by half. Lost three regular clients. Rent and a loan for the salon. “If I stop, I lose the business.”"
         },
         {
-          topic: 'Diabetes',
-          text: 'Type 2 diabetes for 6 years, on metformin 1 g twice daily. "I\u2019m not sure it\u2019s perfect \u2014 I haven\u2019t been in for a while." Last HbA1c over a year ago. Thyroid never checked as far as she knows.'
+          "topic": "What she has tried",
+          "text": "Ibuprofen and paracetamol on and off, helps a bit. Hot water bottle. Has not seen a physiotherapist. Was going to pay for an MRI."
         },
         {
-          topic: 'Medicines and health',
-          text: 'Metformin only. Takes paracetamol occasionally. No stomach ulcers, no asthma, kidneys "fine". No allergies.'
+          "topic": "General health (only if asked)",
+          "text": "Thirsty for months, up twice a night to wee, tired, “but I’m 54 and I work all day”. Overweight. No blurred vision, no foot problems. Smokes 5 a day."
         },
         {
-          topic: 'Work and social',
-          text: 'Hairdresser \u2014 struggling to hold her arm up at work. Married to Tony. Tired from poor sleep.'
+          "topic": "The fear (only if gently explored)",
+          "text": "Her mother had type 2 diabetes and had a leg amputated at 68. Lorraine knows the earlier blood test was “borderline” and has ignored the letters: “If I don’t know, I don’t have to deal with it.”"
         },
         {
-          topic: 'How to play it',
-          text: 'Friendly, frustrated, tired. Ask "So will it get better?" Disappointed by the long timeline but grateful for honesty. Keen on an injection for the night pain once explained.'
+          "topic": "How to play it",
+          "text": "Brisk and businesslike, pushes for the injection. Bristles at blood tests. Softens if the doctor asks what worries her about them and links the test to the shoulder. Agrees to an HbA1c if she understands how it helps and that diabetes found early is very different from her mother’s experience."
         }
       ],
-      ice: {
-        ideas: '"I thought maybe I\u2019d damaged it somehow \u2014 maybe torn something."',
-        concerns: '"I\u2019m worried it won\u2019t come back, and I can\u2019t work properly as a hairdresser like this."',
-        expectations: '"To know how long it will last, and something for the night pain."'
+      "ice": {
+        "ideas": "“It’s worn out from 30 years of hairdressing. An injection will fix it.”",
+        "concerns": "HIDDEN AGENDA: fear of diabetes because of her mother’s amputation, which is why she has avoided blood tests; also losing the business.",
+        "expectations": "“An injection now, maybe an MRI, and no blood tests.”"
       },
-      cues: [
-        '"I\u2019m diabetic, if that matters" \u2014 the diabetes link and a prompt to review control.',
-        '"It won\u2019t go any further even when he moves it" \u2014 passive restriction, a key sign.',
-        '"I can\u2019t work properly" \u2014 the functional impact.'
+      "cues": [
+        "“I don’t want any blood tests” before anyone has suggested one — something lies behind it.",
+        "Unanswered recall letters and a borderline HbA1c in the record.",
+        "Thirst and nocturia mentioned as “just being 54”.",
+        "“I’m losing clients” — work and money are central."
       ]
     },
-    checkpoints: [
+    "checkpoints": [
       {
-        dom: 'dg',
-        text: 'Recognises FROZEN SHOULDER (adhesive capsulitis) \u2014 painful global restriction of BOTH active and passive glenohumeral movement, especially external rotation, with night pain, coming on without injury'
+        "dom": "dg",
+        "text": "Takes a focused history and remote examination showing painful global restriction of active movement, particularly external rotation, consistent with frozen shoulder; arranges face-to-face examination to confirm passive restriction if needed"
       },
       {
-        dom: 'dg',
-        text: 'Knows the PHASES (freezing \u2192 frozen \u2192 thawing) and the often 1\u20133-year course, and the DIABETES (and thyroid) association \u2014 noting her diabetes and that glycaemic control affects outcome'
+        "dom": "dg",
+        "text": "Screens for red flags: trauma, fever or hot joint, weight loss or history of cancer, neurological symptoms, referred pain (neck, cardiac, Pancoast)"
       },
       {
-        dom: 'dg',
-        text: 'Distinguishes it from rotator cuff pathology (active>passive restriction, weakness), glenohumeral OA (plain X-ray to exclude it), and referred pain \u2014 using the active AND passive global restriction examined face to face'
+        "dom": "dg",
+        "text": "Explores the refusal of blood tests and uncovers the fear of diabetes linked to her mother’s amputation; asks about osmotic symptoms"
       },
       {
-        dom: 'cm',
-        text: 'Manages with analgesia/NSAIDs, PHYSIOTHERAPY/exercises to maintain movement, and an intra-articular CORTICOSTEROID INJECTION (helpful in the painful phase; short-term benefit), warning about raised blood glucose after the injection, and optimises diabetes (HbA1c, thyroid tests)'
+        "dom": "cm",
+        "text": "Explains the association between frozen shoulder and diabetes, and that a steroid injection can raise blood glucose for some days, as reasons to check HbA1c now"
       },
       {
-        dom: 'cm',
-        text: 'Refers to physiotherapy and, for refractory cases, orthopaedics (hydrodilatation/manipulation/capsular release)'
+        "dom": "cm",
+        "text": "Discusses options honestly: analgesia, physiotherapy and home exercises, and an intra-articular corticosteroid injection, which can reduce pain in the early painful phase; explains that MRI is not usually needed for a clinical diagnosis"
       },
       {
-        dom: 'ro',
-        text: 'Sets REALISTIC expectations about the slow (1\u20133-year) but largely self-limiting course, managing frustration honestly, and addresses the functional/sleep impact'
+        "dom": "cm",
+        "text": "Explains the natural history (painful, stiff and recovery phases over months to a few years) and when referral is considered (persistent severe symptoms despite treatment)"
       },
-      { dom: 'ro', text: 'Explains the diagnosis and phase-appropriate plan clearly and checks understanding' },
       {
-        dom: 'cm',
-        text: 'Safety-nets and follows up: physiotherapy/injection and review, orthopaedic referral if refractory, diabetes optimisation, and realistic timeline \u2014 recognising the active+passive restriction and managing by phase, not dismissing as wear and tear'
+        "dom": "cm",
+        "text": "Supports work: practical adjustments, pacing, a fit note with “may be fit for work” and suggested adaptations if useful, and signposting for self-employed support"
+      },
+      {
+        "dom": "ro",
+        "text": "Respects her autonomy, links the plan to her goal of keeping the business, and safety-nets (red flags, osmotic symptoms worsening, no improvement)"
       }
     ],
-    worked: [
+    "worked": [
       {
-        lbl: 'Name it',
-        txt: '"This is a frozen shoulder \u2014 the lining of the joint becomes inflamed and tight, making it painful and very stiff, especially turning your arm out and reaching behind you. The clue is that the movement is limited whether you move it OR I move it for you, which separates it from other shoulder problems."'
+        "lbl": "Explore the refusal",
+        "txt": "“You said you don’t want blood tests before I’d mentioned any. Can I ask what makes you feel that way?”"
       },
       {
-        lbl: 'Explain the diabetes link + phases',
-        txt: '"It\u2019s commoner in people with diabetes, so that\u2019s relevant \u2014 and keeping your sugars well controlled actually helps it. It goes through phases: a painful stage, then a stiff stage, then a gradual thawing as it recovers."'
+        "lbl": "Name the fear gently",
+        "txt": "“That must have been awful to see with your mum. It makes complete sense that you’d rather not know. Can I tell you how different it is when diabetes is found early?”"
       },
       {
-        lbl: 'Honest timeline',
-        txt: '"I\u2019ll be honest about the timescale \u2014 it does get better, but it\u2019s slow, often over one to three years. Knowing that helps avoid frustration; you\u2019re not doing anything wrong if it\u2019s gradual."'
+        "lbl": "Link test and shoulder",
+        "txt": "“Frozen shoulder is more common in people with diabetes or borderline sugars, and a steroid injection can push sugar up for a few days. So checking your sugar helps me do the injection safely.”"
       },
       {
-        lbl: 'Treatment',
-        txt: '"For now, painkillers/anti-inflammatories, and physiotherapy with gentle stretches to keep as much movement as possible. In the painful phase, a steroid injection into the joint can help the pain for a few months \u2014 we can arrange that. Because of your diabetes, it can push your sugars up for several days, so check them more often afterwards and tell us if they run high. I\u2019d also like an X-ray to make sure there\u2019s no arthritis in the joint, and to examine the shoulder in person."'
+        "lbl": "The injection honestly",
+        "txt": "“An injection into the joint can ease the pain in this early stage, which may let you work and do your exercises. It doesn’t cure the stiffness on its own, so physio exercises matter too.”"
       },
       {
-        lbl: 'Refer if needed',
-        txt: '"If it stays very stiff and isn\u2019t improving, the orthopaedic team have options like stretching the joint under pressure or a small procedure to release it. Most people don\u2019t need that."'
+        "lbl": "MRI",
+        "txt": "“The diagnosis is made from how the shoulder moves. A scan rarely changes the treatment, so I wouldn’t spend your money on one.”"
       },
       {
-        lbl: 'Safety-net',
-        txt: '"Let\u2019s get physio going, consider the injection, and tighten up your diabetes control. Come back if the pain is unmanageable or it\u2019s not improving, and we\u2019ll step up. It will get there."'
+        "lbl": "Work",
+        "txt": "“Let’s think about the salon. Could your junior do the blow-drying for now? I can give you a fit note suggesting adapted duties if it helps with anything.”"
       }
     ],
-    learning: 'FROZEN SHOULDER (ADHESIVE CAPSULITIS) is progressive shoulder PAIN with global STIFFNESS and loss of movement affecting BOTH ACTIVE AND PASSIVE range \u2014 especially EXTERNAL ROTATION and reaching behind the back/overhead \u2014 often with night pain, typically arising without injury in middle age; the active AND passive global restriction (especially external rotation) is the key examination finding. It progresses in PHASES \u2014 a painful/"freezing" phase, a stiff/"frozen" phase, and a "thawing" phase of gradual recovery \u2014 with the whole course often lasting 1\u20133 years, and is associated with DIABETES (commoner, more severe, more bilateral) and thyroid disease, with glycaemic control affecting outcome. Distinguish it from rotator cuff pathology (weakness, painful arc, active restriction with relatively preserved passive movement), glenohumeral osteoarthritis (older, crepitus, X-ray changes \u2014 a plain X-ray is used to exclude it before labelling frozen shoulder, BESS pathway 2025) and referred pain \u2014 frozen shoulder restricts both active and passive movement globally, whereas the cuff typically restricts active more than passive. Manage with analgesia/NSAIDs, maintain movement with physiotherapy and gentle stretching exercises, and an intra-articular corticosteroid injection (particularly helpful in the painful/early phase, though the benefit is short-term \u2014 not shown beyond about 3 months, BESS 2025), warning people with diabetes that corticosteroids can raise blood glucose for several days (BNF), with reassurance about the natural history and optimisation of diabetes control (HbA1c, thyroid tests). Active and passive range are examined face to face. Refer to physiotherapy and, for refractory cases, orthopaedics for hydrodilatation, manipulation under anaesthesia or arthroscopic capsular release. Set realistic expectations \u2014 frozen shoulder is largely self-limiting but recovery is slow (often 1\u20133 years) \u2014 which manages frustration. The skill is recognising the active+passive global restriction (especially external rotation), the diabetes link, and phase-appropriate management with realistic timelines.',
-    knowledge: {
-      guideline: 'Frozen shoulder (adhesive capsulitis) \u00b7 active+passive global restriction (esp. external rotation) \u00b7 phases & diabetes link \u00b7 physio + steroid injection \u00b7 realistic timeline \u00b7 [1] BESS patient care pathway: frozen shoulder (Rupani, Gwilym et al., Shoulder & Elbow 2025) \u00b7 [2] BESS/BOA patient care pathway: frozen shoulder (2015) \u00b7 [3] UK FROST trial (Rangan et al., Lancet 2020) \u00b7 [4] BNF corticosteroids (hyperglycaemia) \u00b7 [5] NICE NG226 Osteoarthritis in over 16s',
-      points: [
+    "learning": "Frozen shoulder (adhesive capsulitis) causes shoulder pain, often worse at night, followed by progressive stiffness with marked loss of both active and passive movement, typically affecting external rotation most. It is commonest between 40 and 60 and is more common in people with diabetes, so NICE CKS suggests checking for diabetes. It is a clinical diagnosis; imaging is not usually needed unless red flags or diagnostic doubt (an X-ray can exclude glenohumeral arthritis if movement is restricted after trauma or in older people). The condition usually passes through painful, stiff and recovery phases and most people improve, though it can take one to three years and some stiffness may remain. Management: analgesia, information, home exercises and physiotherapy, and an intra-articular corticosteroid injection, which can reduce pain and improve function in the early painful phase. In the UK FROST trial, early structured physiotherapy with a steroid injection was a reasonable first-line option, and surgical options offered no clear advantage for most people. Steroid injections can raise blood glucose for several days, which matters in diabetes. Refer if symptoms remain severe despite treatment. The consultation skill here is the hidden agenda: a refusal of blood tests before any are offered is a cue. Exploring it reveals fear rooted in a parent’s amputation; acknowledging that fear, explaining how different early diagnosis is, and linking the test to her own goals (a safe injection, keeping her business) makes it possible to agree an HbA1c. Supporting a self-employed patient’s work is part of good care.",
+    "knowledge": {
+      "guideline": "[1] NICE CKS Shoulder pain: frozen shoulder (check current version) · [2] UK FROST trial (Rangan et al, Lancet 2020) · [3] NICE NG28 Type 2 diabetes in adults: management (2015, updated 2022) and NICE PH38 Type 2 diabetes: prevention in people at high risk (2012, updated 2017) · [4] DWP Getting the most out of the fit note: guidance for healthcare professionals · [5] Product SPCs for intra-articular corticosteroids",
+      "summary": "Classic frozen shoulder in a 54-year-old self-employed hairdresser who wants an injection and refuses blood tests. Behind the refusal is fear of diabetes after her mother’s amputation, with a previous borderline HbA1c and current osmotic symptoms. Diagnose clinically, discuss injection, physiotherapy and analgesia honestly, explain why HbA1c matters for the shoulder and the injection, address the fear, and support her work.",
+      "points": [
         {
-          h: 'Recognise',
-          t: 'Painful global restriction of both active and passive glenohumeral movement, especially external rotation, with night pain, coming on without injury in middle age.'
+          "h": "Diagnosis",
+          "t": "Shoulder pain then stiffness with loss of active and passive movement, especially external rotation. Clinical diagnosis; imaging not routinely needed [1]."
         },
         {
-          h: 'Phases & associations',
-          t: 'Freezing \u2192 frozen \u2192 thawing; course often 1\u20133 years. Associated with diabetes (commoner/more severe/bilateral) and thyroid disease; glycaemic control affects outcome.'
+          "h": "Red flags",
+          "t": "Trauma (fracture, dislocation), fever or hot joint (septic arthritis), weight loss or cancer history (metastasis, Pancoast tumour), neurological deficit, referred cardiac or neck pain."
         },
         {
-          h: 'Differential',
-          t: 'Rotator cuff (active>passive restriction, weakness, painful arc), glenohumeral OA (crepitus; plain X-ray to exclude it [1,2,5]), referred pain. Frozen shoulder restricts active AND passive globally.'
+          "h": "Diabetes link",
+          "t": "Frozen shoulder is more common in diabetes; CKS suggests checking for it. Ask about thirst, nocturia, tiredness and previous results [1,3]."
         },
         {
-          h: 'Management',
-          t: 'Analgesia/NSAIDs, physiotherapy/exercises to maintain movement, intra-articular corticosteroid injection (helpful in painful phase; short-term benefit only [1]; warn about raised blood glucose for several days [4]), optimise diabetes (HbA1c, thyroid tests).'
+          "h": "Natural history",
+          "t": "Painful phase, stiff phase and recovery phase over months to a few years. Most people improve; some stiffness may persist."
         },
         {
-          h: 'Refer',
-          t: 'Physiotherapy; orthopaedics for refractory cases or uncertain diagnosis (hydrodilatation, manipulation under anaesthesia, arthroscopic capsular release \u2014 similar 12-month outcomes in UK FROST [3]).'
+          "h": "Treatment",
+          "t": "Analgesia, home exercises and physiotherapy. An intra-articular corticosteroid injection can help pain and function in the early phase. FROST: early physiotherapy plus injection is a reasonable first-line option; surgery offered no clear advantage for most [1,2]."
         },
         {
-          h: 'Realistic expectations',
-          t: 'Largely self-limiting but slow (often 1\u20133 years); honest timeline manages frustration.'
+          "h": "Steroid injections and glucose",
+          "t": "Corticosteroid injections can raise blood glucose for several days; check HbA1c and advise people with diabetes to monitor (check the SPC) [5]."
         },
         {
-          h: 'Never do',
-          t: 'Never dismiss as simple wear and tear; never miss the active+passive global restriction or the diabetes link; never set unrealistic quick-recovery expectations.'
+          "h": "Referral",
+          "t": "Consider referral if pain and stiffness remain severe despite treatment, or if the diagnosis is uncertain."
         },
         {
-          h: 'Safety-net & follow-up',
-          t: 'Physiotherapy/injection and review; orthopaedic referral if refractory; diabetes optimisation; realistic timeline and reassurance.'
+          "h": "Work",
+          "t": "Discuss adaptations. A fit note can say “may be fit for work” with suggested adjustments, which can help self-employed people plan [4]."
         }
       ]
     }
@@ -831,67 +836,71 @@
       ]
     },
     'frozen-shoulder': {
-      ceg: ['Long-term conditions & cancer', 'New & undifferentiated presentations'],
-      stem: {
-        name: 'Denise Falk',
-        age: '54 years \u00b7 female',
-        pmh: [
-          'Months of progressive shoulder pain + global stiffness; \u2193 active AND passive movement (esp. external rotation)',
-          'Night pain; no injury; reaching behind back/overhead limited',
-          'Type 2 diabetes'
+      "ceg": [
+        "New & undifferentiated presentations",
+        "Long-term conditions & cancer"
+      ],
+      "stem": {
+        "name": "Lorraine Hart",
+        "age": "54 years · female",
+        "pmh": [
+          "Non-diabetic hyperglycaemia (HbA1c 46 mmol/mol three years ago)",
+          "Overweight"
         ],
-        meds: ['Metformin'],
-        allergy: 'NKDA',
-        recent: '"My shoulder\u2019s stiff and painful \u2014 I can\u2019t reach behind my back, and it\u2019s getting worse."',
-        reason: 'Video consultation (shoulder examined face to face) \u2014 a painful, stiff shoulder.'
+        "meds": [
+          "None on repeat"
+        ],
+        "allergy": "None recorded",
+        "recent": "Two recall letters for a repeat HbA1c not answered. Booked online: “left shoulder pain, want injection”.",
+        "reason": "“My shoulder, I need an injection.”"
       },
-      timeMap: [
+      "timeMap": [
         {
-          t: '0\u2010-2',
-          h: 'Recognise',
-          d: 'Global restriction of active AND passive movement (esp. external rotation) + night pain, no injury = frozen shoulder.'
+          "t": "0–1",
+          "h": "Open",
+          "d": "Hear the injection request and the pre-emptive “no blood tests”. Flag it."
         },
         {
-          t: '2\u2010-4',
-          h: 'Phases + diabetes',
-          d: 'Freezing \u2192 frozen \u2192 thawing, often 1\u20103 years; diabetes association \u2014 optimise control.'
+          "t": "1–5",
+          "h": "Shoulder",
+          "d": "History, red flags, remote range of movement; plan face-to-face check."
         },
         {
-          t: '4\u2010-6',
-          h: 'Differential',
-          d: 'Rotator cuff (active>passive, weakness), OA (X-ray), referred pain \u2014 vs global active+passive restriction examined face to face.'
+          "t": "5–7",
+          "h": "The refusal",
+          "d": "Explore: mother’s amputation; osmotic symptoms; link diabetes to frozen shoulder and to the injection."
         },
         {
-          t: '6\u2010-9',
-          h: 'Manage',
-          d: 'X-ray to exclude OA; analgesia/NSAIDs + physiotherapy + intra-articular steroid injection (painful phase; short-term benefit; glucose monitoring for several days); optimise diabetes.'
+          "t": "7–11",
+          "h": "Plan",
+          "d": "HbA1c, injection if safe, physio, analgesia; no MRI; natural history; work adjustments and fit note."
         },
         {
-          t: '9\u2010-12',
-          h: 'Refer + expectations',
-          d: 'Physio; orthopaedics if refractory (hydrodilatation/manipulation/release); realistic slow timeline.'
+          "t": "11–12",
+          "h": "Close",
+          "d": "Teach-back; safety-net for sugars and shoulder red flags."
         }
       ],
-      wordPics: {
-        fail: 'Dismisses as wear and tear or mislabels as rotator cuff; no injection/physio; sets unrealistic quick-recovery expectations; ignores diabetes.',
-        pass: 'Recognises frozen shoulder, notes the diabetes link, and manages with physio/steroid injection and realistic timelines.',
-        exc: 'Recognises frozen shoulder (active+passive global restriction, esp. external rotation), explains phases and the diabetes link (optimise control), manages with analgesia/physio/intra-articular steroid injection, refers if refractory, and sets a realistic 1\u20133-year timeline.'
+      "wordPics": {
+        "fail": "Books the injection without thinking about diabetes, or insists on blood tests without exploring why she refuses; orders an MRI; ignores the business.",
+        "pass": "Diagnoses frozen shoulder, offers injection and physiotherapy, and explains why an HbA1c is needed.",
+        "exc": "All of the above, plus: treats the refusal as a cue and uncovers the fear about her mother; responds with empathy and hope; links the test to her own goals; explains the natural history honestly; declines MRI with reasons; practical work adjustments; clear safety-net."
       },
-      avoid: [
+      "avoid": [
         {
-          dont: '"It\u2019s just wear and tear \u2014 some painkillers and it\u2019ll settle soon."',
-          instead: '"This is a frozen shoulder \u2014 the joint capsule tightens; it gets better but slowly, over one to three years, and physio and a steroid injection help."',
-          why: 'Dismissing it and implying quick recovery misleads; frozen shoulder is a distinct, slow condition.'
+          "dont": "“You need a blood test, it’s not optional.”",
+          "instead": "“Can I ask what makes you not want a blood test?”",
+          "why": "Pressure without understanding the fear entrenches avoidance."
         },
         {
-          dont: '(Mislabelling) treating it as a rotator cuff tear.',
-          instead: '"Your movement is limited whether you move it or I move it \u2014 that points to a frozen shoulder, not a cuff problem."',
-          why: 'The active+passive global restriction distinguishes frozen shoulder from rotator cuff pathology.'
+          "dont": "“An injection will sort it.”",
+          "instead": "“It can ease the pain at this stage; exercises help the stiffness.”",
+          "why": "Overselling leads to disappointment and non-adherence to physiotherapy."
         },
         {
-          dont: '(Ignoring diabetes) not mentioning glycaemic control.',
-          instead: '"Frozen shoulder is commoner in diabetes, and keeping your sugars controlled helps it."',
-          why: 'The diabetes link affects severity and outcome and should be optimised.'
+          "dont": "“Let’s get an MRI to be sure.”",
+          "instead": "“The diagnosis is clinical and a scan rarely changes treatment.”",
+          "why": "Unnecessary imaging costs her money and delays treatment."
         }
       ]
     }

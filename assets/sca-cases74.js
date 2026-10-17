@@ -11,160 +11,158 @@
 
   /* ===== 265. Transgender health ===== */
   const c265 = {
-    id: 'transgender-health',
-    title: '"I started hormones through a private clinic while waiting years for the NHS gender service \u2014 will you do my monitoring and prescribe?"',
-    type: 'video',
-    duration: 12,
-    meta: {
-      age: 26,
-      sex: 'M (trans man)',
-      setting: 'Video consultation, with BP, weight and monitoring bloods arranged face to face \u2014 a transgender patient seeking GP support.',
-      system: 'Gender / Holistic care \u2014 transgender health: bridging, shared care & respectful care',
-      checked: 'October 2026'
+    "id": "transgender-health",
+    "title": "“The nurse says a blood result needs talking about — I’ve waited years for this, so nobody’s touching my dose”",
+    "type": "video",
+    "duration": 12,
+    "meta": {
+      "age": 26,
+      "sex": "M",
+      "setting": "Video consultation — to discuss routine monitoring blood tests.",
+      "system": "Gender & sexual health / Results — testosterone shared care: raised haematocrit, plus contraception, emergency contraception and pregnancy risk in a trans man",
+      "checked": "October 2026"
     },
-    brief: 'A 26-year-old transgender man (assigned female at birth, affirmed male, prefers he/him), Sam, has been on private testosterone for months while on a very long NHS Gender Identity Clinic (GIC) waiting list, and asks the GP to take over prescribing/monitoring and to support him. The task is RESPECTFUL, holistic transgender care: use the person\u2019s correct NAME and PRONOUNS and an affirming manner; understand the GP role \u2014 RCGP 2024: the core role is to liaise with specialist gender services as with any other specialty, including considering prescribing under a collaborative or shared-care arrangement once a specialist has assessed the patient, while shared care with PRIVATE providers is not part of most GPs\u2019 role without extra expertise; because Sam has a private prescriber, the question is CONTINUITY/SHARED CARE with that service, not bridging \u2014 before agreeing, the practice should be assured that a suitably qualified, GMC-REGISTERED specialist made an assessment equivalent to an NHS one, that the service is UK-REGULATED, and have its assessment and monitoring plan in writing; it may decline if not assured, but should explain its reasons and alternatives and not leave him at significant clinical risk (GMC ethical hub: trans healthcare). A BRIDGING prescription (GMC) is a separate harm-reduction measure for someone self-medicating, or very likely to, with hormones from an UNREGULATED source while waiting, considered after advice from an experienced gender specialist \u2014 not a routine alternative to specialist care. Advise him not to stop testosterone suddenly, and confirm his place on the NHS waiting list (NHS England adult gender dysphoria services); arrange appropriate MONITORING face to face (FBC with haematocrit, LFTs, lipids, testosterone level, BP and weight, on the schedule set by the prescribing specialist, sharing results with the prescriber), provide general holistic care (mental health \u2014 ask directly about mood, self-harm and suicidal thoughts; smoking, alcohol and cardiovascular risk; CONTRACEPTION \u2014 testosterone is not a contraceptive and is contraindicated in pregnancy, FSRH CEU 2017; screening relevant to anatomy \u2014 a person registered as male with a cervix is not invited automatically but can OPT IN to cervical screening (NHS Cervical Screening Programme), breast/chest awareness), avoid making the patient feel like a burden or repeatedly re-justify themselves, and signpost support; recognise limits and seek specialist/GIC guidance rather than refuse care outright. The skill is affirming, non-judgemental care (Equality Act 2010; Gender Recognition Act 2004), understanding the difference between shared care with a private provider and bridging, anatomy-appropriate screening and mental-health support, and acting within competence with specialist advice \u2014 not dismissing or moralising.',
-    script: {
-      opening: '"Thanks for seeing me. I\u2019m a trans man \u2014 I go by Sam, he/him. I\u2019ve been waiting nearly four years for the NHS gender clinic, so I started testosterone through a private service because I couldn\u2019t cope waiting. I\u2019m doing well on it. Can you do my blood monitoring and ideally take over the prescription? I\u2019m worried I\u2019ll be judged or turned away."',
-      facts: [
+    "brief": "Sam Ellis, 26, a trans man (he/him), started testosterone two years ago after assessment by an NHS gender service; the GP practice now prescribes under a shared-care agreement, with monitoring bloods every 6–12 months. Today’s results: haematocrit 0.55 (previously 0.49), haemoglobin 178 g/L, trough testosterone at the upper end of the male range, LFTs and lipids normal. The shared-care protocol asks the GP to repeat the test and contact the gender service about the dose or interval if haematocrit is above 0.54, and to look for contributing factors. Sam smokes 10 a day, recently increased his injection frequency himself “to keep levels steady”, and has been getting headaches. He is anxious that his dose will be cut. Hidden agenda, disclosed only if the doctor asks about relationships, sexual health or contraception in a respectful way: he has a new partner, Kieran (a cis man), and they have had vaginal sex without condoms several times over the last month, most recently last night. Sam believes testosterone means he cannot get pregnant because his periods stopped. His record shows a cervix and no previous cervical screening invitation (he is registered as male). The task: use his name and pronouns; explain the result and why it matters (thrombosis and stroke risk); explore causes (self-adjusted dosing, smoking, possible sleep apnoea, dehydration) without blame; agree to repeat and liaise with the gender service rather than stopping testosterone; then open the sexual-health conversation and correct the myth that testosterone is contraception (testosterone can harm a developing pregnancy); offer emergency contraception (a copper IUD is most effective; oral options are suitable and testosterone does not interact), a pregnancy test now and at 3 weeks, an STI screen, and a plan for ongoing non-oestrogen contraception; and mention cervical screening.",
+    "script": {
+      "opening": "“The nurse rang and said one of my blood results needs talking about. I’ve waited years for this, so if you’re going to say my dose has to come down, I’m going to struggle.”",
+      "facts": [
         {
-          topic: 'The private service',
-          text: 'A UK online gender service; had a video assessment with "a doctor, I think a specialist" 8 months ago. Has letters in his email he can forward. Prescribed testosterone gel daily (Testogel), which he pays for privately \u2014 about \u00a360 a month, which is a strain.'
+          "topic": "Testosterone",
+          "text": "Two years on testosterone injections from the NHS gender service, now prescribed by the practice. Three months ago he started having the injections more often than prescribed, “because I felt flat at the end of each cycle”. Has not told anyone."
         },
         {
-          topic: 'Monitoring',
-          text: 'Had bloods at the start through the private service; "nothing recent". Doesn\u2019t know his last haematocrit or testosterone level. The private service asked for bloods every 3 months "through my GP if possible".'
+          "topic": "Symptoms (if asked)",
+          "text": "Headaches for a few weeks, flushed face. No chest pain, no breathlessness, no leg swelling, no visual disturbance, no weakness or numbness. Snores loudly according to Kieran; sometimes wakes up gasping."
         },
         {
-          topic: 'Effects and health',
-          text: 'Voice deeper, periods stopped 4 months ago, more energy and "finally feel like me". Some acne. No headaches, chest pain, leg swelling or breathlessness. No other medicines; no allergies. Never had cervical screening.'
+          "topic": "Lifestyle",
+          "text": "Smokes 10 a day. Drinks little water at work (warehouse). Alcohol weekends. Gym three times a week."
         },
         {
-          topic: 'Mental health (if asked)',
-          text: '"It was dark while I was waiting" \u2014 self-harmed (cutting) twice 3 years ago; none since. No current suicidal thoughts. Mood much better on testosterone. Had counselling at university.'
+          "topic": "Only if asked about relationships or sexual health",
+          "text": "New partner, Kieran (a cis man), for a month. Vaginal sex without condoms several times, most recently last night. “I can’t get pregnant on T — my periods stopped.” No previous STI tests."
         },
         {
-          topic: 'Sexual health and contraception (if asked)',
-          text: 'Has a male partner. Uses condoms "mostly". Didn\u2019t know testosterone isn\u2019t contraception. Not pregnant (periods stopped on testosterone).'
+          "topic": "Pregnancy facts (if asked)",
+          "text": "No periods for about 20 months. Has not done a pregnancy test. Does not want a pregnancy. Would be frightened to be pregnant."
         },
         {
-          topic: 'Lifestyle and social',
-          text: 'Software tester. Doesn\u2019t smoke; drinks a bit at weekends. Lives with partner. Some family estrangement \u2014 "my dad doesn\u2019t speak to me".'
+          "topic": "Cervical screening (if raised)",
+          "text": "Never invited. Did not know he could have one. Anxious about examinations but would consider a self-sample if offered locally."
         },
         {
-          topic: 'Records',
-          text: 'His name is right on the system but "it still says female in places" and he gets letters for cervical screening addressed oddly.'
-        },
-        {
-          topic: 'How to play it',
-          text: 'Polite, a bit guarded, braced for refusal. If the doctor uses your correct name and pronouns and is curious rather than judgemental, relax and open up. If refused outright or lectured, become upset: "Other people I know have been turned away." Accept a fair plan with a clear next step.'
+          "topic": "How to play it",
+          "text": "Defensive about the dose at first. Relaxes if the doctor uses his name and pronouns, explains the risk clearly and says testosterone will not simply be stopped. Shocked to learn testosterone is not contraception; then practical and keen to act."
         }
       ],
-      ice: {
-        ideas: '"It\u2019s just blood tests and a prescription \u2014 it shouldn\u2019t be a big deal."',
-        concerns: 'HIDDEN AGENDA \u2014 fear of being turned away or told to stop testosterone, which would be devastating; worried about the cost and whether his levels are safe.',
-        expectations: '"Bloods done here, and ideally the prescription taken over on the NHS."'
+      "ice": {
+        "ideas": "“My blood is a bit thick from the T, but that’s normal for guys.”",
+        "concerns": "HIDDEN AGENDA: unprotected sex with his new partner in the belief that testosterone is contraception; also fear of losing his testosterone or being treated as ‘not a real man’ by the system.",
+        "expectations": "“Keep my dose the same, and keep this quick.”"
       },
-      cues: [
-        '"I\u2019m worried I\u2019ll be judged or turned away" \u2014 needs affirming, respectful care.',
-        '"It was dark while I was waiting" (if mood is asked) \u2014 past self-harm to explore.',
-        '"It still says female in places" \u2014 records and screening invitations to sort out.'
+      "cues": [
+        "“Nobody’s touching my dose” — fear of losing treatment; reassure about the process.",
+        "Self-increased injection frequency — a cause of the result, to explore without blame.",
+        "Snoring and waking up gasping — possible sleep apnoea contributing to erythrocytosis.",
+        "A new partner mentioned in passing — open the sexual-health and contraception conversation."
       ]
     },
-    checkpoints: [
+    "checkpoints": [
       {
-        dom: 'ro',
-        text: 'Uses the patient\u2019s correct NAME and PRONOUNS and an affirming, non-judgemental manner, recognising fear of discrimination/refusal'
+        "dom": "ro",
+        "text": "Uses Sam’s name and pronouns, acknowledges how much testosterone matters to him, and explains that the plan is to make it safe rather than stop it"
       },
       {
-        dom: 'cm',
-        text: 'Understands the GP role \u2014 collaborative SHARED CARE with gender services (RCGP 2024), checking a private provider\u2019s GMC-registered specialist, UK regulation and written plan before agreeing \u2014 and does not refuse involvement simply because the patient is transgender'
+        "dom": "dg",
+        "text": "Interprets the result: haematocrit 0.55 on testosterone is above the shared-care action threshold and raises the risk of thrombosis and stroke; asks about symptoms of hyperviscosity and thrombosis"
       },
       {
-        dom: 'cm',
-        text: 'Knows about BRIDGING PRESCRIBING (GMC harm reduction where self-medicating from an unregulated source) as distinct from continuity with a private prescriber, and that it should be done within competence with specialist advice \u2014 being honest about limits rather than flatly refusing, and advising him not to stop testosterone suddenly'
+        "dom": "dg",
+        "text": "Explores contributing factors without blame: self-adjusted dosing, smoking, possible obstructive sleep apnoea, dehydration"
       },
       {
-        dom: 'cm',
-        text: 'Arranges appropriate MONITORING on the prescribing specialist\u2019s schedule (hormone levels, FBC/haematocrit, lipids, LFTs, BP, weight), shares results with the prescriber, and seeks GIC/specialist guidance'
+        "dom": "cm",
+        "text": "Follows the shared-care agreement: repeat the test, contact the gender service about dose or interval, advise taking injections as prescribed, smoking cessation support, hydration, and assessment for sleep apnoea"
       },
       {
-        dom: 'cm',
-        text: 'Provides HOLISTIC care \u2014 mental-health screening/support (high distress/self-harm risk), smoking/cardiovascular risk, CONTRACEPTION (testosterone is not a contraceptive, FSRH CEU 2017), and ANATOMY-APPROPRIATE screening (e.g. cervical screening opt-in if a cervix is present, chest/breast awareness)'
+        "dom": "dg",
+        "text": "Asks respectfully about relationships, sexual practices and contraception, and identifies unprotected vaginal sex with a cis male partner, most recently last night"
       },
       {
-        dom: 'ro',
-        text: 'Avoids making the patient feel a burden or re-justify themselves, is proactive and supportive, and signposts peer/specialist support'
+        "dom": "cm",
+        "text": "Explains that testosterone is not a contraceptive and can harm a developing pregnancy; offers emergency contraception (a copper IUD is most effective; levonorgestrel or ulipristal are suitable and testosterone does not interact; check the SPC), a pregnancy test now and 3 weeks after the last unprotected sex"
       },
       {
-        dom: 'ro',
-        text: 'Involves the patient as an equal partner in the shared-care plan, is explicit about what the practice can and cannot do and why, and agrees clear next steps so he leaves feeling supported rather than fobbed off'
+        "dom": "cm",
+        "text": "Plans ongoing contraception without oestrogen (copper IUD, LNG-IUS, implant or injection), an STI screen, and offers cervical screening as he has a cervix"
       },
       {
-        dom: 'cm',
-        text: 'Reaches a safe, supportive plan \u2014 monitoring + shared-care/bridging within competence with specialist advice, mental-health support, anatomy-appropriate screening, clear documentation and follow-up \u2014 not refusal or moralising'
+        "dom": "cm",
+        "text": "Safety-nets for thrombosis and stroke symptoms and for a positive pregnancy test (stop testosterone and seek urgent advice), and arranges follow-up of the repeat result"
       }
     ],
-    worked: [
+    "worked": [
       {
-        lbl: 'Affirm + reassure',
-        txt: '"Thanks, Sam \u2014 he/him, got it, and I\u2019ll make sure that\u2019s right in your records. You won\u2019t be judged or turned away here; my job is to support you and keep you safe, and I\u2019m glad you came."'
+        "lbl": "Reassure about the process",
+        "txt": "“Sam, I know how long you waited for testosterone. My aim isn’t to take it away. It’s to keep you safe on it. Can I explain what the result means?”"
       },
       {
-        lbl: 'The GP role',
-        txt: '"I can absolutely be involved in your care. GPs work alongside the gender services and can share your care \u2014 monitoring and, where it\u2019s safe and agreed, prescribing. Let me explain what I can do straight away and what needs checking or specialist input first."'
+        "lbl": "Explain the result",
+        "txt": "“Testosterone makes the body produce more red blood cells. Yours have gone up to a level where the blood can get thick, which raises the chance of clots and strokes. It’s fixable.”"
       },
       {
-        lbl: 'Bridging honestly',
-        txt: '"Because you already have a private prescriber, taking over the prescription is like taking a patient over from another hospital: I need the private service\u2019s assessment and plan in writing, and to check their specialist is registered with the GMC and the service is regulated in the UK. Then the practice will decide, with specialist advice if needed, and I\u2019ll tell you the decision and the reasons. Please keep taking it as prescribed meanwhile \u2014 don\u2019t stop suddenly. A \u2018bridging\u2019 prescription is something different, for people getting hormones from unregulated sources."'
+        "lbl": "Without blame",
+        "txt": "“Lots of people adjust their injections to feel steadier. Thanks for telling me. Taking it more often is the most likely reason for the jump, so let’s talk to the gender team about a safer way to even out the levels.”"
       },
       {
-        lbl: 'Monitoring',
-        txt: '"Either way, I\u2019ll set up your monitoring \u2014 blood count (testosterone can thicken the blood), cholesterol, liver, testosterone level, blood pressure and weight \u2014 on the schedule your prescriber recommends, and share the results with them."'
+        "lbl": "Opening sexual health",
+        "txt": "“You mentioned Kieran. I ask everyone about sexual health and contraception. What kind of sex are you having, and are you using anything?”"
       },
       {
-        lbl: 'Holistic + screening',
-        txt: '"I also want to look after the rest of you \u2014 how\u2019s your mood and are you getting support? And a practical point: where the anatomy is present, certain screening still matters \u2014 for example, if you have a cervix, you won\u2019t be invited automatically if you\u2019re registered as male, but you can opt in to cervical screening. And testosterone isn\u2019t a contraceptive, so if pregnancy is possible we should talk about contraception. We\u2019ll handle that sensitively."'
+        "lbl": "Correct the myth",
+        "txt": "“Testosterone stops periods, but it doesn’t reliably stop ovulation, so pregnancy is possible. And testosterone can harm a developing baby, which is why contraception really matters.”"
       },
       {
-        lbl: 'Plan + signpost',
-        txt: '"So: correct records, I\u2019ll get the private service\u2019s plan and specialist advice on the prescription, set up your monitoring, support your mental health, and point you to peer support. You shouldn\u2019t have to fight to be looked after \u2014 we\u2019ll sort this together."'
+        "lbl": "Act today",
+        "txt": "“Because you had sex last night, emergency contraception today is important. A copper coil is the most effective and also works as ongoing contraception. A pill is also fine with testosterone. Let’s do a pregnancy test today and again in three weeks.”"
       }
     ],
-    learning: 'Transgender health in primary care is about RESPECTFUL, holistic, non-judgemental care. Use the patient\u2019s correct NAME and PRONOUNS and an affirming manner, recognising that many trans patients have experienced discrimination and fear being refused or made to re-justify themselves. Understand the GP role: RCGP 2024 describes the core role as liaising COLLABORATIVELY with specialist gender services as with any other specialty, including considering prescribing under a collaborative or SHARED-CARE arrangement once a specialist has assessed the patient; shared care with private providers is not part of most GPs\u2019 role without extra expertise. GPs should not refuse involvement simply because a patient is transgender (Equality Act 2010). With a private prescriber, the practice first obtains the assessment and monitoring plan in writing and checks the specialist is suitably qualified and GMC-registered and the service UK-regulated; it may decline if not assured, explaining its reasons and the alternatives without leaving the patient at significant clinical risk. A BRIDGING PRESCRIPTION (GMC) is a separate harm-reduction measure for someone self-medicating, or very likely to, with hormones from an unregulated source while waiting \u2014 considered after advice from an experienced gender specialist, within the GP\u2019s competence, being honest about limits rather than flatly refusing, and not a routine alternative to specialist care. Arrange appropriate MONITORING on the prescribing specialist\u2019s schedule (hormone levels, FBC/haematocrit \u2014 testosterone raises haematocrit \u2014 lipids, LFTs, BP, weight), sharing results with the prescriber, and provide holistic care: mental-health screening and support (trans people have high rates of distress, anxiety, depression and self-harm), smoking/cardiovascular risk, contraception (testosterone is not a contraceptive and is contraindicated in pregnancy, FSRH CEU 2017), and ANATOMY-APPROPRIATE SCREENING regardless of recorded gender (e.g. cervical screening opt-in if a cervix is present \u2014 a person registered as male is not invited automatically; chest/breast awareness). Avoid making the patient feel a burden, be proactive and supportive, document name/pronouns/affirmed gender, signpost peer/specialist support, and recognise the limits of competence by seeking GIC/specialist advice rather than refusing care. The skill is affirming, competent, collaborative care \u2014 not dismissal or moralising.',
-    knowledge: {
-      guideline: 'Transgender health (GMC/RCGP) \u00b7 affirming care + correct name/pronouns \u00b7 shared care & bridging prescribing \u00b7 monitoring \u00b7 anatomy-appropriate screening \u00b7 mental-health support \u00b7 [1] GMC ethical hub: trans healthcare (bridging prescriptions, shared care) \u00b7 [2] RCGP position statement: the role of the GP in transgender care (2024) \u00b7 [3] NHS England service specification: gender dysphoria services, non-surgical interventions for adults (current version), and NHS England operational and delivery review of adult gender dysphoria clinics (Levy review, December 2025) \u00b7 [4] NHS Cervical Screening Programme: guidance for transgender and non-binary opt-in (gov.uk) \u00b7 [5] FSRH CEU statement: contraceptive choices and sexual health for transgender and non-binary people (2017) \u00b7 [6] Equality Act 2010; Gender Recognition Act 2004',
-      points: [
+    "learning": "Testosterone therapy in trans men commonly raises haemoglobin and haematocrit (erythrocytosis), which increases the risk of thrombosis and stroke. Shared-care protocols from NHS gender services set monitoring and action thresholds; a haematocrit above about 0.54 usually prompts repeating the test, looking for contributing factors and contacting the gender service about dose or interval adjustment, rather than stopping testosterone. Contributing factors include supratherapeutic or self-adjusted dosing, smoking, obstructive sleep apnoea, dehydration and lung disease. RCGP guidance describes the GP’s role as working with specialist gender services, including prescribing and monitoring under shared care. Respectful care means using the person’s name and pronouns and recognising how much treatment matters to them. The hidden agenda is a common, dangerous myth: testosterone does not reliably suppress ovulation, so trans men with a uterus who have vaginal sex with partners who produce sperm can become pregnant, and testosterone can harm a developing pregnancy. FSRH guidance advises non-oestrogen methods for people using testosterone: copper IUD, LNG-IUS, progestogen-only implant or injection (and the progestogen-only pill). Emergency contraception options are the same as for anyone else; a copper IUD is the most effective, and oral levonorgestrel or ulipristal acetate can be used, with no interaction with testosterone (check the SPC). Arrange a pregnancy test now and 3 weeks after the last unprotected sex, offer an STI screen, and if pregnant, stop testosterone and seek urgent advice. People registered as male are not automatically invited for cervical screening; anyone with a cervix aged 25–64 should be offered it.",
+    "knowledge": {
+      "guideline": "[1] NHS gender dysphoria clinic shared-care protocol for testosterone (local version; check current) · [2] RCGP position statement: the role of the GP in caring for gender-questioning and transgender patients (2024) · [3] FSRH CEU Statement: Contraceptive choices and sexual health for transgender and non-binary people (check current version) · [4] FSRH Clinical Guideline: Emergency contraception (2017, amended) · [5] NHS cervical screening programme guidance for trans and non-binary people · [6] GMC Good medical practice (2024) · [7] Product SPCs for testosterone, levonorgestrel and ulipristal acetate",
+      "summary": "A trans man on shared-care testosterone with haematocrit 0.55 after self-increasing his injection frequency, plus smoking and possible sleep apnoea. Repeat, liaise with the gender service about dose or interval, and address contributors without stopping testosterone. The hidden agenda: unprotected vaginal sex in the belief that testosterone is contraception, most recently last night. Offer emergency contraception, pregnancy testing, an STI screen, non-oestrogen contraception and cervical screening.",
+      "points": [
         {
-          h: 'Affirming care',
-          t: 'Use correct name/pronouns and a non-judgemental manner; recognise fear of discrimination/refusal. Document affirmed gender.'
+          "h": "Erythrocytosis on testosterone",
+          "t": "Haematocrit rises with testosterone. Above the protocol threshold (commonly 0.54), repeat the test, look for causes and contact the gender service about dose or interval [1]."
         },
         {
-          h: 'GP role/shared care',
-          t: 'GPs work collaboratively with gender services and may provide shared care (monitoring/prescribing) after specialist assessment [2]; with a private provider, check the GMC-registered specialist, UK regulation and written plan first [1,2]; don\u2019t refuse involvement because a patient is trans [6].'
+          "h": "Contributing factors",
+          "t": "Supratherapeutic or self-adjusted dosing, smoking, obstructive sleep apnoea, dehydration, chronic lung disease. Ask about headache, visual symptoms and thrombosis."
         },
         {
-          h: 'Bridging prescribing',
-          t: 'Where self-medicating from an unregulated source amid long waits, consider a bridging prescription (GMC harm reduction [1]) within competence and after specialist advice; not a routine alternative to specialist care [2]. Sam has a private prescriber \u2014 continuity first. Be honest about limits, not flatly refusing.'
+          "h": "GP role",
+          "t": "Working with the specialist gender service under shared care, as with other specialties; prescribing and monitoring per the agreement [2]."
         },
         {
-          h: 'Monitoring',
-          t: 'On the prescribing specialist\u2019s schedule: hormone levels, FBC/haematocrit (testosterone raises haematocrit), lipids, LFTs, BP, weight; share results with the prescriber. Seek GIC/specialist guidance [3].'
+          "h": "Testosterone is not contraception",
+          "t": "Amenorrhoea on testosterone does not mean no ovulation. Pregnancy is possible, and testosterone can harm a developing pregnancy [3]."
         },
         {
-          h: 'Holistic care',
-          t: 'Mental-health screening/support (high distress/self-harm), smoking/cardiovascular risk; contraception (testosterone is not a contraceptive [5]); anatomy-appropriate screening (cervix \u2192 cervical screening opt-in [4]; chest/breast awareness) regardless of recorded gender.'
+          "h": "Contraception choices",
+          "t": "Non-oestrogen methods: copper IUD, LNG-IUS, implant, injection, progestogen-only pill. Oestrogen-containing methods are generally avoided [3]."
         },
         {
-          h: 'Don\u2019t make them a burden',
-          t: 'Be proactive/supportive; avoid repeated re-justification; signpost peer/specialist support.'
+          "h": "Emergency contraception",
+          "t": "Copper IUD is most effective. Levonorgestrel or ulipristal acetate are options; no interaction with testosterone. Pregnancy test 3 weeks after the last unprotected sex [4,7]."
         },
         {
-          h: 'Never do',
-          t: 'Never misgender or moralise; never refuse care outright; never prescribe beyond competence without advice; never overlook anatomy-appropriate screening or mental-health risk.'
+          "h": "STI and cervical screening",
+          "t": "Offer an STI screen. People with a cervix aged 25–64 should be offered screening even if registered as male; they are not automatically invited [5]."
         },
         {
-          h: 'Safety-net & follow-up',
-          t: 'Monitoring schedule; specialist advice for prescribing/bridging; mental-health support; clear documentation; follow-up and signposting.'
+          "h": "Respectful care",
+          "t": "Use the person’s name and pronouns, avoid unnecessary questions about transition, and do not make testosterone conditional on unrelated matters [6]."
         }
       ]
     }
@@ -652,67 +650,72 @@
   window.SCA_EXTRAS = window.SCA_EXTRAS || {};
   Object.assign(window.SCA_EXTRAS, {
     'transgender-health': {
-      ceg: ['Gender, reproductive & sexual health', 'Health disadvantage & vulnerabilities'],
-      stem: {
-        name: 'Sam',
-        age: '26 years \u00b7 trans man (he/him)',
-        pmh: [
-          'Trans man (assigned female at birth); on private testosterone amid a ~4-year NHS GIC wait',
-          'Requests monitoring + GP prescribing; fears being judged/refused',
-          'Screen mental health; anatomy-appropriate screening (cervix present)'
+      "ceg": [
+        "Gender, reproductive & sexual health",
+        "Ethnicity, culture & diversity",
+        "Investigations & results"
+      ],
+      "stem": {
+        "name": "Sam Ellis",
+        "age": "26 years · male",
+        "pmh": [
+          "Gender incongruence: under an NHS gender service; testosterone prescribed by the practice under a shared-care agreement",
+          "Smoker"
         ],
-        meds: ['Testosterone (private)'],
-        allergy: 'NKDA',
-        recent: '"I started hormones privately while waiting years for the NHS \u2014 will you monitor and prescribe?"',
-        reason: 'Video consultation (BP, weight and bloods face to face) \u2014 transgender patient seeking GP support.'
+        "meds": [
+          "Testosterone injection (shared care)"
+        ],
+        "allergy": "None recorded",
+        "recent": "Shared-care monitoring bloods: haematocrit 0.55 (0.49 a year ago), haemoglobin 178 g/L, trough testosterone upper end of male reference range, LFTs and lipids normal.",
+        "reason": "Practice nurse asked him to book to discuss the results."
       },
-      timeMap: [
+      "timeMap": [
         {
-          t: '0\u20102',
-          h: 'Affirm',
-          d: 'Correct name/pronouns; non-judgemental; reassure not refused/judged; fix records.'
+          "t": "0–1",
+          "h": "Open",
+          "d": "Name and pronouns. Reassure that the aim is safety, not stopping testosterone."
         },
         {
-          t: '2\u20105',
-          h: 'GP role/shared care',
-          d: 'Collaborative shared care (RCGP 2024); check the private prescriber (GMC-registered, UK-regulated, written plan); don\u2019t refuse; bridging only for unregulated sourcing, with specialist advice; don\u2019t stop testosterone suddenly.'
+          "t": "1–5",
+          "h": "Result",
+          "d": "Explain haematocrit; symptoms; dosing (self-adjusted); smoking; snoring."
         },
         {
-          t: '5\u20108',
-          h: 'Monitoring',
-          d: 'FBC/haematocrit, lipids, LFTs, testosterone, BP and weight on the prescriber\u2019s schedule (face to face); seek GIC advice.'
+          "t": "5–8",
+          "h": "Sexual health",
+          "d": "Respectful questions; unprotected vaginal sex, last night; myth corrected; feelings."
         },
         {
-          t: '8\u201010',
-          h: 'Holistic',
-          d: 'Mental-health support (high distress/self-harm); contraception (testosterone is not a contraceptive, FSRH); anatomy-appropriate screening (cervix \u2192 cervical screening opt-in).'
+          "t": "8–11",
+          "h": "Plan",
+          "d": "EC today; pregnancy tests; STI screen; non-oestrogen contraception; cervical screening; repeat bloods and gender service; smoking; OSA."
         },
         {
-          t: '10\u201012',
-          h: 'Signpost + plan',
-          d: 'Peer/specialist support; don\u2019t make him a burden; document; follow-up.'
+          "t": "11–12",
+          "h": "Close",
+          "d": "Teach-back; 999 symptoms; stop T if pregnant."
         }
       ],
-      wordPics: {
-        fail: 'Misgenders or refuses to be involved; flatly declines prescribing/monitoring; ignores mental health/anatomy-appropriate screening; makes him re-justify himself.',
-        pass: 'Uses correct name/pronouns, engages with shared care/monitoring, and supports holistically.',
-        exc: 'Affirming (correct name/pronouns), understands shared care and bridging within competence with specialist advice, arranges monitoring, supports mental health and anatomy-appropriate screening, and signposts \u2014 not refusal or moralising.'
+      "wordPics": {
+        "fail": "Misgenders Sam; stops testosterone or ignores the result; never asks about sex or contraception, so the risk of pregnancy is missed.",
+        "pass": "Explains the raised haematocrit and plans a repeat with the gender service, identifies unprotected sex and offers emergency contraception and a pregnancy test.",
+        "exc": "All of the above, plus: affirming throughout; explores self-adjusted dosing without blame; addresses smoking and possible sleep apnoea; corrects the testosterone-as-contraception myth clearly; offers a copper IUD as the most effective EC and ongoing method; STI and cervical screening; clear safety-net including stopping testosterone if pregnant."
       },
-      avoid: [
+      "avoid": [
         {
-          dont: '"I can\u2019t get involved in any of that \u2014 you\u2019ll have to wait for the gender clinic."',
-          instead: '"I can be involved \u2014 GPs share care with gender services \u2014 so I\u2019ll set up your monitoring now, get your private service\u2019s plan and check their registration, and seek specialist advice about taking over the prescription."',
-          why: 'Flatly refusing involvement is contrary to GP shared-care expectations and leaves the patient at risk.'
+          "dont": "“Your blood is too thick, so we’ll have to stop the testosterone.”",
+          "instead": "“We’ll repeat it and work with the gender team on the dose, so you stay safe on it.”",
+          "why": "The protocol is to adjust and address causes; stopping is rarely needed and harms trust."
         },
         {
-          dont: '(Misgendering) using the wrong name/pronouns.',
-          instead: '"You\u2019re Sam, he/him \u2014 I\u2019ll make sure your records reflect that."',
-          why: 'Correct name/pronouns are foundational to respectful, effective care.'
+          "dont": "(Assuming no pregnancy risk) skipping sexual history.",
+          "instead": "“I ask everyone about sex and contraception. What kind of sex are you having?”",
+          "why": "Testosterone is not contraception."
         },
         {
-          dont: '(Ignoring screening) overlooking anatomy-appropriate screening.',
-          instead: '"If you have a cervix, you can opt in to cervical screening even if you\u2019re not invited automatically \u2014 we\u2019ll handle it sensitively."',
-          why: 'Anatomy-appropriate screening must continue regardless of recorded gender.'
+          "dont": "“Have you thought about going back on the pill?”",
+          "instead": "“Options without oestrogen are the coils, the implant and the injection.”",
+          "why": "Oestrogen-containing methods are generally avoided with testosterone."
         }
       ]
     },

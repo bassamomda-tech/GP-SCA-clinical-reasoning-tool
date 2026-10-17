@@ -475,156 +475,158 @@
 
   /* ===== 276. Tinea pedis ===== */
   const c276 = {
-    id: 'tinea-pedis',
-    title: '"The skin between my toes is itchy, flaky and cracked, and my feet smell \u2014 I\u2019ve tried everything"',
-    type: 'video',
-    duration: 12,
-    meta: {
-      age: 34,
-      sex: 'M',
-      setting: 'Video consultation \u2014 itchy, scaly feet (photos sent)',
-      system: 'Dermatology \u2014 tinea pedis (athlete\u2019s foot): diagnosis, treatment & the diabetic caveat',
-      checked: 'October 2026'
+    "id": "tinea-pedis",
+    "title": "“His feet stink, the cream from the chemist hasn’t worked, and he won’t listen to a word I say”",
+    "type": "video",
+    "duration": 12,
+    "meta": {
+      "age": 16,
+      "sex": "M",
+      "setting": "Video consultation — a mother has booked for her 16-year-old son; both are on the call at the start.",
+      "system": "Dermatology / Adolescent health — athlete’s foot that ‘won’t clear’ as the ticket of entry: seeing a young person alone, HEADSS, low mood and risk",
+      "checked": "October 2026"
     },
-    brief: 'Mr Leon Park, 34 (gym-goer, occlusive footwear; has used over-the-counter creams \u2014 ask which, how often and for how long), has itchy, flaky, MACERATED skin between the TOES (especially 4th web space) with scaling on the soles and odour \u2014 TINEA PEDIS (athlete\u2019s foot, a dermatophyte fungal infection). Recognise it clinically (interdigital maceration/scaling, itch; moccasin-type scaling of soles; provoked by sweating/occlusive footwear/communal showers); distinguish from contact dermatitis, eczema, erythrasma and pitted keratolysis; check for associated TINEA UNGUIUM (nail infection \u2014 reservoir for recurrence) and tinea elsewhere; MANAGE with topical ANTIFUNGALS for the full licensed course (terbinafine 1% cream once daily for 1 week for tinea pedis per the Lamisil AT SPC; clotrimazole for its longer licensed duration; stopping early risks recurrence), foot HYGIENE (keep feet dry, change socks, avoid occlusive footwear, dry between toes, antifungal powder, don\u2019t share towels, footwear in communal areas), treat nail involvement (often needs ORAL antifungal \u2014 confirm by nail clippings for microscopy and culture first; oral terbinafine for toenails usually 12 weeks, 12\u201316 weeks per BAD 2014, with baseline LFTs per the SPC), and consider oral antifungals for extensive/refractory disease; and \u2014 importantly \u2014 ASK about diabetes or immunosuppression and recognise the caveat (tinea/maceration is a portal for bacterial infection/cellulitis, so foot checks and prompt treatment matter more, NICE NG19). Reassure and safety-net. Recorded findings available to the candidate (no in-person examination in this remote consultation): Patient\u2019s photographs and video inspection: white, macerated, peeling skin between the 4th and 5th toes of both feet with fissures; fine scale on both soles; right great toenail thickened and yellow; no spreading redness or swelling.',
-    script: {
-      opening: '"The skin between my toes has gone really itchy, flaky and a bit cracked and soggy, and honestly my feet smell. I\u2019m at the gym a lot. I\u2019ve tried various creams and it keeps coming back. What is it and how do I get rid of it?"',
-      facts: [
+    "brief": "Callum Reid, 16, Year 11, joins a video call with his mother, Jo, who booked it. Jo says his feet smell, the skin between his toes is peeling and cracked, and the athlete’s foot cream from the chemist “did nothing”. On history the cream was used for two days. Callum has stopped showering most days, wears the same trainers and socks for days, and sits gaming until 3am. If the doctor asks to speak to Callum alone and makes it safe, he says he has not done PE since February because of comments in the changing room about his feet and his weight, which spread on a group chat; he now dreads school, has missed several days, sleeps badly, has lost interest in football and friends, and feels “what’s the point” most days for about two months. He has had fleeting thoughts that people would be better off without him but no plans, no self-harm, no access to medicines beyond paracetamol in the kitchen. He does not want his mother told “everything”. No drugs; occasional alcohol at a friend’s. The feet: itchy, white, soggy, fissured skin between the 4th and 5th toes on both feet, no spreading redness, no nail changes, no fever. The task: treat the tinea pedis properly (topical terbinafine or an imidazole for the right duration; check the SPC/local formulary; foot hygiene), but recognise that the self-neglect is the cue; see Callum alone; take a HEADSS-style history; assess mood and suicide risk; agree what will be shared with his mother within the limits of confidentiality; and plan support for depression in a young person (NICE NG134) and the bullying.",
+    "script": {
+      "opening": "“(Mum) It’s his feet. They stink the house out, the skin’s peeling, and the cream from the chemist did nothing. He needs something stronger. And he won’t listen to a word I say.”",
+      "facts": [
         {
-          topic: 'The feet',
-          text: 'On and off for about a year. Itchy, white, soggy, peeling skin between the toes, worst between the 4th and 5th toes on both feet; some cracks. Fine scaling on the soles. Will show his feet to the camera and has photos.'
+          "topic": "Who is on the call",
+          "text": "Jo (mother) and Callum, 16, sitting side by side. Callum has his hood up, short answers, does not look at the camera."
         },
         {
-          topic: 'Creams',
-          text: '"A few from the chemist." Used an antifungal cream "for a few days until it looked better, then stopped". Once used a hydrocortisone cream, which made it worse.'
+          "topic": "The feet",
+          "text": "Itchy, white soggy skin between the toes, cracked and peeling, for about two months. Both feet. No redness spreading up the foot, no swelling, no fever, no nail changes. Cream from the chemist used twice, then lost."
         },
         {
-          topic: 'Nails (if asked)',
-          text: '"I\u2019m not sure \u2014 I haven\u2019t looked closely." When he looks on camera: big toenail on the right is thick and yellowish.'
+          "topic": "What Mum has noticed",
+          "text": "Same trainers and socks for days, showering “maybe twice a week”, up gaming until 3am, “grumpy”, not seeing his mates, quit Sunday football. She thinks he is “just being a teenager” and lazy."
         },
         {
-          topic: 'Negatives (if asked)',
-          text: 'No spreading redness, swelling, heat or pain in the foot or leg. No fever. No rash elsewhere; no groin itch. No eczema or psoriasis.'
+          "topic": "Only when seen alone and made safe",
+          "text": "No PE since February because of comments about his feet and his weight in the changing room, which got onto a group chat with photos. Dreads school; has missed some days by saying he was ill. Low mood most days for about two months, no enjoyment, poor sleep, tired, eating more junk."
         },
         {
-          topic: 'Health',
-          text: 'Not diabetic that he knows of; no thirst or passing urine more. No immune problems. No medicines. No allergies.'
+          "topic": "Risk (only if asked directly)",
+          "text": "Sometimes thinks people would be better off without him. No plans, never acted on it, no self-harm, no previous attempts. Would not want to upset his younger sister. Paracetamol is in the kitchen cupboard. No drugs; a few beers at a friend’s once a month."
         },
         {
-          topic: 'Lifestyle',
-          text: 'Gym 5 times a week, uses the communal showers barefoot. Wears trainers all day at work (warehouse); feet sweaty. Lives with his girlfriend, who has started complaining about the smell.'
+          "topic": "Confidentiality",
+          "text": "Does not want Mum to know about the photos or the thoughts: “She’ll go mental at the school.” Would be okay with her knowing he is “feeling down” and that he needs some help."
         },
         {
-          topic: 'How to play it',
-          text: 'Frustrated, a bit embarrassed. Ask "So I might have been stopping too early?" and "Only a week?" Mention the smell is what bothers you most.'
+          "topic": "How to play it",
+          "text": "Monosyllabic while Mum is there. Opens up if the doctor explains confidentiality simply and asks about school and friends without judgement. Relieved to be asked. Agrees to a plan if he has a say in what Mum is told."
         }
       ],
-      ice: {
-        ideas: '"Athlete\u2019s foot, probably. But the creams don\u2019t work."',
-        concerns: '"The smell, honestly. It\u2019s embarrassing at the gym and my girlfriend\u2019s noticed."',
-        expectations: '"Something stronger \u2014 maybe tablets."'
+      "ice": {
+        "ideas": "(Mum) “Athlete’s foot, and he’s lazy about washing.” (Callum, alone) “It’s my feet that started all of it.”",
+        "concerns": "HIDDEN AGENDA: Callum is being humiliated online, is low and has passive thoughts that people would be better off without him; he is frightened his mother will make it worse at school.",
+        "expectations": "(Mum) “Something stronger, maybe tablets.” (Callum) “For it to stop.”"
       },
-      cues: [
-        '"It keeps coming back" \u2014 how the creams were used, and a nail reservoir.',
-        '"The creams don\u2019t work" \u2014 check which cream and for how long.',
-        '"It\u2019s embarrassing" \u2014 impact and practical foot-hygiene advice.'
+      "cues": [
+        "A teenager who has stopped showering, gaming till 3am and quit football — self-neglect and withdrawal are cues, not just laziness.",
+        "Hood up, no eye contact, one-word answers while Mum talks — ask to see him alone.",
+        "“It’s my feet that started all of it” — the bullying behind the skin complaint.",
+        "“What’s the point” — ask directly about suicidal thoughts."
       ]
     },
-    checkpoints: [
+    "checkpoints": [
       {
-        dom: 'dg',
-        text: 'Recognises TINEA PEDIS (interdigital maceration/scaling, sole "moccasin" scaling, itch, odour; sweating/occlusive footwear/gym) as a dermatophyte infection'
+        "dom": "dg",
+        "text": "Confirms tinea pedis (interdigital maceration and fissuring), checks for cellulitis, nail involvement and how the previous cream was used"
       },
       {
-        dom: 'dg',
-        text: 'Distinguishes it from contact dermatitis/eczema, erythrasma and pitted keratolysis, using skin scrapings if uncertain or before oral therapy'
+        "dom": "cm",
+        "text": "Treats appropriately: a topical antifungal such as terbinafine or an imidazole for the recommended duration (check the SPC/local formulary), with practical foot hygiene; does not offer oral treatment for uncomplicated interdigital disease"
       },
       {
-        dom: 'dg',
-        text: 'Checks for TINEA UNGUIUM (nail reservoir for recurrence) and tinea elsewhere, sampling nails before oral treatment'
+        "dom": "dg",
+        "text": "Notices the self-neglect and withdrawal as cues and asks to speak with Callum alone, explaining confidentiality and its limits"
       },
       {
-        dom: 'dg',
-        text: 'Asks how previous creams were used, then manages with a topical ANTIFUNGAL for the full licensed course (terbinafine 1% cream once daily for 1 week, SPC) plus FOOT HYGIENE (dry feet/between toes, change socks/footwear, antifungal powder, communal-shower footwear, no towel sharing), and considers ORAL antifungal for extensive/refractory/nail disease (after sampling, with baseline LFTs)'
+        "dom": "dg",
+        "text": "Takes a HEADSS-style history (home, education, activities, drugs and alcohol, sexuality as relevant, suicide and mood) and identifies bullying and low mood"
       },
       {
-        dom: 'dg',
-        text: 'Asks about diabetes/immunocompromise and recognises the caveat \u2014 tinea/maceration as a portal for bacterial cellulitis \u2014 warranting foot care and a lower review threshold'
+        "dom": "dg",
+        "text": "Asks directly about suicidal thoughts, plans, self-harm, protective factors and access to means; judges current risk"
       },
       {
-        dom: 'ro',
-        text: 'Explains the diagnosis and why recurrence happens (nail reservoir/hygiene), and engages him in prevention, checking understanding'
+        "dom": "cm",
+        "text": "Plans support for depression in a young person in line with NICE NG134 (for example guided self-help or digital CBT, school support, referral to CAMHS or the local mental health support team as appropriate, early review)"
       },
       {
-        dom: 'ro',
-        text: 'Negotiates a realistic foot-hygiene and treatment routine that fits his lifestyle, and checks he is willing and able to keep it up to prevent recurrence'
+        "dom": "cm",
+        "text": "Agrees with Callum what will be shared with his mother, and a safety plan including crisis contacts and safe storage of medicines"
       },
       {
-        dom: 'cm',
-        text: 'Safety-nets and follows up: review if not improving/refractory (oral antifungal/sampling), signs of secondary infection/cellulitis (especially in diabetics), and prevention to reduce recurrence'
+        "dom": "ro",
+        "text": "Engages a reluctant adolescent respectfully, avoids blaming him or his mother, and brings the mother back in constructively"
       }
     ],
-    worked: [
+    "worked": [
       {
-        lbl: 'Name it',
-        txt: '"This is athlete\u2019s foot \u2014 a fungal infection of the skin, very common with gym use and sweaty, enclosed shoes. The soggy, itchy skin between the toes is classic."'
+        "lbl": "Treat the feet properly",
+        "txt": "“This is athlete’s foot. The cream only works if it goes on every day for the full course, even after it looks better. Dry between the toes, clean socks every day, and let the trainers dry out between wears.”"
       },
       {
-        lbl: 'Why it recurs',
-        txt: '"It keeps coming back for two main reasons \u2014 the warm damp environment, and sometimes the nails get infected and act as a reservoir. Let me check your nails."'
+        "lbl": "Asking to see him alone",
+        "txt": "“Callum, I like to speak to young people on their own for part of the appointment, it’s routine. Jo, would you mind stepping out for a few minutes? I’ll bring you back in.”"
       },
       {
-        lbl: 'Treat + hygiene',
-        txt: '"Terbinafine cream once a day for the full week, even if it looks better on day three, between all the toes and a little beyond the rash, should sort the skin \u2014 some other creams need longer. Just as important: dry carefully between the toes, change socks, let shoes air, use antifungal powder, and wear flip-flops in communal showers."'
+        "lbl": "Confidentiality",
+        "txt": "“What you tell me stays between us, unless I’m worried you or someone else is at serious risk. If that happened, I’d talk to you first about who needs to know.”"
       },
       {
-        lbl: 'Nails/oral',
-        txt: '"If the nails are involved, creams won\u2019t reach them \u2014 we\u2019d take a clipping to confirm and then often use a course of antifungal tablets \u2014 for nails that\u2019s about three months and needs a liver blood test first \u2014 which also helps stop the skin reinfecting."'
+        "lbl": "HEADSS opener",
+        "txt": "“How are things at school at the moment? And with your mates?”"
       },
       {
-        lbl: 'Diabetic caveat',
-        txt: '"Do you have diabetes, or anything that affects your immune system? If you ever do, this matters more, because cracked skin can let bacteria in and cause a skin infection. So keep on top of foot care."'
+        "lbl": "Direct risk question",
+        "txt": "“When things feel that bad, some people have thoughts of ending their life or that people would be better off without them. Have you had thoughts like that?”"
       },
       {
-        lbl: 'Safety-net',
-        txt: '"Come back if it isn\u2019t better two weeks after finishing the cream and I\u2019ll take skin scrapings, or the same day if the foot becomes red, hot, swollen or painful or you get a fever \u2014 that could be a spreading infection needing antibiotics."'
+        "lbl": "Agree what to share",
+        "txt": "“What would you be happy for me to tell your mum? Could we say that you’ve been feeling low and we’re getting you some help, and leave the details for you to share when you’re ready?”"
       }
     ],
-    learning: 'TINEA PEDIS (athlete\u2019s foot) is a dermatophyte fungal infection recognised by itchy, flaky, MACERATED/cracked skin between the toes (especially the 4th web space), scaling in a "moccasin" distribution on the soles, and odour, provoked by sweating, occlusive footwear and communal showers/gyms. Distinguish it from contact dermatitis/eczema, erythrasma (coral-red under Wood\u2019s lamp) and pitted keratolysis, using skin scrapings for mycology if uncertain or before oral therapy. Check for TINEA UNGUIUM (onychomycosis \u2014 thickened/discoloured/crumbly nails), which is a reservoir for recurrent infection, and for tinea elsewhere, sampling nails before oral treatment. Manage with a topical ANTIFUNGAL for the full licensed course (terbinafine 1% cream once daily for 1 week for tinea pedis per its SPC; clotrimazole for its longer licensed duration), asking how previous creams were used, plus foot HYGIENE \u2014 keep feet dry, dry thoroughly between the toes, change socks and avoid occlusive footwear, use antifungal powder, avoid sharing towels and wear footwear in communal showers \u2014 and consider an ORAL antifungal for extensive/refractory disease or nail involvement (after sampling; toenails usually 12 weeks of terbinafine, 12\u201316 weeks per BAD 2014, with baseline LFTs). Importantly, ask about DIABETES or immunocompromise: in these people, tinea pedis/interdigital maceration is a portal for bacterial entry and CELLULITIS, so foot care, prompt treatment and vigilance for secondary infection matter more and the threshold for review is lower. Reassure, address recurrence (nail reservoir/hygiene), and safety-net for secondary infection (NICE NG19 foot checks in diabetes).',
-    knowledge: {
-      guideline: 'MHRA SPC Lamisil AT 1% cream (terbinafine) \u00b7 MHRA SPC Canesten 1% cream (clotrimazole) \u00b7 BAD guidelines for the management of onychomycosis 2014 \u00b7 MHRA SPC Lamisil 250 mg tablets \u00b7 BNF terbinafine, imidazoles \u00b7 NICE NG19 Diabetic foot problems \u00b7 tinea pedis: topical antifungal + hygiene \u00b7 nail reservoir \u00b7 oral antifungal for extensive/nail disease \u00b7 diabetic cellulitis caveat',
-      points: [
+    "learning": "A skin complaint can be a young person’s ticket of entry. Tinea pedis is common and easy to treat: interdigital itch, maceration, scaling and fissuring, usually between the 4th and 5th toes. NICE CKS recommends a topical antifungal (for example terbinafine for 1–2 weeks or an imidazole for several weeks, depending on the product; check the SPC/local formulary) plus foot hygiene: dry between the toes, change socks daily, alternate footwear, and do not share towels. Most “treatment failures” are short or irregular use. Oral antifungals are not needed for uncomplicated interdigital infection. The real station is the cue: a 16-year-old who has stopped washing, games through the night, has quit his team and will not look at the camera. Self-neglect and withdrawal should prompt a psychosocial history. See the young person alone for part of the consultation, explain confidentiality and its limits, and use a HEADSS framework. Ask directly about suicidal thoughts, plans, self-harm, protective factors and access to means; asking does not increase risk. NICE NG134 (Depression in children and young people) supports watchful waiting, then psychological therapy such as digital CBT, group or individual CBT, with referral to CAMHS for moderate to severe depression or risk. Bullying, including online, should be addressed with the school with the young person’s agreement. Agree with him what will be shared with his parent, and give a safety plan and crisis contacts. A 16-year-old is presumed to have capacity to consent, and his confidentiality should be respected unless there is a serious risk of harm (GMC 0–18 years guidance).",
+    "knowledge": {
+      "guideline": "[1] NICE CKS Fungal skin infection – foot (check current version) · [2] NICE NG134 Depression in children and young people: identification and management (2019) · [3] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022) · [4] GMC 0–18 years: guidance for all doctors (2007, updated 2018) · [5] Product SPC for topical terbinafine and imidazoles · [6] RCGP/HEADSS adolescent psychosocial assessment",
+      "summary": "Tinea pedis that “failed” because the cream was used for two days, in a 16-year-old whose self-neglect and withdrawal are the real cue. Treat the feet properly, then see Callum alone: bullying in the changing room and online, two months of low mood, and passive suicidal thoughts without plans. Assess risk, plan support in line with NICE NG134, involve the school with his agreement, and agree what his mother will be told.",
+      "points": [
         {
-          h: 'Recognise',
-          t: 'Itchy, flaky, macerated interdigital skin (4th web space), sole "moccasin" scaling, odour; sweating/occlusive footwear/gym. Dermatophyte infection.'
+          "h": "Tinea pedis",
+          "t": "Interdigital itch, maceration, scaling and fissuring. Treat with a topical antifungal for the full recommended course and continue after the skin looks clear (check the SPC/local formulary) [1,5]."
         },
         {
-          h: 'Differential',
-          t: 'Contact dermatitis/eczema, erythrasma (coral-red, Wood\u2019s lamp), pitted keratolysis. Skin scrapings if uncertain/before oral therapy.'
+          "h": "Foot hygiene",
+          "t": "Dry carefully between the toes, cotton socks changed daily, alternate shoes so they dry out, flip-flops in communal showers, do not share towels."
         },
         {
-          h: 'Check nails/sites',
-          t: 'Onychomycosis = reservoir for recurrence; check other sites (groin/hands). Sample nails before oral treatment.'
+          "h": "When to think again",
+          "t": "Spreading redness, swelling or fever (cellulitis), nail involvement (needs confirmation before oral treatment), or diabetes or immunosuppression."
         },
         {
-          h: 'Manage',
-          t: 'Topical antifungal for the full licensed course (terbinafine 1% once daily for 1 week; clotrimazole longer) + foot hygiene (dry feet/between toes, change socks/footwear, antifungal powder, communal-shower footwear, no towel sharing).'
+          "h": "Seeing the young person alone",
+          "t": "Routine for adolescents. Explain why, ask the parent to step out, and explain confidentiality and its limits [4]."
         },
         {
-          h: 'Oral antifungal',
-          t: 'For extensive/refractory disease or nail involvement (e.g. terbinafine; toenails usually 12 weeks, 12\u201316 per BAD 2014) \u2014 confirm by sampling first; baseline LFTs (SPC).'
+          "h": "HEADSS",
+          "t": "Home, Education/employment, Activities, Drugs and alcohol, Sexuality, Suicide and mood (plus Safety). Start with less sensitive areas."
         },
         {
-          h: 'Diabetic caveat',
-          t: 'Ask about diabetes/immunocompromise: maceration is a portal for cellulitis \u2014 foot checks (NICE NG19), prompt treatment, lower review threshold.'
+          "h": "Risk assessment",
+          "t": "Ask directly about suicidal thoughts, plans, self-harm, protective factors and access to means. Do not use risk tools or scores to predict risk; focus on needs and a safety plan [3]."
         },
         {
-          h: 'Never do',
-          t: 'Never ignore an untreated nail reservoir driving recurrence; never start oral antifungal without sampling; never overlook the diabetic cellulitis risk.'
+          "h": "Depression in young people",
+          "t": "NICE NG134: for mild depression, watchful waiting with review and digital CBT, group CBT or group non-directive supportive therapy; for moderate to severe depression, refer to CAMHS for psychological therapy. Antidepressants are not offered in primary care without specialist assessment [2]."
         },
         {
-          h: 'Safety-net & follow-up',
-          t: 'Review if not better 2 weeks after finishing the cream (scrapings/oral); signs of cellulitis (red/hot/swollen/painful, fever) \u2192 same-day review; prevention to reduce recurrence.'
+          "h": "Bullying",
+          "t": "With his agreement, involve the school (pastoral lead or mental health support team). Online image sharing may need the school’s safeguarding lead."
         }
       ]
     }
@@ -826,67 +828,70 @@
       ]
     },
     'tinea-pedis': {
-      ceg: ['New & undifferentiated presentations', 'Long-term conditions & cancer'],
-      stem: {
-        name: 'Leon Park',
-        age: '34 years \u00b7 male',
-        pmh: [
-          'Itchy, flaky, macerated skin between toes (4th web space) + sole scaling + odour',
-          'Gym-goer; occlusive footwear; recurrent',
-          'Check nails (onychomycosis reservoir)'
+      "ceg": [
+        "Children & young people",
+        "Mental health & addiction"
+      ],
+      "stem": {
+        "name": "Callum Reid",
+        "age": "16 years · male",
+        "pmh": [
+          "Nil significant"
         ],
-        meds: ['None'],
-        allergy: 'NKDA',
-        recent: '"Skin between my toes is itchy, flaky and cracked, and my feet smell \u2014 it keeps coming back." Patient\u2019s photographs and video inspection: white, macerated, peeling skin between the 4th and 5th toes of both feet with fissures; fine scale on both soles; right great toenail thickened and yellow; no spreading redness or swelling.',
-        reason: 'Video consultation \u2014 itchy, scaly feet.'
+        "meds": [
+          "None recorded"
+        ],
+        "allergy": "None recorded",
+        "recent": "Appointment booked by his mother: “Athlete’s foot, cream not working.” Last seen aged 12 for a sprained ankle.",
+        "reason": "“His feet stink and the cream hasn’t worked.”"
       },
-      timeMap: [
+      "timeMap": [
         {
-          t: '0\u20102',
-          h: 'Recognise',
-          d: 'Interdigital maceration/scaling + odour + gym/occlusive footwear = tinea pedis.'
+          "t": "0–1",
+          "h": "Open",
+          "d": "Hear Mum; ask Callum in his own words."
         },
         {
-          t: '2\u20104',
-          h: 'Differential + nails',
-          d: 'Vs dermatitis/erythrasma/pitted keratolysis; check nails (reservoir); sample if uncertain/before oral.'
+          "t": "1–3",
+          "h": "The feet",
+          "d": "Duration, cream use, cellulitis and nails; look on camera. Note the self-neglect."
         },
         {
-          t: '4\u20107',
-          h: 'Treat + hygiene',
-          d: 'Topical antifungal for the full licensed course (terbinafine 1% once daily 1 week) + foot hygiene (dry, socks, powder, communal footwear).'
+          "t": "3–8",
+          "h": "Alone",
+          "d": "Confidentiality. HEADSS: school, bullying, mood, sleep, drugs. Direct risk questions and means."
         },
         {
-          t: '7\u20109',
-          h: 'Oral if needed',
-          d: 'Extensive/refractory/nail disease \u2192 oral antifungal after sampling (baseline LFTs; toenails about 12 weeks).'
+          "t": "8–10",
+          "h": "Plan with Callum",
+          "d": "Low mood support (NG134); school; what Mum will be told; safety plan."
         },
         {
-          t: '9\u201012',
-          h: 'Diabetic caveat + safety-net',
-          d: 'Ask about diabetes; cellulitis portal in diabetes/immunocompromise; review if not improving/secondary infection.'
+          "t": "10–12",
+          "h": "Mum back",
+          "d": "Foot treatment and hygiene; agreed mood message; medicines stored safely; teach-back; review."
         }
       ],
-      wordPics: {
-        fail: 'Treats skin only, ignores nail reservoir/hygiene; misses the diabetic cellulitis caveat; starts oral antifungal without sampling.',
-        pass: 'Recognises tinea pedis, treats with topical antifungal + hygiene, and checks nails.',
-        exc: 'Recognises tinea pedis, distinguishes mimics, treats with topical antifungal + hygiene, checks/treats the nail reservoir (oral after sampling), notes the diabetic cellulitis caveat, and safety-nets.'
+      "wordPics": {
+        "fail": "Prescribes a stronger antifungal, or tablets, and ends the consultation; never sees Callum alone; treats the self-neglect as laziness; no risk assessment.",
+        "pass": "Treats the tinea correctly, sees Callum alone, uncovers bullying and low mood, asks about suicidal thoughts and plans support.",
+        "exc": "All of the above, plus: explains confidentiality and its limits clearly; uses HEADSS naturally; gives a safety plan with crisis contacts and means restriction; negotiates exactly what Mum will be told; supports Mum without blaming; arranges early review and a route to the school."
       },
-      avoid: [
+      "avoid": [
         {
-          dont: '"Here\u2019s a cream \u2014 that should clear it." (ignoring recurrence drivers)',
-          instead: '"We\u2019ll treat the skin and sort the cause of recurrence \u2014 hygiene and any infected nails."',
-          why: 'A nail reservoir and poor hygiene drive recurrence.'
+          "dont": "“The cream didn’t work, so let’s try tablets.”",
+          "instead": "“The cream needs using every day for the whole course. Let’s do that properly.”",
+          "why": "Most failures are short use; oral antifungals are not needed for interdigital tinea."
         },
         {
-          dont: '(Oral without sampling) starting tablets for presumed nail infection.',
-          instead: '"I\u2019ll take a nail clipping to confirm before any antifungal tablets."',
-          why: 'Confirm onychomycosis before oral antifungals.'
+          "dont": "(With Mum present) “Are you depressed?”",
+          "instead": "“I usually see young people on their own for part of the appointment.”",
+          "why": "Disclosure is unlikely in front of a parent."
         },
         {
-          dont: '(Ignoring diabetes) treating as trivial in an at-risk patient.',
-          instead: '"In diabetes, cracked skin can let infection in \u2014 foot care matters more, and watch for cellulitis."',
-          why: 'Tinea is a portal for cellulitis in diabetics/immunocompromised.'
+          "dont": "“You’re not going to do anything silly, are you?”",
+          "instead": "“Have you had thoughts of ending your life or that people would be better off without you?”",
+          "why": "Closed, leading questions shut down disclosure."
         }
       ]
     }

@@ -24,34 +24,9 @@
 (function(){
   'use strict';
 
-  var FILES = [
-    'sca-cases.js?v=4', 'sca-extras.js?v=4',
-    'sca-cases2.js?v=5', 'sca-cases3.js?v=4', 'sca-cases4.js?v=4', 'sca-cases5.js?v=3',
-    'sca-cases6.js?v=3', 'sca-cases7.js?v=4', 'sca-cases8.js?v=4', 'sca-cases9.js?v=3',
-    'sca-cases10.js?v=4', 'sca-cases11.js?v=4', 'sca-cases12.js?v=5', 'sca-cases13.js?v=3',
-    'sca-cases14.js?v=6', 'sca-cases15.js?v=5', 'sca-cases16.js?v=4', 'sca-cases17.js?v=4',
-    'sca-cases18.js?v=4', 'sca-cases19.js?v=4', 'sca-cases20.js?v=4', 'sca-cases21.js?v=5',
-    'sca-cases22.js?v=5', 'sca-cases23.js?v=3', 'sca-cases24.js?v=5', 'sca-cases25.js?v=4',
-    'sca-cases26.js?v=5', 'sca-cases27.js?v=4', 'sca-cases28.js?v=5', 'sca-cases29.js?v=3',
-    'sca-cases30.js?v=4', 'sca-cases31.js?v=4', 'sca-cases32.js?v=5', 'sca-cases33.js?v=5',
-    'sca-cases34.js?v=4', 'sca-cases35.js?v=4', 'sca-cases36.js?v=4', 'sca-cases37.js?v=4',
-    'sca-cases38.js?v=4', 'sca-cases39.js?v=5', 'sca-cases40.js?v=3', 'sca-cases41.js?v=4',
-    'sca-cases42.js?v=3', 'sca-cases43.js?v=4', 'sca-cases44.js?v=3', 'sca-cases45.js?v=4',
-    'sca-cases46.js?v=4', 'sca-cases47.js?v=4', 'sca-cases48.js?v=3', 'sca-cases49.js?v=5',
-    'sca-cases50.js?v=4', 'sca-cases51.js?v=3', 'sca-cases52.js?v=4', 'sca-cases53.js?v=3',
-    'sca-cases54.js?v=5', 'sca-cases55.js?v=3', 'sca-cases56.js?v=3', 'sca-cases57.js?v=4',
-    'sca-cases58.js?v=5', 'sca-cases59.js?v=4', 'sca-cases60.js?v=3', 'sca-cases61.js?v=5',
-    'sca-cases62.js?v=3', 'sca-cases63.js?v=3', 'sca-cases64.js?v=5', 'sca-cases65.js?v=4',
-    'sca-cases66.js?v=4', 'sca-cases67.js?v=4', 'sca-cases68.js?v=3', 'sca-cases69.js?v=3',
-    'sca-cases70.js?v=4', 'sca-cases71.js?v=3', 'sca-cases72.js?v=4', 'sca-cases73.js?v=3',
-    'sca-cases74.js?v=4', 'sca-cases75.js?v=6', 'sca-cases76.js?v=4', 'sca-cases77.js?v=4',
-    'sca-cases78.js?v=7', 'sca-cases79.js?v=4', 'sca-cases80.js?v=5', 'sca-cases-new-p.js?v=1', 'sca-cases-new-q.js?v=1', 'sca-cases-new-r.js?v=1', 'sca-cases-new-s.js?v=1', 'sca-cases-new-t.js?v=1', 'sca-setting-neutral.js?v=1', 'sca-blueprint.js?v=1',
-    'sca-models.js?v=11', 'sca-sc-tasks-extra.js?v=2', 'sca-enrich.js?v=17', 'sca-knowledge.js?v=10', 'sca-pitfalls.js?v=4',
-    'sca-addons-1.js?v=6', 'sca-addons-2.js?v=5', 'sca-addons-3.js?v=7', 'sca-addons-4.js?v=8',
-    'sca-addons-5.js?v=6', 'sca-addons-6.js?v=5', 'sca-addons-7.js?v=6', 'sca-addons-8.js?v=4',
-    'sca-addons-9.js?v=5', 'sca-addons-10.js?v=5', 'sca-addons-11.js?v=5', 'sca-addons-12.js?v=3',
-    'sca-addons-13.js?v=4', 'sca-addons-14.js?v=4', 'sca-addons-15.js?v=7'
-  ];
+  /* Since Upload 148 the case library is a pre-built bundle (governance/build_sca_bundle.js):
+     a light index of every case, plus one JSON file per case loaded on demand by SCA_LOAD(id). */
+  var FILES = [ 'sca-enrich.js?v=17', 'sca-data/index.js?v=e571cdd92f64', 'sca-blueprint.js?v=1' ];  /* enrich first: its load-time passes then skip */
 
   var me = document.currentScript;
 
@@ -130,6 +105,43 @@
 
   window.SCA_UI = { title:title, meta:meta, who:who, fullMeta:fullMeta, stage:stage, record:record, reason:reason,
     stem:stemOf, isFree:isFree, freeFirst:freeFirst, freeOnly:freeOnly, freeIds:freeIds, files:FILES.slice() };
+
+  /* ---------- on-demand case material ----------
+     SCA_LOAD(id) fetches assets/sca-data/c/<id>.json once, merges its fields into the case in
+     window.SCA_CASES and its lookup-table entries (SCA_MODELS, SCA_SC_TASKS, ...) into the
+     window maps, then resolves with that case. SCA_LOAD_INTO(copy) does the same and also
+     copies the material onto a tool's own copy of the case. */
+  var ASSET_BASE = (me && me.src) ? me.src.replace(/sca-loader\.js[^\/]*$/, '') : '../assets/';
+  var loading = {};
+  function findCase(id){ var L = window.SCA_CASES || []; for (var i = 0; i < L.length; i++) if (L[i].id === id) return L[i]; return null; }
+  window.SCA_LOAD = function(id){
+    var c = findCase(id);
+    if (!c) return Promise.resolve(null);
+    if (c._full) return Promise.resolve(c);
+    if (loading[id]) return loading[id];
+    var url = ASSET_BASE + 'sca-data/c/' + encodeURIComponent(id) + '.json?v=' + (window.SCA_DATA_STAMP || '1');
+    loading[id] = fetch(url, { credentials:'same-origin' }).then(function(r){
+      if (!r.ok) throw new Error('Case ' + id + ' could not be loaded (' + r.status + ')');
+      return r.json();
+    }).then(function(d){
+      var f = d.f || {}, m = d.m || {};
+      Object.keys(f).forEach(function(k){ c[k] = f[k]; });
+      Object.keys(m).forEach(function(M){ (window[M] = window[M] || {})[id] = m[M]; });
+      try { Object.defineProperty(c, '_full', { value:true, enumerable:false, configurable:true }); } catch(e){ c._full = true; }
+      try { Object.defineProperty(c, '_heavy', { value:Object.keys(f), enumerable:false, configurable:true }); } catch(e){}
+      try { Object.defineProperty(c, '_rcgp', { value:true, enumerable:false, configurable:true }); } catch(e){}
+      return c;
+    }).catch(function(e){ delete loading[id]; throw e; });
+    return loading[id];
+  };
+  window.SCA_LOAD_INTO = function(target){
+    if (!target) return Promise.resolve(target);
+    return window.SCA_LOAD(target.id).then(function(c){
+      if (c && c !== target) (c._heavy || Object.keys(c)).forEach(function(k){ target[k] = c[k]; });
+      return target;
+    });
+  };
+  window.SCA_LOAD_ALL = function(ids){ return Promise.all((ids || (window.SCA_CASES || []).map(function(c){ return c.id; })).map(window.SCA_LOAD)); };
 
   /* ---------- load the case library ---------- */
   if (me && me.getAttribute('data-cases') === 'none') { if (window.SCA_RCGP) window.SCA_RCGP.normaliseAll(); return; }

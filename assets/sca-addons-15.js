@@ -10056,49 +10056,53 @@
  },
  "threadworm": {
   "stem": {
-   "name": "Ivy Fenwick (on video with her mother, Sophie Fenwick)",
-   "age": "5-year-old girl",
+   "name": "Leila Haddad",
+   "age": "6 years · female",
    "pmh": [
-    "No significant past medical history recorded"
+    "Nil significant"
    ],
    "meds": [
-    "No regular medication recorded"
+    "None recorded"
    ],
-   "allergy": "Not recorded",
-   "recent": "No recent consultations recorded.",
-   "reason": "Mother (Sophie Fenwick) booked: “Itchy bottom at night, and I think I’ve seen worms.”"
+   "allergy": "None recorded",
+   "recent": "Address changed nine weeks ago to a temporary accommodation hostel. No consultations since registering.",
+   "reason": "“They’re back again. I want to talk about all of us.”"
   },
   "knowledge": {
-   "guideline": "[1] Greater Manchester Antimicrobial Guidelines, version 16 (GMMMG, October 2024) · [2] UK guidelines for the investigation and management of eosinophilia in returning travellers and migrants (British Infection Association, 2024) · [3] BNF / BNFC: mebendazole · [4] UKHSA: Health protection in children and young people settings, including education",
-   "summary": "Night-time perianal itch with visible thread-like worms in a child is threadworm, a clinical diagnosis. Treat the affected child and appropriate household contacts on the same day with mebendazole 100 mg, repeat once after 2 weeks, and pair it with practical hygiene. Check age, pregnancy and breastfeeding for each person before every dose. This is the site’s owner-verified protocol pathway.",
+   "guideline": "[1] NICE CKS Threadworm (check current version) · [2] Product SPC for mebendazole (licensed age range and pregnancy) · [3] UKHSA Health protection in children and young people settings, including education (exclusion table) · [4] Homelessness (Suitability of Accommodation) (England) Order 2003 and the Homelessness Code of Guidance for Local Authorities · [5] Working together to safeguard children (2023) · [6] GMC Protecting children and young people (2012, updated 2018)",
+   "summary": "Third episode of threadworm in a 6-year-old, because the household was never treated together and hygiene measures were not explained. The mother is 22 weeks pregnant and her son is 18 months. They live in one room with a shared bathroom. Treat by age and pregnancy, adapt hygiene advice to the accommodation, explore the mother’s worry about abuse proportionately, and support a move with a housing letter and the health visitor and midwife.",
    "points": [
     {
-     "h": "A clinical diagnosis",
-     "t": "Perianal (and in girls vulval) itch, worse at night, sometimes with visible white thread-like worms in the stool or around the anus. If uncertain, an early-morning adhesive-tape test before washing or opening the bowels can help; stool testing is usually not useful [1]. Arrange an in-person examination if symptoms are persistent or atypical."
+     "h": "Diagnosis",
+     "t": "Nocturnal perianal itch and visible worms are enough. The tape test is rarely needed. In girls, threadworm can cause vulval itch and soreness [1]."
     },
     {
-     "h": "Mebendazole 100 mg, repeated at 2 weeks",
-     "t": "A single 100 mg dose for the affected person and appropriate household contacts aged 6 months and over, including those without symptoms, repeated once after 2 weeks because mebendazole does not reliably kill eggs [1][2][3]."
+     "h": "Why it recurs",
+     "t": "Eggs are not killed by mebendazole and survive up to 2 weeks outside the body. Untreated household members and no hygiene routine lead to reinfection."
     },
     {
-     "h": "Age and pregnancy checks",
-     "t": "Aged 6 months to 2 years: off-label, so an individual risk–benefit decision. Under 6 months: hygiene alone for 6 weeks. Pregnancy: hygiene first for 6 weeks; if severe or persistent, seek medicines advice. Breastfeeding: mebendazole can generally be used when clinically appropriate; check the product information if there are additional concerns [1][3]."
+     "h": "Who to treat",
+     "t": "Treat all household members at the same time. Mebendazole as a single dose for those aged 2 and over, repeated after 2 weeks if infection persists. Children aged 6 months to 2 years: off-label treatment can be prescribed. Check the SPC/local formulary for doses [1,2]."
     },
     {
-     "h": "Practical hygiene",
-     "t": "At least 2 weeks alongside treatment, 6 weeks where medicine is not used: handwashing and scrubbing under short nails after the toilet and before eating; a morning wash around the anus; discourage scratching, nail-biting and thumb-sucking; close-fitting nightwear; wash nightwear, towels and bed linen on the day of treatment and damp-dust surfaces. There is no need to hot-wash everything daily [1]."
+     "h": "Pregnancy and breastfeeding",
+     "t": "Pregnant women (especially in the first trimester), breastfeeding women and children under 6 months: hygiene measures alone for 6 weeks [1]. Always ask about pregnancy before treating an adult."
     },
     {
-     "h": "School and stigma",
-     "t": "No exclusion from school or nursery is needed, and classroom contacts do not need routine treatment [1][4]. Threadworm is common and does not mean poor hygiene."
+     "h": "Hygiene measures (6 weeks)",
+     "t": "Short nails, nail scrubbing, handwashing after the toilet and before food, a morning bath or wash of the perianal area, close-fitting underwear at night, own towels, and washing bedding and damp-dusting at the start. Adapt to the family’s facilities."
     },
     {
-     "h": "Recurrent or not settling",
-     "t": "Check the dose and the 2-week repeat, whether the whole household was treated together, and whether hygiene was practical. If it never improved, reconsider: eczema, irritant dermatitis, scabies, vulvovaginal disease. Persistent vulval symptoms need an in-person examination for other causes, including safeguarding where clinically indicated [1]."
+     "h": "Safeguarding, proportionately",
+     "t": "Threadworm explains vulval soreness, but a parent’s concern about abuse must be explored: disclosure, behaviour change, bleeding, discharge, access by unrelated adults. Discuss with the safeguarding lead if concerns remain; refer if there are indicators [5,6]."
     },
     {
-     "h": "Secondary infection",
-     "t": "Spreading redness, pus or crusting, fever, significant skin breakdown, urinary symptoms or marked vulval inflammation need prompt review. No empirical antibiotics without clinical evidence of bacterial infection [1]."
+     "h": "Temporary accommodation",
+     "t": "B&B-type accommodation with shared facilities should not be used for families with children for more than 6 weeks in England [4]. A GP letter describing the health impact can support the family’s case."
+    },
+    {
+     "h": "School",
+     "t": "No exclusion from school for threadworm [3]."
     }
    ]
   },
@@ -10107,400 +10111,376 @@
     "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello, I’m Dr Shah. You must be Ivy’s mum, Mrs Fenwick? Hello Ivy. What’s been happening?",
+    "text": "Hello, I’m Dr Clarke. Hello Leila. What’s brought you both to see me today?",
     "dom": "ro",
-    "why": "Open start that includes the child"
+    "why": "Greets mother and child; open question"
    },
    {
     "who": "pt",
-    "text": "Ivy’s been waking up scratching her bottom. It’s really itchy at night and she’s not sleeping. I had a look and I could see these tiny white thread-like things wriggling. And now her little brother’s scratching too. I feel awful. Does it mean we’re not clean? How do we get rid of it?"
+    "text": "The worms are back. Third time. The chemist keeps giving me tablets for the kids and they just come back. I need tablets for all of us this time, me too, I’m itching as well."
    },
    {
     "who": "dr",
-    "text": "That sounds exhausting for all of you. I can hear you’re worried about what it says about your home, and I’ll come straight back to that. First, a few questions so I can be sure what this is.",
-    "dom": "ro",
-    "why": "Acknowledges the embarrassment and signposts"
+    "text": "Third time is really frustrating. Let’s work out why it keeps happening, and then sort out the right thing for each of you. Tell me what you’ve noticed with Leila this time.",
+    "dom": "dg",
+    "why": "Acknowledges; sets agenda"
    },
    {
-    "phase": "Data gathering",
+    "phase": "History",
     "clock": "1–5 min",
+    "who": "pt",
+    "text": "Itchy bum at night, she wakes up scratching. I saw the little white threads with a torch. She’s red and sore, at the front too."
+   },
+   {
     "who": "dr",
-    "text": "Is the itch mainly at night? And is it just her bottom, or is she sore at the front too?",
+    "text": "Any bleeding, any discharge from the front, pain when she wees, tummy pain or weight loss?",
     "dom": "dg",
-    "why": "Nocturnal pattern and vulval symptoms"
+    "why": "Red flags and alternatives"
    },
    {
     "who": "pt",
-    "text": "Mostly at night. She did say it’s itchy at the front a bit."
+    "text": "No, none of that. She’s eating fine."
    },
    {
     "who": "dr",
-    "text": "Any pain when she wees, any discharge, or any blood?",
+    "text": "Worms quite often make girls sore at the front as well, because they wander. What happened with the treatment before?",
     "dom": "dg",
-    "why": "Screens for vulvovaginitis, UTI and other causes"
+    "why": "Explains vulval symptoms; treatment history"
    },
    {
     "who": "pt",
-    "text": "No, nothing like that. Just the itching."
+    "text": "Just one tablet for Leila each time. They wouldn’t give one for Sami, he’s too little. Nobody else."
    },
    {
     "who": "dr",
-    "text": "Is the skin broken or weepy from scratching? Any fever, tummy pain or change in her bowels?",
+    "text": "That’s the key. The tablet kills the worms but not the eggs, and the eggs get onto fingers and go round the family again. It’s nothing to do with being dirty. Who else lives with you, and how old are they?",
     "dom": "dg",
-    "why": "Secondary infection and atypical features"
+    "why": "Explains reinfection; household"
    },
    {
     "who": "pt",
-    "text": "She’s been scratching a lot. No temperature."
+    "text": "Just me, Leila and Sami, he’s 18 months. In this one room."
    },
    {
     "who": "dr",
-    "text": "Who lives at home with you? I ask because the plan covers everyone.",
+    "text": "And for you, before I suggest anything: is there any chance you’re pregnant, or are you breastfeeding?",
+    "dom": "dg",
+    "why": "Pregnancy check before adult treatment"
+   },
+   {
+    "who": "pt",
+    "text": "I’m 22 weeks pregnant."
+   },
+   {
+    "who": "dr",
+    "text": "Congratulations. That changes what I’d advise for you, so I’m glad I asked. Tell me about where you’re living at the moment.",
+    "dom": "dg",
+    "why": "Explores housing"
+   },
+   {
+    "who": "pt",
+    "text": "It’s a hostel. Temporary. Nine weeks now. We share the bathroom and toilet down the corridor. No washing machine."
+   },
+   {
+    "phase": "Ideas, concerns and expectations",
+    "clock": "5–7 min",
+    "who": "dr",
+    "text": "That’s hard with two little ones and a baby on the way. Is there anything else worrying you about Leila? You seemed to hesitate.",
+    "dom": "ro",
+    "why": "Follows cue; invites hidden concern"
+   },
+   {
+    "who": "pt",
+    "text": "(quietly) The men on the corridor use the same toilet. She’s scared to go at night. And she’s sore at the front. Could someone have done something to her?"
+   },
+   {
+    "who": "dr",
+    "text": "Thank you for telling me, that took courage, and it’s a sensible thing to ask. Has Leila said anything to you, or seemed different in herself? Is she ever in the bathroom on her own?",
+    "dom": "dg",
+    "why": "Explores safeguarding calmly"
+   },
+   {
+    "who": "pt",
+    "text": "No, she hasn’t said anything. I always go with her. She’s just scared of the corridor."
+   },
+   {
+    "who": "dr",
+    "text": "Leila, is there anything that’s worried you or made you sad here? You can always tell Mummy or a teacher.",
+    "dom": "ro",
+    "why": "Gives the child a voice"
+   },
+   {
+    "who": "pt",
+    "text": "(Leila) The corridor is dark."
+   },
+   {
+    "phase": "Plan",
+    "clock": "7–11 min",
+    "who": "dr",
+    "text": "What you’ve told me fits worms, and I can’t see anything that makes me think someone has hurt her. But your instinct matters. Keep going with her at night, and if she ever says anything, call me or 999. I’d like to let our safeguarding lead and your health visitor know about your living situation so you have support. Is that okay?",
     "dom": "cm",
-    "why": "Maps the household for treatment"
+    "why": "Proportionate safeguarding plan with consent"
    },
    {
     "who": "pt",
-    "text": "Me, Ivy and her little brother, and the rest of the family."
+    "text": "Yes. Okay."
    },
    {
     "who": "dr",
-    "text": "How old is her brother? And is anyone at home pregnant or breastfeeding? It changes what I can give each person.",
-    "dom": "dg",
-    "why": "Checks age, pregnancy and breastfeeding before prescribing"
-   },
-   {
-    "who": "pt",
-    "text": "He’s younger than Ivy. I’d have to check with everyone about the rest."
-   },
-   {
-    "who": "dr",
-    "text": "That’s fine. Does Ivy have any other health problems or take any medicines?",
-    "dom": "dg",
-    "why": "Medication and comorbidity check"
-   },
-   {
-    "who": "pt",
-    "text": "No, she’s well otherwise."
-   },
-   {
-    "phase": "ICE",
-    "clock": "5–6 min",
-    "who": "dr",
-    "text": "You said you feel awful about it. What’s been going through your mind?",
-    "dom": "ro",
-    "why": "Explores the idea behind her guilt"
-   },
-   {
-    "who": "pt",
-    "text": "That people will think we’re dirty. And that it’ll keep going round the family."
-   },
-   {
-    "who": "dr",
-    "text": "And what were you hoping we’d do today?",
-    "dom": "ro",
-    "why": "Elicits expectations"
-   },
-   {
-    "who": "pt",
-    "text": "Just get rid of it, properly this time."
-   },
-   {
-    "phase": "History and explanation",
-    "clock": "6–8 min",
-    "who": "dr",
-    "text": "Sophie, without showing me anything on camera — have you noticed any broken, weepy or bleeding skin around Ivy’s bottom, or any discharge from the front? (Mother reports only mild redness and scratch marks; no broken or weepy skin; no discharge.)",
-    "dom": "dg",
-    "why": "Asks the parent about secondary infection; no intimate images on video"
-   },
-   {
-    "who": "dr",
-    "text": "This is threadworm. It’s very common in children, and I want to be really clear: it is not a sign that your home isn’t clean. The worms lay tiny eggs around the bottom at night, which is why it itches then. Scratching puts eggs under the nails, they reach the mouth or get passed on, and the cycle starts again. That’s why it spreads through families.",
-    "dom": "dg",
-    "why": "Clinical diagnosis, explains spread, removes stigma"
-   },
-   {
-    "who": "pt",
-    "text": "So it’s not because of us?"
-   },
-   {
-    "who": "dr",
-    "text": "Not at all. Most families meet it at some point. The plan is about breaking the cycle, not about cleanliness.",
-    "dom": "ro",
-    "why": "Reassurance aimed at her stated fear"
-   },
-   {
-    "phase": "Shared management",
-    "clock": "8–11 min",
-    "who": "dr",
-    "text": "Everyone in the house who can take it has one dose of a worm medicine called mebendazole on the same day, including people with no itch, and then a second dose two weeks later. The tablet doesn’t kill the eggs, which is why the repeat matters. Ivy can have the chewable tablet or the liquid.",
+    "text": "For treatment: Leila has a tablet now and another in two weeks if she’s still itchy. Sami is under 2, so I’ll prescribe his; it’s used off-licence at his age but it’s commonly done. For you, because you’re pregnant, the advice is no tablet. The hygiene routine for six weeks clears it, because the worms only live about six weeks.",
     "dom": "cm",
-    "why": "Mebendazole 100 mg for the household, repeat at 2 weeks (owner protocol)"
+    "why": "Treatment by age and pregnancy"
    },
    {
     "who": "pt",
-    "text": "What about her brother?"
+    "text": "No tablet for me? But I’m itching."
    },
    {
     "who": "dr",
-    "text": "If he’s two or over, he takes the same. Between six months and two, it’s used outside its licence, so we’d decide together whether it’s right for him. Under six months it would be hygiene alone for six weeks. If anyone is pregnant, hygiene comes first, and if anyone’s breastfeeding we check before giving it. Let me know and I’ll go through each person.",
-    "dom": "dg",
-    "why": "Age, pregnancy and breastfeeding caveats per protocol"
-   },
-   {
-    "who": "pt",
-    "text": "Okay. And the cleaning?"
-   },
-   {
-    "who": "dr",
-    "text": "For at least two weeks: wash hands and scrub under nails after the toilet and before eating, keep nails short, wash around the bottom each morning, and close-fitting pyjamas help. On the day you take the medicine, wash nightwear, towels and bedding, and damp-dust surfaces. You don’t need to boil-wash everything every day.",
-    "dom": "ro",
-    "why": "Practical, proportionate hygiene"
-   },
-   {
-    "who": "pt",
-    "text": "Does she need to stay off school?"
-   },
-   {
-    "who": "dr",
-    "text": "No. She can keep going, and her class doesn’t need treating.",
+    "text": "I know. The routine really does work, and it protects the baby from an unnecessary medicine. Short nails, scrub under them, wash hands after the toilet and before eating. Wash everyone’s bottoms each morning, a bowl in the room is fine. Snug pants at night. Your own towels.",
     "dom": "cm",
-    "why": "No school exclusion"
+    "why": "Realistic hygiene advice"
    },
    {
     "who": "dr",
-    "text": "Which bits feel hardest to do at home?",
-    "dom": "ro",
-    "why": "Checks feasibility and buy-in"
-   },
-   {
-    "who": "pt",
-    "text": "Stopping them scratching, honestly."
-   },
-   {
-    "who": "dr",
-    "text": "That’s the tricky part. Short nails and pyjamas at night make the biggest difference. Your pharmacist can also help if you need the medicine for anyone else.",
+    "text": "And the room: families with children shouldn’t be in shared-bathroom accommodation for more than six weeks. I’ll write a letter for the council explaining the health side. I’ll also let your midwife know.",
     "dom": "cm",
-    "why": "Tailors advice to her barrier"
+    "why": "Housing letter; midwife"
    },
    {
     "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "If the itch hasn’t settled after the second dose, or it keeps coming back, come back and we’ll check what else it might be. If the skin becomes sore, weepy, crusted or spreading red, if she gets a temperature, or pain passing urine, see us sooner. Can you tell me the plan in your own words?",
-    "dom": "cm",
-    "why": "Specific safety-net and teach-back"
+    "text": "Can you tell me the plan back?",
+    "dom": "ro",
+    "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "Everyone takes the tablet the same day, again in two weeks, wash the bedding that day, nails short, morning wash, and she can go to school."
+    "text": "Tablets for Leila and Sami now, again in two weeks if needed. No tablet for me, just the washing and nails for six weeks. You’ll write to the council and tell the health visitor."
    },
    {
     "who": "dr",
-    "text": "Exactly right. And please don’t feel bad. You spotted it and acted, which is what matters.",
-    "dom": "ro",
-    "why": "Closes on reassurance"
+    "text": "Exactly. If anyone’s still itchy after the six weeks, if Leila gets tummy pain, weight loss, a discharge or bleeding, or if she ever says something that worries you, contact me straight away.",
+    "dom": "cm",
+    "why": "Safety-net"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Open start, included Ivy, and acknowledged the mother’s embarrassment before questioning.",
-    "pts": 1, "dom": "dg"
+    "d": "Open question; acknowledged the frustration; agenda covered every family member.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Mapped the household, school attendance and what would be hard to do at home.",
-    "pts": 1, "dom": "dg"
+    "d": "Temporary accommodation, shared bathroom, no washing machine, pregnancy, toddler, cost.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up “does it mean we’re not clean?” and returned to it explicitly.",
-    "pts": 1, "dom": "ro"
+    "d": "Followed “me too” to pregnancy and the hesitation to the safeguarding worry.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (a hygiene failing), concern (stigma and re-infection), expectation (clear it properly).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (tablets don’t work or catching from others), concerns (abuse, shame, tablets in pregnancy), expectation (tablets for all).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "No intimate examination over video; parent describes the skin; tape test only if the diagnosis were uncertain; in-person examination with a chaperone if there is broken skin, discharge or doubt.",
-    "pts": 1, "dom": "dg"
+    "d": "No routine tests needed; offered face-to-face review if symptoms persist or are atypical; tape test not required.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
-    "d": "Threadworm versus irritant dermatitis, eczema, scabies, vulvovaginitis or UTI.",
-    "pts": 1, "dom": "dg"
+    "d": "Reinfection versus treatment failure; threadworm vulvitis versus other causes of vulval soreness, including abuse.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Asked about vulval discharge, dysuria, bleeding, fever and broken skin; safeguarding only where clinically indicated.",
-    "pts": 2, "dom": "dg"
+    "d": "Asked about bleeding, discharge, dysuria, abdominal pain, weight loss, disclosure and behaviour change.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Named threadworm as a clinical diagnosis and explained the egg cycle.",
-    "pts": 2, "dom": "dg"
+    "d": "Recurrent threadworm from household reinfection, with vulval irritation; no current indicators of abuse.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Mebendazole 100 mg for the appropriate household on the same day, repeated at 2 weeks, plus practical hygiene; no school exclusion (owner protocol, GMMMG 2024).",
-    "pts": 2, "dom": "cm"
+    "d": "Mebendazole for Leila and (off-label) Sami with a 2-week repeat if needed (check the SPC/local formulary); hygiene measures alone for 6 weeks for the pregnant mother; realistic hygiene advice.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Age checks for the brother (off-label 6 months to 2 years, hygiene alone under 6 months) and pregnancy or breastfeeding in the household.",
-    "pts": 1, "dom": "cm"
+    "d": "Housing letter; health visitor and midwife informed; safeguarding lead discussion; night-time toilet safety.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Return if not settling after the repeat dose or recurring, or if signs of secondary infection; teach-back.",
-    "pts": 1, "dom": "cm"
+    "d": "Teach-back; return if symptoms persist after 6 weeks, or abdominal pain, weight loss, discharge, bleeding or any disclosure.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
     "Children & young people",
-    "New & undifferentiated presentations"
+    "Health disadvantage & vulnerabilities",
+    "Gender, reproductive & sexual health"
    ],
    "stem": {
-    "name": "Ivy Fenwick",
-    "age": "5 years · female",
+    "name": "Leila Haddad",
+    "age": "6 years · female",
     "pmh": [
-     "Nil recorded"
+     "Nil significant"
     ],
     "meds": [
      "None recorded"
     ],
-    "allergy": "Not recorded",
-    "recent": "No recent consultations. Video call with her mother. Mother’s report (no intimate photographs of a child are requested): she saw several tiny white threadlike worms at the anal margin last night; the skin around Ivy’s bottom is red from scratching but not broken or weeping.",
-    "reason": "“Itchy bottom at night, and I think I’ve seen worms.”"
+    "allergy": "None recorded",
+    "recent": "Address changed nine weeks ago to a temporary accommodation hostel. No consultations since registering.",
+    "reason": "“They’re back again. I want to talk about all of us.”"
    },
    "timeMap": [
     {
      "t": "0–1",
      "h": "Open",
-     "d": "Let mother tell it. Note the guilt question and signpost that you will answer it."
+     "d": "Third time. Agenda: everyone in the family."
     },
     {
      "t": "1–5",
-     "h": "Focused history",
-     "d": "Night itch, vulval symptoms, dysuria, broken skin, fever; who lives at home, ages, pregnancy or breastfeeding."
+     "h": "History",
+     "d": "Symptoms and red flags; previous treatment; household ages; pregnancy and breastfeeding; housing."
     },
     {
-     "t": "5–6",
-     "h": "ICE",
-     "d": "Stigma about cleanliness; fear of it going round again; wants it cleared."
+     "t": "5–7",
+     "h": "The worry",
+     "d": "Follow the hesitation. Abuse concern: disclosure, behaviour, access, bleeding, discharge. Speak to Leila."
     },
     {
-     "t": "6–8",
-     "h": "Look and explain",
-     "d": "Consent from child and parent. Name threadworm, explain the egg cycle, remove the stigma."
+     "t": "7–11",
+     "h": "Plan",
+     "d": "Treat by age and pregnancy; realistic hygiene; proportionate safeguarding steps; housing letter; midwife and health visitor."
     },
     {
-     "t": "8–12",
-     "h": "Plan and close",
-     "d": "Mebendazole for the household the same day, repeat at 2 weeks; age and pregnancy checks; hygiene; school; safety-net; teach-back."
+     "t": "11–12",
+     "h": "Close",
+     "d": "Teach-back; safety-net including any disclosure."
     }
    ],
    "wordPics": {
-    "fail": "Treats only Ivy, or forgets the repeat dose; gives mebendazole to everyone without checking ages or pregnancy; lectures about cleanliness; no safety-net.",
-    "pass": "Recognises threadworm, treats the household with a 2-week repeat, gives hygiene advice and reassures that it is common.",
-    "exc": "All of the above, plus: answers the guilt question directly; checks the brother’s age and pregnancy or breastfeeding in the house before prescribing; proportionate hygiene (wash on the day of treatment, not daily hot-washing); no school exclusion; asks what will be hard at home; confirms by teach-back."
+    "fail": "Gives tablets for everyone without asking about pregnancy or Sami’s age; generic hygiene advice that ignores the shared bathroom; misses or brushes off the abuse worry.",
+    "pass": "Treats the household correctly by age and pregnancy, explains reinfection, gives hygiene advice, and responds to the safeguarding worry.",
+    "exc": "All of the above, plus: asks about pregnancy before advising; adapts hygiene advice to a room with a shared bathroom; explores the worry calmly and gives the child a voice; makes a proportionate safeguarding plan; writes a housing letter and links the midwife and health visitor."
    },
    "avoid": [
     {
-     "dont": "“It’s a hygiene thing, so you’ll need to clean more.”",
-     "instead": "“This is very common and isn’t about how clean your home is. The plan just breaks the egg cycle.”",
-     "why": "Reinforces the stigma she brought to the call."
+     "dont": "“Here’s a prescription for the whole family.”",
+     "instead": "“Is anyone pregnant or breastfeeding, and how old is everyone?”",
+     "why": "Pregnant women and young infants need hygiene measures alone or off-label decisions."
     },
     {
-     "dont": "“Give everyone this tablet tonight.”",
-     "instead": "“Let me check each person’s age, and whether anyone is pregnant or breastfeeding, before we decide who takes it.”",
-     "why": "Under 2 years it is off-label, under 6 months it is hygiene alone, and pregnancy starts with hygiene (owner protocol)."
+     "dont": "“It’s just worms, don’t worry about anything else.”",
+     "instead": "“Worms can explain the soreness, and I’m glad you asked. Has she said anything or changed at all?”",
+     "why": "Dismissing a safeguarding worry can miss abuse and damages trust."
     },
     {
-     "dont": "“Keep her off school until it’s gone.”",
-     "instead": "“She can keep going to school, and her class doesn’t need treating.”",
-     "why": "No exclusion is needed (UKHSA)."
+     "dont": "“Wash all the bedding in a hot wash every day.”",
+     "instead": "“Let’s work out what’s possible with a shared bathroom and no washing machine.”",
+     "why": "Advice that cannot be followed does not prevent reinfection."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Shame and stigma",
-     "t": "Parents often feel judged. Naming threadworm as common and unrelated to cleanliness protects the relationship and adherence."
+     "h": "Temporary accommodation",
+     "t": "Shared bathrooms, no laundry and overcrowding make hygiene measures hard and increase stress. Ask about housing in any recurrent infection."
     },
     {
-     "h": "Practical load",
-     "t": "Treating a household on one day and laundry for a family is work; tailor advice to what is realistic."
+     "h": "Shame",
+     "t": "Families in hostels often feel judged. Saying clearly that worms are not about dirt helps engagement."
     }
    ],
    "legal": [
     {
-     "h": "Off-label use",
-     "t": "Mebendazole between 6 months and 2 years is off-label. Explain this, make an individual risk–benefit decision and record it (GMC good practice in prescribing)."
+     "h": "Suitability of accommodation",
+     "t": "In England, B&B-type accommodation with shared facilities should not be used for families with children for more than 6 weeks (Homelessness (Suitability of Accommodation) Order 2003). A GP letter can describe the health impact."
     },
     {
-     "h": "Consent in children",
-     "t": "Do not ask for intimate images on video. If an examination is needed, explain it to Ivy and her mother, gain consent and offer a chaperone at an in-person appointment."
+     "h": "Off-label prescribing",
+     "t": "Treating a child aged 6 months to 2 years with mebendazole is off-label. Explain this to the parent and record it (GMC prescribing guidance)."
     }
    ],
    "professional": [
     {
-     "h": "Prescribing for contacts",
-     "t": "Household contacts not registered with you may be better served by the community pharmacy or their own GP. Check age, pregnancy and breastfeeding for each person."
+     "h": "Proportionate safeguarding",
+     "t": "Take a parent’s worry seriously, ask the right questions, document, and discuss with the safeguarding lead. Do not dismiss or catastrophise."
     },
     {
-     "h": "Safeguarding",
-     "t": "Persistent vulval symptoms or findings not explained by threadworm need an in-person examination for other causes and, where clinically indicated, the local safeguarding pathway."
+     "h": "Sharing information",
+     "t": "Informing the midwife and health visitor, with consent, connects support for the pregnancy and the toddler."
     }
    ],
    "community": [
     {
-     "h": "Community pharmacy",
-     "t": "Mebendazole is widely available over the counter; prescribing and NHS funding follow local policy."
+     "h": "Health visitor",
+     "t": "Health visitors support families in temporary accommodation and can help with practical needs and advocacy."
     },
     {
-     "h": "School",
-     "t": "No exclusion; classroom contacts do not need routine treatment (UKHSA)."
+     "h": "Community pharmacy",
+     "t": "Pharmacists sell mebendazole for people aged 2 and over; they should ask about pregnancy and age, and refer under-2s and pregnant women."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Broken, weepy, crusted or spreading red skin, or fever (secondary infection)",
-     "Vulval discharge, bleeding or dysuria (reconsider the diagnosis)",
-     "Findings not explained by threadworm: follow the safeguarding pathway where clinically indicated",
-     "No improvement after correct household treatment and hygiene"
+     "Vaginal bleeding or discharge, or a disclosure: consider abuse or other causes; safeguarding discussion or referral",
+     "Abdominal pain or weight loss: reconsider the diagnosis",
+     "Persistent symptoms after household treatment and 6 weeks of hygiene measures: review"
     ],
     "psychosocial": [
-     "Mother’s guilt about cleanliness",
-     "Disturbed sleep for the child and family",
-     "Who lives at home, their ages, pregnancy and breastfeeding"
+     "Temporary accommodation with shared facilities",
+     "Pregnancy and a toddler",
+     "Money for laundry",
+     "Child’s fear of the corridor at night"
     ],
     "ice": [
-     "Idea: it means the family isn’t clean",
-     "Concern: stigma and it going round again",
-     "Expectation: clear it properly"
+     "Idea: tablets don’t work or they catch it from others",
+     "Concern: abuse; being judged; medicines in pregnancy",
+     "Expectation: tablets for everyone"
     ]
    },
-   "diagnosis": "“This is threadworm, a very common infection in children. It isn’t about how clean your home is.”",
-   "diagnosisLay": "“The worms lay tiny eggs around the bottom at night, which is why it itches then. Scratching puts eggs under the nails, and they get to the mouth or to other people. Treating everyone together and a few simple habits break that cycle.”",
+   "diagnosis": "“This is threadworm again, from reinfection because only one person was treated each time. Worms explain the soreness at the front too. Nothing you’ve told me suggests someone has hurt her, but we’ll keep that door open.”",
+   "diagnosisLay": "“The worms lay tiny eggs around the bottom at night. They get on fingers and go back into mouths, so they go round the family. The tablet kills the worms, the washing routine stops the eggs.”",
    "management": {
-    "reflectIce": "“You were worried this means you’re not clean. It doesn’t. Almost every family meets it, and it clears well when everyone is treated together.”",
-    "psychosocial": "Make the plan realistic for a busy household: one treatment day, laundry that day, short nails and pyjamas at night.",
+    "reflectIce": "“You wanted tablets for everyone and to know Leila is safe. Here’s what is right for each of you, and here’s how we’ll keep an eye on her safety.”",
+    "psychosocial": "Validate the worry; plan night-time toilet safety; housing letter; health visitor and midwife involvement.",
     "sharedPlan": [
-     "Mebendazole 100 mg single dose for Ivy and appropriate household contacts on the same day; repeat once at 2 weeks",
-     "Brother: same if 2 or over; 6 months to 2 years off-label with risk–benefit decision; under 6 months hygiene alone for 6 weeks; pregnancy hygiene first; breastfeeding check",
-     "Hygiene for at least 2 weeks; wash nightwear, towels and bed linen on the day of treatment; no school exclusion"
+     "Mebendazole for Leila now; repeat in 2 weeks if infection persists (check the SPC/local formulary)",
+     "Mebendazole for Sami (18 months) off-label, explained and recorded",
+     "Mother (22 weeks pregnant): hygiene measures alone for 6 weeks",
+     "Hygiene for everyone for 6 weeks, adapted to the shared bathroom",
+     "Safeguarding lead discussion; health visitor informed with consent",
+     "Housing letter; midwife informed"
     ],
     "safetyNet": [
-     "Not settled after the repeat dose, or recurring: return to re-check the diagnosis and household treatment",
-     "Sore, weepy or spreading red skin, fever or pain passing urine: see us sooner"
+     "Symptoms persisting after 6 weeks",
+     "Abdominal pain, weight loss, vaginal discharge or bleeding",
+     "Any disclosure or new worry: contact the practice, or 999 if a child is in immediate danger"
     ]
    }
   },
@@ -10508,115 +10488,119 @@
    {
     "ic": "💠",
     "t": "Threadworm",
-    "s": "Management protocol · owner-verified",
+    "s": "Who to treat and hygiene measures",
     "href": "management/threadworm.html"
    },
    {
     "ic": "🗺️",
-    "t": "Anal itch",
+    "t": "Anal itchiness",
     "s": "Visual algorithm",
     "href": "algorithms/anal-itchiness.html"
    },
    {
     "ic": "💠",
-    "t": "Vulval disorders",
-    "s": "Management protocol · persistent vulval itch",
-    "href": "management/vulvar-disorders.html"
+    "t": "Safeguarding",
+    "s": "Proportionate response to a parent’s worry",
+    "href": "management/safeguarding.html"
    },
    {
     "ic": "💠",
-    "t": "Scabies",
-    "s": "Management protocol · a key differential",
-    "href": "management/scabies.html"
+    "t": "Childhood rashes and exclusion",
+    "s": "Exclusion rules for settings",
+    "href": "management/childhood-rashes-exclusion.html"
    }
   ],
   "pitfalls": {
-   "intro": "This station is lost on detail rather than diagnosis: treating one child, missing the repeat dose, or prescribing without checking who in the house can safely take it, and on leaving the mother feeling judged.",
+   "intro": "Treating worms is simple. The marks are in getting pregnancy and age right, making hygiene advice realistic, and responding well to a mother’s fear about abuse.",
    "items": [
     {
+     "dom": "dg",
+     "fail": "Not asking about pregnancy or breastfeeding.",
+     "why": "Pregnant women should use hygiene measures alone.",
+     "fix": "Ask before advising any adult treatment."
+    },
+    {
      "dom": "cm",
-     "fail": "Treating only Ivy.",
-     "why": "Other household members carry eggs, so she is re-infected (owner protocol).",
-     "fix": "Treat the appropriate household on the same day, including those without symptoms."
+     "fail": "Treating only the child again.",
+     "why": "Reinfection from untreated household members is why it recurs.",
+     "fix": "Treat everyone at the same time, by age."
+    },
+    {
+     "dom": "cm",
+     "fail": "Generic hygiene advice.",
+     "why": "It cannot be followed in one room with a shared bathroom.",
+     "fix": "Adapt it to the family’s facilities."
+    },
+    {
+     "dom": "dg",
+     "fail": "Brushing off the abuse worry.",
+     "why": "Abuse can be missed and trust is lost.",
+     "fix": "Ask about disclosure, behaviour, access, bleeding and discharge; discuss with the safeguarding lead."
+    },
+    {
+     "dom": "cm",
+     "fail": "Ignoring the housing.",
+     "why": "It drives both the recurrence and the family’s wellbeing.",
+     "fix": "Offer a letter and involve the health visitor and midwife."
     },
     {
      "dom": "ro",
-     "fail": "No repeat dose.",
-     "why": "Mebendazole does not reliably kill eggs; the 2-week repeat catches newly hatched worms.",
-     "fix": "Say “one dose today, one in two weeks” and check it by teach-back."
-    },
-    {
-     "dom": "cm",
-     "fail": "Prescribing for everyone without age or pregnancy checks.",
-     "why": "Off-label between 6 months and 2 years, hygiene alone under 6 months, hygiene first in pregnancy (owner protocol, BNFC).",
-     "fix": "Ask the brother’s age and about pregnancy or breastfeeding before deciding."
-    },
-    {
-     "dom": "ro",
-     "fail": "Brushing past “does it mean we’re not clean?”",
-     "why": "It is her main concern; ignoring it costs Relating marks and adherence.",
-     "fix": "Answer it directly and early: common, not about cleanliness."
-    },
-    {
-     "dom": "cm",
-     "fail": "Excessive hygiene advice or school exclusion.",
-     "why": "Daily hot-washing is unnecessary and exclusion is not needed (UKHSA).",
-     "fix": "Wash on the day of treatment, practical daily habits, stay in school."
-    },
-    {
-     "dom": "cm",
-     "fail": "No safety-net.",
-     "why": "Persistence may mean another diagnosis or secondary infection.",
-     "fix": "Name what to return for: not settling after the repeat, recurrence, weepy or spreading red skin, fever, dysuria."
+     "fail": "Not speaking to Leila.",
+     "why": "The child’s voice is part of safeguarding.",
+     "fix": "Ask her gently, in words she understands."
     }
    ]
   }
  },
  "tinea-pedis": {
   "stem": {
-   "name": "Leon Park",
-   "age": "34-year-old man",
+   "name": "Callum Reid",
+   "age": "16 years · male",
    "pmh": [
-    "No significant past medical history recorded"
+    "Nil significant"
    ],
    "meds": [
-    "No regular medication recorded; has used over-the-counter creams"
+    "None recorded"
    ],
-   "allergy": "Not recorded",
-   "recent": "No recent consultations recorded.",
-   "reason": "Booked: “Itchy, flaky skin between my toes that keeps coming back.”"
+   "allergy": "None recorded",
+   "recent": "Appointment booked by his mother: “Athlete’s foot, cream not working.” Last seen aged 12 for a sprained ankle.",
+   "reason": "“His feet stink and the cream hasn’t worked.”"
   },
   "knowledge": {
-   "guideline": "[1] MHRA SPC: Lamisil AT 1% cream (terbinafine) · [2] MHRA SPC: Canesten 1% cream (clotrimazole) · [3] BAD guidelines for the management of onychomycosis 2014 · [4] MHRA SPC: Lamisil 250 mg tablets · [5] BNF: terbinafine, imidazole antifungals · [6] NICE NG19 Diabetic foot problems",
-   "summary": "Itchy, macerated, scaling skin between the toes, especially the fourth web space, in a gym-goer is tinea pedis. Use a topical antifungal for the full licensed course, with foot hygiene. Look for nail infection and other sites, because a nail reservoir drives recurrence. Sample before any oral antifungal.",
+   "guideline": "[1] NICE CKS Fungal skin infection – foot (check current version) · [2] NICE NG134 Depression in children and young people: identification and management (2019) · [3] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022) · [4] GMC 0–18 years: guidance for all doctors (2007, updated 2018) · [5] Product SPC for topical terbinafine and imidazoles · [6] RCGP/HEADSS adolescent psychosocial assessment",
+   "summary": "Tinea pedis that “failed” because the cream was used for two days, in a 16-year-old whose self-neglect and withdrawal are the real cue. Treat the feet properly, then see Callum alone: bullying in the changing room and online, two months of low mood, and passive suicidal thoughts without plans. Assess risk, plan support in line with NICE NG134, involve the school with his agreement, and agree what his mother will be told.",
    "points": [
     {
-     "h": "Recognise",
-     "t": "Interdigital itch, scaling, fissuring and maceration, often in the fourth web space; or diffuse dry “moccasin” scaling of the soles. Sweating, occlusive footwear and communal showers predispose."
+     "h": "Tinea pedis",
+     "t": "Interdigital itch, maceration, scaling and fissuring. Treat with a topical antifungal for the full recommended course and continue after the skin looks clear (check the SPC/local formulary) [1,5]."
     },
     {
-     "h": "Differential",
-     "t": "Contact or irritant dermatitis, eczema, psoriasis, erythrasma (coral-red under Wood’s light), pitted keratolysis (pits and odour), and bacterial infection of macerated web spaces. Skin scrapings for mycology if the diagnosis is uncertain, it has not responded, or before oral treatment."
+     "h": "Foot hygiene",
+     "t": "Dry carefully between the toes, cotton socks changed daily, alternate shoes so they dry out, flip-flops in communal showers, do not share towels."
     },
     {
-     "h": "Topical treatment",
-     "t": "Terbinafine 1% cream once daily for 1 week for tinea pedis (Lamisil AT SPC); Greater Manchester advises twice daily for 1–2 weeks plus 2 weeks after healing. Irregular use or stopping early risks recurrence [1]. Clotrimazole: follow the licensed duration, which is longer for dermatophyte infections [2]. Doses per BNF [5]."
+     "h": "When to think again",
+     "t": "Spreading redness, swelling or fever (cellulitis), nail involvement (needs confirmation before oral treatment), or diabetes or immunosuppression."
     },
     {
-     "h": "Nails",
-     "t": "Onychomycosis is a reservoir for recurrence. Confirm by nail clippings for microscopy and culture before oral treatment [3]. Oral terbinafine for toenails is usually 12 weeks (12–16 weeks per BAD 2014) [3][4]; check LFTs before starting [4]. Topical nail lacquer only for limited disease with the lunula spared [3], and it is not routinely prescribed in Greater Manchester (self-care)."
+     "h": "Seeing the young person alone",
+     "t": "Routine for adolescents. Explain why, ask the parent to step out, and explain confidentiality and its limits [4]."
     },
     {
-     "h": "Oral treatment for skin",
-     "t": "For extensive or refractory tinea pedis after confirming the diagnosis, an oral antifungal may be used; dose and duration per BNF [5]."
+     "h": "HEADSS",
+     "t": "Home, Education/employment, Activities, Drugs and alcohol, Sexuality, Suicide and mood (plus Safety). Start with less sensitive areas."
     },
     {
-     "h": "Prevention",
-     "t": "Dry carefully between the toes, change socks daily, alternate and air shoes, wear sandals in communal showers, do not share towels, and treat footwear with antifungal powder."
+     "h": "Risk assessment",
+     "t": "Ask directly about suicidal thoughts, plans, self-harm, protective factors and access to means. Do not use risk tools or scores to predict risk; focus on needs and a safety plan [3]."
     },
     {
-     "h": "Diabetes and immunosuppression",
-     "t": "Macerated or fissured web spaces are a portal for bacterial infection and cellulitis. People with diabetes need foot checks and prompt treatment (NICE NG19) [6]."
+     "h": "Depression in young people",
+     "t": "NICE NG134: for mild depression, watchful waiting with review and digital CBT, group CBT or group non-directive supportive therapy; for moderate to severe depression, refer to CAMHS for psychological therapy. Antidepressants are not offered in primary care without specialist assessment [2]."
+    },
+    {
+     "h": "Bullying",
+     "t": "With his agreement, involve the school (pastoral lead or mental health support team). Online image sharing may need the school’s safeguarding lead."
     }
    ]
   },
@@ -10625,369 +10609,403 @@
     "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello Mr Park, I’m Dr Clarke. What can I do for you?",
+    "text": "Hello, I’m Dr Clarke. Hi Callum, and you must be Mum. What’s been going on?",
     "dom": "ro",
-    "why": "Open start"
+    "why": "Greets both; open question"
    },
    {
     "who": "pt",
-    "text": "The skin between my toes has gone really itchy, flaky and a bit cracked and soggy, and honestly my feet smell. I’m at the gym a lot. I’ve tried various creams and it keeps coming back. What is it and how do I get rid of it?"
+    "text": "(Mum) It’s his feet. They stink the house out, the skin’s peeling, and the cream from the chemist did nothing. He needs something stronger. And he won’t listen to a word I say."
    },
    {
     "who": "dr",
-    "text": "Thanks for being so clear, and it sounds frustrating to keep going round in circles. Let’s work out why it keeps coming back.",
+    "text": "Callum, can you tell me about your feet in your own words? What bothers you most?",
     "dom": "ro",
-    "why": "Acknowledges frustration"
-   },
-   {
-    "phase": "Data gathering",
-    "clock": "1–5 min",
-    "who": "dr",
-    "text": "Which creams have you used, how often, and for how long each time?",
-    "dom": "dg",
-    "why": "Treatment history: agent, adherence, duration"
+    "why": "Addresses the young person directly"
    },
    {
     "who": "pt",
-    "text": "A few from the chemist. I couldn’t tell you exactly how long I used them."
+    "text": "(Callum) Itchy. Between my toes."
    },
    {
+    "phase": "History",
+    "clock": "1–3 min",
     "who": "dr",
-    "text": "That’s worth knowing, and I’ll come back to it. Have you noticed any change in your toenails, such as thickening, yellowing or crumbling? Any rash in the groin, hands or elsewhere?",
+    "text": "How long has it been going on, and how often did you use the cream?",
     "dom": "dg",
-    "why": "Nail reservoir and other sites"
+    "why": "Duration and treatment adherence"
    },
    {
     "who": "pt",
-    "text": "I’m not sure about the nails. I haven’t looked closely."
+    "text": "(Callum) Couple of months. Used it twice. Then I lost it."
    },
    {
     "who": "dr",
-    "text": "Any pain, redness spreading up the foot, swelling or fever?",
+    "text": "Any redness spreading up your foot, swelling, feeling feverish, or changes in your toenails?",
     "dom": "dg",
-    "why": "Secondary bacterial infection or cellulitis"
+    "why": "Screens for cellulitis and nail disease"
    },
    {
     "who": "pt",
-    "text": "No, just the itch and the cracks."
+    "text": "(Callum) No."
    },
    {
     "who": "dr",
-    "text": "Do you have diabetes, or anything that affects your immune system? Any thirst or passing more urine?",
+    "text": "Could you show me between your toes on the camera? Thanks. That white, soggy, cracked skin between the little toes is typical of athlete’s foot. No spreading redness. That’s good.",
     "dom": "dg",
-    "why": "Diabetic and immunocompromise caveat"
+    "why": "Remote examination"
    },
    {
     "who": "pt",
-    "text": "Not that I know of."
+    "text": "(Mum) He wears the same socks for days. And he hardly showers now. He’s up gaming till 3am and he’s given up football."
    },
    {
     "who": "dr",
-    "text": "Any history of eczema or psoriasis, or has anything new touched your feet, like new shoes or soap?",
+    "text": "Thanks, that’s helpful. Callum, I usually talk to young people on their own for part of the appointment, it’s routine. Jo, would you mind stepping out for a few minutes? I’ll bring you back in.",
     "dom": "dg",
-    "why": "Differential: dermatitis and psoriasis"
+    "why": "Notices cues; arranges to see alone"
    },
    {
     "who": "pt",
-    "text": "Nothing I can think of."
+    "text": "(Mum) Fine. (leaves)"
    },
    {
-    "phase": "ICE",
-    "clock": "5–6 min",
+    "phase": "Seen alone",
+    "clock": "3–8 min",
     "who": "dr",
-    "text": "What do you think is going on?",
+    "text": "Callum, what you say to me stays between us, unless I’m worried that you or someone else is at serious risk. If that happened, I’d talk to you first about who needs to know. Is that okay?",
     "dom": "ro",
-    "why": "Idea"
+    "why": "Explains confidentiality and limits"
    },
    {
     "who": "pt",
-    "text": "Athlete’s foot, probably. But the creams don’t work."
+    "text": "(Callum) Yeah."
    },
    {
     "who": "dr",
-    "text": "And what bothers you most about it?",
+    "text": "How are things at school at the moment?",
+    "dom": "dg",
+    "why": "HEADSS: education"
+   },
+   {
+    "who": "pt",
+    "text": "(Callum) Rubbish. I don’t do PE any more. Someone took a picture of my feet in the changing room and put it on the group chat. And they say stuff about my weight."
+   },
+   {
+    "who": "dr",
+    "text": "That sounds really humiliating. I’m sorry that happened. How has it been affecting you?",
     "dom": "ro",
-    "why": "Concern"
+    "why": "Empathy; follows cue"
    },
    {
     "who": "pt",
-    "text": "The smell, honestly. It’s embarrassing at the gym."
-   },
-   {
-    "phase": "Video inspection and explanation",
-    "clock": "6–8 min",
-    "who": "dr",
-    "text": "Could you hold your feet up to the camera — between the toes, the soles, and your toenails? (Interdigital maceration and scaling seen on video; nails and other sites inspected.)",
-    "dom": "dg",
-    "why": "Inspects web spaces, soles, nails and other sites on video"
+    "text": "(Callum) I don’t want to go in. I’ve said I was ill a few times. I just game. Nothing’s fun any more. What’s the point."
    },
    {
     "who": "dr",
-    "text": "This is athlete’s foot, a fungal infection that loves warm, damp skin. A common reason it keeps coming back is stopping the cream when it looks better, while the fungus is still there. The other is the nails: if they’re infected, they reseed the skin.",
+    "text": "How long have you felt like that? How are you sleeping and eating, and how is your energy?",
     "dom": "dg",
-    "why": "Names diagnosis; explains recurrence"
+    "why": "Core depressive symptoms and duration"
    },
    {
     "who": "pt",
-    "text": "So I might have been stopping too early?"
+    "text": "(Callum) About two months. Can’t sleep. Tired all the time. Eat rubbish."
    },
    {
     "who": "dr",
-    "text": "Possibly, and it’s very common. The skin looks better before the fungus has gone.",
-    "dom": "ro",
-    "why": "Non-judgemental"
-   },
-   {
-    "phase": "Shared management",
-    "clock": "8–11 min",
-    "who": "dr",
-    "text": "I suggest terbinafine cream once a day for the full week, even if it looks better on day three, between all the toes and a little beyond the rash.",
+    "text": "When things feel that bad, some people have thoughts that they’d be better off dead or that people would be better off without them. Have you had thoughts like that?",
     "dom": "dg",
-    "why": "Terbinafine 1% once daily for 1 week (SPC)"
+    "why": "Direct question about suicidal thoughts"
    },
    {
     "who": "pt",
-    "text": "Only a week?"
+    "text": "(Callum) Sometimes. That they’d be better off without me. I wouldn’t do anything. My little sister…"
    },
    {
     "who": "dr",
-    "text": "For this cream, yes, if you do the full week. Some other creams need longer. Alongside that: dry carefully between your toes, clean cotton socks daily, alternate trainers so they dry out, sandals in the gym showers, and your own towel. Antifungal powder in your shoes helps.",
+    "text": "Thank you for telling me. Have you ever hurt yourself, or made any plans? Is there anything at home you’ve thought about using?",
     "dom": "dg",
-    "why": "Foot hygiene and prevention"
+    "why": "Plans, self-harm, means"
    },
    {
     "who": "pt",
-    "text": "That I can do. What about the smell?"
+    "text": "(Callum) No. Never. There’s just paracetamol in the kitchen."
    },
    {
     "who": "dr",
-    "text": "Much of the smell comes from damp skin, so drying and changing socks helps. If it persists, I’ll check for another condition that causes pitting and odour.",
+    "text": "Any drugs, or drinking?",
     "dom": "dg",
-    "why": "Considers pitted keratolysis"
-   },
-   {
-    "who": "dr",
-    "text": "If your nails are involved, creams won’t reach. I’d take clippings to confirm it before any tablets, because tablets for nails take about three months and need a liver blood test first.",
-    "dom": "dg",
-    "why": "Nail sampling before oral terbinafine; LFTs (BAD 2014; SPC)"
+    "why": "HEADSS: drugs and alcohol"
    },
    {
     "who": "pt",
-    "text": "Okay, makes sense."
+    "text": "(Callum) A few beers at a mate’s sometimes. No drugs."
    },
    {
-    "phase": "Safety-net and close",
-    "clock": "11–12 min",
+    "phase": "Plan with Callum",
+    "clock": "8–10 min",
     "who": "dr",
-    "text": "If it isn’t better two weeks after finishing the cream, come back and I’ll take skin scrapings. If your foot becomes red, hot, swollen or painful, or you get a fever, that could be a bacterial infection and needs seeing the same day. What’s your plan?",
+    "text": "It sounds like you’ve been feeling low for a couple of months, and the bullying is a big part of that. That’s something we can help with. I’d like to get you some talking support, there are online and school-based options, and I’d like to see you again in a week or two. If it gets worse, we’d involve the young people’s mental health team.",
     "dom": "cm",
-    "why": "Review point and cellulitis safety-net"
+    "why": "Explains low mood and plan (NICE NG134)"
    },
    {
     "who": "pt",
-    "text": "Cream every day for the full week even if it looks fine, dry between the toes, change socks, sandals at the gym, and back if it doesn’t clear or goes red."
+    "text": "(Callum) Don’t tell Mum about the photos. She’ll go mental at the school."
    },
    {
     "who": "dr",
-    "text": "Exactly right.",
+    "text": "What would you be happy for me to tell her? Could we say you’ve been feeling down and we’re getting you some help, and you tell her the rest when you’re ready? I do think the school needs to know about the photos, but we can talk about how and when, together.",
     "dom": "ro",
-    "why": "Confirms understanding"
+    "why": "Negotiates what is shared"
+   },
+   {
+    "who": "pt",
+    "text": "(Callum) Yeah. That’s okay."
+   },
+   {
+    "who": "dr",
+    "text": "And if those thoughts ever get stronger, you can call me, text SHOUT on 85258, call Childline, or ring 999. Could the paracetamol be kept somewhere you can’t easily get to for now?",
+    "dom": "cm",
+    "why": "Safety plan; means restriction"
+   },
+   {
+    "phase": "Mum back in and close",
+    "clock": "10–12 min",
+    "who": "dr",
+    "text": "Jo, thanks for waiting. Callum’s feet: the cream needs using every day for the full course on the pack, even once it looks better, with clean socks daily and trainers dried out. I’ll prescribe it. Callum’s also told me he’s been feeling quite down lately, and we’ve agreed some support. I’ll see him again in a week or two.",
+    "dom": "cm",
+    "why": "Shares agreed information; foot plan"
+   },
+   {
+    "who": "pt",
+    "text": "(Mum) Down? I thought he was just being lazy."
+   },
+   {
+    "who": "dr",
+    "text": "It’s really common for low mood to look like that from the outside. The most helpful thing you can do is keep things calm and let him talk when he’s ready. And keep medicines locked away for now. Callum, can you tell me the plan back?",
+    "dom": "ro",
+    "why": "Supports parent; teach-back"
+   },
+   {
+    "who": "pt",
+    "text": "(Callum) Cream every day till it’s gone. Clean socks. Online help. Come back in two weeks. Call if it gets worse."
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Open start; let him describe symptoms, gym use and frustration.",
-    "pts": 1, "dom": "dg"
+    "d": "Open question; heard the mother, then asked Callum in his own words.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Gym, footwear, towel-sharing and embarrassment explored.",
-    "pts": 1, "dom": "dg"
+    "d": "HEADSS seen alone: school, PE and the group chat, friends, football, sleep, gaming, alcohol, family.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up “the creams don’t work” and explored how they were used.",
-    "pts": 1, "dom": "ro"
+    "d": "Self-neglect, withdrawal, hood up and silence with Mum present; “what’s the point”.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (athlete’s foot), concern (odour, embarrassment, recurrence), expectation (something that works).",
-    "pts": 2, "dom": "ro"
+    "d": "Mum: athlete’s foot and laziness, wants something stronger. Callum: the feet started the bullying; wants it to stop; fears Mum will make it worse.",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Inspected web spaces, soles, nails and other sites on video; scrapings if uncertain or refractory; nail clippings before oral treatment.",
-    "pts": 1, "dom": "dg"
+    "d": "Remote look between the toes; no tests needed for typical tinea pedis; mood assessed; no physical cause for low mood suggested.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
-    "d": "Tinea pedis versus dermatitis, psoriasis, erythrasma, pitted keratolysis, bacterial infection.",
-    "pts": 1, "dom": "dg"
+    "d": "Tinea pedis versus pitted keratolysis or eczema; low mood and depression versus adjustment to bullying; substance use.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Asked about spreading redness, swelling, pain and fever; diabetes and immunosuppression.",
-    "pts": 2, "dom": "dg"
+    "d": "Cellulitis features; suicidal thoughts, plans, self-harm, means and protective factors.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Named tinea pedis and explained recurrence (early stopping, nail reservoir).",
-    "pts": 2, "dom": "dg"
+    "d": "Tinea pedis inadequately treated; low mood consistent with depression in the context of bullying, with passive suicidal thoughts and no plans.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Terbinafine 1% once daily for the full week (SPC) with foot hygiene; oral treatment only after mycology confirmation, with baseline LFTs.",
-    "pts": 2, "dom": "cm"
+    "d": "Topical antifungal for the full course with foot hygiene (check the SPC/local formulary); support for low mood in line with NICE NG134; safety plan and crisis contacts; review in 1–2 weeks.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Diabetes and immunosuppression caveat (NICE NG19); odour addressed.",
-    "pts": 1, "dom": "cm"
+    "d": "Bullying and image sharing: agreed approach to involving the school; sleep and gaming; medicines stored safely at home.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Review if not clear two weeks after treatment; same-day review for cellulitis signs; teach-back.",
-    "pts": 1, "dom": "cm"
+    "d": "Review booked; crisis routes (SHOUT, Childline, 999); agreed what Mum is told; teach-back.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
-    "New & undifferentiated presentations"
+    "Children & young people",
+    "Mental health & addiction"
    ],
    "stem": {
-    "name": "Leon Park",
-    "age": "34 years · male",
+    "name": "Callum Reid",
+    "age": "16 years · male",
     "pmh": [
-     "Nil recorded"
+     "Nil significant"
     ],
     "meds": [
-     "Over-the-counter creams"
+     "None recorded"
     ],
-    "allergy": "Not recorded",
-    "recent": "No recent consultations. Patient’s photographs and video inspection: white, macerated, peeling skin between the 4th and 5th toes of both feet with fissures; fine scale on both soles; right great toenail thickened and yellow; no spreading redness or swelling.",
-    "reason": "“Itchy skin between my toes that keeps coming back.”"
+    "allergy": "None recorded",
+    "recent": "Appointment booked by his mother: “Athlete’s foot, cream not working.” Last seen aged 12 for a sprained ankle.",
+    "reason": "“His feet stink and the cream hasn’t worked.”"
    },
    "timeMap": [
     {
      "t": "0–1",
      "h": "Open",
-     "d": "Let him describe it and the failed creams."
+     "d": "Hear Mum; ask Callum in his own words."
     },
     {
-     "t": "1–5",
-     "h": "Focused history",
-     "d": "Which creams, how long; nails; other sites; cellulitis signs; diabetes; dermatitis."
+     "t": "1–3",
+     "h": "The feet",
+     "d": "Duration, cream use, cellulitis and nails; look on camera. Note the self-neglect."
     },
     {
-     "t": "5–6",
-     "h": "ICE",
-     "d": "Athlete’s foot; embarrassment about the smell; wants a fix."
+     "t": "3–8",
+     "h": "Alone",
+     "d": "Confidentiality. HEADSS: school, bullying, mood, sleep, drugs. Direct risk questions and means."
     },
     {
-     "t": "6–8",
-     "h": "Look and explain",
-     "d": "Web spaces, soles, nails. Why it recurs."
+     "t": "8–10",
+     "h": "Plan with Callum",
+     "d": "Low mood support (NG134); school; what Mum will be told; safety plan."
     },
     {
-     "t": "8–12",
-     "h": "Plan and close",
-     "d": "Full course of cream; hygiene; nails; review point; cellulitis safety-net; teach-back."
+     "t": "10–12",
+     "h": "Mum back",
+     "d": "Foot treatment and hygiene; agreed mood message; medicines stored safely; teach-back; review."
     }
    ],
    "wordPics": {
-    "fail": "Gives another cream without asking how the last ones were used; doesn’t look at the nails; starts oral terbinafine without sampling.",
-    "pass": "Recognises tinea pedis, prescribes a topical antifungal with hygiene advice, checks nails, and safety-nets.",
-    "exc": "All of the above, plus: explores how previous creams were used; gives the product-specific duration; nail sampling and LFTs before tablets; considers erythrasma and pitted keratolysis; asks about diabetes; addresses the odour; teach-back."
+    "fail": "Prescribes a stronger antifungal, or tablets, and ends the consultation; never sees Callum alone; treats the self-neglect as laziness; no risk assessment.",
+    "pass": "Treats the tinea correctly, sees Callum alone, uncovers bullying and low mood, asks about suicidal thoughts and plans support.",
+    "exc": "All of the above, plus: explains confidentiality and its limits clearly; uses HEADSS naturally; gives a safety plan with crisis contacts and means restriction; negotiates exactly what Mum will be told; supports Mum without blaming; arranges early review and a route to the school."
    },
    "avoid": [
     {
-     "dont": "“Try a different cream.”",
-     "instead": "“How long did you use the last ones? Stopping early is the commonest reason it comes back.”",
-     "why": "Treatment failure is often adherence, not the drug."
+     "dont": "“The cream didn’t work, so let’s try tablets.”",
+     "instead": "“The cream needs using every day for the whole course. Let’s do that properly.”",
+     "why": "Most failures are short use; oral antifungals are not needed for interdigital tinea."
     },
     {
-     "dont": "“I’ll start you on terbinafine tablets.”",
-     "instead": "“If the nails look involved, let’s confirm with clippings first.”",
-     "why": "Sample before oral treatment (BAD 2014); baseline LFTs needed."
+     "dont": "(With Mum present) “Are you depressed?”",
+     "instead": "“I usually see young people on their own for part of the appointment.”",
+     "why": "Disclosure is unlikely in front of a parent."
     },
     {
-     "dont": "“It’s just sweaty feet.”",
-     "instead": "“It’s a fungal infection, and it’s very treatable.”",
-     "why": "Dismissal ignores his embarrassment and the need for treatment."
+     "dont": "“You’re not going to do anything silly, are you?”",
+     "instead": "“Have you had thoughts of ending your life or that people would be better off without you?”",
+     "why": "Closed, leading questions shut down disclosure."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Gym and communal showers",
-     "t": "Sandals, own towel and drying habits are practical and fit his routine."
+     "h": "Online bullying",
+     "t": "Images shared on group chats follow young people home. Withdrawal, school avoidance and self-neglect are common responses."
     },
     {
-     "h": "Embarrassment",
-     "t": "Odour and appearance cause social embarrassment; acknowledge it."
+     "h": "Parents’ view",
+     "t": "Parents often read low mood as laziness. Helping them understand reduces conflict at home."
     }
    ],
    "legal": [
     {
-     "h": "Self-care",
-     "t": "Topical antifungals are available from pharmacies; many areas expect self-care for mild athlete’s foot."
+     "h": "Confidentiality at 16",
+     "t": "A 16-year-old is presumed to have capacity. Respect his confidentiality unless there is a serious risk of harm, and involve him in decisions about sharing (GMC 0–18 years)."
+    },
+    {
+     "h": "Image sharing",
+     "t": "Sharing intimate or humiliating images of a child can be a safeguarding and criminal matter; schools have procedures, coordinated by the designated safeguarding lead."
     }
    ],
    "professional": [
     {
-     "h": "Safe oral prescribing",
-     "t": "Confirm the diagnosis by mycology and check LFTs before oral terbinafine (SPC); review interactions."
+     "h": "Asking about suicide",
+     "t": "Asking directly does not increase risk. Focus on needs and a safety plan rather than a risk score (NICE NG225)."
     },
     {
-     "h": "Reconsidering the diagnosis",
-     "t": "Failure of correct treatment should prompt scrapings and reconsideration."
+     "h": "Ticket of entry",
+     "t": "Treat the presenting complaint well, but follow the cues that suggest something more."
     }
    ],
    "community": [
     {
-     "h": "Community pharmacy",
-     "t": "Advice on creams, powders and correct duration."
+     "h": "School mental health support teams",
+     "t": "Many schools have mental health support teams and pastoral leads who can offer low-intensity support and act on bullying."
     },
     {
-     "h": "Podiatry",
-     "t": "For people with diabetes or foot problems needing foot care."
+     "h": "Crisis support",
+     "t": "SHOUT (text 85258), Childline (0800 1111), Papyrus HOPELINE247, NHS 111 (mental health option) and 999."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Spreading redness, heat, swelling, pain or fever (cellulitis)",
-     "Diabetes or immunosuppression",
-     "Nail changes (reservoir)",
-     "No response to a correct course (reconsider the diagnosis)"
+     "Suicidal plans, intent, preparation or self-harm: same-day CAMHS/crisis assessment",
+     "Spreading redness, swelling or fever from the foot: cellulitis",
+     "Drug use, school refusal with safeguarding concerns, or abuse: safeguarding discussion"
     ],
     "psychosocial": [
-     "Gym use and communal showers",
-     "Embarrassment about odour",
-     "How he used previous creams"
+     "Bullying and image sharing",
+     "School avoidance",
+     "Loss of football and friends",
+     "Sleep and gaming",
+     "Relationship with his mother"
     ],
     "ice": [
-     "Idea: athlete’s foot that creams don’t fix",
-     "Concern: odour, embarrassment, recurrence",
-     "Expectation: something that works"
+     "Mum: athlete’s foot and laziness; wants something stronger",
+     "Callum: the feet started the bullying; wants it to stop",
+     "Callum: fears Mum will make it worse at school"
     ]
    },
-   "diagnosis": "“This is athlete’s foot, a fungal skin infection between the toes.”",
-   "diagnosisLay": "“The fungus loves warm, damp skin. The cream clears it, but only if you finish the full course, because the skin looks better before the fungus has gone.”",
+   "diagnosis": "“Your feet have athlete’s foot that hasn’t had a proper go with the cream. And you’ve been feeling low for a couple of months, with the bullying behind a lot of it.”",
+   "diagnosisLay": "“Athlete’s foot is a fungus that loves warm, damp skin. It clears if the cream is used every day for the whole course and the feet are kept dry. Feeling low like this is common and it does get better with the right help.”",
    "management": {
-    "reflectIce": "“You felt the creams don’t work. Often the cream is fine, but stopping early lets it come back.”",
-    "psychosocial": "Build hygiene into his gym routine; address the odour.",
+    "reflectIce": "“Mum wanted something stronger for the feet; you wanted the bullying to stop and not to make things worse. We can do both.”",
+    "psychosocial": "Agreed message to Mum; school involvement with Callum’s agreement; sleep routine; football as a goal.",
     "sharedPlan": [
-     "Terbinafine 1% cream once daily for the full week (SPC)",
-     "Foot hygiene: dry between toes, daily socks, alternate shoes, sandals in showers, own towel, antifungal powder",
-     "Nail clippings if nails involved; oral terbinafine only after confirmation, with baseline LFTs"
+     "Topical antifungal daily for the full course on the pack (check the SPC/local formulary); foot hygiene",
+     "Low mood: guided self-help or digital CBT, school mental health support; CAMHS referral if moderate to severe or risk increases (NICE NG134)",
+     "Safety plan: crisis contacts; medicines stored safely",
+     "School approached about the image sharing, agreed with Callum",
+     "Review in 1–2 weeks"
     ],
     "safetyNet": [
-     "Not clear two weeks after finishing: return for scrapings",
-     "Red, hot, swollen or painful foot, or fever: same-day review"
+     "Thoughts of ending his life getting stronger, any plan or self-harm: call the practice, SHOUT 85258, Childline, NHS 111 or 999",
+     "Spreading redness, swelling or fever from the foot",
+     "No improvement in the skin after the full course"
     ]
    }
   },
@@ -10995,66 +11013,66 @@
    {
     "ic": "💠",
     "t": "Fungal skin infection",
-    "s": "Management protocol · tinea",
+    "s": "Tinea pedis treatment and hygiene",
     "href": "management/fungal-skin-infection.html"
    },
    {
-    "ic": "📋",
-    "t": "Fungal infections",
-    "s": "Case walkthrough",
-    "href": "../cases/fungal-infections.html"
+    "ic": "💠",
+    "t": "Self-harm and suicide risk",
+    "s": "Asking, safety planning and referral",
+    "href": "management/self-harm-suicide-risk.html"
    },
    {
     "ic": "💠",
-    "t": "Nail disorders",
-    "s": "Management protocol · onychomycosis",
-    "href": "management/nail-disorders.html"
+    "t": "Depression",
+    "s": "Recognition and stepped care",
+    "href": "management/depression.html"
    },
    {
-    "ic": "💠",
-    "t": "Cellulitis",
-    "s": "Management protocol",
-    "href": "management/cellulitis.html"
+    "ic": "🗺️",
+    "t": "Low mood",
+    "s": "Visual algorithm",
+    "href": "algorithms/low-mood.html"
    }
   ],
   "pitfalls": {
-   "intro": "The diagnosis is easy. The marks are in finding why it keeps coming back, looking at the nails, and prescribing safely.",
+   "intro": "Prescribing for athlete’s foot takes a minute. The station tests whether you notice a withdrawn teenager, see him alone and ask about risk.",
    "items": [
     {
-     "dom": "dg",
-     "fail": "Not asking how the previous creams were used.",
-     "why": "Stopping early is a common cause of recurrence (SPC).",
-     "fix": "Ask which cream, how often and for how long."
+     "dom": "cm",
+     "fail": "Escalating to oral antifungals.",
+     "why": "The cream was used twice; interdigital tinea responds to a full topical course.",
+     "fix": "Explain correct use and duration; add foot hygiene."
     },
     {
      "dom": "dg",
-     "fail": "Not looking at the nails.",
-     "why": "A nail reservoir reseeds the skin.",
-     "fix": "Look at the nails and other sites."
+     "fail": "Never seeing Callum alone.",
+     "why": "He will not disclose in front of his mother.",
+     "fix": "Make seeing alone routine and explain confidentiality."
     },
     {
      "dom": "dg",
-     "fail": "Oral terbinafine without sampling.",
-     "why": "BAD 2014: confirm by mycology first; SPC: baseline LFTs.",
-     "fix": "Clippings first."
+     "fail": "Accepting “lazy” at face value.",
+     "why": "Self-neglect and withdrawal are cues to low mood.",
+     "fix": "Take a HEADSS history."
     },
     {
      "dom": "dg",
-     "fail": "Missing the differential.",
-     "why": "Erythrasma, pitted keratolysis and dermatitis mimic tinea.",
-     "fix": "Consider them when treatment fails or odour dominates."
+     "fail": "Not asking about suicidal thoughts.",
+     "why": "He has passive thoughts and access to paracetamol.",
+     "fix": "Ask directly; plans, self-harm, means, protective factors."
     },
     {
      "dom": "ro",
-     "fail": "Ignoring the odour.",
-     "why": "It is his main concern.",
-     "fix": "Acknowledge it and explain what helps."
+     "fail": "Telling Mum everything, or nothing.",
+     "why": "Either breaks trust or leaves him unsupported.",
+     "fix": "Agree with Callum what will be shared."
     },
     {
      "dom": "cm",
-     "fail": "No cellulitis safety-net.",
-     "why": "Macerated skin is a portal for bacteria, especially in diabetes.",
-     "fix": "Name redness, heat, swelling, pain and fever."
+     "fail": "No follow-up.",
+     "why": "Depression in young people needs early review.",
+     "fix": "Review in 1–2 weeks with clear crisis routes."
     }
    ]
   }

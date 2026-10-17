@@ -2027,518 +2027,469 @@
  "fatigue-lfts-vitd": {
   "stem": {
    "name": "Paul Cresswell",
-   "age": "48-year-old man",
+   "age": "48 years · male",
    "pmh": [
-    "No significant past medical history",
-    "BMI 33"
+    "Obesity (BMI 33)",
+    "Ex-smoker"
    ],
    "meds": [
-    "No regular medication"
+    "None prescribed"
    ],
-   "allergy": "No known drug allergies recorded",
-   "recent": "Tiredness blood panel (patient-requested): ALT 88 (about twice the upper limit), bilirubin normal, ALP near-normal; HbA1c in the pre-diabetes range; triglycerides raised; vitamin D low. Alcohol recorded as about 20 units a week. Office manager, mostly sedentary.",
-   "reason": "Video consultation to discuss his blood results."
+   "allergy": "None recorded",
+   "recent": "Uploaded a private blood test report (36 markers, nine flagged). Pharmacy BP last week 146/92. No previous cardiovascular risk assessment recorded.",
+   "reason": "“Go through my private blood results.”"
   },
   "knowledge": {
-   "guideline": "NICE NG49 (MASLD, formerly NAFLD; updated July 2026) · BSG/BASL abnormal liver blood tests guideline (Newsome et al., 2018) · NICE PH38 (type 2 diabetes: prevention in people at high risk, 2012) · NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · Royal Osteoporosis Society vitamin D guideline (2018) · UK Chief Medical Officers’ low-risk drinking guidelines (2016)",
-   "summary": "A raised ALT with normal bilirubin and ALP, BMI 33, pre-diabetic HbA1c and raised triglycerides is most likely fatty liver disease driven by metabolism (NAFLD, now also called MASLD). Complete a liver screen, assess fibrosis rather than the ALT, treat the metabolic drivers and alcohol, and replace the vitamin D in proportion.",
+   "guideline": "[1] NICE NG238 Cardiovascular disease: risk assessment and reduction, including lipid modification (2023) · [2] NICE NG136 Hypertension in adults: diagnosis and management (2019, updated 2023) · [3] NICE NG49 Non-alcoholic fatty liver disease (NAFLD): assessment and management (2016) and NICE CKS NAFLD/MASLD (check current) · [4] NICE PH38 Type 2 diabetes: prevention in people at high risk (2012, updated 2017) · [5] GMC Good medical practice (2024) and BMA guidance on the NHS–private interface · [6] UK NSC / NHS Prostate Cancer Risk Management Programme (PSA counselling)",
+   "summary": "A private finger-prick panel with nine flags. What matters: a high cardiovascular risk profile with premature CVD in his brother, raised BP, likely fatty liver, non-diabetic hyperglycaemia and a raised ferritin needing transferrin saturation. What does not: afternoon testosterone, isolated hs-CRP, routine repeat panels. Vitamin D is self-care; the uncounselled PSA is normal. His brother’s heart attack is the hidden driver.",
    "points": [
     {
-     "h": "Read the pattern",
-     "t": "A raised ALT with normal bilirubin and near-normal ALP is a hepatocellular pattern. Set in a metabolic cluster — obesity, pre-diabetes, raised triglycerides — the commonest cause is fatty liver disease linked to insulin resistance."
+     "h": "Private results",
+     "t": "Act on clinically significant results whatever the source; explain what will and will not be followed up; the NHS does not repeat private screening panels on request [5]."
     },
     {
-     "h": "Liver screen before labelling",
-     "t": "BSG/BASL 2018: an abnormal liver test warrants a standard aetiology screen — hepatitis B surface antigen, hepatitis C antibody, ferritin and transferrin saturation, autoantibodies and immunoglobulins — plus an ultrasound. Record alcohol accurately: his 20 units a week is above the UK CMO (2016) low-risk limit of 14 and may be contributing."
+     "h": "Cardiovascular risk",
+     "t": "QRISK3 (includes family history of CVD in a first-degree relative under 60). Repeat lipids; offer lifestyle advice and discuss atorvastatin if 10-year risk is 10% or more [1]."
     },
     {
-     "h": "Fibrosis, not ALT",
-     "t": "The ALT doesn’t measure scarring. BSG/BASL 2018: use FIB-4 (age, AST, ALT, platelets) first; a score above 3.25 suggests advanced fibrosis. NICE NG49: offer the ELF test to people with NAFLD; ELF 10.51 or above means refer to a hepatologist, and if lower, retest adults every 3 years."
+     "h": "Blood pressure",
+     "t": "Clinic or pharmacy reading of 140/90 or more needs confirmation with home or ambulatory monitoring [2]."
     },
     {
-     "h": "The metabolic picture",
-     "t": "HbA1c 42–47 mmol/mol is high risk of type 2 diabetes: offer an intensive lifestyle programme and recheck at least yearly (NICE PH38). Calculate QRISK3 and offer atorvastatin 20 mg if 10% or more (NICE NG238). NG238: do not exclude people from statins because transaminases are raised but less than 3 times the upper limit."
+     "h": "Raised ALT",
+     "t": "Repeat venous LFTs; liver screen (hepatitis B and C, iron studies, autoimmune if indicated); alcohol (AUDIT-C); FIB-4 to stratify fibrosis risk, ELF or specialist if indeterminate or high [3]."
     },
     {
-     "h": "Vitamin D in proportion",
-     "t": "Replace a genuinely low vitamin D: the Royal Osteoporosis Society (2018) uses a loading regimen for deficiency then maintenance, with doses per BNF depending on the level. Fatigue is rarely explained by vitamin D alone — sleep, activity, mood and the metabolic state matter more."
+     "h": "Ferritin",
+     "t": "Often raised with fatty liver, alcohol or inflammation. Check transferrin saturation to exclude haemochromatosis."
     },
     {
-     "h": "No invented cancer pathway",
-     "t": "Jaundice, weight loss, a mass or a rising ALT despite lifestyle change would change the assessment."
+     "h": "HbA1c 42–47",
+     "t": "Non-diabetic hyperglycaemia. Confirm, then annual HbA1c and referral to the NHS Diabetes Prevention Programme [4]."
+    },
+    {
+     "h": "Low-value results",
+     "t": "Afternoon or finger-prick testosterone is unreliable; test at 9–11am only if symptoms. Isolated hs-CRP does not guide management. Vitamin D: self-care supplement."
+    },
+    {
+     "h": "PSA without counselling",
+     "t": "PSA testing should follow informed discussion. A normal result needs no action but explain its limits [6]."
     }
    ]
   },
   "model": [
    {
-    "phase": "Opening and agenda",
+    "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello Paul, I’m Dr Lee. Can you see and hear me okay? … Good. Your results are back — before I go through them, what have you made of them so far?",
+    "text": "Hello Paul, I’m Dr Clarke. I’ve got the report you uploaded. What would you like from today?",
     "dom": "ro",
-    "why": "Checks the set-up and starts from his understanding"
+    "why": "Open question; clarifies agenda"
    },
    {
     "who": "pt",
-    "text": "The website said my vitamin D is low, and that explains the tiredness, right? I’ve read it makes you knackered. Can you just prescribe a strong one and I’ll be sorted? I haven’t got time for a rabbit hole."
+    "text": "I paid for a full health MOT and it’s flagged nine things in red. I need you to go through every one, refer me to a liver specialist and a hormone clinic, and I’d like it repeated on the NHS every three months to keep an eye on it."
    },
    {
     "who": "dr",
-    "text": "You’re right that it’s low, and I’ll sort that today. I promise not to send you down a rabbit hole. The panel shows a couple of other things that I think matter more for your energy and your health, and I’d like five minutes to go through them with you. Is that okay?",
+    "text": "Thanks for sharing it. My job is to pick out what really matters for your health and act on that. Some of these flags are more important than others. Before we start, can I ask what made you decide to get tested now?",
     "dom": "ro",
-    "why": "Validates, then sets an agenda that includes the whole panel"
+    "why": "Sets approach; explores motivation"
    },
    {
-    "who": "pt",
-    "text": "Go on then. What else?"
-   },
-   {
-    "phase": "Data gathering",
+    "phase": "Hidden agenda",
     "clock": "1–4 min",
+    "who": "pt",
+    "text": "(pause) My brother had a heart attack three months ago. He’s 50. My dad died of a stroke. I keep lying awake thinking I’m next."
+   },
+   {
     "who": "dr",
-    "text": "Tell me about the tiredness first. How long, and what’s it like?",
+    "text": "That must have been a real shock. I can see why you’re worried. Have you had any chest pain or tightness yourself?",
     "dom": "dg",
-    "why": "Characterises the presenting symptom"
+    "why": "Empathy; screens symptoms"
    },
    {
     "who": "pt",
-    "text": "Months. I’m flat by mid-afternoon. I sit at a desk all day, then I’m on the sofa all evening."
+    "text": "Sometimes at night when I’m worrying, a tight feeling for a minute or two. Never when I’m walking or on the stairs."
    },
    {
     "who": "dr",
-    "text": "How’s your sleep — do you wake refreshed? And has anyone mentioned snoring or you stopping breathing at night?",
+    "text": "Any breathlessness, palpitations, sweating or blackouts? Does it ever come on with effort?",
     "dom": "dg",
-    "why": "Screens sleep and OSA without assuming"
+    "why": "Angina and cardiac red flags"
    },
    {
     "who": "pt",
-    "text": "Not really refreshed, no. I don’t know about snoring — nobody’s complained."
+    "text": "No. Never with effort."
    },
    {
     "who": "dr",
-    "text": "How’s your mood been — any low patches, stress, losing interest in things?",
+    "text": "That pattern sounds much more like worry than your heart, but I’ll keep it in mind. How much do you drink in a week, and do you smoke?",
     "dom": "dg",
-    "why": "Screens mood as a cause of fatigue"
+    "why": "Risk factors"
    },
    {
     "who": "pt",
-    "text": "Work’s busy but I’m fine. Just tired."
+    "text": "About 20 units. Stopped smoking five years ago."
+   },
+   {
+    "phase": "Prioritising the results",
+    "clock": "4–8 min",
+    "who": "dr",
+    "text": "Here’s how I read your results. The most important message is about your heart and stroke risk: your cholesterol pattern, the borderline sugar, your weight, the blood pressure at the pharmacy, and your brother’s heart attack all add up. That’s where I want to focus.",
+    "dom": "cm",
+    "why": "Prioritises CVD risk"
+   },
+   {
+    "who": "pt",
+    "text": "So it’s my heart, not my liver?"
    },
    {
     "who": "dr",
-    "text": "Any yellowing of your eyes or skin, dark urine, itching, tummy pain or swelling, or weight loss?",
+    "text": "They’re linked. The liver test is most likely fat in the liver, which goes with the same picture. I’ll repeat it with a proper blood sample, add some checks for other causes, and use a score that tells us whether you need a liver specialist. Your iron store is a bit high, often from the same thing, but I’ll add one test to rule out an inherited iron condition.",
     "dom": "dg",
-    "why": "Screens liver red flags"
+    "why": "ALT plan; FIB-4; transferrin saturation"
    },
    {
     "who": "pt",
-    "text": "No, none of that."
+    "text": "And the testosterone?"
    },
    {
     "who": "dr",
-    "text": "The nurse recorded about 20 units a week. Does that sound right — what does a typical week look like?",
-    "dom": "dg",
-    "why": "Quantifies alcohol without judgement"
+    "text": "That was taken at 4pm, when levels are naturally lower, and you don’t have symptoms of it being low. I wouldn’t act on it. I’d stop the booster, as we don’t know what’s in those. The inflammation marker on its own doesn’t tell us anything useful. Vitamin D is worth taking, but it’s something you buy, it’s cheap.",
+    "dom": "cm",
+    "why": "Low-value results; stop supplement; self-care"
    },
    {
     "who": "pt",
-    "text": "About right, yeah."
+    "text": "There was a PSA in there too."
    },
    {
     "who": "dr",
-    "text": "Thanks for being straightforward. Any medicines, supplements or anything from the gym or online?",
-    "dom": "dg",
-    "why": "Drug and supplement causes of raised ALT"
+    "text": "It’s normal. Ideally that test is done after a conversation about its pros and cons, because it can give false alarms. If you’d like that conversation in future, we can have it.",
+    "dom": "cm",
+    "why": "Uncounselled PSA"
    },
    {
-    "who": "pt",
-    "text": "Nothing."
-   },
-   {
-    "phase": "Ideas, concerns and expectations",
-    "clock": "4–6 min",
-    "who": "dr",
-    "text": "You said you haven’t got time for a rabbit hole. What’s behind that?",
-    "dom": "ro",
-    "why": "Follows the avoidance cue"
-   },
-   {
-    "who": "pt",
-    "text": "Honestly, I just want to feel normal again. I know I should lose weight. I don’t need a lecture."
-   },
-   {
-    "who": "dr",
-    "text": "No lecture, I promise. What were you hoping to leave with today?",
-    "dom": "ro",
-    "why": "Elicits expectations"
-   },
-   {
-    "who": "pt",
-    "text": "A prescription. And to hear I’m basically fine."
-   },
-   {
-    "phase": "Explanation",
-    "clock": "6–8 min",
-    "who": "dr",
-    "text": "Here’s the fuller picture. Your liver test is raised, in a pattern that means the liver cells themselves are irritated. With your sugar level in the pre-diabetes range and high blood fats, the likeliest cause is fatty liver — the liver storing extra fat, often because the body is struggling to handle sugar. It’s very common, it’s usually reversible, and it’s one of the reasons you may feel flat.",
-    "dom": "dg",
-    "why": "Interprets the panel as a whole; working diagnosis in plain words"
-   },
-   {
-    "who": "pt",
-    "text": "Fatty liver? I thought that was drinkers."
-   },
-   {
-    "who": "dr",
-    "text": "It can be both. Most fatty liver is from weight and blood sugar, but your 20 units a week is above the recommended 14 and adds to the strain. I don’t want to assume, though — I’d like a routine liver screen to check for viruses, iron overload and immune causes, and an ultrasound scan.",
-    "dom": "dg",
-    "why": "Liver aetiology screen; alcohol honestly placed"
-   },
-   {
-    "who": "pt",
-    "text": "Is it serious?"
-   },
-   {
-    "who": "dr",
-    "text": "The ALT number doesn’t tell us that. What matters is whether there’s any scarring. There’s a simple score from a blood test — FIB-4 — and if it’s not clearly low, a second test called ELF or a scan. Most people are low risk and manage this with us. A few need a liver specialist, and those are the ones we want to find.",
-    "dom": "dg",
-    "why": "Fibrosis risk stratification and honest proportion"
-   },
-   {
-    "who": "pt",
-    "text": "Right. And the vitamin D?"
-   },
-   {
-    "phase": "Shared management",
+    "phase": "Plan",
     "clock": "8–11 min",
     "who": "dr",
-    "text": "I’ll prescribe it today — it is low and worth fixing. But honestly, I’d be surprised if it’s the whole story for your tiredness. Sleep, activity, the sugar and the liver are more likely to be doing most of it.",
-    "dom": "ro",
-    "why": "Gives the vitamin D proportionately and honestly"
+    "text": "So the plan: a fasting blood test with cholesterol, sugar, liver tests, a liver screen and the iron test; a home blood pressure monitor for a week; then I’ll calculate your ten-year heart risk properly, including your brother. We’ll talk about a statin, which is likely to be recommended, and the changes that make the biggest difference: alcohol, weight and walking. Your sugar result means you can join a free NHS programme too.",
+    "dom": "cm",
+    "why": "Prioritised plan; NG238; PH38"
    },
    {
     "who": "pt",
-    "text": "So what do I actually do?"
+    "text": "What about every three months?"
    },
    {
     "who": "dr",
-    "text": "Losing some weight is the single best treatment for a fatty liver, and it also brings the sugar and blood fats down. You don’t have to overhaul everything. If you picked one change that would stick, what would it be?",
+    "text": "We won’t repeat the whole panel, because most of it won’t change what we do. But I’ll check the important things at the right intervals, and see you in three weeks with the results. That’s a better way to keep an eye on you.",
     "dom": "ro",
-    "why": "Negotiates one owned goal"
-   },
-   {
-    "who": "pt",
-    "text": "Probably cutting the drinking back a bit. And walking at lunch, maybe."
-   },
-   {
-    "who": "dr",
-    "text": "Great — both help your liver directly. There’s also a free NHS programme for people with sugar levels like yours, to help avoid diabetes; can I refer you? I’ll also work out your heart risk score, because fatty liver and heart risk travel together.",
-    "dom": "ro",
-    "why": "Pre-diabetes programme and cardiovascular risk"
-   },
-   {
-    "who": "pt",
-    "text": "Yeah, go on."
+    "why": "Declines routine panels; offers structure"
    },
    {
     "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "If you ever notice yellow eyes or skin, very dark urine, your tummy or legs swelling, vomiting blood or black stools, contact us the same day. That isn’t what I expect — it’s just what would change things.",
-    "dom": "cm",
-    "why": "Specific safety-net"
-   },
-   {
-    "who": "pt",
-    "text": "Okay."
-   },
-   {
-    "who": "dr",
-    "text": "To check I’ve explained it well — what will you tell someone at home about today?",
+    "text": "Can you tell me the plan back?",
     "dom": "ro",
     "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "Vitamin D’s low so I’m taking that, but it’s probably not the main thing. My liver’s fatty from weight and sugar and a bit the drink. More bloods and a scan to check for scarring, cut back the drinking, walk at lunch."
+    "text": "Bloods, home blood pressure, heart risk score, probably a statin. Liver score. Stop the booster, buy vitamin D. Cut the beer. See you in three weeks."
    },
    {
     "who": "dr",
-    "text": "Exactly. I’ll book you in with the results in a few weeks, and we’ll look at the scarring score and your heart risk together. Anything else?",
+    "text": "Exactly. If you get chest pain that comes on with effort, lasts more than a few minutes, or comes with breathlessness, sweating or feeling faint, call 999.",
     "dom": "cm",
-    "why": "Follow-up and shares the floor"
-   },
-   {
-    "who": "pt",
-    "text": "No — that’s more useful than I expected. Cheers."
+    "why": "Safety-net"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Started from his reading of the results; did not hand over the vitamin D and close.",
-    "pts": 1, "dom": "dg"
+    "d": "Clarified his agenda; set out the approach to private results before going through them.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Sedentary office job, evenings on the sofa, alcohol pattern, time pressure, what “normal” means to him.",
-    "pts": 1, "dom": "dg"
+    "d": "Brother’s heart attack, father’s stroke, night-time worry and sleep, work and lifestyle.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up “no time for a rabbit hole” and “I don’t need a lecture” as avoidance, and explored them.",
-    "pts": 1, "dom": "ro"
+    "d": "“Every three months”; the testosterone booster; uncounselled PSA.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (vitamin D explains the tiredness); concern (a lecture, a long process); expectation (a strong vitamin D prescription and to be told he’s fine).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (liver and hormone problems), concern (heart attack like his brother), expectation (referrals, vitamin D, repeat panels).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
-    "t": "Plans appropriate examination and tests",
-    "d": "Liver screen (hepatitis B and C, ferritin and transferrin saturation, autoantibodies, immunoglobulins), ultrasound, FIB-4 then ELF if needed, QRISK3.",
-    "pts": 1, "dom": "dg"
+    "t": "Plans appropriate examination & tests",
+    "d": "Fasting lipids, HbA1c, venous LFTs, liver screen, transferrin saturation; home BP; QRISK3; FIB-4.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
-    "t": "Generates and tests hypotheses",
-    "d": "NAFLD/MASLD vs alcohol-related vs viral vs haemochromatosis vs autoimmune vs drugs; fatigue from sleep, mood, activity and metabolic state.",
-    "pts": 1, "dom": "dg"
+    "t": "Generates & tests hypotheses",
+    "d": "Metabolic syndrome with MASLD; haemochromatosis; alcohol-related liver disease; anxiety versus angina.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Screened jaundice, weight loss, abdominal symptoms; knew no NICE suspected-cancer guidance criterion applies and did not invent one; fibrosis assessed, not assumed.",
-    "pts": 2, "dom": "dg"
+    "d": "Exertional or prolonged chest pain, breathlessness, syncope; jaundice; iron overload.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Likely fatty liver disease within a metabolic cluster; vitamin D deficiency present but not the whole explanation.",
-    "pts": 2, "dom": "dg"
+    "d": "High cardiovascular risk profile with probable fatty liver and non-diabetic hyperglycaemia; anxiety-related chest tightness.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Vitamin D replaced (Royal Osteoporosis Society 2018, dose per BNF); one owned lifestyle goal; alcohol within 14 units; diabetes prevention referral.",
-    "pts": 2, "dom": "cm"
+    "d": "Prioritised tests; QRISK3 and statin discussion (NG238); BP confirmation; FIB-4; no repeat panels; vitamin D self-care.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
-    "t": "Manages comorbidity and contributors",
-    "d": "Pre-diabetes (NICE PH38); cardiovascular risk and statin not withheld for ALT below 3× ULN (NICE NG238); sleep and mood considered.",
-    "pts": 1, "dom": "cm"
+    "t": "Manages comorbidity & contributors",
+    "d": "Alcohol, weight, activity, sleep; stop the testosterone booster; Diabetes Prevention Programme; PSA explained.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Named liver warning signs; review with fibrosis score and QRISK; teach-back.",
-    "pts": 1, "dom": "cm"
+    "d": "Review in three weeks; 999 for exertional or prolonged chest pain; teach-back.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
     "Investigations & results",
-    "Long-term conditions & cancer"
+    "Long-term conditions & cancer",
+    "Professional & ethical dilemmas"
    ],
    "stem": {
     "name": "Paul Cresswell",
     "age": "48 years · male",
     "pmh": [
-     "Nil significant",
-     "BMI 33"
+     "Obesity (BMI 33)",
+     "Ex-smoker"
     ],
     "meds": [
-     "No regular medication"
+     "None prescribed"
     ],
-    "allergy": "NKDA",
-    "recent": "⚠ Tiredness panel: ALT 88 (≈2× ULN), bilirubin normal, ALP near-normal; HbA1c pre-diabetes range; triglycerides raised; vitamin D low. Alcohol ≈20 units/week. No liver screen, FIB-4 or QRISK on file.",
-    "reason": "Results. “Just give me the vitamin D and I’ll be right.”"
+    "allergy": "None recorded",
+    "recent": "Uploaded a private blood test report (36 markers, nine flagged). Pharmacy BP last week 146/92. No previous cardiovascular risk assessment recorded.",
+    "reason": "“Go through my private blood results.”"
    },
    "timeMap": [
     {
      "t": "0–1",
-     "h": "Open and reframe",
-     "d": "He wants vitamin D and no rabbit hole. Agree to treat it, then ask permission to go through the rest of the panel."
+     "h": "Open",
+     "d": "His agenda; your approach to private results."
     },
     {
      "t": "1–4",
-     "h": "Focused history",
-     "d": "Tiredness pattern, sleep and possible OSA, mood, liver symptoms, alcohol in units, medicines and supplements."
+     "h": "Why now",
+     "d": "Brother’s heart attack; father’s stroke; chest tightness screened; alcohol and smoking."
     },
     {
-     "t": "4–6",
-     "h": "ICE",
-     "d": "He wants to feel normal and fears a lecture. Name the avoidance gently."
+     "t": "4–8",
+     "h": "Prioritise",
+     "d": "Heart and stroke risk first; liver and ferritin plan; testosterone, hs-CRP, vitamin D, PSA explained."
     },
     {
-     "t": "6–10",
-     "h": "Explain and plan",
-     "d": "Hepatocellular pattern in a metabolic cluster = likely fatty liver. Liver screen and ultrasound, FIB-4 then ELF, QRISK3. Vitamin D in proportion. One owned goal; diabetes prevention referral."
+     "t": "8–11",
+     "h": "Plan",
+     "d": "Fasting bloods, home BP, QRISK3, statin discussion, FIB-4, lifestyle, DPP; no repeat panels."
     },
     {
-     "t": "10–12",
-     "h": "Safety-net and close",
-     "d": "Jaundice, dark urine, swelling, GI bleeding — same day. Review with results. Teach-back."
+     "t": "11–12",
+     "h": "Close",
+     "d": "Teach-back; review in three weeks; chest pain safety-net."
     }
    ],
    "wordPics": {
-    "fail": "Prescribes vitamin D and agrees it explains the tiredness; ignores or merely “repeats” the ALT; no liver screen or fibrosis assessment; either lectures on weight and alcohol or avoids the subject; invents a cancer referral.",
-    "pass": "Interprets the ALT with the metabolic results as likely NAFLD; arranges a liver screen and FIB-4; addresses alcohol and weight; replaces vitamin D; books follow-up.",
-    "exc": "All of the above, plus: engages a quick-fix patient without a lecture by negotiating one change he owns; explains that fibrosis, not ALT, is what matters; links the liver to diabetes and heart risk (PH38 programme, QRISK3); keeps vitamin D in honest proportion; knows statins aren’t withheld for a mildly raised ALT; teach-back."
+    "fail": "Works through nine results one by one, refers to liver and endocrine clinics, prescribes vitamin D and agrees to repeat panels; or dismisses the whole report; never asks why he tested.",
+    "pass": "Explains the approach to private results, prioritises cardiovascular risk and the raised ALT, and declines low-value testing with reasons.",
+    "exc": "All of the above, plus: uncovers the brother’s heart attack and responds with empathy; screens his chest symptoms; QRISK3 including family history; FIB-4 and transferrin saturation; stops the booster; explains the uncounselled PSA; turns anxiety into a structured follow-up plan."
    },
    "avoid": [
     {
-     "dont": "“Yes, low vitamin D will explain your tiredness.”",
-     "instead": "“It is low and I’ll treat it — but I don’t think it’s the whole story. Can I show you what else the tests found?”",
-     "why": "Colluding with one googled number misses the liver and metabolic picture."
+     "dont": "“Private tests aren’t our responsibility.”",
+     "instead": "“I’ll act on what matters for your health, and explain what doesn’t need action.”",
+     "why": "Doctors must act on clinically significant results whatever the source."
     },
     {
-     "dont": "“You need to lose weight and cut down your drinking.”",
-     "instead": "“If you picked one change that would stick, what would it be?”",
-     "why": "He has already told you he doesn’t want a lecture; a negotiated goal scores, a list doesn’t."
+     "dont": "“Let’s refer you to a liver specialist and an endocrinologist.”",
+     "instead": "“Let’s repeat the liver tests properly and use a score to see if you need a specialist.”",
+     "why": "Most raised ALT with metabolic risk is fatty liver managed in primary care."
     },
     {
-     "dont": "“Your liver test is only mildly raised — we’ll repeat it in six months.”",
-     "instead": "“The number doesn’t tell us about scarring. A simple score and a screen will.”",
-     "why": "Repeating the ALT alone answers nothing about fibrosis and leaves other causes unexcluded."
+     "dont": "(Going through results in order)",
+     "instead": "“The most important thing these results tell us is about your heart and stroke risk.”",
+     "why": "Prioritising keeps the consultation focused on what changes outcomes."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Work and routine",
-     "t": "A desk-bound job, alcohol above the low-risk limit and evenings on the sofa drive the metabolic picture. Plan changes around his working day, not against it."
+     "h": "The worried well and family events",
+     "t": "A relative’s heart attack often prompts testing. Fear drives demand for repeated tests; addressing the fear reduces it."
     },
     {
-     "h": "Stigma of “liver”",
-     "t": "Many people link liver disease only with heavy drinking. Explaining the metabolic cause reduces defensiveness while still addressing his alcohol honestly."
+     "h": "Direct-to-consumer testing",
+     "t": "Panels are marketed as reassurance but often generate anxiety through red flags that are not clinically significant."
     }
    ],
    "legal": [
     {
-     "h": "Driving and work",
-     "t": "No DVLA notification or fitness-for-work issue arises from fatty liver or pre-diabetes at this stage."
+     "h": "Acting on results",
+     "t": "GMC: doctors must act on clinically significant information whatever its source. NHS–private interface guidance: the NHS is not obliged to repeat private screening."
+    },
+    {
+     "h": "Supplements",
+     "t": "Online testosterone boosters are unregulated and may contain undeclared substances."
     }
    ],
    "professional": [
     {
-     "h": "Results governance",
-     "t": "An abnormal ALT needs a documented plan — liver screen, fibrosis assessment and review — not a filed “repeat in 6 months”. GMC Good Medical Practice (2024): follow up results you request."
+     "h": "Prioritisation",
+     "t": "Lead with what changes outcomes. Explain why low-value results do not need action."
     },
     {
-     "h": "Respectful weight conversations",
-     "t": "Discuss weight with consent and without stigmatising language, and offer practical support rather than instructions."
+     "h": "Stewardship",
+     "t": "Declining repeated panels, with reasons and a structured alternative, is responsible use of resources."
     }
    ],
    "community": [
     {
-     "h": "Support",
-     "t": "NHS Diabetes Prevention Programme; local weight-management services; British Liver Trust patient information; Drinkaware or local alcohol services if he wants support to cut down."
+     "h": "NHS Diabetes Prevention Programme",
+     "t": "For people with non-diabetic hyperglycaemia."
+    },
+    {
+     "h": "NHS Health Check and community pharmacy",
+     "t": "Blood pressure checks and lifestyle support; NHS Better Health resources for weight and alcohol."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Jaundice, dark urine, pale stools, itching",
-     "Abdominal swelling, leg swelling, confusion, GI bleeding — decompensated liver disease",
-     "Unexplained weight loss or a mass — changes the assessment",
-     "Alcohol intake above 14 units a week — quantify honestly"
+     "Exertional or prolonged chest pain, breathlessness, syncope: urgent cardiac assessment",
+     "Jaundice, ALT over 3 times the upper limit, or signs of chronic liver disease: urgent liver work-up",
+     "Transferrin saturation raised with high ferritin: haemochromatosis testing"
     ],
     "psychosocial": [
-     "Sedentary office job, evenings on the sofa",
-     "Wants a quick fix; “no time for a rabbit hole”",
-     "Sleep quality and mood as causes of tiredness"
+     "Brother’s heart attack at 50",
+     "Father’s stroke",
+     "Night-time worry and poor sleep",
+     "Sedentary job, alcohol"
     ],
     "ice": [
-     "Idea: low vitamin D explains the tiredness",
-     "Concern: a lecture, a long process",
-     "Expectation: a strong vitamin D prescription and to be told he’s fine"
+     "Idea: liver and hormone problems",
+     "Concern: heart attack like his brother",
+     "Expectation: referrals and repeat panels"
     ]
    },
-   "diagnosis": "A hepatocellular pattern (ALT about twice the upper limit, normal bilirubin and near-normal ALP) with BMI 33, pre-diabetic HbA1c and raised triglycerides — most likely fatty liver disease linked to insulin resistance, with alcohol at 20 units a week as a possible contributor. Vitamin D deficiency is present but unlikely to explain the fatigue on its own.",
-   "diagnosisLay": "“Your liver is storing extra fat — very common when blood sugar and weight are creeping up. It irritates the liver cells, which is why that test is raised. The important question is whether it has caused any scarring, and a simple blood score will tell us. It’s usually reversible.”",
+   "diagnosis": "“These results mostly point to one thing: your heart and stroke risk is raised, with fat in the liver and borderline sugar as part of the same picture.”",
+   "diagnosisLay": "“Cholesterol, sugar, blood pressure, weight and the liver are all connected. Improving one usually improves the others.”",
    "management": {
-    "reflectIce": "“You came for vitamin D and I’m giving you that. I’ve also shown you why I think your energy is more tied to your liver and blood sugar — and that’s good news, because it’s something you can change.”",
-    "psychosocial": "Respect his time pressure: one negotiated change (cutting back alcohol, a lunchtime walk) and a referral that does the work for him, rather than a lecture.",
+    "reflectIce": "“You came wanting every result chased because you’re frightened after Mark’s heart attack. Let’s put the effort where it protects your heart.”",
+    "psychosocial": "Acknowledge fear; structured follow-up instead of repeated panels; sleep and alcohol.",
     "sharedPlan": [
-     "Liver screen (hepatitis B and C, ferritin and transferrin saturation, autoantibodies, immunoglobulins) and ultrasound (BSG/BASL 2018)",
-     "FIB-4, then ELF if not low; refer to hepatology if ELF ≥10.51 (NICE NG49)",
-     "Diabetes prevention programme and HbA1c recheck at least yearly (NICE PH38); QRISK3 and statin if ≥10% (NICE NG238)",
-     "Vitamin D replacement (Royal Osteoporosis Society 2018; dose per BNF); alcohol within 14 units a week"
+     "Fasting lipids and HbA1c; venous LFTs; liver screen; transferrin saturation",
+     "Home BP monitoring for a week",
+     "QRISK3 including family history; statin discussion (NG238)",
+     "FIB-4 for fibrosis risk; referral only if indicated",
+     "Stop the testosterone booster; vitamin D as self-care",
+     "Alcohol, weight, activity; NHS Diabetes Prevention Programme",
+     "Review in three weeks"
     ],
     "safetyNet": [
-     "Same-day contact: yellow eyes or skin, very dark urine, abdominal or leg swelling, vomiting blood, black stools",
-     "Review in a few weeks with the liver screen, fibrosis score and QRISK3"
+     "Chest pain on exertion, lasting more than a few minutes, or with breathlessness, sweating or faintness: 999",
+     "Yellow skin or eyes, dark urine or abdominal swelling: contact the practice urgently"
     ]
    }
   },
   "links": [
    {
+    "ic": "🗺️",
+    "t": "High cholesterol",
+    "s": "Risk assessment and statins",
+    "href": "algorithms/high-cholesterol.html"
+   },
+   {
     "ic": "💠",
     "t": "Fatty liver",
-    "s": "Protocol · NICE NG49",
+    "s": "FIB-4 and when to refer",
     "href": "management/fatty-liver.html"
    },
    {
-    "ic": "📋",
+    "ic": "💠",
+    "t": "Non-diabetic hyperglycaemia",
+    "s": "HbA1c 42–47 and the prevention programme",
+    "href": "management/non-diabetic-hyperglycaemia.html"
+   },
+   {
+    "ic": "🗺️",
     "t": "Abnormal LFTs",
-    "s": "Case walkthrough · fibrosis scoring",
-    "href": "../cases/abnormal-lfts.html"
-   },
-   {
-    "ic": "🗺️",
-    "t": "Abnormal LFTs pathway",
-    "s": "Visual algorithm · liver screen",
+    "s": "Visual algorithm",
     "href": "algorithms/abnormal-lfts.html"
-   },
-   {
-    "ic": "🗺️",
-    "t": "Vitamin D deficiency",
-    "s": "Visual algorithm · testing and replacement",
-    "href": "algorithms/vitamin-d-deficiency.html"
-   },
-   {
-    "ic": "🧮",
-    "t": "QRISK3",
-    "s": "Medical Calculators",
-    "href": "calculators.html"
    }
   ],
   "pitfalls": {
-   "intro": "Interpreting a results panel is examined as a reasoning task. Candidates fail when they answer the patient’s question rather than the clinical one, or when they turn a metabolic conversation into a lecture.",
+   "intro": "There are nine flags but only a few matter. The station tests prioritisation, saying no to low-value tests kindly, and finding the fear behind the request.",
    "items": [
     {
      "dom": "cm",
-     "fail": "Treating the vitamin D and filing the rest.",
-     "why": "The raised ALT, HbA1c and triglycerides are the real findings. Missing the gestalt is a data-interpretation fail.",
-     "fix": "Name all the abnormal results and how they fit together before prescribing."
+     "fail": "Working through every result equally.",
+     "why": "The time goes on low-value results and the cardiovascular message is lost.",
+     "fix": "Lead with heart and stroke risk."
     },
     {
      "dom": "dg",
-     "fail": "Labelling it fatty liver without a liver screen.",
-     "why": "BSG/BASL 2018 expects viral, iron, autoimmune and drug causes to be excluded; alcohol must be quantified.",
-     "fix": "Hepatitis B and C, ferritin and transferrin saturation, autoantibodies, immunoglobulins and an ultrasound."
+     "fail": "Not asking why he tested.",
+     "why": "His brother’s heart attack is the hidden agenda and a QRISK3 input.",
+     "fix": "Ask what prompted it."
+    },
+    {
+     "dom": "dg",
+     "fail": "Not screening his chest symptoms.",
+     "why": "Angina must be excluded before attributing them to anxiety.",
+     "fix": "Ask about exertion, duration and associated features."
     },
     {
      "dom": "cm",
-     "fail": "Planning to repeat the ALT in 6 months as the whole plan.",
-     "why": "ALT does not reflect fibrosis. The prognostic question goes unanswered.",
-     "fix": "FIB-4, then ELF if needed (NICE NG49: refer if ELF ≥10.51)."
+     "fail": "Referring the ALT straight to hepatology.",
+     "why": "Most cases are MASLD managed in primary care.",
+     "fix": "Repeat, screen, FIB-4; refer if indicated."
     },
     {
      "dom": "cm",
-     "fail": "Inventing a cancer referral or withholding a statin because of the liver test.",
-     "why": "No NICE suspected-cancer guidance criterion applies; NICE NG238 advises not to exclude people from statins for transaminases below 3× ULN.",
-     "fix": "Keep the plan proportionate: fibrosis, diabetes risk and QRISK3."
+     "fail": "Acting on the afternoon testosterone.",
+     "why": "Unreliable sample; no symptoms; he is taking a booster.",
+     "fix": "Stop the booster; test properly only if symptomatic."
     },
     {
      "dom": "ro",
-     "fail": "A lecture on weight and alcohol.",
-     "why": "He signalled avoidance and asked for no lecture. Examiners mark down lists of instructions.",
-     "fix": "Ask what one change he would make, and build on it."
-    },
-    {
-     "dom": "ro",
-     "fail": "Using “transaminases”, “hepatocellular” and “fibrosis” without explanation.",
-     "why": "Jargon loses a patient who already wants to disengage.",
-     "fix": "“Liver cells irritated”, “storing extra fat”, “any scarring” — then check understanding."
+     "fail": "Dismissing the report or agreeing to repeat panels.",
+     "why": "Either damages trust or wastes resources.",
+     "fix": "Explain what you will do and when."
     }
    ]
   }
@@ -2999,479 +2950,488 @@
  "flight-anxiety-diazepam": {
   "stem": {
    "name": "Bianca Foster",
-   "age": "38-year-old woman",
+   "age": "36 years · female",
    "pmh": [
-    "No significant past medical history recorded",
-    "Moved from a previous practice"
+    "Pregnancy: antenatal booking at 10 weeks (IVF pregnancy); dating scan normal",
+    "Anxiety (2019)"
    ],
    "meds": [
-    "No regular medication"
+    "Folic acid 400 micrograms daily"
    ],
    "allergy": "None recorded",
-   "recent": "Reports that her previous GP gave her a few diazepam before flights. No other recent contact.",
-   "reason": "Telephone request: “A few diazepam for a long-haul flight in two weeks.”"
+   "recent": "Antenatal booking: BMI 32. Previous practice records show diazepam issued in 2018 and 2019 “for flights”.",
+   "reason": "Telephone request: “a few diazepam for a flight”."
   },
   "knowledge": {
-   "guideline": "BNF — benzodiazepines (anxiolytics) · NICE CG113 — Generalised anxiety disorder and panic disorder in adults · GOV.UK — travelling with medicine containing controlled drugs · GMC prescribing guidance (2021)",
-   "summary": "Fear of flying is a specific phobia, and benzodiazepines don’t treat it. Decline kindly with clear reasons (sedation, clot risk when immobile, slower reactions in an emergency, legal problems abroad, dependence), then offer things that work: a fear-of-flying course, CBT-based self-help, and breathing techniques. Check for wider anxiety.",
+   "guideline": "[1] RCOG Green-top Guideline No. 37a Reducing the risk of venous thromboembolism during pregnancy and the puerperium (2015) · [2] RCOG Scientific Impact Paper: Air travel and pregnancy (check current version) · [3] NICE CKS Benzodiazepine and z-drug withdrawal / Generalized anxiety disorder (check current versions) · [4] NICE CG192 Antenatal and postnatal mental health (2014, updated 2020) · [5] Product SPC for diazepam (use in pregnancy) · [6] NHS Talking Therapies for anxiety and depression (self-referral) and national bereavement support services",
+   "summary": "A request for diazepam for an 8-hour flight from a woman who is 15 weeks pregnant after IVF, BMI 32, age 36, with a family history of VTE, travelling to her estranged father’s funeral with acute grief and panic attacks. Decline diazepam kindly with reasons, give non-drug strategies, arrange urgent maternity assessment of VTE risk for the flight, give pregnancy travel advice, and support her grief.",
    "points": [
     {
-     "h": "What benzodiazepines are licensed for",
-     "t": "BNF: benzodiazepines are for short-term relief (2–4 weeks only) of anxiety that is severe, disabling or causing unacceptable distress. They do not treat a phobia. The previous GP’s prescribing does not make a new prescription appropriate."
+     "h": "Why not benzodiazepines for flying",
+     "t": "Sedation and paradoxical agitation, impaired response in an emergency, immobility increasing VTE risk, possible legal issues abroad, dependence, and no effect on the underlying phobia."
     },
     {
-     "h": "The safety reasons",
-     "t": "Sedation and occasional paradoxical agitation or disinhibition; sitting still and drowsy for hours on a long flight adds to clot risk; reduced alertness makes it harder to follow crew instructions or evacuate; interaction with alcohol taken on board; tolerance and dependence."
+     "h": "Pregnancy",
+     "t": "Avoid benzodiazepines in pregnancy where possible; check the SPC [5]. Always ask about pregnancy before prescribing for a woman of reproductive age."
     },
     {
-     "h": "Legal issues abroad",
-     "t": "Diazepam is a UK controlled drug. GOV.UK advises checking the destination country’s rules with its embassy before travelling with controlled drugs, and some countries restrict or ban them. Diazepam is also covered by UK drug-driving law if she drives soon after landing."
+     "h": "VTE risk with travel in pregnancy",
+     "t": "Long-distance travel over 4 hours is a transient risk factor. With other risk factors (age over 35, BMI 30 or more, IVF, family history), an individual assessment is needed; the maternity team may advise LMWH [1]."
     },
     {
-     "h": "They maintain the fear",
-     "t": "Sedating through a flight works as a safety behaviour: she never learns that she can cope, so the fear persists. Exposure-based approaches reduce it over time."
+     "h": "Travel measures",
+     "t": "Aisle seat, walk regularly, calf exercises, hydration, avoid alcohol, graduated compression stockings, carry maternity notes [2]."
     },
     {
-     "h": "What works",
-     "t": "Fear-of-flying courses (several airlines run one-day courses combining pilot explanation with psychological techniques), CBT-based self-help, controlled breathing and grounding. NHS Talking Therapies accepts self-referral for anxiety problems, including specific phobias."
+     "h": "Insurance and airlines",
+     "t": "Check travel insurance covers pregnancy. Airlines often require a letter later in pregnancy, usually after 28 weeks; not needed at 15 weeks [2]."
     },
     {
-     "h": "Look for wider anxiety",
-     "t": "Ask whether anxiety affects other areas of life. NICE CG113: do not offer benzodiazepines for generalised anxiety disorder except short term during a crisis, and do not prescribe them for panic disorder; offer stepped psychological care first."
+     "h": "Flight anxiety without drugs",
+     "t": "Slow breathing, grounding techniques, distraction, telling the crew, and longer term CBT-based fear-of-flying courses."
+    },
+    {
+     "h": "Grief and panic",
+     "t": "Acute grief with guilt after estrangement is common. Assess mood, sleep and risk; offer bereavement support and NHS Talking Therapies self-referral; consider perinatal mental health input if symptoms persist [4,6]."
+    },
+    {
+     "h": "Holding the boundary",
+     "t": "Decline clearly and kindly, explain the reasons in terms of her and the baby’s safety, and offer a concrete alternative plan."
     }
    ]
   },
   "model": [
    {
-    "phase": "Opening & agenda",
+    "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello, is that Bianca Foster? It’s Dr Okafor from the surgery. Can you confirm your date of birth? … Thanks. I understand you’d like to talk about an upcoming flight — tell me what’s going on.",
+    "text": "Hello, is that Bianca Foster? I’m Dr Clarke. Can you confirm your date of birth, and are you somewhere you can talk?",
+    "dom": "ro",
+    "why": "Telephone identity and privacy"
+   },
+   {
+    "who": "pt",
+    "text": "Yes. I just need a quick prescription. I’ve got a long-haul flight on Saturday and I can’t do it without a few diazepam. My old GP always gave them. Five would do."
+   },
+   {
+    "who": "dr",
+    "text": "Thanks for explaining. Before I think about medicines, I can see from your notes you’re pregnant. How far along are you, and how are you both doing?",
+    "dom": "dg",
+    "why": "Pregnancy first"
+   },
+   {
+    "who": "pt",
+    "text": "About 15 weeks. Fine, I think. I didn’t think it mattered for this."
+   },
+   {
+    "phase": "History",
+    "clock": "1–5 min",
+    "who": "dr",
+    "text": "It does matter, and we’ll come to that. It sounds like this trip came up quickly. Can I ask what it’s for?",
+    "dom": "dg",
+    "why": "Explores the reason for travel"
+   },
+   {
+    "who": "pt",
+    "text": "(pause, tearful) My dad died. On Tuesday. In Toronto. The funeral’s next week."
+   },
+   {
+    "who": "dr",
+    "text": "I’m so sorry, Bianca. That’s a huge shock. How are you coping?",
+    "dom": "ro",
+    "why": "Empathy"
+   },
+   {
+    "who": "pt",
+    "text": "Not well. We hadn’t spoken for three years. We fell out. I kept meaning to ring him. Now I can’t."
+   },
+   {
+    "who": "dr",
+    "text": "That guilt makes grief so much heavier. Have you been having panic attacks, trouble sleeping or eating? And have you had any thoughts of harming yourself?",
+    "dom": "dg",
+    "why": "Mood, panic and risk"
+   },
+   {
+    "who": "pt",
+    "text": "Panic attacks every day. I can’t sleep. No, I wouldn’t hurt myself, I’ve got the baby."
+   },
+   {
+    "who": "dr",
+    "text": "Thank you for telling me. And the flying, what happens for you?",
+    "dom": "dg",
+    "why": "Nature of the fear"
+   },
+   {
+    "who": "pt",
+    "text": "Bad turbulence years ago. Since then I panic as soon as the doors close."
+   },
+   {
+    "phase": "Ideas, concerns and expectations",
+    "clock": "5–6 min",
+    "who": "dr",
+    "text": "What were you hoping the diazepam would do?",
+    "dom": "ro",
+    "why": "Ideas and expectations"
+   },
+   {
+    "who": "pt",
+    "text": "Knock me out so I sleep through it. And I’m scared all this stress is bad for the baby."
+   },
+   {
+    "phase": "Explanation and decline",
+    "clock": "6–8 min",
+    "who": "dr",
+    "text": "That makes sense. I’m not going to prescribe diazepam, and I want to explain why, because it’s about keeping you and the baby safe. We avoid it in pregnancy where we can. Sleeping still for hours raises the risk of a clot in the legs, and that risk is already higher in pregnancy and on long flights. And if anything happened on the plane, you’d need to be alert.",
     "dom": "cm",
-    "why": "Identity check and open start on the phone"
+    "why": "Decline with reasons"
    },
    {
     "who": "pt",
-    "text": "I’ve got a long-haul flight in a couple of weeks and I’m terrified. My old GP always gave me a few diazepam and it really helped. Could you just do me about five? It’s only for the flight."
+    "text": "It’s only five tablets."
    },
    {
     "who": "dr",
-    "text": "Thank you for being so clear. Before we get to the tablets, I’d like to understand what flying is like for you. Would that be okay?",
+    "text": "I know it feels small. But I think we can make the flight more manageable in other ways, and do something about the clot risk at the same time.",
     "dom": "ro",
-    "why": "Acknowledges the request without an instant yes or no; explores first"
+    "why": "Holds boundary; offers alternative"
    },
    {
-    "who": "pt",
-    "text": "I suppose. It’s the only thing that gets me on the plane."
-   },
-   {
-    "phase": "Data gathering",
-    "clock": "1–4 min",
-    "who": "dr",
-    "text": "What happens for you when you think about the flight, or when you’re on the plane?",
-    "dom": "ro",
-    "why": "Open question about her experience of the fear"
-   },
-   {
-    "who": "pt",
-    "text": "My heart races, I feel sick, I’m convinced something’s going to go wrong. Even thinking about it now I feel it."
-   },
-   {
-    "who": "dr",
-    "text": "That sounds really horrible. Is it only flying that makes you feel like that, or does anxiety show up in other parts of your life too — work, sleep, being out and about?",
-    "dom": "dg",
-    "why": "Screens for a wider anxiety disorder behind the phobia"
-   },
-   {
-    "who": "pt",
-    "text": "I’ve not really thought about it that way. Flying is the thing that floors me."
-   },
-   {
-    "who": "dr",
-    "text": "Okay. And when you took the diazepam before, how did you feel on the flight — and did you have alcohol with it?",
-    "dom": "dg",
-    "why": "Checks prior effects and the alcohol interaction"
-   },
-   {
-    "who": "pt",
-    "text": "It took the edge off, I think. I can’t really remember whether I had a drink."
-   },
-   {
-    "who": "dr",
-    "text": "That’s helpful. Do you have any other health conditions, or take anything regularly, and is there anything like a clot in the past in you or your family?",
-    "dom": "dg",
-    "why": "Brief safety screen including VTE risk"
-   },
-   {
-    "who": "pt",
-    "text": "No, nothing like that. I’m pretty healthy."
-   },
-   {
-    "phase": "Ideas, concerns & expectations",
-    "clock": "4–5 min",
-    "who": "dr",
-    "text": "Can I ask what this trip means to you? You said diazepam is the only thing that gets you on the plane.",
-    "dom": "ro",
-    "why": "Follows the cue about the stakes of the trip"
-   },
-   {
-    "who": "pt",
-    "text": "It’s important. I can’t not go. I’m honestly scared that without something I just won’t get on."
-   },
-   {
-    "who": "dr",
-    "text": "Thank you — so the real worry is being unable to travel to something that matters. That makes complete sense, and I want to help you get on that plane.",
-    "dom": "ro",
-    "why": "Names the hidden concern and aligns with her goal"
-   },
-   {
-    "phase": "Explanation",
-    "clock": "5–8 min",
-    "who": "dr",
-    "text": "I’m going to be honest with you about the diazepam, because you deserve the reasons rather than just a no. GPs have moved away from prescribing it for flights, and it isn’t me being awkward.",
-    "dom": "ro",
-    "why": "Signposts a difficult message respectfully"
-   },
-   {
-    "who": "pt",
-    "text": "Oh. My old GP never had a problem with it."
-   },
-   {
-    "who": "dr",
-    "text": "I understand, and I’m not criticising them. The reasons are about your safety. It makes you drowsy, and now and then it does the opposite and makes people agitated. Sitting still and sleepy for hours on a long flight raises the chance of a clot in the leg. If there were an emergency on board, you’d be slower to react. And some countries restrict it, so carrying it can cause problems at the other end.",
-    "dom": "cm",
-    "why": "Gives the specific safety and legal reasons for declining"
-   },
-   {
-    "who": "pt",
-    "text": "I didn’t know about the clot thing, or the countries."
-   },
-   {
-    "who": "dr",
-    "text": "And the biggest reason: it doesn’t treat the fear. It gets you through one flight, but the fear is still there next time — sometimes stronger, because you never find out you can manage without it.",
-    "dom": "ro",
-    "why": "Explains that benzodiazepines maintain rather than treat the phobia"
-   },
-   {
-    "who": "pt",
-    "text": "So what am I supposed to do? I can’t just not go."
-   },
-   {
-    "phase": "Shared management",
+    "phase": "Plan",
     "clock": "8–11 min",
     "who": "dr",
-    "text": "You won’t have to. There are things that work better. Several airlines run one-day fear-of-flying courses with a pilot explaining what’s happening and a psychologist teaching coping skills — some people finish with a short flight. There are good self-help programmes based on CBT, and I can teach you a breathing technique now. Which of those sounds most doable in two weeks?",
+    "text": "Have you had any clots, or anyone in the family?",
     "dom": "dg",
-    "why": "Offers effective alternatives and involves her in choosing"
+    "why": "VTE risk factors"
    },
    {
     "who": "pt",
-    "text": "The course might be good if I can get on one. And the breathing, definitely."
+    "text": "My mum had one after an operation."
    },
    {
     "who": "dr",
-    "text": "Let’s try it now. Breathe in gently through your nose for a count of four, and out slowly through your mouth for a count of six. The longer out-breath calms your body down. Practise a few minutes twice a day before the trip, so it’s automatic on the plane.",
+    "text": "With a flight of eight hours, your pregnancy after IVF, your weight and your mum’s clot, I’d like the maternity team to assess you before Saturday in case you need blood-thinning injections for the journey. I’ll contact your midwife today. On the plane: an aisle seat, walk every hour, calf exercises, plenty of water and no alcohol, and flight socks.",
     "dom": "cm",
-    "why": "Teaches a practical technique during the consultation"
-   },
-   {
-    "who": "pt",
-    "text": "That actually helps a bit, even now."
+    "why": "VTE assessment; travel measures"
    },
    {
     "who": "dr",
-    "text": "Good. I’ll message you links to fear-of-flying courses and a CBT self-help programme. And if you’d like longer-term help, you can refer yourself to NHS Talking Therapies — they treat phobias like this properly. For the flight itself: move around the cabin, drink water, go easy on alcohol.",
+    "text": "For the panic: breathe in for four, out for six, and name five things you can see. Tell the crew you’re a nervous flyer, they’re used to it. There are free apps and courses for fear of flying, which you could look at for the future.",
     "dom": "cm",
-    "why": "Concrete, tailored plan with written follow-up and travel advice"
-   },
-   {
-    "who": "pt",
-    "text": "Okay. I’m a bit disappointed, but I get it."
+    "why": "Non-drug strategies"
    },
    {
     "who": "dr",
-    "text": "That’s completely fair — you rang expecting one thing and I’ve offered something else. I’d rather give you tools that work this time and every time than something that just papers over it.",
-    "dom": "ro",
-    "why": "Acknowledges her disappointment and holds the boundary kindly"
+    "text": "Take your maternity notes, and check your travel insurance covers pregnancy. If you get bleeding, tummy pain or a painful swollen leg or chest pain while away, get seen urgently there.",
+    "dom": "cm",
+    "why": "Pregnancy travel advice"
    },
    {
-    "phase": "Safety-net & close",
+    "who": "dr",
+    "text": "And for the grief, I’d like to see you when you’re back. Bereavement services and NHS Talking Therapies can help, and you can self-refer. Is that okay?",
+    "dom": "cm",
+    "why": "Grief support; follow-up"
+   },
+   {
+    "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "Could you tell me back what you’re going to do over the next two weeks, so I know I’ve explained it well?",
+    "text": "Can you tell me what you’ll do before Saturday?",
     "dom": "ro",
-    "why": "Teach-back to check understanding"
+    "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "Look at the courses, try the self-help, practise the breathing twice a day, and walk about and drink water on the flight."
+    "text": "Midwife about the clot thing. Flight socks, aisle seat, water, walk. Breathing. Notes and insurance. See you when I’m back."
    },
    {
     "who": "dr",
-    "text": "Exactly. If the anxiety starts spilling into other parts of your life, or you want to talk it through again before you go, ring and book in with me. And I’d love to hear how the flight went.",
-    "dom": "ro",
-    "why": "Leaves a route back and offers continuity"
-   },
-   {
-    "who": "pt",
-    "text": "Thanks. I’ll let you know."
+    "text": "Exactly. If the panic becomes unbearable, or you ever have thoughts of harming yourself, call us, 111, or Samaritans on 116 123. I’m really sorry about your dad.",
+    "dom": "cm",
+    "why": "Safety-net; compassion"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Did not answer the prescription request straight away; explored what flying is like for her in her own words.",
-    "pts": 1, "dom": "dg"
+    "d": "Identity and privacy; heard the request; raised the pregnancy before discussing medicines.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "What the trip means, previous experience with diazepam, alcohol use when flying, how anxiety affects daily life.",
-    "pts": 1, "dom": "dg"
+    "d": "Father’s sudden death, estrangement and guilt, work, IVF pregnancy.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up “it’s the only thing that gets me on the plane” and the fear of not being able to travel.",
-    "pts": 1, "dom": "ro"
+    "d": "Pregnancy in the record; short-notice trip; tearfulness.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea that diazepam is the answer; concern about missing an important trip; expectation of a small prescription.",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (sleep through the flight), concerns (grief, guilt, stress harming the baby), expectation (five diazepam today).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "No tests needed; brief safety screen (health conditions, regular medicines, clot history) and screen for wider anxiety.",
-    "pts": 1, "dom": "dg"
+    "d": "No tests needed; same-week maternity assessment of VTE risk; follow-up appointment.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
-    "d": "Specific phobia of flying vs part of generalised anxiety or panic disorder.",
-    "pts": 1, "dom": "dg"
+    "d": "Specific phobia of flying; acute grief reaction with panic attacks; perinatal anxiety.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Considered clot risk factors and alcohol co-use; asked whether anxiety extends beyond flying.",
-    "pts": 2, "dom": "dg"
+    "d": "Suicidal thoughts; pregnancy bleeding or pain; VTE risk factors and history.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Named it as a common, treatable fear of flying (specific phobia) and explained it in plain words.",
-    "pts": 2, "dom": "dg"
+    "d": "Flight anxiety in a 15-week pregnancy with raised VTE risk for long-haul travel, and acute grief with panic.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Declined diazepam with clear reasons; offered a fear-of-flying course, CBT self-help, a breathing technique and NHS Talking Therapies.",
-    "pts": 2, "dom": "cm"
+    "d": "Diazepam declined with reasons; non-drug strategies; maternity VTE assessment; travel measures, notes and insurance.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Addressed alcohol on flights and in-flight clot prevention; offered assessment if anxiety is wider.",
-    "pts": 1, "dom": "cm"
+    "d": "Grief and guilt acknowledged; bereavement and Talking Therapies support; perinatal mental health in mind.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Written links sent, route back before travel, teach-back, and review if anxiety spreads to daily life.",
-    "pts": 1, "dom": "cm"
+    "d": "Review on return; urgent care abroad for bleeding, pain, leg or chest symptoms; crisis numbers; teach-back.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
-    "Mental health & addiction",
-    "Professional & ethical dilemmas"
+    "Gender, reproductive & sexual health",
+    "Mental health & addiction"
    ],
    "stem": {
     "name": "Bianca Foster",
-    "age": "38 years · female",
+    "age": "36 years · female",
     "pmh": [
-     "Nil significant"
+     "Pregnancy: antenatal booking at 10 weeks (IVF pregnancy); dating scan normal",
+     "Anxiety (2019)"
     ],
     "meds": [
-     "No regular medication"
+     "Folic acid 400 micrograms daily"
     ],
     "allergy": "None recorded",
-    "recent": "⚠ States previous GP issued a few diazepam before flights. Flight in two weeks.",
-    "reason": "Telephone request for “a few diazepam” before a long-haul flight in two weeks."
+    "recent": "Antenatal booking: BMI 32. Previous practice records show diazepam issued in 2018 and 2019 “for flights”.",
+    "reason": "Telephone request: “a few diazepam for a flight”."
    },
    "timeMap": [
     {
      "t": "0–1",
      "h": "Open",
-     "d": "Let her make the request in full. Don’t say yes or no yet — ask what flying is like for her."
+     "d": "Identity. Hear the request. Raise the pregnancy before medicines."
     },
     {
-     "t": "1–4",
-     "h": "Focused history",
-     "d": "Symptoms of the fear, previous diazepam effects, alcohol, health and clot risk, wider anxiety."
+     "t": "1–6",
+     "h": "History",
+     "d": "Why the trip: father’s death, estrangement, guilt. Panic, sleep, risk. The flying fear. ICE."
     },
     {
-     "t": "4–5",
-     "h": "ICE",
-     "d": "What the trip means and the fear of not being able to go."
+     "t": "6–8",
+     "h": "Decline",
+     "d": "No diazepam: pregnancy, clot risk, alertness, doesn’t treat fear. Hold the boundary kindly."
     },
     {
-     "t": "5–8",
-     "h": "Kind decline with reasons",
-     "d": "Sedation, clot risk, emergency response, legal issues abroad, dependence — and that it doesn’t treat the fear."
+     "t": "8–11",
+     "h": "Plan",
+     "d": "VTE risk factors; maternity assessment before Saturday; travel measures; breathing and grounding; notes and insurance; grief support."
     },
     {
-     "t": "8–12",
-     "h": "Alternatives and close",
-     "d": "Course, CBT self-help, breathing technique practised now, Talking Therapies; teach-back and route back."
+     "t": "11–12",
+     "h": "Close",
+     "d": "Teach-back; urgent care abroad; crisis numbers; follow-up."
     }
    ],
    "wordPics": {
-    "fail": "Prescribes because the previous GP did, or refuses flatly (“we don’t do that”) with no reasons or alternatives; never explores what the trip means or whether anxiety is wider; she ends the call feeling judged and stuck.",
-    "pass": "Declines with the main safety reasons; validates the fear; offers a fear-of-flying course and self-help; checks for wider anxiety; offers a route back.",
-    "exc": "All of the above, plus: explores the stakes of the trip before giving the decision; teaches a breathing technique on the call; turns the decline into a better offer; acknowledges her disappointment honestly; she leaves with a concrete two-week plan she chose."
+    "fail": "Prescribes diazepam without noticing the pregnancy, or refuses curtly without reasons or alternatives; never asks why she is travelling.",
+    "pass": "Notices the pregnancy, declines diazepam with reasons, gives non-drug strategies and travel advice, and responds to the bereavement.",
+    "exc": "All of the above, plus: links the decline to her and the baby’s safety; identifies multiple VTE risk factors and arranges maternity assessment before the flight; practical panic techniques; insurance and notes; acknowledges the guilt with compassion; follow-up after her return."
    },
    "avoid": [
     {
-     "dont": "“We don’t prescribe diazepam for flying — practice policy.”",
-     "instead": "“I’d like to explain why, because the reasons are about your safety, and then find something that works better.”",
-     "why": "Hiding behind policy reads as dismissive and loses Relating marks."
+     "dont": "“Sure, five won’t hurt.”",
+     "instead": "“Before any medicine, I can see you’re pregnant. Let’s talk about that.”",
+     "why": "Benzodiazepines are avoided in pregnancy where possible and sedation increases clot risk."
     },
     {
-     "dont": "“Fine, just this once, since your old GP did.”",
-     "instead": "“I’m not criticising your old GP, but I’m not able to prescribe it safely — here’s what I can offer instead.”",
-     "why": "Collusion is unsafe prescribing and a Tasks fail."
+     "dont": "“We don’t prescribe that for flying. Anything else?”",
+     "instead": "“I’m not going to prescribe it, and here’s why. Let’s plan the flight another way.”",
+     "why": "A bare refusal damages trust and leaves her without help."
     },
     {
-     "dont": "“Just try to relax, you’ll be fine.”",
-     "instead": "“Let’s practise a breathing technique right now so you have something that works on the plane.”",
-     "why": "Empty reassurance gives her nothing to use."
+     "dont": "(Not asking why she is travelling)",
+     "instead": "“It sounds like this came up quickly. What’s the trip for?”",
+     "why": "The bereavement is the hidden agenda."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "What the trip means",
-     "t": "The stakes of the journey shape how hard a refusal lands. Ask, don’t assume, and link the plan to getting her there."
+     "h": "Bereavement abroad",
+     "t": "Sudden travel for a funeral adds cost, stress and logistics. Estrangement adds guilt and complicates grief."
     },
     {
-     "h": "Alcohol on flights",
-     "t": "People with flying anxiety often drink to cope. Alcohol plus a sedative adds to drowsiness and immobility."
+     "h": "IVF pregnancy",
+     "t": "Women who conceived after IVF often carry extra anxiety about anything that might affect the pregnancy."
     }
    ],
    "legal": [
     {
      "h": "Controlled drugs abroad",
-     "t": "GOV.UK advises checking with the destination country’s embassy before travelling with medicine containing a controlled drug; some countries restrict benzodiazepines and possession can lead to fines or detention."
+     "t": "Some countries restrict benzodiazepines; travellers may need documentation. Another reason to avoid prescribing for flights."
     },
     {
-     "h": "Drug driving",
-     "t": "Diazepam is one of the medicines covered by UK drug-driving law. It is an offence to drive if impaired, which matters if she drives after landing or on return."
+     "h": "Prescribing responsibility",
+     "t": "The prescriber is responsible for the decision, whatever a previous doctor did (GMC prescribing guidance)."
     }
    ],
    "professional": [
     {
-     "h": "Prescribing responsibility",
-     "t": "GMC prescribing guidance (2021): you are responsible for prescriptions you sign and should prescribe only when satisfied the medicine serves the patient’s needs. A previous doctor’s practice does not transfer that responsibility."
+     "h": "Consistency",
+     "t": "Many practices have a policy on benzodiazepines for flights. Explaining the clinical reasons matters more than citing policy."
     },
     {
-     "h": "Declining respectfully",
-     "t": "Explain the reasons, offer alternatives, and tell her she can seek a second opinion. Document the discussion and what was offered."
+     "h": "Pregnancy check",
+     "t": "Ask about pregnancy before prescribing for any woman of reproductive age."
     }
    ],
    "community": [
     {
-     "h": "Resources",
-     "t": "Airline-run fear-of-flying courses, CBT-based self-help programmes, and NHS Talking Therapies by self-referral."
+     "h": "Bereavement support",
+     "t": "Cruse Bereavement Support and local services; NHS Talking Therapies self-referral."
+    },
+    {
+     "h": "Fear of flying courses",
+     "t": "Airlines and providers run CBT-based courses; useful for future travel."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Anxiety spilling into daily life — possible generalised anxiety or panic disorder",
-     "Heavy alcohol use to cope with flying or anxiety",
-     "Personal or family history of clots before a long-haul flight"
+     "Suicidal thoughts or inability to function: urgent mental health assessment",
+     "Vaginal bleeding or abdominal pain in pregnancy: early pregnancy or maternity assessment",
+     "Previous VTE or strong risk factors before long-haul travel: maternity team assessment for thromboprophylaxis"
     ],
     "psychosocial": [
-     "What the trip is for and what missing it would mean",
-     "How she coped on previous flights, including alcohol",
-     "Time available before travel for a course or self-help"
+     "Sudden death of estranged father",
+     "Guilt",
+     "Panic attacks, poor sleep and appetite",
+     "IVF pregnancy",
+     "Work"
     ],
     "ice": [
-     "Idea: “A few diazepam got me through before.”",
-     "Concern: not being able to get on the plane for a trip that matters",
-     "Expectation: a small prescription today"
+     "Idea: diazepam lets her sleep through the flight",
+     "Concern: guilt; stress harming the baby",
+     "Expectation: five diazepam"
     ]
    },
-   "diagnosis": "Frame it as a common, treatable fear: “What you’re describing is a fear of flying — a specific phobia. It’s very common, and there are proper treatments that shrink it rather than just sedating you through it.”",
-   "diagnosisLay": "“Diazepam is like switching off a smoke alarm for one night — it goes quiet, but the alarm is still set too sensitive for next time. The courses and techniques recalibrate the alarm.”",
+   "diagnosis": "“You have a real fear of flying, made much worse by the shock and grief of losing your dad. And being pregnant on a long flight raises your clot risk, which we need to plan for.”",
+   "diagnosisLay": "“Pregnancy makes the blood a little stickier, and sitting still for hours on a plane slows the blood in the legs. Moving, drinking water and flight socks help keep it flowing.”",
    "management": {
-    "reflectIce": "“You told me the real fear is not being able to go. Everything I’m suggesting is about getting you on that plane.”",
-    "psychosocial": "Fit the plan into two weeks: a one-day course if one is available, daily breathing practice, a self-help programme, and a route back before she flies.",
+    "reflectIce": "“You wanted to sleep through the flight. Diazepam would make that riskier for you and the baby, so let’s make the flight safer and calmer another way.”",
+    "psychosocial": "Acknowledge grief and guilt; bereavement support; follow-up on return.",
     "sharedPlan": [
-     "Decline diazepam with the safety, legal and efficacy reasons",
-     "Fear-of-flying course, CBT self-help, breathing technique practised now",
-     "Offer NHS Talking Therapies self-referral and review if anxiety is wider"
+     "No diazepam; reasons explained",
+     "Midwife/obstetric team contacted today for VTE risk assessment before travel",
+     "Aisle seat, walk hourly, calf exercises, hydration, no alcohol, compression stockings",
+     "Breathing and grounding for panic; tell the crew",
+     "Carry maternity notes; check insurance covers pregnancy",
+     "Bereavement support and NHS Talking Therapies; review on return"
     ],
     "safetyNet": [
-     "Book in before travel if the anxiety worsens or spreads to daily life",
-     "On the flight: move around, drink water, limit alcohol"
+     "Bleeding, abdominal pain, painful swollen leg, chest pain or breathlessness while away: urgent local care",
+     "Thoughts of self-harm or unmanageable distress: practice, NHS 111 or Samaritans 116 123"
     ]
    }
   },
   "links": [
    {
-    "ic": "📋",
-    "t": "Anxiety",
-    "s": "Case walkthrough · NICE CG113",
-    "href": "../cases/anxiety.html"
-   },
-   {
     "ic": "💠",
-    "t": "Benzodiazepines and Z-drugs",
-    "s": "Management protocol · safe prescribing",
+    "t": "Benzodiazepines and z-drugs",
+    "s": "Why sedatives for flights are avoided",
     "href": "management/benzodiazepines-z-drugs.html"
    },
    {
     "ic": "💠",
-    "t": "Anxiety management",
-    "s": "Management protocol · stepped care",
+    "t": "Anxiety",
+    "s": "Panic and non-drug strategies",
     "href": "management/anxiety.html"
+   },
+   {
+    "ic": "💠",
+    "t": "DVT",
+    "s": "Recognition and risk",
+    "href": "management/dvt.html"
+   },
+   {
+    "ic": "🗺️",
+    "t": "Vaginal bleeding in pregnancy",
+    "s": "If bleeding occurs while away",
+    "href": "algorithms/vaginal-bleeding-pregnancy.html"
    }
   ],
   "pitfalls": {
-   "intro": "This station tests how you say no. Candidates fail either by giving in to a reasonable-sounding request or by refusing so bluntly that the patient leaves with nothing.",
+   "intro": "Declining diazepam is the easy part. The marks are in spotting the pregnancy, acting on the clot risk, and noticing why she is flying.",
    "items": [
     {
-     "dom": "cm",
-     "fail": "Prescribing five diazepam because the previous GP did and the patient is otherwise well.",
-     "why": "“Management not in line with current UK practice.” The request is outside the BNF indication and carries real safety and legal risks.",
-     "fix": "Decline, give the reasons, and make a better offer in the same breath."
-    },
-    {
-     "dom": "ro",
-     "fail": "Opening with “We don’t prescribe that for flights” before hearing anything about her.",
-     "why": "“Did not explore the patient’s agenda.” She hears a door closing and stops listening.",
-     "fix": "Explore first: what flying is like, what the trip means. Then the decline lands as care."
+     "dom": "dg",
+     "fail": "Not noticing the pregnancy.",
+     "why": "It changes both the prescribing and the travel advice.",
+     "fix": "Check the record and ask before discussing medicines."
     },
     {
      "dom": "cm",
-     "fail": "Listing the risks but offering no alternative.",
-     "why": "A refusal without a plan leaves the problem unmanaged and scores poorly on Tasks.",
-     "fix": "Name at least two things that work — a course and CBT-based self-help — and teach a breathing technique on the call."
+     "fail": "Prescribing diazepam.",
+     "why": "Avoided in pregnancy where possible; sedation and immobility raise VTE risk.",
+     "fix": "Decline with clear reasons."
+    },
+    {
+     "dom": "dg",
+     "fail": "No VTE risk assessment.",
+     "why": "Long-haul travel plus multiple risk factors may need thromboprophylaxis.",
+     "fix": "Identify risk factors and involve the maternity team before the flight."
+    },
+    {
+     "dom": "dg",
+     "fail": "Not asking why she is travelling.",
+     "why": "Acute grief and panic are the hidden agenda.",
+     "fix": "Ask; respond with compassion; assess risk."
     },
     {
      "dom": "ro",
-     "fail": "Never asking whether anxiety affects the rest of her life.",
-     "why": "A wider anxiety or panic disorder would change management and is an easy miss.",
-     "fix": "“Is it just flying, or does anxiety show up anywhere else?”"
+     "fail": "A bare refusal.",
+     "why": "She leaves angry and unsupported.",
+     "fix": "Offer a practical plan for the flight and the panic."
     },
     {
-     "dom": "ro",
-     "fail": "Jargon — “specific phobia”, “safety behaviour”, “VTE” — without explanation.",
-     "why": "“Language not easily understood by the patient.”",
-     "fix": "Plain words: “a clot in the leg”, “it gets you through once but keeps the fear going”."
-    },
-    {
-     "dom": "ro",
-     "fail": "Ignoring her disappointment and ending the call abruptly.",
-     "why": "“Did not respond to the patient’s feelings.” She may simply ring another service for a prescription.",
-     "fix": "Name it: “You rang expecting something different — that’s disappointing.” Then check understanding and leave a route back."
+     "dom": "cm",
+     "fail": "Forgetting insurance and notes.",
+     "why": "Pregnancy complications abroad are hard to manage without them.",
+     "fix": "Advise checking insurance and carrying maternity notes."
     }
    ]
   }

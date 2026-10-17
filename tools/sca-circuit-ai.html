@@ -217,7 +217,7 @@
 <script src="../assets/site.js?v=107"></script>
 <script src="../assets/tts-voice.js?v=1"></script>
 <!-- the full 312-case library, same files and order as The Hot Seat -->
-<script src="../assets/sca-loader.js?v=9"></script>
+<script src="../assets/sca-loader.js?v=10"></script>
 <script>
 (function(){
   'use strict';
@@ -279,8 +279,13 @@
     strict=$('#optStrict').checked;
     order=pickOrder(); idx=0; results=[];
     if(!order.length){ alert('No cases available.'); return; }
-    $('#setup').classList.add('hidden'); $('#run').classList.remove('hidden');
-    startCase();
+    const go = () => { $('#setup').classList.add('hidden'); $('#run').classList.remove('hidden'); startCase(); };
+    /* Case material is loaded on demand (Upload 148): fetch every case in this circuit before starting. */
+    if (window.SCA_LOAD_INTO){
+      const btn = $('#startBtn'); btn.disabled = true;
+      Promise.all(order.map(c => window.SCA_LOAD_INTO(c))).then(() => { btn.disabled = false; go(); })
+        .catch(() => { btn.disabled = false; alert('The cases could not be loaded. Please check your connection and try again.'); });
+    } else go();
   });
 
   function startCase(){

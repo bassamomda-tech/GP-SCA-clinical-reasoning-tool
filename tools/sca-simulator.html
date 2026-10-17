@@ -315,7 +315,7 @@
 <script src="../assets/site.js?v=107"></script>
 <script src="../assets/tts-voice.js?v=1"></script>
 <!-- the full 312-case library, same files and order as The Hot Seat -->
-<script src="../assets/sca-loader.js?v=9"></script>
+<script src="../assets/sca-loader.js?v=10"></script>
 <script>
 (function(){
   'use strict';
@@ -517,7 +517,15 @@
     setTimeout(()=>{ ov.classList.add('hidden'); $('#consult').classList.remove('hidden'); beginConsult(); }, 2600);
   }
 
+  /* Case material is loaded on demand (Upload 148): wait for it before using the script or checkpoints. */
+  const _loaded = new Set();
+  function withCase(c, then){
+    if (!c || !c.id || _loaded.has(c.id) || !window.SCA_LOAD_INTO) return true;
+    window.SCA_LOAD_INTO(c).then(() => { _loaded.add(c.id); then(); }).catch(() => alert('This case could not be loaded. Please check your connection and try again.'));
+    return false;
+  }
   function beginConsult(){
+    if (!withCase(cur, beginConsult)) return;
     phase='live'; stopTimer();
     $('#phaseTag').textContent='Consulting'; $('#phaseTag').className='sim-phase';
     $('#prep').classList.add('hidden'); $('#live').classList.remove('hidden');

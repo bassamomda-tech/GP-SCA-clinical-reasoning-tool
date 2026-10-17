@@ -1,13 +1,13 @@
 /* ============================================
    Medication Chooser — Contraception (method choice)
-   FSRH · UKMEC · BNF
+   CoSRH · UKMEC · BNF
    Fixed lists (October 2026, Upload 114): each card's "conditions" and the topic's
    "safety" points are written out here; there are no patient factors and no scoring.
    ============================================ */
 MedChooser.register('contraception', {
   title: 'Contraception — method selection',
   subtitle: 'Effectiveness, oestrogen-safety (UKMEC) and patient preference drive the choice. LARC methods are the most effective.',
-  guideline: 'FSRH · UKMEC',
+  guideline: 'CoSRH (formerly FSRH) · UKMEC 2025',
 
 
   safety: [
@@ -15,7 +15,7 @@ MedChooser.register('contraception', {
     {"tone":"amber","label":"VTE history / thrombophilia","text":"Oestrogen-containing methods unsafe in this profile — favour progestogen-only or copper IUD"},
     {"tone":"red","label":"Current / past breast cancer","text":"Current breast cancer — hormonal methods UKMEC 4; use copper IUD / barrier"},
     {"tone":"amber","label":"Needs STI protection","text":"Condoms needed for STI protection regardless of the chosen method"},
-    {"tone":"amber","label":"Enzyme-inducing drugs (e.g. some AEDs)","text":"Enzyme inducers reduce efficacy of pills/implant — favour IUD/IUS or DMPA (FSRH)"}
+    {"tone":"amber","label":"Enzyme-inducing drugs (e.g. some AEDs)","text":"Enzyme inducers reduce efficacy of pills/implant — favour IUD/IUS or DMPA (CoSRH)"}
   ],
 
   drugs: [
@@ -25,7 +25,7 @@ MedChooser.register('contraception', {
       name:'LNG-IUS (hormonal coil)',
       examples:'Levonorgestrel IUS — 5–8 years',
       step:'LARC · most effective',
-      source:'FSRH · UKMEC',
+      source:'CoSRH · UKMEC 2025',
       sideEffects:'Irregular bleeding/spotting early then lighter; insertion discomfort',
       monitor:'Threads check; not affected by enzyme inducers',
       counsel:'"Fit-and-forget for years, makes periods much lighter, and one of the most reliable options. Bleeding can be irregular for the first few months."',
@@ -46,7 +46,7 @@ MedChooser.register('contraception', {
       name:'Etonogestrel implant',
       examples:'Subdermal implant — 3 years',
       step:'LARC · most effective',
-      source:'FSRH · UKMEC',
+      source:'CoSRH · UKMEC 2025',
       sideEffects:'Unpredictable bleeding (main reason for removal); no VTE risk',
       monitor:'Palpable; reduced efficacy with enzyme inducers',
       counsel:'"The most effective method there is — a tiny rod in the arm for three years. The main downside is unpredictable bleeding."',
@@ -68,7 +68,7 @@ MedChooser.register('contraception', {
       name:'Copper IUD (hormone-free)',
       examples:'Cu-IUD — 5–10 years',
       step:'LARC · hormone-free',
-      source:'FSRH · UKMEC',
+      source:'CoSRH · UKMEC 2025',
       sideEffects:'Heavier/more painful periods; insertion discomfort',
       monitor:'Threads check; also emergency contraception',
       counsel:'"Completely hormone-free and lasts years — but it can make periods heavier and crampier, especially at first."',
@@ -86,7 +86,7 @@ MedChooser.register('contraception', {
       name:'Progestogen-only pill (desogestrel)',
       examples:'Desogestrel 75 µg OD',
       step:'Daily · oestrogen-free',
-      source:'FSRH · UKMEC',
+      source:'CoSRH · UKMEC 2025',
       sideEffects:'Irregular bleeding; must take daily (12-h window for desogestrel)',
       monitor:'Adherence; now available OTC',
       counsel:'"A daily pill with no oestrogen — safe with migraines, clot risk or while breastfeeding. It just needs taking around the same time each day."',
@@ -107,7 +107,7 @@ MedChooser.register('contraception', {
       name:'Injectable (DMPA)',
       examples:'Medroxyprogesterone IM/SC every 13 weeks',
       step:'Oestrogen-free · 3-monthly',
-      source:'FSRH · UKMEC',
+      source:'CoSRH · UKMEC 2025',
       sideEffects:'Weight gain, delayed fertility return (up to 1 yr), reversible ↓ BMD',
       monitor:'Reassess if continued >2 years; not affected by enzyme inducers',
       counsel:'"An injection every three months — convenient and oestrogen-free, but it can cause weight gain and fertility takes a while to return."',
@@ -125,7 +125,7 @@ MedChooser.register('contraception', {
       name:'Combined hormonal contraception (pill / patch / ring)',
       examples:'COC · transdermal patch · vaginal ring',
       step:'Daily · oestrogen-containing',
-      source:'FSRH · UKMEC',
+      source:'CoSRH · UKMEC 2025',
       sideEffects:'Small ↑ VTE & arterial risk; nausea; breakthrough bleeding',
       monitor:'BP before + at review; UKMEC screen essential',
       counsel:'"Good cycle control and can help acne and painful periods — but it carries a small clot risk, so it isn\'t safe with certain migraines or clot history."',
@@ -134,19 +134,19 @@ MedChooser.register('contraception', {
         {"kind":"avoid","label":"Migraine WITH aura","text":"Migraine with aura — UKMEC 4"},
         {"kind":"avoid","label":"VTE history / thrombophilia","text":"VTE history — UKMEC 4"},
         {"kind":"avoid","label":"Smoker and age ≥35","text":"Smoker ≥35 — UKMEC 4 (≥15/day) / 3"},
-        {"kind":"avoid","label":"BMI ≥35","text":"BMI ≥35 — UKMEC 3/4, risk outweighs benefit"},
+        {"kind":"avoid","label":"BMI ≥35","text":"BMI ≥35 — UKMEC 3; check UKMEC 2025 when there are other VTE risk factors"},
         {"kind":"avoid","label":"Current / past breast cancer","text":"Breast cancer — UKMEC 4"},
         {"kind":"caution","label":"Enzyme-inducing drugs (e.g. some AEDs)","text":"Enzyme inducers reduce efficacy — not recommended"},
         {"kind":"favoured","label":"Heavy menstrual bleeding","text":"Heavy/painful periods — CHC gives cycle control"},
         {"kind":"favoured","label":"Acne / PCOS symptoms","text":"Acne / PCOS symptoms — CHC improves both"},
-        {"kind":"note","label":"Migraine without aura","text":"Migraine without aura — UKMEC 2 (broadly usable, review)"}
+        {"kind":"note","label":"Migraine without aura","text":"Migraine without aura — UKMEC 2 to start (check UKMEC 2025 for continuation)"}
       ]
     }
   ],
 
   sources: [
-    { label:'FSRH — UK Medical Eligibility Criteria (UKMEC)', url:'https://www.fsrh.org/standards-and-guidance/uk-medical-eligibility-criteria/' },
+    { label:'CoSRH — UK Medical Eligibility Criteria (UKMEC 2025)', url:'https://www.cosrh.org/Common/Uploaded%20files/documents/UKMEC_2025.pdf' },
     
-    { label:'FSRH — Clinical guidance', url:'https://www.fsrh.org/standards-and-guidance/' }
+    { label:'CoSRH (formerly FSRH) — Clinical guidance', url:'https://www.fsrh.org/standards-and-guidance/' }
   ],
 });

@@ -95,7 +95,7 @@ Avoid alcohol during AND for 48 h after treatment. Refer gastro if 2nd line fail
     category: "Women's & Sexual Health",
     eyebrow: 'Single doses · choice depends on time since UPSI',
     indication: 'Unprotected sex or contraceptive failure within last 5 days. Discuss all 3 options. The Cu-IUD is the most effective method \u2014 offer it to everyone eligible. In England, free oral EC is also available from participating community pharmacies (NHS Pharmacy Contraception Service, since October 2025), without a GP appointment.',
-    contraindications: 'Higher weight: if BMI >26 kg/m\u00b2 or weight >70 kg and a Cu-IUD is not used, ulipristal acetate (UPA) is preferred; if UPA is unsuitable, give levonorgestrel (LNG) 3 mg (CoSRH). UPA: severe asthma insufficiently controlled by oral steroids. UPA is less effective if a progestogen was taken in the previous 7 days; hormonal contraception must not be started/restarted until 5 days after UPA. Enzyme inducers: Cu-IUD preferred (or LNG 3 mg). Breastfeeding: after UPA, express and discard breast milk for 1 week; LNG can be used while breastfeeding.',
+    contraindications: 'Higher weight: if BMI >26 kg/m\u00b2 or weight >70 kg and a Cu-IUD is not used, ulipristal acetate (UPA) is preferred; if UPA is unsuitable, give levonorgestrel (LNG) 3 mg (CoSRH). UPA: severe asthma insufficiently controlled by oral steroids. UPA is less effective if a progestogen was taken in the previous 7 days; hormonal contraception must not be started/restarted until 5 days after UPA. Enzyme inducers: Cu-IUD preferred (or LNG 3 mg). Breastfeeding: can continue without interruption after a single dose of UPA (CoSRH EC, amended April 2026); LNG and the Cu-IUD are also compatible with breastfeeding.',
     duration: 'Single dose (oral options) or fitted device (Cu-IUD)',
     drugs: [
       { name:'Cu-IUD (copper coil)', dose:'1 device', freq:'Fit', route:'IU', days:'Up to 120 h after UPSI OR ≤ 5 days after earliest predicted ovulation — MOST EFFECTIVE' },
@@ -106,7 +106,7 @@ Avoid alcohol during AND for 48 h after treatment. Refer gastro if 2nd line fail
       "Cu-IUD is most effective (failure < 0.1%). Offer to ALL women requesting EC who are eligible — within 120 h of first UPSI or ≤ 5 days after earliest predicted ovulation.",
       "UPA delays ovulation more effectively than LNG — preferred if > 72 h, close to ovulation, or if BMI > 26 kg/m² / weight > 70 kg.",
       "Quick-start hormonal contraception: after LNG → start immediately (+ condoms/abstain until effective); after UPA → wait 5 days before starting/restarting CHC, POP, patch, ring, implant or injection (then condoms until effective).",
-      "Breastfeeding: after UPA, express and discard breast milk for 1 week; LNG does not need a break from breastfeeding.",
+      "Breastfeeding: can continue without interruption after a single dose of UPA (CoSRH EC, amended April 2026); LNG and the Cu-IUD are also compatible.",
       "In England, oral EC is free from participating community pharmacies (since October 2025) as well as from GPs and sexual health clinics.",
       "Vomiting within 3 h of LNG or UPA → repeat dose.",
       "Pregnancy test in 3 weeks if no period.",
@@ -123,9 +123,9 @@ DISCUSS ALL 3 OPTIONS:
 2. Ulipristal acetate (ellaOne) 30 mg PO STAT — within 120 h.
 3. Levonorgestrel 1.5 mg PO STAT — within 72 h (3 mg if enzyme inducers).
 BMI > 26 / weight > 70 kg and no Cu-IUD: UPA preferred; LNG 3 mg only if UPA unsuitable.
-Counsel: quick-start hormonal contraception immediately after LNG / wait 5 days after UPA. Breastfeeding: express and discard milk for 1 week after UPA (LNG compatible). Pregnancy test if no period in 3 wks. Offer STI screen. Free oral EC from participating pharmacies in England (since Oct 2025).`,
+Counsel: quick-start hormonal contraception immediately after LNG / wait 5 days after UPA. Breastfeeding can continue without interruption after UPA (LNG and Cu-IUD also compatible). Pregnancy test if no period in 3 wks. Offer STI screen. Free oral EC from participating pharmacies in England (since Oct 2025).`,
     sources: [
-      { label:'CoSRH (formerly FSRH) — Emergency Contraception guideline (2017, amended)', url:'https://cosrh.org/Common/Uploaded%20files/documents/fsrh-guideline-emergency-contraception03dec2020-amendedjuly2023-11jul.pdf' },
+      { label:'CoSRH (formerly FSRH) — Emergency Contraception guideline (2017, amended April 2026)', url:'https://cosrh.org/Common/Uploaded%20files/documents/fsrh-guideline-emergency-contraception03dec2020-amendedjuly2023-11jul.pdf' },
       { label:'NHS England — Pharmacy Contraception Service', url:'https://www.england.nhs.uk/pharmacycontraception' },
     ],
   },
@@ -213,7 +213,7 @@ Options (NICE CG150, 2025 — choose by comorbidity and preference):
 COUNSEL: review at 3 months; aim ≥ 50% reduction; keep diary; lifestyle measures.`,
     sources: [
       { label:'NICE CG150 — Headaches in over 12s', url:'https://www.nice.org.uk/guidance/cg150' },
-      { label:'MHRA Topiramate pregnancy warning 2024', url:'https://www.gov.uk/government/publications/topiramate-introduction-of-new-safety-measures' },
+      { label:'MHRA Topiramate pregnancy warning 2024', url:'https://www.gov.uk/drug-safety-update/topiramate-topamax-introduction-of-new-safety-measures-including-a-pregnancy-prevention-programme' },
     ],
   },
 
@@ -349,7 +349,7 @@ Counsel: lifelong therapy; lifestyle (alcohol, weight, hydration); rash → STOP
 Off-licence if > 17 days. Consider alternatives (continuous CHC pack) if on COCP.`,
     sources: [
       { label:'SPC — norethisterone', url:'https://www.medicines.org.uk/emc/search?q=norethisterone' },
-      { label:'FSRH — Combined hormonal contraception (2019, amended)', url:'https://www.fsrh.org/standards-and-guidance/documents/combined-hormonal-contraception/' },
+      { label:'CoSRH (formerly FSRH) — Combined hormonal contraception (2019, amended)', url:'https://www.fsrh.org/standards-and-guidance/documents/combined-hormonal-contraception/' },
     ],
   },
 

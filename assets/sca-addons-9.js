@@ -2898,990 +2898,967 @@
  },
  "hrt-counselling": {
   "stem": {
-   "name": "Sandra Okafor",
-   "age": "51-year-old woman",
+   "name": "Nicola Grant",
+   "age": "46 years · female",
    "pmh": [
-    "No significant past medical history recorded"
+    "Nil significant"
    ],
    "meds": [
-    "No regular medication recorded"
+    "None"
    ],
-   "allergy": "No known drug allergies recorded",
-   "recent": "No recent consultations about menopausal symptoms. No FSH or other hormone tests on file.",
-   "reason": "Hot flushes, night sweats, poor sleep, irritability and poor memory affecting work — wants to discuss HRT but worried about cancer."
+   "allergy": "None recorded",
+   "recent": "Pharmacy BP last month 124/78. BMI 29. Cervical screening up to date.",
+   "reason": "“Periods all over the place, not sleeping, can’t think straight.”"
   },
   "knowledge": {
-   "guideline": "NICE NG23 (2015, updated April 2026) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · MHRA Drug Safety Update August 2019 (HRT and breast cancer) · FSRH contraception for women aged over 40 (2017)",
-   "summary": "At 51 with typical symptoms this is a clinical diagnosis of perimenopause. HRT is the most effective treatment; the breast-cancer risk is real but small in absolute terms, and she deserves the actual numbers.",
+   "guideline": "[1] NICE NG23 Menopause: identification and management (2015, updated 2024) · [2] FSRH Clinical Guideline: Contraception for women aged over 40 years (2017, amended) · [3] FSRH and British Menopause Society guidance on LNG-IUS for endometrial protection (check current SPC/licence) · [4] NICE CKS Menopause (check current version) · [5] DWP fit note guidance; Equality Act 2010 (sex, age and disability) and employer menopause guidance · [6] Product SPCs for HRT preparations and the 52 mg LNG-IUS",
+   "summary": "A 46-year-old police sergeant with a year of irregular cycles, vasomotor symptoms, poor sleep and brain fog. Diagnose perimenopause clinically, exclude pregnancy, explain HRT and that it is not contraception, offer the 52 mg LNG-IUS for endometrial protection and contraception with transdermal oestrogen, mention CBT, uncover and address the fear of dementia and the work review, and support her at work.",
    "points": [
     {
-     "h": "Diagnose clinically",
-     "t": "NICE NG23: diagnose perimenopause on symptoms in women over 45 with vasomotor symptoms and irregular periods; do not use FSH to diagnose in this group. Ask about the bleeding pattern and contraception."
+     "h": "Diagnosis",
+     "t": "Over 45 with vasomotor symptoms and irregular periods: perimenopause, without FSH testing [1]."
     },
     {
-     "h": "Risk history shapes the choice",
-     "t": "Ask about breast cancer, VTE, cardiovascular disease and stroke, migraine with aura, liver disease, unexplained bleeding and smoking; check BP and BMI. Most findings change which HRT, not whether she can have it."
+     "h": "Exclude pregnancy",
+     "t": "Late period with inconsistent contraception: pregnancy test first."
     },
     {
-     "h": "Options",
-     "t": "Oestrogen for systemic symptoms, with a progestogen if she has a uterus — sequential while still having periods, continuous later. Transdermal oestrogen at standard doses does not raise VTE risk above baseline (NICE NG23), so it suits those with VTE risk factors. Vaginal oestrogen for dryness. NICE NG23: consider testosterone for low sexual desire if HRT alone is not effective; consider menopause-specific CBT for vasomotor and mood symptoms."
+     "h": "HRT components",
+     "t": "Oestrogen plus a progestogen if she has a uterus. Transdermal oestrogen does not increase VTE risk above baseline [1]."
     },
     {
-     "h": "Breast cancer in numbers",
-     "t": "MHRA August 2019: of 1000 women aged 50–69 who never use HRT, about 63 are diagnosed with breast cancer. Five years of HRT from age 50 adds about 5 (oestrogen-only), 14 (sequential combined) or 20 (continuous combined) extra cases per 1000 over those 20 years; 10 years roughly doubles this. Some excess persists for more than 10 years after stopping. No increased risk found with low-dose vaginal oestrogen. NICE NG23 describes the risk with oestrogen-only HRT as little or no change."
+     "h": "HRT is not contraception",
+     "t": "Contraception is needed until 55, or 2 years’ amenorrhoea under 50 (1 year over 50) [2]."
     },
     {
-     "h": "Other benefits and risks",
-     "t": "NICE NG23: HRT started before 60 does not increase cardiovascular disease risk; it reduces fragility fracture risk while taken. Oral oestrogen raises VTE risk; transdermal does not. HRT does not provide contraception — she still needs it if at risk (FSRH 2017)."
+     "h": "LNG-IUS",
+     "t": "The 52 mg LNG-IUS provides contraception and endometrial protection with oestrogen; check the SPC for licensed duration for each purpose [2,3,6]."
     },
     {
-     "h": "Bleeding safety-net",
-     "t": "NICE NG23 (April 2026): bleeding is common in the first 6 months of systemic HRT or within 3 months of a dose or product change; unscheduled bleeding beyond these should be reported promptly. NICE NG12: unexplained postmenopausal bleeding at 55 or over that cannot be attributed to HRT → suspected cancer pathway referral."
+     "h": "Other options",
+     "t": "CBT for vasomotor symptoms and low mood; vaginal oestrogen for genitourinary symptoms; non-hormonal options if HRT is unsuitable [1]."
+    },
+    {
+     "h": "Cognitive symptoms",
+     "t": "Common in perimenopause and with poor sleep; screen mood and alcohol; review after treatment; assess further if persistent."
+    },
+    {
+     "h": "Work",
+     "t": "Disclosure, occupational health, reasonable adjustments, and a fit note with suggested adaptations if helpful [5]."
     }
    ]
   },
   "model": [
    {
-    "phase": "Opening & agenda",
+    "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello Sandra, I’m Dr Lee. What can I help with today?",
+    "text": "Hello Nicola, I’m Dr Clarke. What’s been happening?",
     "dom": "ro",
-    "why": "Open question; lets her set out her concerns"
+    "why": "Open question"
    },
    {
     "who": "pt",
-    "text": "I’m pretty sure it’s the menopause — the flushes, sweats at night, I can’t sleep, I’m snapping at everyone and my memory’s shot. It’s affecting work. I’ve thought about HRT, but everything I read says it gives you breast cancer."
+    "text": "My periods are all over the place, I’m not sleeping, I’m drenched at night and I can’t think straight. Is this the change? Do I need a blood test to find out?"
    },
    {
+    "phase": "History",
+    "clock": "1–5 min",
     "who": "dr",
-    "text": "That sounds exhausting, and I’m glad you’ve come. I’d like to understand the symptoms and how they’re affecting you, then talk honestly about HRT — including the cancer worry, with real numbers. Does that work?",
-    "dom": "ro",
-    "why": "Agenda that includes her hidden fear"
-   },
-   {
-    "who": "pt",
-    "text": "Yes. That’s what I need."
-   },
-   {
-    "phase": "Data gathering",
-    "clock": "1–4 min",
-    "who": "dr",
-    "text": "Which of these symptoms bothers you most, and how is it affecting work and home?",
-    "dom": "ro",
-    "why": "Prioritises her most troublesome symptoms and impact"
-   },
-   {
-    "who": "pt",
-    "text": "The sweats and no sleep. Then I’m foggy at work and short with everyone. I feel like I’m not myself."
-   },
-   {
-    "who": "dr",
-    "text": "How has your mood been generally — just irritable, or low as well? Any times you’ve felt hopeless?",
+    "text": "Let’s find out. Tell me about your periods over the last year, and when the last one was.",
     "dom": "dg",
-    "why": "Screens mood in its own right"
+    "why": "Menstrual history"
    },
    {
     "who": "pt",
-    "text": "Irritable more than low. Not hopeless."
+    "text": "Anything from three to eight weeks apart. Last one seven weeks ago. Hot flushes all day, especially in uniform."
    },
    {
     "who": "dr",
-    "text": "What are your periods doing at the moment, and do you still need contraception?",
+    "text": "Any bleeding between periods or after sex, or very heavy bleeding?",
     "dom": "dg",
-    "why": "Bleeding pattern guides the regimen; contraception still needed"
+    "why": "Red-flag bleeding"
    },
    {
     "who": "pt",
-    "text": "They’re all over the place. I hadn’t really thought about contraception."
+    "text": "No."
    },
    {
     "who": "dr",
-    "text": "Worth thinking about — HRT isn’t a contraceptive, so we’ll cover that. Any vaginal dryness, discomfort or waterworks symptoms?",
+    "text": "What are you using for contraception, and is there any chance you could be pregnant?",
     "dom": "dg",
-    "why": "Urogenital symptoms and contraception counselling"
+    "why": "Pregnancy and contraception"
    },
    {
     "who": "pt",
-    "text": "Some dryness, yes. It’s embarrassing."
+    "text": "Condoms, most of the time. Surely not at 46? I’ll do a test."
    },
    {
     "who": "dr",
-    "text": "It’s very common and very treatable. A few safety questions: any breast cancer, blood clots, stroke or heart problems, migraines with aura, liver problems, or bleeding after sex or between periods? And do you smoke?",
+    "text": "Any migraines, clots in you or the family, breast cancer in the family? Do you smoke?",
     "dom": "dg",
-    "why": "Risk history that shapes which HRT"
+    "why": "Risk history"
    },
    {
     "who": "pt",
-    "text": "Not that I know of. I don’t smoke."
+    "text": "None of those. Never smoked."
    },
    {
-    "phase": "Ideas, concerns & expectations",
-    "clock": "4–5 min",
+    "phase": "Ideas, concerns and expectations",
+    "clock": "5–7 min",
     "who": "dr",
-    "text": "You said everything you read says HRT causes breast cancer. What have you seen, and how much is it putting you off?",
+    "text": "You said you can’t think straight. What worries you most about that?",
     "dom": "ro",
-    "why": "Explores the hidden agenda directly"
+    "why": "Follows cognitive cue"
    },
    {
     "who": "pt",
-    "text": "Headlines, mostly. It’s why I’ve put this off for months. I keep telling myself I should just cope."
+    "text": "(pause, tearful) I’ve made mistakes at work. I’m on a performance review. My mum got dementia at 68 and it started like this. I’m terrified."
    },
    {
     "who": "dr",
-    "text": "You don’t have to just cope. These symptoms are real and treatable. Let’s look at the actual risk so you can decide on facts rather than headlines.",
-    "dom": "ro",
-    "why": "Validates and counters the “just cope” belief"
+    "text": "That’s a frightening thing to carry, especially after your mum. Thank you for telling me. How has your mood been, and how much are you drinking to help you sleep?",
+    "dom": "dg",
+    "why": "Empathy; mood and alcohol"
+   },
+   {
+    "who": "pt",
+    "text": "Low sometimes, irritable. Still enjoy walking the dog. A glass of wine most nights. Nothing darker than that."
    },
    {
     "phase": "Explanation",
-    "clock": "5–9 min",
+    "clock": "7–9 min",
     "who": "dr",
-    "text": "First, the diagnosis. At 51 with these symptoms and irregular periods, this is the perimenopause. I don’t need a blood test to confirm it — hormone levels swing so much they don’t help at your age.",
+    "text": "At 46, with irregular periods, flushes and night sweats, this is very likely the perimenopause. We don’t need a blood test to diagnose it, because hormone levels swing around and one test can mislead. Losing words and forgetting tasks is really common in the perimenopause, especially with broken sleep, and usually improves with treatment. If it doesn’t, we’ll look into it properly.",
     "dom": "dg",
-    "why": "Clinical diagnosis without FSH (NICE NG23)"
-   },
-   {
-    "who": "dr",
-    "text": "Now the cancer question, in numbers. Picture 1000 women aged 50. Without HRT, about 63 will be diagnosed with breast cancer by 70. With five years of the type you’d likely start on — oestrogen plus a progestogen part of each month — about 14 more would be, so around 77. That means most women who take it don’t get breast cancer because of it.",
-    "dom": "dg",
-    "why": "MHRA 2019 absolute figures as natural frequencies"
+    "why": "Clinical diagnosis; brain fog explained with a plan"
    },
    {
     "who": "pt",
-    "text": "Fourteen in a thousand. That’s much smaller than I’d imagined."
+    "text": "So it’s not the start of what Mum had?"
    },
    {
     "who": "dr",
-    "text": "It is real, and it rises the longer you take it, so we review it each year. Some of the extra risk lingers for years after stopping. Against that: HRT is the most effective treatment for flushes and sweats, it usually helps sleep and concentration, and it protects your bones. Started at your age, it doesn’t increase heart disease risk.",
-    "dom": "cm",
-    "why": "Balanced benefit and harm, including duration and persistence"
+    "text": "Nothing you’ve told me points that way, and the timing fits the hormones. I’ll review it with you once you’re sleeping better.",
+    "dom": "ro",
+    "why": "Proportionate reassurance"
    },
    {
-    "who": "dr",
-    "text": "On options: oestrogen as a patch or gel through the skin doesn’t increase clot risk, unlike tablets. Because you’re still having periods, you’d also need a progestogen for part of each month to protect the womb lining. For dryness, a vaginal oestrogen works locally, and the evidence doesn’t show it raises breast cancer risk.",
-    "dom": "dg",
-    "why": "Transdermal vs oral, progestogen, vaginal oestrogen"
-   },
-   {
-    "who": "pt",
-    "text": "So a patch or gel plus the progestogen?"
-   },
-   {
-    "phase": "Shared management",
+    "phase": "Plan",
     "clock": "9–11 min",
     "who": "dr",
-    "text": "That would be my suggestion. But it’s your decision — how are you feeling about it now?",
-    "dom": "ro",
-    "why": "Hands the decision back to her"
+    "text": "HRT is a good option. Because you have a womb, you need oestrogen plus a progestogen to protect the lining. One important point: HRT isn’t contraception. A hormonal coil could do two jobs, protecting the womb lining and giving contraception, with oestrogen as a patch or gel. Patches and gels don’t raise the clot risk.",
+    "dom": "cm",
+    "why": "HRT options; not contraception; LNG-IUS"
    },
    {
     "who": "pt",
-    "text": "I think I want to try it. I can always stop."
+    "text": "I assumed HRT would cover contraception. A coil sounds sensible."
    },
    {
     "who": "dr",
-    "text": "Exactly. I’ll check your blood pressure and weight first, then start a gel or patch with a progestogen, plus the vaginal oestrogen if you’d like it. We’ll also sort contraception. I’ll send you written information with these numbers so you can read them again.",
+    "text": "You’d need contraception until 55, or until two years without a period if that happens before 50. There’s also a type of talking therapy, CBT, that helps flushes, sleep and mood, which you could do alongside. The risks of HRT at your age are small, and I can go through them in numbers before you decide.",
     "dom": "cm",
-    "why": "Concrete plan with contraception and written information"
+    "why": "Contraception duration; CBT; proportionate risk"
    },
    {
-    "phase": "Safety-net & close",
+    "who": "dr",
+    "text": "And work: would it help to tell your manager this is the menopause? Occupational health can suggest adjustments, and I can write a fit note with suggestions if useful.",
+    "dom": "cm",
+    "why": "Workplace support"
+   },
+   {
+    "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "Two important things. Irregular bleeding is common in the first six months, but tell us promptly if bleeding is heavy or carries on beyond that. And keep going to your breast screening, and tell me about any breast lump or change.",
-    "dom": "cm",
-    "why": "NICE NG23 bleeding windows and breast awareness"
-   },
-   {
-    "who": "dr",
-    "text": "Can you tell me in your own words what the numbers mean for you?",
+    "text": "Can you tell me what we’ve agreed?",
     "dom": "ro",
-    "why": "Teach-back of the risk"
+    "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "Out of a thousand women, about fourteen extra cases over twenty years with five years on it — and it helps with everything that’s wrecking my sleep."
+    "text": "Pregnancy test today. Coil plus a patch or gel. Not contraception on its own. CBT. Talk to my inspector and occupational health. Review the brain fog."
    },
    {
     "who": "dr",
-    "text": "Exactly right. Let’s review in three months to see how it’s working and whether it suits you. Anything else before we finish?",
+    "text": "Exactly. I’ll see you three months after starting. If you have bleeding after sex, between periods, or very heavy bleeding, tell me sooner.",
     "dom": "cm",
-    "why": "Defined review"
-   },
-   {
-    "who": "pt",
-    "text": "No. Thank you — I wish I’d come sooner."
+    "why": "Review; bleeding safety-net"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Open question; let her describe the symptoms and her HRT worry before narrowing down.",
-    "pts": 1, "dom": "dg"
+    "d": "Open question; detailed menstrual and symptom history.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Impact on work, relationships and sleep; feeling she should “just cope”.",
-    "pts": 1, "dom": "dg"
+    "d": "Police work, performance review, relationship, mother’s dementia, alcohol for sleep.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up the cancer fear and the embarrassment about dryness, and responded to both.",
-    "pts": 1, "dom": "ro"
+    "d": "“Can’t think straight”; late period with inconsistent condoms; wine to sleep.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (menopause), concern (HRT causes breast cancer), expectation (guidance on whether to take HRT).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (the change, needs a test), concerns (dementia like her mother, losing her job), expectation (blood test and HRT; assumed HRT is contraception).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "BP and BMI before starting; no FSH at 51 with typical symptoms.",
-    "pts": 1, "dom": "dg"
+    "d": "Pregnancy test; no FSH; BP and BMI noted; review of cognition after treatment.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
-    "d": "Perimenopause versus depression or other causes; screens mood and the bleeding pattern.",
-    "pts": 1, "dom": "dg"
+    "d": "Perimenopause versus pregnancy, thyroid disease, depression, alcohol, early cognitive impairment.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Screens abnormal bleeding and contraindications (breast cancer, VTE, stroke, liver disease).",
-    "pts": 2, "dom": "dg"
+    "d": "Abnormal bleeding; VTE and breast cancer risk history; mood and suicidal thoughts.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Perimenopause diagnosed clinically and stated plainly.",
-    "pts": 2, "dom": "dg"
+    "d": "Perimenopause with vasomotor, sleep, mood and cognitive symptoms; contraception still needed.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Transdermal oestrogen with a progestogen, vaginal oestrogen, MHRA 2019 numbers in absolute terms, contraception, shared decision.",
-    "pts": 2, "dom": "cm"
+    "d": "52 mg LNG-IUS for endometrial protection and contraception with transdermal oestrogen (check the SPC/local formulary); contraception until no longer needed; CBT.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Mood, sleep and urogenital symptoms; CBT or testosterone mentioned where relevant.",
-    "pts": 1, "dom": "cm"
+    "d": "Work disclosure, occupational health, fit note with adjustments; alcohol and sleep; mood monitoring.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "NICE NG23 bleeding windows, breast screening and breast changes, review at three months.",
-    "pts": 1, "dom": "cm"
+    "d": "Review at 3 months including cognition; abnormal bleeding safety-net; teach-back.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
-    "Gender, reproductive & sexual health"
+    "Gender, reproductive & sexual health",
+    "New & undifferentiated presentations"
    ],
    "stem": {
-    "name": "Sandra Okafor",
-    "age": "51 years · female",
+    "name": "Nicola Grant",
+    "age": "46 years · female",
     "pmh": [
-     "Nil significant recorded"
+     "Nil significant"
     ],
     "meds": [
-     "No regular medication"
+     "None"
     ],
-    "allergy": "NKDA",
-    "recent": "No previous menopause consultation. No hormone tests on file.",
-    "reason": "“I think it’s the menopause — but I’m scared HRT will give me cancer.”"
+    "allergy": "None recorded",
+    "recent": "Pharmacy BP last month 124/78. BMI 29. Cervical screening up to date.",
+    "reason": "“Periods all over the place, not sleeping, can’t think straight.”"
    },
    "timeMap": [
     {
      "t": "0–1",
-     "h": "Open & listen",
-     "d": "She lists the symptoms and the cancer fear in one breath. Note both."
+     "h": "Open",
+     "d": "Hear the symptoms and the blood test question."
     },
     {
-     "t": "1–4",
-     "h": "Symptoms & risk",
-     "d": "Most troublesome symptom, impact, mood, periods, contraception, dryness, and the risk history."
+     "t": "1–5",
+     "h": "History",
+     "d": "Cycles, last period, bleeding red flags, contraception and pregnancy, risk history."
     },
     {
-     "t": "4–5",
+     "t": "5–7",
      "h": "ICE",
-     "d": "Headlines, months of putting it off, “I should just cope”."
+     "d": "Brain fog: dementia fear and performance review; mood; alcohol."
     },
     {
-     "t": "5–9",
-     "h": "Diagnose & explain",
-     "d": "Clinical diagnosis, no FSH. MHRA 2019 numbers per 1000. Benefits. Transdermal oestrogen, progestogen, vaginal oestrogen."
+     "t": "7–11",
+     "h": "Explain and plan",
+     "d": "Clinical diagnosis without FSH; brain fog plan; HRT components; not contraception; LNG-IUS plus transdermal oestrogen; contraception duration; CBT; work support."
     },
     {
-     "t": "9–12",
-     "h": "Decide & safety-net",
-     "d": "Her decision, contraception, written information, bleeding windows, breast awareness, teach-back, review at three months."
+     "t": "11–12",
+     "h": "Close",
+     "d": "Teach-back; pregnancy test; review at 3 months; bleeding safety-net."
     }
    ],
    "wordPics": {
-    "fail": "Orders FSH; either dismisses the cancer risk or refuses HRT out of fear; gives relative risks or no numbers; forgets the progestogen or contraception; no bleeding safety-net.",
-    "pass": "Clinical diagnosis; reasonable risk history; explains transdermal oestrogen with a progestogen; says the breast-cancer risk is small and depends on type and duration; offers review and a bleeding safety-net.",
-    "exc": "All of the above, plus: gives the MHRA 2019 figures as natural frequencies for her likely regimen; mentions duration and persistence after stopping; addresses “I should just cope”; covers vaginal oestrogen and contraception; checks understanding with teach-back; she makes the decision."
+    "fail": "Orders FSH; starts HRT without excluding pregnancy or mentioning contraception; ignores the brain fog or dismisses it; never discovers the work review or her mother’s dementia.",
+    "pass": "Diagnoses perimenopause clinically, excludes pregnancy, explains HRT is not contraception and offers suitable options, and addresses the brain fog.",
+    "exc": "All of the above, plus: uncovers the dementia fear and work review with empathy; proportionate reassurance with a review plan; offers the LNG-IUS for both roles and transdermal oestrogen; CBT; practical work support; clear safety-net."
    },
    "avoid": [
     {
-     "dont": "\"The risk is tiny, don’t worry about the headlines.\"",
-     "instead": "\"There is a small extra risk — let me show you exactly how small, in numbers.\"",
-     "why": "False reassurance is as poor as scaremongering; she asked for honesty."
-    },
-    {
-     "dont": "\"HRT increases your breast cancer risk by 30%.\"",
-     "instead": "\"Of 1000 women, about 63 get breast cancer anyway; five years of this type adds about 14.\"",
-     "why": "Relative risks frighten without informing; absolute numbers let her decide."
-    },
-    {
-     "dont": "\"Let’s do a blood test to confirm it’s the menopause.\"",
-     "instead": "\"At your age, your symptoms tell us — a blood test wouldn’t add anything.\"",
+     "dont": "“Let’s check your FSH to confirm it.”",
+     "instead": "“At 46 with these symptoms we can diagnose it without a blood test.”",
      "why": "NICE NG23 advises against FSH testing in women over 45 with typical symptoms."
+    },
+    {
+     "dont": "“HRT will sort everything.”",
+     "instead": "“HRT isn’t contraception. A hormonal coil can protect your womb and prevent pregnancy.”",
+     "why": "Unplanned pregnancy risk in the perimenopause."
+    },
+    {
+     "dont": "“Brain fog is just the menopause, don’t worry.”",
+     "instead": "“It’s very common now and usually improves; we’ll review it and look further if not.”",
+     "why": "Dismissing it ignores her fear and the need to reassess."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Work",
-     "t": "Menopausal symptoms affect concentration and performance. Discuss workplace adjustments and occupational health; employers are encouraged to support menopause at work."
+     "h": "Menopause at work",
+     "t": "Many women hide symptoms at work, especially in uniformed or male-dominated roles. Errors are sometimes treated as performance issues."
     },
     {
-     "h": "Relationships and stigma",
-     "t": "Irritability, low libido and dryness strain relationships and are often not raised through embarrassment. Ask directly and normalise."
+     "h": "Family history of dementia",
+     "t": "A parent’s dementia makes cognitive symptoms frightening. Ask about it."
     }
    ],
    "legal": [
     {
      "h": "Equality Act 2010",
-     "t": "Menopause is not a protected characteristic in itself, but less favourable treatment can amount to discrimination on grounds of sex, age or disability where symptoms are severe and long-term."
+     "t": "Menopause-related treatment at work may engage protections for sex, age or disability. Employers are encouraged to make reasonable adjustments."
+    },
+    {
+     "h": "Fit notes",
+     "t": "A fit note can state “may be fit for work” with suggested adjustments (DWP guidance)."
     }
    ],
    "professional": [
     {
-     "h": "Informed consent",
-     "t": "GMC decision-making and consent guidance: share the information a reasonable person would want — including absolute risks — and respect her choice. Record the numbers discussed."
+     "h": "Shared decisions",
+     "t": "Present options with balanced, proportionate risk information (GMC Decision making and consent)."
     },
     {
-     "h": "Prescription charges",
-     "t": "The HRT prescription prepayment certificate in England covers eligible HRT items for a single annual charge."
+     "h": "Not over-testing",
+     "t": "Avoid unnecessary FSH testing; it can mislead in the perimenopause."
     }
    ],
    "community": [
     {
-     "h": "Patient resources",
-     "t": "Women’s Health Concern (patient arm of the British Menopause Society) and the MHRA 2019 patient information sheet on HRT and breast cancer; NHS Breast Screening Programme."
+     "h": "Occupational health",
+     "t": "Can advise employer and employee on adjustments and support."
+    },
+    {
+     "h": "Information resources",
+     "t": "NHS menopause information, British Menopause Society/Women’s Health Concern patient resources."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Unexplained postmenopausal bleeding at 55 or over not attributable to HRT — NICE NG12 suspected cancer pathway",
-     "Personal history of breast cancer, VTE, stroke or active liver disease — changes the options",
-     "Low mood with hopelessness — consider depression in its own right"
+     "Postcoital, intermenstrual or very heavy bleeding: assess and consider referral",
+     "Progressive cognitive decline, functional loss or neurological signs: assess further",
+     "Low mood with suicidal thoughts: risk assessment"
     ],
     "psychosocial": [
-     "Work performance and concentration",
-     "Irritability and relationships; embarrassment about dryness",
-     "Belief she should “just cope”"
+     "Police sergeant on a performance review",
+     "Mother’s dementia",
+     "Relationship and contraception",
+     "Alcohol for sleep"
     ],
     "ice": [
-     "Idea: “I’m pretty sure this is the menopause.”",
-     "Concern: “Everything I read says HRT gives you breast cancer.”",
-     "Expectation: honest guidance on whether to take HRT"
+     "Idea: the change, needs a blood test",
+     "Concern: dementia; losing her job",
+     "Expectation: test and HRT; assumed HRT is contraception"
     ]
    },
-   "diagnosis": "Perimenopause, diagnosed clinically at 51 on typical vasomotor, sleep, mood, cognitive and urogenital symptoms with irregular periods — no FSH needed.",
-   "diagnosisLay": "“Your ovaries are winding down, and the hormone levels are swinging up and down. That’s what drives the sweats, the broken sleep and the fog. It’s a normal stage, but you don’t have to suffer through it.”",
+   "diagnosis": "“This is the perimenopause, the years when hormones fluctuate before periods stop. It explains the flushes, sweats, sleep, mood and the brain fog.”",
+   "diagnosisLay": "“Your ovaries are winding down unevenly, so hormone levels swing up and down. Those swings cause the flushes, poor sleep and fuzzy thinking, which usually settle with treatment.”",
    "management": {
-    "reflectIce": "“You’ve put this off for months because of the headlines — so let’s look at the real numbers together, and then it’s your call.”",
-    "psychosocial": "Counter “I should just cope”, raise work adjustments, and treat dryness without embarrassment.",
+    "reflectIce": "“You were frightened the brain fog was the start of what your mum had and that it could cost you your job. It fits the perimenopause, and we’ll review it once you’re treated and sleeping.”",
+    "psychosocial": "Work disclosure and occupational health; alcohol and sleep; mood monitoring.",
     "sharedPlan": [
-     "Transdermal oestrogen with a sequential progestogen (uterus present); vaginal oestrogen for dryness",
-     "MHRA 2019 figures in natural frequencies; written information",
-     "Contraception review; BP and BMI before starting"
+     "Pregnancy test today",
+     "52 mg LNG-IUS for endometrial protection and contraception (check the SPC)",
+     "Transdermal oestrogen (patch or gel); vaginal oestrogen if needed",
+     "Contraception until 55, or 2 years’ amenorrhoea if under 50",
+     "CBT for vasomotor symptoms, sleep and mood",
+     "Workplace support: manager, occupational health, fit note with adjustments if helpful",
+     "Review at 3 months, including cognitive symptoms"
     ],
     "safetyNet": [
-     "Report heavy or persistent bleeding beyond the first 6 months (or 3 months after a change)",
-     "Breast lump or change; continue breast screening; review at three months"
+     "Bleeding after sex, between periods or very heavy bleeding",
+     "Worsening memory or new neurological symptoms",
+     "Low mood worsening or thoughts of self-harm"
     ]
    }
   },
   "links": [
    {
-    "ic": "📋",
-    "t": "Menopause",
-    "s": "Case walkthrough · NICE NG23",
-    "href": "../cases/menopause.html"
-   },
-   {
     "ic": "💠",
     "t": "HRT prescribing",
-    "s": "Regimens, risks and bleeding",
+    "s": "Regimens and endometrial protection",
     "href": "management/hrt-prescribing.html"
    },
    {
     "ic": "🗺️",
-    "t": "Bleeding on HRT",
-    "s": "Visual algorithm · NICE NG23 · NICE NG12",
-    "href": "algorithms/bleeding-on-hrt.html"
+    "t": "HRT and menopause",
+    "s": "Visual algorithm",
+    "href": "algorithms/hrt-menopause.html"
    },
    {
     "ic": "💠",
     "t": "Contraception",
-    "s": "Methods over 40",
+    "s": "Contraception over 40 and LNG-IUS",
     "href": "management/contraception.html"
+   },
+   {
+    "ic": "💠",
+    "t": "Menopause",
+    "s": "Diagnosis and options",
+    "href": "management/menopause.html"
    }
   ],
   "pitfalls": {
-   "intro": "This station is failed less on HRT knowledge than on risk communication — either brushing off the cancer fear or reinforcing it — and on missing the practical details that make HRT safe. Each pattern below is fixable.",
+   "intro": "Diagnosing the perimenopause is straightforward. The marks are in contraception, pregnancy, and the frightening meaning of her brain fog.",
    "items": [
     {
      "dom": "dg",
-     "fail": "Requesting FSH “to confirm the menopause”.",
-     "why": "NICE NG23 advises against FSH testing in women over 45 with typical symptoms; it delays treatment and adds nothing.",
-     "fix": "“At 51, with these symptoms, your history gives us the diagnosis.”"
+     "fail": "Ordering FSH.",
+     "why": "Not needed over 45 and can mislead.",
+     "fix": "Diagnose clinically (NG23)."
+    },
+    {
+     "dom": "dg",
+     "fail": "Not excluding pregnancy.",
+     "why": "Late period with inconsistent condoms.",
+     "fix": "Pregnancy test before starting treatment."
+    },
+    {
+     "dom": "cm",
+     "fail": "Implying HRT is contraception.",
+     "why": "Unplanned pregnancy risk.",
+     "fix": "Explain and offer the LNG-IUS or other method."
+    },
+    {
+     "dom": "dg",
+     "fail": "Not exploring the brain fog.",
+     "why": "Fear of dementia and the work review are the hidden agenda.",
+     "fix": "Ask what worries her; screen mood and alcohol."
+    },
+    {
+     "dom": "cm",
+     "fail": "No work support.",
+     "why": "Her job is at risk.",
+     "fix": "Disclosure, occupational health, adjustments, fit note."
     },
     {
      "dom": "ro",
-     "fail": "“The risk is tiny, don’t believe the papers.”",
-     "why": "False reassurance ignores her concern and is inaccurate. “Does not respond to the patient’s concerns.”",
-     "fix": "Give the MHRA 2019 figures: about 63 per 1000 without HRT, about 14 more with five years of sequential combined HRT."
-    },
-    {
-     "dom": "cm",
-     "fail": "Prescribing oestrogen alone to a woman with a uterus, or forgetting contraception.",
-     "why": "Unopposed oestrogen causes endometrial hyperplasia; HRT is not a contraceptive.",
-     "fix": "Ask about the womb and contraception every time; add a progestogen."
-    },
-    {
-     "dom": "cm",
-     "fail": "Telling her any bleeding on HRT means an urgent cancer referral.",
-     "why": "NICE NG23 (April 2026): bleeding is common in the first 6 months or 3 months after a change. NICE NG12 applies to unexplained postmenopausal bleeding at 55+ not attributable to HRT.",
-     "fix": "Explain the expected bleeding window and when to report bleeding promptly."
-    },
-    {
-     "dom": "ro",
-     "fail": "Using jargon — “sequential combined transdermal with micronised progesterone, RR 1.3”.",
-     "why": "“Language not easily understood by the patient.”",
-     "fix": "“A patch or gel through the skin, plus a tablet to protect the womb lining for part of each month.”"
-    },
-    {
-     "dom": "cm",
-     "fail": "No review date or teach-back of the numbers.",
-     "why": "“Does not confirm understanding” and absent follow-up are standard failing statements.",
-     "fix": "Ask her to explain the numbers back; review in three months."
+     "fail": "Overloading with risk statistics.",
+     "why": "Her main concern is elsewhere.",
+     "fix": "Proportionate risk information, with numbers offered."
     }
    ]
   }
  },
  "itchy-rash-systemic": {
   "stem": {
-   "name": "Howard Leyton",
-   "age": "58-year-old man",
+   "name": "Iris Paterson",
+   "age": "86 years · female",
    "pmh": [
-    "Generalised itch for about 3 months (seen once before)"
+    "Alzheimer’s dementia (moderate)",
+    "Hypertension",
+    "Osteoarthritis"
    ],
    "meds": [
-    "Emollient — from previous visit",
-    "Mild topical corticosteroid — from previous visit"
+    "Donepezil",
+    "Amlodipine",
+    "Emollient (care home request, 4 weeks ago)",
+    "Hydrocortisone 1% cream (care home request, 4 weeks ago)"
    ],
-   "allergy": "Allergy status not recorded — check before prescribing",
-   "recent": "Previous consultation for itch: emollient and a mild topical steroid prescribed. No blood tests on file for this problem. Accountant.",
-   "reason": "Video consultation: \"Itch no better — wants something stronger.\""
+   "allergy": "None recorded",
+   "recent": "Residential care home. Four weeks ago: telephone request from the home for “eczema creams”, issued; no examination recorded. Registered health and welfare LPA: daughter, Helen Paterson.",
+   "reason": "Daughter calling: “Mum’s itching is getting worse.”"
   },
   "knowledge": {
-   "guideline": "BAD guidelines for generalised pruritus in adults without an underlying dermatosis (2018) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BNF",
-   "summary": "Three months of generalised itch with no primary rash, not helped by emollient or steroid, calls for a search for a systemic cause. With night sweats, weight loss, fevers and a rubbery neck node, the picture is suspected lymphoma until proven otherwise.",
+   "guideline": "[1] UKHSA Guidance on the management of scabies cases and outbreaks in long-term care facilities and other closed settings (2023; check current version) · [2] NICE CKS Scabies (check current version) · [3] Mental Capacity Act 2005 and Code of Practice · [4] GMC Confidentiality: good practice in handling patient information (2017) · [5] GMC Good medical practice (2024) – openness and raising concerns · [6] Product SPCs for permethrin cream and oral ivermectin",
+   "summary": "A care-home resident with dementia has six weeks of nocturnal itch in a scabies distribution and crusted skin on her hands; staff, another resident and her daughter are itching. Treat as a probable scabies outbreak with possible crusted scabies: same-day examination, the home to contact the UKHSA health protection team, simultaneous treatment of residents, staff and contacts, Helen and her household treated at the same time, best-interests decisions with Helen as attorney, confidentiality for others, and an honest response about the earlier remote prescription.",
    "points": [
     {
-     "h": "Itch without a rash",
-     "t": "When the only skin signs are scratch marks, look for an internal cause rather than stepping up topical steroids. BAD 2018 lists iron deficiency, cholestasis and liver disease, chronic kidney disease, thyroid disease, haematological disease (including lymphoma and polycythaemia vera), drugs and HIV among the causes; exclude scabies and dry skin, but do not assume them."
+     "h": "Recognise scabies",
+     "t": "Nocturnal itch; burrows and papules in finger webs, wrists, waist, breasts and genitals; itch in contacts. In older people the pattern can be atypical and the face and scalp involved [2]."
     },
     {
-     "h": "The B-symptom screen",
-     "t": "Ask directly about drenching night sweats, unintentional weight loss, fevers, fatigue and pain in lymph nodes after alcohol. Examine all node groups, the liver and the spleen — this needs a face-to-face visit."
+     "h": "Crusted scabies",
+     "t": "Thick, crusted, scaly plaques, often on the hands, in older, immunosuppressed or cognitively impaired people. Very high mite load and infectivity; may itch little [1,2]."
     },
     {
-     "h": "The NICE NG12 lymphoma criterion",
-     "t": "NICE NG12: consider a suspected cancer pathway referral for Hodgkin or non-Hodgkin lymphoma in adults with unexplained lymphadenopathy (or splenomegaly for non-Hodgkin lymphoma), taking into account associated symptoms, particularly fever, night sweats, shortness of breath, pruritus and weight loss — and, for Hodgkin lymphoma, alcohol-induced lymph node pain."
+     "h": "Care home outbreaks",
+     "t": "The care home should contact the UKHSA health protection team when scabies is suspected. Outbreak management includes case finding, simultaneous treatment of residents, staff and contacts, and environmental measures [1]."
     },
     {
-     "h": "Other NICE NG12 actions",
-     "t": "NICE NG12: consider a very urgent full blood count (within 48 hours) to assess for leukaemia in adults with features such as persistent fatigue, unexplained fever, generalised lymphadenopathy or hepatosplenomegaly. Offer an urgent chest X-ray (within 2 weeks) to people aged 40 and over with two or more unexplained symptoms such as fatigue and weight loss (one is enough if they have ever smoked)."
+     "h": "Treatment",
+     "t": "Permethrin 5% cream to the whole body, repeated after 7 days (check the SPC/local formulary). In crusted scabies or outbreaks, oral ivermectin may be advised by specialists or UKHSA [1,6]."
     },
     {
-     "h": "First-line tests",
-     "t": "BAD 2018: FBC and ferritin, renal function, liver function and thyroid function in chronic generalised itch without a rash; add a blood film, ESR or CRP, LDH, calcium, HbA1c and HIV testing as the picture suggests."
+     "h": "Contacts and laundry",
+     "t": "Household and close contacts treated at the same time, even without symptoms. Wash clothing, towels and bedding at 50°C or above, or seal in bags for 72 hours [2]."
     },
     {
-     "h": "Relief meanwhile",
-     "t": "Keep emollients going generously, keep nails short, avoid hot baths and overheating. A sedating antihistamine at night may help sleep (BAD 2018); dose per BNF. Symptom relief runs alongside the work-up, never instead of it."
+     "h": "After treatment",
+     "t": "Itch may last 2–4 weeks; persistent itch beyond that, new burrows or crusting suggests treatment failure or reinfestation."
+    },
+    {
+     "h": "Capacity and LPA",
+     "t": "If the resident lacks capacity for the decision, treat in her best interests and consult the registered health and welfare attorney [3]."
+    },
+    {
+     "h": "Confidentiality and candour",
+     "t": "Do not disclose other residents’ details [4]. Be open about shortcomings in care and explain how to raise concerns [5]."
     }
    ]
   },
   "model": [
    {
-    "phase": "Opening & agenda",
+    "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello Mr Leyton, I’m Dr Lee. Can you see and hear me? … Good. I can see from the notes the itch hasn’t settled. Tell me how it’s been.",
+    "text": "Hello, I’m Dr Clarke. Can I check who I’m speaking to and your connection to the patient?",
     "dom": "ro",
-    "why": "Open question after checking the video link"
+    "why": "Third-party identity"
    },
    {
     "who": "pt",
-    "text": "It’s driving me to distraction. Everywhere, worse at night, and there’s hardly anything to see. The creams haven’t made a dent. I just want something stronger that works. I’m scratching myself raw."
+    "text": "Helen Paterson, I’m her daughter, I have power of attorney for health. I’m ringing about my mum, Iris, at Beech House. She’s been scratching herself raw for weeks and nobody’s done anything. Now my own hands are itching. Is she being neglected?"
    },
    {
     "who": "dr",
-    "text": "That sounds miserable, and I’m not going to brush it off. I’d like to understand it properly, then work out together why the creams haven’t worked, and what to do next. Is that all right?",
+    "text": "Thank you, Helen. I can see the health and welfare LPA on her record. I’m sorry she’s been so uncomfortable, and I’ll come back to your question about neglect. Can I ask some questions first so I can work out what’s going on?",
     "dom": "ro",
-    "why": "Validates distress and sets a clear agenda"
+    "why": "Acknowledges; checks LPA; sets agenda"
    },
    {
+    "phase": "History",
+    "clock": "1–5 min",
     "who": "pt",
-    "text": "Fine. As long as I leave with something."
+    "text": "Fine."
    },
    {
-    "phase": "Data gathering",
-    "clock": "1–4 min",
     "who": "dr",
-    "text": "Has there ever been a rash, or is it just the scratch marks?",
+    "text": "Where on her body is it, and is it worse at any time of day?",
     "dom": "dg",
-    "why": "Establishes itch without a primary rash"
+    "why": "Distribution and timing"
    },
    {
     "who": "pt",
-    "text": "Just the scratches. The skin itself looks normal otherwise."
+    "text": "Wrists, between her fingers, round her waist, under her breasts. The staff say she’s worse at night. And her hands have gone thick and crusty, like dried porridge."
    },
    {
     "who": "dr",
-    "text": "Anyone else at home itchy? And any new medicines, washing powders or anything else that changed around when it started?",
+    "text": "Is anyone else itching? You mentioned your hands.",
     "dom": "dg",
-    "why": "Screens scabies, contact and drug causes"
+    "why": "Contacts"
    },
    {
     "who": "pt",
-    "text": "No, nobody else. Nothing new that I can think of."
+    "text": "My hands and wrists, at night, for a week. A carer said two staff are itching and the lady next door."
    },
    {
     "who": "dr",
-    "text": "Now some questions that might seem unrelated. Have you had sweats at night — enough to soak the sheets?",
+    "text": "Is your mum otherwise herself? Any fever, more confused than usual, off her food? Any new medicines, or steroid tablets?",
     "dom": "dg",
-    "why": "Starts the B-symptom screen"
+    "why": "Systemic features; secondary infection; drugs"
    },
    {
     "who": "pt",
-    "text": "Actually, yes. I’ve had to change the sheets some nights. I put it down to the itching keeping me awake."
-   },
-   {
-    "who": "dr",
-    "text": "Have you lost weight without trying, had any fevers, or felt more tired than usual?",
-    "dom": "dg",
-    "why": "Completes the B-symptom screen"
-   },
-   {
-    "who": "pt",
-    "text": "My clothes are looser, now you mention it. I’ve felt shivery and warm on and off. And I’m shattered — but I’m not sleeping."
-   },
-   {
-    "who": "dr",
-    "text": "Have you noticed any lumps in your neck, armpits or groin? Could you run your fingers down the sides of your neck for me now?",
-    "dom": "dg",
-    "why": "Asks directly about lymphadenopathy"
-   },
-   {
-    "who": "pt",
-    "text": "There’s… something on the left side of my neck. A lump. Firm, sort of rubbery. It doesn’t hurt."
-   },
-   {
-    "who": "dr",
-    "text": "Thank you, that’s important. Any breathlessness or cough, and does the itch or anywhere ache after a drink of alcohol?",
-    "dom": "dg",
-    "why": "Screens mediastinal symptoms and alcohol-induced pain"
-   },
-   {
-    "who": "pt",
-    "text": "Breathing’s fine. I haven’t really noticed anything with drink."
-   },
-   {
-    "phase": "Ideas, concerns & expectations",
-    "clock": "4–6 min",
-    "who": "dr",
-    "text": "You said you put the sweats down to the itch. What have you been thinking is going on, overall?",
-    "dom": "ro",
-    "why": "Explores his idea and the sweats he has not connected"
-   },
-   {
-    "who": "pt",
-    "text": "Dry skin, I suppose. Or eczema. I’d noticed the sweats and the weight, but… I didn’t want to think about it, if I’m honest."
-   },
-   {
-    "who": "dr",
-    "text": "That’s a very understandable reaction. Is there something in particular you’ve been worried it might be?",
-    "dom": "ro",
-    "why": "Surfaces the fear he has been avoiding"
-   },
-   {
-    "who": "pt",
-    "text": "You hear things. Cancer. I’ve just been hoping a stronger cream would make it all go away."
+    "text": "No, she’s the same as usual. No new tablets apart from the creams."
    },
    {
     "phase": "Explanation",
-    "clock": "6–8 min",
+    "clock": "5–7 min",
     "who": "dr",
-    "text": "Thank you for saying it. I want to be straight with you. When someone itches all over with nothing to see, and also has night sweats, weight loss, fevers and a new lump in the neck, the cause may be inside rather than in the skin. One of the things we have to rule out is a problem with the lymph glands, such as a lymphoma. I’m not saying that’s what it is, but it needs checking quickly.",
+    "text": "An itch that’s worse at night in the hands, wrists and waist, with staff and you itching too, sounds very much like scabies. That’s tiny mites that spread through close skin contact. It’s nothing to do with cleanliness. The thick crusty skin on her hands makes me think she may have a heavier form, called crusted scabies, which spreads more easily. A steroid cream can make scabies worse.",
     "dom": "dg",
-    "why": "Links the features and names lymphoma honestly as a possibility"
+    "why": "Working diagnosis; crusted scabies"
    },
    {
     "who": "pt",
-    "text": "A lymphoma. Right. That’s… a lot."
+    "text": "Scabies? In a care home?"
    },
    {
     "who": "dr",
-    "text": "It is a lot to hear. Can I explain what happens next? Many things can cause this, and if it does turn out to be lymphoma, it is often very treatable. The key is getting answers quickly.",
+    "text": "It’s quite common in care homes, because of close contact during personal care. The important thing is to deal with it properly now.",
     "dom": "ro",
-    "why": "Pauses for emotion and offers realistic hope"
+    "why": "Normalises; moves to plan"
+   },
+   {
+    "phase": "Ideas, concerns and expectations",
+    "clock": "7–8 min",
+    "who": "dr",
+    "text": "What’s worrying you most?",
+    "dom": "ro",
+    "why": "Concerns"
    },
    {
     "who": "pt",
-    "text": "Okay. Go on."
+    "text": "That I didn’t push sooner. That I’ve taken it home to my grandchildren. And who else has it."
    },
    {
-    "phase": "Shared management",
+    "phase": "Plan",
     "clock": "8–11 min",
     "who": "dr",
-    "text": "First, I’d like to see you in person tomorrow to examine your neck, armpits, groin and tummy. I can’t feel the gland over video. At the same visit, blood tests: blood count and film, iron, kidney, liver and thyroid tests, inflammation markers, LDH, calcium and sugar. I’ll also arrange a chest X-ray, because you have both tiredness and weight loss.",
-    "dom": "dg",
-    "why": "Face-to-face examination, targeted bloods and NICE NG12 chest X-ray"
-   },
-   {
-    "who": "pt",
-    "text": "And a specialist?"
+    "text": "Here’s what will happen today. A doctor will see your mum at the home this afternoon, rather than another cream over the phone. If it’s scabies, the home needs to contact the public health team, who organise treating all the residents, staff and close contacts at the same time, and advise on cleaning. With crusted scabies they may also advise tablets as well as cream.",
+    "dom": "cm",
+    "why": "Same-day visit; UKHSA; simultaneous treatment"
    },
    {
     "who": "dr",
-    "text": "Yes. If the examination confirms the gland, I’ll refer you on the urgent suspected cancer pathway, so a specialist sees you within two weeks. I’d rather move quickly and find it’s something simpler.",
-    "dom": "cm",
-    "why": "NICE NG12 lymphoma suspected cancer pathway referral"
+    "text": "Because your mum can’t make this decision herself now, as her attorney you’ll be involved in agreeing her treatment, in her best interests. Is that okay?",
+    "dom": "ro",
+    "why": "Best interests with LPA"
    },
    {
     "who": "pt",
-    "text": "And the itch in the meantime?"
+    "text": "Yes. Please."
    },
    {
     "who": "dr",
-    "text": "Keep using the moisturiser generously, avoid hot baths, and I’ll prescribe an antihistamine that makes you drowsy, to take at night for sleep. Don’t drive or use machinery if it makes you sleepy the next morning. The stronger steroid cream wouldn’t help an itch like this.",
+    "text": "For you and your household, including the grandchildren if they’ve had close contact: get permethrin cream from the pharmacy or your own GP, apply it all over, and repeat after a week, ideally starting on the same day as the home. Wash clothes, towels and bedding on a hot wash. The itch can last a few weeks even after it’s worked.",
     "dom": "cm",
-    "why": "Symptom relief alongside the work-up with a safety caution"
+    "why": "Contacts treated simultaneously"
    },
    {
     "who": "pt",
-    "text": "That’s something, at least."
+    "text": "And the others at the home? Who are they?"
    },
    {
-    "phase": "Safety-net & close",
+    "who": "dr",
+    "text": "I can’t share other residents’ details, in the same way I wouldn’t share your mum’s with their families. The public health team will make sure everyone affected is treated.",
+    "dom": "ro",
+    "why": "Confidentiality explained respectfully"
+   },
+   {
+    "who": "dr",
+    "text": "About neglect: you’re right that a cream was prescribed without anyone looking at her skin, and that should have been different. I’ll make sure it’s reviewed. If you want to raise concerns about the home or about us, I can explain how, including speaking to the home manager or the Care Quality Commission.",
+    "dom": "ro",
+    "why": "Honest, non-defensive; routes for concerns"
+   },
+   {
+    "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "If you get high fevers, feel very unwell, become breathless, or notice the lumps growing quickly before we speak again, contact us the same day or call 111 out of hours. I’ll ring you myself with the blood results.",
-    "dom": "cm",
-    "why": "Specific safety-net and personal follow-up"
-   },
-   {
-    "who": "pt",
-    "text": "Right."
-   },
-   {
-    "who": "dr",
-    "text": "It’s a lot to take in. If you were explaining today to someone close to you, what would you say?",
+    "text": "Can I check what you’ll do from here?",
     "dom": "ro",
-    "why": "Teach-back that also checks support"
+    "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "That the itch might be coming from inside, maybe the glands. I’m being examined tomorrow, bloods and a chest X-ray, and probably an urgent referral. Tablet for sleep, keep up the cream."
+    "text": "Doctor sees Mum today. Home calls public health. I get the cream for us, twice a week apart, hot wash. You’ll look at what went wrong."
    },
    {
     "who": "dr",
-    "text": "That’s exactly it. You did the right thing coming back. I’ll see you tomorrow — is there anything else on your mind before we finish?",
+    "text": "Exactly. I’ll ring you after the visit. If your mum gets a fever, becomes more confused or drowsy, or the skin becomes hot, red and weeping, the home should call us or 111 urgently.",
     "dom": "cm",
-    "why": "Confirms plan and shares the floor"
-   },
-   {
-    "who": "pt",
-    "text": "No. Thank you for being straight with me."
+    "why": "Follow-up call; safety-net"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Let him describe the itch and its impact; did not jump to a stronger cream.",
-    "pts": 1, "dom": "dg"
+    "d": "Confirmed identity and LPA; acknowledged distress; parked the neglect question and returned to it.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Sleep loss, work, who is at home, how he copes with worry, and support for bad news.",
-    "pts": 1, "dom": "dg"
+    "d": "Care home setting, Helen’s role and guilt, grandchildren, others itching.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up the sweats he blamed on the itch and his “didn’t want to think about it”, and explored them.",
-    "pts": 1, "dom": "ro"
+    "d": "Nocturnal itch in typical sites; crusted hands; staff and family itching; “neglect” and “who else”.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (dry skin or eczema); concern (unspoken fear of cancer); expectation (a stronger cream).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (something catching the home let spread), concerns (guilt, grandchildren, neglect), expectation (visit today, diagnosis, names).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Face-to-face examination of all node groups, liver and spleen; FBC and film, ferritin, U&E, LFTs, TFTs, ESR or CRP, LDH, calcium, HbA1c; chest X-ray.",
-    "pts": 1, "dom": "dg"
+    "d": "Same-day examination at the home; skin scrapings or dermatoscopy if available; no further remote prescribing.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
-    "d": "Lymphoma vs other systemic causes (iron deficiency, cholestasis, CKD, thyroid, polycythaemia, drugs, HIV) vs skin causes (scabies, xerosis).",
-    "pts": 1, "dom": "dg"
+    "d": "Scabies and crusted scabies versus asteatotic eczema, drug-induced or systemic itch, bullous pemphigoid.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "B-symptom screen; lymphadenopathy asked about directly; NICE NG12 lymphoma, leukaemia and chest X-ray criteria applied.",
-    "pts": 2, "dom": "dg"
+    "d": "Fever, delirium, secondary infection; crusted scabies with high infectivity.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Itch without a rash with B symptoms and a rubbery node: suspected lymphoma, named honestly as something to rule out.",
-    "pts": 2, "dom": "dg"
+    "d": "Probable scabies outbreak in a care home with possible crusted scabies in Iris.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Examination tomorrow, bloods, chest X-ray, suspected cancer pathway referral if the node is confirmed; itch relief meanwhile.",
-    "pts": 2, "dom": "cm"
+    "d": "Same-day visit; home to contact UKHSA health protection team; simultaneous treatment of residents, staff and contacts; permethrin twice 7 days apart (check the SPC/local formulary); ivermectin per specialist advice.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Night-time sedating antihistamine with driving caution; stopped escalating topical steroid; sleep and distress addressed.",
-    "pts": 1, "dom": "cm"
+    "d": "Best interests with the LPA; confidentiality for other residents; honest response and review of the remote prescription; routes for concerns.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Named same-day warning signs; personal results call; teach-back and support check.",
-    "pts": 1, "dom": "cm"
+    "d": "Call back after the visit; fever, confusion or infected skin needs urgent care; persistent itch expected for weeks; teach-back.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
-    "New & undifferentiated presentations",
-    "Long-term conditions & cancer"
+    "Older adults",
+    "Professional & ethical dilemmas",
+    "New & undifferentiated presentations"
    ],
    "stem": {
-    "name": "Howard Leyton",
-    "age": "58 years · male",
+    "name": "Iris Paterson",
+    "age": "86 years · female",
     "pmh": [
-     "Generalised itch ~3 months"
+     "Alzheimer’s dementia (moderate)",
+     "Hypertension",
+     "Osteoarthritis"
     ],
     "meds": [
-     "Emollient",
-     "Mild topical steroid"
+     "Donepezil",
+     "Amlodipine",
+     "Emollient (care home request, 4 weeks ago)",
+     "Hydrocortisone 1% cream (care home request, 4 weeks ago)"
     ],
-    "allergy": "Not recorded",
-    "recent": "Seen for itch: emollient and mild topical steroid. No bloods on file.",
-    "reason": "\"The creams aren’t touching it.\""
+    "allergy": "None recorded",
+    "recent": "Residential care home. Four weeks ago: telephone request from the home for “eczema creams”, issued; no examination recorded. Registered health and welfare LPA: daughter, Helen Paterson.",
+    "reason": "Daughter calling: “Mum’s itching is getting worse.”"
    },
    "timeMap": [
     {
      "t": "0–1",
-     "h": "Open & listen",
-     "d": "Let him vent the misery of the itch. Agree to understand it before deciding on treatment."
+     "h": "Open",
+     "d": "Identity and LPA. Acknowledge anger; promise to return to neglect."
     },
     {
-     "t": "1–4",
-     "h": "Widen the lens",
-     "d": "No primary rash; contacts, drugs. Then the B symptoms: night sweats, weight loss, fevers, fatigue, lumps (ask him to feel his neck), alcohol pain, breathlessness."
+     "t": "1–5",
+     "h": "History",
+     "d": "Sites, night itch, crusted hands, contacts, systemic features, medicines."
     },
     {
-     "t": "4–6",
-     "h": "ICE",
-     "d": "He thinks dry skin; he has been avoiding the sweats and weight loss. Draw out the fear gently."
+     "t": "5–8",
+     "h": "Explain",
+     "d": "Probable scabies, possibly crusted; steroid may worsen; not about cleanliness. ICE: guilt, grandchildren, names."
     },
     {
-     "t": "6–10",
-     "h": "Explain & plan",
-     "d": "Name lymphoma as something to rule out, with realistic hope. Face-to-face tomorrow, bloods, chest X-ray, suspected cancer pathway if the node is confirmed. Itch relief meanwhile."
+     "t": "8–11",
+     "h": "Plan",
+     "d": "Same-day visit; UKHSA via the home; simultaneous treatment; Helen’s household; best interests; confidentiality; honest answer on neglect."
     },
     {
-     "t": "10–12",
-     "h": "Safety-net & close",
-     "d": "Same-day warning signs, personal results call, teach-back."
+     "t": "11–12",
+     "h": "Close",
+     "d": "Teach-back; call back after visit; safety-net."
     }
    ],
    "wordPics": {
-    "fail": "Prescribes a stronger steroid or a different cream and books a review in a month; never asks about sweats, weight or lumps; no blood tests; no referral; reassures that it is dry skin.",
-    "pass": "Recognises itch without a rash needs a systemic screen, elicits the B symptoms, arranges examination and bloods, and refers on the suspected cancer pathway, with symptom relief and a safety-net.",
-    "exc": "All of the above, plus: asks him to feel his neck on camera; surfaces the fear he has been avoiding; names lymphoma honestly with realistic hope; applies the NICE NG12 chest X-ray and lymphoma criteria precisely; arranges face-to-face examination within a day; teach-back and a personal results call."
+    "fail": "Prescribes a stronger steroid or antihistamine over the phone; misses that others are itching; shares other residents’ details or refuses to engage with the neglect question.",
+    "pass": "Recognises probable scabies, arranges a same-day visit, explains outbreak management with the health protection team, and advises Helen to treat her household.",
+    "exc": "All of the above, plus: recognises possible crusted scabies and the steroid effect; simultaneous treatment explained clearly; involves Helen properly as attorney; explains confidentiality respectfully; acknowledges the earlier remote prescription honestly and offers routes for concerns; calls back after the visit."
    },
    "avoid": [
     {
-     "dont": "\"Let’s try a stronger steroid cream and see how you get on.\"",
-     "instead": "\"When there’s nothing to see and creams don’t help, I need to look for a cause inside.\"",
-     "why": "Escalating topical steroids for itch without a rash misses the systemic cause."
+     "dont": "“Let’s try a stronger steroid cream.”",
+     "instead": "“This sounds like scabies; a doctor needs to see her today.”",
+     "why": "Steroids can worsen scabies and delay diagnosis."
     },
     {
-     "dont": "\"I’m sure it’s nothing — probably just dry skin.\"",
-     "instead": "\"Many things cause this, and one I have to rule out is a problem with the lymph glands.\"",
-     "why": "False reassurance in the face of B symptoms and a node is unsafe."
+     "dont": "“The lady next door is Mrs…”",
+     "instead": "“I can’t share other residents’ details, but everyone affected will be treated.”",
+     "why": "Other residents’ information is confidential."
     },
     {
-     "dont": "\"You probably have cancer.\"",
-     "instead": "\"I’m not saying that’s what it is, but it needs checking quickly — and if it is, it’s often very treatable.\"",
-     "why": "Honesty must be calibrated; overstating causes distress and disengagement."
+     "dont": "“The home did everything right.”",
+     "instead": "“A cream was prescribed without anyone examining her, and that should have been different.”",
+     "why": "Defensiveness damages trust; openness is a professional duty."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Sleep and work",
-     "t": "Relentless itch and night sweats wreck sleep. As an accountant, concentration matters; ask how he is coping at work."
+     "h": "Families as contacts",
+     "t": "Visiting relatives are close contacts and may carry scabies to grandchildren. Coordinated treatment includes them."
     },
     {
-     "h": "Avoidance and support",
-     "t": "He noticed the weight loss and sweats but avoided the thought. Ask who he can talk to, and whether he wants someone with him at the face-to-face visit."
+     "h": "Guilt and anger",
+     "t": "Relatives of care-home residents often feel guilty about not noticing sooner. Acknowledge it."
     }
    ],
    "legal": [
     {
-     "h": "Driving and sedating antihistamines",
-     "t": "It is an offence to drive when impaired by drugs, including prescribed medicines (Road Traffic Act 1988). Warn about next-day drowsiness."
+     "h": "Health and welfare LPA",
+     "t": "A registered attorney can make health decisions the person lacks capacity to make, in their best interests (Mental Capacity Act 2005)."
     },
     {
-     "h": "Fit notes",
-     "t": "If investigation or treatment stops him working, he can self-certify for the first 7 days; after that a fit note can be issued."
+     "h": "Confidentiality",
+     "t": "Other residents’ health information cannot be shared with a relative without their consent or another lawful basis (GMC Confidentiality)."
     }
    ],
    "professional": [
     {
-     "h": "Remote consulting limits",
-     "t": "A new node and possible organomegaly cannot be examined on video. Arrange in-person examination promptly rather than referring or reassuring on the screen alone."
+     "h": "Remote prescribing",
+     "t": "Prescribing for a rash without examination, at a third party’s request, risks missed diagnoses. Review it as a significant event."
     },
     {
-     "h": "Results and referral tracking",
-     "t": "Own the results and the referral: tell him when you will call, and track the suspected cancer referral (GMC Good Medical Practice 2024)."
+     "h": "Candour",
+     "t": "Be open when care has fallen short and explain how concerns can be raised."
     }
    ],
    "community": [
     {
-     "h": "Support",
-     "t": "Blood Cancer UK and Lymphoma Action for information if a diagnosis is made; Macmillan Cancer Support for practical and emotional help."
+     "h": "UKHSA health protection teams",
+     "t": "Lead outbreak management in care homes, advising on treatment, staff, visitors and environmental measures."
+    },
+    {
+     "h": "Care Quality Commission",
+     "t": "Relatives can share concerns about a care home with the CQC; the home and the practice also have complaints processes."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Drenching night sweats, unintentional weight loss, fevers",
-     "Lymphadenopathy — rubbery, painless, enlarging; hepatosplenomegaly",
-     "Breathlessness, cough or facial swelling (mediastinal mass)",
-     "Jaundice, dark urine (cholestasis); itch after a hot bath (polycythaemia)"
+     "Thick crusted scaling: crusted scabies, highly infectious, specialist and UKHSA advice",
+     "Fever, delirium, hot spreading redness or weeping: secondary infection or another diagnosis",
+     "Blistering in an older person: consider bullous pemphigoid"
     ],
     "psychosocial": [
-     "Impact on sleep, mood and work",
-     "His avoidance of the sweats and weight loss — ask gently",
-     "Support at home for difficult news"
+     "Care-home resident with dementia",
+     "Daughter with LPA, guilt and anger",
+     "Grandchildren as possible contacts"
     ],
     "ice": [
-     "Idea: “Dry skin or eczema”",
-     "Concern: unspoken fear of cancer, and exhaustion from the itch",
-     "Expectation: “Something stronger that works”"
+     "Idea: something catching that was missed",
+     "Concern: neglect; grandchildren; her own guilt",
+     "Expectation: visit today, a diagnosis, names of others"
     ]
    },
-   "diagnosis": "Generalised itch without a primary rash, with night sweats, weight loss, fevers and a rubbery cervical node, is suspected lymphoma until proven otherwise. Other systemic causes — iron deficiency, cholestasis, CKD, thyroid disease, polycythaemia, drugs, HIV — are screened with the first-line tests.",
-   "diagnosisLay": "“Your skin itself looks healthy, which tells me the itch may be coming from something inside the body. With the sweats, the weight loss and that lump, one of the things we need to rule out is a problem with the lymph glands. It needs checking quickly — and many of these conditions are very treatable.”",
+   "diagnosis": "“This sounds very likely to be scabies, possibly a heavier crusted form on her hands, spreading through the home.”",
+   "diagnosisLay": "“Scabies is tiny mites that burrow into the top layer of skin and spread by close skin contact, such as helping someone wash and dress. The cream kills them, but everyone in contact has to be treated together or it goes round again.”",
    "management": {
-    "reflectIce": "“You hoped a stronger cream would fix it, and I understand why. But I think the itch is a clue to something else, and I want to find it rather than cover it up.”",
-    "psychosocial": "Pause after naming lymphoma; offer realistic hope; ask who will support him; keep the itch relief so he leaves with something tangible.",
+    "reflectIce": "“You were worried your mum had been left to suffer and that you’d taken it home. We’ll see her today, treat everyone together, including your family, and look honestly at what happened.”",
+    "psychosocial": "Involve Helen as attorney; acknowledge guilt; transparency about care.",
     "sharedPlan": [
-     "Face-to-face examination within a day: all node groups, liver, spleen, skin",
-     "FBC and film, ferritin, U&E, LFTs, TFTs, ESR or CRP, LDH, calcium, HbA1c (± HIV); urgent chest X-ray (NICE NG12)",
-     "Suspected cancer pathway referral if unexplained lymphadenopathy is confirmed (NICE NG12); emollient and night-time sedating antihistamine meanwhile"
+     "Same-day face-to-face assessment at the home",
+     "Care home to contact the UKHSA health protection team",
+     "Simultaneous treatment of residents, staff and contacts; permethrin twice, 7 days apart (check the SPC/local formulary); ivermectin if advised",
+     "Helen and household treated at the same time; hot-wash laundry",
+     "Best-interests decision with Helen as attorney",
+     "Review of the earlier remote prescription; routes for concerns explained"
     ],
     "safetyNet": [
-     "High fevers, feeling very unwell, breathlessness, or fast-growing lumps — same day, or 111 out of hours",
-     "Personal call with results; referral tracked"
+     "Fever, increased confusion or drowsiness, hot weeping skin: urgent review or 111",
+     "Itch persisting beyond 4 weeks after treatment or new lesions: reassess",
+     "Call back to Helen after the visit"
     ]
    }
   },
   "links": [
    {
-    "ic": "📋",
-    "t": "Pruritus",
-    "s": "Case walkthrough · BAD 2018",
-    "href": "../cases/pruritus.html"
+    "ic": "💠",
+    "t": "Scabies",
+    "s": "Treatment, contacts and outbreaks",
+    "href": "management/scabies.html"
    },
    {
     "ic": "🗺️",
-    "t": "Widespread itch pathway",
-    "s": "Visual algorithm · itch without a rash",
+    "t": "Widespread itch",
+    "s": "Visual algorithm",
     "href": "algorithms/widespread-itch.html"
    },
    {
-    "ic": "🗺️",
-    "t": "Lymphadenopathy pathway",
-    "s": "Visual algorithm · NICE NG12",
-    "href": "algorithms/lymphadenopathy.html"
-   },
-   {
-    "ic": "🗺️",
-    "t": "Night sweats pathway",
-    "s": "Visual algorithm · B symptoms",
-    "href": "algorithms/night-sweats.html"
+    "ic": "💠",
+    "t": "Dementia",
+    "s": "Capacity and best interests",
+    "href": "management/dementia.html"
    },
    {
     "ic": "💠",
-    "t": "Haematological cancers",
-    "s": "Protocol · referral and work-up",
-    "href": "management/haematological-cancers.html"
+    "t": "Safeguarding",
+    "s": "When care concerns become safeguarding",
+    "href": "management/safeguarding.html"
    }
   ],
   "pitfalls": {
-   "intro": "This station is failed when the candidate treats the skin instead of the patient. The itch is the clue; the B symptoms and the node are the diagnosis. The patterns below come from recurring SCA feedback.",
+   "intro": "The diagnosis is in the pattern. The marks are in acting as an outbreak, involving the attorney properly, protecting others’ confidentiality and answering the neglect question honestly.",
    "items": [
     {
+     "dom": "dg",
+     "fail": "Prescribing another cream over the phone.",
+     "why": "Scabies and crusted scabies need examination and coordinated treatment.",
+     "fix": "Same-day face-to-face assessment."
+    },
+    {
+     "dom": "dg",
+     "fail": "Not asking who else is itching.",
+     "why": "Itching contacts are the diagnostic clue and drive outbreak management.",
+     "fix": "Ask about staff, residents and visitors."
+    },
+    {
      "dom": "cm",
-     "fail": "Prescribing a potent steroid or a different emollient and booking a review in four weeks.",
-     "why": "“Management not in line with current UK best practice.” BAD 2018 calls for a systemic work-up in chronic itch without a rash.",
-     "fix": "“When there’s nothing to see and creams don’t help, I look inside.” Then screen and test."
-    },
-    {
-     "dom": "dg",
-     "fail": "Never asking about sweats, weight loss, fevers or lumps.",
-     "why": "“Did not gather sufficient information to make a safe diagnosis.” He will not volunteer them — he has been avoiding them.",
-     "fix": "Signpost, then ask directly: “Some questions that might seem unrelated…”"
-    },
-    {
-     "dom": "dg",
-     "fail": "Referring to haematology on B symptoms alone without examining, or reassuring over video that the lump is “probably a gland from an infection”.",
-     "why": "The NICE NG12 lymphoma criterion hinges on unexplained lymphadenopathy, which needs examination; reassurance without it is unsafe.",
-     "fix": "Examine in person within a day, send first-line bloods and chest X-ray, and refer on the suspected cancer pathway if the node is confirmed."
+     "fail": "Treating Iris alone.",
+     "why": "Untreated contacts cause reinfestation.",
+     "fix": "Health protection team; simultaneous treatment of residents, staff and families."
     },
     {
      "dom": "ro",
-     "fail": "Ignoring “I didn’t want to think about it” and ploughing on with the plan.",
-     "why": "“Does not identify or respond to the patient’s cues.” His fear shapes whether he attends.",
-     "fix": "“What have you been worried it might be?” Then acknowledge the fear before explaining."
+     "fail": "Sharing other residents’ details.",
+     "why": "Breaches confidentiality.",
+     "fix": "Explain why you cannot, and how they will be treated."
     },
     {
      "dom": "ro",
-     "fail": "Talking about “B symptoms”, “LDH” and “2WW” to the patient.",
-     "why": "“Language not easily understood by the patient.”",
-     "fix": "Plain words: “a blood count”, “a chest X-ray”, “an urgent specialist appointment within two weeks”."
+     "fail": "Ignoring or deflecting the neglect question.",
+     "why": "Damages trust and misses a learning event.",
+     "fix": "Acknowledge the remote prescription; explain how to raise concerns."
     },
     {
-     "dom": "ro",
-     "fail": "Ending with “we’ll let you know if anything’s abnormal”.",
-     "why": "Passive results handling and no named warning signs are standard failing feedback.",
-     "fix": "Name the same-day warning signs, promise a personal results call, and use teach-back."
+     "dom": "cm",
+     "fail": "Not involving the attorney.",
+     "why": "Iris lacks capacity; Helen has a health and welfare LPA.",
+     "fix": "Best-interests decision with Helen."
     }
    ]
   }

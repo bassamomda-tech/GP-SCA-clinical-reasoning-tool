@@ -402,7 +402,7 @@ window.RGP_CASES = [
       { id:"depression",       title:"Depression",                    setting:"New presentation",       status:"full",  path:"cases/depression.html", guideline:"NICE NG222" },
       { id:"anxiety",          title:"Generalised Anxiety",           setting:"Initial assessment · SCA",     status:"full",  path:"cases/anxiety.html", guideline:"NICE NG222 / NICE" },
       { id:"dementia",         title:"Dementia",                      setting:"Cognitive assessment · SCA", status:"full",  path:"cases/dementia.html", guideline:"NICE NG97" },
-      { id:"insomnia",         title:"Insomnia",                      setting:"CBT-I first-line",       status:"full",  path:"cases/insomnia.html", guideline:"NICE TA77 · NICE MTG70 · CBT-I" },
+      { id:"insomnia",         title:"Insomnia",                      setting:"CBT-I first-line",       status:"full",  path:"cases/insomnia.html", guideline:"NICE TA77 · NICE HTG624 · CBT-I" },
       { id:"ocd",              title:"OCD",                           setting:"CBT/ERP · SSRI",         status:"full",  path:"cases/ocd.html", guideline:"NICE CG31" },
       { id:"ptsd",             title:"PTSD",                          setting:"TF-CBT / EMDR",          status:"full",  path:"cases/ptsd.html", guideline:"NICE NG116" },
       { id:"alcohol",          title:"Alcohol & Problem Drinking",    setting:"AUDIT · brief intervention · detox", status:"full", path:"cases/alcohol.html", guideline:"NICE CG115 / NG12" },
@@ -981,33 +981,48 @@ function renderTopNav(activeId){
     </a>
   `).join('');
 
-  // SCA Tools mega — the SCA candidate suite, ordered by the prep journey
-  const scaToolsList = [
-    { ic:'🧾', label:'The SCA Guide',         meta:'Format · marking · 12-week plan', path:'tools/sca-guide.html' },
-    { ic:'📅', label:'SCA dates & fees',      meta:'2026–27 diets · fee · booking', path:'sca/dates-and-fees.html' },
-    { ic:'🗺️', label:'Ultimate Consultation Guide', meta:'The 7 phases · move · phrases · trap', path:'tools/sca-consultation-guide.html' },
-    { ic:'📑', label:'Worked Examples',       meta:'Pass vs fail · annotated turn-by-turn', path:'tools/sca-worked-examples.html' },
-    { ic:'⚖️', label:'Examiner Marking',      meta:'The domains · self-mark /126', path:'tools/sca-domains.html' },
-    { ic:'🎙️', label:'AI Patient Simulator', meta:'Live AI patient · exam-day mode · marked', path:'tools/sca-simulator.html' },
-    { ic:'💬', label:'Conversation Lab',      meta:'ICE · cues · shared plans · negotiation', path:'tools/sca-comms-lab.html' },
-    { ic:'🎯', label:'Micro-Drills',          meta:'Cues · safety-net · explainer reps', path:'tools/sca-drills.html' },
-    { ic:'🔁', label:'AI Mock Exam Circuit',  meta:'Back-to-back AI patients · report card', path:'tools/sca-circuit-ai.html' },
-    { ic:'👥', label:'Live Group Mock',       meta:'3 friends · 1 code · candidate / patient / examiner', path:'tools/sca-group.html' },
-    { ic:'📋', label:'Mock Exam Circuit',     meta:'Self-led timed diet · no AI', path:'tools/sca-circuit.html' },
-    { ic:'📝', label:'AKT Question Bank',     meta:'SBAs · spaced repetition', path:'tools/sca-qbank.html' },
-    { ic:'🔥', label:'SCA Hot Topics',        meta:"What's likely this diet", path:'tools/sca-hot-topics.html' },
-    { ic:'🧭', label:'Consultation Playbooks',meta:'10 difficult consultation types', path:'tools/sca-playbooks.html' },
-    { ic:'🌡️', label:'My Readiness',          meta:'Pass-likelihood · habits · coverage', path:'tools/sca-weakspots.html' },
-    { ic:'🩺', label:'The Resit Clinic',      meta:'Failed? Results letter → 8-week fix', path:'tools/sca-resit.html' },
-    { ic:'📆', label:'The Daily 10',          meta:'Habit streak · quick daily reps', path:'tools/sca-daily.html' },
-    { id:'__updates', ic:'📰', label:'Updates & News', meta:'NICE first · MHRA · UKHSA · 12-month archive', path:'pages/updates.html' },
+  // SCA Tools mega — 7 areas, ordered by the prep journey (Upload 144, Oct 2026)
+  const scaGroups = [
+    { h:'Learn', items:[
+      { ic:'🧾', label:'The SCA Guide',         meta:'Format · marking · 12-week plan', path:'tools/sca-guide.html' },
+      { ic:'📅', label:'SCA dates & fees',      meta:'2026–27 diets · fee · booking', path:'sca/dates-and-fees.html' },
+      { ic:'🗺️', label:'Ultimate Consultation Guide', meta:'The 7 phases · moves · phrases · traps', path:'tools/sca-consultation-guide.html' },
+      { ic:'🧭', label:'Consultation Playbooks',meta:'10 difficult consultation types', path:'tools/sca-playbooks.html' },
+      { ic:'📑', label:'Worked Examples',       meta:'Pass vs fail · annotated turn-by-turn', path:'tools/sca-worked-examples.html' },
+      { ic:'🔥', label:'SCA Hot Topics',        meta:"What's likely this diet", path:'tools/sca-hot-topics.html' },
+      { id:'__updates', ic:'📰', label:'Updates & News', meta:'NICE first · MHRA · UKHSA · 12-month archive', path:'pages/updates.html' } ]},
+    { h:'Case bank', items:[
+      { ic:'📚', label:'Browse all cases',      meta:'Every case by experience group · candidate briefs', path:'sca/case-index.html' },
+      { ic:'🔓', label:'Free SCA cases',        meta:'What you can practise without paying', path:'sca/free-cases.html' } ]},
+    { h:'Practise a case', items:[
+      { id:'__sca', ic:'🎓', label:'The Hot Seat',  meta:'12-min timer · phase clock · RCGP-domain scorecard', path:'tools/sca-practice.html' },
+      { ic:'🎙️', label:'AI Patient Simulator', meta:'Live AI patient · exam-day mode · marked', path:'tools/sca-simulator.html' },
+      { ic:'🎭', label:'Role-play packs',       meta:'Patient + examiner cards for practice in threes', path:'tools/sca-roleplay.html' } ]},
+    { h:'Mock exam', items:[
+      { ic:'📋', label:'Mock Exam Circuit',     meta:'12 cases drawn to the exam blueprint · timed', path:'tools/sca-circuit.html' },
+      { ic:'🔁', label:'AI Mock Exam Circuit',  meta:'Back-to-back AI patients · report card', path:'tools/sca-circuit-ai.html' },
+      { ic:'👥', label:'Live Group Mock',       meta:'3 friends · 1 code · candidate / patient / examiner', path:'tools/sca-group.html' },
+      { ic:'🧑‍🏫', label:'Trainer / VTS mode',   meta:'Session builder · rotations · print packs · room timer', path:'tools/sca-trainer.html' } ]},
+    { h:'Mark & review', items:[
+      { ic:'⚖️', label:'Examiner Marking',      meta:'The three domains · grade yourself honestly', path:'tools/sca-domains.html' } ]},
+    { h:'Skills gym', items:[
+      { ic:'💬', label:'Conversation Lab',      meta:'ICE · cues · shared plans · negotiation', path:'tools/sca-comms-lab.html' },
+      { ic:'🎯', label:'Micro-Drills',          meta:'Cues · safety-net · explainer reps', path:'tools/sca-drills.html' },
+      { ic:'📆', label:'The Daily 10',          meta:'Habit streak · quick daily reps', path:'tools/sca-daily.html' },
+      { ic:'🌍', label:'IMG Track',             meta:'Habit swaps · UK context · explain it plainly', path:'tools/sca-img-track.html' } ]},
+    { h:'My readiness & resit', items:[
+      { ic:'🌡️', label:'My Readiness',          meta:'Pass-likelihood · habits · coverage', path:'tools/sca-weakspots.html' },
+      { ic:'🩺', label:'The Resit Clinic',      meta:'Failed? Results letter → 8-week fix', path:'tools/sca-resit.html' } ]}
   ];
-  const scaToolsMega = scaToolsList.map(t => `
-    <a class="rgp-mm-tool ${activeId === t.id ? 'is-active' : ''}" href="${PRE}${t.path}">
+  const scaToolsList = scaGroups.reduce((a, g) => a.concat(g.items), []);
+  const scaTile = t => `
+    <a class="rgp-mm-tool ${t.id && activeId === t.id ? 'is-active' : ''}" href="${PRE}${t.path}">
       <span class="rgp-mm-tool-ic">${t.ic}</span>
       <span><b>${t.label}</b><small>${t.meta}</small></span>
-    </a>
-  `).join('');
+    </a>`;
+  const scaToolsMega = '<div class="rgp-sca-groups">' + scaGroups.map((g, i) => `
+    <section class="rgp-sca-grp"><h4><span>${i + 1}</span>${g.h}</h4><div class="rgp-sca-grp-list">${g.items.map(scaTile).join('')}</div></section>`).join('') +
+    `</div><div class="rgp-sca-also">Also: <a href="${PRE}tools/sca-qbank.html">AKT Question Bank</a> (SBAs · spaced repetition)</div>`;
 
   // Algorithms mega — by specialty (not all topics).
   // NOTE: the nav meta must match what tools/algorithms.html advertises (algShown).
@@ -1139,7 +1154,7 @@ function renderTopNav(activeId){
       <nav class="rgp-primary" aria-label="Primary">
         <button class="rgp-nav-btn rgp-sca-only" data-menu="scatools" type="button" aria-expanded="false">
           <span class="rgp-nav-sect-ic">🛠️</span>
-          <span>SCA Tools</span> <span class="rgp-pill">${scaToolsList.length}</span>
+          <span>SCA Tools</span> <span class="rgp-pill">${scaGroups.length}</span>
           <svg class="rgp-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
         </button>
         <button class="rgp-nav-btn ${activeId==='__core'?'is-active':''}" data-menu="core" type="button" aria-expanded="false">
@@ -1186,7 +1201,7 @@ function renderTopNav(activeId){
 
     <div class="rgp-mega" data-mega="scatools" hidden>
       <div class="rgp-mega-inner">
-        <div class="rgp-mm-tools">${scaToolsMega}</div>
+        ${scaToolsMega}
       </div>
     </div>
     <div class="rgp-mega" data-mega="core" hidden>

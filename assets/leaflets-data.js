@@ -32,7 +32,7 @@ window.LEAFLET_ORGS = {
   rcog:       { name:'RCOG Patient Info',                    short:'RCOG',              tone:'#56114a' },
   daisynet:   { name:'Daisy Network (Early Menopause)',     short:'Daisy Network',      tone:'#005eb8' },
   bashh:      { name:'BASHH / Patient Group Direction info', short:'BASHH',             tone:'#005eb8' },
-  fsrh:       { name:'FSRH',                                 short:'FSRH',              tone:'#005eb8' },
+  fsrh:       { name:'CoSRH (formerly FSRH)',                short:'CoSRH',              tone:'#005eb8' },
   brookadv:   { name:'Brook (Sexual Health)',                short:'Brook',             tone:'#e2231a' },
   rnib:       { name:'RNIB',                                 short:'RNIB',              tone:'#e2231a' },
   glauc:      { name:'Glaucoma UK',                          short:'Glaucoma UK',       tone:'#005eb8' },
@@ -65,7 +65,7 @@ window.LEAFLET_SPECIALTIES = [
   { id:'neuro',  name:'Neurology',                color:'#7c3aed', icon:'\u26a1',         lead:'stroke',     blurb:'Stroke Assoc., MS Society, Epilepsy Action, Migraine Trust, Parkinson\u2019s UK.' },
   { id:'women',  name:'Women\u2019s Health',       color:'#be185d', icon:'\u2640\ufe0e',   lead:'rcog',       blurb:'RCOG Patient Information Committee leaflets are the GP gold standard.' },
   { id:'men',    name:'Men\u2019s Health',         color:'#1d4ed8', icon:'\u2642\ufe0e',   lead:'pcuk',       blurb:'Prostate Cancer UK + NHS.' },
-  { id:'sexual', name:'Sexual Health & GU',        color:'#a21caf', icon:'\ud83d\udd12',   lead:'bashh',      blurb:'BASHH (STI), FSRH (contraception), Brook (under-25s).' },
+  { id:'sexual', name:'Sexual Health & GU',        color:'#a21caf', icon:'\ud83d\udd12',   lead:'bashh',      blurb:'BASHH (STI), CoSRH (contraception), Brook (under-25s).' },
   { id:'cancer', name:'Cancer',                    color:'#475569', icon:'\ud83c\udf80',   lead:'macmillan',  blurb:'Macmillan for living-with content; CRUK for diagnostic detail.' },
   { id:'eye',    name:'Eye',                       color:'#0f766e', icon:'\ud83d\udc41',   lead:'rnib',       blurb:'RNIB, Glaucoma UK, Macular Society.' },
   { id:'ent',    name:'ENT',                       color:'#0369a1', icon:'\ud83d\udc42',   lead:'ent',        blurb:'ENT UK and NHS.' },
@@ -712,7 +712,7 @@ window.LEAFLET_CONDITIONS = [
     a:[ { o:'nhsinform', u:'https://www.nhsinform.scot/illnesses-and-conditions/immune-system/hiv/', d:'NHS inform (NHS Scotland) \u2014 alternative plain-English overview.' } ] },
 
   { s:'contraception', n:'Contraception (overview)', sp:'sexual', syn:['birth control','pill','coil','implant'],
-    p:{ o:'fsrh', u:'https://www.fsrh.org/standards-and-guidance/fsrh-clinical-guidance-and-statement/contraception-overview/', d:'FSRH \u2014 UK lead body. Method-by-method.' },
+    p:{ o:'fsrh', u:'https://www.fsrh.org/standards-and-guidance/fsrh-clinical-guidance-and-statement/contraception-overview/', d:'CoSRH (formerly FSRH) \u2014 UK lead body. Method-by-method.' },
     a:[ { o:'nhs', u:'https://www.nhs.uk/conditions/contraception/', d:'NHS Contraception Choices hub.' },
         { o:'brookadv', u:'https://www.brook.org.uk/topics/contraception/', d:'Brook.' } ] },
 

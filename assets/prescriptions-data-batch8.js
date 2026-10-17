@@ -224,7 +224,7 @@
     title: 'Nausea & vomiting in pregnancy',
     category: "Women's & Sexual Health",
     eyebrow: 'Antiemetic ladder · safe in pregnancy · spot HG',
-    indication: 'Nausea/vomiting of pregnancy (NVP). Conservative measures first; stepwise antiemetics with established pregnancy safety. Recognise hyperemesis gravidarum (HG: >5% weight loss, dehydration, ketonuria/electrolyte disturbance) needing escalation/admission.',
+    indication: 'Nausea/vomiting of pregnancy (NVP). Conservative measures first; stepwise antiemetics with established pregnancy safety. Recognise hyperemesis gravidarum (HG: >5% pre-pregnancy weight loss with dehydration and/or electrolyte imbalance; assess severity with PUQE) needing escalation/admission.',
     contraindications: 'Exclude other causes (UTI, thyroid, molar/multiple pregnancy) if atypical/late onset. In HG: give thiamine (prevent Wernicke\u2019s) and assess VTE risk. Limit metoclopramide to ~5 days (extrapyramidal effects); counsel on ondansetron first-trimester data.',
     duration: 'Until symptoms settle (often by 16–20 wks)',
     drugs: [
@@ -243,16 +243,16 @@
       'The most important thing is staying hydrated — if you can\u2019t keep fluids down, pass little/dark urine, or feel faint, contact maternity/us, as you may need a drip.',
       'We\u2019ll step the medicines up if the first one isn\u2019t enough.',
     ],
-    followUp: 'Review within days; step up antiemetics if persisting. Check hydration/ketonuria/weight. HG or unable to tolerate oral → maternity/early-pregnancy unit.',
+    followUp: 'Review within days; step up antiemetics if persisting. Check hydration/weight/U&E and PUQE (ketonuria does not assess severity — RCOG 2024). HG or unable to tolerate oral → maternity/early-pregnancy unit.',
     redFlags: [
-      'Unable to keep fluids down, ketonuria, >5% weight loss, dehydration (HG) → admit/ambulatory IV fluids + thiamine.',
+      'Unable to keep fluids down, >5% weight loss, dehydration and/or electrolyte imbalance (HG) → admit/ambulatory IV fluids + thiamine.',
       'Abdominal pain, fever, dysuria, or vaginal bleeding → assess for other causes.',
     ],
     emisText: `Nausea & vomiting of pregnancy (NVP):
 - Conservative: small frequent bland meals, fluids, ginger, P6 bands.
 - 1st-line antiemetic: doxylamine/pyridoxine / cyclizine / promethazine / prochlorperazine.
 - 2nd-line: metoclopramide (≤5 days) or ondansetron (counsel 1st-trimester data).
-- Hyperemesis (>5% wt loss, dehydration, ketonuria) → thiamine + VTE assessment + IV fluids/admit.
+- Hyperemesis (>5% pre-pregnancy weight loss with dehydration and/or electrolyte imbalance; assess severity with PUQE) → thiamine + VTE assessment + IV fluids/admit.
 - Exclude UTI/thyroid/molar if atypical.`,
     sources: [
       { label:'RCOG Green-top 69 — Hyperemesis', url:'https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/the-management-of-nausea-and-vomiting-of-pregnancy-and-hyperemesis-gravidarum-green-top-guideline-no-69/' },

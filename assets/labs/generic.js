@@ -1422,7 +1422,7 @@ RGPLabs.register('generic', {
 
   sources: [
     { label:'NICE NG12 (updated April 2026) — Suspected cancer recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
-    { label:'Macmillan — Rapid referral guidelines', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' },
+    { label:'Macmillan rapid referral guide (2022 edition; check against NG12)', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' },
     
     { label:'NICE NG203 — Chronic kidney disease', url:'https://www.nice.org.uk/guidance/ng203' },
     { label:'NICE NG145 — Thyroid disease', url:'https://www.nice.org.uk/guidance/ng145' },

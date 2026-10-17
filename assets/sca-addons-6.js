@@ -1469,7 +1469,7 @@
    "reason": "Video consultation to discuss her blood results and her bowel symptoms."
   },
   "knowledge": {
-   "guideline": "NICE NG20 (2015) · NICE CG61 (2008, updated 2017) · NICE DG11 (2013) · BSG iron-deficiency anaemia guideline (2021)",
+   "guideline": "NICE NG20 (2015) · NICE CG61 (2008, updated 2017) · NICE HTG320 (2013, formerly DG11) · BSG iron-deficiency anaemia guideline (2021)",
    "summary": "IBS does not cause iron-deficiency anaemia. Years of “IBS” plus iron deficiency, tiredness, mouth ulcers and a little weight loss is coeliac disease until serology says otherwise — tested correctly, while she is still eating gluten.",
    "points": [
     {
@@ -1490,7 +1490,7 @@
     },
     {
      "h": "The anaemia in its own right",
-     "t": "BSG 2021: confirm iron deficiency with ferritin, screen all adults with IDA for coeliac disease, ask about menstrual loss and diet, and treat with oral iron while the cause is sought — product and dose per BNF. In premenopausal women, GI investigation is guided by symptoms, age and family history, and offers FIT to adults with iron-deficiency anaemia. Faecal calprotectin (NICE DG11) helps separate IBD from IBS in adults with lower GI symptoms."
+     "t": "BSG 2021: confirm iron deficiency with ferritin, screen all adults with IDA for coeliac disease, ask about menstrual loss and diet, and treat with oral iron while the cause is sought — product and dose per BNF. In premenopausal women, GI investigation is guided by symptoms, age and family history, and offers FIT to adults with iron-deficiency anaemia. Faecal calprotectin (NICE HTG320) helps separate IBD from IBS in adults with lower GI symptoms."
     },
     {
      "h": "Why the diagnosis matters",

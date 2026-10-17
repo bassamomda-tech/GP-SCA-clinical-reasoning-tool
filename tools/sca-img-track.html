@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>IMG Track: Relating to Others in the SCA · Reasoning GP</title>
+<meta name="description" content="IMG Track: a practical Relating to Others programme for international medical graduates preparing for the MRCGP SCA. Habit swaps, UK context, plain-English explaining drills and a four-week plan.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="IMG Track: Relating to Others in the SCA">
+<meta property="og:description" content="Habit swaps, UK context, plain-English explaining drills and a four-week plan for international medical graduates preparing for the SCA.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/sca-img-track.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/sca-img-track.html">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","isAccessibleForFree":false,"hasPart":{"@type":"WebPageElement","isAccessibleForFree":false,"cssSelector":"body"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=14">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:900px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+.tool-head{ padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:0; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:clamp(1.8rem,3.4vw,2.3rem); line-height:1.12; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:7px; max-width:70ch; line-height:1.6; }
+.tool-head p a, .it-sec a, .it-foot a{ color:var(--teal); font-weight:600; }
+
+/* sticky in-page nav */
+.it-nav{ position:sticky; top:0; z-index:30; background:rgba(246,242,233,.94); -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); margin:0 -4px 6px; padding:10px 4px; display:flex; align-items:center; gap:10px; }
+body.rgp-topnav .it-nav{ top:var(--rgp-nav-h, 0px); }
+.it-links{ display:flex; gap:6px; overflow-x:auto; flex:1; min-width:0; scrollbar-width:none; }
+.it-links::-webkit-scrollbar{ display:none; }
+.it-links a{ flex-shrink:0; font-size:12.5px; font-weight:700; color:var(--ink-2); text-decoration:none; padding:7px 12px; border-radius:999px; border:1px solid var(--line); background:#fff; white-space:nowrap; }
+.it-links a:hover, .it-links a.on{ background:var(--teal); border-color:var(--teal); color:#f6f2e9; }
+.it-chip{ flex-shrink:0; font-size:12px; font-weight:800; color:var(--teal); background:var(--teal-soft); border:1px solid #b9d6d3; border-radius:999px; padding:6px 11px; white-space:nowrap; }
+
+.it-sec{ scroll-margin-top:72px; padding-top:22px; }
+.it-sec > h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:26px; line-height:1.2; color:var(--ink); }
+.it-sec > h2 small{ display:block; font-family:'DM Sans',sans-serif; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); font-weight:700; margin-bottom:4px; }
+.it-intro{ font-size:14px; line-height:1.65; color:var(--ink-2); background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--teal); border-radius:0 12px 12px 0; padding:13px 16px; margin:12px 0 16px; }
+.it-intro b{ color:var(--ink); }
+
+/* habit swap cards */
+.hs-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:700px){ .hs-grid{ grid-template-columns:1fr; } }
+.hs-card{ border:1px solid var(--line); border-radius:14px; background:#fff; padding:15px 16px; display:flex; flex-direction:column; gap:9px; min-width:0; }
+.hs-card.done{ border-color:#bbf7d0; box-shadow:0 0 0 1px #bbf7d0; }
+.hs-n{ font-size:10.5px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+.hs-row{ display:grid; grid-template-columns:86px 1fr; gap:8px; align-items:start; }
+.hs-lbl{ font-size:10.5px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding-top:2px; }
+.hs-lbl.from{ color:#92400e; } .hs-lbl.to{ color:#15803d; }
+.hs-txt{ font-size:13.3px; line-height:1.55; color:var(--ink-2); }
+.hs-txt b{ color:var(--ink); }
+
+.it-btn{ font:inherit; font-size:12.8px; font-weight:700; padding:9px 14px; border-radius:9px; border:1px solid var(--line); background:#fff; color:var(--ink-2); cursor:pointer; }
+.it-btn:hover{ border-color:var(--ink-2); color:var(--ink); }
+.it-btn.pri{ background:var(--teal); color:#f6f2e9; border-color:var(--teal); }
+.it-btn.pri:hover{ filter:brightness(1.12); color:#fff; }
+.it-btn[aria-pressed="true"]{ background:#f0fdf4; border-color:#15803d; color:#14532d; }
+.it-btn:focus-visible, .it-links a:focus-visible{ outline:3px solid #93c5fd; outline-offset:2px; }
+.it-ctl{ display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+.it-reveal{ font-family:'Source Serif 4',Georgia,serif; font-size:15.5px; font-style:italic; line-height:1.55; color:var(--ink); background:#f0fdf4; border:1px solid #bbf7d0; border-radius:11px; padding:11px 14px; }
+.it-reveal[hidden]{ display:none; }
+
+/* UK context cards */
+.uk-grid{ display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media (max-width:760px){ .uk-grid{ grid-template-columns:1fr; } }
+.uk-card{ border:1px solid var(--line); border-radius:14px; background:#fff; padding:15px 16px; min-width:0; }
+.uk-t{ font-size:15px; font-weight:800; color:var(--ink); margin-bottom:8px; }
+.uk-k{ font-size:10.5px; font-weight:800; letter-spacing:.06em; text-transform:uppercase; margin:9px 0 3px; }
+.uk-k.rule{ color:var(--teal); } .uk-k.sca{ color:#3f5c93; } .uk-k.say{ color:#15803d; }
+.uk-p{ font-size:13.2px; line-height:1.58; color:var(--ink-2); }
+.uk-say{ font-family:'Source Serif 4',Georgia,serif; font-size:14.5px; font-style:italic; line-height:1.5; color:var(--ink); background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:9px 12px; }
+.uk-more{ margin-top:9px; font-size:12px; color:var(--muted); line-height:1.5; }
+
+/* explain drills */
+.ex-list{ display:flex; flex-direction:column; gap:14px; }
+.ex-card{ border:1px solid var(--line); border-radius:15px; background:#fff; padding:16px 18px; min-width:0; }
+.ex-card.done{ border-color:#bbf7d0; box-shadow:0 0 0 1px #bbf7d0; }
+.ex-ctx{ font-size:10.5px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:#3f5c93; background:#f0f5ff; border:1px solid #d8e3f8; border-radius:999px; padding:3px 11px; display:inline-block; margin-bottom:9px; }
+.ex-q{ font-family:'Source Serif 4',Georgia,serif; font-size:17px; line-height:1.45; color:var(--ink); margin-bottom:10px; }
+.ex-ta{ width:100%; box-sizing:border-box; font:inherit; font-size:13.5px; line-height:1.55; padding:10px 12px; border:1px solid var(--line-2); border-radius:10px; background:#fff; color:var(--ink); resize:vertical; min-height:72px; margin-bottom:10px; }
+.ex-ta:focus{ outline:none; border-color:var(--teal); box-shadow:0 0 0 2px var(--teal-soft); }
+.ex-clock{ font-variant-numeric:tabular-nums; font-weight:800; font-size:14px; color:var(--ink); min-width:44px; }
+.ex-clock.warn{ color:#b91c1c; }
+.ex-model{ margin-top:12px; }
+.ex-model[hidden]{ display:none; }
+.ex-mh{ font-size:11px; font-weight:800; letter-spacing:.07em; text-transform:uppercase; color:#15803d; margin-bottom:6px; }
+.ex-mt{ font-size:14px; line-height:1.65; color:var(--ink); background:#f0fdf4; border:1px solid #bbf7d0; border-radius:11px; padding:12px 15px; }
+.ex-tb{ display:block; margin-top:7px; font-style:italic; color:#14532d; }
+.ex-jar{ margin-top:10px; font-size:12.8px; line-height:1.55; color:#7f1d1d; background:#fef2f2; border:1px solid #fecaca; border-radius:10px; padding:9px 12px; }
+.ex-jar b{ color:#7f1d1d; }
+.ex-tick{ display:flex; gap:9px; align-items:flex-start; margin-top:10px; font-size:13px; color:var(--ink-2); border:1px solid var(--line); border-radius:10px; padding:9px 12px; cursor:pointer; }
+.ex-tick input{ margin-top:2px; accent-color:#0c4a47; flex-shrink:0; }
+.ex-tick:has(input:checked){ background:#f0fdf4; border-color:#bbf7d0; }
+
+/* plan */
+.pl-weeks{ display:flex; flex-direction:column; gap:12px; }
+.pl-week{ border:1px solid var(--line); border-radius:14px; background:#fff; padding:15px 17px; }
+.pl-wh{ display:flex; gap:10px; align-items:baseline; flex-wrap:wrap; margin-bottom:8px; }
+.pl-wn{ font-size:11px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#f6f2e9; background:var(--teal); border-radius:999px; padding:3px 10px; }
+.pl-wt{ font-size:15px; font-weight:800; color:var(--ink); }
+.pl-week ul{ margin:0; padding-left:18px; display:flex; flex-direction:column; gap:6px; }
+.pl-week li{ font-size:13.3px; line-height:1.55; color:var(--ink-2); }
+.it-note{ font-size:12.8px; line-height:1.6; color:#92400e; background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:10px 13px; margin-top:12px; }
+.it-note b{ color:var(--ink); }
+.it-foot{ margin-top:32px; font-size:11.8px; line-height:1.6; color:var(--muted); border-top:1px solid var(--line); padding-top:14px; }
+.it-foot ul{ margin:6px 0 0; padding-left:18px; }
+</style>
+</head>
+<body>
+<div class="sb-overlay"></div>
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-sca"></aside>
+  <main class="main">
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · SCA · Relating to Others</div>
+        <h1>IMG track: <em>relating to others</em></h1>
+        <p>For doctors who trained outside the UK and are preparing for the MRCGP SCA. This track is not about medical knowledge. It is about the habits and the UK know-how that the exam rewards, written down plainly so you can practise them. It sits alongside the <a href="sca-comms-lab.html">Conversation Lab</a> (cues, ICE, bridges, shared decisions, negotiation) and the <a href="sca-drills.html">Micro-Drills</a>; it does not repeat them. For the background and the published pass-rate figures, read the public <a href="../sca/img.html">SCA guide for IMGs</a>.</p>
+      </div>
+
+      <nav class="it-nav" aria-label="On this page">
+        <div class="it-links">
+          <a href="#habits">1 · Habit swaps</a>
+          <a href="#uk">2 · UK context</a>
+          <a href="#explain">3 · Explain it plainly</a>
+          <a href="#plan">4 · Four-week plan</a>
+        </div>
+        <span class="it-chip" id="itChip" role="status" aria-live="polite">0 of 24 done</span>
+      </nav>
+
+      <section class="it-sec" id="habits" aria-labelledby="h-habits">
+        <h2 id="h-habits"><small>Section 1</small>Habit swaps</h2>
+        <div class="it-intro">These are <b>not national traits</b>. They are habits that are normal in many busy health systems, including plenty of UK hospital wards, and they are sensible where they come from. UK general practice and the SCA simply reward something different. Read the swap, say your own version out loud, then reveal a natural line. Mark a card done once you have used the swap in a practice case.</div>
+        <div class="hs-grid" id="hsGrid"></div>
+      </section>
+
+      <section class="it-sec" id="uk" aria-labelledby="h-uk">
+        <h2 id="h-uk"><small>Section 2</small>UK context you are expected to know</h2>
+        <div class="it-intro">The SCA assumes you know how these work in <b>England</b>. Each card gives the rule, how it tends to appear in a case, and one line you could say. Rules here were checked in October 2026; sources are listed at the bottom of the page. For the fine detail use the site tools linked on each card.</div>
+        <div class="uk-grid" id="ukGrid"></div>
+      </section>
+
+      <section class="it-sec" id="explain" aria-labelledby="h-explain">
+        <h2 id="h-explain"><small>Section 3</small>Explain it plainly</h2>
+        <div class="it-intro">Write or say your explanation first, ideally out loud, in <b>45 seconds or less</b>. Then compare with the model: two to four short sentences, no jargon, and a check of understanding at the end. The model is a standard, not a script. The Micro-Drills page has a random <a href="sca-drills.html">45-second explainer</a> on conditions; these twelve focus on results, referrals and UK processes that often come up.</div>
+        <div class="ex-list" id="exList"></div>
+      </section>
+
+      <section class="it-sec" id="plan" aria-labelledby="h-plan">
+        <h2 id="h-plan"><small>Section 4</small>Four-week plan</h2>
+        <div class="it-intro">About an hour a day, five days a week. Each week builds on the last. If you have less time, keep the order and stretch it to six or eight weeks.</div>
+        <div class="pl-weeks">
+          <div class="pl-week">
+            <div class="pl-wh"><span class="pl-wn">Week 1</span><span class="pl-wt">Notice your habits</span></div>
+            <ul>
+              <li>Work through the <a href="#habits">habit swaps</a> above. Pick the three that feel least natural and write them on a card.</li>
+              <li><a href="sca-comms-lab.html">Conversation Lab</a>: cue-spotting, ICE and the shared-decision module.</li>
+              <li><a href="sca-drills.html">Micro-Drills</a>: ten cue-spotting reps and five golden-minute openings a day.</li>
+              <li><a href="sca-practice.html">Hot Seat</a>: filter by theme to <b>Ethnicity, culture &amp; diversity</b> and do three cases. Browse the same theme in the <a href="../sca/case-index.html#ethnicity-culture-and-diversity">case index</a>.</li>
+            </ul>
+          </div>
+          <div class="pl-week">
+            <div class="pl-wh"><span class="pl-wn">Week 2</span><span class="pl-wt">Learn the UK context</span></div>
+            <ul>
+              <li>Read the <a href="#uk">UK context cards</a>, two or three a day. Say each "line to say" aloud until it sounds like you.</li>
+              <li><a href="sca-practice.html">Hot Seat</a>: switch the theme filter to <b>Health disadvantage</b> and do three cases (see also the <a href="../sca/case-index.html#health-disadvantage-and-vulnerabilities">case index</a>).</li>
+              <li><a href="sca-simulator.html">AI simulator</a>: three <b>telephone</b> cases. On the phone, make your listening audible and check understanding more often.</li>
+              <li>Do six of the <a href="#explain">explain-it-plainly drills</a>.</li>
+            </ul>
+          </div>
+          <div class="pl-week">
+            <div class="pl-wh"><span class="pl-wn">Week 3</span><span class="pl-wt">Get real feedback</span></div>
+            <ul>
+              <li><a href="sca-simulator.html">AI simulator</a>: three <b>video</b> cases. Look at the camera when you speak.</li>
+              <li><a href="sca-domains.html">Examiner Marking</a>: re-mark one of your recorded cases, reading the <b>Relating to others</b> descriptors closely.</li>
+              <li><a href="sca-group.html">Live Group Mock</a> with UK-trained colleagues. Ask them one question: "Was there anything I said that sounded unusual or scripted?"</li>
+              <li>Finish the remaining <a href="#explain">explain-it-plainly drills</a>.</li>
+            </ul>
+          </div>
+          <div class="pl-week">
+            <div class="pl-wh"><span class="pl-wn">Week 4</span><span class="pl-wt">Make it automatic</span></div>
+            <ul>
+              <li>Record two or three real consultations (with the patients' written consent and following your practice's policy) and review them with your trainer, focusing on the three habits from week 1.</li>
+              <li>A second <a href="sca-group.html">Live Group Mock</a>, or a full <a href="sca-circuit-ai.html">AI mock circuit</a> under time.</li>
+              <li>Mixed <a href="sca-practice.html">Hot Seat</a> cases from both themes, one telephone and one video each day.</li>
+              <li>Re-read the <a href="../sca/img.html">IMG guide</a> and redo any habit swap you have not yet marked done.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="it-note"><b>Ask for help early.</b> Your training programme director, deanery professional support unit and the GMC's free <i>Welcome to UK practice</i> session are all there for this. Asking is normal in UK training and is not a sign of weakness.</div>
+      </section>
+
+      <div class="it-ctl" style="margin-top:22px">
+        <button type="button" class="it-btn" id="itReset">Reset my progress on this page</button>
+      </div>
+
+      <div class="it-foot">
+        Educational aid for SCA preparation, not legal or clinical advice for a real patient. Rules are for England and were checked in October 2026; always follow current national and local guidance.
+        <b>Main sources:</b>
+        <ul>
+          <li>GOV.UK: Statutory Sick Pay and fit note guidance; DVLA <i>Assessing fitness to drive</i>; <i>Working together to safeguard children 2023</i>; information sharing advice; migrant health guide on interpreting; Crime and Policing Act 2026 factsheets.</li>
+          <li>legislation.gov.uk: Mental Capacity Act 2005 (sections 1 to 3); Care Act 2014 (section 42); Domestic Abuse Act 2021.</li>
+          <li>GMC: <i>Decision making and consent</i> (2020); <i>Confidentiality</i> (2017) and its DVLA/DVA supplement; <i>0–18 years</i>; <i>Intimate examinations and chaperones</i> (2024).</li>
+          <li>NICE: NG84 (sore throat), NG136 (hypertension), NG238 (cardiovascular risk), NG203 (CKD), NG196 (atrial fibrillation), NG28 (type 2 diabetes), NG12 (suspected cancer).</li>
+          <li>NHS England and nhs.uk: Pharmacy First, NHS 111, NHS Talking Therapies, social prescribing, interpreting in primary care, cervical screening.</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=105"></script>
+<script>
+(function(){
+  'use strict';
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(m){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]; }); };
+
+  /* ---------- Section 1: habit swaps ---------- */
+  var HABITS = [
+    { id:'h1', t:'Who makes the decision',
+      from:'The doctor decides the plan and tells the patient.',
+      to:'A shared decision: you lay out the options, find out what matters to the patient, and agree a plan together.',
+      say:'There are a couple of sensible ways forward. Can I run through them, and then we can work out together which suits you best?' },
+    { id:'h2', t:'Family and adult patients',
+      from:'The family decides, or is told first, for an adult patient.',
+      to:'The adult patient decides. Family can be involved, but only with the patient’s agreement.',
+      say:'This is your decision, and I want to hear what you think first. Would you like your daughter to stay while we talk it through?' },
+    { id:'h3', t:'Bad or uncertain news',
+      from:'Softening bad news by holding it back, or telling the family instead.',
+      to:'Honest disclosure in stages: warn that news is coming, check what they want to know, give it in small pieces and pause.',
+      say:'I’m afraid the scan has shown something that concerns me. Would you like me to go through it now, a step at a time?' },
+    { id:'h4', t:'Gathering the history',
+      from:'A long list of closed questions from the first minute.',
+      to:'An open start, real listening, then a few focused questions, with a short reason for asking them.',
+      say:'Tell me about it from the beginning. … Thank you. Can I ask a few specific questions now, so I don’t miss anything important?' },
+    { id:'h5', t:'Reassurance',
+      from:'Reassuring early, before you know what the worry is.',
+      to:'Explore the worry first. Reassurance only lands when it answers the patient’s actual concern.',
+      say:'Before I tell you what I think, what has been worrying you most about it?' },
+    { id:'h6', t:'Giving advice',
+      from:'“You must” and “you should”: instructions to follow.',
+      to:'Options with honest pros and cons, and your own view if the patient asks for it. A different choice is accepted.',
+      say:'Some people start the tablet now; others prefer to try changes first and recheck in three months. If it helps, I can tell you which way I’d lean and why.' },
+    { id:'h7', t:'Roles at home',
+      from:'Assuming who the partner is, who earns, or who looks after the children or older relatives.',
+      to:'Ask open questions about who is at home and who helps. Use the words the patient uses.',
+      say:'Who is at home with you at the moment? Is there anyone who helps you day to day?' },
+    { id:'h8', t:'Register and titles',
+      from:'A very formal register and titles (“Sir”, “Madam”, surname only) throughout.',
+      to:'Warm, plain and polite. Introduce yourself and ask how the patient would like to be addressed.',
+      say:'Hello, I’m Dr Okafor, one of the GPs here. What would you like me to call you?' },
+    { id:'h9', t:'Apologising',
+      from:'Apologising again and again (“sorry, sorry to ask, sorry”).',
+      to:'One sincere acknowledgement, then move to what you can do. Repeated apology can sound unsure.',
+      say:'I’m sorry you’ve had such a long wait for this. Let’s make good use of today. What’s the main thing you need from me?' },
+    { id:'h10', t:'Ideas, concerns, expectations',
+      from:'Reading ICE out as a checklist: “What are your ideas, concerns and expectations?”',
+      to:'Ask about one part at a time, at the moment it fits, often by picking up something the patient has said. The Conversation Lab has a full ICE phrase bank.',
+      say:'You mentioned your dad had something similar. Is that part of what’s on your mind?' },
+    { id:'h11', t:'Questions and disagreement',
+      from:'A patient’s questions or doubts treated as a challenge to the doctor.',
+      to:'Invite questions and disagreement. Exploring a different view is a strength, not a loss of authority.',
+      say:'It’s completely fine to see this differently from me. Which part doesn’t sit right with you?' },
+    { id:'h12', t:'Explaining',
+      from:'A long, complete explanation in one go, then “Any questions?”',
+      to:'Small chunks, plain words, a pause after each, and a check of understanding that is not a yes/no question.',
+      say:'That was quite a lot. When you get home, what will you tell your family about what we’ve decided?' }
+  ];
+
+  /* ---------- Section 2: UK context ---------- */
+  var UK = [
+    { t:'Fit notes',
+      rule:'Employees self-certify for the first 7 calendar days off sick (weekends included). After that, a fit note says either “not fit for work” or “may be fit for work” with suggested changes such as a phased return, altered hours or amended duties. Nurses, pharmacists, occupational therapists and physiotherapists can also issue them.',
+      sca:'A patient wants a note for a three-day illness, or wants to be signed off for months. Explore the job, the barriers and what the patient wants, and consider “may be fit”.',
+      say:'For the first week you can self-certify, so you won’t need a note from me for that. If it goes on, let’s talk about your job: sometimes going back on lighter duties suits people better than being off completely.',
+      more:'Since 6 April 2026 Statutory Sick Pay is paid from the first day off. Fit-note reform pilots began in parts of England in 2026; the fit note rules above have not changed. Tool: <a href="fit-note.html">Fit note helper</a>.' },
+    { t:'Driving and the DVLA',
+      rule:'The licence holder has the legal duty to tell the DVLA about a condition that affects safe driving. The doctor advises the patient about this. Under GMC guidance, if a patient keeps driving when unfit and will not tell the DVLA, the doctor may disclose relevant information to the DVLA’s medical adviser without consent, after trying to persuade them and telling them first, then confirming in writing.',
+      sca:'A patient after a seizure, blackout or new diagnosis says they need the car for work. Be clear, kind and practical about transport and income.',
+      say:'With what happened last week, the rules mean you need to stop driving for now, and it’s your responsibility to tell the DVLA. I know that’s hard. Let’s think about how you’ll get to work in the meantime.',
+      more:'If a patient cannot understand the advice (for example because of dementia), GMC guidance says to inform the DVLA as soon as practicable. Tool: <a href="dvla.html">DVLA fitness to drive</a>.' },
+    { t:'Mental capacity',
+      rule:'The Mental Capacity Act 2005 applies from age 16. Its five principles: assume capacity; help the person decide before concluding they cannot; an unwise decision is not proof of incapacity; act in their best interests if they lack capacity; choose the less restrictive option. Capacity is decision-specific and time-specific.',
+      sca:'An older patient refuses admission, or a relative says “she can’t decide any more”. Test the specific decision: can they understand, retain, use or weigh the information, and communicate a choice?',
+      say:'It’s your decision. So I know I’ve explained it well, could you tell me in your own words what might happen if you stay at home?' },
+    { t:'Gillick competence and Fraser guidelines',
+      rule:'A young person under 16 can consent to their own treatment if they have enough understanding and intelligence to fully understand what is proposed (Gillick competence). The Fraser guidelines apply specifically to contraception and sexual health advice without a parent’s knowledge.',
+      sca:'A 15-year-old asks for contraception and does not want their parents told. Assess understanding, encourage (but do not force) involving a parent, and keep safeguarding in mind.',
+      say:'What we talk about stays between us, unless I’m worried that you or someone else could be seriously harmed. If that happened, I’d talk to you first about what I needed to do.',
+      more:'GMC 0–18 guidance: sexual activity involving a child under 13 should usually be shared with a safeguarding lead or children’s services, because in law they cannot consent.' },
+    { t:'Confidentiality with relatives and callers',
+      rule:'You can always listen to a relative or carer. You need the patient’s consent to share information about them, unless the patient lacks capacity and sharing is in their best interests, or disclosure is required by law or justified in the public interest. On the phone, check who you are speaking to.',
+      sca:'A worried son phones asking for his mother’s results, or a partner asks what the patient said. Show warmth, do not disclose, and gather what they have noticed.',
+      say:'I can hear how worried you are, and I’m glad you called. I can’t share anything about your mum without her agreement, but I can listen to what you’ve noticed, and that really helps.' },
+    { t:'Safeguarding children and adults',
+      rule:'Children: if you are worried a child is at risk of harm, discuss with the practice safeguarding lead and refer to local children’s social care (or the police on 999 if a child is in immediate danger). Adults: concerns about abuse or neglect of an adult with care and support needs go to the local authority under the Care Act 2014. Data protection law does not prevent sharing information to keep someone safe.',
+      sca:'A child’s injury does not match the story, or a carer seems to control an older patient. Be open with the family where it is safe to do so, and say what you will do.',
+      say:'Because of what you’ve told me, I need to share this with the team whose job is to keep children safe. I’d like to do that with you, not behind your back.',
+      more:'The Crime and Policing Act 2026 created a legal duty to report child sexual abuse; its start date is set by regulations, so check current guidance on whether it is in force.' },
+    { t:'Domestic abuse',
+      rule:'Ask about abuse only when the patient is alone, never in front of a partner, a relative or a child over about two, and never using a family member to interpret. Abuse includes coercive control and economic abuse (Domestic Abuse Act 2021). Local routes include a DASH risk check and, for high risk, a referral to a MARAC.',
+      sca:'Repeated injuries, low mood, or a partner who always answers for the patient. On video or phone, check first that they are alone and safe to talk.',
+      say:'Before we go on, are you somewhere you can talk freely? … Some people who feel like this tell me things are difficult at home. Is anyone hurting you or making you feel afraid?',
+      more:'The free 24-hour National Domestic Abuse Helpline is 0808 2000 247. If the patient is in immediate danger, call 999.' },
+    { t:'Chaperones',
+      rule:'GMC guidance (2024): offer a chaperone for any intimate examination, whatever the gender of the doctor and patient. A chaperone is usually a trained health professional, not a relative. Explain why the examination is needed and what it involves, get consent, and record the discussion.',
+      sca:'In a remote case you cannot examine, but you can say what you would examine and offer to arrange it with a chaperone.',
+      say:'I’d like to examine you properly to check this. It would mean … We always offer a chaperone, a trained member of our team, for that kind of examination. Would you like one?' },
+    { t:'Consent and shared decisions',
+      rule:'GMC <i>Decision making and consent</i> (2020): patients have the right to be involved in decisions about their care. Share information about the options, including the option of doing nothing, with the benefits and risks that matter to this patient, and respect their choice.',
+      sca:'Almost every case. Offer at least two options including “wait and see” where safe, ask what matters to them, and give your view if asked. The Conversation Lab teaches the full shared-decision pattern.',
+      say:'One option is to do nothing for now and see how it goes. The others are… What matters most to you when you think about these?' },
+    { t:'Antibiotics and back-up prescriptions',
+      rule:'NICE antimicrobial guidelines advise no antibiotic or a back-up (delayed) prescription for most self-limiting infections. With a back-up prescription, the patient only uses it if symptoms do not improve, or get worse, within a set time.',
+      sca:'A patient with a sore throat expects antibiotics. Find out why (a past illness? time off work?), explain the usual course, and agree a plan.',
+      say:'Most sore throats like this get better on their own within about a week, and antibiotics only shorten it by less than a day. I can give you a prescription to use if it’s not improving in three to five days or you’re getting worse.' },
+    { t:'NHS routes',
+      rule:'NHS 111 (phone or online) is for urgent problems that are not emergencies; 999 is for emergencies. Pharmacy First lets community pharmacies in England treat seven conditions: sinusitis (12+), sore throat (5+), acute otitis media (1–17), infected insect bites (1+), impetigo (1+), shingles (18+) and uncomplicated urinary tract infections in women aged 16–64. Patients can self-refer to services such as NHS Talking Therapies and sexual health clinics, and in many areas to physiotherapy. Social prescribing link workers help with non-medical needs such as loneliness, debt or housing.',
+      sca:'A patient wants a GP appointment for something a pharmacy or self-referral service could handle sooner, or has needs that are social rather than medical.',
+      say:'You don’t need to wait for a GP appointment for this. Your local pharmacy can check it and, if needed, treat it under Pharmacy First, often the same day.',
+      more:'From autumn 2026 some “prescribing pharmacies” with a pharmacist independent prescriber are adding five more conditions (including migraine and acne); availability is still limited. Tool: <a href="pharmacy-first.html">Pharmacy First</a>.' },
+    { t:'Sick-day rules',
+      rule:'During a dehydrating illness (vomiting, diarrhoea, or fever with sweats and shaking), patients temporarily stop certain medicines, commonly ACE inhibitors, ARBs, diuretics, metformin and NSAIDs, and restart after 24 to 48 hours of eating and drinking normally. Insulin is not simply stopped: patients follow their own plan and check glucose more often. Steroid sick-day rules are different (the dose is usually increased).',
+      sca:'A patient with diabetes and hypertension asks what to do if they get a stomach bug, or you are starting a medicine on the list.',
+      say:'If you get vomiting or diarrhoea, or a high temperature with shivers, pause the metformin and the ramipril. Start them again once you’ve been eating and drinking normally for a day or two. If you can’t keep fluids down, call us or 111.',
+      more:'Lists vary by local card. Tool: <a href="sick-day-rules.html">Sick-day rules</a>.' },
+    { t:'Repeat prescriptions and controlled drugs',
+      rule:'Repeat medicines need regular review. Prescriptions for Schedule 2, 3 and 4 controlled drugs (for example morphine, pregabalin, diazepam) are valid for 28 days, and good practice is to prescribe no more than 30 days’ supply. Schedule 2 and 3 drugs cannot be put on repeat dispensing (batch) prescriptions.',
+      sca:'An early request for codeine or a “lost” prescription for pregabalin. Stay curious, not accusing: explore use, pain, mood and dependence, and keep the patient safe.',
+      say:'I can’t issue this early, but I don’t want you to struggle either. Can you talk me through how you’ve been taking it this month?' },
+    { t:'Interpreters',
+      rule:'Offer a professional interpreter (telephone, video or in person) whenever language is a barrier; it is free to the patient. Do not rely on family or friends, and do not use children as interpreters. Family interpreting can hide abuse and distort what is said.',
+      sca:'A relative or teenage child arrives to interpret. Thank them, explain why a professional interpreter is better, and speak to the patient, not the interpreter.',
+      say:'Thank you for helping your mum. For medical appointments we use a professional interpreter, so she can tell me anything in private and you can just be here for her. Is that all right with you both?' }
+  ];
+
+  /* ---------- Section 3: explain drills ---------- */
+  var DRILLS = [
+    { id:'d1', ctx:'Blood result', q:'Explain an HbA1c of 52 mmol/mol (new type 2 diabetes) to a 50-year-old taxi driver.',
+      m:'This blood test shows your average sugar level over the last two to three months. Yours is 52, and 48 or above means type 2 diabetes. It’s very common, and there’s a lot we can do together, starting with food, activity and possibly a tablet.',
+      tb:'Just so I know I’ve explained it clearly, what will you tell your wife about the result?',
+      j:['HbA1c (say “the average sugar test”)','mmol/mol','glycaemic control','hyperglycaemia','insulin resistance'] },
+    { id:'d2', ctx:'Blood pressure', q:'Explain why you want a 24-hour blood pressure monitor after a clinic reading of 152/94.',
+      m:'Your blood pressure was higher than we’d like today, but readings at the surgery are often higher than in everyday life. To get a true picture, we’d like you to wear a small monitor that checks it through the day. That tells us whether treatment would help you.',
+      tb:'Could you tell me back what you’ll need to do with the monitor?',
+      j:['ABPM','hypertension (unless you explain it)','white-coat effect','systolic / diastolic','end-organ damage'] },
+    { id:'d3', ctx:'Prevention', q:'Explain a 10-year heart and stroke risk score of 14% and the offer of a statin.',
+      m:'A calculator uses your age, blood pressure, cholesterol and other details to estimate your chance of a heart attack or stroke in the next 10 years. Say yours is about 14 in 100 (an example; use the patient’s own QRISK result). A statin would bring that down to roughly 10 in 100. Most people won’t notice a difference, but a few will avoid a heart attack or stroke, and you can decide whether that is worth a daily tablet.',
+      tb:'How does that number sound to you? What would help you decide?',
+      j:['QRISK3','cardiovascular','LDL / lipids','primary prevention','relative risk reduction'] },
+    { id:'d4', ctx:'Referral', q:'Explain an urgent suspected cancer referral (once called a “2-week wait”) for a breast lump, without frightening the patient.',
+      m:'I’d like you to be seen quickly by the breast team so we can find out what this lump is. This is a fast-track route we use to check for cancer. Most people referred this way turn out not to have cancer, but it’s the quickest way to get the right tests and an answer.',
+      tb:'That’s a lot to hear. What’s going through your mind? And what will you do if you haven’t heard about an appointment within a week?',
+      j:['2WW','urgent suspected cancer pathway','malignancy / neoplasm','“the C-word” or avoiding the word cancer completely','Faster Diagnosis Standard'] },
+    { id:'d5', ctx:'Blood result', q:'Explain prediabetes (HbA1c 44 mmol/mol) to a patient who feels completely well.',
+      m:'Your sugar level is higher than normal, but not high enough to be diabetes. Think of it as an early warning: without changes, the chance of getting type 2 diabetes is higher. The good news is that being more active and losing a little weight can bring it back down, and there’s a free NHS programme to help.',
+      tb:'What do you think might be realistic for you to change first?',
+      j:['non-diabetic hyperglycaemia','impaired fasting glucose','HbA1c','insulin resistance','NDH'] },
+    { id:'d6', ctx:'Kidney function', q:'Explain an eGFR of 52 (CKD stage G3a) to a worried 72-year-old.',
+      m:'This test shows how well your kidneys are filtering your blood. Yours are working a little below normal, which is common as we get older. It doesn’t mean your kidneys are failing, and most people with this level never need dialysis. Our job now is to protect them: keeping your blood pressure steady and checking your medicines once a year or so.',
+      tb:'What had you been worried it might mean?',
+      j:['eGFR','CKD','renal','nephropathy','ACR / proteinuria'] },
+    { id:'d7', ctx:'Treatment', q:'Explain why a blood thinner is being offered for newly found atrial fibrillation.',
+      m:'Your heart is beating irregularly; that’s called atrial fibrillation. Because of the irregular beat, blood can pool and form a small clot, which can travel to the brain and cause a stroke. A blood thinner makes that much less likely. The trade-off is a higher chance of bleeding, so we’ll weigh up both for you.',
+      tb:'Can you tell me in your own words why this tablet is being suggested?',
+      j:['CHA₂DS₂-VASc','DOAC','thromboembolism','ORBIT score','INR'] },
+    { id:'d8', ctx:'Antibiotics', q:'Explain why you are not prescribing antibiotics for a cold.',
+      m:'Colds are caused by viruses, and antibiotics only work on bacteria, so they won’t help you get better faster. They can also cause side effects like diarrhoea or thrush. Most colds clear up within a week or two, and rest, fluids and paracetamol help in the meantime.',
+      tb:'What would make you want to get back in touch with us?',
+      j:['viral URTI','self-limiting','antimicrobial resistance (unless explained)','coryzal','bacterial superinfection'] },
+    { id:'d9', ctx:'Test result', q:'Explain that a normal ECG does not rule out angina in a man with chest tightness on hills.',
+      m:'Your heart tracing today was normal, which is good news, but it only shows your heart at rest. Angina usually shows up when the heart is working hard, like walking uphill, so a normal tracing doesn’t rule it out. That’s why I’d like you to see the chest pain clinic for more tests.',
+      tb:'Before you go, can you tell me when you would call 999 rather than wait? (Answer: pain at rest, or pain lasting more than 15 minutes.)',
+      j:['ECG (say “heart tracing”)','ischaemia','ST changes','exertional','CT coronary angiogram'] },
+    { id:'d10', ctx:'Screening', q:'Explain a cervical screening result: high-risk HPV found and some abnormal cells; referral to colposcopy.',
+      m:'Your screening test found a very common virus called HPV, and some cells on your cervix that have changed. Most people have HPV at some point and it usually clears by itself. These changes are not cancer. The next step is a closer look at the cervix in a clinic, called a colposcopy, to see whether any treatment is needed.',
+      tb:'What questions do you have about the next appointment?',
+      j:['dyskaryosis','CIN','cytology','hrHPV','neoplasia'] },
+    { id:'d11', ctx:'Work', q:'Explain a fit note that says “may be fit for work” to a warehouse worker after a back injury.',
+      m:'Rather than signing you off completely, I can write a note saying you may be fit for work with some changes, for example lighter duties or shorter shifts for a few weeks. Your employer decides whether they can make those changes. If they can’t, the note counts as you not being fit, so you stay off without needing another note.',
+      tb:'How do you think your manager will react, and what would you say to them?',
+      j:['Med3','statement of fitness for work','amended duties (unless explained)','phased return (unless explained)','occupational health'] },
+    { id:'d12', ctx:'Process', q:'Explain to a patient (and their daughter) what a capacity assessment is.',
+      m:'Because this is an important decision, I need to check that you have the information you need and can weigh it up. That’s what we call a capacity assessment. It isn’t a test of intelligence, and everyone is assumed able to decide unless we find otherwise. I’ll explain the choices, then ask you to tell me in your own words what you understand.',
+      tb:'Is it all right with you if we do that now?',
+      j:['MCA','lacks capacity','best interests','IMCA','LPA'] }
+  ];
+
+  var TOTAL = HABITS.length + DRILLS.length;
+  var KEY = 'rgp-img-track';
+  var DEF = function(){ return { habits:{}, drills:{}, fast:{} }; };
+  var load = function(){
+    try {
+      var s = JSON.parse(localStorage.getItem(KEY)) || {};
+      var d = DEF();
+      ['habits','drills','fast'].forEach(function(k){ if (s[k] && typeof s[k] === 'object') d[k] = s[k]; });
+      return d;
+    } catch(e){ return DEF(); }
+  };
+  var save = function(s){ try { localStorage.setItem(KEY, JSON.stringify(s)); } catch(e){} };
+  var state = load();
+
+  function chip(){
+    var n = 0;
+    HABITS.forEach(function(h){ if (state.habits[h.id]) n++; });
+    DRILLS.forEach(function(d){ if (state.drills[d.id]) n++; });
+    var c = document.getElementById('itChip');
+    if (c) c.textContent = n + ' of ' + TOTAL + ' done';
+  }
+
+  function doneBtn(kind, id, label){
+    var on = !!state[kind][id];
+    return '<button type="button" class="it-btn it-done" data-kind="' + kind + '" data-id="' + id + '" aria-pressed="' + on + '">' + (on ? 'Done ✓' : esc(label)) + '</button>';
+  }
+
+  /* render habits */
+  document.getElementById('hsGrid').innerHTML = HABITS.map(function(h, i){
+    return '<article class="hs-card' + (state.habits[h.id] ? ' done' : '') + '" id="card-' + h.id + '">' +
+      '<div class="hs-n">Swap ' + (i + 1) + ' · ' + esc(h.t) + '</div>' +
+      '<div class="hs-row"><span class="hs-lbl from">Common habit</span><span class="hs-txt">' + esc(h.from) + '</span></div>' +
+      '<div class="hs-row"><span class="hs-lbl to">UK GP / SCA</span><span class="hs-txt"><b>' + esc(h.to) + '</b></span></div>' +
+      '<div class="it-ctl"><button type="button" class="it-btn pri it-rev" aria-expanded="false" aria-controls="say-' + h.id + '">Say it like this</button>' +
+      doneBtn('habits', h.id, 'Mark as practised') + '</div>' +
+      '<div class="it-reveal" id="say-' + h.id + '" hidden>“' + esc(h.say) + '”</div>' +
+      '</article>';
+  }).join('');
+
+  /* render UK cards (rule/sca/say are trusted static strings; some contain <i>/<a>) */
+  document.getElementById('ukGrid').innerHTML = UK.map(function(u){
+    return '<article class="uk-card">' +
+      '<h3 class="uk-t">' + esc(u.t) + '</h3>' +
+      '<div class="uk-k rule">The rule</div><p class="uk-p">' + u.rule + '</p>' +
+      '<div class="uk-k sca">In an SCA case</div><p class="uk-p">' + u.sca + '</p>' +
+      '<div class="uk-k say">A line to say</div><p class="uk-say">“' + esc(u.say) + '”</p>' +
+      (u.more ? '<p class="uk-more">' + u.more + '</p>' : '') +
+      '</article>';
+  }).join('');
+
+  /* render drills */
+  document.getElementById('exList').innerHTML = DRILLS.map(function(d, i){
+    return '<article class="ex-card' + (state.drills[d.id] ? ' done' : '') + '" id="card-' + d.id + '">' +
+      '<span class="ex-ctx">' + (i + 1) + ' · ' + esc(d.ctx) + '</span>' +
+      '<div class="ex-q" id="q-' + d.id + '">' + esc(d.q) + '</div>' +
+      '<label class="visually-hidden" for="ta-' + d.id + '" style="position:absolute;left:-9999px">Your explanation</label>' +
+      '<textarea class="ex-ta" id="ta-' + d.id + '" aria-describedby="q-' + d.id + '" placeholder="Write or say your explanation here first…"></textarea>' +
+      '<div class="it-ctl">' +
+        '<button type="button" class="it-btn ex-timer" data-id="' + d.id + '">Start 45 s</button><span class="ex-clock" id="clk-' + d.id + '" aria-live="off">0:45</span>' +
+        '<button type="button" class="it-btn pri it-rev" aria-expanded="false" aria-controls="model-' + d.id + '">Show a model explanation</button>' +
+        doneBtn('drills', d.id, 'Mark as done') +
+      '</div>' +
+      '<div class="ex-model" id="model-' + d.id + '" hidden>' +
+        '<div class="ex-mh">A model explanation</div>' +
+        '<div class="ex-mt">' + esc(d.m) + '<span class="ex-tb">Check understanding: “' + esc(d.tb) + '”</span></div>' +
+        '<div class="ex-jar"><b>Jargon to avoid:</b> ' + d.j.map(esc).join(' · ') + '</div>' +
+      '</div>' +
+      '<label class="ex-tick"><input type="checkbox" class="ex-fast" data-id="' + d.id + '"' + (state.fast[d.id] ? ' checked' : '') + '><span>I explained it in under 45 seconds</span></label>' +
+      '</article>';
+  }).join('');
+
+  /* reveal buttons */
+  document.querySelectorAll('.it-rev').forEach(function(b){
+    b.addEventListener('click', function(){
+      var p = document.getElementById(b.getAttribute('aria-controls'));
+      var open = b.getAttribute('aria-expanded') !== 'true';
+      b.setAttribute('aria-expanded', String(open));
+      if (p) p.hidden = !open;
+      var isModel = b.getAttribute('aria-controls').indexOf('model-') === 0;
+      b.textContent = open ? (isModel ? 'Hide the model' : 'Hide the line') : (isModel ? 'Show a model explanation' : 'Say it like this');
+    });
+  });
+
+  /* done toggles */
+  document.querySelectorAll('.it-done').forEach(function(b){
+    b.addEventListener('click', function(){
+      var kind = b.dataset.kind, id = b.dataset.id;
+      var on = !state[kind][id];
+      if (on) state[kind][id] = 1; else delete state[kind][id];
+      save(state);
+      b.setAttribute('aria-pressed', String(on));
+      b.textContent = on ? 'Done ✓' : (kind === 'habits' ? 'Mark as practised' : 'Mark as done');
+      var card = document.getElementById('card-' + id);
+      if (card) card.classList.toggle('done', on);
+      chip();
+    });
+  });
+
+  /* 45-second self-tick */
+  document.querySelectorAll('.ex-fast').forEach(function(c){
+    c.addEventListener('change', function(){
+      if (c.checked) state.fast[c.dataset.id] = 1; else delete state.fast[c.dataset.id];
+      save(state);
+    });
+  });
+
+  /* 45-second timers (one at a time) */
+  var tm = null, tmId = null;
+  function stopTimer(){
+    if (tm) clearInterval(tm);
+    tm = null;
+    if (tmId){
+      var b = document.querySelector('.ex-timer[data-id="' + tmId + '"]');
+      if (b) b.textContent = 'Start 45 s';
+    }
+    tmId = null;
+  }
+  document.querySelectorAll('.ex-timer').forEach(function(b){
+    b.addEventListener('click', function(){
+      var id = b.dataset.id;
+      if (tmId === id){ stopTimer(); return; }
+      stopTimer();
+      var left = 45, clk = document.getElementById('clk-' + id);
+      tmId = id; b.textContent = 'Stop';
+      clk.textContent = '0:45'; clk.classList.remove('warn');
+      tm = setInterval(function(){
+        left--;
+        clk.textContent = '0:' + String(Math.max(left, 0)).padStart(2, '0');
+        clk.classList.toggle('warn', left <= 10);
+        if (left <= 0) stopTimer();
+      }, 1000);
+    });
+  });
+
+  /* reset */
+  document.getElementById('itReset').addEventListener('click', function(){
+    if (!window.confirm('Clear your progress on this page?')) return;
+    state = DEF(); save(state);
+    document.querySelectorAll('.it-done').forEach(function(b){
+      b.setAttribute('aria-pressed', 'false');
+      b.textContent = b.dataset.kind === 'habits' ? 'Mark as practised' : 'Mark as done';
+    });
+    document.querySelectorAll('.hs-card.done, .ex-card.done').forEach(function(c){ c.classList.remove('done'); });
+    document.querySelectorAll('.ex-fast').forEach(function(c){ c.checked = false; });
+    chip();
+  });
+
+  /* highlight current section in the sticky nav */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.it-links a'));
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          links.forEach(function(a){
+            var on = a.getAttribute('href') === '#' + e.target.id;
+            a.classList.toggle('on', on);
+            if (on && a.parentNode) a.parentNode.scrollLeft = Math.max(0, a.offsetLeft - a.parentNode.offsetLeft - 8);
+          });
+        }
+      });
+    }, { rootMargin:'-45% 0px -50% 0px' });
+    document.querySelectorAll('.it-sec').forEach(function(s){ io.observe(s); });
+  }
+
+  chip();
+})();
+</script>
+<script src="../assets/nav-back.js?v=1"></script>
+</body>
+</html>

@@ -424,7 +424,7 @@ RGPDiagnostic.register('headache', {
     { label:'NICE NG240 Meningitis', url:'https://www.nice.org.uk/guidance/ng240' },
     { label:'ICHD-3 classification', url:'https://ichd-3.org/' },
     { label:'SNNOOP10 red-flag mnemonic', url:'https://pubmed.ncbi.nlm.nih.gov/30429301/' },
-    { label:'BSR Giant Cell Arteritis guideline', url:'https://academic.oup.com/rheumatology/article/59/3/e1/5714025' }
+    { label:'BSR Giant Cell Arteritis guideline', url:'https://academic.oup.com/rheumatology/article/59/3/e1/5714024' }
   ],
 
   defaultMessage: 'Tick features on the left — the differential ranks live.',

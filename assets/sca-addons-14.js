@@ -2541,53 +2541,54 @@
  },
  "frozen-shoulder": {
   "stem": {
-   "name": "Denise Falk",
-   "age": "54-year-old woman",
+   "name": "Lorraine Hart",
+   "age": "54 years · female",
    "pmh": [
-    "Type 2 diabetes (on metformin)"
+    "Non-diabetic hyperglycaemia (HbA1c 46 mmol/mol three years ago)",
+    "Overweight"
    ],
    "meds": [
-    "Metformin (type 2 diabetes)"
+    "None on repeat"
    ],
-   "allergy": "No known drug allergies recorded",
-   "recent": "No previous consultations about her shoulder recorded.",
-   "reason": "Several months of a progressively stiff, painful right shoulder, worse at night. No injury."
+   "allergy": "None recorded",
+   "recent": "Two recall letters for a repeat HbA1c not answered. Booked online: “left shoulder pain, want injection”.",
+   "reason": "“My shoulder, I need an injection.”"
   },
   "knowledge": {
-   "guideline": "[1] BESS patient care pathway: frozen shoulder (Rupani, Gwilym et al., Shoulder & Elbow 2025) · [2] BESS/BOA patient care pathway: frozen shoulder (2015) · [3] UK FROST trial (Rangan et al., Lancet 2020) · [4] BNF, corticosteroids (hyperglycaemia) · [5] NICE NG226 (osteoarthritis in over 16s)",
-   "summary": "Pain and progressive stiffness with loss of both active and passive movement, most marked in external rotation, in a middle-aged person with diabetes and no injury, is frozen shoulder. It is a clinical diagnosis; an X-ray helps exclude glenohumeral arthritis. Treat pain, keep moving, consider an intra-articular steroid injection early, look after glucose, and be honest that recovery takes a long time.",
+   "guideline": "[1] NICE CKS Shoulder pain: frozen shoulder (check current version) · [2] UK FROST trial (Rangan et al, Lancet 2020) · [3] NICE NG28 Type 2 diabetes in adults: management (2015, updated 2022) and NICE PH38 Type 2 diabetes: prevention in people at high risk (2012, updated 2017) · [4] DWP Getting the most out of the fit note: guidance for healthcare professionals · [5] Product SPCs for intra-articular corticosteroids",
+   "summary": "Classic frozen shoulder in a 54-year-old self-employed hairdresser who wants an injection and refuses blood tests. Behind the refusal is fear of diabetes after her mother’s amputation, with a previous borderline HbA1c and current osmotic symptoms. Diagnose clinically, discuss injection, physiotherapy and analgesia honestly, explain why HbA1c matters for the shoulder and the injection, address the fear, and support her work.",
    "points": [
     {
-     "h": "Recognise it",
-     "t": "Gradual-onset shoulder pain, often severe at night, with progressive stiffness. On examination, active and passive movement are both restricted, with passive external rotation the most reduced [1][2]. Strength is preserved within the available range."
+     "h": "Diagnosis",
+     "t": "Shoulder pain then stiffness with loss of active and passive movement, especially external rotation. Clinical diagnosis; imaging not routinely needed [1]."
     },
     {
-     "h": "Associations",
-     "t": "Commoner between about 40 and 60 and in women. Diabetes is the strongest association and is linked with more severe, longer-lasting and bilateral disease; thyroid disease is also associated [1][2]."
+     "h": "Red flags",
+     "t": "Trauma (fracture, dislocation), fever or hot joint (septic arthritis), weight loss or cancer history (metastasis, Pancoast tumour), neurological deficit, referred cardiac or neck pain."
     },
     {
-     "h": "Differential",
-     "t": "Rotator cuff disease: painful arc and weakness, with passive movement better preserved than active. Glenohumeral osteoarthritis: older, crepitus, loss of passive external rotation too, so X-ray is used to tell them apart [2][5]. Also consider referred pain from the neck, and cardiac, lung-apex or subdiaphragmatic causes when the history fits."
-    },
-    {
-     "h": "Imaging",
-     "t": "Frozen shoulder is a clinical diagnosis. A plain X-ray is normal in frozen shoulder and is used to exclude arthritis or other bony causes before labelling it [1][2]."
+     "h": "Diabetes link",
+     "t": "Frozen shoulder is more common in diabetes; CKS suggests checking for it. Ask about thirst, nocturia, tiredness and previous results [1,3]."
     },
     {
      "h": "Natural history",
-     "t": "Classically a painful phase, then a stiff phase, then gradual recovery. Improvement often takes 1–3 years, and some people keep a degree of stiffness [2]. Honest timelines reduce frustration."
+     "t": "Painful phase, stiff phase and recovery phase over months to a few years. Most people improve; some stiffness may persist."
     },
     {
-     "h": "Primary-care treatment",
-     "t": "Analgesia; gentle exercises within the limits of pain; physiotherapy. An intra-articular glucocorticoid injection gives short-term benefit and can be given in primary care; long-term benefit beyond about 3 months is not shown [1]. Physiotherapy after injection may add short-term benefit [1]."
+     "h": "Treatment",
+     "t": "Analgesia, home exercises and physiotherapy. An intra-articular corticosteroid injection can help pain and function in the early phase. FROST: early physiotherapy plus injection is a reasonable first-line option; surgery offered no clear advantage for most [1,2]."
     },
     {
-     "h": "Injection and diabetes",
-     "t": "Corticosteroids can raise blood glucose [4]. Before injecting, warn people with diabetes to monitor glucose more closely for several days and to know what to do if it rises. Record the discussion."
+     "h": "Steroid injections and glucose",
+     "t": "Corticosteroid injections can raise blood glucose for several days; check HbA1c and advise people with diabetes to monitor (check the SPC) [5]."
     },
     {
-     "h": "Refer",
-     "t": "Refer to secondary care if symptoms are not improving despite primary-care treatment, or if the diagnosis is uncertain [1][2]. Specialist options include hydrodilatation, manipulation under anaesthesia and arthroscopic capsular release. In UK FROST, early structured physiotherapy with steroid injection, manipulation and capsular release gave similar outcomes at 12 months; none was clearly superior in a clinically important way [3]."
+     "h": "Referral",
+     "t": "Consider referral if pain and stiffness remain severe despite treatment, or if the diagnosis is uncertain."
+    },
+    {
+     "h": "Work",
+     "t": "Discuss adaptations. A fit note can say “may be fit for work” with suggested adjustments, which can help self-employed people plan [4]."
     }
    ]
   },
@@ -2596,438 +2597,412 @@
     "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello, Mrs Falk, I’m Dr Patel. How can I help?",
+    "text": "Hello Lorraine, I’m Dr Clarke. What can I help with today?",
     "dom": "ro",
     "why": "Open question"
    },
    {
     "who": "pt",
-    "text": "My right shoulder’s been getting stiffer and more painful over the last few months. I can’t reach behind my back to do my bra up or get my arm into a coat, and it aches badly at night so I can’t sleep on it. I didn’t injure it, it just came on. I’m diabetic, if that matters. Will it get better?"
+    "text": "I need a steroid injection in this shoulder. My client had one and it was like magic. I can’t lift my arm to blow-dry and I’m losing clients. And before you ask, I don’t want any blood tests."
    },
    {
     "who": "dr",
-    "text": "It does matter, thank you for mentioning it, and I’ll come back to your question about getting better. Not sleeping and struggling to dress sounds really wearing. Can I ask a few questions, examine the shoulder, and then explain?",
+    "text": "I can hear how much this is affecting your work. Let’s talk about the shoulder first, and I’ll come back to what you said about blood tests. When did it start?",
     "dom": "ro",
-    "why": "Acknowledges impact and signposts"
+    "why": "Acknowledges; flags the cue to return to"
    },
    {
+    "phase": "History",
+    "clock": "1–4 min",
     "who": "pt",
-    "text": "Yes, of course."
-   },
-   {
-    "phase": "Data gathering",
-    "clock": "1–5 min",
-    "who": "dr",
-    "text": "Did it start with pain, stiffness, or both? And is it still getting worse, or has it levelled off?",
-    "dom": "dg",
-    "why": "Onset and phase"
-   },
-   {
-    "who": "pt",
-    "text": "Pain first, then it got stiffer and stiffer. It’s still getting worse, I think."
+    "text": "About four months. Aching at first, now it’s agony at night and I can’t get my arm behind my back or do my bra up."
    },
    {
     "who": "dr",
-    "text": "Any pain or stiffness in the neck, or tingling down the arm? And any chest pain or breathlessness when you exert yourself?",
+    "text": "Did you injure it at all? Any fever, hot swollen joint, weight loss, cough, numbness or weakness in the arm, or chest pain when you’re active?",
     "dom": "dg",
-    "why": "Referred pain from neck or heart"
+    "why": "Red flag screen"
    },
    {
     "who": "pt",
     "text": "No, nothing like that."
    },
    {
+    "phase": "Examination",
+    "clock": "4–5 min",
     "who": "dr",
-    "text": "Have you felt generally unwell, had fevers, lost weight without trying, or noticed any lump or swelling around the shoulder?",
+    "text": "Could you stand back from the camera? Lift both arms out to the side. Now keep your elbows tucked in and turn your hands outwards. Thank you. Your left shoulder is very restricted in all directions, especially turning outwards. That pattern fits a frozen shoulder. I’d like to check the passive movement face to face as well.",
     "dom": "dg",
-    "why": "Red flags for infection or tumour"
+    "why": "Remote examination; plan to confirm"
    },
    {
-    "who": "pt",
-    "text": "No, I’m well otherwise."
-   },
-   {
+    "phase": "Exploring the blood tests",
+    "clock": "5–7 min",
     "who": "dr",
-    "text": "How is your diabetes at the moment? Do you check your sugars, and when was your last diabetes review?",
-    "dom": "dg",
-    "why": "Diabetes control, relevant to outcome and injection"
-   },
-   {
-    "who": "pt",
-    "text": "I’m not sure it’s perfect. I haven’t been in for a while."
-   },
-   {
-    "who": "dr",
-    "text": "And how is this affecting you day to day, apart from dressing and sleeping?",
+    "text": "You said you don’t want blood tests before I’d mentioned any. Can I ask what makes you feel that way?",
     "dom": "ro",
-    "why": "Functional impact"
+    "why": "Follows cue to hidden agenda"
    },
    {
     "who": "pt",
-    "text": "Everything takes longer. I’m tired all the time from not sleeping."
-   },
-   {
-    "phase": "Ideas, concerns and expectations",
-    "clock": "5–6 min",
-    "who": "dr",
-    "text": "What do you think might be going on? Has anything been worrying you about it?",
-    "dom": "ro",
-    "why": "Explores ideas and concerns"
-   },
-   {
-    "who": "pt",
-    "text": "I thought maybe I’d damaged it somehow. I’m worried it won’t come back, and I just want to know how long it will last."
+    "text": "(pause) My mum had diabetes. She lost her leg. I know the last test was borderline. I’d rather not know."
    },
    {
     "who": "dr",
-    "text": "That’s a fair question, and I’ll give you an honest answer once I’ve examined you.",
-    "dom": "ro",
-    "why": "Commits to answer her concern"
-   },
-   {
-    "phase": "Examination and explanation",
-    "clock": "6–8 min",
-    "who": "dr",
-    "text": "Let me look at both shoulders and your neck … Now lift your arm as far as you can, and turn it out. And now let me move it for you, relax … Both when you move it and when I move it, it’s stiff, and turning outwards is the most limited.",
+    "text": "That must have been really hard to see. It makes sense you’d want to avoid it. Have you noticed being thirsty, getting up at night to wee, or feeling more tired?",
     "dom": "dg",
-    "why": "Active and passive range; external rotation"
+    "why": "Empathy; osmotic symptoms"
    },
    {
     "who": "pt",
-    "text": "Yes, that’s exactly where it catches."
+    "text": "Thirsty all the time, and up twice a night. I put it down to my age."
    },
    {
     "who": "dr",
-    "text": "That pattern tells me this is a frozen shoulder. The lining of the joint becomes inflamed and then thick and tight, so the joint can’t move fully whichever way it’s moved. It isn’t damage you’ve caused, and it isn’t wear and tear. It’s commoner in people with diabetes.",
-    "dom": "dg",
-    "why": "Names the diagnosis, the diabetes link, and distinguishes from wear and tear"
+    "text": "Can I tell you why it matters for your shoulder? Frozen shoulder is more common when sugar levels run high. And a steroid injection can push sugar up for a few days, so I’d want to know your level to do the injection safely.",
+    "dom": "cm",
+    "why": "Links test to her goal"
    },
    {
     "who": "pt",
-    "text": "So will it get better?"
+    "text": "I didn’t know they were connected."
    },
    {
     "who": "dr",
-    "text": "Yes, in most people it does, but I want to be honest that it is slow. It tends to go through a painful stage, then a stiff stage, and then gradually loosens. That often takes one to three years, and some people keep a little stiffness. Knowing that from the start helps. You’re not doing anything wrong if it’s gradual.",
-    "dom": "ro",
-    "why": "Honest, realistic timeline"
+    "text": "And if it is diabetes, finding it now is very different from your mum’s time. Today we look after feet, eyes and kidneys from the start, and many people get their sugars back down with changes and treatment.",
+    "dom": "cm",
+    "why": "Addresses fear with hope"
    },
    {
-    "who": "pt",
-    "text": "That’s longer than I hoped, but at least I know."
-   },
-   {
-    "phase": "Shared management",
-    "clock": "8–11 min",
+    "phase": "Plan",
+    "clock": "7–11 min",
     "who": "dr",
-    "text": "I’d like an X-ray, mainly to make sure there’s no arthritis in the joint, which can look similar. For the pain, regular painkillers, and gentle stretches within what’s comfortable. I’ll refer you to physiotherapy to guide the exercises.",
-    "dom": "dg",
-    "why": "X-ray to exclude OA; analgesia; physiotherapy"
+    "text": "Here’s what I suggest. A blood test for your sugar this week. If it’s safe, an injection into the shoulder joint, which can ease the pain at this stage, plus physiotherapy exercises, because the injection helps the pain but the exercises help the stiffness. Regular painkillers meanwhile.",
+    "dom": "cm",
+    "why": "Shared plan"
    },
    {
     "who": "pt",
-    "text": "Is there anything for the night pain?"
+    "text": "Should I pay for an MRI?"
    },
    {
     "who": "dr",
-    "text": "A steroid injection into the joint can really help the pain in this early painful stage, for a few months. Because you have diabetes, it can push your sugars up for several days, so you’d check them more often and we’d agree what to do if they rise. What do you think?",
-    "dom": "dg",
-    "why": "Steroid injection with diabetes-specific counselling; shared decision"
-   },
-   {
-    "who": "pt",
-    "text": "I’d like to try it."
+    "text": "I wouldn’t. The diagnosis comes from how your shoulder moves, and a scan rarely changes the treatment. Most frozen shoulders get better, but it can take a year or more, so we’ll keep reviewing it.",
+    "dom": "cm",
+    "why": "Avoids unnecessary imaging; natural history"
    },
    {
     "who": "dr",
-    "text": "Good. I’d also like a diabetes blood test and a thyroid test, because better sugar control helps both your health and this shoulder. If things aren’t improving despite all this, I’ll refer you to the shoulder specialists, who have other options such as stretching the joint with fluid or a small operation. Most people don’t need them.",
-    "dom": "dg",
-    "why": "HbA1c and thyroid; referral if not improving"
+    "text": "What about the salon? Could your junior take the blow-drying for a while? If it helps, I can write a fit note saying you may be fit for work with adapted duties.",
+    "dom": "cm",
+    "why": "Work adjustments; fit note"
    },
    {
     "who": "pt",
-    "text": "Okay, that makes sense."
+    "text": "She could do the drying. That would help."
    },
    {
     "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "Please come back sooner if the pain becomes unmanageable, you get fever, redness or swelling in the joint, especially after an injection, or any weakness or numbness in the arm. Otherwise I’ll see you after the X-ray and bloods. Can you tell me what you’ll take away from today?",
-    "dom": "cm",
-    "why": "Specific safety-net including post-injection infection; teach-back"
+    "text": "So, what will you do this week?",
+    "dom": "ro",
+    "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "It’s a frozen shoulder, it will get better but slowly. Painkillers, stretches and physio, an injection and checking my sugars afterwards, and a diabetes check."
+    "text": "Blood test. Then the injection and the physio. Junior does the drying. No MRI."
    },
    {
     "who": "dr",
-    "text": "That’s it exactly. It will get there, and we’ll support you along the way.",
+    "text": "Perfect. If you get very thirsty, are weeing a lot, feel unwell or are losing weight, contact us sooner. And if the shoulder becomes hot and swollen, you get a fever, or arm weakness or numbness, get seen the same day.",
     "dom": "cm",
-    "why": "Confirms understanding; supportive close"
+    "why": "Safety-net"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Open question; heard dressing, night pain, no injury and her diabetes; acknowledged her question “will it get better?”.",
-    "pts": 1, "dom": "dg"
+    "d": "Open question; acknowledged work impact; parked and returned to the blood-test refusal.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Sleep loss and fatigue; daily tasks taking longer; how she will cope over a long course.",
-    "pts": 1, "dom": "dg"
+    "d": "Self-employed, salon loan, losing clients, night pain, mother’s diabetes and amputation.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up the diabetes mention and returned to it; heard “will it get better?” as the key concern.",
-    "pts": 1, "dom": "ro"
+    "d": "Refusal of tests before they were offered; unanswered recall letters; thirst dismissed as age.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (damage), concern (it won’t recover), expectation (how long it will last).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (worn out from hairdressing), concerns (diabetes like her mother; the business), expectation (injection, MRI, no tests).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Active and passive range of both shoulders, especially external rotation; neck; X-ray to exclude OA; HbA1c and thyroid tests.",
-    "pts": 1, "dom": "dg"
+    "d": "Remote range of movement with face-to-face confirmation; HbA1c; no MRI.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
-    "d": "Frozen shoulder versus rotator cuff disease, glenohumeral OA and referred pain.",
-    "pts": 1, "dom": "dg"
+    "d": "Frozen shoulder versus rotator cuff disease, glenohumeral arthritis, referred neck pain.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Screened fever, weight loss, mass, neck and cardiac symptoms; post-injection infection in the safety-net.",
-    "pts": 2, "dom": "dg"
+    "d": "Trauma, sepsis, malignancy (including Pancoast), neurology, cardiac referred pain; osmotic symptoms.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Frozen shoulder (adhesive capsulitis), painful phase, associated with diabetes.",
-    "pts": 2, "dom": "dg"
+    "d": "Frozen shoulder in the painful-stiff phase, with possible undiagnosed diabetes.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Analgesia, gentle exercises, physiotherapy, intra-articular steroid injection with glucose monitoring advice; honest 1–3-year timeline.",
-    "pts": 2, "dom": "cm"
+    "d": "HbA1c first; intra-articular steroid injection if safe; physiotherapy and analgesia; no MRI.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Diabetes review and optimisation; thyroid check; referral to secondary care if not improving.",
-    "pts": 1, "dom": "cm"
+    "d": "Fear of diabetes addressed; smoking noted; work adjustments and fit note offered.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Return for unmanageable pain, hot swollen joint or fever after injection, arm weakness or numbness; review after X-ray and bloods; teach-back.",
-    "pts": 1, "dom": "cm"
+    "d": "Results and injection appointment; osmotic symptoms; hot joint, fever, neurology; review of progress.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
-    "Long-term conditions & cancer",
-    "New & undifferentiated presentations"
+    "New & undifferentiated presentations",
+    "Long-term conditions & cancer"
    ],
    "stem": {
-    "name": "Denise Falk",
+    "name": "Lorraine Hart",
     "age": "54 years · female",
     "pmh": [
-     "Type 2 diabetes"
+     "Non-diabetic hyperglycaemia (HbA1c 46 mmol/mol three years ago)",
+     "Overweight"
     ],
     "meds": [
-     "Metformin (type 2 diabetes)"
+     "None on repeat"
     ],
-    "allergy": "NKDA",
-    "recent": "No previous shoulder consultations.",
-    "reason": "“My shoulder’s become stiff and painful and it’s getting worse. Will it get better?”"
+    "allergy": "None recorded",
+    "recent": "Two recall letters for a repeat HbA1c not answered. Booked online: “left shoulder pain, want injection”.",
+    "reason": "“My shoulder, I need an injection.”"
    },
    "timeMap": [
     {
      "t": "0–1",
-     "h": "Opening",
-     "d": "Let her describe dressing, night pain and no injury; note the diabetes."
+     "h": "Open",
+     "d": "Hear the injection request and the pre-emptive “no blood tests”. Flag it."
     },
     {
      "t": "1–5",
-     "h": "Focused history",
-     "d": "Onset and phase, neck and cardiac symptoms, systemic red flags, diabetes control, daily impact."
+     "h": "Shoulder",
+     "d": "History, red flags, remote range of movement; plan face-to-face check."
     },
     {
-     "t": "5–6",
-     "h": "ICE",
-     "d": "Thinks she damaged it; fears it won’t recover; wants a timeline."
+     "t": "5–7",
+     "h": "The refusal",
+     "d": "Explore: mother’s amputation; osmotic symptoms; link diabetes to frozen shoulder and to the injection."
     },
     {
-     "t": "6–8",
-     "h": "Examine and explain",
-     "d": "Active and passive range, external rotation most limited; name frozen shoulder and the diabetes link; honest timeline."
+     "t": "7–11",
+     "h": "Plan",
+     "d": "HbA1c, injection if safe, physio, analgesia; no MRI; natural history; work adjustments and fit note."
     },
     {
-     "t": "8–12",
-     "h": "Plan and close",
-     "d": "X-ray, analgesia, exercises, physio, injection with glucose advice, HbA1c and thyroid, refer if not improving, safety-net, teach-back."
+     "t": "11–12",
+     "h": "Close",
+     "d": "Teach-back; safety-net for sugars and shoulder red flags."
     }
    ],
    "wordPics": {
-    "fail": "Calls it wear and tear or a rotator cuff problem without testing passive movement; promises it will settle in weeks; gives a steroid injection with no glucose advice; ignores the diabetes.",
-    "pass": "Examines active and passive range, diagnoses frozen shoulder, links it to diabetes, offers analgesia, physio and an injection, and gives a realistic timeline.",
-    "exc": "All of the above, plus: explains the phases in plain words; uses an X-ray to exclude arthritis; counsels glucose monitoring after injection; checks HbA1c and thyroid; sets a clear referral trigger; addresses her sleep and her fear it won’t recover; teach-back."
+    "fail": "Books the injection without thinking about diabetes, or insists on blood tests without exploring why she refuses; orders an MRI; ignores the business.",
+    "pass": "Diagnoses frozen shoulder, offers injection and physiotherapy, and explains why an HbA1c is needed.",
+    "exc": "All of the above, plus: treats the refusal as a cue and uncovers the fear about her mother; responds with empathy and hope; links the test to her own goals; explains the natural history honestly; declines MRI with reasons; practical work adjustments; clear safety-net."
    },
    "avoid": [
     {
-     "dont": "“It’s just wear and tear, it’ll settle in a few weeks.”",
-     "instead": "“It’s a frozen shoulder. It does get better, but slowly, often over one to three years.”",
-     "why": "Wrong diagnosis and false timelines lead to frustration and loss of trust."
+     "dont": "“You need a blood test, it’s not optional.”",
+     "instead": "“Can I ask what makes you not want a blood test?”",
+     "why": "Pressure without understanding the fear entrenches avoidance."
     },
     {
-     "dont": "“I’ll give you a steroid injection, that should sort it.”",
-     "instead": "“An injection can help the pain for a few months; because of your diabetes, check your sugars more often for several days afterwards.”",
-     "why": "Steroids can raise glucose; benefit is short-term."
+     "dont": "“An injection will sort it.”",
+     "instead": "“It can ease the pain at this stage; exercises help the stiffness.”",
+     "why": "Overselling leads to disappointment and non-adherence to physiotherapy."
     },
     {
-     "dont": "“Rest it until the pain goes.”",
-     "instead": "“Keep it moving gently within comfort, and physio will guide you.”",
-     "why": "Guidance supports keeping movement, not prolonged rest."
+     "dont": "“Let’s get an MRI to be sure.”",
+     "instead": "“The diagnosis is clinical and a scan rarely changes treatment.”",
+     "why": "Unnecessary imaging costs her money and delays treatment."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Daily living",
-     "t": "Dressing, washing hair, reaching and sleeping are all affected. Ask about work, caring roles and driving; practical aids and occupational therapy advice can help."
+     "h": "Self-employment",
+     "t": "No sick pay and fixed business costs make time off very hard. Work adaptations are often more useful than being signed off."
     },
     {
-     "h": "Sleep and mood",
-     "t": "Months of night pain cause exhaustion and low mood; ask, and include this in the plan."
+     "h": "Family experience of illness",
+     "t": "A parent’s complications can make people avoid diagnosis. Exploring this is often the key to engagement."
     }
    ],
    "legal": [
     {
      "h": "Fit notes",
-     "t": "If her work involves overhead or heavy use of the arm, a fit note with adjustments (altered duties, reduced lifting) may help her stay in work."
+     "t": "Self-employed people can use a fit note. “May be fit for work” with suggested adaptations is often the most helpful option (DWP guidance)."
     },
     {
-     "h": "Driving",
-     "t": "She should only drive if she can control the vehicle safely, including steering and emergency manoeuvres. If restricted movement stops her driving safely she should not drive; check current DVLA guidance on musculoskeletal disability if the restriction is lasting."
+     "h": "Consent and autonomy",
+     "t": "She can decline a blood test. The doctor’s role is to inform, including the safety relevance to the injection, and to respect her decision."
     }
    ],
    "professional": [
     {
-     "h": "Consent for injection",
-     "t": "GMC Decision making and consent (2020): discuss benefits (short-term pain relief), risks (infection, flare, skin changes, glucose rise in diabetes) and alternatives, and record them."
+     "h": "Avoiding low-value care",
+     "t": "Declining an MRI that will not change management, with reasons, is responsible use of resources."
     },
     {
-     "h": "Honest prognosis",
-     "t": "Realistic timelines are part of good care; over-promising undermines trust and adherence."
+     "h": "Hidden agenda",
+     "t": "A refusal offered before a suggestion is a cue. Explore before persuading."
     }
    ],
    "community": [
     {
-     "h": "Physiotherapy access",
-     "t": "Many areas offer self-referral to MSK physiotherapy. Diabetes structured education can support better glucose control."
+     "h": "Physiotherapy",
+     "t": "Many areas offer self-referral to MSK physiotherapy."
+    },
+    {
+     "h": "NHS Diabetes Prevention Programme",
+     "t": "If the HbA1c is still in the non-diabetic hyperglycaemia range, offer referral to the programme."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Fever, hot swollen joint, especially after injection (septic arthritis)",
-     "Unexplained weight loss, history of cancer, mass or deformity",
-     "Trauma with sudden loss of movement (dislocation or fracture)",
-     "Weakness or numbness in the arm, neck symptoms",
-     "Pain on exertion with breathlessness (referred cardiac pain)"
+     "Trauma with loss of movement: fracture or dislocation; X-ray",
+     "Fever, hot swollen joint: septic arthritis, same-day assessment",
+     "Weight loss, cancer history, cough, Horner’s or hand weakness: malignancy including Pancoast tumour",
+     "Exertional chest or arm pain: cardiac referred pain"
     ],
     "psychosocial": [
-     "Night pain and exhaustion",
-     "Dressing and daily tasks",
-     "Frustration with slow recovery"
+     "Self-employed salon owner with a loan",
+     "Losing clients",
+     "Mother’s diabetes and amputation",
+     "Avoidance of recall letters"
     ],
     "ice": [
-     "Idea: she has damaged the shoulder",
-     "Concern: that it won’t recover",
-     "Expectation: a diagnosis and how long it will last"
+     "Idea: worn out from hairdressing",
+     "Concern: diabetes like her mother; losing the business",
+     "Expectation: injection, MRI, no blood tests"
     ]
    },
-   "diagnosis": "“This is a frozen shoulder. The lining of the joint has become inflamed and tight, so it’s stiff whether you move it or I move it, and turning the arm outwards is the most affected.”",
-   "diagnosisLay": "“Think of the joint lining as a stretchy bag around the ball of the shoulder. In a frozen shoulder the bag gets inflamed and then shrinks and stiffens, like a jumper washed too hot. Over time it slowly stretches out again.”",
+   "diagnosis": "“This is a frozen shoulder. The lining of the joint becomes inflamed and then tight. It’s more common when sugar levels run high, which is why I’d like to check yours.”",
+   "diagnosisLay": "“The bag around the shoulder joint gets inflamed, then shrinks and tightens like a shrunken jumper. Over months it loosens again.”",
    "management": {
-    "reflectIce": "“You wondered if you’d damaged it and you’re worried it won’t come back. You haven’t caused this, and it does recover, but slowly, and I’d rather be honest about that now.”",
-    "psychosocial": "Address sleep and daily tasks; give an honest timeline; link diabetes care to her shoulder so it feels relevant.",
+    "reflectIce": "“You want an injection so you can work, and you’ve been avoiding tests because of what happened to your mum. A sugar test helps me give you that injection safely.”",
+    "psychosocial": "Address fear of diabetes; adapt work; keep her business going.",
     "sharedPlan": [
-     "X-ray to exclude glenohumeral arthritis",
-     "Analgesia and gentle exercises within comfort; physiotherapy referral",
-     "Intra-articular steroid injection in the painful phase, with glucose monitoring advice",
-     "HbA1c, thyroid tests and diabetes review",
-     "Refer to secondary care if not improving (hydrodilatation, manipulation, capsular release)"
+     "HbA1c this week",
+     "Intra-articular corticosteroid injection if appropriate (check the SPC/local formulary)",
+     "Physiotherapy and home exercises",
+     "Regular simple analgesia",
+     "No MRI",
+     "Work adaptations; fit note with adjustments if useful"
     ],
     "safetyNet": [
-     "Unmanageable pain",
-     "Fever, redness or swelling of the joint, especially after injection",
-     "New weakness or numbness in the arm",
-     "Review after X-ray and bloods"
+     "Worsening thirst, frequent urination, weight loss or feeling unwell: contact sooner",
+     "Hot swollen shoulder, fever, arm weakness or numbness: same-day assessment",
+     "No improvement after injection and physiotherapy: review and consider referral"
     ]
    }
   },
   "links": [
    {
+    "ic": "💠",
+    "t": "Shoulder pain",
+    "s": "Frozen shoulder diagnosis and options",
+    "href": "management/shoulder-pain.html"
+   },
+   {
     "ic": "🗺️",
-    "t": "Shoulder pain pathway",
-    "s": "Visual algorithm · active versus passive",
+    "t": "Shoulder pain",
+    "s": "Visual algorithm",
     "href": "algorithms/shoulder-pain.html"
    },
    {
-    "ic": "📋",
-    "t": "Shoulder pain",
-    "s": "Case walkthrough · BESS pathways",
-    "href": "../cases/shoulder-pain.html"
+    "ic": "💠",
+    "t": "Non-diabetic hyperglycaemia",
+    "s": "The borderline result and recall",
+    "href": "management/non-diabetic-hyperglycaemia.html"
    },
    {
     "ic": "💠",
-    "t": "Musculoskeletal protocols",
-    "s": "Management by condition",
-    "href": "management.html?cat=musculoskeletal-and-rheumatology"
+    "t": "Type 2 diabetes",
+    "s": "If the HbA1c is in the diabetes range",
+    "href": "management/type-2-diabetes.html"
    }
   ],
   "pitfalls": {
-   "intro": "This station is lost by mislabelling it, by skipping the passive examination, and by promising a quick fix. Each pattern below is common and fixable.",
+   "intro": "Frozen shoulder is a clinical diagnosis. The marks are in noticing the refusal as a cue, linking diabetes to the shoulder, and helping her keep working.",
    "items": [
     {
      "dom": "dg",
-     "fail": "Testing only active movement and calling it a rotator cuff problem.",
-     "why": "Loss of passive movement, especially external rotation, is what defines frozen shoulder.",
-     "fix": "Always compare active with passive range and name what you find."
-    },
-    {
-     "dom": "dg",
-     "fail": "Ignoring the diabetes she volunteered.",
-     "why": "Diabetes is the strongest association and matters for injection safety and outcome.",
-     "fix": "Ask about control, check HbA1c, and link it to the plan."
-    },
-    {
-     "dom": "cm",
-     "fail": "Steroid injection without glucose advice.",
-     "why": "Corticosteroids can raise blood glucose (BNF).",
-     "fix": "Advise closer glucose monitoring for several days and what to do if it rises."
-    },
-    {
-     "dom": "dg",
-     "fail": "No X-ray and no referral trigger.",
-     "why": "BESS pathways use X-ray to exclude arthritis and refer when not improving.",
-     "fix": "Arrange an X-ray; state when you would refer to secondary care."
+     "fail": "Not asking about diabetes.",
+     "why": "Frozen shoulder is associated with diabetes and she has a borderline result and symptoms.",
+     "fix": "Ask about osmotic symptoms and arrange HbA1c."
     },
     {
      "dom": "ro",
-     "fail": "Promising it will settle in weeks.",
-     "why": "Recovery often takes 1–3 years; false hope damages trust.",
-     "fix": "Give the honest timeline and frame it as expected, not failure."
+     "fail": "Overriding the refusal of tests.",
+     "why": "Her fear will win and she will disengage.",
+     "fix": "Explore why first."
     },
     {
      "dom": "cm",
-     "fail": "Vague “come back if it’s no better”.",
-     "why": "Non-specific safety-netting is common failing feedback.",
-     "fix": "Named red flags, especially a hot swollen joint after injection, and a set review point."
+     "fail": "Injecting without considering glucose.",
+     "why": "Steroid injections can raise glucose for days.",
+     "fix": "Check HbA1c and advise monitoring if diabetic."
+    },
+    {
+     "dom": "cm",
+     "fail": "Ordering or endorsing an MRI.",
+     "why": "It rarely changes management.",
+     "fix": "Explain the clinical diagnosis."
+    },
+    {
+     "dom": "dg",
+     "fail": "Skipping red flags.",
+     "why": "Sepsis, fracture and malignancy can mimic it.",
+     "fix": "Ask about trauma, fever, weight loss, neurology."
+    },
+    {
+     "dom": "cm",
+     "fail": "Ignoring work.",
+     "why": "Her livelihood is the main driver.",
+     "fix": "Discuss adaptations and offer a fit note."
     }
    ]
   }
@@ -8616,53 +8591,54 @@
  },
  "transgender-health": {
   "stem": {
-   "name": "Sam (he/him)",
-   "age": "26-year-old trans man",
+   "name": "Sam Ellis",
+   "age": "26 years · male",
    "pmh": [
-    "Gender incongruence; on the NHS gender dysphoria clinic waiting list (nearly four years)"
+    "Gender incongruence: under an NHS gender service; testosterone prescribed by the practice under a shared-care agreement",
+    "Smoker"
    ],
    "meds": [
-    "Testosterone — prescribed by a private gender service; not on the practice repeat list"
+    "Testosterone injection (shared care)"
    ],
-   "allergy": "No known drug allergies recorded",
-   "recent": "No letters from the private service on file. No monitoring bloods on record.",
-   "reason": "Asking the practice to take over testosterone monitoring and, ideally, prescribing."
+   "allergy": "None recorded",
+   "recent": "Shared-care monitoring bloods: haematocrit 0.55 (0.49 a year ago), haemoglobin 178 g/L, trough testosterone upper end of male reference range, LFTs and lipids normal.",
+   "reason": "Practice nurse asked him to book to discuss the results."
   },
   "knowledge": {
-   "guideline": "[1] GMC ethical hub: trans healthcare (bridging prescriptions, shared care) · [2] RCGP position statement: the role of the GP in transgender care (2024) · [3] NHS England service specification: gender dysphoria services, non-surgical interventions for adults (current version) and NHS England operational and delivery review of adult gender dysphoria clinics (Levy review, December 2025) · [4] NHS Cervical Screening Programme: operational guidance for transgender and non-binary opt-in (gov.uk) · [5] FSRH CEU statement: contraceptive choices and sexual health for transgender and non-binary people (2017) · [6] Equality Act 2010; Gender Recognition Act 2004",
-   "summary": "An adult on privately prescribed testosterone asking the GP to take over is a question about shared care with a private provider, not about whether he deserves care. Be respectful and use his name and pronouns. Be honest about what the practice can and cannot take on, and why. Check the private prescriber’s credentials. Keep him safe in the meantime with monitoring and advice. Look after the rest of his health: mood, contraception and screening based on anatomy.",
+   "guideline": "[1] NHS gender dysphoria clinic shared-care protocol for testosterone (local version; check current) · [2] RCGP position statement: the role of the GP in caring for gender-questioning and transgender patients (2024) · [3] FSRH CEU Statement: Contraceptive choices and sexual health for transgender and non-binary people (check current version) · [4] FSRH Clinical Guideline: Emergency contraception (2017, amended) · [5] NHS cervical screening programme guidance for trans and non-binary people · [6] GMC Good medical practice (2024) · [7] Product SPCs for testosterone, levonorgestrel and ulipristal acetate",
+   "summary": "A trans man on shared-care testosterone with haematocrit 0.55 after self-increasing his injection frequency, plus smoking and possible sleep apnoea. Repeat, liaise with the gender service about dose or interval, and address contributors without stopping testosterone. The hidden agenda: unprotected vaginal sex in the belief that testosterone is contraception, most recently last night. Offer emergency contraception, pregnancy testing, an STI screen, non-oestrogen contraception and cervical screening.",
    "points": [
     {
-     "h": "Respect and records",
-     "t": "Use his chosen name and pronouns. Update the record with his consent. Gender reassignment is a protected characteristic under the Equality Act 2010; refusing care because someone is trans is not acceptable [1][6]. Information about gender recognition is specially protected [6]."
+     "h": "Erythrocytosis on testosterone",
+     "t": "Haematocrit rises with testosterone. Above the protocol threshold (commonly 0.54), repeat the test, look for causes and contact the gender service about dose or interval [1]."
     },
     {
-     "h": "The GP role",
-     "t": "RCGP 2024 [2]: the core GP role is to liaise with specialist gender services as with any other specialty, including considering prescribing under a collaborative or shared-care arrangement once a specialist has assessed the patient. For GPs without extra expertise, the role does not include starting hormones before specialist assessment, and shared care with private providers is not part of most GPs’ role."
+     "h": "Contributing factors",
+     "t": "Supratherapeutic or self-adjusted dosing, smoking, obstructive sleep apnoea, dehydration, chronic lung disease. Ask about headache, visual symptoms and thrombosis."
     },
     {
-     "h": "Private providers",
-     "t": "Before agreeing to shared care with a private service, the practice should be assured that a suitably qualified, GMC-registered specialist has made an assessment equivalent to an NHS one. It should also check that the service is UK-regulated, and it should have the service’s assessment and monitoring plan in writing [1][2]. A practice may decline if it is not assured, but should not leave the patient at significant clinical risk. Explain the reasons and the alternatives."
+     "h": "GP role",
+     "t": "Working with the specialist gender service under shared care, as with other specialties; prescribing and monitoring per the agreement [2]."
     },
     {
-     "h": "Bridging prescriptions",
-     "t": "GMC [1]: a bridging prescription is a harm-reduction measure. A GP may consider one when a person is already self-medicating, or is very likely to, with hormones from an unregulated source, while waiting for a specialist service, and after seeking advice from an experienced gender specialist. It is not a routine alternative to specialist care [2]. Sam has a private prescriber, so the first question is continuity from that service, not bridging."
+     "h": "Testosterone is not contraception",
+     "t": "Amenorrhoea on testosterone does not mean no ovulation. Pregnancy is possible, and testosterone can harm a developing pregnancy [3]."
     },
     {
-     "h": "National picture",
-     "t": "NHS England’s adult clinics have waits measured in years. Following the Levy review (December 2025), from 1 October 2026 adult referrals in England go through the Gender National Referral Support Service (GNRSS), which manages a single national waiting list; self-referral is no longer accepted [3]. Confirm his place on that list."
+     "h": "Contraception choices",
+     "t": "Non-oestrogen methods: copper IUD, LNG-IUS, implant, injection, progestogen-only pill. Oestrogen-containing methods are generally avoided [3]."
     },
     {
-     "h": "Monitoring for safety",
-     "t": "On testosterone: FBC with haematocrit, liver function, lipids, testosterone level, blood pressure and weight, on the schedule set by the prescribing specialist. Raised haematocrit (secondary polycythaemia) is the key risk to look for. Share results with the prescriber."
+     "h": "Emergency contraception",
+     "t": "Copper IUD is most effective. Levonorgestrel or ulipristal acetate are options; no interaction with testosterone. Pregnancy test 3 weeks after the last unprotected sex [4,7]."
     },
     {
-     "h": "Contraception and fertility",
-     "t": "FSRH [5]: testosterone is not a contraceptive and is contraindicated in pregnancy. If he has sex that could lead to pregnancy, discuss contraception. Fertility may be affected; discuss it and refer for advice if he wishes."
+     "h": "STI and cervical screening",
+     "t": "Offer an STI screen. People with a cervix aged 25–64 should be offered screening even if registered as male; they are not automatically invited [5]."
     },
     {
-     "h": "Whole-person care",
-     "t": "Ask directly about mood, self-harm and suicidal thoughts; trans people report higher rates of distress, often linked to waiting and discrimination. Screen by anatomy: a person registered as male with a cervix is not invited automatically, but can opt in to cervical screening [4]. Include smoking, alcohol and cardiovascular risk."
+     "h": "Respectful care",
+     "t": "Use the person’s name and pronouns, avoid unnecessary questions about transition, and do not make testosterone conditional on unrelated matters [6]."
     }
    ]
   },
@@ -8671,448 +8647,422 @@
     "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello, I’m Dr Rahman. How would you like me to address you?",
+    "text": "Hello, I’m Dr Clarke. Can I check I’ve got your name right, Sam? And it’s he and him?",
     "dom": "ro",
-    "why": "Asks rather than assumes name and pronouns"
+    "why": "Confirms name and pronouns"
    },
    {
     "who": "pt",
-    "text": "Thanks for seeing me. I’m a trans man. I go by Sam, he/him. I’ve been waiting nearly four years for the NHS gender clinic, so I started testosterone through a private service because I couldn’t cope waiting. I’m doing well on it. Can you do my blood monitoring and ideally take over the prescription? I’m worried I’ll be judged or turned away."
+    "text": "Yes, thanks. The nurse rang and said one of my blood results needs talking about. I’ve waited years for this, so if you’re going to say my dose has to come down, I’m going to struggle."
    },
    {
     "who": "dr",
-    "text": "Thank you, Sam. You won’t be turned away. I want to help you stay safe and well on your treatment. I’ll also be honest about what I can do today and what needs checking first. Is it okay if I ask some questions?",
+    "text": "I know how long you waited, Sam. My aim isn’t to take testosterone away, it’s to keep you safe on it. Can I explain what we found?",
     "dom": "ro",
-    "why": "Addresses the fear of refusal directly; sets honest expectations"
+    "why": "Acknowledges fear; sets intent"
    },
    {
-    "who": "pt",
-    "text": "Yes, of course."
-   },
-   {
-    "phase": "Data gathering",
+    "phase": "Result and history",
     "clock": "1–5 min",
     "who": "dr",
-    "text": "Can you tell me about the private service: who assessed you, and do you have their letters, your dose and how you take it?",
+    "text": "Testosterone makes the body produce more red blood cells. Your level has risen to a point where the blood can get thicker, which raises the chance of clots and strokes. It’s fixable, but we need to act on it.",
     "dom": "dg",
-    "why": "Establishes prescriber, assessment and regimen"
+    "why": "Explains the result and its risk"
    },
    {
     "who": "pt",
-    "text": "It’s a UK online service. I had an assessment with them. I can forward the letters, they’re in my email."
+    "text": "Right. I thought thick blood was just normal for guys on T."
    },
    {
     "who": "dr",
-    "text": "That would really help. Have you had any blood tests since starting, and are you getting the testosterone only through them, not from anywhere else?",
+    "text": "It goes up a bit for everyone, but yours has jumped since last year. Have you had headaches, a red face, blurred vision, chest pain, breathlessness, a painful swollen leg, or any weakness or numbness?",
     "dom": "dg",
-    "why": "Monitoring to date; checks for unregulated sourcing"
+    "why": "Hyperviscosity and thrombosis screen"
    },
    {
     "who": "pt",
-    "text": "Only through them. I had bloods at the start, I think. Nothing recent."
+    "text": "Headaches, a few weeks. Bit flushed. Nothing else."
    },
    {
     "who": "dr",
-    "text": "Thanks. I’d like to ask about the rest of your health too. How has your mood been, through the wait and now?",
+    "text": "How are you taking your injections at the moment?",
     "dom": "dg",
-    "why": "Mental-health screen"
+    "why": "Dosing"
    },
    {
     "who": "pt",
-    "text": "Waiting was really hard. It’s better since starting."
+    "text": "(pause) A bit more often than it says. I felt flat at the end of each cycle."
    },
    {
     "who": "dr",
-    "text": "I’m glad it’s better. I ask everyone this: have you had thoughts of harming yourself or ending your life, either then or now?",
+    "text": "Thanks for being honest. Lots of people do that. It’s probably the main reason for the jump, and there are safer ways to even out the levels, which the gender team can advise on. Do you smoke? And has anyone said you snore or stop breathing at night?",
     "dom": "dg",
-    "why": "Direct, normalised self-harm and suicide question"
+    "why": "Non-judgemental; contributing factors"
    },
    {
     "who": "pt",
-    "text": "Not now. It was dark while I was waiting, but not now."
+    "text": "Ten a day. And my boyfriend, Kieran, says I snore and sometimes gasp."
+   },
+   {
+    "phase": "Sexual health",
+    "clock": "5–7 min",
+    "who": "dr",
+    "text": "That’s useful, I’ll come back to the snoring. You mentioned Kieran. I ask everyone about sexual health and contraception. What kind of sex are you having, and are you using any contraception?",
+    "dom": "dg",
+    "why": "Respectful sexual history"
+   },
+   {
+    "who": "pt",
+    "text": "Vaginal sex. No condoms. I can’t get pregnant on T, my periods stopped two years ago."
    },
    {
     "who": "dr",
-    "text": "Thank you for telling me. Do you smoke, and how much alcohol do you drink?",
-    "dom": "dg",
-    "why": "Cardiovascular risk"
+    "text": "That’s a really common belief, so I’m glad we’re talking. Testosterone stops periods, but it doesn’t reliably stop ovulation, so pregnancy is possible. And testosterone can harm a developing baby. When did you last have sex?",
+    "dom": "cm",
+    "why": "Corrects myth; establishes timing"
    },
    {
     "who": "pt",
-    "text": "I don’t smoke. I drink a bit at weekends."
+    "text": "Last night. And a few times this month. Oh no."
    },
    {
     "phase": "Ideas, concerns and expectations",
-    "clock": "5–6 min",
+    "clock": "7–8 min",
     "who": "dr",
-    "text": "You said you were worried about being judged. What were you expecting today?",
+    "text": "How are you feeling hearing that?",
     "dom": "ro",
-    "why": "Explores concern and expectations"
+    "why": "Checks emotional response"
    },
    {
     "who": "pt",
-    "text": "Honestly, that you’d say it’s not your job, or that I should stop. Other people I know have been turned away. I want to be safe and not have to fight for everything."
+    "text": "Scared. I don’t want to be pregnant. I just want to be left alone to be me."
    },
    {
-    "who": "dr",
-    "text": "That sounds exhausting, and I’m sorry that’s been people’s experience. Please don’t stop your testosterone suddenly. Let me explain what I can do.",
-    "dom": "ro",
-    "why": "Validates, and gives safety advice early"
-   },
-   {
-    "phase": "Explanation",
-    "clock": "6–8 min",
-    "who": "dr",
-    "text": "There are two separate things: monitoring and prescribing. Monitoring I can arrange now, because keeping you safe matters whoever prescribes. That means a blood count, as testosterone can thicken the blood, liver tests, cholesterol, your testosterone level, blood pressure and weight.",
-    "dom": "cm",
-    "why": "Separates monitoring from prescribing; names monitoring and the haematocrit risk"
-   },
-   {
-    "who": "pt",
-    "text": "That would be great."
-   },
-   {
-    "who": "dr",
-    "text": "Taking over the prescription from a private service is a shared-care decision for the practice. Professional guidance asks us to check first that you were assessed by a suitably qualified, GMC-registered specialist, and that the service is UK-regulated. We also need a clear plan in writing. So I can’t promise the prescription today, but I will look at it properly and quickly, and I won’t leave you without treatment.",
-    "dom": "cm",
-    "why": "Honest about shared-care conditions and limits, without refusal"
-   },
-   {
-    "who": "pt",
-    "text": "Okay. That’s fairer than I expected."
-   },
-   {
-    "who": "dr",
-    "text": "Can I also check you’re still on the NHS clinic list? NHS England is moving to a single national waiting list, and I want to make sure you don’t lose your place.",
-    "dom": "ro",
-    "why": "Protects his NHS pathway"
-   },
-   {
-    "who": "pt",
-    "text": "I think so. I’m not sure since they changed it."
-   },
-   {
-    "phase": "Shared management",
+    "phase": "Plan",
     "clock": "8–11 min",
     "who": "dr",
-    "text": "I’ll check it for you. Two more health points, and tell me if either doesn’t apply. Testosterone isn’t a contraceptive and isn’t safe in pregnancy. So if you have sex that could lead to a pregnancy, we should talk about contraception. And if you still have a cervix, you won’t be invited for cervical screening automatically if you’re registered as male, but you can opt in. We can do that in a way that feels okay for you.",
-    "dom": "dg",
-    "why": "Contraception and anatomy-based screening, sensitively"
+    "text": "Let’s deal with today first. Because of last night, emergency contraception is important. A copper coil fitted within five days is the most effective, and it would also be your ongoing contraception without hormones that affect your T. If you’d rather not have a coil, an emergency pill works with testosterone. Let’s also do a pregnancy test today, and again three weeks after last night.",
+    "dom": "cm",
+    "why": "EC options; pregnancy tests"
    },
    {
     "who": "pt",
-    "text": "I hadn’t thought about the screening. I’d want to talk about how that would work."
+    "text": "I’ll take the pill today. I’ll think about the coil."
    },
    {
     "who": "dr",
-    "text": "Of course, we can plan that together at another appointment. Is the name and gender on your record how you want it?",
-    "dom": "ro",
-    "why": "Offers record update with consent"
-   },
-   {
-    "who": "pt",
-    "text": "My name’s right, but it still says female in places."
+    "text": "Good. I’ll also offer a sexual health screen, and longer term the options without oestrogen are the copper coil, the hormonal coil, the implant or the injection. And because you have a cervix, you’re eligible for cervical screening even though you won’t get invitations. We can talk about that when you’re ready.",
+    "dom": "cm",
+    "why": "STI screen; non-oestrogen contraception; cervical screening"
    },
    {
     "who": "dr",
-    "text": "I’ll help you update it today if you’d like, and I’ll explain what it means for screening invitations so nothing is missed. There are also peer support groups and national trans support organisations. I can give you details.",
-    "dom": "ro",
-    "why": "Record update with consent; signposting"
-   },
-   {
-    "who": "pt",
-    "text": "Yes, please."
+    "text": "For the blood result: take the injections as prescribed, I’ll repeat the test in a few weeks and contact the gender team about adjusting the dose or timing so you don’t feel flat. Cutting down smoking would help a lot, and I can refer you to the stop smoking service. Drink plenty of water at work. And I’d like to assess the snoring for sleep apnoea, which can push the blood count up too.",
+    "dom": "cm",
+    "why": "Shared-care actions; contributors"
    },
    {
     "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "Please book the bloods and blood-pressure check this week, and send me the private service’s letters. I’ll review them, seek specialist advice if needed, and ring you with the practice’s decision and the reasons. If your mood drops or those dark thoughts return, contact us the same day, or call 999 or NHS 111 in a crisis. Headaches, chest pain or a red, swollen leg also need urgent help. What will you do next?",
-    "dom": "cm",
-    "why": "Concrete plan, feedback route and specific safety-net; teach-back"
+    "text": "Can you tell me the plan back?",
+    "dom": "ro",
+    "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "Bloods this week, send the letters, keep taking my testosterone as prescribed, and you’ll call me. And get help quickly if my mood crashes."
+    "text": "Morning-after pill today, pregnancy test today and in three weeks. Injections as prescribed. Repeat bloods, you’ll talk to the gender team. Think about the coil. Smoking help. Sleep test."
    },
    {
     "who": "dr",
-    "text": "That’s it. Thank you for coming in, Sam. You shouldn’t have to fight to be looked after, and we’ll keep seeing you through this.",
+    "text": "Exactly. If you get sudden weakness, numbness, face drooping, speech or vision problems, chest pain, breathlessness or a painful swollen leg, call 999. If any pregnancy test is positive, stop the testosterone and contact me the same day.",
     "dom": "cm",
-    "why": "Confirms understanding and continuity"
+    "why": "Safety-net"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Asked how he wishes to be addressed; open question; let him state his request and his fear of refusal.",
-    "pts": 1, "dom": "dg"
+    "d": "Checked name and pronouns; acknowledged fear about the dose; explained intent before results.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "The long wait and its toll; experiences of discrimination; alcohol and smoking.",
-    "pts": 1, "dom": "dg"
+    "d": "Work, smoking, new relationship, what testosterone means to him.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up “I’m worried I’ll be judged or turned away” and “couldn’t cope waiting” and explored both, including mood.",
-    "pts": 1, "dom": "ro"
+    "d": "Self-adjusted dosing; snoring and gasping; the new partner as a route to sexual health.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (GP can take over), concern (judgement, refusal, having to fight), expectation (monitoring and prescribing).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (thick blood is normal on T), concerns (losing his dose; pregnancy), expectation (no change, keep it quick).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "FBC with haematocrit, LFTs, lipids, testosterone level, BP, weight; obtain the private service’s assessment and plan.",
-    "pts": 1, "dom": "dg"
+    "d": "Repeat haematocrit; pregnancy test now and at 3 weeks; STI screen; sleep apnoea assessment; BP.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
-    "d": "Safety of current regimen; secondary polycythaemia; mood disorder or self-harm risk; contraceptive need; screening gaps from registered gender.",
-    "pts": 1, "dom": "dg"
+    "d": "Testosterone-induced erythrocytosis from self-adjusted dosing, smoking and possible OSA; pregnancy risk.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Asked directly about self-harm and suicidal thoughts; checked for hormones from unregulated sources; clot and polycythaemia symptoms in the safety-net.",
-    "pts": 2, "dom": "dg"
+    "d": "Hyperviscosity, thrombosis and stroke symptoms; possible pregnancy on a teratogen.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Adult trans man on privately prescribed testosterone requesting shared care, awaiting NHS gender clinic assessment.",
-    "pts": 2, "dom": "dg"
+    "d": "Erythrocytosis on testosterone above the action threshold; risk of unintended pregnancy needing EC.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Monitoring now; honest shared-care decision after checking the private prescriber (GMC-registered specialist, UK-regulated service); do not stop testosterone; specialist advice if needed.",
-    "pts": 2, "dom": "cm"
+    "d": "EC today (copper IUD offered; oral EC suitable, check the SPC); pregnancy tests; injections as prescribed; repeat and liaise with the gender service.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Mental-health support; contraception advice (testosterone is not a contraceptive); cervical screening opt-in if a cervix is present; record update with consent; confirm NHS list position.",
-    "pts": 1, "dom": "cm"
+    "d": "Smoking cessation referral; hydration; OSA assessment; non-oestrogen contraception; STI and cervical screening.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Bloods this week; decision and reasons fed back by phone; same-day contact for low mood or suicidal thoughts, 999 or 111 in crisis; urgent symptoms named; teach-back and continuity offered.",
-    "pts": 1, "dom": "cm"
+    "d": "999 for stroke, chest or leg symptoms; stop testosterone and call if pregnant; repeat bloods and review; teach-back.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
     "Gender, reproductive & sexual health",
     "Ethnicity, culture & diversity",
-    "Professional & ethical dilemmas"
+    "Investigations & results"
    ],
    "stem": {
-    "name": "Sam (he/him)",
-    "age": "26 years · trans man",
+    "name": "Sam Ellis",
+    "age": "26 years · male",
     "pmh": [
-     "Gender incongruence; on NHS gender clinic waiting list"
+     "Gender incongruence: under an NHS gender service; testosterone prescribed by the practice under a shared-care agreement",
+     "Smoker"
     ],
     "meds": [
-     "Testosterone via private gender service"
+     "Testosterone injection (shared care)"
     ],
-    "allergy": "NKDA",
-    "recent": "No private service letters on file. No monitoring bloods recorded.",
-    "reason": "“Will you do my monitoring and take over the prescription? I’m worried I’ll be judged.”"
+    "allergy": "None recorded",
+    "recent": "Shared-care monitoring bloods: haematocrit 0.55 (0.49 a year ago), haemoglobin 178 g/L, trough testosterone upper end of male reference range, LFTs and lipids normal.",
+    "reason": "Practice nurse asked him to book to discuss the results."
    },
    "timeMap": [
     {
      "t": "0–1",
-     "h": "Opening",
-     "d": "Ask how he wishes to be addressed; hear the request and the fear of refusal."
+     "h": "Open",
+     "d": "Name and pronouns. Reassure that the aim is safety, not stopping testosterone."
     },
     {
      "t": "1–5",
-     "h": "Focused history",
-     "d": "Private prescriber and assessment, dose, monitoring to date, any unregulated sourcing, mood and self-harm, smoking and alcohol."
+     "h": "Result",
+     "d": "Explain haematocrit; symptoms; dosing (self-adjusted); smoking; snoring."
     },
     {
-     "t": "5–6",
-     "h": "ICE",
-     "d": "Fear of being judged or turned away; wants safety and not to have to fight."
+     "t": "5–8",
+     "h": "Sexual health",
+     "d": "Respectful questions; unprotected vaginal sex, last night; myth corrected; feelings."
     },
     {
-     "t": "6–8",
-     "h": "Explain",
-     "d": "Monitoring now; prescribing is a shared-care decision after checking the private prescriber; don’t stop testosterone; NHS list."
+     "t": "8–11",
+     "h": "Plan",
+     "d": "EC today; pregnancy tests; STI screen; non-oestrogen contraception; cervical screening; repeat bloods and gender service; smoking; OSA."
     },
     {
-     "t": "8–12",
-     "h": "Plan and close",
-     "d": "Contraception, cervical screening opt-in, record update, signposting, decision fed back, mood safety-net, teach-back."
+     "t": "11–12",
+     "h": "Close",
+     "d": "Teach-back; 999 symptoms; stop T if pregnant."
     }
    ],
    "wordPics": {
-    "fail": "Misgenders him or avoids his name; refuses involvement outright or tells him to stop testosterone; lectures about private providers; no monitoring and no mood question.",
-    "pass": "Uses his name and pronouns, arranges monitoring, explains that shared care depends on checking the private prescriber, asks about mood, and agrees a follow-up.",
-    "exc": "All of the above, plus: separates monitoring from prescribing clearly; explains the GMC and RCGP position in plain words without moralising; advises not to stop suddenly; covers contraception and cervical screening opt-in sensitively; offers a record update; protects his NHS list place; names a route and timescale for the decision; teach-back."
+    "fail": "Misgenders Sam; stops testosterone or ignores the result; never asks about sex or contraception, so the risk of pregnancy is missed.",
+    "pass": "Explains the raised haematocrit and plans a repeat with the gender service, identifies unprotected sex and offers emergency contraception and a pregnancy test.",
+    "exc": "All of the above, plus: affirming throughout; explores self-adjusted dosing without blame; addresses smoking and possible sleep apnoea; corrects the testosterone-as-contraception myth clearly; offers a copper IUD as the most effective EC and ongoing method; STI and cervical screening; clear safety-net including stopping testosterone if pregnant."
    },
    "avoid": [
     {
-     "dont": "“GPs don’t prescribe hormones. You’ll have to wait for the clinic.”",
-     "instead": "“I can arrange your monitoring now, and I’ll look properly at taking over the prescription once I’ve checked the private service.”",
-     "why": "A flat refusal is not in line with GMC guidance and leaves him unsafe; honest conditions are."
+     "dont": "“Your blood is too thick, so we’ll have to stop the testosterone.”",
+     "instead": "“We’ll repeat it and work with the gender team on the dose, so you stay safe on it.”",
+     "why": "The protocol is to adjust and address causes; stopping is rarely needed and harms trust."
     },
     {
-     "dont": "“You shouldn’t have started without the NHS.”",
-     "instead": "“The wait has been very long. Let’s focus on keeping you safe now.”",
-     "why": "Moralising damages trust and adds nothing clinically."
+     "dont": "(Assuming no pregnancy risk) skipping sexual history.",
+     "instead": "“I ask everyone about sex and contraception. What kind of sex are you having?”",
+     "why": "Testosterone is not contraception."
     },
     {
-     "dont": "“Stop the testosterone until we sort this out.”",
-     "instead": "“Please keep taking it as prescribed while we work this out.”",
-     "why": "Abrupt stopping can cause harm and distress; continuity is safer."
+     "dont": "“Have you thought about going back on the pill?”",
+     "instead": "“Options without oestrogen are the coils, the implant and the injection.”",
+     "why": "Oestrogen-containing methods are generally avoided with testosterone."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Waiting and wellbeing",
-     "t": "Adult gender clinic waits run to years. Isolation, discrimination and cost of private care all affect wellbeing; ask about support, work and money."
+     "h": "Long waits",
+     "t": "After years waiting for gender services, fear of losing treatment can make people defensive. Saying early that the aim is safety helps."
     },
     {
-     "h": "Cost of private care",
-     "t": "Private prescriptions and tests are expensive; this can drive people to unregulated sources. Ask, without judgement."
+     "h": "Myths",
+     "t": "The belief that testosterone prevents pregnancy is common and spreads through peer networks."
     }
    ],
    "legal": [
     {
-     "h": "Equality Act 2010",
-     "t": "Gender reassignment is a protected characteristic. Refusing or providing worse care because someone is trans is unlawful discrimination."
+     "h": "Shared care",
+     "t": "The GP prescribes and monitors under the agreement and should contact the specialist service when results fall outside set limits (RCGP 2024)."
     },
     {
-     "h": "Confidentiality",
-     "t": "Gender Recognition Act 2004 section 22 protects information about a person’s gender recognition application or history when it is acquired in an official capacity. Share gender history only with consent or where clinically necessary."
-    },
-    {
-     "h": "Records",
-     "t": "A patient can ask to change name and gender on their NHS record. Explain the effect on screening invitations and put reminders in place."
+     "h": "Equality",
+     "t": "Gender reassignment is a protected characteristic under the Equality Act 2010. Care should be respectful and non-discriminatory."
     }
    ],
    "professional": [
     {
-     "h": "GMC and RCGP positions",
-     "t": "GMC: treat trans patients with dignity and consider harm reduction, including bridging, with specialist advice. RCGP 2024: shared care with NHS specialist services is core; starting hormones or shared care with private providers is not part of most GPs’ role without extra expertise."
+     "h": "Respectful language",
+     "t": "Use the person’s chosen name and pronouns and anatomical terms they are comfortable with."
     },
     {
-     "h": "Competence and honesty",
-     "t": "Work within your competence, seek specialist advice, explain decisions and reasons, and never leave a patient without a plan (GMC Good medical practice 2024)."
+     "h": "Screening invitations",
+     "t": "Registered gender affects automatic invitations. Practices should identify people with a cervix (or breast tissue) who may need screening."
     }
    ],
    "community": [
     {
-     "h": "Support",
-     "t": "Signpost national trans support and peer groups, local LGBT+ services, and mental-health support including NHS Talking Therapies."
+     "h": "Sexual health services",
+     "t": "Can fit copper IUDs for emergency contraception, test for STIs and offer inclusive care."
+    },
+    {
+     "h": "Stop smoking services",
+     "t": "Smoking cessation reduces erythrocytosis and cardiovascular risk."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Current suicidal thoughts or recent self-harm",
-     "Hormones from unregulated sources or at unknown doses",
-     "Headache, chest pain, breathlessness or a swollen leg (polycythaemia or clot)",
-     "Possible pregnancy while on testosterone"
+     "Sudden weakness, numbness, speech or vision problems: stroke, 999",
+     "Chest pain, breathlessness, painful swollen leg: thrombosis, same-day or 999",
+     "Positive pregnancy test on testosterone: stop testosterone, urgent advice"
     ],
     "psychosocial": [
-     "Years on the waiting list",
-     "Experience or fear of discrimination",
-     "Cost of private care",
-     "Support network"
+     "Fear of losing testosterone",
+     "New relationship",
+     "Smoking and work hydration",
+     "Anxiety about examinations"
     ],
     "ice": [
-     "Idea: the GP can take over monitoring and prescribing",
-     "Concern: being judged, turned away or having to fight",
-     "Expectation: monitoring, ideally prescribing, and support"
+     "Idea: thick blood is normal on T",
+     "Concern: dose cut; unintended pregnancy",
+     "Expectation: no change, quick appointment"
     ]
    },
-   "diagnosis": "“You’re an adult trans man on testosterone from a private service, waiting for the NHS clinic. My job is to keep you safe on it, look after the rest of your health, and decide properly whether the practice can share your prescribing.”",
-   "diagnosisLay": "“Think of it as two jobs. Checking your bloods is a safety job I can start now. Taking over the prescription is like taking a patient from another hospital: I need their notes and plan first, so I know I’m continuing it safely.”",
+   "diagnosis": "“Your red blood cell level is higher than is safe on testosterone, most likely from taking the injections more often, plus smoking and possibly sleep apnoea. And testosterone isn’t contraception, so there’s a pregnancy risk from last night.”",
+   "diagnosisLay": "“Testosterone tells the bone marrow to make more red cells. Too many make the blood thicker, like syrup, which can clot more easily.”",
    "management": {
-    "reflectIce": "“You were worried I’d judge you or turn you away. I won’t. I’ll arrange your monitoring now, and I’ll be straight with you about what we need before taking over the prescription.”",
-    "psychosocial": "Acknowledge the wait and the fear of refusal; ask about mood and support; offer continuity and a clear decision timeline.",
+    "reflectIce": "“You were worried we’d cut your dose. We’ll keep you on testosterone and make it safer. And we’ll sort out protection so pregnancy isn’t a worry.”",
+    "psychosocial": "Affirming care; respect his decision about the coil; support around anxiety with examinations.",
     "sharedPlan": [
-     "Monitoring bloods (FBC with haematocrit, LFTs, lipids, testosterone), BP and weight now; share results with the prescriber",
-     "Obtain the private service’s assessment and plan; check the specialist is GMC-registered and the service UK-regulated; practice shared-care decision with reasons; specialist advice if needed",
-     "Keep taking testosterone as prescribed; do not stop suddenly",
-     "Confirm his place on the NHS waiting list",
-     "Contraception advice; cervical screening opt-in if a cervix is present; record update with consent; signposting"
+     "Emergency contraception today (copper IUD offered; oral EC suitable, check the SPC)",
+     "Pregnancy test today and 3 weeks after the last unprotected sex",
+     "STI screen; ongoing non-oestrogen contraception",
+     "Injections as prescribed; repeat haematocrit in a few weeks; contact the gender service about dose or interval",
+     "Stop smoking referral; hydration; sleep apnoea assessment",
+     "Offer cervical screening"
     ],
     "safetyNet": [
-     "Same-day contact for low mood or suicidal thoughts; 999 or NHS 111 in a crisis",
-     "Urgent help for chest pain, breathlessness, severe headache or a red, swollen leg",
-     "Phone call with the shared-care decision and reasons"
+     "Stroke symptoms, chest pain, breathlessness or a painful swollen leg: 999",
+     "Positive pregnancy test: stop testosterone, contact the practice the same day",
+     "Worsening headaches or visual symptoms: urgent review"
     ]
    }
   },
   "links": [
    {
     "ic": "💠",
-    "t": "Gender dysphoria protocol",
-    "s": "Affirming care · bridging · monitoring",
+    "t": "Gender dysphoria",
+    "s": "Shared care and monitoring",
     "href": "management/gender-dysphoria.html"
    },
    {
-    "ic": "📋",
-    "t": "Gender dysphoria",
-    "s": "Case walkthrough",
-    "href": "../cases/gender-dysphoria.html"
-   },
-   {
-    "ic": "📋",
-    "t": "Cervical screening",
-    "s": "Case walkthrough · screening by anatomy",
-    "href": "../cases/cervical-screening.html"
+    "ic": "💠",
+    "t": "Contraception",
+    "s": "Non-oestrogen methods",
+    "href": "management/contraception.html"
    },
    {
     "ic": "🗺️",
-    "t": "Polycythaemia pathway",
-    "s": "Raised haematocrit on testosterone",
-    "href": "algorithms/polycythaemia.html"
+    "t": "Emergency contraception",
+    "s": "Visual algorithm",
+    "href": "algorithms/emergency-contraception.html"
+   },
+   {
+    "ic": "💠",
+    "t": "DVT",
+    "s": "If leg symptoms develop",
+    "href": "management/dvt.html"
    }
   ],
   "pitfalls": {
-   "intro": "This station tests whether you can give respectful, safe care while being honest about professional limits. It is failed by refusal, moralising or vagueness, not by admitting that checks are needed.",
+   "intro": "The result is a protocol action. The marks are in keeping Sam on side, finding the self-adjusted dosing, and uncovering a pregnancy risk he does not know he has.",
    "items": [
     {
      "dom": "ro",
-     "fail": "Avoiding his name or pronouns, or getting them wrong and moving on.",
-     "why": "The basics of respect frame the whole consultation; he came fearing judgement.",
-     "fix": "Ask at the start, use his name, and offer to update the record."
-    },
-    {
-     "dom": "cm",
-     "fail": "A flat “GPs can’t prescribe this” with no alternative.",
-     "why": "GMC guidance does not support refusing care because a patient is trans; the RCGP sets out a role in shared care.",
-     "fix": "Separate monitoring (now) from prescribing (after checks), and give a timescale for the decision."
-    },
-    {
-     "dom": "cm",
-     "fail": "Agreeing to take over prescribing on the spot, without knowing who assessed him.",
-     "why": "Shared care with a private provider needs assurance about the specialist and the service.",
-     "fix": "Obtain the letters, check GMC registration and regulation, and seek specialist advice if needed."
+     "fail": "Misgendering or leading with stopping testosterone.",
+     "why": "Trust collapses and he will not disclose.",
+     "fix": "Name and pronouns; say early that the aim is safety."
     },
     {
      "dom": "dg",
-     "fail": "No monitoring bloods, or forgetting haematocrit.",
-     "why": "Secondary polycythaemia is the main testosterone risk.",
-     "fix": "FBC with haematocrit, LFTs, lipids, testosterone level, BP and weight."
+     "fail": "Not asking how he takes his injections.",
+     "why": "Self-adjusted dosing is the likely cause.",
+     "fix": "Ask openly and thank him for honesty."
     },
     {
      "dom": "cm",
-     "fail": "Not asking about mood or self-harm.",
-     "why": "He describes a very difficult wait; distress and self-harm rates are higher.",
-     "fix": "Ask directly and kindly; safety-net with a same-day route."
+     "fail": "Not liaising with the gender service.",
+     "why": "Dose changes sit within the shared-care agreement.",
+     "fix": "Repeat the test and contact the service."
+    },
+    {
+     "dom": "dg",
+     "fail": "No sexual or contraceptive history.",
+     "why": "Unprotected sex last night needs emergency contraception.",
+     "fix": "Ask respectfully, as with any patient."
     },
     {
      "dom": "cm",
-     "fail": "Missing contraception and cervical screening.",
-     "why": "Testosterone is not contraceptive (FSRH 2017); a person registered as male is not invited for screening automatically.",
-     "fix": "Raise both sensitively and offer the opt-in."
+     "fail": "Accepting that testosterone is contraception.",
+     "why": "Pregnancy is possible and testosterone can harm a pregnancy.",
+     "fix": "Correct the myth; EC, pregnancy tests, ongoing non-oestrogen method."
+    },
+    {
+     "dom": "cm",
+     "fail": "Forgetting smoking, sleep apnoea and screening.",
+     "why": "They contribute to risk or are missed by registration.",
+     "fix": "Address each briefly with a plan."
     }
    ]
   }

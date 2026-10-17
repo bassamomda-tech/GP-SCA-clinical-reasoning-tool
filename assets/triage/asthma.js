@@ -131,7 +131,7 @@ RGPTriage.register('asthma-triage', {
     { label:'NICE NG245 — Asthma (2024)', url:'https://www.nice.org.uk/guidance/ng245' },
     { label:'BTS/SIGN 158 (2019) — acute asthma', url:'https://www.brit-thoracic.org.uk' },
     { label:'NICE NG12 (updated April 2026) — Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
-    { label:'Macmillan Rapid Referral', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' },
+    { label:'Macmillan rapid referral guide (2022 edition; check against NG12)', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' },
     { label:'NICE NG245 — asthma', url:'https://www.nice.org.uk/guidance/ng245' }
   ],
 });

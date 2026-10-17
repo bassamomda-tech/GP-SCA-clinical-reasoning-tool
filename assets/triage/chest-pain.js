@@ -40,7 +40,7 @@ RGPTriage.register('chest-pain-triage', {
       when:(i)=>!!i.central_crushing && (!!i.radiates_arm_jaw || !!i.pallor_clammy || !!i.sob_acute) },
     { id:'aortic_dissection', tier:'emergency', label:'?Aortic dissection — tearing back pain',
       action:'Call 999. CT aortogram. Do NOT give thrombolysis.',
-      source:'ESC 2014', sourceUrl:'https://academic.oup.com/eurheartj/article/35/41/2873/407693',
+      source:'ESC 2024 (peripheral arterial and aortic diseases)', sourceUrl:'https://doi.org/10.1093/eurheartj/ehae179',
       when:(i)=>!!i.tearing_back || (!!i.severe_now && !!i.unequal_pulses_bp) },
     { id:'pe_massive', tier:'emergency', label:'?Massive / submassive PE',
       action:'Call 999 — same-day admission. CTPA. NICE NG158.',
@@ -69,6 +69,6 @@ RGPTriage.register('chest-pain-triage', {
     {label:'NICE CG95 Chest pain', url:'https://www.nice.org.uk/guidance/cg95'},
     {label:'NICE NG185 ACS', url:'https://www.nice.org.uk/guidance/ng185'},
     {label:'NICE NG158 VTE', url:'https://www.nice.org.uk/guidance/ng158'},
-    {label:'ESC Acute aortic syndromes 2014', url:'https://academic.oup.com/eurheartj/article/35/41/2873/407693'}
+    {label:'ESC 2024 — peripheral arterial and aortic diseases (replaces the 2014 aortic guideline)', url:'https://doi.org/10.1093/eurheartj/ehae179'}
   ],
 });

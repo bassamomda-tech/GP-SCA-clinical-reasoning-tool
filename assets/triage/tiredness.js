@@ -484,7 +484,7 @@ RGPTriage.register('tiredness', {
 
   sources: [
     { label:'NICE NG12 (updated April 2026) — Suspected cancer: recognition and referral', url:'https://www.nice.org.uk/guidance/ng12' },
-    { label:'Macmillan Rapid Referral Guidelines', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' },
+    { label:'Macmillan rapid referral guide (2022 edition; check against NG12)', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' },
     
     { label:'NICE NG253 — Sepsis', url:'https://www.nice.org.uk/guidance/ng253' },
     { label:'NICE CG151 — Neutropenic sepsis', url:'https://www.nice.org.uk/guidance/cg151' },

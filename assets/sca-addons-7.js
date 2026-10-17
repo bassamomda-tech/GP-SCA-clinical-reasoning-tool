@@ -6579,47 +6579,54 @@
  },
  "non-healing-lesion": {
   "stem": {
-   "name": "Stanley Cooke",
-   "age": "74-year-old man",
+   "name": "Margaret (Peggy) Lowe",
+   "age": "82 years · female",
    "pmh": [
-    "Multiple actinic keratoses",
-    "Lifelong outdoor worker (retired farmer)"
+    "Hypertension",
+    "Registered as carer for her husband (vascular dementia)"
    ],
    "meds": [
-    "No regular medication recorded",
-    "Using over-the-counter antiseptic cream on the lesion"
+    "Amlodipine"
    ],
    "allergy": "None recorded",
-   "recent": "No previous consultation for this lesion. Booked as a video consultation.",
-   "reason": "A scab on the top of his right ear for about 4 months that \"won’t heal\". Requesting a stronger cream."
+   "recent": "Photos uploaded this morning of a lesion on the left side of the nose. No previous consultations about skin.",
+   "reason": "“A spot on my nose that won’t heal — I’d like a cream.”"
   },
   "knowledge": {
-   "guideline": "BAD guidelines for cutaneous squamous cell carcinoma (2020) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BAD guidelines for actinic keratosis (2017)",
-   "summary": "A crusting, bleeding, growing, tender lesion with an indurated edge on the ear of an older man with heavy sun exposure is a squamous cell carcinoma until proven otherwise. Refer on the suspected cancer pathway; do not treat it with creams.",
+   "guideline": "[1] NICE NG12 Suspected cancer: recognition and referral (2015, last updated 2026) — skin cancers · [2] NICE CKS Skin cancers: basal cell carcinoma (check current version) · [3] British Association of Dermatologists guidelines for the management of adults with basal cell carcinoma (2021) · [4] Care Act 2014 — carer’s assessment · [5] GMC Decision making and consent (2020)",
+   "summary": "A probable nodular BCC on the nose of an 82-year-old carer who wants a cream and cannot leave her husband with dementia, with a hidden fear of disfigurement after her sister’s nasal surgery. Explain honestly, refer through the correct NG12 route (routine for suspected BCC, local pathway for high-risk facial sites), address the fear with accurate information about modern treatment, solve the practical barriers, and respect her decision.",
    "points": [
     {
-     "h": "Non-healing is the red flag",
-     "t": "A lesion that has not healed over weeks to months, and that crusts, bleeds, grows or is tender, on sun-damaged skin, needs assessment for skin cancer rather than a stronger cream."
+     "h": "Recognition",
+     "t": "Pearly or translucent nodule, rolled edge, telangiectasia, central ulceration or crust, slow growth, bleeding and failure to heal. Often head and neck in sun-exposed older people [2]."
     },
     {
-     "h": "The NICE NG12 skin criteria",
-     "t": "NICE NG12: consider a suspected cancer pathway referral (appointment within 2 weeks) for a skin lesion that raises the suspicion of squamous cell carcinoma. For a suspected basal cell carcinoma, consider routine referral, and use the suspected cancer pathway only if a delay could have a significant impact because of factors such as site or size."
+     "h": "Behaviour",
+     "t": "Locally invasive, very rarely metastasises. Early treatment means smaller surgery and better cosmetic results, especially on the face [3]."
     },
     {
-     "h": "SCC or BCC",
-     "t": "SCC: a keratotic, crusted or ulcerated, often tender nodule that grows over weeks to months on sun-exposed skin; the ear and lip are high-risk sites and SCC can spread to nodes (BAD 2020). BCC: a slow-growing pearly nodule with a rolled edge and surface telangiectasia, which rarely spreads."
+     "h": "NG12 referral route",
+     "t": "Consider routine referral for suspected BCC. Consider a suspected cancer pathway only if delay could have a significant impact because of site or size [1]. Follow local pathways for high-risk facial sites."
     },
     {
-     "h": "Examine",
-     "t": "Assess size, edge, surface, induration and ulceration, and examine the regional lymph nodes (pre- and post-auricular, cervical). A video view or photograph helps triage but does not replace palpation of the nodes."
+     "h": "Differential",
+     "t": "Squamous cell carcinoma (faster growing, tender, keratotic; suspected cancer pathway), keratoacanthoma, amelanotic melanoma, sebaceous hyperplasia."
     },
     {
-     "h": "Field change",
-     "t": "Actinic keratoses are markers of cumulative sun damage and can progress to SCC. Check other sun-exposed skin, treat or monitor actinic keratoses (BAD 2017), and advise sun protection with a hat and high-factor sunscreen."
+     "h": "Treatment options",
+     "t": "Surgical excision; Mohs micrographic surgery for high-risk facial sites; radiotherapy for some older patients; topical treatments or curettage for selected superficial low-risk lesions. Chosen by the specialist with the patient [3]."
     },
     {
-     "h": "Honest reassurance",
-     "t": "Most cutaneous SCCs caught early are cured by excision. Framing the urgent referral as the way to keep treatment simple helps a stoical patient accept it."
+     "h": "No GP creams for facial nodules",
+     "t": "Do not treat a suspected nodular facial BCC with creams or minor surgery in primary care outside accredited arrangements."
+    },
+    {
+     "h": "Carers",
+     "t": "Carers often delay their own care. Offer practical help with cover and transport and refer for a Carer’s Assessment under the Care Act 2014 [4]."
+    },
+    {
+     "h": "Autonomy",
+     "t": "She may decline referral after understanding the options. Document the discussion and keep the door open [5]."
     }
    ]
   },
@@ -6628,420 +6635,409 @@
     "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello Mr Cooke, thanks for joining. Tell me about this scab.",
+    "text": "Hello Mrs Lowe, I’m Dr Clarke. I’ve got your photos here. What would you like help with?",
     "dom": "ro",
     "why": "Open question"
    },
    {
     "who": "pt",
-    "text": "It’s on the top of my ear. Had it a few months. I knock the crust off, it bleeds a bit, then it comes back. I’ve been putting antiseptic cream on but it’s not shifting. It’s where my glasses rub, or an old man’s scab. Could you give me something stronger? I don’t want any fuss made."
+    "text": "Call me Peggy. My granddaughter made me do this. It’s only a little spot on my nose that bleeds when I wash. I just want a cream. I can’t be going up the hospital, I look after my husband."
    },
    {
     "who": "dr",
-    "text": "Thanks for telling me. Four months is a long time for a scab. Could I ask a few questions and have a look on the camera? Then we’ll decide together what’s best.",
-    "dom": "ro",
-    "why": "Sets the agenda and plans a look"
-   },
-   {
-    "who": "pt",
-    "text": "Go on, then."
-   },
-   {
-    "phase": "Data gathering",
-    "clock": "1–5 min",
-    "who": "dr",
-    "text": "Has it changed over those months, in size or shape?",
+    "text": "Thanks, Peggy. I’ll keep in mind that you’re looking after your husband. Tell me about the spot. How long has it been there?",
     "dom": "dg",
-    "why": "Asks about growth"
+    "why": "Acknowledges barrier; history"
    },
    {
+    "phase": "History",
+    "clock": "1–4 min",
     "who": "pt",
-    "text": "It’s got a bit bigger, I’ll give you that. It’s sore if I lie on it."
+    "text": "About a year and a half. Started like a pimple. Very slowly bigger. It scabs, bleeds when I wash, then scabs again."
    },
    {
     "who": "dr",
-    "text": "Could you hold the camera close to your ear, or ask someone to take a photo and send it through? I’d like to see the edges.",
+    "text": "Has it ever fully healed? Is it painful? Any other spots like it, or lumps in your neck?",
     "dom": "dg",
-    "why": "Remote inspection of the lesion"
+    "why": "Lesion features; spread"
    },
    {
     "who": "pt",
-    "text": "(angles phone) There. It’s crusty in the middle and the edge is a bit raised and hard."
+    "text": "Never properly healed. Doesn’t hurt. No other ones."
    },
    {
     "who": "dr",
-    "text": "Thank you, that’s a good view. You’ve worked outdoors most of your life. Have you had other rough or scaly patches on your face, scalp or hands?",
+    "text": "Did you spend a lot of time in the sun when you were younger? Any skin cancers before?",
     "dom": "dg",
-    "why": "Sun exposure and field change"
+    "why": "Risk factors"
    },
    {
     "who": "pt",
-    "text": "Farming all my life. I’ve had a few of those rough patches, yes."
+    "text": "On the farm as a girl, always outside. Never had anything like this."
    },
    {
+    "phase": "Examination",
+    "clock": "4–5 min",
     "who": "dr",
-    "text": "Any lumps you’ve noticed around your ear or in your neck?",
+    "text": "Could you hold your face close to the camera in good light? Thank you. I can see a shiny, pearly lump about the size of a pea with a raised edge, tiny blood vessels and a crust in the middle. That matches your photos.",
     "dom": "dg",
-    "why": "Screens for nodal spread"
-   },
-   {
-    "who": "pt",
-    "text": "Not that I’ve felt."
-   },
-   {
-    "who": "dr",
-    "text": "Do your glasses actually rest on that spot?",
-    "dom": "dg",
-    "why": "Tests his explanation"
-   },
-   {
-    "who": "pt",
-    "text": "(pause) Not really, now you ask. The arm sits lower down."
-   },
-   {
-    "phase": "Ideas, concerns and expectations",
-    "clock": "5–7 min",
-    "who": "dr",
-    "text": "You’ve kept an eye on this for a while. I wonder whether any part of you has been worried about it.",
-    "dom": "ro",
-    "why": "Gently invites the unspoken concern"
-   },
-   {
-    "who": "pt",
-    "text": "A mate of mine had a skin cancer taken off his face. I did wonder. But I didn’t want to be a nuisance, and I don’t fancy being carved up."
-   },
-   {
-    "who": "dr",
-    "text": "You’re not a nuisance at all. Thank you for telling me. It sounds as if this has been on your mind more than you’ve let on, and the idea of an operation on your face worries you.",
-    "dom": "ro",
-    "why": "Validates and reflects both concerns"
-   },
-   {
-    "who": "pt",
-    "text": "Aye, that’s about it."
+    "why": "Remote examination"
    },
    {
     "phase": "Explanation",
-    "clock": "7–9 min",
+    "clock": "5–6 min",
     "who": "dr",
-    "text": "I’ll be straight with you. A sore that hasn’t healed in four months, that bleeds, has grown and has that firm raised edge, on skin that’s had a lot of sun, could be a skin cancer. The most likely type in that spot is called a squamous cell cancer. A cream won’t heal it.",
-    "dom": "dg",
-    "why": "Names the likely diagnosis honestly with the reasons"
-   },
-   {
-    "who": "pt",
-    "text": "Cancer. Right."
-   },
-   {
-    "who": "dr",
-    "text": "Before that word worries you too much: the skin cancers caused by sun damage are usually very treatable, and most are cured by removing them with a small operation, especially when they’re caught at this stage. That’s why I want it seen quickly. It keeps the treatment simple.",
+    "text": "Peggy, I’d like to be honest with you. This looks like a basal cell carcinoma. It’s a type of skin cancer, but the gentlest kind. It grows slowly and very rarely spreads elsewhere in the body.",
     "dom": "ro",
-    "why": "Gives genuine reassurance alongside honesty"
+    "why": "Honest naming with proportion"
    },
    {
     "who": "pt",
-    "text": "And the operation? It’s my ear."
+    "text": "Cancer. I thought it might be. At my age, what does it matter?"
    },
    {
     "who": "dr",
-    "text": "The specialists will talk you through it and aim for the smallest procedure that removes it completely. Taking it off early usually means a smaller operation than waiting.",
-    "dom": "ro",
-    "why": "Addresses the disfigurement worry"
-   },
-   {
-    "phase": "Shared plan",
-    "clock": "9–11 min",
-    "who": "dr",
-    "text": "So here’s my plan. I’m referring you today on the urgent skin cancer pathway, so a specialist sees you within two weeks. They’ll usually take a sample or remove it. I’d also like you to pop in this week so I can feel the glands around your ear and neck and check the rest of your sun-exposed skin. Does that work?",
-    "dom": "dg",
-    "why": "Suspected cancer pathway referral plus in-person node examination"
-   },
-   {
-    "who": "pt",
-    "text": "I can come in Thursday."
-   },
-   {
-    "who": "dr",
-    "text": "Good. Stop the antiseptic cream, keep the area clean and covered if it bleeds, and from now on wear a wide-brimmed hat and a high-factor sunscreen outside. You’ve had a lot of sun, so it’s worth protecting your skin.",
+    "text": "It does matter, because left alone it keeps slowly growing into the skin around it, and on the nose a smaller one is much easier to treat. A cream won’t treat this kind of spot.",
     "dom": "cm",
-    "why": "Practical care and sun protection"
+    "why": "Why treat; no cream"
+   },
+   {
+    "phase": "Ideas, concerns and expectations",
+    "clock": "6–8 min",
+    "who": "dr",
+    "text": "You’ve had this a while. Has something made you wary of getting it looked at?",
+    "dom": "ro",
+    "why": "Explores reluctance"
+   },
+   {
+    "who": "pt",
+    "text": "(tearful) My sister Joan. They cut half her nose off for skin cancer. She never went out again. I couldn’t bear that."
+   },
+   {
+    "who": "dr",
+    "text": "That sounds awful, for Joan and for you. Thank you for telling me. Things have changed a lot. For spots on the nose, there’s a technique where they remove only the affected skin, checking under the microscope as they go, to keep as much healthy skin as possible. Smaller spots also mean smaller repairs. The specialist would talk through all the options with you, including ones that aren’t surgery.",
+    "dom": "cm",
+    "why": "Addresses fear with accurate information"
+   },
+   {
+    "who": "pt",
+    "text": "I didn’t know that."
+   },
+   {
+    "phase": "Plan",
+    "clock": "8–11 min",
+    "who": "dr",
+    "text": "What I’d suggest is a referral to the skin specialists. This type isn’t one where we need to rush, but because it’s on your nose I’ll send it through the pathway for face lesions so it’s seen by the right team. You can hear the options and decide then.",
+    "dom": "cm",
+    "why": "NG12 routine referral; local facial pathway"
+   },
+   {
+    "who": "pt",
+    "text": "But Ted. I can’t leave him."
+   },
+   {
+    "who": "dr",
+    "text": "Let’s solve that. Could your granddaughter sit with him on the day? If not, there are sitting services and short respite stays. I can check if you’re eligible for hospital transport. And I’d like to refer you for a carer’s assessment, so you get some support with Ted anyway. You’re doing a lot on your own.",
+    "dom": "cm",
+    "why": "Practical barriers; Carer’s Assessment"
+   },
+   {
+    "who": "pt",
+    "text": "Sundays she comes. She’d do it if it was a weekday, I think. A carer’s assessment would be nice."
    },
    {
     "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "If you haven’t heard about the appointment within a week, ring us. If it grows fast, bleeds a lot, or you notice a lump near your ear or in your neck, tell me sooner. Can you tell me what we’ve agreed, so I know I’ve explained it properly?",
-    "dom": "cm",
-    "why": "Specific safety-net and teach-back"
+    "text": "Can you tell me what we’ve agreed?",
+    "dom": "ro",
+    "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "Urgent appointment with the skin people, see you Thursday to check my neck, no more cream, get a hat. And it’s probably treatable."
+    "text": "It’s the slow kind of skin cancer. You’ll refer me, they might not need to cut much. You’ll sort a carer’s assessment and I’ll ask my granddaughter."
    },
    {
     "who": "dr",
-    "text": "Spot on. I’ll check the referral has gone through and see you Thursday.",
+    "text": "Exactly. Keep it clean with a little Vaseline and cover it if it bleeds. If it grows quickly, becomes painful, you notice a lump in your neck or a new spot, or you haven’t heard about the appointment in eight weeks, let me know.",
     "dom": "cm",
-    "why": "Owns the follow-up"
-   },
-   {
-    "who": "pt",
-    "text": "Thanks, doctor. Better than I thought, all told."
+    "why": "Wound care; safety-net"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Open question; let him describe the \"scab\" and his request before directing the history.",
-    "pts": 1, "dom": "dg"
+    "d": "Open question; acknowledged the caring barrier early; lesion history.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Lifelong outdoor work, sun protection habits, the friend’s skin cancer, reluctance to be a nuisance.",
-    "pts": 1, "dom": "dg"
+    "d": "Caring for Ted alone, family support, tiredness, never had a carer’s assessment.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up the growth, the tenderness and the pause over the glasses explanation, and followed them.",
-    "pts": 1, "dom": "ro"
+    "d": "Granddaughter’s insistence; 18-month delay; tearfulness about her sister.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (glasses rub, old scab), concerns (cancer after his friend, facial surgery), expectation (stronger cream).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (a sore she keeps knocking), concerns (disfigurement like Joan; Ted), expectation (a cream, no hospital).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Camera or photo view of the lesion; in-person palpation of pre- and post-auricular and cervical nodes; other sun-exposed skin.",
-    "pts": 1, "dom": "dg"
+    "d": "Photos plus close camera view in good light; neck nodes asked about; specialist examination arranged.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
-    "d": "SCC versus BCC versus actinic keratosis versus chondrodermatitis or friction ulcer.",
-    "pts": 1, "dom": "dg"
+    "d": "Nodular BCC versus SCC, keratoacanthoma, amelanotic melanoma.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Recognised non-healing, growing, bleeding, indurated lesion on a high-risk site as suspected SCC.",
-    "pts": 2, "dom": "dg"
+    "d": "Rapid growth, pain, tenderness, neck lumps, other lesions: features that would change urgency.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Stated suspected squamous cell carcinoma honestly and in plain language.",
-    "pts": 2, "dom": "dg"
+    "d": "Probable nodular basal cell carcinoma on a high-risk facial site.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Suspected cancer pathway referral (NICE NG12), stop the cream, wound care.",
-    "pts": 2, "dom": "cm"
+    "d": "NG12 routine referral via the local facial pathway; no cream; options explained; her decision respected.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Actinic keratoses and field change managed; sun protection advice.",
-    "pts": 1, "dom": "cm"
+    "d": "Cover for Ted, transport, Carer’s Assessment referral; simple wound care.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Chase if no appointment within a week, report rapid growth, bleeding or a neck lump, teach-back, booked review.",
-    "pts": 1, "dom": "cm"
+    "d": "Rapid growth, pain, neck lump, new lesion, or no appointment in 8 weeks; teach-back.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
     "Long-term conditions & cancer",
-    "Older adults",
-    "New & undifferentiated presentations"
+    "Older adults"
    ],
    "stem": {
-    "name": "Stanley Cooke",
-    "age": "74 years · male",
+    "name": "Margaret (Peggy) Lowe",
+    "age": "82 years · female",
     "pmh": [
-     "Multiple actinic keratoses",
-     "Retired farmer"
+     "Hypertension",
+     "Registered as carer for her husband (vascular dementia)"
     ],
     "meds": [
-     "No regular medication recorded"
+     "Amlodipine"
     ],
     "allergy": "None recorded",
-    "recent": "No previous consultation about this lesion.",
-    "reason": "\"A scab on my ear that won’t heal. Can I have something stronger?\""
+    "recent": "Photos uploaded this morning of a lesion on the left side of the nose. No previous consultations about skin.",
+    "reason": "“A spot on my nose that won’t heal — I’d like a cream.”"
    },
    "timeMap": [
     {
      "t": "0–1",
-     "h": "Open and listen",
-     "d": "He minimises in the opening. Let him finish; the four months, the bleeding and the growth are all in his story."
+     "h": "Open",
+     "d": "Hear the cream request and the caring barrier."
     },
     {
      "t": "1–5",
-     "h": "History and a look",
-     "d": "Growth, tenderness, bleeding, sun exposure, previous actinic keratoses, neck lumps. Get a close camera view or a photo."
+     "h": "History and look",
+     "d": "Duration, growth, bleeding, healing, sun exposure; close camera view: pearly, rolled edge, telangiectasia, crust."
     },
     {
-     "t": "5–7",
-     "h": "ICE",
-     "d": "His friend’s skin cancer, not wanting to be a nuisance, fear of surgery on his face."
+     "t": "5–8",
+     "h": "Explain and explore",
+     "d": "Honest naming with proportion; why not a cream; why she waited: her sister."
     },
     {
-     "t": "7–11",
-     "h": "Explain and refer",
-     "d": "Possible skin cancer, likely SCC, very treatable. Suspected cancer pathway referral today; in-person node check this week; sun protection."
+     "t": "8–11",
+     "h": "Plan",
+     "d": "NG12 route and local facial pathway; modern options; cover for Ted, transport, Carer’s Assessment."
     },
     {
      "t": "11–12",
-     "h": "Safety-net and close",
-     "d": "Chase if no appointment in a week; report rapid growth, heavy bleeding or a lump; teach-back."
+     "h": "Close",
+     "d": "Teach-back; wound care; safety-net."
     }
    ],
    "wordPics": {
-    "fail": "Prescribes a stronger cream or antibiotic; accepts \"where my glasses rub\"; no view of the lesion; no referral, or a routine referral; the fear and the surgery worry are never explored.",
-    "pass": "Recognises a non-healing lesion on sun-damaged skin as a possible skin cancer; views it; refers on the suspected cancer pathway; gives sun protection advice and a basic safety-net.",
-    "exc": "All of the above, plus: tests his explanation gently; surfaces the friend’s cancer and the surgery worry; explains SCC honestly with genuine reassurance; arranges node examination; addresses field change; checks understanding and owns the follow-up."
+    "fail": "Prescribes a cream; or sends an urgent cancer referral without explanation; never finds out why she delayed or how she could attend.",
+    "pass": "Recognises a probable BCC, explains it honestly, refers through the correct route and addresses the caring barrier.",
+    "exc": "All of the above, plus: explains BCC with proportion (slow, rarely spreads, best treated small); uncovers and addresses the fear of disfigurement with accurate information; practical help with cover, transport and a Carer’s Assessment; respects her autonomy; clear safety-net."
    },
    "avoid": [
     {
-     "dont": "\"Try this steroid-antibiotic cream for a fortnight and see.\"",
-     "instead": "\"A sore that hasn’t healed in four months needs a specialist to look at it, not a stronger cream.\"",
-     "why": "Treating a suspected SCC empirically delays diagnosis and is a Tasks fail."
+     "dont": "“It’s just a sore spot, try an antiseptic cream.”",
+     "instead": "“This looks like a type of skin cancer, the gentle kind, and a cream won’t treat it.”",
+     "why": "Delays diagnosis of a locally invasive tumour on a high-risk site."
     },
     {
-     "dont": "\"It’s cancer, I’m afraid.\"",
-     "instead": "\"This could be a skin cancer. The kind that comes from sun damage is usually very treatable, especially at this stage.\"",
-     "why": "Honest, proportionate wording with genuine reassurance helps a stoical man accept referral."
+     "dont": "“I’m referring you urgently for cancer.” (and nothing more)",
+     "instead": "“It grows slowly and rarely spreads, so it doesn’t need a rush, but it does need the specialists.”",
+     "why": "Unexplained urgency increases fear and does not match NG12 for BCC."
     },
     {
-     "dont": "\"It’s probably just a BCC, I’ll send a routine referral.\"",
-     "instead": "\"Because it’s on your ear, has grown and is tender, I’m referring you urgently.\"",
-     "why": "Growth, tenderness and keratin on the ear point to SCC, which NICE NG12 refers on the suspected cancer pathway."
+     "dont": "“You’ll just have to find someone to look after your husband.”",
+     "instead": "“Let’s work out cover for Ted together, and get you a carer’s assessment.”",
+     "why": "Unaddressed barriers lead to missed appointments."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Stoicism in older rural men",
-     "t": "\"Don’t want a fuss\" often hides fear. A direct, kind question about worries surfaces it without making him feel foolish."
+     "h": "Caring responsibilities",
+     "t": "Older carers frequently delay their own care because they cannot leave the person they care for. Practical solutions make attendance possible."
     },
     {
-     "h": "Occupational sun exposure",
-     "t": "A lifetime of outdoor work means field damage. Advice on hats and sunscreen is still worthwhile, and other lesions should be checked."
+     "h": "Family stories",
+     "t": "A relative’s bad experience often shapes how people imagine treatment. Ask about it."
     }
    ],
    "legal": [
     {
-     "h": "Images and consent",
-     "t": "If a photo is taken for referral or teledermatology, get consent and store it in the record (GMC guidance on making and using visual recordings of patients)."
+     "h": "Carer’s Assessment",
+     "t": "Under the Care Act 2014, carers in England are entitled to an assessment of their needs by the local authority."
+    },
+    {
+     "h": "Consent",
+     "t": "She can decline referral after understanding the risks and options; document and offer review (GMC Decision making and consent)."
     }
    ],
    "professional": [
     {
-     "h": "Referral tracking",
-     "t": "Suspected cancer referrals need a safety-net system: confirm receipt and that the patient has an appointment. Document the lesion description and the reason for urgency."
+     "h": "Right pathway",
+     "t": "Using NG12 correctly (routine for BCC, suspected cancer pathway for SCC and melanoma) protects capacity for urgent cases and avoids unnecessary alarm."
     },
     {
-     "h": "Honest disclosure",
-     "t": "GMC Good Medical Practice 2024: share the possibility of a serious diagnosis honestly and at a pace the patient can manage."
+     "h": "Honest language",
+     "t": "Naming cancer honestly, with proportion, supports informed decisions."
     }
    ],
    "community": [
     {
-     "h": "Patient resources",
-     "t": "British Association of Dermatologists patient information on squamous cell carcinoma, actinic keratoses and sun protection; British Skin Foundation."
+     "h": "Carer support",
+     "t": "Local carers’ centres, sitting services and respite care can provide cover for appointments."
+    },
+    {
+     "h": "Non-emergency patient transport",
+     "t": "Available for eligible patients, according to local criteria."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Failure to heal over weeks to months; growth; bleeding; crusting or keratin",
-     "Tenderness and an indurated edge on a high-risk site (ear, lip)",
-     "Lumps near the ear or in the neck (nodal spread)"
+     "Rapid growth, tenderness, keratin horn: consider SCC (suspected cancer pathway)",
+     "Pigmentation, irregular border or colour change: consider melanoma (suspected cancer pathway)",
+     "Neck lymphadenopathy: urgent assessment"
     ],
     "psychosocial": [
-     "Lifelong outdoor work and sun protection habits",
-     "Reluctance to be a nuisance",
-     "A friend’s skin cancer; fear of facial surgery"
+     "Sole carer for husband with dementia",
+     "No paid support; family far away",
+     "Sister’s disfiguring surgery"
     ],
     "ice": [
-     "Idea: \"where my glasses rub, an old man’s scab\"",
-     "Concern: skin cancer like his friend; being \"carved up\"",
-     "Expectation: a stronger cream"
+     "Idea: a sore that keeps being knocked",
+     "Concern: disfigurement; leaving Ted",
+     "Expectation: a cream and no hospital"
     ]
    },
-   "diagnosis": "A non-healing, growing, tender, crusted lesion with an indurated edge on the helix of the right ear in a 74-year-old with chronic sun damage and actinic keratoses: suspected cutaneous squamous cell carcinoma.",
-   "diagnosisLay": "\"Skin that’s had a lot of sun can form a type of skin cancer that looks like a scab that never heals. Yours looks like it could be that. The good news is this type is usually cured by removing it, and it’s simplest when it’s caught early.\"",
+   "diagnosis": "“This looks like a basal cell carcinoma: a slow-growing skin cancer that very rarely spreads, but does need treating, ideally while it’s small.”",
+   "diagnosisLay": "“Think of it like a weed in a lawn rather than seeds blowing elsewhere. It spreads slowly into the skin around it, so taking it out early keeps the repair small.”",
    "management": {
-    "reflectIce": "\"You didn’t want a fuss, and after your friend’s skin cancer you’ve been wondering. Getting this seen quickly is the way to keep it small and simple.\"",
-    "psychosocial": "Frame the referral as reassuring rather than catastrophic; address the fear of facial surgery; involve him in sun protection choices.",
+    "reflectIce": "“You wanted a cream and to avoid hospital, partly because of Ted and partly because of what happened to Joan. Treatment has changed a lot, and we can help with Ted.”",
+    "psychosocial": "Carer support; address disfigurement fear; involve granddaughter with her consent.",
     "sharedPlan": [
-     "Suspected cancer pathway referral today for suspected SCC (NICE NG12)",
-     "In-person examination this week: regional nodes and other sun-exposed skin",
-     "Stop antiseptic cream; keep clean and covered; hat and high-factor sunscreen; manage actinic keratoses (BAD 2017)"
+     "Referral to dermatology via the local pathway for facial lesions (NG12: routine for suspected BCC)",
+     "No cream; simple wound care with petroleum jelly and a plaster if it bleeds",
+     "Specialist to discuss options, including tissue-sparing surgery",
+     "Cover for Ted on the day; transport eligibility checked",
+     "Carer’s Assessment referral"
     ],
     "safetyNet": [
-     "Ring if no appointment within a week; report rapid growth, heavy bleeding, or a new lump near the ear or in the neck",
-     "Review after the specialist outcome; ongoing skin surveillance"
+     "Rapid growth, pain, a neck lump or a new suspicious spot: contact the practice",
+     "No appointment within 8 weeks: contact the practice",
+     "If she changes her mind about referral, the door is open"
     ]
    }
   },
   "links": [
    {
     "ic": "💠",
-    "t": "Actinic keratosis",
-    "s": "Protocol · field change · SCC risk",
-    "href": "management/actinic-keratosis.html"
+    "t": "Skin cancers",
+    "s": "BCC, SCC and melanoma referral routes",
+    "href": "management/skin-cancers.html"
    },
    {
     "ic": "🗺️",
-    "t": "Skin lesions pathway",
-    "s": "Visual algorithm · NICE NG12 skin",
+    "t": "Pigmented skin lesions",
+    "s": "When a lesion needs urgent referral",
     "href": "algorithms/pigmented-skin-lesions.html"
+   },
+   {
+    "ic": "💠",
+    "t": "Dementia",
+    "s": "Support for carers",
+    "href": "management/dementia.html"
    }
   ],
   "pitfalls": {
-   "intro": "This station is lost by treating the patient’s label rather than the lesion. A non-healing lesion on the ear of an old farmer is a suspected SCC, and the marks go to recognising it, referring it correctly and bringing a stoical man with you.",
+   "intro": "Recognising a BCC is the easy part. The marks are in choosing the right referral route, explaining it with proportion, and removing the fear and the practical barriers that kept her away.",
    "items": [
     {
      "dom": "cm",
-     "fail": "Prescribing a stronger cream or antibiotic with a review in a month.",
-     "why": "\"Management not in line with current UK best practice.\" NICE NG12 refers suspected SCC on the suspected cancer pathway.",
-     "fix": "\"A sore that hasn’t healed in four months needs a specialist look, not a stronger cream.\""
+     "fail": "Prescribing a cream.",
+     "why": "Nodular facial BCC needs specialist treatment.",
+     "fix": "Explain why a cream won’t work and refer."
     },
     {
      "dom": "cm",
-     "fail": "Calling it a BCC and referring routinely.",
-     "why": "Growth, tenderness, keratin and bleeding on the ear favour SCC, which can spread to nodes.",
-     "fix": "State the features that make SCC likely and refer urgently."
+     "fail": "Wrong referral route.",
+     "why": "NG12: routine for suspected BCC unless delay could matter because of site or size.",
+     "fix": "Use the routine or local facial pathway and explain why."
+    },
+    {
+     "dom": "ro",
+     "fail": "Avoiding the word cancer, or alarming her.",
+     "why": "Both undermine informed choice.",
+     "fix": "Name it honestly with proportion."
     },
     {
      "dom": "dg",
-     "fail": "Never looking at the lesion or asking about neck lumps.",
-     "why": "\"Insufficient data gathering to reach a safe conclusion.\"",
-     "fix": "Get a close camera view or photo, ask about lumps, and arrange in-person node palpation."
-    },
-    {
-     "dom": "ro",
-     "fail": "Accepting \"I don’t want a fuss\" and moving on.",
-     "why": "\"Did not explore the patient’s concerns.\" His friend’s cancer and fear of surgery are the hidden agenda.",
-     "fix": "\"I wonder whether part of you has been worried about it?\" Then reflect both concerns."
-    },
-    {
-     "dom": "ro",
-     "fail": "Saying \"cancer\" and then going straight into referral logistics.",
-     "why": "Disclosure without reassurance leaves a frightened patient and is marked as poor explanation.",
-     "fix": "Follow the word immediately with the honest good news: usually cured by a small operation, especially early."
+     "fail": "Not asking why she delayed.",
+     "why": "Her sister’s disfigurement is the hidden agenda.",
+     "fix": "Ask what has made her wary."
     },
     {
      "dom": "cm",
-     "fail": "No mention of other sun damage or sun protection.",
-     "why": "Missing the field change is an incomplete plan.",
-     "fix": "One line on checking other rough patches and one on hats and sunscreen."
+     "fail": "Ignoring the caring barrier.",
+     "why": "She will not attend.",
+     "fix": "Cover for Ted, transport, Carer’s Assessment."
     },
     {
      "dom": "cm",
-     "fail": "Closing with \"the hospital will be in touch\".",
-     "why": "Referral without a safety-net for a lost appointment is a patient-safety gap.",
-     "fix": "\"If you haven’t heard within a week, ring us. I’ll check it has gone through.\""
+     "fail": "No safety-net.",
+     "why": "Features of SCC or melanoma would change urgency.",
+     "fix": "Advise on rapid growth, pain, lumps and a missing appointment."
     }
    ]
   }
@@ -8041,287 +8037,270 @@
  "raised-inflammatory-markers": {
   "stem": {
    "name": "Margaret Doyle",
-   "age": "72-year-old woman",
+   "age": "72 years · female",
    "pmh": [
-    "None recorded relevant to this presentation"
+    "Polymyalgia rheumatica (diagnosed 10 months ago)",
+    "Hypertension"
    ],
    "meds": [
-    "See repeat list — to be checked before prescribing"
+    "Prednisolone (reducing regimen)",
+    "Alendronic acid weekly",
+    "Lansoprazole",
+    "Amlodipine"
    ],
-   "allergy": "To be confirmed",
-   "recent": "Bloods for fatigue: ESR 88 mm/h, CRP raised, mild normocytic anaemia. No previous inflammatory markers on file.",
-   "reason": "Video appointment to discuss her blood results. Worried the raised markers mean cancer."
+   "allergy": "None recorded",
+   "recent": "CRP 28 mg/L (4 three months ago); ESR 40. HbA1c 47 mmol/mol (41 a year ago). Nurse BP 152/88. Weight up 6 kg since diagnosis.",
+   "reason": "PMR review: “The stiffness is back again.”"
   },
   "knowledge": {
-   "guideline": "BSR giant cell arteritis guideline (Mackie et al., 2020) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BSR/BHPR polymyalgia rheumatica guideline (Dasgupta et al., 2010) · NOGG 2024 · NatPSA/2020/005 Steroid Emergency Card · NICE NG243 (2024) · BNF",
-   "summary": "A raised ESR and CRP only tell you inflammation is present. At 72, girdle pain and stiffness suggest polymyalgia, but a new temporal headache, scalp tenderness and jaw pain on chewing mean suspected giant cell arteritis: start high-dose prednisolone today and refer on the fast-track pathway, then complete a proportionate work-up.",
+   "guideline": "[1] British Society for Rheumatology guideline on the diagnosis and management of polymyalgia rheumatica (2024) · [2] NICE CKS Polymyalgia rheumatica (check current version) · [3] National Patient Safety Alert: Steroid emergency card to support early recognition and treatment of adrenal crisis in adults (NatPSA/2020/005/NHSPS) and Society for Endocrinology guidance · [4] NOGG Clinical guideline for the prevention and treatment of osteoporosis (2021, updated 2022) · [5] UKHSA Green Book chapter 28a: Shingles · [6] Product SPCs for prednisolone and alendronic acid",
+   "summary": "A woman with PMR relapsing whenever prednisolone falls below 7.5 mg, now with raised CRP and ESR, who has self-increased to 15 mg and stopped her alendronate, with rising HbA1c and BP. Screen for GCA and alternative diagnoses, agree a safer dose plan (previous effective dose, slower taper), address steroid harms and bone protection, give a steroid emergency card and sick-day rules, offer shingles vaccination, and refer to rheumatology for relapsing disease.",
    "points": [
     {
-     "h": "Markers point, they don’t diagnose",
-     "t": "ESR and CRP rise with infection, inflammatory disease, malignancy and tissue injury. Interpret them through a directed history and examination; do not treat them as a cancer test or trigger an undirected battery of tests."
+     "h": "What a relapse is",
+     "t": "Return of PMR symptoms, usually with rising inflammatory markers. Raised markers alone are not a relapse [1]."
     },
     {
-     "h": "Ask the GCA questions every time",
-     "t": "In anyone over 50 with raised inflammatory markers or PMR symptoms, ask about new headache (often temporal), scalp tenderness, jaw or tongue claudication, visual disturbance and systemic upset. Jaw claudication is a high-risk feature (BSR 2020)."
+     "h": "Treating relapse",
+     "t": "Return to the previous dose at which the person was well, then taper more slowly. Do not restart the initial high dose routinely [1]. Check the SPC/local formulary."
     },
     {
-     "h": "Treat on suspicion",
-     "t": "BSR 2020: suspected GCA without visual loss — prednisolone 40–60 mg once daily, started the same day by the GP. Acute or intermittent visual loss — IV methylprednisolone 500 mg–1 g daily for up to 3 days via same-day ophthalmology; do not delay oral steroid if IV is not immediately possible."
+     "h": "When to refer",
+     "t": "Relapsing disease, inability to taper, prolonged steroid requirement, atypical features or doubt about the diagnosis: rheumatology for steroid-sparing treatment [1,2]."
     },
     {
-     "h": "Fast-track, and test without delaying treatment",
-     "t": "BSR 2020: refer urgently to the GCA fast-track service — specialist review ideally the same working day and always within 3 working days. Ultrasound as soon as possible (preferably within 72 hours of starting steroids where feasible) and/or temporal artery biopsy (at least 1 cm) promptly via the pathway, because steroids reduce test sensitivity; never delay treatment for them."
+     "h": "GCA at every relapse",
+     "t": "New headache, scalp tenderness, jaw claudication or visual symptoms need same-day assessment."
     },
     {
-     "h": "PMR and the wider work-up",
-     "t": "BSR/BHPR 2010: PMR is age over 50, bilateral shoulder and/or pelvic girdle aching and morning stiffness, with raised inflammatory markers. Baseline tests include FBC, U&E, LFT, bone profile, protein electrophoresis, TSH, CK, rheumatoid factor and urine dipstick. Protein electrophoresis is part of the BSR pre-steroid panel. NICE NG12 myeloma testing at 60 and over is triggered by persistent bone pain (particularly back pain) or unexplained fracture; an isolated raised ESR is not itself the trigger."
+     "h": "Steroid harms",
+     "t": "Hyperglycaemia, hypertension, weight gain, skin thinning, insomnia, mood change, cataract, osteoporosis. Monitor HbA1c and BP."
     },
     {
-     "h": "Steroid safety from day one",
-     "t": "NOGG 2024: in a postmenopausal woman starting prednisolone 7.5 mg/day or more for 3 months or longer, assess fracture risk at the start; this is a trigger for bone-protective treatment, which need not wait for DXA. A PPI according to GI risk (BSR 2020). NatPSA/2020/005: Steroid Emergency Card for 5 mg or more for 4 weeks or longer; sick-day rules per NICE NG243. Monitor glucose and BP."
+     "h": "Bone protection",
+     "t": "Most older people expected to take glucocorticoids for 3 months or more should have bone protection; review intolerance, technique and alternatives; consider DXA [4]."
+    },
+    {
+     "h": "Adrenal safety",
+     "t": "Steroid emergency card for prednisolone 5 mg or more for 4 weeks or longer; sick-day rules; never stop abruptly [3]."
+    },
+    {
+     "h": "Vaccination",
+     "t": "Annual influenza, pneumococcal and shingles vaccination (non-live vaccine for eligible immunosuppressed people) [5]."
     }
    ]
   },
   "model": [
    {
-    "phase": "Opening and agenda",
+    "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello Mrs Doyle, I’m Dr Lee. Thank you for joining. I can see you’ve been worried about these results — tell me what’s been on your mind.",
+    "text": "Hello Mrs Doyle, I’m Dr Clarke. How have things been with the PMR?",
     "dom": "ro",
-    "why": "Opens with her concern before the numbers"
+    "why": "Open question"
    },
    {
     "who": "pt",
-    "text": "I read that high inflammation can mean a hidden cancer. I’ve been so worried something’s eating away at me. I am exhausted and achy, but I put that down to age. I just want to know it isn’t cancer."
+    "text": "Every time we cut the steroids, the stiffness comes straight back. I can barely get out of bed. I want to go back to 15 milligrams, that worked, and just stay on it."
    },
    {
     "who": "dr",
-    "text": "Thank you for telling me — that’s a frightening thing to carry. I will take the cancer question seriously. To find out what’s causing the inflammation, I need to ask some quite specific questions first, then I’ll explain and we’ll make a plan. Is that all right?",
+    "text": "That sounds really frustrating. Let’s work out what’s happening and get you a plan that holds. When does the stiffness come back?",
     "dom": "ro",
-    "why": "Acknowledges the fear and sets an agenda that makes room for directed history"
+    "why": "Acknowledges; explores pattern"
+   },
+   {
+    "phase": "History",
+    "clock": "1–5 min",
+    "who": "pt",
+    "text": "Every time it goes under seven and a half. Within a fortnight my shoulders and hips are back to how they were at the start."
+   },
+   {
+    "who": "dr",
+    "text": "Any new headache, tenderness on your scalp when you brush your hair, pain in your jaw when you chew, or any change in your eyesight?",
+    "dom": "dg",
+    "why": "GCA screen"
    },
    {
     "who": "pt",
-    "text": "Yes, of course."
+    "text": "No, none of that."
    },
    {
-    "phase": "Data gathering",
-    "clock": "1–4 min",
     "who": "dr",
-    "text": "You mentioned aches. Where exactly are they?",
+    "text": "Any swollen joints in your hands or feet, fevers, sweats or weight loss you can’t explain?",
+    "dom": "dg",
+    "why": "Alternative diagnoses"
+   },
+   {
+    "who": "pt",
+    "text": "No. I’ve put weight on, if anything. Six kilos."
+   },
+   {
+    "who": "dr",
+    "text": "Lots of people adjust their tablets when they feel bad. Can you tell me exactly how you’ve been taking them this last week or two?",
+    "dom": "dg",
+    "why": "Non-judgemental medication check"
+   },
+   {
+    "who": "pt",
+    "text": "(pause) I went back to 15 ten days ago. I had an old box. And I stopped the bone tablet a few months ago, it gave me heartburn."
+   },
+   {
+    "who": "dr",
+    "text": "Thank you for telling me, that really helps. Has the 15 helped?",
     "dom": "ro",
-    "why": "Directed history starting from her own cue"
+    "why": "Thanks; avoids blame"
    },
    {
     "who": "pt",
-    "text": "Both shoulders, and my hips. I can hardly get my arms up to do my hair in the morning. It eases a bit as the day goes on."
-   },
-   {
-    "who": "dr",
-    "text": "How long does the stiffness last in the mornings, and how long has this been going on?",
-    "dom": "dg",
-    "why": "Characterises inflammatory girdle stiffness"
-   },
-   {
-    "who": "pt",
-    "text": "A good while every morning. It’s been several weeks now."
-   },
-   {
-    "who": "dr",
-    "text": "Now some questions that really matter, even if they seem unrelated. Have you had any new headaches recently — especially around your temples?",
-    "dom": "dg",
-    "why": "Actively asks the GCA red-flag questions she has not volunteered"
-   },
-   {
-    "who": "pt",
-    "text": "Actually, yes. A headache here, at the side. I thought it was tiredness."
-   },
-   {
-    "who": "dr",
-    "text": "Is your scalp tender — for example, when you brush or comb your hair?",
-    "dom": "dg",
-    "why": "Asks specifically about scalp tenderness"
-   },
-   {
-    "who": "pt",
-    "text": "It is! I’d not thought to mention that. It’s sore when I comb it."
-   },
-   {
-    "who": "dr",
-    "text": "And when you chew — does your jaw ache, and does it get worse the longer you chew?",
-    "dom": "dg",
-    "why": "Asks specifically about jaw claudication"
-   },
-   {
-    "who": "pt",
-    "text": "Yes, my jaw aches by the end of a meal. I thought it was my teeth."
-   },
-   {
-    "who": "dr",
-    "text": "Have you had any change in your vision at all — blurring, double vision, or a moment where the sight in one eye went dim or grey?",
-    "dom": "dg",
-    "why": "Screens for visual symptoms, which determine the urgency pathway"
-   },
-   {
-    "who": "pt",
-    "text": "No, my eyes have been fine."
-   },
-   {
-    "who": "dr",
-    "text": "Any fevers, night sweats, weight loss you haven’t tried for, or back pain?",
-    "dom": "dg",
-    "why": "Screens for systemic features and myeloma or malignancy clues"
-   },
-   {
-    "who": "pt",
-    "text": "Nothing I’ve noticed, apart from being so tired."
+    "text": "Much better. But I’m puffy, I bruise, I can’t sleep."
    },
    {
     "phase": "Ideas, concerns and expectations",
-    "clock": "4–6 min",
+    "clock": "5–6 min",
     "who": "dr",
-    "text": "Thank you. I’m really glad I asked, because you’ve told me something very important. Can I explain what I think?",
+    "text": "What worries you most about the PMR?",
     "dom": "ro",
-    "why": "Validates her and signposts the shift to explanation"
+    "why": "Concerns"
    },
    {
     "who": "pt",
-    "text": "Please."
+    "text": "Becoming disabled. I collect the grandchildren three days a week. If I can’t, my daughter can’t work."
    },
    {
     "phase": "Explanation",
     "clock": "6–8 min",
     "who": "dr",
-    "text": "The shoulder and hip stiffness fits a condition called polymyalgia. But the new headache, the sore scalp and the jaw ache on chewing, together with your results, make me concerned about giant cell arteritis — inflammation of the arteries around the head. The reason it matters is that, untreated, it can affect the blood supply to the eye and threaten sight.",
-    "dom": "ro",
-    "why": "Names the working diagnosis and why it is urgent, in plain language"
+    "text": "Your bloods show the inflammation has come back, which fits the stiffness. That’s called a relapse, and it’s common. The guidance is not to go back to the starting dose but to the dose where you were last well, around 10, and then come down much more slowly. That controls it with fewer side effects.",
+    "dom": "cm",
+    "why": "Explains relapse; BSR 2024 approach"
    },
    {
     "who": "pt",
-    "text": "My sight? Oh goodness. But it isn’t cancer?"
+    "text": "But 15 works."
    },
    {
     "who": "dr",
-    "text": "This pattern is much more typical of artery inflammation than of cancer. I haven’t forgotten your worry, though — as part of the tests, I’ll include a check for a blood condition that can raise the ESR at your age, so we look properly rather than guess.",
-    "dom": "ro",
-    "why": "Addresses the cancer fear honestly without letting it eclipse the emergency"
+    "text": "It does, and it’s also pushing your sugar and blood pressure up, and thinning your skin and bones. Staying on 15 long term would cause more harm than help. Since you’re on 15 now, we’ll step down to 10 rather than stopping suddenly, and I’ll write it down for you.",
+    "dom": "cm",
+    "why": "Harms; safe step-down from current dose"
    },
    {
-    "who": "pt",
-    "text": "What happens now?"
-   },
-   {
-    "phase": "Shared management",
+    "phase": "Plan",
     "clock": "8–11 min",
     "who": "dr",
-    "text": "We treat today — we don’t wait for tests. I’m prescribing prednisolone, a steroid, at a high dose starting today. It usually settles symptoms within days and protects your eyesight. I’m also referring you urgently to the specialist GCA team, who should see you very soon, ideally today.",
+    "text": "Because the PMR keeps returning as we reduce, I’m going to refer you to the rheumatologists. There are other medicines that can help you need less steroid.",
     "dom": "cm",
-    "why": "Starts high-dose steroid without waiting for biopsy and refers on the fast-track pathway (BSR 2020)"
-   },
-   {
-    "who": "pt",
-    "text": "Is that safe, a high dose of steroids?"
+    "why": "Referral for relapsing PMR"
    },
    {
     "who": "dr",
-    "text": "A fair question. Protecting your sight comes first, and the benefits clearly outweigh the risks. We’ll protect you too: a bone-protection tablet with calcium and vitamin D, possibly a stomach-protection tablet, and a steroid card — you must never stop them suddenly. I’ll check your medicines and allergies on your record before sending it.",
+    "text": "For your bones: the steroids make them thinner, so protection really matters. The heartburn might settle if the tablet is taken first thing with a full glass of water, standing up for 30 minutes. If not, there are other options, and I’d like to check your bone density.",
     "dom": "cm",
-    "why": "Steroid safety: bone protection (NOGG 2024), PPI, Steroid Emergency Card"
+    "why": "Bone protection; technique; alternatives"
    },
    {
     "who": "dr",
-    "text": "I’d also like to see you in person today if you can manage it, to examine your temples and check your eyesight, and take a few more bloods. If you can’t get here, please start the tablets anyway — don’t wait for me.",
+    "text": "One important safety thing: after this long on steroids, your body relies on them. Never stop them suddenly, and carry this steroid emergency card. If you’re vomiting and can’t keep them down, you need medical help the same day.",
     "dom": "cm",
-    "why": "Arranges examination and baseline bloods without delaying treatment"
+    "why": "Steroid card; sick-day advice"
    },
    {
-    "who": "pt",
-    "text": "I can get there this afternoon."
+    "who": "dr",
+    "text": "Your sugar has crept up to just below the diabetes range, so I’ll repeat it and recheck your blood pressure. And you’re eligible for the shingles vaccine, which I’d recommend.",
+    "dom": "cm",
+    "why": "Monitoring harms; vaccination"
    },
    {
     "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "Before you go, can you tell me what you’ll do and what you’ll watch for?",
+    "text": "Can you tell me the plan?",
     "dom": "ro",
-    "why": "Teach-back of an urgent plan"
+    "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "Start the steroids today, come in this afternoon, wait for the specialist call. And not stop the tablets suddenly."
+    "text": "Down to 10, not stopping suddenly. Come down slower later. Rheumatology. Bone tablet properly or something else, and a scan. Carry the card. Sugar test, blood pressure, shingles jab."
    },
    {
     "who": "dr",
-    "text": "Perfect. And this is the most important part: any change in your vision — blurring, double vision, a curtain or shadow, or losing sight in either eye, even briefly — go straight to A&E or eye casualty. Don’t wait, don’t ring first. I’ll follow up the specialist review and the other results, and we’ll talk again this week.",
+    "text": "Perfect. If you get a new headache, scalp tenderness, jaw pain when eating, or any change in your eyesight, that’s same-day, call us or 111. I’ll see you in four weeks.",
     "dom": "cm",
-    "why": "Emphatic, specific visual safety-net and defined follow-up"
-   },
-   {
-    "who": "pt",
-    "text": "Thank you, doctor. I came in thinking cancer, and I’d never have mentioned the headache if you hadn’t asked."
+    "why": "GCA safety-net; follow-up"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Invited her worry first, then moved from her aches into a directed history.",
-    "pts": 1, "dom": "dg"
+    "d": "Open question; acknowledged frustration; explored the relapse pattern.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Impact on daily tasks (hair, dressing) and how she would get to a same-day review.",
-    "pts": 1, "dom": "dg"
+    "d": "Widowed, childcare for grandchildren, sleep, body image, fear of disability.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Followed “achy but I put it down to age” into girdle pain, then asked directly about headache, scalp and jaw.",
-    "pts": 1, "dom": "ro"
+    "d": "“That worked”; side effects; heartburn; grandchildren.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (hidden cancer), concern (“something eating away at me”), expectation (to be told it isn’t cancer).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (only the high dose works), concerns (disability, letting her daughter down, guilt about self-adjusting), expectation (15 mg indefinitely).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
-    "t": "Plans appropriate examination and tests",
-    "d": "Same-day temporal artery palpation, visual acuity and fundi; baseline bloods including protein electrophoresis, bone profile, U&E, LFT, TSH, CK; urinalysis.",
-    "pts": 1, "dom": "dg"
+    "t": "Plans appropriate examination & tests",
+    "d": "Inflammatory markers in context; HbA1c repeat; BP; DXA; joint check if synovitis suspected.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
-    "t": "Generates and tests hypotheses",
-    "d": "GCA with PMR versus infection, myeloma or other malignancy, and other inflammatory disease.",
-    "pts": 1, "dom": "dg"
+    "t": "Generates & tests hypotheses",
+    "d": "PMR relapse versus GCA, late-onset RA, infection or malignancy.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Asked about visual loss, systemic symptoms and back pain; recognised GCA as a sight-threatening emergency.",
-    "pts": 2, "dom": "dg"
+    "d": "GCA symptoms; weight loss, fever; adrenal risk from abrupt changes.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Suspected giant cell arteritis with polymyalgic symptoms, explained in plain words.",
-    "pts": 2, "dom": "dg"
+    "d": "Relapsing PMR during taper with significant steroid harms and stopped bone protection.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Prednisolone 40–60 mg started today without waiting for tests; fast-track referral (BSR 2020); IV route via ophthalmology if visual loss.",
-    "pts": 2, "dom": "cm"
+    "d": "Step down to the previous effective dose and taper more slowly (BSR 2024; check the SPC/local formulary); rheumatology referral; written plan.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
-    "t": "Manages comorbidity and contributors",
-    "d": "Bone protection without waiting for DXA (NOGG 2024), consider PPI, Steroid Emergency Card (NatPSA/2020/005), glucose and BP monitoring.",
-    "pts": 1, "dom": "cm"
+    "t": "Manages comorbidity & contributors",
+    "d": "HbA1c and BP follow-up; bone protection restarted or alternative and DXA; shingles vaccine.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Any visual change → A&E or eye casualty immediately; specialist review chased; follow-up this week.",
-    "pts": 1, "dom": "cm"
+    "d": "Steroid emergency card and sick-day rules; same-day GCA symptoms; review in 4 weeks; teach-back.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
-    "Urgent & unscheduled care",
+    "Long-term conditions & cancer",
     "Older adults",
     "Investigations & results"
    ],
@@ -8329,198 +8308,214 @@
     "name": "Margaret Doyle",
     "age": "72 years · female",
     "pmh": [
-     "Nil relevant recorded"
+     "Polymyalgia rheumatica (diagnosed 10 months ago)",
+     "Hypertension"
     ],
     "meds": [
-     "Check repeat list before prescribing"
+     "Prednisolone (reducing regimen)",
+     "Alendronic acid weekly",
+     "Lansoprazole",
+     "Amlodipine"
     ],
-    "allergy": "To confirm",
-    "recent": "⚠ Bloods for fatigue: ESR 88 mm/h, CRP raised, Hb mildly low with normal MCV. No previous markers for comparison.",
-    "reason": "Video review of results. “Is it cancer?”"
+    "allergy": "None recorded",
+    "recent": "CRP 28 mg/L (4 three months ago); ESR 40. HbA1c 47 mmol/mol (41 a year ago). Nurse BP 152/88. Weight up 6 kg since diagnosis.",
+    "reason": "PMR review: “The stiffness is back again.”"
    },
    "timeMap": [
     {
      "t": "0–1",
-     "h": "Hear the fear",
-     "d": "She opens with hidden cancer. Acknowledge it, then ask permission for specific questions."
+     "h": "Open",
+     "d": "Hear the request; acknowledge frustration."
     },
     {
      "t": "1–5",
-     "h": "Directed history",
-     "d": "Girdle pain and stiffness; then headache, scalp tenderness, jaw claudication, vision; systemic features and back pain. She will not volunteer the GCA symptoms."
+     "h": "History",
+     "d": "Relapse pattern; GCA screen; alternative diagnoses; exactly how she takes her tablets."
     },
     {
      "t": "5–6",
-     "h": "Name it",
-     "d": "Polymyalgic symptoms plus suspected giant cell arteritis, and why sight is at risk."
+     "h": "ICE",
+     "d": "Fear of disability; grandchildren."
     },
     {
-     "t": "6–10",
-     "h": "Treat now",
-     "d": "Prednisolone 40–60 mg today, fast-track referral, same-day examination and bloods, bone protection, steroid card. Address the cancer fear with a proportionate work-up."
+     "t": "6–11",
+     "h": "Plan",
+     "d": "Relapse explained; previous effective dose, slower taper; harms; rheumatology; bones; card; HbA1c, BP, shingles vaccine."
     },
     {
-     "t": "10–12",
-     "h": "Safety-net and teach-back",
-     "d": "Any visual change → A&E or eye casualty now. Teach-back. Follow-up this week."
+     "t": "11–12",
+     "h": "Close",
+     "d": "Teach-back; GCA safety-net; review in 4 weeks."
     }
    ],
    "wordPics": {
-    "fail": "Reassures that it is probably age or arranges a CT to look for cancer; never asks about headache, scalp or jaw; or recognises GCA but waits for biopsy or a specialist before starting steroids.",
-    "pass": "Asks the GCA questions, recognises suspected giant cell arteritis, starts high-dose prednisolone today with fast-track referral, and safety-nets visual symptoms.",
-    "exc": "All of the above, plus: connects her unvolunteered symptoms kindly, addresses the cancer fear with a proportionate myeloma check, starts bone protection and a steroid card from day one, arranges same-day examination without delaying treatment, and uses teach-back."
+    "fail": "Prescribes 15 mg indefinitely, or insists on continuing the taper; never asks how she takes her tablets; misses the GCA screen, bone protection and the steroid card.",
+    "pass": "Recognises relapse, screens for GCA, agrees a return to the previous effective dose with slower taper, and refers to rheumatology.",
+    "exc": "All of the above, plus: uncovers the self-increase and stopped alendronate without blame; steps down safely from 15 mg; addresses HbA1c, BP, bone health and heartburn; steroid emergency card and sick-day rules; shingles vaccination; links the plan to her role with her grandchildren."
    },
    "avoid": [
     {
-     "dont": "“Inflammation markers can be raised for lots of reasons at your age — let’s repeat them in a month.”",
-     "instead": "“The markers tell us where to look, not what it is — let me ask some specific questions.”",
-     "why": "Delay and a random recheck miss a sight-threatening emergency."
+     "dont": "“Fine, back to 15 mg.”",
+     "instead": "“Let’s go back to where you were last well, around 10, then reduce more slowly.”",
+     "why": "BSR 2024 advises the previous effective dose; high doses add harm."
     },
     {
-     "dont": "“I’ll refer you to the specialists, and they’ll decide about steroids.”",
-     "instead": "“We start the steroids today — protecting your sight can’t wait for tests.”",
-     "why": "BSR 2020 is explicit: tests must not delay treatment."
+     "dont": "“You shouldn’t have changed the dose yourself.”",
+     "instead": "“Thank you for telling me. Let’s make a safe plan from where you are now.”",
+     "why": "Blame stops disclosure; the safety issue is the abrupt changes."
     },
     {
-     "dont": "“Don’t worry, it definitely isn’t cancer.”",
-     "instead": "“This pattern fits artery inflammation much better — and I’ll include checks so we look properly.”",
-     "why": "False certainty undermines trust; proportionate honesty addresses the fear."
+     "dont": "(No card or sick-day advice)",
+     "instead": "“Carry this steroid card and never stop suddenly.”",
+     "why": "Adrenal crisis is a preventable risk (2020 National Patient Safety Alert)."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Getting to same-day care",
-     "t": "Older patients may need help with transport for urgent reviews and biopsy. Ask how she will get there rather than assume."
+     "h": "Caring roles",
+     "t": "Grandparents providing childcare fear losing function. Linking treatment goals to that role improves engagement."
     },
     {
-     "h": "Living with steroids",
-     "t": "High doses affect sleep, mood, appetite and glucose. Honest expectations and a written plan help adherence through a long taper."
+     "h": "Self-adjustment",
+     "t": "People with relapsing conditions often keep old supplies and adjust doses themselves."
     }
    ],
    "legal": [
     {
-     "h": "Driving and vision",
-     "t": "No DVLA action is needed while vision is normal. If GCA causes visual loss or a field defect, she must tell the DVLA and meet the Group 1 eyesight standard before driving."
+     "h": "Patient safety alert",
+     "t": "The 2020 National Patient Safety Alert requires steroid emergency cards for people at risk of adrenal crisis."
+    },
+    {
+     "h": "Prescribing records",
+     "t": "Document the agreed dose plan clearly and give it in writing to avoid confusion."
     }
    ],
    "professional": [
     {
-     "h": "Acting on clinical suspicion",
-     "t": "Starting high-dose steroid before confirmation is correct practice (BSR 2020). Document the red flags, dose, referral and safety-net advice (GMC Good Medical Practice 2024)."
+     "h": "Shared decisions",
+     "t": "Balance symptom control against cumulative harm openly, with the patient."
     },
     {
-     "h": "Limits of video",
-     "t": "Temporal arteries, acuity and fundi cannot be assessed by video. Recognise the limit and arrange a same-day examination without deferring treatment."
+     "h": "Knowing when to refer",
+     "t": "Relapsing PMR or inability to taper is a specialist indication, not a GP failure."
     }
    ],
    "community": [
     {
-     "h": "Support",
-     "t": "PMRGCAuk (patient charity) for information and peer support; Royal Osteoporosis Society for bone-health advice on long-term steroids."
+     "h": "Community pharmacy",
+     "t": "Can reinforce how to take alendronate and steroid safety messages."
+    },
+    {
+     "h": "Royal Osteoporosis Society and PMRGCAuk",
+     "t": "Patient information and support for bone health and PMR."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Any visual disturbance: blurring, diplopia, transient or persistent loss — emergency ophthalmology",
-     "New temporal headache, scalp tenderness, jaw or tongue claudication — suspected GCA",
-     "Back pain, bone pain, weight loss, night sweats, recurrent infection — consider myeloma or other malignancy",
-     "Fever or focal infection — infective cause of raised markers"
+     "New headache, scalp tenderness, jaw claudication, visual symptoms: GCA, same-day assessment",
+     "Vomiting or acute illness on long-term steroids: risk of adrenal crisis",
+     "Peripheral synovitis, weight loss, fever or atypical features: reconsider the diagnosis"
     ],
     "psychosocial": [
-     "Function: lifting arms, dressing, rising from a chair",
-     "Transport and support for same-day and fast-track appointments",
-     "Her understanding of steroids and fear of side effects"
+     "Childcare for grandchildren",
+     "Widowed",
+     "Body image and sleep",
+     "Self-adjusted dosing"
     ],
     "ice": [
-     "Idea: raised inflammation means a hidden cancer",
-     "Concern: “something is eating away at me”; aches dismissed as age",
-     "Expectation: to be told the cause and that it isn’t cancer"
+     "Idea: only the high dose works",
+     "Concern: disability; letting her daughter down",
+     "Expectation: stay on 15 mg"
     ]
    },
-   "diagnosis": "Suspected giant cell arteritis with polymyalgic symptoms: “Your headache, sore scalp and aching jaw with these results suggest inflammation of the arteries around your head, which can threaten sight if untreated.”",
-   "diagnosisLay": "“The inflammation test is like a smoke alarm — it tells us there’s smoke, not where the fire is. Your answers have shown us where: the arteries around your temples. We put that fire out today, before it reaches your eyes.”",
+   "diagnosis": "“This is a relapse of your PMR as the steroid came down, which is common. You need a steadier plan and some specialist help to need less steroid.”",
+   "diagnosisLay": "“The steroid acts like a lid on the inflammation. Lift it too quickly and it bubbles over. We want the smallest lid that keeps it down, lowered more slowly.”",
    "management": {
-    "reflectIce": "“You were right that this result mattered. It isn’t pointing to cancer — it’s pointing to something treatable that we need to act on today.”",
-    "psychosocial": "Check she can get to a same-day appointment and specialist review; give a written steroid plan and card; plan follow-up this week.",
+    "reflectIce": "“You want to keep doing the school run, and the high dose felt like the only way. Let’s get you there with less harm from the steroids.”",
+    "psychosocial": "Written plan; respect her experience; link goals to her caring role.",
     "sharedPlan": [
-     "Prednisolone 40–60 mg once daily from today (BSR 2020); fast-track GCA referral; same-day examination and baseline bloods",
-     "Bone protection without waiting for DXA (NOGG 2024), consider a PPI, Steroid Emergency Card and sick-day rules",
-     "Proportionate work-up of the raised markers, including protein electrophoresis for possible myeloma"
+     "Step down from 15 mg to the previous effective dose (about 10 mg), then taper more slowly (check the SPC/local formulary)",
+     "Rheumatology referral for relapsing PMR and steroid-sparing treatment",
+     "Bone protection: alendronate taken correctly or an alternative; DXA",
+     "Repeat HbA1c; BP follow-up",
+     "NHS steroid emergency card; sick-day rules; never stop suddenly",
+     "Shingles vaccination"
     ],
     "safetyNet": [
-     "Any visual change — even brief — go straight to A&E or eye casualty",
-     "Never stop steroids suddenly; review this week and chase the specialist appointment"
+     "New headache, scalp tenderness, jaw pain, visual change: same day",
+     "Vomiting or unable to take steroids: urgent medical help",
+     "Review in 4 weeks"
     ]
    }
   },
   "links": [
    {
-    "ic": "🗺️",
-    "t": "High CRP or ESR",
-    "s": "Visual algorithm · structured work-up",
-    "href": "algorithms/high-crp-esr.html"
-   },
-   {
-    "ic": "💠",
-    "t": "Giant cell arteritis",
-    "s": "Management protocol · BSR 2020",
-    "href": "management/giant-cell-arteritis.html"
-   },
-   {
     "ic": "💠",
     "t": "Polymyalgia rheumatica",
-    "s": "Management protocol · dosing and taper",
+    "s": "Relapse and tapering",
     "href": "management/polymyalgia-rheumatica.html"
    },
    {
+    "ic": "💠",
+    "t": "Osteoporosis",
+    "s": "Glucocorticoid bone protection",
+    "href": "management/osteoporosis.html"
+   },
+   {
+    "ic": "💠",
+    "t": "Sick day rules",
+    "s": "Steroids and acute illness",
+    "href": "management/sick-day-rules.html"
+   },
+   {
     "ic": "🗺️",
-    "t": "Vision loss pathway",
-    "s": "Visual algorithm · same-day triage",
-    "href": "algorithms/vision-loss.html"
+    "t": "Joint pain",
+    "s": "Visual algorithm",
+    "href": "algorithms/joint-pain.html"
    }
   ],
   "pitfalls": {
-   "intro": "This station hides a sight-threatening emergency behind a cancer worry. Candidates fail by answering the question she asked instead of asking the questions she did not know mattered.",
+   "intro": "Relapsing PMR is common. The marks are in finding what she is actually taking, choosing the right dose, and dealing with the steroid harms and safety measures.",
    "items": [
     {
      "dom": "dg",
-     "fail": "Arranging a “cancer screen” of scans and tumour markers without a directed history.",
-     "why": "Raised markers are non-specific. An undirected work-up misses GCA and is not good practice.",
-     "fix": "Let the history direct tests: girdle symptoms, GCA questions, systemic and bone symptoms, then a targeted work-up."
+     "fail": "Not asking how she takes her tablets.",
+     "why": "She has self-increased and stopped her bone protection.",
+     "fix": "Ask exactly, without blame."
+    },
+    {
+     "dom": "cm",
+     "fail": "Returning to 15 mg long term.",
+     "why": "BSR 2024 advises the previous effective dose; harms accumulate.",
+     "fix": "Previous effective dose, slower taper."
     },
     {
      "dom": "dg",
-     "fail": "Never asking about headache, scalp tenderness or jaw claudication.",
-     "why": "She will not volunteer them. Failing to ask is the commonest way this station is failed.",
-     "fix": "Ask every over-50 with raised markers: “New headache? Sore scalp when you comb your hair? Jaw ache when you chew? Any change in vision?”"
+     "fail": "No GCA screen.",
+     "why": "Relapse may be GCA, which threatens sight.",
+     "fix": "Ask about headache, scalp, jaw and vision."
     },
     {
      "dom": "cm",
-     "fail": "Suspecting GCA but waiting for a biopsy or specialist opinion before starting prednisolone.",
-     "why": "BSR 2020: start glucocorticoid on suspicion; ultrasound or biopsy follows urgently via the fast-track pathway.",
-     "fix": "“We start the steroids today — we don’t wait for tests.”"
-    },
-    {
-     "dom": "ro",
-     "fail": "Dismissing the cancer fear because the diagnosis is now obvious to you.",
-     "why": "Unaddressed concerns lose Relating marks and leave her anxious.",
-     "fix": "Return to it explicitly and offer a proportionate check (protein electrophoresis) so she knows it was heard."
+     "fail": "Ignoring bone health.",
+     "why": "Long-term steroids cause osteoporosis.",
+     "fix": "Restart or change bone protection; DXA."
     },
     {
      "dom": "cm",
-     "fail": "Starting high-dose steroids with no bone protection, card or warning about stopping suddenly.",
-     "why": "Steroid harms are predictable. NOGG 2024 and NatPSA/2020/005 set clear expectations.",
-     "fix": "Bone protection from day one, consider a PPI, Steroid Emergency Card, and “never stop suddenly”."
+     "fail": "No steroid card or sick-day advice.",
+     "why": "Risk of adrenal crisis.",
+     "fix": "Issue the NHS steroid emergency card and explain."
     },
     {
      "dom": "cm",
-     "fail": "A vague safety-net: “ring us if you feel worse”.",
-     "why": "The critical risk is visual loss; non-specific safety-netting is standard failing feedback.",
-     "fix": "Name it: “Any change in vision — even brief — go straight to A&E or eye casualty.”"
+     "fail": "Not referring.",
+     "why": "Relapsing PMR needs specialist input for steroid-sparing treatment.",
+     "fix": "Refer to rheumatology."
     }
    ]
   }

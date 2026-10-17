@@ -78,7 +78,7 @@
       'Atypical features (rest/night pain, bilateral in a young person, systemic/inflammatory features) → investigate/relevant specialty (e.g. rheumatology for spondyloarthropathy)',
       'Suspected calcaneal stress fracture → imaging/orthopaedics',
       'Diagnostic uncertainty → MSK assessment'],
-    source:'Clinical practice (no NICE guideline); NICE IPG311 (Extracorporeal shockwave therapy for refractory plantar fasciitis, 2009)' },
+    source:'Clinical practice (no NICE guideline); NICE HTG200 (Extracorporeal shockwave therapy for refractory plantar fasciitis, 2009; formerly IPG311)' },
 
   { id:'pleurisy', title:'Pleurisy', category:'Respiratory', icon:'🌬️',
     overview:'Inflammation of the pleura causing sharp, localised chest pain that is characteristically worse on breathing in and coughing. It is a symptom/sign of an underlying process — most often viral, but the crucial task is to exclude dangerous causes, especially pulmonary embolism, pneumonia, and pneumothorax.',

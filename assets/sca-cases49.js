@@ -15,63 +15,159 @@
 
   /* ====== 189. F2F — HRT counselling: symptoms, options, honest risk ====== */
   const c189 = {
-    id:'hrt-counselling', title:'"I think it\u2019s the menopause \u2014 but I\u2019m scared HRT will give me cancer"', type:'video', duration:12,
-    meta:{ age:51, sex:'F', setting:'Video consultation \u2014 menopausal symptoms, considering HRT.', system:'Reproductive / Menopause \u2014 HRT counselling: symptoms, options & honest risk', checked:'October 2026' },
-    brief:'Mrs Sandra Okafor, 51, with classic perimenopausal symptoms (hot flushes, night sweats, disturbed sleep, low mood/irritability, brain-fog, low libido, vaginal dryness) badly affecting work and relationships, considering HRT but frightened by the "HRT causes cancer" headlines. The examined skills: confirm the menopause diagnosis CLINICALLY (in women over 45, on symptoms \u2014 no routine FSH needed), assess symptom burden and impact, take a risk history (VTE, breast cancer, cardiovascular, migraine), explain HRT OPTIONS accurately (transdermal vs oral oestrogen; the need for a PROGESTOGEN if she has a uterus; vaginal oestrogen for urogenital symptoms), give HONEST, PROPORTIONATE risk-benefit information (symptom relief and bone benefit vs type/duration-dependent breast-cancer risk given in MHRA August 2019 absolute numbers, and route-dependent VTE risk), and support a SHARED decision \u2014 countering the headline fear with real numbers. The bleeding safety-net must be stated and kept distinct: unscheduled bleeding on HRT is handled under NICE NG23 and British Menopause Society guidance: bleeding is common in the first 6 months of systemic HRT or within 3 months of a dose or product change, and unscheduled bleeding beyond these should be reported promptly and assessed; whereas NICE NG12: unexplained postmenopausal bleeding at 55 or over that cannot be attributed to HRT → suspected cancer pathway referral for endometrial cancer; under 55, consider a suspected cancer pathway referral. ',
-    script:{
-      opening:"(Tired, a bit flustered, fanning herself at one point.) \"I'm pretty sure this is the menopause — the flushes, the sweats at night, I can't sleep, I'm snapping at everyone, my memory's shot. It's affecting my work. I've been thinking about HRT … but everything I read says it gives you breast cancer, so I keep putting it off. What should I do?\"",
-      facts:[
-        { topic:"Symptoms", text:"About a year of hot flushes (10 a day), drenching night sweats, waking three or four times a night. \"The sweats and no sleep. Then I'm foggy at work and short with everyone. I feel like I'm not myself.\" Achy joints. Low libido." },
-        { topic:"Periods and contraception", text:"\"They're all over the place\" — gaps of 2–4 months; last period 6 weeks ago. No bleeding between periods or after sex. \"I hadn't really thought about contraception\" — uses nothing; husband has not had a vasectomy." },
-        { topic:"Mood", text:"\"Irritable more than low. Not hopeless.\" No thoughts of self-harm. Enjoys her grandchild." },
-        { topic:"Vaginal symptoms", text:"If asked: \"Some dryness, yes. It's embarrassing\" — sex is uncomfortable. No urinary infections, mild urgency." },
-        { topic:"Risk history", text:"\"Not that I know of. I don't smoke.\" No blood clots in her or the family, no breast cancer in the family, no migraine with aura, no liver disease, no heart disease or stroke. BP normal at her last check. BMI 27. Breast screening up to date (normal last year). Cervical screening up to date." },
-        { topic:"Medicines and history", text:"No regular medicines. No allergies. Has a uterus — no hysterectomy." },
-        { topic:"Work and home", text:"Senior nurse manager in a care home group — \"I forgot a key meeting last month.\" Married to Joseph, two adult children. Drinks a glass of wine most evenings to \"switch off\"." },
-        { topic:"How to play it", text:"Frank but worried. If asked what she has read: \"Headlines, mostly. It's why I've put this off for months. I keep telling myself I should just cope.\" Engages well with numbers: \"Fourteen in a thousand. That's much smaller than I'd imagined.\" Asks: \"So a patch or gel plus the progestogen?\" Decides to try it if given balanced information. If brushed off with \"it's very safe\", stay unconvinced." }
+    "id": "hrt-counselling",
+    "title": "“My periods are all over the place, I’m not sleeping and I can’t think straight — is this the change, or something worse?”",
+    "type": "video",
+    "duration": 12,
+    "meta": {
+      "age": 46,
+      "sex": "F",
+      "setting": "Video consultation — irregular periods, poor sleep and difficulty concentrating.",
+      "system": "Women’s health — perimenopause at 46: clinical diagnosis, HRT with contraception (HRT is not contraceptive), non-hormonal and CBT options, cognitive symptoms, and support at work",
+      "checked": "October 2026"
+    },
+    "brief": "Nicola Grant, 46, police sergeant, has had a year of irregular periods (cycles 21–60 days, last period 7 weeks ago), night sweats, hot flushes at work, poor sleep, irritability, joint aches and “brain fog”: losing words and forgetting tasks. She is in a relationship and uses condoms “most of the time”. Non-smoker, BMI 29, BP 124/78, no migraine, no personal or family history of VTE or breast cancer. She asks whether this is the menopause and whether she needs a blood test. Hidden agenda, only if explored: she made two paperwork errors at work and is now on an informal performance review; her mother developed dementia at 68, and Nicola is frightened she has early dementia and that she will lose her job. She would like HRT but assumed it would also be her contraception. Mood: low at times, no anhedonia, no suicidal thoughts. The task: make a clinical diagnosis of perimenopause without FSH testing (NICE NG23, over 45 with symptoms); check pregnancy is excluded given the late period; explore the cognitive symptoms and the dementia fear, screen mood, and explain that brain fog is common in perimenopause and will be reviewed after treatment; explain HRT options (oestrogen with endometrial protection; transdermal or oral) and that HRT is not contraception; offer the 52 mg LNG-IUS as both progestogen and contraception (check the SPC), or other suitable contraception until it is no longer needed (FSRH: until 55, or after 2 years of amenorrhoea under 50); mention CBT and non-hormonal options; give proportionate risk information; and support her at work (adjustments, occupational health, a fit note if helpful).",
+    "script": {
+      "opening": "“My periods are all over the place, I’m not sleeping, I’m drenched at night and I can’t think straight. Is this the change? Do I need a blood test to find out?”",
+      "facts": [
+        {
+          "topic": "Periods and symptoms",
+          "text": "A year of irregular cycles (3 to 8 weeks). Last period 7 weeks ago. Hot flushes several times a day, worse in uniform; night sweats most nights; waking at 3am. Irritable, aching joints, low libido, vaginal dryness. No postcoital or intermenstrual bleeding."
+        },
+        {
+          "topic": "Contraception and pregnancy (if asked)",
+          "text": "Condoms most of the time with her partner of three years. Could she be pregnant? “Surely not at 46.” Willing to do a test. Does not want a pregnancy."
+        },
+        {
+          "topic": "Risk history (if asked)",
+          "text": "Non-smoker. No migraine. No clots in her or her family. No breast cancer in the family. Mother had dementia from 68. Last cervical screening up to date."
+        },
+        {
+          "topic": "Only if asked about the brain fog and work",
+          "text": "Losing words, walking into rooms and forgetting why. Two paperwork errors at work led to an informal performance review. Frightened: “Mum started like this.” Hasn’t told work about menopause symptoms."
+        },
+        {
+          "topic": "Mood (if asked)",
+          "text": "Low and tearful at times, more irritable; still enjoys walking the dog and her nieces. Sleep poor. No thoughts of self-harm. Alcohol: a glass of wine most nights “to sleep”."
+        },
+        {
+          "topic": "What she wants",
+          "text": "Wants to know what this is and to feel normal. Open to HRT; assumed it would “cover contraception too”. Worried about breast cancer “a bit”. Would consider a coil."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Brisk and organised, uses humour. Becomes quiet and tearful when the brain fog and her mother come up. Relieved when the cognitive symptoms are explained and taken seriously, and when the doctor offers to help with work."
+        }
       ],
-      ice:{
-        ideas:"\"It's the menopause — HRT would help, but it gives you breast cancer.\"",
-        concerns:"HIDDEN AGENDA — headline-driven fear of breast cancer and a sense she should \"just cope\"; worried about her memory at work and snapping at her family.",
-        expectations:"\"Honest advice on whether HRT is safe for me.\""
+      "ice": {
+        "ideas": "“It’s probably the change, but I need a blood test to prove it.”",
+        "concerns": "HIDDEN AGENDA: fear of early dementia like her mother, and of losing her job after a performance review. Also a belief that HRT will act as contraception.",
+        "expectations": "“A blood test, and HRT if it’s the menopause.”"
       },
-      cues:[
-        "\"Everything I read says it gives you breast cancer.\" — needs real numbers.",
-        "\"I keep telling myself I should just cope.\" — permission to seek help.",
-        "\"It's affecting my work.\" — impact to explore."
+      "cues": [
+        "“Can’t think straight” — explore cognitive symptoms and what she fears they mean.",
+        "Last period 7 weeks ago and condoms “most of the time” — pregnancy test and contraception.",
+        "A police sergeant with symptoms at work — workplace impact and support.",
+        "Wine most nights to sleep — sleep, mood and alcohol."
       ]
     },
-    checkpoints:[
-      { dom:'dg', text:'Diagnoses menopause/perimenopause CLINICALLY in a woman over 45 (no routine FSH), confirms the symptom pattern, last period/contraceptive needs, and validates the symptoms as real and treatable' },
-      { dom:'dg', text:'Assesses symptom burden and IMPACT (work, relationships, sleep, mood) and screens mood specifically \u2014 tailoring management to what bothers her most' },
-      { dom:'dg', text:'Takes a RISK history (breast cancer, VTE/clotting, cardiovascular/stroke, migraine with aura, liver disease, undiagnosed bleeding) that shapes which HRT' },
-      { dom:'ro', text:'Explains OPTIONS accurately: transdermal vs oral oestrogen (transdermal preferred for VTE/migraine/age), a PROGESTOGEN if she has a uterus (cyclical vs continuous), vaginal oestrogen for urogenital symptoms, and testosterone for refractory low libido' },
-      { dom:'cm', text:'Gives HONEST, PROPORTIONATE risk-benefit \u2014 effective symptom relief and bone protection vs type/route/duration-dependent breast-cancer and VTE risks (oestrogen-only/transdermal lower) — in MHRA August 2019 absolute terms, including persistence of some excess risk after stopping — countering the headline fear' },
-      { dom:'ro',   text:'Addresses the headline-driven cancer fear directly and the sense she should "just cope", supporting a genuine SHARED decision' },
-      { dom:'ro',   text:'Communicates risk in meaningful, non-frightening numbers and checks understanding so she can decide with confidence' },
-      { dom:'cm',    text:'Safety-nets and follows up: review of efficacy/side-effects, and explicit counselling that unscheduled bleeding on HRT beyond the expected settling period must be reported and assessed (NICE NG23, BMS), and that unexplained postmenopausal bleeding at 55+ not attributable to HRT is a suspected cancer pathway referral (NICE NG12) — a shared, safe decision with both rules stated' },
+    "checkpoints": [
+      {
+        "dom": "dg",
+        "text": "Takes a menstrual and symptom history and makes a clinical diagnosis of perimenopause without FSH testing (NICE NG23: over 45 with symptoms), checking for red-flag bleeding"
+      },
+      {
+        "dom": "dg",
+        "text": "Excludes pregnancy (late period, inconsistent condom use) and asks about contraception"
+      },
+      {
+        "dom": "dg",
+        "text": "Explores the cognitive symptoms, uncovers the fear of dementia and the work review, screens mood and alcohol, and explains that brain fog is common in perimenopause, to be reviewed after treatment"
+      },
+      {
+        "dom": "cm",
+        "text": "Explains HRT options: oestrogen with a progestogen for endometrial protection because she has a uterus; transdermal or oral oestrogen; vaginal oestrogen for genitourinary symptoms"
+      },
+      {
+        "dom": "cm",
+        "text": "Explains that HRT is not contraception and offers the 52 mg LNG-IUS as both the progestogen part of HRT and contraception (check the SPC), or other suitable contraception, continued until no longer needed (FSRH: until 55, or 2 years’ amenorrhoea if under 50)"
+      },
+      {
+        "dom": "cm",
+        "text": "Mentions CBT for vasomotor and mood symptoms and non-hormonal options, and gives proportionate, honest risk information"
+      },
+      {
+        "dom": "cm",
+        "text": "Supports work: discusses telling her manager, reasonable adjustments, occupational health referral and a fit note with adjustments if helpful"
+      },
+      {
+        "dom": "ro",
+        "text": "Uses shared decision-making, checks understanding and arranges review (bleeding pattern, symptom response, cognitive symptoms) with a safety-net for abnormal bleeding"
+      }
     ],
-    worked:[
-      { lbl:'Validate + diagnose', txt:'"You\u2019re very likely right \u2014 at 51 with those symptoms, this is the menopause, and we don\u2019t even need a blood test to say so. And these symptoms are real and treatable; you don\u2019t have to just grit your teeth through them."' },
-      { lbl:'Tackle the headline fear', txt:'"Let\u2019s deal with the breast-cancer worry head-on, because it\u2019s stopping you getting help. The headlines make it sound bigger than it is, but the risk is real, so here are the actual numbers. Out of 1000 women in their fifties and sixties who never take HRT, about 63 get breast cancer over 20 years. Five years of the combined type from 50 adds roughly 14 to 20 more; oestrogen-only, for women without a womb, adds about 5. A little of that extra risk lasts for some years after stopping. Because you still have your womb, you’d need the combined type."' },
-      { lbl:'Explain options', txt:'"For the flushes and sweats, oestrogen \u2014 I\u2019d usually suggest a patch or gel through the skin, which doesn\u2019t raise clot risk. If you still have your womb, you also need a progesterone to protect its lining. For dryness, a small vaginal oestrogen works locally with almost no absorption."' },
-      { lbl:'Balance the benefits', txt:'"The upside is real: it’s the most effective treatment for flushes, it usually helps sleep, mood and concentration, and it protects your bones while you take it. Started before 60, it doesn’t raise the risk of heart disease. Weighing that against the cancer numbers is your call, and I’ll help you do it."' },
-      { lbl:'Bleeding safety-net', txt:'"One important safety rule: some irregular bleeding is common in the first six months on HRT, or for a few months after any change. Bleeding outside that, you tell me promptly and we’ll assess it. And once your periods have stopped for good, any bleeding that isn’t explained by the HRT needs checking quickly, including a hospital referral if you’re 55 or over. It’s usually nothing, but it’s a rule we don’t bend."' },
-      { lbl:'Shared decision + review', txt:'"There\u2019s no rush \u2014 but you also don\u2019t have to suffer. How do you feel about trying it? Whatever we choose, we\u2019ll review in a few months to check it\u2019s helping and suiting you."' },
+    "worked": [
+      {
+        "lbl": "No blood test needed",
+        "txt": "“At 46, with irregular periods, flushes and night sweats, this is very likely the perimenopause. The guidance says we don’t need a blood test to diagnose it, because hormone levels jump around and a single test can mislead.”"
+      },
+      {
+        "lbl": "Pregnancy first",
+        "txt": "“Your last period was seven weeks ago and condoms aren’t always used, so let’s do a pregnancy test before we start anything.”"
+      },
+      {
+        "lbl": "Explore the fear",
+        "txt": "“You said you can’t think straight. What worries you most about that?”"
+      },
+      {
+        "lbl": "Brain fog",
+        "txt": "“Losing words and forgetting tasks is really common in the perimenopause, especially with broken sleep. It usually improves with treatment. If it doesn’t, we’ll look into it properly, I promise.”"
+      },
+      {
+        "lbl": "HRT is not contraception",
+        "txt": "“HRT doesn’t stop you getting pregnant. A hormonal coil can do two jobs: it protects the womb lining as part of HRT and gives contraception. Then you’d add oestrogen as a patch or gel.”"
+      },
+      {
+        "lbl": "Work",
+        "txt": "“Would it help to tell your manager it’s menopause? Occupational health can suggest adjustments, like uniform, breaks or ventilation, and I can write a fit note with suggestions if useful.”"
+      }
     ],
-    learning:'Menopause counselling starts with a clinical diagnosis: in a woman over 45 with typical symptoms the menopause/perimenopause is diagnosed on the symptom pattern (NICE NG23) with no routine FSH test, and the symptoms \u2014 vasomotor, sleep, mood, cognitive, urogenital and libido \u2014 are validated as real, common and treatable rather than something to endure. Assess symptom burden and impact on work, relationships, sleep and mood (screening mood in its own right), and take a risk history (breast cancer, VTE/clotting, cardiovascular/stroke, migraine with aura, liver disease, undiagnosed bleeding) that usually shapes WHICH HRT rather than whether she can have any. Explain options accurately: oestrogen for systemic symptoms, with transdermal (patch/gel/spray) preferred for VTE/migraine/older patients because it avoids the oral first-pass VTE risk; a progestogen if she has a uterus to protect the endometrium (cyclical if still bleeding, continuous if postmenopausal, e.g. micronised progesterone or an LNG-IUS); vaginal oestrogen for urogenital symptoms with minimal systemic absorption; and testosterone for refractory low libido. Give honest, proportionate risk-benefit information \u2014 HRT is the most effective treatment for vasomotor symptoms and helps mood, sleep and urogenital symptoms and protects bone, while the breast-cancer risk is real but small in absolute terms and type/duration-dependent (MHRA August 2019: five years from 50 adds about 5, 14 or 20 per 1000 over 20 years for oestrogen-only, sequential combined or continuous combined HRT, with some excess persisting more than 10 years after stopping; NICE NG23 calls the oestrogen-only change little or none), and transdermal oestrogen does not increase VTE risk; NICE NG23: HRT started before 60 does not increase cardiovascular risk and reduces fracture risk while taken. Counter the headline-driven cancer fear with absolute numbers and support a shared decision, and counsel the safety-net explicitly, keeping two rules distinct: unscheduled bleeding on HRT beyond the expected settling period (first 6 months, or 3 months after a change) must be reported and assessed under NICE NG23 and BMS guidance; and NICE NG12 (Suspected cancer: recognition and referral, last updated April 2026): unexplained postmenopausal bleeding at 55 or over that cannot be attributed to HRT → suspected cancer pathway referral for endometrial cancer; under 55, consider a suspected cancer pathway referral.',
-    knowledge:{
-      guideline:'NICE NG23 (2015, updated April 2026) · MHRA Drug Safety Update August 2019 (HRT and breast cancer) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated April 2026) · British Menopause Society (unscheduled bleeding on HRT) · FSRH contraception for women aged over 40 (2017)',
-      points:[
-        { h:'Clinical diagnosis >45', t:'NICE NG23: diagnose menopause/perimenopause on symptoms in women over 45 — no routine FSH. Validate symptoms as real and treatable.' },
-        { h:'Burden & impact', t:'Assess effect on work/relationships/sleep/mood; screen mood; tailor to the most troublesome symptoms.' },
-        { h:'Risk history shapes choice', t:'Breast cancer (contraindication), VTE (favours transdermal), cardiovascular/stroke, migraine with aura, liver disease, undiagnosed bleeding \u2014 usually determine which HRT, not whether.' },
-        { h:'Options', t:'Transdermal vs oral oestrogen (transdermal preferred for VTE/migraine/age); progestogen if uterus present (cyclical vs continuous; micronised progesterone/LNG-IUS); vaginal oestrogen for urogenital symptoms; testosterone for refractory libido.' },
-        { h:'Honest risk-benefit', t:'Most effective for vasomotor symptoms; helps mood/sleep/urogenital; reduces fracture risk while taken. Breast-cancer risk (MHRA August 2019): baseline about 63 per 1000 women aged 50–69; five years from 50 adds about 5 (oestrogen-only), 14 (sequential combined) or 20 (continuous combined) per 1000 over 20 years; some excess persists >10 years after stopping (NG23: oestrogen-only little/no change). Transdermal no VTE rise; started before 60, no rise in CVD risk (NG23). Use absolute numbers.' },
-        { h:'Counter the headlines', t:'Address the "HRT causes cancer" fear with proportionate numbers; support a shared decision; don\u2019t let headline fear deny effective treatment.' },
-        { h:'Bleeding safety-net: NICE NG23 and NICE NG12', t:'NICE NG12: unexplained postmenopausal bleeding at 55 or over that cannot be attributed to HRT → suspected cancer pathway referral for endometrial cancer; under 55, consider a suspected cancer pathway referral. Unscheduled bleeding on HRT is separate: NICE NG23/BMS — common in the first 6 months or 3 months after a change; beyond that, report promptly and assess. State both explicitly.' },
-        { h:'Never do', t:'Never order routine FSH in over-45s; never deny HRT on headline fear; never give systemic oestrogen without a progestogen in a woman with a uterus; never ignore unscheduled/postmenopausal bleeding.' },
-        { h:"Assess symptom burden & impact", t:"Quantify how the symptoms affect work, relationships, sleep and mood — this drives the treatment conversation and counters any minimisation (hers or society’s). Screen MOOD specifically: low mood in perimenopause may respond to HRT, but consider depression in its own right (NICE NG23 also advises considering menopause-specific CBT for vasomotor and mood symptoms). Identify the symptoms most bothering her so management is tailored." }
+    "learning": "NICE NG23 (Menopause: identification and management, updated 2024) advises diagnosing perimenopause clinically in women over 45 with vasomotor symptoms and irregular periods, without FSH testing. Exclude pregnancy where periods are late and contraception is inconsistent. HRT for a woman with a uterus needs oestrogen plus a progestogen for endometrial protection; transdermal oestrogen does not increase VTE risk above baseline and suits women with risk factors. HRT is not contraception. The 52 mg levonorgestrel intrauterine system can provide both the progestogen component of HRT and contraception (check the SPC for licensed duration of use for each purpose). FSRH guidance on contraception for women over 40 advises continuing contraception until age 55, or stopping after 2 years of amenorrhoea if under 50 (1 year if over 50) when not using hormonal methods. NG23 also recommends offering CBT as an option for vasomotor symptoms and for low mood associated with menopause, and vaginal oestrogen for genitourinary symptoms. Cognitive complaints (“brain fog”) are common in perimenopause and often improve with treatment of vasomotor symptoms and sleep; screen mood and alcohol, and reassess if symptoms persist, especially with a family history of dementia. Work matters: many women do not disclose menopause symptoms at work; occupational health, reasonable adjustments and a fit note with suggested adaptations can help. Risk communication should be balanced and proportionate; for women in their 40s the absolute risks of HRT are small. The hidden agenda here is fear of inherited dementia and of losing her job.",
+    "knowledge": {
+      "guideline": "[1] NICE NG23 Menopause: identification and management (2015, updated 2024) · [2] FSRH Clinical Guideline: Contraception for women aged over 40 years (2017, amended) · [3] FSRH and British Menopause Society guidance on LNG-IUS for endometrial protection (check current SPC/licence) · [4] NICE CKS Menopause (check current version) · [5] DWP fit note guidance; Equality Act 2010 (sex, age and disability) and employer menopause guidance · [6] Product SPCs for HRT preparations and the 52 mg LNG-IUS",
+      "summary": "A 46-year-old police sergeant with a year of irregular cycles, vasomotor symptoms, poor sleep and brain fog. Diagnose perimenopause clinically, exclude pregnancy, explain HRT and that it is not contraception, offer the 52 mg LNG-IUS for endometrial protection and contraception with transdermal oestrogen, mention CBT, uncover and address the fear of dementia and the work review, and support her at work.",
+      "points": [
+        {
+          "h": "Diagnosis",
+          "t": "Over 45 with vasomotor symptoms and irregular periods: perimenopause, without FSH testing [1]."
+        },
+        {
+          "h": "Exclude pregnancy",
+          "t": "Late period with inconsistent contraception: pregnancy test first."
+        },
+        {
+          "h": "HRT components",
+          "t": "Oestrogen plus a progestogen if she has a uterus. Transdermal oestrogen does not increase VTE risk above baseline [1]."
+        },
+        {
+          "h": "HRT is not contraception",
+          "t": "Contraception is needed until 55, or 2 years’ amenorrhoea under 50 (1 year over 50) [2]."
+        },
+        {
+          "h": "LNG-IUS",
+          "t": "The 52 mg LNG-IUS provides contraception and endometrial protection with oestrogen; check the SPC for licensed duration for each purpose [2,3,6]."
+        },
+        {
+          "h": "Other options",
+          "t": "CBT for vasomotor symptoms and low mood; vaginal oestrogen for genitourinary symptoms; non-hormonal options if HRT is unsuitable [1]."
+        },
+        {
+          "h": "Cognitive symptoms",
+          "t": "Common in perimenopause and with poor sleep; screen mood and alcohol; review after treatment; assess further if persistent."
+        },
+        {
+          "h": "Work",
+          "t": "Disclosure, occupational health, reasonable adjustments, and a fit note with suggested adaptations if helpful [5]."
+        }
       ]
     }
   };
@@ -268,31 +364,71 @@
   Object.assign(window.SCA_EXTRAS, {
 
     'hrt-counselling': {
-      ceg: ['Gender, reproductive & sexual health', 'Prescribing & pharmacology'],
-      stem: {
-        name: 'Sandra Okafor', age: '51 years \u00b7 female',
-        pmh: ['Perimenopausal symptoms: flushes, night sweats, poor sleep, low mood, brain-fog, low libido, dryness', 'Affecting work and relationships', 'Frightened by "HRT causes cancer" headlines'],
-        meds: ['None'],
-        allergy: 'NKDA',
-        recent: '"I think it\u2019s the menopause \u2014 but I\u2019m scared HRT will give me cancer."',
-        reason: 'Video consultation \u2014 menopausal symptoms, considering HRT.'
-      },
-      timeMap: [
-        { t:'0\u20132',  h:'Validate + diagnose', d:'Clinical diagnosis >45, no FSH; symptoms real and treatable.' },
-        { t:'2\u20134',  h:'Burden + risk history', d:'Impact on life/mood; screen breast/VTE/CVD/migraine \u2014 shapes which HRT.' },
-        { t:'4\u20137',  h:'Options', d:'Transdermal vs oral oestrogen; progestogen if uterus; vaginal oestrogen; testosterone for libido.' },
-        { t:'7\u20139',  h:'Honest risk-benefit', d:'Effective relief + bone; type/route/duration-dependent risks; MHRA 2019 absolute numbers (5/14/20 per 1000), counter headlines.' },
-        { t:'9\u201312', h:'Bleeding safety-net', d:'Unscheduled bleeding on HRT → report/assess (NG23, BMS); unexplained PMB 55+ not due to HRT → suspected cancer pathway (NICE NG12); shared decision; review.' }
+      "ceg": [
+        "Gender, reproductive & sexual health",
+        "New & undifferentiated presentations"
       ],
-      wordPics: {
-        fail: 'Orders FSH unnecessarily or denies HRT on headline fear; gives oral oestrogen without a progestogen in a woman with a uterus; no bleeding safety-net.',
-        pass: 'Diagnoses clinically, explains options and proportionate risk, and supports a shared decision with a bleeding safety-net.',
-        exc:  'Validates and diagnoses clinically, assesses impact and risk, explains transdermal/progestogen/vaginal options accurately, gives honest absolute-risk information countering the headlines, counsels the bleeding safety-net (unscheduled bleeding on HRT per NICE NG23; postmenopausal bleeding not attributable to HRT per NICE NG12), and shares the decision.'
+      "stem": {
+        "name": "Nicola Grant",
+        "age": "46 years · female",
+        "pmh": [
+          "Nil significant"
+        ],
+        "meds": [
+          "None"
+        ],
+        "allergy": "None recorded",
+        "recent": "Pharmacy BP last month 124/78. BMI 29. Cervical screening up to date.",
+        "reason": "“Periods all over the place, not sleeping, can’t think straight.”"
       },
-      avoid: [
-        { dont:'"Let\u2019s do a blood test to confirm the menopause first."', instead:'"At 51 with these symptoms we diagnose it clinically \u2014 no blood test needed."', why:'Routine FSH is not indicated in over-45s and delays help.' },
-        { dont:'"HRT does raise breast-cancer risk, so maybe avoid it."', instead:'"The extra risk is real but small in numbers — about 14 to 20 extra per 1000 women over 20 years for five years of combined HRT — and the benefits are real too. Let’s decide together."', why:'Headline-driven denial withholds effective, appropriate treatment.' },
-        { dont:'(Uterus present) prescribing oestrogen alone.', instead:'"As you still have your womb, you also need a progesterone to protect its lining."', why:'Unopposed oestrogen risks endometrial hyperplasia/cancer.' }
+      "timeMap": [
+        {
+          "t": "0–1",
+          "h": "Open",
+          "d": "Hear the symptoms and the blood test question."
+        },
+        {
+          "t": "1–5",
+          "h": "History",
+          "d": "Cycles, last period, bleeding red flags, contraception and pregnancy, risk history."
+        },
+        {
+          "t": "5–7",
+          "h": "ICE",
+          "d": "Brain fog: dementia fear and performance review; mood; alcohol."
+        },
+        {
+          "t": "7–11",
+          "h": "Explain and plan",
+          "d": "Clinical diagnosis without FSH; brain fog plan; HRT components; not contraception; LNG-IUS plus transdermal oestrogen; contraception duration; CBT; work support."
+        },
+        {
+          "t": "11–12",
+          "h": "Close",
+          "d": "Teach-back; pregnancy test; review at 3 months; bleeding safety-net."
+        }
+      ],
+      "wordPics": {
+        "fail": "Orders FSH; starts HRT without excluding pregnancy or mentioning contraception; ignores the brain fog or dismisses it; never discovers the work review or her mother’s dementia.",
+        "pass": "Diagnoses perimenopause clinically, excludes pregnancy, explains HRT is not contraception and offers suitable options, and addresses the brain fog.",
+        "exc": "All of the above, plus: uncovers the dementia fear and work review with empathy; proportionate reassurance with a review plan; offers the LNG-IUS for both roles and transdermal oestrogen; CBT; practical work support; clear safety-net."
+      },
+      "avoid": [
+        {
+          "dont": "“Let’s check your FSH to confirm it.”",
+          "instead": "“At 46 with these symptoms we can diagnose it without a blood test.”",
+          "why": "NICE NG23 advises against FSH testing in women over 45 with typical symptoms."
+        },
+        {
+          "dont": "“HRT will sort everything.”",
+          "instead": "“HRT isn’t contraception. A hormonal coil can protect your womb and prevent pregnancy.”",
+          "why": "Unplanned pregnancy risk in the perimenopause."
+        },
+        {
+          "dont": "“Brain fog is just the menopause, don’t worry.”",
+          "instead": "“It’s very common now and usually improves; we’ll review it and look further if not.”",
+          "why": "Dismissing it ignores her fear and the need to reassess."
+        }
       ]
     },
 

@@ -316,8 +316,8 @@
       },
       interpret(s){
         if (s <= 6)  return { label:'Mild', severity:'low', action:'Conservative + oral antiemetic if needed (cyclizine / promethazine / prochlorperazine).', detail:'Reassure; dietary measures; hydration.' };
-        if (s <= 12) return { label:'Moderate', severity:'med', action:'Regular oral antiemetic; check ketones/weight; consider ambulatory care.', detail:'Escalate antiemetic (add metoclopramide/ondansetron with counselling).' };
-        return        { label:'Severe', severity:'high', action:'Likely hyperemesis — assess dehydration/ketonuria; consider admission / IV fluids + thiamine.', detail:'RCOG: ≥ 13 severe; risk of Wernicke\u2019s if prolonged.' };
+        if (s <= 12) return { label:'Moderate', severity:'med', action:'Regular oral antiemetic; check hydration/weight; consider ambulatory care.', detail:'Escalate antiemetic (add metoclopramide/ondansetron with counselling).' };
+        return        { label:'Severe', severity:'high', action:'Likely hyperemesis — assess dehydration, weight and U&E (not ketonuria — RCOG 2024); consider admission / IV fluids + thiamine.', detail:'RCOG: ≥ 13 severe; risk of Wernicke\u2019s if prolonged.' };
       },
       refs:[
         { label:'RCOG GTG 69 — NVP & hyperemesis', url:'https://www.rcog.org.uk/guidance/' },

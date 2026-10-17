@@ -1019,487 +1019,480 @@
  "af-anticoag-decision": {
   "stem": {
    "name": "Frank Ostrowski",
-   "age": "74-year-old man",
+   "age": "82 years · male",
    "pmh": [
-    "Atrial fibrillation — recently diagnosed",
+    "Atrial fibrillation",
     "Hypertension",
-    "Diabetes"
+    "TIA (2021)",
+    "Benign prostatic enlargement"
    ],
    "meds": [
-    "Treatment for hypertension and diabetes as per repeat list",
-    "No anticoagulant"
+    "Apixaban",
+    "Ramipril",
+    "Atorvastatin",
+    "Doxazosin (started 6 weeks ago by urology)"
    ],
-   "allergy": "No known drug allergies recorded",
-   "recent": "New diagnosis of atrial fibrillation. CHA₂DS₂-VASc recorded as high (age, hypertension, diabetes). Anticoagulation to be discussed.",
-   "reason": "Video appointment to discuss stroke prevention for atrial fibrillation."
+   "allergy": "None recorded",
+   "recent": "A&E two weeks ago after a fall at home: hip X-ray normal, discharged. eGFR 52, creatinine 118 µmol/L, Hb 128 g/L. Weight 64 kg. Nurse BP (sitting) 132/74. Bereaved last year.",
+   "reason": "Daughter requested an appointment “to discuss Dad’s blood thinner after his fall”."
   },
   "knowledge": {
-   "guideline": "NICE NG196 (Atrial fibrillation, 2021) and its patient decision aid · NICE TA249, TA256, TA275, TA355 (DOACs in AF) · BNF · GMC Decision making and consent (2020) · Montgomery v Lanarkshire Health Board (UK Supreme Court, 2015)",
-   "summary": "His CHA₂DS₂-VASc is 3 (age 65–74, hypertension, diabetes), so NICE NG196 says offer a DOAC. Aspirin is not an alternative. The task is an informed, non-coercive shared decision that takes his father’s death seriously.",
+   "guideline": "[1] NICE NG196 Atrial fibrillation: diagnosis and management (2021, updated 2021) · [2] NICE NG249 Falls: assessment and prevention in older people and in people 50 and over at higher risk (2025) · [3] Product SPCs for apixaban and doxazosin · [4] NICE CKS Anticoagulation – oral (check current version) · [5] Mental Capacity Act 2005; GMC Decision making and consent (2020) · [6] NICE CKS Alcohol – problem drinking (check current version)",
+   "summary": "A capacitous 82-year-old on apixaban for AF (CHA2DS2-VASc 4) fell at night, likely from postural hypotension after starting doxazosin, plus nocturia and evening alcohol. His daughter wants the DOAC stopped. Falls alone are not a reason to stop. Address modifiable bleeding risks (ibuprofen, alcohol), check the DOAC dose, review the doxazosin, arrange a falls assessment, support his grief, and respect his decision.",
    "points": [
     {
-     "h": "Stroke risk",
-     "t": "NICE NG196: use CHA₂DS₂-VASc. Offer anticoagulation with a DOAC at a score of 2 or above, taking bleeding risk into account; consider it for men with a score of 1. Frank scores 3: age 65–74 (1), hypertension (1), diabetes (1)."
+     "h": "Falls and anticoagulation",
+     "t": "NG196: do not withhold anticoagulation solely because of age or falls risk [1]. Stroke prevention benefit usually far outweighs fall-related bleeding risk."
     },
     {
-     "h": "Bleeding risk",
-     "t": "NICE NG196 recommends the ORBIT score to assess bleeding risk, and addressing modifiable factors: uncontrolled blood pressure, harmful alcohol use, concurrent antiplatelets or NSAIDs, and anaemia. A bleeding score is a prompt to reduce risk, not a reason on its own to withhold."
+     "h": "Scores",
+     "t": "CHA2DS2-VASc for stroke risk; ORBIT for bleeding risk, used to identify modifiable factors rather than to deny treatment [1]."
     },
     {
-     "h": "Aspirin is not the answer",
-     "t": "NICE NG196: do not offer aspirin monotherapy solely for stroke prevention in atrial fibrillation. It does not give the protection he thinks and still carries a bleeding risk."
+     "h": "Modifiable bleeding risks",
+     "t": "NSAIDs and unnecessary antiplatelets, excess alcohol, uncontrolled blood pressure, incorrect DOAC dosing, anaemia [1,4]."
     },
     {
-     "h": "DOACs are not his father’s warfarin",
-     "t": "Apixaban, dabigatran, edoxaban and rivaroxaban are options (NICE NG196; NICE TA249, TA256, TA275, TA355). No routine INR monitoring and fewer interactions than warfarin. Check renal function, FBC and liver function before starting; dose per BNF."
+     "h": "DOAC dose",
+     "t": "Apixaban dose reduction depends on a combination of age, body weight and serum creatinine; check the SPC. Monitor renal function and weight [3]."
     },
     {
-     "h": "Age and falls",
-     "t": "NICE NG196: do not withhold anticoagulation solely because of a person’s age or their risk of falls."
+     "h": "Falls assessment",
+     "t": "History, lying and standing BP, medication review (alpha-blockers, antihypertensives, sedatives, alcohol), vision, gait and balance, home hazards; multifactorial intervention [2]."
     },
     {
-     "h": "Shared decision",
-     "t": "Use the NICE NG196 patient decision aid. A capacitous adult can decline after an informed discussion (GMC 2020; Montgomery 2015). Document the discussion and revisit the decision at follow-up or if his circumstances change."
+     "h": "Alpha-blockers",
+     "t": "Doxazosin can cause postural hypotension, especially early in treatment; discuss alternatives or timing with the prescriber [3]."
+    },
+    {
+     "h": "Capacity and relatives",
+     "t": "A capacitous adult decides; involve family as he wishes and address their concerns [5]."
+    },
+    {
+     "h": "Alcohol and grief",
+     "t": "Ask about drinking in bereaved older adults; brief intervention and bereavement support [6]."
     }
    ]
   },
   "model": [
    {
-    "phase": "Opening and agenda",
+    "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello Mr Ostrowski, I’m Dr Lee. Can I check your date of birth, and that you’re somewhere private? … Thank you. We’re here to talk about the heart rhythm. Where would you like to start?",
+    "text": "Hello, I’m Dr Clarke. Frank, is it okay for Anna to be part of this conversation?",
     "dom": "ro",
-    "why": "Checks identity on video, then hands him the floor"
+    "why": "Consent to third party"
    },
    {
     "who": "pt",
-    "text": "I’ll save you the trouble. I know you want me on blood thinners, and the answer’s no. My father was on warfarin and he bled to death. It was horrific. Isn’t it rat poison anyway? I’ll take an aspirin if you insist, and we’ll call it quits."
+    "text": "(Frank) Yes, fine. (Anna) Thanks for seeing us. Since Dad’s fall I want him off that blood thinner. If he bangs his head on that, it’ll kill him. I’ve read about it."
    },
    {
     "who": "dr",
-    "text": "Thank you for being so honest with me straight away. I’m not going to push you into anything today. What I would like is for you to make this decision with the full picture — because some things have changed since your father’s time. Could we spend a few minutes on that, and then it’s your call?",
+    "text": "Anna, I can hear how frightened you’ve been since the fall. Frank, I’d like to hear from you too. Can you tell me what happened?",
     "dom": "ro",
-    "why": "Sets a non-coercive agenda that respects his autonomy"
+    "why": "Acknowledges daughter; centres patient"
    },
    {
+    "phase": "History",
+    "clock": "1–5 min",
     "who": "pt",
-    "text": "Go on. But I’m not changing my mind."
-   },
-   {
-    "phase": "Data gathering",
-    "clock": "1–4 min",
-    "who": "dr",
-    "text": "Would you tell me what happened to your father?",
-    "dom": "ro",
-    "why": "Explores the trauma before any facts"
-   },
-   {
-    "who": "pt",
-    "text": "He was on warfarin. He started bleeding and they couldn’t stop it. I was there. I’ll never forget it."
+    "text": "(Frank) Got up for a wee at three in the morning, stood up, went light-headed and my legs went. Landed on my hip. Didn’t hit my head."
    },
    {
     "who": "dr",
-    "text": "I’m so sorry. Seeing that would stay with anyone, and it makes complete sense that the words ‘blood thinner’ bring it all back.",
-    "dom": "ro",
-    "why": "Validates the trauma without rushing past it"
-   },
-   {
-    "who": "pt",
-    "text": "(Quietly.) Yes. It does."
-   },
-   {
-    "who": "dr",
-    "text": "Can I ask a few things about you? Have you had any bleeding problems yourself — nosebleeds, blood in your water or motions, stomach ulcers?",
+    "text": "Did you black out, have chest pain or palpitations beforehand? How long were you on the floor, and how’s the hip now?",
     "dom": "dg",
-    "why": "Assesses bleeding history"
+    "why": "Falls history; cardiac red flags"
    },
    {
     "who": "pt",
-    "text": "Nothing like that."
+    "text": "(Frank) No blackout, nothing like that. Ten minutes. Bruised, but I’m walking fine."
    },
    {
     "who": "dr",
-    "text": "And how much do you drink in a week? Do you take any painkillers like ibuprofen, or anything from the chemist?",
+    "text": "Has anything changed with your tablets recently?",
     "dom": "dg",
-    "why": "Screens modifiable bleeding risk factors"
+    "why": "Medication review"
    },
    {
     "who": "pt",
-    "text": "Not much, and I don’t take ibuprofen or anything like that."
+    "text": "(Frank) The prostate doctor started a new one six weeks ago. Doxa-something. I’ve been dizzy when I stand since then, worse at night."
    },
    {
     "who": "dr",
-    "text": "Have you ever had a spell of weakness in your face, arm or leg, trouble speaking, or loss of vision?",
+    "text": "That’s really helpful. That tablet can drop blood pressure when you stand, especially at first. Are you taking anything from the chemist or supermarket, for pain or sleep?",
     "dom": "dg",
-    "why": "Screens for prior stroke or TIA, which would change the risk"
+    "why": "Over-the-counter medicines"
    },
    {
     "who": "pt",
-    "text": "No. I’m very well, doctor. I keep active and do everything for myself."
+    "text": "(Frank) Ibuprofen for my knees. Two or three a day, for a month."
+   },
+   {
+    "who": "dr",
+    "text": "And how much do you drink in a typical week?",
+    "dom": "dg",
+    "why": "Alcohol"
+   },
+   {
+    "who": "pt",
+    "text": "(Frank, pause) Three or four whiskies of an evening. Since Irena died. It helps me sleep. (Anna) Dad, I didn’t know."
+   },
+   {
+    "who": "dr",
+    "text": "I’m sorry about Irena. That’s a big loss. Thank you for being honest, Frank, it really helps me keep you safe.",
+    "dom": "ro",
+    "why": "Responds to grief; no blame"
    },
    {
     "phase": "Ideas, concerns and expectations",
-    "clock": "4–6 min",
+    "clock": "5–6 min",
     "who": "dr",
-    "text": "That independence sounds really important to you. When you picture the future, what matters most?",
+    "text": "Frank, what do you think about the blood thinner?",
     "dom": "ro",
-    "why": "Picks up the cue about independence"
+    "why": "Patient’s view"
    },
    {
     "who": "pt",
-    "text": "Not being a burden. Not ending up in a chair with someone feeding me. I’d rather go quick."
-   },
-   {
-    "who": "dr",
-    "text": "That helps me a lot, thank you. Can I share something that connects to exactly that?",
-    "dom": "ro",
-    "why": "Asks permission before offering information"
+    "text": "(Frank) I want to stay on it. My friend Stan had a stroke and lost his speech. I’d rather bleed than end up like Stan. It’s my decision."
    },
    {
     "phase": "Explanation",
     "clock": "6–9 min",
     "who": "dr",
-    "text": "With your heart rhythm, blood can pool and form a clot that travels to the brain and causes a stroke. Your age, blood pressure and diabetes put your risk in the group where the guidance recommends protection. And the thing you just described — being dependent — is one of the commonest results of that kind of stroke.",
-    "dom": "ro",
-    "why": "Explains stroke risk and links it to his own values"
+    "text": "Can I explain the balance to you both? Because of your age, blood pressure and the TIA, without a blood thinner around 4 or 5 in every 100 people like you would have a stroke each year. Apixaban cuts that by about two thirds. Serious bleeds are much less common than that, and the national guidance says we shouldn’t stop a blood thinner just because someone has fallen.",
+    "dom": "cm",
+    "why": "Risk numbers; NG196"
    },
    {
     "who": "pt",
-    "text": "So you’re saying I’d end up like that without it."
+    "text": "(Anna) But what about his head?"
    },
    {
     "who": "dr",
-    "text": "I’m saying the risk is real, not certain. Here’s the next important bit: aspirin doesn’t prevent these strokes. It still thins the blood enough to cause bleeding, but it doesn’t give the protection. So it would feel safe without actually being safe.",
-    "dom": "ro",
-    "why": "Corrects the aspirin misconception"
+    "text": "It’s a fair worry. Studies suggest someone would need to fall very many times a year before the bleeding risk outweighed the stroke protection. The things raising his bleeding risk most right now are the ibuprofen and the whisky, and those we can change.",
+    "dom": "cm",
+    "why": "Addresses fear; modifiable risks"
    },
    {
-    "who": "pt",
-    "text": "I didn’t know that. Everyone says aspirin thins the blood."
-   },
-   {
-    "who": "dr",
-    "text": "It’s a very common belief. And the tablet I’d suggest isn’t warfarin. It’s a newer type — no weekly blood tests, far fewer food and drug clashes, and a lower risk of bleeding into the brain than warfarin. It’s a genuinely different medicine from the one your father had.",
-    "dom": "dg",
-    "why": "Distinguishes DOACs from warfarin"
-   },
-   {
-    "who": "pt",
-    "text": "But it can still make you bleed."
-   },
-   {
-    "who": "dr",
-    "text": "Yes, it can, and I won’t pretend otherwise. For most people with your level of risk, the strokes it prevents outweigh the bleeds it causes. We can lower the bleeding risk further by keeping your blood pressure well controlled and avoiding ibuprofen-type painkillers.",
-    "dom": "dg",
-    "why": "Honest about bleeding risk and its modification"
-   },
-   {
-    "phase": "Shared decision",
+    "phase": "Plan",
     "clock": "9–11 min",
     "who": "dr",
-    "text": "There’s a NICE NG196 decision aid that shows these risks as pictures, with and without treatment. Would you like to take it home, perhaps talk it over with someone you trust, and come back to me?",
-    "dom": "ro",
-    "why": "Offers a decision aid and time rather than pressure"
+    "text": "So here’s my suggestion. Frank, stop the ibuprofen. I’ll suggest a gel for the knees and paracetamol instead. Let’s talk about cutting the whisky down, and I can put you in touch with bereavement support. I’ll check your apixaban dose against your kidney results and weight; it looks right but I’ll confirm. I’ll speak to the urologist about the doxazosin, and the nurse will check your blood pressure lying and standing. And I’ll refer you to the falls team for a full assessment.",
+    "dom": "cm",
+    "why": "Stops NSAID; alcohol; dose check; doxazosin; falls referral"
    },
    {
     "who": "pt",
-    "text": "(Pause.) I’ll look at it. I’m not promising."
-   },
-   {
-    "who": "dr",
-    "text": "That’s all I’d ask. Whatever you decide, I’ll respect it and keep looking after you. In the meantime please don’t start aspirin for this — it won’t protect you. I’d like to do some routine blood tests so we’re ready if you do decide to go ahead.",
-    "dom": "ro",
-    "why": "Respects autonomy, advises against aspirin, prepares baseline bloods"
-   },
-   {
-    "who": "pt",
-    "text": "Fine. Blood tests I can do."
+    "text": "(Frank) That sounds sensible. (Anna) Okay. I feel better that there’s a reason he fell."
    },
    {
     "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "One important thing: if you ever have sudden weakness in your face, arm or leg, slurred speech or loss of vision — even if it passes — ring 999 straight away. Can you tell me what you’re taking away from today?",
-    "dom": "cm",
-    "why": "FAST safety-net and teach-back"
+    "text": "Frank, can you tell me the plan?",
+    "dom": "ro",
+    "why": "Teach-back to patient"
    },
    {
     "who": "pt",
-    "text": "Aspirin doesn’t work for this. The new tablet isn’t warfarin. Read the leaflet. Stroke signs, 999."
+    "text": "(Frank) Keep the apixaban. No ibuprofen. Less whisky. Sit on the bed a minute before I stand at night. You’ll talk to the prostate doctor. Falls team."
    },
    {
     "who": "dr",
-    "text": "Exactly. Let’s book a follow-up in two weeks, once you’ve had the bloods and time to think. Is there anything else on your mind today?",
-    "dom": "ro",
-    "why": "Defined follow-up and shares the floor"
-   },
-   {
-    "who": "pt",
-    "text": "No. Thank you for not bullying me, doctor. I will read it."
+    "text": "Exactly. If you do hit your head, even if you feel fine, go to A&E the same day because of the blood thinner. And black or bloody stools, blood in your urine or vomit, or unusual bruising, contact us urgently.",
+    "dom": "cm",
+    "why": "Head injury and bleeding safety-net"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Let him state his refusal in full; responded to it rather than launching into a prepared explanation.",
-    "pts": 1, "dom": "dg"
+    "d": "Consent for Anna’s presence; acknowledged her fear; centred Frank’s account.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Explored his active, independent life and what he most wants to protect.",
-    "pts": 1, "dom": "dg"
+    "d": "Widowed last year, alcohol to sleep, Anna’s worry and distance, friend Stan’s stroke.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up the father’s death and “I’d rather go quick” / not being a burden, and explored both.",
-    "pts": 1, "dom": "ro"
+    "d": "Light-headed on standing; “helps me sleep”; knee pain; Anna speaking for Frank.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (blood thinners are rat poison; aspirin will do); concern (bleeding to death like his father); expectation (aspirin and no more discussion).",
-    "pts": 2, "dom": "ro"
+    "d": "Anna: falls plus thinner means a brain bleed, stop it. Frank: fears stroke like Stan, keep it, but stop falling.",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
-    "t": "Plans appropriate examination and tests",
-    "d": "Bleeding history, alcohol, NSAID use, prior stroke/TIA symptoms; baseline FBC, renal and liver function; ORBIT once results are back.",
-    "pts": 1, "dom": "dg"
+    "t": "Plans appropriate examination & tests",
+    "d": "Lying and standing BP; renal function, weight and Hb for dose check; falls assessment.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
-    "t": "Generates and tests hypotheses",
-    "d": "Weighed stroke versus bleeding risk; considered modifiable bleeding factors and prior TIA.",
-    "pts": 1, "dom": "dg"
+    "t": "Generates & tests hypotheses",
+    "d": "Orthostatic hypotension from doxazosin with nocturia and alcohol versus arrhythmia or syncope.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Screened for previous stroke or TIA and gave FAST 999 advice.",
-    "pts": 2, "dom": "dg"
+    "d": "Head injury, loss of consciousness, cardiac symptoms; bleeding symptoms; anaemia.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "CHA₂DS₂-VASc 3 explained as a stroke risk in the treatment range, in plain words.",
-    "pts": 2, "dom": "dg"
+    "d": "Medication-related postural fall in a man who should continue anticoagulation, with modifiable bleeding risks.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Offered a DOAC per NICE NG196; corrected the aspirin myth; decision aid; respected his right to decline.",
-    "pts": 2, "dom": "cm"
+    "d": "Continue apixaban (NG196) with dose check per the SPC; stop ibuprofen; alcohol reduction; doxazosin review; falls referral (NG249).",
+    "pts": 3,
+    "dom": "cm"
    },
    {
-    "t": "Manages comorbidity and contributors",
-    "d": "BP control and avoiding NSAIDs to lower bleeding risk; did not withhold on age or falls grounds.",
-    "pts": 1, "dom": "cm"
+    "t": "Manages comorbidity & contributors",
+    "d": "Knee pain alternatives; nocturia; bereavement support; Anna’s involvement as Frank wishes.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Teach-back, FAST safety-net, follow-up in two weeks, and the door left open.",
-    "pts": 1, "dom": "cm"
+    "d": "Same-day A&E after any head injury; bleeding symptoms; review after BP and urology input; teach-back.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
-    "Long-term conditions & cancer",
     "Older adults",
+    "Long-term conditions & cancer",
     "Professional & ethical dilemmas"
    ],
    "stem": {
     "name": "Frank Ostrowski",
-    "age": "74 years · male",
+    "age": "82 years · male",
     "pmh": [
-     "Atrial fibrillation (new)",
+     "Atrial fibrillation",
      "Hypertension",
-     "Diabetes"
+     "TIA (2021)",
+     "Benign prostatic enlargement"
     ],
     "meds": [
-     "Antihypertensive and diabetes treatment (repeat list)",
-     "No anticoagulant"
+     "Apixaban",
+     "Ramipril",
+     "Atorvastatin",
+     "Doxazosin (started 6 weeks ago by urology)"
     ],
-    "allergy": "NKDA recorded",
-    "recent": "⚠ New AF. CHA₂DS₂-VASc high (age, hypertension, diabetes). Anticoagulation not yet started.",
-    "reason": "Video appointment. “I’m not going on blood thinners.”"
+    "allergy": "None recorded",
+    "recent": "A&E two weeks ago after a fall at home: hip X-ray normal, discharged. eGFR 52, creatinine 118 µmol/L, Hb 128 g/L. Weight 64 kg. Nurse BP (sitting) 132/74. Bereaved last year.",
+    "reason": "Daughter requested an appointment “to discuss Dad’s blood thinner after his fall”."
    },
    "timeMap": [
     {
      "t": "0–1",
-     "h": "Open and hear the no",
-     "d": "He refuses in the first breath. Thank him and promise it will be his decision — that buys you the next ten minutes."
+     "h": "Open",
+     "d": "Consent for Anna; acknowledge her fear; turn to Frank."
     },
     {
-     "t": "1–4",
-     "h": "Father, bleeding risks",
-     "d": "Ask what happened to his father and stay with it. Then bleeding history, alcohol, NSAIDs, stroke or TIA symptoms."
+     "t": "1–5",
+     "h": "Fall and medicines",
+     "d": "Circumstances, head injury, prodrome; doxazosin; ibuprofen; alcohol; grief."
     },
     {
-     "t": "4–6",
-     "h": "What he values",
-     "d": "Independence and not being a burden. This is the bridge to the stroke explanation."
+     "t": "5–6",
+     "h": "Frank’s view",
+     "d": "Stan’s stroke; it’s his decision."
     },
     {
      "t": "6–9",
-     "h": "Three facts",
-     "d": "Stroke risk linked to dependency; aspirin does not protect; a DOAC is not warfarin. Be honest about bleeding."
+     "h": "Numbers",
+     "d": "Stroke versus bleeding risk; NG196 on falls; modifiable risks."
     },
     {
      "t": "9–12",
-     "h": "Decide together, safety-net",
-     "d": "Decision aid, time to think, baseline bloods, no aspirin. FAST 999. Review in two weeks."
+     "h": "Plan and close",
+     "d": "Stop NSAID; alcohol; dose check; urology; lying and standing BP; falls team; teach-back; head injury safety-net."
     }
    ],
    "wordPics": {
-    "fail": "Argues for anticoagulation with statistics while ignoring his father’s death; or accepts aspirin as a compromise; presents warfarin as the option; uses guilt or fear; or documents refusal after a 30-second discussion.",
-    "pass": "Acknowledges his father’s death; explains stroke risk; corrects the aspirin belief; explains DOACs differ from warfarin; respects his decision and arranges follow-up.",
-    "exc": "All of the above, plus: links stroke to the dependency he fears, in his own words; checks modifiable bleeding factors and plans baseline bloods; offers the NICE NG196 decision aid and time; FAST safety-net and teach-back; he leaves feeling respected and willing to reconsider."
+    "fail": "Stops apixaban because of the fall at the daughter’s request, or dismisses her; never asks about new medicines, NSAIDs or alcohol; talks to Anna rather than Frank.",
+    "pass": "Keeps Frank at the centre, explains why falls alone are not a reason to stop, finds the doxazosin and ibuprofen, and plans a falls assessment.",
+    "exc": "All of the above, plus: clear risk numbers; uncovers alcohol and grief sensitively; checks the DOAC dose against the SPC criteria; liaises with urology; involves Anna constructively; robust head injury and bleeding safety-net."
    },
    "avoid": [
     {
-     "dont": "\"If you don’t take it, you will have a stroke.\"",
-     "instead": "\"The risk is real, not certain. I want you to decide knowing what it is.\"",
-     "why": "Coercion and overstatement breach shared decision-making and lose his trust."
+     "dont": "“Your daughter’s right, let’s stop it to be safe.”",
+     "instead": "“Falls alone aren’t a reason to stop. Let’s find out why he fell and lower the bleeding risk.”",
+     "why": "NG196 advises against withholding anticoagulation solely because of falls risk."
     },
     {
-     "dont": "\"Okay, an aspirin is better than nothing.\"",
-     "instead": "\"Aspirin doesn’t prevent these strokes, but it still carries a bleeding risk — so it would feel safe without being safe.\"",
-     "why": "NICE NG196 advises against aspirin monotherapy for stroke prevention in AF; agreeing to it is a Tasks fail."
+     "dont": "(Talking only to Anna)",
+     "instead": "“Frank, what do you think about the blood thinner?”",
+     "why": "A capacitous patient decides."
     },
     {
-     "dont": "\"Warfarin is much safer now.\"",
-     "instead": "\"What I’d suggest isn’t warfarin. It’s a newer type with no weekly blood tests and less risk of bleeding into the brain.\"",
-     "why": "A DOAC is what NICE NG196 recommends, and naming the difference speaks directly to his fear."
+     "dont": "(No medicine review)",
+     "instead": "“Has anything changed with your tablets? Anything from the chemist?”",
+     "why": "Doxazosin and ibuprofen are the key modifiable factors."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Independence",
-     "t": "An active man who does everything for himself fears dependency more than death. Use that value, respectfully, to frame the stroke risk."
+     "h": "Adult children’s fear",
+     "t": "After a parent’s fall, relatives often want to remove risk. Explaining numbers and acting on causes usually reassures them."
     },
     {
-     "h": "Family memory",
-     "t": "Watching his father bleed to death is a traumatic memory, not a misunderstanding to correct. Acknowledge it before giving facts."
+     "h": "Bereavement in older men",
+     "t": "Isolation, poor sleep and alcohol use are common after losing a spouse."
     }
    ],
    "legal": [
     {
-     "h": "Informed consent",
-     "t": "Montgomery (2015): patients must be told of material risks and reasonable alternatives. A capacitous adult may refuse treatment even if the doctor disagrees; record the information given and his decision."
+     "h": "Capacity and consent",
+     "t": "An adult with capacity makes his own treatment decisions; relatives can be involved with his agreement (Mental Capacity Act 2005; GMC Decision making and consent)."
+    },
+    {
+     "h": "Shared prescribing",
+     "t": "When another specialist started the drug causing harm, communicate with them about changes."
     }
    ],
    "professional": [
     {
-     "h": "Shared decision-making",
-     "t": "GMC Decision making and consent (2020): find out what matters to the patient, share balanced information, and support his decision. Use the NICE NG196 decision aid."
+     "h": "Risk communication",
+     "t": "Use natural frequencies (per 100 people per year) for both benefit and harm."
     },
     {
-     "h": "Revisiting the decision",
-     "t": "A refusal is not final. Offer review at follow-up and whenever his circumstances or risks change, without pressure."
+     "h": "Three-way consultations",
+     "t": "Acknowledge the relative, then centre the patient; check consent to share information."
     }
    ],
    "community": [
     {
-     "h": "Resources",
-     "t": "NICE NG196 patient decision aid; Arrhythmia Alliance and the Stroke Association for patient information."
+     "h": "Falls services",
+     "t": "Community falls teams provide multifactorial assessment, strength and balance training and home hazard checks."
+    },
+    {
+     "h": "Bereavement support",
+     "t": "Local bereavement services and charities; befriending for isolated older people."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Previous stroke or TIA symptoms — raise stroke risk and urgency",
-     "Current bleeding, anaemia or previous major bleed — affect the bleeding balance",
-     "Palpitations with chest pain, breathlessness or dizziness — would need same-day assessment"
+     "Head injury on an anticoagulant: same-day CT assessment (A&E)",
+     "Syncope with palpitations, chest pain or exertional onset: cardiac cause",
+     "Melaena, haematuria, haematemesis, falling Hb: bleeding on anticoagulation"
     ],
     "psychosocial": [
-     "Witnessed his father bleed to death on warfarin",
-     "Active and independent; fears being a burden",
-     "Belief that warfarin is “rat poison” and aspirin is a safe middle ground"
+     "Widowed last year",
+     "Alcohol to sleep",
+     "Daughter’s fear",
+     "Friend’s disabling stroke"
     ],
     "ice": [
-     "Idea: blood thinners are dangerous; aspirin thins the blood enough",
-     "Concern: bleeding to death like his father; losing his independence",
-     "Expectation: to refuse anticoagulation and take aspirin instead"
+     "Anna: stop it, a fall plus a thinner means a brain bleed",
+     "Frank: keep it, fear of stroke",
+     "Both: stop the falls"
     ]
    },
-   "diagnosis": "Be clear about the risk: “Your heart rhythm, with your age, blood pressure and diabetes, puts you in the group where a stroke is a real risk and protection is recommended.”",
-   "diagnosisLay": "“With this rhythm the top of the heart quivers instead of squeezing, so blood can sit still in one corner and form a small clot. If that clot travels to the brain, it causes a stroke. The tablet stops those clots forming.”",
+   "diagnosis": "“The fall was most likely your blood pressure dropping when you stood up, from the new prostate tablet, with the night-time trips and the evening whisky adding to it. The blood thinner is still doing an important job.”",
+   "diagnosisLay": "“The prostate tablet relaxes blood vessels, so when you stand quickly the blood pools in your legs for a moment and your head goes light.”",
    "management": {
-    "reflectIce": "“What happened to your father would put anyone off. And you’ve told me the thing you fear most is being dependent — that’s exactly what a stroke can take away.”",
-    "psychosocial": "Treat the refusal as fear to understand, not defiance to overcome; give time, the decision aid and the option to involve someone he trusts.",
+    "reflectIce": "“Anna, you’re worried about a bleed; Frank, you’re worried about a stroke. Keeping the blood thinner but removing the things that raise bleeding and falls risk addresses both.”",
+    "psychosocial": "Bereavement support; alcohol brief intervention; Anna involved as Frank wishes.",
     "sharedPlan": [
-     "Offer a DOAC (NICE NG196); correct the aspirin belief; explain DOAC versus warfarin",
-     "Baseline FBC, renal and liver function; ORBIT bleeding score; address BP, alcohol and NSAID use",
-     "NICE NG196 decision aid, time to decide, and a follow-up in two weeks"
+     "Continue apixaban; dose checked against SPC criteria (age, weight, creatinine); renal monitoring",
+     "Stop ibuprofen; topical NSAID or paracetamol for knees as appropriate",
+     "Reduce alcohol; bereavement support",
+     "Discuss doxazosin with urology; lying and standing BP; sit before standing at night",
+     "Multifactorial falls assessment (NG249)"
     ],
     "safetyNet": [
-     "Face, arm or leg weakness, speech or vision change — 999 even if it passes",
-     "Door open to revisit the decision at any time"
+     "Any head injury: A&E the same day",
+     "Black stools, blood in urine or vomit, unusual bruising: urgent contact",
+     "Further dizziness or falls: review sooner"
     ]
    }
   },
   "links": [
    {
-    "ic": "📋",
-    "t": "Atrial fibrillation",
-    "s": "Case walkthrough · NICE NG196",
-    "href": "../cases/atrial-fibrillation.html"
-   },
-   {
     "ic": "💠",
-    "t": "Atrial fibrillation protocol",
-    "s": "CHA₂DS₂-VASc · ORBIT · DOAC choice",
+    "t": "Atrial fibrillation",
+    "s": "Stroke and bleeding risk",
     "href": "management/atrial-fibrillation.html"
    },
    {
     "ic": "💠",
     "t": "Antiplatelets and anticoagulants",
-    "s": "DOAC dosing · monitoring",
+    "s": "DOAC dosing and interactions",
     "href": "management/antiplatelets-anticoagulants.html"
    },
    {
-    "ic": "🧮",
-    "t": "CHA₂DS₂-VASc",
-    "s": "Medical Calculators",
-    "href": "calculators.html"
+    "ic": "🗺️",
+    "t": "Falls",
+    "s": "Visual algorithm",
+    "href": "algorithms/falls.html"
+   },
+   {
+    "ic": "💠",
+    "t": "Frailty medication review",
+    "s": "Medicines that cause falls",
+    "href": "management/frailty-medication-review.html"
    }
   ],
   "pitfalls": {
-   "intro": "This station tests shared decision-making under emotional pressure. Candidates who know NICE NG196 still fail by arguing, by conceding to aspirin, or by recording a refusal that was never truly informed.",
+   "intro": "The decision to continue anticoagulation is usually clear. The marks are in keeping the patient at the centre, finding why he fell and reducing bleeding risk where it really comes from.",
    "items": [
     {
-     "dom": "ro",
-     "fail": "Moving straight to stroke statistics after “my father bled to death”.",
-     "why": "“Does not respond to the patient’s cues.” Facts cannot land until the trauma has been heard.",
-     "fix": "“Would you tell me what happened to him?” Stay with it, then ask permission to share information."
-    },
-    {
      "dom": "cm",
-     "fail": "Agreeing to aspirin as a compromise.",
-     "why": "NICE NG196 advises against aspirin monotherapy for stroke prevention in AF. It gives false reassurance and still causes bleeding.",
-     "fix": "Correct it clearly and kindly, and advise him not to start it for this."
-    },
-    {
-     "dom": "dg",
-     "fail": "Talking about “blood thinners” without explaining DOACs are different from warfarin.",
-     "why": "His fear is warfarin-specific. Missing the difference misses the most useful fact.",
-     "fix": "No weekly blood tests, fewer interactions, lower risk of brain bleeding than warfarin."
-    },
-    {
-     "dom": "dg",
-     "fail": "Accepting his refusal because of his age.",
-     "why": "NICE NG196: do not withhold anticoagulation solely because of age or falls risk.",
-     "fix": "Assess bleeding risk with ORBIT and modify what can be modified."
+     "fail": "Stopping the DOAC because of the fall.",
+     "why": "NG196: not solely for falls risk; stroke risk is high.",
+     "fix": "Explain numbers and continue, addressing modifiable risks."
     },
     {
      "dom": "ro",
-     "fail": "Using fear or pressure — “you’ll end up in a wheelchair”.",
-     "why": "Coercion undermines consent (GMC 2020) and loses the trust you need for him to reconsider.",
-     "fix": "Link stroke to his own words about independence, then hand the decision back with a decision aid."
+     "fail": "Letting the daughter decide.",
+     "why": "Frank has capacity.",
+     "fix": "Ask Frank directly; involve Anna as he wishes."
+    },
+    {
+     "dom": "dg",
+     "fail": "No falls history or medicine review.",
+     "why": "Doxazosin, nocturia and alcohol explain the fall.",
+     "fix": "Ask about new and over-the-counter medicines and drinking."
     },
     {
      "dom": "cm",
-     "fail": "Closing with “it’s your choice then” and no follow-up.",
-     "why": "An uninformed refusal documented without a plan is unsafe and scores poorly on management.",
-     "fix": "Decision aid, bloods, FAST safety-net and a booked review in two weeks."
+     "fail": "Missing the ibuprofen.",
+     "why": "NSAIDs with a DOAC substantially raise bleeding risk.",
+     "fix": "Stop it and offer alternatives."
+    },
+    {
+     "dom": "cm",
+     "fail": "Not checking the DOAC dose.",
+     "why": "Age, weight and renal function determine the correct dose.",
+     "fix": "Check against the SPC criteria."
+    },
+    {
+     "dom": "cm",
+     "fail": "No head-injury safety-net.",
+     "why": "Anticoagulated head injury needs same-day assessment.",
+     "fix": "A&E for any head injury."
     }
    ]
   }
@@ -4399,265 +4392,274 @@
  },
  "hypercalcaemia-workup": {
   "stem": {
-   "name": "Carol Lindqvist",
-   "age": "58-year-old woman",
+   "name": "Desmond Okoro",
+   "age": "64 years · male",
    "pmh": [
-    "Hypertension"
+    "Hypertension",
+    "Renal colic two years ago (A&E attendance; stone passed)"
    ],
    "meds": [
-    "Thiazide diuretic for blood pressure"
+    "Bendroflumethiazide",
+    "Amlodipine"
    ],
-   "allergy": "No known drug allergies",
-   "recent": "Bloods for tiredness and aches: adjusted calcium 2.78 mmol/L (upper limit about 2.60), confirmed on repeat. PTH not yet measured.",
-   "reason": "Video consultation to discuss her raised calcium."
+   "allergy": "None recorded",
+   "recent": "Adjusted calcium 2.86 mmol/L, repeat 2.88 mmol/L. PTH 9.8 pmol/L (ref 1.6–6.9). 25-OH vitamin D 38 nmol/L. eGFR 72. Phosphate low-normal. FBC and LFTs normal.",
+   "reason": "Telephone appointment booked by the practice to discuss results."
   },
   "knowledge": {
-   "guideline": "NICE NG132 (primary hyperparathyroidism, 2019) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · Society for Endocrinology acute hypercalcaemia guidance (2016) · BNF",
-   "summary": "A mild, confirmed raised calcium in a well woman is most often primary hyperparathyroidism. PTH is the next test; find self-bought supplements and review the thiazide.",
+   "guideline": "[1] NICE NG132 Hyperparathyroidism (primary): diagnosis, assessment and initial management (2019) · [2] NICE NG136 Hypertension in adults: diagnosis and management (2019, updated 2023) · [3] NICE CKS Hypercalcaemia (check current version) · [4] NICE NG222 Depression in adults: treatment and management (2022) · [5] Product SPCs for bendroflumethiazide and vitamin D preparations · [6] GMC Decision making and consent (2020)",
+   "summary": "Two raised calcium results with a raised PTH: primary hyperparathyroidism, with a previous kidney stone and calcium above 2.85 mmol/L, so NICE NG132 recommends referral to a parathyroid surgery specialist. He is on a thiazide and vitamin D insufficient. He refuses surgery because his wife died after a ‘routine’ operation. Explain, change the medicines, replace vitamin D, explore the fear, agree to hear the specialist’s options, check mood and safety-net.",
    "points": [
     {
-     "h": "PTH is the pivotal test",
-     "t": "NICE NG132: when a raised albumin-adjusted calcium is confirmed on repeat (hers is 2.78 mmol/L twice), measure PTH with a same-time adjusted calcium. Do not rule out primary hyperparathyroidism because the PTH sits within the reference range."
+     "h": "Diagnosis",
+     "t": "Raised albumin-adjusted calcium on two occasions with raised or inappropriately normal PTH. Do not exclude PHPT if PTH is in the upper half of the reference range [1]."
     },
     {
-     "h": "Reading the PTH",
-     "t": "A raised or inappropriately normal PTH with high calcium = primary hyperparathyroidism. A suppressed PTH means a PTH-independent cause — malignancy (including myeloma), vitamin D excess, granulomatous disease — and needs further work-up."
+     "h": "Symptoms",
+     "t": "Often few. Tiredness, thirst, polyuria, constipation, aches, low mood and poor concentration; renal stones; fragility fractures."
     },
     {
-     "h": "Drugs and supplements",
-     "t": "Thiazide diuretics can raise calcium, and so can excess vitamin D and calcium supplements (BNF). Ask specifically about self-bought products. Stop the supplements, review the thiazide, and recheck."
+     "h": "Referral criteria (NG132)",
+     "t": "Refer to a specialist with expertise in parathyroid surgery if symptoms, end-organ disease (renal stones, fragility fractures, osteoporosis) or adjusted calcium of 2.85 mmol/L or above [1]."
     },
     {
-     "h": "Severity",
-     "t": "Society for Endocrinology (2016): under 3.0 mmol/L is often asymptomatic and doesn’t usually need urgent correction; 3.0–3.5 usually needs prompt treatment; over 3.5 needs urgent correction. Symptomatic hypercalcaemia (vomiting, confusion, dehydration) needs same-day assessment whatever the level."
+     "h": "What the specialist does",
+     "t": "Excludes familial hypocalciuric hypercalcaemia (urine calcium), localising imaging, bone density, renal imaging, and discusses parathyroidectomy versus monitoring or medical treatment such as cinacalcet if surgery is declined or unsuitable [1]."
     },
     {
-     "h": "When to refer",
-     "t": "NICE NG132: refer confirmed primary hyperparathyroidism to a surgeon with expertise in parathyroid surgery if there are symptoms (such as thirst, frequent urination or constipation), end-organ disease (renal stones, fragility fractures, osteoporosis), or adjusted calcium of 2.85 mmol/L or above; consider referral for others. Her thirst and constipation may meet this."
+     "h": "Medicines",
+     "t": "Thiazides reduce urinary calcium excretion and can raise calcium; switch to an alternative antihypertensive in line with NG136 [2]. Ask about lithium and calcium or vitamin D supplements."
     },
     {
-     "h": "Myeloma",
-     "t": "NICE NG12 includes very urgent myeloma testing for people aged 60 and over with hypercalcaemia and a presentation consistent with myeloma. At 58 she falls below that age, so use clinical judgement; a suppressed PTH is the main trigger for a myeloma screen here."
+     "h": "Vitamin D and diet",
+     "t": "Measure vitamin D and replace deficiency (check the SPC/local formulary). Do not restrict dietary calcium. Encourage good fluid intake [1]."
+    },
+    {
+     "h": "Severe hypercalcaemia",
+     "t": "Vomiting, confusion, drowsiness, abdominal pain, dehydration or very high calcium need same-day hospital assessment [3]."
+    },
+    {
+     "h": "Consent and autonomy",
+     "t": "A capacitous patient can decline surgery. Give balanced information and support his decision; seeing the specialist does not commit him [6]."
     }
    ]
   },
   "model": [
    {
-    "phase": "Opening and agenda",
+    "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello Mrs Lindqvist, I’m Dr Lee. Thanks for joining. I’ve seen your calcium result. Before I explain it, tell me how you’ve been and what’s on your mind.",
+    "text": "Hello, is that Mr Okoro? I’m Dr Clarke from the surgery. Could you confirm your date of birth? Is now a good time, and are you somewhere private?",
     "dom": "ro",
-    "why": "Open question; patient’s agenda first"
+    "why": "Telephone identity and privacy"
    },
    {
     "who": "pt",
-    "text": "I’m really worried. My friend says high calcium means cancer — that it’s often the first sign. I’ve been sick with worry. I feel mostly okay, a bit tired and achy, but I can’t stop thinking the worst. Is she right? Have I got cancer?"
+    "text": "Yes, it’s me, I’m on my own. Another phone call about my bloods. Just tell me straight, doctor. And before you start, I’m not having an operation, whatever it is."
    },
    {
     "who": "dr",
-    "text": "I can see how frightened you are, and I’m glad you came rather than sitting with it. I’ll answer that question directly. Can I ask a few things first, so my answer is based on you and not a general rule? Then we’ll agree a plan.",
+    "text": "I will be straight with you. I also heard what you said about an operation, and I’d like to come back to that. First, what have you been told about these tests so far?",
     "dom": "ro",
-    "why": "Commits to answering the question and sets the structure"
+    "why": "Acknowledges cue; checks prior knowledge"
    },
    {
     "who": "pt",
-    "text": "Yes. Okay."
+    "text": "Just that the calcium was up and they wanted another one."
    },
    {
-    "phase": "Data gathering",
-    "clock": "1–5 min",
+    "phase": "Results and history",
+    "clock": "1–4 min",
     "who": "dr",
-    "text": "You mentioned tiredness and aches. Have you had any thirst, passing more urine, tummy pain, constipation or feeling muddled?",
+    "text": "That’s right. Your calcium is slightly high on both tests, and the hormone that controls calcium, called PTH, is high too. That usually means one of four tiny glands in your neck, the parathyroid glands, has become overactive. It’s common, and it isn’t cancer.",
     "dom": "dg",
-    "why": "Screens symptoms of hypercalcaemia"
+    "why": "Plain explanation of result"
    },
    {
     "who": "pt",
-    "text": "A bit thirsty, and constipated now and then. Nothing major."
+    "text": "Well, that’s something."
    },
    {
     "who": "dr",
-    "text": "Any kidney-stone-type pain in your back or side, bone pain that wakes you, broken bones, or weight loss?",
+    "text": "Have you been feeling thirsty, weeing more, constipated, achy, or foggy in your thinking?",
     "dom": "dg",
-    "why": "End-organ effects and malignancy red flags"
+    "why": "Symptoms of hypercalcaemia"
    },
    {
     "who": "pt",
-    "text": "No, none of that."
+    "text": "All of that, now you say it. I thought it was grief. I’ve been worried I’m going senile, to be honest."
    },
    {
     "who": "dr",
-    "text": "That’s helpful. Now, I know you take a water tablet for your blood pressure. Do you take anything else — including supplements or vitamins you buy yourself?",
+    "text": "Raised calcium can cause exactly that fogginess, and it can improve when the calcium is treated. Any vomiting, confusion, bad tummy pain? Have you had kidney stones or broken bones?",
     "dom": "dg",
-    "why": "Full medication history including self-bought products"
+    "why": "Severe features; end-organ disease"
    },
    {
     "who": "pt",
-    "text": "Oh — I take vitamin D and calcium. High-dose ones I bought myself. I didn’t think they counted."
+    "text": "No sickness. I had a kidney stone two years ago. Agony. They never said anything about calcium."
    },
    {
     "who": "dr",
-    "text": "They really do count, and I’m glad you said. Both those supplements and the water tablet can push calcium up. That doesn’t mean you’ve done anything wrong — it’s a very useful clue.",
-    "dom": "ro",
-    "why": "Non-judgemental response that reframes the disclosure as helpful"
-   },
-   {
-    "phase": "Ideas, concerns and expectations",
-    "clock": "5–6 min",
-    "who": "dr",
-    "text": "You said your friend’s words have really stuck. Is there something that makes the word cancer especially frightening for you?",
-    "dom": "ro",
-    "why": "Explores why the fear is so strong"
-   },
-   {
-    "who": "pt",
-    "text": "My mum died of cancer. So when she said it, I just thought — that’s it, it’s my turn."
-   },
-   {
-    "who": "dr",
-    "text": "I’m sorry about your mum. No wonder this hit so hard. What were you hoping to get from today?",
-    "dom": "ro",
-    "why": "Empathy, then expectations"
-   },
-   {
-    "who": "pt",
-    "text": "A yes or no. Have I got cancer or not."
-   },
-   {
-    "phase": "Explanation",
-    "clock": "6–9 min",
-    "who": "dr",
-    "text": "I’ll be honest and calm with you. High calcium has several causes, and cancer is one — but your friend’s rule isn’t right. In someone who is well, with a mildly raised level and no cancer history, the commonest cause by far is an overactive parathyroid gland: tiny glands in the neck. It’s benign and very treatable.",
+    "text": "Which tablets do you take? Any calcium or vitamin D, indigestion remedies, or lithium?",
     "dom": "dg",
-    "why": "Honest, proportionate answer to the cancer question"
+    "why": "Drug review"
    },
    {
     "who": "pt",
-    "text": "So it’s not cancer?"
+    "text": "Just my two blood pressure tablets. Bendro-something and amlodipine."
+   },
+   {
+    "phase": "The refusal",
+    "clock": "4–7 min",
+    "who": "dr",
+    "text": "Thank you. Can I ask what’s behind saying no to an operation before I’d mentioned one?",
+    "dom": "ro",
+    "why": "Explores the pre-emptive refusal"
+   },
+   {
+    "who": "pt",
+    "text": "(pause) My wife, Grace. Three years ago. A routine bowel operation, they said. She got an infection and died a week later. I watched her die. I’m not going through that."
    },
    {
     "who": "dr",
-    "text": "I won’t give you a verdict without the facts, any more than your friend should have. What I can say is the odds are strongly in your favour, and one blood test — the parathyroid hormone, PTH — will point us the right way. If it’s high, or normal when it should be low, that’s the gland. If it’s low, we look further.",
+    "text": "I’m so sorry. After that, the word ‘operation’ must feel terrifying. I want to be clear: nobody will make you have one. It’s your decision.",
+    "dom": "ro",
+    "why": "Empathy; autonomy"
+   },
+   {
+    "who": "pt",
+    "text": "Thank you. Nobody’s said that."
+   },
+   {
+    "who": "dr",
+    "text": "How have you been in yourself since Grace died? Your mood, sleep, whether you’ve had thoughts of not wanting to go on?",
+    "dom": "dg",
+    "why": "Mood and risk screen"
+   },
+   {
+    "who": "pt",
+    "text": "Lonely. Low. I see my daughter at weekends. I’d never do anything, Grace wouldn’t want that."
+   },
+   {
+    "phase": "Plan",
+    "clock": "7–11 min",
+    "who": "dr",
+    "text": "Here’s what I’d suggest. Because your calcium is above a certain level and you’ve had a kidney stone, the national guidance says you should see a specialist in these glands. Seeing them doesn’t commit you to anything. They’ll do more tests and explain the choices, including not operating and keeping an eye on it, or tablets in some cases.",
     "dom": "cm",
-    "why": "Avoids false reassurance; explains PTH logic"
+    "why": "NG132 referral criteria; options"
    },
    {
     "who": "pt",
-    "text": "That makes me feel a lot better, actually."
+    "text": "Just to listen?"
    },
    {
     "who": "dr",
-    "text": "Your level is mildly raised — not the kind of level that needs emergency treatment. That’s why we can work this out properly as an outpatient.",
+    "text": "Just to listen. If you wanted to know, the operation is usually through a small cut in the neck, often with a short hospital stay, and it’s very different from bowel surgery. But that’s for you and them to talk through.",
     "dom": "cm",
-    "why": "Places severity in context"
+    "why": "Honest information without pressure"
    },
    {
-    "phase": "Shared management",
-    "clock": "9–11 min",
     "who": "dr",
-    "text": "Here’s the plan I’d suggest. Stop the vitamin D and calcium supplements from today. I’ll arrange blood tests for PTH, kidney function, vitamin D, phosphate and a bone test called ALP, with another calcium — in the next day or two, because of the thirst, so I can check your kidneys are happy. Keep drinking plenty of water meanwhile. What do you think?",
-    "dom": "dg",
-    "why": "Stops contributors and orders a prompt PTH-led work-up, with kidney function because of the thirst"
+    "text": "There are things we can do now. Bendroflumethiazide can push calcium up, so I’ll stop it and start a different blood pressure tablet, and ask the nurse to check your pressure in two weeks. Your vitamin D is low, so I’ll prescribe a supplement. Drink plenty of water through the day, not just tea, and don’t cut out calcium in your food.",
+    "dom": "cm",
+    "why": "Thiazide switch; vitamin D; fluids; no dietary restriction"
+   },
+   {
+    "who": "dr",
+    "text": "And with how low you’ve been, would you like some support? There’s bereavement counselling locally, and I’d like to see how you’re doing once the calcium is sorted.",
+    "dom": "cm",
+    "why": "Mood support"
    },
    {
     "who": "pt",
-    "text": "Fine. What about the water tablet?"
-   },
-   {
-    "who": "dr",
-    "text": "Good question. It can raise calcium too, so I’d like to review it. I don’t want your blood pressure to go up, so let’s look at a different tablet together once the bloods are back, and recheck your blood pressure then.",
-    "dom": "cm",
-    "why": "Reviews the thiazide safely rather than stopping without a plan"
-   },
-   {
-    "who": "pt",
-    "text": "And if it is the gland?"
-   },
-   {
-    "who": "dr",
-    "text": "Then I’d refer you to a specialist to talk about an operation, which usually cures it. The thirst and constipation you mentioned are part of the reason to refer. They’ll probably check your bones and kidneys too.",
-    "dom": "cm",
-    "why": "Knows the NG132 referral criteria"
+    "text": "I might. Yes."
    },
    {
     "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "If before the results you become very thirsty and pass lots of urine, start vomiting, feel confused or get severe tummy pain, contact us the same day or go to A&E if we’re closed. Could you tell me what we’ve agreed?",
-    "dom": "cm",
-    "why": "Specific safety-net for severe hypercalcaemia and teach-back"
+    "text": "Could you tell me what you’ll do from today?",
+    "dom": "ro",
+    "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "Stop the supplements, bloods including PTH, review the water tablet, and ring if I’m very thirsty, sick or muddled."
+    "text": "Stop the bendro, start the new one. Vitamin D. Drink water. See the specialist just to hear them out. Bloods again."
    },
    {
     "who": "dr",
-    "text": "Exactly. I’ll see you when the results are in — about a week. You came in braced for the worst; the most likely answer is common, benign and fixable. Anything else?",
-    "dom": "ro",
-    "why": "Summarises and closes on a balanced message"
-   },
-   {
-    "who": "pt",
-    "text": "No. Thank you — I think I’ll sleep tonight."
+    "text": "Exactly. Repeat bloods in about four weeks. If you start vomiting, become confused or very drowsy, get bad tummy or loin pain, or can’t keep fluids down, call 111 or go to A&E the same day.",
+    "dom": "cm",
+    "why": "Safety-net for severe hypercalcaemia"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Open question; let her voice the friend’s claim and the fear before explaining.",
-    "pts": 1, "dom": "dg"
+    "d": "Identity and privacy; checked what he already knew; acknowledged the refusal and returned to it.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Her mother’s death from cancer; poor sleep with worry; supplements bought without advice.",
-    "pts": 1, "dom": "dg"
+    "d": "Widowed, lives alone, grief, daughter at weekends, the meaning of surgery.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up “I can’t stop thinking the worst” and explored the reason (her mother).",
-    "pts": 1, "dom": "ro"
+    "d": "Pre-emptive refusal of surgery; ‘foggy’ and fear of dementia; kidney stone.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (high calcium means cancer); concern (her mother’s death, “it’s my turn”); expectation (a yes or no on cancer).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (age or grief), concerns (surgery after Grace’s death; dementia), expectation (a tablet and no operation).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
-    "t": "Plans appropriate examination and tests",
-    "d": "PTH with a same-time adjusted calcium, U&E, vitamin D, phosphate, ALP; myeloma screen if PTH suppressed.",
-    "pts": 1, "dom": "dg"
+    "t": "Plans appropriate examination & tests",
+    "d": "Repeat calcium and renal function after the thiazide change; BP check; specialist tests (urine calcium, imaging, bone density) explained.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
-    "t": "Generates and tests hypotheses",
-    "d": "Primary hyperparathyroidism versus drug or supplement effect versus malignancy; checked the logic of PTH.",
-    "pts": 1, "dom": "dg"
+    "t": "Generates & tests hypotheses",
+    "d": "Primary hyperparathyroidism versus drug effect, familial hypocalciuric hypercalcaemia, malignancy (less likely with raised PTH).",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Screened for severe hypercalcaemia (vomiting, confusion), stones, bone pain, fractures and weight loss.",
-    "pts": 2, "dom": "dg"
+    "d": "Severe hypercalcaemia features; fractures; renal stones; mood and suicide risk.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Mild, confirmed hypercalcaemia in a well woman, most likely primary hyperparathyroidism with supplements and thiazide contributing.",
-    "pts": 2, "dom": "dg"
+    "d": "Primary hyperparathyroidism meeting NG132 referral criteria, aggravated by a thiazide and with vitamin D insufficiency.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Stop supplements; PTH-led bloods; review the thiazide without losing BP control; refer per NICE NG132 if confirmed.",
-    "pts": 2, "dom": "cm"
+    "d": "Referral to hear options; stop thiazide and alternative antihypertensive; vitamin D replacement (check the SPC/local formulary); fluids; no calcium restriction.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
-    "t": "Manages comorbidity and contributors",
-    "d": "Planned an alternative antihypertensive; considered bone and kidney assessment if hyperparathyroidism is confirmed.",
-    "pts": 1, "dom": "cm"
+    "t": "Manages comorbidity & contributors",
+    "d": "Hypertension managed; bereavement and low mood support offered; autonomy about surgery respected.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Same-day advice for severe symptoms; results appointment in about a week; recheck calcium off supplements.",
-    "pts": 1, "dom": "cm"
+    "d": "Bloods in about 4 weeks; nurse BP check; same-day care for vomiting, confusion, abdominal or loin pain; teach-back.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
@@ -4666,201 +4668,213 @@
     "Long-term conditions & cancer"
    ],
    "stem": {
-    "name": "Carol Lindqvist",
-    "age": "58 years · female",
+    "name": "Desmond Okoro",
+    "age": "64 years · male",
     "pmh": [
      "Hypertension",
-     "No history of cancer"
+     "Renal colic two years ago (A&E attendance; stone passed)"
     ],
     "meds": [
-     "Thiazide diuretic (repeat)"
+     "Bendroflumethiazide",
+     "Amlodipine"
     ],
-    "allergy": "NKDA",
-    "recent": "⚠ Adjusted calcium 2.78 mmol/L, repeat also raised. No PTH, vitamin D, phosphate or ALP on file. Over-the-counter supplements not recorded.",
-    "reason": "Booked to discuss results. “My friend says high calcium means cancer.”"
+    "allergy": "None recorded",
+    "recent": "Adjusted calcium 2.86 mmol/L, repeat 2.88 mmol/L. PTH 9.8 pmol/L (ref 1.6–6.9). 25-OH vitamin D 38 nmol/L. eGFR 72. Phosphate low-normal. FBC and LFTs normal.",
+    "reason": "Telephone appointment booked by the practice to discuss results."
    },
    "timeMap": [
     {
      "t": "0–1",
-     "h": "Open and listen",
-     "d": "She opens with “Have I got cancer?”. Promise a direct answer, then gather first."
+     "h": "Open",
+     "d": "Identity and privacy. Note the refusal; say you’ll come back to it. What does he know?"
     },
     {
-     "t": "1–5",
-     "h": "Focused history",
-     "d": "Thirst, urine, constipation, confusion, stones, bone pain, weight loss. Ask about EVERY supplement — she won’t volunteer the vitamin D and calcium."
+     "t": "1–4",
+     "h": "Results and history",
+     "d": "Plain explanation; symptoms; severe features; stone; drugs."
     },
     {
-     "t": "5–6",
-     "h": "ICE",
-     "d": "Why is cancer so frightening? Her mother. What does she want? A yes or no."
+     "t": "4–7",
+     "h": "The refusal",
+     "d": "Ask why; Grace’s death; empathy; autonomy; mood and risk."
     },
     {
-     "t": "6–10",
-     "h": "Explain and plan",
-     "d": "Cancer is one cause, not the likeliest here. PTH is the key test. Stop supplements, review the thiazide."
+     "t": "7–11",
+     "h": "Plan",
+     "d": "NG132 referral to hear options; stop thiazide, alternative; vitamin D; fluids; bereavement support."
     },
     {
-     "t": "10–12",
-     "h": "Safety-net and close",
-     "d": "Vomiting, confusion, marked thirst = same day. Results in a week. Teach-back."
+     "t": "11–12",
+     "h": "Close",
+     "d": "Teach-back; repeat bloods; same-day safety-net."
     }
    ],
    "wordPics": {
-    "fail": "Either says “it’s definitely not cancer” or agrees cancer must be ruled out without explaining the likelier cause; never asks about supplements; doesn’t order PTH; no safety-net.",
-    "pass": "Explains that hyperparathyroidism is the commonest cause; orders PTH and related bloods; finds the supplements and stops them; mentions the thiazide; basic safety-net.",
-    "exc": "All of the above, plus: links her fear to her mother; explains the PTH logic plainly; reviews the thiazide with an alternative for BP; knows NG132 referral criteria; balanced, honest close; teach-back."
+    "fail": "Reads out numbers; misses the thiazide and the stone; tells him he needs an operation; or accepts the refusal without exploring it and does not refer.",
+    "pass": "Explains primary hyperparathyroidism, recognises the referral criteria, stops the thiazide, replaces vitamin D and safety-nets.",
+    "exc": "All of the above, plus: explores the refusal and responds to his bereavement with real empathy; reframes referral as hearing options without commitment; explains symptoms that may improve; screens mood and offers support; clear teach-back."
    },
    "avoid": [
     {
-     "dont": "“Don’t worry, it’s definitely not cancer.”",
-     "instead": "“Cancer is one cause, but in someone like you it’s not the likeliest — one blood test will point us the right way.”",
-     "why": "A promise you can’t keep is false reassurance."
+     "dont": "“You’ll need an operation to remove the gland.”",
+     "instead": "“A specialist can explain the options, including not operating.”",
+     "why": "Leading with surgery ends the conversation with a frightened patient."
     },
     {
-     "dont": "“Are you on any medication?”",
-     "instead": "“Do you take anything else — including vitamins or supplements you buy yourself?”",
-     "why": "Self-bought products aren’t “medicines” to many patients, and here they may explain the result."
+     "dont": "“That’s fine, we’ll just keep an eye on it.”",
+     "instead": "“Your level and the kidney stone mean the guidance recommends seeing a specialist; it doesn’t commit you.”",
+     "why": "He meets NG132 referral criteria; not referring deprives him of an informed choice."
     },
     {
-     "dont": "“Stop the water tablet.”",
-     "instead": "“It can raise calcium, so let’s swap it safely and recheck your blood pressure.”",
-     "why": "Stopping an antihypertensive with no plan creates a new problem."
+     "dont": "(Not reviewing medicines) leaving the thiazide.",
+     "instead": "“One of your blood pressure tablets can raise calcium; I’ll switch it.”",
+     "why": "Thiazides reduce urinary calcium excretion."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Health anxiety after bereavement",
-     "t": "Her mother’s death from cancer makes a friend’s offhand claim feel like a verdict. Name it, and give accurate information at a pace she can take in."
+     "h": "Bereavement",
+     "t": "A spouse’s death after surgery shapes how people hear the word ‘operation’. Exploring the story builds the trust needed for any decision."
     },
     {
-     "h": "Self-directed supplements",
-     "t": "Self-bought supplements are common and often not seen as medicines. Ask routinely and without judgement."
+     "h": "Living alone",
+     "t": "Isolation and low mood are common after bereavement; consider practical and emotional support."
     }
    ],
    "legal": [
     {
-     "h": "Documentation",
-     "t": "Record the self-bought supplements on the medication list; they matter for future interpretation of results."
+     "h": "Consent",
+     "t": "A person with capacity may refuse treatment. Doctors must give balanced information about options, including doing nothing (GMC Decision making and consent, 2020)."
+    },
+    {
+     "h": "Telephone results",
+     "t": "Confirm identity and privacy before discussing results by telephone."
     }
    ],
    "professional": [
     {
-     "h": "Honesty without false reassurance",
-     "t": "GMC Good Medical Practice (2024) asks for honest, clear information. Avoid both “definitely not cancer” and unexplained alarm; explain what each result would mean."
+     "h": "Acting on results",
+     "t": "A previous stone with no calcium check is a missed opportunity. Joining the dots now is part of safe results handling."
     },
     {
-     "h": "Test-result follow-up",
-     "t": "Make sure the PTH and repeat calcium are tracked and she has a booked appointment for results."
+     "h": "Not over-persuading",
+     "t": "Agreeing to ‘just listen’ to a specialist is a valid shared decision."
     }
    ],
    "community": [
     {
-     "h": "Support",
-     "t": "Patient information from the Society for Endocrinology (You and Your Hormones); NHS Talking Therapies if health anxiety persists."
+     "h": "Bereavement support",
+     "t": "Local bereavement services and charities (for example Cruse Bereavement Support) offer counselling and groups."
+    },
+    {
+     "h": "Practice nurse",
+     "t": "BP checks after switching antihypertensive."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Vomiting, confusion, marked thirst and polyuria, dehydration — possible severe hypercalcaemia, same-day assessment",
-     "Weight loss, bone pain, night pain or fractures — consider malignancy or myeloma",
-     "Renal colic or known stones — end-organ effect of hyperparathyroidism"
+     "Vomiting, confusion, drowsiness, abdominal pain or dehydration: severe hypercalcaemia, same-day assessment",
+     "Weight loss, bone pain, low or suppressed PTH: consider malignancy",
+     "Low mood with hopelessness or suicidal thoughts: risk assessment"
     ],
     "psychosocial": [
-     "Her mother died of cancer — fear that “it’s my turn”",
-     "Poor sleep and constant worry since her friend’s comment",
-     "Takes self-bought high-dose vitamin D and calcium supplements"
+     "Widowed three years ago",
+     "Lives alone; daughter at weekends",
+     "Fear of surgery after his wife’s death"
     ],
     "ice": [
-     "Idea: “High calcium means cancer — my friend said so”",
-     "Concern: dying of cancer like her mother",
-     "Expectation: a definite yes or no today"
+     "Idea: age or grief",
+     "Concern: surgery; dementia",
+     "Expectation: a tablet and no operation"
     ]
    },
-   "diagnosis": "Mild, confirmed hypercalcaemia (adjusted calcium 2.78 mmol/L) in a well woman: most likely primary hyperparathyroidism, with high-dose vitamin D and calcium supplements and a thiazide as contributors. Malignancy is less likely but not excluded until PTH is known.",
-   "diagnosisLay": "“Calcium is controlled by four tiny glands in your neck, like a thermostat. The commonest reason for it running high is that one gland’s thermostat is set a bit too high — benign and fixable. Your supplements and water tablet may be nudging it up too. One blood test tells us whether the thermostat is the cause.”",
+   "diagnosis": "“Your calcium and the hormone PTH are both high, which means one of the small parathyroid glands in your neck is overactive. It isn’t cancer.”",
+   "diagnosisLay": "“The parathyroid glands are like thermostats for calcium. One has got stuck on ‘high’, so your calcium runs high, which can cause tiredness, thirst, fogginess and kidney stones.”",
    "management": {
-    "reflectIce": "“After losing your mum to cancer, of course your friend’s words hit hard. The honest picture is much more hopeful — and we’ll prove it with the right test, not guess.”",
-    "psychosocial": "Pace the explanation to her fear; thank her for the supplement disclosure; give a firm date for results so she isn’t left waiting in the dark.",
+    "reflectIce": "“You thought it was grief, and you feared being pushed into an operation. Some of how you feel may be the calcium, and the decision about any operation is yours.”",
+    "psychosocial": "Bereavement support; respect autonomy; follow-up of mood.",
     "sharedPlan": [
-     "Stop vitamin D and calcium supplements now",
-     "PTH with same-time adjusted calcium, U&E, vitamin D, phosphate, ALP; myeloma screen if PTH suppressed",
-     "Review the thiazide with an alternative antihypertensive; refer per NICE NG132 if primary hyperparathyroidism confirmed"
+     "Referral to a specialist in parathyroid surgery to hear options (NG132 criteria met)",
+     "Stop bendroflumethiazide; start an alternative antihypertensive (NG136); BP check in 2 weeks",
+     "Vitamin D replacement (check the SPC/local formulary)",
+     "Good fluid intake; no dietary calcium restriction",
+     "Repeat calcium and renal function in about 4 weeks",
+     "Bereavement support offered; review mood"
     ],
     "safetyNet": [
-     "Vomiting, confusion, marked thirst or severe abdominal pain — same day, or A&E out of hours",
-     "Results appointment in about a week; recheck calcium off supplements"
+     "Vomiting, confusion, drowsiness, severe abdominal or loin pain, unable to keep fluids down: NHS 111 or A&E the same day",
+     "Feeling much lower or any thoughts of harming himself: contact the practice or 111"
     ]
    }
   },
   "links": [
    {
-    "ic": "📋",
-    "t": "Hypercalcaemia",
-    "s": "Case walkthrough · NICE NG132",
-    "href": "../cases/hypercalcaemia.html"
+    "ic": "💠",
+    "t": "Hyperparathyroidism",
+    "s": "NICE NG132 referral criteria",
+    "href": "management/hyperparathyroidism.html"
    },
    {
     "ic": "🗺️",
-    "t": "Hypercalcaemia pathway",
-    "s": "Visual algorithm · PTH logic",
+    "t": "Hypercalcaemia",
+    "s": "Visual algorithm",
     "href": "algorithms/hypercalcaemia.html"
    },
    {
     "ic": "💠",
     "t": "Malignant hypercalcaemia",
-    "s": "Protocol · when PTH is suppressed",
+    "s": "When PTH is suppressed",
     "href": "management/malignant-hypercalcaemia.html"
    },
    {
-    "ic": "💠",
-    "t": "Hypertension protocol",
-    "s": "Alternatives to a thiazide",
-    "href": "management/hypertension.html"
+    "ic": "🗺️",
+    "t": "Hypertension",
+    "s": "Choosing an alternative to the thiazide",
+    "href": "algorithms/hypertension.html"
    }
   ],
   "pitfalls": {
-   "intro": "This station is about holding honesty and reassurance together. It is failed by false promises, by missing the self-bought supplements, and by forgetting that PTH is the test that answers her question.",
+   "intro": "The result is straightforward. The station tests whether you explain it simply, act on the referral criteria and medicines, and handle a refusal rooted in grief.",
    "items": [
     {
      "dom": "dg",
-     "fail": "Ordering “a myeloma screen and a CT to rule out cancer” without a PTH.",
-     "why": "PTH is the pivotal test (NICE NG132). Skipping it frightens the patient and misses the commonest cause.",
-     "fix": "PTH with a same-time adjusted calcium first, plus U&E, vitamin D, phosphate and ALP. Screen for myeloma if PTH is suppressed."
+     "fail": "Not checking the stone history and drugs.",
+     "why": "Stones meet the referral criteria; thiazides raise calcium.",
+     "fix": "Ask about stones, fractures, thiazides, lithium and supplements."
+    },
+    {
+     "dom": "cm",
+     "fail": "Not referring because he refuses surgery.",
+     "why": "NG132 criteria are met; referral allows an informed choice.",
+     "fix": "Refer to hear options, without commitment."
+    },
+    {
+     "dom": "ro",
+     "fail": "Pushing surgery.",
+     "why": "He will disengage.",
+     "fix": "Explore why, acknowledge his loss, respect autonomy."
+    },
+    {
+     "dom": "cm",
+     "fail": "Leaving the thiazide.",
+     "why": "It worsens hypercalcaemia.",
+     "fix": "Switch antihypertensive and check BP."
+    },
+    {
+     "dom": "cm",
+     "fail": "Restricting dietary calcium.",
+     "why": "NG132 advises against it.",
+     "fix": "Normal diet and good fluids."
     },
     {
      "dom": "dg",
-     "fail": "Accepting “no other medicines” and never finding the vitamin D and calcium.",
-     "why": "Self-bought supplements are a reversible contributor and she won’t call them medicines.",
-     "fix": "“Anything you buy yourself — vitamins, supplements, anything from the chemist or online?”"
-    },
-    {
-     "dom": "ro",
-     "fail": "“It’s definitely not cancer, don’t worry.”",
-     "why": "False reassurance is unsafe and examiners mark it down; if the PTH is suppressed, trust is lost.",
-     "fix": "“The odds are strongly in your favour, and one test will point us the right way. I won’t guess.”"
-    },
-    {
-     "dom": "ro",
-     "fail": "Explaining the biochemistry without asking why she’s so frightened.",
-     "why": "Her mother’s death is the driver; missing it leaves the fear untouched.",
-     "fix": "“Is there something that makes the word cancer especially frightening for you?”"
-    },
-    {
-     "dom": "cm",
-     "fail": "Stopping the thiazide with no plan for her blood pressure.",
-     "why": "Creates a new risk and looks unsafe.",
-     "fix": "Review it with an alternative antihypertensive and a BP recheck."
-    },
-    {
-     "dom": "cm",
-     "fail": "No safety-net for severe hypercalcaemia.",
-     "why": "Vomiting, confusion and marked thirst need same-day care; not saying so is a standard failing point.",
-     "fix": "Name the symptoms and where to go, then confirm with teach-back."
+     "fail": "Missing low mood.",
+     "why": "Bereavement and hypercalcaemia both affect mood.",
+     "fix": "Ask directly, including about suicidal thoughts."
     }
    ]
   }

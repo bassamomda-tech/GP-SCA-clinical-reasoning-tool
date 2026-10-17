@@ -175,7 +175,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
     <div class="rfgrid">
       <div class="rftile"><b>Massive or ongoing haemoptysis</b> Large volumes (cupfuls), continuous bleeding, or any amount with breathlessness, falling SpO₂, hypotension or tachycardia → <span class="pill pill-red">999</span> Sit up or lie on the bleeding side if known; oxygen if hypoxic; nil by mouth</div>
       <div class="rftile"><b>Suspected pulmonary embolism</b> Pleuritic pain, breathlessness, tachycardia, hypoxia, unilateral leg swelling, recent surgery or immobility → <span class="pill pill-red">Same-day</span> PE pathway (NICE NG158); <span class="pill pill-red">999</span> if hypotensive or collapsed</div>
-      <div class="rftile"><b>Pneumonia with sepsis or high CRB-65</b> RR ≥30, new confusion, low BP, SpO₂ below target → <span class="pill pill-red">999</span> if high-risk sepsis; CRB-65 of 3–4 → urgent hospital admission (NICE CG191)</div>
+      <div class="rftile"><b>Pneumonia with sepsis or high CRB-65</b> RR ≥30, new confusion, low BP, SpO₂ below target → <span class="pill pill-red">999</span> if high-risk sepsis; CRB-65 of 2 or more → consider hospital referral, combined with clinical judgement (NICE NG250)</div>
       <div class="rftile"><b>Bleeding on an anticoagulant</b> Warfarin, a DOAC or heparin with more than streaks, or other bleeding sites → <span class="pill pill-red">Same-day</span> hospital assessment (major bleed → 999). Do not assume the anticoagulant is the whole explanation</div>
       <div class="rftile"><b>Haemoptysis with haematuria, AKI or a vasculitic rash</b> Possible pulmonary–renal syndrome (ANCA vasculitis, anti-GBM disease) → <span class="pill pill-red">Same-day</span> medical admission</div>
       <div class="rftile"><b>Stridor or suspected inhaled foreign body</b> → <span class="pill pill-red">999</span> if airway compromise; otherwise <span class="pill pill-red">Same-day</span> ENT / respiratory assessment</div>
@@ -238,7 +238,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   </div>
   <div class="node-body">
     <div class="kv">
-      <div>Observations</div><div>RR, SpO₂ on air (against the patient's target), HR, BP, temperature, conscious level — calculate CRB-65 if pneumonia is likely; use a structured sepsis assessment (NICE NG51)</div>
+      <div>Observations</div><div>RR, SpO₂ on air (against the patient's target), HR, BP, temperature, conscious level — calculate CRB-65 if pneumonia is likely; use a structured sepsis assessment (NICE NG253)</div>
       <div>Nose and mouth</div><div>Anterior nasal bleeding point, posterior pharynx, gums and dentition (pseudohaemoptysis)</div>
       <div>Chest</div><div>Focal crackles or bronchial breathing (pneumonia), coarse crackles (bronchiectasis), wheeze, effusion (dullness), stridor, pleural rub</div>
       <div>Hands and nodes</div><div>Clubbing (lung cancer, bronchiectasis), tar staining, supraclavicular and cervical nodes</div>
@@ -332,7 +332,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   <div class="node-body">
     <div class="kv">
       <div><span class="pill pill-red">999</span></div><div>Massive or ongoing bleeding, airway compromise, hypoxia below target, haemodynamic instability, suspected high-risk PE, high-risk sepsis</div>
-      <div><span class="pill pill-red">Same-day</span></div><div>Suspected PE (NG158 pathway); pneumonia with CRB-65 of 1–2 where clinical judgement favours hospital assessment (3–4 needs urgent admission); bleeding on an anticoagulant beyond streaks; suspected pulmonary–renal syndrome; suspected TB with systemic compromise; inhaled foreign body</div>
+      <div><span class="pill pill-red">Same-day</span></div><div>Suspected PE (NG158 pathway); pneumonia with CRB-65 of 2 or more (consider hospital referral), or 1 where clinical judgement favours hospital assessment; bleeding on an anticoagulant beyond streaks; suspected pulmonary–renal syndrome; suspected TB with systemic compromise; inhaled foreign body</div>
       <div><span class="pill pill-purple">Suspected cancer pathway · NICE NG12</span></div><div>Aged 40 and over with unexplained haemoptysis; any age with a CXR suggesting lung cancer. Consider for persistent or recurrent haemoptysis under 40 with risk factors (clinical judgement, local pathway)</div>
       <div><span class="pill pill-purple">Urgent</span> TB service</div><div>Suspected active TB (NICE NG33); notify UKHSA on clinical suspicion; do not start TB treatment in primary care</div>
       <div>Respiratory clinic</div><div>Suspected bronchiectasis (needs CT); persistent or recurrent haemoptysis with a normal CXR and no cancer criterion met; known bronchiectasis or COPD with recurrent bleeding</div>
@@ -342,7 +342,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
   <div class="why-row">
     <button class="why-btn" aria-expanded="false">Why? <span class="caret">▾</span></button>
     <div class="why-drawer">
-      <p>CRB-65 (NICE CG191): 0 = low risk, consider home treatment; 1–2 = intermediate risk, consider hospital assessment; 3–4 = high risk, urgent admission — always combined with clinical judgement. Active pulmonary TB needs specialist multidrug treatment, contact tracing and public health input.</p>
+      <p>CRB-65 (NICE NG250), always combined with clinical judgement: 0 = low severity, usually primary-care-led care with safety-netting advice; 1 = decide individually between primary-care-led care, a virtual ward, same-day emergency care, hospital at home or hospital; 2 or more = consider hospital referral (3–4 = high severity). Refer anyone with sepsis or cardiorespiratory failure whatever the score. Active pulmonary TB needs specialist multidrug treatment, contact tracing and public health input.</p>
     </div>
   </div>
 </div>
@@ -363,7 +363,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
       <div class="b-card">
         <div class="b-cond">Low-severity pneumonia (CRB-65 0)</div>
         <div class="b-drug">Amoxicillin <span class="pill pill-teal">First-line</span></div>
-        <div class="b-note">Usual adult dose: amoxicillin 500 mg three times daily for 5 days (NICE NG138). Penicillin allergy: doxycycline 200 mg on day 1 then 100 mg once daily (5 days in total) or clarithromycin per NG138 and the local formulary. Arrange a CXR if not already done; reassess at 48–72 hours</div>
+        <div class="b-note">Usual adult dose: amoxicillin 500 mg three times daily for 5 days (NICE NG250). Penicillin allergy: doxycycline 200 mg on day 1 then 100 mg once daily (5 days in total), or clarithromycin 500 mg twice daily for 5 days (erythromycin in pregnancy), per NG250 and the local formulary. Arrange a CXR if not already done; reassess at 48–72 hours</div>
       </div>
       <div class="b-card">
         <div class="b-cond">Acute bronchitis with streaks</div>
@@ -449,7 +449,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
     <div class="kv">
       <div>48–72 hours</div><div>Reassess infection treated at home: fever, breathlessness, sputum and bleeding should be improving</div>
       <div>Suspected cancer referral</div><div>Check the appointment is booked and attended; diagnosis or cancer ruled out within 28 days (Faster Diagnosis Standard). If tests are normal but symptoms persist, re-refer or seek respiratory advice</div>
-      <div>About 6 weeks</div><div>Repeat CXR after pneumonia if symptoms or signs persist, or in people at higher risk of cancer such as smokers aged over 50 (BTS); NICE CG191 does not advise a routine follow-up CXR when symptoms have resolved</div>
+      <div>About 6 weeks</div><div>Repeat CXR after pneumonia if symptoms or signs persist, or in people at higher risk of cancer such as smokers aged over 50 (BTS); NICE NG250 does not advise a routine follow-up CXR when symptoms have resolved</div>
       <div>Any recurrence</div><div>Recurrent bleeding is no longer "explained" by a past infection — act on the NG12 criteria or refer to respiratory</div>
       <div><span class="pill pill-red">Safety-net 999</span></div><div>Coughing up more than a few teaspoons of blood, bleeding that will not stop, severe breathlessness, chest pain, blue lips, collapse or feeling faint</div>
       <div><span class="pill pill-red">Safety-net same-day</span></div><div>New breathlessness or pleuritic chest pain, a swollen painful leg, blood in the urine, high fever or confusion, any bleeding while on a blood thinner that is more than streaks</div>
@@ -466,7 +466,7 @@ body{font-family:var(--font-sans);background:var(--bg);color:var(--text);line-he
 </div><!-- end alg-flow -->
 
 <div class="alg-foot">
-  <strong>Educational use only.</strong> Based on: NICE NG12 (Suspected cancer: recognition and referral, 2015, updated April 2026), NICE NG158 (Venous thromboembolic diseases, 2020, updated 2023), NICE NG138 (Pneumonia (community-acquired): antimicrobial prescribing, 2019), NICE CG191 (Pneumonia in adults, updated 2023), NICE NG33 (Tuberculosis, updated 2024), NICE NG122 (Lung cancer: diagnosis and management, updated 2024), British Thoracic Society guideline for bronchiectasis in adults (2019), NICE CKS Haemoptysis and Anticoagulation — oral, UKHSA notifiable diseases guidance. Check doses against the current SPC, BNF/BNFC and local formulary. Always adapt to individual patient context, comorbidities, and local pathways. Not a substitute for clinical judgement.
+  <strong>Educational use only.</strong> Based on: NICE NG12 (Suspected cancer: recognition and referral, 2015, updated April 2026), NICE NG158 (Venous thromboembolic diseases, 2020, updated 2023), NICE NG250 (Pneumonia: diagnosis and management, 2025; replaced NG138 and CG191), NICE NG33 (Tuberculosis, updated 2024), NICE NG122 (Lung cancer: diagnosis and management, updated 2024), British Thoracic Society guideline for bronchiectasis in adults (2019), NICE CKS Haemoptysis and Anticoagulation — oral, UKHSA notifiable diseases guidance. Check doses against the current SPC, BNF/BNFC and local formulary. Always adapt to individual patient context, comorbidities, and local pathways. Not a substitute for clinical judgement.
 </div>
 
 <script>

@@ -192,6 +192,6 @@ RGPTriage.register('type-2-diabetes-triage', {
     { label:'NICE NG148 — Acute kidney injury', url:'https://www.nice.org.uk/guidance/ng148' },
     { label:'NICE NG12 (updated April 2026) — Suspected cancer', url:'https://www.nice.org.uk/guidance/ng12' },
     { label:'JBDS-IP DKA / HHS guidance', url:'https://abcd.care/joint-british-diabetes-societies-jbds-inpatient-care-group' },
-    { label:'Macmillan Rapid Referral', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' }
+    { label:'Macmillan rapid referral guide (2022 edition; check against NG12)', url:'https://www.macmillan.org.uk/healthcare-professionals/cancer-pathways/prevention-and-diagnosis/rapid-referral-guidelines' }
   ],
 });

@@ -48,7 +48,7 @@
       ageRange: 'Anyone at risk of pregnancy after UPSI, including under-16s (assess Fraser competence and safeguarding).',
       children: 'Young people under 16 can be given EC if Fraser competent; consider safeguarding (under 13 — always discuss with the safeguarding lead). Doses are the same as adults.',
       pregnancy: 'Not used once pregnant (EC does not harm an established pregnancy). Do a pregnancy test if the period is more than 7 days late or unusual.',
-      breastfeeding: 'Levonorgestrel and Cu-IUD compatible. Ulipristal: CoSRH advises expressing and discarding milk for 1 week after the dose. Under 21 days postpartum EC is not needed.',
+      breastfeeding: 'Levonorgestrel and Cu-IUD compatible. Ulipristal: breastfeeding can continue without interruption after a single dose (CoSRH EC guideline, amended April 2026). Under 21 days postpartum EC is not needed.',
       selfCare: 'Oral EC can be bought from pharmacies and is free from many community pharmacies and sexual health services in England — check the current NHS Pharmacy Contraception Service offer locally.',
       leaflets: [NHS('contraception/emergency-contraception', 'Emergency contraception')],
       pharmacyFirst: 'Not a Pharmacy First condition. Community pharmacies supply oral EC (free through NHS-commissioned services in England where available).',

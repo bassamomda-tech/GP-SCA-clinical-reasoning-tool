@@ -83,7 +83,7 @@ MedChooser.register('endometriosis', {
   sources: [
     { label:'NICE NG73 — Endometriosis: diagnosis and management', url:'https://www.nice.org.uk/guidance/ng73' },
     { label:'NICE CKS — Endometriosis', url:'https://cks.nice.org.uk/topics/endometriosis/' },
-    { label:'FSRH — UK Medical Eligibility Criteria (UKMEC)', url:'https://www.fsrh.org/Public/Public/Standards-and-Guidance/fsrh-ukmec-for-contraceptive-use.aspx' },
+    { label:'CoSRH — UK Medical Eligibility Criteria (UKMEC 2025)', url:'https://www.cosrh.org/Common/Uploaded%20files/documents/UKMEC_2025.pdf' },
     { label:'SPC — dienogest', url:'https://www.medicines.org.uk/emc/search?q=dienogest' }
   ],
 });

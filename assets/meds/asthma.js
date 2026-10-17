@@ -210,6 +210,6 @@ MedChooser.register('asthma', {
     { label:'NICE NG245 — Asthma: diagnosis, monitoring and chronic asthma management (2024)', url:'https://www.nice.org.uk/guidance/ng245' },
     { label:'NICE NG245 — asthma', url:'https://www.nice.org.uk/guidance/ng245' },
     { label:'BNF — Asthma treatment summary', url:'https://bnf.nice.org.uk/treatment-summaries/asthma/' },
-    { label:'MHRA — Montelukast neuropsychiatric reactions', url:'https://www.gov.uk/drug-safety-update/montelukast-singulair' }
+    { label:'MHRA — Montelukast neuropsychiatric reactions', url:'https://www.gov.uk/drug-safety-update/montelukast-reminder-of-the-risk-of-neuropsychiatric-reactions' }
   ],
 });

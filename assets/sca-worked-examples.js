@@ -9,7 +9,7 @@ window.SCA_WORKED = [
   /* ---------------- 1 · Tired all the time ---------------- */
   {
     title:'Tired all the time',
-    type:'Face-to-face · 38F',
+    type:'Video · 38F',
     brief:'Priya Shah, 38. Booked for "feeling exhausted". Records: 2 entries for fatigue in 6 months, normal FBC 3 months ago. Mother of two, works shifts. No medication.',
     link:'../tools/sca-simulator.html',
     pass:{
@@ -85,14 +85,14 @@ window.SCA_WORKED = [
   /* ---------------- 3 · Breaking news: new diabetes ---------------- */
   {
     title:'Explaining a new diagnosis',
-    type:'Face-to-face · 55M',
+    type:'Video · 55M',
     brief:'Derek Holt, 55. Booked to discuss blood results. HbA1c 59 mmol/mol (new type 2 diabetes). BMI 31, BP 142/88. Drives a taxi. Anxious by nature.',
     link:'../cases/type-2-diabetes.html',
     pass:{
       grades:{dg:'P', cm:'CP', rto:'CP'},
       turns:[
         {r:'pt', s:'You said the blood test was back \u2014 is everything OK?'},
-        {r:'dr', s:'Thanks for coming in. Before I go through it \u2014 what were you expecting it might show, and is there anything you\u2019ve been worried about?', an:{t:'good',dom:'ro',text:'<b>Elicits ideas/concerns first.</b> Calibrates the news to the person \u2014 and uncovers any specific fear before delivering it.'}},
+        {r:'dr', s:'Thanks for joining the call. Before I go through it \u2014 what were you expecting it might show, and is there anything you\u2019ve been worried about?', an:{t:'good',dom:'ro',text:'<b>Elicits ideas/concerns first.</b> Calibrates the news to the person \u2014 and uncovers any specific fear before delivering it.'}},
         {r:'pt', s:'My dad had diabetes and lost a toe. I\u2019ve been dreading you\u2019d say that.'},
         {r:'dr', s:'I\u2019m really glad you told me that. The result does show your blood sugar is in the diabetes range \u2014 [pause] \u2014 and I know that word carries a lot, especially with your dad. Can I explain what it means for you specifically?', an:{t:'good',dom:'ro',text:'<b>Warning shot + pause + addresses the fear.</b> Names the diagnosis clearly, then immediately separates his situation from his father\u2019s.'}},
         {r:'pt', s:'\u2026OK. Yeah, please.'},
@@ -114,7 +114,7 @@ window.SCA_WORKED = [
         {r:'pt', s:'But I drive a taxi for a living\u2026'},
         {r:'dr', s:'You\u2019ll be fine. Most people are. Let\u2019s get the prescription sorted.', an:{t:'bad',dom:'cm',text:'<b>Livelihood cue dismissed.</b> The DVLA question \u2014 the heart of the case \u2014 is brushed aside with false reassurance and no actual information.'}},
         {r:'pt', s:'\u2026Right.'},
-        {r:'dr', s:'I\u2019ll print the prescription. Any questions? No? Great, see you in three months.', an:{t:'bad',dom:'cm',text:'<b>Information overload, no shared plan, no check of understanding.</b> An anxious patient leaves frightened, uninformed about driving, and not on side.'}}
+        {r:'dr', s:'I\u2019ll send the prescription to your pharmacy. Any questions? No? Great, see you in three months.', an:{t:'bad',dom:'cm',text:'<b>Information overload, no shared plan, no check of understanding.</b> An anxious patient leaves frightened, uninformed about driving, and not on side.'}}
       ],
       verdict:'A fail on Relating to Others and Management. The diagnosis is correct and metformin is reasonable, but the news was broken with no warning and no exploration of the patient\u2019s fears, the father-and-toe terror was dismissed, and the licence question \u2014 the case\u2019s real test \u2014 was waved away. Right diagnosis, wrong consultation.'
     }
@@ -122,8 +122,8 @@ window.SCA_WORKED = [
   /* ---------------- 4 · The angry patient (complaint) ---------------- */
   {
     title:'The angry patient',
-    type:'Face-to-face · 47M',
-    brief:'Mark Ellis, 47. Booked "urgent, wants to complain". His knee-pain referral was rejected by the service last week; he arrives visibly angry.',
+    type:'Video · 47M',
+    brief:'Mark Ellis, 47. Booked "urgent, wants to complain". His knee-pain referral was rejected by the service last week; he joins the video call visibly angry.',
     link:'../tools/sca-simulator.html',
     pass:{
       grades:{dg:'P', cm:'P', rto:'CP'},
@@ -159,36 +159,36 @@ window.SCA_WORKED = [
   /* ---------------- 5 · Safeguarding (a bruise) ---------------- */
   {
     title:'A worrying bruise',
-    type:'Face-to-face · mother + 14-month-old',
-    brief:'Chloe, 24, brings her 14-month-old for a "rash". You notice finger-mark bruising on his upper arm; her account is vague and she seems frightened of her phone buzzing (her partner).',
+    type:'Video · mother + 14-month-old',
+    brief:'Chloe, 24, books a video call about her 14-month-old\u2019s "rash". When she holds him up to the camera you notice finger-mark bruising on his upper arm; her account is vague and she seems frightened of her phone buzzing (her partner).',
     link:'../cases/safeguarding.html',
     pass:{
       grades:{dg:'P', cm:'CP', rto:'CP'},
       turns:[
         {r:'pt', s:'It\u2019s just a rash on his tummy, doctor. He\u2019s fine otherwise. I can\u2019t stay long.'},
-        {r:'dr', s:'Of course, let\u2019s have a look at him. While I check him over \u2014 how have things been at home for you both lately?', an:{t:'good',dom:'ro',text:'<b>Gentle open door.</b> Examines the child while creating space for disclosure \u2014 unforced, non-judgmental.'}},
+        {r:'dr', s:'Of course \u2014 could you hold him up to the camera and show me the rash? While you do that \u2014 how have things been at home for you both lately?', an:{t:'good',dom:'ro',text:'<b>Gentle open door.</b> Looks at the child on camera while creating space for disclosure \u2014 unforced, non-judgmental.'}},
         {r:'pt', s:'\u2026Fine. Bit stressful. He\u2019s always bumping into things, you know what they\u2019re like.'},
-        {r:'dr', s:'They do get into everything. I\u2019ve noticed some bruising on his arm here \u2014 these little marks. Can you tell me how those happened?', an:{t:'good',dom:'dg',text:'<b>Notices and asks neutrally.</b> Doesn\u2019t accept the vague explanation; explores the injury without accusing.'}},
+        {r:'dr', s:'They do get into everything. I can see some bruising on his arm on the screen \u2014 these little marks. Can you tell me how those happened?', an:{t:'good',dom:'dg',text:'<b>Notices and asks neutrally.</b> Doesn\u2019t accept the vague explanation; explores the injury without accusing.'}},
         {r:'pt', s:'I\u2019m not sure\u2026 he must have done it somehow. Look, my partner\u2019s waiting, he gets cross if I\u2019m late.'},
         {r:'dr', s:'I can hear you\u2019re under pressure. I have to be honest because I think a lot of you as his mum: those marks look like finger-marks, and my first job is to make sure he\u2019s safe \u2014 and you too.', an:{t:'good',dom:'cm',text:'<b>Honest \u2014 doesn\u2019t collude.</b> Names it kindly, doesn\u2019t promise secrecy, frames it around the child\u2019s welfare. The hinge of the case.'}},
         {r:'pt', s:'Please don\u2019t make a fuss \u2014 he\u2019ll be furious. It\u2019ll make everything worse for me.'},
-        {r:'dr', s:'That tells me you might not feel safe either, and I want to help. I won\u2019t tell your partner anything, but I do have to involve our safeguarding team today \u2014 not to take anyone away, but to get you both support. Are you safe to go home right now?', an:{t:'good',dom:'cm',text:'<b>Acts on concern + checks safety.</b> Explains the referral as support; assesses the mother\u2019s safety too (Think Family).'}},
+        {r:'dr', s:'That tells me you might not feel safe either, and I want to help. I won\u2019t tell your partner anything, but I can\u2019t judge bruising properly through a screen, so he needs to be seen in person today by the children\u2019s team, who check bruising in little ones \u2014 and I have to involve our safeguarding team today too. Not to take anyone away, but to get you both support. Are you safe where you are right now?', an:{t:'good',dom:'cm',text:'<b>Acts on concern + checks safety.</b> Arranges same-day in-person paediatric/safeguarding assessment (bruising cannot be assessed on video), explains the referral as support, and assesses the mother\u2019s safety too (Think Family).'}},
         {r:'pt', s:'\u2026I don\u2019t know. Sometimes it\u2019s bad.'},
-        {r:'dr', s:'Thank you for trusting me. Let\u2019s sort somewhere safe and the right support now \u2014 I\u2019ll stay with you through this, and here\u2019s how to get help any time.', an:{t:'good',dom:'ro',text:'<b>Supports without abandoning.</b> Keeps the alliance, safety-plans the abuse, follows through.'}}
+        {r:'dr', s:'Thank you for trusting me. I\u2019ll stay on the call while I speak to the paediatric team and arrange how you both get there safely this afternoon, and I\u2019ll tell you exactly who you\u2019ll see. Here\u2019s how to get help any time.', an:{t:'good',dom:'ro',text:'<b>Supports without abandoning.</b> Keeps the alliance, makes the same-day in-person assessment happen safely, safety-plans the abuse, follows through.'}}
       ],
-      verdict:'A clear pass. The candidate created space for disclosure, refused the inconsistent explanation, named the safeguarding concern honestly without promising secrecy, and acted on reasonable suspicion \u2014 referring as support \u2014 while recognising the mother\u2019s own risk (Think Family) and safety-planning. Child\u2019s welfare paramount, delivered with compassion.'
+      verdict:'A clear pass. The candidate created space for disclosure, refused the inconsistent explanation, named the safeguarding concern honestly without promising secrecy, and acted on reasonable suspicion \u2014 arranging same-day in-person paediatric/safeguarding assessment and referring as support \u2014 while recognising the mother\u2019s own risk (Think Family) and safety-planning. Child\u2019s welfare paramount, delivered with compassion.'
     },
     fail:{
       grades:{dg:'F', cm:'CF', rto:'F'},
       turns:[
         {r:'pt', s:'It\u2019s just a rash on his tummy, doctor. He\u2019s fine otherwise. I can\u2019t stay long.'},
-        {r:'dr', s:'Let\u2019s have a quick look. Yes, that\u2019s just a viral rash, nothing to worry about.', an:{t:'bad',dom:'dg',text:'<b>Tunnel vision on the rash.</b> Never properly examines or registers the bruising.'}},
+        {r:'dr', s:'Just hold the camera on his tummy for a second. Yes, that\u2019s just a viral rash, nothing to worry about.', an:{t:'bad',dom:'dg',text:'<b>Tunnel vision on the rash.</b> Never looks properly at the child on camera or registers the bruising.'}},
         {r:'pt', s:'Oh good. He does have a couple of bruises but he\u2019s always bumping into things.'},
         {r:'dr', s:'That\u2019s toddlers for you! Always covered in bruises at this age. Nothing to worry about.', an:{t:'bad',dom:'cm',text:'<b>Colludes with the explanation.</b> Accepts "always bumping into things" at face value \u2014 the most dangerous error in a safeguarding case.'}},
         {r:'pt', s:'Thanks. Please don\u2019t make a fuss, my partner hates appointments.'},
         {r:'dr', s:'No problem, I won\u2019t keep you. Pop some cream on the rash and he\u2019ll be fine.', an:{t:'bad',dom:'cm',text:'<b>Promises no fuss; misses the abuse cue.</b> Lets them leave with no safeguarding action.'}},
         {r:'pt', s:'Brilliant, thank you doctor.'},
-        {r:'dr', s:'Take care, bye now.', an:{t:'bad',dom:'cm',text:'<b>A child at risk goes home unprotected.</b> No examination of the injury, no referral, no consideration of the mother.'}}
+        {r:'dr', s:'Take care, bye now.', an:{t:'bad',dom:'cm',text:'<b>A child at risk goes home unprotected.</b> No in-person assessment of the injury, no referral, no consideration of the mother.'}}
       ],
       verdict:'A clear fail with potentially serious consequences. The candidate anchored on the "rash", accepted an inconsistent explanation for finger-mark bruising, colluded with "no fuss" and missed the domestic-abuse cue \u2014 taking no safeguarding action. Accepting the easy explanation and failing to act on reasonable concern is an automatic fail.'
     }
@@ -196,8 +196,8 @@ window.SCA_WORKED = [
   /* ---------------- 6 · The crowded agenda (multimorbidity) ---------------- */
   {
     title:'The crowded agenda',
-    type:'Face-to-face · 71F + daughter',
-    brief:'Margaret, 71, comes with her daughter, who has a written list of seven problems. Records: COPD, type 2 diabetes, osteoarthritis, low mood, recent fall. 12 minutes.',
+    type:'Video · 71F + daughter',
+    brief:'Margaret, 71, joins a video call with her daughter beside her, who has a written list of seven problems. Records: COPD, type 2 diabetes, osteoarthritis, low mood, recent fall. 12 minutes.',
     link:'../cases/multimorbidity-polypharmacy.html',
     pass:{
       grades:{dg:'P', cm:'CP', rto:'CP'},
@@ -207,11 +207,11 @@ window.SCA_WORKED = [
         {r:'pt', s:'(Margaret) Honestly\u2026 it\u2019s the dizziness and the fall. I\u2019m scared of falling again.'},
         {r:'dr', s:'That makes complete sense \u2014 and a fall is important for your safety too, so let\u2019s make that today\u2019s priority. Tell me about the dizziness \u2014 is it when you stand up?', an:{t:'good',dom:'dg',text:'<b>Negotiated priority.</b> Aligns the clinical risk (falls) with the patient\u2019s own concern \u2014 then gathers focused data instead of scattering across seven issues.'}},
         {r:'pt', s:'(Margaret) Yes, when I get up I go all woozy. And I do take a lot of tablets.'},
-        {r:'dr', s:'That\u2019s a useful clue \u2014 some blood-pressure and other tablets can cause that on standing. I\u2019d like to check your lying and standing blood pressure and review the medicines that might be contributing.', an:{t:'good',dom:'cm',text:'<b>Targeted, safe management.</b> Links the dizziness to likely drug causes and proposes a focused, evidence-based action (postural BP + medication review).'}},
+        {r:'dr', s:'That\u2019s a useful clue \u2014 some blood-pressure and other tablets can cause that on standing. I\u2019d like your lying and standing blood pressure checked \u2014 we can do it now if you have a home monitor, or I\u2019ll book it with the nurse this week \u2014 and review the medicines that might be contributing.', an:{t:'good',dom:'cm',text:'<b>Targeted, safe management.</b> Links the dizziness to likely drug causes and proposes a focused, evidence-based action (postural BP + medication review).'}},
         {r:'pt', s:'(Daughter) But what about her mood and her sugars? We came about all of it.'},
         {r:'dr', s:'You\u2019re right that those matter, and I don\u2019t want to brush them aside. Here\u2019s what I suggest: we sort the falls risk safely today, and I\u2019ll book a longer follow-up and a medication review for the mood, sugars and the rest \u2014 so each gets proper time. Does that feel fair?', an:{t:'good',dom:'cm',text:'<b>Safe netting of the deferred problems.</b> Validates the daughter, doesn\u2019t abandon the other issues, and arranges structured follow-up \u2014 realistic multimorbidity care.'}},
         {r:'pt', s:'(Daughter) \u2026Yes, that\u2019s fair. As long as the mood gets looked at.'},
-        {r:'dr', s:'It will \u2014 I\u2019ll flag it specifically. For today: postural BP, a look at the tablets, and safety advice for falls. Come back sooner if she has another fall or faints. I\u2019ll write the plan down for you both.', an:{t:'good',dom:'cm',text:'<b>Clear plan + safety-net + written summary.</b> Closes a complex consultation with structure and a route back.'}}
+        {r:'dr', s:'It will \u2014 I\u2019ll flag it specifically. For now: postural BP (on your monitor or with the nurse), a look at the tablets, and safety advice for falls. Come back sooner if she has another fall or faints. I\u2019ll write the plan down for you both.', an:{t:'good',dom:'cm',text:'<b>Clear plan + safety-net + written summary.</b> Closes a complex consultation with structure and a route back.'}}
       ],
       verdict:'A pass in a notoriously hard format. The candidate set the agenda explicitly, negotiated a shared priority that aligned clinical risk with the patient\u2019s own concern, and \u2014 crucially \u2014 brought Margaret\u2019s voice in rather than consulting only with the daughter. The deferred problems were safely netted with structured follow-up, not abandoned.'
     },
@@ -233,7 +233,7 @@ window.SCA_WORKED = [
   /* ---------------- 7 · Health beliefs (vaccine-hesitant parent) ---------------- */
   {
     title:'\u201cI don\u2019t want the vaccine\u201d',
-    type:'Face-to-face · parent of 12-month-old',
+    type:'Video · parent of 12-month-old',
     brief:'Parent of a 12-month-old declines the MMR vaccine, citing things she has read online. The child is well. The clinic has 12 minutes booked.',
     link:'../tools/sca-simulator.html',
     pass:{
@@ -270,7 +270,7 @@ window.SCA_WORKED = [
   /* ---------------- 8 · "Something is being missed" ---------------- */
   {
     title:'\u201cSomething is being missed\u201d',
-    type:'Face-to-face · 41F',
+    type:'Video · 41F',
     brief:'Hannah Okafor, 41. Booked for "ongoing symptoms \u2014 wants more tests". Records: 14 contacts in 8 months \u2014 headaches, fatigue, abdominal discomfort, palpitations. Bloods, ECG, abdominal USS, CT head all normal. No red flags documented.',
     link:'../cases/anxiety.html',
     pass:{
@@ -283,7 +283,7 @@ window.SCA_WORKED = [
         {r:'pt', s:'Honestly? Most of it. I check my pulse, I look things up, I cannot sleep. My husband says I have changed.'},
         {r:'dr', s:'That is a huge amount to carry. Can I offer a thought \u2014 not instead of taking your symptoms seriously, but alongside it? Sometimes when the body is under constant stress and worry, it produces very real physical symptoms \u2014 the racing heart, the headaches, the gut. The symptoms are real; the cause may not be a hidden disease.', an:{t:'good',dom:'cm',text:'<b>Offers a positive explanation, tentatively.</b> Names a mechanism rather than a void \u2014 "real symptoms, different cause" \u2014 without dismissing or promising another scan.'}},
         {r:'pt', s:'So you think it is all in my head?'},
-        {r:'dr', s:'No \u2014 the opposite. Your symptoms are completely real and I am not closing the door. What I am suggesting is that more scans, when the ones we have done are reassuring, often feed the worry rather than ease it. I would like us to work on the symptoms and the worry together, and I will absolutely re-examine anything that changes.', an:{t:'good',dom:'ro',text:'<b>Reframes without abandoning.</b> Explains why endless testing harms, holds the safety-net open, and avoids the trap of an unnecessary referral that reinforces the fear.'}},
+        {r:'dr', s:'No \u2014 the opposite. Your symptoms are completely real and I am not closing the door. What I am suggesting is that more scans, when the ones we have done are reassuring, often feed the worry rather than ease it. I would like us to work on the symptoms and the worry together, and I will absolutely look again at anything that changes \u2014 in person if it needs examining.', an:{t:'good',dom:'ro',text:'<b>Reframes without abandoning.</b> Explains why endless testing harms, holds the safety-net open, and avoids the trap of an unnecessary referral that reinforces the fear.'}},
         {r:'pt', s:'I do not want to feel like this forever. What would that actually involve?'},
         {r:'dr', s:'A few things, at your pace: regular appointments with me \u2014 booked in advance, so you are not chasing symptoms \u2014 rather than a new doctor each time; some support for the anxiety, which can be talking therapy; and an agreement that we investigate new or changing symptoms but resist re-running normal tests. How does that sit?', an:{t:'good',dom:'cm',text:'<b>Structured, shared plan.</b> Scheduled continuity, treats the anxiety, and a clear rule for re-investigation \u2014 the evidence-based management of MUS/health anxiety.'}},
         {r:'pt', s:'I think I could try that. It would be a relief to see the same person, actually.'},
@@ -346,7 +346,7 @@ window.SCA_WORKED = [
   /* ---------------- 10 · "I just need my diazepam" ---------------- */
   {
     title:'\u201cI just need my diazepam\u201d',
-    type:'Face-to-face · 52M',
+    type:'Video · 52M',
     brief:'Derek Lyle, 52, new patient. Requests "my usual diazepam 10mg, I have been on it for years for my nerves". No records transferred yet. Asking for a month\u2019s supply today. Appears calm, articulate.',
     link:'../cases/drug-dependence.html',
     pass:{
@@ -410,7 +410,7 @@ window.SCA_WORKED[3].pass.diff = [
 window.SCA_WORKED[4].pass.diff = [
   'Refused to accept "always bumping into things" for finger-mark bruising.',
   'Named the safeguarding concern honestly \u2014 did not promise secrecy or collude.',
-  'Acted on reasonable concern, checked the mother\u2019s safety (Think Family) and safety-planned.'
+  'Acted on reasonable concern \u2014 same-day in-person paediatric/safeguarding assessment \u2014 checked the mother\u2019s safety (Think Family) and safety-planned.'
 ];
 window.SCA_WORKED[5].pass.diff = [
   'Set the agenda openly and negotiated which problem to tackle today \u2014 didn\u2019t try to do everything.',

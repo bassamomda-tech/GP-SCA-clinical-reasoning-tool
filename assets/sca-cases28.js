@@ -272,86 +272,159 @@
 
   /* ============ 108. VIDEO — AF anticoagulation: the refusal/decision ============ */
   const c108 = {
-    id:'af-anticoag-decision', title:'“I’m not going on blood thinners”', type:'video', duration:12,
-    meta:{ age:74, sex:'M', setting:'Video consultation \u2014 anticoagulation decision in AF.', system:'Cardiology / AF & shared anticoagulation decision', checked:'October 2026' },
-    brief:'Mr Frank Ostrowski, 74. Recently diagnosed atrial fibrillation; CHA₂DS₂-VASc 3 (age 65–74, hypertension, diabetes) — NICE NG196 says offer anticoagulation with a DOAC at a score of 2 or more, whatever the sex, taking bleeding risk into account. He is refusing: "I\u2019m not taking blood thinners, they killed my father \u2014 he bled to death." He is otherwise well, active, terrified of bleeding, and has heard "warfarin is rat poison". He doesn\u2019t know about DOACs or that modern options differ. Falls risk often over-stated to him. Wants to "just take an aspirin and leave it".',
-    script:{
-      "opening": "\"Look, I know you want me on blood thinners for this heart rhythm thing, but I'm telling you now — no. My father was on warfarin and he bled to death, it was horrific. I'm not going through that. Isn't it basically rat poison anyway? I'll take a daily aspirin if you insist, that thins the blood a bit, and we'll call it quits. I'd rather take my chances than end up like my dad.\"",
+    "id": "af-anticoag-decision",
+    "title": "“Since Dad’s fall I want him off that blood thinner — if he bangs his head, it’ll kill him”",
+    "type": "video",
+    "duration": 12,
+    "meta": {
+      "age": 82,
+      "sex": "M",
+      "setting": "Video consultation — an older man with his daughter, two weeks after a fall at home.",
+      "system": "Cardiovascular / Older adults — continuing a DOAC after a fall: stroke versus bleeding risk, modifiable bleeding risks, a medication-related fall, dose review and whose decision it is",
+      "checked": "October 2026"
+    },
+    "brief": "Frank Ostrowski, 82, retired engineer, has atrial fibrillation and has taken apixaban for two years (CHA2DS2-VASc 4: age, hypertension, previous TIA). Two weeks ago he fell at home at 3am on his way to the toilet: he felt light-headed on standing, went down, bruised his hip, did not hit his head, was on the floor for 10 minutes. A&E: no fracture, discharged. His daughter Anna, 54, has joined the video and wants the apixaban stopped: “If he bangs his head on that, it’ll kill him.” Frank has capacity. If asked, he does not want to stop: his friend had a stroke and lost his speech. Hidden details, only if asked: six weeks ago a urologist started doxazosin for prostate symptoms, and since then he has felt dizzy on standing, especially at night; he has also been taking ibuprofen from the supermarket for his knees for a month, and drinking three or four whiskies every evening since his wife died last year. Recent bloods: eGFR 52, creatinine 118 µmol/L, Hb 128 g/L; weight 64 kg; nurse BP sitting 132/74. The task: hear Anna’s fear respectfully while recognising that Frank decides; take a falls history and find the likely cause (postural hypotension after doxazosin, nocturia, alcohol); explain stroke and bleeding risk in plain numbers (NICE NG196: do not withhold anticoagulation solely because of age or falls risk; use ORBIT for bleeding risk); identify and act on modifiable bleeding risks (stop ibuprofen, reduce alcohol); check the apixaban dose criteria (check the SPC); review the doxazosin with the urologist; arrange a multifactorial falls assessment (NICE NG249); offer bereavement support; and agree a plan with Frank, with Anna’s involvement as he wishes.",
+    "script": {
+      "opening": "“(Anna) Thanks for seeing us. Since Dad’s fall I want him off that blood thinner. If he bangs his head on that, it’ll kill him. I’ve read about it.”",
       "facts": [
         {
-          "topic": "The AF",
-          "text": "If asked: found two weeks ago at a diabetic check when the nurse felt an irregular pulse; the heart tracing confirmed it. You do not feel it at all — no palpitations, no breathlessness, no chest pain, no dizziness or fainting."
+          "topic": "Who is on the call",
+          "text": "Frank and his daughter Anna in his living room. Frank is alert and sharp, a little irritated at being talked about."
         },
         {
-          "topic": "Strokes and bleeding (if asked)",
-          "text": "Never had a stroke or mini-stroke. Never had a stomach ulcer or serious bleed. No blood in stools or urine."
+          "topic": "The fall (Frank)",
+          "text": "3am, got up to wee, felt light-headed as he stood, legs went, landed on his hip. Did not hit his head, no loss of consciousness, no chest pain or palpitations beforehand. Got up after 10 minutes using a chair. A&E: hip X-ray normal. Bruise still there, walking fine."
         },
         {
-          "topic": "Medical history and medicines",
-          "text": "High blood pressure (ramipril), type 2 diabetes (metformin). No allergies. You do not take ibuprofen or aspirin at present."
+          "topic": "Only if asked about new medicines",
+          "text": "Six weeks ago the urology clinic started doxazosin for his prostate. Since then he gets dizzy when he stands, especially at night. Up three times a night to wee."
         },
         {
-          "topic": "Falls and lifestyle (if asked)",
-          "text": "No falls. Fit and active: you walk 3 miles a day and do your allotment. A couple of pints at the weekend. Never smoked."
+          "topic": "Only if asked about painkillers and alcohol",
+          "text": "Ibuprofen from the supermarket for his knees for about a month, “two or three a day”. Three or four whiskies every evening since his wife, Irena, died last year: “It helps me sleep.”"
         },
         {
-          "topic": "Your father",
-          "text": "He was on warfarin \"for his heart\" in the 1990s, had a fall at 78, and bled into his brain. You were with him in hospital for the three days before he died. \"He was confused and bruised all over. The INR was all over the place.\""
+          "topic": "Frank’s view (if asked directly)",
+          "text": "Does not want to stop. His friend Stan had a stroke and lost his speech: “I’d rather bleed than end up like Stan.” Happy for Anna to be involved, but “it’s my decision”."
         },
         {
-          "topic": "What you have heard",
-          "text": "\"Warfarin is rat poison.\" You have never heard of the newer tablets (DOACs). You assume aspirin does the same job, only safer."
-        },
-        {
-          "topic": "Hidden fear — hold back",
-          "text": "What you fear most is ending up dependent, like your dad in his last days: \"I'd rather go quickly than be a vegetable.\" Say this only if the doctor asks what matters most to you or what a good outcome looks like."
+          "topic": "Anna’s view",
+          "text": "Read online that blood thinners plus falls cause brain bleeds. Lives 20 minutes away; worried sick since the fall. Did not know about the ibuprofen or the whisky; upset when she hears."
         },
         {
           "topic": "How to play it",
-          "text": "Firm and a bit defensive at first. If the doctor argues or quotes numbers at you before acknowledging your father, dig in: \"You're not listening.\" If they ask about your father with genuine interest, soften. You become curious if told the newer tablets work differently from warfarin and that aspirin does not protect against stroke in AF. You do NOT have to agree today — you may ask for a leaflet and time to think, and say you will talk to your daughter."
+          "text": "Anna dominates at first. Frank becomes more assertive if the doctor turns to him and asks his view. Both settle when the doctor explains numbers clearly, finds a likely cause of the fall, and offers concrete steps to reduce bleeding and falls risk."
         }
       ],
       "ice": {
-        "ideas": "\"Blood thinners are rat poison. Aspirin will do the job.\"",
-        "concerns": "\"I watched Dad bleed to death. I won't go through that.\" Underneath: losing your independence.",
-        "expectations": "\"I'll take an aspirin and we'll call it quits.\" You will consider a newer blood thinner if you feel listened to and given honest information."
+        "ideas": "(Anna) “Blood thinners plus falls equals a brain bleed.” (Frank) “The tablet stops me having a stroke like Stan.”",
+        "concerns": "HIDDEN AGENDA: Frank’s drinking and ibuprofen since his wife’s death, which he has not told Anna; his grief. Anna’s fear of losing her remaining parent.",
+        "expectations": "(Anna) “Stop the blood thinner today.” (Frank) “Keep taking it, but stop falling.”"
       },
       "cues": [
-        "\"My father bled to death on warfarin.\" — say in the opening.",
-        "\"I'll take an aspirin — that thins the blood.\" — say in the opening.",
-        "\"I'd rather go quickly than end up helpless.\" — say if asked what matters to you."
+        "Anna speaks for Frank — check his view and capacity; it is his decision.",
+        "Light-headed on standing at night — postural hypotension; ask about new medicines.",
+        "“It helps me sleep” — alcohol and grief.",
+        "Knee pain — over-the-counter NSAIDs, a modifiable bleeding risk."
       ]
     },
-    checkpoints:[
-      { dom:'cm', text:'Makes the STROKE-PREVENTION case clearly: NICE NG196 — offer a DOAC at a CHA₂DS₂-VASc of 2 or more, whatever the person’s sex (his is 3: age 65–74, hypertension, diabetes), taking bleeding risk into account; anticoagulation substantially reduces the risk of a disabling/fatal stroke — the dominant risk — and he quantifies it in understandable terms (stroke vs bleeding risk: CHA₂DS₂-VASc and the ORBIT score that NG196 recommends, with modifiable factors)' },
-      { dom:'ro', text:'Corrects the ASPIRIN misconception: aspirin is NOT effective for stroke prevention in AF and is not a safe substitute \u2014 "just an aspirin" gives false reassurance while carrying its own bleeding risk' },
-      { dom:'dg', text:'Distinguishes modern DOACs from his father\u2019s warfarin: first-line for most, no routine INR monitoring, fewer interactions, generally lower intracranial-bleed risk \u2014 a genuinely different option from the warfarin that traumatised him' },
-      { dom:'ro', text:'Puts the BLEEDING risk in proportion and addresses modifiable bleeding factors (BP control, alcohol, concomitant NSAIDs/antiplatelets), and counters the commonly over-stated falls-risk argument (NICE NG196: do not withhold anticoagulation solely because of age or falls risk)' },
-      { dom:'cm', text:'Practises genuine SHARED DECISION-MAKING: respects his autonomy to decline after an informed discussion, does not coerce, checks understanding, and keeps the door open for reconsideration' },
-      { dom:'ro',   text:'Acknowledges and explores the TRAUMA of his father\u2019s death with compassion, recognising the refusal as fear rather than informed choice, and addresses it directly rather than arguing past it' },
-      { dom:'ro',   text:'Reframes empathically: a stroke is a leading cause of exactly the dependency/loss of independence he fears, so anticoagulation protects what he values \u2014 offered as information, not pressure' },
-      { dom:'cm',    text:'Safety-nets and follows up: provides written information and the NICE NG196 patient decision aid, agrees a plan (trial/think-about-it/specialist input as needed), what to do re symptoms, and a follow-up to revisit the decision \u2014 honouring autonomy while keeping him engaged and safe' },
+    "checkpoints": [
+      {
+        "dom": "ro",
+        "text": "Acknowledges Anna’s fear, then turns to Frank to hear his own account and view, establishing that he has capacity and that the decision is his"
+      },
+      {
+        "dom": "dg",
+        "text": "Takes a falls history (circumstances, prodrome, head injury, injuries, long lie) and identifies a likely cause: postural symptoms since starting doxazosin, nocturia, alcohol"
+      },
+      {
+        "dom": "dg",
+        "text": "Reviews medicines and finds the over-the-counter ibuprofen and the alcohol intake as modifiable bleeding risks"
+      },
+      {
+        "dom": "cm",
+        "text": "Explains stroke and bleeding risk in plain language (CHA2DS2-VASc and ORBIT), and that NICE NG196 advises not withholding anticoagulation solely because of age or falls risk"
+      },
+      {
+        "dom": "cm",
+        "text": "Acts on modifiable bleeding risks: stop ibuprofen (alternative analgesia for the knees), advice and support to reduce alcohol, blood pressure control"
+      },
+      {
+        "dom": "cm",
+        "text": "Checks the apixaban dose against the dose-reduction criteria (age, weight, creatinine; check the SPC) and arranges ongoing renal monitoring"
+      },
+      {
+        "dom": "cm",
+        "text": "Addresses the fall: discusses the doxazosin with the urologist or prescriber, measures lying and standing BP, nocturia management, and refers for a multifactorial falls assessment (NICE NG249)"
+      },
+      {
+        "dom": "ro",
+        "text": "Responds to Frank’s bereavement, agrees a shared plan that respects his decision and involves Anna as he wishes, and safety-nets for head injury and bleeding"
+      }
     ],
-    worked:[
-      { lbl:'Hear the trauma first', txt:'"Before anything about tablets \u2014 what happened to your father sounds genuinely horrific, and watching that would frighten anyone off blood thinners for life. I\u2019m not going to brush past that or push you. I just want to make sure that whatever you decide, you\u2019re deciding with the full, accurate picture \u2014 because some things have changed a lot since your dad\u2019s day."' },
-      { lbl:'Correct the aspirin myth', txt:'"Here\u2019s the first important thing: an aspirin won\u2019t protect you here. People assume it thins the blood enough \u2014 but for this heart rhythm, aspirin doesn\u2019t prevent the strokes, and it still carries a bleeding risk of its own. So \u2018just an aspirin\u2019 would give you a false sense of safety while leaving you exposed."' },
-      { lbl:'DOACs aren\u2019t his dad\u2019s warfarin', txt:'"And the blood thinner I\u2019d suggest isn\u2019t warfarin \u2014 it\u2019s a newer type called a DOAC. No INR blood tests every week, far fewer food and drug clashes, and importantly a LOWER risk of the kind of bleeding into the brain that\u2019s most feared. It\u2019s genuinely a different, safer proposition than what your father was on. \u2018Rat poison\u2019 was the old warfarin line \u2014 this isn\u2019t that."' },
-      { lbl:'Risk in proportion',    txt:'"Let me be straight about the trade-off, because you deserve the real numbers, not a sales pitch. Yes, any blood thinner raises bleeding risk a bit. But with your heart rhythm and your other factors, the risk of a serious stroke without one is much higher \u2014 and we can lower the bleeding risk further by keeping your blood pressure controlled and avoiding certain painkillers."' },
-      { lbl:'The reframe',           txt:'"And here\u2019s the part I really want you to hear: the thing you\u2019re most afraid of \u2014 ending up dependent, not yourself \u2014 a stroke is one of the commonest causes of exactly that. So this tablet isn\u2019t about risk for its own sake; it\u2019s about protecting the independent life you\u2019ve got. It guards the very thing you\u2019re frightened of losing."' },
-      { lbl:'Respect + keep the door open', txt:'"Ultimately this is YOUR decision, and if after all this you still say no, I\u2019ll respect that and we\u2019ll keep talking \u2014 I\u2019m not going to force anything. But take a bit of time, read this information I\u2019ll give you, maybe talk it over with your family. I\u2019d genuinely hate for an out-of-date fear to cost you the stroke we could prevent. Come back and we\u2019ll go through it again \u2014 there\u2019s no rush today, and the door\u2019s always open."' },
+    "worked": [
+      {
+        "lbl": "Hear both, then the patient",
+        "txt": "“Anna, I can hear how frightened you’ve been since the fall. Frank, I’d like to hear from you too. What happened, and what do you think about the blood thinner?”"
+      },
+      {
+        "lbl": "Find the cause",
+        "txt": "“You felt light-headed as you stood up. Has anything changed with your tablets recently?”"
+      },
+      {
+        "lbl": "Numbers",
+        "txt": "“Without the blood thinner, someone with your risk factors might have around 4 or 5 strokes in every 100 people each year. With it, that drops by about two thirds. The risk of a serious bleed is much lower than that for most people, and we can lower it further.”"
+      },
+      {
+        "lbl": "Falls are not the reason to stop",
+        "txt": "“The national guidance says we shouldn’t stop a blood thinner just because someone has fallen or might fall. Someone would need to fall a very large number of times a year before the bleeding risk outweighed the stroke protection.”"
+      },
+      {
+        "lbl": "Modifiable risks",
+        "txt": "“The ibuprofen and the whisky both raise the chance of bleeding much more than the fall does. Those are the things I’d like us to change.”"
+      },
+      {
+        "lbl": "Whose decision",
+        "txt": "“Frank, it’s your decision, and you’ve told me you want to stay on it. Anna, your worries are why we’re making these changes to keep him safer.”"
+      }
     ],
-    learning:'In AF with a CHA₂DS₂-VASc of 2 or more — here 3 — NICE NG196 says offer a DOAC, whatever the person’s sex, taking bleeding risk into account; anticoagulation substantially reduces the risk of a disabling/fatal stroke — the dominant risk — and the consultation is shared decision-making, not coercion (GMC Decision making and consent, 2020; Montgomery v Lanarkshire Health Board, 2015). Two misconceptions must be corrected: ASPIRIN is NOT effective for stroke prevention in AF (it gives false reassurance with its own bleeding risk), and modern DOACs are a genuinely different proposition from the warfarin that may haunt a patient\u2019s family memory (no routine INR, fewer interactions, generally lower intracranial-bleed risk). Put the bleeding risk in proportion (it is usually far outweighed by the stroke benefit at high CHA\u2082DS\u2082-VASc), address modifiable bleeding factors, and counter the commonly over-stated falls-risk argument. The examinable hidden agenda is TRAUMA: witnessing his father bleed to death on warfarin, so "I\u2019d rather take my chances" is fear, not informed choice \u2014 acknowledge it with compassion. Offer the empathic reframe that a stroke causes exactly the dependency he fears, so anticoagulation protects his independence. Respect his autonomy to decline after a genuinely informed discussion, provide a decision aid, and keep the door open with follow-up.',
-    knowledge:{
-      guideline:'NICE NG196 Atrial fibrillation: diagnosis and management (2021) and its patient decision aid · NICE TA249, TA256, TA275, TA355 (DOACs in AF) · BNF · GMC Decision making and consent (2020) · Montgomery v Lanarkshire Health Board (UK Supreme Court, 2015)',
-      points:[
-        { h:'Assess stroke and bleeding risk', t:'NICE NG196: use CHA₂DS₂-VASc to assess stroke risk and offer anticoagulation with a DOAC at a score of 2 or more, whatever the person’s sex, taking bleeding risk into account; consider it for men with a score of 1 (the "≥3 in women" threshold comes from European (ESC, international) guidance and is not the NG196 rule). Frank scores 3: age 65–74 (1), hypertension (1), diabetes (1). Assess bleeding risk with ORBIT (recommended by NICE NG196; HAS-BLED also used) and address MODIFIABLE bleeding factors (uncontrolled BP, alcohol, concomitant antiplatelets/NSAIDs) \u2014 a high bleeding score is a prompt to modify, not to withhold.' },
-        { h:'Aspirin is not the answer', t:'NICE NG196: do not offer aspirin monotherapy solely for stroke prevention in AF — it is ineffective for this and still carries bleeding risk. Correct the common belief that "an aspirin will do"; it offers false reassurance.' },
-        { h:'DOACs vs warfarin', t:'DOACs (apixaban, rivaroxaban, edoxaban, dabigatran — NICE NG196; NICE TA249, TA256, TA275, TA355) are first-line for most non-valvular AF: comparable/better efficacy, no routine INR monitoring, fewer interactions, and generally lower intracranial haemorrhage risk than warfarin (Ruff et al., Lancet 2014). Check renal function, FBC and liver function before starting; dose per BNF. This matters hugely when a patient\u2019s refusal is anchored on a bad warfarin experience.' },
-        { h:'Risk in proportion & falls myth', t:'At high CHA\u2082DS\u2082-VASc the absolute stroke-prevention benefit usually far outweighs the bleeding risk. The falls-risk argument is frequently over-stated — a decision analysis estimated a person would need to fall about 295 times a year for falls-related bleeding to outweigh the stroke benefit (Man-Son-Hing et al., Arch Intern Med 1999, on warfarin); NICE NG196: do not withhold anticoagulation solely because of a person’s age or their risk of falls.' },
-        { h:'Shared decision-making & autonomy', t:'This is a preference-sensitive decision. Provide balanced information and the NICE NG196 patient decision aid, elicit values, correct misconceptions, and respect a competent patient’s informed refusal — without coercion (GMC Decision making and consent, 2020; Montgomery, 2015). Keep the door open and revisit.' },
-        { h:'Address the trauma & reframe', t:'A family member\u2019s bleeding death (or "rat poison" beliefs) drives fear-based refusal. Acknowledge the trauma; explain how options have changed; and reframe empathically: stroke is a leading cause of the dependency/loss of independence the patient fears, so anticoagulation protects what they value.' },
-        { h:'Never do', t:'Never accept aspirin as a substitute for anticoagulation in AF; never coerce, but never leave a trauma-driven refusal uninformed; never present warfarin as the only/­default option; never over-state falls risk to justify withholding; never miss modifiable bleeding factors; never close the door on revisiting.' },
-        { h:'Safety-net & follow-up', t:'NICE NG196 patient decision aid / written information; agree a plan (consider, trial, or specialist input); modify bleeding-risk factors; arrange follow-up to revisit the decision; document the informed discussion and the patient\u2019s decision.' }
+    "learning": "Falls are often cited as a reason to stop anticoagulation in older people with AF, but NICE NG196 advises not withholding anticoagulation solely because of age or risk of falls. Stroke risk is assessed with CHA2DS2-VASc and bleeding risk with ORBIT; the purpose of the bleeding score is to identify and address modifiable risk factors, not to deny treatment. Modelling studies suggest a person would need to fall very many times a year before the risk of subdural haemorrhage outweighed the stroke benefit of anticoagulation. Modifiable bleeding risks include NSAIDs and antiplatelets taken without indication, excess alcohol, uncontrolled hypertension and inappropriate dosing. DOAC doses should be checked against the criteria in the SPC (for apixaban, dose reduction depends on a combination of age, weight and serum creatinine; check the SPC/local formulary) and renal function monitored. A fall is a symptom: take a falls history, look for a cause (here, likely orthostatic hypotension after starting an alpha-blocker, worsened by nocturia and evening alcohol), measure lying and standing blood pressure, review medicines, and refer for a multifactorial falls assessment (NICE NG249, 2025). A person with capacity decides about their own treatment; relatives’ views are heard and their fears addressed, but they cannot decide for him. Bereavement and alcohol use often go together in older widowed men and deserve a gentle conversation. The communication skill is managing a three-way consultation, keeping the patient at the centre, giving numbers clearly and turning fear into concrete actions that reduce both falls and bleeding risk.",
+    "knowledge": {
+      "guideline": "[1] NICE NG196 Atrial fibrillation: diagnosis and management (2021, updated 2021) · [2] NICE NG249 Falls: assessment and prevention in older people and in people 50 and over at higher risk (2025) · [3] Product SPCs for apixaban and doxazosin · [4] NICE CKS Anticoagulation – oral (check current version) · [5] Mental Capacity Act 2005; GMC Decision making and consent (2020) · [6] NICE CKS Alcohol – problem drinking (check current version)",
+      "summary": "A capacitous 82-year-old on apixaban for AF (CHA2DS2-VASc 4) fell at night, likely from postural hypotension after starting doxazosin, plus nocturia and evening alcohol. His daughter wants the DOAC stopped. Falls alone are not a reason to stop. Address modifiable bleeding risks (ibuprofen, alcohol), check the DOAC dose, review the doxazosin, arrange a falls assessment, support his grief, and respect his decision.",
+      "points": [
+        {
+          "h": "Falls and anticoagulation",
+          "t": "NG196: do not withhold anticoagulation solely because of age or falls risk [1]. Stroke prevention benefit usually far outweighs fall-related bleeding risk."
+        },
+        {
+          "h": "Scores",
+          "t": "CHA2DS2-VASc for stroke risk; ORBIT for bleeding risk, used to identify modifiable factors rather than to deny treatment [1]."
+        },
+        {
+          "h": "Modifiable bleeding risks",
+          "t": "NSAIDs and unnecessary antiplatelets, excess alcohol, uncontrolled blood pressure, incorrect DOAC dosing, anaemia [1,4]."
+        },
+        {
+          "h": "DOAC dose",
+          "t": "Apixaban dose reduction depends on a combination of age, body weight and serum creatinine; check the SPC. Monitor renal function and weight [3]."
+        },
+        {
+          "h": "Falls assessment",
+          "t": "History, lying and standing BP, medication review (alpha-blockers, antihypertensives, sedatives, alcohol), vision, gait and balance, home hazards; multifactorial intervention [2]."
+        },
+        {
+          "h": "Alpha-blockers",
+          "t": "Doxazosin can cause postural hypotension, especially early in treatment; discuss alternatives or timing with the prescriber [3]."
+        },
+        {
+          "h": "Capacity and relatives",
+          "t": "A capacitous adult decides; involve family as he wishes and address their concerns [5]."
+        },
+        {
+          "h": "Alcohol and grief",
+          "t": "Ask about drinking in bereaved older adults; brief intervention and bereavement support [6]."
+        }
       ]
     }
   };
@@ -449,31 +522,78 @@
     },
 
     'af-anticoag-decision': {
-      ceg: ['Long-term conditions & cancer', 'Prescribing & pharmacology'],
-      stem: {
-        name: 'Frank Ostrowski', age: '74 years · male',
-        pmh: ['Newly diagnosed atrial fibrillation; CHA₂DS₂-VASc 3 (age 65–74, HTN, diabetes) — NICE NG196: offer a DOAC at 2 or more', 'Refusing anticoagulation; father "bled to death" on warfarin', 'Otherwise well, active'],
-        meds: ['Amlodipine', 'Metformin'],
-        allergy: 'NKDA',
-        recent: 'Wants to "just take an aspirin"; believes warfarin is "rat poison".',
-        reason: 'Video consultation — anticoagulation decision in AF.'
-      },
-      timeMap: [
-        { t:'0–2',  h:'Hear the trauma first', d:'His father\u2019s bleeding death drives the refusal. Don\u2019t push; ensure the decision is informed with the modern picture.' },
-        { t:'2–4',  h:'Correct the aspirin myth', d:'Aspirin doesn\u2019t prevent AF strokes and still bleeds — "just an aspirin" is false reassurance.' },
-        { t:'4–6',  h:'DOACs ≠ his dad\u2019s warfarin', d:'No INR, fewer interactions, lower brain-bleed risk — a genuinely different, safer option than warfarin.' },
-        { t:'6–8',  h:'Risk in proportion',   d:'Bleeding risk (ORBIT, NICE NG196) real but outweighed by stroke benefit at CHA₂DS₂-VASc 3 (NG196 offers a DOAC at 2 or more, whatever the sex); modify BP/alcohol/NSAIDs; falls risk over-stated (NG196: don’t withhold for falls or age alone).' },
-        { t:'8–12', h:'Reframe + respect',     d:'Stroke causes the dependency he fears — anticoagulation protects independence. Decision aid; respect autonomy; keep the door open; follow-up.' }
+      "ceg": [
+        "Older adults",
+        "Long-term conditions & cancer",
+        "Professional & ethical dilemmas"
       ],
-      wordPics: {
-        fail: 'Either coerces him onto anticoagulation, or accepts "just an aspirin" and lets a trauma-driven refusal stand uninformed; never corrects the aspirin myth, never distinguishes DOACs from warfarin, never addresses the trauma.',
-        pass: 'Makes the stroke-prevention case, corrects the aspirin myth, explains DOACs vs warfarin, puts bleeding in proportion, and respects autonomy with follow-up.',
-        exc:  'Hears and explores the father-death trauma first; corrects the aspirin misconception; distinguishes modern DOACs from his father\u2019s warfarin; puts bleeding vs stroke risk in real proportion and counters the falls-risk myth; offers the independence reframe; and practises genuine shared decision-making with a decision aid, respected autonomy and an open door.'
+      "stem": {
+        "name": "Frank Ostrowski",
+        "age": "82 years · male",
+        "pmh": [
+          "Atrial fibrillation",
+          "Hypertension",
+          "TIA (2021)",
+          "Benign prostatic enlargement"
+        ],
+        "meds": [
+          "Apixaban",
+          "Ramipril",
+          "Atorvastatin",
+          "Doxazosin (started 6 weeks ago by urology)"
+        ],
+        "allergy": "None recorded",
+        "recent": "A&E two weeks ago after a fall at home: hip X-ray normal, discharged. eGFR 52, creatinine 118 µmol/L, Hb 128 g/L. Weight 64 kg. Nurse BP (sitting) 132/74. Bereaved last year.",
+        "reason": "Daughter requested an appointment “to discuss Dad’s blood thinner after his fall”."
       },
-      avoid: [
-        { dont:'"Fine, take an aspirin then if you won\u2019t have the proper one."', instead:'"Aspirin won\u2019t protect you from these strokes and still bleeds — it\u2019s a false sense of safety. Let me show you a modern option that isn\u2019t the warfarin your father had."', why:'Accepting aspirin as a substitute leaves him unprotected under a false belief.' },
-        { dont:'"You really must take this or you\u2019ll have a stroke — there\u2019s no choice."', instead:'"This is your decision, and I\u2019ll respect it. I just want it to be an informed one, because a lot has changed since your father\u2019s day. Take time and we\u2019ll revisit."', why:'Coercion overrides autonomy and entrenches a trauma-driven refusal instead of informing it.' },
-        { dont:'"Your father\u2019s experience isn\u2019t relevant to modern medicine."', instead:'"What happened to your father was horrific and it makes complete sense it frightened you — and the newer tablets are genuinely safer, with a lower brain-bleed risk than his warfarin."', why:'Dismissing the trauma alienates him; acknowledging it while updating the facts is what builds trust.' }
+      "timeMap": [
+        {
+          "t": "0–1",
+          "h": "Open",
+          "d": "Consent for Anna; acknowledge her fear; turn to Frank."
+        },
+        {
+          "t": "1–5",
+          "h": "Fall and medicines",
+          "d": "Circumstances, head injury, prodrome; doxazosin; ibuprofen; alcohol; grief."
+        },
+        {
+          "t": "5–6",
+          "h": "Frank’s view",
+          "d": "Stan’s stroke; it’s his decision."
+        },
+        {
+          "t": "6–9",
+          "h": "Numbers",
+          "d": "Stroke versus bleeding risk; NG196 on falls; modifiable risks."
+        },
+        {
+          "t": "9–12",
+          "h": "Plan and close",
+          "d": "Stop NSAID; alcohol; dose check; urology; lying and standing BP; falls team; teach-back; head injury safety-net."
+        }
+      ],
+      "wordPics": {
+        "fail": "Stops apixaban because of the fall at the daughter’s request, or dismisses her; never asks about new medicines, NSAIDs or alcohol; talks to Anna rather than Frank.",
+        "pass": "Keeps Frank at the centre, explains why falls alone are not a reason to stop, finds the doxazosin and ibuprofen, and plans a falls assessment.",
+        "exc": "All of the above, plus: clear risk numbers; uncovers alcohol and grief sensitively; checks the DOAC dose against the SPC criteria; liaises with urology; involves Anna constructively; robust head injury and bleeding safety-net."
+      },
+      "avoid": [
+        {
+          "dont": "“Your daughter’s right, let’s stop it to be safe.”",
+          "instead": "“Falls alone aren’t a reason to stop. Let’s find out why he fell and lower the bleeding risk.”",
+          "why": "NG196 advises against withholding anticoagulation solely because of falls risk."
+        },
+        {
+          "dont": "(Talking only to Anna)",
+          "instead": "“Frank, what do you think about the blood thinner?”",
+          "why": "A capacitous patient decides."
+        },
+        {
+          "dont": "(No medicine review)",
+          "instead": "“Has anything changed with your tablets? Anything from the chemist?”",
+          "why": "Doxazosin and ibuprofen are the key modifiable factors."
+        }
       ]
     }
   });

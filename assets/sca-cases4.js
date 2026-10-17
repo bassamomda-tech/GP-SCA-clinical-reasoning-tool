@@ -10,55 +10,159 @@
 
   /* ============ 16. VIDEO — Microcytic anaemia at 68 ============ */
   const c16 = {
-    id:'anaemia-ida', title:'Iron isn\u2019t a diagnosis', type:'video', duration:12,
-    meta:{ age:68, sex:'F', setting:'Video consultation — recalled to discuss blood results.', system:'Haematology / Lower GI', checked:'October 2026' },
-    brief:'Mrs Sheila Drummond, 68, was recalled after bloods taken for tiredness: Hb 96 g/L, MCV 72 fl, ferritin 9 \u00b5g/L. PMH: hypertension. Meds: amlodipine. She is the sole carer for her husband Brian, who has Parkinson\u2019s (in her record\u2019s carer flag). She has already decided the answer: "I just need iron tablets — I barely eat red meat these days."',
-    script:{
-      opening:'"Hello doctor — I know what you\u2019re going to say, the nurse hinted it\u2019s low iron. That\u2019ll be my diet, I hardly touch red meat now. If you pop some iron tablets on a prescription I\u2019ll let you get on — I\u2019ve left Brian watching the snooker and he frets if I\u2019m long."',
-      facts:[
-        { topic:'Tiredness',        text:'Six months of creeping exhaustion — stairs, shopping bags, "heavy legs". She\u2019s blamed it on caring for Brian: up twice a night turning him, no respite.' },
-        { topic:'The stomach',      text:'Only if asked: "my stomach\u2019s been off for a while" — vague upper discomfort, eating slightly less. Belt unchanged, "maybe a few pounds down".' },
-        { topic:'The stools',       text:'Only if asked directly and kindly: stools darker than they used to be, on and off, for two or three months. She told herself it was the multivitamin with iron in it she bought "to get ahead of this".' },
-        { topic:'Diet story',       text:'The vegetarian-ish framing collapses under one question: she still eats chicken, fish, eggs most days. The diet explanation is something to hold on to, not a fact.' },
-        { topic:'Brian',            text:'Husband, Parkinson\u2019s 8 years, falls if left. Daughter in Australia. No carer package — "we manage". Her real terror: anything that takes her into hospital takes her away from Brian.' },
-        { topic:'If trust is built', text:'"As long as it\u2019s nothing that puts me IN anywhere, doctor. Brian can\u2019t be left. Whatever this is, it has to be the kind of thing you fix from home."' },
-      ],
-      ice:{
-        ideas:'Low iron from not eating red meat; tablets will fix it.',
-        concerns:'HIDDEN AGENDA — she has seen the dark stools for months and is frightened of what they mean, but more frightened of hospital: she is Brian\u2019s only carer, and any admission, test or diagnosis that takes her away feels impossible. So she has pre-built the diet story.',
-        expectations:'A prescription for iron tablets and to be allowed to carry on. Tests, scopes and hospitals are to be avoided at almost any cost.'
-      },
-      cues:['"I\u2019ve left Brian watching the snooker" in the first breath — the whole consultation\u2019s constraint, announced as small talk.','"My stomach\u2019s been off" dropped mid-sentence while changing the subject — the door to the real history.','"As long as it\u2019s nothing that puts me in anywhere" — the fear is not cancer; it\u2019s leaving Brian.']
+    "id": "anaemia-ida",
+    "title": "“The hospital says the cameras were clear, but I’m still shattered and those iron tablets made me ill”",
+    "type": "video",
+    "duration": 12,
+    "meta": {
+      "age": 68,
+      "sex": "F",
+      "setting": "Video consultation — follow-up of a blood condition after hospital tests.",
+      "system": "Haematology / GI — persistent iron-deficiency anaemia after negative bidirectional endoscopy: oral iron intolerance, alternate-day dosing, IV iron, next investigations and a fear of missed cancer",
+      "checked": "October 2026"
     },
-    checkpoints:[
-      { dom:'dg', text:'Reads the picture out loud: Hb 96 + MCV 72 + ferritin 9 = iron-deficiency anaemia — and states that in a 68-year-old this is a FIND-THE-BLEED problem, not a diet problem' },
-      { dom:'dg', text:'Takes the GI history her framing was hiding: dyspepsia, darker stools, weight, NSAID/aspirin use — and dismantles the diet story gently with her own facts (chicken, fish, eggs)' },
-      { dom:'dg', text:"Orders the right work-up: FIT test (NICE HTG690; under NICE NG12 FIT ≥10 µg Hb/g triggers a suspected cancer pathway lower-GI referral), coeliac serology (tTG-IgA), and flags that in a postmenopausal woman with IDA, BSG 2021 advises gastroscopy AND colonoscopy — her dyspepsia adds to the case for the upper scope" },
-      { dom:'cm', text:'Starts iron correctly as TREATMENT alongside — not instead of — investigation: one tablet once daily (alternate days if not tolerated — BSG 2021), dark stools warned, FBC rechecked within 4 weeks' },
-      { dom:'ro',   text:'Hears the Brian constraint in minute one and addresses it as part of the plan, not an obstacle to it — carer\u2019s assessment, respite options, the daughter loop' },
-      { dom:'ro',   text:'Names the pre-built story for what it is, kindly: "the diet explanation was doing a job for you — let\u2019s deal with what it was protecting you from"' },
-      { dom:'ro',   text:'Reframes investigation as how she STAYS Brian\u2019s carer: a colonoscopy is a day; an undiscovered bleed is the thing that actually takes her away' },
-      { dom:'cm',    text:'Safety-nets: black tarry stools, vomiting blood, faintness or chest pain at this Hb → same-day/999; books the FIT drop-off, bloods recheck and a named follow-up call' },
+    "brief": "Sheila Drummond, 68, retired, sole carer for her husband Brian, who has Parkinson’s disease. Four months ago she had iron-deficiency anaemia (Hb 96 g/L, MCV 72, ferritin 9) and was referred on the suspected cancer pathway. Gastroscopy with duodenal biopsies and colonoscopy were normal; coeliac serology negative; urine dipstick negative for blood. She was started on ferrous sulfate once daily but stopped after three weeks because of nausea, constipation and black stools. Bloods this week: Hb 101 g/L, ferritin 11. She is tired and breathless on the stairs. Diet: little red meat, lots of tea with meals. If asked about painkillers: ibuprofen from the supermarket most days for her back. Her hidden concern, only if explored: the black stools frightened her, and her friend Pat had a “clear” colonoscopy and was diagnosed with bowel cancer a year later, so she thinks the cameras have missed something; she also read that iron drips can cause severe allergic reactions. Brian cannot be left for more than an hour or two. The task: explain the results and what the negative tests mean; distinguish iron-darkened stools from melaena; address the oral iron intolerance (alternate-day or lower-frequency dosing, a different preparation, taking it with vitamin C and away from tea; check the SPC/local formulary); stop the ibuprofen; consider intravenous iron if oral iron fails or is not tolerated, explaining the small risk honestly; plan monitoring and when further investigation (such as small-bowel investigation via gastroenterology) is indicated if anaemia persists despite adequate iron; address the fear that cancer was missed; and make practical arrangements around Brian’s care.",
+    "script": {
+      "opening": "“The hospital says the cameras were all clear, which is good I suppose. But I’m still shattered, I get puffed on the stairs, and those iron tablets made me so ill I stopped them.”",
+      "facts": [
+        {
+          "topic": "Symptoms",
+          "text": "Tired all the time, breathless on the stairs, a bit dizzy on standing. No chest pain. No visible blood loss: no blood in stools or urine, no vomiting blood. Postmenopausal for 15 years, no vaginal bleeding. Weight steady."
+        },
+        {
+          "topic": "Iron tablets",
+          "text": "Ferrous sulfate once a day for three weeks. Felt sick, constipated, and her stools went black. Stopped them a month ago. Took them with breakfast and a cup of tea."
+        },
+        {
+          "topic": "Stools (if asked in detail)",
+          "text": "Black but formed, not sticky or tarry, no unusual smell, and they returned to brown within days of stopping the tablets. No black stools since."
+        },
+        {
+          "topic": "Diet and medicines (if asked)",
+          "text": "Little red meat, lots of tea. Ibuprofen from the supermarket most days for her back for about a year. No aspirin or anticoagulants. Amlodipine for BP."
+        },
+        {
+          "topic": "The fear (only if explored)",
+          "text": "Her friend Pat had a clear colonoscopy and was diagnosed with bowel cancer a year later. Sheila thinks the cameras might have missed something, and the black stools “proved it”. Also read online that iron drips can cause a severe allergic reaction."
+        },
+        {
+          "topic": "Home",
+          "text": "Cares for Brian, 72, with Parkinson’s; he falls if left long. Daughter helps one afternoon a week. Tired from broken nights."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Matter-of-fact, slightly apologetic about stopping the tablets. Relieved when the black stools are explained. Becomes anxious about the iron drip until the risk is put in proportion; then practical about arranging cover for Brian."
+        }
+      ],
+      "ice": {
+        "ideas": "“I’m just anaemic and tired from looking after Brian.”",
+        "concerns": "HIDDEN AGENDA: that the cameras missed a cancer, as happened to her friend, and that the black stools meant bleeding; fear of a reaction to an iron drip.",
+        "expectations": "“Something for the tiredness that doesn’t make me ill.”"
+      },
+      "cues": [
+        "“Which is good I suppose” — ambivalence about the clear tests.",
+        "Black stools on iron — distinguish from melaena, and explore what she made of them.",
+        "Tea with breakfast and daily ibuprofen — absorption and ongoing loss.",
+        "Caring for Brian — practical barrier to IV iron and appointments."
+      ]
+    },
+    "checkpoints": [
+      {
+        "dom": "dg",
+        "text": "Reviews the results and investigations so far (persistent iron deficiency after normal gastroscopy with duodenal biopsies, colonoscopy, coeliac serology and urinalysis) and asks about symptoms and ongoing blood loss"
+      },
+      {
+        "dom": "dg",
+        "text": "Clarifies the black stools (formed, not tarry, resolved after stopping iron) and distinguishes iron-darkened stools from melaena"
+      },
+      {
+        "dom": "dg",
+        "text": "Identifies contributors: daily over-the-counter ibuprofen, tea with iron, diet"
+      },
+      {
+        "dom": "cm",
+        "text": "Manages oral iron intolerance: once-daily or alternate-day dosing, an alternative preparation, taken with vitamin C and away from tea, coffee and antacids (check the SPC/local formulary), with a recheck of Hb after about 2–4 weeks"
+      },
+      {
+        "dom": "cm",
+        "text": "Explains intravenous iron as an option if oral iron is not tolerated or does not work, with honest information that serious reactions are rare and are managed by the infusion team"
+      },
+      {
+        "dom": "cm",
+        "text": "Stops the ibuprofen and offers safer analgesia for her back"
+      },
+      {
+        "dom": "cm",
+        "text": "Explains when further investigation is needed (if anaemia persists or recurs despite adequate iron, refer back to gastroenterology for consideration of small-bowel investigation) and addresses her fear that cancer was missed with honest, proportionate information"
+      },
+      {
+        "dom": "ro",
+        "text": "Explores her concerns and caring situation, arranges practical cover for appointments, and safety-nets (melaena, rectal bleeding, worsening breathlessness or chest pain, weight loss)"
+      }
     ],
-    worked:[
-      { lbl:'The result as a story',  txt:'"Your blood says three things at once: you\u2019re anaemic, the red cells are small, and the iron stores are empty. At 68 that\u2019s a pattern we never put down to dinner plates — it almost always means iron is being LOST somewhere, usually quietly, from the gut."' },
-      { lbl:'Retiring the diet story',txt:'"You\u2019ve told me chicken, fish and eggs most days — that diet doesn\u2019t empty an iron store. I think the diet idea has been doing a job for you: it\u2019s the explanation that didn\u2019t need a hospital. Can we talk about the one that might?"' },
-      { lbl:'The stools, gently',     txt:'"You mentioned your stomach\u2019s been off. I want to ask the question nobody likes: have the stools changed — darker, like tar, even on and off?"' },
-      { lbl:'Brian, head on',         txt:'"You\u2019ve mentioned Brian three times — so let\u2019s plan around him properly instead of pretending he isn\u2019t the issue. A carer\u2019s assessment and sitting service exist for exactly this. The tests are day visits, not admissions."' },
-      { lbl:'The reframe',            txt:'"Here\u2019s the truth as I see it: the thing most likely to take you away from Brian isn\u2019t a camera test that takes a morning — it\u2019s a bleed nobody found until it collapsed you. Finding it early is how you stay his carer."' },
-      { lbl:'Safety-net',             txt:'"Three things tonight that change everything: black tarry stools, vomiting anything like blood, or feeling faint or chest-tight — that\u2019s 999, not a wait. Otherwise: FIT kit back this week, bloods again in a fortnight, and I ring you with every result — you\u2019ll never be chasing me."' },
+    "worked": [
+      {
+        "lbl": "What the clear tests mean",
+        "txt": "“The cameras looked at your stomach, the first part of your small bowel and your whole large bowel, and they were clear, as were the coeliac test and the urine. That’s genuinely reassuring. But you’re still low on iron, so we need to fix that and keep an eye on why.”"
+      },
+      {
+        "lbl": "Black stools",
+        "txt": "“Iron tablets often turn stools very dark or black. The worrying kind of black stool is sticky, tarry and smells awful. Yours were formed and went back to normal when you stopped the tablets. That fits the iron.”"
+      },
+      {
+        "lbl": "Explore the fear",
+        "txt": "“You said the clear result was good ‘I suppose’. Is part of you worried they’ve missed something?”"
+      },
+      {
+        "lbl": "Better iron",
+        "txt": "“Taking iron every other day is often just as effective and much easier on the stomach. Take it with orange juice, not tea, and away from indigestion remedies.”"
+      },
+      {
+        "lbl": "The drip, honestly",
+        "txt": "“If tablets don’t work, an iron drip in hospital is very effective. Serious allergic reactions are rare, and the team watch you closely and know exactly what to do.”"
+      },
+      {
+        "lbl": "When to look further",
+        "txt": "“If your iron keeps falling despite treatment, I’d send you back to the bowel team to look at the small bowel, which the standard cameras don’t reach. That’s a planned next step, not a sign anything was missed.”"
+      }
     ],
-    learning:"Iron-deficiency anaemia in a postmenopausal woman is a gastrointestinal blood loss problem until proven otherwise — NICE HTG690 offers FIT, and under NICE NG12 FIT ≥10 µg Hb/g triggers a suspected cancer pathway lower-GI referral; BSG 2021 advises gastroscopy and colonoscopy as the first-line GI investigations, plus coeliac serology for everyone. Prescribing iron without investigating the cause is the classic fail. The hidden agenda is the consultation: she is a sole carer whose real terror is leaving her husband — investigation only happens if the candidate plans around Brian out loud.",
-    knowledge:{
-      guideline:"NICE HTG690 (2023, formerly DG56) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BSG iron-deficiency anaemia guideline (2021)",
-      points:[
-        { h:'Diagnose the pattern', t:'Hb 96 + MCV 72 + ferritin 9 = unequivocal iron-deficiency anaemia. In men and postmenopausal women, IDA = occult GI blood loss until excluded (BSG 2021) — diet alone almost never empties ferritin to single figures in someone eating chicken, fish and eggs.' },
-        { h:'Red flags & same-day action', t:'Melaena with haemodynamic symptoms, haematemesis, syncope, chest pain or breathlessness at rest → same-day hospital assessment. An Hb in the 90s in a well, stable patient is not by itself an admission trigger. Her "darker stools for 2\u20133 months" is the buried red flag the diet story was built to cover — it must be asked for directly.' },
-        { h:'Investigate', t:"FIT (NICE HTG690); NICE NG12: ≥10 µg Hb/g → suspected cancer pathway lower-GI referral. Coeliac serology (tTG-IgA) for all adults with IDA (BSG 2021). BSG 2021: gastroscopy and colonoscopy are the first-line GI investigations in postmenopausal women with IDA. NICE NG12: aged 55+ with weight loss and upper abdominal pain, reflux or dyspepsia → suspected cancer pathway referral for oesophageal or stomach cancer — hers qualifies if the weight loss is confirmed. Review NSAID/aspirin/anticoagulant use." },
-        { h:'Refer — the thresholds out loud', t:"FIT ≥10 → urgent suspected cancer pathway colorectal referral, NICE NG12, named as such. Do not let a negative FIT close the case if symptoms persist — ongoing unexplained IDA still warrants referral discussion." },
-        { h:'Manage alongside', t:'BSG 2021: one tablet of oral iron once daily (alternate days if not tolerated); product and strength per BNF; warn about black stools (and that this must not mask NEW melaena — ask about tarry, sticky stools specifically); recheck FBC within 4 weeks; continue for about 3 months after Hb normalises to refill stores.' },
-        { h:'Safety-net & follow-up', t:'999/same-day triggers said in plain words (tarry stools, blood, faintness, chest tightness); FIT kit returned this week with a chase date; named GP follow-up call for every result; carer\u2019s assessment referral documented so the plan survives her cancelling.' },
-        { h:'Marking edge', t:'Brian is mentioned in the first breath and every refusal routes through him. The Clear Pass treats the carer constraint as a clinical problem — sitting service, carer\u2019s assessment, day-visit framing — because the colonoscopy only happens if Brian is looked after on paper first.' }
+    "learning": "Iron-deficiency anaemia in a postmenopausal woman needs investigation for gastrointestinal blood loss and malabsorption: the BSG guideline (2021) recommends coeliac serology, urinalysis and bidirectional endoscopy (gastroscopy with duodenal biopsies and colonoscopy) for most, and NICE NG12 includes IDA in suspected cancer pathway criteria. When these are negative, the next steps are to replace iron effectively and monitor. Oral iron causes gastrointestinal side effects in many people; once-daily or alternate-day dosing improves tolerance and can maintain absorption because of hepcidin effects, and absorption improves with vitamin C and worsens with tea, coffee, calcium and antacids (check the SPC/local formulary). Recheck Hb after 2–4 weeks; a rise of about 20 g/L over 3–4 weeks shows a good response. Intravenous iron is indicated when oral iron is not tolerated or is ineffective; serious hypersensitivity reactions are rare and infusions are given where resuscitation facilities are available. Iron commonly darkens stools; melaena is black, tarry, sticky and offensive, and needs urgent assessment. Remove contributors such as NSAIDs. If IDA persists or recurs despite adequate replacement after negative bidirectional endoscopy, refer back to gastroenterology for consideration of small-bowel investigation (for example capsule endoscopy), and reconsider non-GI causes. The consultation skill is uncovering the fear that cancer was missed, giving honest reassurance about what the tests did and did not show, and making the plan workable for a carer who cannot easily leave home.",
+    "knowledge": {
+      "guideline": "[1] British Society of Gastroenterology guidelines for the management of iron deficiency anaemia in adults (2021) · [2] NICE CKS Anaemia – iron deficiency (check current version) · [3] NICE NG12 Suspected cancer: recognition and referral (2015, last updated 2026) · [4] Product SPCs for oral iron preparations and intravenous iron · [5] MHRA Drug Safety Update: intravenous iron and serious hypersensitivity reactions (2014) · [6] Care Act 2014 — carer’s assessment",
+      "summary": "Persistent iron deficiency after a negative suspected cancer pathway work-up (gastroscopy with duodenal biopsies, colonoscopy, coeliac serology, urinalysis), oral iron stopped because of side effects and black stools, ongoing ibuprofen, tea with meals, and a hidden fear that cancer was missed. Explain the results, distinguish iron stools from melaena, optimise oral iron or consider IV iron, stop the NSAID, set a monitoring plan and a threshold for small-bowel investigation, and make it work around her caring role.",
+      "points": [
+        {
+          "h": "Standard work-up",
+          "t": "Coeliac serology, urinalysis, and bidirectional endoscopy with duodenal biopsies in men and postmenopausal women with IDA [1]."
+        },
+        {
+          "h": "Oral iron tolerance",
+          "t": "Once-daily or alternate-day dosing improves tolerance; alternative preparations may suit; take with vitamin C, away from tea, coffee, calcium and antacids (check the SPC/local formulary) [1,2,4]."
+        },
+        {
+          "h": "Monitoring response",
+          "t": "Recheck Hb at 2–4 weeks; expect a rise of about 20 g/L over 3–4 weeks. Continue for about 3 months after Hb normalises to replenish stores [1]."
+        },
+        {
+          "h": "Intravenous iron",
+          "t": "When oral iron is not tolerated or ineffective. Serious hypersensitivity is rare; give where resuscitation facilities are available [4,5]."
+        },
+        {
+          "h": "Black stools",
+          "t": "Iron darkens stools. Melaena is black, tarry, sticky and offensive, and needs urgent assessment."
+        },
+        {
+          "h": "Contributors",
+          "t": "NSAIDs, antiplatelets and anticoagulants increase GI loss; diet; malabsorption."
+        },
+        {
+          "h": "Persistent or recurrent IDA",
+          "t": "If IDA persists or recurs despite adequate iron after negative bidirectional endoscopy, refer back for consideration of small-bowel investigation such as capsule endoscopy [1]."
+        },
+        {
+          "h": "Carers",
+          "t": "Plan appointments and infusions around caring responsibilities; offer a carer’s assessment [6]."
+        }
       ]
     }
   };
@@ -179,31 +283,75 @@
   Object.assign(window.SCA_EXTRAS, {
 
     'anaemia-ida': {
-      ceg: ['Investigations & results', 'Long-term conditions & cancer'],
-      stem: {
-        name: 'Sheila Drummond', age: '68 years · female',
-        pmh: ['Hypertension', 'Carer flag: sole carer for husband (Parkinson\u2019s disease)'],
-        meds: ['Amlodipine 5 mg OD', 'OTC: multivitamin "with iron" — self-started'],
-        allergy: 'NKDA',
-        recent: '⚠ Results for action: Hb 96 g/L, MCV 72 fl, ferritin 9 \u00b5g/L (bloods for tiredness). No FIT on file. Last BP review 10 months ago. Two recalls needed before she booked — "couldn\u2019t leave Brian".',
-        reason: 'Video consultation — recalled to discuss blood results.'
-      },
-      timeMap: [
-        { t:'0–1',  h:'Open & listen',        d:'She arrives with the answer pre-built (diet, iron tablets) and Brian in the first sentence. Bank both — the consultation is already telling you its shape.' },
-        { t:'1–5',  h:'History the story hid', d:'"My stomach\u2019s been off" is the door: dyspepsia, the darker stools, weight, NSAIDs. Dismantle the diet story with her own menu. Ask about stools DIRECTLY — she will not volunteer them twice.' },
-        { t:'5–6',  h:'Summarise & share',     d:'"Empty iron stores at 68 means iron is being lost, almost always from the gut — the diet idea was protecting you from a scarier sentence, and I understand why."' },
-        { t:'6–10', h:'Plan around Brian',     d:'FIT + coeliac serology + iron started properly; the Brian problem treated as clinical work — carer\u2019s assessment, sitting service, day-visit framing for any scope.' },
-        { t:'10–12',h:'Safety-net & close',    d:'Tarry stools / blood / faintness → 999 tonight. FIT back this week with a chase date. "I ring you with every result." Recheck bloods in a fortnight.' }
+      "ceg": [
+        "Older adults",
+        "Investigations & results",
+        "Long-term conditions & cancer"
       ],
-      wordPics: {
-        fail: 'Prescribes ferrous sulfate against the diet story and says "we\u2019ll recheck in three months"; never asks about stools or dyspepsia; FIT never mentioned; Brian treated as background noise, so every investigation she\u2019s offered is silently declined.',
-        pass: 'Names IDA as a find-the-bleed problem; asks the GI questions and surfaces the dark stools; sends FIT and coeliac serology; starts iron correctly alongside; acknowledges the caring load; safety-nets melaena.',
-        exc:  'The pre-built diet story is named kindly and retired with her own facts; the stools question is asked directly and the months of quiet fear behind them acknowledged; Brian becomes part of the prescription (carer\u2019s assessment, sitting service) so the FIT and any scope actually happen; the suspected cancer pathway threshold (FIT \u226510) stated in advance so the next step is pre-agreed, not a new battle.'
+      "stem": {
+        "name": "Sheila Drummond",
+        "age": "68 years · female",
+        "pmh": [
+          "Iron-deficiency anaemia (diagnosed 4 months ago)",
+          "Hypertension",
+          "Registered as carer for her husband (Parkinson’s disease)"
+        ],
+        "meds": [
+          "Amlodipine",
+          "Ferrous sulfate (issued 2 months ago; not reordered)"
+        ],
+        "allergy": "None recorded",
+        "recent": "Gastroscopy with duodenal biopsies and colonoscopy normal; coeliac serology negative; urine dipstick negative for blood. Bloods this week: Hb 101 g/L (96 four months ago), ferritin 11 µg/L, MCV 74.",
+        "reason": "Follow-up after hospital tests: “Still tired.”"
       },
-      avoid: [
-        { dont:'"Your iron is low so I\u2019ll put you on iron tablets and we\u2019ll see how you go."', instead:'"Iron tablets are part of this — but at 68, empty iron stores are a FIND-the-leak problem. Tablets refill the tank; my job is finding the hole."', why:'Iron-without-investigation is the designed fail of every IDA station — and of real-world missed colorectal cancers.' },
-        { dont:'"You really should have mentioned the dark stools sooner."', instead:'"Months of noticing and not saying — that\u2019s not carelessness, that\u2019s fear doing its job. You\u2019ve said it now, and now is what counts."', why:'Scolding the delay teaches her to hide the next symptom; absolution keeps the channel open.' },
-        { dont:'"The tests are nothing to worry about — try to make time for yourself."', instead:'"Let\u2019s solve Brian first: a sitting service for the morning of any test, a carer\u2019s assessment this month. Then the tests stop being impossible."', why:'"Make time for yourself" is advice; a sitting service is a plan. Only one of them gets the colonoscopy attended.' }
+      "timeMap": [
+        {
+          "t": "0–1",
+          "h": "Open",
+          "d": "Hear the intolerance and the ambivalence about clear tests."
+        },
+        {
+          "t": "1–5",
+          "h": "History",
+          "d": "Iron side effects; black stools characterised; red flags; tea; ibuprofen."
+        },
+        {
+          "t": "5–7",
+          "h": "ICE",
+          "d": "Fear of missed cancer after Pat; drip worries."
+        },
+        {
+          "t": "7–11",
+          "h": "Explain and plan",
+          "d": "What the tests showed; iron stools; alternate-day iron; stop NSAID; IV iron; threshold for small-bowel investigation; Brian’s cover."
+        },
+        {
+          "t": "11–12",
+          "h": "Close",
+          "d": "Teach-back; Hb in 3 weeks; melaena safety-net; carer’s assessment."
+        }
+      ],
+      "wordPics": {
+        "fail": "Restarts the same iron regimen or tells her to persevere; misses the ibuprofen; does not clarify the black stools; ignores the fear that cancer was missed.",
+        "pass": "Explains the negative tests, distinguishes iron stools from melaena, offers alternate-day iron, stops the NSAID and plans a recheck.",
+        "exc": "All of the above, plus: uncovers and addresses the fear about Pat with honest limits of testing; explains IV iron risk proportionately; a clear threshold for small-bowel investigation; arranges infusion cover around Brian; offers a carer’s assessment."
+      },
+      "avoid": [
+        {
+          "dont": "“You need to take the tablets, they all cause side effects.”",
+          "instead": "“Let’s try them every other day, with orange juice rather than tea.”",
+          "why": "Alternate-day dosing improves tolerance with similar effectiveness."
+        },
+        {
+          "dont": "“The tests were clear, so there’s nothing to worry about.”",
+          "instead": "“That’s reassuring, and if your iron keeps dropping we’ll look further.”",
+          "why": "Honest limits of testing build trust and keep her safe."
+        },
+        {
+          "dont": "(Ignoring the black stools)",
+          "instead": "“Were they sticky and tarry, or just dark?”",
+          "why": "Melaena must be distinguished from iron-darkened stools."
+        }
       ]
     },
 

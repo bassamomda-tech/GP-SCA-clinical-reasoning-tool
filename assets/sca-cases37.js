@@ -195,90 +195,155 @@
 
   /* ============ 143. VIDEO — The non-healing lesion: skin-cancer 2WW behind "just a sore" ============ */
   const c143 = {
-    id:'non-healing-lesion', title:'"It\u2019s just a sore that won\u2019t heal \u2014 a bit of cream\u2019ll do"', type:'video', duration:12,
-    meta:{ age:74, sex:'M', setting:'Video consultation \u2014 a non-healing lesion on the ear/face.', system:'Dermatology / Non-melanoma skin cancer', checked:'October 2026' },
-    brief:'Mr Stanley Cooke, 74, retired farmer (decades of sun exposure). A scaly, crusting, sometimes-bleeding lesion on the top of his RIGHT EAR for ~4 months that "won\u2019t heal" \u2014 he\u2019s tried antiseptic cream. It\u2019s tender, has grown, with a raised, indurated edge. Likely a non-melanoma skin cancer (SCC > BCC given the ear/sun-exposed site, growth, tenderness). He dismisses it as "an old man\u2019s scab / where my glasses rub" and wants "a stronger cream". Lifelong outdoor worker; multiple actinic keratoses.',
-    script:{
-      "opening": "\"Afternoon. I've got this little scab on the top of my ear that just won't heal up — had it a few months. I keep knocking the crust off and it bleeds a bit, then it comes back. I've been putting antiseptic cream on but it's not shifting. I reckon it's just where my glasses rub, or an old man's scab. Could you give me something stronger to heal it? I don't want any fuss made.\"",
+    "id": "non-healing-lesion",
+    "title": "“It’s only a little spot on my nose that bleeds when I wash — I can’t be going to the hospital, I look after my husband”",
+    "type": "video",
+    "duration": 12,
+    "meta": {
+      "age": 82,
+      "sex": "F",
+      "setting": "Video consultation — a spot on the face that has been slow to heal; photographs uploaded.",
+      "system": "Dermatology / Older adults — suspected basal cell carcinoma on the nose: NICE NG12 referral route, fear of disfigurement and a carer’s barriers to attending",
+      "checked": "October 2026"
+    },
+    "brief": "Margaret (Peggy) Lowe, 82, a retired school cook, uploads photos and joins a video call because her granddaughter insisted. For about 18 months she has had a slowly enlarging spot on the left side of her nose, now about 9 mm: a shiny, pearly nodule with a rolled edge, small visible blood vessels and a central crust that bleeds when she washes, scabs, and never fully heals. No other lesions of concern; fair skin; she worked outdoors in her youth on a farm. She wants “a cream” and says she cannot go to the hospital because she cares for her husband, Ted, 85, who has vascular dementia and cannot be left. Hidden concern, only if explored: her sister had “half her nose cut off” for skin cancer 20 years ago and was left disfigured and housebound with embarrassment; Peggy is terrified of the same. The task: recognise a probable basal cell carcinoma; explain it honestly in plain language (a slow-growing skin cancer that very rarely spreads, but grows locally and is best treated while small, especially on the nose); know the NICE NG12 route (routine referral for suspected BCC, with a suspected cancer pathway only if delay could have a significant impact because of site or size; follow local pathways for high-risk facial sites); explore and address the fear of disfigurement (modern options include surgery with careful reconstruction, Mohs micrographic surgery for high-risk facial sites, and sometimes radiotherapy or other treatments, chosen by the specialist); solve the practical barriers (carer cover, transport, the Carer’s Assessment); and agree a plan she can accept, with safety-netting.",
+    "script": {
+      "opening": "“My granddaughter made me do this. It’s only a little spot on my nose that bleeds when I wash my face. I just want a cream for it. I can’t be going up the hospital, I look after my husband.”",
       "facts": [
         {
-          "topic": "The lesion (if asked)",
-          "text": "Top of the right ear, about four months. Started like a rough, scaly spot; now \"the size of a fingernail\" and bigger than it was. Crusty, bleeds when you catch it on the pillow or a towel. Tender to touch. Your glasses arm sits lower down, behind the ear, not on the top."
+          "topic": "The spot",
+          "text": "About 18 months. Started like a pimple, very slowly bigger, now “the size of a pea”. Shiny, pearly edge, tiny red veins, a crust in the middle that bleeds when she washes, scabs, then breaks again. Not painful. No other spots like it."
         },
         {
-          "topic": "On video (if asked to show)",
-          "text": "You turn your head and hold the phone close in good light: a raised, crusty lump with a hard, rolled edge and a scab in the middle, about 1 cm. If asked, your wife can take a clear photo and send it in."
+          "topic": "Skin history (if asked)",
+          "text": "Fair skin, freckles. Worked on her parents’ farm as a girl, “always out in the sun, no such thing as sun cream”. No previous skin cancers. No weight loss, no lumps in the neck."
         },
         {
-          "topic": "Lumps (if asked)",
-          "text": "You have not noticed any lumps in front of or behind the ear or in the neck, but \"I wouldn't know what I was feeling for\"."
+          "topic": "Home",
+          "text": "Cares for Ted, 85, with vascular dementia, who wanders and cannot be left alone for long. Daughter lives 200 miles away; granddaughter visits on Sundays. No paid carers. Has never had a carer’s assessment."
         },
         {
-          "topic": "Other skin (if asked)",
-          "text": "Lots of rough \"sun spots\" on your scalp and the backs of your hands — \"the doctor froze a few years back\". No other sore that will not heal. No dark moles changing."
+          "topic": "Only if asked what worries her",
+          "text": "Her sister Joan had skin cancer on her nose 20 years ago and “they cut half of it off”. Joan stopped going out and never got over it. Peggy has avoided getting this looked at for that reason."
         },
         {
-          "topic": "Sun exposure",
-          "text": "Farmer for 50 years, outdoors in all weathers, \"never wore a hat till my wife made me\". Sunburnt many times as a young man."
-        },
-        {
-          "topic": "Medical history and medicines",
-          "text": "No regular medicines. No allergies. No transplant or immune problems. Ex-smoker."
-        },
-        {
-          "topic": "Social",
-          "text": "74, retired farmer, married to Mary, lives on the farm still. Son runs the farm."
-        },
-        {
-          "topic": "Hidden — hold back",
-          "text": "Your neighbour had \"a skin cancer on his face\" and had a big operation that left a scar; you do not want \"them cutting bits off me\". Say this only if asked what worries you, or when referral is mentioned."
+          "topic": "Her health",
+          "text": "Hypertension on amlodipine. Mobile, independent, drives locally. Tired from caring."
         },
         {
           "topic": "How to play it",
-          "text": "Stoical, a bit gruff, dismissive. If the doctor explains clearly why a sore that will not heal needs a specialist to look at it, and that most are treated with a small operation, you grumble but agree: \"Mary'll be pleased, she's been on at me.\" Ask: \"Will they have to take my ear off?\""
+          "text": "Matter-of-fact and dismissive at first: “At my age, what does it matter?” Becomes emotional describing Joan. Engages if the doctor explains that this type rarely spreads, that treatment now is smaller and better than it was, and offers help with Ted for the appointment."
         }
       ],
       "ice": {
-        "ideas": "\"It's an old man's scab, or my glasses rubbing.\"",
-        "concerns": "Underneath (only if asked): a big operation and scar like your neighbour.",
-        "expectations": "\"Something stronger to heal it.\" You will accept referral if it is explained plainly."
+        "ideas": "“It’s a sore that won’t heal because I keep knocking it.”",
+        "concerns": "HIDDEN AGENDA: fear of disfigurement after her sister’s experience; also worry about who would look after Ted.",
+        "expectations": "“A cream, and no hospital.”"
       },
       "cues": [
-        "\"It bleeds a bit, then it comes back.\" — say in the opening.",
-        "\"I don't want any fuss made.\" — say in the opening.",
-        "\"Will they have to cut a lot off?\" — ask if referral is mentioned."
+        "“My granddaughter made me do this” — someone is worried; why hasn’t she come sooner?",
+        "Bleeding, crusting and never fully healing for 18 months — a lesion that needs referral.",
+        "“I look after my husband” — a carer with practical barriers and no support.",
+        "Emotion when talking about her sister — the hidden fear."
       ]
     },
-    checkpoints:[
-      { dom:'dg', text:'Recognises that a lesion FAILING TO HEAL over weeks\u2013months on sun-exposed skin (scaly/crusting, bleeding, growing, tender, indurated edge) in an older sun-exposed person is a NON-MELANOMA SKIN CANCER until proven otherwise \u2014 and does NOT prescribe "a stronger cream" for it' },
-      { dom:'dg', text:'EXAMINES the lesion and surrounding skin as far as video allows (close view, good light, photographs) and arranges palpation of the regional nodes (pre- and post-auricular, cervical) face to face for suspected SCC, and assesses its features, recognising the ear as a high-risk site and the SCC-suspicious features (growth, tenderness, keratin, bleeding)' },
-      { dom:'cm', text:"Refers on the appropriate pathway: URGENT suspected cancer pathway referral for suspected SCC; recognises BCC is usually routine unless delay could matter because of site or size — and acts on the NICE NG12 criteria rather than treating empirically" },
-      { dom:'cm', text:'Gives accurate, reassuring information: most non-melanoma skin cancers (BCC, and SCC caught early) are highly treatable/curable with minor surgery, especially early \u2014 so the urgent referral is precautionary, not a catastrophe' },
-      { dom:'dg', text:'Addresses the wider SUN-DAMAGE picture: examines for/advises on actinic keratoses and other lesions, and gives sun-protection advice, recognising field damage in a lifelong outdoor worker' },
-      { dom:'ro',   text:'Gently challenges the "old man\u2019s scab/don\u2019t want a fuss" minimisation and surfaces the underlying fear, rather than colluding with the cream request; names the concern honestly and proportionately' },
-      { dom:'ro',   text:'Balances honesty (this needs urgent checking) with genuine reassurance (these are very treatable), so the stoical patient accepts referral; addresses any disfigurement worry' },
-      { dom:'cm',    text:'Safety-nets and follows up: the urgent referral and what to expect (biopsy/excision), reassurance and sun-protection advice, what to report (rapid growth, bleeding, new lesions), and a follow-up \u2014 referring the likely cancer, not creaming it' },
+    "checkpoints": [
+      {
+        "dom": "dg",
+        "text": "Takes a lesion history (duration, growth, bleeding, healing, symptoms) and risk factors (sun exposure, skin type, previous skin cancer), and examines the photos and on camera (pearly rolled edge, telangiectasia, central crust or ulceration)"
+      },
+      {
+        "dom": "dg",
+        "text": "Reaches a working diagnosis of probable basal cell carcinoma and considers the differential (squamous cell carcinoma, keratoacanthoma, amelanotic melanoma), checking for features that would change urgency"
+      },
+      {
+        "dom": "cm",
+        "text": "Applies NICE NG12 correctly: routine referral for suspected BCC, considering a suspected cancer pathway only if delay could have a significant impact because of site or size, and following local pathways for facial lesions; does not prescribe a cream"
+      },
+      {
+        "dom": "ro",
+        "text": "Explains the diagnosis honestly: a skin cancer that grows slowly and very rarely spreads, but is best treated while small, especially on the nose"
+      },
+      {
+        "dom": "dg",
+        "text": "Explores her reluctance and uncovers the fear of disfigurement based on her sister’s experience"
+      },
+      {
+        "dom": "cm",
+        "text": "Addresses the fear with accurate information about current treatment options (surgery with reconstruction, Mohs micrographic surgery for high-risk facial sites, radiotherapy or other options), decided with the specialist"
+      },
+      {
+        "dom": "cm",
+        "text": "Solves practical barriers: cover for Ted on the day (family, respite or sitting services), hospital transport if eligible, and a referral for a Carer’s Assessment (Care Act 2014)"
+      },
+      {
+        "dom": "cm",
+        "text": "Respects her right to decide, agrees a plan she accepts, and safety-nets (rapid growth, pain, a new lump, a new lesion, or the appointment not arriving)"
+      }
     ],
-    worked:[
-      { lbl:'Reframe \"old man\u2019s scab\"', txt:'"I\u2019m really glad you mentioned it, even if it feels like nothing. Here\u2019s the important rule: a sore or scab that DOESN\u2019T heal over a few months \u2014 keeps bleeding and crusting and coming back \u2014 isn\u2019t just an old scab, especially on a sun-exposed spot like the top of your ear. A cream won\u2019t fix that, because it\u2019s likely something we need to look at properly. So let me take a proper look on the video, get some clear photos, and check the glands around your ear in person."' },
-      { lbl:'Name it honestly',    txt:'"Having looked at it closely on the video — the way it\u2019s grown, the raised edge, the crusting and bleeding, on sun-damaged skin after all your years outdoors \u2014 I\u2019m concerned this could be a skin cancer. I want to be straight with you about that. But before that word frightens you, let me tell you the genuinely reassuring part."' },
-      { lbl:'The reassurance',     txt:'"The common skin cancers from sun damage \u2014 which this is most likely to be \u2014 are usually very treatable, often cured completely with a small operation, especially when caught early like yours. So this isn\u2019t the kind of cancer news people most dread. Getting it seen now is exactly how we keep it simple."' },
-      { lbl:'The urgent referral', txt:'"Because of where it is and how it looks, I’m going to refer you urgently to the skin specialists on the suspected cancer pathway — you should be seen quickly, usually within about two weeks. They\u2019ll examine it and usually take a small sample or remove it. That\u2019s the right, safe step, and it\u2019s why a cream wouldn\u2019t have done."' },
-      { lbl:'The wider sun damage', txt:'"While we\u2019re here \u2014 a lifetime farming means a lot of sun on your skin, so I\u2019d like to check for any other rough or scaly patches, and talk about protecting your skin going forward, hat and sunscreen. There may be a few spots worth treating."' },
-      { lbl:'Safety-net',          txt:'"I know you didn\u2019t want a fuss \u2014 but this is worth it, and you\u2019ve done the right thing. If it grows quickly, bleeds a lot, or you spot new ones, tell me sooner. I\u2019ll get the urgent referral done and follow it up with you. You came in for a stronger cream; what you actually needed was to get this looked at properly \u2014 and most likely sorted simply."' },
+    "worked": [
+      {
+        "lbl": "Honest naming",
+        "txt": "“From the photos, this looks like a basal cell carcinoma. It’s a type of skin cancer, but it’s the gentlest kind: it grows slowly and very rarely spreads to other parts of the body.”"
+      },
+      {
+        "lbl": "Why not leave it",
+        "txt": "“If it’s left, it keeps slowly growing into the skin around it. On the nose, smaller is much easier to treat, with a smaller scar.”"
+      },
+      {
+        "lbl": "Explore reluctance",
+        "txt": "“You’ve had this a while. Has something made you wary of getting it looked at?”"
+      },
+      {
+        "lbl": "Respond to Joan’s story",
+        "txt": "“That sounds awful for Joan and for you. Things have changed a lot in 20 years. For spots on the nose there’s a special technique that removes only the affected skin, checking under the microscope as they go, to keep as much healthy skin as possible.”"
+      },
+      {
+        "lbl": "Practical help",
+        "txt": "“Let’s work out how you’d get there. Could your granddaughter sit with Ted on the day? If not, there are sitting services, and I’d like to refer you for a carer’s assessment so you get some support anyway.”"
+      },
+      {
+        "lbl": "Respect choice",
+        "txt": "“It’s your decision. What I’d suggest is a referral to the skin specialists so you can hear the options. You can decide once you know what they’d do.”"
+      }
     ],
-    learning:"A lesion that FAILS TO HEAL over weeks–months on sun-exposed skin in an older person with chronic sun exposure — scaly/crusting, bleeding, growing, tender, with a raised/indurated edge — is a NON-MELANOMA SKIN CANCER until proven otherwise (SCC or BCC), so \"an old man’s scab / a stronger cream\" is the dangerous misconception and non-healing is the red flag. On a high-risk site like the ear with growth, tenderness, keratin and bleeding, SCC (which can metastasise) is likely and warrants an URGENT suspected cancer pathway referral per NICE NG12, while BCC (pearly, rolled edge, telangiectasia, slow) is usually routine — the job is to examine, recognise it needs assessment/biopsy, and refer, not to cream it. Reassure genuinely (most non-melanoma skin cancers, and early SCC, are highly treatable/curable with minor surgery), address the field sun-damage (actinic keratoses, sun protection), and — the hidden agenda — gently challenge the stoical \"don’t want a fuss\" minimisation masking a quiet fear, naming the concern honestly while reassuring, so the patient accepts the urgent referral.",
-    knowledge:{
-      guideline:"BAD guidelines for the management of primary cutaneous squamous cell carcinoma (2020) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BAD guidelines for the management of actinic keratosis (2017) · non-melanoma skin cancer pathways",
-      points:[
-        { h:'Non-healing = red flag', t:'A skin lesion that does not heal within the expected time (weeks), or that grows, bleeds, crusts, ulcerates or is tender \u2014 especially on sun-exposed skin in older/sun-damaged patients \u2014 should be regarded as a possible skin cancer, not treated as a benign "scab" with creams.' },
-        { h:'SCC features and urgency', t:"Squamous cell carcinoma: a keratinising/crusting, often tender, enlarging nodule or non-healing ulcer on sun-exposed sites (face, ears, scalp, hands, lower lip). SCC can metastasise to nodes (BAD 2020) — NICE NG12: consider a suspected cancer pathway referral for a skin lesion that raises the suspicion of squamous cell carcinoma. High-risk sites (ear, lip) and immunosuppression raise concern." },
-        { h:'BCC features and pathway', t:"Basal cell carcinoma: pearly/translucent papule or nodule with a rolled edge and surface telangiectasia, slow-growing, may ulcerate (\"rodent ulcer\"). Usually low metastatic risk — NICE NG12: consider routine referral (or per local pathway/skin-cancer service), using the suspected cancer pathway only if there is concern about SCC or a delay could have a significant impact because of factors such as site or size." },
-        { h:'Examine and assess', t:'Examine the lesion (size, edge, surface, ulceration, induration) and surrounding skin; examine regional lymph nodes (pre- and post-auricular, cervical) for suspected SCC — a video view or photograph helps triage but does not replace palpation of the nodes in person. Dermoscopy/structured assessment supports the decision. Biopsy/excision is done in secondary care \u2014 refer rather than treating empirically.' },
-        { h:'Reassure proportionately', t:'Most non-melanoma skin cancers (BCC, and early SCC) are highly treatable and often cured with minor surgery, especially when caught early. Frame urgent referral as precautionary and good news, not a catastrophe \u2014 this helps a stoical patient accept it.' },
-        { h:'Field damage & prevention', t:'Lifelong sun exposure causes field change \u2014 actinic keratoses (premalignant) and multiple lesions. Examine for and manage these (BAD 2017), and give sun-protection advice (hat, sunscreen, avoidance), with surveillance for further lesions.' },
-        { h:'Never do', t:"Never treat a non-healing, growing or bleeding lesion as a benign scab with creams; never miss the NICE NG12 suspected cancer pathway criterion for SCC (especially high-risk sites); never skip examination/regional nodes; never collude with \"don’t want a fuss\"; never frighten without the genuine reassurance these are usually very treatable." },
-        { h:'Safety-net & follow-up', t:"Urgent suspected cancer pathway referral for SCC suspicion (routine for BCC per NICE NG12 unless site or size makes delay significant); examine and manage field damage; sun protection; report rapid growth/bleeding/new lesions; follow up the referral and outcome." }
+    "learning": "Basal cell carcinoma (BCC) is the commonest skin cancer, typically on sun-exposed skin of the head and neck in older people. It presents as a slowly enlarging, pearly or translucent nodule with a rolled edge and telangiectasia, often with central ulceration or crusting that bleeds and fails to heal. It grows locally and can destroy surrounding tissue, but metastasis is very rare. NICE NG12 recommends considering routine referral for a skin lesion that raises suspicion of BCC, and considering a suspected cancer pathway referral only if there is particular concern that a delay may have a significant impact because of factors such as lesion site or size; facial lesions near the eyes, nose and lips are high-risk sites for recurrence and are often handled through local pathways. GPs should not treat suspected facial BCCs with creams or minor surgery outside accredited arrangements. Specialist treatment options include surgical excision, Mohs micrographic surgery (tissue-sparing, used for high-risk facial sites and recurrent tumours), radiotherapy for some older patients, and topical treatments or curettage for selected low-risk superficial lesions. The contrast with the related case of a suspected squamous cell carcinoma is important: SCC is faster-growing, often tender and can metastasise, so NG12 recommends a suspected cancer pathway referral. The consultation challenge here is an older carer who minimises the lesion because of fear of disfigurement from a family experience and because she cannot leave her husband. Honest, proportionate information, addressing the specific fear, practical help with caring responsibilities (respite, transport, a Carer’s Assessment under the Care Act 2014), and respect for her autonomy lead to a plan she can accept.",
+    "knowledge": {
+      "guideline": "[1] NICE NG12 Suspected cancer: recognition and referral (2015, last updated 2026) — skin cancers · [2] NICE CKS Skin cancers: basal cell carcinoma (check current version) · [3] British Association of Dermatologists guidelines for the management of adults with basal cell carcinoma (2021) · [4] Care Act 2014 — carer’s assessment · [5] GMC Decision making and consent (2020)",
+      "summary": "A probable nodular BCC on the nose of an 82-year-old carer who wants a cream and cannot leave her husband with dementia, with a hidden fear of disfigurement after her sister’s nasal surgery. Explain honestly, refer through the correct NG12 route (routine for suspected BCC, local pathway for high-risk facial sites), address the fear with accurate information about modern treatment, solve the practical barriers, and respect her decision.",
+      "points": [
+        {
+          "h": "Recognition",
+          "t": "Pearly or translucent nodule, rolled edge, telangiectasia, central ulceration or crust, slow growth, bleeding and failure to heal. Often head and neck in sun-exposed older people [2]."
+        },
+        {
+          "h": "Behaviour",
+          "t": "Locally invasive, very rarely metastasises. Early treatment means smaller surgery and better cosmetic results, especially on the face [3]."
+        },
+        {
+          "h": "NG12 referral route",
+          "t": "Consider routine referral for suspected BCC. Consider a suspected cancer pathway only if delay could have a significant impact because of site or size [1]. Follow local pathways for high-risk facial sites."
+        },
+        {
+          "h": "Differential",
+          "t": "Squamous cell carcinoma (faster growing, tender, keratotic; suspected cancer pathway), keratoacanthoma, amelanotic melanoma, sebaceous hyperplasia."
+        },
+        {
+          "h": "Treatment options",
+          "t": "Surgical excision; Mohs micrographic surgery for high-risk facial sites; radiotherapy for some older patients; topical treatments or curettage for selected superficial low-risk lesions. Chosen by the specialist with the patient [3]."
+        },
+        {
+          "h": "No GP creams for facial nodules",
+          "t": "Do not treat a suspected nodular facial BCC with creams or minor surgery in primary care outside accredited arrangements."
+        },
+        {
+          "h": "Carers",
+          "t": "Carers often delay their own care. Offer practical help with cover and transport and refer for a Carer’s Assessment under the Care Act 2014 [4]."
+        },
+        {
+          "h": "Autonomy",
+          "t": "She may decline referral after understanding the options. Document the discussion and keep the door open [5]."
+        }
       ]
     }
   };
@@ -433,31 +498,72 @@
     },
 
     'non-healing-lesion': {
-      ceg: ['Long-term conditions & cancer', 'Older adults'],
-      stem: {
-        name: 'Stanley Cooke', age: '74 years · male',
-        pmh: ['Scaly, crusting, bleeding lesion on the right ear ~4 months, "won\u2019t heal"; growing, tender, indurated edge', 'Retired farmer — decades of sun exposure; multiple actinic keratoses', 'Tried antiseptic cream'],
-        meds: ['None'],
-        allergy: 'NKDA',
-        recent: 'Dismisses it as "an old man\u2019s scab / where my glasses rub"; wants a stronger cream; "no fuss".',
-        reason: 'Video consultation — non-healing lesion on the ear.'
-      },
-      timeMap: [
-        { t:'0–2',  h:'Reframe "scab"',      d:'A sore that won\u2019t heal over months on sun-exposed skin, growing/bleeding, isn\u2019t a scab — a cream won\u2019t fix it. Examine.' },
-        { t:'2–4',  h:'Name it honestly',    d:'Growth, raised edge, crusting/bleeding on the ear after years outdoors → likely skin cancer (SCC). Be straight, then reassure.' },
-        { t:'4–6',  h:'The reassurance',     d:'Sun-damage skin cancers are usually very treatable, often cured by minor surgery, especially early. Urgent referral is precautionary.' },
-        { t:'6–8',  h:'Urgent suspected cancer pathway referral', d:"Ear/SCC suspicion → urgent suspected cancer pathway referral; biopsy/excision in secondary care. Tag NICE NG12." },
-        { t:'8–12', h:'Field damage + net',  d:'Check for other actinic lesions; sun protection. Rapid growth/bleeding/new lesions → sooner. Follow up the referral.' }
+      "ceg": [
+        "Long-term conditions & cancer",
+        "Older adults"
       ],
-      wordPics: {
-        fail: 'Prescribes a stronger cream for "an old man\u2019s scab"; never examines or recognises the non-healing lesion as a likely skin cancer; misses the SCC suspected cancer pathway referral; colludes with "no fuss".',
-        pass: 'Recognises the non-healing lesion as a likely skin cancer, examines, refers urgently (suspected cancer pathway), and reassures + advises on sun damage.',
-        exc:  "Reframes the non-healing \"scab\" as a likely skin cancer and examines it (with the nodes checked in person for SCC); refers urgently on the NICE NG12 suspected cancer pathway for SCC suspicion; reassures genuinely that these are usually very treatable; addresses the field sun-damage and protection; and gently challenges the stoical minimisation and underlying fear."
+      "stem": {
+        "name": "Margaret (Peggy) Lowe",
+        "age": "82 years · female",
+        "pmh": [
+          "Hypertension",
+          "Registered as carer for her husband (vascular dementia)"
+        ],
+        "meds": [
+          "Amlodipine"
+        ],
+        "allergy": "None recorded",
+        "recent": "Photos uploaded this morning of a lesion on the left side of the nose. No previous consultations about skin.",
+        "reason": "“A spot on my nose that won’t heal — I’d like a cream.”"
       },
-      avoid: [
-        { dont:'"It\u2019s probably just an old scab where your glasses rub — try a stronger cream."', instead:'"A sore that won\u2019t heal over months on a sun-exposed ear, growing and bleeding, isn\u2019t a scab — it needs looking at properly, because it could be a skin cancer. A cream won\u2019t fix that."', why:'Creaming a non-healing, growing, bleeding lesion misses a likely skin cancer (often SCC).' },
-        { dont:'"Let\u2019s give it another few months and see if it heals."', instead:'"We don\u2019t watch and wait with this — because of where it is and how it looks, I’m referring you urgently to the skin specialists on the suspected cancer pathway, usually seen within about two weeks."', why:'"Watch and wait" delays the urgent suspected cancer pathway assessment an SCC-suspicious ear lesion needs.' },
-        { dont:'"It\u2019s likely cancer, so you\u2019ll need to brace yourself for that." (no reassurance)', instead:'"It could be a skin cancer, but the genuinely reassuring part is these are usually very treatable, often cured with a small operation, especially caught early like yours."', why:'Frightening a stoical patient without the true reassurance risks disengagement from the urgent referral.' }
+      "timeMap": [
+        {
+          "t": "0–1",
+          "h": "Open",
+          "d": "Hear the cream request and the caring barrier."
+        },
+        {
+          "t": "1–5",
+          "h": "History and look",
+          "d": "Duration, growth, bleeding, healing, sun exposure; close camera view: pearly, rolled edge, telangiectasia, crust."
+        },
+        {
+          "t": "5–8",
+          "h": "Explain and explore",
+          "d": "Honest naming with proportion; why not a cream; why she waited: her sister."
+        },
+        {
+          "t": "8–11",
+          "h": "Plan",
+          "d": "NG12 route and local facial pathway; modern options; cover for Ted, transport, Carer’s Assessment."
+        },
+        {
+          "t": "11–12",
+          "h": "Close",
+          "d": "Teach-back; wound care; safety-net."
+        }
+      ],
+      "wordPics": {
+        "fail": "Prescribes a cream; or sends an urgent cancer referral without explanation; never finds out why she delayed or how she could attend.",
+        "pass": "Recognises a probable BCC, explains it honestly, refers through the correct route and addresses the caring barrier.",
+        "exc": "All of the above, plus: explains BCC with proportion (slow, rarely spreads, best treated small); uncovers and addresses the fear of disfigurement with accurate information; practical help with cover, transport and a Carer’s Assessment; respects her autonomy; clear safety-net."
+      },
+      "avoid": [
+        {
+          "dont": "“It’s just a sore spot, try an antiseptic cream.”",
+          "instead": "“This looks like a type of skin cancer, the gentle kind, and a cream won’t treat it.”",
+          "why": "Delays diagnosis of a locally invasive tumour on a high-risk site."
+        },
+        {
+          "dont": "“I’m referring you urgently for cancer.” (and nothing more)",
+          "instead": "“It grows slowly and rarely spreads, so it doesn’t need a rush, but it does need the specialists.”",
+          "why": "Unexplained urgency increases fear and does not match NG12 for BCC."
+        },
+        {
+          "dont": "“You’ll just have to find someone to look after your husband.”",
+          "instead": "“Let’s work out cover for Ted together, and get you a carer’s assessment.”",
+          "why": "Unaddressed barriers lead to missed appointments."
+        }
       ]
     },
 

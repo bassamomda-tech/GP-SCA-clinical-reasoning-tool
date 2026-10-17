@@ -306,16 +306,29 @@
     reset.addEventListener('click', () => { rail.querySelectorAll('.dir-check input:checked').forEach(i => i.checked = false); apply(); });
   }
 
+  /* Each case's full material is fetched on demand (assets/sca-data/c/<id>.json, Upload 148). */
   function startCase(id){
     const c = CASES.find(x => x.id === id);
     if (!c) return;
     if (caseLocked(id)){ showCaseUpsell(); return; }
+    if (!c._full && window.SCA_LOAD){
+      document.body.style.cursor = 'progress';
+      window.SCA_LOAD(id).then(() => { document.body.style.cursor = ''; startCaseNow(id); })
+        .catch(() => { document.body.style.cursor = ''; alert('This case could not be loaded. Please check your connection and try again.'); });
+      return;
+    }
+    startCaseNow(id);
+  }
+  function startCaseNow(id){
+    const c = CASES.find(x => x.id === id);
+    if (!c) return;
     state.case = c;
     state.timerSec = (c.duration || 12) * 60;
     state.scores = { dg:null, cm:null, ro:null };
     state.checkpoints = {}; state.rag = {};
     state.cueChecks = {};
     state.timeChecks = {};
+    phaseReset();
     state.recordings = [];
     state.notesA = state.notesB = state.keepText = state.improveText = state.transcript = '';
     if (audio.playing) { try { speechSynthesis.cancel(); } catch(e){} }
@@ -1226,6 +1239,77 @@ ${worked}`;
 
   function renderCheckpoints(){ /* replaced by renderScorecard */ }
 
+  /* ---------- Phase timer (Upload 143): where the 12 minutes went ----------
+     The candidate taps the phase they are in; each second of the running clock is
+     counted against it. A nudge appears if data gathering runs past 6½ minutes, and
+     the Scorecard shows the breakdown. */
+  const PHASES = [
+    { k:'gather',  l:'Gathering',  tip:'History, ICE, focused examination findings' },
+    { k:'explain', l:'Explaining', tip:'Summary and working diagnosis, in plain words' },
+    { k:'plan',    l:'Plan',       tip:'Options, shared decision, prescribing, referral' },
+    { k:'safety',  l:'Safety-net', tip:'Named red flags, timeframe, route back, close' }
+  ];
+  function phaseReset(){ state.phase = { cur:0, secs:[0,0,0,0], at:[0,null,null,null] }; phaseRender(); }
+  function phaseSet(i){
+    if (!state.phase) phaseReset();
+    state.phase.cur = i;
+    if (state.phase.at[i] == null) state.phase.at[i] = phaseElapsed();
+    if (!state.timerRunning && phaseElapsed() === 0) startTimer();
+    phaseRender();
+  }
+  function phaseElapsed(){ return Math.max(0, (state.case?.duration || 12) * 60 - state.timerSec); }
+  function fmtS(s){ return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+  function phaseMount(){
+    let el = document.getElementById('phaseBar');
+    if (el) return el;
+    const host = $('#timer') && $('#timer').closest('.sh-left');
+    if (!host) return null;
+    if (!document.getElementById('phaseCss')){
+      const st = document.createElement('style'); st.id = 'phaseCss';
+      st.textContent = '.ph-bar{display:flex;gap:4px;margin-top:8px;flex-wrap:wrap}'+
+        '.ph-btn{font:inherit;font-size:11.5px;font-weight:700;padding:5px 9px;border-radius:999px;border:1px solid var(--line,#e7e2d8);background:#fff;color:var(--ink-2,#44403c);cursor:pointer;display:flex;gap:5px;align-items:center}'+
+        '.ph-btn small{font-weight:500;color:var(--muted,#78716c);font-variant-numeric:tabular-nums}'+
+        '.ph-btn.on{background:#0c4a47;border-color:#0c4a47;color:#f6f2e9}.ph-btn.on small{color:#cfe3df}'+
+        '.ph-nudge{font-size:12px;font-weight:600;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:9px;padding:6px 10px;margin-top:6px;display:none}.ph-nudge.on{display:block}'+
+        '.ph-sum{display:flex;height:22px;border-radius:7px;overflow:hidden;margin:10px 0 8px;border:1px solid var(--line,#e7e2d8)}'+
+        '.ph-sum span{display:grid;place-items:center;font-size:11px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden}'+
+        '.ph-c0{background:#3f5c93}.ph-c1{background:#0e7490}.ph-c2{background:#0c4a47}.ph-c3{background:#b45309}'+
+        '.ph-legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:12.5px;color:var(--ink-2,#44403c)}.ph-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px;vertical-align:-1px}';
+      document.head.appendChild(st);
+    }
+    el = document.createElement('div'); el.id = 'phaseBar';
+    el.innerHTML = '<div class="ph-bar" role="group" aria-label="Consultation phase">' +
+      PHASES.map((p, i) => `<button type="button" class="ph-btn" data-ph="${i}" title="${p.tip}">${p.l} <small>0:00</small></button>`).join('') +
+      '</div><div class="ph-nudge" id="phNudge">Over 6½ minutes gathering. Summarise and move to your explanation and plan.</div>';
+    host.appendChild(el);
+    el.querySelectorAll('.ph-btn').forEach(b => b.addEventListener('click', () => phaseSet(+b.dataset.ph)));
+    return el;
+  }
+  function phaseRender(){
+    const el = phaseMount(); if (!el || !state.phase) return;
+    el.querySelectorAll('.ph-btn').forEach((b, i) => {
+      b.classList.toggle('on', i === state.phase.cur);
+      b.querySelector('small').textContent = fmtS(state.phase.secs[i]);
+    });
+    const n = document.getElementById('phNudge');
+    if (n) n.classList.toggle('on', state.phase.cur === 0 && state.phase.secs[0] >= 390);
+  }
+  function phaseSummaryHtml(){
+    const ph = state.phase; if (!ph) return '';
+    const tot = ph.secs.reduce((a, b) => a + b, 0);
+    if (tot < 30) return '<p class="ct-empty" style="font-size:13px;color:var(--muted,#78716c)">Tap the phase buttons under the clock as you consult (Gathering → Explaining → Plan → Safety-net) and this shows where your 12 minutes went.</p>';
+    const bar = ph.secs.map((s, i) => s ? `<span class="ph-c${i}" style="width:${(s / tot * 100).toFixed(1)}%">${s / tot > .12 ? fmtS(s) : ''}</span>` : '').join('');
+    const legend = PHASES.map((p, i) => `<span><i class="ph-c${i}"></i>${p.l} <b>${fmtS(ph.secs[i])}</b></span>`).join('');
+    const planAt = ph.at[2];
+    let verdict;
+    if (ph.secs[0] > 420) verdict = ['bad', `You spent <b>${fmtS(ph.secs[0])}</b> gathering data. Aim to summarise by minute 6 and reach a plan by minute 7, or Clinical management runs short.`];
+    else if (planAt == null || !ph.secs[2]) verdict = ['bad', 'No time was logged in <b>Plan</b>. A consultation without an agreed plan scores little in Clinical management.'];
+    else if (planAt > 420) verdict = ['mid', `Plan reached at <b>${fmtS(planAt)}</b>. Aim to start the plan by minute 7, so there is room for a shared decision and a proper safety-net.`];
+    else if (!ph.secs[3]) verdict = ['mid', `Plan reached at <b>${fmtS(planAt)}</b>, but no time on <b>Safety-net</b>. Leave at least a minute for named red flags, a timeframe and a route back.`];
+    else verdict = ['ok', `Exam-shaped pacing: plan reached at <b>${fmtS(planAt)}</b>, with time left to safety-net.`];
+    return `<div class="ph-sum">${bar}</div><div class="ph-legend">${legend}</div><div class="ct-verdict ${verdict[0]}" style="margin-top:8px">${verdict[1]}</div>`;
+  }
+
   /* ---------- Timer ---------- */
   function updateTimerDisplay(){
     const m = Math.floor(state.timerSec / 60);
@@ -1238,6 +1322,7 @@ ${worked}`;
   function tickTimer(){
     if (!state.timerRunning) return;
     state.timerSec--;
+    if (state.phase){ state.phase.secs[state.phase.cur]++; phaseRender(); }
     if (state.timerSec <= 0) {
       state.timerSec = 0;
       updateTimerDisplay();
@@ -1267,6 +1352,7 @@ ${worked}`;
     pauseTimer();
     state.timerSec = (state.case?.duration || 12) * 60;
     updateTimerDisplay();
+    phaseReset();
   }
 
   /* ---------- Recording ---------- */
@@ -1770,6 +1856,10 @@ Your one-sentence nudge:`;
           <div class="ct-block-h"><span class="ctb-ic">🎭</span><div><b>Cue recognition</b><small>This station planted ${cues.length} cues. The Relating-to-others differentiator is noticing them AND responding out loud — tick only if you did both.</small></div></div>
           <div class="ct-items">${cues.map((cu, i) => `<label class="ct-item"><input type="checkbox" data-cue="${i}"${state.cueChecks[i] ? ' checked' : ''}><span>${escapeHtml(cu)}</span></label>`).join('')}</div>
           <div class="ct-verdict" id="cueVerdict"></div>
+        </div>
+        <div class="ct-block">
+          <div class="ct-block-h"><span class="ctb-ic">📊</span><div><b>Where your 12 minutes went</b><small>From the phase buttons under the clock</small></div></div>
+          ${phaseSummaryHtml()}
         </div>
         <div class="ct-block">
           <div class="ct-block-h"><span class="ctb-ic">⏱️</span><div><b>Time discipline</b><small>The mechanical reasons candidates fail — tick what you actually did, honestly</small></div></div>

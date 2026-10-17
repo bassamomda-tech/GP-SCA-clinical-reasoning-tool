@@ -4048,49 +4048,57 @@
  },
  "head-lice": {
   "stem": {
-   "name": "Maisie",
-   "age": "8-year-old girl",
+   "name": "Maisie Dobson",
+   "age": "8 years · female",
    "pmh": [
-    "Nothing significant recorded"
+    "Nil significant"
    ],
    "meds": [
     "None recorded"
    ],
    "allergy": "None recorded",
-   "recent": "School letter home about head lice in her class. Scratching her scalp since. Attends with her mother.",
-   "reason": "“Should the whole family be treated, and should I keep her off school?”"
+   "recent": "Mother booked an urgent appointment: “Sent home from school again.” No previous consultations for this problem.",
+   "reason": "“I’ve tried everything from the chemist and it keeps coming back.”"
   },
   "knowledge": {
-   "guideline": "[1] BNFC: dimeticone (topical) and the treatment summary on parasitic skin infections · [2] UKHSA Health protection in children and young people settings, including education: exclusion table · [3] GMC Good medical practice (2024)",
-   "summary": "Head lice are diagnosed by finding a live louse, usually by detection combing wet, conditioned hair. Treat only a confirmed live infestation, with a physically acting product such as dimeticone 4% applied twice 7 days apart, or with methodical wet combing. Check everyone in the household and treat only those with live lice, on the same day. Lice are not a sign of dirt and there is no school exclusion.",
+   "guideline": "[1] NICE CKS Head lice (check current version) · [2] UKHSA Health protection in children and young people settings, including education: managing specific infectious diseases (exclusion table) · [3] NHS England Conditions for which over-the-counter items should not be routinely prescribed in primary care (self-care guidance, with general exceptions) · [4] Product SPC/information for dimeticone 4% lotion · [5] GMC Good medical practice (2024) · [6] Working together to safeguard children (2023)",
+   "summary": "Repeated head-lice infestation over three months, with four products each used once and incorrectly, reinfestation from an untreated second household, an unsafe veterinary insecticide on the child’s scalp, wrongful exclusion from school with bullying, and a stretched parent. Find the causes of failure, stop the flea spray and check for harm, prescribe a physically acting treatment with clear instructions and the 7-day repeat, coordinate both households, correct the exclusion, and support Maisie and her mother without judgement.",
    "points": [
     {
-     "h": "Diagnosis needs a live louse",
-     "t": "Itch and a school letter are not enough. Eggs, and especially empty white shells found well away from the scalp, can be left over from a past infestation. Detection combing with a fine-toothed comb through wet, conditioned hair is the reliable way to find live lice."
+     "h": "Why treatment fails",
+     "t": "Common causes: product applied to wet hair or rinsed early, too little product, no repeat after 7 days (eggs hatch after the first application), and reinfestation from close contacts who were not checked [1]. True resistance is mainly a problem with neurotoxic insecticides."
     },
     {
-     "h": "Dimeticone",
-     "t": "BNFC [1]: dimeticone 4% lotion works physically by coating the lice, so insecticide resistance does not affect it. Apply to dry hair covering the scalp and hair root to tip, leave for the time stated on the product (8 hours or overnight for the lotion), wash out, and repeat after 7 days to kill lice that hatch from eggs that survived."
+     "h": "Confirm live lice",
+     "t": "Diagnosis and cure need a live louse found by detection combing of wet, conditioned hair. Itch can persist for some days after successful treatment and is not proof of failure."
+    },
+    {
+     "h": "Physically acting treatment",
+     "t": "Dimeticone 4% coats the lice, so insecticide resistance does not apply. Apply to dry hair from scalp to tips, leave for the time stated in the product information, wash out, and repeat after 7 days (check the SPC/product information). Check for cure with detection combing 2–3 days after the second application and again a week later [1]."
     },
     {
      "h": "Wet combing",
-     "t": "Methodical combing of wet, conditioned hair with a detection comb (“bug busting”) is an alternative for families who prefer not to use a product. It needs several sessions every few days over at least two weeks, continued until no live lice are found at consecutive sessions."
+     "t": "Structured combing of wet, conditioned hair with a detection comb every few days for at least two weeks, continuing until no live lice are seen at consecutive sessions. Useful where products are not wanted or tolerated."
     },
     {
-     "h": "Contacts",
-     "t": "Check all household members and close contacts with a detection comb. Treat only those with live lice, all on the same day, to avoid passing lice back and forth. Treating everyone “just in case” is not recommended."
+     "h": "Unsafe remedies",
+     "t": "Veterinary insecticides, paraffin and undiluted essential oils should not be used on children. Wash the hair through, look for skin irritation or burns, and ask about vomiting, drowsiness, twitching or breathing problems. Clinicians can get poisons advice through TOXBASE or the National Poisons Information Service."
     },
     {
-     "h": "Myths",
-     "t": "Lice live on clean or dirty hair alike, cannot jump or fly, and spread by head-to-head contact. Washing bedding or treating pets is not needed."
+     "h": "Households and contacts",
+     "t": "Check everyone in each household the child lives in, including a second parent’s home, on the same evening. Treat only those with live lice, on the same day. No need to wash all bedding or treat pets."
     },
     {
      "h": "School",
-     "t": "UKHSA [2]: no exclusion period for head lice. The child can attend school while being treated."
+     "t": "UKHSA guidance [2]: no exclusion period for head lice. A child should not be sent home or kept off. The GP can provide a letter, involve the school nurse and raise bullying with the school."
     },
     {
-     "h": "Treatment failure",
-     "t": "Usually reinfestation, a missed second application, or not enough product. If live lice persist after correct use, check technique, check contacts, and switch to another method."
+     "h": "Prescribing and self-care",
+     "t": "Head-lice products are on the national list of items for self-care purchase [3], but the guidance includes a general exception where a clinician judges that medical, mental health or significant social vulnerability compromises self-care. Record the reason."
+    },
+    {
+     "h": "Safeguarding perspective",
+     "t": "Persistent head lice in a family that is actively trying to treat them is not, on its own, neglect. Look at the whole picture: the child’s wellbeing, school attendance, bullying and the parent’s capacity. Offer early help if the family would value it [6]."
     }
    ]
   },
@@ -4099,232 +4107,245 @@
     "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello, I’m Dr Clarke. Hello Maisie. What can I help with today?",
+    "text": "Hello, I’m Dr Clarke. Hello Maisie, and you must be Mum. What’s been happening?",
     "dom": "ro",
     "why": "Greets both; open question"
    },
    {
     "who": "pt",
-    "text": "The school sent home a letter saying there’s nits going round, and now Maisie’s scratching her head. I’m mortified. Does it mean she’s dirty? Should I treat her and the whole family to be safe, and keep her off school?"
+    "text": "She’s been sent home from school again. That’s twice this month. I’ve tried everything they sell at the chemist and they keep coming back. I need the proper strong stuff on prescription, because I can’t keep paying for it."
    },
    {
     "who": "dr",
-    "text": "I can hear you’re worried, so let me answer the most important bit straight away: head lice have nothing to do with being dirty. Any child can catch them. I’ll come back to your other questions in a moment.",
+    "text": "That sounds exhausting, and I can see you’ve really been trying. One thing first, because people often worry about it: head lice have nothing to do with a clean or dirty home. Any child can get them. Let’s work out why they keep coming back.",
     "dom": "ro",
-    "why": "Addresses stigma immediately"
+    "why": "Removes stigma early; acknowledges effort"
    },
    {
     "who": "pt",
-    "text": "Oh, thank goodness."
+    "text": "The school makes me feel like I’m a dirty mum."
    },
    {
     "phase": "History",
-    "clock": "1–4 min",
+    "clock": "1–5 min",
     "who": "dr",
-    "text": "How long has she been scratching? And have you actually seen anything moving in her hair, or eggs stuck to the hairs?",
+    "text": "I’m sorry you’ve been made to feel that way. Can you talk me through each product you used, how you put it on, and how long you left it?",
     "dom": "dg",
-    "why": "Asks whether live lice have been seen"
+    "why": "Precise treatment history"
    },
    {
     "who": "pt",
-    "text": "A few days. I had a quick look and couldn’t see anything, but I didn’t know what I was looking for."
+    "text": "A spray, two lotions and a shampoo one. Once each. One I put on after her bath and washed off after ten minutes because she said it stung."
    },
    {
     "who": "dr",
-    "text": "Has she had any rash on the scalp or neck, sores from scratching, or swollen glands? And is she well otherwise?",
+    "text": "Did any of them say to do it again a week later?",
     "dom": "dg",
-    "why": "Screens for secondary infection and other scalp causes"
+    "why": "Checks the 7-day repeat"
    },
    {
     "who": "pt",
-    "text": "She’s fine in herself. Just itchy."
+    "text": "I didn’t know you had to. I thought one go killed them."
    },
    {
     "who": "dr",
-    "text": "Maisie, is it itchy all over your head, or in particular places?",
+    "text": "That’s really common, and it’s the main reason lice seem to come back. The lotion kills the lice but not always the eggs, so new ones hatch in the following week. Have you been able to comb her hair to check for live ones?",
+    "dom": "dg",
+    "why": "Explains mechanism; asks about detection combing"
+   },
+   {
+    "who": "pt",
+    "text": "I’ve got a comb, but it takes forever and she screams."
+   },
+   {
+    "who": "dr",
+    "text": "Has anything else been tried, maybe something from home? People try all sorts when they’re desperate, and I won’t judge.",
+    "dom": "dg",
+    "why": "Non-judgemental question about other remedies"
+   },
+   {
+    "who": "pt",
+    "text": "…Last weekend I used the dog’s flea spray. It kills fleas, so I thought it would kill these. Her scalp’s been sore since."
+   },
+   {
+    "who": "dr",
+    "text": "Thank you for telling me. That’s important. Has Maisie been sick, unusually sleepy, twitchy or had any trouble breathing since?",
+    "dom": "dg",
+    "why": "Screens for systemic toxicity"
+   },
+   {
+    "who": "pt",
+    "text": "No, she’s been fine, just the sore bit at the back."
+   },
+   {
+    "phase": "Examination",
+    "clock": "5–6 min",
+    "who": "dr",
+    "text": "Could you tip the camera so I can see the back of her scalp? I can see a patch of redness but no blisters, weeping or crusting. Can you feel any lumps in her neck?",
+    "dom": "dg",
+    "why": "Remote look for irritation or infection"
+   },
+   {
+    "who": "pt",
+    "text": "No lumps."
+   },
+   {
+    "who": "dr",
+    "text": "Products for dogs are made for animal skin and aren’t safe for children, so please don’t use it again. Wash her hair through with ordinary shampoo tonight. If she becomes unwell, sick or drowsy, ring 111 straight away and keep the bottle to show them.",
+    "dom": "cm",
+    "why": "Stops unsafe remedy; safety advice"
+   },
+   {
+    "who": "dr",
+    "text": "Where does Maisie spend her time? Is there anywhere else she sleeps?",
+    "dom": "dg",
+    "why": "Explores second household"
+   },
+   {
+    "who": "pt",
+    "text": "Every other weekend at her dad’s. He’s got two stepsons. They come back after those weekends, now you mention it."
+   },
+   {
+    "who": "dr",
+    "text": "Maisie, can I ask you something? How have things been at school?",
     "dom": "ro",
     "why": "Involves the child"
    },
    {
     "who": "pt",
-    "text": "Mostly behind my ears."
-   },
-   {
-    "who": "dr",
-    "text": "Who else lives with you both? Has anyone else been itching?",
-    "dom": "dg",
-    "why": "Identifies household contacts"
-   },
-   {
-    "who": "pt",
-    "text": "Just the family at home. Nobody else has said anything."
-   },
-   {
-    "who": "dr",
-    "text": "Have you used any head-lice treatments already, from the chemist?",
-    "dom": "dg",
-    "why": "Previous treatment and possible failure"
-   },
-   {
-    "who": "pt",
-    "text": "Not yet. I was going to buy enough for everyone."
-   },
-   {
-    "phase": "Examination",
-    "clock": "4–6 min",
-    "who": "dr",
-    "text": "May I look at her scalp? The best way to check is actually a fine detection comb through wet hair with conditioner, which you can do properly at home, but I’ll have a look now for eggs close to the scalp or any sores.",
-    "dom": "dg",
-    "why": "Examines scalp; explains detection combing"
-   },
-   {
-    "who": "dr",
-    "text": "Her scalp looks healthy with no sores. I can’t say from a look whether there are live lice. That’s what the comb will tell us.",
-    "dom": "dg",
-    "why": "Honest about the limits of inspection"
+    "text": "(Maisie) Some people call me nitty. I don’t want to go back."
    },
    {
     "phase": "Ideas, concerns and expectations",
     "clock": "6–7 min",
     "who": "dr",
-    "text": "You mentioned treating everyone and keeping her off school. What were you hoping we’d sort today?",
+    "text": "That sounds horrible, Maisie, and it isn’t fair. Mum, what are you most worried about with all this?",
     "dom": "ro",
-    "why": "Clarifies expectations"
+    "why": "Explores concerns"
    },
    {
     "who": "pt",
-    "text": "I just want it dealt with before it spreads to all of us. And I don’t want other parents thinking we’re dirty."
+    "text": "Honestly? That the school thinks I can’t look after her and they’ll call social services. And money. I’ve spent sixty quid."
    },
    {
-    "phase": "Explanation",
-    "clock": "7–9 min",
+    "phase": "Explanation and plan",
+    "clock": "7–11 min",
     "who": "dr",
-    "text": "That makes sense. Here’s the key thing: we only treat if we find a live louse. Itching and a letter aren’t proof, and old empty egg shells can hang around for weeks after lice have gone. Tonight, wash her hair, put lots of conditioner on, and comb section by section with a detection comb, wiping it on white paper each time. A live louse is a small, moving, sesame-seed-sized insect.",
-    "dom": "dg",
-    "why": "Diagnosis requires live lice; teaches detection combing"
-   },
-   {
-    "who": "pt",
-    "text": "And if I find one?"
-   },
-   {
-    "who": "dr",
-    "text": "Then treat her with a lotion such as dimeticone. It works by coating the lice rather than poisoning them, so resistance isn’t a problem. You cover the dry hair and scalp, leave it for the time on the pack, usually overnight, then wash it out. The crucial part is doing it again seven days later, because eggs that survive the first treatment hatch in that week.",
+    "text": "Lots of families get stuck in this loop, and it doesn’t mean you can’t look after her. Here’s my plan. I’ll prescribe a lotion called dimeticone. It works by coating the lice rather than poisoning them, so they can’t be resistant to it. It goes on dry hair, the whole scalp from roots to tips, and stays on for the full time on the leaflet. Then exactly seven days later you do it again.",
     "dom": "cm",
-    "why": "Dimeticone with repeat at 7 days (BNFC)"
+    "why": "Physical agent; correct technique; repeat"
    },
    {
     "who": "dr",
-    "text": "If you’d rather not use a lotion, careful wet combing every few days for at least two weeks also works, but it takes commitment.",
+    "text": "Normally these are bought from the chemist, but there’s an exception when cost and circumstances make that hard, and I think that applies here.",
     "dom": "cm",
-    "why": "Offers the alternative"
+    "why": "Self-care exception explained"
    },
    {
     "who": "pt",
-    "text": "Should I just do all of us at the same time to be safe?"
+    "text": "Thank you. What about her dad’s?"
    },
    {
     "who": "dr",
-    "text": "No need. Treating people without lice is a waste of money and exposes them to products they don’t need. Instead, comb everyone at home the same evening, and treat anyone with a live louse on the same day as Maisie.",
+    "text": "Everyone in both houses needs checking with the comb on the same evening, and anyone with live lice treated on the same day as Maisie. I can write a short note you can send her dad, so it doesn’t feel like it’s coming from you.",
     "dom": "cm",
-    "why": "Check contacts; treat only confirmed; same day"
-   },
-   {
-    "phase": "Myths and school",
-    "clock": "9–11 min",
-    "who": "dr",
-    "text": "A couple of other things people often worry about. Lice can’t jump or fly, they spread when heads touch. You don’t need to wash all the bedding or treat pets. And Maisie doesn’t need to miss any school. The national guidance for schools says children with head lice carry on as normal.",
-    "dom": "ro",
-    "why": "Myth-busting; no exclusion (UKHSA)"
-   },
-   {
-    "who": "pt",
-    "text": "Really? I thought they’d send her home."
+    "why": "Coordinates both households"
    },
    {
     "who": "dr",
-    "text": "No. It might be kind to let the parents of her close friends know so they can check too, but that’s up to you. Does that plan feel manageable?",
-    "dom": "ro",
-    "why": "Informs contacts; checks agreement"
+    "text": "And school: national guidance says children with head lice should not be sent home or kept off. I’ll write a letter for you to take in, and with your agreement I’ll let the school nurse know about the name-calling so the school can deal with it.",
+    "dom": "cm",
+    "why": "Corrects exclusion; addresses bullying"
    },
    {
     "who": "pt",
-    "text": "Yes. It’s much less than I thought."
+    "text": "I didn’t know that. They made it sound like the rules."
    },
    {
     "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "Can you tell me the plan back, so I know I’ve explained it clearly?",
+    "text": "Can you tell me the plan back so I know I’ve explained it well?",
     "dom": "ro",
     "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "Comb her wet hair tonight with conditioner. Only treat if I find a live one. Lotion, then again a week later. Check everyone and only treat anyone with lice. She goes to school."
+    "text": "No more flea spray. Lotion on dry hair, leave it on, again in a week. Comb everyone, here and at her dad’s, same night. She goes to school with your letter."
    },
    {
     "who": "dr",
-    "text": "Exactly. Comb again a few days after the second treatment to check it’s worked. If you’re still finding live lice after doing it properly, or her scalp becomes sore, weepy or crusted, come back and we’ll look again.",
+    "text": "Perfect. Comb her wet hair two or three days after the second go and again a week after that. If you still find live lice, or her scalp gets weepy, crusty or more sore, book back with me. And if you ever want extra support at home, there’s help available, but nobody thinks you’re a bad mum.",
     "dom": "cm",
-    "why": "Checks cure; safety-net for failure and infection"
+    "why": "Check for cure; safety-net; early help offered without judgement"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Open question; addressed the embarrassment first, then took all three questions as the agenda.",
-    "pts": 1, "dom": "dg"
+    "d": "Open question to both; named the stigma early and set the agenda: why treatment fails, school, cost.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Household members, the mother’s worry about other parents’ judgement, and Maisie’s own experience.",
-    "pts": 1, "dom": "dg"
+    "d": "Two households, single parent with two jobs, money, Maisie’s experience of bullying and missed school.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up that no live lice had been seen and that she planned to buy treatment for everyone.",
-    "pts": 1, "dom": "ro"
+    "d": "Followed the pause about ‘what else’ to the flea spray; noticed Maisie looking down and asked her directly.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (letter plus itch means lice), concern (stigma, spread), expectation (treat everyone; keep her off school).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (resistant lice need something stronger), concerns (cost, being judged, social services), expectation (prescription and a school letter).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Inspected the scalp for sores and eggs and explained that detection combing is the real test.",
-    "pts": 1, "dom": "dg"
+    "d": "Remote look at the scalp for irritation or infection; detection combing as the test for live lice and for cure.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
-    "d": "Head lice versus dry scalp, eczema or other causes of scalp itch; secondary infection.",
-    "pts": 1, "dom": "dg"
+    "d": "Incorrect use, missed repeat and reinfestation versus true resistance; irritant reaction to the flea spray versus secondary infection.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Asked about sores, rash, glands and general health; previous treatments.",
-    "pts": 2, "dom": "dg"
+    "d": "Asked about vomiting, drowsiness, twitching and breathing after the insecticide; neck glands; crusting or weeping.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Explained that a diagnosis needs a live louse, not itch or a school letter.",
-    "pts": 2, "dom": "dg"
+    "d": "Persistent head lice due to incorrect use and reinfestation, plus a scalp irritant reaction to a veterinary product.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Dimeticone with repeat at 7 days, or wet combing; check all contacts, treat only those with live lice on the same day.",
-    "pts": 2, "dom": "cm"
+    "d": "Stop the flea spray; dimeticone used correctly with the 7-day repeat (check the SPC/product information); check for cure by combing; both households on the same evening.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Myths corrected (hygiene, jumping, bedding, pets); no school exclusion; informing close contacts.",
-    "pts": 1, "dom": "cm"
+    "d": "School letter and no exclusion; bullying raised with the school nurse; prescribing under the social vulnerability exception; note for the father.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Re-check combing after treatment; return if lice persist after correct use or scalp becomes infected; teach-back.",
-    "pts": 1, "dom": "cm"
+    "d": "Teach-back; combing checks after treatment; return if lice persist or the scalp worsens; NHS 111 if unwell after the spray; early help offered.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
@@ -4333,140 +4354,146 @@
     "Health disadvantage & vulnerabilities"
    ],
    "stem": {
-    "name": "Maisie",
+    "name": "Maisie Dobson",
     "age": "8 years · female",
     "pmh": [
      "Nil significant"
     ],
     "meds": [
-     "None"
+     "None recorded"
     ],
     "allergy": "None recorded",
-    "recent": "School head-lice letter; scalp itch for a few days.",
-    "reason": "“Treat the whole family? Keep her off school?”"
+    "recent": "Mother booked an urgent appointment: “Sent home from school again.” No previous consultations for this problem.",
+    "reason": "“I’ve tried everything from the chemist and it keeps coming back.”"
    },
    "timeMap": [
     {
      "t": "0–1",
      "h": "Open",
-     "d": "She is mortified. Tackle “dirty” in the first minute."
+     "d": "Greet both. Say early that lice are not about hygiene."
     },
     {
-     "t": "1–6",
-     "h": "History and look",
-     "d": "Live lice seen? Duration, sores, glands, household, prior treatment. Inspect the scalp and explain detection combing."
+     "t": "1–5",
+     "h": "Why it fails",
+     "d": "Each product, how applied, contact time, 7-day repeat, combing. Ask what else has been tried: flea spray."
     },
     {
-     "t": "6–7",
-     "h": "ICE",
-     "d": "Treat everyone, keep her off school, fear of judgement."
+     "t": "5–7",
+     "h": "Safety and context",
+     "d": "Look at the scalp; systemic symptoms. Second household. Ask Maisie about school. ICE: cost, judgement, social services."
     },
     {
      "t": "7–11",
      "h": "Plan",
-     "d": "Detection comb first; dimeticone twice 7 days apart or wet combing; check contacts, treat only confirmed on the same day; myths; no exclusion."
+     "d": "Dimeticone used correctly with the repeat; both homes the same evening; no exclusion letter; school nurse; prescribing exception."
     },
     {
      "t": "11–12",
      "h": "Close",
-     "d": "Teach-back; re-check after treatment; return if still live lice or infected scalp."
+     "d": "Teach-back; combing checks; return if live lice or a worse scalp; 111 if unwell."
     }
    ],
    "wordPics": {
-    "fail": "Prescribes treatment for the whole family on the strength of a letter; advises time off school; misses the repeat application; reinforces stigma or ignores it.",
-    "pass": "Explains detection combing and treating only a live infestation, gives dimeticone with the 7-day repeat, checks rather than blanket-treats contacts, and says no exclusion.",
-    "exc": "All of the above, plus: removes the stigma in the first minute; teaches the combing technique practically; explains why the second application matters; treats confirmed contacts on the same day; corrects myths about bedding and pets; involves Maisie; confirms with teach-back and a plan for failure."
+    "fail": "Prescribes “something stronger” without asking how earlier treatments were used; never finds the flea spray or the second household; accepts the school exclusion; ignores Maisie.",
+    "pass": "Finds the missed repeat and wrong technique, stops the flea spray, plans a physically acting treatment with the repeat, includes the father’s household, and says there is no exclusion.",
+    "exc": "All of the above, plus: removes the stigma in the first minute; asks about other remedies in a way that makes disclosure safe and screens for toxicity; involves Maisie and acts on the bullying; offers a letter for school and a note for the father; explains the prescribing exception; checks understanding and plans the check for cure."
    },
    "avoid": [
     {
-     "dont": "“Treat everyone to be on the safe side.”",
-     "instead": "“Comb everyone tonight and treat only anyone with a live louse.”",
-     "why": "Treating without infestation adds cost and exposure without benefit."
+     "dont": "“They must be resistant — here’s something stronger.”",
+     "instead": "“Talk me through exactly how each one was used and whether you repeated it.”",
+     "why": "Most failures are technique, a missed repeat or reinfestation."
     },
     {
-     "dont": "“Keep her home until they’re gone.”",
-     "instead": "“She can go to school as normal.”",
-     "why": "UKHSA sets no exclusion for head lice."
+     "dont": "“You used dog flea spray on her?”",
+     "instead": "“Thank you for telling me. Let’s wash it out tonight and I’ll check she’s okay.”",
+     "why": "Shame stops disclosure; the safety action is what matters."
     },
     {
-     "dont": "“One treatment should do it.”",
-     "instead": "“Repeat it after seven days to catch any that hatch.”",
-     "why": "Products may not kill all eggs, and the repeat is part of the licensed use."
+     "dont": "“Keep her home until she’s clear.”",
+     "instead": "“She can be in school; I’ll write that down for you.”",
+     "why": "UKHSA guidance sets no exclusion for head lice."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Stigma and shame",
-     "t": "Parents often feel judged. Saying clearly that lice are not about hygiene helps the parent and protects the child from shame."
+     "h": "Two households",
+     "t": "Children who move between parents’ homes are often reinfested from the untreated household. A neutral note from the GP can help where parents find it hard to talk."
     },
     {
-     "h": "Cost",
-     "t": "Treating the whole family is expensive. Checking first and treating only confirmed cases saves money for families on low incomes."
+     "h": "Cost and stigma",
+     "t": "Repeated product purchases are a real burden on a low income. Shame makes parents less likely to ask for help or disclose unsafe remedies."
     }
    ],
    "legal": [
     {
-     "h": "Prescribing and self-care",
-     "t": "Head-lice products are available from pharmacies. Many areas expect self-care purchase for minor conditions, with local exceptions; follow local policy."
+     "h": "Self-care guidance and exceptions",
+     "t": "NHS England’s guidance on over-the-counter items lists head-lice treatments for self-care, with a general exception where medical, mental health or significant social vulnerability compromises self-care. Record the reason."
+    },
+    {
+     "h": "School exclusion",
+     "t": "UKHSA guidance for education and childcare settings sets no exclusion for head lice. Schools can ask parents to treat, but should not send children home."
     }
    ],
    "professional": [
     {
-     "h": "Evidence over reassurance-seeking",
-     "t": "Declining to prescribe for the whole family, with reasons, is good practice and stewardship of resources (GMC Good medical practice)."
+     "h": "Non-judgemental disclosure",
+     "t": "Asking what else has been tried, without blame, is how unsafe remedies come to light. Respond to the risk, not the parent’s choice."
     },
     {
-     "h": "Consistent messages",
-     "t": "Match the UKHSA no-exclusion advice given to schools, so families hear one message."
+     "h": "Hearing the child",
+     "t": "Speak to the child directly. Bullying and missed school are part of the problem the consultation should address."
     }
    ],
    "community": [
     {
-     "h": "Schools",
-     "t": "Schools may send “alert” letters. Parents can be encouraged to comb regularly rather than treat on the basis of a letter."
+     "h": "School nurse",
+     "t": "The school nursing service can support the family, give consistent advice to the school and help with bullying."
     },
     {
      "h": "Community pharmacy",
-     "t": "Pharmacists can sell dimeticone and detection combs and advise on technique."
+     "t": "Pharmacists can demonstrate detection combing and product use, and may run local minor ailment schemes."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Weeping, crusted or infected scalp with enlarged glands: secondary bacterial infection",
-     "Persistent live lice despite correct treatment: check technique, reinfestation and contacts",
-     "Scalp rash without lice: consider eczema, psoriasis or tinea capitis"
+     "Vomiting, drowsiness, twitching or breathing problems after a home insecticide: urgent assessment (NHS 111/999); poisons advice for clinicians via TOXBASE/NPIS",
+     "Weeping, crusted scalp with tender neck glands: secondary bacterial infection",
+     "Scalp scaling or patchy hair loss without lice: consider tinea capitis, eczema or psoriasis"
     ],
     "psychosocial": [
-     "Parent’s embarrassment and fear of judgement",
-     "Household members",
-     "Cost of treating everyone"
+     "Two households and communication with the father",
+     "Money and work pressures",
+     "Bullying, distress and missed school",
+     "Fear of being judged as neglectful"
     ],
     "ice": [
-     "Idea: a school letter and an itch mean lice",
-     "Concern: that she is seen as dirty; spread to the family",
-     "Expectation: treat everyone and keep her off school"
+     "Idea: the lice are resistant and need a stronger product",
+     "Concern: cost; being judged; social services",
+     "Expectation: a prescription and a letter for school"
     ]
    },
-   "diagnosis": "“We can only say she has head lice if we find a live one. A detection comb through wet, conditioned hair is the way to check.”",
-   "diagnosisLay": "“Lice are like tiny passengers that walk from one head to another when heads touch. They don’t care if hair is clean or dirty. Eggs are glued to the hair, and the empty shells can stay long after the lice have gone, which is why we look for a live one.”",
+   "diagnosis": "“This is head lice coming back because the treatments weren’t repeated and Maisie is being reinfested at her dad’s, not because the lice are super-resistant. The soreness at the back is irritation from the flea spray.”",
+   "diagnosisLay": "“The lotion kills the lice but some eggs survive and hatch over the next week, which is why you repeat it. And if anyone she stays with still has lice, they simply walk back across.”",
    "management": {
-    "reflectIce": "“You were worried people would think she’s dirty, and about everyone catching it. It isn’t about hygiene, and by checking everyone we’ll only treat who needs it. She stays at school.”",
-    "psychosocial": "Reduce shame; keep her in school; save the family money by treating only confirmed cases.",
+    "reflectIce": "“You’ve spent a lot, you feel judged, and you’re worried what the school thinks. You’ve done nothing wrong. Let’s fix the treatment and get her back in school.”",
+    "psychosocial": "Remove shame; involve Maisie; tackle bullying through the school nurse; reduce cost; support the parents to coordinate.",
     "sharedPlan": [
-     "Detection comb wet, conditioned hair tonight",
-     "If live lice: dimeticone 4% per the product instructions, repeated after 7 days (BNFC), or wet combing every few days for at least two weeks",
-     "Check all household members; treat only those with live lice, on the same day",
-     "No bedding washing or pet treatment needed",
-     "No school exclusion (UKHSA)"
+     "Stop the flea spray; wash the hair through with ordinary shampoo tonight",
+     "Dimeticone 4% on dry hair over the whole scalp, left for the full contact time, repeated after 7 days (check the SPC/product information)",
+     "Detection combing 2–3 days after the second application and again a week later",
+     "Comb everyone in both households on the same evening; treat anyone with live lice the same day",
+     "Letter for school: no exclusion (UKHSA); school nurse informed about bullying, with consent",
+     "Prescribed under the self-care exception for social vulnerability; reason recorded"
     ],
     "safetyNet": [
-     "Re-check with the comb a few days after the second treatment",
-     "Return if live lice persist after correct use",
-     "Return if the scalp becomes sore, weepy, crusted or glands swell"
+     "NHS 111 or 999 if Maisie becomes sick, drowsy, twitchy or short of breath",
+     "Return if the scalp becomes weepy, crusted or more sore",
+     "Return if live lice are found after the second application"
     ]
    }
   },
@@ -4479,61 +4506,61 @@
    },
    {
     "ic": "💠",
-    "t": "Scabies protocol",
-    "s": "Treat contacts, repeat application",
-    "href": "management/scabies.html"
+    "t": "Childhood rashes and exclusion",
+    "s": "What settings should and should not exclude",
+    "href": "management/childhood-rashes-exclusion.html"
    },
    {
     "ic": "💠",
-    "t": "Seborrhoeic dermatitis",
-    "s": "Other causes of scalp itch",
-    "href": "management/seborrhoeic-dermatitis.html"
+    "t": "Impetigo",
+    "s": "If the scalp becomes infected",
+    "href": "management/impetigo.html"
    },
    {
     "ic": "💠",
-    "t": "Fungal skin infection",
-    "s": "Tinea capitis in children",
-    "href": "management/fungal-skin-infection.html"
+    "t": "Safeguarding",
+    "s": "Thinking about neglect proportionately",
+    "href": "management/safeguarding.html"
    }
   ],
   "pitfalls": {
-   "intro": "The clinical content is simple. The station tests whether you can decline blanket treatment and school exclusion while taking away a parent’s shame.",
+   "intro": "The lice are easy. The marks are in finding why treatment failed, spotting the unsafe remedy, and helping a stretched parent and an unhappy child without blame.",
    "items": [
     {
-     "dom": "cm",
-     "fail": "Treating on the strength of a letter and an itch.",
-     "why": "Diagnosis needs a live louse.",
-     "fix": "Teach detection combing and treat only if live lice are found."
-    },
-    {
-     "dom": "cm",
-     "fail": "Prescribing for the whole family.",
-     "why": "Unnecessary cost and exposure; contacts should be checked.",
-     "fix": "Check everyone; treat confirmed cases on the same day."
+     "dom": "dg",
+     "fail": "Prescribing a stronger product without a treatment history.",
+     "why": "Failure is usually technique, a missed repeat or reinfestation.",
+     "fix": "Ask about each product, how it was used and whether it was repeated."
     },
     {
      "dom": "dg",
-     "fail": "Forgetting the second application.",
-     "why": "Eggs that survive hatch within the week.",
-     "fix": "Repeat dimeticone after 7 days (BNFC)."
+     "fail": "Never asking what else has been tried.",
+     "why": "The veterinary insecticide is a safety issue.",
+     "fix": "Ask openly and without blame; check the scalp and for systemic symptoms."
     },
     {
      "dom": "dg",
-     "fail": "Advising time off school.",
-     "why": "UKHSA sets no exclusion for head lice.",
-     "fix": "Say clearly that she can attend as normal."
+     "fail": "Missing the second household.",
+     "why": "Reinfestation from untreated contacts keeps the cycle going.",
+     "fix": "Ask where the child sleeps; coordinate same-evening checks in both homes."
+    },
+    {
+     "dom": "cm",
+     "fail": "Accepting the school’s exclusion.",
+     "why": "UKHSA guidance sets no exclusion for head lice.",
+     "fix": "Offer a letter and involve the school nurse."
     },
     {
      "dom": "ro",
-     "fail": "Leaving the “dirty” question until the end.",
-     "why": "She will not listen to the plan while ashamed.",
-     "fix": "Address hygiene in the first minute."
+     "fail": "Talking only to the mother.",
+     "why": "Maisie’s distress and bullying are part of the case.",
+     "fix": "Ask Maisie directly about school."
     },
     {
-     "dom": "cm",
-     "fail": "No plan if it does not work.",
-     "why": "Treatment failure usually means reinfestation or technique.",
-     "fix": "Re-check after treatment and return if live lice persist."
+     "dom": "ro",
+     "fail": "Shaming the mother about the flea spray or hinting at neglect.",
+     "why": "She will disengage and stop disclosing.",
+     "fix": "Thank her for telling you and focus on what to do next."
     }
    ]
   }
@@ -6083,45 +6110,53 @@
  },
  "molluscum-contagiosum": {
   "stem": {
-   "name": "Leo",
-   "age": "5-year-old boy",
+   "name": "Leo Bello",
+   "age": "4 years · male",
    "pmh": [
-    "Nothing significant recorded"
+    "Atopic eczema since infancy"
    ],
    "meds": [
-    "None recorded"
+    "Emollient (repeat, last issued 7 months ago)"
    ],
    "allergy": "None recorded",
-   "recent": "Mother reports a spreading cluster of small pearly bumps under the arm and on the tummy, with an itchy eczema-like patch around some of them. Otherwise well.",
-   "reason": "“How do we get rid of them? Should he stay off school or swimming?”"
+   "recent": "No consultations for six months. Mother requested an urgent appointment: “childcare problem with skin spots”.",
+   "reason": "“The childminder won’t have him back.”"
   },
   "knowledge": {
-   "guideline": "[1] British Association of Dermatologists (BAD) patient information leaflet: molluscum contagiosum (updated July 2020) · [2] UKHSA Health protection in children and young people settings, including education: exclusion table · [3] NICE CG57 Atopic eczema in under 12s (2007, updated 2023) · [4] BNFC: hydrocortisone (topical), emollients · [5] GMC 0–18 years (2007, updated 2018)",
-   "summary": "Clusters of pearly, umbilicated papules in a well child are molluscum contagiosum, a common poxvirus infection. It clears by itself, usually within 6 to 18 months and sometimes longer, so in a healthy child the plan is reassurance, simple advice and treating any surrounding eczema. No exclusion from school or swimming. Treatment or referral is for the few with specific problems.",
+   "guideline": "[1] NICE CKS Molluscum contagiosum (check current version) · [2] UKHSA Health protection in children and young people settings, including education (exclusion table) · [3] NICE CG57 Atopic eczema in under 12s: diagnosis and management (2007, updated 2023) · [4] British Association of Dermatologists patient information: molluscum contagiosum · [5] Product SPCs for emollients and topical corticosteroids",
+   "summary": "Widespread molluscum in a 4-year-old with eczema, with molluscum dermatitis, a lesion on the eyelid margin with two weeks of conjunctivitis, and a childminder refusing care. Explain the self-limiting course and why removal and the online kit are not advised, treat the eczema, refer to ophthalmology for the eyelid lesion with conjunctivitis, write to the childminder (no exclusion), and support a mother whose job is at risk.",
    "points": [
     {
-     "h": "Recognise it",
-     "t": "Small, firm, dome-shaped, pearly or skin-coloured papules with a central dimple, often in clusters on the trunk, armpits and skin folds. Spread by skin contact, shared towels and by scratching, which moves the virus to new skin. An eczema-like reaction around the spots is common and does not mean infection."
+     "h": "Recognition",
+     "t": "Firm, pearly, dome-shaped papules with a central dimple, often clustered, in flexures and on the trunk. Usually painless [1]."
     },
     {
      "h": "Natural history",
-     "t": "BAD [1]: the spots usually clear on their own within 6 to 18 months, although new ones can appear while old ones fade and some children take longer. Spots often go red and inflamed just before they clear, which is a sign the immune system is dealing with them, not infection."
+     "t": "Self-limiting. Most clear within 6–18 months, sometimes longer. Inflamed lesions often mean the immune system is clearing them [1,4]."
     },
     {
-     "h": "Why not treat routinely",
-     "t": "BAD [1]: treatment is not usually needed. Freezing, scraping or irritant creams are painful for a young child and can scar, while the untreated spots usually heal without marks. Picking and squeezing also risk scarring and secondary infection."
+     "h": "Removal not recommended",
+     "t": "In well children, cryotherapy and curettage are painful and can scar; topical treatments can irritate. None is routinely recommended [1]."
     },
     {
-     "h": "School, nursery and swimming",
-     "t": "UKHSA [2]: no exclusion period for molluscum contagiosum. Children can go to school and swim. Covering spots and not sharing towels reduce spread."
+     "h": "Molluscum dermatitis",
+     "t": "Eczema around lesions is common. Treat with regular emollients and a topical corticosteroid to inflamed skin (check the SPC/local formulary) [3,5]."
     },
     {
-     "h": "The eczema around the spots",
-     "t": "Treat it as eczema: regular emollients and, for an inflamed itchy patch, a short course of a mild topical corticosteroid such as hydrocortisone 1%, dose per BNFC [3,4]. Settling the itch cuts scratching and spread."
+     "h": "Eyelid lesions",
+     "t": "Lesions on the eyelid margin can cause conjunctivitis or keratitis. Refer to ophthalmology if there is associated red eye; urgently if pain, photophobia or reduced vision [1]."
     },
     {
-     "h": "When to think again",
-     "t": "Consider referral or specialist advice for a child who is immunosuppressed or has very extensive or atypical lesions, spots on the eyelid margin with a red or sore eye (ophthalmology), significant secondary bacterial infection, or genital lesions, where transmission is usually autoinoculation in young children but the whole picture is considered with safeguarding in mind [5]."
+     "h": "When else to refer",
+     "t": "Very extensive or atypical lesions, suspected immunosuppression (including HIV), diagnostic uncertainty, or lesions causing significant distress despite explanation."
+    },
+    {
+     "h": "Exclusion",
+     "t": "No exclusion from school, nursery or childminders [2]. Advise not sharing towels or baths, not scratching or squeezing, and covering lesions for swimming if wished."
+    },
+    {
+     "h": "Secondary infection",
+     "t": "Yellow crusting, weeping, spreading redness or fever suggest bacterial infection needing assessment."
     }
    ]
   },
@@ -6130,462 +6165,423 @@
     "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello, I’m Dr Shah. Come in, both of you. Hello Leo. What’s brought you in today?",
+    "text": "Hello, I’m Dr Clarke. Hello Leo. What’s been happening?",
     "dom": "ro",
-    "why": "Greets parent and child; open question"
+    "why": "Greets both; open question"
    },
    {
     "who": "pt",
-    "text": "Leo’s got these little pearly bumps in a cluster under his arm and on his tummy. Some have a tiny dimple in the middle. They’re spreading a bit and one area’s gone a bit eczema-y. How do we get rid of them? Should he stay off school or swimming?"
+    "text": "The childminder says she won’t have Leo back until these spots have gone because they’re catching. I’m back on shift on Monday and I’ve used all my leave. Can you freeze them off, or give me something that gets rid of them?"
    },
    {
     "who": "dr",
-    "text": "Thanks, that’s a clear description. You’ve got two questions there: what they are and how to get rid of them, and school and swimming. I’ll make sure we answer both. Can I ask a few things first?",
+    "text": "That’s a lot of pressure with Monday so close. Let’s look at the spots, and then I’ll help with the childminder as well. Tell me about them.",
     "dom": "ro",
-    "why": "Summarises and agrees the agenda"
+    "why": "Acknowledges pressure; agenda"
    },
    {
     "phase": "History",
     "clock": "1–4 min",
+    "who": "pt",
+    "text": "Three months. Little shiny bumps, some with a dent in the middle. Tummy first, now his arms and behind his knees. Some have gone red and scabby."
+   },
+   {
     "who": "dr",
-    "text": "When did you first notice them, and how have they changed since?",
+    "text": "Are they itchy or painful? And how’s his eczema at the moment?",
     "dom": "dg",
-    "why": "Onset and course"
+    "why": "Symptoms; eczema"
    },
    {
     "who": "pt",
-    "text": "A couple of months ago, just a few. Now there are more."
+    "text": "The red bits around them itch, especially at night. I’m not great with his creams, to be honest."
    },
    {
     "who": "dr",
-    "text": "Do they bother Leo? Itching, soreness, or does he pick at them?",
+    "text": "That’s really common, life is busy. Any weeping, yellow crusts, fever, or is he unwell in himself?",
     "dom": "dg",
-    "why": "Symptoms and scratching, which drives spread"
+    "why": "Secondary infection screen"
    },
    {
     "who": "pt",
-    "text": "The patch round them is itchy and he scratches it. The bumps themselves don’t seem to hurt."
-   },
-   {
-    "who": "dr",
-    "text": "Has he been well in himself: eating, playing, no fevers? And does he have any medical conditions or take any medicines regularly?",
-    "dom": "dg",
-    "why": "General health and immune status"
-   },
-   {
-    "who": "pt",
-    "text": "He’s been completely fine. Nothing like that, and no medicines."
-   },
-   {
-    "who": "dr",
-    "text": "Are any on his face or near his eyes, or in the nappy or private area? And are any hot, very red, weeping pus or spreading redness?",
-    "dom": "dg",
-    "why": "Screens for eyelid, genital and infected lesions"
-   },
-   {
-    "who": "pt",
-    "text": "No, just under his arm and on his tummy. A couple look a bit red."
-   },
-   {
-    "who": "dr",
-    "text": "How is all this affecting things at home and for Leo? Is anyone making comments?",
-    "dom": "ro",
-    "why": "Explores impact on child and family"
-   },
-   {
-    "who": "pt",
-    "text": "He doesn’t care. I just don’t like how they look, and I don’t want him passing it round."
+    "text": "No, he’s fine in himself."
    },
    {
     "phase": "Examination",
-    "clock": "4–5 min",
+    "clock": "4–6 min",
     "who": "dr",
-    "text": "Leo, can I have a quick look at your tummy and under your arm? It won’t hurt.",
+    "text": "Could you show me his arm close to the camera? Yes, those small, pearly bumps with a little dimple are typical. And the red, rough skin around them is eczema reacting to them. Can you bring the camera to his face? Does he have any on his eyelids?",
     "dom": "dg",
-    "why": "Examines with the child’s cooperation"
+    "why": "Remote examination; checks face and eyes"
+   },
+   {
+    "who": "pt",
+    "text": "There’s one on the edge of his eyelid, this one. Actually, that eye’s been red and sticky for a couple of weeks. He keeps rubbing it."
    },
    {
     "who": "dr",
-    "text": "There’s a cluster of small, shiny, dome-shaped bumps, and several have that little dimple in the middle. Around a few there’s a dry pink eczema patch. A couple are a bit red, which often happens when they’re starting to clear. Nothing looks infected, and his eyes and face are clear.",
+    "text": "Thank you, that’s important. Does light bother him, or does his eye seem painful, or is he bumping into things?",
     "dom": "dg",
-    "why": "Describes classic umbilicated papules and molluscum dermatitis; excludes infection"
+    "why": "Red flags for keratitis or reduced vision"
+   },
+   {
+    "who": "pt",
+    "text": "No, nothing like that."
    },
    {
     "phase": "Ideas, concerns and expectations",
-    "clock": "5–6 min",
+    "clock": "6–7 min",
     "who": "dr",
-    "text": "Before I explain, what did you think they might be?",
+    "text": "What do you think the spots are, and what worries you most?",
     "dom": "ro",
-    "why": "Elicits ideas"
+    "why": "ICE"
    },
    {
     "who": "pt",
-    "text": "Some sort of wart? I thought you’d freeze them off."
+    "text": "Some sort of contagious warts. And honestly, my job. I’ve had a warning about absence and there’s nobody else to have him."
    },
    {
+    "phase": "Explanation and plan",
+    "clock": "7–11 min",
     "who": "dr",
-    "text": "And is there anything worrying you about them, beyond how they look?",
-    "dom": "ro",
-    "why": "Elicits concerns"
-   },
-   {
-    "who": "pt",
-    "text": "Just that they keep spreading, and whether he should be at school."
-   },
-   {
-    "phase": "Explanation",
-    "clock": "6–8 min",
-    "who": "dr",
-    "text": "You’re close. They’re called molluscum contagiosum. It’s a very common, harmless skin virus in young children, a bit like warts. The dimple in the middle is the giveaway.",
-    "dom": "dg",
-    "why": "Names the diagnosis and links to her idea"
-   },
-   {
-    "who": "dr",
-    "text": "The good news is that the body clears it by itself. It usually takes somewhere between six months and a year and a half, and sometimes a little longer. New spots can pop up while others go, so it can look as if it’s spreading for a while.",
-    "dom": "dg",
-    "why": "Natural history with honest timescale (BAD)"
-   },
-   {
-    "who": "pt",
-    "text": "That long? Can’t you just freeze them?"
-   },
-   {
-    "who": "dr",
-    "text": "I understand wanting them gone. Freezing or scraping them is painful for a five-year-old, needs doing lots of times, and can leave marks, whereas left alone they usually heal without scars. So for a healthy child, the kinder option is to let them go by themselves.",
-    "dom": "ro",
-    "why": "Explains harm versus benefit of treatment"
-   },
-   {
-    "who": "pt",
-    "text": "I suppose I don’t want him upset every week."
-   },
-   {
-    "phase": "Shared management",
-    "clock": "8–11 min",
-    "who": "dr",
-    "text": "Here’s what does help. The eczema patch is making him scratch, and scratching spreads the virus. So I’ll suggest a moisturiser several times a day, and a mild steroid cream, hydrocortisone, on the pink itchy patch for a short time. That settles the itch.",
+    "text": "These are molluscum, a harmless skin virus that lots of young children get, especially with eczema. They go away on their own, usually within a year or so. Freezing or scraping them is painful at his age, can scar, and doesn’t make the rest go faster, so we don’t recommend it.",
     "dom": "cm",
-    "why": "Treats molluscum dermatitis (CG57, BNFC)"
+    "why": "Diagnosis; natural history; why no removal"
+   },
+   {
+    "who": "pt",
+    "text": "What about the kit I bought online?"
    },
    {
     "who": "dr",
-    "text": "Try to stop him squeezing or picking them, keep his nails short, give him his own towel, and avoid sharing baths where you can. You could pop a plaster over any that weep.",
+    "text": "I’d leave it. Those liquids can sting and inflame eczema skin, and that would make him scratch and spread them more. The best thing is calming the eczema: moisturiser every day, and a steroid cream on the red, itchy patches for a short while. I’ll prescribe both.",
     "dom": "cm",
-    "why": "Practical measures to reduce spread"
-   },
-   {
-    "who": "pt",
-    "text": "And school? Swimming?"
+    "why": "Advises against kit; treats eczema"
    },
    {
     "who": "dr",
-    "text": "He doesn’t need any time off school, and he can carry on swimming. The national guidance for schools says no one needs to stay away with molluscum. Covering the spots with a waterproof plaster or a swim top and using his own towel is enough.",
-    "dom": "ro",
-    "why": "Answers directly: no exclusion (UKHSA)"
+    "text": "For the childminder: the national guidance for nurseries and childminders says children with molluscum don’t need to stay away. I’ll write a letter today saying that, and suggesting he has his own towel and the spots are covered if she prefers.",
+    "dom": "cm",
+    "why": "Corrects exclusion; letter"
    },
    {
     "who": "pt",
-    "text": "Oh, that’s a relief. I thought he’d have to miss swimming lessons."
+    "text": "That would be amazing. She listens to doctors."
    },
    {
     "who": "dr",
-    "text": "Does that plan feel all right to you? Is there anything you’d find hard to do?",
-    "dom": "ro",
-    "why": "Checks agreement and barriers"
+    "text": "The eye is the one thing I want to act on. A spot on the eyelid edge can irritate the eye, and his has been red and sticky for two weeks, so I’m referring him to the eye specialists. They may treat that one spot.",
+    "dom": "cm",
+    "why": "Ophthalmology referral for eyelid lesion with conjunctivitis"
    },
    {
     "who": "pt",
-    "text": "No, that sounds doable."
+    "text": "Oh. Is his eye in danger?"
+   },
+   {
+    "who": "dr",
+    "text": "It’s very unlikely to harm his sight, but it’s worth them checking. If his eye becomes painful, he doesn’t like light, or his vision seems worse, take him to the eye casualty or A&E the same day.",
+    "dom": "cm",
+    "why": "Proportionate reassurance and urgent safety-net"
    },
    {
     "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "Please bring him back if a spot becomes hot, swollen, very sore or oozes pus, which could mean infection; if spots appear on his eyelids and his eye goes red or sore; if they spread a lot despite this; or if the eczema doesn’t settle with the cream. Otherwise, patience is the treatment. Just so I know I’ve explained it well, what will you do at home?",
-    "dom": "cm",
-    "why": "Safety-net for infection, eye involvement and eczema; teach-back"
+    "text": "Can you tell me the plan back?",
+    "dom": "ro",
+    "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "Moisturiser, the steroid cream on the itchy patch for a short while, stop him picking, his own towel. School and swimming as normal, and come back if one gets infected or near his eye."
+    "text": "Leave the spots, no kit. Moisturiser every day, steroid on the red bits. Letter for Mrs Price. Eye referral, and same day if it hurts or he can’t see."
    },
    {
     "who": "dr",
-    "text": "Perfect. I’ll give you a printed leaflet too. Bye, Leo, well done for letting me look.",
+    "text": "Exactly. Also come back if there’s yellow crusting, spreading redness, fever, or if they’re spreading a lot despite the eczema settling. You’re doing a good job with a lot on your plate.",
     "dom": "cm",
-    "why": "Written information; warm close"
+    "why": "Safety-net; support"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Open question; agreed both of the mother’s questions (removal, school and swimming) as the agenda.",
-    "pts": 1, "dom": "dg"
+    "d": "Open question; acknowledged the Monday deadline and agreed to deal with the childminder too.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Impact on Leo and the family, and the mother’s dislike of the appearance and worry about passing it on.",
-    "pts": 1, "dom": "dg"
+    "d": "Single parent, 12-hour shifts, absence warning, no family support, guilt about eczema care.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up the itchy eczema patch and scratching as the driver of spread, and the red spots as a sign of clearance.",
-    "pts": 1, "dom": "ro"
+    "d": "Leo rubbing his eye; red skin around lesions; the online kit; “used all my leave”.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (a wart to be frozen), concern (spreading, school), expectation (removal; time off school).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (contagious warts needing removal), concern (job, childcare), expectation (removal and a letter).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Examined the lesions, looked for infection and checked the face, eyelids and genital area by history.",
-    "pts": 1, "dom": "dg"
+    "d": "Close camera view of lesions; looked at the face and eyelids; no tests needed.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
-    "d": "Molluscum versus warts, chickenpox, folliculitis and infected lesions.",
-    "pts": 1, "dom": "dg"
+    "d": "Molluscum versus warts or folliculitis; molluscum dermatitis versus secondary bacterial infection; conjunctivitis from an eyelid lesion.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Asked about immune status, general health, eyelid and genital lesions, and signs of bacterial infection.",
-    "pts": 2, "dom": "dg"
+    "d": "Eye pain, photophobia and vision; fever, crusting and spreading redness; extent suggesting immune problems.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Named molluscum contagiosum and explained its self-limiting course with an honest timescale.",
-    "pts": 2, "dom": "dg"
+    "d": "Molluscum contagiosum with molluscum dermatitis, and an eyelid-margin lesion with conjunctivitis.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "No routine destructive treatment, with harm versus benefit explained; practical anti-spread advice; no school or swimming exclusion.",
-    "pts": 2, "dom": "cm"
+    "d": "No removal or online kit; emollient and topical steroid to inflamed skin (check the SPC/local formulary); ophthalmology referral; spread advice.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Treated the surrounding eczema with emollient and a short course of mild topical steroid to break the itch–scratch cycle.",
-    "pts": 1, "dom": "cm"
+    "d": "Letter to the childminder (no exclusion); eczema routine made manageable; acknowledged work pressure.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Return if infected, eyelid involvement with a red eye, marked spread or eczema not settling; teach-back and leaflet.",
-    "pts": 1, "dom": "cm"
+    "d": "Same-day eye care if pain, photophobia or reduced vision; return for infection or rapid spread; teach-back.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
     "Children & young people",
-    "New & undifferentiated presentations"
+    "Health disadvantage & vulnerabilities"
    ],
    "stem": {
-    "name": "Leo",
-    "age": "5 years · male",
+    "name": "Leo Bello",
+    "age": "4 years · male",
     "pmh": [
-     "Nil significant"
+     "Atopic eczema since infancy"
     ],
     "meds": [
-     "None"
+     "Emollient (repeat, last issued 7 months ago)"
     ],
     "allergy": "None recorded",
-    "recent": "Cluster of pearly bumps, axilla and trunk; itchy patch around some.",
-    "reason": "“How do we get rid of them? Should he stay off school?”"
+    "recent": "No consultations for six months. Mother requested an urgent appointment: “childcare problem with skin spots”.",
+    "reason": "“The childminder won’t have him back.”"
    },
    "timeMap": [
     {
      "t": "0–1",
      "h": "Open",
-     "d": "Hear both questions: removal, and school and swimming. Name them as the agenda."
+     "d": "Acknowledge Monday and the childminder."
     },
     {
-     "t": "1–5",
+     "t": "1–6",
      "h": "History and look",
-     "d": "Onset, itch and scratching, general health and immune status, eyelid or genital spots, infection. Examine and describe the dimpled papules."
+     "d": "Spots, eczema, infection; close camera view; face and eyelids: the eyelid lesion and red eye."
     },
     {
-     "t": "5–6",
+     "t": "6–7",
      "h": "ICE",
-     "d": "She thinks they are warts to be frozen and worries about spread and school."
+     "d": "Warts needing removal; job at risk; guilt about creams."
     },
     {
-     "t": "6–11",
-     "h": "Explain and plan",
-     "d": "Name molluscum; clears in 6 to 18 months; why freezing is not kinder; treat the eczema; no picking, own towel; no exclusion."
+     "t": "7–11",
+     "h": "Plan",
+     "d": "Natural history; no removal or kit; eczema treatment; childminder letter; ophthalmology referral."
     },
     {
      "t": "11–12",
      "h": "Close",
-     "d": "Infection, eye involvement, marked spread, eczema not settling. Teach-back, leaflet."
+     "d": "Teach-back; same-day eye safety-net; infection; support."
     }
    ],
    "wordPics": {
-    "fail": "Freezes or prescribes an irritant treatment on request without discussing harm, or dismisses the mother with “it’ll go” and no advice; advises time off school or no swimming; ignores the itchy eczema.",
-    "pass": "Recognises molluscum, explains that it clears on its own, advises against routine treatment, gives anti-spread advice, confirms school and swimming are fine and treats the eczema.",
-    "exc": "All of the above, plus: builds on her own idea that it is wart-like; gives an honest 6 to 18 month timescale; explains harm versus benefit so she chooses watchful waiting; links the eczema to scratching and spread; screens for immune problems, eyelid and genital lesions; checks the plan with teach-back."
+    "fail": "Freezes or recommends the online kit; accepts exclusion; never looks at the eyelids; ignores the eczema and the mother’s work crisis.",
+    "pass": "Recognises molluscum, explains why removal is not advised, treats the eczema, writes to the childminder and refers the eyelid lesion with conjunctivitis.",
+    "exc": "All of the above, plus: explains the natural history in plain words; advises specifically against the kit on eczema skin; acknowledges the job pressure and guilt without judgement; proportionate reassurance and a clear same-day eye safety-net; teach-back."
    },
    "avoid": [
     {
-     "dont": "“They’re nothing, just leave them.”",
-     "instead": "“They’re harmless and clear by themselves, and here’s what will help in the meantime.”",
-     "why": "Dismissive reassurance leaves the parent without a plan and with her concerns unaddressed."
+     "dont": "“We can freeze them off for you.”",
+     "instead": "“Freezing hurts, can scar and doesn’t speed up the rest. They go on their own.”",
+     "why": "Removal is not recommended in well children (CKS)."
     },
     {
-     "dont": "“Keep him off school and out of the pool until they’ve gone.”",
-     "instead": "“He can go to school and swim as normal. Cover them and use his own towel.”",
-     "why": "UKHSA sets no exclusion for molluscum; months of exclusion would harm him."
+     "dont": "“The childminder has a point, keep him home.”",
+     "instead": "“The guidance says no exclusion. I’ll write to her.”",
+     "why": "UKHSA guidance sets no exclusion for molluscum."
     },
     {
-     "dont": "“We can freeze them off today.”",
-     "instead": "“Freezing hurts, often needs repeating and can scar, whereas they usually heal cleanly on their own.”",
-     "why": "Destructive treatment in a healthy young child causes pain and scarring for little benefit."
+     "dont": "(Not looking at the face) treating only the body.",
+     "instead": "“Can you bring the camera to his face? Any on his eyelids?”",
+     "why": "Eyelid-margin lesions with conjunctivitis need ophthalmology."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Family life",
-     "t": "Parents often feel judged about skin conditions. Practical, non-blaming advice on towels, baths and picking works better than a list of restrictions."
+     "h": "Childcare and work",
+     "t": "Exclusion by a childcare provider can cost a parent their job. A clear letter citing national guidance can resolve it quickly."
     },
     {
-     "h": "Child’s experience",
-     "t": "A five-year-old should be spared painful procedures for a condition that will heal. Involve him in the examination and praise him."
+     "h": "Guilt and eczema care",
+     "t": "Parents juggling shifts often struggle with twice-daily creams. Make the routine simple and realistic."
     }
    ],
    "legal": [
     {
-     "h": "Consent and the child’s interests",
-     "t": "The parent consents for a young child, but the doctor must act in the child’s best interests. Declining a painful, low-benefit procedure and explaining why is part of that (GMC 0–18 years)."
+     "h": "Exclusion guidance",
+     "t": "UKHSA guidance for education and childcare settings lists no exclusion for molluscum contagiosum."
     },
     {
-     "h": "Genital lesions",
-     "t": "Molluscum on the genitals of a young child usually comes from the child’s own spots, but the history, the whole child and any other concerns are considered, following local safeguarding procedures if anything else is worrying (GMC 0–18 years)."
+     "h": "Reports and letters",
+     "t": "Letters for childcare providers should be factual, agreed with the parent and recorded (GMC guidance on writing reports)."
     }
    ],
    "professional": [
     {
-     "h": "Avoiding over-treatment",
-     "t": "Resisting a request for a harmful or unnecessary procedure while keeping the parent on side is a core professional skill."
+     "h": "Avoiding harm",
+     "t": "Declining painful, scarring procedures for a self-limiting condition is good practice, with clear reasons."
     },
     {
-     "h": "Consistent advice",
-     "t": "Give the same no-exclusion message that schools receive from UKHSA, so parents are not given conflicting advice by school and practice."
+     "h": "Looking for the red flag",
+     "t": "Ask to see the face and eyelids in any child with molluscum, especially if they rub an eye."
     }
    ],
    "community": [
     {
-     "h": "Schools and swimming clubs",
-     "t": "Some settings still ask for children to be kept away. The UKHSA exclusion table can be shared with the school if needed."
+     "h": "Community pharmacy",
+     "t": "Pharmacists can advise on emollients and explain why removal products are not recommended for young children."
     },
     {
-     "h": "Pharmacy",
-     "t": "Community pharmacists can advise on emollients. Over-the-counter molluscum products are not routinely needed in a healthy child."
+     "h": "Health visitor and school nurse",
+     "t": "Can support eczema care routines and help with childcare-setting queries."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Immunosuppression or very extensive or atypical lesions: seek specialist advice",
-     "Eyelid-margin lesions with a red or sore eye: ophthalmology",
-     "Hot, swollen, painful or pus-filled lesions: secondary bacterial infection",
-     "Genital lesions: consider the whole picture with safeguarding in mind"
+     "Eyelid-margin lesion with red, sticky eye: ophthalmology referral; same day if pain, photophobia or reduced vision",
+     "Fever, spreading redness, weeping or yellow crusting: secondary bacterial infection",
+     "Very extensive or atypical lesions: consider immune deficiency"
     ],
     "psychosocial": [
-     "Impact on the child and family",
-     "Parent’s feelings about appearance and spread",
-     "School, nursery and swimming"
+     "Single parent on shifts",
+     "Absence warning at work",
+     "No alternative childcare",
+     "Eczema routine hard to maintain"
     ],
     "ice": [
-     "Idea: a wart that needs freezing off",
-     "Concern: spreading to others; whether he can go to school",
-     "Expectation: removal of the spots; possibly time off"
+     "Idea: contagious warts that need removing",
+     "Concern: losing her job",
+     "Expectation: removal and a letter"
     ]
    },
-   "diagnosis": "“These are molluscum contagiosum, a common and harmless skin virus in young children. The small dimple in the middle of each bump is typical.”",
-   "diagnosisLay": "“Think of it like a very common childhood cold, but in the skin. His immune system will find it and clear it, it just takes months rather than days. The redness you sometimes see is the body starting to win.”",
+   "diagnosis": "“These are molluscum, with eczema flaring around them, and one on his eyelid edge is irritating his eye.”",
+   "diagnosisLay": "“It’s a harmless skin virus. The body clears it on its own over months. Picking or freezing doesn’t speed that up, but calming the eczema stops the spread from scratching.”",
    "management": {
-    "reflectIce": "“You wanted them gone and you were worried about school. They will go by themselves without marks, and he can carry on with school and swimming.”",
-    "psychosocial": "Keep school, swimming and family life normal; involve Leo and spare him painful treatment.",
+    "reflectIce": "“You wanted them gone so the childminder would take him and you could work. The letter will do that faster than any treatment could.”",
+    "psychosocial": "Solve the childcare problem today; simplify the eczema routine; reassure about her parenting.",
     "sharedPlan": [
-     "Watchful waiting; clears in about 6 to 18 months, sometimes longer (BAD)",
-     "No routine freezing or scraping in a healthy child",
-     "Emollient and short course of mild topical steroid for the eczema patch (CG57, BNFC)",
-     "No picking, short nails, own towel, avoid shared baths",
-     "No exclusion from school or swimming (UKHSA)"
+     "No removal or online kit",
+     "Emollient daily and as soap substitute; topical steroid to inflamed eczema (check the SPC/local formulary)",
+     "Letter for the childminder: no exclusion (UKHSA); own towel; cover if preferred",
+     "Ophthalmology referral for the eyelid-margin lesion with conjunctivitis",
+     "Spread advice: don’t scratch or squeeze; nails short; no shared towels or baths"
     ],
     "safetyNet": [
-     "Return if spots become hot, swollen, painful or pus-filled",
-     "Return if spots appear on the eyelids with a red or sore eye",
-     "Return if very widespread or the eczema does not settle"
+     "Eye pain, light sensitivity or reduced vision: eye casualty or A&E the same day",
+     "Yellow crusting, spreading redness or fever: same-day review",
+     "Rapid spread or no improvement in the eczema in 2 weeks: review"
     ]
    }
   },
   "links": [
    {
     "ic": "💠",
-    "t": "Eczema protocol",
-    "s": "Emollients · topical steroids · CG57",
-    "href": "management/eczema.html"
-   },
-   {
-    "ic": "📋",
-    "t": "Eczema",
-    "s": "Case walkthrough",
-    "href": "../cases/eczema.html"
-   },
-   {
-    "ic": "🗺️",
-    "t": "Widespread itch",
-    "s": "Visual algorithm",
-    "href": "algorithms/widespread-itch.html"
+    "t": "Childhood rashes and exclusion",
+    "s": "No exclusion for molluscum",
+    "href": "management/childhood-rashes-exclusion.html"
    },
    {
     "ic": "💠",
-    "t": "Scabies protocol",
-    "s": "Another contagious skin problem in children",
-    "href": "management/scabies.html"
+    "t": "Eczema",
+    "s": "Emollients and topical steroids",
+    "href": "management/eczema.html"
+   },
+   {
+    "ic": "💠",
+    "t": "Impetigo",
+    "s": "If lesions become infected",
+    "href": "management/impetigo.html"
+   },
+   {
+    "ic": "🗺️",
+    "t": "Fever and rash in a child",
+    "s": "Visual algorithm",
+    "href": "algorithms/fever-rash-child.html"
    }
   ],
   "pitfalls": {
-   "intro": "Molluscum is easy to diagnose. Marks are won or lost on how you handle a parent who wants the spots gone, the school question, and the eczema that drives the itch.",
+   "intro": "Molluscum is a spot diagnosis. The marks are in declining removal well, treating the eczema, spotting the eyelid lesion, and solving the childcare crisis.",
    "items": [
     {
      "dom": "cm",
-     "fail": "Freezing or scraping on request.",
-     "why": "It is painful, often repeated and can scar, while untreated lesions usually heal cleanly (BAD).",
-     "fix": "Explain harm versus benefit and offer watchful waiting."
+     "fail": "Agreeing to freeze the lesions or to the online kit.",
+     "why": "Painful, can scar, irritates eczema and does not shorten the course.",
+     "fix": "Explain the natural history and why removal is not advised."
     },
     {
      "dom": "dg",
-     "fail": "Advising time off school or no swimming.",
-     "why": "UKHSA sets no exclusion for molluscum contagiosum.",
-     "fix": "“He can go to school and swim. Cover the spots and use his own towel.”"
+     "fail": "Not looking at the eyelids.",
+     "why": "Eyelid-margin lesions with conjunctivitis need ophthalmology.",
+     "fix": "Ask to see the face; ask about red or sticky eyes."
     },
     {
      "dom": "cm",
-     "fail": "Ignoring the eczema patch.",
-     "why": "Itch drives scratching and autoinoculation.",
-     "fix": "Emollient and a short course of mild topical steroid."
+     "fail": "Ignoring the eczema around lesions.",
+     "why": "Molluscum dermatitis drives itch, scratching and spread.",
+     "fix": "Emollient and topical steroid to inflamed skin."
     },
     {
-     "dom": "dg",
-     "fail": "Not asking about immune status, eyelids or genitals.",
-     "why": "These are the situations where referral or a wider assessment is needed.",
-     "fix": "Ask briefly and document it."
+     "dom": "cm",
+     "fail": "Accepting the childminder’s exclusion.",
+     "why": "UKHSA guidance sets no exclusion.",
+     "fix": "Offer a factual letter."
     },
     {
      "dom": "ro",
-     "fail": "“They’re nothing, just leave them.”",
-     "why": "The parent feels dismissed and leaves without a plan.",
-     "fix": "Acknowledge her wish, explain the reasons and give things she can do."
+     "fail": "Missing the job pressure.",
+     "why": "It is the mother’s main concern.",
+     "fix": "Name it and solve the practical problem."
     },
     {
      "dom": "cm",
-     "fail": "No timescale and no safety-net.",
-     "why": "She will return in a month expecting them to be gone.",
-     "fix": "Give the 6 to 18 month timescale and clear reasons to come back."
+     "fail": "Weak safety-net for the eye.",
+     "why": "Keratitis can threaten vision.",
+     "fix": "Same-day care for pain, photophobia or reduced vision."
     }
    ]
   }
@@ -7587,53 +7583,53 @@
  },
  "pityriasis-rosea": {
   "stem": {
-   "name": "Lena Ashworth",
-   "age": "24-year-old woman",
+   "name": "Jade Morris",
+   "age": "26 years · female",
    "pmh": [
-    "No significant past medical history recorded"
+    "Nil significant"
    ],
    "meds": [
-    "No regular medication recorded"
+    "Folic acid 400 micrograms daily (self-purchased)"
    ],
-   "allergy": "No known drug allergies recorded",
-   "recent": "No previous skin consultations recorded.",
-   "reason": "One large oval scaly patch on the chest a week ago, now many smaller oval patches on the back and tummy; mildly itchy. Thinks it is ringworm and wants a cream."
+   "allergy": "None recorded",
+   "recent": "Positive pregnancy test two weeks ago; self-referred to midwife, booking appointment next week. Photos of a trunk rash uploaded this morning.",
+   "reason": "“Rash spreading over my body — is it catching?”"
   },
   "knowledge": {
-   "guideline": "[1] Primary Care Dermatology Society, pityriasis rosea clinical guidance (accessed 2026) · [2] British Association of Dermatologists, Pityriasis rosea patient information leaflet (2023) · [3] BASHH UK national guideline on the management of syphilis (2024) · [4] Contreras-Ruiz et al., Cochrane 2019 CD005068 (interventions for pityriasis rosea) · [5] Drago et al., J Am Acad Dermatol 2008; Manduca et al., Int J Womens Dermatol 2025; Ong et al., J Am Acad Dermatol 2024 (pityriasis rosea in pregnancy) · [6] BNF, topical corticosteroids and antihistamines",
-   "summary": "A single larger oval scaly herald patch followed by a crop of smaller oval patches along the skin lines of the trunk is pityriasis rosea. Reassure, treat any itch, and avoid antifungals. Think of secondary syphilis if the palms or soles are involved or there are other atypical features, and ask about pregnancy.",
+   "guideline": "[1] NICE CKS Pityriasis rosea (check current version) · [2] BASHH UK national guidelines on the management of syphilis (check current version) · [3] NHS Infectious diseases in pregnancy screening programme (syphilis, HIV, hepatitis B) · [4] BASHH Statement on partner notification for sexually transmissible infections · [5] GMC Confidentiality: good practice in handling patient information (2017) · [6] Product SPCs for emollients and topical corticosteroids",
+   "summary": "Typical pityriasis rosea in a woman about 10 weeks pregnant, with a hidden fear of an STI from a previous partner. Exclude secondary syphilis by examination and serology now, offer a full STI screen, give honest information about the reported miscarriage association and involve the obstetric team as CKS advises, treat itch safely, and protect her confidentiality.",
    "points": [
     {
-     "h": "Recognise it",
-     "t": "PCDS [1]: a herald patch, usually 2–5 cm, pink or red with a fine scale and sharp border, appears a few days to two weeks before a crop of smaller oval patches with a collarette of scale along the skin cleavage lines, giving a “Christmas tree” pattern on the back. It mainly affects children and young adults and its cause is uncertain (HHV-6 and HHV-7 reactivation has been proposed but not established)."
+     "h": "Recognition",
+     "t": "Herald patch, then smaller oval scaly patches with a collarette on the trunk along skin lines, often after a prodrome. Mild itch. Usually clears within 6–12 weeks [1]."
     },
     {
-     "h": "Ringworm is the classic confusion",
-     "t": "BAD [2]: the herald patch can look like ringworm. Tinea usually has fewer, annular lesions with an active scaly edge and central clearing, and spreads outward rather than erupting as a crop. If in doubt about a single patch, skin scrapings for mycology settle it."
+     "h": "Differential",
+     "t": "Secondary syphilis (palms, soles, mucosa, lymphadenopathy, hair loss), tinea corporis, guttate psoriasis, nummular eczema, drug eruptions [1,2]."
     },
     {
-     "h": "Other differentials",
-     "t": "Guttate psoriasis (small drop-like plaques, often after a streptococcal sore throat), discoid eczema, a pityriasis-rosea-like drug eruption (review medicines), and secondary syphilis."
-    },
-    {
-     "h": "Secondary syphilis",
-     "t": "BASHH 2024 [3]: secondary syphilis gives a generalised mucocutaneous rash with lymphadenopathy; the rash involves the palms and soles in 11–70% and usually does not itch. Mucosal lesions, patchy hair loss, systemic symptoms or sexual risk should prompt a sexual history and syphilis serology, ideally via sexual health services with partner notification if positive."
-    },
-    {
-     "h": "Treatment",
-     "t": "No treatment is needed if it does not itch [2]. For itch, PCDS [1]: an emollient, or a mild to moderately potent topical steroid such as hydrocortisone 1% or clobetasone butyrate 0.05%; a sedating antihistamine at night if sleep is affected (doses per BNF [6]). Antifungals do not help, and antibiotics and antivirals are not routine primary-care treatments; Cochrane [4] found only low-certainty evidence for any intervention, and aciclovir is a dermatology option in severe disease."
-    },
-    {
-     "h": "Course",
-     "t": "It is self-limiting, lasting about 2–12 weeks [4]; BAD [2] says it clears within a few months. Post-inflammatory colour change, especially in darker skin, can take longer to fade. Recurrence is uncommon. Reconsider the diagnosis if it persists beyond about 3 months (practice)."
-    },
-    {
-     "h": "Contagion and work",
-     "t": "BAD [2]: the risk of passing it on is very low. No need to stay off work or college, or avoid the gym."
+     "h": "Test for syphilis when in doubt",
+     "t": "Arrange syphilis serology if there are atypical features, risk factors or pregnancy; offer HIV, hepatitis B and chlamydia/gonorrhoea testing [2]."
     },
     {
      "h": "Pregnancy",
-     "t": "Small studies found higher miscarriage rates when pityriasis rosea began before about 15 weeks of pregnancy (Drago 2008; Manduca 2025), although a 2024 matched study found no excess risk [5]. Ask about possible pregnancy; if pregnant, discuss the uncertain evidence and consider contacting the midwife or obstetric team, who decide on any extra surveillance."
+     "t": "An association with miscarriage has been reported, particularly when pityriasis rosea occurs in the first 15 weeks. CKS advises seeking specialist advice for pregnant women [1]. Inform the midwife or early pregnancy service."
+    },
+    {
+     "h": "Antenatal screening",
+     "t": "Syphilis, HIV and hepatitis B screening is offered to all pregnant women at booking [3]; do not wait for it when syphilis is a current clinical question."
+    },
+    {
+     "h": "Symptom relief",
+     "t": "Emollients; mild or moderate topical corticosteroid for itch if needed (check the SPC/local formulary). Avoid unnecessary antifungals."
+    },
+    {
+     "h": "Confidentiality and partners",
+     "t": "Sexual history disclosures are confidential. Partner notification is discussed only if a result is positive and can be done anonymously by sexual health services [4,5]."
+    },
+    {
+     "h": "No exclusion",
+     "t": "Pityriasis rosea is not very contagious. No time off work is needed."
     }
    ]
   },
@@ -7642,459 +7638,430 @@
     "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello Miss Ashworth, I’m Dr Hughes. What can I help with today?",
+    "text": "Hello Jade, I’m Dr Clarke. I’ve got your photos up. Tell me what’s been happening.",
     "dom": "ro",
-    "why": "Open question"
+    "why": "Open question; uses uploaded images"
    },
    {
     "who": "pt",
-    "text": "About a week ago I got one big oval scaly patch on my chest, and now I’ve come out in loads of smaller oval ones across my back and tummy. It’s a bit itchy. I thought the first one was ringworm. Is it spreading? Should I have a cream?"
+    "text": "It started with one big patch under my boob and now it’s all over my chest and back. Is it catching? Is it something I’ve picked up?"
+   },
+   {
+    "phase": "History",
+    "clock": "1–4 min",
+    "who": "dr",
+    "text": "When did the first patch appear, and how long before the others?",
+    "dom": "dg",
+    "why": "Herald patch and timing"
+   },
+   {
+    "who": "pt",
+    "text": "About eight days ago. The rest came four days later."
    },
    {
     "who": "dr",
-    "text": "That must have been alarming, watching it spread like that. Let me ask a few questions and have a look, and then we’ll work out what it is and what will help.",
+    "text": "Were you unwell beforehand? Any new medicines or creams? Is it itchy?",
+    "dom": "dg",
+    "why": "Prodrome; drug eruption"
+   },
+   {
+    "who": "pt",
+    "text": "I had a sore throat a couple of weeks ago. No new tablets. A bit itchy."
+   },
+   {
+    "who": "dr",
+    "text": "I can see from your record you’ve had a positive pregnancy test. Congratulations. How far along do you think you are, and how are you feeling?",
+    "dom": "dg",
+    "why": "Integrates pregnancy from the record"
+   },
+   {
+    "who": "pt",
+    "text": "About ten weeks. Bit sick. No bleeding."
+   },
+   {
+    "phase": "Examination",
+    "clock": "4–5 min",
+    "who": "dr",
+    "text": "Could you show me your palms and the soles of your feet, and open your mouth for me? Any sores in the mouth or down below, hair falling out, or lumps in your neck or groin?",
+    "dom": "dg",
+    "why": "Looks for syphilis features"
+   },
+   {
+    "who": "pt",
+    "text": "Nothing on my hands or feet. No sores. Nothing like that."
+   },
+   {
+    "who": "dr",
+    "text": "Your photos show an oval patch with a scaly edge and smaller ovals lined up along the skin lines. That pattern is typical of a rash called pityriasis rosea. It’s thought to be a reaction to a virus, it isn’t very catching, and it fades over a couple of months.",
+    "dom": "dg",
+    "why": "Working diagnosis explained"
+   },
+   {
+    "phase": "Sexual history",
+    "clock": "5–7 min",
+    "who": "dr",
+    "text": "One other infection, which is sexually transmitted, can look very similar, so I ask everyone with this rash a few questions about sexual health. Is that okay?",
+    "dom": "dg",
+    "why": "Normalises sexual history"
+   },
+   {
+    "who": "pt",
+    "text": "(pause) Okay."
+   },
+   {
+    "who": "dr",
+    "text": "Who have your sexual partners been in the last few months, and have you had a sexual health check before?",
+    "dom": "dg",
+    "why": "Sexual history"
+   },
+   {
+    "who": "pt",
+    "text": "Dan, my boyfriend, four months. But… before him there was someone, once, no condom. I’ve never been tested. I keep thinking this is from that, and the baby…"
+   },
+   {
+    "who": "dr",
+    "text": "Thank you for telling me. That’s really common, and it doesn’t change how we look after you. The best thing is to test properly, so you know rather than worry.",
     "dom": "ro",
-    "why": "Acknowledges worry; signposts"
-   },
-   {
-    "phase": "Data gathering",
-    "clock": "1–5 min",
-    "who": "dr",
-    "text": "Did you feel unwell before the first patch appeared, like a cold or sore throat?",
-    "dom": "dg",
-    "why": "Preceding illness: viral prodrome or strep for guttate psoriasis"
-   },
-   {
-    "who": "pt",
-    "text": "I think I had a bit of a cold before, nothing much."
-   },
-   {
-    "who": "dr",
-    "text": "How itchy is it? Is it stopping you sleeping?",
-    "dom": "dg",
-    "why": "Itch severity to guide treatment"
-   },
-   {
-    "who": "pt",
-    "text": "Just a bit itchy. It’s more how it looks."
-   },
-   {
-    "who": "dr",
-    "text": "Have you used any creams on it, or started any new medicines recently?",
-    "dom": "dg",
-    "why": "Treatment tried; drug eruption screen"
-   },
-   {
-    "who": "pt",
-    "text": "No, nothing yet. I wanted to check first."
-   },
-   {
-    "who": "dr",
-    "text": "I ask everyone with a rash like this a few extra questions, because a few conditions can look similar. Is there any rash on your palms or the soles of your feet? Any mouth ulcers, hair loss, swollen glands or feeling unwell now?",
-    "dom": "dg",
-    "why": "Screens features of secondary syphilis"
-   },
-   {
-    "who": "pt",
-    "text": "No, none of that."
-   },
-   {
-    "who": "dr",
-    "text": "And any sexual health concerns, such as a new partner, a sore or ulcer anywhere, or anything you’d like checked?",
-    "dom": "ro",
-    "why": "Non-judgemental sexual history"
-   },
-   {
-    "who": "pt",
-    "text": "No, nothing like that."
-   },
-   {
-    "who": "dr",
-    "text": "Is there any chance you could be pregnant?",
-    "dom": "dg",
-    "why": "Pregnancy history, relevant to pityriasis rosea"
-   },
-   {
-    "who": "pt",
-    "text": "I don’t think so."
+    "why": "Non-judgemental response to disclosure"
    },
    {
     "phase": "Ideas, concerns and expectations",
-    "clock": "5–6 min",
+    "clock": "7–8 min",
     "who": "dr",
-    "text": "You thought it might be ringworm spreading. What worries you most about it?",
+    "text": "What has worried you most?",
     "dom": "ro",
-    "why": "Explores ideas and concerns"
+    "why": "Explores concerns"
    },
    {
     "who": "pt",
-    "text": "That it’s catching, and it’s all over my back. I don’t want to pass it on or have it for ages."
+    "text": "That I’ve given Dan something, or hurt the baby. And Dan finding out about the other guy."
    },
    {
-    "who": "dr",
-    "text": "And you were hoping for a cream to clear it?",
-    "dom": "ro",
-    "why": "Confirms expectation"
-   },
-   {
-    "who": "pt",
-    "text": "Yes, an antifungal one I suppose."
-   },
-   {
-    "phase": "Examination and explanation",
-    "clock": "6–8 min",
-    "who": "dr",
-    "text": "May I look? … This bigger patch on your chest is what we call a herald patch. The smaller oval patches on your back have a fine ring of scale and follow the lines of your skin, a bit like the branches of a Christmas tree. Your palms and soles are clear.",
-    "dom": "dg",
-    "why": "Examines herald patch, distribution, palms and soles"
-   },
-   {
-    "who": "pt",
-    "text": "So it’s not ringworm?"
-   },
-   {
-    "who": "dr",
-    "text": "No. This is pityriasis rosea. It’s a common rash in young adults, probably triggered by a virus, often after a cold like the one you had. The first patch can look just like ringworm, which is why many people think that.",
-    "dom": "dg",
-    "why": "Names diagnosis; explains the ringworm confusion"
-   },
-   {
-    "who": "pt",
-    "text": "Is it catching?"
-   },
-   {
-    "who": "dr",
-    "text": "The risk of passing it on is very low. You don’t need to keep away from other people or take time off, and you can carry on with normal life, including exercise.",
-    "dom": "ro",
-    "why": "Answers contagion fear directly"
-   },
-   {
-    "phase": "Shared management",
+    "phase": "Plan",
     "clock": "8–11 min",
     "who": "dr",
-    "text": "It goes away on its own, usually within about 2 to 12 weeks. It can leave paler or darker marks for a little while after, which fade too.",
-    "dom": "dg",
-    "why": "Natural history"
-   },
-   {
-    "who": "pt",
-    "text": "So what about the cream?"
-   },
-   {
-    "who": "dr",
-    "text": "An antifungal cream wouldn’t help, because it isn’t a fungus. For the itch, a moisturiser used often helps, and if it’s still itchy, a mild steroid cream such as hydrocortisone 1%. If it ever stops you sleeping, an antihistamine at night can help. Does that sound reasonable?",
-    "dom": "dg",
-    "why": "Symptomatic care; explains why no antifungal"
-   },
-   {
-    "who": "pt",
-    "text": "Yes, that makes sense. I’d rather not use something that won’t work."
-   },
-   {
-    "who": "dr",
-    "text": "If there’s any chance you become pregnant while you have the rash, let us or your midwife know, as it’s worth closer follow-up in early pregnancy. If you’re at all unsure, a test is easy to do.",
+    "text": "I think this is most likely pityriasis rosea. But I’d like to do a syphilis blood test this week, not wait for your booking bloods, and offer HIV, hepatitis B and swabs for chlamydia and gonorrhoea. What you’ve told me is confidential. If anything were positive, we’d talk together about how partners are told, and the clinic can do that without naming you.",
     "dom": "cm",
-    "why": "Pregnancy advice proportionate to uncertainty"
+    "why": "Serology now; full screen; confidentiality"
    },
    {
     "who": "pt",
-    "text": "Okay, I will."
+    "text": "Okay. And the baby?"
+   },
+   {
+    "who": "dr",
+    "text": "I want to be honest with you. Some studies have found this rash in the first few months of pregnancy is linked with a higher chance of miscarriage. Most women who get it go on to have healthy pregnancies, and the evidence is limited. Because of that, I’ll contact your midwife and the early pregnancy team today so they can advise and keep an eye on you.",
+    "dom": "cm",
+    "why": "Honest, proportionate risk; obstetric advice (CKS)"
+   },
+   {
+    "who": "pt",
+    "text": "That’s scary, but I’d rather know."
+   },
+   {
+    "who": "dr",
+    "text": "For the itch, a moisturiser is safe, and if it’s bothering you, a mild steroid cream for a short time is fine in pregnancy. You don’t need to stay off work, and you can’t give it to Dan through normal contact.",
+    "dom": "cm",
+    "why": "Safe symptom relief; no exclusion"
    },
    {
     "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "Come back if the rash spreads to your palms or soles, you feel unwell or get mouth ulcers or swollen glands, it changes a lot, or it’s still there after about three months. Then I’d rethink it and might do a blood test.",
-    "dom": "cm",
-    "why": "Specific safety-net including syphilis triggers"
+    "text": "Can you tell me the plan back?",
+    "dom": "ro",
+    "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "So it’ll go by itself, moisturiser and maybe a mild steroid for the itch, no antifungal, and come back if it’s on my hands or feet or still there in three months."
+    "text": "Blood tests this week, swabs too. You’ll tell the midwife. Moisturiser. It should go in a couple of months."
    },
    {
     "who": "dr",
-    "text": "Exactly. Anything else you’d like to ask?",
-    "dom": "ro",
-    "why": "Teach-back confirmed; invites questions"
-   },
-   {
-    "who": "pt",
-    "text": "No, that’s really reassuring. Thank you."
+    "text": "Yes. I’ll call you with the results. If you have any bleeding or tummy pain, call the early pregnancy unit or 111. Come back if the rash appears on your palms or soles, you get mouth or genital sores, a fever, or if it’s not fading after 12 weeks.",
+    "dom": "cm",
+    "why": "Safety-net and results follow-up"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Open question; let her describe the herald patch and the spread; heard the ringworm idea.",
-    "pts": 1, "dom": "dg"
+    "d": "Open question using the uploaded images; timeline of herald patch and spread.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Impact on appearance and confidence; work, college and gym; privacy for a sexual history.",
-    "pts": 1, "dom": "dg"
+    "d": "Early pregnancy, new relationship, who knows about the pregnancy, fear about a previous partner.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up “one big oval patch, then loads of smaller ones” as the herald-patch sequence.",
-    "pts": 1, "dom": "ro"
+    "d": "“Something I’ve picked up?” and the pause when sexual health was raised.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (ringworm spreading), concern (catching, lasting for ages), expectation (antifungal cream).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (ringworm or an STI), concerns (baby, Dan, being found out), expectation (what it is and whether the baby is okay).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
     "t": "Plans appropriate examination & tests",
-    "d": "Examined the herald patch, distribution, collarette scale, palms, soles, mouth and nodes; serology only if atypical.",
-    "pts": 1, "dom": "dg"
+    "d": "Palms, soles, mouth on camera; syphilis serology now; HIV, hepatitis B, chlamydia and gonorrhoea offered.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Generates & tests hypotheses",
-    "d": "Pityriasis rosea versus tinea, guttate psoriasis, discoid eczema, drug eruption, secondary syphilis.",
-    "pts": 1, "dom": "dg"
+    "d": "Pityriasis rosea versus secondary syphilis, tinea corporis, guttate psoriasis and drug eruption.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Screened secondary syphilis features and sexual risk; asked about pregnancy.",
-    "pts": 2, "dom": "dg"
+    "d": "Features of secondary syphilis; bleeding or pain in early pregnancy.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Pityriasis rosea.",
-    "pts": 2, "dom": "dg"
+    "d": "Probable pityriasis rosea in early pregnancy, syphilis to be excluded.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Reassurance; emollient and mild steroid for itch; antihistamine if sleep affected; no antifungal.",
-    "pts": 2, "dom": "cm"
+    "d": "Serology and STI screen now; obstetric advice via midwife and early pregnancy team (CKS); emollient and mild steroid if needed (check the SPC/local formulary).",
+    "pts": 3,
+    "dom": "cm"
    },
    {
     "t": "Manages comorbidity & contributors",
-    "d": "Addressed contagion and work; pregnancy advice given proportionately.",
-    "pts": 1, "dom": "cm"
+    "d": "Confidentiality about the previous partner; partner notification only if positive; no exclusion from work.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "Return if palms or soles, systemic features, mouth ulcers, big change, or persisting beyond about 3 months.",
-    "pts": 1, "dom": "cm"
+    "d": "Results call; bleeding or pain in pregnancy; palm or sole rash, ulcers, fever; rash persisting beyond 12 weeks.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
-    "New & undifferentiated presentations",
-    "Gender, reproductive & sexual health"
+    "Gender, reproductive & sexual health",
+    "New & undifferentiated presentations"
    ],
    "stem": {
-    "name": "Lena Ashworth",
-    "age": "24 years · female",
+    "name": "Jade Morris",
+    "age": "26 years · female",
     "pmh": [
-     "Nil recorded"
+     "Nil significant"
     ],
     "meds": [
-     "Nil recorded"
+     "Folic acid 400 micrograms daily (self-purchased)"
     ],
-    "allergy": "NKDA",
-    "recent": "No previous skin consultations.",
-    "reason": "“Big oval patch on my chest a week ago, now lots of small ones — is it ringworm spreading?”"
+    "allergy": "None recorded",
+    "recent": "Positive pregnancy test two weeks ago; self-referred to midwife, booking appointment next week. Photos of a trunk rash uploaded this morning.",
+    "reason": "“Rash spreading over my body — is it catching?”"
    },
    "timeMap": [
     {
      "t": "0–1",
-     "h": "Opening",
-     "d": "Open question; let her tell the sequence."
+     "h": "Open",
+     "d": "Use the photos; let her tell the story."
     },
     {
      "t": "1–5",
-     "h": "Focused history",
-     "d": "Preceding illness, itch, treatments and medicines, palms and soles, mouth, nodes, sexual history, pregnancy."
+     "h": "Rash and pregnancy",
+     "d": "Herald patch, prodrome, drugs; 10 weeks pregnant; palms, soles, mouth, genitals, glands."
     },
     {
-     "t": "5–6",
-     "h": "ICE",
-     "d": "Ringworm idea, fear of passing it on, wish for an antifungal."
+     "t": "5–8",
+     "h": "Sexual history",
+     "d": "Normalise, ask, respond to disclosure without judgement. ICE: baby, Dan, being found out."
     },
     {
-     "t": "6–8",
-     "h": "Examine and name it",
-     "d": "Herald patch, Christmas-tree distribution, palms and soles clear; pityriasis rosea; not catching."
+     "t": "8–11",
+     "h": "Plan",
+     "d": "Syphilis serology now plus STI screen; honest miscarriage information; midwife and early pregnancy team; itch relief; no exclusion."
     },
     {
-     "t": "8–12",
-     "h": "Plan and close",
-     "d": "Self-limiting course, itch care, why no antifungal, pregnancy note, syphilis-aware safety-net, teach-back."
+     "t": "11–12",
+     "h": "Close",
+     "d": "Teach-back; results; bleeding and rash safety-net."
     }
    ],
    "wordPics": {
-    "fail": "Prescribes an antifungal for “ringworm”; never examines palms and soles or asks a sexual history; no explanation of the course; no safety-net.",
-    "pass": "Recognises pityriasis rosea, reassures that it is self-limiting and not significantly contagious, treats the itch without antifungals, and safety-nets.",
-    "exc": "All of the above, plus: explains why the herald patch looks like ringworm; screens secondary syphilis features and asks the sexual history non-judgementally; asks about pregnancy with a proportionate explanation; addresses the contagion fear directly; teach-back."
+    "fail": "Labels it ringworm or reassures without considering syphilis; ignores the pregnancy; no sexual history; or moralises about the previous partner.",
+    "pass": "Recognises pityriasis rosea, checks for syphilis features, arranges serology, and involves the midwife because of the pregnancy.",
+    "exc": "All of the above, plus: normalises the sexual history so she discloses; responds without judgement; offers a full STI screen; explains the miscarriage association honestly and proportionately; protects confidentiality and explains anonymous partner notification; safe itch relief; clear results plan."
    },
    "avoid": [
     {
-     "dont": "“It’s ringworm, here’s some clotrimazole.”",
-     "instead": "“The first patch looks like ringworm, but the pattern afterwards shows it’s pityriasis rosea.”",
-     "why": "Antifungals do not help pityriasis rosea and delay the right explanation."
+     "dont": "“It’s just a harmless rash, nothing to worry about.”",
+     "instead": "“It looks like pityriasis rosea, but I want to rule out one infection with a blood test, especially in pregnancy.”",
+     "why": "Secondary syphilis can mimic it, and pregnancy changes the plan."
     },
     {
-     "dont": "“Have you been sleeping around?”",
-     "instead": "“I ask everyone with this kind of rash a few sexual health questions, because some conditions look alike.”",
-     "why": "Judgemental wording closes the history down and misses syphilis."
+     "dont": "“You should have used a condom.”",
+     "instead": "“Thank you for telling me. Let’s test so you know.”",
+     "why": "Judgement stops disclosure and testing."
     },
     {
-     "dont": "“You’ll need to keep away from people until it clears.”",
-     "instead": "“The risk of passing it on is very low; carry on as normal.”",
-     "why": "BAD: very low transmission risk; unnecessary isolation causes harm."
+     "dont": "“This rash causes miscarriage.”",
+     "instead": "“Some studies suggest a higher chance of miscarriage, but most women have healthy pregnancies. I’ll get the pregnancy team involved.”",
+     "why": "Risk should be honest and proportionate."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Appearance and confidence",
-     "t": "A widespread truncal rash can affect confidence, clothing choices and relationships. Clear information on the course helps."
+     "h": "New relationship and pregnancy",
+     "t": "Fear of a partner finding out about a past encounter can stop people testing. Confidentiality makes testing possible."
     },
     {
-     "h": "Work, college and gym",
-     "t": "No need to stay off work, college or exercise; a fit note is not needed."
+     "h": "Early pregnancy",
+     "t": "Many women have not told family in the first trimester. Worry about the baby dominates."
     }
    ],
    "legal": [
     {
      "h": "Confidentiality",
-     "t": "GMC Confidentiality (2017): sexual history and any sexual health testing are confidential. Sexual health clinics offer confidential testing and partner notification."
+     "t": "Information about sexual partners is confidential. Partner notification is voluntary and can be anonymous (GMC confidentiality guidance; BASHH partner notification statement)."
+    },
+    {
+     "h": "Antenatal screening",
+     "t": "Syphilis, HIV and hepatitis B screening is offered to every pregnant woman. Clinical concern justifies testing before booking."
     }
    ],
    "professional": [
     {
-     "h": "Antimicrobial stewardship",
-     "t": "Avoid antifungals and antibiotics for a self-limiting rash; explain why rather than prescribing to meet expectation."
+     "h": "Honest uncertainty",
+     "t": "Explaining limited evidence about pregnancy outcomes honestly, with a plan, is better than false reassurance or alarm."
     },
     {
-     "h": "Non-judgemental sexual history",
-     "t": "Ask routinely, with a reason, so that secondary syphilis is not missed and the patient does not feel singled out."
+     "h": "Sexual history as routine",
+     "t": "Framing the questions as routine for the presentation lowers the barrier to disclosure."
     }
    ],
    "community": [
     {
      "h": "Sexual health services",
-     "t": "Local sexual health services provide syphilis testing, treatment and partner notification if the picture becomes atypical."
+     "t": "Can provide rapid syphilis, HIV and hepatitis testing, treatment and anonymous partner notification."
     },
     {
-     "h": "Community pharmacy",
-     "t": "Emollients and mild steroid creams are available from pharmacies; pharmacists can advise on use."
+     "h": "Midwife and early pregnancy unit",
+     "t": "Can advise on pityriasis rosea in pregnancy and provide follow-up and an open door for bleeding or pain."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Rash on palms or soles",
-     "Mouth ulcers, patchy hair loss or lymphadenopathy",
-     "Systemic symptoms",
-     "Sexual risk or a genital sore",
-     "Pregnancy, especially early",
-     "Persisting beyond about 3 months or atypical morphology"
+     "Palm or sole rash, mouth or genital ulcers, lymphadenopathy, patchy hair loss: secondary syphilis until proven otherwise",
+     "Vaginal bleeding or pain in early pregnancy: early pregnancy unit",
+     "Systemic illness, mucosal involvement or blistering: reconsider the diagnosis urgently"
     ],
     "psychosocial": [
-     "Worry about passing it on",
-     "Appearance and confidence",
-     "Work, college and exercise"
+     "Early pregnancy, told only her partner",
+     "New relationship",
+     "Fear about a previous unprotected encounter"
     ],
     "ice": [
-     "Idea: ringworm spreading",
-     "Concern: that it is catching and will last",
-     "Expectation: an antifungal cream"
+     "Idea: ringworm or an STI",
+     "Concern: harm to the baby; Dan finding out",
+     "Expectation: diagnosis and reassurance about the baby"
     ]
    },
-   "diagnosis": "“The single bigger patch followed a week later by lots of smaller oval patches following your skin lines is pityriasis rosea, a harmless rash that goes on its own.”",
-   "diagnosisLay": "“It’s the skin’s reaction to a common virus. The first patch is like a messenger, and the rest follow along the natural lines of your skin. It isn’t a fungus, so antifungal creams won’t help.”",
+   "diagnosis": "“This is most likely pityriasis rosea. Because a sexually transmitted infection can look similar, and you’re pregnant, we’ll test for it now.”",
+   "diagnosisLay": "“It’s your skin reacting to a virus. It isn’t very catching and fades over weeks. One infection looks similar, so a blood test makes sure.”",
    "management": {
-    "reflectIce": "“You thought it was ringworm spreading, and the first patch does look like that. It isn’t, and the good news is that it clears by itself.”",
-    "psychosocial": "Reassure about contagion and normal activities; address appearance; offer written information.",
+    "reflectIce": "“You were worried this came from before Dan and could hurt the baby. Testing now gives you an answer, and what you’ve told me stays confidential.”",
+    "psychosocial": "Confidentiality; support around the new relationship; link with the midwife early.",
     "sharedPlan": [
-     "Reassurance: self-limiting, usually 2–12 weeks",
-     "Emollient; mild to moderate topical steroid if itchy (PCDS); sedating antihistamine at night if sleep affected (per BNF)",
-     "No antifungal or antibiotic",
-     "Pregnancy: inform the midwife or obstetric team if pregnant"
+     "Syphilis serology this week; offer HIV, hepatitis B, chlamydia and gonorrhoea testing",
+     "Inform midwife and early pregnancy team; seek obstetric advice (CKS)",
+     "Emollient; mild or moderate topical steroid if itchy (check the SPC/local formulary)",
+     "No exclusion from work; not transmitted by normal contact",
+     "Results call; partner notification only if positive, anonymous option"
     ],
     "safetyNet": [
-     "Return if palms or soles involved, mouth ulcers, swollen glands or feeling unwell",
-     "Return if still present after about 3 months or it changes",
-     "Syphilis serology and sexual health referral if atypical"
+     "Vaginal bleeding or abdominal pain: early pregnancy unit or NHS 111",
+     "Rash on palms or soles, mouth or genital ulcers, fever: review",
+     "Rash not fading after 12 weeks: reconsider the diagnosis"
     ]
    }
   },
   "links": [
    {
     "ic": "💠",
-    "t": "Pityriasis rosea protocol",
-    "s": "PCDS · BASHH syphilis caveat · pregnancy",
+    "t": "Pityriasis rosea",
+    "s": "Recognition and when to test",
     "href": "management/pityriasis-rosea.html"
    },
    {
+    "ic": "💠",
+    "t": "Syphilis",
+    "s": "Serology and the secondary rash",
+    "href": "management/syphilis.html"
+   },
+   {
     "ic": "🗺️",
-    "t": "Maculopapular rash pathway",
-    "s": "Visual algorithm · rash differential",
+    "t": "Maculopapular rash",
+    "s": "Visual algorithm",
     "href": "algorithms/maculopapular-rash.html"
    },
    {
-    "ic": "💠",
-    "t": "Fungal skin infection protocol",
-    "s": "Tinea corporis · when scrapings help",
-    "href": "management/fungal-skin-infection.html"
-   },
-   {
-    "ic": "📋",
-    "t": "Fungal infections",
-    "s": "Case walkthrough",
-    "href": "../cases/fungal-infections.html"
-   },
-   {
-    "ic": "💠",
-    "t": "Psoriasis protocol",
-    "s": "Guttate psoriasis differential",
-    "href": "management/psoriasis.html"
+    "ic": "🗺️",
+    "t": "Vaginal bleeding in pregnancy",
+    "s": "If bleeding starts",
+    "href": "algorithms/vaginal-bleeding-pregnancy.html"
    }
   ],
   "pitfalls": {
-   "intro": "The trap is agreeing with her ringworm idea. The marks sit in naming pityriasis rosea, not prescribing antifungals, and keeping secondary syphilis and pregnancy in mind without alarming her.",
+   "intro": "The rash is a classic picture. The station tests whether you keep syphilis in mind, act on the pregnancy, and make it safe for her to disclose.",
    "items": [
     {
-     "dom": "cm",
-     "fail": "Prescribing an antifungal cream.",
-     "why": "It is not a fungal infection; the herald patch mimics ringworm.",
-     "fix": "Explain the herald patch and offer itch care instead."
-    },
-    {
      "dom": "dg",
-     "fail": "Not looking at palms and soles or asking about sexual health.",
-     "why": "BASHH 2024: secondary syphilis involves palms and soles in many cases and can mimic pityriasis rosea.",
-     "fix": "Check palms, soles, mouth and nodes; ask the sexual history routinely."
-    },
-    {
-     "dom": "dg",
-     "fail": "Forgetting pregnancy.",
-     "why": "Small studies suggest higher miscarriage rates with onset before about 15 weeks.",
-     "fix": "Ask, and advise informing the midwife if pregnant."
+     "fail": "No sexual history.",
+     "why": "Secondary syphilis mimics pityriasis rosea.",
+     "fix": "Frame the questions as routine for this rash."
     },
     {
      "dom": "cm",
-     "fail": "Giving no time frame.",
-     "why": "Uncertainty about duration drives repeat visits and worry.",
-     "fix": "“Usually 2–12 weeks; come back if it is still there after about three months.”"
+     "fail": "Waiting for booking bloods.",
+     "why": "Syphilis is a current clinical question in pregnancy.",
+     "fix": "Arrange serology this week and offer a full screen."
+    },
+    {
+     "dom": "cm",
+     "fail": "Not involving the obstetric team.",
+     "why": "CKS advises specialist advice for pityriasis rosea in pregnancy.",
+     "fix": "Inform the midwife and early pregnancy team."
     },
     {
      "dom": "ro",
-     "fail": "Dismissing the expectation of a cream without explanation.",
-     "why": "She will feel unheard and may buy an antifungal anyway.",
-     "fix": "Explain why antifungals won’t help and offer something that will."
+     "fail": "Alarming or falsely reassuring about miscarriage.",
+     "why": "The evidence is limited; both extremes harm.",
+     "fix": "Give honest, proportionate information with a plan."
+    },
+    {
+     "dom": "ro",
+     "fail": "Judging the previous encounter or pushing to tell Dan.",
+     "why": "It breaks trust and deters testing.",
+     "fix": "Confidentiality; partner notification only if positive."
     },
     {
      "dom": "cm",
-     "fail": "“Come back if it doesn’t go.”",
-     "why": "Vague safety-netting is standard failing feedback.",
-     "fix": "Palms or soles, systemic features, mouth ulcers, big change, or beyond about 3 months."
+     "fail": "Prescribing an antifungal.",
+     "why": "This is not tinea.",
+     "fix": "Emollient and a mild steroid if needed."
     }
    ]
   }

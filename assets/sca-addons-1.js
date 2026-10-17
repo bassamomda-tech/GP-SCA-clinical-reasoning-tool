@@ -12,492 +12,470 @@
  "anaemia-ida": {
   "stem": {
    "name": "Sheila Drummond",
-   "age": "68-year-old woman",
+   "age": "68 years · female",
    "pmh": [
+    "Iron-deficiency anaemia (diagnosed 4 months ago)",
     "Hypertension",
-    "Registered carer for her husband (Parkinson’s disease)"
+    "Registered as carer for her husband (Parkinson’s disease)"
    ],
    "meds": [
     "Amlodipine",
-    "Over-the-counter multivitamin with iron (self-bought, not on repeat)"
+    "Ferrous sulfate (issued 2 months ago; not reordered)"
    ],
-   "allergy": "No known drug allergies",
-   "recent": "Bloods last week for tiredness: Hb 96 g/L, MCV 72 fl, ferritin 9 µg/L. No previous FBC abnormality on record. Nurse note: “patient expects iron tablets”.",
-   "reason": "Recalled by video to discuss blood results."
+   "allergy": "None recorded",
+   "recent": "Gastroscopy with duodenal biopsies and colonoscopy normal; coeliac serology negative; urine dipstick negative for blood. Bloods this week: Hb 101 g/L (96 four months ago), ferritin 11 µg/L, MCV 74.",
+   "reason": "Follow-up after hospital tests: “Still tired.”"
   },
   "knowledge": {
-   "guideline": "NICE HTG690 (2023, formerly DG56) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BSG iron-deficiency anaemia guideline (2021)",
-   "summary": "Iron-deficiency anaemia in a 68-year-old woman is gastrointestinal blood loss until proven otherwise. Investigate the cause and treat with iron at the same time.",
+   "guideline": "[1] British Society of Gastroenterology guidelines for the management of iron deficiency anaemia in adults (2021) · [2] NICE CKS Anaemia – iron deficiency (check current version) · [3] NICE NG12 Suspected cancer: recognition and referral (2015, last updated 2026) · [4] Product SPCs for oral iron preparations and intravenous iron · [5] MHRA Drug Safety Update: intravenous iron and serious hypersensitivity reactions (2014) · [6] Care Act 2014 — carer’s assessment",
+   "summary": "Persistent iron deficiency after a negative suspected cancer pathway work-up (gastroscopy with duodenal biopsies, colonoscopy, coeliac serology, urinalysis), oral iron stopped because of side effects and black stools, ongoing ibuprofen, tea with meals, and a hidden fear that cancer was missed. Explain the results, distinguish iron stools from melaena, optimise oral iron or consider IV iron, stop the NSAID, set a monitoring plan and a threshold for small-bowel investigation, and make it work around her caring role.",
    "points": [
     {
-     "h": "Read the pattern",
-     "t": "Low Hb, low MCV and a low ferritin confirm iron deficiency. In men and postmenopausal women, BSG 2021 advises gastroscopy and colonoscopy as the first-line GI investigations; about a third have an underlying cause, most often in the GI tract."
+     "h": "Standard work-up",
+     "t": "Coeliac serology, urinalysis, and bidirectional endoscopy with duodenal biopsies in men and postmenopausal women with IDA [1]."
     },
     {
-     "h": "FIT",
-     "t": "NICE HTG690 recommends quantitative FIT to guide referral in adults with iron-deficiency anaemia. NICE NG12: refer on a suspected cancer pathway for colorectal cancer if FIT is at least 10 µg Hb/g faeces. A negative FIT does not close the case when IDA is unexplained and upper GI symptoms are present."
+     "h": "Oral iron tolerance",
+     "t": "Once-daily or alternate-day dosing improves tolerance; alternative preparations may suit; take with vitamin C, away from tea, coffee, calcium and antacids (check the SPC/local formulary) [1,2,4]."
     },
     {
-     "h": "Upper GI criterion",
-     "t": "NICE NG12: aged 55 and over with weight loss and upper abdominal pain, reflux or dyspepsia — suspected cancer pathway referral for oesophageal or stomach cancer. Her dyspepsia and possible weight loss meet this if the weight loss is confirmed."
+     "h": "Monitoring response",
+     "t": "Recheck Hb at 2–4 weeks; expect a rise of about 20 g/L over 3–4 weeks. Continue for about 3 months after Hb normalises to replenish stores [1]."
     },
     {
-     "h": "Coeliac and drugs",
-     "t": "BSG 2021: screen all adults with IDA for coeliac disease serologically (tTG-IgA). Ask about aspirin, NSAIDs and anticoagulants."
+     "h": "Intravenous iron",
+     "t": "When oral iron is not tolerated or ineffective. Serious hypersensitivity is rare; give where resuscitation facilities are available [4,5]."
     },
     {
-     "h": "Iron treatment",
-     "t": "BSG 2021: one tablet of oral iron once daily (consider alternate days if not tolerated); products and strengths per BNF. Recheck FBC within 4 weeks and continue for about 3 months after Hb normalises to replenish stores. Iron darkens stools — warn her, and ask about tarry or sticky stools specifically."
+     "h": "Black stools",
+     "t": "Iron darkens stools. Melaena is black, tarry, sticky and offensive, and needs urgent assessment."
     },
     {
-     "h": "Same-day action",
-     "t": "Melaena with haemodynamic symptoms, haematemesis, syncope, chest pain or breathlessness at rest needs same-day hospital assessment."
+     "h": "Contributors",
+     "t": "NSAIDs, antiplatelets and anticoagulants increase GI loss; diet; malabsorption."
+    },
+    {
+     "h": "Persistent or recurrent IDA",
+     "t": "If IDA persists or recurs despite adequate iron after negative bidirectional endoscopy, refer back for consideration of small-bowel investigation such as capsule endoscopy [1]."
+    },
+    {
+     "h": "Carers",
+     "t": "Plan appointments and infusions around caring responsibilities; offer a carer’s assessment [6]."
     }
    ]
   },
   "model": [
    {
-    "phase": "Opening and agenda",
+    "phase": "Opening",
     "clock": "0–1 min",
     "who": "dr",
-    "text": "Hello Mrs Drummond, I’m Dr Lee. Thank you for joining. Before anything else — you mentioned Brian’s on his own. Is he safe for the next ten minutes or so?",
+    "text": "Hello Mrs Drummond, I’m Dr Clarke. How are you getting on since the hospital tests?",
     "dom": "ro",
-    "why": "Hears the carer constraint in the first breath and deals with it"
+    "why": "Open question"
    },
    {
     "who": "pt",
-    "text": "He’s fine with the snooker for a bit. I know it’s low iron — the nurse hinted. I barely eat red meat now, so if you pop some tablets through I’ll get back to him."
+    "text": "The hospital says the cameras were all clear, which is good I suppose. But I’m still shattered, I get puffed on the stairs, and those iron tablets made me so ill I stopped them."
    },
    {
+    "phase": "History",
+    "clock": "1–5 min",
     "who": "dr",
-    "text": "I’ll be quick and I’ll be clear. Iron is part of today, yes. But I’d like a few minutes to understand how you’ve been and what might be behind the result, then we’ll agree a plan that works around Brian. Is that fair?",
-    "dom": "ro",
-    "why": "Sets an agenda that respects her time without accepting her conclusion"
-   },
-   {
-    "who": "pt",
-    "text": "Go on then."
-   },
-   {
-    "phase": "Data gathering",
-    "clock": "1–4 min",
-    "who": "dr",
-    "text": "Tell me about the tiredness. When did you first notice it, and what does it stop you doing?",
-    "dom": "ro",
-    "why": "Open question about the symptom that brought her"
-   },
-   {
-    "who": "pt",
-    "text": "Six months maybe. Stairs, the shopping, my legs feel like lead. But I’m up twice a night turning Brian, so what do you expect?"
-   },
-   {
-    "who": "dr",
-    "text": "That’s a lot to carry. Can I ask about your diet properly — on a normal day, what do you eat?",
+    "text": "I’m sorry they made you ill. What happened with the tablets?",
     "dom": "dg",
-    "why": "Tests her explanation with facts rather than accepting it"
+    "why": "Explores intolerance"
    },
    {
     "who": "pt",
-    "text": "Chicken, fish, an egg most mornings. Just not much red meat."
+    "text": "Sick, bunged up, and my stools went black. That frightened me. I stopped after three weeks."
    },
    {
     "who": "dr",
-    "text": "And your stomach and appetite — any discomfort, indigestion, eating less, weight change?",
+    "text": "Can you describe the black stools? Were they sticky or tarry, did they smell much worse than usual, and did they go back to normal after you stopped?",
     "dom": "dg",
-    "why": "Targets the upper GI history her framing was hiding"
+    "why": "Distinguishes iron stools from melaena"
    },
    {
     "who": "pt",
-    "text": "Well… my stomach’s been off a while. Up here. I’m eating a bit less. Maybe a few pounds down."
+    "text": "Just black, normal otherwise. Back to brown within a few days of stopping."
    },
    {
     "who": "dr",
-    "text": "Thank you — that matters. I’m going to ask the question nobody enjoys. Have your stools changed at all — darker, black, sticky like tar, even on and off?",
+    "text": "Any blood in your stools or urine, vomiting blood, chest pain, or weight loss?",
     "dom": "dg",
-    "why": "Asks directly and kindly about melaena, the buried red flag"
+    "why": "Red flags"
    },
    {
     "who": "pt",
-    "text": "(Pause.) They have been darker. Two or three months. I thought it was the multivitamin with iron in it."
+    "text": "No, nothing like that."
    },
    {
     "who": "dr",
-    "text": "That’s really important, and I’m glad you told me. Any blood you’ve vomited, dizziness or fainting, chest pain or breathlessness at rest? And do you take aspirin, ibuprofen or anything similar?",
+    "text": "How did you take the tablets, and do you take anything else, like painkillers from the shop?",
     "dom": "dg",
-    "why": "Screens for active bleeding and NSAID or aspirin use"
+    "why": "Absorption; NSAIDs"
    },
    {
     "who": "pt",
-    "text": "No to all of that. Paracetamol now and then. Nothing else."
+    "text": "With breakfast and a cup of tea. And ibuprofen most days for my back."
    },
    {
     "phase": "Ideas, concerns and expectations",
-    "clock": "4–6 min",
+    "clock": "5–7 min",
     "who": "dr",
-    "text": "You’ve mentioned Brian a few times. When you noticed the darker stools, what went through your mind?",
+    "text": "You said the clear result was good ‘I suppose’. Is part of you worried they missed something?",
     "dom": "ro",
-    "why": "Follows the cue to her real fear"
+    "why": "Follows cue"
    },
    {
     "who": "pt",
-    "text": "Honestly? That it could be something. And that if it’s something, they’ll want me in hospital. And then who turns Brian? Our daughter’s in Australia. There’s nobody."
+    "text": "(pause) My friend Pat had a clear camera test and got bowel cancer a year later. When my stools went black I thought, there it is."
    },
    {
     "who": "dr",
-    "text": "So the diet explanation has been doing a job for you — it was the answer that didn’t need a hospital. That makes complete sense. Can we talk about the other answer, and how we’d handle it without leaving Brian stranded?",
+    "text": "That must have been frightening, especially after Pat. Thank you for telling me. Let me explain what the tests did show and what the black stools were.",
     "dom": "ro",
-    "why": "Names the pre-built story kindly and links it to her concern"
-   },
-   {
-    "who": "pt",
-    "text": "(Quietly.) Yes. I suppose I knew."
+    "why": "Empathy; signposts explanation"
    },
    {
     "phase": "Explanation",
-    "clock": "6–8 min",
+    "clock": "7–9 min",
     "who": "dr",
-    "text": "Your blood shows three things: you’re anaemic, the red cells are small, and your iron stores are almost empty. With chicken, fish and eggs every day, that isn’t your diet. At 68, it usually means iron is being lost slowly from the gut — often something simple like an ulcer or inflammation, but we must rule out a growth.",
+    "text": "The cameras looked at your stomach, the start of your small bowel and the whole of your large bowel, and took samples, and the coeliac and urine tests were clear. That’s genuinely reassuring. And iron tablets turn stools black; the worrying kind is sticky and tarry. Yours fit the iron.",
     "dom": "dg",
-    "why": "Interprets the pattern and states it is a find-the-bleed problem"
-   },
-   {
-    "who": "pt",
-    "text": "A growth. You mean cancer."
+    "why": "What the tests showed; stools"
    },
    {
     "who": "dr",
-    "text": "It’s one of the things we check for, and I won’t hide that. Most people with this pattern turn out to have something else. The point of testing quickly is that anything found early is usually far easier to treat.",
-    "dom": "ro",
-    "why": "Honest, proportionate answer without false reassurance"
-   },
-   {
-    "who": "dr",
-    "text": "Here’s what I’d suggest. A stool test kit you do at home. A blood test for coeliac disease. And, because of the stomach symptoms and the weight, an urgent referral for camera tests of the stomach and bowel on the suspected cancer pathway. These are day procedures — you go home the same day.",
-    "dom": "dg",
-    "why": "FIT, coeliac serology and urgent upper and lower GI assessment in line with NICE NG12 and HTG690"
-   },
-   {
-    "who": "pt",
-    "text": "A day? Not an overnight stay?"
-   },
-   {
-    "phase": "Shared management",
-    "clock": "8–11 min",
-    "who": "dr",
-    "text": "A day. And I’d like to plan around Brian properly, not leave you to juggle. You’re entitled to a carer’s assessment from the council, and there are sitting services for exactly these mornings. Would you let me refer you, and could your daughter help organise from Australia?",
-    "dom": "ro",
-    "why": "Treats the carer constraint as part of the plan"
-   },
-   {
-    "who": "pt",
-    "text": "I’ve never asked for help. But… yes. My daughter’s always saying I should."
-   },
-   {
-    "who": "dr",
-    "text": "Good. I will also start iron today — one tablet once a day, taken with orange juice or vitamin C if you can, and please stop the multivitamin so we’re not doubling up. The tablets turn stools dark, so if they ever become tarry, sticky or smell different, that’s new and you tell us. I’ll recheck your blood count within four weeks.",
+    "text": "No test is perfect, so here’s the safety net: if your iron keeps dropping despite treatment, I’ll send you back to the bowel team to look at the part of the small bowel the standard cameras can’t reach.",
     "dom": "cm",
-    "why": "Iron as treatment alongside, not instead of, investigation"
+    "why": "Honest limits; threshold for further investigation"
+   },
+   {
+    "phase": "Plan",
+    "clock": "9–11 min",
+    "who": "dr",
+    "text": "For the iron: let’s try a tablet every other day, which is often just as effective and much easier on the stomach. Take it with orange juice, not tea, and keep tea an hour or two away. I’d stop the ibuprofen, as it can cause slow bleeding from the stomach, and we’ll find something safer for your back.",
+    "dom": "cm",
+    "why": "Alternate-day iron; absorption; stop NSAID"
    },
    {
     "who": "pt",
-    "text": "So the tablets aren’t the answer, they’re the meantime."
+    "text": "And if that doesn’t work?"
    },
    {
     "who": "dr",
-    "text": "Exactly that. The thing most likely to take you away from Brian isn’t a morning in the endoscopy unit — it’s a bleed nobody found until it made you collapse. Finding it early is how you stay his carer.",
-    "dom": "ro",
-    "why": "Reframes investigation around her own priority"
+    "text": "Then an iron drip in hospital, which works very well. I know you’ve read about reactions. Serious ones are rare, and the team watches you and knows exactly what to do. It would take a couple of hours, so we’d plan cover for Brian, perhaps on your daughter’s afternoon.",
+    "dom": "cm",
+    "why": "IV iron honestly; carer logistics"
    },
    {
     "who": "pt",
-    "text": "I hadn’t thought of it like that."
+    "text": "That would work. She comes on Thursdays."
    },
    {
     "phase": "Safety-net and close",
     "clock": "11–12 min",
     "who": "dr",
-    "text": "Before you go back to him: black tarry stools, vomiting blood, feeling faint, chest pain or breathlessness — that’s 999, even if Brian is on his own; the ambulance crew will help arrange cover. Otherwise, the stool kit goes back this week, and I’ll ring you myself with every result.",
-    "dom": "cm",
-    "why": "Specific 999 triggers, dated actions and a named follow-up"
+    "text": "Can you tell me the plan?",
+    "dom": "ro",
+    "why": "Teach-back"
    },
    {
     "who": "pt",
-    "text": "All right. Thank you, doctor."
+    "text": "Iron every other day with orange juice, not tea. No ibuprofen. Blood test in a few weeks. Drip if it doesn’t work. Back to the bowel team if it keeps dropping."
    },
    {
     "who": "dr",
-    "text": "When your daughter rings this week and asks what the doctor said, what will you tell her?",
-    "dom": "ro",
-    "why": "Teach-back to check understanding"
-   },
-   {
-    "who": "pt",
-    "text": "That it’s not my diet, I need tests — day ones — iron in the meantime, and she needs to help me sort a sitter."
+    "text": "Exactly. Blood test in three weeks. If you get black, sticky, tarry stools, blood from your back passage, worse breathlessness, chest pain or fainting, get help the same day. And would a carer’s assessment be helpful? You’ve a lot on.",
+    "dom": "cm",
+    "why": "Melaena safety-net; follow-up; carer support"
    }
   ],
   "scTasks": [
    {
     "t": "Opens and explores the problem",
-    "d": "Open question about the tiredness; acknowledged the result and Brian without letting her close the consultation on “just iron”.",
-    "pts": 1, "dom": "dg"
+    "d": "Open question; heard the intolerance and the ambivalent “good I suppose”.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Explores psychosocial context",
-    "d": "Sole carer, broken nights, no care package, daughter abroad; practical barriers to attending tests.",
-    "pts": 1, "dom": "dg"
+    "d": "Carer for Brian, daughter’s Thursday help, broken nights, friend Pat’s cancer.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Identifies and follows cues",
-    "d": "Picked up “my stomach’s been off” and “anything that puts me in”, and explored both.",
-    "pts": 1, "dom": "ro"
+    "d": "Ambivalence about clear tests; black stools; tea and ibuprofen.",
+    "pts": 1,
+    "dom": "ro"
    },
    {
     "t": "Discovers ICE",
-    "d": "Idea (diet), concern (what the dark stools mean and leaving Brian), expectation (tablets and no tests).",
-    "pts": 2, "dom": "ro"
+    "d": "Idea (just anaemic and tired), concerns (missed cancer, black stools, drip reactions), expectation (treatment that doesn’t make her ill).",
+    "pts": 1.5,
+    "dom": "ro"
    },
    {
-    "t": "Plans appropriate examination and tests",
-    "d": "FIT, coeliac serology (tTG-IgA with total IgA), U&E and LFTs; abdominal examination at a face-to-face visit; FBC recheck within 4 weeks of iron.",
-    "pts": 1, "dom": "dg"
+    "t": "Plans appropriate examination & tests",
+    "d": "Repeat Hb and ferritin in 3 weeks; review of completed investigations; consideration of small-bowel investigation if persistent.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
-    "t": "Generates and tests hypotheses",
-    "d": "Upper GI loss (ulcer, oesophagitis, cancer) vs colorectal cancer vs coeliac; tested the diet explanation and excluded NSAID or aspirin use.",
-    "pts": 1, "dom": "dg"
+    "t": "Generates & tests hypotheses",
+    "d": "Inadequate replacement and absorption, ongoing NSAID loss, small-bowel source, dietary deficiency.",
+    "pts": 1,
+    "dom": "dg"
    },
    {
     "t": "Rules in/out serious disease",
-    "d": "Asked about melaena, haematemesis, faintness and chest pain; weight loss with dyspepsia at 68 recognised as an NICE NG12 upper GI criterion.",
-    "pts": 2, "dom": "dg"
+    "d": "Melaena versus iron stools; overt bleeding; weight loss; cardiac symptoms of anaemia.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "Stated iron-deficiency anaemia with probable GI blood loss, cause not yet known, in plain words.",
-    "pts": 2, "dom": "dg"
+    "d": "Persistent iron-deficiency anaemia after negative bidirectional endoscopy, with oral iron intolerance and NSAID use.",
+    "pts": 1.5,
+    "dom": "dg"
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Urgent referral for upper and lower GI investigation on the suspected cancer pathway, FIT, coeliac serology, and oral iron started alongside.",
-    "pts": 2, "dom": "cm"
+    "d": "Alternate-day iron with vitamin C, away from tea (check the SPC/local formulary); stop ibuprofen; IV iron if needed; threshold for referral back.",
+    "pts": 3,
+    "dom": "cm"
    },
    {
-    "t": "Manages comorbidity and contributors",
-    "d": "Carer’s assessment and sitting service arranged; multivitamin stopped; amlodipine unaffected.",
-    "pts": 1, "dom": "cm"
+    "t": "Manages comorbidity & contributors",
+    "d": "Back pain analgesia; diet; cover for Brian for infusions; carer’s assessment offered.",
+    "pts": 1.5,
+    "dom": "cm"
    },
    {
     "t": "Provides follow-up and safety net",
-    "d": "999 triggers named; FIT returned this week; FBC in 4 weeks; the GP phones with each result.",
-    "pts": 1, "dom": "cm"
+    "d": "Hb in 3 weeks; same-day care for melaena, rectal bleeding, chest pain, breathlessness or syncope; teach-back.",
+    "pts": 1.5,
+    "dom": "cm"
    }
   ],
   "extras": {
    "ceg": [
     "Older adults",
-    "New & undifferentiated presentations"
+    "Investigations & results",
+    "Long-term conditions & cancer"
    ],
    "stem": {
     "name": "Sheila Drummond",
     "age": "68 years · female",
     "pmh": [
+     "Iron-deficiency anaemia (diagnosed 4 months ago)",
      "Hypertension",
-     "Carer flag: sole carer for husband (Parkinson’s)"
+     "Registered as carer for her husband (Parkinson’s disease)"
     ],
     "meds": [
      "Amlodipine",
-     "OTC multivitamin with iron (patient-reported)"
+     "Ferrous sulfate (issued 2 months ago; not reordered)"
     ],
-    "allergy": "NKDA",
-    "recent": "⚠ FBC last week for tiredness: Hb 96 g/L, MCV 72 fl, ferritin 9 µg/L. No prior anaemia on file. No FIT or coeliac serology on record.",
-    "reason": "Recalled to discuss blood results. “I just need iron tablets.”"
+    "allergy": "None recorded",
+    "recent": "Gastroscopy with duodenal biopsies and colonoscopy normal; coeliac serology negative; urine dipstick negative for blood. Bloods this week: Hb 101 g/L (96 four months ago), ferritin 11 µg/L, MCV 74.",
+    "reason": "Follow-up after hospital tests: “Still tired.”"
    },
    "timeMap": [
     {
      "t": "0–1",
-     "h": "Open and settle",
-     "d": "She opens with her answer and a deadline (Brian). Acknowledge both, then agree an agenda that includes the result, not only the prescription."
+     "h": "Open",
+     "d": "Hear the intolerance and the ambivalence about clear tests."
     },
     {
-     "t": "1–4",
-     "h": "Focused history",
-     "d": "Diet facts (chicken, fish, eggs), dyspepsia, weight, stool colour, haematemesis, faintness, NSAID or aspirin use. The dark stools only surface if asked directly and kindly."
+     "t": "1–5",
+     "h": "History",
+     "d": "Iron side effects; black stools characterised; red flags; tea; ibuprofen."
     },
     {
-     "t": "4–6",
-     "h": "ICE and the hidden agenda",
-     "d": "Why the diet story matters to her: hospital means leaving Brian. Name it gently before explaining anything."
+     "t": "5–7",
+     "h": "ICE",
+     "d": "Fear of missed cancer after Pat; drip worries."
     },
     {
-     "t": "6–10",
+     "t": "7–11",
      "h": "Explain and plan",
-     "d": "IDA at 68 means finding the bleed. FIT, coeliac serology, urgent upper and lower GI referral, iron alongside. Carer’s assessment and sitting service built into the plan."
+     "d": "What the tests showed; iron stools; alternate-day iron; stop NSAID; IV iron; threshold for small-bowel investigation; Brian’s cover."
     },
     {
-     "t": "10–12",
-     "h": "Safety-net and close",
-     "d": "999 triggers in plain words, dated FIT return, FBC in 4 weeks, GP call with results. Teach-back: “What will you tell your daughter?”"
+     "t": "11–12",
+     "h": "Close",
+     "d": "Teach-back; Hb in 3 weeks; melaena safety-net; carer’s assessment."
     }
    ],
    "wordPics": {
-    "fail": "Prescribes iron and ends the call; never asks about stools, weight or indigestion; accepts the diet story; ignores Brian or treats him as an obstacle; no referral and no safety-net.",
-    "pass": "Explains IDA needs investigation at her age; asks about GI symptoms and finds the dark stools; arranges FIT, coeliac serology and referral; starts iron alongside; gives basic safety-netting and follow-up.",
-    "exc": "All of the above, plus: names the diet story as a shield kindly; builds the carer’s assessment and sitting service into the plan so the tests actually happen; frames investigation as how she stays Brian’s carer; dated actions and teach-back."
+    "fail": "Restarts the same iron regimen or tells her to persevere; misses the ibuprofen; does not clarify the black stools; ignores the fear that cancer was missed.",
+    "pass": "Explains the negative tests, distinguishes iron stools from melaena, offers alternate-day iron, stops the NSAID and plans a recheck.",
+    "exc": "All of the above, plus: uncovers and addresses the fear about Pat with honest limits of testing; explains IV iron risk proportionately; a clear threshold for small-bowel investigation; arranges infusion cover around Brian; offers a carer’s assessment."
    },
    "avoid": [
     {
-     "dont": "“It’s just low iron — I’ll send some tablets through.”",
-     "instead": "“Iron is part of today, but at 68 an empty iron store means we find out where it’s going.”",
-     "why": "Treating IDA without investigating the cause is the classic Tasks fail in this station."
+     "dont": "“You need to take the tablets, they all cause side effects.”",
+     "instead": "“Let’s try them every other day, with orange juice rather than tea.”",
+     "why": "Alternate-day dosing improves tolerance with similar effectiveness."
     },
     {
-     "dont": "“You really need to put your own health first and not worry about your husband.”",
-     "instead": "“Let’s plan around Brian properly — a sitting service and a carer’s assessment, so the tests can happen.”",
-     "why": "Dismissing the constraint loses her; solving it earns Relating marks and gets the tests done."
+     "dont": "“The tests were clear, so there’s nothing to worry about.”",
+     "instead": "“That’s reassuring, and if your iron keeps dropping we’ll look further.”",
+     "why": "Honest limits of testing build trust and keep her safe."
     },
     {
-     "dont": "“Any change in bowel habit?”",
-     "instead": "“Have your stools been darker, black or sticky like tar, even on and off?”",
-     "why": "A vague question gets a vague “no”; the specific one finds the melaena history."
+     "dont": "(Ignoring the black stools)",
+     "instead": "“Were they sticky and tarry, or just dark?”",
+     "why": "Melaena must be distinguished from iron-darkened stools."
     }
    ]
   },
   "kb": {
    "social": [
     {
-     "h": "Carer strain",
-     "t": "Sole carer for a husband with Parkinson’s, broken nights, no package of care and a daughter abroad. Carer burden hides symptoms and blocks attendance — it must be planned for, not noted."
+     "h": "Carers",
+     "t": "Carers often stop treatments that make them feel unwell because they cannot afford to be ill. Plans must fit around caring."
     },
     {
-     "h": "Practical barriers",
-     "t": "Bowel preparation, sedation and an escort home after endoscopy all need Brian covered for a day. Raise it now so appointments are not cancelled."
+     "h": "Friends’ stories",
+     "t": "A friend’s missed cancer strongly shapes how people interpret their own results."
     }
    ],
    "legal": [
     {
-     "h": "Care Act 2014 carer’s assessment",
-     "t": "Any carer who appears to have support needs is entitled to a local authority carer’s assessment, regardless of the cared-for person’s finances. Brian can also have a needs assessment."
+     "h": "Carer’s Assessment",
+     "t": "Carers in England are entitled to an assessment of their needs under the Care Act 2014."
     },
     {
-     "h": "Benefits",
-     "t": "Brian may qualify for Attendance Allowance; she can check her position on Carer’s Allowance via Citizens Advice, as state pension affects payment."
+     "h": "Information about risk",
+     "t": "Explain material risks of IV iron honestly so she can decide (GMC Decision making and consent)."
     }
    ],
    "professional": [
     {
-     "h": "Safe prescribing",
-     "t": "Prescribing iron without investigating the cause falls short of good clinical care (GMC Good Medical Practice 2024). Document the discussion, the referral and her agreement."
+     "h": "Owning the follow-up",
+     "t": "After a negative suspected cancer pathway, the GP manages ongoing iron replacement and decides when to re-refer."
     },
     {
-     "h": "Shared decision-making",
-     "t": "She may decline scopes. Explain the risks of not investigating, offer alternatives (for example CT colonography where appropriate), and record an informed decision if she declines."
+     "h": "Honest reassurance",
+     "t": "Say what tests showed and what they cannot exclude, with a plan."
     }
    ],
    "community": [
     {
-     "h": "Support for carers",
-     "t": "Local carers’ centre, Carers UK, and Parkinson’s UK (nurse and helpline); crossroads-type sitting services for appointment days."
+     "h": "Community pharmacy",
+     "t": "Can advise on taking iron and on avoiding NSAIDs, and offer alternatives for back pain."
+    },
+    {
+     "h": "Parkinson’s UK and carers’ centres",
+     "t": "Support and respite options for Brian’s care."
     }
    ]
   },
   "playbook": {
    "history": {
     "redFlags": [
-     "Melaena (black, tarry, sticky stools), haematemesis, syncope, chest pain or breathlessness at rest — same-day assessment",
-     "Unintentional weight loss with dyspepsia or upper abdominal pain at 55+ — NICE NG12 upper GI suspected cancer referral",
-     "Aspirin, NSAID or anticoagulant use; change in bowel habit; rectal bleeding"
+     "Melaena (black, tarry, sticky, offensive), haematemesis or rectal bleeding: same-day assessment",
+     "Chest pain, breathlessness at rest or syncope: urgent assessment",
+     "Weight loss, persistent or recurrent IDA despite adequate iron: refer back to gastroenterology"
     ],
     "psychosocial": [
-     "Sole carer: who looks after Brian during tests, and what happens if she is unwell",
-     "Sleep deprivation and exhaustion masking symptoms",
-     "Isolation: daughter in Australia, no care package"
+     "Sole carer for Brian",
+     "Daughter helps on Thursdays",
+     "Friend’s cancer after a clear colonoscopy"
     ],
     "ice": [
-     "Idea: “It’s my diet — I hardly eat red meat.”",
-     "Concern: the dark stools, and that any diagnosis means hospital and leaving Brian",
-     "Expectation: iron tablets and no tests"
+     "Idea: tiredness from caring and anaemia",
+     "Concern: missed cancer; reactions to IV iron",
+     "Expectation: treatment without side effects"
     ]
    },
-   "diagnosis": "Iron-deficiency anaemia (Hb 96, MCV 72, ferritin 9) in a 68-year-old with dyspepsia, possible weight loss and darker stools: presumed gastrointestinal blood loss until proven otherwise; diet is not an adequate explanation.",
-   "diagnosisLay": "“Your blood is low because your iron store is empty. With the food you eat, that doesn’t come from your plate — at your age it usually means a small amount of blood is being lost from the gut without you seeing it. We need to find where.”",
+   "diagnosis": "“You still have iron-deficiency anaemia. The hospital tests were reassuring, the black stools were from the iron, and we need a gentler way of replacing it, plus stopping the ibuprofen.”",
+   "diagnosisLay": "“Iron is what red blood cells use to carry oxygen. Low iron means fewer, smaller cells, so you tire easily. Refilling the stores takes a few months.”",
    "management": {
-    "reflectIce": "“You’ve been holding on to the diet explanation because the other one might mean hospital and leaving Brian. Let’s make a plan where the tests happen and he’s looked after.”",
-    "psychosocial": "Carer’s assessment and sitting service referral today; involve the daughter by phone; book procedures as day cases with Brian’s cover arranged in advance.",
+    "reflectIce": "“You were worried the cameras missed something, like with Pat, and the black stools seemed to prove it. They fit the iron, and if your levels keep dropping we will look further.”",
+    "psychosocial": "Plan infusions on her daughter’s day; carer’s assessment.",
     "sharedPlan": [
-     "FIT this week (NICE HTG690); coeliac serology; urgent upper and lower GI investigation on the suspected cancer pathway (NICE NG12, BSG 2021)",
-     "Oral iron once daily with vitamin C; stop the iron-containing multivitamin; FBC within 4 weeks",
-     "Carer’s assessment and sitting service so appointments can be kept"
+     "Oral iron on alternate days, with vitamin C, away from tea and antacids (check the SPC/local formulary)",
+     "Stop ibuprofen; safer analgesia for her back",
+     "Hb and ferritin in 3 weeks",
+     "IV iron if oral not tolerated or ineffective",
+     "Refer back to gastroenterology if IDA persists or recurs despite adequate iron",
+     "Carer’s assessment offered"
     ],
     "safetyNet": [
-     "999 for tarry stools, vomiting blood, faintness, chest pain or breathlessness",
-     "GP phones with each result; FBC recheck booked; review if iron is not tolerated"
+     "Black, tarry, sticky stools, vomiting blood or rectal bleeding: same day",
+     "Chest pain, worsening breathlessness or fainting: same day",
+     "Weight loss or new symptoms: contact the practice"
     ]
    }
   },
   "links": [
    {
-    "ic": "📋",
-    "t": "Anaemia",
-    "s": "Case walkthrough · BSG 2021",
-    "href": "../cases/anaemia.html"
-   },
-   {
-    "ic": "🗺️",
-    "t": "Anaemia pathway",
-    "s": "Visual algorithm · low Hb",
-    "href": "algorithms/anaemia.html"
-   },
-   {
     "ic": "💠",
-    "t": "Iron-deficiency anaemia protocol",
-    "s": "Iron dosing · FIT · referral",
+    "t": "Iron deficiency anaemia",
+    "s": "Replacement, intolerance and IV iron",
     "href": "management/iron-deficiency-anaemia.html"
    },
    {
     "ic": "🗺️",
-    "t": "Dyspepsia pathway",
-    "s": "Visual algorithm · NICE NG12 upper GI",
-    "href": "algorithms/dyspepsia.html"
+    "t": "Iron deficiency",
+    "s": "Visual algorithm",
+    "href": "algorithms/iron-deficiency.html"
+   },
+   {
+    "ic": "🗺️",
+    "t": "Rectal bleeding",
+    "s": "If bleeding develops",
+    "href": "algorithms/rectal-bleeding.html"
+   },
+   {
+    "ic": "🗺️",
+    "t": "Fatigue",
+    "s": "Other causes of persistent tiredness",
+    "href": "algorithms/fatigue.html"
    }
   ],
   "pitfalls": {
-   "intro": "This station is failed on one move: treating the number and not the cause. The second trap is Brian — the candidate who ignores him loses her, and the candidate who plans around him gets the tests done.",
+   "intro": "The investigations are done. The marks are in making iron replacement work, setting a clear threshold for looking further, and dealing with the fear that cancer was missed.",
    "items": [
     {
      "dom": "cm",
-     "fail": "Prescribing iron and closing the call because she asked for it and the story fits.",
-     "why": "“Management plan not in line with current UK best practice.” IDA at 68 needs investigation for GI loss (BSG 2021; NICE HTG690; NICE NG12).",
-     "fix": "Say it plainly: “Iron is the meantime, not the answer.” Then FIT, coeliac serology and urgent referral."
+     "fail": "Restarting daily iron with the same instructions.",
+     "why": "She will stop again.",
+     "fix": "Alternate-day dosing, vitamin C, away from tea."
     },
     {
      "dom": "dg",
-     "fail": "Asking “any bowel problems?” and accepting “no”.",
-     "why": "“Does not gather sufficient information to make a safe assessment.” The darker stools only surface with a direct, specific question.",
-     "fix": "“Have your stools been darker, black or sticky like tar, even on and off?” Then ask about vomiting blood, faintness and weight."
+     "fail": "Not characterising the black stools.",
+     "why": "Melaena needs urgent assessment; iron stools do not.",
+     "fix": "Ask about tarry, sticky, offensive stools and timing."
+    },
+    {
+     "dom": "dg",
+     "fail": "Missing the ibuprofen.",
+     "why": "Ongoing GI loss undermines treatment.",
+     "fix": "Ask about over-the-counter medicines and stop NSAIDs."
     },
     {
      "dom": "ro",
-     "fail": "Treating Brian as a distraction — “we’ll be quick” — and never returning to him.",
-     "why": "“Does not identify or respond to the patient’s cues.” Every refusal she makes routes through Brian.",
-     "fix": "Make him part of the plan: carer’s assessment, sitting service, the daughter by phone, day-case framing."
-    },
-    {
-     "dom": "ro",
-     "fail": "Contradicting the diet story bluntly: “that’s not it, you need scopes.”",
-     "why": "Correct but confrontational; she disengages and cancels the appointments.",
-     "fix": "Use her own facts: “chicken, fish and eggs every day doesn’t empty an iron store” — then name what the story was protecting her from."
-    },
-    {
-     "dom": "ro",
-     "fail": "Jargon: “We’ll do a FIT, tTG, and bidirectional endoscopy on the suspected cancer pathway (2WW).”",
-     "why": "“Language not easily understood by the patient.”",
-     "fix": "“A stool kit you do at home, a blood test for coeliac disease, a reaction to gluten, and camera tests of the stomach and bowel — day visits.”"
+     "fail": "Blanket reassurance that nothing was missed.",
+     "why": "She will not believe it after Pat.",
+     "fix": "Explain what was tested and the plan if iron keeps falling."
     },
     {
      "dom": "cm",
-     "fail": "“Come back if you’re worried” as the only safety-net, with no dates.",
-     "why": "Non-specific safety-netting is a standard failing feedback statement, and she will not come back unprompted.",
-     "fix": "Name the 999 symptoms, date the FIT return and FBC recheck, and promise the GP will ring with results."
+     "fail": "Not offering IV iron.",
+     "why": "It is the next step when oral iron fails.",
+     "fix": "Explain it with honest, proportionate risk."
+    },
+    {
+     "dom": "cm",
+     "fail": "Ignoring caring logistics.",
+     "why": "She cannot attend without cover for Brian.",
+     "fix": "Plan around her daughter’s day; carer’s assessment."
     }
    ]
   }

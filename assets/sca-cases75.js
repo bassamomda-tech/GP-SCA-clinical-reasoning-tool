@@ -316,142 +316,158 @@
 
   /* ===== 271. Threadworm (enterobiasis) ===== */
   const c271 = {
-    id: 'threadworm',
-    title: '"My little girl\u2019s bottom is really itchy at night and I\u2019ve seen tiny white threads \u2014 the whole family keeps catching it"',
-    type: 'video',
-    duration: 12,
-    meta: {
-      age: 5,
-      sex: 'F',
-      setting: 'Video consultation \u2014 perianal itch in a child, parent present',
-      system: 'Paediatrics / Infectious disease \u2014 threadworm: treat the whole household & hygiene',
-      checked: 'October 2026'
+    "id": "threadworm",
+    "title": "“They’re back for the third time — I need tablets for all of us this time, me included”",
+    "type": "video",
+    "duration": 12,
+    "meta": {
+      "age": 6,
+      "sex": "F",
+      "setting": "Video consultation — a mother about her 6-year-old daughter; she would like to discuss the whole family.",
+      "system": "Child health / Infection — recurrent threadworm: household treatment, pregnancy and under-2s, temporary accommodation and a proportionate safeguarding question",
+      "checked": "October 2026"
     },
-    brief: 'A mother, Sophie Fenwick, brings 5-year-old Ivy Fenwick with intense PERIANAL ITCH worse at NIGHT, disturbed sleep, and visible tiny white THREADS (worms) in the perianal area/stool \u2014 THREADWORM (Enterobius/pinworm), the commonest worm infection in UK children, spread faeco-orally via eggs (scratching \u2192 fingers/under nails \u2192 mouth/surfaces). Recognise it clinically (nocturnal perianal/vulval itch, visible threadworms; tape test rarely needed); treat the affected child and appropriate HOUSEHOLD contacts on the same day (including those without symptoms) with MEBENDAZOLE 100 mg as a single dose, repeated once after 2 weeks, for those aged 6 months and over (off-label from 6 months to 2 years, so an individual risk\u2013benefit decision; Greater Manchester antimicrobial guidelines v16 2024, BNFC) \u2014 PLUS practical HYGIENE for at least 2 weeks (hand-washing and nail-scrubbing after the toilet and before eating, short nails, a morning wash around the anus, discourage scratching/nail-biting/thumb-sucking, close-fitting nightwear, and wash nightwear, towels and bed linen on the day of treatment with damp-dusting; no need to hot-wash everything daily). Under 6 months: hygiene alone for 6 weeks; in PREGNANCY: hygiene first for 6 weeks, seeking medicines advice if severe or persistent; BREASTFEEDING: check product information rather than withholding automatically. Ask the brother\u2019s age and about pregnancy/breastfeeding before prescribing for each person. No school or nursery exclusion is needed (UKHSA). Consider other causes if vulval symptoms persist (vulvovaginitis, irritant dermatitis; safeguarding where clinically indicated) and secondary infection. Reassure it is common and not a sign of poor hygiene, and safety-net. Recorded findings available to the candidate (no in-person examination in this remote consultation): Mother\u2019s photograph (sent via the practice\u2019s online form last night): several tiny white threadlike worms at the anal margin; perianal skin red from scratching, not broken or weeping.',
-    script: {
-      opening: '"Ivy\u2019s been waking up scratching her bottom \u2014 it\u2019s really itchy at night and she\u2019s not sleeping. I had a look and I could see these tiny white thread-like things wriggling. And now her little brother\u2019s scratching too. I feel awful \u2014 does it mean we\u2019re not clean? How do we get rid of it?"',
-      facts: [
+    "brief": "Nadia Haddad, 27, joins a video call about Leila, 6, who has an itchy bottom at night again, with tiny white threads seen on her stool and around her bottom. This is the third time in four months. Twice the pharmacy sold mebendazole “for the children”, but nobody else was treated and Nadia did not know about hygiene measures. The family has been in emergency temporary accommodation for nine weeks: one room in a hostel, with a bathroom and toilet shared with other residents on the corridor, no washing machine, and a launderette that costs money. Nadia is 22 weeks pregnant (in her own record, not Leila’s) and has a son, Sami, 18 months. She is itchy herself. She wants tablets for everyone, including herself and Sami. Only if the doctor asks gently about worries or about the shared bathroom does she say that Leila is frightened to go to the toilet at night because unfamiliar men use the corridor, and she asks quietly whether the soreness “down there” could mean “someone has done something”. There has been no disclosure, no behaviour change other than fear of the night-time toilet, no bleeding or discharge. The task: confirm the picture and the reason for recurrence; treat correctly by age and pregnancy (mebendazole for household members aged 2 and over, off-label consideration for Sami at 18 months, hygiene measures alone for 6 weeks for the pregnant mother); give realistic hygiene advice for a shared bathroom; take the safeguarding question seriously and proportionately; and act on the housing (families with children should not be in shared-facility B&B-type accommodation beyond 6 weeks), with midwife and health visitor involvement.",
+    "script": {
+      "opening": "“The worms are back. Third time. The chemist keeps giving me tablets for the kids and they just come back. I need tablets for all of us this time — me too, I’m itching as well.”",
+      "facts": [
         {
-          topic: 'Who is calling',
-          text: 'Mother, Sophie, on video; Ivy (5) is in the room. Sophie has a photo on her phone of the worms she saw on Ivy\u2019s bottom last night.'
+          "topic": "Who is on the call",
+          "text": "Nadia with Leila, 6, on the bed beside her in a small room. Sami, 18 months, is asleep in a travel cot behind them."
         },
         {
-          topic: 'Ivy\u2019s symptoms',
-          text: 'Itchy bottom at night for about a week, waking 2\u20133 times. "She did say it\u2019s itchy at the front a bit." Saw tiny white wriggling threads around her bottom at 10pm with a torch. No tummy pain, no weight loss, no diarrhoea, no blood. No temperature. Skin round the bottom red from scratching, not broken or weeping.'
+          "topic": "Leila’s symptoms",
+          "text": "Itchy bottom at night for a week, waking her up. Nadia saw tiny white moving threads on the toilet paper and on her bottom with a torch. Leila is sore from scratching, a bit red between the cheeks and at the front. No bleeding, no discharge, no pain on passing urine, eating well, no tummy pain, no weight loss."
         },
         {
-          topic: 'Household',
-          text: 'Sophie, her partner Mark, Ivy, and Alfie, who is 18 months and has started scratching too. Sophie is not pregnant; stopped breastfeeding Alfie at 12 months. Grandma, Ivy\u2019s nan, looks after the children two days a week (only if asked about other close contacts).'
+          "topic": "Previous treatment",
+          "text": "Twice in four months the pharmacy sold a single chewable tablet for Leila (and once for Sami, who was refused because he was under 2). Nobody else was treated. No one explained hygiene or a second dose."
         },
-        { topic: 'Health', text: 'Ivy is healthy, no medicines, no allergies. Bites her nails and sucks her thumb.' },
-        { topic: 'School', text: 'Reception class. Sophie is worried she has to keep her off.' },
         {
-          topic: 'How to play it',
-          text: 'Embarrassed and a bit tearful: "Does it mean we\u2019re not clean?" Relieved when reassured. Ask: "What about her brother?" (he is under 2), "And the cleaning?", and "Does she need to stay off school?". Admit "stopping them scratching" will be the hardest part.'
+          "topic": "Housing",
+          "text": "Nine weeks in emergency temporary accommodation after leaving a privately rented flat with mould. One room for the three of them; shared bathroom and toilet on the corridor with other residents; no washing machine; the launderette costs £5 a load. The council said it was “for a couple of weeks”."
+        },
+        {
+          "topic": "Nadia’s own health (only if asked about pregnancy or breastfeeding)",
+          "text": "22 weeks pregnant, seeing the midwife. Not breastfeeding. Itching around her own bottom for a few days."
+        },
+        {
+          "topic": "The worry (only if asked gently what else is on her mind)",
+          "text": "“The men on the corridor use the same toilet. Leila is scared to go at night on her own. She’s sore at the front too. Could it be… could someone have done something to her?” Leila has said nothing worrying; she is never left alone in the shared bathroom; no change in behaviour except fear of the corridor at night."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Tired and anxious, apologetic about the room. Relieved if the doctor explains why worms keep coming back without blame. Becomes quiet when the safeguarding worry comes up; grateful if it is taken seriously but not catastrophised. Very keen on any letter that might help with housing."
         }
       ],
-      ice: {
-        ideas: '"I must have done something wrong \u2014 maybe not washing their hands enough."',
-        concerns: 'HIDDEN AGENDA \u2014 "That people will think we\u2019re dirty." Also that it will keep going round the family.',
-        expectations: '"To get rid of it properly this time \u2014 tablets for everyone."'
+      "ice": {
+        "ideas": "“The tablets don’t work properly, or we keep catching them from the other people here.”",
+        "concerns": "HIDDEN AGENDA: that Leila’s soreness means she has been abused by someone on the corridor; also shame about the room, and worry about taking tablets in pregnancy.",
+        "expectations": "“Tablets for all of us, including me and the baby. And I want to know she’s safe.”"
       },
-      cues: [
-        '"Does it mean we\u2019re not clean?" \u2014 reassure: common and not about hygiene.',
-        '"Her little brother\u2019s scratching too" \u2014 he is 18 months: check age-appropriate treatment.',
-        '"She bites her nails" (if asked) \u2014 reinfection route and practical hygiene.'
+      "cues": [
+        "“Third time” — recurrence: reinfection because the household was not treated together and hygiene measures were not explained.",
+        "“Me too” — ask about pregnancy and breastfeeding before offering medicines.",
+        "A small room with a travel cot and a shared bathroom — temporary accommodation and what is realistic.",
+        "Hesitation about “anything else” — the safeguarding worry."
       ]
     },
-    checkpoints: [
+    "checkpoints": [
       {
-        dom: 'dg',
-        text: 'Recognises THREADWORM (Enterobius/pinworm) \u2014 nocturnal perianal/vulval itch, disturbed sleep, visible tiny white threads \u2014 as a clinical diagnosis (adhesive-tape test only if uncertain), asking about vulval symptoms, dysuria and broken or weepy skin, and using the parent\u2019s photograph or description (a face-to-face examination, with consent and the parent present, only if the skin is broken, infected or the picture is atypical)'
+        "dom": "dg",
+        "text": "Confirms the typical features (nocturnal perianal itch, worms seen) and asks about red flags and vulval symptoms; explains that threadworm can cause vulval itching in girls"
       },
       {
-        dom: 'ro',
-        text: 'Explains the faeco-oral spread (scratching \u2192 fingers/nails \u2192 mouth/surfaces) and reassures it is common and NOT a sign of poor hygiene'
+        "dom": "dg",
+        "text": "Asks about pregnancy and breastfeeding and the ages of all household members before recommending treatment"
       },
       {
-        dom: 'cm',
-        text: 'Treats the affected child and appropriate HOUSEHOLD contacts on the same day with MEBENDAZOLE 100 mg single dose, REPEATED once after 2 weeks \u2014 for those aged 6 months and over (off-label under 2) \u2014 rather than only the index child'
+        "dom": "cm",
+        "text": "Recommends treating all household members at the same time: mebendazole for those aged 2 and over (single dose, repeat after 2 weeks if infection persists; check the SPC/local formulary), considers off-label use for Sami at 18 months, and advises hygiene measures alone for 6 weeks for the pregnant mother"
       },
       {
-        dom: 'cm',
-        text: 'Advises practical HYGIENE for at least 2 weeks (wash nightwear, towels and bedding on the day of treatment \u2014 no daily hot-washing \u2014 morning wash, hand-washing/nail-scrubbing, short nails, discourage scratching, close-fitting nightwear, no towel sharing) and that no school exclusion is needed'
+        "dom": "cm",
+        "text": "Gives practical hygiene advice for 6 weeks adapted to a shared bathroom and no washing machine (nails short, handwashing and nail scrubbing, morning bath or wash of the perianal area, close-fitting underwear at night, separate towels, damp-dusting)"
       },
       {
-        dom: 'cm',
-        text: 'Knows the age and PREGNANCY caveats (hygiene alone for 6 weeks under 6 months; off-label from 6 months to 2 years; hygiene first for 6 weeks in pregnancy; check breastfeeding) and asks the brother\u2019s age and about pregnancy/breastfeeding before prescribing'
+        "dom": "dg",
+        "text": "Explores the safeguarding worry calmly: who has access, any disclosure, behaviour change, bleeding or discharge; explains that threadworm can explain the soreness but that the worry is valid"
       },
       {
-        dom: 'ro',
-        text: 'Reassures the parent (common, not about cleanliness) and addresses the embarrassment, checking understanding of the household treatment + hygiene plan'
+        "dom": "cm",
+        "text": "Makes a proportionate safeguarding plan: no current indicators of abuse, safety planning for night-time toilet use, clear routes if anything is disclosed, discussion with the practice safeguarding lead and health visitor"
       },
       {
-        dom: 'ro',
-        text: 'Negotiates whole-household buy-in with the parent, giving clear practical instructions for the medication and hygiene measures and checking she is confident to carry them out'
+        "dom": "cm",
+        "text": "Acts on the housing: offers a letter supporting a move (families with children should not be in shared-facility B&B-type accommodation for more than 6 weeks), and informs the midwife and health visitor with consent"
       },
       {
-        dom: 'cm',
-        text: 'Safety-nets and follows up: return if persistent/recurrent despite treating everyone, or atypical features (persistent vulval symptoms need a face-to-face examination for other causes); sooner for weepy, crusted or spreading red skin, fever or pain passing urine; reinforces the repeat dose and hygiene \u2014 household treatment, not index-child only'
+        "dom": "ro",
+        "text": "Avoids blame, involves Leila appropriately, checks understanding and safety-nets (persistent symptoms, abdominal pain, weight loss, vaginal discharge or bleeding, any disclosure)"
       }
     ],
-    worked: [
+    "worked": [
       {
-        lbl: 'Reassure + name it',
-        txt: '"These are threadworms \u2014 incredibly common in children, and crucially NOT a sign that you\u2019re not clean. Almost every family gets them at some point. The night-time bottom itch and those little white threads are the giveaway."'
+        "lbl": "Why it keeps coming back",
+        "txt": "“The tablet kills the worms but not the eggs, and the eggs get onto fingers and back into mouths. So if only one person is treated and there’s no hand-washing routine, the eggs just go round again. It isn’t about the room being dirty.”"
       },
       {
-        lbl: 'Explain the spread',
-        txt: '"They spread easily \u2014 scratching puts microscopic eggs on the fingers and under the nails, which then get to the mouth and to others. That\u2019s why the whole family keeps catching it, and why we treat everyone together."'
+        "lbl": "Pregnancy check",
+        "txt": "“Before I suggest any tablets for you: is there any chance you’re pregnant, or breastfeeding?”"
       },
       {
-        lbl: 'Treat the household',
-        txt: '"So everyone in the house who can take it has a single dose of a worm medicine called mebendazole on the same day, including people with no itch, and then a second dose two weeks later because the tablet doesn\u2019t kill the eggs. Treating just Ivy wouldn\u2019t work \u2014 she\u2019d just get re-infected."'
+        "lbl": "Who gets what",
+        "txt": "“Leila gets a tablet now, and a second one in two weeks if she’s still itchy. Sami is under 2, so I’ll prescribe it for him, which is off-licence but commonly done. For you, because you’re pregnant, the advice is no tablet: the hand-washing routine for six weeks does the job.”"
       },
       {
-        lbl: 'Hygiene measures',
-        txt: '"Alongside, for at least two weeks: wash the bedding, nightwear and towels on the day you take the medicine \u2014 no need to boil-wash everything every day \u2014 wash around the bottom each MORNING to remove overnight eggs, scrub hands and nails after the toilet and before eating, keep nails short, and try to stop scratching. That breaks the cycle, and Ivy can carry on going to school."'
+        "lbl": "Realistic hygiene",
+        "txt": "“Short nails, scrub under them, hands washed after the toilet and before food. A quick wash of her bottom each morning in the room with a bowl is fine. Tight pants at night. Your own towels, not the shared ones.”"
       },
       {
-        lbl: 'Caveats',
-        txt: '"How old is her brother? From six months to two the medicine is used outside its licence, so we\u2019d decide together; under six months it\u2019s hygiene alone for six weeks. If anyone\u2019s pregnant, hygiene comes first for six weeks, and if anyone\u2019s breastfeeding we check before giving it \u2014 just let me know so I prescribe correctly."'
+        "lbl": "The worry",
+        "txt": "“You were right to tell me. Worms often make girls sore at the front as well, so this fits. Has she said anything, or changed in any way? If she ever does, you call me or 999. I’d also like our safeguarding lead and the health visitor to know you’re in shared accommodation.”"
       },
       {
-        lbl: 'Safety-net',
-        txt: '"If it keeps coming back despite everyone being treated and the hygiene, come back and we\u2019ll check what else it might be. If the skin gets weepy, crusted or spreading red, or she has a temperature or pain passing urine, see us sooner. But done together, this clears up well \u2014 and please don\u2019t feel bad, it really isn\u2019t about cleanliness."'
+        "lbl": "Housing",
+        "txt": "“A family with children shouldn’t be in a room with a shared bathroom for more than six weeks. I’ll write a letter you can give the council saying why this matters for your health and the children’s.”"
       }
     ],
-    learning: 'THREADWORM (Enterobius vermicularis/pinworm) is the commonest worm infection in UK children, presenting with intense PERIANAL (and vulval in girls) ITCH worse at NIGHT, disturbed sleep, and visible tiny white THREADS in the perianal area or stool \u2014 a clinical diagnosis (an early-morning adhesive-tape test only if uncertain; stool testing is usually not useful). Spread is FAECO-ORAL via eggs: scratching transfers eggs to the fingers/under the nails and then to the mouth (re-infection), other people and surfaces/bedding, which is why it spreads through households and recurs \u2014 and it is common and NOT a sign of poor hygiene, which the parent should be reassured about. The core treatment principle (Greater Manchester antimicrobial guidelines v16 2024; BIA 2024; BNFC) is to treat the affected child and appropriate HOUSEHOLD contacts on the same day (even asymptomatic members) with MEBENDAZOLE 100 mg as a single dose, repeated once after 2 weeks because it does not reliably kill eggs \u2014 for those aged 6 months and over, off-label from 6 months to 2 years \u2014 because treating only the index child leads to re-infection. Combine this with practical HYGIENE for at least 2 weeks: washing nightwear, towels and bed linen on the day of treatment (no need to hot-wash everything daily); a morning wash around the anus to remove overnight eggs; thorough hand-washing and nail-scrubbing (especially after toileting and before eating); keeping nails short; discouraging scratching and nail-biting; wearing close-fitting underwear at night; and avoiding towel-sharing. Under 6 months, hygiene alone for 6 weeks; in pregnancy, hygiene first for 6 weeks with medicines advice if severe or persistent; in breastfeeding, check product information rather than withholding automatically \u2014 so check age/pregnancy suitability for each person before prescribing. No school or nursery exclusion is needed (UKHSA). Persistent vulval symptoms need a face-to-face examination for other causes (including safeguarding where clinically indicated), and secondary infection needs prompt review. Reassure, treat the household plus hygiene, advise the caveats, and safety-net for persistence.',
-    knowledge: {
-      guideline: 'Greater Manchester antimicrobial guidelines v16 (GMMMG, 2024) \u00b7 British Infection Association eosinophilia and parasitic infection guideline (2024) \u00b7 BNF/BNFC mebendazole \u00b7 UKHSA Health protection in children and young people settings \u00b7 threadworm (enterobiasis): clinical diagnosis \u00b7 household mebendazole 100 mg (repeat at 2 weeks) + hygiene \u00b7 under 6 months and pregnancy hygiene-first',
-      points: [
+    "learning": "Recurrent threadworm is usually reinfection, not treatment failure. Mebendazole kills the worms but not the eggs, which survive on hands, nails, bedding and surfaces for up to two weeks, so the whole household should be treated at the same time and everyone should follow hygiene measures for 6 weeks. CKS: offer mebendazole to household members aged 2 and over as a single dose, repeated after 2 weeks if infection persists (check the SPC/local formulary); children aged 6 months to 2 years can be treated off-label; pregnant women (especially in the first trimester), breastfeeding women and children under 6 months should use hygiene measures alone for 6 weeks. Always ask about pregnancy and breastfeeding before advising treatment for adults. Threadworm commonly causes vulval itching and soreness in girls, but a parent’s worry about sexual abuse must be explored calmly and taken seriously: ask about disclosure, behaviour change, bleeding, discharge and who has access, and know when to discuss with the safeguarding lead or refer. Families in temporary accommodation with shared facilities face real barriers to hygiene advice, so adapt it to what is possible. In England, B&B-type accommodation with shared facilities should not be used for families with children for more than 6 weeks (Homelessness (Suitability of Accommodation) Order 2003), so a supporting letter and involvement of the health visitor and midwife are part of good care. UKHSA guidance sets no exclusion from school for threadworm.",
+    "knowledge": {
+      "guideline": "[1] NICE CKS Threadworm (check current version) · [2] Product SPC for mebendazole (licensed age range and pregnancy) · [3] UKHSA Health protection in children and young people settings, including education (exclusion table) · [4] Homelessness (Suitability of Accommodation) (England) Order 2003 and the Homelessness Code of Guidance for Local Authorities · [5] Working together to safeguard children (2023) · [6] GMC Protecting children and young people (2012, updated 2018)",
+      "summary": "Third episode of threadworm in a 6-year-old, because the household was never treated together and hygiene measures were not explained. The mother is 22 weeks pregnant and her son is 18 months. They live in one room with a shared bathroom. Treat by age and pregnancy, adapt hygiene advice to the accommodation, explore the mother’s worry about abuse proportionately, and support a move with a housing letter and the health visitor and midwife.",
+      "points": [
         {
-          h: 'Recognise',
-          t: 'Nocturnal perianal/vulval itch, disturbed sleep, visible tiny white threads in a child = threadworm (Enterobius). Clinical diagnosis; early-morning adhesive-tape test only if uncertain; stool testing usually not useful.'
+          "h": "Diagnosis",
+          "t": "Nocturnal perianal itch and visible worms are enough. The tape test is rarely needed. In girls, threadworm can cause vulval itch and soreness [1]."
         },
         {
-          h: 'Spread & reassurance',
-          t: 'Faeco-oral via eggs (scratching \u2192 fingers/nails \u2192 mouth/surfaces); spreads through households and recurs. Common and NOT a sign of poor hygiene \u2014 reassure.'
+          "h": "Why it recurs",
+          "t": "Eggs are not killed by mebendazole and survive up to 2 weeks outside the body. Untreated household members and no hygiene routine lead to reinfection."
         },
         {
-          h: 'Treat whole household',
-          t: 'Treat appropriate household contacts on the same day (even asymptomatic) with mebendazole 100 mg single dose, repeated once after 2 weeks; aged 6 months and over, off-label from 6 months to 2 years. Treating only the index child causes re-infection.'
+          "h": "Who to treat",
+          "t": "Treat all household members at the same time. Mebendazole as a single dose for those aged 2 and over, repeated after 2 weeks if infection persists. Children aged 6 months to 2 years: off-label treatment can be prescribed. Check the SPC/local formulary for doses [1,2]."
         },
         {
-          h: 'Hygiene measures',
-          t: 'At least 2 weeks (6 weeks without medicine): wash bedding/nightwear/towels on the day of treatment (no daily hot-wash), morning wash, hand-washing/nail-scrubbing, short nails, discourage scratching, close-fitting nightwear, no towel sharing. No school exclusion (UKHSA).'
+          "h": "Pregnancy and breastfeeding",
+          "t": "Pregnant women (especially in the first trimester), breastfeeding women and children under 6 months: hygiene measures alone for 6 weeks [1]. Always ask about pregnancy before treating an adult."
         },
         {
-          h: 'Pregnancy/young children',
-          t: 'Under 6 months: hygiene alone for 6 weeks. Pregnancy: hygiene first for 6 weeks, medicines advice if severe/persistent. Breastfeeding: check product information, don\u2019t withhold automatically \u2014 check age/pregnancy suitability.'
+          "h": "Hygiene measures (6 weeks)",
+          "t": "Short nails, nail scrubbing, handwashing after the toilet and before food, a morning bath or wash of the perianal area, close-fitting underwear at night, own towels, and washing bedding and damp-dusting at the start. Adapt to the family’s facilities."
         },
         {
-          h: 'Never do',
-          t: 'Never treat only the index child; never omit the repeat dose or hygiene measures; never reinforce the poor-hygiene stigma; never prescribe without checking age/pregnancy suitability.'
+          "h": "Safeguarding, proportionately",
+          "t": "Threadworm explains vulval soreness, but a parent’s concern about abuse must be explored: disclosure, behaviour change, bleeding, discharge, access by unrelated adults. Discuss with the safeguarding lead if concerns remain; refer if there are indicators [5,6]."
         },
         {
-          h: 'Safety-net & follow-up',
-          t: 'Return if persistent/recurrent despite household treatment + hygiene, or atypical features (persistent vulval symptoms: examine for other causes, safeguarding where indicated); sooner for secondary infection, fever or dysuria; reinforce repeat dose and hygiene.'
+          "h": "Temporary accommodation",
+          "t": "B&B-type accommodation with shared facilities should not be used for families with children for more than 6 weeks in England [4]. A GP letter describing the health impact can support the family’s case."
+        },
+        {
+          "h": "School",
+          "t": "No exclusion from school for threadworm [3]."
         }
       ]
     }

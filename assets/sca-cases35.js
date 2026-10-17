@@ -101,90 +101,159 @@
 
   /* ============ 134. VIDEO — Raised inflammatory markers: the non-specific result + the can't-miss ============ */
   const c134 = {
-    id:'raised-inflammatory-markers', title:'"My inflammation markers are up \u2014 what\u2019s causing it?"', type:'video', duration:12,
-    meta:{ age:72, sex:'F', setting:'Video consultation \u2014 incidentally raised ESR/CRP.', system:'Investigations / Non-specific inflammatory markers', checked:'October 2026' },
-    brief:'Mrs Margaret Doyle, 72. Bloods for fatigue show a markedly raised ESR (88) and raised CRP, mild normocytic anaemia. She is worried something is "eating away" at her. On careful, directed history (the key): NEW bilateral shoulder/hip girdle pain and morning stiffness for weeks (?polymyalgia rheumatica), AND \u2014 crucially, if asked \u2014 a recent NEW temporal headache, scalp tenderness on combing her hair, and jaw ache when chewing. This raises GIANT CELL ARTERITIS \u2014 a sight-threatening emergency. She hasn\u2019t connected these. No visual loss yet.',
-    script:{
-      "opening": "\"Hello doctor. My blood test showed my inflammation levels are really high, and I've read that can mean something serious, like a hidden cancer. I've been so worried something's eating away at me. I AM exhausted, and achy, but I put that down to age. Can you tell me what's causing the inflammation? I just want to know it's not cancer.\"",
+    "id": "raised-inflammatory-markers",
+    "title": "“Every time we cut the steroids the stiffness comes straight back — I want to go back to the dose that worked”",
+    "type": "video",
+    "duration": 12,
+    "meta": {
+      "age": 72,
+      "sex": "F",
+      "setting": "Video consultation — review of a long-term condition, with recent blood tests.",
+      "system": "Rheumatology / Prescribing — polymyalgia rheumatica relapsing during steroid taper: safe dose adjustment, GCA screen, steroid harms, bone protection, adrenal safety and referral",
+      "checked": "October 2026"
+    },
+    "brief": "Margaret Doyle, 72, retired librarian, was diagnosed with polymyalgia rheumatica 10 months ago and responded well to prednisolone. The plan reduced the dose stepwise; each time it has gone below 7.5 mg her shoulder and hip girdle pain and morning stiffness have returned within two weeks. Bloods this week: CRP 28 mg/L (was 4 three months ago), ESR 40, HbA1c 47 mmol/mol (41 a year ago); nurse BP 152/88. She wants to “go back to 15 mg, which worked”. Only if asked exactly how she is taking her tablets: ten days ago she increased herself back to 15 mg using an old box, and she stopped the weekly alendronate three months ago because of heartburn, without telling anyone. She has no steroid emergency card. On direct questioning there are no new headaches, scalp tenderness, jaw claudication or visual symptoms, no fever or weight loss, no peripheral joint swelling. She has gained 6 kg, bruises easily, sleeps badly and feels “puffy”. She minds for her two grandchildren after school three days a week and is frightened of becoming disabled. The task: confirm a PMR relapse and screen for GCA and alternative diagnoses; explain why returning to 15 mg is not the answer (BSR 2024 advises returning to the previous dose at which she was well, then tapering more slowly); agree a safe dose plan from her current self-adjusted dose; review steroid harms (glucose, BP, weight, skin, mood, sleep) and bone health (restart bone protection or an alternative, FRAX/DXA as appropriate); issue a steroid emergency card and sick-day advice; offer vaccinations; and refer to rheumatology for relapsing PMR and steroid-sparing treatment.",
+    "script": {
+      "opening": "“Every time we cut the steroids, the stiffness comes straight back. I can barely get out of bed. I want to go back to 15 milligrams, that worked, and just stay on it.”",
       "facts": [
         {
-          "topic": "The aches (if asked where)",
-          "text": "Both shoulders and both hips/thighs for about six weeks. Very stiff in the mornings — takes over an hour to loosen up; you struggle to lift your arms to brush your hair or get out of bed. Eases a bit through the day."
+          "topic": "The relapses",
+          "text": "Twice now: each time the dose went below 7.5 mg, the aching and stiffness in her shoulders, upper arms, hips and thighs returned within two weeks, with morning stiffness over an hour. Like the original illness."
         },
         {
-          "topic": "Headache — only if asked about headache",
-          "text": "\"Now you mention it — I've had a headache on the right side, by my temple, for about ten days. I don't usually get headaches.\""
+          "topic": "Only if asked exactly how she is taking her tablets",
+          "text": "Ten days ago she went back up to 15 mg herself using an old box from the start of treatment. Feels much better already. Stopped the weekly alendronate three months ago because of heartburn; did not tell anyone. Still taking lansoprazole."
         },
         {
-          "topic": "Scalp and jaw — only if asked specifically",
-          "text": "The right side of your scalp is sore when you comb your hair. Your jaw aches after chewing for a minute, so you have been eating soup."
+          "topic": "GCA screen (if asked)",
+          "text": "No new headache, no scalp tenderness when brushing her hair, no jaw pain on chewing, no visual blurring, double vision or loss. No fever, sweats or weight loss."
         },
         {
-          "topic": "Vision (if asked)",
-          "text": "No loss of vision, no double vision, no blurring, no flashing lights — \"my eyes are fine\"."
+          "topic": "Other features (if asked)",
+          "text": "No swollen small joints in her hands or feet. No back pain at night. No cough. Weight up 6 kg since starting steroids. Bruises easily, thin skin, sleeps badly, feels “puffy” and a bit irritable. No fractures or falls."
         },
         {
-          "topic": "General (if asked)",
-          "text": "Tired, off your food, lost a few pounds. Night sweats once or twice. No cough, no lumps, no bowel change, no blood anywhere, no urinary symptoms, no rash."
+          "topic": "Steroid safety (if asked)",
+          "text": "No steroid emergency card. Did not know she shouldn’t stop suddenly. Had flu and pneumonia vaccines last year; no shingles vaccine."
         },
         {
-          "topic": "Medical history and medicines",
-          "text": "High blood pressure (amlodipine). Occasional paracetamol. No allergies. Not diabetic. No stomach ulcers."
-        },
-        {
-          "topic": "Social",
-          "text": "72, retired dinner lady, widowed, lives alone, son nearby who can drive. Never smoked."
-        },
-        {
-          "topic": "Hidden fear — hold back",
-          "text": "Your sister died of \"cancer that wasn't found until too late\" — that is why the word inflammation frightened you. Say this only if asked why you are worried about cancer."
+          "topic": "Life",
+          "text": "Widowed. Collects her grandchildren from school three days a week. “If I can’t do that, my daughter can’t work.”"
         },
         {
           "topic": "How to play it",
-          "text": "Anxious, focused on cancer, and you will NOT mention the headache, scalp or jaw unless asked about them. If the doctor asks good, specific questions, answer honestly and you may say: \"I didn't think that was related.\" If told this might be inflammation of the blood vessels that can affect sight and needs treatment today, you are surprised but agree and ask: \"Will I go blind?\""
+          "text": "Determined about 15 mg. A bit sheepish when asked how she is actually taking the tablets. Accepts a plan if her symptoms are taken seriously, she understands the harms of high doses, and she is referred to a specialist."
         }
       ],
       "ice": {
-        "ideas": "\"High inflammation means something is eating away at me — maybe cancer.\"",
-        "concerns": "Underneath (only if asked): your sister's cancer, found too late.",
-        "expectations": "\"Tell me what's causing it — and that it's not cancer.\""
+        "ideas": "“The higher dose is the only thing that works, so I should stay on it.”",
+        "concerns": "HIDDEN AGENDA: she has already self-increased to 15 mg and stopped her bone tablets, and feels guilty; frightened of becoming disabled and unable to help her daughter with the grandchildren.",
+        "expectations": "“Prescribe 15 mg and leave it there.”"
       },
       "cues": [
-        "\"I put the aches down to age.\" — say in the opening.",
-        "\"I didn't think the headache was related.\" — say if headache comes up.",
-        "\"Will I go blind?\" — ask if the doctor explains the eye risk."
+        "Relapse each time below 7.5 mg — the dose at which she was last well matters.",
+        "“That worked” — she may already be taking it; ask exactly how she takes her tablets.",
+        "Weight gain, bruising, HbA1c and BP rising — cumulative steroid harm.",
+        "Grandchildren — function and what matters to her."
       ]
     },
-    checkpoints:[
-      { dom:'dg', text:'Understands raised ESR/CRP are NON-SPECIFIC and works them up with a STRUCTURED, DIRECTED history and examination (guided by the clinical context) rather than panicking about cancer or ordering a random scatter of tests' },
-      { dom:'dg', text:'Actively elicits the GIANT CELL ARTERITIS red flags by DIRECTED questioning \u2014 new temporal headache, scalp tenderness, jaw claudication, visual symptoms \u2014 which the patient did not volunteer, and recognises GCA as a sight-threatening emergency in an over-50 with raised markers (\u00b1 PMR)' },
-      { dom:'cm', text:'Acts URGENTLY on suspected GCA: starts (or arranges immediate) HIGH-DOSE corticosteroids WITHOUT waiting for temporal-artery biopsy/results, and refers SAME-DAY to rheumatology/ophthalmology \u2014 because delay risks irreversible blindness' },
-      { dom:'dg', text:'Recognises the POLYMYALGIA RHEUMATICA picture (bilateral girdle pain, morning stiffness, raised markers, age >50) and its overlap with GCA, managing/ referring appropriately' },
-      { dom:'cm', text:'Plans a proportionate structured work-up for the raised markers (history/exam-directed: e.g. examination, urinalysis, further bloods/imaging as indicated, myeloma/malignancy consideration if the picture warrants) \u2014 without letting it delay GCA treatment' },
-      { dom:'ro',   text:'Addresses the patient\u2019s CANCER fear honestly and proportionately, while NOT letting reassurance eclipse the directed search that catches the sight-threatening emergency' },
-      { dom:'ro',   text:'Explains the urgency of the GCA concern clearly and calmly so she accepts immediate treatment/referral, and validates that she was right to be worried by the result' },
-      { dom:'cm',    text:'Safety-nets emphatically: any visual symptoms (blurring, double vision, transient or actual visual loss) \u2192 emergency same-day ophthalmology/A&E; starts steroids and arranges same-day specialist review; explains steroid safety; and follows up the broader work-up \u2014 sight preserved, cause pursued' },
+    "checkpoints": [
+      {
+        "dom": "dg",
+        "text": "Confirms the pattern of PMR relapse (girdle pain and stiffness returning as the dose falls) and interprets the raised CRP and ESR in that context"
+      },
+      {
+        "dom": "dg",
+        "text": "Screens for giant cell arteritis (headache, scalp tenderness, jaw claudication, visual symptoms) and for alternative diagnoses (peripheral synovitis suggesting rheumatoid arthritis, infection, malignancy, weight loss)"
+      },
+      {
+        "dom": "dg",
+        "text": "Asks exactly how she is taking the medicines and identifies the self-increase to 15 mg and the stopped alendronate"
+      },
+      {
+        "dom": "cm",
+        "text": "Agrees a safe dose plan in line with BSR 2024: return to the dose at which she was last symptom-free rather than 15 mg, step down from her current dose without stopping abruptly, then taper more slowly (check the SPC/local formulary)"
+      },
+      {
+        "dom": "cm",
+        "text": "Reviews steroid harms: confirms the raised HbA1c and BP and plans follow-up, discusses weight, skin, sleep and mood"
+      },
+      {
+        "dom": "cm",
+        "text": "Addresses bone health: explains why bone protection matters on long-term glucocorticoids, manages the heartburn and restarts or changes treatment (for example taking alendronate correctly, or an alternative), with DXA as appropriate"
+      },
+      {
+        "dom": "cm",
+        "text": "Issues an NHS steroid emergency card and explains sick-day rules and never stopping suddenly; offers shingles vaccination as appropriate"
+      },
+      {
+        "dom": "cm",
+        "text": "Refers to rheumatology for relapsing PMR and consideration of steroid-sparing treatment, and safety-nets for GCA symptoms (same-day) and adrenal crisis"
+      }
     ],
-    worked:[
-      { lbl:'Name the marker honestly', txt:'"Let me explain what those inflammation markers mean: they tell us there\u2019s inflammation SOMEWHERE, but not what\u2019s causing it \u2014 they\u2019re a smoke alarm, not the fire. So rather than jump to the scariest cause or fire off random tests, I want to ask you some specific questions to find the actual source. And yes, we\u2019ll make sure it\u2019s not something sinister."' },
-      { lbl:'Directed history',     txt:'"You mentioned aches \u2014 tell me, is it both shoulders and hips, worse and stiff in the mornings? \u2026 That fits a treatable condition called polymyalgia. Now some specific questions, and these really matter: any new headache, especially at your temples? Is your scalp tender when you brush your hair? Any ache in your jaw when you chew? \u2026 You have. That\u2019s very important, and I\u2019m really glad I asked."' },
-      { lbl:'Name the emergency',   txt:'"Putting that together \u2014 the headache, the tender scalp, the jaw ache, with your raised markers \u2014 I\u2019m concerned about a condition called giant cell arteritis: inflammation of the arteries around the temple. I have to be straight with you about why it matters: untreated, it can affect the blood supply to the eye and threaten your sight. So this is something we treat URGENTLY, today, not wait and see."' },
-      { lbl:'Treat now, don\u2019t wait', txt:'"Because of that sight risk, I\u2019m going to start you on a high dose of steroid tablets straight away \u2014 we do NOT wait for further tests, because protecting your vision can\u2019t wait \u2014 and refer you to the specialists to be seen today. The steroids usually settle it quickly and protect your eyes."' },
-      { lbl:'Address the cancer fear', txt:'"On your worry about cancer \u2014 I haven\u2019t forgotten it, and we WILL make sure there\u2019s nothing else going on with the right checks. But the most pressing thing your symptoms point to is this artery inflammation, which is treatable, and your instinct that the result mattered was absolutely right."' },
-      { lbl:'Safety-net (vision)',  txt:'"This is crucial: if you get ANY change in your vision \u2014 blurring, double vision, a curtain coming down, loss of sight in part of your eye \u2014 that is an emergency, go straight to A&E or eye casualty, do not wait. I\u2019m starting the steroids now and arranging the urgent specialist review, and I\u2019ll follow up the rest of the work-up. We protect your sight first, and chase everything else properly."' },
+    "worked": [
+      {
+        "lbl": "Ask without blame",
+        "txt": "“Lots of people adjust their tablets when they feel bad. Can you tell me exactly how you’ve been taking them this last week or two?”"
+      },
+      {
+        "lbl": "GCA screen",
+        "txt": "“Any new headache, tenderness on your scalp when you brush your hair, pain in your jaw when you chew, or any change in your eyesight?”"
+      },
+      {
+        "lbl": "Why not 15 mg",
+        "txt": "“15 mg worked, but it was the dose to switch the illness off. The guidance is to go back to the dose where you were last well, around 10, then come down more slowly. That controls it with fewer side effects.”"
+      },
+      {
+        "lbl": "Name the harms",
+        "txt": "“The steroids are pushing your sugar and blood pressure up and thinning your skin and bones. That’s why we want the lowest dose that controls it, and why the bone tablets matter.”"
+      },
+      {
+        "lbl": "Card and safety",
+        "txt": "“Because you’ve been on steroids a long time, your body relies on them. Never stop them suddenly, and carry this steroid card so anyone treating you in an emergency knows.”"
+      },
+      {
+        "lbl": "Specialist help",
+        "txt": "“When PMR keeps coming back as we reduce the steroid, the guidance is to involve the rheumatologists. There are other medicines that can help you need less steroid.”"
+      }
     ],
-    learning:'Raised ESR/CRP are NON-SPECIFIC \u2014 a "smoke alarm, not the fire" \u2014 indicating inflammation but not its cause, so a markedly raised ESR in an older person needs a STRUCTURED, DIRECTED history and examination guided by the clinical context, not panic about cancer or a random scatter of tests. The examinable core is using directed questioning to uncover what the patient did not volunteer: here, new bilateral girdle pain with morning stiffness fits polymyalgia rheumatica, but the new temporal headache, scalp tenderness (combing hair) and jaw claudication, with raised markers in an over-50, signal GIANT CELL ARTERITIS \u2014 a sight-threatening emergency that demands URGENT high-dose corticosteroids WITHOUT waiting for biopsy/results and same-day rheumatology/ophthalmology referral, because untreated GCA causes irreversible blindness. The hidden agenda is the patient\u2019s cancer fear plus her failure to connect/mention the GCA symptoms; address the cancer fear honestly and proportionately but do not let reassurance eclipse the directed search, act urgently on the GCA, plan a proportionate work-up for the markers, and safety-net visual symptoms to emergency ophthalmology.',
-    knowledge:{
-      guideline:"BSR guideline for the management of giant cell arteritis (Mackie et al., 2020) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BSR/BHPR guideline for the management of polymyalgia rheumatica (Dasgupta et al., 2010) · NOGG 2024 (glucocorticoid-induced osteoporosis) · NatPSA/2020/005 Steroid Emergency Card · NICE NG243 Adrenal insufficiency (2024) · BNF · sight-threatening emergency pathways",
-      points:[
-        { h:'Inflammatory markers are non-specific', t:'ESR and CRP indicate inflammation but not its cause (infection, autoimmune/inflammatory disease, malignancy, tissue injury). A raised marker is interpreted in clinical context via a directed history and examination \u2014 not as a stand-alone "cancer test" and not as a trigger for an undirected battery of investigations.' },
-        { h:'Giant cell arteritis \u2014 the can\u2019t-miss', t:'In a patient \u226550 with raised inflammatory markers, ASK directly about new headache (often temporal), scalp tenderness, jaw claudication, and visual symptoms; examine the temporal arteries. GCA is a sight-threatening emergency \u2014 untreated it can cause sudden, irreversible visual loss (anterior ischaemic optic neuropathy).' },
-        { h:'Treat GCA immediately', t:'If GCA is suspected, start HIGH-DOSE glucocorticoids IMMEDIATELY — BSR 2020: prednisolone 40–60 mg once daily, started the same day by the GP, if there is no visual loss; with acute or intermittent visual loss, IV methylprednisolone via same-day ophthalmology (do not delay oral steroid if IV is not immediately possible) — do NOT wait for temporal-artery biopsy, ultrasound, or specialist review, and refer urgently to the GCA fast-track service (specialist review ideally the same working day and always within 3 working days; ophthalmology the same day if any visual symptoms). Biopsy (at least 1 cm) and/or ultrasound should follow within 1 week of starting steroids; treatment must not be delayed.' },
-        { h:'Polymyalgia rheumatica overlap', t:'PMR (BSR/BHPR 2010: bilateral shoulder/pelvic-girdle pain and morning stiffness, age >50, raised ESR/CRP, steroid-responsive) commonly coexists with GCA. New girdle pain with raised markers is a clue; always screen for GCA features in PMR, and vice versa.' },
-        { h:'Structured work-up for raised markers', t:"Guided by history/examination: consider infection screen, urinalysis, further bloods (FBC/film, U&E, LFTs, calcium, immunoglobulins/electrophoresis for myeloma, TFTs, CK, rheumatoid factor — the BSR/BHPR 2010 PMR baseline set), and imaging where indicated. NICE NG12 includes a myeloma pathway for people aged 60 and over, so protein electrophoresis is proportionate here with anaemia and a high ESR. Pursue malignancy/serious causes proportionately — but never let this delay GCA treatment." },
-        { h:'Address the cancer fear proportionately', t:'Patients often fear a raised marker means hidden cancer. Acknowledge and address this honestly with an appropriate work-up, while ensuring reassurance does not eclipse the directed search for treatable, urgent causes like GCA.' },
-        { h:'Never do', t:'Never treat a raised ESR/CRP as a stand-alone cancer test or order an undirected scatter of tests; never miss the GCA red flags by failing to ask directly; never wait for biopsy/results before treating suspected GCA; never let cancer-fear reassurance eclipse the sight-threatening emergency; never miss visual symptoms.' },
-        { h:'Safety-net & follow-up', t:'Suspected GCA → high-dose steroids now + same-day specialist referral (BSR 2020 fast-track); ANY visual symptom → emergency ophthalmology/A&E; steroid-safety advice (NOGG 2024: bone protection from the start in a postmenopausal woman on prednisolone ≥7.5 mg/day for 3 months or longer; consider a PPI; Steroid Emergency Card per NatPSA/2020/005; sick-day rules per NICE NG243); structured work-up for the markers followed up; review.' }
+    "learning": "Relapse during glucocorticoid tapering is common in polymyalgia rheumatica. A relapse is the return of PMR symptoms, usually with rising inflammatory markers; raised markers alone without symptoms are not a relapse. The BSR 2024 guideline advises, for a relapse, returning to the previous dose at which the person was well (rather than restarting the initial dose), then tapering more slowly, and referring to specialist care for relapsing disease, inability to taper, or prolonged steroid need, where steroid-sparing treatment (such as methotrexate, or a biologic in some cases) can be considered. Every relapse should prompt a GCA screen (new headache, scalp tenderness, jaw claudication, visual symptoms need same-day assessment) and reconsideration of alternative diagnoses (late-onset rheumatoid arthritis, infection, malignancy). Ask exactly how the person is taking their tablets: self-adjustment is common. Long-term glucocorticoids cause weight gain, hyperglycaemia, hypertension, skin thinning, sleep and mood disturbance, cataract and osteoporosis. Bone protection is recommended for most older people expected to take glucocorticoids for 3 months or more (NOGG guidance); if alendronate causes heartburn, check it is taken correctly and consider alternatives, and assess fracture risk. The National Patient Safety Alert on steroid emergency cards (2020) requires people at risk of adrenal insufficiency, including those on prednisolone 5 mg or more for 4 weeks or longer, to be given an NHS steroid emergency card and sick-day advice; steroids must never be stopped abruptly. Offer recommended vaccinations, including shingles vaccination (non-live) for eligible people. The communication task is respecting her lived experience of relapse and her caring role while negotiating a safer dose plan.",
+    "knowledge": {
+      "guideline": "[1] British Society for Rheumatology guideline on the diagnosis and management of polymyalgia rheumatica (2024) · [2] NICE CKS Polymyalgia rheumatica (check current version) · [3] National Patient Safety Alert: Steroid emergency card to support early recognition and treatment of adrenal crisis in adults (NatPSA/2020/005/NHSPS) and Society for Endocrinology guidance · [4] NOGG Clinical guideline for the prevention and treatment of osteoporosis (2021, updated 2022) · [5] UKHSA Green Book chapter 28a: Shingles · [6] Product SPCs for prednisolone and alendronic acid",
+      "summary": "A woman with PMR relapsing whenever prednisolone falls below 7.5 mg, now with raised CRP and ESR, who has self-increased to 15 mg and stopped her alendronate, with rising HbA1c and BP. Screen for GCA and alternative diagnoses, agree a safer dose plan (previous effective dose, slower taper), address steroid harms and bone protection, give a steroid emergency card and sick-day rules, offer shingles vaccination, and refer to rheumatology for relapsing disease.",
+      "points": [
+        {
+          "h": "What a relapse is",
+          "t": "Return of PMR symptoms, usually with rising inflammatory markers. Raised markers alone are not a relapse [1]."
+        },
+        {
+          "h": "Treating relapse",
+          "t": "Return to the previous dose at which the person was well, then taper more slowly. Do not restart the initial high dose routinely [1]. Check the SPC/local formulary."
+        },
+        {
+          "h": "When to refer",
+          "t": "Relapsing disease, inability to taper, prolonged steroid requirement, atypical features or doubt about the diagnosis: rheumatology for steroid-sparing treatment [1,2]."
+        },
+        {
+          "h": "GCA at every relapse",
+          "t": "New headache, scalp tenderness, jaw claudication or visual symptoms need same-day assessment."
+        },
+        {
+          "h": "Steroid harms",
+          "t": "Hyperglycaemia, hypertension, weight gain, skin thinning, insomnia, mood change, cataract, osteoporosis. Monitor HbA1c and BP."
+        },
+        {
+          "h": "Bone protection",
+          "t": "Most older people expected to take glucocorticoids for 3 months or more should have bone protection; review intolerance, technique and alternatives; consider DXA [4]."
+        },
+        {
+          "h": "Adrenal safety",
+          "t": "Steroid emergency card for prednisolone 5 mg or more for 4 weeks or longer; sick-day rules; never stop abruptly [3]."
+        },
+        {
+          "h": "Vaccination",
+          "t": "Annual influenza, pneumococcal and shingles vaccination (non-live vaccine for eligible immunosuppressed people) [5]."
+        }
       ]
     }
   };
@@ -404,31 +473,76 @@
     },
 
     'raised-inflammatory-markers': {
-      ceg: ['Investigations & results', 'Urgent & unscheduled care'],
-      stem: {
-        name: 'Margaret Doyle', age: '72 years · female',
-        pmh: ['Markedly raised ESR (88) + CRP; mild normocytic anaemia', 'NEW bilateral shoulder/hip girdle pain + morning stiffness (?PMR)', '⚠ NEW temporal headache, scalp tenderness, jaw claudication (?GCA)'],
-        meds: ['None'],
-        allergy: 'NKDA',
-        recent: 'Fixated on hidden cancer; hasn\u2019t connected the headache/scalp/jaw symptoms.',
-        reason: 'Video consultation — incidentally raised ESR/CRP.'
-      },
-      timeMap: [
-        { t:'0–2',  h:'Markers are non-specific', d:'A smoke alarm, not the fire. Inflammation somewhere, not the cause. Directed questions, not panic or a random test scatter.' },
-        { t:'2–4',  h:'Directed history',     d:'Girdle pain + morning stiffness → PMR. Then ASK specifically: new temporal headache? scalp tender combing hair? jaw ache chewing?' },
-        { t:'4–6',  h:'Name the emergency',   d:'Headache + scalp + jaw + raised markers over 50 = giant cell arteritis until proven otherwise — sight-threatening.' },
-        { t:'6–8',  h:'Treat now, don\u2019t wait', d:'High-dose steroids immediately (don\u2019t wait for biopsy/results) + same-day rheumatology/ophthalmology referral.' },
-        { t:'8–12', h:'Cancer fear + vision net', d:'Address the cancer worry proportionately with a structured work-up; ANY visual change → emergency eye/A&E. Steroid safety; follow up.' }
+      "ceg": [
+        "Long-term conditions & cancer",
+        "Older adults",
+        "Investigations & results"
       ],
-      wordPics: {
-        fail: 'Treats the raised ESR as a "cancer test" and either panics or fires off random investigations; never asks the directed GCA questions, so the temporal headache/scalp/jaw symptoms and the sight-threatening GCA are missed; reassures about cancer while the real emergency goes untreated.',
-        pass: 'Recognises markers are non-specific, takes a directed history that uncovers GCA, starts steroids and refers same-day, and addresses the cancer fear.',
-        exc:  'Explains the non-specific marker and works it up with a directed history; actively elicits the GCA red flags the patient didn\u2019t volunteer; starts high-dose steroids immediately without waiting and refers same-day; recognises the PMR overlap; addresses the cancer fear proportionately without letting it eclipse the emergency; and safety-nets vision to emergency ophthalmology.'
+      "stem": {
+        "name": "Margaret Doyle",
+        "age": "72 years · female",
+        "pmh": [
+          "Polymyalgia rheumatica (diagnosed 10 months ago)",
+          "Hypertension"
+        ],
+        "meds": [
+          "Prednisolone (reducing regimen)",
+          "Alendronic acid weekly",
+          "Lansoprazole",
+          "Amlodipine"
+        ],
+        "allergy": "None recorded",
+        "recent": "CRP 28 mg/L (4 three months ago); ESR 40. HbA1c 47 mmol/mol (41 a year ago). Nurse BP 152/88. Weight up 6 kg since diagnosis.",
+        "reason": "PMR review: “The stiffness is back again.”"
       },
-      avoid: [
-        { dont:'"A high ESR can mean cancer, so let\u2019s arrange a load of scans to look for it."', instead:'"Raised markers just mean inflammation somewhere — let me ask some specific questions to find the source. And we\u2019ll check for anything sinister properly, not at random."', why:'Treating a raised ESR as a cancer test and scattering investigations misses the directed search that finds treatable, urgent causes.' },
-        { dont:'"Your aches are probably just age — try some paracetamol."', instead:'"New shoulder and hip stiffness with raised markers could be polymyalgia — and I need to ask about headache, scalp tenderness and jaw ache, because those point to something sight-threatening."', why:'Dismissing the aches as age skips the directed GCA/PMR questions that change everything.' },
-        { dont:'"Let\u2019s arrange a temporal artery biopsy first and start treatment once it\u2019s confirmed."', instead:'"Because your sight is at risk, I\u2019m starting high-dose steroids NOW — we don\u2019t wait for the biopsy — and getting you seen by the specialists today."', why:'Waiting for biopsy/confirmation before treating suspected GCA risks irreversible blindness.' }
+      "timeMap": [
+        {
+          "t": "0–1",
+          "h": "Open",
+          "d": "Hear the request; acknowledge frustration."
+        },
+        {
+          "t": "1–5",
+          "h": "History",
+          "d": "Relapse pattern; GCA screen; alternative diagnoses; exactly how she takes her tablets."
+        },
+        {
+          "t": "5–6",
+          "h": "ICE",
+          "d": "Fear of disability; grandchildren."
+        },
+        {
+          "t": "6–11",
+          "h": "Plan",
+          "d": "Relapse explained; previous effective dose, slower taper; harms; rheumatology; bones; card; HbA1c, BP, shingles vaccine."
+        },
+        {
+          "t": "11–12",
+          "h": "Close",
+          "d": "Teach-back; GCA safety-net; review in 4 weeks."
+        }
+      ],
+      "wordPics": {
+        "fail": "Prescribes 15 mg indefinitely, or insists on continuing the taper; never asks how she takes her tablets; misses the GCA screen, bone protection and the steroid card.",
+        "pass": "Recognises relapse, screens for GCA, agrees a return to the previous effective dose with slower taper, and refers to rheumatology.",
+        "exc": "All of the above, plus: uncovers the self-increase and stopped alendronate without blame; steps down safely from 15 mg; addresses HbA1c, BP, bone health and heartburn; steroid emergency card and sick-day rules; shingles vaccination; links the plan to her role with her grandchildren."
+      },
+      "avoid": [
+        {
+          "dont": "“Fine, back to 15 mg.”",
+          "instead": "“Let’s go back to where you were last well, around 10, then reduce more slowly.”",
+          "why": "BSR 2024 advises the previous effective dose; high doses add harm."
+        },
+        {
+          "dont": "“You shouldn’t have changed the dose yourself.”",
+          "instead": "“Thank you for telling me. Let’s make a safe plan from where you are now.”",
+          "why": "Blame stops disclosure; the safety issue is the abrupt changes."
+        },
+        {
+          "dont": "(No card or sick-day advice)",
+          "instead": "“Carry this steroid card and never stop suddenly.”",
+          "why": "Adrenal crisis is a preventable risk (2020 National Patient Safety Alert)."
+        }
       ]
     },
 

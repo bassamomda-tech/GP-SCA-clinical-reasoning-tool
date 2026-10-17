@@ -16,63 +16,159 @@
 
   /* ============ 177. F2F — Itchy widespread rash: eczema vs the systemic clue (NG12 haematological if B symptoms) ============ */
   const c177 = {
-    id:'itchy-rash-systemic', title:'"I\u2019m itching all over and there\u2019s barely a rash \u2014 the creams aren\u2019t touching it"', type:'video', duration:12,
-    meta:{ age:58, sex:'M', setting:'Video consultation \u2014 generalised itch poorly responsive to emollients.', system:'Dermatology / General \u2014 generalised pruritus & the systemic differential', checked:'October 2026' },
-    brief:'Mr Howard Leyton, 58, accountant, with ~3 months of generalised, relentless ITCH, worse at night, with little to see on the skin beyond excoriations \u2014 no primary rash. Emollients and a mild steroid from a previous visit have not helped. The examinable task is to treat ITCH WITHOUT AN OBVIOUS RASH as a presentation that demands a SYSTEMIC differential, not just stronger creams: screen the major causes \u2014 haematological (lymphoma \u2014 especially with B symptoms), cholestatic/hepatobiliary disease, chronic kidney disease, thyroid disease, iron deficiency, diabetes, drugs, and (in the elderly) malignancy and polycythaemia \u2014 and to act on the red flags. On directed history a sinister cluster emerges: drenching NIGHT SWEATS, unintentional weight loss, fatigue and intermittent low-grade fevers — and a lump in his neck he has felt himself, which is confirmed as a rubbery enlarged cervical node when he is examined face to face (nodes, liver and spleen cannot be examined on video, so he is seen in person the same or next day). This converts "chronic itch" into a suspected LYMPHOMA presentation: under NICE NG12, consider a suspected cancer pathway referral for Hodgkin or non-Hodgkin lymphoma in adults with unexplained lymphadenopathy (or splenomegaly for non-Hodgkin lymphoma), taking into account associated symptoms, particularly fever, night sweats, shortness of breath, pruritus and weight loss (and, for Hodgkin lymphoma, alcohol-induced lymph node pain); persistent fatigue, unexplained fever or hepatosplenomegaly also prompt a very urgent FBC (within 48 hours); and, at 40 or over with two or more unexplained symptoms such as fatigue and weight loss, an urgent chest X-ray (within 2 weeks). Investigation follows the BAD 2018 generalised pruritus guideline (FBC/film, ferritin, renal, liver and thyroid function, LDH).',
-    script:{
-      opening:"(Exasperated, tired, scratching his forearm on camera.) \"Doctor, this itch is driving me to distraction — it's everywhere, it's worse at night, and there's hardly anything to see. The creams you gave me last time haven't made a dent. I just want something stronger that actually works. I'm scratching myself raw.\"",
-      facts:[
-        { topic:"The itch", text:"About three months, all over — arms, legs, back, chest. Worst at night. \"Just the scratches. The skin itself looks normal otherwise.\" No blisters, burrows between fingers, hives or patches. Will show scratch marks on camera. No itch after a hot bath or shower in particular." },
-        { topic:"Contacts and triggers", text:"\"No, nobody else\" at home is itchy. \"Nothing new that I can think of\" — no new soaps, washing powder, pets or medicines." },
-        { topic:"Sweats — only if asked", text:"\"Actually, yes. I've had to change the sheets some nights. I put it down to the itching keeping me awake.\" Three or four nights a week for about six weeks." },
-        { topic:"Weight, fevers, tiredness", text:"\"My clothes are looser, now you mention it\" — about 6 kg in three months without trying. \"I've felt shivery and warm on and off. And I'm shattered — but I'm not sleeping.\"" },
-        { topic:"The lump — only if asked about lumps", text:"\"There's… something on the left side of my neck. A lump. Firm, sort of rubbery. It doesn't hurt.\" Noticed it about a month ago. Can point to it on camera. No lumps in armpits or groin that he's felt." },
-        { topic:"Other questions", text:"\"Breathing's fine. I haven't really noticed anything with drink\" — no pain in the lump after alcohol. No cough, no yellow skin or eyes, dark urine or pale stools, no thirst or passing more urine, no heat intolerance, no bleeding." },
-        { topic:"Medicines and history", text:"Emollient and a mild steroid cream from last visit. Nothing else — no statins, opioids or new tablets. No allergies. No previous skin problems." },
-        { topic:"Social", text:"Accountant, married, two teenagers. Drinks about 10 units a week. Non-smoker. No foreign travel this year. No risk factors for HIV or hepatitis he can think of." },
-        { topic:"How to play it", text:"Irritable from lack of sleep; wants a stronger cream. Volunteer only the itch. Give the sweats, weight loss and fevers if asked; the neck lump only if asked about lumps or swellings. If asked what he thinks is behind it: \"Dry skin, I suppose. Or eczema. I'd noticed the sweats and the weight, but… I didn't want to think about it, if I'm honest.\" Then: \"You hear things. Cancer.\" If simply given a stronger steroid, accept and leave (the trap)." }
+    "id": "itchy-rash-systemic",
+    "title": "“Mum’s scratching herself raw at the care home — and now my hands are itching too. What is going on?”",
+    "type": "telephone",
+    "duration": 12,
+    "meta": {
+      "age": 86,
+      "sex": "F",
+      "setting": "Telephone — a daughter calling about her mother, who lives in a residential care home.",
+      "system": "Dermatology / Older adults — itch in a care-home resident with spread to staff and family: probable scabies outbreak, health protection, consent under an LPA and confidentiality",
+      "checked": "October 2026"
+    },
+    "brief": "Helen Paterson, 58, rings about her mother, Iris, 86, who has moderate Alzheimer’s dementia and lives in a residential care home registered with the practice. Iris has been itching for about six weeks, worse at night, scratching until she bleeds. Four weeks ago the home asked for an emollient and hydrocortisone for “eczema”, issued without an examination. Helen visited yesterday: red spots and scratch marks on Iris’s wrists, between her fingers, around her waist and under her breasts; the skin on her hands looks thick and crusty. Helen’s own hands and wrists have itched at night for a week. A carer told her that two staff members and “the lady next door” are also itching. Helen holds a registered health and welfare Lasting Power of Attorney. She is angry and asks whether this is neglect and wants to know the names of the other residents involved. The task: take a focused history from a third party; recognise a probable scabies outbreak, with possible crusted (hyperkeratotic) scabies in Iris; arrange same-day face-to-face assessment at the home; explain the need for the care home to inform the UKHSA health protection team and for coordinated, simultaneous treatment of residents, staff and close contacts (topical permethrin twice, 7 days apart, check the SPC/local formulary; oral ivermectin may be advised for crusted scabies or outbreaks under specialist or UKHSA advice); advise Helen to treat herself and her household at the same time; involve Helen in best-interests decisions under her LPA; maintain other residents’ confidentiality; respond to the neglect question honestly without defensiveness, acknowledging the earlier missed examination; and explain routes for raising concerns.",
+    "script": {
+      "opening": "“I’m ringing about my mum, Iris Paterson, at Beech House. She’s been scratching herself raw for weeks and nobody’s done anything. Now my own hands are itching. What is going on? Is she being neglected?”",
+      "facts": [
+        {
+          "topic": "Who is calling",
+          "text": "Helen, daughter, holds a registered health and welfare LPA for Iris. Visits twice a week. Calling from work at lunchtime."
+        },
+        {
+          "topic": "Iris’s itch",
+          "text": "About six weeks. Worse at night; staff say she is restless and scratching. Yesterday Helen saw red spots and scratch marks on her wrists, between her fingers, round her waist and under her breasts. The skin on her hands is thick, grey and crusty, “like dried porridge”. Not on her face. Eating and drinking as usual; no fever; no new confusion beyond her usual."
+        },
+        {
+          "topic": "Treatment so far",
+          "text": "Emollient and hydrocortisone cream from four weeks ago, applied by staff. No better. Nobody from the practice has seen her skin."
+        },
+        {
+          "topic": "Others itching (if asked)",
+          "text": "Helen’s hands and wrists itch at night for a week; her husband not yet. A carer mentioned two staff members and the resident next door are itching too. Helen does not know names."
+        },
+        {
+          "topic": "Iris’s background",
+          "text": "Alzheimer’s for five years, cannot make decisions about treatment now. Donepezil, amlodipine. No steroid tablets or immunosuppressants. Mobile with a frame."
+        },
+        {
+          "topic": "The anger (if explored)",
+          "text": "Feels the home ignored it and the practice “just sent a cream”. Wants to know who else is affected and whether she should report the home."
+        },
+        {
+          "topic": "How to play it",
+          "text": "Angry and upset at first. Calms if the doctor takes her seriously, explains what it probably is and gives a clear plan for today. Pushes for names of other residents; accepts the confidentiality explanation if it is given respectfully. Relieved to hear she can be involved in decisions."
+        }
       ],
-      ice:{
-        ideas:"\"Dry skin or eczema — I just need a stronger cream.\"",
-        concerns:"HIDDEN AGENDA — he has noticed the sweats, weight loss and a neck lump and fears cancer, but has been hoping a stronger cream would make it all go away.",
-        expectations:"\"Something stronger that works. As long as I leave with something.\""
+      "ice": {
+        "ideas": "“Something catching that the home has let spread, and nobody looked properly.”",
+        "concerns": "HIDDEN AGENDA: guilt that she did not push sooner, and fear that she has carried it home to her grandchildren. Also worried her mother is being neglected.",
+        "expectations": "“Someone to see Mum today, tell me what it is, and tell me who else has it.”"
       },
-      cues:[
-        "\"There's hardly anything to see.\" — itch without a rash; invites a wider look.",
-        "\"I put it down to the itching keeping me awake.\" — the sweats, explained away.",
-        "\"I didn't want to think about it.\" — the fear, if explored."
+      "cues": [
+        "Itch worse at night in the hands, wrists and waist, plus others itching — classic pattern of scabies in a closed setting.",
+        "Thick, crusty skin on the hands — possible crusted scabies, highly infectious.",
+        "“Is she being neglected?” — respond honestly, without defensiveness.",
+        "“Who else has it?” — confidentiality of other residents."
       ]
     },
-    checkpoints:[
-      { dom:'dg', text:'Treats generalised ITCH WITHOUT A RASH as a systemic presentation \u2014 not reaching for stronger topical steroids \u2014 and constructs the differential (haematological, cholestatic/liver, renal, thyroid, iron deficiency, diabetes, drugs, malignancy; plus xerosis/scabies to exclude)' },
-      { dom:'dg', text:'Actively SCREENS the B-symptom/systemic red flags \u2014 drenching night sweats, unintentional weight loss, fevers, profound fatigue, alcohol-induced itch/pain \u2014 rather than focusing only on the skin' },
-      { dom:'dg', text:'Recognises that nodes, liver and spleen cannot be examined on video and arranges a same- or next-day face-to-face EXAMINATION for lymphadenopathy (cervical/axillary/inguinal — rubbery, painless, enlarging) and hepatosplenomegaly, and finds/acts on the enlarged cervical node' },
-      { dom:'cm', text:'Arranges appropriate investigations (FBC + blood film, LDH, ESR/CRP, U&E, LFTs incl. GGT, ferritin, TFTs, glucose/HbA1c, calcium ± HIV, per BAD 2018; urgent CXR within 2 weeks because he is 40+ with fatigue and weight loss, NICE NG12) targeted to the differential' },
-      { dom:'cm', text:'Applies NICE NG12 accurately: a suspected cancer pathway referral for lymphoma (unexplained lymphadenopathy, taking into account fever, night sweats, pruritus and weight loss), a very urgent FBC within 48 hours (persistent fatigue, unexplained fever, lymphadenopathy or hepatosplenomegaly), and an urgent chest X-ray (40+ with two unexplained symptoms such as fatigue and weight loss) — not watchful waiting' },
-      { dom:'ro',   text:'Takes the itch and its impact (sleep, distress) seriously while widening the lens, and elicits the systemic features the patient has not volunteered' },
-      { dom:'ro',   text:'Conveys the need for urgent investigation honestly and calmly \u2014 explaining why itch can reflect something internal \u2014 without catastrophising, and checks understanding' },
-      { dom:'cm',    text:'Safety-nets and follows up: very urgent FBC (within 48 hours), urgent chest X-ray and suspected cancer pathway referral with timing, symptomatic itch relief (emollients, antihistamine for sleep, measures) meanwhile, red flags warranting sooner help, definite review of results, and active tracking \u2014 systemic work-up, not escalating creams' },
+    "checkpoints": [
+      {
+        "dom": "dg",
+        "text": "Takes a focused third-party history: distribution, nocturnal itch, duration, treatment so far, others affected (staff, residents, family), crusting, systemic features and medicines"
+      },
+      {
+        "dom": "dg",
+        "text": "Recognises a probable scabies outbreak in a care home, with possible crusted scabies in Iris, and considers other causes of itch in older people"
+      },
+      {
+        "dom": "cm",
+        "text": "Arranges same-day face-to-face assessment at the home, and does not rely on further remote prescribing"
+      },
+      {
+        "dom": "cm",
+        "text": "Explains that the care home should inform the UKHSA health protection team, who coordinate outbreak management: simultaneous treatment of all residents, staff and close contacts, environmental measures, and specialist advice on oral ivermectin for crusted scabies (check the SPC/local formulary)"
+      },
+      {
+        "dom": "cm",
+        "text": "Advises Helen to treat herself and her household at the same time as the home (permethrin cream, two applications 7 days apart, via pharmacy or her own GP), with washing of clothes and bedding"
+      },
+      {
+        "dom": "ro",
+        "text": "Involves Helen as Iris’s health and welfare attorney in best-interests decisions about treatment, and explains that Iris lacks capacity for this decision"
+      },
+      {
+        "dom": "ro",
+        "text": "Keeps other residents’ information confidential and explains why respectfully"
+      },
+      {
+        "dom": "ro",
+        "text": "Responds to the neglect question honestly: acknowledges the earlier prescription without examination, explains how it will be reviewed, and signposts routes for concerns (home manager, practice complaints, CQC; safeguarding if indicators)"
+      }
     ],
-    worked:[
-      { lbl:'Validate, then widen', txt:'"That kind of relentless itch is genuinely miserable, and I\u2019m not going to brush it off. But here\u2019s the thing that changes my approach: when someone itches all over with almost nothing to see, and creams don\u2019t help, I have to look beyond the skin for a cause inside."' },
-      { lbl:'Elicit the red flags', txt:'"Let me ask some things that might seem unrelated. Any drenching sweats at night \u2014 soaking the sheets? \u2026 Yes. Lost any weight without trying? \u2026 And how\u2019s your energy, any fevers? \u2026 Thank you. Does the itch get worse after a drink? Those answers matter a lot."' },
-      { lbl:'Examine deliberately', txt:'"Have you noticed any lumps anywhere — neck, armpits or groin? … You’ve felt one in your neck. I can’t examine glands or your tummy properly over video, so I’d like you to come in today or tomorrow so I can feel them myself. … (Face to face.) There’s a firmish, rubbery gland in your neck. Combined with the sweats and weight loss, that’s something I need to investigate properly and promptly."' },
-      { lbl:'Honest naming + plan', txt:'"I want to be straight with you. An itch like this, with night sweats, weight loss and an enlarged gland, can be a sign of a problem with the lymph glands \u2014 a lymphoma is one we have to rule out. I\u2019m not saying that\u2019s what it is, but it needs urgent blood tests and a specialist."' },
-      { lbl:'The pathway', txt:'"So I’m arranging a blood count within the next two days and a chest X-ray, and referring you on the suspected cancer pathway to the specialists, which means you’re seen quickly and should have an answer within about four weeks. These conditions, if that\u2019s what it turns out to be, are often very treatable \u2014 and getting answers quickly is exactly the right move."' },
-      { lbl:'Relief + safety-net', txt:'"For the itch itself, keep using emollients generously and I\u2019ll add an antihistamine to help you sleep. If you develop high fevers, get much more unwell, or notice new lumps, contact us sooner. I\u2019ll chase the results and we\u2019ll go through everything together."' },
+    "worked": [
+      {
+        "lbl": "Take it seriously",
+        "txt": "“Thank you for ringing, and I’m sorry your mum’s been so uncomfortable. Let me ask a few questions so I can work out what’s going on today.”"
+      },
+      {
+        "lbl": "Name the likely cause",
+        "txt": "“An itch that’s worse at night, in the hands, wrists and waist, with staff and you itching too, sounds very much like scabies, tiny mites that spread through close skin contact. The thick crusty skin on her hands makes me think she may have a heavier form, which spreads more easily.”"
+      },
+      {
+        "lbl": "Today",
+        "txt": "“I’d like a doctor to see her at the home today, rather than another cream over the phone. If it’s scabies, the home needs to contact the public health team, who organise treating everyone at the same time.”"
+      },
+      {
+        "lbl": "Your role",
+        "txt": "“As her attorney for health decisions, you’ll be involved in agreeing her treatment. Your mum isn’t able to decide this herself now, so we’ll decide together what’s in her best interests.”"
+      },
+      {
+        "lbl": "Confidentiality",
+        "txt": "“I can’t tell you about other residents, in the same way I wouldn’t share your mum’s details with their families. The public health team will make sure everyone affected is treated.”"
+      },
+      {
+        "lbl": "The neglect question",
+        "txt": "“You’re right that a cream was prescribed without anyone looking at her skin, and that should have been different. I’ll make sure that’s reviewed. If you want to raise concerns formally, I can explain how.”"
+      }
     ],
-    learning:'Generalised PRURITUS with little or no primary rash (only excoriations), persistent and treatment-resistant \u2014 especially in middle-aged/older adults and worse at night \u2014 is a flag to think SYSTEMICALLY rather than escalate topical steroids. The differential spans HAEMATOLOGICAL disease (lymphoma, classically Hodgkin; polycythaemia vera, with post-bath itch), CHOLESTASIS/liver disease, CHRONIC KIDNEY DISEASE (uraemic pruritus), THYROID disease, IRON DEFICIENCY, DIABETES, DRUGS, HIV, occult MALIGNANCY, and the common xerosis/eczema/scabies that must be excluded but not assumed. The decisive step is to actively screen the B-symptom cluster \u2014 drenching night sweats, unintentional weight loss, recurrent fevers, profound fatigue, and itch/pain after alcohol \u2014 and to examine all node groups (rubbery, painless, enlarging lymphadenopathy) plus the liver and spleen — face to face, because this cannot be done on video. Itch with this cluster and a rubbery cervical node is a suspected LYMPHOMA presentation: arrange bloods (FBC + film very urgently, within 48 hours, plus LDH, ESR/CRP, U&E, LFTs incl. GGT, ferritin, TFTs, glucose/HbA1c, calcium ± HIV, per BAD 2018) and, under NICE NG12 (Suspected cancer: recognition and referral, last updated April 2026), consider a suspected cancer pathway referral for Hodgkin or non-Hodgkin lymphoma in adults with unexplained lymphadenopathy (or splenomegaly for non-Hodgkin lymphoma), taking into account associated symptoms, particularly fever, night sweats, shortness of breath, pruritus and weight loss (and, for Hodgkin lymphoma, alcohol-induced lymph node pain) — a suspected cancer pathway referral here; persistent fatigue, unexplained fever, lymphadenopathy or hepatosplenomegaly prompt a very urgent FBC; and at 40 or over with two unexplained symptoms such as fatigue and weight loss, offer an urgent chest X-ray within 2 weeks. The hidden agenda is the wish for a stronger cream by a patient who has not connected his sweats and weight loss to the itch; take the itch and its impact seriously, widen the lens by eliciting the unvolunteered systemic features, provide symptomatic relief meanwhile, and convey the need for urgent investigation honestly and calmly \u2014 not escalating creams.',
-    knowledge:{
-      guideline:'BAD guidelines for generalised pruritus in adults without an underlying dermatosis (2018) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated April 2026) Suspected cancer (lymphoma, leukaemia, lung) · BNF · lymphoma B symptoms',
-      points:[
-        { h:'Itch without rash = think systemic', t:'Persistent generalised pruritus with no primary rash (only excoriations), treatment-resistant and night-worse, warrants a search for an internal cause rather than stronger topical steroids (BAD 2018).' },
-        { h:'Systemic differential', t:'Haematological (lymphoma, polycythaemia vera), cholestasis/liver disease, chronic kidney disease (uraemic), thyroid disease, iron deficiency, diabetes, drugs, HIV, occult malignancy; exclude xerosis/eczema/scabies but don\u2019t assume them.' },
-        { h:'B symptoms & exam', t:'Screen drenching night sweats, unintentional weight loss, recurrent fevers, profound fatigue, alcohol-induced itch/pain; examine all node groups (rubbery, painless, enlarging) and for hepatosplenomegaly — face to face, not by video.' },
-        { h:'Investigations', t:'BAD 2018 first-line: FBC, ferritin, renal, liver and thyroid function; add blood film, LDH, ESR/CRP, calcium, glucose/HbA1c and HIV as the picture suggests. Urgent CXR (within 2 weeks) at 40+ with two unexplained symptoms such as fatigue and weight loss (NICE NG12).' },
-        { h:'NICE NG12 lymphoma, leukaemia and lung actions', t:'NICE NG12: lymphoma — consider a suspected cancer pathway referral for Hodgkin or non-Hodgkin lymphoma in adults with unexplained lymphadenopathy (or splenomegaly for non-Hodgkin lymphoma), taking into account associated symptoms, particularly fever, night sweats, shortness of breath, pruritus and weight loss (and, for Hodgkin lymphoma, alcohol-induced lymph node pain). Leukaemia — persistent fatigue, unexplained fever, generalised lymphadenopathy or hepatosplenomegaly → consider a very urgent FBC (within 48 hours). Generalised itch with B symptoms and a rubbery node → suspected cancer pathway referral.' },
-        { h:'Symptomatic relief', t:'Continue generous emollients, consider a sedating antihistamine at night to aid sleep (BAD 2018; dose per BNF), and general anti-itch measures while investigation proceeds \u2014 relief alongside, not instead of, the work-up.' },
-        { h:'Never do', t:'Never escalate topical steroids for unexplained generalised itch without a systemic screen; never miss the B-symptom cluster or a rubbery node; never label "dry skin/eczema" by assumption; never watchful-wait a lymphoma picture.' },
-        { h:'Safety-net & follow-up', t:'Very urgent FBC (within 48 hours), urgent CXR and suspected cancer pathway referral with timing; itch relief meanwhile; red flags (high fevers, new lumps, marked deterioration); definite results review with active tracking.' }
+    "learning": "Generalised itch in an older care-home resident needs examination and a broad differential (dry skin, drugs, eczema, systemic disease), but itch worse at night affecting the hands, wrists, waist and breasts, with staff, other residents and visitors itching, is scabies until proven otherwise. In older people with dementia or immunosuppression, scabies may be atypical or crusted (hyperkeratotic, Norwegian) scabies: thick, crusted scaling, often on the hands, with very large numbers of mites and high infectivity. Topical steroids alone can mask it and make it worse. UKHSA guidance on scabies in care homes and other closed settings advises that when scabies is suspected in a care home, the home should contact the local health protection team; outbreaks are managed by coordinated, simultaneous treatment of all residents, staff and close contacts (including families), environmental cleaning and laundering, and, in crusted scabies or outbreaks, consideration of oral ivermectin under specialist or UKHSA advice (check the SPC/local formulary). Topical permethrin 5% is applied to the whole body (including scalp, face and neck in older people, avoiding the eyes) and repeated after 7 days. Itch can persist for several weeks after successful treatment. For a resident who lacks capacity, treatment decisions are made in her best interests, involving a registered health and welfare attorney (Mental Capacity Act 2005). Other residents’ information is confidential. When a relative asks about neglect, respond honestly, acknowledge any shortcomings (such as prescribing without examination), and explain routes for concerns; a delayed diagnosis is not in itself neglect, but safeguarding should be considered if there are wider indicators.",
+    "knowledge": {
+      "guideline": "[1] UKHSA Guidance on the management of scabies cases and outbreaks in long-term care facilities and other closed settings (2023; check current version) · [2] NICE CKS Scabies (check current version) · [3] Mental Capacity Act 2005 and Code of Practice · [4] GMC Confidentiality: good practice in handling patient information (2017) · [5] GMC Good medical practice (2024) – openness and raising concerns · [6] Product SPCs for permethrin cream and oral ivermectin",
+      "summary": "A care-home resident with dementia has six weeks of nocturnal itch in a scabies distribution and crusted skin on her hands; staff, another resident and her daughter are itching. Treat as a probable scabies outbreak with possible crusted scabies: same-day examination, the home to contact the UKHSA health protection team, simultaneous treatment of residents, staff and contacts, Helen and her household treated at the same time, best-interests decisions with Helen as attorney, confidentiality for others, and an honest response about the earlier remote prescription.",
+      "points": [
+        {
+          "h": "Recognise scabies",
+          "t": "Nocturnal itch; burrows and papules in finger webs, wrists, waist, breasts and genitals; itch in contacts. In older people the pattern can be atypical and the face and scalp involved [2]."
+        },
+        {
+          "h": "Crusted scabies",
+          "t": "Thick, crusted, scaly plaques, often on the hands, in older, immunosuppressed or cognitively impaired people. Very high mite load and infectivity; may itch little [1,2]."
+        },
+        {
+          "h": "Care home outbreaks",
+          "t": "The care home should contact the UKHSA health protection team when scabies is suspected. Outbreak management includes case finding, simultaneous treatment of residents, staff and contacts, and environmental measures [1]."
+        },
+        {
+          "h": "Treatment",
+          "t": "Permethrin 5% cream to the whole body, repeated after 7 days (check the SPC/local formulary). In crusted scabies or outbreaks, oral ivermectin may be advised by specialists or UKHSA [1,6]."
+        },
+        {
+          "h": "Contacts and laundry",
+          "t": "Household and close contacts treated at the same time, even without symptoms. Wash clothing, towels and bedding at 50°C or above, or seal in bags for 72 hours [2]."
+        },
+        {
+          "h": "After treatment",
+          "t": "Itch may last 2–4 weeks; persistent itch beyond that, new burrows or crusting suggests treatment failure or reinfestation."
+        },
+        {
+          "h": "Capacity and LPA",
+          "t": "If the resident lacks capacity for the decision, treat in her best interests and consult the registered health and welfare attorney [3]."
+        },
+        {
+          "h": "Confidentiality and candour",
+          "t": "Do not disclose other residents’ details [4]. Be open about shortcomings in care and explain how to raise concerns [5]."
+        }
       ]
     }
   };
@@ -271,31 +367,77 @@
   Object.assign(window.SCA_EXTRAS, {
 
     'itchy-rash-systemic': {
-      ceg: ['Long-term conditions & cancer', 'New & undifferentiated presentations'],
-      stem: {
-        name: 'Howard Leyton', age: '58 years \u00b7 male',
-        pmh: ['\u26a0 3 months generalised relentless itch, worse at night, NO primary rash (only excoriations)', '\u26a0 Drenching night sweats, unintentional weight loss, fatigue, intermittent fevers', 'Emollients + mild steroid: no benefit'],
-        meds: ['None regular'],
-        allergy: 'NKDA',
-        recent: '"Just give me something stronger that actually works \u2014 I\u2019m scratching myself raw."',
-        reason: 'Video consultation \u2014 generalised itch unresponsive to creams.'
-      },
-      timeMap: [
-        { t:'0\u20132',  h:'Validate, then widen', d:'Itch is miserable AND itch without a rash = think systemic, not stronger steroid.' },
-        { t:'2\u20134',  h:'Elicit B symptoms', d:'Night sweats, weight loss, fevers, fatigue, alcohol-induced itch \u2014 the lymphoma cluster.' },
-        { t:'4\u20136',  h:'Examine nodes/organs', d:'Ask about lumps on video; examine cervical/axillary/inguinal nodes (rubbery) and for hepatosplenomegaly face to face the same or next day — finds the enlarged node.' },
-        { t:'6\u20139',  h:'NICE NG12 actions', d:'Very urgent FBC/film (48 h), LDH, U&E, LFTs/GGT, ferritin, TFTs + urgent CXR (40+, fatigue + weight loss) + suspected cancer pathway referral for lymphoma.' },
-        { t:'9\u201312', h:'Relief + safety-net', d:'Emollients + antihistamine for sleep; high fevers/new lumps \u2192 sooner; chase results, review.' }
+      "ceg": [
+        "Older adults",
+        "Professional & ethical dilemmas",
+        "New & undifferentiated presentations"
       ],
-      wordPics: {
-        fail: 'Prescribes a stronger steroid/antihistamine for "eczema"; never asks about B symptoms; never examines nodes; misses a lymphoma.',
-        pass: 'Recognises itch-without-rash as systemic, screens B symptoms, examines nodes face to face and refers on the suspected cancer pathway with bloods.',
-        exc:  'Takes the itch seriously while widening to a systemic differential, elicits the B-symptom cluster, arranges a face-to-face examination and finds lymphadenopathy/organomegaly, arranges a very urgent FBC, an urgent chest X-ray and a suspected cancer pathway referral for suspected lymphoma (NICE NG12), gives symptomatic relief, and communicates honestly and calmly with safety-netting.'
+      "stem": {
+        "name": "Iris Paterson",
+        "age": "86 years · female",
+        "pmh": [
+          "Alzheimer’s dementia (moderate)",
+          "Hypertension",
+          "Osteoarthritis"
+        ],
+        "meds": [
+          "Donepezil",
+          "Amlodipine",
+          "Emollient (care home request, 4 weeks ago)",
+          "Hydrocortisone 1% cream (care home request, 4 weeks ago)"
+        ],
+        "allergy": "None recorded",
+        "recent": "Residential care home. Four weeks ago: telephone request from the home for “eczema creams”, issued; no examination recorded. Registered health and welfare LPA: daughter, Helen Paterson.",
+        "reason": "Daughter calling: “Mum’s itching is getting worse.”"
       },
-      avoid: [
-        { dont:'"Let\u2019s try a stronger steroid cream and a different antihistamine."', instead:'"Itching all over with nothing to see, not helped by creams, makes me look beyond the skin \u2014 let me ask about sweats and weight, and then check your glands in person."', why:'Escalating topical therapy for unexplained generalised itch misses the systemic differential, including lymphoma.' },
-        { dont:'(Skipping systemic questions) "It\u2019s probably just dry skin."', instead:'"Any drenching night sweats, weight loss or fevers? Does it itch after a drink?"', why:'Failing to elicit B symptoms misses the key cluster pointing to haematological malignancy.' },
-        { dont:'"Let\u2019s see if it settles over a few weeks."', instead:'"With night sweats, weight loss and an enlarged gland, this needs urgent blood tests and a specialist now."', why:'Watchful waiting on a lymphoma picture delays urgent diagnosis.' }
+      "timeMap": [
+        {
+          "t": "0–1",
+          "h": "Open",
+          "d": "Identity and LPA. Acknowledge anger; promise to return to neglect."
+        },
+        {
+          "t": "1–5",
+          "h": "History",
+          "d": "Sites, night itch, crusted hands, contacts, systemic features, medicines."
+        },
+        {
+          "t": "5–8",
+          "h": "Explain",
+          "d": "Probable scabies, possibly crusted; steroid may worsen; not about cleanliness. ICE: guilt, grandchildren, names."
+        },
+        {
+          "t": "8–11",
+          "h": "Plan",
+          "d": "Same-day visit; UKHSA via the home; simultaneous treatment; Helen’s household; best interests; confidentiality; honest answer on neglect."
+        },
+        {
+          "t": "11–12",
+          "h": "Close",
+          "d": "Teach-back; call back after visit; safety-net."
+        }
+      ],
+      "wordPics": {
+        "fail": "Prescribes a stronger steroid or antihistamine over the phone; misses that others are itching; shares other residents’ details or refuses to engage with the neglect question.",
+        "pass": "Recognises probable scabies, arranges a same-day visit, explains outbreak management with the health protection team, and advises Helen to treat her household.",
+        "exc": "All of the above, plus: recognises possible crusted scabies and the steroid effect; simultaneous treatment explained clearly; involves Helen properly as attorney; explains confidentiality respectfully; acknowledges the earlier remote prescription honestly and offers routes for concerns; calls back after the visit."
+      },
+      "avoid": [
+        {
+          "dont": "“Let’s try a stronger steroid cream.”",
+          "instead": "“This sounds like scabies; a doctor needs to see her today.”",
+          "why": "Steroids can worsen scabies and delay diagnosis."
+        },
+        {
+          "dont": "“The lady next door is Mrs…”",
+          "instead": "“I can’t share other residents’ details, but everyone affected will be treated.”",
+          "why": "Other residents’ information is confidential."
+        },
+        {
+          "dont": "“The home did everything right.”",
+          "instead": "“A cream was prescribed without anyone examining her, and that should have been different.”",
+          "why": "Defensiveness damages trust; openness is a professional duty."
+        }
       ]
     },
 

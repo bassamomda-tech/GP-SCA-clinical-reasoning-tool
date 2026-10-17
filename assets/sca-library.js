@@ -104,7 +104,7 @@ window.SCA_LIBRARY = [
       { t:'Acute chest pain on the phone — triage with your ears', ty:'t', src:52, live:'chest-acute-hgv' },
       { t:'Exertional tightness in a 47-year-old builder — cardiac until cleared', ty:'v', live:'angina-builder' },
       { t:'Incidental abnormal ECG — explaining AF and starting the stroke maths', ty:'t', src:141, live:'af-incidental', ceg:['Investigations & results'] },
-      { t:'AF anticoagulation refusal — “warfarin killed my father”, shared decision', ty:'v', live:'af-anticoag-decision', ceg:['Prescribing & pharmacology'] },
+      { t:'A fall on a DOAC and a daughter who wants it stopped — falls are not a reason to stop anticoagulation alone: ORBIT, modifiable bleeding risks, the new doxazosin, DOAC dose check and the patient’s own decision', ty:'v', live:'af-anticoag-decision', ceg:['Prescribing & pharmacology'] },
       { t:'New heart failure — the four-pillar conversation', ty:'v', src:121, live:'hf-four-pillars', ceg:['Long-term conditions & cancer'] },
     ]},
 
@@ -187,7 +187,7 @@ window.SCA_LIBRARY = [
     v:[
       { t:'Husband ringing about his wife\u2019s mood — the third-party call', ty:'t', live:'third-party-meno' },
       { t:'Postmenopausal bleeding — the NG12 suspected cancer pathway referral you never miss', ty:'v', live:'pmb-endometrial', ceg:['Long-term conditions & cancer'] },
-      { t:'HRT counselling — symptoms, options, honest risk', ty:'t', src:94, live:'hrt-counselling', ceg:['Prescribing & pharmacology'] },
+      { t:'Perimenopause at 46 — a clinical diagnosis without FSH, HRT is not contraception (LNG-IUS for both), CBT options, brain fog, a fear of dementia and a work performance review', ty:'t', src:94, live:'hrt-counselling', ceg:['Prescribing & pharmacology'] },
       { t:'"Does HRT give you breast cancer?" — numbers that mean something', ty:'v', src:188, live:'hrt-breast-cancer-numbers', ceg:['Investigations & results'] },
       { t:'Unscheduled bleeding ON HRT — when to refer', ty:'t', live:'hrt-unscheduled-bleed', ceg:['Long-term conditions & cancer'] },
     ]},
@@ -260,7 +260,7 @@ window.SCA_LIBRARY = [
       { t:'Health anxiety / GAD — the serial reassurance-seeker and the reassurance trap', ty:'v', live:'health-anxiety-gad' },
       { t:'Depression in a man with a shotgun licence — risk + the firearms duty', ty:'v', src:10, live:'depression-firearms', ceg:['Professional & ethical dilemmas'] },
       { t:'Military veteran who "doesn\u2019t do feelings" — PTSD routes (Op COURAGE)', ty:'t', src:26, live:'ptsd-veteran', ceg:['Health disadvantage & vulnerabilities'] },
-      { t:'Flight anxiety wanting diazepam — the kind decline and the real alternative', ty:'t', src:170, live:'flight-anxiety-diazepam', ceg:['Prescribing & pharmacology'] },
+      { t:'Diazepam for a long-haul flight at 15 weeks pregnant — declining safely, travel VTE risk in pregnancy, and a sudden bereavement', ty:'t', src:170, live:'flight-anxiety-diazepam', ceg:['Prescribing & pharmacology'] },
       { t:'Sex difficult after past assault — trauma-informed pace', ty:'v', src:169, live:'sex-after-assault' },
       { t:'Gambling out of control — the debt behind the insomnia', ty:'v', src:151, live:'gambling-insomnia' },
       { t:'Repeated self-harm in crisis — EUPD, validation, the safety plan (not just “refer”)', ty:'v', live:'eupd-crisis', ceg:['Health disadvantage & vulnerabilities'] },
@@ -315,7 +315,7 @@ window.SCA_LIBRARY = [
     note:'Results stations live or die on one skill: the number explained as a story, then the right next test.',
     v:[
       { t:'FIT 47 in a man who blames his piles — the suspected cancer pathway reframe', ty:'t', live:'fit-positive' },
-      { t:'Microcytic anaemia at 68 — iron isn\u2019t a diagnosis, find the bleed', ty:'v', src:29, live:'anaemia-ida', ceg:['Long-term conditions & cancer'] },
+      { t:'Iron deficiency that persists after clear scopes — oral iron intolerance, alternate-day dosing, black stools versus melaena, IV iron, what to investigate next and the fear that the cameras missed something', ty:'v', src:29, live:'anaemia-ida', ceg:['Long-term conditions & cancer'] },
       { t:'B12 deficiency — injections, neurology, and why diet won\u2019t fix it', ty:'t', src:45, live:'b12-deficiency' },
       { t:'Isolated macrocytosis — the result that opens the alcohol door', ty:'t', src:144, live:'macrocytosis-result' },
       { t:'Low platelets in a young adult — watch, test or refer today?', ty:'t', src:35, live:'low-platelets-young' },
@@ -323,7 +323,7 @@ window.SCA_LIBRARY = [
       { t:'Hyponatraemia on a new diuretic — drugs first, urgency by number', ty:'t', src:15, live:'hyponatraemia-diuretic', ceg:['Older adults'] },
       { t:'Back pain + abnormal bloods — the myeloma picture', ty:'t', src:4, live:'back-pain-myeloma', ceg:['Long-term conditions & cancer'] },
       { t:'Abnormal result in a blood donor — incidental findings etiquette', ty:'t', src:185, live:'blood-donor-anaemia', ceg:['Long-term conditions & cancer'] },
-      { t:'Raised ESR/CRP — the non-specific marker and the GCA you don’t miss', ty:'v', live:'raised-inflammatory-markers', ceg:['Urgent & unscheduled care'] },
+      { t:'Rising CRP as the steroid comes down — PMR relapse during tapering, self-adjusted prednisolone, stopped bone protection, steroid card and when to refer', ty:'v', live:'raised-inflammatory-markers', ceg:['Urgent & unscheduled care'] },
       { t:'Very high cholesterol in a fit young man — spotting familial hypercholesterolaemia', ty:'v', src:167, live:'familial-hypercholesterolaemia' },
       { t:'HbA1c 47 — pre-diabetes as a fork in the road (prevention, not “fine”)', ty:'t', src:171, live:'prediabetes-fork' },
     ]},
@@ -334,7 +334,7 @@ window.SCA_LIBRARY = [
       { t:'Critical potassium recall — the emergency the patient feels fine through', ty:'t', live:'hyperkalaemia-recall', ceg:['Urgent & unscheduled care'] },
       { t:'Non-visible haematuria at 67 — “can’t see it” isn’t “nothing” (NG12)', ty:'v', live:'nonvisible-haematuria', ceg:['Long-term conditions & cancer'] },
       { t:'Polycystic kidney disease at 24 — screening the family, planning a life', ty:'v', src:12, live:'pkd-young', ceg:['Gender, reproductive & sexual health'] },
-      { t:'Mildly raised calcium — PTH-led work-up before the cancer worry', ty:'v', src:133, live:'hypercalcaemia-workup', ceg:['Investigations & results'] },
+      { t:'Raised calcium with a raised PTH — explaining primary hyperparathyroidism, the referral criteria, the thiazide, and a bereaved man’s fear of surgery', ty:'v', src:133, live:'hypercalcaemia-workup', ceg:['Investigations & results'] },
       { t:'Vomiting + on an ACE inhibitor — acute kidney injury and the sick-day rules', ty:'v', live:'aki-sick-day', ceg:['Urgent & unscheduled care'] },
       { t:'Raised prolactin (amenorrhoea + galactorrhoea) — drug cause, MRI, fertility', ty:'v', live:'raised-prolactin', ceg:['Gender, reproductive & sexual health'] },
       { t:'Incidental thyroid nodule — normal TFTs don’t reassure (NG12)', ty:'v', live:'thyroid-nodule', ceg:['Long-term conditions & cancer'] },
@@ -380,7 +380,7 @@ window.SCA_LIBRARY = [
       { t:'Generalised itch, no rash — the systemic screen (and the lymphoma it hides)', ty:'v', src:145, live:'generalised-itch', ceg:['Long-term conditions & cancer'] },
       { t:'White patches spreading — vitiligo, the contagion myth, and the stigma that weighs most', ty:'v', src:128, live:'vitiligo-meaning', ceg:['Ethnicity, culture & diversity'] },
       { t:'Keloid scar in a young Black woman — options and honesty', ty:'t', src:119, live:'keloid-scar', ceg:['Ethnicity, culture & diversity'] },
-      { t:'A lesion that won\u2019t heal — skin cancer suspected cancer pathway behind "just a sore"', ty:'v', src:20, live:'non-healing-lesion', ceg:['Long-term conditions & cancer'] },
+      { t:'A slow-growing spot on the nose in an 82-year-old carer — suspected BCC, routine versus suspected cancer referral (NG12), fear of disfigurement and the barriers to going', ty:'v', src:20, live:'non-healing-lesion', ceg:['Long-term conditions & cancer'] },
       { t:'Painful forehead rash near the eye — shingles, the antiviral window + Hutchinson\u2019s sign', ty:'v', src:193, live:'shingles-ophthalmic', ceg:['Urgent & unscheduled care'] },
       { t:'Drenching night sweats in a young adult — the lymphoma B-symptom screen, not ‘just stress’', ty:'v', src:48, live:'night-sweats-young', ceg:['Long-term conditions & cancer'] },
       { t:'Fingers turning white in a young girl — Raynaud\u2019s vs connective tissue', ty:'t', src:101, live:'raynauds-young-girl', ceg:['Children & young people'] },
@@ -393,7 +393,7 @@ window.SCA_LIBRARY = [
     v:[
       { t:'Changing mole — suspected melanoma, the 7-point checklist', ty:'v', live:'melanoma-2ww' },
       { t:'Non-healing scaly lump on the ear — BCC/SCC and the sun-damage story', ty:'v', src:191, live:'ear-scaly-lump-scc' },
-      { t:'Itchy widespread rash — eczema vs the systemic clue', ty:'t', src:105, live:'itchy-rash-systemic', xref:true },
+      { t:'An itching care-home resident, itchy staff and an angry daughter — a probable scabies outbreak: UKHSA, simultaneous treatment, LPA and confidentiality', ty:'t', src:105, live:'itchy-rash-systemic', xref:true },
     ]},
 
   { f:'ENT & eyes', ic:'👂', sp:'derm', ceg:['New & undifferentiated presentations'],
@@ -427,7 +427,7 @@ window.SCA_LIBRARY = [
     v:[
       { t:'Persistent fatigue in a young adult — the structured screen + the life behind it', ty:'v', src:28, live:'persistent-fatigue-young' },
       { t:'Tiredness in a young man (testosterone myths): see Men\u2019s health family', ty:'v', xref:true },
-      { t:'Fatigue with abnormal LFTs/vitamin D — interpreting the panel', ty:'v', src:60, live:'fatigue-lfts-vitd', ceg:['Investigations & results'] },
+      { t:'A private ‘health MOT’ with nine flagged results — prioritising what matters (cardiovascular risk, fatty liver, HbA1c), what doesn’t, and the brother’s heart attack behind it', ty:'v', src:60, live:'fatigue-lfts-vitd', ceg:['Investigations & results'] },
     ]},
 
   { f:'Prevention, screening & public health', ic:'\ud83d\udee1\ufe0f', sp:'prev', ceg:['Population & planetary health'],
@@ -475,9 +475,9 @@ window.SCA_LIBRARY = [
     v:[
       { t:'Painful red itchy ear with discharge — otitis externa & the malignant-OE flag', ty:'v', live:'otitis-externa' },
       { t:'Itchy purple wrist bumps + white oral streaks — lichen planus (the 6 Ps)', ty:'v', live:'lichen-planus' },
-      { t:'Herald patch then a Christmas-tree rash — pityriasis rosea (+ the syphilis caveat)', ty:'v', live:'pityriasis-rosea' },
-      { t:'Pearly umbilicated bumps in a child — molluscum, reassure & avoid harm', ty:'v', live:'molluscum-contagiosum', ceg:['Children & young people'] },
-      { t:'School "nits" letter — head lice: detection combing & treat only live lice', ty:'v', live:'head-lice', ceg:['Children & young people'] },
+      { t:'A spreading truncal rash at 10 weeks pregnant — pityriasis rosea, the syphilis test, the miscarriage association and a hidden STI fear', ty:'v', live:'pityriasis-rosea' },
+      { t:'Childminder exclusion and a mother’s job at stake — molluscum, the removal request, eczema and the eyelid red flag', ty:'v', live:'molluscum-contagiosum', ceg:['Children & young people'] },
+      { t:'Sent home again with nits — head-lice treatment failure, an unsafe home remedy, school exclusion and a stretched single parent', ty:'v', live:'head-lice', ceg:['Children & young people'] },
       { t:'Dripping hands and armpits — primary focal hyperhidrosis, stepwise treatment', ty:'v', live:'hyperhidrosis-primary' },
       { t:'Itchy weals for months, no trigger — chronic urticaria & the angioedema safety-net', ty:'v', live:'chronic-urticaria', ceg:['Prescribing & pharmacology'] },
     ]},
@@ -489,7 +489,7 @@ window.SCA_LIBRARY = [
       { t:'First-step heel pain easing through the day — plantar fasciitis, conservative care', ty:'v', live:'plantar-fasciitis' },
       { t:'Sore foreskin & tightening — balanitis/phimosis, check glucose & the BXO flag', ty:'v', live:'balanitis-phimosis', ceg:['Long-term conditions & cancer'] },
       { t:'Painful leaking swelling in the natal cleft — pilonidal abscess, drain & refer', ty:'v', live:'pilonidal-sinus', ceg:['Urgent & unscheduled care'] },
-      { t:'Stiff painful shoulder, can’t reach behind — frozen shoulder, phases & the diabetes link', ty:'v', live:'frozen-shoulder', ceg:['Long-term conditions & cancer'] },
+      { t:'A stiff, painful shoulder and a business at risk — frozen shoulder, the injection request, and the diabetes test she is avoiding', ty:'v', live:'frozen-shoulder', ceg:['Long-term conditions & cancer'] },
       { t:'“Like passing glass” + bright blood — anal fissure, soften the stool', ty:'v', live:'anal-fissure' },
     ]},
 
@@ -511,7 +511,7 @@ window.SCA_LIBRARY = [
   { f:'Identity, adolescence & dignity', ic:'🤝', sp:'general', ceg:['Health disadvantage & vulnerabilities'],
     note:'Consultations where respect, confidentiality and safeguarding are the skill being tested.',
     v:[
-      { t:'Trans man self-sourcing hormones amid a long wait — affirming care, shared care & bridging', ty:'v', live:'transgender-health', ceg:['Gender, reproductive & sexual health'] },
+      { t:'A trans man’s shared-care monitoring result — raised haematocrit on testosterone, plus the hidden belief that testosterone is contraception (EC, pregnancy test, contraception)', ty:'v', live:'transgender-health', ceg:['Gender, reproductive & sexual health'] },
       { t:'Vapes & pills found in a 15-year-old’s bag — HEADSS, confidentiality & county-lines safeguarding', ty:'v', live:'teen-substance-misuse', ceg:['Children & young people'] },
       { t:'“Antidepressants” that mask the real issue — premature ejaculation, the hidden agenda & treatment', ty:'v', live:'premature-ejaculation', ceg:['Gender, reproductive & sexual health'] },
       { t:'“Will you help me end my life?” — assisted-dying request, law, exploration & non-abandonment', ty:'v', live:'assisted-dying-request', ceg:['End-of-life & palliative care'] },
@@ -521,7 +521,7 @@ window.SCA_LIBRARY = [
     note:'Common presentations named precisely and managed conservatively or compassionately.',
     v:[
       { t:'Painful outer elbow, hurts to grip — tennis elbow (lateral epicondylitis), conservative care', ty:'v', live:'tennis-elbow' },
-      { t:'Itchy bottom at night + tiny white threads — threadworm, treat the whole household', ty:'v', live:'threadworm', ceg:['Children & young people'] },
+      { t:'Threadworm back for the third time — a pregnant mother, a toddler, a shared hostel bathroom and the housing letter', ty:'v', live:'threadworm', ceg:['Children & young people'] },
     ]},
 
   { f:'Infection, travel & occupational', ic:'🦟', sp:'urgent', ceg:['Urgent & unscheduled care'],
@@ -530,7 +530,7 @@ window.SCA_LIBRARY = [
       { t:'Fever back from Thailand — exclude malaria first, then dengue & its warning signs', ty:'t', live:'dengue-fever' },
       { t:'Jabbed by a used needle at work — first aid, risk assessment & time-critical HIV PEP', ty:'v', live:'needlestick-injury', ceg:['Professionalism & ethics'] },
       { t:'Exhausted & breathless months after COVID — long COVID, exclude red flags, pace & rehab', ty:'v', live:'post-covid-syndrome' },
-      { t:'Itchy, flaky, soggy toes — athlete’s foot, the nail reservoir & the diabetic cellulitis caveat', ty:'v', live:'tinea-pedis' },
+      { t:'Smelly feet and a cream that failed — athlete’s foot as the ticket of entry for a withdrawn 16-year-old (seeing alone, HEADSS, low mood and risk)', ty:'v', live:'tinea-pedis' },
     ]},
 
   { f:'More MSK & chest-wall', ic:'🦵', sp:'msk', ceg:['New & undifferentiated presentations'],

@@ -83,12 +83,12 @@ MedChooser.register('pcos', {
       name:'Ovulation induction — letrozole, clomifene (specialist)',
       examples:'Fertility specialist only',
       step:'Fertility — refer',
-      source:'International PCOS guideline 2023 · NICE CG156',
-      sourceUrl:'https://www.nice.org.uk/guidance/cg156',
+      source:'International PCOS guideline 2023 · NICE NG257 (2026)',
+      sourceUrl:'https://www.nice.org.uk/guidance/ng257',
       sideEffects:'Multiple pregnancy, ovarian hyperstimulation',
       monitor:'Specialist follow-up scans',
       counsel:'"If you are trying for a baby we will refer you — start folic acid now."',
-      detail:{ 'Key teaching':'Letrozole is first-line in the international guideline but off-label in the UK. Folic acid before conception (5 mg if BMI ≥30).' },
+      detail:{ 'Key teaching':'Letrozole is first-line in the international guideline but off-label in the UK. NICE NG257 (2026) no longer makes recommendations on ovulation induction in PCOS (a separate NICE PCOS guideline is in development); it still guides fertility assessment and referral. Folic acid before conception (5 mg if BMI ≥30).' },
       conditions: [
         {"kind":"note","label":"Trying to conceive","text":"Refer; check rubella, smear, folic acid, BMI"}
       ]
@@ -98,7 +98,7 @@ MedChooser.register('pcos', {
   sources: [
     { label:'International evidence-based guideline for the assessment and management of PCOS (2023)', url:'https://www.monash.edu/medicine/mchri/pcos/guideline' },
     { label:'NICE CKS — Polycystic ovary syndrome', url:'https://cks.nice.org.uk/topics/polycystic-ovary-syndrome/' },
-    { label:'FSRH — UK Medical Eligibility Criteria (UKMEC)', url:'https://www.fsrh.org/Public/Public/Standards-and-Guidance/fsrh-ukmec-for-contraceptive-use.aspx' },
+    { label:'CoSRH — UK Medical Eligibility Criteria (UKMEC 2025)', url:'https://www.cosrh.org/Common/Uploaded%20files/documents/UKMEC_2025.pdf' },
     { label:'SPC — co-cyprindiol', url:'https://www.medicines.org.uk/emc/search?q=co-cyprindiol' }
   ],
 });
