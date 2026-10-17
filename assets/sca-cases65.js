@@ -6,7 +6,7 @@
    red flags); premenstrual dysphoric disorder (cyclical, severe \u2014
    not "just PMS"); first-episode genital herpes (diagnosis,
    antivirals, the disclosure/psychological hit); and hyperemesis
-   gravidarum (severe NVP \u2014 dehydration/ketones, admission, safe
+   gravidarum (severe NVP \u2014 PUQE/dehydration, admission, safe
    antiemetics). No NG12 cancer pathway genuinely applies; none
    invented.
    Pushes into SCA_CASES + SCA_EXTRAS. Load AFTER sca-cases64.js.
@@ -895,7 +895,7 @@
       wordPics: {
         fail: 'Dismisses as morning sickness and advises ginger/crackers despite inability to keep fluids down; no severity assessment, IV fluids, thiamine or mimic exclusion.',
         pass: 'Recognises hyperemesis, assesses severity, arranges IV rehydration and safe antiemetics with thiamine.',
-        exc: 'Distinguishes hyperemesis from NVP, assesses severity objectively (PUQE/ketones/U&E/fluid tolerance), arranges IV rehydration when fluids not tolerated, prescribes safe antiemetics + thiamine, excludes UTI/molar/multiple/thyroid, and validates/safety-nets compassionately.'
+        exc: 'Distinguishes hyperemesis from NVP, assesses severity objectively (PUQE/U&E/fluid tolerance, not ketonuria), arranges IV rehydration when fluids not tolerated, prescribes safe antiemetics + thiamine, excludes UTI/molar/multiple/thyroid, and validates/safety-nets compassionately.'
       },
       avoid: [
         {

@@ -2442,16 +2442,16 @@
    "reason": "Wants a straight answer on whether HRT causes breast cancer, after a friend’s comment and a newspaper headline."
   },
   "knowledge": {
-   "guideline": "MHRA Drug Safety Update August 2019 (HRT and breast cancer) · NICE NG23 (2015, updated April 2026) · British Menopause Society Fast Facts: HRT and breast cancer risk (2025) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026)",
+   "guideline": "NICE NG23 discussion aid (2024) · MHRA Drug Safety Update August 2019 (HRT and breast cancer) · NICE NG23 (2015, updated April 2026) · British Menopause Society Fast Facts: HRT and breast cancer risk (2025) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026)",
    "summary": "The honest answer is a number, not a yes or no. Systemic HRT carries a small, duration-dependent increase in breast cancer risk, largest with combined HRT; in absolute terms most women who take it are not harmed by it.",
    "points": [
     {
      "h": "The baseline",
-     "t": "MHRA August 2019: of 1000 women aged 50–69 who never use HRT, about 63 are diagnosed with breast cancer over those 20 years (about 1 in 16)."
+     "t": "NICE NG23 discussion aid (2024): of 1000 women starting around 50 who never use HRT, about 59 are diagnosed with breast cancer over the 20 years to age 69 (about 1 in 17)."
     },
     {
      "h": "Five years from age 50",
-     "t": "MHRA August 2019: extra cases per 1000 women over the same 20 years — about 5 with oestrogen-only, 14 with sequential combined (progestogen part of the month) and 20 with continuous combined HRT. Ten years of use roughly doubles these."
+     "t": "NICE NG23 discussion aid (2024): over the same 20 years, 5 years of combined HRT gives about 79 per 1000 (20 extra) and 10 years about 92 (33 extra); 5 years of oestrogen-only gives about 69 (10 extra)."
     },
     {
      "h": "Type, route and stopping",
@@ -2548,9 +2548,9 @@
     "phase": "Explanation",
     "clock": "5–9 min",
     "who": "dr",
-    "text": "Picture 1000 women aged 50. Over the next 20 years, about 63 will get breast cancer without ever taking HRT. If they each take five years of combined HRT, about 14 to 20 more will — depending on whether the progestogen is taken part of the month or every day. So roughly 77 to 83 instead of 63.",
+    "text": "Picture 1000 women aged 50. Over the next 20 years, about 59 will get breast cancer without ever taking HRT. If they each take five years of combined HRT, about 20 more will. So about 79 instead of 59.",
     "dom": "dg",
-    "why": "MHRA 2019 absolute figures as natural frequencies"
+    "why": "NICE NG23 discussion aid (2024) absolute figures as natural frequencies"
    },
    {
     "who": "pt",
@@ -2558,7 +2558,7 @@
    },
    {
     "who": "dr",
-    "text": "Exactly. Two more honest points. The risk grows with the number of years you take it — ten years is roughly double five, so we’ll check your start date and use it. And some of the extra risk lasts for years after stopping, so stopping now doesn’t reset it to zero.",
+    "text": "Exactly. Two more honest points. The risk grows with the number of years you take it — ten years adds about 33 per 1000 rather than 20, so we’ll check your start date and use it. And some of the extra risk lasts for years after stopping, so stopping now doesn’t reset it to zero.",
     "dom": "cm",
     "why": "Duration and persistence after stopping"
    },
@@ -2598,7 +2598,7 @@
    },
    {
     "who": "dr",
-    "text": "That’s a very reasonable decision. We’ll review each year — whether you still need it, and the lowest dose that works. Anything you can do on weight, alcohol and activity lowers your risk whatever you decide. I’ll send you the MHRA information sheet so you can see the numbers again.",
+    "text": "That’s a very reasonable decision. We’ll review each year — whether you still need it, and the lowest dose that works. Anything you can do on weight, alcohol and activity lowers your risk whatever you decide. I’ll send you the NICE discussion aid so you can see the numbers again.",
     "dom": "cm",
     "why": "Annual review, modifiable factors, written information"
    },
@@ -2673,7 +2673,7 @@
    },
    {
     "t": "Reaches a working diagnosis",
-    "d": "States the risk accurately: small, type- and duration-dependent, in absolute terms (MHRA 2019).",
+    "d": "States the risk accurately: small, type- and duration-dependent, in absolute terms (NICE NG23 discussion aid, 2024).",
     "pts": 2, "dom": "dg"
    },
    {
@@ -2729,18 +2729,18 @@
     {
      "t": "5–9",
      "h": "The numbers",
-     "d": "63 per 1000 baseline; 14–20 extra with five years combined; doubles at ten; persists after stopping; obesity comparison; relative vs absolute."
+     "d": "59 per 1000 baseline; 20 extra with five years combined; 33 with ten; persists after stopping; obesity comparison; relative vs absolute."
     },
     {
      "t": "9–12",
      "h": "Decide & close",
-     "d": "Her decision, annual review, modifiable factors, MHRA sheet, teach-back, screening and bleeding safety-net."
+     "d": "Her decision, annual review, modifiable factors, NICE discussion aid, teach-back, screening and bleeding safety-net."
     }
    ],
    "wordPics": {
     "fail": "Answers “no, it’s safe” or “yes, you should stop”; uses relative risk only; no numbers; ignores her guilt; no review.",
     "pass": "Explains a small increased risk with combined HRT that rises with duration; gives some absolute figures; distinguishes oestrogen-only; supports her choice and arranges review.",
-    "exc": "All of the above, plus: MHRA 2019 figures as natural frequencies with a stated time frame; persistence after stopping; a sourced everyday comparison; explains why headlines mislead; reconnects to her benefit; teach-back; she decides with confidence."
+    "exc": "All of the above, plus: NICE NG23 discussion-aid figures as natural frequencies with a stated time frame; persistence after stopping; a sourced everyday comparison; explains why headlines mislead; reconnects to her benefit; teach-back; she decides with confidence."
    },
    "avoid": [
     {
@@ -2750,7 +2750,7 @@
     },
     {
      "dont": "\"It increases your risk by about a third.\"",
-     "instead": "\"About 63 in 1000 anyway; five years of combined HRT adds about 14 to 20.\"",
+     "instead": "\"About 59 in 1000 anyway; five years of combined HRT adds about 20.\"",
      "why": "Relative figures frighten without informing."
     },
     {
@@ -2790,7 +2790,7 @@
    "community": [
     {
      "h": "Patient resources",
-     "t": "MHRA 2019 patient information sheet on HRT and breast cancer; Women’s Health Concern (British Menopause Society); NHS Breast Screening Programme."
+     "t": "NICE NG23 discussion aid on HRT and breast cancer (2024); Women’s Health Concern (British Menopause Society); NHS Breast Screening Programme."
     }
    ]
   },
@@ -2812,15 +2812,15 @@
      "Expectation: a straight yes or no"
     ]
    },
-   "diagnosis": "Combined HRT carries a small increase in breast cancer risk that rises with duration and partly persists after stopping; in absolute terms, about 14–20 extra cases per 1000 women for five years’ use from 50 (MHRA 2019).",
-   "diagnosisLay": "“Out of 1000 women your age, about 63 will get breast cancer over 20 years anyway. Five years of your type of HRT adds about 14 to 20 to that. So most women on it are not harmed by it — but the risk is real, and it grows the longer you take it.”",
+   "diagnosis": "Combined HRT carries a small increase in breast cancer risk that rises with duration and partly persists after stopping; in absolute terms, about 20 extra cases per 1000 women over 20 years for five years’ use from 50 (NICE NG23 discussion aid, 2024).",
+   "diagnosisLay": "“Out of 1000 women your age, about 59 will get breast cancer over 20 years anyway. Five years of your type of HRT adds about 20 to that. So most women on it are not harmed by it — but the risk is real, and it grows the longer you take it.”",
    "management": {
     "reflectIce": "“You asked for honesty, and you’re not reckless — you made a sensible choice. Here are the real numbers so you can decide.”",
     "psychosocial": "Remove guilt, reconnect to her benefit, and give her words to use with her friend.",
     "sharedPlan": [
      "Her choice: continue, reduce or stop — with the figures to hand",
      "Annual review of need and lowest effective dose",
-     "Modifiable factors: weight, alcohol, activity; MHRA information sheet"
+     "Modifiable factors: weight, alcohol, activity; NICE discussion aid"
     ],
     "safetyNet": [
      "Breast lump or change — see us promptly; continue breast screening",
@@ -2838,7 +2838,7 @@
    {
     "ic": "💠",
     "t": "HRT prescribing",
-    "s": "Regimens · MHRA 2019 risk figures",
+    "s": "Regimens · NICE NG23 risk figures",
     "href": "management/hrt-prescribing.html"
    },
    {
@@ -2885,13 +2885,13 @@
      "dom": "ro",
      "fail": "Burying the numbers in jargon — “HR 1.6, CI 1.5–1.7, E3N data”.",
      "why": "“Language not easily understood by the patient.”",
-     "fix": "One picture: 1000 women, 63 anyway, 14–20 more with five years."
+     "fix": "One picture: 1000 women, 59 anyway, 20 more with five years."
     },
     {
      "dom": "cm",
      "fail": "Closing without checking understanding or planning review.",
      "why": "No teach-back and no follow-up are standard failing statements.",
-     "fix": "“What will you tell your friend?” Then yearly review and the MHRA sheet."
+     "fix": "“What will you tell your friend?” Then yearly review and the NICE discussion aid."
     }
    ]
   }
@@ -4358,7 +4358,7 @@
     },
     {
      "h": "Topical minoxidil",
-     "t": "5% solution or foam, 1 ml twice daily, maximum 2 ml a day, licensed for men aged 18–49 (SPC). Early shedding is common; judge response after at least 6 and possibly 12 months (BAD); benefit lasts only while used. Bought over the counter."
+     "t": "For men: 5% solution 1 ml twice daily (maximum 2 ml a day), licensed for men aged 18–49, or 5% foam twice daily per the product directions (check the SPC). Early shedding is common; judge response after at least 6 and possibly 12 months (BAD); benefit lasts only while used. Bought over the counter."
     },
     {
      "h": "Oral finasteride 1 mg",
@@ -4587,7 +4587,7 @@
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Honest options: minoxidil (1 ml twice daily, judge at 6–12 months), finasteride 1 mg (MHRA mood and sexual warnings), cosmetic, transplant, or no treatment; NHS access explained.",
+    "d": "Honest options: minoxidil (5% solution 1 ml or 5% foam, twice daily; judge at 6–12 months), finasteride 1 mg (MHRA mood and sexual warnings), cosmetic, transplant, or no treatment; NHS access explained.",
     "pts": 2, "dom": "cm"
    },
    {
@@ -4735,7 +4735,7 @@
     "reflectIce": "“You asked for the straight answer, so here it is — and I’m sorry you’ve spent so much on things that were never going to work.”",
     "psychosocial": "Validate the distress, screen mood proportionately, and present no treatment and cosmetic options as legitimate choices.",
     "sharedPlan": [
-     "Minoxidil 5% 1 ml twice daily (maximum 2 ml a day); expect early shedding; judge at 6–12 months; continue to keep benefit",
+     "Minoxidil 5% solution 1 ml twice daily (maximum 2 ml a day) or 5% foam twice daily per product directions; expect early shedding; judge at 6–12 months; continue to keep benefit",
      "Finasteride 1 mg only after a mood history and the MHRA warnings; sexual side effects may persist; lowers PSA; private or pharmacy supply",
      "Stop spending on unproven products; baseline photos; consider cosmetic options or transplant privately if wanted"
     ],

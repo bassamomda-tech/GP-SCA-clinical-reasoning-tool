@@ -288,7 +288,7 @@ Review function at each step; deprescribe if no benefit.`,
     contraindications: 'Minoxidil: not in pregnancy/breastfeeding; can cause facial hypertrichosis and initial shedding. Rule out other causes before labelling as pattern loss. Signs of hyperandrogenism (virilisation, irregular periods) \u2192 investigate (e.g. PCOS, androgen excess).',
     duration: 'Continuous; assess at 6\u201312 months',
     drugs: [
-      { name: 'Minoxidil 2% or 5% topical solution/foam (usually bought OTC \u2014 solutions not NHS-prescribable)', dose: 'Apply to dry scalp', freq: 'OD\u2013BD (per product)', route: 'Topical', days: 'Continuous (\u22656\u201312 mo trial)' },
+      { name: 'Minoxidil (women): 2% solution 1 ml BD (max 2 ml/day) or 5% foam half a capful (about 1 g) OD (usually bought OTC \u2014 solutions not NHS-prescribable; check the product SPC)', dose: 'Apply to dry scalp', freq: '2% solution BD; 5% foam OD', route: 'Topical', days: 'Continuous (\u22656\u201312 mo trial)' },
       { name: 'Check & correct: ferritin, TFTs, ANA if indicated', dose: '\u2014', freq: 'Baseline', route: 'Investigation', days: 'Once' },
     ],
     altRegimens: [
@@ -311,7 +311,7 @@ Review function at each step; deprescribe if no benefit.`,
     ],
     emisText: `Female pattern hair loss (androgenetic):
 - Exclude/treat reversible causes: ferritin (iron), TFTs, telogen effluvium, drugs, crash diet.
-- Topical minoxidil 2-5% OD-BD, continuous; assess 6-12 months (photos). Expect early shedding; not in pregnancy.
+- Topical minoxidil (women): 2% solution 1 ml BD (max 2 ml/day) or 5% foam half a capful (~1 g) OD, continuous (check SPC); assess 6-12 months (photos). Expect early shedding; not in pregnancy.
 - Hyperandrogenism features \u2192 investigate (PCOS); antiandrogens specialist.
 - Scarring/patchy/rapid loss or virilisation \u2192 dermatology. Psychological support + camouflage.`,
     sources: [

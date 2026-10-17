@@ -270,9 +270,9 @@ window.RGP_CALCULATORS = [
     ],
     compute(v){ return Object.values(v).filter(Boolean).length; },
     interpret(s){
-      if (s === 0) return { label:'Low risk',       severity:'low',  action:'NICE NG250: usually suitable for management at home with safety-netting, using clinical judgement. See the pneumonia protocol.', detail:'30-day mortality < 1%. Use clinical judgement; refer if sepsis or cardiorespiratory failure.' };
-      if (s === 1) return { label:'Intermediate',   severity:'med',  action:'Primary care with safety-netting, or virtual ward / SDEC / hospital at home / hospital — clinical judgement (NICE NG250).', detail:'Weigh hypoxia, comorbidities, frailty and social factors.' };
-      return          { label:'Higher risk',        severity:'severe', action:'Consider hospital referral (NICE NG250); same-day if sepsis, hypoxia or clinically unwell.', detail:'Mortality rises with each point (score 3–4: high risk).' };
+      if (s === 0) return { label:'Low risk',       severity:'low',  action:'NICE NG250 1.2.3: usually suitable for management in primary care with safety-netting, using clinical judgement. See the pneumonia protocol.', detail:'30-day mortality < 1%. Use clinical judgement; refer if sepsis or cardiorespiratory failure.' };
+      if (s === 1) return { label:'Intermediate',   severity:'med',  action:'Primary care with safety-netting, or virtual ward / SDEC / hospital at home / hospital — individualised decision (NICE NG250 1.2.3).', detail:'Weigh hypoxia, comorbidities, frailty and social factors.' };
+      return          { label:'Higher risk',        severity:'severe', action:'Consider hospital referral (NICE NG250 1.2.3); same-day if sepsis, hypoxia or clinically unwell.', detail:'Mortality rises with each point (score 3–4: high risk).' };
     },
     refs:[
       { label:'NICE NG250 Pneumonia (2025)', url:'https://www.nice.org.uk/guidance/ng250' },

@@ -72,7 +72,7 @@ body{background:var(--bg, #f6f2e9) !important}
 <div class="numstrip">
   <div class="ns-inner">
     <div class="ns-item"><span class="ns-val">Bronchitis vs pneumonia</span><span class="ns-lbl">Acute bronchitis (cough ± sputum, no focal chest signs, systemically well) is usually viral and self-limiting — antibiotics rarely help. Pneumonia (focal chest signs, fever, tachypnoea, hypoxia, systemic upset) is a different, potentially serious diagnosis. Examination separates them</span></div>
-    <div class="ns-item"><span class="ns-val">CRB-65 stratifies CAP</span><span class="ns-lbl">In community-acquired pneumonia, CRB-65 (Confusion, Respiratory rate ≥30, BP &lt;90/≤60, age ≥65) informs place of care (NICE NG250, 2025): score 1 — primary care with safety-netting, virtual ward, SDEC, hospital at home or hospital; score 2 or more — consider hospital referral; higher scores carry a high mortality risk. Always combine with clinical judgement and oxygen saturations</span></div>
+    <div class="ns-item"><span class="ns-val">CRB-65 stratifies CAP</span><span class="ns-lbl">In community-acquired pneumonia, CRB-65 (Confusion, Respiratory rate ≥30, BP &lt;90/≤60, age ≥65) informs place of care (NICE NG250 1.2.3, 2025): score 0 — usually primary care; score 1 — primary care with safety-netting, virtual ward, SDEC, hospital at home or hospital; score 2 or more — consider hospital referral; higher scores carry a high mortality risk. Always combine with clinical judgement and oxygen saturations</span></div>
     <div class="ns-item"><span class="ns-val">Stewardship: don't reflex-prescribe</span><span class="ns-lbl">Most acute coughs/bronchitis are viral. NICE NG120 supports no antibiotic, or a back-up (delayed) prescription for those at higher risk of complications, in uncomplicated cases, with clear safety-netting — reducing resistance. Reserve immediate antibiotics for pneumonia, systemic illness or high-risk patients</span></div>
     <div class="ns-item"><span class="ns-val">Spot sepsis early</span><span class="ns-lbl">A chest infection can be the source of sepsis: confusion, RR ≥22, hypotension, tachycardia, hypoxia, mottling, very high/low temperature, reduced urine output. Use a sepsis screen / NEWS2 (NICE NG253, 2025 — replaced NG51; high-risk community features include new confusion, RR ≥25, HR &gt;130); sepsis is a time-critical emergency — admit and treat without delay</span></div>
     <div class="ns-item"><span class="ns-val">COPD exacerbations differ</span><span class="ns-lbl">In COPD, an infective exacerbation (increased breathlessness, sputum volume/purulence) is managed with bronchodilators ± steroids ± antibiotics (per sputum purulence/criteria); have a lower threshold and a rescue-pack/self-management plan. Watch for type 2 respiratory failure</span></div>
@@ -220,7 +220,7 @@ body{background:var(--bg, #f6f2e9) !important}
         <h3>Treat ± admit</h3>
         <span class="tc-badge tcb-u">By severity</span>
         <ul class="tc-items">
-          <li class="tc-item"><strong>CAP CRB-65 1–2</strong><em>Consider hospital; oral/IV antibiotics; review</em></li>
+          <li class="tc-item"><strong>CAP CRB-65 1 or ≥2</strong><em>1: individualised (primary care, virtual ward, SDEC, hospital at home or hospital); ≥2: consider hospital referral (NG250 1.2.3); review</em></li>
           <li class="tc-item"><strong>Infective COPD exacerbation</strong><em>Bronchodilators ± steroids ± antibiotics; rescue pack</em></li>
           <li class="tc-item"><strong>Vulnerable/comorbid</strong><em>Lower admission threshold; close review</em></li>
         </ul>
@@ -457,7 +457,7 @@ body{background:var(--bg, #f6f2e9) !important}
     <div class="sub-divider">7B — Why treatment matters: goals tailored to this patient</div>
     <div class="num-grid" style="margin-bottom:1rem">
       <div class="num-card num-highlight"><div class="num-val">CRB65</div><div class="num-lbl">Confusion · RR ≥30 · SBP &lt;90 or DBP ≤60 · age ≥65. Brian scores 2 (confusion, age) on the letter of the score — but his sepsis features, not the number, decide admission (NICE NG250)</div></div>
-      <div class="num-card num-highlight"><div class="num-val">≥2</div><div class="num-lbl">CRB65 score at which NICE NG250 says consider hospital referral; score 1 may be managed in primary care with safety-netting, a virtual ward, SDEC or hospital at home — always with clinical judgement</div></div>
+      <div class="num-card num-highlight"><div class="num-val">≥2</div><div class="num-lbl">CRB65 score at which NICE NG250 (1.2.3) says consider hospital referral; score 1 may be managed in primary care with safety-netting, a virtual ward, SDEC or hospital at home — always with clinical judgement</div></div>
       <div class="num-card num-highlight"><div class="num-val">5 days</div><div class="num-lbl">Standard adult antibiotic course for community-acquired pneumonia (NICE NG250) — stop at 5 days unless not clinically stable or microbiology suggests longer</div></div>
       <div class="num-card num-highlight"><div class="num-val">&lt;20 · 20–100 · &gt;100</div><div class="num-lbl">Point-of-care CRP (mg/L) where pneumonia is not diagnosed and the antibiotic decision is unclear: no routine antibiotic · consider back-up · offer antibiotic (NICE NG250)</div></div>
       <div class="num-card"><div class="num-val">RR ≥25 · HR &gt;130</div><div class="num-lbl">Examples of high-risk sepsis criteria in community settings for people aged 16+ (NICE NG253, 2025 — replaced NG51) → emergency referral, usually 999, with a pre-alert to hospital</div></div>
@@ -803,7 +803,7 @@ body{background:var(--bg, #f6f2e9) !important}
       <div class="algo-arrow">▼</div>
       <div class="algo-row">
         <div class="algo-branch algo-red"><div class="algo-branch-lbl">🔴 Emergency</div><ul class="algo-list"><li>Sepsis (confusion, RR≥22, ↓BP, hypoxia, ↓urine)</li><li>Severe CAP (high CRB-65) / resp failure</li></ul><span class="algo-action red-action">999 + pre-alert; O2 to target; IV abx/fluids in hospital</span></div>
-        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">🟠 Moderate</div><ul class="algo-list"><li>CAP CRB-65 1–2; vulnerable</li><li>Infective COPD exacerbation</li></ul><span class="algo-action amber-action">Treat ± admit</span></div>
+        <div class="algo-branch algo-amber"><div class="algo-branch-lbl">🟠 Moderate</div><ul class="algo-list"><li>CAP CRB-65 1 (individualised) or ≥2 (consider hospital, NG250 1.2.3); vulnerable</li><li>Infective COPD exacerbation</li></ul><span class="algo-action amber-action">Treat ± admit</span></div>
         <div class="algo-branch algo-green"><div class="algo-branch-lbl">🟢 Mild</div><ul class="algo-list"><li>Acute bronchitis (well, clear chest)</li><li>CAP CRB-65 0</li></ul><span class="algo-action green-action">Self-care / oral abx; stewardship</span></div>
       </div>
     </div>

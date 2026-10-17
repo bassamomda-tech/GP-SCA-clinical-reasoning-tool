@@ -142,7 +142,7 @@
     contraindications: 'Finasteride: men only; sexual side effects (libido/erectile/ejaculatory — may persist after stopping); depression and suicidal ideation — ask about history of depression/suicidal ideation before prescribing, give the patient alert card (MHRA 2026); reduces PSA by ~50% (interpret with care/double the value), women of childbearing potential must not handle crushed tablets (teratogenic). Minoxidil: initial shedding, scalp irritation.',
     duration: 'Continuous; assess at 6–12 months',
     drugs: [
-      { name: 'Minoxidil 5% topical solution/foam', dose: 'Apply to dry scalp', freq: 'OD–BD (per product)', route: 'Topical', days: 'Continuous (≥6–12 mo trial)' },
+      { name: 'Minoxidil (men): 5% solution 1 ml BD (max 2 ml/day) or 5% foam BD per product directions (check the product SPC)', dose: 'Apply to dry scalp', freq: 'BD', route: 'Topical', days: 'Continuous (≥6–12 mo trial)' },
       { name: 'Finasteride', dose: '1 mg', freq: 'OD', route: 'PO', days: 'Continuous (private/where appropriate)' },
     ],
     altRegimens: [
@@ -164,7 +164,7 @@
     ],
     emisText: `Male pattern hair loss (androgenetic):
 - Cosmetic; reassure. Options (work only while continued):
-  - Minoxidil 5% topical OD-BD (expect early shedding).
+  - Minoxidil 5% topical BD (men: solution 1 ml, or foam per product directions; check SPC) (expect early shedding).
   - Finasteride 1 mg OD (sexual SEs may persist after stopping; depression/suicidal ideation - asked re mood history, advised to stop and seek advice if mood changes, alert card (MHRA 2026); halves PSA — interpret x2; women not to handle crushed tabs/teratogenic).
   - Combination > either alone.
 - Assess 6-12 months (photos). Atypical/scarring/patchy → dermatology.`,
@@ -224,7 +224,7 @@
     title: 'Nausea & vomiting in pregnancy',
     category: "Women's & Sexual Health",
     eyebrow: 'Antiemetic ladder · safe in pregnancy · spot HG',
-    indication: 'Nausea/vomiting of pregnancy (NVP). Conservative measures first; stepwise antiemetics with established pregnancy safety. Recognise hyperemesis gravidarum (HG: >5% pre-pregnancy weight loss with dehydration and/or electrolyte imbalance; assess severity with PUQE) needing escalation/admission.',
+    indication: 'Nausea/vomiting of pregnancy (NVP). Conservative measures first; stepwise antiemetics with established pregnancy safety. Recognise hyperemesis gravidarum (HG, RCOG GTG69 2024: nausea and vomiting in early pregnancy severe enough to prevent normal eating and drinking and to substantially limit daily activities; dehydration contributes, and >5% weight loss may support severity but is not essential; assess severity with PUQE and HELP) needing escalation/admission.',
     contraindications: 'Exclude other causes (UTI, thyroid, molar/multiple pregnancy) if atypical/late onset. In HG: give thiamine (prevent Wernicke\u2019s) and assess VTE risk. Limit metoclopramide to ~5 days (extrapyramidal effects); counsel on ondansetron first-trimester data.',
     duration: 'Until symptoms settle (often by 16–20 wks)',
     drugs: [
@@ -245,14 +245,14 @@
     ],
     followUp: 'Review within days; step up antiemetics if persisting. Check hydration/weight/U&E and PUQE (ketonuria does not assess severity — RCOG 2024). HG or unable to tolerate oral → maternity/early-pregnancy unit.',
     redFlags: [
-      'Unable to keep fluids down, >5% weight loss, dehydration and/or electrolyte imbalance (HG) → admit/ambulatory IV fluids + thiamine.',
+      'Unable to keep fluids down, clinical dehydration or electrolyte disturbance (HG; >5% weight loss supports severity but is not essential) → admit/ambulatory IV fluids + thiamine.',
       'Abdominal pain, fever, dysuria, or vaginal bleeding → assess for other causes.',
     ],
     emisText: `Nausea & vomiting of pregnancy (NVP):
 - Conservative: small frequent bland meals, fluids, ginger, P6 bands.
 - 1st-line antiemetic: doxylamine/pyridoxine / cyclizine / promethazine / prochlorperazine.
 - 2nd-line: metoclopramide (≤5 days) or ondansetron (counsel 1st-trimester data).
-- Hyperemesis (>5% pre-pregnancy weight loss with dehydration and/or electrolyte imbalance; assess severity with PUQE) → thiamine + VTE assessment + IV fluids/admit.
+- Hyperemesis (N&V in early pregnancy preventing normal eating and drinking and substantially limiting daily activities; >5% weight loss not essential; severity by PUQE and HELP, not ketonuria) → thiamine + VTE assessment + IV fluids/admit.
 - Exclude UTI/thyroid/molar if atypical.`,
     sources: [
       { label:'RCOG Green-top 69 — Hyperemesis', url:'https://www.rcog.org.uk/guidance/browse-all-guidance/green-top-guidelines/the-management-of-nausea-and-vomiting-of-pregnancy-and-hyperemesis-gravidarum-green-top-guideline-no-69/' },

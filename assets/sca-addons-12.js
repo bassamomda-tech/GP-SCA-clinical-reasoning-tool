@@ -1979,7 +1979,7 @@
   },
   "knowledge": {
    "guideline": "[1] NICE NG250 Pneumonia: diagnosis and management (2025) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NICE NG253 Suspected sepsis in people aged 16 or over (2025) · [3] NICE NG115 COPD in over 16s · [5] British Thoracic Society guideline for the management of community acquired pneumonia in adults (2009) · [6] Mental Capacity Act 2005 Code of Practice",
-   "summary": "Cough, fever, pleuritic pain and breathlessness in a 71-year-old with COPD who is newly confused is suspected pneumonia with a CRB65 score of at least 2 before respiratory rate or blood pressure are even measured. NICE NG250 says consider hospital referral at a score of 2 or more and refer if sepsis or cardiorespiratory failure is suspected; new confusion also needs sepsis assessment (NG253). The skill is making and explaining that disposition decision kindly, checking he can weigh it up, and planning a follow-up chest X-ray because he is an older ex-smoker.",
+   "summary": "Cough, fever, pleuritic pain and breathlessness in a 71-year-old with COPD who is newly confused is suspected pneumonia with a CRB65 score of at least 2 before respiratory rate or blood pressure are even measured. NICE NG250 (1.2.3) says consider hospital referral at a score of 2 or more and refer if sepsis or cardiorespiratory failure is suspected; new confusion also needs sepsis assessment (NG253). The skill is making and explaining that disposition decision kindly, checking he can weigh it up, and planning a follow-up chest X-ray because he is an older ex-smoker.",
    "points": [
     {
      "h": "CRB65",
@@ -2230,7 +2230,7 @@
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Hospital referral by ambulance (NICE NG250 CRB65 2 or more; NICE NG253 sepsis assessment); no delay for oral antibiotics.",
+    "d": "Hospital referral by ambulance (NICE NG250 1.2.3: CRB65 2 or more; NICE NG253 sepsis assessment); no delay for oral antibiotics.",
     "pts": 2, "dom": "cm"
    },
    {
@@ -2427,7 +2427,7 @@
     {
      "dom": "cm",
      "fail": "Prescribing oral antibiotics by phone without a severity assessment.",
-     "why": "New confusion and age 65 or over give CRB65 of at least 2: NICE NG250 says consider hospital referral.",
+     "why": "New confusion and age 65 or over give CRB65 of at least 2: NICE NG250 (1.2.3) says consider hospital referral.",
      "fix": "Score CRB65 out loud and arrange hospital assessment."
     },
     {

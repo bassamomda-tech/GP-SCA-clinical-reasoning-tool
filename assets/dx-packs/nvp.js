@@ -72,7 +72,7 @@
         keyExam: 'Well hydrated; no abdominal signs.', nextIx: 'Antiemetic ladder; dietary advice; reassure.',
         patientPhrase: 'Common early-pregnancy sickness, driven by pregnancy hormones. It usually eases by 16–20 weeks and treatment helps.',
         guideUrl: '', guideLabel: 'RCOG nausea and vomiting of pregnancy (GTG 69)' },
-      { id: 'hyperemesis', name: 'Hyperemesis gravidarum', summary: 'Protracted vomiting + >5% weight loss + dehydration and/or electrolyte imbalance', baseline: 4, category: 'cant-miss',
+      { id: 'hyperemesis', name: 'Hyperemesis gravidarum', summary: 'N&V in early pregnancy preventing normal eating and drinking and substantially limiting daily activities; dehydration contributes; >5% weight loss supports but is not essential', baseline: 4, category: 'cant-miss',
         keyExam: 'Dehydration, weight loss, U&E (ketonuria does not grade severity).', nextIx: '\u26A1 Admission / ambulatory IV fluids + antiemetics + thiamine; VTE prophylaxis.',
         patientPhrase: 'This severe form causes dehydration and needs intravenous fluids and stronger treatment — usually in hospital.',
         guideUrl: '', guideLabel: 'RCOG nausea and vomiting of pregnancy (GTG 69)', redFlagAction: '\u26A1 Admit for IV therapy' },

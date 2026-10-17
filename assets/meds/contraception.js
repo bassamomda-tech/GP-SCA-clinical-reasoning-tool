@@ -129,17 +129,17 @@ MedChooser.register('contraception', {
       sideEffects:'Small ↑ VTE & arterial risk; nausea; breakthrough bleeding',
       monitor:'BP before + at review; UKMEC screen essential',
       counsel:'"Good cycle control and can help acne and painful periods — but it carries a small clot risk, so it isn\'t safe with certain migraines or clot history."',
-      detail:{ 'Key teaching':'Non-contraceptive benefits: cycle control, acne, dysmenorrhoea, ovarian/endometrial cancer reduction. Contraindicated (UKMEC 4) in migraine with aura, prior VTE, smoker ≥35, BMI/BP extremes, breast cancer.' },
+      detail:{ 'Key teaching':'Non-contraceptive benefits: cycle control, acne, dysmenorrhoea, ovarian/endometrial cancer reduction. Contraindicated (UKMEC 4) in migraine with aura, prior VTE, smoker ≥35 (≥15/day), BP ≥160/100, breast cancer; BMI ≥35 is UKMEC 3.' },
       conditions: [
         {"kind":"avoid","label":"Migraine WITH aura","text":"Migraine with aura — UKMEC 4"},
         {"kind":"avoid","label":"VTE history / thrombophilia","text":"VTE history — UKMEC 4"},
         {"kind":"avoid","label":"Smoker and age ≥35","text":"Smoker ≥35 — UKMEC 4 (≥15/day) / 3"},
-        {"kind":"avoid","label":"BMI ≥35","text":"BMI ≥35 — UKMEC 3; check UKMEC 2025 when there are other VTE risk factors"},
+        {"kind":"avoid","label":"BMI ≥35","text":"BMI ≥35 — UKMEC 3; with additional VTE risk factors, make an overall risk assessment (UKMEC 2025 multiple risk factors)"},
         {"kind":"avoid","label":"Current / past breast cancer","text":"Breast cancer — UKMEC 4"},
         {"kind":"caution","label":"Enzyme-inducing drugs (e.g. some AEDs)","text":"Enzyme inducers reduce efficacy — not recommended"},
         {"kind":"favoured","label":"Heavy menstrual bleeding","text":"Heavy/painful periods — CHC gives cycle control"},
         {"kind":"favoured","label":"Acne / PCOS symptoms","text":"Acne / PCOS symptoms — CHC improves both"},
-        {"kind":"note","label":"Migraine without aura","text":"Migraine without aura — UKMEC 2 to start (check UKMEC 2025 for continuation)"}
+        {"kind":"note","label":"Migraine without aura","text":"Migraine without aura — UKMEC 2 to start; UKMEC 3 to continue if it develops on CHC (reassess, usually consider an alternative)"}
       ]
     }
   ],

@@ -6,7 +6,7 @@
   { id:'cap', title:'Community-acquired pneumonia', category:'Infections',
     eyebrow:'CRB-65 severity · amoxicillin 1st line',
     indication:'Adult CAP diagnosed clinically (± CXR). Assess severity with CRB-65 and treat at the appropriate setting. Antibiotic choice and duration per NICE NG250 (2025; replaced NG138, partly replaced CG191).',
-    contraindications:'CRB-65 is used with clinical judgement: 0 → usually home; 1 → primary care with safety-netting or other community options (virtual ward, SDEC, hospital at home) or hospital; ≥2 → consider hospital referral. Sepsis/cardiorespiratory failure → admit. Penicillin allergy → use alternative. Review at 48–72 h; lack of response → reassess/CXR/admit.',
+    contraindications:'CRB-65 is used with clinical judgement (NICE NG250 1.2.3): 0 → usually primary care; 1 → primary care with safety-netting or other community options (virtual ward, SDEC, hospital at home) or hospital; ≥2 → consider hospital referral. Sepsis/cardiorespiratory failure → admit. Penicillin allergy → use alternative. Review at 48–72 h; lack of response → reassess/CXR/admit.',
     duration:'5 days (stop at 5 days if clinically stable; review if not improving)',
     drugs:[
       { name:'Low severity (clinical judgement + CRB-65): Amoxicillin', dose:'500 mg', freq:'TDS', route:'PO', days:'5 days' },
