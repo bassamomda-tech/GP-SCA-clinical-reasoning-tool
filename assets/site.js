@@ -997,7 +997,7 @@ function renderTopNav(activeId){
       { ic:'📋', label:'Mock Exam Circuit',     meta:'12 cases drawn to the exam blueprint · timed', path:'tools/sca-circuit.html' },
       { ic:'🔁', label:'AI Mock Exam Circuit',  meta:'Back-to-back AI patients · report card', path:'tools/sca-circuit-ai.html' },
       { ic:'👥', label:'Live Group Mock',       meta:'3 friends · 1 code · candidate / patient / examiner', path:'tools/sca-group.html' },
-      { ic:'🧑‍🏫', label:'Trainer / VTS mode',   meta:'Session builder · rotations · print packs · room timer', path:'tools/sca-trainer.html' } ]},
+      { ic:'🏫', label:'Trainer / VTS mode',   meta:'Session builder · rotations · print packs · room timer', path:'tools/sca-trainer.html' } ]},
     { h:'Mark & review', items:[
       { ic:'⚖️', label:'Examiner Marking',      meta:'The three domains · grade yourself honestly', path:'tools/sca-domains.html' } ]},
     { h:'Skills gym', items:[
@@ -1007,7 +1007,7 @@ function renderTopNav(activeId){
       { ic:'🌍', label:'IMG Track',             meta:'Habit swaps · UK context · explain it plainly', path:'tools/sca-img-track.html' } ]},
     { h:'My readiness & resit', items:[
       { ic:'🌡️', label:'My Readiness',          meta:'Pass-likelihood · habits · coverage', path:'tools/sca-weakspots.html' },
-      { ic:'🩺', label:'The Resit Clinic',      meta:'Failed? Results letter → 8-week fix', path:'tools/sca-resit.html' } ]}
+      { ic:'📈', label:'The Resit Clinic',      meta:'Failed? Results letter → 8-week fix', path:'tools/sca-resit.html' } ]}
   ];
   const scaToolsList = scaGroups.reduce((a, g) => a.concat(g.items), []);
   const scaTile = t => `
@@ -1015,9 +1015,15 @@ function renderTopNav(activeId){
       <span class="rgp-mm-tool-ic">${t.ic}</span>
       <span><b>${t.label}</b><small>${t.meta}</small></span>
     </a>`;
-  const scaToolsMega = '<div class="rgp-sca-groups">' + scaGroups.map((g, i) => `
-    <section class="rgp-sca-grp"><h4><span>${i + 1}</span>${g.h}</h4><div class="rgp-sca-grp-list">${g.items.map(scaTile).join('')}</div></section>`).join('') +
-    `</div><div class="rgp-sca-also">Also: <a href="${PRE}tools/sca-qbank.html">AKT Question Bank</a> (SBAs · spaced repetition)</div>`;
+  // Four columns, read top to bottom in journey order, so the whole menu fits
+  // on one screen: Learn | Case bank + Practise | Mock + Mark | Skills + Readiness.
+  const scaCols = [[0], [1, 2], [3, 4], [5, 6]];
+  const scaGrp = i => `
+    <section class="rgp-sca-grp"><h4><span>${i + 1}</span>${scaGroups[i].h}</h4><div class="rgp-sca-grp-list">${scaGroups[i].items.map(scaTile).join('')}</div></section>`;
+  const scaAlso = `<div class="rgp-sca-also">Also: <a href="${PRE}tools/sca-qbank.html">AKT Question Bank</a> (SBAs · spaced repetition)</div>`;
+  const scaToolsMega = '<div class="rgp-sca-groups">' +
+    scaCols.map((col, c) => '<div class="rgp-sca-col">' + col.map(scaGrp).join('') + (c === scaCols.length - 1 ? scaAlso : '') + '</div>').join('') +
+    '</div>';
 
   // Algorithms mega — by specialty (not all topics).
   // NOTE: the nav meta must match what tools/algorithms.html advertises (algShown).

@@ -1645,6 +1645,8 @@ body.rgp-rtl .rgp-auth-shell{ direction: ltr; }
 
 /* SCA Tools mega: 7 areas (Upload 144) */
 .rgp-sca-groups{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px 16px; }
+.rgp-sca-col{ display:flex; flex-direction:column; gap:14px; min-width:0; }
+@media (min-width:1000px){ .rgp-sca-groups{ grid-template-columns:repeat(4,minmax(0,1fr)); } }
 .rgp-sca-grp h4{ display:flex; align-items:center; gap:8px; margin:0 0 7px; font-size:11px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); }
 .rgp-sca-grp h4 span{ display:grid; place-items:center; width:20px; height:20px; border-radius:6px; background:#0c4a47; color:#f6f2e9; font-size:10.5px; letter-spacing:0; }
 .rgp-sca-grp-list{ display:flex; flex-direction:column; gap:6px; }
