@@ -4,7 +4,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 
 /* ---------------- CARDIOVASCULAR ---------------- */
 {
-  id:'pharma-antiplatelets', domain:'Pharmacology', class:'Cardiovascular', icon:'🩸',
+  id:'pharma-antiplatelets', domain:'Pharmacology', class:'Cardiovascular', icon:'💉',
   title:'Antiplatelets (aspirin & clopidogrel)', blurb:'Stop platelets clumping — the cornerstone of secondary prevention after MI, stroke and in vascular disease.',
   examples:['Aspirin 75 mg (irreversible COX-1)','Clopidogrel, prasugrel, ticagrelor (P2Y12 blockers)','Dipyridamole'],
   moa:[
@@ -31,7 +31,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-acs', pathoLabel:'Acute coronary syndrome', case:'cases/chest-pain.html', caseLabel:'Chest pain' },
 },
 {
-  id:'pharma-warfarin', domain:'Pharmacology', class:'Cardiovascular', icon:'🩸',
+  id:'pharma-warfarin', domain:'Pharmacology', class:'Cardiovascular', icon:'💉',
   title:'Warfarin', blurb:'A vitamin-K-antagonist anticoagulant — cheap, reversible and monitored, still first-line for mechanical valves and severe renal impairment.',
   examples:['Warfarin (target INR 2–3 for AF/VTE; 2.5–3.5 for mechanical valves)'],
   moa:[
@@ -324,7 +324,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 
 /* ---------------- DIABETES & ENDOCRINE ---------------- */
 {
-  id:'pharma-sulfonylureas', domain:'Pharmacology', class:'Endocrine & Metabolic', icon:'🩸',
+  id:'pharma-sulfonylureas', domain:'Pharmacology', class:'Endocrine & Metabolic', icon:'💉',
   title:'Sulfonylureas (gliclazide)', blurb:'Stimulate insulin release — effective and cheap, but cause weight gain and hypoglycaemia.',
   examples:['Gliclazide, glimepiride, glipizide'],
   moa:[
@@ -346,7 +346,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-t2dm', pathoLabel:'Type 2 diabetes', case:'cases/type-2-diabetes.html', caseLabel:'T2DM' },
 },
 {
-  id:'pharma-dpp4', domain:'Pharmacology', class:'Endocrine & Metabolic', icon:'🩸',
+  id:'pharma-dpp4', domain:'Pharmacology', class:'Endocrine & Metabolic', icon:'💉',
   title:'DPP-4 inhibitors (gliptins)', blurb:'Boost the body’s own incretin hormones — weight-neutral, low hypo risk.',
   examples:['Sitagliptin, linagliptin, alogliptin'],
   moa:[
@@ -413,7 +413,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-t1dm', pathoLabel:'Type 1 diabetes', patho2:'patho-dka', patho2Label:'DKA' },
 },
 {
-  id:'pharma-pioglitazone', domain:'Pharmacology', class:'Endocrine & Metabolic', icon:'🩸',
+  id:'pharma-pioglitazone', domain:'Pharmacology', class:'Endocrine & Metabolic', icon:'💉',
   title:'Pioglitazone', blurb:'A thiazolidinedione that improves insulin sensitivity — niche use because of fluid and fracture risks.',
   examples:['Pioglitazone'],
   moa:[

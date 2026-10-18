@@ -1,6 +1,6 @@
 /* ============================================
    Medication Chooser — Polycystic ovary syndrome (PCOS)
-   International evidence-based PCOS guideline (2023) · NICE CKS · FSRH UKMEC · SPC
+   International evidence-based PCOS guideline (2023) · NICE CKS · CoSRH UKMEC · SPC
    Fixed lists (Upload 128, October 2026): no patient factors and no scoring.
    ============================================ */
 MedChooser.register('pcos', {

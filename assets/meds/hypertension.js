@@ -25,14 +25,14 @@ MedChooser.register('hypertension', {
     {
       id:'acei',
       name:'ACE inhibitor',
-      examples:'Ramipril 1.25 → 10 mg OD · Lisinopril',
+      examples:'Ramipril 2.5 → 10 mg OD · Lisinopril',
       step:'Step 1',
       source:'NICE NG136 §1.4',
       sideEffects:'Dry cough (10–15%), hyperkalaemia, AKI, angioedema (rare)',
       monitor:'U&E + K⁺ within 1 week of start / titration',
       counsel:'"You may get a dry tickly cough — don\'t stop it, call us and we\'ll switch. If lips/tongue/throat swell, call 999."',
       detail:{
-        'Dose': 'Ramipril 1.25 mg OD → titrate to 10 mg over weeks',
+        'Dose': 'Ramipril 2.5 mg OD (1.25 mg if on a diuretic, per SPC) → titrate to 10 mg over weeks',
         'Interactions': 'NSAIDs (AKI), K-sparing diuretics + spiro (hyperK), lithium (toxicity)',
         'Key teaching': 'Never combine with ARB. Stop if creatinine rises >30% or K⁺ rise >0.5'
       },

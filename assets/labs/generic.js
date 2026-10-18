@@ -397,7 +397,6 @@ RGPLabs.register('generic', {
               action:'treat', label:'Hypokalaemia — replace + investigate',
               rule:'K⁺ <3.5',
               timeframe:'1 week',
-              source:'BNF',
               patientPhrase:'"Your potassium is low — usually from a tablet or fluid loss. We\'ll top it up and repeat the test."',
               noteTemplate:'Hypokalaemia. K⁺ [value].\nReview thiazide / loop diuretic / steroid / liquorice / GI loss / Conn\'s.\nSando-K 2 tabs TDS or alternative; repeat U&E in 1 week.',
               when:(v) => v >= 2.5 && v < 3.5
@@ -940,7 +939,7 @@ RGPLabs.register('generic', {
               action:'treat', label:'Vitamin D deficiency — loading regimen',
               rule:'25-OH Vit D <25',
               timeframe:'Start now',
-              source:'Royal Osteoporosis Society (formerly NOS) vitamin D guideline · BNF',
+              source:'Royal Osteoporosis Society (formerly NOS) vitamin D guideline',
               patientPhrase:'"Your vitamin D is low — we\'ll give you a loading course then a daily supplement to maintain levels."',
               noteTemplate:'Vit D deficient. [value] nmol/L.\nLoading: colecalciferol 50,000 IU weekly × 6 OR 20,000 IU twice weekly × 7. Maintenance 800–2000 IU OD.\nCheck Ca²⁺ before loading.',
               when:(v) => v < 25
@@ -949,7 +948,7 @@ RGPLabs.register('generic', {
               action:'treat', label:'Vit D insufficient — daily supplement',
               rule:'25-OH Vit D 25–49',
               timeframe:'Routine',
-              source:'Royal Osteoporosis Society (formerly NOS) · BNF',
+              source:'Royal Osteoporosis Society (formerly NOS)',
               when:(v) => v >= 25 && v < 50
             }
           ]
@@ -979,7 +978,7 @@ RGPLabs.register('generic', {
               action:'treat', label:'Iron deficiency — start iron + investigate cause',
               rule:'Ferritin <30',
               timeframe:'Now',
-              source:'BSG 2021 iron deficiency anaemia · BNF',
+              source:'BSG 2021 iron deficiency anaemia',
               patientPhrase:'"Your iron stores are low — common cause of tiredness. We\'ll start an iron tablet and check what\'s causing it."',
               noteTemplate:'Iron deficiency. Ferritin [value].\nFerrous fumarate 210 mg OD (alternate-day option). Recheck Hb + ferritin at 4–8 wks. Dietary + menstrual + GI source.',
               when:(v) => v < 30
@@ -1012,7 +1011,7 @@ RGPLabs.register('generic', {
               action:'treat', label:'Mild B12 deficiency — oral trial + dietary review',
               rule:'B12 100–200',
               timeframe:'1 month',
-              source:'BSH B12 · BNF',
+              source:'BSH B12',
               when:(v) => v >= 100 && v < 200
             }
           ]
@@ -1025,7 +1024,7 @@ RGPLabs.register('generic', {
               action:'treat', label:'Folate deficiency — replace + check B12 first',
               rule:'Folate <3 (always check + replace B12 first)',
               timeframe:'Start now',
-              source:'BSH B12/folate · BNF',
+              source:'BSH B12/folate',
               noteTemplate:'Folate deficiency.\nCheck B12 — replace B12 first if low (folate alone in B12 deficiency can precipitate subacute combined cord degeneration).\nFolic acid 5 mg OD × 4 months. Coeliac screen.',
               when:(v) => v < 3
             }
@@ -1401,7 +1400,7 @@ RGPLabs.register('generic', {
               action:'review', label:'CK 1000–5000 — statin myopathy / cause; stop statin if >5× ULN + symptoms',
               rule:'CK markedly raised on statin or with myalgia/weakness',
               timeframe:'Within days',
-              source:'NICE NG238 · BNF statin monitoring',
+              source:'NICE NG238',
               patientPhrase:'"Your muscle enzyme is up — one of your tablets can do this. We\'ll pause it and recheck."',
               noteTemplate:'Raised CK. CK [value].\nIf on statin and CK >5× ULN with symptoms → stop statin, recheck CK + renal. Review exertion, drugs, hypothyroidism (TSH), alcohol. If proximal weakness/persistent → ?inflammatory myositis → rheumatology.',
               when:(v) => v > 1000 && v <= 5000

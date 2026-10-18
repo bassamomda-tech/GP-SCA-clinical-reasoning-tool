@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 19: M topics, part 2)
    Remaining NHS A–Z (letter M) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -53,7 +53,7 @@
       'Mastitis not responding to antibiotics, or any suspicion of inflammatory breast cancer → breast suspected cancer pathway referral (NICE NG12 (updated April 2026))',
       'Severe systemic illness/sepsis → admission',
       'Recurrent or non-lactational mastitis → breast clinic'],
-    source:'BNF (flucloxacillin) / Academy of Breastfeeding Medicine Protocol 36 (2022, international) / NICE NG12 (updated April 2026)' },
+    source:'Academy of Breastfeeding Medicine Protocol 36 (2022, international) / NICE NG12 (updated April 2026)' },
 
   { id:'molar-pregnancy', title:'Molar pregnancy (hydatidiform mole)', category:'Women’s health', icon:'🤰',
     overview:'A type of gestational trophoblastic disease in which an abnormal pregnancy produces proliferating placental tissue rather than a viable fetus. It presents like an early-pregnancy problem (bleeding, a uterus large for dates, very high hCG). It matters because of the small risk of persistent trophoblastic disease and choriocarcinoma, requiring registration and hCG follow-up.',
@@ -178,7 +178,7 @@
       'Severe/refractory recurrent aphthous ulceration → oral medicine',
       'Suspected systemic cause (Behçet’s, IBD, coeliac, immunodeficiency) → relevant specialty',
       'Suspected herpetic/other infective cause needing treatment → manage accordingly'],
-    source:'NICE NG12 (updated April 2026) / BNF (topical oral corticosteroids, antiseptic and anti-inflammatory mouthwashes)' },
+    source:'NICE NG12 (updated April 2026)' },
 
   { id:'mrsa', title:'MRSA (meticillin-resistant Staphylococcus aureus)', category:'Infectious diseases', icon:'🦠',
     overview:'Staphylococcus aureus resistant to meticillin/flucloxacillin and many beta-lactams. People may be colonised (carrying it harmlessly, often in the nose/skin) or infected (skin/soft-tissue infection, bacteraemia). The priorities are distinguishing colonisation from infection, infection control, and using appropriate antibiotics guided by sensitivities.',
@@ -203,7 +203,7 @@
       'Severe or spreading skin/soft-tissue infection not responding → urgent assessment',
       'Recurrent community MRSA/PVL-SA → microbiology/dermatology advice (decolonisation)',
       'Decolonisation/screening in healthcare pathways → infection-control team'],
-    source:'HIS/IPS guidelines for the prevention and control of MRSA in healthcare facilities (2021) / UKHSA PVL-SA guidance / BNF' },
+    source:'HIS/IPS guidelines for the prevention and control of MRSA in healthcare facilities (2021) / UKHSA PVL-SA guidance' },
 
   { id:'multiple-myeloma', title:'Multiple myeloma', category:'Haematology', icon:'🎗️',
     overview:'A malignancy of plasma cells producing a monoclonal paraprotein, causing bone destruction, marrow failure, kidney injury and hypercalcaemia. It is often diagnosed late because symptoms are non-specific. Recognising the "CRAB" features and unexplained back/bone pain — and ordering the right tests — is the key primary-care skill.',

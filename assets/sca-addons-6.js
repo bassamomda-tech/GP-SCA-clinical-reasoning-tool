@@ -980,7 +980,7 @@
    "reason": "Telephone call to give a positive chlamydia result and arrange treatment."
   },
   "knowledge": {
-   "guideline": "BASHH Chlamydia trachomatis guideline 2026 · BASHH PID guideline 2018 (updated 2019) · UKHSA National Chlamydia Screening Programme (2021) · FSRH CEU drug interactions with hormonal contraception (2022)",
+   "guideline": "BASHH Chlamydia trachomatis guideline 2026 · BASHH PID guideline 2018 (updated 2019) · UKHSA National Chlamydia Screening Programme (2021) · CoSRH CEU drug interactions with hormonal contraception (2022)",
    "summary": "Chlamydia is common, often silent for long periods, and easily treated. Treat her, get the partner treated, screen for other infections, and assess for PID, because her intermenstrual bleeding and pelvic discomfort matter.",
    "points": [
     {
@@ -1001,7 +1001,7 @@
     },
     {
      "h": "Contraception and retesting",
-     "t": "Doxycycline does not reduce the effectiveness of the combined pill, so no extra precautions are needed (FSRH CEU 2022). Test of cure is not routine outside pregnancy; retest to exclude reinfection is advised, at 2–6 months for under-25s (BASHH 2026)."
+     "t": "Doxycycline does not reduce the effectiveness of the combined pill, so no extra precautions are needed (CoSRH CEU 2022). Test of cure is not routine outside pregnancy; retest to exclude reinfection is advised, at 2–6 months for under-25s (BASHH 2026)."
     },
     {
      "h": "Fertility",
@@ -1423,7 +1423,7 @@
     {
      "dom": "cm",
      "fail": "Giving single-dose azithromycin, or advising extra contraception with doxycycline.",
-     "why": "BASHH 2026 names doxycycline 7 days as sole first line; doxycycline does not affect the combined pill (FSRH CEU 2022).",
+     "why": "BASHH 2026 names doxycycline 7 days as sole first line; doxycycline does not affect the combined pill (CoSRH CEU 2022).",
      "fix": "\"Doxycycline twice a day for a week. It won't affect your pill.\""
     },
     {
@@ -1957,7 +1957,7 @@
    "reason": "Telephone call: wants to discuss her mother's tablets."
   },
   "knowledge": {
-   "guideline": "Mental Capacity Act 2005 · SC1 Managing medicines in care homes (2014) · NICE NG97 (dementia) · NICE NG5 (medicines optimisation) · NICE NG150 (supporting adult carers) · Care Act 2014 · BNF",
+   "guideline": "Mental Capacity Act 2005 · SC1 Managing medicines in care homes (2014) · NICE NG97 (dementia) · NICE NG5 (medicines optimisation) · NICE NG150 (supporting adult carers) · Care Act 2014",
    "summary": "Covert medication can be lawful for someone who lacks capacity, but only through a documented best-interests process with pharmacist input and regular review. Use the call to review whether each medicine is still needed and to support an exhausted carer.",
    "points": [
     {
@@ -3437,7 +3437,7 @@
    "reason": "Telephone call: “Half my face has dropped — is it a stroke?”"
   },
   "knowledge": {
-   "guideline": "NICE NG127 (suspected neurological conditions) · NICE NG128 (stroke and TIA) · NICE NG133 (hypertension in pregnancy) · BNF",
+   "guideline": "NICE NG127 (suspected neurological conditions) · NICE NG128 (stroke and TIA) · NICE NG133 (hypertension in pregnancy)",
    "summary": "Whole-hemiface weakness including the forehead, with no other neurology, points to Bell’s palsy — but sudden facial weakness still needs same-day examination. Treat early with prednisolone, protect the eye, and in pregnancy check for pre-eclampsia.",
    "points": [
     {

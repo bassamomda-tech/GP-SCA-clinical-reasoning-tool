@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 25: Q & R topics)
    NHS conditions A–Z (letters Q and R) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -78,7 +78,7 @@
       'Critical digital ischaemia, digital ulceration, or threatened tissue loss → urgent rheumatology/vascular assessment',
       'Severe symptoms refractory to first-line treatment → specialist',
       'Suspected hand-arm vibration syndrome → occupational health'],
-    source:'BNF (nifedipine) / 2024 BSR guideline for management of systemic sclerosis (secondary Raynaud’s)' },
+    source:'2024 BSR guideline for management of systemic sclerosis (secondary Raynaud’s)' },
 
   { id:'rectal-prolapse', title:'Rectal prolapse', category:'Gastroenterology', icon:'🔴',
     overview:'Protrusion of the rectal wall through the anus — either full-thickness (the whole rectal wall) or mucosal (partial). It is commonest at the extremes of age (young children and older women) and, while not usually dangerous, causes distressing symptoms and may rarely become irreducible/strangulated.',
@@ -178,7 +178,7 @@
       'Augmentation on dopaminergic treatment → neurology/specialist review',
       'Secondary causes needing specialist management (e.g. severe CKD) → relevant specialty',
       'Significant sleep disorder → sleep service if indicated'],
-    source:'AASM clinical practice guideline for RLS (2024, international) / BNF (ropinirole, pramipexole; gabapentin/pregabalin off-label)' },
+    source:'AASM clinical practice guideline for RLS (2024, international)' },
 
   { id:'retinoblastoma', title:'Retinoblastoma', category:'Paediatrics', icon:'👁️',
     overview:'The commonest primary intraocular malignancy of childhood, arising in the retina, usually under age 5. It can be hereditary (often bilateral) or sporadic. It is highly curable if caught early — and the cardinal sign is a white pupillary reflex (leukocoria), so a checked red reflex and acting on an abnormal one are vital.',
@@ -278,7 +278,7 @@
       'Rickets in children → paediatrics for treatment and monitoring',
       'Atypical, non-responsive, or suspected genetic/phosphate-related disease → endocrinology/metabolic bone specialist',
       'Underlying malabsorption → gastroenterology'],
-    source:'NICE NG247 (Maternal and child nutrition, 2025) / Royal Osteoporosis Society vitamin D guideline / BNF' },
+    source:'NICE NG247 (Maternal and child nutrition, 2025) / Royal Osteoporosis Society vitamin D guideline' },
 
   { id:'ringworm', title:'Ringworm and other tinea (fungal skin infections)', category:'Dermatology', icon:'🍄',
     overview:'Common superficial fungal (dermatophyte) infections of the skin, named by site: tinea corporis (body/"ringworm"), tinea pedis (athlete’s foot), tinea cruris (groin/"jock itch"), and tinea capitis (scalp). They are benign and treatable, but accurate diagnosis matters — and steroid creams alone make them worse.',
@@ -303,7 +303,7 @@
       'Extensive, resistant, or diagnostically uncertain disease → dermatology',
       'Tinea pedis complicated by cellulitis → treat the bacterial infection',
       'Immunocompromised patients with widespread/atypical infection → dermatology'],
-    source:'BAD guidelines for the management of tinea capitis (2014) / BNF (terbinafine, imidazoles)' },
+    source:'BAD guidelines for the management of tinea capitis (2014)' },
 
   { id:'rosacea', title:'Rosacea', category:'Dermatology', icon:'🌹',
     overview:'A common chronic inflammatory facial skin condition causing flushing, persistent central-face redness, papules/pustules and (over time) telangiectasia and, in some, thickening of the nose (rhinophyma). It is not "acne" and not caused by poor hygiene; management addresses triggers and the predominant features, including the eyes.',
@@ -328,7 +328,7 @@
       'Severe, resistant, or diagnostically uncertain rosacea → dermatology',
       'Rhinophyma → dermatology/plastic surgery',
       'Persistent telangiectasia/erythema → consider laser/IPL via dermatology'],
-    source:'BNF (brimonidine, ivermectin, metronidazole, azelaic acid, doxycycline) / Primary Care Dermatology Society (PCDS) rosacea guidance' },
+    source:'Primary Care Dermatology Society (PCDS) rosacea guidance' },
 
   { id:'roseola', title:'Roseola (roseola infantum)', category:'Paediatrics', icon:'👶',
     overview:'A common, benign viral illness of infancy (usually human herpesvirus 6), classically causing several days of high fever followed by a characteristic rash that appears as the fever resolves. It is self-limiting; the main issues are reassurance, managing the fever, and recognising the febrile child who needs assessment.',

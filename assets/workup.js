@@ -239,7 +239,7 @@
       }).join('');
       return `
         <section class="wu-section wu-sect-dx">
-          <div class="wu-section-h"><span class="wu-section-ic">🩺</span><span>Differential — in the pack's own order (not ranked)</span></div>
+          <div class="wu-section-h"><span class="wu-section-ic">⚕️</span><span>Differential — in the pack's own order (not ranked)</span></div>
           <div class="wu-dxlist">${cards}</div>
         </section>`;
     }

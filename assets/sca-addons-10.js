@@ -525,7 +525,7 @@
    "reason": "Video consultation: “I want to go back on my antipsychotic — can you just prescribe it?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG178 (psychosis and schizophrenia in adults, 2014) · [2] NHS England, Responsibility for prescribing between primary and secondary/tertiary care (2018) · [3] BNF antipsychotic monographs · [4] DVLA, Assessing fitness to drive: psychiatric disorders",
+   "guideline": "[1] NICE CG178 (psychosis and schizophrenia in adults, 2014) · [2] NHS England, Responsibility for prescribing between primary and secondary/tertiary care (2018) · [3] DVLA, Assessing fitness to drive: psychiatric disorders",
    "summary": "A man with established psychosis who recognises early relapse and asks to restart treatment is doing the right thing. Assess mental state and risk today, get his mental-health team to review him urgently, and set up the physical baseline so a restart is safe.",
    "points": [
     {
@@ -550,11 +550,11 @@
     },
     {
      "h": "Choice of drug",
-     "t": "CG178 [1] names no preferred antipsychotic: choose with the person, driven by side effects (metabolic, sedation, sexual, extrapyramidal, akathisia) and previous response. A long-acting injection is an option where the person prefers it. Clozapine is specialist-only with mandatory blood monitoring (BNF [3])."
+     "t": "CG178 [1] names no preferred antipsychotic: choose with the person, driven by side effects (metabolic, sedation, sexual, extrapyramidal, akathisia) and previous response. A long-acting injection is an option where the person prefers it. Clozapine is specialist-only with mandatory blood monitoring (BNF)."
     },
     {
      "h": "Driving",
-     "t": "DVLA [4]: psychotic illness has notification rules for Group 1 and Group 2 licences, and he should not drive if symptoms affect his driving. Check the current DVLA guidance."
+     "t": "DVLA [3]: psychotic illness has notification rules for Group 1 and Group 2 licences, and he should not drive if symptoms affect his driving. Check the current DVLA guidance."
     }
    ]
   },
@@ -1048,7 +1048,7 @@
    "reason": "Mother wants advice on how to stop Maisie “dirtying her pants”."
   },
   "knowledge": {
-   "guideline": "NICE CG99 (2010, updated 2017) — Constipation in children and young people · NICE CG89 — Child maltreatment: when to suspect · BNFC",
+   "guideline": "NICE CG99 (2010, updated 2017) — Constipation in children and young people · NICE CG89 — Child maltreatment: when to suspect",
    "summary": "Soiling in a toilet-trained child is overflow from faecal impaction until shown otherwise. Remove the blame, screen for red flags, then disimpact before maintenance and continue treatment for months.",
    "points": [
     {
@@ -1537,7 +1537,7 @@
    "reason": "Mother reports a “running ear” and is asking for antibiotics."
   },
   "knowledge": {
-   "guideline": "NICE NG91 (2018, updated 2022) — Otitis media (acute): antimicrobial prescribing · NICE NG143 (2019) — Fever in under 5s · NICE NG240 (2024) — Meningitis (bacterial) and meningococcal disease · BNFC",
+   "guideline": "NICE NG91 (2018, updated 2022) — Otitis media (acute): antimicrobial prescribing · NICE NG143 (2019) — Fever in under 5s · NICE NG240 (2024) — Meningitis (bacterial) and meningococcal disease",
    "summary": "A discharging ear after a few days of earache is usually acute otitis media with a perforated drum. Assess well versus unwell first. Under NICE NG91, otorrhoea is one of the groups where an antibiotic is more likely to help, so no, back-up or immediate antibiotic are all reasonable options, chosen with the parent.",
    "points": [
     {
@@ -2027,7 +2027,7 @@
    "reason": "Mother asking whether something is wrong with him; bedwetting is causing rows at home."
   },
   "knowledge": {
-   "guideline": "NICE CG111 (2010) — Bedwetting in under 19s · NICE CG89 — Child maltreatment: when to suspect · NICE NG18 — Diabetes (type 1 and type 2) in children and young people · BNFC",
+   "guideline": "NICE CG111 (2010) — Bedwetting in under 19s · NICE CG89 — Child maltreatment: when to suspect · NICE NG18 — Diabetes (type 1 and type 2) in children and young people",
    "summary": "Bedwetting at 7 is common, involuntary and treatable. Remove the blame, look for contributors (constipation, daytime symptoms, UTI, diabetes, stressors), then choose an alarm for lasting cure or desmopressin for rapid, short-term control.",
    "points": [
     {
@@ -3025,7 +3025,7 @@
    "reason": "Video consultation: wants to talk about “what happens from here”."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG115 (COPD in over 16s, 2018, updated 2019; reviewed July 2026) · [2] NICE NG142 (end of life care for adults: service delivery, 2019) · [3] Resuscitation Council UK, ReSPECT process · [4] GMC Treatment and care towards the end of life (2010) · [5] Mental Capacity Act 2005 · [6] BNF",
+   "guideline": "[1] NICE NG115 (COPD in over 16s, 2018, updated 2019; reviewed July 2026) · [2] NICE NG142 (end of life care for adults: service delivery, 2019) · [3] Resuscitation Council UK, ReSPECT process · [4] GMC Treatment and care towards the end of life (2010) · [5] Mental Capacity Act 2005",
    "summary": "He has opened the door to advance care planning. Explore what matters to him, separate the kinds of “machine”, record his wishes in a shareable plan, and treat the breathlessness-panic cycle actively with non-drug measures, low-dose opioids and palliative-care input.",
    "points": [
     {
@@ -3046,7 +3046,7 @@
     },
     {
      "h": "Drug treatment",
-     "t": "NICE NG115 [1]: use opioids, when appropriate, to palliate breathlessness in end-stage COPD unresponsive to other medical therapy; benzodiazepines, tricyclic antidepressants, major tranquillisers and oxygen may also be used when appropriate. Start low-dose oral morphine and titrate (dose per BNF [6]); warn about constipation and drowsiness."
+     "t": "NICE NG115 [1]: use opioids, when appropriate, to palliate breathlessness in end-stage COPD unresponsive to other medical therapy; benzodiazepines, tricyclic antidepressants, major tranquillisers and oxygen may also be used when appropriate. Start low-dose oral morphine and titrate (dose per BNF); warn about constipation and drowsiness."
     },
     {
      "h": "Palliative care and carers",
@@ -3535,7 +3535,7 @@
    "reason": "Video consultation: “I just need the steroids and antibiotics I usually get.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG115 (COPD in over 16s, 2018, updated 2019; reviewed July 2026) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NICE NG114 (COPD exacerbation: antimicrobial prescribing, 2018) · [4] NICE NG209 (tobacco: preventing uptake, promoting quitting, 2021) · [5] NCSCT Very Brief Advice on smoking · [6] BNF",
+   "guideline": "[1] NICE NG115 (COPD in over 16s, 2018, updated 2019; reviewed July 2026) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NICE NG114 (COPD exacerbation: antimicrobial prescribing, 2018) · [4] NICE NG209 (tobacco: preventing uptake, promoting quitting, 2021) · [5] NCSCT Very Brief Advice on smoking",
    "summary": "Grade the flare and exclude its mimics, then treat: more reliever, prednisolone 30 mg for 5 days, and an antibiotic on the NG114 judgement. Use the flare as the moment to offer stop-smoking help, briefly and without a lecture.",
    "points": [
     {
@@ -3548,7 +3548,7 @@
     },
     {
      "h": "Antibiotic judgement",
-     "t": "NICE NG114 [2]: weigh severity (sputum colour change with increased volume or thickness), previous exacerbations and admissions, risk of complications, previous sputum results and resistance risk. First choices are amoxicillin, doxycycline or clarithromycin, for 5 days (doses per BNF [6]). His purulent, increased sputum supports an antibiotic this time."
+     "t": "NICE NG114 [2]: weigh severity (sputum colour change with increased volume or thickness), previous exacerbations and admissions, risk of complications, previous sputum results and resistance risk. First choices are amoxicillin, doxycycline or clarithromycin, for 5 days (doses per BNF). His purulent, increased sputum supports an antibiotic this time."
     },
     {
      "h": "Rescue pack",
@@ -4045,7 +4045,7 @@
    "reason": "Video COPD review: “My inhalers just aren’t working any more.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG115 (COPD in over 16s, 2018, updated 2019; reviewed July 2026 with a new biological-therapy section) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NICE TA1142 (dupilumab, March 2026) and NICE TA1166 (mepolizumab, June 2026) for uncontrolled COPD with raised blood eosinophils) · [4] UKHSA Green Book · [5] BNF",
+   "guideline": "[1] NICE NG115 (COPD in over 16s, 2018, updated 2019; reviewed July 2026 with a new biological-therapy section) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NICE TA1142 (dupilumab, March 2026) and NICE TA1166 (mepolizumab, June 2026) for uncontrolled COPD with raised blood eosinophils) · [4] UKHSA Green Book",
    "summary": "Before escalating, check technique, adherence, the diagnosis and the non-drug treatments, especially pulmonary rehabilitation. Then apply the NG115 step to triple therapy on its stated criteria, with the pneumonia trade-off discussed and a planned review.",
    "points": [
     {
@@ -6492,7 +6492,7 @@
    "reason": "Mother asking for “something to stop it”; a friend’s baby was prescribed a reflux medicine."
   },
   "knowledge": {
-   "guideline": "NICE NG1 (2015, updated 2019) — Gastro-oesophageal reflux disease in children and young people · NICE CG116 — Food allergy in under 19s · NICE CG192 — Antenatal and postnatal mental health · BNFC",
+   "guideline": "NICE NG1 (2015, updated 2019) — Gastro-oesophageal reflux disease in children and young people · NICE CG116 — Food allergy in under 19s · NICE CG192 — Antenatal and postnatal mental health",
    "summary": "Regurgitation in a thriving, well baby is gastro-oesophageal reflux, not disease. Assess feeding, growth and red flags, then reassure and adjust feeds. Acid suppression is not for regurgitation alone. The exhausted parent is part of the consultation.",
    "points": [
     {
@@ -6988,12 +6988,12 @@
    "reason": "Video consultation: “I’ve had a sickness bug and now I’m shaky — I’m on lithium, is that relevant?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG185 (bipolar disorder in adults, 2014, updated) · [2] NPSA Patient Safety Alert NPSA/2009/PSA005, Safer lithium therapy (December 2009) · [3] BNF lithium monographs · [4] NICE QS95 (bipolar disorder in adults)",
+   "guideline": "[1] NICE CG185 (bipolar disorder in adults, 2014, updated) · [2] NPSA Patient Safety Alert NPSA/2009/PSA005, Safer lithium therapy (December 2009) · [3] NICE QS95 (bipolar disorder in adults)",
    "summary": "A patient on lithium who becomes confused, ataxic and coarsely tremulous after vomiting and diarrhoea has lithium toxicity until a level proves otherwise. Stop the lithium, get an urgent level and renal function, and arrange same-day hospital assessment.",
    "points": [
     {
      "h": "Narrow therapeutic range",
-     "t": "NICE CG185 [1] and QS95 [4]: aim for a 12-hour post-dose plasma level of 0.6–0.8 mmol/L for most people (0.8–1.0 mmol/L after a relapse on a lower level, or with subthreshold symptoms). Small rises in level can produce toxicity, and toxicity can occur at a level within the range in an unwell patient."
+     "t": "NICE CG185 [1] and QS95 [3]: aim for a 12-hour post-dose plasma level of 0.6–0.8 mmol/L for most people (0.8–1.0 mmol/L after a relapse on a lower level, or with subthreshold symptoms). Small rises in level can produce toxicity, and toxicity can occur at a level within the range in an unwell patient."
     },
     {
      "h": "Why dehydration matters",
@@ -7009,7 +7009,7 @@
     },
     {
      "h": "Interacting drugs",
-     "t": "BNF [3] and CG185 [1]: NSAIDs (including over-the-counter ibuprofen), ACE inhibitors, angiotensin-II receptor blockers and diuretics (especially thiazides) raise lithium levels. Ask about anything taken for the bug or for pain."
+     "t": "BNF and CG185 [1]: NSAIDs (including over-the-counter ibuprofen), ACE inhibitors, angiotensin-II receptor blockers and diuretics (especially thiazides) raise lithium levels. Ask about anything taken for the bug or for pain."
     },
     {
      "h": "Safety system",

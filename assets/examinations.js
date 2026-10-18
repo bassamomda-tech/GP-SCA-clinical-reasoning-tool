@@ -16,7 +16,7 @@
   const SYSTEM_ICON = {
     'Cardiovascular':'❤️','Respiratory':'🌬️','Abdominal & GI':'🤰','Neurological':'🧠',
     'Musculoskeletal':'🦴','ENT, Neck & Thyroid':'👂','Ophthalmology':'👁️','Breast':'🎗️',
-    'Vascular & Diabetic foot':'🦶','Skin':'🔬','Lymphoreticular':'🩸',
+    'Vascular & Diabetic foot':'🦶','Skin':'🔬','Lymphoreticular':'💉',
     'Mental health & Cognitive':'🧩','Paediatric':'🧒',
   };
 
@@ -50,7 +50,7 @@
         const search = esc([e.title, e.system, e.blurb, (e.indications||[]).join(' '), e.id].join(' ').toLowerCase());
         const path = e.pathway ? '🗺️ pathway' : `${(e.indications||[]).length} indications`;
         return `<a class="ex-card" href="#${esc(e.id)}" data-search="${search}">
-          <span class="ex-ic">${e.icon || SYSTEM_ICON[g] || '🩺'}</span>
+          <span class="ex-ic">${e.icon || SYSTEM_ICON[g] || '⚕️'}</span>
           <span class="ex-tx">
             <b>${esc(e.title)}</b>
             <small>${esc(e.blurb||'')}</small>
@@ -60,7 +60,7 @@
         </a>`;
       }).join('');
       sections += `<section class="ex-group" data-group="${esc(g.toLowerCase())}">
-        <div class="ex-group-head"><span class="egh-ic">${SYSTEM_ICON[g]||'🩺'}</span><h2>${esc(g)}</h2><span class="egh-count">${list.length}</span></div>
+        <div class="ex-group-head"><span class="egh-ic">${SYSTEM_ICON[g]||'⚕️'}</span><h2>${esc(g)}</h2><span class="egh-count">${list.length}</span></div>
         <div class="ex-grid">${cards}</div>
       </section>`;
     }
@@ -252,7 +252,7 @@
       <a class="ex-back" href="#"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg> All examinations</a>
 
       <header class="ex-detail-head" data-screen-label="${esc(e.title)} exam">
-        <div class="ex-dh-ic">${e.icon || SYSTEM_ICON[e.system] || '🩺'}</div>
+        <div class="ex-dh-ic">${e.icon || SYSTEM_ICON[e.system] || '⚕️'}</div>
         <div>
           <span class="ex-dh-sys">${esc(e.system||'')}</span>
           <h1>${esc(e.title)}</h1>

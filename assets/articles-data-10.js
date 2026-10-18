@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 10: F topics)
    NHS conditions A–Z (letter F) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -228,7 +228,7 @@
       'Diagnostic uncertainty, treatment failure, or extensive disease → dermatology',
       'Diabetic/ischaemic foot with nail infection → podiatry/diabetic foot service',
       'Consideration of oral antifungals where interactions/comorbidity complicate prescribing → specialist advice'],
-    source:'BAD onychomycosis guideline (2014) / BNF / NICE NG12 (updated April 2026)' }
+    source:'BAD onychomycosis guideline (2014) / NICE NG12 (updated April 2026)' }
 
   );
 })();

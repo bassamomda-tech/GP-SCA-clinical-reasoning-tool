@@ -496,7 +496,7 @@
    "reason": "Video follow-up after an anaphylactic reaction, to agree a plan."
   },
   "knowledge": {
-   "guideline": "NICE NG258 (2026, replaced CG134) · NICE QS119 · Resuscitation Council UK anaphylaxis guideline (2021) · MHRA Drug Safety Update June 2023 (adrenaline auto-injectors) · BNF",
+   "guideline": "NICE NG258 (2026, replaced CG134) · NICE QS119 · Resuscitation Council UK anaphylaxis guideline (2021) · MHRA Drug Safety Update June 2023 (adrenaline auto-injectors)",
    "summary": "Acute airway, breathing or circulation problems with skin changes minutes after food is anaphylaxis. Aftercare is a package: two in-date auto-injectors with training, a written plan, allergy-service referral, avoidance advice and attention to the fear it leaves behind.",
    "points": [
     {
@@ -991,7 +991,7 @@
    "reason": "Video consultation to discuss her B12 result."
   },
   "knowledge": {
-   "guideline": "NICE NG239 (vitamin B12 deficiency in over 16s, 2024) · BNF (hydroxocobalamin; folic acid) · BSH guideline for cobalamin and folate disorders (Devalia et al., 2014) · NICE NG20 (coeliac disease, 2015)",
+   "guideline": "NICE NG239 (vitamin B12 deficiency in over 16s, 2024) · BSH guideline for cobalamin and folate disorders (Devalia et al., 2014) · NICE NG20 (coeliac disease, 2015)",
    "summary": "A low B12 with macrocytosis in a meat-eater points to poor absorption, most often autoimmune gastritis (pernicious anaemia). Her tingling feet and unsteadiness mean nerve involvement: start intramuscular hydroxocobalamin promptly on the neurological regimen, and never give folic acid alone first.",
    "points": [
     {
@@ -1494,7 +1494,7 @@
    "reason": "Periods have stopped on the mini-pill — is this normal, or could she be pregnant?"
   },
   "knowledge": {
-   "guideline": "FSRH Progestogen-only Pills guideline (August 2022, amended April 2026) · FSRH Emergency Contraception guideline (2017, amended) · FSRH Problematic Bleeding with Hormonal Contraception (2015) · BNF",
+   "guideline": "CoSRH Progestogen-only Pills guideline (August 2022, amended April 2026) · CoSRH Emergency Contraception guideline (2017, amended) · CoSRH Problematic Bleeding with Hormonal Contraception (2015)",
    "summary": "Absent or infrequent bleeding is a common, harmless effect of desogestrel and not a sign the pill has failed — but amenorrhoea can also hide a pregnancy, so check adherence and test before reassuring.",
    "points": [
     {
@@ -1503,15 +1503,15 @@
     },
     {
      "h": "Reassure, but test first",
-     "t": "FSRH POP (2022): amenorrhoea may mask a pregnancy. Ask about late or missed pills, vomiting or severe diarrhoea, new medicines (especially enzyme inducers) and pregnancy symptoms. If there is any doubt, a urine pregnancy test — reliable from 3 weeks after the last unprotected sex."
+     "t": "CoSRH POP (2022): amenorrhoea may mask a pregnancy. Ask about late or missed pills, vomiting or severe diarrhoea, new medicines (especially enzyme inducers) and pregnancy symptoms. If there is any doubt, a urine pregnancy test — reliable from 3 weeks after the last unprotected sex."
     },
     {
      "h": "Desogestrel missed-pill rule",
-     "t": "FSRH POP (2022): a desogestrel pill more than 12 hours late counts as missed — take it as soon as remembered, continue daily, and use condoms or avoid sex for 48 hours. Emergency contraception may be needed if she had sex after the missed pill before 48 hours of correct pill-taking."
+     "t": "CoSRH POP (2022): a desogestrel pill more than 12 hours late counts as missed — take it as soon as remembered, continue daily, and use condoms or avoid sex for 48 hours. Emergency contraception may be needed if she had sex after the missed pill before 48 hours of correct pill-taking."
     },
     {
      "h": "Vomiting and interactions",
-     "t": "Vomiting soon after a pill or severe diarrhoea may stop absorption — follow the FSRH POP time limits and treat it as a possible missed pill. Enzyme-inducing drugs reduce effectiveness; check any new medicine against the BNF."
+     "t": "Vomiting soon after a pill or severe diarrhoea may stop absorption — follow the CoSRH POP time limits and treat it as a possible missed pill. Enzyme-inducing drugs reduce effectiveness; check any new medicine against the BNF."
     },
     {
      "h": "Wider sexual health",
@@ -1632,7 +1632,7 @@
     "who": "dr",
     "text": "Exactly — once the test is negative, you can trust that. Just so you’re covered in future: if you’re ever more than 12 hours late, take the pill as soon as you remember, carry on as normal, and use condoms for the next two days. If you had sex in that time, get in touch because you might need emergency contraception. Being sick soon after a pill or bad diarrhoea can count as missing one too.",
     "dom": "dg",
-    "why": "FSRH missed-pill rules and emergency contraception"
+    "why": "CoSRH missed-pill rules and emergency contraception"
    },
    {
     "phase": "Shared management",
@@ -1728,7 +1728,7 @@
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "Test first, explained reassurance, FSRH missed-pill and emergency contraception rules, method review with LARC offered.",
+    "d": "Test first, explained reassurance, CoSRH missed-pill and emergency contraception rules, method review with LARC offered.",
     "pts": 2, "dom": "cm"
    },
    {
@@ -1877,7 +1877,7 @@
    {
     "ic": "📋",
     "t": "Contraception",
-    "s": "Case walkthrough · FSRH",
+    "s": "Case walkthrough · CoSRH",
     "href": "../cases/contraception.html"
    },
    {
@@ -1905,7 +1905,7 @@
     {
      "dom": "dg",
      "fail": "“That’s just the pill” — no adherence questions and no test.",
-     "why": "Amenorrhoea can mask pregnancy (FSRH POP 2022). Blind reassurance is unsafe.",
+     "why": "Amenorrhoea can mask pregnancy (CoSRH POP 2022). Blind reassurance is unsafe.",
      "fix": "Ask about late pills, vomiting, medicines and symptoms; arrange a pregnancy test."
     },
     {
@@ -1970,7 +1970,7 @@
     },
     {
      "h": "The NICE NG12 skin criteria",
-     "t": "NICE NG12: consider a suspected cancer pathway referral (appointment within 2 weeks) for a skin lesion that raises the suspicion of squamous cell carcinoma. For a suspected basal cell carcinoma, consider routine referral, and use the suspected cancer pathway only if there is particular concern that a delay could have a significant impact because of factors such as site or size."
+     "t": "NICE NG12: consider a suspected cancer pathway referral for a skin lesion that raises the suspicion of squamous cell carcinoma. For a suspected basal cell carcinoma, consider routine referral, and use the suspected cancer pathway only if there is particular concern that a delay could have a significant impact because of factors such as site or size."
     },
     {
      "h": "Why the ear matters",
@@ -2837,9 +2837,9 @@
    },
    {
     "ic": "💠",
-    "t": "HRT prescribing",
+    "t": "Menopause and HRT",
     "s": "Regimens · NICE NG23 risk figures",
-    "href": "management/hrt-prescribing.html"
+    "href": "management/menopause.html"
    },
    {
     "ic": "💠",
@@ -2911,7 +2911,7 @@
    "reason": "“Periods all over the place, not sleeping, can’t think straight.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG23 Menopause: identification and management (2015, updated 2024) · [2] FSRH Clinical Guideline: Contraception for women aged over 40 years (2017, amended) · [3] FSRH and British Menopause Society guidance on LNG-IUS for endometrial protection (check current SPC/licence) · [4] NICE CKS Menopause (check current version) · [5] DWP fit note guidance; Equality Act 2010 (sex, age and disability) and employer menopause guidance · [6] Product SPCs for HRT preparations and the 52 mg LNG-IUS",
+   "guideline": "[1] NICE NG23 Menopause: identification and management (2015, updated 2024) · [2] CoSRH Clinical Guideline: Contraception for women aged over 40 years (2017, amended) · [3] CoSRH and British Menopause Society guidance on LNG-IUS for endometrial protection (check current SPC/licence) · [4] NICE CKS Menopause (check current version) · [5] DWP fit note guidance; Equality Act 2010 (sex, age and disability) and employer menopause guidance · [6] Product SPCs for HRT preparations and the 52 mg LNG-IUS",
    "summary": "A 46-year-old police sergeant with a year of irregular cycles, vasomotor symptoms, poor sleep and brain fog. Diagnose perimenopause clinically, exclude pregnancy, explain HRT and that it is not contraception, offer the 52 mg LNG-IUS for endometrial protection and contraception with transdermal oestrogen, mention CBT, uncover and address the fear of dementia and the work review, and support her at work.",
    "points": [
     {
@@ -3307,27 +3307,15 @@
   "links": [
    {
     "ic": "💠",
-    "t": "HRT prescribing",
+    "t": "Menopause and HRT",
     "s": "Regimens and endometrial protection",
-    "href": "management/hrt-prescribing.html"
-   },
-   {
-    "ic": "🗺️",
-    "t": "HRT and menopause",
-    "s": "Visual algorithm",
-    "href": "algorithms/hrt-menopause.html"
+    "href": "management/menopause.html"
    },
    {
     "ic": "💠",
     "t": "Contraception",
     "s": "Contraception over 40 and LNG-IUS",
     "href": "management/contraception.html"
-   },
-   {
-    "ic": "💠",
-    "t": "Menopause",
-    "s": "Diagnosis and options",
-    "href": "management/menopause.html"
    }
   ],
   "pitfalls": {
@@ -3879,7 +3867,7 @@
    "reason": "Video consultation: wants the chest scar “cut off properly this time”."
   },
   "knowledge": {
-   "guideline": "BAD patient information leaflet: Keloids (updated October 2017) · BAD leaflet: Intralesional steroid therapy · BNF (triamcinolone acetonide, intralesional)",
+   "guideline": "BAD patient information leaflet: Keloids (updated October 2017) · BAD leaflet: Intralesional steroid therapy",
    "summary": "A scar that grows beyond the original wound, itches and returned larger after excision is a keloid. Excision alone rarely succeeds; treatment aims for control with steroid injections, silicone and pressure, under specialist care.",
    "points": [
     {
@@ -4823,7 +4811,7 @@
    "reason": "Video consultation: asks for another methotrexate prescription today because she has run out early."
   },
   "knowledge": {
-   "guideline": "MHRA Drug Safety Update (September 2020) · NPSA oral methotrexate alert (2006) · BSR csDMARD guideline (2025) · BNF · FSRH Contraception for women aged over 40 years (2017, amended May 2025)",
+   "guideline": "MHRA Drug Safety Update (September 2020) · NPSA oral methotrexate alert (2006) · BSR csDMARD guideline (2025) · CoSRH Contraception for women aged over 40 years (2017, amended May 2025)",
    "summary": "An early methotrexate request is a safety signal. Find out why, exclude daily dosing and toxicity, confirm monitoring is up to date, then issue a safe quantity — or escalate.",
    "points": [
     {
@@ -4848,7 +4836,7 @@
     },
     {
      "h": "Contraception at 58",
-     "t": "Methotrexate is teratogenic, but FSRH guidance says contraception can be stopped at 55 because pregnancy risk is extremely low. Contraception counselling is unlikely to apply to her; check rather than assume."
+     "t": "Methotrexate is teratogenic, but CoSRH guidance says contraception can be stopped at 55 because pregnancy risk is extremely low. Contraception counselling is unlikely to apply to her; check rather than assume."
     }
    ]
   },
@@ -5274,7 +5262,7 @@
     {
      "dom": "cm",
      "fail": "Spending time on contraception counselling for a 58-year-old.",
-     "why": "FSRH guidance allows contraception to stop at 55; counselling without checking relevance wastes time.",
+     "why": "CoSRH guidance allows contraception to stop at 55; counselling without checking relevance wastes time.",
      "fix": "Prioritise weekly dosing, toxicity, monitoring and interactions."
     },
     {
@@ -5761,7 +5749,7 @@
     "ic": "💠",
     "t": "Insomnia",
     "s": "Protocol · sleep advice",
-    "href": "management/insomnia.html"
+    "href": "algorithms/insomnia.html"
    }
   ],
   "pitfalls": {
@@ -6806,7 +6794,7 @@
    "reason": "Video consultation about pain that has continued since her shingles healed."
   },
   "knowledge": {
-   "guideline": "NICE CG173 (neuropathic pain in adults, 2013, updated 2020) · UKHSA Green Book chapter 28a (shingles) · MHRA Drug Safety Update (April 2019; October 2017) · BNF",
+   "guideline": "NICE CG173 (neuropathic pain in adults, 2013, updated 2020) · UKHSA Green Book chapter 28a (shingles) · MHRA Drug Safety Update (April 2019; October 2017)",
    "summary": "Burning dermatomal pain with allodynia months after shingles is postherpetic neuralgia. Stop what is not working, offer one CG173 first-line neuropathic agent at a time, tailor it to a 74-year-old, and look after sleep and mood.",
    "points": [
     {
@@ -7320,7 +7308,7 @@
    "reason": "Video consultation with her mother: “Is it just poor circulation?”"
   },
   "knowledge": {
-   "guideline": "BSR guideline for the management of systemic sclerosis (2024) · EULAR systemic sclerosis recommendations (2023 update, international) · PCDS Raynaud’s phenomenon · BNFC (nifedipine) · GMC 0–18 years (2018)",
+   "guideline": "BSR guideline for the management of systemic sclerosis (2024) · EULAR systemic sclerosis recommendations (2023 update, international) · PCDS Raynaud’s phenomenon · GMC 0–18 years (2018)",
    "summary": "Symmetrical white–blue–red colour change in the cold in a well 15-year-old is almost always primary Raynaud’s. The skill is a careful screen for secondary features, warmth-first management, and speaking to Ruby herself.",
    "points": [
     {
@@ -8261,7 +8249,7 @@
     },
     {
      "dom": "ro",
-     "fail": "Jargon: “We’ll do a FIT and a suspected cancer referral (2WW) for a colonoscopy.”",
+     "fail": "Jargon: “We’ll do a FIT and a suspected cancer referral for a colonoscopy.”",
      "why": "Language not pitched to the patient. Danny cannot take part in decisions he cannot follow.",
      "fix": "“A poo test that looks for blood. Then a camera test at the hospital, with Maria there.” Check with teach-back."
     }
@@ -8283,7 +8271,7 @@
    "reason": "Video consultation: \"Hay fever worse this year — wants something stronger.\""
   },
   "knowledge": {
-   "guideline": "BSACI guideline for the diagnosis and management of allergic and non-allergic rhinitis (Scadding et al., 2017) · ARIA-EAACI (international, 2024–2025) · MHRA Drug Safety Update (September 2019; April 2024) · BNF",
+   "guideline": "BSACI guideline for the diagnosis and management of allergic and non-allergic rhinitis (Scadding et al., 2017) · ARIA-EAACI (international, 2024–2025) · MHRA Drug Safety Update (September 2019; April 2024)",
    "summary": "Spring-time, two-sided sneezing, itch, running and blocked nose with itchy eyes is seasonal allergic rhinitis. When an as-needed tablet stops working, the usual problem is under-treatment: a regular intranasal steroid with good technique is the mainstay.",
    "points": [
     {

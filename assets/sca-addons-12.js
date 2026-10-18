@@ -518,7 +518,7 @@
    "reason": "Video consultation. “A blood test says my kidneys are off — should I be worried?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG148 (acute kidney injury: prevention, detection and management, 2019) · [2] Think Kidneys (NHS England programme) sick day guidance (2018) · [3] MHRA Drug Safety Update March 2020 (SGLT2 inhibitors: monitor ketones in blood during treatment interruption for surgical procedures or acute serious medical illness) · [4] NICE NG28 (type 2 diabetes in adults, updated) · [5] NICE NG253 (suspected sepsis in people aged 16 and over, 2025) · [6] BNF monographs for ramipril, metformin, SGLT2 inhibitors and ibuprofen",
+   "guideline": "[1] NICE NG148 (acute kidney injury: prevention, detection and management, 2019) · [2] Think Kidneys (NHS England programme) sick day guidance (2018) · [3] MHRA Drug Safety Update March 2020 (SGLT2 inhibitors: monitor ketones in blood during treatment interruption for surgical procedures or acute serious medical illness) · [4] NICE NG28 (type 2 diabetes in adults, updated) · [5] NICE NG253 (suspected sepsis in people aged 16 and over, 2025)",
    "summary": "Four days of diarrhoea and vomiting, barely keeping fluids down, dizziness on standing and a rise in creatinine, in a 72-year-old on ramipril, metformin, an SGLT2 inhibitor and ibuprofen: this is acute kidney injury from volume depletion made worse by her medicines. Stop the ibuprofen, pause the ramipril, metformin and SGLT2 inhibitor, and — because she cannot keep fluids down, is older, diabetic and on an SGLT2 inhibitor — arrange same-day hospital assessment rather than a trial at home. Then make sure the held drugs are restarted safely and she has a sick-day plan.",
    "points": [
     {
@@ -547,7 +547,7 @@
     },
     {
      "h": "Metformin",
-     "t": "Metformin accumulates when kidney function falls, raising the risk of lactic acidosis. Pause during the illness; restart when eGFR has recovered, with dose adjusted to eGFR per BNF [6]."
+     "t": "Metformin accumulates when kidney function falls, raising the risk of lactic acidosis. Pause during the illness; restart when eGFR has recovered, with dose adjusted to eGFR per BNF."
     },
     {
      "h": "After recovery",
@@ -1488,7 +1488,7 @@
    "reason": "“The creams barely touch it and it’s wrecking my confidence. Can you give me something stronger?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG153 Psoriasis: assessment and management (2012, updated 2017) · [2] NICE QS40 Psoriasis (2013) · [3] NICE NG65 Spondyloarthritis in over 16s (2017) · [4] MHRA Drug Safety Update December 2018 (emollients and fire risk) · [5] MHRA Drug Safety Update September 2021 (topical corticosteroid withdrawal reactions) · [6] BNF",
+   "guideline": "[1] NICE CG153 Psoriasis: assessment and management (2012, updated 2017) · [2] NICE QS40 Psoriasis (2013) · [3] NICE NG65 Spondyloarthritis in over 16s (2017) · [4] MHRA Drug Safety Update December 2018 (emollients and fire risk) · [5] MHRA Drug Safety Update September 2021 (topical corticosteroid withdrawal reactions)",
    "summary": "Chronic plaque psoriasis with a big impact on confidence, now with inflammatory-sounding joint and back symptoms. Optimise topicals using the CG153 sequence, assess severity and impact, screen for psoriatic arthritis and refer to rheumatology, consider dermatology referral for major impact on wellbeing, and look at mood and cardiovascular risk.",
    "points": [
     {
@@ -3003,7 +3003,7 @@
    "reason": "Video consultation: frightened by the result; asking whether her baby is in danger."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG3 (diabetes in pregnancy, 2015, updated 2020) · [2] NICE QS109 (diabetes in pregnancy) · [3] NICE NG133 (hypertension in pregnancy, 2019) · [4] BNF",
+   "guideline": "[1] NICE NG3 (diabetes in pregnancy, 2015, updated 2020) · [2] NICE QS109 (diabetes in pregnancy) · [3] NICE NG133 (hypertension in pregnancy, 2019)",
    "summary": "Gestational diabetes raises risks for mother and baby, but good glucose control reduces them. Refer to the joint diabetes and antenatal clinic within a week, start monitoring, diet and activity, add metformin or insulin if targets are not met, and plan postnatal testing and lifelong screening.",
    "points": [
     {
@@ -3020,7 +3020,7 @@
     },
     {
      "h": "Treatment steps",
-     "t": "NICE NG3 [1]: if fasting glucose is below 7.0 at diagnosis, offer diet and exercise; add metformin if targets are not met within 1–2 weeks; add insulin if still not met, or if metformin is contraindicated or unacceptable. If fasting glucose is 7.0 or more at diagnosis, offer immediate insulin with or without metformin; consider it at 6.0–6.9 with macrosomia or hydramnios. Glibenclamide only if metformin fails and insulin is declined, or metformin is not tolerated. Doses per BNF [4]."
+     "t": "NICE NG3 [1]: if fasting glucose is below 7.0 at diagnosis, offer diet and exercise; add metformin if targets are not met within 1–2 weeks; add insulin if still not met, or if metformin is contraindicated or unacceptable. If fasting glucose is 7.0 or more at diagnosis, offer immediate insulin with or without metformin; consider it at 6.0–6.9 with macrosomia or hydramnios. Glibenclamide only if metformin fails and insulin is declined, or metformin is not tolerated. Doses per BNF."
     },
     {
      "h": "Monitoring and birth",
@@ -3492,28 +3492,28 @@
    "reason": "Video consultation: “Sore throat and wiped out. Can I have antibiotics so I can play rugby on Saturday?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG84 Sore throat (acute): antimicrobial prescribing (2018) · [2] Amoxicillin summary of product characteristics, section 4.4 (avoid if infectious mononucleosis suspected) · [3] BNF: phenoxymethylpenicillin, paracetamol, ibuprofen · [4] Ebell MH et al. JAMA 2016 (diagnosis of infectious mononucleosis) · [5] Sylvester JE et al. Am Fam Physician 2023 (infectious mononucleosis: rapid evidence review) · [6] BHIVA/BASHH/BIA Adult HIV testing guidelines (2020) · [8] NICE NG206 ME/CFS (2021)",
+   "guideline": "[1] NICE NG84 Sore throat (acute): antimicrobial prescribing (2018) · [2] Amoxicillin summary of product characteristics, section 4.4 (avoid if infectious mononucleosis suspected) · [3] Ebell MH et al. JAMA 2016 (diagnosis of infectious mononucleosis) · [4] Sylvester JE et al. Am Fam Physician 2023 (infectious mononucleosis: rapid evidence review) · [5] BHIVA/BASHH/BIA Adult HIV testing guidelines (2020) · [7] NICE NG206 ME/CFS (2021)",
    "summary": "A young adult with more than a week of severe sore throat, fever, marked fatigue and posterior as well as anterior neck nodes most likely has glandular fever (EBV). Confirm with FBC and film and EBV serology (or a heterophile antibody (Monospot) test, per the local laboratory pathway), with LFTs if clinically indicated. It is viral: antibiotics will not help, and amoxicillin causes a florid rash. The key safety message is the spleen: no contact sport or heavy lifting for at least 4 weeks and until reviewed, so no rugby on Saturday. Safety-net for airway obstruction and splenic rupture.",
    "points": [
     {
      "h": "Recognise it",
-     "t": "Prolonged sore throat, fever, tonsillar exudate, marked fatigue, and tender posterior cervical nodes are typical of infectious mononucleosis in teenagers and young adults. Palatal petechiae, splenomegaly and mild hepatitis support it. Ebell (JAMA 2016) [4]: posterior cervical, axillary or inguinal nodes, palatal petechiae and splenomegaly make it more likely."
+     "t": "Prolonged sore throat, fever, tonsillar exudate, marked fatigue, and tender posterior cervical nodes are typical of infectious mononucleosis in teenagers and young adults. Palatal petechiae, splenomegaly and mild hepatitis support it. Ebell (JAMA 2016) [3]: posterior cervical, axillary or inguinal nodes, palatal petechiae and splenomegaly make it more likely."
     },
     {
      "h": "Tests",
-     "t": "FBC and film (lymphocytosis with atypical lymphocytes), and EBV-specific serology as the preferred confirmatory test per the local laboratory pathway; LFTs if jaundice, hepatomegaly or marked systemic illness. A heterophile antibody (Monospot) test, where used, is about 87% sensitive and 91% specific and is unreliable in the first week [4], so a negative result does not exclude EBV when suspicion remains. If negative with a mononucleosis-like illness, offer an HIV test: BHIVA/BASHH/BIA 2020 [6] lists mononucleosis-like syndrome as an indicator condition."
+     "t": "FBC and film (lymphocytosis with atypical lymphocytes), and EBV-specific serology as the preferred confirmatory test per the local laboratory pathway; LFTs if jaundice, hepatomegaly or marked systemic illness. A heterophile antibody (Monospot) test, where used, is about 87% sensitive and 91% specific and is unreliable in the first week [3], so a negative result does not exclude EBV when suspicion remains. If negative with a mononucleosis-like illness, offer an HIV test: BHIVA/BASHH/BIA 2020 [5] lists mononucleosis-like syndrome as an indicator condition."
     },
     {
      "h": "No antibiotics, no amoxicillin",
-     "t": "EBV is viral and antibiotics do not shorten it. Amoxicillin (and ampicillin) cause a widespread maculopapular rash in most people with glandular fever; the SPC [2] advises avoiding it when infectious mononucleosis is suspected. If a separate bacterial tonsillitis needed treating, NICE NG84 [1] first choice is phenoxymethylpenicillin for 5 to 10 days (dose per BNF [3])."
+     "t": "EBV is viral and antibiotics do not shorten it. Amoxicillin (and ampicillin) cause a widespread maculopapular rash in most people with glandular fever; the SPC [2] advises avoiding it when infectious mononucleosis is suspected. If a separate bacterial tonsillitis needed treating, NICE NG84 [1] first choice is phenoxymethylpenicillin for 5 to 10 days (dose per BNF)."
     },
     {
      "h": "Supportive care",
-     "t": "Rest as needed, fluids, paracetamol or ibuprofen for pain and fever (dose per BNF [3]), saltwater gargles. Avoid alcohol while unwell and until liver tests settle. Most people feel better within 2 to 4 weeks, but tiredness can last longer."
+     "t": "Rest as needed, fluids, paracetamol or ibuprofen for pain and fever (dose per BNF), saltwater gargles. Avoid alcohol while unwell and until liver tests settle. Most people feel better within 2 to 4 weeks, but tiredness can last longer."
     },
     {
      "h": "The spleen and sport",
-     "t": "Splenic rupture is rare (often quoted as about 0.1 to 0.5%, though exact estimates are uncertain) but potentially fatal; most reported cases occur in the first month, although late rupture can occur [5]. Advise no contact or collision sport and no heavy lifting for at least 4 weeks from the start of symptoms, and longer while the spleen is enlarged or he is unwell. Many UK NHS services advise about 8 weeks before full contact sport. Agree the return at review, not by guesswork."
+     "t": "Splenic rupture is rare (often quoted as about 0.1 to 0.5%, though exact estimates are uncertain) but potentially fatal; most reported cases occur in the first month, although late rupture can occur [4]. Advise no contact or collision sport and no heavy lifting for at least 4 weeks from the start of symptoms, and longer while the spleen is enlarged or he is unwell. Many UK NHS services advise about 8 weeks before full contact sport. Agree the return at review, not by guesswork."
     },
     {
      "h": "Red flags",
@@ -3521,7 +3521,7 @@
     },
     {
      "h": "If it doesn’t settle",
-     "t": "Persistent or enlarging nodes, night sweats, weight loss or splenomegaly without explanation need reassessment: [7] lymphoma criteria. Fatigue beyond 6 weeks with post-exertional symptoms: consider ME/CFS assessment per NICE NG206 [8]."
+     "t": "Persistent or enlarging nodes, night sweats, weight loss or splenomegaly without explanation need reassessment: [6] lymphoma criteria. Fatigue beyond 6 weeks with post-exertional symptoms: consider ME/CFS assessment per NICE NG206 [7]."
     }
    ]
   },
@@ -4471,7 +4471,7 @@
    "reason": "Video consultation: “A spreading round rash on my calf. Is it ringworm?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG95 Lyme disease (2018) · [2] NICE QS186 Lyme disease (2019) · [3] BNF: doxycycline (photosensitivity, oesophageal irritation) · [4] UKHSA Tick awareness and tick removal guidance",
+   "guideline": "[1] NICE NG95 Lyme disease (2018) · [2] NICE QS186 Lyme disease (2019) · [3] UKHSA Tick awareness and tick removal guidance",
    "summary": "A slowly expanding red rash, with or without central clearing, appearing days to weeks after time in tick habitat, is erythema migrans until proved otherwise. NICE NG95 says diagnose and treat Lyme disease on the rash alone: no blood test. Doxycycline first line, tick-bite prevention, and a safety-net for the uncommon later features of disseminated disease.",
    "points": [
     {
@@ -4484,7 +4484,7 @@
     },
     {
      "h": "Antibiotics",
-     "t": "NICE NG95 [1]: doxycycline 100 mg twice a day for 21 days first line for erythema migrans; amoxicillin for 21 days if doxycycline is contraindicated (for example pregnancy), and azithromycin as a further alternative (doses per BNF). BNF [3]: warn about photosensitivity and take with plenty of water, sitting or standing, to avoid oesophageal irritation."
+     "t": "NICE NG95 [1]: doxycycline 100 mg twice a day for 21 days first line for erythema migrans; amoxicillin for 21 days if doxycycline is contraindicated (for example pregnancy), and azithromycin as a further alternative (doses per BNF). BNF: warn about photosensitivity and take with plenty of water, sitting or standing, to avoid oesophageal irritation."
     },
     {
      "h": "Not ringworm, not cellulitis",
@@ -4496,7 +4496,7 @@
     },
     {
      "h": "Tick prevention and removal",
-     "t": "UKHSA [4]: cover skin and use repellent in tick areas, check skin after walks, and remove ticks promptly with fine-tipped tweezers or a tick-removal tool, gripping close to the skin and pulling steadily without crushing, then clean the area. NICE NG95 [1]: do not give antibiotics after a tick bite in a person with no symptoms."
+     "t": "UKHSA [3]: cover skin and use repellent in tick areas, check skin after walks, and remove ticks promptly with fine-tipped tweezers or a tick-removal tool, gripping close to the skin and pulling steadily without crushing, then clean the area. NICE NG95 [1]: do not give antibiotics after a tick bite in a person with no symptoms."
     },
     {
      "h": "Recovery",
@@ -4950,7 +4950,7 @@
    "reason": "Video consultation. “Nothing touches it — can I have something stronger?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG150 (headaches in over 12s: diagnosis and management, 2012, updated June 2025) · [2] MHRA Drug Safety Update June 2024 (topiramate: pregnancy prevention programme) · [3] British Association for the Study of Headache (BASH) National headache management system for adults (2019) · [4] UK Medical Eligibility Criteria for Contraceptive Use (CoSRH UKMEC 2025) · [5] BNF monographs for propranolol, amitriptyline and topiramate",
+   "guideline": "[1] NICE CG150 (headaches in over 12s: diagnosis and management, 2012, updated June 2025) · [2] MHRA Drug Safety Update June 2024 (topiramate: pregnancy prevention programme) · [3] British Association for the Study of Headache (BASH) National headache management system for adults (2019) · [4] UK Medical Eligibility Criteria for Contraceptive Use (CoSRH UKMEC 2025)",
    "summary": "Long-standing migraine that has become near-daily, with co-codamol and a triptan taken on most days, is medication-overuse headache on top of migraine until proved otherwise. The painkillers are now keeping the headache going, so ‘something stronger’ would make it worse. Exclude secondary headache, then withdraw the overused drugs with a warning about the short-term worsening, start a preventer, and review.",
    "points": [
     {
@@ -4971,7 +4971,7 @@
     },
     {
      "h": "Prevention",
-     "t": "NICE CG150 [1] and BASH [3]: consider a preventer when attacks are frequent or disabling. Options include propranolol, amitriptyline and topiramate; candesartan is used off-label (BASH [3]). Titrate to an effective dose and judge after an adequate trial. CG150 [1] also advises that riboflavin 400 mg once a day may reduce frequency and intensity for some people. Doses per BNF [5]."
+     "t": "NICE CG150 [1] and BASH [3]: consider a preventer when attacks are frequent or disabling. Options include propranolol, amitriptyline and topiramate; candesartan is used off-label (BASH [3]). Titrate to an effective dose and judge after an adequate trial. CG150 [1] also advises that riboflavin 400 mg once a day may reduce frequency and intensity for some people. Doses per BNF."
     },
     {
      "h": "Topiramate",
@@ -6402,7 +6402,7 @@
    "reason": "Video consultation: urgency, frequency day and night and occasional leaking; asking for a tablet to stop it."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG123 (urinary incontinence and pelvic organ prolapse in women, 2019) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NICE QS77 (urinary incontinence in women) · [3] NICE TA290 (mirabegron) · [4] MHRA Drug Safety Update, mirabegron (October 2015) · [6] BNF",
+   "guideline": "[1] NICE NG123 (urinary incontinence and pelvic organ prolapse in women, 2019) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NICE QS77 (urinary incontinence in women) · [3] NICE TA290 (mirabegron) · [4] MHRA Drug Safety Update, mirabegron (October 2015)",
    "summary": "Urgency, frequency, nocturia and urge leakage suggest overactive bladder. Exclude infection, haematuria and other causes, confirm the type of incontinence, and start with a bladder diary, lifestyle change and at least 6 weeks of bladder training before medication.",
    "points": [
     {
@@ -6423,7 +6423,7 @@
     },
     {
      "h": "Medication next",
-     "t": "NICE NG123 [1]: if bladder training is ineffective, offer an antimuscarinic after discussing benefits and adverse effects, taking account of total anticholinergic burden. Do not offer immediate-release oxybutynin to older women who may be at higher risk of sudden deterioration in physical or mental health. Review 4 weeks after starting a new OAB medicine. Mirabegron (NICE TA290 [3]) or vibegron (NICE TA999) is an option where antimuscarinics are contraindicated, ineffective or not tolerated. Doses per BNF [6]."
+     "t": "NICE NG123 [1]: if bladder training is ineffective, offer an antimuscarinic after discussing benefits and adverse effects, taking account of total anticholinergic burden. Do not offer immediate-release oxybutynin to older women who may be at higher risk of sudden deterioration in physical or mental health. Review 4 weeks after starting a new OAB medicine. Mirabegron (NICE TA290 [3]) or vibegron (NICE TA999) is an option where antimuscarinics are contraindicated, ineffective or not tolerated. Doses per BNF."
     },
     {
      "h": "Mirabegron and BP",
@@ -7903,7 +7903,7 @@
    "reason": "“It’s agony, it comes in waves and shoots down to my groin. I can’t keep still.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG118 Renal and ureteric stones: assessment and management (2019) · [2] NICE QS195 Renal and ureteric stones (2020) · [3] NICE NG253 Suspected sepsis in people aged 16 and over · [4] MHRA Drug Safety Update June 2013 (diclofenac: new contraindications and warnings) · [5] BNF",
+   "guideline": "[1] NICE NG118 Renal and ureteric stones: assessment and management (2019) · [2] NICE QS195 Renal and ureteric stones (2020) · [3] NICE NG253 Suspected sepsis in people aged 16 and over · [4] MHRA Drug Safety Update June 2013 (diclofenac: new contraindications and warnings)",
    "summary": "Classic left ureteric colic in a restless man with haematuria and vomiting. Relieve pain with an NSAID by any route, arrange low-dose non-contrast CT within 24 hours, and ask actively about fever and vascular disease so an infected obstructed kidney or a leaking aneurysm is not missed. Vomiting with uncontrolled pain means he needs same-day hospital assessment.",
    "points": [
     {
@@ -7912,7 +7912,7 @@
     },
     {
      "h": "Pain relief",
-     "t": "NG118 [1]: offer an NSAID by any route as first-line analgesia for suspected renal colic. Offer intravenous paracetamol if NSAIDs are contraindicated or not enough, and consider opioids if both are contraindicated or not enough. Do not offer antispasmodics. Diclofenac is contraindicated in established ischaemic heart disease, peripheral arterial disease, cerebrovascular disease and congestive heart failure [4]; check NSAID cautions in the BNF [5]."
+     "t": "NG118 [1]: offer an NSAID by any route as first-line analgesia for suspected renal colic. Offer intravenous paracetamol if NSAIDs are contraindicated or not enough, and consider opioids if both are contraindicated or not enough. Do not offer antispasmodics. Diclofenac is contraindicated in established ischaemic heart disease, peripheral arterial disease, cerebrovascular disease and congestive heart failure [4]; check NSAID cautions in the BNF."
     },
     {
      "h": "Imaging",
@@ -8381,7 +8381,7 @@
    "reason": "Video consultation: “Sore throat for three days. I always need antibiotics for these.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG84 Sore throat (acute): antimicrobial prescribing (2018) · [2] BNF: phenoxymethylpenicillin, clarithromycin, paracetamol, ibuprofen · [3] NICE NG15 Antimicrobial stewardship: systems and processes (2015) · [4] NICE NG253 Suspected sepsis in people aged 16 or over (2025) · [5] GOV.UK: employee self-certification for the first 7 days of sickness",
+   "guideline": "[1] NICE NG84 Sore throat (acute): antimicrobial prescribing (2018) · [2] NICE NG15 Antimicrobial stewardship: systems and processes (2015) · [3] NICE NG253 Suspected sepsis in people aged 16 or over (2025) · [4] GOV.UK: employee self-certification for the first 7 days of sickness",
    "summary": "A 3-day sore throat with mild fever and cough or cold symptoms in a well adult is most likely viral and will settle in about a week. Screen for red flags, score it with FeverPAIN or Centor, and use NICE NG84 to decide between no antibiotic, a back-up prescription or an immediate course. The core skill is a respectful negotiation that leaves him informed, comfortable and safe, whatever the outcome.",
    "points": [
     {
@@ -8398,19 +8398,19 @@
     },
     {
      "h": "Self-care",
-     "t": "NICE NG84 [1]: paracetamol or ibuprofen for pain or fever (dose per BNF [2]), adequate fluids, and medicated lozenges containing a local anaesthetic, an NSAID or an antiseptic may help a little. There is no evidence for non-medicated lozenges or mouthwashes."
+     "t": "NICE NG84 [1]: paracetamol or ibuprofen for pain or fever (dose per BNF), adequate fluids, and medicated lozenges containing a local anaesthetic, an NSAID or an antiseptic may help a little. There is no evidence for non-medicated lozenges or mouthwashes."
     },
     {
      "h": "If an antibiotic is needed",
-     "t": "NICE NG84 [1]: phenoxymethylpenicillin for 5 to 10 days first choice; clarithromycin (or erythromycin in pregnancy) for penicillin allergy. Doses per BNF [2]."
+     "t": "NICE NG84 [1]: phenoxymethylpenicillin for 5 to 10 days first choice; clarithromycin (or erythromycin in pregnancy) for penicillin allergy. Doses per BNF."
     },
     {
      "h": "Red flags",
-     "t": "Drooling, inability to swallow saliva, stridor or breathing difficulty (epiglottitis or airway compromise); trismus, unilateral swelling, uvular deviation or muffled voice (quinsy); severe systemic illness (NICE NG253 [4]); a sore throat on carbimazole, clozapine, DMARDs or chemotherapy (check FBC for neutropenia). NICE NG84 [1]: refer to hospital for severe systemic infection or severe suppurative complications."
+     "t": "Drooling, inability to swallow saliva, stridor or breathing difficulty (epiglottitis or airway compromise); trismus, unilateral swelling, uvular deviation or muffled voice (quinsy); severe systemic illness (NICE NG253 [3]); a sore throat on carbimazole, clozapine, DMARDs or chemotherapy (check FBC for neutropenia). NICE NG84 [1]: refer to hospital for severe systemic infection or severe suppurative complications."
     },
     {
      "h": "Work",
-     "t": "GOV.UK [5]: employees can self-certify for the first 7 days of sickness; a fit note is needed after that. Antibiotics are not a return-to-work ticket. NICE NG15 [3] supports explaining the reasons for not prescribing and giving written information."
+     "t": "GOV.UK [4]: employees can self-certify for the first 7 days of sickness; a fit note is needed after that. Antibiotics are not a return-to-work ticket. NICE NG15 [2] supports explaining the reasons for not prescribing and giving written information."
     }
    ]
   },
@@ -8857,7 +8857,7 @@
    "reason": "Video consultation. “My wife made me book — it’s passed now, so no harm done?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG128 (stroke and transient ischaemic attack in over 16s: diagnosis and initial management, 2019, updated 2022) · [2] National Clinical Guideline for Stroke for the UK and Ireland (ICSWP, 2023) · [3] NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · [4] NICE NG196 (atrial fibrillation, 2021) · [5] DVLA Assessing fitness to drive: a guide for medical professionals (current edition) · [6] GMC Confidentiality: patients’ fitness to drive and reporting concerns to the DVLA or DVA (2017) · [7] BNF aspirin monograph",
+   "guideline": "[1] NICE NG128 (stroke and transient ischaemic attack in over 16s: diagnosis and initial management, 2019, updated 2022) · [2] National Clinical Guideline for Stroke for the UK and Ireland (ICSWP, 2023) · [3] NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · [4] NICE NG196 (atrial fibrillation, 2021) · [5] DVLA Assessing fitness to drive: a guide for medical professionals (current edition) · [6] GMC Confidentiality: patients’ fitness to drive and reporting concerns to the DVLA or DVA (2017)",
    "summary": "Sudden right arm weakness with slurred speech lasting about 30 minutes and fully resolving, in a 69-year-old hypertensive ex-smoker, is a suspected TIA until a specialist says otherwise. Recovery is the reason to act, not a reason to relax: the stroke risk is highest in the first days. The GP’s job is aspirin 300 mg now unless contraindicated, a same-day referral to be seen within 24 hours of onset, clear no-driving advice and a firm 999 safety net.",
    "points": [
     {
@@ -8866,7 +8866,7 @@
     },
     {
      "h": "Aspirin now",
-     "t": "NICE NG128 [1]: offer aspirin 300 mg immediately to people with suspected TIA unless contraindicated. If he already takes an anticoagulant, or has a bleeding disorder or aspirin hypersensitivity, do not give it and discuss with the TIA service [1][7]."
+     "t": "NICE NG128 [1]: offer aspirin 300 mg immediately to people with suspected TIA unless contraindicated. If he already takes an anticoagulant, or has a bleeding disorder or aspirin hypersensitivity, do not give it and discuss with the TIA service [1]."
     },
     {
      "h": "Refer the same day",

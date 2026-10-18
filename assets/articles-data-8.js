@@ -1,5 +1,5 @@
 /* Reasoning GP — Articles data (batch 8: D topics)
-   RCGP/SCA examiner depth. NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   RCGP/SCA examiner depth. NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -127,7 +127,7 @@
       'Localised dental abscess → urgent dental service for definitive treatment',
       'Immunocompromised patient with dental infection → lower threshold for antibiotics and urgent dental/specialist care',
       'Recurrent dental infection → dental review for underlying cause'],
-    source:'SDCEP Drug Prescribing for Dentistry / BNF' },
+    source:'SDCEP Drug Prescribing for Dentistry' },
 
   { id:'retinal-detachment', title:'Detached retina (retinal detachment)', category:'Ophthalmology', icon:'👁️',
     overview:'Separation of the neurosensory retina from the underlying retinal pigment epithelium — a sight-threatening emergency. Prompt recognition and same-day referral are vital, because the visual outcome depends on whether the macula is still attached when surgery is performed.',
@@ -230,7 +230,7 @@
       'Lithium-induced or other nephrogenic DI → review cause ± nephrology/endocrinology'],
     source:'Society for Endocrinology (AVP disorders)' },
 
-  { id:'dka', title:'Diabetic ketoacidosis (DKA)', category:'Endocrine & metabolic', icon:'🩸',
+  { id:'dka', title:'Diabetic ketoacidosis (DKA)', category:'Endocrine & metabolic', icon:'💉',
     overview:'A life-threatening acute complication of (usually type 1) diabetes from absolute insulin deficiency, causing hyperglycaemia, ketosis and metabolic acidosis. It can be the first presentation of type 1 diabetes — so recognising it in primary care and arranging immediate admission saves lives.',
     features:[
       'Polyuria, polydipsia, weight loss, then nausea/vomiting, abdominal pain, and lethargy',
@@ -353,7 +353,7 @@
       'Severe, widespread, or treatment-resistant disease → dermatology (phototherapy/systemic therapy)',
       'Recurrent secondary infection → review/treat',
       'Suspected tinea not responding → confirm with mycology'],
-    source:'Clinical practice summary / BNF (topical corticosteroid potency)' },
+    source:'Clinical practice summary' },
 
   { id:'patellar-dislocation', title:'Dislocated kneecap (patellar dislocation)', category:'Musculoskeletal', icon:'🦵',
     overview:'Lateral displacement of the patella out of the trochlear groove, usually after a twisting injury or direct blow in a young, active person. Most reduce spontaneously or easily, but recurrent instability is common and some have associated osteochondral injury, so assessment and rehabilitation matter.',

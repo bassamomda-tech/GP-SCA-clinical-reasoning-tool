@@ -25,7 +25,7 @@
    "reason": "Worsening acne with scarring. Requesting isotretinoin (\"Roaccutane\")."
   },
   "knowledge": {
-   "guideline": "NICE NG198 (acne vulgaris, 2021, last updated 30 April 2026) · MHRA Drug Safety Updates, October 2023, October 2025 and 22 January 2026 (isotretinoin) · NICE NG225 (self-harm, 2022) · NICE NG222 (depression in adults, 2022, updated December 2025) · BNF",
+   "guideline": "NICE NG198 (acne vulgaris, 2021, last updated 30 April 2026) · MHRA Drug Safety Updates, October 2023, October 2025 and 22 January 2026 (isotretinoin) · NICE NG225 (self-harm, 2022) · NICE NG222 (depression in adults, 2022, updated December 2025)",
    "summary": "Moderate to severe acne with scarring and major psychological distress warrants a step-up now and referral to a consultant dermatologist-led team for isotretinoin. The suicidal thoughts behind \"it’s ruining my life\" must be asked about directly and managed in their own right.",
    "points": [
     {
@@ -526,7 +526,7 @@
    "reason": "Booked a video appointment for “sleeping tablets”."
   },
   "knowledge": {
-   "guideline": "NICE NG116 (post-traumatic stress disorder, 2018) · NICE NG225 (self-harm, 2022) · NICE TA77 (hypnotics for insomnia, 2004) · BNF · NHS England patient registration standard operating principles · NHS (Charges to Overseas Visitors) Regulations 2015 · Immigration and Asylum Act 1999 (asylum support)",
+   "guideline": "NICE NG116 (post-traumatic stress disorder, 2018) · NICE NG225 (self-harm, 2022) · NICE TA77 (hypnotics for insomnia, 2004) · NHS England patient registration standard operating principles · NHS (Charges to Overseas Visitors) Regulations 2015 · Immigration and Asylum Act 1999 (asylum support)",
    "summary": "A request for sleeping tablets from a newly registered man seeking asylum is the entry point to probable PTSD and destitution. Confirm his right to free GP care, gently explore trauma symptoms and risk, do not make a hypnotic the answer, refer for trauma-focused therapy, and act on food, money and legal advice today.",
    "points": [
     {
@@ -972,7 +972,7 @@
     "ic": "💠",
     "t": "Insomnia protocol",
     "s": "Sleep measures · hypnotic limits",
-    "href": "management/insomnia.html"
+    "href": "algorithms/insomnia.html"
    },
    {
     "ic": "💠",
@@ -3085,7 +3085,7 @@
    "reason": "About 10 weeks of itching all over, worse at night, with no rash. Requesting \"a strong cream or antihistamines\"."
   },
   "knowledge": {
-   "guideline": "BAD guidelines for generalised pruritus in adults without an underlying dermatosis (2018) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BNF",
+   "guideline": "BAD guidelines for generalised pruritus in adults without an underlying dermatosis (2018) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026)",
    "summary": "Generalised itch with no primary rash needs a search for a systemic cause. With night sweats, weight loss and a lump he has noticed, lymphoma must be excluded quickly: examine, test and refer. Symptom relief goes alongside the work-up, never instead of it.",
    "points": [
     {
@@ -5605,7 +5605,7 @@
    "reason": "Urgent telephone call: “My methadone runs out today.”"
   },
   "knowledge": {
-   "guideline": "DHSC Drug misuse and dependence: UK guidelines on clinical management (2017, the “Orange Book”) · NICE TA114 (methadone and buprenorphine for opioid dependence, 2007) · BNF · Human Medicines (Amendment) Regulations 2015 (naloxone)",
+   "guideline": "DHSC Drug misuse and dependence: UK guidelines on clinical management (2017, the “Orange Book”) · NICE TA114 (methadone and buprenorphine for opioid dependence, 2007) · Human Medicines (Amendment) Regulations 2015 (naloxone)",
    "summary": "Never prescribe methadone blind, and never simply refuse. Verify the dose and last dispensing with the previous prescriber and pharmacy, and get him to the local drug service urgently for safe continuation, with harm-reduction advice meanwhile.",
    "points": [
     {
@@ -7567,7 +7567,7 @@
    "points": [
     {
      "h": "The NICE NG12 criterion",
-     "t": "NICE NG12: consider a suspected cancer pathway referral (appointment within 2 weeks) for laryngeal cancer in people aged 45 and over with persistent unexplained hoarseness or an unexplained lump in the neck. He meets both."
+     "t": "NICE NG12: consider a suspected cancer pathway referral for laryngeal cancer in people aged 45 and over with persistent unexplained hoarseness or an unexplained lump in the neck. He meets both."
     },
     {
      "h": "Associated red flags",
@@ -9054,7 +9054,7 @@
    "reason": "Two days of a painful, blistering rash on the right side of her forehead. Requesting a cream."
   },
   "knowledge": {
-   "guideline": "UKHSA Green Book chapter 28a (shingles) · BNF and SPCs (aciclovir, valaciclovir, famciclovir) · NICE CG173 (neuropathic pain) · College of Optometrists Clinical Management Guidelines (herpes zoster ophthalmicus)",
+   "guideline": "UKHSA Green Book chapter 28a (shingles) · SPCs (aciclovir, valaciclovir, famciclovir) · NICE CG173 (neuropathic pain) · College of Optometrists Clinical Management Guidelines (herpes zoster ophthalmicus)",
    "summary": "A painful, one-sided, blistering rash in a band after a prodrome of pain is shingles. In the ophthalmic division with a rash on the side or tip of the nose (Hutchinson’s sign) and a red eye, it is herpes zoster ophthalmicus: start an oral antiviral today and arrange same-day eye assessment.",
    "points": [
     {
@@ -9554,7 +9554,7 @@
     },
     {
      "h": "The neck lump criterion",
-     "t": "NICE NG12: consider a suspected cancer pathway referral (appointment within 2 weeks) for laryngeal cancer in people aged 45 and over with an unexplained lump in the neck, and for oral cancer with a persistent unexplained neck lump. At 52 with an unexplained neck lump he meets this; the head and neck team assesses the nasopharynx too."
+     "t": "NICE NG12: consider a suspected cancer pathway referral for laryngeal cancer in people aged 45 and over with an unexplained lump in the neck, and for oral cancer with a persistent unexplained neck lump. At 52 with an unexplained neck lump he meets this; the head and neck team assesses the nasopharynx too."
     },
     {
      "h": "The ear criterion",

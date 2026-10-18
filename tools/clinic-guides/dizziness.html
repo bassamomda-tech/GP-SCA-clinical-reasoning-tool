@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="dizziness">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dizziness and vertigo — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/dizziness.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/dizziness.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · chronic disease series</div>
+      <h1>Dizziness and vertigo <small>CLINIC GUIDE</small></h1>
+      <div class="scope">For the adult presenting with dizziness or vertigo. Adults 18+. Not for children, a blackout already on the transient loss of consciousness pathway (NICE CG109) or head injury (NG232).</div>
+    </div>
+    <div class="meta">NICE <b>NG127</b> · <b>CKS</b> vertigo, BPPV, vestibular neuronitis · NG98 · CG109 · DVLA Assessing fitness to drive<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full protocol: gpreasoning.uk/tools/algorithms/dizziness.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Assess <span>red flags → what kind of dizzy → timing and triggers → targeted examination</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Red flags — act today<small>NICE NG127 · NG98 · CG109</small></h2><div class="body">
+    <table>
+      <tr><th style="width:38%">999 / immediate stroke pathway</th><th style="width:34%">Same day (seen within 24 hours)</th><th>Urgent (within 2 weeks)</th></tr>
+      <tr><td><b>Acute vestibular syndrome</b> (sudden continuous vertigo, nausea or vomiting, unsteady gait) not explained by BPPV or postural hypotension, and no one trained in HINTS → <b>refer immediately</b> via the stroke pathway.<br>New diplopia, dysarthria, dysphagia, facial numbness, limb weakness or ataxia; <b>cannot stand or walk</b>; vertical or direction-changing nystagmus; sudden severe headache or neck pain.<br>Diabetes: check for and treat <b>hypoglycaemia</b> (NG127).</td>
+      <td><b>Sudden hearing loss</b> (over 3 days or less) within the past 30 days, not explained by ear canal or middle ear causes → ENT or ED (NG98).<br>Hearing loss on one side with <b>facial droop or altered sensation</b> on the same side → ENT immediately, or stroke pathway if stroke suspected.<br><b>Blackout with red flags</b> (exertional, ECG abnormality, heart failure, murmur, new breathlessness, family history of young sudden death) → specialist cardiovascular assessment within 24 hours (CG109).</td>
+      <td>Sudden hearing loss more than 30 days ago, or hearing <b>worsening rapidly over 4–90 days</b> → ENT or audiovestibular medicine (NG98).<br>Weight loss, night sweats or other constitutional symptoms → assess on the suspected cancer pathway that fits the findings.</td></tr>
+    </table>
+    <p class="key" style="margin-top:2px"><b>HINTS is a specialist tool</b> (NG127): use it only if you are trained and experienced. A normal head impulse, direction-changing nystagmus or skew deviation = stroke until proven otherwise. Untrained "negative HINTS" reassures no one.</p>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Focused history — what kind of dizzy?<small>CKS vertigo</small></h2><div class="body">
+        <ul>
+          <li><b>"Describe exactly what you feel"</b>: spinning (vertigo) · about to faint (presyncope) · off balance when walking (disequilibrium) · vague or light-headed.</li>
+          <li><b>Timing</b>: seconds, triggered by rolling over or looking up → BPPV. Continuous for days → vestibular neuritis, labyrinthitis — or stroke. Recurrent attacks lasting hours with hearing change → Ménière's. Recurrent with migraine features → vestibular migraine.</li>
+          <li><b>Ears</b>: hearing loss, tinnitus, fullness, discharge, ear pain or vesicles.</li>
+          <li><b>Neuro and vascular</b>: diplopia, speech or swallowing change, weakness, headache or neck pain; AF, hypertension, diabetes, smoking.</li>
+          <li><b>Heart</b>: dizziness on exertion, palpitations, chest pain, blackouts.</li>
+          <li><b>Medicines</b>: antihypertensives, diuretics, alpha-blockers, sedatives, antiepileptics; ototoxic drugs (aminoglycosides).</li>
+          <li><b>Impact</b>: falls, work, and whether they drive.</li>
+        </ul>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">2</span>Examination findings that change the plan<small>NG127 · CKS</small></h2><div class="body">
+        <table>
+          <tr><td><b>Postural BP</b></td><td>Lying, then standing at 1 and 3 minutes: fall ≥20 systolic or ≥10 diastolic = orthostatic hypotension</td></tr>
+          <tr><td><b>Pulse, ECG</b></td><td>Irregular or slow pulse, murmur → cardiac cause</td></tr>
+          <tr><td><b>Nystagmus</b></td><td>Horizontal, one direction, suppressed by fixation → peripheral. Vertical or direction-changing → central</td></tr>
+          <tr><td><b>Dix–Hallpike</b></td><td>Only if trained (CKS). Torsional upbeating nystagmus after a short delay, fatiguing → posterior canal BPPV</td></tr>
+          <tr><td><b>Gait, cerebellar</b></td><td>Cannot walk unaided, limb ataxia → central until proven otherwise</td></tr>
+          <tr><td><b>Ears, hearing</b></td><td>Otoscopy; whisper test, Rinne and Weber</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">3</span>Key differentials<small>clue → think → first step</small></h2><div class="body">
+        <table>
+          <tr><th>Clue</th><th>Think</th><th>First step</th></tr>
+          <tr><td>Brief spins on rolling over or looking up; hearing normal</td><td><b>BPPV</b></td><td>Dix–Hallpike → Epley</td></tr>
+          <tr><td>Sudden continuous vertigo for days, after a viral illness; hearing normal</td><td><b>Vestibular neuritis</b></td><td>Exclude stroke; short antiemetic</td></tr>
+          <tr><td>As above with hearing loss on one side</td><td><b>Labyrinthitis</b></td><td>NG98 timelines for hearing loss</td></tr>
+          <tr><td>Recurrent attacks lasting hours; fluctuating hearing, tinnitus, fullness</td><td><b>Ménière's</b></td><td>Audiology and ENT</td></tr>
+          <tr><td>Recurrent vertigo, migraine history, light or sound sensitivity</td><td><b>Vestibular migraine</b></td><td>Migraine diary and plan</td></tr>
+          <tr><td>Sudden vertigo with any neurological sign, or cannot walk</td><td><b>Posterior circulation stroke</b></td><td>999 stroke pathway</td></tr>
+          <tr><td>Light-headed on standing; new antihypertensive</td><td><b>Orthostatic hypotension</b></td><td>Postural BP; review medicines</td></tr>
+          <tr><td>Presyncope on exertion, palpitations</td><td><b>Arrhythmia, aortic stenosis</b></td><td>ECG; CG109 red flags</td></tr>
+          <tr><td>Constant, vague, worse in crowds or busy places</td><td><b>Anxiety, PPPD</b></td><td>After organic causes excluded</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">4</span>Investigations checklist<small>targeted, not a screen</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Classic BPPV</b> with positive Dix–Hallpike: no bloods, no imaging</li>
+          <li><b>Capillary glucose</b> if diabetes and acute symptoms</li>
+          <li><b>12-lead ECG</b> for presyncope, palpitations, exertional symptoms or blackouts</li>
+          <li>FBC, U&amp;E, glucose only if the story suggests anaemia, dehydration or metabolic cause</li>
+          <li><b>Audiology</b> when hearing loss or tinnitus; MRI internal auditory meati via the specialist (NG98)</li>
+          <li>A normal <b>CT head</b> does not exclude posterior circulation stroke</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="blk purple span"><h2><span class="n">5</span>Dix–Hallpike, then Epley<small>CKS BPPV · trained clinicians only</small></h2><div class="body">
+      <div class="flow" style="--c:var(--purple)">
+        <div><b class="h">Before</b>Ask about neck problems: avoid in unstable cervical spine disease; take care with severe neck disease. Warn it may bring on the vertigo.</div>
+        <div><b class="h">Dix–Hallpike</b>Seated, head turned towards the tested side; lie back quickly with the neck slightly extended. Watch the eyes.</div>
+        <div><b class="h">Positive</b>Torsional, upbeating nystagmus after a short delay, settling within a minute and fatiguing on repeat → posterior canal BPPV on that side.</div>
+        <div><b class="h">Then</b>Positive → Epley on the same side. Negative but a strong positional story → think horizontal canal (supine roll test) or refer.</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Dizziness and vertigo · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Manage and refer <span>treat the cause → limit sedatives → refer at the right speed → driving and safety-net</span></div>
+
+  <div class="grid">
+    <div class="blk teal span"><h2><span class="n">6</span>Manage the common causes<small>NICE CKS · NG127 · SPC</small></h2><div class="body">
+      <table>
+        <tr><th style="width:17%">Cause</th><th>First line</th><th style="width:31%">Watch</th></tr>
+        <tr><td><b>BPPV</b> (posterior canal)</td><td><b>Epley manoeuvre</b> in clinic by a trained clinician; Brandt–Daroff exercises at home if a manoeuvre is not possible. <b>No vestibular suppressants.</b> No routine restrictions after the manoeuvre.</td><td>Recurrence is common: repeat Epley. Persists despite correct treatment, or atypical nystagmus → ENT or balance clinic</td></tr>
+        <tr><td><b>Vestibular neuritis, labyrinthitis</b></td><td>Severe nausea or vertigo only: <b>prochlorperazine 3–6 mg buccal twice a day</b> (SPC) as a <b>short course of a few days</b>. Mobilise early; start vestibular rehabilitation exercises.</td><td>Not improving as expected, or new neurological signs → reassess for a central cause. Hearing loss → NG98 timelines</td></tr>
+        <tr><td><b>Ménière's</b></td><td>Refer to ENT or audiovestibular medicine to confirm with audiometry. Short-term antiemetic for acute attacks only. Betahistine: benefit uncertain; agree any trial with ENT.</td><td>Unpredictable disabling attacks → DVLA (box 9)</td></tr>
+        <tr><td><b>Vestibular migraine</b></td><td>Migraine principles: diary, trigger and sleep routine, acute treatment, prevention if frequent (see Migraine guide).</td><td>Topiramate: MHRA Pregnancy Prevention Programme</td></tr>
+        <tr><td><b>Orthostatic hypotension</b></td><td>Review antihypertensives, diuretics, alpha-blockers, tricyclics; correct dehydration; rise in stages. Drug treatment is a specialist decision.</td><td>Falls; supine hypertension if treated</td></tr>
+        <tr><td><b>Medicines, anxiety</b></td><td>Deprescribe the culprit (taper sedatives). Persistent dizziness with anxiety: talking therapy, vestibular rehabilitation.</td><td>Do not give vestibular sedatives</td></tr>
+      </table>
+    </div></div>
+
+    <div class="col">
+      <div class="blk slate"><h2><span class="n">7</span>Vestibular sedative limits<small>CKS · SPC</small></h2><div class="body">
+        <ul>
+          <li>Prochlorperazine, cinnarizine and cyclizine are for <b>acute severe symptoms only</b>; continued use <b>delays vestibular compensation</b>.</li>
+          <li>Not for BPPV, chronic dizziness or "dizzy spells" in older people: drug-induced parkinsonism, postural hypotension, confusion and falls.</li>
+          <li>Prochlorperazine: avoid in Parkinson's disease; stop at once if dystonia or tremor.</li>
+          <li>Never issue on repeat. Record the stop date on the prescription.</li>
+        </ul>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">8</span>When and where to refer<small>NG127 · NG98 · CG109</small></h2><div class="body">
+        <table>
+          <tr><th>Tier</th><th>Who</th></tr>
+          <tr><td><b>999 / stroke</b></td><td>Acute vestibular syndrome without trained HINTS · central signs · cannot walk · thunderclap or neck pain</td></tr>
+          <tr><td><b>Within 24 h</b></td><td>Sudden hearing loss within 30 days (ENT or ED) · blackout with CG109 red flags · Ramsay Hunt</td></tr>
+          <tr><td><b>Within 2 weeks</b></td><td>Older sudden or rapidly worsening hearing loss (NG98)</td></tr>
+          <tr><td><b>Routine</b></td><td>ENT or audiovestibular: suspected Ménière's, BPPV not settling, recurrent unexplained vertigo · neurology: vestibular migraine not responding · physiotherapy: vestibular rehabilitation · falls service</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk green"><h2><span class="n">9</span>Driving — DVLA<small>Assessing fitness to drive</small></h2><div class="body">
+        <ul>
+          <li><b>Sudden, disabling dizziness</b> without warning (for example Ménière's attacks): <b>stop driving and tell the DVLA</b>. The duty to notify is the driver's; record your advice.</li>
+          <li>Driving may restart once symptoms are controlled, subject to DVLA review. Bus and lorry (Group 2) rules are stricter.</li>
+          <li>Anyone: no driving while vertigo, imbalance or a sedating medicine could affect control.</li>
+        </ul>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">10</span>Safety-net and follow-up checklist<small>record it in the notes</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>999</b>: new double vision, slurred speech, facial droop, weakness, cannot walk, sudden severe headache or neck pain</li>
+          <li><b>Same day</b>: sudden hearing loss, ear vesicles or facial weakness, vomiting so they cannot keep fluids down</li>
+          <li>Sedative course length written down, with a stop date</li>
+          <li>BPPV: review if not settled after Epley; repeat or refer</li>
+          <li>Vestibular neuritis: review progress; exercises started</li>
+          <li>Driving advice given and documented</li>
+          <li>Older person: falls assessment offered</li>
+        </ul>
+      </div></div>
+    </div>
+
+
+    <div class="col">
+      <div class="blk green"><h2><span class="n">11</span>Older people and falls<small>NICE NG249 (2025)</small></h2><div class="body">
+        <ul>
+          <li>Aged <b>65 and over</b>, or <b>50–64</b> with a condition that raises falls risk: ask about falls and offer a <b>comprehensive falls assessment</b> when indicated.</li>
+          <li>Check postural BP, medicines (sedatives, antihypertensives, anticholinergics), vision, hearing, feet and home hazards.</li>
+          <li>Refer for individually tailored <b>strength and balance</b> exercise.</li>
+        </ul>
+      </div></div>
+    </div>
+    <div class="col">
+      <div class="blk teal"><h2><span class="n">12</span>Vestibular rehabilitation<small>CKS vestibular neuronitis</small></h2><div class="body">
+        <ul>
+          <li>For persistent imbalance after vestibular neuritis or other one-sided vestibular loss, once the acute phase settles.</li>
+          <li>Home head and eye movement exercises, or physiotherapy referral. Warn that symptoms may worsen briefly as the exercises start.</li>
+          <li>Movement speeds recovery; bed rest and sedatives slow it.</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="blk red span"><h2><span class="n">13</span>Never-events<small>NG127 · CKS · DVLA</small></h2><div class="body">
+      <ul>
+        <li>Call it "labyrinthitis" in acute continuous vertigo without examining gait, eyes and cranial nerves.</li>
+        <li>Rely on a HINTS examination done by someone not trained in it, or use a normal CT head to "exclude stroke" in vertigo.</li>
+        <li>Give prochlorperazine or betahistine for BPPV instead of an Epley manoeuvre.</li>
+        <li>Continue vestibular sedatives beyond the acute phase, put them on repeat, or give prochlorperazine in Parkinson's disease.</li>
+        <li>Miss sudden hearing loss: within 30 days of onset it needs to be seen within 24 hours.</li>
+        <li>Forget to ask about driving, or to document the advice.</li>
+      </ul>
+      <p class="say" style="margin-top:3px">"The tiny crystals in your balance organ have moved into the wrong place. This manoeuvre moves them back, and most people feel better quickly. Tablets would only slow your recovery — moving normally is part of the treatment."</p>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Dizziness and vertigo · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG127, NG98, CG109, NG232, NG249; NICE CKS (vertigo, BPPV, vestibular neuronitis); prochlorperazine buccal SPC; DVLA Assessing fitness to drive</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/dizziness.html</span></div>
+</section>
+<script src="../../assets/clinic-guides.js?v=1"></script>
+</body>
+</html>

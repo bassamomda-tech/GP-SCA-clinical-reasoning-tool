@@ -85,11 +85,11 @@ MedChooser.register('atrial-fibrillation', {
       step:'Rate · 1st-line',
       source:'NICE NG196 §1.7 (not sotalol)',
       sideEffects:'Bradycardia, fatigue, cold peripheries, bronchospasm',
-      monitor:'Resting HR (target <110 initially), BP',
+      monitor:'Resting HR and symptoms (NG196 sets no number; ESC lenient <110), BP',
       counsel:'"Slows the heart rate so it pumps more efficiently. Don\'t stop it suddenly — let us know if you feel very tired or dizzy."',
       detail:{
         'Dose': 'Bisoprolol 1.25–2.5 mg OD → 10 mg (titrate to HR)',
-        'Key teaching': 'First-line rate control (standard β-blocker, NOT sotalol). Also prognostic in HFrEF.'
+        'Key teaching': 'First-line rate control: a β-blocker (NOT sotalol) OR a rate-limiting CCB (NG196). Also prognostic in HFrEF.'
       },
       conditions: [
         {"kind":"avoid","label":"Asthma / reversible airways","text":"Asthma — risk of bronchospasm; use rate-limiting CCB"},
@@ -104,11 +104,11 @@ MedChooser.register('atrial-fibrillation', {
       step:'Rate · 1st-line (non-HF)',
       source:'NICE NG196 §1.7',
       sideEffects:'Bradycardia, constipation (verapamil), ankle oedema; negative inotropy',
-      monitor:'HR, BP; avoid combining with β-blocker (heart block)',
+      monitor:'HR, BP; never verapamil + β-blocker (heart block); β-blocker + diltiazem only as monitored dual therapy',
       counsel:'"An alternative rate-slower that suits people who can\'t take beta-blockers — for example with asthma."',
       detail:{
         'Dose': 'Diltiazem MR titrated to HR; verapamil 40–120 mg TDS',
-        'Key teaching': 'Good when β-blocker unsuitable (asthma). CONTRAINDICATED in HFrEF — negative inotrope. Never combine with β-blocker.'
+        'Key teaching': 'Equal first-line option to a β-blocker (NG196) — e.g. asthma. CONTRAINDICATED in HFrEF — negative inotrope. Never verapamil + β-blocker; NG196 allows β-blocker + diltiazem as dual therapy.'
       },
       conditions: [
         {"kind":"avoid","label":"Heart failure (HFrEF)","text":"HFrEF — negatively inotropic; contraindicated"},

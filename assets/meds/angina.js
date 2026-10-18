@@ -44,14 +44,14 @@ MedChooser.register('angina', {
     {
       id:'beta',
       name:'β-blocker',
-      examples:'Bisoprolol 2.5 → 10 mg OD · Atenolol',
+      examples:'Bisoprolol 5 → 10 mg OD · Atenolol',
       step:'1st-line anti-anginal',
       source:'NICE CG126 §1.3.3',
       sideEffects:'Bradycardia, fatigue, cold extremities, ED, masks hypoglycaemia, nightmares',
       monitor:'Resting HR + BP. Never stop abruptly (rebound angina).',
       counsel:'"This slows the heart so it needs less oxygen — fewer episodes of pain. Don\'t stop suddenly. It can mask the warning signs of a low sugar if you\'re diabetic."',
       detail:{
-        'Dose': 'Bisoprolol 2.5 mg OD → titrate to 10 mg aiming resting HR 55–60',
+        'Dose': 'Bisoprolol 5 mg OD, usually 5–10 mg (SPC); titrate to symptoms, HR, BP and side effects — no fixed HR target',
         'Interactions': 'Verapamil/diltiazem (heart block — never combine), insulin (masks hypos)',
         'Key teaching': 'First-line anti-anginal with a β-blocker OR a rate-limiting CCB. Prognostic post-MI and in HFrEF.'
       },
@@ -149,10 +149,10 @@ MedChooser.register('angina', {
       step:'2nd-line (consider specialist)',
       source:'NICE CG126 §1.3.8',
       sideEffects:'Nicorandil — GI/oral/anal ulceration; Ivabradine — luminous phenomena, bradycardia; Ranolazine — QT prolongation',
-      monitor:'Drug-specific. Ivabradine needs sinus rhythm + HR.',
+      monitor:'Drug-specific. Ivabradine needs sinus rhythm and resting HR ≥70 to start (MHRA).',
       counsel:'"A further option if the usual tablets aren\'t enough or don\'t suit you — we\'d usually discuss this alongside the cardiology team."',
       detail:{
-        'Dose': 'Nicorandil 10 mg BD; Ivabradine 5 mg BD (sinus rhythm only); Ranolazine 375 mg BD',
+        'Dose': 'Nicorandil 10 mg BD; Ivabradine 5 mg BD (sinus rhythm only; start only if resting HR ≥70 — MHRA); Ranolazine 375 mg BD',
         'Interactions': 'Ivabradine — avoid with diltiazem/verapamil; Ranolazine — QT drugs',
         'Key teaching': 'Use when both first-line classes are tried/contraindicated, or while awaiting revascularisation assessment. Ivabradine needs sinus rhythm.'
       },
@@ -176,10 +176,10 @@ MedChooser.register('angina', {
       detail:{
         'Dose': 'Aspirin 75 mg OD with food',
         'Interactions': 'Anticoagulants (bleeding), other antiplatelets, NSAIDs',
-        'Key teaching': 'Clopidogrel 75 mg is the alternative if aspirin not tolerated or contraindicated. Do not routinely double-up with a DOAC.'
+        'Key teaching': 'CG126 does not name an alternative if aspirin is unsuitable — individual decision (seek advice). Do not routinely double-up with a DOAC.'
       },
       conditions: [
-        {"kind":"avoid","label":"Aspirin allergy / intolerance","text":"Aspirin allergy — use clopidogrel 75 mg instead"},
+        {"kind":"avoid","label":"Aspirin allergy / intolerance","text":"Aspirin allergy — alternative antiplatelet is an individual decision (not specified in CG126)"},
         {"kind":"caution","label":"On an anticoagulant (DOAC / warfarin)","text":"On an anticoagulant — avoid routine dual therapy (bleeding); specialist decision"},
         {"kind":"favoured","label":"Prior MI / PCI / CABG","text":"Established CAD / post-MI — secondary prevention"}
       ]

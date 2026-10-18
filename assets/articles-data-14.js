@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 14: I topics)
    NHS conditions A–Z (letter I) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(

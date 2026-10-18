@@ -55,12 +55,12 @@ MedChooser.register('depression', {
       step:'First-line',
       source:'NICE NG222 · MHRA QTc warning',
       sideEffects:'As SSRIs; dose-dependent QTc prolongation',
-      monitor:'Review 1–2 weeks; ECG if cardiac risk / polypharmacy',
+      monitor:'Review 1–2 weeks; consider ECG in cardiac disease; correct low K+/Mg2+',
       counsel:'"A well-tolerated daily tablet. There\'s a small effect on heart rhythm at higher doses, so we keep the dose sensible and check if needed."',
       detail:{
         'Dose': 'Citalopram 20 mg OD (max 40; max 20 if >65 or hepatic). Escitalopram 10 mg → 20 mg',
-        'Interactions': 'Additive QTc with other QT-prolonging drugs (antipsychotics, methadone, ondansetron)',
-        'Key teaching': 'MHRA: dose caps for QTc. Avoid if congenital long QT.'
+        'Interactions': 'Contraindicated with other QT-prolonging drugs (e.g. some antipsychotics, methadone, ondansetron) — MHRA 2011',
+        'Key teaching': 'MHRA: dose caps for QTc. Contraindicated in known QT prolongation or congenital long QT, and with other QT-prolonging drugs.'
       },
       conditions: [
         {"kind":"avoid","label":"Bipolar / past manic episode","text":"Bipolar — no antidepressant monotherapy"},

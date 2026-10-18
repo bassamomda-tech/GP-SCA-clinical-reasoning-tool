@@ -350,7 +350,7 @@ window.SCA_KNOWLEDGE = {
   },
 
   'sleep-paeds': {
-    guideline: 'NICE CKS — Insomnia (children) · BNFC melatonin (specialist-initiated) · NICE NG222 — Depression in adults (for mum)',
+    guideline: 'NICE CKS — Insomnia (children) · NICE NG222 — Depression in adults (for mum)',
     summary: 'A well, thriving 4-year-old who won’t sleep has a behavioural sleep difficulty — managed with consistent behavioural strategy, not medication. The patient who needs treating may be the exhausted mother.',
     points: [
       { h:'Behavioural, not medical', t:'Normal growth, fine at nursery, no snoring/apnoea/red flags points to a sleep-onset association / limit-setting problem — not an organic disorder.' },

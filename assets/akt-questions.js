@@ -99,7 +99,7 @@ window.AKT_QUESTIONS = [
   { id:'wh3', cat:'Women\u2019s Health',
     stem:'A 26-year-old woman starting the combined oral contraceptive pill 6 days after the first day of her period asks when she is protected. Assuming correct use, what advice is correct?',
     opts:['Immediate protection','Use additional precautions for 7 days','Use additional precautions for 2 days','No contraception needed','Protected after the first pack'],
-    ans:1, exp:'If the COC is started after day 5 of the cycle, additional contraception (e.g. condoms) is needed for the first 7 days. Started within the first 5 days, it is effective immediately (FSRH).',
+    ans:1, exp:'If the COC is started after day 5 of the cycle, additional contraception (e.g. condoms) is needed for the first 7 days. Started within the first 5 days, it is effective immediately (CoSRH).',
     link:'../cases/contraception.html' },
   // ---------- Children & young people ----------
   { id:'ch1', cat:'Children',

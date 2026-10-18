@@ -25,7 +25,7 @@
    "reason": "Telephone call from her mother: “What is it, and why do the tests keep coming back fine?”"
   },
   "knowledge": {
-   "guideline": "[1] International Classification of Headache Disorders, 3rd edition, 1.6.1.2 Abdominal migraine (International Headache Society 2018, international) · [2] Rome IV childhood functional gastrointestinal disorders, Hyams et al., Gastroenterology 2016 (international) · [3] NICE NG20 Coeliac disease (2015) · [4] NICE NG224 Urinary tract infection in under 16s (2022) · [5] NICE CG99 Constipation in children and young people (2010) · [6] MHRA Drug Safety Update: domperidone (December 2019) and metoclopramide (August 2013) · [7] BNFC",
+   "guideline": "[1] International Classification of Headache Disorders, 3rd edition, 1.6.1.2 Abdominal migraine (International Headache Society 2018, international) · [2] Rome IV childhood functional gastrointestinal disorders, Hyams et al., Gastroenterology 2016 (international) · [3] NICE NG20 Coeliac disease (2015) · [4] NICE NG224 Urinary tract infection in under 16s (2022) · [5] NICE CG99 Constipation in children and young people (2010) · [6] MHRA Drug Safety Update: domperidone (December 2019) and metoclopramide (August 2013)",
    "summary": "Stereotyped attacks of central abdominal pain lasting hours, with pallor, nausea, vomiting or anorexia, complete wellness between attacks, normal growth and a family history of migraine fit abdominal migraine. It is a clinical diagnosis made once alarm features are absent and the examination, growth and simple tests are normal; normal tests support it. On the phone, take the history and red flags, then arrange a face-to-face review to examine her, plot growth and check urine. Manage with explanation, a diary, triggers, and early simple analgesia for attacks. Antiemetics and triptans are restricted at her age, and prevention is a paediatric decision.",
    "points": [
     {
@@ -42,7 +42,7 @@
     },
     {
      "h": "Acute attacks",
-     "t": "Rest in a quiet, dark room, sips of fluid, and paracetamol or ibuprofen early in the attack, dose per BNFC [7]. Domperidone is no longer licensed for children under 12 (MHRA 2019) and metoclopramide is restricted in under-18s (MHRA 2013) [6], so antiemetics are not routine in primary care. Triptans are not licensed at her age [7]."
+     "t": "Rest in a quiet, dark room, sips of fluid, and paracetamol or ibuprofen early in the attack, dose per BNFC. Domperidone is no longer licensed for children under 12 (MHRA 2019) and metoclopramide is restricted in under-18s (MHRA 2013) [6], so antiemetics are not routine in primary care. Triptans are not licensed at her age."
     },
     {
      "h": "Prevention and referral",
@@ -519,7 +519,7 @@
    "reason": "Booked appointment: “Pain and bleeding when I go to the toilet.”"
   },
   "knowledge": {
-   "guideline": "[1] MHRA SPC: Rectogesic 4 mg/g rectal ointment · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] BNF: osmotic laxatives, lidocaine (topical) · [4] NICE HTG690 Quantitative faecal immunochemical testing for suspected colorectal cancer · [5] NICE CG192 Antenatal and postnatal mental health",
+   "guideline": "[1] MHRA SPC: Rectogesic 4 mg/g rectal ointment · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] NICE HTG690 Quantitative faecal immunochemical testing for suspected colorectal cancer · [4] NICE CG192 Antenatal and postnatal mental health",
    "summary": "Severe, sharp pain on passing stool with a throbbing ache afterwards and bright red blood on the paper, after postnatal constipation, is an anal fissure. The foundation is keeping stools soft; a topical sphincter relaxant is for persistent or chronic fissures, and its pregnancy and breastfeeding cautions matter in a postnatal woman.",
    "points": [
     {
@@ -532,7 +532,7 @@
     },
     {
      "h": "Soften the stool",
-     "t": "Fluids, gradual fibre where appropriate, and an osmotic laxative if stools stay hard, titrated to soft stools (dose per BNF [2]). Fibre without enough fluid can make things worse. Avoid straining and continue after healing. Warm baths ease spasm; a short course of topical lidocaine before defecation for severe pain (BNF [2])."
+     "t": "Fluids, gradual fibre where appropriate, and an osmotic laxative if stools stay hard, titrated to soft stools (dose per BNF). Fibre without enough fluid can make things worse. Avoid straining and continue after healing. Warm baths ease spasm; a short course of topical lidocaine before defecation for severe pain (BNF)."
     },
     {
      "h": "Topical relaxant",
@@ -544,11 +544,11 @@
     },
     {
      "h": "Colorectal red flags",
-     "t": "A fissure does not exclude other pathology. Blood mixed with stool, a persistent change in bowel habit, weight loss, iron-deficiency anaemia or a mass need assessment under NICE NG12 [3], using FIT where indicated (NICE HTG690 [4]). A rectal or anal mass or unexplained anal ulceration: consider a suspected cancer pathway referral."
+     "t": "A fissure does not exclude other pathology. Blood mixed with stool, a persistent change in bowel habit, weight loss, iron-deficiency anaemia or a mass need assessment under NICE NG12 [2], using FIT where indicated (NICE HTG690 [3]). A rectal or anal mass or unexplained anal ulceration: consider a suspected cancer pathway referral."
     },
     {
      "h": "Postnatal context",
-     "t": "Postnatal constipation, fear of opening the bowels and sleep loss often coexist. NICE CG192 [5]: consider asking about low mood and anxiety in the postnatal period."
+     "t": "Postnatal constipation, fear of opening the bowels and sleep loss often coexist. NICE CG192 [4]: consider asking about low mood and anxiety in the postnatal period."
     }
    ]
   },
@@ -1030,7 +1030,7 @@
    "reason": "Booked appointment: “Keep getting bad attacks of being sick. Nobody knows why.”"
   },
   "knowledge": {
-   "guideline": "[1] Rome IV criteria for functional gastrointestinal disorders: cannabinoid hyperemesis syndrome (2016) (international) · [2] NICE CG51 Drug misuse in over 16s: psychosocial interventions (2007) · [3] DVLA Assessing fitness to drive: drug misuse and dependence · [4] BNF: antiemetics",
+   "guideline": "[1] Rome IV criteria for functional gastrointestinal disorders: cannabinoid hyperemesis syndrome (2016) (international) · [2] NICE CG51 Drug misuse in over 16s: psychosocial interventions (2007) · [3] DVLA Assessing fitness to drive: drug misuse and dependence",
    "summary": "Stereotyped episodes of vomiting and abdominal pain over months, repeated normal investigations, and relief from long hot showers in a regular cannabis user is cannabis hyperemesis syndrome. The diagnosis depends on asking about cannabis without judgement. Sustained cessation is the only treatment that stops the episodes.",
    "points": [
     {
@@ -1047,7 +1047,7 @@
     },
     {
      "h": "Acute episodes",
-     "t": "Standard antiemetics often help little [4]. Dehydration and electrolyte disturbance, including acute kidney injury, can follow prolonged vomiting: seek urgent care if unable to keep fluids down. Warn that very hot water can scald."
+     "t": "Standard antiemetics often help little. Dehydration and electrolyte disturbance, including acute kidney injury, can follow prolonged vomiting: seek urgent care if unable to keep fluids down. Warn that very hot water can scald."
     },
     {
      "h": "Cessation",
@@ -1519,7 +1519,7 @@
    "reason": "Itchy raised welts most days for a couple of months, sometimes with lip or eyelid swelling. Cannot find a trigger."
   },
   "knowledge": {
-   "guideline": "[1] BSACI guideline for the management of chronic urticaria and angioedema (Powell et al., Clin Exp Allergy 2015) · [2] EAACI/GA²LEN/EuroGuiDerm/APAAACI urticaria guideline (2026 update, Allergy; international) · [3] NICE TA339 (2015) omalizumab for previously treated chronic spontaneous urticaria · [4] BNF, antihistamines · [5] MHRA Drug Safety Update (April 2024), montelukast neuropsychiatric reactions",
+   "guideline": "[1] BSACI guideline for the management of chronic urticaria and angioedema (Powell et al., Clin Exp Allergy 2015) · [2] EAACI/GA²LEN/EuroGuiDerm/APAAACI urticaria guideline (2026 update, Allergy; international) · [3] NICE TA339 (2015) omalizumab for previously treated chronic spontaneous urticaria · [4] MHRA Drug Safety Update (April 2024), montelukast neuropsychiatric reactions",
    "summary": "Itchy weals most days for more than 6 weeks, each lasting under 24 hours and fading without a mark, with or without angioedema, and no consistent trigger, is chronic spontaneous urticaria. It is rarely allergic. Treat with a daily non-sedating antihistamine, step it up to four times the standard dose if needed, and refer if it stays uncontrolled. Give a clear airway safety-net.",
    "points": [
     {
@@ -1540,7 +1540,7 @@
     },
     {
      "h": "Antihistamine ladder",
-     "t": "A second-generation non-sedating H1-antihistamine taken every day, not only on bad days [1][2]. If control is not achieved in 2–4 weeks, increase up to four times the standard dose [2]; above the licensed dose this is off-label and should be explained [4]. Avoid sedating antihistamines for regular use. A short course of oral steroid may be used for a severe flare only, never long term [1][2]."
+     "t": "A second-generation non-sedating H1-antihistamine taken every day, not only on bad days [1][2]. If control is not achieved in 2–4 weeks, increase up to four times the standard dose [2]; above the licensed dose this is off-label and should be explained. Avoid sedating antihistamines for regular use. A short course of oral steroid may be used for a severe flare only, never long term [1][2]."
     },
     {
      "h": "Pregnancy and breastfeeding",
@@ -1548,7 +1548,7 @@
     },
     {
      "h": "Refractory disease",
-     "t": "If uncontrolled on up-dosed antihistamine, refer to dermatology or immunology. Omalizumab is the preferred add-on [2]; NICE TA339 recommends it, in specialist care, for people aged 12 and over with severe disease (UAS7 of 28 or more) despite H1-antihistamines and a leukotriene receptor antagonist [3]. Ciclosporin is a specialist option after that [2]. UK guidance (BSACI [1]; BAD 2021) includes montelukast as an off-label add-on before omalizumab; if used, warn about neuropsychiatric effects [5]."
+     "t": "If uncontrolled on up-dosed antihistamine, refer to dermatology or immunology. Omalizumab is the preferred add-on [2]; NICE TA339 recommends it, in specialist care, for people aged 12 and over with severe disease (UAS7 of 28 or more) despite H1-antihistamines and a leukotriene receptor antagonist [3]. Ciclosporin is a specialist option after that [2]. UK guidance (BSACI [1]; BAD 2021) includes montelukast as an off-label add-on before omalizumab; if used, warn about neuropsychiatric effects [4]."
     },
     {
      "h": "Airway safety-net",
@@ -3022,7 +3022,7 @@
    "reason": "“Is there anything that helps?”"
   },
   "knowledge": {
-   "guideline": "[1] BNF aluminium chloride hexahydrate monograph · [2] BNF botulinum toxin type A monograph (severe axillary hyperhidrosis, specialist use) · [3] BNF propantheline bromide and other antimuscarinic monographs · [4] NICE HTG339 (formerly IPG487): endoscopic thoracic sympathectomy for primary hyperhidrosis of the upper limb (2014) · [5] International Hyperhidrosis Society (Hyperhidrosis Disease Severity Scale) (international)",
+   "guideline": "[1] NICE HTG339 (formerly IPG487): endoscopic thoracic sympathectomy for primary hyperhidrosis of the upper limb (2014) · [2] International Hyperhidrosis Society (Hyperhidrosis Disease Severity Scale) (international)",
    "summary": "Symmetrical sweating of the palms, soles and armpits since adolescence, even when cool, but not during sleep, is primary focal hyperhidrosis. It is common, harmless and treatable, but it can hurt confidence, work and relationships. Check for the features of secondary sweating, score severity, start aluminium chloride with the right technique, and step up to iontophoresis, antimuscarinics or botulinum toxin, with dermatology referral for severe or resistant disease.",
    "points": [
     {
@@ -3035,19 +3035,19 @@
     },
     {
      "h": "Score severity",
-     "t": "The Hyperhidrosis Disease Severity Scale grades impact from 1 (never noticeable) to 4 (intolerable, always interferes) [5]. A score of 3 or 4 means severe disease and helps decide on escalation and referral."
+     "t": "The Hyperhidrosis Disease Severity Scale grades impact from 1 (never noticeable) to 4 (intolerable, always interferes) [2]. A score of 3 or 4 means severe disease and helps decide on escalation and referral."
     },
     {
      "h": "First line: aluminium chloride",
-     "t": "Aluminium chloride hexahydrate 20% applied to completely dry skin at night and washed off in the morning, building up the number of nights as tolerated, then reducing to maintenance as it works [1]. Irritation is the common problem: apply only to dry skin, reduce frequency and avoid shaving just before use."
+     "t": "Aluminium chloride hexahydrate 20% applied to completely dry skin at night and washed off in the morning, building up the number of nights as tolerated, then reducing to maintenance as it works. Irritation is the common problem: apply only to dry skin, reduce frequency and avoid shaving just before use."
     },
     {
      "h": "Next steps",
-     "t": "Tap-water iontophoresis for palms and soles (usually via dermatology or physiotherapy, or a home device). Oral antimuscarinics such as propantheline for widespread or multi-site sweating; dry mouth, blurred vision and constipation limit use (BNF [3]; dose per BNF). Botulinum toxin A for severe axillary disease, given by a specialist [2]. Topical glycopyrronium cream is an option for severe axillary disease in adults when aluminium chloride and oral antimuscarinics have not worked or are unsuitable (NICE TA1175, 2026)."
+     "t": "Tap-water iontophoresis for palms and soles (usually via dermatology or physiotherapy, or a home device). Oral antimuscarinics such as propantheline for widespread or multi-site sweating; dry mouth, blurred vision and constipation limit use (BNF; dose per BNF). Botulinum toxin A for severe axillary disease, given by a specialist. Topical glycopyrronium cream is an option for severe axillary disease in adults when aluminium chloride and oral antimuscarinics have not worked or are unsuitable (NICE TA1175, 2026)."
     },
     {
      "h": "Referral and surgery",
-     "t": "Refer to dermatology if topical treatment fails or disease is severe. Endoscopic thoracic sympathectomy is for severe upper-limb disease after other treatments. NICE HTG339 supports it, but patients must understand that compensatory sweating elsewhere is usual and can be severe [4]."
+     "t": "Refer to dermatology if topical treatment fails or disease is severe. Endoscopic thoracic sympathectomy is for severe upper-limb disease after other treatments. NICE HTG339 supports it, but patients must understand that compensatory sweating elsewhere is usual and can be severe [1]."
     },
     {
      "h": "Impact",
@@ -4050,7 +4050,7 @@
    "reason": "“I can’t stay awake in the day, and people think I’m just lazy.”"
   },
   "knowledge": {
-   "guideline": "[1] DVLA Assessing fitness to drive: a guide for medical professionals (current online version), section on primary/central hypersomnias including narcolepsy · [2] NICE TA758 (solriamfetol for excessive daytime sleepiness caused by narcolepsy, 2022) · [3] BNF modafinil monograph · [4] MHRA Drug Safety Update (November 2020): modafinil and the risk of congenital malformations · [5] GMC Confidentiality: patients’ fitness to drive and reporting concerns to the DVLA (2017) · [6] Equality Act 2010",
+   "guideline": "[1] DVLA Assessing fitness to drive: a guide for medical professionals (current online version), section on primary/central hypersomnias including narcolepsy · [2] NICE TA758 (solriamfetol for excessive daytime sleepiness caused by narcolepsy, 2022) · [3] MHRA Drug Safety Update (November 2020): modafinil and the risk of congenital malformations · [4] GMC Confidentiality: patients’ fitness to drive and reporting concerns to the DVLA (2017) · [5] Equality Act 2010",
    "summary": "Irresistible daytime sleep attacks with cataplexy (brief loss of muscle tone set off by laughter or surprise, with full awareness), sleep paralysis and vivid hallucinations at sleep onset make narcolepsy type 1 the working diagnosis. The GP’s job is to recognise the pattern, rule out common causes of sleepiness, measure sleepiness with the Epworth scale, refer to a specialist sleep service, and deal with driving and safety on the day. Treatment is specialist-led. A person with narcolepsy must stop driving and tell the DVLA.",
    "points": [
     {
@@ -4071,15 +4071,15 @@
     },
     {
      "h": "Treatment is specialist-led",
-     "t": "Regular sleep times and short planned naps. Modafinil is the usual first drug for sleepiness (BNF [3]). It can harm an unborn baby and it lowers the effect of hormonal contraception, so effective contraception is needed (MHRA [4]). Solriamfetol is an option if modafinil and dexamfetamine or methylphenidate have not worked well enough or are not suitable (NICE TA758 [2]). Cataplexy has its own treatments, chosen by the specialist."
+     "t": "Regular sleep times and short planned naps. Modafinil is the usual first drug for sleepiness (BNF). It can harm an unborn baby and it lowers the effect of hormonal contraception, so effective contraception is needed (MHRA [3]). Solriamfetol is an option if modafinil and dexamfetamine or methylphenidate have not worked well enough or are not suitable (NICE TA758 [2]). Cataplexy has its own treatments, chosen by the specialist."
     },
     {
      "h": "Driving",
-     "t": "Under current DVLA standards for primary/central hypersomnias, including narcolepsy, a Group 1 driver must stop driving and tell the DVLA. Relicensing is considered only after satisfactory symptom control, for at least 3 months, confirmed by the specialist. Group 2 (lorry and bus) licensing is much stricter and needs specialist assessment [1]. If she keeps driving against advice, the GMC allows the doctor to tell the DVLA after telling her first [5]."
+     "t": "Under current DVLA standards for primary/central hypersomnias, including narcolepsy, a Group 1 driver must stop driving and tell the DVLA. Relicensing is considered only after satisfactory symptom control, for at least 3 months, confirmed by the specialist. Group 2 (lorry and bus) licensing is much stricter and needs specialist assessment [1]. If she keeps driving against advice, the GMC allows the doctor to tell the DVLA after telling her first [4]."
     },
     {
      "h": "Impact and support",
-     "t": "Narcolepsy is likely to count as a disability under the Equality Act 2010 [6], so her university must consider reasonable adjustments (extra time, rest breaks, recorded lectures). Screen for low mood, which is common. Give safety advice about cooking, bathing, swimming and heights while cataplexy is untreated."
+     "t": "Narcolepsy is likely to count as a disability under the Equality Act 2010 [5], so her university must consider reasonable adjustments (extra time, rest breaks, recorded lectures). Screen for low mood, which is common. Give safety advice about cooking, bathing, swimming and heights while cataplexy is untreated."
     }
    ]
   },
@@ -4615,7 +4615,7 @@
    "reason": "“People keep saying it’s anxiety, but it doesn’t feel like that.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG136 (hypertension in adults, 2019, current version) · [2] Endocrine Society clinical practice guideline on phaeochromocytoma and paraganglioma (2014) (international) · [3] BNF propranolol and other beta-blocker monographs (contraindications) · [4] BNF phenoxybenzamine and doxazosin monographs · [5] British and Irish Hypertension Society position statement on young-onset hypertension (2024)",
+   "guideline": "[1] NICE NG136 (hypertension in adults, 2019, current version) · [2] Endocrine Society clinical practice guideline on phaeochromocytoma and paraganglioma (2014) (international) · [3] British and Irish Hypertension Society position statement on young-onset hypertension (2024)",
    "summary": "Sudden attacks of headache, palpitations and sweating, with pallor and high, swinging blood pressure in a man under 40, should make you think of phaeochromocytoma before calling it anxiety. It is rare but curable, and dangerous if missed. Test plasma free or 24-hour urinary metanephrines, check for mimics, and refer to endocrinology. Do not start a beta-blocker. Arrange same-day assessment if blood pressure is very high with symptoms of a crisis.",
    "points": [
     {
@@ -4624,7 +4624,7 @@
     },
     {
      "h": "When to think of it",
-     "t": "Paroxysmal symptoms with hypertension, hypertension under 40, resistant hypertension, a severe rise with anaesthesia or certain drugs, an adrenal incidentaloma, or a family history of a hereditary syndrome. NICE NG136 advises considering specialist evaluation for secondary causes in adults under 40 with hypertension [1], and the British and Irish Hypertension Society sets out a structured work-up for young-onset hypertension [5]."
+     "t": "Paroxysmal symptoms with hypertension, hypertension under 40, resistant hypertension, a severe rise with anaesthesia or certain drugs, an adrenal incidentaloma, or a family history of a hereditary syndrome. NICE NG136 advises considering specialist evaluation for secondary causes in adults under 40 with hypertension [1], and the British and Irish Hypertension Society sets out a structured work-up for young-onset hypertension [3]."
     },
     {
      "h": "Mimics",
@@ -4636,7 +4636,7 @@
     },
     {
      "h": "Alpha before beta",
-     "t": "A beta-blocker given alone can leave alpha-driven vasoconstriction unopposed and trigger a hypertensive crisis. The BNF lists phaeochromocytoma as a contraindication to beta-blockers unless an alpha-blocker is already in place [3]. The specialist starts alpha-blockade first, for example phenoxybenzamine or doxazosin [4], before surgery."
+     "t": "A beta-blocker given alone can leave alpha-driven vasoconstriction unopposed and trigger a hypertensive crisis. The BNF lists phaeochromocytoma as a contraindication to beta-blockers unless an alpha-blocker is already in place. The specialist starts alpha-blockade first, for example phenoxybenzamine or doxazosin, before surgery."
     },
     {
      "h": "Urgent situations",
@@ -5142,7 +5142,7 @@
    "reason": "Booked appointment: “Painful swelling at the top of my bum, leaking. Can’t sit down.”"
   },
   "knowledge": {
-   "guideline": "[1] European Society of Coloproctology guidelines for the management of pilonidal disease, BJS 2024;111(10):znae237 (international) · [2] NICE NG141 Cellulitis and erysipelas: antimicrobial prescribing (2019) · [3] NICE NG253 Suspected sepsis in people aged 16 or over (2025) · [4] BNF: paracetamol, ibuprofen",
+   "guideline": "[1] European Society of Coloproctology guidelines for the management of pilonidal disease, BJS 2024;111(10):znae237 (international) · [2] NICE NG141 Cellulitis and erysipelas: antimicrobial prescribing (2019) · [3] NICE NG253 Suspected sepsis in people aged 16 or over (2025)",
    "summary": "A tender, fluctuant, discharging swelling in the midline natal cleft of a young hairy man with a history of on-off discharge is an acute pilonidal abscess on a chronic sinus. The abscess needs incision and drainage, not antibiotics alone; definitive treatment of the sinus is planned once the inflammation has settled.",
    "points": [
     {
@@ -5171,7 +5171,7 @@
     },
     {
      "h": "Analgesia",
-     "t": "Paracetamol and, if suitable, ibuprofen at BNF [4] doses while awaiting drainage. Check for contraindications to NSAIDs."
+     "t": "Paracetamol and, if suitable, ibuprofen at BNF doses while awaiting drainage. Check for contraindications to NSAIDs."
     }
    ]
   },
@@ -5641,7 +5641,7 @@
    "reason": "Booked by her mother: “Worried she’s developing too early.”"
   },
   "knowledge": {
-   "guideline": "[2] Endocrine Society clinical practice guideline on central precocious puberty (2026) (international) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] MHRA Drug Safety Update (January 2023): topical testosterone and harm to children from accidental exposure · [4] BNFC: gonadorelin analogues · [5] RCPCH UK-WHO growth charts · [6] DfE Working Together to Safeguard Children (2023)",
+   "guideline": "[2] Endocrine Society clinical practice guideline on central precocious puberty (2026) (international) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] MHRA Drug Safety Update (January 2023): topical testosterone and harm to children from accidental exposure · [4] RCPCH UK-WHO growth charts · [5] DfE Working Together to Safeguard Children (2023)",
    "summary": "Breast development and pubic hair with a growth spurt in a 6-year-old girl is precocious puberty until proved otherwise. The GP’s job is a focused history and examination, prompt referral to paediatric endocrinology, and clear, calm support for the parent and child.",
    "points": [
     {
@@ -5654,7 +5654,7 @@
     },
     {
      "h": "History and examination",
-     "t": "Onset and progression, growth, headaches, visual symptoms, vomiting, behaviour change, vaginal bleeding, and exposure to hormone creams or gels in the household (MHRA [3]: accidental transfer of testosterone gel). Plot height and weight on the RCPCH UK-WHO chart [5] with any previous measurements and parental heights. Pubertal staging with a parent present; document it and do not photograph. Check for café-au-lait patches, abdominal masses, blood pressure, fundi, visual fields and neurological signs."
+     "t": "Onset and progression, growth, headaches, visual symptoms, vomiting, behaviour change, vaginal bleeding, and exposure to hormone creams or gels in the household (MHRA [3]: accidental transfer of testosterone gel). Plot height and weight on the RCPCH UK-WHO chart [4] with any previous measurements and parental heights. Pubertal staging with a parent present; document it and do not photograph. Check for café-au-lait patches, abdominal masses, blood pressure, fundi, visual fields and neurological signs."
     },
     {
      "h": "NICE NG12 and urgent features",
@@ -5666,7 +5666,7 @@
     },
     {
      "h": "Treatment and support",
-     "t": "Central precocious puberty that is progressing may be treated with a GnRH analogue (BNFC [4]) to pause puberty, protect adult height and allow age-appropriate development; doses follow the specialist. Early puberty can bring teasing, distress and vulnerability; unexplained vaginal bleeding or signs of harm need safeguarding consideration [6]."
+     "t": "Central precocious puberty that is progressing may be treated with a GnRH analogue (BNFC) to pause puberty, protect adult height and allow age-appropriate development; doses follow the specialist. Early puberty can bring teasing, distress and vulnerability; unexplained vaginal bleeding or signs of harm need safeguarding consideration [5]."
     }
    ]
   },
@@ -6110,7 +6110,7 @@
    "reason": "Booked “for antidepressants to feel better”."
   },
   "knowledge": {
-   "guideline": "[1] EAU Guidelines on Sexual and Reproductive Health (Limited Update March 2026, international) · [2] ISSM definition of premature ejaculation, Serefoglu et al., J Sex Med 2014 (international) · [3] BNF: dapoxetine; lidocaine with prilocaine · [4] NICE NG222 Depression in adults (2022, updated December 2025) · [5] BSSM guidelines on the management of erectile dysfunction (Hackett et al., 2018)",
+   "guideline": "[1] EAU Guidelines on Sexual and Reproductive Health (Limited Update March 2026, international) · [2] ISSM definition of premature ejaculation, Serefoglu et al., J Sex Med 2014 (international) · [3] NICE NG222 Depression in adults (2022, updated December 2025) · [4] BSSM guidelines on the management of erectile dysfunction (Hackett et al., 2018)",
    "summary": "A request for antidepressants can hide a sexual problem. Here the real agenda is premature ejaculation causing distress and relationship strain. Make it safe to talk, then confirm PE against the ISSM definition, classify lifelong versus acquired (acquired needs a cause looked for), and check for erectile dysfunction, which is treated first if present. Screen mood properly rather than prescribing for ‘feeling low’. Offer behavioural techniques, a topical anaesthetic spray and, if wanted, on-demand dapoxetine or an off-label daily SSRI, with partner involvement and psychosexual therapy where relationship or anxiety factors dominate.",
    "points": [
     {
@@ -6123,15 +6123,15 @@
     },
     {
      "h": "Erectile dysfunction",
-     "t": "ED commonly coexists. Rushing to ejaculate for fear of losing the erection can drive PE, so treat ED first with a PDE5 inhibitor and cardiovascular risk assessment [1,5]; PE may then improve."
+     "t": "ED commonly coexists. Rushing to ejaculate for fear of losing the erection can drive PE, so treat ED first with a PDE5 inhibitor and cardiovascular risk assessment [1,4]; PE may then improve."
     },
     {
      "h": "Mood",
-     "t": "He booked for antidepressants. Assess depression properly (NG222 [4]), including risk. If he has depression needing an SSRI, a daily SSRI may also delay ejaculation; dapoxetine must not be combined with another SSRI or serotonergic drug [3]."
+     "t": "He booked for antidepressants. Assess depression properly (NG222 [3]), including risk. If he has depression needing an SSRI, a daily SSRI may also delay ejaculation; dapoxetine must not be combined with another SSRI or serotonergic drug."
     },
     {
      "h": "Treatment",
-     "t": "Behavioural techniques (stop-start, squeeze) with his partner, and psychosexual therapy for anxiety or relationship factors; combining behavioural and drug treatment may be more effective than either alone [1]. Topical lidocaine with prilocaine spray, licensed for lifelong PE, applied before intercourse, dose per BNF [3]; excess is wiped off to avoid numbness in the partner. Dapoxetine, licensed for men aged 18–64: 30 mg 1–3 hours before sex, no more than once in 24 hours; check for orthostatic hypotension first, avoid alcohol, and do not combine with a PDE5 inhibitor in routine primary care [3]. Daily SSRIs are off-label."
+     "t": "Behavioural techniques (stop-start, squeeze) with his partner, and psychosexual therapy for anxiety or relationship factors; combining behavioural and drug treatment may be more effective than either alone [1]. Topical lidocaine with prilocaine spray, licensed for lifelong PE, applied before intercourse, dose per BNF; excess is wiped off to avoid numbness in the partner. Dapoxetine, licensed for men aged 18–64: 30 mg 1–3 hours before sex, no more than once in 24 hours; check for orthostatic hypotension first, avoid alcohol, and do not combine with a PDE5 inhibitor in routine primary care. Daily SSRIs are off-label."
     },
     {
      "h": "Follow-up",
@@ -6595,7 +6595,7 @@
    "reason": "Several nosebleeds over the past few weeks; the latest took about twenty minutes to stop."
   },
   "knowledge": {
-   "guideline": "[1] BNF — anticoagulants (warfarin INR monitoring; DOACs) and chlorhexidine with neomycin nasal cream · [2] NICE NG136 (hypertension in adults) · [3] Curaçao criteria for hereditary haemorrhagic telangiectasia (Shovlin et al., 2000, international) · [4] Second international HHT guidelines (Faughnan et al., Ann Intern Med 2020, international)",
+   "guideline": "[1] NICE NG136 (hypertension in adults) · [2] Curaçao criteria for hereditary haemorrhagic telangiectasia (Shovlin et al., 2000, international) · [3] Second international HHT guidelines (Faughnan et al., Ann Intern Med 2020, international)",
    "summary": "Most recurrent nosebleeds come from Little’s area at the front of the septum and are benign, but anticoagulation makes them last longer. Teach first aid properly, review the anticoagulant and blood pressure without stopping the anticoagulant on impulse, treat a visible anterior vessel, and know when to send to hospital. Keep one-sided bleeding with obstruction, and HHT, in mind.",
    "points": [
     {
@@ -6612,19 +6612,19 @@
     },
     {
      "h": "Review the anticoagulant, don’t just stop it",
-     "t": "Check the indication and whether it is still needed, the dose against current weight and renal function (DOACs), interacting drugs (antiplatelets, NSAIDs), and INR if on warfarin [1]. Stopping or pausing an anticoagulant is a shared decision with the prescriber or specialist, weighed against stroke or clot risk."
+     "t": "Check the indication and whether it is still needed, the dose against current weight and renal function (DOACs), interacting drugs (antiplatelets, NSAIDs), and INR if on warfarin. Stopping or pausing an anticoagulant is a shared decision with the prescriber or specialist, weighed against stroke or clot risk."
     },
     {
      "h": "Blood pressure",
-     "t": "Measure BP. Hypertension is associated with epistaxis severity; optimise control per NICE NG136 [2]. A very high reading during a bleed may partly reflect distress; recheck."
+     "t": "Measure BP. Hypertension is associated with epistaxis severity; optimise control per NICE NG136 [1]. A very high reading during a bleed may partly reflect distress; recheck."
     },
     {
      "h": "Primary-care treatment",
-     "t": "If a bleeding point is visible anteriorly and the clinician is trained, silver nitrate cautery to one side of the septum. Chlorhexidine with neomycin nasal cream reduces crusting and re-bleeding (dose per BNF [1]; Naseptin contains arachis oil, so check for peanut or soya allergy). Refer to ENT when bleeds keep recurring despite this, or no source is seen."
+     "t": "If a bleeding point is visible anteriorly and the clinician is trained, silver nitrate cautery to one side of the septum. Chlorhexidine with neomycin nasal cream reduces crusting and re-bleeding (dose per BNF; Naseptin contains arachis oil, so check for peanut or soya allergy). Refer to ENT when bleeds keep recurring despite this, or no source is seen."
     },
     {
      "h": "Red flags for another cause",
-     "t": "Persistent one-sided bleeding with nasal obstruction, blood-stained discharge, facial pain or swelling, or a visible mass: refer urgently to ENT to exclude a sinonasal tumour. Easy bruising or other bleeding: FBC and clotting. HHT: recurrent spontaneous nosebleeds, telangiectasia on lips, tongue or fingers, and a first-degree relative with HHT [3][4]."
+     "t": "Persistent one-sided bleeding with nasal obstruction, blood-stained discharge, facial pain or swelling, or a visible mass: refer urgently to ENT to exclude a sinonasal tumour. Easy bruising or other bleeding: FBC and clotting. HHT: recurrent spontaneous nosebleeds, telangiectasia on lips, tongue or fingers, and a first-degree relative with HHT [2][3]."
     },
     {
      "h": "Prevention",
@@ -7602,7 +7602,7 @@
    "reason": "“What is it, and will it settle?”"
   },
   "knowledge": {
-   "guideline": "[1] BESS patient care pathway: tennis elbow, Singh et al., Shoulder Elbow 2023 · [2] Coombes et al., JAMA 2013 · [3] Smidt et al., Lancet 2002 · [4] Ikonen et al., Clin Orthop Relat Res 2022 · [5] NICE HTG201 Extracorporeal shockwave therapy for refractory tennis elbow (2009) · [6] NICE HTG299 Autologous blood injection for tendinopathy (2013) · [7] BNF",
+   "guideline": "[1] BESS patient care pathway: tennis elbow, Singh et al., Shoulder Elbow 2023 · [2] Coombes et al., JAMA 2013 · [3] Smidt et al., Lancet 2002 · [4] Ikonen et al., Clin Orthop Relat Res 2022 · [5] NICE HTG201 Extracorporeal shockwave therapy for refractory tennis elbow (2009) · [6] NICE HTG299 Autologous blood injection for tendinopathy (2013)",
    "summary": "Lateral elbow pain after repetitive gripping, with tenderness at the lateral epicondyle and pain on resisted wrist extension, is tennis elbow (lateral elbow tendinopathy). It is a clinical diagnosis and imaging is not needed. Most people improve within a year. Explain the natural history, adjust load at work and home without stopping activity, and use progressive loading exercises through physiotherapy. Topical NSAIDs help short-term; a strap may help some. Corticosteroid injection gives short-term relief but worse outcomes at a year and more recurrence, and BESS advises against it. Reassess for neck, nerve or joint causes if atypical.",
    "points": [
     {
@@ -7619,7 +7619,7 @@
     },
     {
      "h": "First-line care",
-     "t": "Education and load adjustment: reduce provoking gripping and lifting (palm-up lifting, thicker tool handles, spreading tasks) without complete rest. Physiotherapy with progressive extensor loading and stretching is strongly recommended [1]. A counterforce strap may be offered but may not help [1]. Topical NSAIDs relieve pain for up to about 4 weeks; oral NSAID evidence is conflicting; check risk and dose per BNF [7]."
+     "t": "Education and load adjustment: reduce provoking gripping and lifting (palm-up lifting, thicker tool handles, spreading tasks) without complete rest. Physiotherapy with progressive extensor loading and stretching is strongly recommended [1]. A counterforce strap may be offered but may not help [1]. Topical NSAIDs relieve pain for up to about 4 weeks; oral NSAID evidence is conflicting; check risk and dose per BNF."
     },
     {
      "h": "Injections",
@@ -8087,7 +8087,7 @@
    "reason": "(Mother) “Is it just a habit, or something serious like Tourette’s?”"
   },
   "knowledge": {
-   "guideline": "[1] European clinical guidelines for Tourette syndrome and other tic disorders, version 2.0 (European Society for the Study of Tourette Syndrome, 2021) (international) · [2] NICE NG87 (attention deficit hyperactivity disorder, 2018) · [3] NICE CG31 (obsessive-compulsive disorder and body dysmorphic disorder, 2005) · [4] BNFC (specialist-initiated medicines for tics) · [5] Equality Act 2010 and the SEND Code of Practice (2015)",
+   "guideline": "[1] European clinical guidelines for Tourette syndrome and other tic disorders, version 2.0 (European Society for the Study of Tourette Syndrome, 2021) (international) · [2] NICE NG87 (attention deficit hyperactivity disorder, 2018) · [3] NICE CG31 (obsessive-compulsive disorder and body dysmorphic disorder, 2005) · [4] Equality Act 2010 and the SEND Code of Practice (2015)",
    "summary": "Blinking, grimacing and shrugging with throat-clearing and sniffing, which come and go, are briefly suppressible, follow an urge and worsen with tiredness or excitement, are tics. Tics are common in children and usually mild. Tourette syndrome means several motor tics and at least one vocal tic for more than a year, starting in childhood. After a few months Finn does not yet meet that definition. The GP’s job is to recognise tics, check for red flags, ask about impact and common co-occurring conditions (ADHD, OCD, anxiety), reassure with good information, and refer only if tics are impairing or something else needs help.",
    "points": [
     {
@@ -8112,11 +8112,11 @@
     },
     {
      "h": "When to refer and what helps",
-     "t": "If tics cause distress, pain, social or school problems, refer (paediatrics or CAMHS, per local pathway) for behavioural therapy: habit reversal training or CBIT, and exposure with response prevention are first-line [1]. Medication is specialist-only, for severe tics; aripiprazole is the usual first choice, with clonidine considered where ADHD co-exists [1, 4]."
+     "t": "If tics cause distress, pain, social or school problems, refer (paediatrics or CAMHS, per local pathway) for behavioural therapy: habit reversal training or CBIT, and exposure with response prevention are first-line [1]. Medication is specialist-only, for severe tics; aripiprazole is the usual first choice, with clonidine considered where ADHD co-exists [1]."
     },
     {
      "h": "School and rights",
-     "t": "If tics or co-occurring conditions affect learning, the school’s SENCo can put support in place. A long-term tic disorder can meet the definition of disability under the Equality Act 2010 [5]. Watch for bullying."
+     "t": "If tics or co-occurring conditions affect learning, the school’s SENCo can put support in place. A long-term tic disorder can meet the definition of disability under the Equality Act 2010 [4]. Watch for bullying."
     }
    ]
   },
@@ -8605,7 +8605,7 @@
    "reason": "Practice nurse asked him to book to discuss the results."
   },
   "knowledge": {
-   "guideline": "[1] NHS gender dysphoria clinic shared-care protocol for testosterone (local version; check current) · [2] RCGP position statement: the role of the GP in caring for gender-questioning and transgender patients (2024) · [3] FSRH CEU Statement: Contraceptive choices and sexual health for transgender and non-binary people (check current version) · [4] FSRH Clinical Guideline: Emergency contraception (2017, amended) · [5] NHS cervical screening programme guidance for trans and non-binary people · [6] GMC Good medical practice (2024) · [7] Product SPCs for testosterone, levonorgestrel and ulipristal acetate",
+   "guideline": "[1] NHS gender dysphoria clinic shared-care protocol for testosterone (local version; check current) · [2] RCGP position statement: the role of the GP in caring for gender-questioning and transgender patients (2024) · [3] CoSRH CEU Statement: Contraceptive choices and sexual health for transgender and non-binary people (check current version) · [4] CoSRH Clinical Guideline: Emergency contraception (2017, amended) · [5] NHS cervical screening programme guidance for trans and non-binary people · [6] GMC Good medical practice (2024) · [7] Product SPCs for testosterone, levonorgestrel and ulipristal acetate",
    "summary": "A trans man on shared-care testosterone with haematocrit 0.55 after self-increasing his injection frequency, plus smoking and possible sleep apnoea. Repeat, liaise with the gender service about dose or interval, and address contributors without stopping testosterone. The hidden agenda: unprotected vaginal sex in the belief that testosterone is contraception, most recently last night. Offer emergency contraception, pregnancy testing, an STI screen, non-oestrogen contraception and cervical screening.",
    "points": [
     {
@@ -9574,7 +9574,7 @@
    "reason": "(Parent) “Could it all be connected?”"
   },
   "knowledge": {
-   "guideline": "[1] EASL–ERN Clinical Practice Guidelines on Wilson’s disease (2025) (international) · [2] AASLD practice guidance on Wilson disease (2022) (international) · [3] British Society of Gastroenterology guideline on the management of abnormal liver blood tests (2018) · [4] BNF penicillamine, trientine and zinc acetate monographs · [5] GMC Confidentiality: good practice in handling patient information (2017)",
+   "guideline": "[1] EASL–ERN Clinical Practice Guidelines on Wilson’s disease (2025) (international) · [2] AASLD practice guidance on Wilson disease (2022) (international) · [3] British Society of Gastroenterology guideline on the management of abnormal liver blood tests (2018) · [4] GMC Confidentiality: good practice in handling patient information (2017)",
    "summary": "A young man with abnormal liver tests, a new tremor, slurred speech and a change in mood and behaviour should make you think of Wilson’s disease. It is an inherited disorder of copper build-up in the liver and brain: rare, treatable, and devastating if missed. Check caeruloplasmin and liver tests, refer urgently to hepatology (and neurology) for copper studies and a slit-lamp eye examination, and plan family screening. Adam is an adult, so ask him about his parent being present, and see him alone for part of the consultation.",
    "points": [
     {
@@ -9599,7 +9599,7 @@
     },
     {
      "h": "Treatment",
-     "t": "Specialist-led and lifelong: chelation with penicillamine or trientine, or zinc to block absorption; chelators are preferred for significant liver disease [1, 2, 4]. Neurological symptoms can briefly worsen when treatment starts. Stopping treatment can cause fatal liver failure, so adherence is vital. Liver transplant is used for acute liver failure or end-stage disease."
+     "t": "Specialist-led and lifelong: chelation with penicillamine or trientine, or zinc to block absorption; chelators are preferred for significant liver disease [1, 2]. Neurological symptoms can briefly worsen when treatment starts. Stopping treatment can cause fatal liver failure, so adherence is vital. Liver transplant is used for acute liver failure or end-stage disease."
     },
     {
      "h": "Family and mental health",

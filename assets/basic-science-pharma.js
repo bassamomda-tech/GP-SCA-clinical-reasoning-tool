@@ -142,7 +142,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-atherosclerosis', pathoLabel:'Atherosclerosis & IHD', calculator:'tools/calculators.html#qrisk3', calculatorLabel:'QRISK3' },
 },
 {
-  id:'pharma-doac', domain:'Pharmacology', class:'Cardiovascular', icon:'🩸',
+  id:'pharma-doac', domain:'Pharmacology', class:'Cardiovascular', icon:'💉',
   title:'DOACs (anticoagulants)', blurb:'Directly inhibit factor Xa or thrombin to prevent clot — predictable, no routine monitoring.',
   examples:['Apixaban, rivaroxaban, edoxaban (factor Xa inhibitors)','Dabigatran (direct thrombin inhibitor)'],
   moa:[

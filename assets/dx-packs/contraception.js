@@ -12,8 +12,10 @@
 
     { group: 'CHC contraindications (UKMEC 3/4)', id: 'migraine_aura', kind: 'check', label: 'Migraine with aura' },
     { group: 'CHC contraindications (UKMEC 3/4)', id: 'vte_history', kind: 'check', label: 'VTE / known thrombophilia / immobility' },
-    { group: 'CHC contraindications (UKMEC 3/4)', id: 'smoker_35', kind: 'check', label: 'Smoker and age ≥35' },
-    { group: 'CHC contraindications (UKMEC 3/4)', id: 'bp_high_bmi', kind: 'check', label: 'Hypertension / BMI ≥35 / vascular disease' },
+    { group: 'CHC contraindications (UKMEC 3/4)', id: 'smoker_35_heavy', kind: 'check', label: 'Smoker aged ≥35, ≥15 a day (UKMEC 4)' },
+    { group: 'CHC contraindications (UKMEC 3/4)', id: 'smoker_35', kind: 'check', label: 'Smoker aged ≥35, <15 a day, or stopped <1 year (UKMEC 3)' },
+    { group: 'CHC contraindications (UKMEC 3/4)', id: 'bp_severe', kind: 'check', label: 'BP ≥160/100 / vascular disease (UKMEC 4)' },
+    { group: 'CHC contraindications (UKMEC 3/4)', id: 'bp_high_bmi', kind: 'check', label: 'Controlled hypertension or BP 140–159/90–99 / BMI ≥35 (UKMEC 3)' },
     { group: 'General', id: 'breast_cancer', kind: 'check', label: 'Current / past breast cancer' },
     { group: 'General', id: 'postpartum_bf', kind: 'check', label: 'Postpartum / breastfeeding' },
     { group: 'General', id: 'pregnant_possible', kind: 'check', label: 'Could already be pregnant' }
@@ -29,7 +31,7 @@
       {
         id: 'emergency', tier: 'urgent',
         label: 'Emergency contraception needed',
-        action: 'Cu-IUD most effective (up to 120h) — offer first; or ulipristal/levonorgestrel by timing. Quick-start ongoing method.',
+        action: 'Cu-IUD most effective (up to 120h after first UPSI, or within 5 days of the earliest expected ovulation, whichever is later) — offer first; or ulipristal/levonorgestrel by timing. Quick-start ongoing method.',
         patientPhrase: '"The most effective emergency option is the copper coil — I can also offer a tablet depending on timing."',
         source: 'CoSRH Emergency contraception',
         when: i => i.emergency_need,
@@ -37,10 +39,18 @@
       {
         id: 'chc_contra', tier: 'urgent',
         label: 'Combined hormonal contraception contraindicated (UKMEC 4) — avoid oestrogen',
-        action: 'Avoid CHC (migraine+aura, VTE, smoker ≥35, BP/BMI high, breast cancer). Offer progestogen-only / LARC / Cu-IUD.',
+        action: 'Avoid CHC (migraine with aura, VTE/thrombophilia, smoker ≥35 at ≥15 a day, BP ≥160/100 or vascular disease, current breast cancer; past breast cancer is UKMEC 3). Offer progestogen-only / LARC / Cu-IUD.',
         patientPhrase: '"The oestrogen pill is not safe for you, but there are excellent alternatives without oestrogen."',
         source: 'CoSRH UKMEC 2025', sourceUrl: 'https://www.cosrh.org/Common/Uploaded%20files/documents/UKMEC_2025.pdf',
-        when: i => i.migraine_aura || i.vte_history || i.smoker_35 || i.breast_cancer || i.bp_high_bmi,
+        when: i => i.migraine_aura || i.vte_history || i.smoker_35_heavy || i.breast_cancer || i.bp_severe,
+      },
+      {
+        id: 'chc_caution', tier: 'urgent',
+        label: 'Combined hormonal contraception: risks usually outweigh benefits (UKMEC 3)',
+        action: 'Smoker ≥35 under 15 a day (or stopped <1 year), controlled hypertension or BP 140–159/90–99, or BMI ≥35: CHC not usually recommended; make an overall assessment with other VTE/arterial risk factors (two or more UKMEC 3 factors may amount to UKMEC 4). Offer progestogen-only / LARC / Cu-IUD.',
+        patientPhrase: '"For you the risks of the oestrogen pill usually outweigh the benefits, so a method without oestrogen is usually better."',
+        source: 'CoSRH UKMEC 2025', sourceUrl: 'https://www.cosrh.org/Common/Uploaded%20files/documents/UKMEC_2025.pdf',
+        when: i => i.smoker_35 || i.bp_high_bmi,
       },
       {
         id: 'pregnant', tier: 'urgent',
@@ -78,7 +88,7 @@
         patientPhrase: 'The hormone coil prevents pregnancy and usually makes periods much lighter — ideal if they are heavy.',
         guideUrl: '' },
       { id: 'chc', name: 'Combined hormonal (pill/patch/ring)', summary: 'Cycle control; only if no oestrogen contraindication', baseline: 6, category: 'common',
-        keyExam: 'BP, BMI, migraine history.', nextIx: 'UKMEC screen; avoid if migraine+aura/VTE/smoker≥35/breast cancer.',
+        keyExam: 'BP, BMI, migraine history.', nextIx: 'UKMEC screen; avoid if migraine+aura/VTE/smoker ≥35 at ≥15 a day/breast cancer (UKMEC 4); usually avoid if smoker ≥35 under 15 a day, controlled hypertension or BMI ≥35 (UKMEC 3).',
         patientPhrase: 'The combined pill is effective and gives cycle control — but only if it is safe for you.',
         guideUrl: '' },
       { id: 'pop', name: 'Progestogen-only pill', summary: 'No oestrogen; suitable in most contraindications', baseline: 5, category: 'common',
@@ -102,7 +112,9 @@
 
       migraine_aura: { chc: -30, pop: +8, ius: +6 },
       vte_history: { chc: -30, pop: +6, ius: +4, cu_iud: +6 },
-      smoker_35: { chc: -24, pop: +6 },
+      smoker_35_heavy: { chc: -30, pop: +6 },
+      smoker_35: { chc: -20, pop: +6 },
+      bp_severe: { chc: -30, pop: +6, ius: +4 },
       bp_high_bmi: { chc: -18, pop: +6, ius: +4 },
       breast_cancer: { chc: -30, ius: -20, pop: -20, cu_iud: +20 },
       postpartum_bf: { pop: +10, chc: -10 },
@@ -111,7 +123,7 @@
     askAbout: {
       larc: ['wants_larc'],
       ius: ['heavy_periods', 'wants_larc'],
-      chc: ['migraine_aura', 'vte_history', 'smoker_35'],
+      chc: ['migraine_aura', 'vte_history', 'smoker_35_heavy', 'smoker_35', 'bp_severe', 'bp_high_bmi'],
       pop: ['wants_oral'],
       cu_iud: ['breast_cancer'],
       emergency: ['emergency_need'],

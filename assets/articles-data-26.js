@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 26: S topics, part 1)
    NHS A–Z (letter S) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -53,7 +53,7 @@
       'Outbreaks in care homes/institutions → health protection / infection control',
       'Diagnostic uncertainty → dermatology',
       'Severe secondary infection → treat ± refer'],
-    source:'BASHH scabies guidance / UKHSA scabies outbreak guidance for care settings / BNF (permethrin 5%, malathion)' },
+    source:'BASHH scabies guidance / UKHSA scabies outbreak guidance for care settings' },
 
   { id:'scarlet-fever', title:'Scarlet fever', category:'Infectious diseases', icon:'🦠',
     overview:'A childhood illness caused by group A streptococcus, with a characteristic sandpaper rash, fever and sore throat. It is usually mild and treated with antibiotics, but it is notifiable, can cause complications, and matters in the context of invasive group A strep — so recognition, treatment and public-health awareness are important.',
@@ -203,7 +203,7 @@
       'Immunocompromised patients, disseminated zoster, or severe disease → urgent specialist/admission (IV antivirals)',
       'Ramsay Hunt syndrome (facial palsy + ear vesicles) → prompt ENT/specialist treatment',
       'Refractory post-herpetic neuralgia → pain service'],
-    source:'BNF (aciclovir, valaciclovir) / NICE CG173 (Neuropathic pain in adults) / Green Book chapter 28a (Shingles)' }
+    source:'NICE CG173 (Neuropathic pain in adults) / Green Book chapter 28a (Shingles)' }
 
   );
 })();

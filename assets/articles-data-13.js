@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 13: H topics, part 2)
    NHS conditions A–Z (letter H) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -130,7 +130,7 @@
       'Ongoing injecting/risk → harm-reduction and substance-misuse services; notify public health'],
     source:'NICE PH43 (Hepatitis B and C testing) / UKHSA' },
 
-  { id:'hernia', title:'Hernia (inguinal, femoral and other abdominal wall hernias)', category:'General', icon:'🩹',
+  { id:'hernia', title:'Hernia (inguinal, femoral and other abdominal wall hernias)', category:'General', icon:'🤕',
     overview:'A protrusion of a viscus (often bowel) through a defect in the abdominal wall. Most are inguinal and present as a reducible lump; the critical complications are obstruction and strangulation, where the blood supply is compromised — a surgical emergency. Recognising the irreducible, tender hernia is the key skill.',
     features:[
       'A lump that appears/enlarges on standing, coughing or straining and reduces on lying down; may cause dragging discomfort',
@@ -155,7 +155,7 @@
       'Persistent/large or complicated infantile umbilical hernia → paediatric surgery'],
     source:'Clinical practice summary / surgical guidance' },
 
-  { id:'hypertension', title:'High blood pressure (hypertension)', category:'Cardiovascular & Renal', icon:'🩺',
+  { id:'hypertension', title:'High blood pressure (hypertension)', category:'Cardiovascular & Renal', icon:'⚕️',
     overview:'Persistently raised arterial blood pressure — a major, usually symptomless, modifiable risk factor for stroke, heart attack, heart failure, kidney disease and dementia. The primary-care role is accurate diagnosis (with out-of-office readings), risk assessment, and achieving target control to prevent cardiovascular events.',
     features:[
       'Usually asymptomatic and detected on screening/opportunistic measurement — "the silent killer"',
@@ -180,7 +180,7 @@
       'Hypertension in pregnancy → obstetric/maternal-medicine pathway'],
     source:'NICE NG136 (Hypertension in adults)' },
 
-  { id:'high-cholesterol', title:'High cholesterol (and lipid disorders)', category:'Cardiovascular & Renal', icon:'🩸',
+  { id:'high-cholesterol', title:'High cholesterol (and lipid disorders)', category:'Cardiovascular & Renal', icon:'💉',
     overview:'Raised blood lipids are a major, modifiable driver of atherosclerotic cardiovascular disease. Most is multifactorial (diet, lifestyle, genetics), but recognising familial hypercholesterolaemia — a common, under-diagnosed inherited cause of premature heart disease — is a specific and important task. Management is risk-based, centred on statins.',
     features:[
       'Usually asymptomatic and detected on a lipid profile done for cardiovascular risk assessment',
@@ -280,7 +280,7 @@
       'Fertility concerns before treatment → fertility services'],
     source:'NICE NG12 (updated April 2026) / BSH Hodgkin lymphoma guidance' },
 
-  { id:'hyperglycaemia', title:'Hyperglycaemia (high blood sugar)', category:'Endocrine & metabolic', icon:'🩸',
+  { id:'hyperglycaemia', title:'Hyperglycaemia (high blood sugar)', category:'Endocrine & metabolic', icon:'💉',
     overview:'A raised blood glucose level, usually in the context of diabetes. It ranges from mild, chronic hyperglycaemia (driving long-term complications) to acute hyperglycaemic emergencies — diabetic ketoacidosis (DKA) and the hyperosmolar hyperglycaemic state (HHS) — which are life-threatening and must be recognised promptly.',
     features:[
       'Symptoms of hyperglycaemia: polyuria, polydipsia, blurred vision, fatigue, and recurrent infections (e.g. thrush)',
@@ -380,7 +380,7 @@
       'Suspicious thyroid nodule with hyperthyroidism → assess per thyroid-cancer pathway (NICE NG12 (updated April 2026)) as appropriate'],
     source:'NICE NG145 (Thyroid disease)' },
 
-  { id:'hypoglycaemia', title:'Hypoglycaemia (low blood sugar)', category:'Endocrine & metabolic', icon:'🩸',
+  { id:'hypoglycaemia', title:'Hypoglycaemia (low blood sugar)', category:'Endocrine & metabolic', icon:'💉',
     overview:'A low blood glucose (typically <4 mmol/L, "four is the floor"), most often a complication of diabetes treatment (insulin or sulfonylureas). It can rapidly impair consciousness and cause harm, so prompt recognition and treatment are essential, as is identifying and preventing the cause to avoid recurrence.',
     features:[
       'Autonomic (early) symptoms: sweating, tremor, palpitations, hunger, and anxiety',

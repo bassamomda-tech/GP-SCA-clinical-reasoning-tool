@@ -49,7 +49,7 @@
     ],
     learning:'Z-drugs and benzodiazepines raise the risk of falls and fractures in older people, and tolerance makes long-term use ineffective for sleep. The exam skill is deprescribing as a negotiation: validate the fear, harness the patient\u2019s own motivation, taper slowly (never stop abruptly), and replace the tablet with something — CBT-I principles and attention to the loneliness driving the 3am waking. Escalating to temazepam is the station\u2019s trapdoor.',
     knowledge:{
-      guideline:'NICE TA77 (2004) — hypnotics for insomnia · NICE NG249 (2025) — falls · BNF zopiclone · NICE HTG624 (Sleepio, formerly MTG70)',
+      guideline:'NICE TA77 (2004) — hypnotics for insomnia · NICE NG249 (2025) — falls · NICE HTG624 (Sleepio, formerly MTG70)',
       points:[
         { h:'Diagnose the real problem', t:'Twelve years of a z-drug = dependence and tolerance, not "insomnia needing a stronger tablet". The 3am waking with afternoon napping and evening loneliness is a behavioural-circadian pattern the tablet cannot fix.' },
         { h:'Red flags & same-day action', t:'The fall IS the red flag: sedative-related nocturnal falls in a 76-year-old predict fracture. Check orthostatic BP, review all sedating/hypotensive medication, ask about syncope, vision and home hazards.' },

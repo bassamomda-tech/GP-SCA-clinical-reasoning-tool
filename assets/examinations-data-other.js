@@ -140,7 +140,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
 
 /* ===================== LYMPHORETICULAR ===================== */
 {
-  id:'lymph-nodes', system:'Lymphoreticular', icon:'🩸', title:'Lymph node & lymphoreticular examination',
+  id:'lymph-nodes', system:'Lymphoreticular', icon:'💉', title:'Lymph node & lymphoreticular examination',
   blurb:'Systematic palpation of all node groups plus liver and spleen, distinguishing reactive from sinister nodes.',
   indications:[
     'Palpable lump in neck, axilla or groin',
@@ -361,7 +361,7 @@ window.RGP_EXAMINATIONS = (window.RGP_EXAMINATIONS || []).concat([
   ],
   note:'NIPE has four national screening components: eyes, heart, hips and testes. The 6–8 week check repeats them because some conditions (cataract, DDH, CHD, UDT) declare later. The red reflex is mandatory at every check.',
   commonFindings:[
-    { group:'🩹 Skin & birthmarks', items:[
+    { group:'🤕 Skin & birthmarks', items:[
       { finding:'Erythema toxicum, milia, miliaria, neonatal acne, peeling skin', action:'reassure', detail:'Benign transient newborn rashes — explain natural history; no treatment.' },
       { finding:'Salmon patch ("stork mark") on eyelids/nape; Mongolian blue spot', action:'reassure', detail:'Fade over months/years. **Document Mongolian spots** clearly to avoid later NAI confusion.' },
       { finding:'Infantile haemangioma ("strawberry mark"), uncomplicated', action:'followup', detail:'Grows then involutes — monitor size/site at reviews; photograph if helpful.' },

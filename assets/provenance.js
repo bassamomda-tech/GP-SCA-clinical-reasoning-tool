@@ -35,7 +35,7 @@ var HIGH_RISK = ['chest-pain','acs','sepsis','anaphylaxis','asthma','asthma-adul
 /* NG12 two-week-wait triage pathways — a missed cancer threshold is the
    highest-consequence error on the site, so these follow the 6-monthly cycle.
    Governance owns this list; add a slug here when a pathway's primary action
-   is a 2WW referral or a direct-access cancer investigation. */
+   is a suspected cancer pathway referral or a direct-access cancer investigation. */
 'dyspepsia','dysphagia','rectal-bleeding','haematuria','haematuria-children','high-psa',
 'neck-lump','pigmented-skin-lesions','weight-loss','jaundice','abdominal-mass','nipple-problems',
 'vaginal-bleeding','vaginal-bleeding-pregnancy','lymphadenopathy','purpura-petechiae',
@@ -168,7 +168,7 @@ function fromVersionTag(){
 
 /* ---- sources --------------------------------------------------------- */
 var NICE_RE = /\bNICE\s+(NG|CG|TA|QS|DG|MTG|IPG|PH|ES)\s?(\d+)/gi;
-var BODY_RE = /\b(BNFC|BNF|SIGN\s?\d{2,3}|SIGN|UKHSA|MHRA|NHS\s+England|RCGP|RCOG|RCPCH|RCEM|BASHH|BSG|BTS|BAD|BSR|BOA|BHIVA|FSRH|JBDS|KDIGO|GOLD|ESC|EULAR|GMC|BHS|BSH|UKMEC|BAUS|RCOphth|Resuscitation Council UK)\b/g;
+var BODY_RE = /\b(BNFC|BNF|SIGN\s?\d{2,3}|SIGN|UKHSA|MHRA|NHS\s+England|RCGP|RCOG|RCPCH|RCEM|BASHH|BSG|BTS|BAD|BSR|BOA|BHIVA|CoSRH|JBDS|KDIGO|GOLD|ESC|EULAR|GMC|BHS|BSH|UKMEC|BAUS|RCOphth|Resuscitation Council UK)\b/g;
 
 function explicitSources(){
   var out = [], seen = {};

@@ -195,3 +195,14 @@ tools/management/varicocele-print.html | URGENCY | urgent urology/torsion route
 #
 # false alarm: NG12 "consider" (suspected oral cancer) vs a firm "arrange" for toothache/dental abscess — different conditions
 tools/algorithms/jaw-pain.html | STRENGTH | arrange urgent dental assessment
+#
+# false alarm: NG12 1.3.2 says "consider" for skin changes suggesting breast cancer (dimpling); NG12 1.3.1 says refer for an unexplained lump at 30+. Both correct, different criteria (reviewed Oct 2026)
+tools/algorithms/mastalgia.html | STRENGTH | consider a suspected cancer
+
+# Contraception: 94% (DMPA) and 91% (pill/patch/ring) NHS typical-use figures are in the full page's method table (JS data row); the checker does not read that row.
+tools/management/summaries/contraception.html | SNAPSHOT | DMPA 94%
+tools/management/summaries/contraception.html | SNAPSHOT | pill/patch/ring 91%
+# Breathlessness: "anaphylaxis" here is the Resuscitation Council UK guidance name in the sources line, not an urgency instruction.
+tools/algorithms/breathlessness.html | URGENCY | Resuscitation Council UK anaphylaxis guidance
+# Male LUTS: different NG12 criteria. PSA above the age threshold = "consider" referral (NG12 2025 wording); visible haematuria persisting after UTI treatment at 45+ = refer. Both correct.
+tools/management/male-luts.html | STRENGTH | still needs a suspected cancer pathwa

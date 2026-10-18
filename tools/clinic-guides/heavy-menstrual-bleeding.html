@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="heavy-menstrual-bleeding">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Heavy menstrual bleeding — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/menorrhagia.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/menorrhagia.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · chronic disease series</div>
+      <h1>Heavy menstrual bleeding <small>CLINIC GUIDE</small></h1>
+      <div class="scope">For women with heavy periods in primary care, from first consultation to review. Not for post-menopausal bleeding, bleeding in pregnancy or bleeding on HRT (separate pathways).</div>
+    </div>
+    <div class="meta">NICE <b>NG88</b> (2018, updated Jul 2026) · <b>NG12</b> (updated Apr 2026) · NICE CKS · CoSRH UKMEC<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full protocol: gpreasoning.uk/tools/management/menorrhagia.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Assess and start <span>exclude the emergency and cancer routes → classify → FBC → treat now, by pregnancy plans</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act today — the emergency and the cancer routes<small>NICE NG12 (updated Apr 2026) · NG88</small></h2><div class="body">
+    <ul>
+      <li><b>Acute heavy bleeding with dizziness, tachycardia, hypotension or collapse</b> → emergency admission (<b>999</b> if collapsed or shocked).</li>
+      <li><b>Unexplained post-menopausal bleeding aged 55+</b>, not attributable to HRT → <b>suspected cancer pathway</b> (endometrial); under 55, consider one. Bleeding on HRT → HRT pathway.</li>
+      <li><b>Pelvic or abdominal mass not obviously fibroids, or ascites</b> → suspected cancer pathway (ovarian). <b>Cervix that looks consistent with cancer</b> → consider the suspected cervical cancer pathway, whatever the screening history.</li>
+      <li><b>Iron-deficiency anaemia out of proportion to the bleeding</b> → do not blame the periods: FIT (≥10 µg Hb/g → colorectal pathway, NG12) and coeliac serology.</li>
+    </ul>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Diagnose by impact — not by volume<small>NICE NG88</small></h2><div class="body">
+        <p>HMB is <b>excessive menstrual blood loss that interferes with physical, social, emotional and material quality of life</b>. Measuring blood loss is not needed.</p>
+        <p><b>Ask:</b> flooding · clots · changing protection hourly · double protection · changing at night · days off work or school. This is the baseline for judging treatment.</p>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">2</span>The history that classifies it<small>NG88</small></h2><div class="body">
+        <table>
+          <tr><th>Pattern</th><th>Think</th></tr>
+          <tr><td>Regular, heavy, no other symptoms</td><td>No pathology, fibroids, coagulopathy</td></tr>
+          <tr><td>Pain, pressure, bulky tender uterus</td><td>Adenomyosis, fibroids, endometriosis</td></tr>
+          <tr><td>Intermenstrual or post-coital bleeding</td><td>Polyp, endometrial or cervical pathology, infection</td></tr>
+          <tr><td>Heavy since menarche, bruising, dental or post-partum bleeding</td><td>Bleeding disorder (von Willebrand) → haematology</td></tr>
+          <tr><td>Obesity or PCOS with infrequent heavy bleeds, tamoxifen</td><td>Endometrial hyperplasia risk → hysteroscopy</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">3</span>Work-up — every woman<small>NG88</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>FBC</b> in all, alongside treatment</li>
+          <li><b>Ferritin</b>: no longer advised against (NG88 Jul 2026)</li>
+          <li>hCG if pregnancy possible</li>
+          <li>Chlamydia test if at risk</li>
+          <li>Cervical screening up to date</li>
+          <li><b>Pregnancy plans</b> — ask early</li>
+        </ul>
+        <p style="margin-top:2px"><b>Not routinely:</b> thyroid tests (only if symptoms) · female hormone tests · a coagulation screen without a suggestive history.</p>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">4</span>Examine and image — targeted<small>NICE NG88</small></h2><div class="body">
+        <p><b>Examine</b> (abdominal and pelvic) if there are related symptoms, abnormal bleeding patterns, suspected structural disease, or before an LNG-IUS. Uncomplicated HMB: drug treatment can start without it.</p>
+        <table>
+          <tr><th>Test</th><th>Use when</th></tr>
+          <tr><td><b>Pelvic ultrasound</b></td><td>Uterus palpable abdominally · history or examination suggests a pelvic mass · examination inconclusive or difficult</td></tr>
+          <tr><td><b>Transvaginal US</b></td><td>Suspected adenomyosis: significant dysmenorrhoea, bulky tender uterus</td></tr>
+          <tr><td><b>Outpatient hysteroscopy</b></td><td>Suspected submucosal fibroid, polyp or endometrial pathology: <b>persistent intermenstrual bleeding</b> or endometrial risk factors</td></tr>
+        </table>
+        <p class="key">No blind endometrial biopsy as the routine test; MRI is not first-line.</p>
+      </div></div>
+
+      <div class="blk teal"><h2><span class="n">5</span>Start treatment now — split by pregnancy plans<small>NG88 · SPC</small></h2><div class="body">
+        <div class="flow" style="--c:var(--teal);grid-template-columns:1fr 1fr">
+          <div><b class="h">Contraception acceptable</b><b>LNG-IUS 52 mg first</b>: no pathology, fibroids under 3 cm not distorting the cavity, or adenomyosis. Treats pain too.</div>
+          <div><b class="h">LNG-IUS declined or unsuitable</b>Non-hormonal: <b>tranexamic acid</b>, an NSAID. Hormonal: <b>CHC</b> (UKMEC), cyclical oral progestogen.</div>
+          <div><b class="h">Trying to conceive</b>Non-hormonal only: <b>tranexamic acid</b> with or without <b>mefenamic acid</b>.</div>
+          <div><b class="h">Fibroids 3 cm or more</b>Consider specialist referral; tranexamic acid and/or NSAID meanwhile.</div>
+        </div>
+        <p style="margin-top:3px">Usual adult doses: <b>tranexamic acid 1 g TDS for up to 4 days</b> from the start of bleeding (max 4 g/day) · <b>mefenamic acid 500 mg TDS</b> during bleeding. Treat in parallel with any investigation.</p>
+      </div></div>
+    </div>
+
+    <div class="blk green span"><h2><span class="n">6</span>Iron and self-management — the part most often left undone<small>NG88 · BSG iron guidance</small></h2><div class="body">
+      <table>
+        <tr><th>Act on the FBC</th><th>Replace</th><th>Continue</th><th>Recheck</th><th>Look beyond periods</th></tr>
+        <tr><td>Low Hb, or low ferritin with symptoms → treat; diarise the result</td><td>Oral iron once daily or on alternate days; not with tea, coffee or calcium</td><td>Until Hb corrects <b>and</b> stores are replenished</td><td>FBC (and ferritin) after an adequate trial; no response → adherence, coeliac, ongoing loss</td><td>IDA out of proportion, GI symptoms, weight loss → FIT</td></tr>
+      </table>
+      <p class="say" style="margin-top:3px">"Heavy periods are not something you just have to put up with. We'll judge success by your life — no flooding, no days off, not planning around it — and if the first treatment doesn't do that, there are others."</p>
+    </div></div>
+
+    <div class="blk blue span"><h2><span class="n">7</span>Choosing with her — what each option offers<small>NG88 · CoSRH</small></h2><div class="body">
+      <table>
+        <tr><th>Option</th><th>Contraceptive?</th><th>If trying to conceive</th><th>Worth knowing</th></tr>
+        <tr><td><b>LNG-IUS</b></td><td>Yes</td><td>Not suitable</td><td>Usually the most effective medical option; treats period pain</td></tr>
+        <tr><td><b>Tranexamic acid</b></td><td>No</td><td>Suitable</td><td>Taken only on bleeding days; avoid with active or past VTE</td></tr>
+        <tr><td><b>NSAID</b> (mefenamic acid)</td><td>No</td><td>Suitable</td><td>Also eases period pain; can be combined with tranexamic acid</td></tr>
+        <tr><td><b>Combined hormonal contraception</b></td><td>Yes</td><td>Not suitable</td><td>UKMEC first; extended or continuous use avoids the withdrawal bleed</td></tr>
+        <tr><td><b>Cyclical norethisterone</b></td><td><b>No</b></td><td>Not suitable</td><td>Cycle control only — she still needs contraception</td></tr>
+      </table>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Heavy menstrual bleeding · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Review, step up and refer <span>impact against baseline → iron → change treatment → investigate → refer</span></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk green"><h2><span class="n">8</span>What success looks like<small>NG88</small></h2><div class="body">
+        <ul>
+          <li>Impact measures improved against her own baseline: no flooding, fewer protection changes, no days lost.</li>
+          <li>Haemoglobin corrected and iron stores replenished.</li>
+          <li>A method that also fits her contraception and pregnancy plans.</li>
+          <li>Review medical treatment after an adequate trial — usually around <b>3 months</b>, sooner if severe or worsening.</li>
+        </ul>
+      </div></div>
+
+      <div class="blk amber"><h2><span class="n">9</span>Before changing treatment<small>NG88</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Adherence</b> — tranexamic acid from day 1 of bleeding, every cycle?</li>
+          <li><b>LNG-IUS</b> — irregular bleeding early on is expected; is loss improving?</li>
+          <li><b>New pattern</b> — intermenstrual or post-coital bleeding, pain, a mass</li>
+          <li><b>Contributors</b> — copper IUD, anticoagulants, missed contraception</li>
+          <li><b>Iron</b> — still deficient? Taking it correctly?</li>
+          <li><b>Pregnancy</b> — possible? Plans changed?</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">10</span>Review checklist<small>at ~3 months, then yearly</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li>Impact score against baseline (flooding, changes, days lost)</li>
+          <li><b>FBC</b> (ferritin where used) and iron plan</li>
+          <li>Side effects and tolerability</li>
+          <li>LNG-IUS: threads, bleeding pattern, device expiry</li>
+          <li>On CHC: <b>BP, BMI, UKMEC</b> recheck (migraine with aura, smoking 35+, VTE risk)</li>
+          <li>Pregnancy and contraception plans</li>
+          <li>New red flags: IMB, PCB, mass, post-menopausal bleeding</li>
+          <li>Perimenopause: does the plan still fit?</li>
+          <li>Failed treatment → re-examine, ultrasound or hysteroscopy, refer</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="blk teal span"><h2><span class="n">11</span>The treatment ladder<small>NICE NG88 · SPC · CoSRH UKMEC</small></h2><div class="body">
+      <div class="ladder">
+        <div><b class="h">Step 1 · LNG-IUS</b>First-line where contraception is acceptable and there is no significant structural disease. Counsel about early irregular bleeding.</div>
+        <div><b class="h">Step 2 · other drugs</b>Tranexamic acid, NSAID, CHC or cyclical oral progestogen — alone or combined, per contraindications.</div>
+        <div><b class="h">Step 3 · investigate</b>Treatment fails → re-examine; ultrasound or hysteroscopy by the NG88 criteria; review the diagnosis.</div>
+        <div class="s4"><b class="h">Step 4 · specialist</b>Endometrial ablation (family complete), fibroid treatment, hysterectomy. GnRH analogue is specialist-initiated.</div>
+      </div>
+      <table style="margin-top:3px">
+        <tr><th>Drug</th><th>Usual adult dose</th><th>Notes</th><th>Watch</th></tr>
+        <tr><td><b>LNG-IUS</b> 52 mg</td><td>Intrauterine</td><td>Contraceptive; also treats dysmenorrhoea</td><td>Early irregular bleeding; expulsion</td></tr>
+        <tr><td><b>Tranexamic acid</b></td><td>1 g TDS up to 4 days from start of bleeding; max 4 g/day</td><td>Non-hormonal; does not affect fertility</td><td>Active or past VTE; renal impairment</td></tr>
+        <tr><td><b>Mefenamic acid</b></td><td>500 mg TDS during bleeding</td><td>Also helps period pain</td><td>Peptic ulcer, renal, CV disease, NSAID-sensitive asthma</td></tr>
+        <tr><td><b>CHC</b></td><td>Cyclical, or extended/continuous</td><td>Cycle control and contraception</td><td>UKMEC: migraine with aura, BMI, smoking 35+, VTE, BP</td></tr>
+        <tr><td><b>Norethisterone</b></td><td>5 mg TDS, day 5 to 26 of the cycle</td><td><b>Not contraceptive</b> — say so</td><td>Bloating, mood, breast tenderness</td></tr>
+      </table>
+    </div></div>
+
+    <div class="col">
+      <div class="blk slate"><h2><span class="n">12</span>Side effects — fix, don't abandon<small>SPC · CoSRH</small></h2><div class="body">
+        <table>
+          <tr><td><b>LNG-IUS spotting</b></td><td>Expected early; warn beforehand; do not remove for irregular bleeding alone if loss is improving</td></tr>
+          <tr><td><b>Tranexamic acid</b></td><td>GI upset; stop with visual disturbance or VTE signs</td></tr>
+          <tr><td><b>Mefenamic acid</b></td><td>Dyspepsia, diarrhoea: take with food; stop if GI bleed</td></tr>
+          <tr><td><b>CHC</b></td><td>Breakthrough bleeding: check adherence and interactions</td></tr>
+          <tr><td><b>Oral iron</b></td><td>Constipation, nausea: alternate days or with food; dark stools are harmless</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">13</span>When to refer<small>NG88 · NG12</small></h2><div class="body">
+        <table>
+          <tr><td><b>Emergency</b></td><td>Haemodynamic compromise; severe symptomatic anaemia</td></tr>
+          <tr><td><b>Suspected cancer</b></td><td>Post-menopausal bleeding 55+ · mass or ascites · abnormal cervix · FIT positive</td></tr>
+          <tr><td><b>Gynaecology</b></td><td>Fibroids 3 cm or more (consider) · persistent IMB (hysteroscopy) · treatment failed, declined or not tolerated · wishes to discuss surgery</td></tr>
+          <tr><td><b>Haematology</b></td><td>Suspected bleeding disorder; IV iron if oral fails</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk red"><h2><span class="n">14</span>Special groups and never-events<small>NG88 · CoSRH</small></h2><div class="body">
+          <ul>
+            <li><b>Never</b> require a measured blood loss before treating.</li>
+            <li><b>Never</b> offer oral progestogen in the <b>luteal phase only</b>, or danazol, for HMB.</li>
+            <li><b>Never</b> leave the FBC unactioned, or assume iron deficiency is "just the periods".</li>
+            <li><b>Never</b> leave a woman waiting for referral untreated.</li>
+            <li><b>Trying to conceive</b>: hormonal options and ablation are not suitable; tranexamic acid ± NSAID.</li>
+            <li><b>On anticoagulants</b>: joint decision with the prescriber; do not just stop it.</li>
+            <li><b>Adolescents</b> heavy from menarche: think von Willebrand disease.</li>
+          </ul>
+      </div></div>
+
+      <div class="blk amber"><h2><span class="n">15</span>Acute heavy bleeding — no compromise<small>NG88 · local pathway</small></h2><div class="body">
+        <ul>
+          <li>Exclude pregnancy; check pulse, BP and Hb.</li>
+          <li>Assess thrombotic risk and possible structural or malignant cause before any hormone.</li>
+          <li>Use a locally approved temporary regimen — not a long-term plan.</li>
+          <li>Severe or persistent → same-day gynaecology advice.</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Heavy menstrual bleeding · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG88 (2018, updated Jul 2026), NG12 (updated Apr 2026); NICE CKS; CoSRH UKMEC; BSG iron deficiency guidance; SPCs</span><span>Full detail and evidence: gpreasoning.uk/tools/management/menorrhagia.html</span></div>
+</section>
+<script src="../../assets/clinic-guides.js?v=1"></script>
+</body>
+</html>

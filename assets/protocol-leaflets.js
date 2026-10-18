@@ -68,7 +68,7 @@ window.RGP_PROTOCOL_LEAFLETS = {
   'haemorrhoids': [['haemorrhoids','exact']],
   'heart-failure': [['heart-failure','exact']],
   'hiv': [['hiv','exact']],
-  'hrt-prescribing': [['menopause','exact']],
+  'menopause': [['menopause','exact']],
   'hypercholesterolaemia': [['high-cholesterol','clear']],
   'hyperhidrosis': [['hyperhidrosis','exact']],
   'hypertension': [['high-blood-pressure','exact']],

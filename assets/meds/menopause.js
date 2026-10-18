@@ -84,9 +84,9 @@ MedChooser.register('menopause', {
       name:'LNG-IUS (Mirena) as progestogen',
       examples:'Levonorgestrel IUS + oestrogen',
       step:'Progestogen + contraception',
-      source:'NICE NG23 · FSRH',
+      source:'NICE NG23 · CoSRH',
       sideEffects:'Irregular bleeding initially; insertion discomfort',
-      monitor:'Threads; licensed 5 years for HRT endometrial protection',
+      monitor:'Threads; UK licence 4 years for HRT endometrial protection (BMS/CoSRH up to 5 years off-licence; 8 years for contraception only)',
       counsel:'"The coil can double as the womb-lining protection for your HRT and gives contraception too — a neat two-in-one."',
       detail:{ 'Key teaching':'Provides the progestogen component AND contraception. Ideal when contraception still needed in perimenopause.' },
       conditions: [

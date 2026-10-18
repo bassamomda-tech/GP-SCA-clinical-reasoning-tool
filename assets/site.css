@@ -1653,3 +1653,50 @@ body.rgp-rtl .rgp-auth-shell{ direction: ltr; }
 .rgp-sca-grp-list .rgp-mm-tool{ padding:8px 10px; }
 .rgp-sca-also{ margin-top:12px; padding-top:10px; border-top:1px solid var(--line); font-size:12.5px; color:var(--muted); }
 .rgp-sca-also a{ color:var(--teal,#0c4a47); font-weight:600; }
+
+/* ── Results-day campaign (injectResultsBanner in site.js) ──
+   In the page flow under the top nav: it pushes content down, never covers it. */
+.rgp-results{
+  position: relative; box-sizing: border-box;
+  width: min(1240px, calc(100% - 32px)); margin: 12px auto 4px;
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 14px 52px 14px 18px; border-radius: 14px;
+  background: linear-gradient(135deg, #0c4a47 0%, #0e5c58 100%); color: #f6f2e9;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  box-shadow: 0 6px 20px rgba(12,74,71,.18);
+}
+.rgp-results-body{ flex: 1; min-width: 0; display: flex; align-items: center; gap: 10px 18px; flex-wrap: wrap; }
+.rgp-results-msg{ margin: 0; flex: 1 1 320px; min-width: 0; font-size: 14px; line-height: 1.5; color: rgba(246,242,233,.92); }
+.rgp-results-msg b{ color: #fff; font-weight: 700; }
+.rgp-results-links{ display: flex; gap: 8px; flex-wrap: wrap; }
+.rgp-results-a{
+  display: inline-flex; align-items: center; min-height: 40px; box-sizing: border-box;
+  padding: 8px 14px; border-radius: 10px; font-size: 13px; font-weight: 700; line-height: 1.25;
+  text-decoration: none; color: #f6f2e9; border: 1px solid rgba(246,242,233,.45); background: transparent;
+}
+.rgp-results-a:hover{ background: rgba(255,255,255,.1); }
+.rgp-results-pri{ background: #f6f2e9; color: #0c4a47; border-color: #f6f2e9; }
+.rgp-results-pri:hover{ background: #fff; }
+.rgp-results-a:focus-visible, .rgp-results-x:focus-visible{ outline: 3px solid #ffd99a; outline-offset: 2px; }
+.rgp-results-x{
+  position: absolute; top: 8px; right: 8px; width: 36px; height: 36px;
+  display: grid; place-items: center; border-radius: 9px; cursor: pointer;
+  border: 1px solid rgba(246,242,233,.3); background: transparent; color: #f6f2e9;
+  font: 700 20px/1 'DM Sans', system-ui, sans-serif;
+}
+.rgp-results-x:hover{ background: rgba(255,255,255,.12); }
+@media (max-width: 560px){
+  .rgp-results{ padding: 12px 48px 12px 14px; }
+  .rgp-results-links{ flex-direction: column; align-items: stretch; width: 100%; }
+  .rgp-results-a{ justify-content: center; text-align: center; }
+}
+@media print{ .rgp-results, .rgp-resit-free{ display: none !important; } }
+body.summary-mode .rgp-results{ display: none !important; }
+
+/* Resit Clinic free-week note */
+.rgp-resit-free{
+  border: 1px solid #99c4bf; border-left: 5px solid #0c4a47; background: #ecf5f3;
+  border-radius: 12px; padding: 12px 16px; margin: 0 0 16px;
+  font-size: 13.4px; line-height: 1.6; color: #1c1917;
+}
+.rgp-resit-free b{ color: #0c4a47; }

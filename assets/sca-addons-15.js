@@ -25,7 +25,7 @@
    "reason": "“What is it, and can I keep running?”"
   },
   "knowledge": {
-   "guideline": "[1] JOSPT/APTA clinical practice guideline, midportion Achilles tendinopathy (2024) (international) · [2] MHRA Drug Safety Update: fluoroquinolones (March 2019 and January 2024) · [3] Depo-Medrone SPC and BNF corticosteroid injection monographs · [4] NICE HTG426 (extracorporeal shockwave therapy for Achilles tendinopathy, formerly IPG571) · [5] Maffulli, Am J Sports Med 1998 (clinical tests for Achilles rupture) · [6] NICE NG65 (spondyloarthritis, 2017) · [7] BNF and MHRA Drug Safety Update June 2015 (high-dose ibuprofen)",
+   "guideline": "[1] JOSPT/APTA clinical practice guideline, midportion Achilles tendinopathy (2024) (international) · [2] MHRA Drug Safety Update: fluoroquinolones (March 2019 and January 2024) · [3] Depo-Medrone SPC · [4] NICE HTG426 (extracorporeal shockwave therapy for Achilles tendinopathy, formerly IPG571) · [5] Maffulli, Am J Sports Med 1998 (clinical tests for Achilles rupture) · [6] NICE NG65 (spondyloarthritis, 2017) · [7] MHRA Drug Safety Update June 2015 (high-dose ibuprofen)",
    "summary": "Gradual, load-related pain at the back of the heel, stiff first thing and at the start of exercise, with a tender thickened tendon after a jump in training, is Achilles tendinopathy. First make sure it is not a rupture: ask about a sudden pop, check he can stand on tiptoe and do the calf-squeeze test. Then treat with load modification and a progressive loading programme, usually through physiotherapy, and set expectations of about three months. Check for fluoroquinolone use. Do not inject steroid into the Achilles.",
    "points": [
     {
@@ -1517,7 +1517,7 @@
    "reason": "“I’m 32 — could it still be serious?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG95 (recent-onset chest pain of suspected cardiac origin, 2010, updated 2016) · [2] NICE NG158 (venous thromboembolic diseases, 2020, updated 2023) · [3] BNF ibuprofen, naproxen and topical NSAID monographs; MHRA Drug Safety Update June 2015 (high-dose ibuprofen) · [4] NICE CG113 (generalised anxiety disorder and panic disorder, 2011)",
+   "guideline": "[1] NICE CG95 (recent-onset chest pain of suspected cardiac origin, 2010, updated 2016) · [2] NICE NG158 (venous thromboembolic diseases, 2020, updated 2023) · [3] MHRA Drug Safety Update June 2015 (high-dose ibuprofen) · [4] NICE CG113 (generalised anxiety disorder and panic disorder, 2011)",
    "summary": "Costochondritis is a positive diagnosis: sharp, localised anterior chest pain, worse on movement and deep breathing, reproduced by pressing on the costochondral junctions. It is made only after the history, risk factors and examination (recorded observations, ECG, and self-palpation on video) have made cardiac, thromboembolic and respiratory causes unlikely. Chest-wall tenderness makes a cardiac cause less likely but does not exclude it. When the assessment is reassuring, say so clearly and explain why, offer simple analgesia and safety-net for red flags.",
    "points": [
     {
@@ -2024,7 +2024,7 @@
    "reason": "Urgent appointment: “Fever, headache and aching all over since getting back from Thailand.”"
   },
   "knowledge": {
-   "guideline": "[1] UK malaria treatment guidelines 2016 (Lalloo et al., J Infect 2016) · [2] UKHSA: dengue guidance and Rare and Imported Pathogens Laboratory (RIPL) user manual · [3] UKHSA: Notifiable diseases and causative organisms: how to report · [4] Green Book chapter 15a: Dengue (UKHSA, October 2024) · [5] NICE NG253 Suspected sepsis in people aged 16 or over · [6] BNF: paracetamol, NSAIDs · [7] WHO Dengue guidelines for diagnosis, treatment, prevention and control, 2009 (international)",
+   "guideline": "[1] UK malaria treatment guidelines 2016 (Lalloo et al., J Infect 2016) · [2] UKHSA: dengue guidance and Rare and Imported Pathogens Laboratory (RIPL) user manual · [3] UKHSA: Notifiable diseases and causative organisms: how to report · [4] Green Book chapter 15a: Dengue (UKHSA, October 2024) · [5] NICE NG253 Suspected sepsis in people aged 16 or over · [6] WHO Dengue guidelines for diagnosis, treatment, prevention and control, 2009 (international)",
    "summary": "Fever in a returning traveller is malaria until proven otherwise, and one negative test does not exclude it: three negative samples over 24–48 hours are needed [1]. Fever, retro-orbital headache, severe myalgia and rash after South-East Asia fit dengue. Arrange same-day assessment, recognise warning signs, give fluids and paracetamol, and avoid NSAIDs and aspirin.",
    "points": [
     {
@@ -2033,7 +2033,7 @@
     },
     {
      "h": "Recognise dengue",
-     "t": "Mosquito-borne flavivirus common in South-East Asia. High fever, severe headache with retro-orbital pain, myalgia and arthralgia, rash, nausea; often leucopenia and thrombocytopenia. Incubation is usually under 2 weeks, so symptoms starting over 2 weeks after return make dengue unlikely [2][7]."
+     "t": "Mosquito-borne flavivirus common in South-East Asia. High fever, severe headache with retro-orbital pain, myalgia and arthralgia, rash, nausea; often leucopenia and thrombocytopenia. Incubation is usually under 2 weeks, so symptoms starting over 2 weeks after return make dengue unlikely [2][6]."
     },
     {
      "h": "Confirm",
@@ -2041,7 +2041,7 @@
     },
     {
      "h": "Warning signs",
-     "t": "Abdominal pain or tenderness, persistent vomiting, clinical fluid accumulation, mucosal bleeding, lethargy or restlessness, liver enlargement, and a rising haematocrit with a rapid platelet fall. Severe dengue is most likely around the time the fever settles, often days 3–7 [7]. Any warning sign needs admission."
+     "t": "Abdominal pain or tenderness, persistent vomiting, clinical fluid accumulation, mucosal bleeding, lethargy or restlessness, liver enlargement, and a rising haematocrit with a rapid platelet fall. Severe dengue is most likely around the time the fever settles, often days 3–7 [6]. Any warning sign needs admission."
     },
     {
      "h": "Broad differential",
@@ -2049,7 +2049,7 @@
     },
     {
      "h": "Supportive care",
-     "t": "Fluids, rest and paracetamol (dose per BNF). Avoid NSAIDs and aspirin because of bleeding risk [6]. Screen for sepsis with NICE NG253 [5]."
+     "t": "Fluids, rest and paracetamol (dose per BNF). Avoid NSAIDs and aspirin because of bleeding risk. Screen for sepsis with NICE NG253 [5]."
     },
     {
      "h": "After dengue",
@@ -2522,7 +2522,7 @@
    "reason": "“Is the diverticular disease causing this, and what do I do about it?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG147 Diverticular disease: diagnosis and management (2019) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] NICE HTG690 Quantitative faecal immunochemical testing to guide colorectal cancer pathway referral in primary care · [4] NICE NG253 Suspected sepsis in people aged 16 or over · [5] BNF: antispasmodics, bulk-forming laxatives, co-amoxiclav (doses per BNF)",
+   "guideline": "[1] NICE NG147 Diverticular disease: diagnosis and management (2019) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] NICE HTG690 Quantitative faecal immunochemical testing to guide colorectal cancer pathway referral in primary care · [4] NICE NG253 Suspected sepsis in people aged 16 or over",
    "summary": "Diverticulosis is common and usually incidental; diverticular disease means symptoms from the diverticula; diverticulitis means inflammation. A 62-year-old with a change in bowel habit must not have it written off as diverticular disease: NICE NG12 and HTG690 [2, 3] recommend offering FIT to adults with a change in bowel habit, and a result of 10 µg Hb/g or more triggers a suspected cancer pathway referral. Manage the symptomatic disease with diet, fluids, bulk-forming laxatives and an antispasmodic [1]; recognise acute diverticulitis and its complications, and give clear safety-net advice.",
    "points": [
     {
@@ -2531,7 +2531,7 @@
     },
     {
      "h": "Managing diverticular disease",
-     "t": "NG147 [1]: advise a healthy balanced diet with whole grains, fruit and vegetables, increasing fibre gradually with adequate fluids; consider a bulk-forming laxative for constipation and an antispasmodic for cramping; do not offer antibiotics for diverticular disease. Doses per BNF [5]. Review NSAID and opioid use, which are linked to complications."
+     "t": "NG147 [1]: advise a healthy balanced diet with whole grains, fruit and vegetables, increasing fibre gradually with adequate fluids; consider a bulk-forming laxative for constipation and an antispasmodic for cramping; do not offer antibiotics for diverticular disease. Doses per BNF. Review NSAID and opioid use, which are linked to complications."
     },
     {
      "h": "Acute diverticulitis in the community",
@@ -4004,7 +4004,7 @@
    "reason": "Persistent bad breath for a long time, affecting his confidence at work. Mints and mouthwash only mask it. Wonders about his stomach."
   },
   "knowledge": {
-   "guideline": "[1] Office for Health Improvement and Disparities, Delivering better oral health: an evidence-based toolkit for prevention (version 4, 2021) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] NICE CG184 (2014, updated 2019) Gastro-oesophageal reflux disease and dyspepsia in adults · [4] BNF, chlorhexidine mouthwash",
+   "guideline": "[1] Office for Health Improvement and Disparities, Delivering better oral health: an evidence-based toolkit for prevention (version 4, 2021) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] NICE CG184 (2014, updated 2019) Gastro-oesophageal reflux disease and dyspepsia in adults",
    "summary": "Most persistent bad breath comes from the mouth: the coating on the back of the tongue, gum disease, decay and a dry mouth. Start with the mouth, not the stomach. Look in the mouth, advise tongue cleaning and good oral hygiene, and ask him to see his dentist. Think about ENT and reflux causes if the mouth is healthy, recognise the rare systemic odours, and remember that some people are convinced of bad breath that others cannot detect.",
    "points": [
     {
@@ -4017,7 +4017,7 @@
     },
     {
      "h": "Dental care",
-     "t": "Patients book NHS dental care directly; GPs do not refer routinely. Encourage a dental check for gum disease and decay. Chlorhexidine mouthwash can help gum inflammation short term but stains teeth and alters taste [4]."
+     "t": "Patients book NHS dental care directly; GPs do not refer routinely. Encourage a dental check for gum disease and decay. Chlorhexidine mouthwash can help gum inflammation short term but stains teeth and alters taste."
     },
     {
      "h": "Non-oral causes",
@@ -5019,7 +5019,7 @@
    "reason": "Burning indigestion and upper stomach pain since starting the new tablets. Wants something for the acid."
   },
   "knowledge": {
-   "guideline": "[1] NICE CG184 (2014, updated 2019) Gastro-oesophageal reflux disease and dyspepsia in adults · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] NICE NG226 (2022) Osteoarthritis in over 16s · [4] NICE CG141 (2012) Acute upper gastrointestinal bleeding in over 16s · [5] BNF, NSAIDs and proton pump inhibitors",
+   "guideline": "[1] NICE CG184 (2014, updated 2019) Gastro-oesophageal reflux disease and dyspepsia in adults · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] NICE NG226 (2022) Osteoarthritis in over 16s · [4] NICE CG141 (2012) Acute upper gastrointestinal bleeding in over 16s",
    "summary": "New dyspepsia that starts soon after a new NSAID is drug-induced until proved otherwise. Screen the upper-GI alarm features, stop or switch the culprit rather than adding a PPI on top, give short-term acid treatment and lifestyle advice, test for H. pylori if symptoms persist, and review. If an NSAID truly must continue, prescribe a PPI with it.",
    "points": [
     {
@@ -5044,7 +5044,7 @@
     },
     {
      "h": "If an NSAID must continue",
-     "t": "Use the lowest effective dose for the shortest time and prescribe a PPI with it [3][5]. Risk rises with age over 65, previous ulcer or bleed, and with anticoagulants, antiplatelets, corticosteroids or SSRIs. Oral NSAIDs also carry renal and cardiovascular risk [3][5]."
+     "t": "Use the lowest effective dose for the shortest time and prescribe a PPI with it [3]. Risk rises with age over 65, previous ulcer or bleed, and with anticoagulants, antiplatelets, corticosteroids or SSRIs. Oral NSAIDs also carry renal and cardiovascular risk [3]."
     },
     {
      "h": "Review, and don’t leave PPIs running",
@@ -5534,7 +5534,7 @@
    "reason": "Itching, redness and swelling where condoms or rubber gloves touch; lips tingled once. Asks about latex allergy and contraception."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG258 (2026) Anaphylaxis: assessment and referral after emergency treatment · [2] Resuscitation Council UK, Emergency treatment of anaphylaxis (2021) · [3] MHRA Drug Safety Update (June 2023), adrenaline auto-injectors: new guidance and resources for safe use · [4] NICE CG183 (2014) Drug allergy: diagnosis and management, recording allergy status · [5] FSRH Clinical Guideline: Barrier methods for contraception and STI prevention (2012) · [6] Health and Safety Executive guidance on latex and the Control of Substances Hazardous to Health Regulations 2002",
+   "guideline": "[1] NICE NG258 (2026) Anaphylaxis: assessment and referral after emergency treatment · [2] Resuscitation Council UK, Emergency treatment of anaphylaxis (2021) · [3] MHRA Drug Safety Update (June 2023), adrenaline auto-injectors: new guidance and resources for safe use · [4] NICE CG183 (2014) Drug allergy: diagnosis and management, recording allergy status · [5] CoSRH Clinical Guideline: Barrier methods for contraception and STI prevention (2012) · [6] Health and Safety Executive guidance on latex and the Control of Substances Hazardous to Health Regulations 2002",
    "summary": "Itching, redness and swelling within minutes of latex contact, with lip tingling, suggests immediate (IgE-mediated) latex allergy. Assess for any systemic features, refer to an allergy service to confirm it, and advise strict avoidance with latex-free condoms and nitrile gloves. Record the allergy, warn her to tell every healthcare and dental team, ask about cross-reacting fruits, and give clear emergency advice. Sort out contraception so she is not relying on latex.",
    "points": [
     {
@@ -5954,7 +5954,7 @@
     "sharedPlan": [
      "Refer to an allergy service for testing and risk assessment",
      "Strict latex avoidance: nitrile gloves, no balloons",
-     "Polyurethane or polyisoprene condoms, lubricant, and emergency contraception advice (FSRH)",
+     "Polyurethane or polyisoprene condoms, lubricant, and emergency contraception advice (CoSRH)",
      "Offer other methods: pill, implant, injection or intrauterine methods",
      "Record the allergy (NICE CG183); tell all healthcare and dental teams; medical alert bracelet"
     ],
@@ -6048,7 +6048,7 @@
    "reason": "“What’s going on — do I need a scan?”"
   },
   "knowledge": {
-   "guideline": "[1] Ottawa knee rules (Stiell et al., JAMA 1996–1997) (international) · [2] BASK Meniscal Working Group: arthroscopic meniscal surgery treatment guideline and consensus statement (Bone Joint J 2019) · [3] ESSKA meniscus consensus (2016–2017) (international) · [4] NICE NG226 (osteoarthritis in over 16s, 2022) · [5] BNF ibuprofen and paracetamol monographs; MHRA Drug Safety Update June 2015 (high-dose ibuprofen)",
+   "guideline": "[1] Ottawa knee rules (Stiell et al., JAMA 1996–1997) (international) · [2] BASK Meniscal Working Group: arthroscopic meniscal surgery treatment guideline and consensus statement (Bone Joint J 2019) · [3] ESSKA meniscus consensus (2016–2017) (international) · [4] NICE NG226 (osteoarthritis in over 16s, 2022) · [5] MHRA Drug Safety Update June 2015 (high-dose ibuprofen)",
    "summary": "A twisting injury on a planted foot, swelling that builds over hours, joint-line tenderness and mechanical symptoms suggest a meniscal tear. Use the Ottawa knee rules to decide whether an X-ray is needed. A knee that truly locks, or has locked, in a young person points to a displaced tear and needs MRI and orthopaedic review; a knee locked now needs same-day assessment. Swelling within an hour or two with a pop and giving way suggests an ACL tear. Stable, non-locking tears can start with physiotherapy.",
    "points": [
     {
@@ -6482,7 +6482,7 @@
     "href": "algorithms/joint-pain.html"
    },
    {
-    "ic": "🩺",
+    "ic": "⚕️",
     "t": "Examinations",
     "s": "Knee examination",
     "href": "examinations.html"
@@ -8559,7 +8559,7 @@
    "reason": "“My legs feel crawly every evening and it’s ruining my sleep. What can I do, and is it safe for the baby?”"
   },
   "knowledge": {
-   "guideline": "[1] IRLSSG consensus guideline on RLS in pregnancy and lactation, Picchietti et al., Sleep Medicine Reviews 2015 (international) · [2] IRLSSG diagnostic criteria for RLS (international) · [3] British Society for Haematology UK guideline on the management of iron deficiency in pregnancy (2020) · [4] BNF: oral iron preparations and folic acid (doses per BNF) · [5] NICE NG201 Antenatal care (2021) · [6] AASM clinical practice guideline on RLS and PLMD treatment (J Clin Sleep Med 2025) (international)",
+   "guideline": "[1] IRLSSG consensus guideline on RLS in pregnancy and lactation, Picchietti et al., Sleep Medicine Reviews 2015 (international) · [2] IRLSSG diagnostic criteria for RLS (international) · [3] British Society for Haematology UK guideline on the management of iron deficiency in pregnancy (2020) · [4] NICE NG201 Antenatal care (2021) · [5] AASM clinical practice guideline on RLS and PLMD treatment (J Clin Sleep Med 2025) (international)",
    "summary": "An urge to move the legs, worse at rest and in the evening and relieved by movement, in the third trimester is restless legs syndrome until shown otherwise. Up to about one in five pregnant women are affected, and pregnancy-related RLS usually settles after delivery [1]. The GP’s job is to confirm the four core features, exclude mimics (cramps, positional discomfort, oedema and, above all, a unilateral swollen painful leg suggesting DVT), check ferritin, FBC and folate, correct iron and folate, review drugs that worsen it, and use non-drug measures. The usual RLS medicines are avoided in pregnancy; refractory cases need obstetric advice.",
    "points": [
     {
@@ -8572,7 +8572,7 @@
     },
     {
      "h": "Iron and folate",
-     "t": "Low iron stores are the key treatable contributor. Check ferritin, FBC and folate. The IRLSSG pregnancy guideline [1] (international) advises oral iron when ferritin is below 75 µg/L in a woman with RLS, a higher threshold than for anaemia. BSH 2020 [3] defines iron deficiency in pregnancy as ferritin below 30 µg/L and gives the anaemia thresholds (Hb below 105 g/L in the second and third trimesters). Oral iron and folic acid doses per BNF [4]; recheck the response."
+     "t": "Low iron stores are the key treatable contributor. Check ferritin, FBC and folate. The IRLSSG pregnancy guideline [1] (international) advises oral iron when ferritin is below 75 µg/L in a woman with RLS, a higher threshold than for anaemia. BSH 2020 [3] defines iron deficiency in pregnancy as ferritin below 30 µg/L and gives the anaemia thresholds (Hb below 105 g/L in the second and third trimesters). Oral iron and folic acid doses per BNF; recheck the response."
     },
     {
      "h": "Drug and lifestyle triggers",
@@ -8580,11 +8580,11 @@
     },
     {
      "h": "Non-drug care",
-     "t": "Moderate daytime activity, stretching or a short walk before bed, leg massage, warm or cool compresses, a regular sleep routine, and mentally engaging activity during enforced rest (a puzzle or reading) [1]. Treat the sleep deprivation seriously: ask about mood, which matters in the perinatal period [5]."
+     "t": "Moderate daytime activity, stretching or a short walk before bed, leg massage, warm or cool compresses, a regular sleep routine, and mentally engaging activity during enforced rest (a puzzle or reading) [1]. Treat the sleep deprivation seriously: ask about mood, which matters in the perinatal period [4]."
     },
     {
      "h": "Medicines and referral",
-     "t": "Dopamine agonists and alpha-2-delta ligands used for RLS outside pregnancy [6] are avoided in pregnancy. If symptoms stay severe despite iron, folate and non-drug measures, seek obstetric advice; the IRLSSG [1] describes specialist options for refractory cases. Pregnancy-related RLS usually resolves within weeks of delivery; persistent symptoms after birth need reassessment."
+     "t": "Dopamine agonists and alpha-2-delta ligands used for RLS outside pregnancy [5] are avoided in pregnancy. If symptoms stay severe despite iron, folate and non-drug measures, seek obstetric advice; the IRLSSG [1] describes specialist options for refractory cases. Pregnancy-related RLS usually resolves within weeks of delivery; persistent symptoms after birth need reassessment."
     }
    ]
   },
@@ -9483,7 +9483,7 @@
     "ic": "💠",
     "t": "Insomnia",
     "s": "Protocol · sleep strategies first",
-    "href": "management/insomnia.html"
+    "href": "algorithms/insomnia.html"
    },
    {
     "ic": "📝",
@@ -9550,7 +9550,7 @@
    "reason": "Wants to know if her steroid tablets caused the spinal fracture, and whether she should have been protected."
   },
   "knowledge": {
-   "guideline": "[1] NOGG clinical guideline for the prevention and treatment of osteoporosis (2021, updated 2024) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] NICE NG259 (July 2026; replaced CG146) Osteoporosis: risk assessment · [4] NICE NG249 (2025) Falls: assessment and prevention · [5] NatPSA/2020/005/NHSPS (August 2020) steroid emergency card · [6] EULAR/ACR 2015 polymyalgia rheumatica recommendations (international) · [7] BNF, bisphosphonates · [8] GMC and NMC Openness and honesty when things go wrong: the professional duty of candour (2015, updated 2022)",
+   "guideline": "[1] NOGG clinical guideline for the prevention and treatment of osteoporosis (2021, updated 2024) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] NICE NG259 (July 2026; replaced CG146) Osteoporosis: risk assessment · [4] NICE NG249 (2025) Falls: assessment and prevention · [5] NatPSA/2020/005/NHSPS (August 2020) steroid emergency card · [6] EULAR/ACR 2015 polymyalgia rheumatica recommendations (international) · [7] GMC and NMC Openness and honesty when things go wrong: the professional duty of candour (2015, updated 2022)",
    "summary": "A vertebral fracture from a minor stumble in a 68-year-old on long-term prednisolone is a fragility fracture and glucocorticoid-induced osteoporosis until proved otherwise. Say honestly that the steroid very likely contributed. Start an oral bisphosphonate with calcium and vitamin D now without waiting for a DXA scan, check bloods including a myeloma screen, review the steroid dose, assess falls and treat the pain.",
    "points": [
     {
@@ -9563,7 +9563,7 @@
     },
     {
      "h": "Treat now",
-     "t": "First-line: alendronate or risedronate (or IV zoledronate if oral is unsuitable), with calcium and vitamin D if intake is low [1][7]. Before starting, check calcium, vitamin D, renal function and dental health [7]. Take the tablet on waking with a full glass of plain water, stay upright, and wait before food or other medicines, as the BNF describes [7]. DXA can help baseline and monitoring but must not delay treatment [1]."
+     "t": "First-line: alendronate or risedronate (or IV zoledronate if oral is unsuitable), with calcium and vitamin D if intake is low [1]. Before starting, check calcium, vitamin D, renal function and dental health. Take the tablet on waking with a full glass of plain water, stay upright, and wait before food or other medicines, as the BNF describes. DXA can help baseline and monitoring but must not delay treatment [1]."
     },
     {
      "h": "Look for other causes",
@@ -9579,7 +9579,7 @@
     },
     {
      "h": "Honest disclosure",
-     "t": "If bone protection should have been started with the steroid, say so plainly, apologise, explain what happens next and record the conversation [8]. Consider a significant event review in the practice."
+     "t": "If bone protection should have been started with the steroid, say so plainly, apologise, explain what happens next and record the conversation [7]. Consider a significant event review in the practice."
     }
    ]
   },

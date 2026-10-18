@@ -363,7 +363,7 @@ window.SCA_LINKS = {
   ],
   'third-party-meno': [
     { ic:'📋', t:'Menopause', s:'Case walkthrough · NICE NG23', href:'../cases/menopause.html' },
-    { ic:'🗺️', t:'HRT & menopause pathway', s:'Diagnosis · HRT initiation', href:'algorithms/hrt-menopause.html' },
+    { ic:'💠', t:'Menopause and HRT', s:'Protocol · diagnosis · HRT initiation', href:'management/menopause.html' },
     { ic:'💠', t:'Women’s health protocols', s:'Incl. HRT preparations', href:'management.html?cat=women-s-health' }
   ],
   'cough-smoker-2ww': [

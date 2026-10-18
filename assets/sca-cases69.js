@@ -125,7 +125,7 @@
     ],
     learning: 'DE QUERVAIN\u2019S TENOSYNOVITIS is mainly thickening and narrowing of the sheath around the first dorsal extensor compartment tendons (abductor pollicis longus and extensor pollicis brevis) at the RADIAL wrist, so the tendons catch, presenting with pain and swelling over the radial styloid that is worse with thumb/wrist movement and gripping/lifting \u2014 classically in NEW MOTHERS (repeated lifting of the baby) and with repetitive thumb use. Confirm it clinically \u2014 a guided self-test on video, or FINKELSTEIN\u2019S test face to face if unclear (the examiner holds the thumb and gently deviates the wrist towards the little finger, reproducing the radial-styloid pain \u2014 the thumb-in-fist version is Eichhoff\u2019s test, more often positive in normal wrists) and first-compartment tenderness/swelling; imaging is not routinely needed. Distinguish it from thumb-base (first CMC joint) osteoarthritis (older patients, base-of-thumb pain), scaphoid pathology (trauma, snuffbox tenderness), intersection syndrome (more proximal) and inflammatory arthritis (other joints/systemic features). Manage conservatively first: activity modification and baby-handling/ergonomic advice (lift with the forearm rather than thumb-abducted scooping), a THUMB SPICA splint to rest the thumb/wrist, analgesia/NSAIDs (topical or oral, after asking whether she is breastfeeding \u2014 BNF), and relative rest \u2014 most settle with these. If not settling, a local corticosteroid injection into the tendon sheath relieves symptoms for many (BSSH; counsel skin thinning or lightening, infection, temporary flare), and refractory cases are referred to hand/orthopaedics for surgical decompression. Reassure it is treatable and usually self-limiting with the right measures, give practical ergonomic advice tailored to childcare, ask about her emotional wellbeing (NICE NG194), and safety-net.',
     knowledge: {
-      guideline: '[1] British Society for Surgery of the Hand (BSSH): de Quervain\u2019s syndrome, patient information \u00b7 [2] BNF: paracetamol, ibuprofen (breastfeeding sections), topical NSAIDs \u00b7 [3] NICE NG194 Postnatal care (2021) \u00b7 [4] NICE NG100 Rheumatoid arthritis in adults (2018, updated 2020) \u00b7 Finkelstein test \u00b7 thumb spica splint + ergonomics \u00b7 corticosteroid injection / surgical release',
+      guideline: '[1] British Society for Surgery of the Hand (BSSH): de Quervain\u2019s syndrome, patient information \u00b7 [2] NICE NG194 Postnatal care (2021) \u00b7 [3] NICE NG100 Rheumatoid arthritis in adults (2018, updated 2020) \u00b7 Finkelstein test \u00b7 thumb spica splint + ergonomics \u00b7 corticosteroid injection / surgical release',
       points: [
         {
           h: 'Recognise',
@@ -137,11 +137,11 @@
         },
         {
           h: 'Differential',
-          t: 'Thumb-base (CMC) OA, scaphoid pathology (trauma/snuffbox), intersection syndrome, superficial radial nerve irritation, inflammatory arthritis [4].'
+          t: 'Thumb-base (CMC) OA, scaphoid pathology (trauma/snuffbox), intersection syndrome, superficial radial nerve irritation, inflammatory arthritis [3].'
         },
         {
           h: 'Conservative care',
-          t: 'Activity modification/baby-handling ergonomics, splint holding thumb and wrist [1], paracetamol/ibuprofen or topical NSAID after asking about breastfeeding [2], relative rest.'
+          t: 'Activity modification/baby-handling ergonomics, splint holding thumb and wrist [1], paracetamol/ibuprofen or topical NSAID after asking about breastfeeding, relative rest.'
         },
         {
           h: 'Escalation',
@@ -149,7 +149,7 @@
         },
         {
           h: 'Reassure',
-          t: 'Treatable and usually self-limiting with the right measures; tailor advice to childcare; ask about emotional wellbeing and support (NICE NG194 [3]).'
+          t: 'Treatable and usually self-limiting with the right measures; tailor advice to childcare; ask about emotional wellbeing and support (NICE NG194 [2]).'
         },
         {
           h: 'Never do',
@@ -278,7 +278,7 @@
     ],
     learning: 'PLANTAR FASCIITIS is the commonest cause of plantar heel pain, recognised by classic "FIRST-STEP" pain \u2014 worst on the first steps in the morning or after rest, easing with walking, and returning after prolonged standing \u2014 with tenderness at the MEDIAL CALCANEAL tubercle (plantar-fascia origin); risk factors include overuse/new running, prolonged standing, higher body weight, unsupportive footwear and a tight calf/Achilles; chronic cases are often degenerative and load-related ("plantar fasciopathy"). Diagnosis is clinical (typical history plus localised tenderness, \u00b1 pain on dorsiflexing the toes) and imaging is not routinely required. Distinguish it from a calcaneal STRESS FRACTURE (recent increase in load/trauma, point bony tenderness, positive squeeze test), fat-pad atrophy (central heel, older), tarsal tunnel/nerve entrapment (burning/tingling/numbness), Achilles/insertional pathology, and inflammatory/seronegative arthropathy with enthesitis (ask about other joints, back pain, psoriasis, eye/GI symptoms). Manage conservatively \u2014 most improve, though recovery commonly takes several months (JOSPT/APTA 2023, international): education, load modification keeping up tolerable activity rather than complete rest, calf and plantar-fascia STRETCHING with progressive strengthening, supportive FOOTWEAR with optional low-cost heel cushioning, WEIGHT discussed sensitively (not a condition of treatment), and paracetamol or a short NSAID course only if suitable (BNF), which are first-line and effective for most. For persistent pain, review adherence and the diagnosis, then escalate to physiotherapy/podiatry, a night splint, a selective corticosteroid injection (risk of fat-pad atrophy/fascia rupture), and specialist referral (extracorporeal shockwave therapy only under NICE HTG200 special arrangements, as effectiveness is uncertain). Reassure about the favourable but slow course, set realistic timeline expectations, give stretching/footwear and load/weight advice, and safety-net for features that would prompt reconsideration (stress-fracture point tenderness, neurological symptoms, inflammatory/systemic features).',
     knowledge: {
-      guideline: '[1] JOSPT/APTA Heel pain \u2013 plantar fasciitis clinical practice guideline (2023, international) \u00b7 [2] NICE HTG200 Extracorporeal shockwave therapy for refractory plantar fasciitis (2009) \u00b7 [3] NICE NG65 Spondyloarthritis in over 16s (2017) \u00b7 [4] BNF: paracetamol, NSAIDs \u00b7 first-step heel pain \u00b7 conservative care (education/load/stretching/footwear) \u00b7 escalation (physio/injection/shockwave)',
+      guideline: '[1] JOSPT/APTA Heel pain \u2013 plantar fasciitis clinical practice guideline (2023, international) \u00b7 [2] NICE HTG200 Extracorporeal shockwave therapy for refractory plantar fasciitis (2009) \u00b7 [3] NICE NG65 Spondyloarthritis in over 16s (2017) \u00b7 first-step heel pain \u00b7 conservative care (education/load/stretching/footwear) \u00b7 escalation (physio/injection/shockwave)',
       points: [
         {
           h: 'Recognise',
@@ -294,7 +294,7 @@
         },
         {
           h: 'Conservative care',
-          t: 'Education, load modification (stay active within tolerance), calf and plantar-fascia stretching with strengthening, supportive footwear/optional heel cushioning [1]; weight discussed sensitively; analgesia only if suitable [4]. Most improve over several months.'
+          t: 'Education, load modification (stay active within tolerance), calf and plantar-fascia stretching with strengthening, supportive footwear/optional heel cushioning [1]; weight discussed sensitively; analgesia only if suitable. Most improve over several months.'
         },
         {
           h: 'Escalation',
@@ -432,11 +432,11 @@
     ],
     learning: 'BALANITIS is inflammation of the glans (balanoposthitis if the foreskin is also involved), presenting as a red, sore, itchy glans with discharge; recurrent episodes and progressive difficulty retracting the foreskin suggest developing PHIMOSIS (non-retractile foreskin) \u2014 examine without forcibly retracting. Irritant or contact dermatitis and dermatoses are common causes and Candida is a minority cause (BASHH balanoposthitis guideline 2025). Importantly, recurrent CANDIDAL balanitis is strongly associated with DIABETES and can be a presenting feature, so CHECK glucose/HbA1c in recurrent balanitis. Screen the causes: candidal/infective (red glans, itch, white curd-like material \u2014 commoner with diabetes, antibiotics, immunosuppression), irritant/contact dermatitis and hygiene (too little or too much), bacterial infection, STI (GUM screen if at risk), psoriasis/lichen planus, and crucially LICHEN SCLEROSUS (balanitis xerotica obliterans, BXO) \u2014 a white, atrophic, scarring change causing pathological phimosis and meatal stenosis that needs dermatology/urology involvement (potent topical steroids, sometimes circumcision) and carries a small increased penile SCC risk. Manage per cause: hygiene advice (gentle washing, drying, avoiding irritant soaps), topical antifungal \u00b1 mild steroid for candidal disease, appropriate treatment of bacterial/STI causes, and optimisation of diabetes. Refer for pathological phimosis, suspected lichen sclerosus/BXO, recurrent/refractory balanitis, or any suspicious/non-healing lesion (urology; NICE NG12: suspected cancer pathway referral for a penile mass or ulcerated lesion once an STI is excluded, a persistent lesion after STI treatment, or unexplained or persistent foreskin or glans symptoms), and consider circumcision in pathological phimosis/recurrent disease \u2014 never forcibly retracting a phimotic foreskin, examining with a chaperone offered, and treating paraphimosis as a same-day emergency. Handle an embarrassing problem sensitively, check glucose, screen for BXO, treat by cause, and safety-net. NICE NG12 applies to a persistent or suspicious penile lesion or unexplained persistent foreskin/glans symptoms.',
     knowledge: {
-      guideline: '[1] BASHH UK national guideline on the management of balanoposthitis (2025) \u00b7 [2] NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) \u00b7 [3] NICE PH38 Type 2 diabetes: prevention in people at high risk (2012, updated 2017) \u00b7 [4] BAD guidelines for the management of lichen sclerosus (2018) \u00b7 [5] BNF: clotrimazole, hydrocortisone, fluconazole \u00b7 [6] GMC Intimate examinations and chaperones (2024) \u00b7 candidal balanitis & diabetes (check glucose) \u00b7 lichen sclerosus/BXO referral \u00b7 hygiene & cause-directed treatment',
+      guideline: '[1] BASHH UK national guideline on the management of balanoposthitis (2025) \u00b7 [2] NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) \u00b7 [3] NICE PH38 Type 2 diabetes: prevention in people at high risk (2012, updated 2017) \u00b7 [4] BAD guidelines for the management of lichen sclerosus (2018) \u00b7 [5] GMC Intimate examinations and chaperones (2024) \u00b7 candidal balanitis & diabetes (check glucose) \u00b7 lichen sclerosus/BXO referral \u00b7 hygiene & cause-directed treatment',
       points: [
         {
           h: 'Recognise',
-          t: 'Red, sore, itchy glans \u00b1 foreskin (balanoposthitis); recurrent episodes + difficulty retracting suggest developing phimosis. Examine face to face with a chaperone offered [6]. Don\u2019t forcibly retract; paraphimosis is a same-day emergency.'
+          t: 'Red, sore, itchy glans \u00b1 foreskin (balanoposthitis); recurrent episodes + difficulty retracting suggest developing phimosis. Examine face to face with a chaperone offered [5]. Don\u2019t forcibly retract; paraphimosis is a same-day emergency.'
         },
         {
           h: 'Check for diabetes',
@@ -452,7 +452,7 @@
         },
         {
           h: 'Manage',
-          t: 'Hygiene advice with emollient soap substitute; clotrimazole 1% twice daily 7\u201314 days \u00b1 short hydrocortisone 1% for candidal [5]; treat bacterial/STI by syndrome; optimise diabetes; reassess rather than repeat creams.'
+          t: 'Hygiene advice with emollient soap substitute; clotrimazole 1% twice daily 7\u201314 days \u00b1 short hydrocortisone 1% for candidal; treat bacterial/STI by syndrome; optimise diabetes; reassess rather than repeat creams.'
         },
         {
           h: 'Refer',
@@ -582,7 +582,7 @@
     ],
     learning: 'PILONIDAL DISEASE is a sinus/cyst in the midline NATAL CLEFT (top of the buttock crease), typically with one or more midline PITS and related to hair/friction, commonest in young, hirsute men and those who sit a lot or are overweight; intermittent discharge/pits with a now painful, red, fluctuant swelling indicates a PILONIDAL ABSCESS. Distinguish the ACUTE ABSCESS (painful, red, hot, fluctuant, may discharge pus) from a chronic/quiescent sinus \u2014 the abscess is the urgent issue. An acute pilonidal abscess needs INCISION AND DRAINAGE, usually through an off-midline incision with definitive surgery deferred (European Society of Coloproctology 2024, international): arrange same-day surgical assessment (drainage in primary care only if competent, equipped and the abscess is suitable) with analgesia (paracetamol and, if suitable, ibuprofen at BNF doses), after checking observations face to face (NICE NG253 if systemically unwell) and asking about diabetes or immunosuppression, recognising that ANTIBIOTICS are NOT a substitute for drainage and should be reserved for surrounding cellulitis or systemic features (NICE NG141) \u2014 an undrained abscess will not settle on antibiotics alone. For the underlying SINUS (the recurrent problem), refer to general/colorectal surgery for definitive management once the acute episode settles (the surgeon chooses minimally invasive or excisional options; recurrence after drainage alone is common, so definitive care matters; asymptomatic pits need no operation). Advise prevention and hygiene \u2014 keep the area clean and dry, and hair removal around the cleft is widely advised though the evidence is limited, with weight discussed sensitively \u2014 and consider the differential (perianal abscess/fistula closer to the anus, hidradenitis suppurativa with other flexures, infected sebaceous cyst). Handle a painful, embarrassing problem sensitively, arrange drainage rather than antibiotics alone, refer for definitive treatment, and safety-net for spreading infection/systemic features.',
     knowledge: {
-      guideline: 'Pilonidal sinus & abscess \u00b7 incision and drainage for acute abscess \u00b7 surgical referral for definitive care \u00b7 prevention (hygiene/hair/weight) \u00b7 [1] European Society of Coloproctology guidelines for the management of pilonidal disease, BJS 2024;111(10):znae237 (international) \u00b7 [2] NICE NG141 Cellulitis and erysipelas: antimicrobial prescribing (2019) \u00b7 [3] NICE NG253 Suspected sepsis in people aged 16 or over (2025) \u00b7 [4] BNF paracetamol, ibuprofen',
+      guideline: 'Pilonidal sinus & abscess \u00b7 incision and drainage for acute abscess \u00b7 surgical referral for definitive care \u00b7 prevention (hygiene/hair/weight) \u00b7 [1] European Society of Coloproctology guidelines for the management of pilonidal disease, BJS 2024;111(10):znae237 (international) \u00b7 [2] NICE NG141 Cellulitis and erysipelas: antimicrobial prescribing (2019) \u00b7 [3] NICE NG253 Suspected sepsis in people aged 16 or over (2025)',
       points: [
         {
           h: 'Recognise',
@@ -594,7 +594,7 @@
         },
         {
           h: 'Drainage',
-          t: 'Acute abscess needs incision and drainage (off-midline; usually same-day surgical assessment/SDEC, primary care only if competent and suitable) [1] with analgesia [4]. Antibiotics are not a substitute. Check observations (NG253 [3] if unwell); ask about diabetes/immunosuppression.'
+          t: 'Acute abscess needs incision and drainage (off-midline; usually same-day surgical assessment/SDEC, primary care only if competent and suitable) [1] with analgesia. Antibiotics are not a substitute. Check observations (NG253 [3] if unwell); ask about diabetes/immunosuppression.'
         },
         {
           h: 'Antibiotics',

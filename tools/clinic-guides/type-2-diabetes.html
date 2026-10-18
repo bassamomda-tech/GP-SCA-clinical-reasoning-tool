@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="type-2-diabetes">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Type 2 diabetes in adults — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/type-2-diabetes.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/type-2-diabetes.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · chronic disease series</div>
+      <h1>Type 2 diabetes in adults <small>CLINIC GUIDE</small></h1>
+      <div class="scope">For the new diagnosis and the annual review. Adults 18+ with type 2 diabetes. Not for type 1 diabetes, pregnancy, children, or DKA/HHS management.</div>
+    </div>
+    <div class="meta">NICE <b>NG28</b> (updated Feb 2026) · NG136 · <b>NG203</b> · NG238 · NG19 · NG12<br>MHRA DSU (SGLT2i) · DVLA<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full protocol: gpreasoning.uk/tools/management/type-2-diabetes.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Diagnose and start <span>raised HbA1c → right diagnosis → dual first-line</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act today<small>MHRA DSU · NG12 · NG19</small></h2><div class="body">
+    <ul>
+      <li><b>Vomiting, abdominal pain, deep sighing breathing, drowsiness</b> → check <b>blood ketones</b> and glucose. On an SGLT2 inhibitor DKA can occur with near-normal glucose: <b>stop the SGLT2i</b> and arrange same-day hospital assessment. Profound dehydration, confusion, very high glucose (possible HHS) → <b>999</b>.</li>
+      <li><b>Could this be type 1?</b> Ketosis, rapid weight loss, low BMI, young, personal or family autoimmunity → same-day glucose, ketones and diabetes-team advice. Type 1 treated as type 2 can be fatal.</li>
+      <li><b>New diabetes with weight loss, aged 60+</b> → consider urgent direct-access CT abdomen for pancreatic cancer (NG12), not just metformin.</li>
+      <li><b>Active foot problem</b> (ulcer, spreading infection, ischaemia, suspected Charcot) → MDT foot service <b>within 1 working day</b>; limb- or life-threatening → acute admission. Confused hypo on a sulfonylurea or insulin → 999.</li>
+    </ul>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Confirm the diagnosis<small>NG28 · WHO criteria</small></h2><div class="body">
+        <table>
+          <tr><th>Result</th><th>Meaning · action</th></tr>
+          <tr><td><b>HbA1c ≥48</b> mmol/mol</td><td>Diabetes if <b>two</b> results ≥48, or one with osmotic symptoms. Asymptomatic → repeat before labelling</td></tr>
+          <tr><td>HbA1c 42–47</td><td>Non-diabetic hyperglycaemia → <b>annual HbA1c</b> + NHS Diabetes Prevention Programme</td></tr>
+          <tr><td>Fasting glucose ≥7.0</td><td>Diagnostic (venous plasma); confirm if asymptomatic</td></tr>
+          <tr><td>Random glucose ≥11.1</td><td>Diagnostic <b>only with symptoms</b>; otherwise repeat fasting glucose or HbA1c</td></tr>
+        </table>
+        <p class="key">Do not rely on HbA1c with haemoglobinopathy, haemolysis, recent transfusion, pregnancy or suspected type 1 → use plasma glucose.</p>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">2</span>Is it really type 2?<small>check before you label</small></h2><div class="body">
+        <table>
+          <tr><td><b>Type 1 / LADA</b></td><td>Ketosis, weight loss, rapid progression, autoimmunity, early insulin need — any age or BMI → GAD antibodies, C-peptide if unsure, diabetes team</td></tr>
+          <tr><td><b>MODY</b></td><td>Young, not obese, strong multi-generation family history → genetics</td></tr>
+          <tr><td><b>Pancreatic</b></td><td>Pancreatitis, steatorrhoea, abdominal pain, weight loss (red box)</td></tr>
+          <tr><td><b>Drug-induced</b></td><td>Steroids, antipsychotics</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">3</span>Work-up at diagnosis<small>baseline = first annual review</small></h2><div class="body">
+        <ul class="tick">
+          <li>HbA1c, <b>U&amp;E/eGFR</b></li>
+          <li>Urine <b>ACR</b> (early-morning)</li>
+          <li>Lipids, LFTs, FBC</li>
+          <li><b>QRISK3</b>, BP, BMI, waist</li>
+          <li><b>Feet</b>: monofilament, pulses, risk</li>
+          <li>Refer to <b>NHS eye screening</b></li>
+          <li>Smoking, mood, erectile function</li>
+          <li>ECG, TSH only if indicated</li>
+        </ul>
+        <p style="margin-top:2px"><b>eGFR before metformin</b> is non-negotiable; it also sets the SGLT2 inhibitor choice (box 5).</p>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">4</span>Start by phenotype<small>NG28 2026 · initial medicines</small></h2><div class="body">
+        <table>
+          <tr><th>Person</th><th>First-line</th></tr>
+          <tr><td><b>Most people</b>, eGFR ≥30</td><td><b>MR metformin + SGLT2i</b>, even with no comorbidity (SGLT2i alone if metformin unsuitable)</td></tr>
+          <tr><td>eGFR 20 to &lt;30</td><td>Dapagliflozin or empagliflozin + a DPP-4i</td></tr>
+          <tr><td>eGFR &lt;20</td><td>Consider a DPP-4i</td></tr>
+          <tr><td><b>Established ASCVD</b></td><td>MR metformin + SGLT2i + s/c <b>semaglutide</b> up to 1 mg weekly</td></tr>
+          <tr><td><b>Heart failure</b></td><td>SGLT2i is the priority (also an HF pillar)</td></tr>
+          <tr><td>Diagnosed <b>under 40</b></td><td>Dual first-line; consider adding a GLP-1 RA or tirzepatide</td></tr>
+          <tr><td><b>Frailty</b></td><td>SGLT2i only if no risk of volume depletion or hypotension; relax target</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk teal"><h2><span class="n">5</span>Dual first-line, safely<small>NG28 · MHRA DSU · SPC</small></h2><div class="body">
+        <div class="flow" style="--c:var(--teal)">
+          <div><b class="h">Metformin MR</b>500 mg OD with food, up weekly to 1–2 g/day</div>
+          <div><b class="h">eGFR gates</b>&lt;45 → review dose; &lt;30 → stop</div>
+          <div><b class="h">Then SGLT2i</b>dapagliflozin or empagliflozin 10 mg OD within weeks</div>
+          <div><b class="h">Before SGLT2i</b>previous DKA? volume depletion? keto diet? not while unwell</div>
+        </div>
+        <p style="margin-top:3px">Give <b>written sick-day rules</b> with every SGLT2i (box 12). Explain genital hygiene.</p>
+        <p><b>Treat the risk too:</b> ACEi/ARB for hypertension or ACR &gt;3 mg/mmol; <b>atorvastatin 20 mg</b> if QRISK3 ≥10% (80 mg with established CVD, NG238). No aspirin for primary prevention.</p>
+        <p class="key">Already stable on metformin alone? NG28 changes the default, not a mass switch — review whether an SGLT2i should now be added (CVD, CKD, rising HbA1c, obesity, early onset).</p>
+      </div></div>
+    </div>
+
+    <div class="blk green span"><h2><span class="n">6</span>Self-management — from day one<small>NG28 · structured education is treatment</small></h2><div class="body">
+      <table>
+        <tr><th>Education</th><th>Weight</th><th>Activity</th><th>Diet</th><th>Alcohol · smoking</th><th>Feet</th></tr>
+        <tr><td>Structured programme (e.g. DESMOND) at diagnosis</td><td>Weight loss improves HbA1c; offer NHS remission programme if eligible</td><td>150 min/week + strength work</td><td>Cut refined carbs and sugary drinks; Mediterranean pattern</td><td>≤14 units/week; stop smoking</td><td>Daily check; report any break in the skin</td></tr>
+      </table>
+      <p class="say" style="margin-top:3px">"Diabetes is mostly about protecting your heart, kidneys, eyes and feet. These two tablets do that as well as lowering your sugar — and losing some weight could even put it into remission."</p>
+      <p class="key" style="margin-top:2px">Self-monitoring of glucose is not routine on diet, metformin or an SGLT2i — offer it on insulin, with hypos, on a sulfonylurea if driving, or when planning pregnancy.</p>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Type 2 diabetes · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Review and intensify <span>the chronic disease review: target → loop → step up → monitor</span></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk green"><h2><span class="n">7</span>Targets — agree one, write it down<small>NG28 · NG136 · NG238</small></h2><div class="body">
+        <table>
+          <tr><th>Measure</th><th>Target</th></tr>
+          <tr><td>HbA1c — lifestyle or a regimen <b>not</b> causing hypos</td><td><b>48</b> mmol/mol</td></tr>
+          <tr><td>HbA1c — on a sulfonylurea or insulin</td><td><b>53</b> mmol/mol</td></tr>
+          <tr><td>Intensify when HbA1c</td><td><b>≥58</b> (then aim 53)</td></tr>
+          <tr><td>Frail, hypo risk, limited life expectancy</td><td>Relax — individualise</td></tr>
+          <tr><td>Clinic BP under 80 · aged 80+</td><td><b>&lt;140/90</b> · &lt;150/90</td></tr>
+          <tr><td>BP with CKD and ACR ≥70</td><td><b>&lt;130/80</b> (NG203)</td></tr>
+          <tr><td>Lipids — primary · secondary prevention</td><td>non-HDL ↓&gt;40% · LDL ≤2.0 or non-HDL ≤2.6</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk amber"><h2><span class="n">8</span>Above target? Before stepping up<small>NG28</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Adherence</b> — tablets actually taken? GI effects (MR metformin helps)</li>
+          <li><b>Lifestyle drift</b> — weight, diet, alcohol: agree one goal</li>
+          <li><b>Intercurrent</b> — steroids, infection, antipsychotic, low mood</li>
+          <li><b>Right target?</b> — frail or hypo-prone → relax it</li>
+          <li><b>Right diagnosis?</b> — weight loss or rapid rise → think LADA, pancreas</li>
+          <li><b>Too low?</b> — HbA1c well under target on a sulfonylurea or insulin, or frail → de-intensify, hypo-causing drugs first</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">9</span>Annual review checklist<small>every patient, every year</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>HbA1c</b> (3–6-monthly until stable, then 6-monthly)</li>
+          <li><b>BP</b>; <b>lipids</b> and QRISK3 / statin review</li>
+          <li><b>Urine ACR + eGFR</b> — at least yearly; more often in CKD</li>
+          <li><b>BMI</b> and <b>smoking</b> status</li>
+          <li><b>Foot check</b>: monofilament, pulses, risk (low · moderate · high)</li>
+          <li><b>Eye screening</b> attended (NHS DESP sets the interval)</li>
+          <li><b>Hypos</b> and awareness; <b>driving</b> group and DVLA duties</li>
+          <li>Sick-day rules; mood; erectile function; flu and pneumococcal vaccines</li>
+          <li>Pregnancy plans and contraception; B12 if on long-term metformin with neuropathy or anaemia</li>
+        </ul>
+      </div></div>
+      <div class="blk blue"><h2><span class="n">13</span>When to refer<small>NG28 · NG19 · NG203</small></h2><div class="body">
+        <table>
+          <tr><td>Suspected type 1, ketosis, HHS</td><td>Same day — diabetes team / acute</td></tr>
+          <tr><td>Moderate or high foot risk</td><td>Foot protection service</td></tr>
+          <tr><td>Recurrent severe hypos, lost awareness</td><td>Diabetes team (and DVLA)</td></tr>
+          <tr><td>Pregnancy or planning it</td><td>Joint diabetes–antenatal clinic</td></tr>
+          <tr><td>KFRE &gt;5%, ACR ≥70, rapid eGFR fall</td><td>Nephrology (NG203)</td></tr>
+          <tr><td>Sudden visual loss</td><td>Same-day ophthalmology</td></tr>
+          <tr><td>Above target despite optimised treatment</td><td>Diabetes team advice; obesity → weight-management pathway (NG246)</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="blk teal span"><h2><span class="n">10</span>The glucose ladder<small>NG28 2026 · add by phenotype, not HbA1c alone · never DPP-4i with a GLP-1 RA</small></h2><div class="body">
+      <div class="ladder">
+        <div><b class="h">Step 1 · dual</b>MR metformin + SGLT2i (dapagliflozin or empagliflozin). ASCVD → add s/c semaglutide as initial triple therapy.</div>
+        <div><b class="h">Step 2 · by phenotype</b>No comorbidity → DPP-4i (SU or pioglitazone if unsuitable). Obesity, after ≥3 months of dual → consider GLP-1 RA or tirzepatide. ASCVD → SU, pioglitazone or insulin.</div>
+        <div><b class="h">Step 3 · third agent</b>Pick another mechanism: DPP-4i, sulfonylurea, pioglitazone, GLP-1 RA. Run box 8 first every time.</div>
+        <div class="s4"><b class="h">Step 4 · insulin</b>Basal insulin once or twice daily; consider basal + short-acting if HbA1c ≥75. Keep metformin and SGLT2i; stop or cut the sulfonylurea.</div>
+      </div>
+      <table style="margin-top:3px">
+        <tr><th>Drug</th><th>Usual dose</th><th>Monitor</th><th>Watch</th></tr>
+        <tr><td><b>Metformin MR</b></td><td>500 mg → 1–2 g OD</td><td>eGFR yearly (more if &lt;60)</td><td>GI upset; B12; hold when dehydrated</td></tr>
+        <tr><td><b>SGLT2i</b></td><td>Dapagliflozin or empagliflozin 10 mg OD</td><td>eGFR (small early dip expected)</td><td>Thrush, volume depletion, DKA with normal glucose</td></tr>
+        <tr><td><b>Semaglutide</b> s/c</td><td>0.25 mg weekly → 0.5 → up to 1 mg</td><td>Weight, HbA1c</td><td>Nausea; stop if pancreatitis suspected</td></tr>
+        <tr><td><b>DPP-4i</b></td><td>Sitagliptin 100 mg (50 eGFR 30–44; 25 &lt;30) · linagliptin 5 mg</td><td>eGFR for sitagliptin</td><td>Rare pancreatitis</td></tr>
+        <tr><td><b>Gliclazide</b></td><td>40–80 mg → up to 160 mg BD (MR 30–120 mg)</td><td>Capillary glucose; driving</td><td>Hypos, weight gain</td></tr>
+        <tr><td><b>Pioglitazone</b></td><td>15–45 mg OD</td><td>Weight, oedema</td><td>Never in heart failure or bladder cancer; fractures</td></tr>
+        <tr><td><b>Basal insulin</b></td><td>Once or twice daily; start low, self-titrate on fasting glucose (local pathway)</td><td>Fasting glucose pattern, injection sites</td><td>Hypos, weight; DVLA; brand-name prescribing</td></tr>
+      </table>
+    </div></div>
+
+    <div class="col">
+      <div class="blk slate"><h2><span class="n">11</span>Side effects — fix, don't just stop<small>SPC · MHRA</small></h2><div class="body">
+        <table>
+          <tr><td><b>GI upset</b> (metformin)</td><td>MR form, take with food, slower titration</td></tr>
+          <tr><td><b>Genital thrush</b> (SGLT2i)</td><td>Treat, hygiene advice; rarely needs stopping</td></tr>
+          <tr><td><b>Perineal pain, fever</b> (SGLT2i)</td><td>Fournier's gangrene — same-day</td></tr>
+          <tr><td><b>Nausea</b> (GLP-1 RA)</td><td>Slow titration, smaller meals</td></tr>
+          <tr><td><b>Hypos</b> (SU, insulin)</td><td>Reduce or stop the SU; review timing, alcohol, kidneys</td></tr>
+          <tr><td><b>B12 deficiency</b> (metformin)</td><td>Check if neuropathy or anaemia; replace and continue</td></tr>
+          <tr><td><b>Weight gain</b></td><td>SU, pioglitazone, insulin — favour weight-neutral agents</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="blk red"><h2><span class="n">12</span>Sick days, hypos, driving<small>MHRA DSU 2016 · 2020 · DVLA</small></h2><div class="body">
+        <ul>
+          <li><b>Sick days</b> (vomiting, diarrhoea, not eating or drinking): pause metformin, the SGLT2i, ACEi/ARB and diuretics; never stop insulin; test glucose often. Restart when eating and drinking normally. On an SGLT2i and unwell → <b>blood ketones even if glucose is normal</b>.</li>
+          <li><b>Hypo</b> (&lt;4 mmol/L): 15–20 g fast-acting carbohydrate, recheck after 10–15 min, then a longer-acting snack.</li>
+          <li><b>DVLA</b>: insulin → tell the DVLA (Group 1, unless temporary under 3 months); Group 2 → also for a sulfonylurea. Test before driving and every 2 hours on long journeys; don't drive if &lt;4 ("5 to drive"). More than one severe hypo while awake in 12 months → must notify.</li>
+          <li><b>Never</b>: start an SGLT2i in someone unwell · leave a frail person on a hypo-causing drug to hit 48.</li>
+        </ul>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Type 2 diabetes · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG28 (2015, updated Feb 2026), NG136, NG203, NG238, NG19, NG12; NICE TA1075; MHRA DSU Apr 2016 and Mar 2020; DVLA Assessing fitness to drive</span><span>Full detail and evidence: gpreasoning.uk/tools/management/type-2-diabetes.html</span></div>
+</section>
+<script src="../../assets/clinic-guides.js?v=1"></script>
+</body>
+</html>

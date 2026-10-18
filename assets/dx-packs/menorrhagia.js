@@ -44,7 +44,7 @@
       {
         id: 'structural', tier: 'urgent',
         label: 'Structural cause likely — fibroids / polyp / adenomyosis',
-        action: 'Pelvic + transvaginal USS; gynae referral if large fibroids / structural lesion.',
+        action: 'Pelvic ultrasound if the uterus is palpable, a mass is suspected or examination is inconclusive (TVUS for suspected adenomyosis); consider gynae referral if fibroids ≥3 cm / structural lesion. Persistent IMB → outpatient hysteroscopy (NG88).',
         source: 'NICE NG88',
         when: i => i.bulk_pressure || i.imb_pcb || i.dysmenorrhoea_dyspareunia,
       },

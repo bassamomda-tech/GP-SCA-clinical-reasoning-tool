@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 30: T topics, part 2)
    NHS A–Z (letter T) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -128,7 +128,7 @@
       'Pain not controlled by first-line treatment, or diagnostic uncertainty → neurology',
       'Refractory trigeminal neuralgia → specialist (consider microvascular decompression/ablative procedures)',
       'Severe uncontrolled pain affecting eating/hydration → urgent specialist input'],
-    source:'NICE CG173 (Neuropathic pain in adults — carbamazepine for trigeminal neuralgia) / BNF (carbamazepine)' },
+    source:'NICE CG173 (Neuropathic pain in adults — carbamazepine for trigeminal neuralgia)' },
 
   { id:'trigger-finger', title:'Trigger finger', category:'Musculoskeletal', icon:'✋',
     overview:'A common condition in which a finger or thumb catches or locks in a bent position due to inflammation/nodularity of the flexor tendon and its sheath (stenosing tenosynovitis). It is benign and often self-limiting or treatable with simple measures, with injection or surgery for persistent cases.',
@@ -203,9 +203,9 @@
       'Atypical features, symptoms without motion, or suspected vestibular/neurological cause → relevant assessment',
       'Severe, disabling motion sickness unresponsive to measures → specialist advice',
       'Suspected vestibular migraine → manage/refer accordingly'],
-    source:'BNF (hyoscine, cinnarizine, promethazine, cyclizine) / UKHSA NaTHNaC travel health advice' },
+    source:'UKHSA NaTHNaC travel health advice' },
 
-  { id:'type-1-diabetes', title:'Type 1 diabetes', category:'Endocrine & metabolic', icon:'🩸',
+  { id:'type-1-diabetes', title:'Type 1 diabetes', category:'Endocrine & metabolic', icon:'💉',
     overview:'An autoimmune disease causing destruction of pancreatic beta cells and absolute insulin deficiency, usually presenting in children/young adults but possible at any age. It requires lifelong insulin. Recognising new-onset type 1 promptly (to prevent DKA) and supporting lifelong self-management are the core tasks.',
     features:[
       'Classic presentation: polyuria, polydipsia, weight loss, and fatigue, often developing over weeks — typically in a lean child/young adult (but can occur at any age)',
@@ -230,7 +230,7 @@
       'Pregnancy/planning pregnancy → specialist preconception/antenatal diabetes care'],
     source:'NICE NG17 (adults) / NG18 (children) — Type 1 diabetes' },
 
-  { id:'type-2-diabetes', title:'Type 2 diabetes', category:'Endocrine & metabolic', icon:'🩸',
+  { id:'type-2-diabetes', title:'Type 2 diabetes', category:'Endocrine & metabolic', icon:'💉',
     overview:'A common, progressive metabolic disorder of insulin resistance and relative insulin deficiency, strongly linked to obesity and lifestyle. It is often asymptomatic at diagnosis and drives major cardiovascular and microvascular complications. Management is a structured, individualised programme of lifestyle, glucose control, and crucially cardiovascular-risk reduction.',
     features:[
       'Often asymptomatic and detected on screening/testing, or with osmotic symptoms (thirst, polyuria, fatigue), recurrent infections (e.g. thrush), or blurred vision',

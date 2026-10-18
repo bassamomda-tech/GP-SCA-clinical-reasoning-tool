@@ -136,11 +136,11 @@
     ],
     learning: 'CLUSTER HEADACHE \u2014 a trigeminal autonomic cephalalgia \u2014 presents with STRICTLY UNILATERAL, EXCRUCIATING orbital/temporal pain, SHORT-LIVED (typically 15\u2013180 min, often ~45\u201390), occurring once to several times daily with CIRCADIAN/nocturnal timing, accompanied by ipsilateral CRANIAL AUTONOMIC features (red/watering eye, ptosis/lid swelling, nasal congestion/rhinorrhoea, miosis) and marked RESTLESSNESS/agitation, occurring in CLUSTERS over weeks; it is commoner in men and smokers. The key contrast is with MIGRAINE, which is usually LONGER (4\u201372 h), throbbing, with nausea/photophobia, and where the patient prefers to LIE STILL in a dark room \u2014 whereas cluster attacks are short, strictly one-sided with autonomic features, and the patient is AGITATED \u2014 so do not mislabel it as migraine or sinusitis. Critically, the ACUTE treatment is DIFFERENT and high-yield (NICE CG150, 2012, updated June 2025): 100% OXYGEN at a flow rate of at least 12 litres per minute through a non-rebreathing mask with a reservoir bag and/or a fast-acting SUBCUTANEOUS or NASAL TRIPTAN (sumatriptan) abort attacks, while paracetamol, NSAIDs, opioids, ergots and oral triptans should not be offered; home oxygen in a smoker carries a serious fire risk. Consider PREVENTIVE treatment during a bout \u2014 VERAPAMIL (NICE CG150: seek specialist advice first if unfamiliar with it, including ECG monitoring for heart block), with a steroid course or greater occipital nerve block to break a cluster \u2014 started early. Advise on triggers (alcohol during a bout, smoking), screen headache red flags warranting imaging (thunderclap/first-and-worst, focal neurology, new in older age, abnormal exam, raised-ICP/GCA features), discuss neuroimaging for a first bout with a headache GPwSI or neurologist (NICE CG150), and refer to neurology. Given the extreme severity (the "suicide headache"), screen mood and suicidality (NICE NG225) and support the patient \u2014 not another opioid prescription.',
     knowledge: {
-      guideline: '[1] NICE CG150 (headaches in over 12s: diagnosis and management, 2012, updated June 2025) \u00b7 [2] BNF sumatriptan and verapamil monographs \u00b7 [3] NICE NG225 (self-harm: assessment, management and preventing recurrence, 2022) \u00b7 [4] International Classification of Headache Disorders, 3rd edition (International Headache Society, 2018) (international) \u00b7 Cluster headache (trigeminal autonomic cephalalgia) \u00b7 high-flow O2 + sc/nasal triptan \u00b7 verapamil prevention \u00b7 migraine distinction & red flags',
+      guideline: '[1] NICE CG150 (headaches in over 12s: diagnosis and management, 2012, updated June 2025) \u00b7 [2] NICE NG225 (self-harm: assessment, management and preventing recurrence, 2022) \u00b7 [3] International Classification of Headache Disorders, 3rd edition (International Headache Society, 2018) (international) \u00b7 Cluster headache (trigeminal autonomic cephalalgia) \u00b7 high-flow O2 + sc/nasal triptan \u00b7 verapamil prevention \u00b7 migraine distinction & red flags',
       points: [
         {
           h: 'Recognise cluster headache',
-          t: 'Strictly unilateral, excruciating orbital/temporal pain, short (15\u2013180 min, ICHD-3 [4]), circadian/nocturnal, with ipsilateral autonomic features (red/watering eye, ptosis, rhinorrhoea) and restlessness, in clusters. Commoner in men/smokers.'
+          t: 'Strictly unilateral, excruciating orbital/temporal pain, short (15\u2013180 min, ICHD-3 [3]), circadian/nocturnal, with ipsilateral autonomic features (red/watering eye, ptosis, rhinorrhoea) and restlessness, in clusters. Commoner in men/smokers.'
         },
         {
           h: 'Vs migraine',
@@ -148,11 +148,11 @@
         },
         {
           h: 'Acute treatment (different!)',
-          t: 'NICE CG150 [1]: 100% oxygen at \u226512 L/min via a non-rebreathing mask with reservoir bag (home and ambulatory) and/or fast-acting subcutaneous/nasal triptan abort attacks (check triptan cautions, BNF [2]). Do not offer paracetamol, NSAIDs, opioids, ergots or oral triptans.'
+          t: 'NICE CG150 [1]: 100% oxygen at \u226512 L/min via a non-rebreathing mask with reservoir bag (home and ambulatory) and/or fast-acting subcutaneous/nasal triptan abort attacks (check triptan cautions, BNF). Do not offer paracetamol, NSAIDs, opioids, ergots or oral triptans.'
         },
         {
           h: 'Prevention',
-          t: 'NICE CG150 [1]: consider verapamil during a bout, with specialist advice first if unfamiliar, including ECG monitoring for heart block (BNF [2]); specialist advice if it fails. Steroid course/greater occipital nerve block to break a cluster (specialist). Start early.'
+          t: 'NICE CG150 [1]: consider verapamil during a bout, with specialist advice first if unfamiliar, including ECG monitoring for heart block (BNF); specialist advice if it fails. Steroid course/greater occipital nerve block to break a cluster (specialist). Start early.'
         },
         {
           h: 'Triggers & red flags',
@@ -160,7 +160,7 @@
         },
         {
           h: 'Severity & mood',
-          t: 'Cluster headache is extremely severe ("suicide headache") with suicidality risk \u2014 ask directly, no risk scales, safety plan (NICE NG225 [3]). Refer to neurology.'
+          t: 'Cluster headache is extremely severe ("suicide headache") with suicidality risk \u2014 ask directly, no risk scales, safety plan (NICE NG225 [2]). Refer to neurology.'
         },
         {
           h: 'Never do',
@@ -293,11 +293,11 @@
     ],
     learning: 'Distinguish ESSENTIAL TREMOR from PARKINSON\u2019S \u2014 the core skill in a "shaking hands" presentation. Essential tremor is a postural/action/kinetic tremor that is WORSE ON ACTION and posture (reaching, holding, writing \u2014 spidery, eating) and BETTER at rest, typically BILATERAL and fairly SYMMETRICAL, often FAMILIAL, frequently IMPROVED by a small amount of alcohol, sometimes with head ("yes-yes"/"no-no") or voice tremor, and crucially WITHOUT bradykinesia, rigidity or gait disturbance. Parkinson\u2019s tremor, by contrast, is a RESTING "pill-rolling" tremor, typically ASYMMETRIC (one side first), BETTER with action, and accompanied by the parkinsonian features \u2014 BRADYKINESIA (slowness, reduced arm swing, micrographia that decrements), RIGIDITY (cogwheel) and gait/postural changes (shuffling, stooped, festination) \u2014 so the rest-vs-action distinction and the presence/absence of the parkinsonian triad are the discriminators. Consider other tremors: enhanced PHYSIOLOGICAL (anxiety, caffeine, fatigue), HYPERTHYROIDISM (check TFTs), DRUGS (salbutamol, lithium, SSRIs, valproate \u2014 review), excess alcohol/withdrawal, cerebellar INTENTION tremor (worse approaching a target, with cerebellar signs) and dystonic tremor. Examine the tremor at rest, on posture (arms outstretched) and on action (finger-nose, cup, writing/spiral), and assess for bradykinesia, rigidity, gait and cerebellar signs, which underpins the diagnosis and reassurance. Manage essential tremor by reassuring when mild (directly addressing the Parkinson\u2019s fear), and offering PROPRANOLOL (licensed for essential tremor; check for asthma, bradycardia/heart block and heart failure first) or primidone when functionally impairing or socially distressing (BNF; clinical practice rather than a guideline recommendation), while reducing caffeine, reviewing aggravating drugs and treating thyroid abnormality; refer to neurology for diagnostic uncertainty, atypical/asymmetric features, suspected parkinsonism (NICE NG71: quickly and untreated) or cerebellar signs, or refractory tremor. The hidden agenda is fear of Parkinson\u2019s plus embarrassment/functional impact; make the action-vs-rest distinction, reassure appropriately while screening properly, address the impact and offer treatment, and refer if uncertain.',
     knowledge: {
-      guideline: '[1] NICE NG71 (Parkinson\u2019s disease in adults, 2017) \u00b7 [2] BNF propranolol and primidone monographs \u00b7 [3] Consensus statement on the classification of tremors (International Parkinson and Movement Disorder Society, 2018) (international) \u00b7 [4] NICE NG145 (thyroid disease: assessment and management, 2019) \u00b7 [5] NICE HTG474 (unilateral MRI-guided focused ultrasound thalamotomy for treatment-resistant essential tremor; formerly IPG617) \u00b7 Essential tremor vs Parkinson\u2019s \u00b7 action vs rest tremor \u00b7 reversible-cause screen (TFTs/drugs) \u00b7 propranolol/primidone \u00b7 neurology referral',
+      guideline: '[1] NICE NG71 (Parkinson\u2019s disease in adults, 2017) \u00b7 [2] Consensus statement on the classification of tremors (International Parkinson and Movement Disorder Society, 2018) (international) \u00b7 [3] NICE NG145 (thyroid disease: assessment and management, 2019) \u00b7 [4] NICE HTG474 (unilateral MRI-guided focused ultrasound thalamotomy for treatment-resistant essential tremor; formerly IPG617) \u00b7 Essential tremor vs Parkinson\u2019s \u00b7 action vs rest tremor \u00b7 reversible-cause screen (TFTs/drugs) \u00b7 propranolol/primidone \u00b7 neurology referral',
       points: [
         {
           h: 'Essential tremor',
-          t: 'Action/postural, bilateral/symmetrical, worse with action and better at rest, often familial, alcohol-responsive, \u00b1 head/voice tremor, NO bradykinesia/rigidity/gait change (consensus definition [3], international: bilateral upper-limb action tremor for at least 3 years without other neurological signs).'
+          t: 'Action/postural, bilateral/symmetrical, worse with action and better at rest, often familial, alcohol-responsive, \u00b1 head/voice tremor, NO bradykinesia/rigidity/gait change (consensus definition [2], international: bilateral upper-limb action tremor for at least 3 years without other neurological signs).'
         },
         {
           h: 'Parkinson\u2019s tremor',
@@ -305,7 +305,7 @@
         },
         {
           h: 'Other/reversible causes',
-          t: 'Enhanced physiological (anxiety/caffeine/fatigue), hyperthyroidism (TFTs, NICE NG145 [4]), drugs (salbutamol/lithium/SSRIs/valproate/amiodarone/steroids \u2014 review), alcohol, cerebellar intention tremor, dystonic tremor.'
+          t: 'Enhanced physiological (anxiety/caffeine/fatigue), hyperthyroidism (TFTs, NICE NG145 [3]), drugs (salbutamol/lithium/SSRIs/valproate/amiodarone/steroids \u2014 review), alcohol, cerebellar intention tremor, dystonic tremor.'
         },
         {
           h: 'Examine',
@@ -313,11 +313,11 @@
         },
         {
           h: 'Manage essential tremor',
-          t: 'Reassure if mild; propranolol (licensed; check for asthma, bradycardia/heart block, heart failure) or primidone if functionally impairing/distressing \u2014 dose per BNF [2]; clinical practice rather than a guideline recommendation; reduce caffeine, review drugs, treat thyroid.'
+          t: 'Reassure if mild; propranolol (licensed; check for asthma, bradycardia/heart block, heart failure) or primidone if functionally impairing/distressing \u2014 dose per BNF; clinical practice rather than a guideline recommendation; reduce caffeine, review drugs, treat thyroid.'
         },
         {
           h: 'Refer',
-          t: 'Neurology if diagnostic uncertainty, atypical/asymmetric features, suspected parkinsonism, cerebellar signs, or refractory/severe tremor (specialist options: deep brain stimulation; focused ultrasound thalamotomy under special arrangements, NICE HTG474 [5]).'
+          t: 'Neurology if diagnostic uncertainty, atypical/asymmetric features, suspected parkinsonism, cerebellar signs, or refractory/severe tremor (specialist options: deep brain stimulation; focused ultrasound thalamotomy under special arrangements, NICE HTG474 [4]).'
         },
         {
           h: 'Address the fear',
@@ -446,7 +446,7 @@
     ],
     learning: 'ERYTHEMA NODOSUM is a panniculitis presenting as crops of TENDER, warm, erythematous-to-violaceous NODULES on the SHINS (anterior lower legs), usually bilateral, which do NOT ulcerate and resolve like BRUISES over a few weeks, often with low-grade fever, malaise and arthralgia \u2014 a clinical diagnosis. The critical point is that EN is a REACTIVE condition, so the key task is to search for an UNDERLYING CAUSE rather than only treat the legs: streptococcal infection (a recent SORE THROAT is a common trigger), SARCOIDOSIS, INFLAMMATORY BOWEL DISEASE, TUBERCULOSIS, DRUGS (notably oestrogen-containing contraceptives and sulfonamides), PREGNANCY, and TB and other infections, with many cases (about a third) having no cause found; EN with bilateral hilar lymphadenopathy, fever and ankle arthritis is L\u00d6FGREN\u2019S SYNDROME, an acute sarcoidosis that usually settles (BTS 2021). Take a focused history aimed at these causes (recent infection/sore throat; GI symptoms, diarrhoea, blood, weight loss \u2014 IBD; respiratory/eye symptoms \u2014 sarcoid; TB risk/travel/contacts; current drugs, especially the pill; pregnancy), and arrange a sensible work-up after a face-to-face examination: ASO titre (a throat swab only if the throat is still sore), FBC, U&E, LFT, CRP/ESR, and importantly a CHEST X-RAY (for sarcoidosis \u2014 bilateral hilar lymphadenopathy \u2014 and TB), a pregnancy test, and directed tests per history (calcium/ACE if sarcoid suspected, faecal calprotectin/GI work-up for bowel symptoms, TB testing if at risk) \u2014 the chest X-ray being a high-yield, easily-forgotten investigation. Manage the EN itself supportively, as it is usually self-limiting (rest, leg elevation, compression; an NSAID only once pregnancy is excluded and with caution in suspected IBD, BNF), and treat or refer for the underlying cause as found. The hidden agenda is wanting to know "what are they"; reassure about the skin lesions while conducting the underlying-cause screen including a chest X-ray, not only treating the legs.',
     knowledge: {
-      guideline: '[1] BTS Clinical Statement on pulmonary sarcoidosis (British Thoracic Society, 2021) \u00b7 [2] NICE NG33 (tuberculosis, 2016) \u00b7 [3] NICE NG84 (sore throat (acute): antimicrobial prescribing, 2018) \u00b7 [4] NICE NG129 (Crohn\u2019s disease, 2019) and NICE NG130 (ulcerative colitis, 2019) \u00b7 [5] NICE HTG320 (faecal calprotectin testing, 2013; formerly DG11) \u00b7 [6] BNF naproxen and ibuprofen monographs \u00b7 Erythema nodosum (panniculitis) \u00b7 reactive \u2014 underlying-cause screen (strep/sarcoid/IBD/TB/drugs/pregnancy) \u00b7 chest X-ray \u00b7 supportive management',
+      guideline: '[1] BTS Clinical Statement on pulmonary sarcoidosis (British Thoracic Society, 2021) \u00b7 [2] NICE NG33 (tuberculosis, 2016) \u00b7 [3] NICE NG84 (sore throat (acute): antimicrobial prescribing, 2018) \u00b7 [4] NICE NG129 (Crohn\u2019s disease, 2019) and NICE NG130 (ulcerative colitis, 2019) \u00b7 [5] NICE HTG320 (faecal calprotectin testing, 2013; formerly DG11) \u00b7 Erythema nodosum (panniculitis) \u00b7 reactive \u2014 underlying-cause screen (strep/sarcoid/IBD/TB/drugs/pregnancy) \u00b7 chest X-ray \u00b7 supportive management',
       points: [
         {
           h: 'Recognise EN',
@@ -466,7 +466,7 @@
         },
         {
           h: 'Manage supportively',
-          t: 'EN is usually self-limiting: rest, leg elevation, compression; NSAID (naproxen or ibuprofen) only once pregnancy is excluded, with caution in suspected IBD, peptic ulcer or renal disease (BNF [6]). Reassure about bruise-like resolution over about 3\u20136 weeks.'
+          t: 'EN is usually self-limiting: rest, leg elevation, compression; NSAID (naproxen or ibuprofen) only once pregnancy is excluded, with caution in suspected IBD, peptic ulcer or renal disease (BNF). Reassure about bruise-like resolution over about 3\u20136 weeks.'
         },
         {
           h: 'Treat the cause',
@@ -607,7 +607,7 @@
     ],
     learning: 'Faecal incontinence is deeply STIGMATISED and under-reported, often hidden for years and disclosed tentatively (here after booking about something else; NICE CG49 advises asking in higher-risk groups such as women after childbirth), so the first task is COMMUNICATION: respond with genuine empathy and without embarrassment, thank and validate the patient, normalise that it is common and often TREATABLE, and give it the time it deserves. Then ASSESS systematically: characterise it as URGE incontinence (urgency, cannot reach the toilet \u2014 often sphincter/neurological) versus PASSIVE incontinence/soiling (unaware \u2014 internal sphincter dysfunction or OVERFLOW), and assess stool CONSISTENCY (loose stool is harder to control; constipation with overflow soiling is a common, treatable cause), frequency, pad use and psychosocial impact. Screen causes and contributors: OBSTETRIC anal sphincter injury (vaginal deliveries/forceps \u2014 a key cause in women), diarrhoea or constipation with overflow, IBS/IBD, diabetes and neurological disease, rectal prolapse/haemorrhoids, anorectal surgery, medications, and cognitive/mobility/access factors. Critically, EXCLUDE the RED FLAGS that change the pathway: a CHANGE IN BOWEL HABIT, RECTAL BLEEDING or unintentional WEIGHT LOSS (consider colorectal pathology \u2014 NICE NG12: FIT for a change in bowel habit, with suspected cancer pathway referral if FIT is 10 \u00b5g Hb/g faeces or more (NICE HTG690) or a rectal mass is felt; examination including DRE), and NEUROLOGICAL features \u2014 saddle anaesthesia or new bowel/bladder incontinence with back pain/leg weakness (CAUDA EQUINA, a neurosurgical emergency). Examine face to face with consent and a chaperone offered (GMC) \u2014 the abdomen, perianal area and a digital rectal examination (resting/squeeze tone, faecal impaction/overflow, masses), and manage first-line conservatively (NICE CG49: treat constipation/overflow or diarrhoea, optimise stool consistency, loperamide for loose stool if no contraindication, bowel-retraining/scheduled toileting, supervised pelvic floor muscle training (NICE NG210), skin care and continence products), referring to continence services and/or colorectal (sphincter assessment, biofeedback, surgery) as indicated \u2014 and via the cancer pathway if red flags. The hidden agenda is the shame-laden disclosure itself and a belief that nothing can be done; receive it compassionately, assess systematically, exclude red flags, address the psychosocial/mood impact, and give realistic hope. NICE NG12/lower-GI assessment applies where there is a change in bowel habit or rectal bleeding.',
     knowledge: {
-      guideline: '[1] NICE CG49 (faecal incontinence in adults: management, 2007) \u00b7 [2] NICE NG210 (pelvic floor dysfunction: prevention and non-surgical management, 2021) \u00b7 [3] NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) (suspected cancer: recognition and referral) \u00b7 [4] NICE HTG690 (quantitative faecal immunochemical testing to guide colorectal cancer pathway referral in primary care; formerly DG56) \u00b7 [5] GIRFT National suspected cauda equina syndrome pathway (2023) \u00b7 [6] BNF loperamide monograph \u00b7 [7] GMC Intimate examinations and chaperones (2013, updated 2024) \u00b7 sensitive disclosure \u00b7 urge vs passive & overflow \u00b7 red flags (colorectal/cauda equina) \u00b7 conservative management & referral',
+      guideline: '[1] NICE CG49 (faecal incontinence in adults: management, 2007) \u00b7 [2] NICE NG210 (pelvic floor dysfunction: prevention and non-surgical management, 2021) \u00b7 [3] NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) (suspected cancer: recognition and referral) \u00b7 [4] NICE HTG690 (quantitative faecal immunochemical testing to guide colorectal cancer pathway referral in primary care; formerly DG56) \u00b7 [5] GIRFT National suspected cauda equina syndrome pathway (2023) \u00b7 [6] GMC Intimate examinations and chaperones (2013, updated 2024) \u00b7 sensitive disclosure \u00b7 urge vs passive & overflow \u00b7 red flags (colorectal/cauda equina) \u00b7 conservative management & referral',
       points: [
         {
           h: 'Receive the disclosure well',
@@ -627,11 +627,11 @@
         },
         {
           h: 'Examine',
-          t: 'Face to face, with consent and a chaperone offered, discussion recorded (GMC [7]): abdomen, perianal inspection (soiling, prolapse, haemorrhoids, scars, gaping), DRE (resting/squeeze tone, faecal impaction/overflow, masses).'
+          t: 'Face to face, with consent and a chaperone offered, discussion recorded (GMC [6]): abdomen, perianal inspection (soiling, prolapse, haemorrhoids, scars, gaping), DRE (resting/squeeze tone, faecal impaction/overflow, masses).'
         },
         {
           h: 'Conservative management',
-          t: 'NICE CG49 [1]: treat constipation/overflow or diarrhoea; optimise stool consistency (diet/fluids; loperamide if loose and no contraindication, dose per BNF [6]); bowel-retraining/scheduled toileting; supervised pelvic floor muscle training (NICE NG210 [2]); skin care; continence products.'
+          t: 'NICE CG49 [1]: treat constipation/overflow or diarrhoea; optimise stool consistency (diet/fluids; loperamide if loose and no contraindication, dose per BNF); bowel-retraining/scheduled toileting; supervised pelvic floor muscle training (NICE NG210 [2]); skin care; continence products.'
         },
         {
           h: 'Refer',

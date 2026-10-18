@@ -793,7 +793,7 @@
       else if (topAction === 'cancer') {
         const n = byAction.cancer.length;
         lead = `${ICONS.canc} ${n} suspected cancer pathway trigger${n===1?'':'s'} — refer urgently while completing parallel workup.`;
-        sections.push({ title:'Suspected cancer pathway referral (appointment within 2 weeks)', bullets: byAction.cancer.map(r => r.rule.label) });
+        sections.push({ title:'Suspected cancer pathway referral', bullets: byAction.cancer.map(r => r.rule.label) });
         if (byAction.urgent) sections.push({ title:'Same-day / same-week (parallel)', bullets: byAction.urgent.map(r => r.rule.label) });
         if (byAction.review) sections.push({ title:'Drug review (parallel)', bullets: byAction.review.map(r => r.rule.label) });
         if (byAction.treat) sections.push({ title:'Treat (parallel)', bullets: byAction.treat.map(r => r.rule.label) });

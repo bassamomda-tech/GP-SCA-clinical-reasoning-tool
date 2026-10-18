@@ -4,7 +4,7 @@
    Four ORIGINAL GI cases. Each turns on knowing when a gut
    symptom is safely managed in primary care and when it crosses
    a NICE NG12 (or acute-admission) threshold — and saying so.
-   Three carry an explicit NG12 2WW / direct-access pathway; the
+   Three carry an explicit NG12 suspected cancer pathway / direct-access pathway; the
    UC-flare case is acute-admission territory (Truelove & Witts)
    with CRC-surveillance noted honestly, not a forced 2WW.
    Pushes into SCA_CASES + SCA_EXTRAS. Load AFTER sca-cases43.js.

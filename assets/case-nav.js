@@ -8,7 +8,7 @@
   var STEP = {
     1:{e:'📝', l:'History'},
     2:{e:'🚦', l:'Triage'},
-    3:{e:'🩺', l:'Examination'},
+    3:{e:'⚕️', l:'Examination'},
     4:{e:'🧪', l:'Investigations'},
     5:{e:'🎯', l:'Diagnosis'},
     6:{e:'📨', l:'Referral'},

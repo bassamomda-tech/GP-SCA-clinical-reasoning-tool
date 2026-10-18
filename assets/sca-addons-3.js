@@ -31,7 +31,7 @@
    "reason": "Telephone call about “dizzy spells” on standing, made at her daughter’s request."
   },
   "knowledge": {
-   "guideline": "NICE NG249 (2025) · NICE NG136 (updated 2023) · NICE NG5 · NICE NG259 (July 2026; replaced CG146) · BNF",
+   "guideline": "NICE NG249 (2025) · NICE NG136 (updated 2023) · NICE NG5 · NICE NG259 (July 2026; replaced CG146)",
    "summary": "Light-headedness on standing in an 82-year-old on five blood-pressure-lowering drugs is postural hypotension until proven otherwise. The medication review is the treatment, and the hidden falls change the whole plan.",
    "points": [
     {
@@ -1007,7 +1007,7 @@
    "reason": "Video appointment: “requesting sildenafil”."
   },
   "knowledge": {
-   "guideline": "BSSM erectile dysfunction guideline (2017) · NICE NG238 (2023) · NICE NG202 (2021) · NICE NG209 (2021) · BNF (sildenafil) · DVLA Assessing fitness to drive",
+   "guideline": "BSSM erectile dysfunction guideline (2017) · NICE NG238 (2023) · NICE NG202 (2021) · NICE NG209 (2021) · DVLA Assessing fitness to drive",
    "summary": "Gradual erectile dysfunction in a 49-year-old smoker with a family history of early heart attack is a cardiovascular warning. Treat the symptom and use the visit to find and reduce his vascular risk.",
    "points": [
     {
@@ -1540,7 +1540,7 @@
    "reason": "Telephone call from mother: “temperature for two days, not himself, now some spots”."
   },
   "knowledge": {
-   "guideline": "NICE NG143 (2019) · NICE NG240 (2024) · NICE NG254 (2025) · BNFC (benzylpenicillin)",
+   "guideline": "NICE NG143 (2019) · NICE NG240 (2024) · NICE NG254 (2025)",
    "summary": "A febrile child who is flat, drinking less and has a rash that does not fade under a glass has meningococcal sepsis until proven otherwise. The action is 999, now.",
    "points": [
     {
@@ -4848,7 +4848,7 @@
    "reason": "Telephone appointment: “the HRT’s made me bleed — I want to stop it”."
   },
   "knowledge": {
-   "guideline": "NICE NG23 (updated April 2026) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BMS/RCOG/BGCS/BSGE/FSRH/RCGP joint guideline on unscheduled bleeding on HRT (2024) · MHRA Drug Safety Update (August 2019) · NICE NG209",
+   "guideline": "NICE NG23 (updated April 2026) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BMS/RCOG/BGCS/BSGE/CoSRH/RCGP joint guideline on unscheduled bleeding on HRT (2024) · MHRA Drug Safety Update (August 2019) · NICE NG209",
    "summary": "Bleeding on continuous combined HRT beyond the first 6 months, or new, prolonged or heavier bleeding, needs assessment. Stopping the HRT does not replace that assessment.",
    "points": [
     {
@@ -5246,9 +5246,9 @@
    },
    {
     "ic": "💠",
-    "t": "HRT prescribing",
+    "t": "Menopause and HRT",
     "s": "Regimens · risks · NICE NG23",
-    "href": "management/hrt-prescribing.html"
+    "href": "management/menopause.html"
    },
    {
     "ic": "📋",
@@ -9185,7 +9185,7 @@
    "reason": "Father has booked a telephone call: wheezy again with a cold, and asking whether Reuben has asthma and needs a preventer."
   },
   "knowledge": {
-   "guideline": "NICE NG245 (2024, joint with BTS and SIGN) · BTS/SIGN 158 (2019) acute asthma · NICE NG209 · BNFC",
+   "guideline": "NICE NG245 (2024, joint with BTS and SIGN) · BTS/SIGN 158 (2019) acute asthma · NICE NG209",
    "summary": "Wheeze only with colds and no symptoms in between, at age 2, fits episodic viral wheeze. Asthma cannot be confirmed by objective tests under 5, and a regular preventer is not the automatic answer. Technique, a written plan and a smoke-free home are the key interventions.",
    "points": [
     {

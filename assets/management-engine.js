@@ -302,6 +302,83 @@
     ['monitor','Monitoring'],['follow','Follow-up'],['safety','Safety-net'],['refer','Refer']
   ];
 
+  /* CLINIC GUIDE — a "Clinic Guide" tab beside Steps / Snapshot when a 2-page printable
+     Clinic Guide exists for this protocol. The guide list is assets/clinic-guides.json
+     (written by governance/import_clinic_guides.py), matched on this page's path, so a
+     guide added or removed there needs no change to any protocol page. The guide shows in
+     a frame (its own top bar hidden) with "Print 2 pages"; its access check runs inside it.
+     Never on print twins (-print.html / omelette-print-source), so print and PDF are unchanged. */
+  function mgClinicGuide(root){
+    if(!root || root.querySelector('.mg-cg')) return;
+    if(document.querySelector('meta[name="omelette-print-source"]') || /-print\.html$/i.test(location.pathname)) return;
+    var pm = location.pathname.match(/\/tools\/management\/([a-z0-9-]+)\.html$/i);
+    if(!pm || !window.fetch) return;
+    var page = 'tools/management/' + pm[1].toLowerCase() + '.html';
+    var me = document.querySelector('script[src*="management-engine.js"]');
+    var mm = me && (me.getAttribute('src') || '').match(/^(.*?)assets\/management-engine\.js/);
+    var pre = mm ? mm[1] : '../../';
+    fetch(pre + 'assets/clinic-guides.json', { cache: 'no-cache' }).then(function(r){ return r.ok ? r.json() : null; }).then(function(j){
+      var g = j && (j.guides || []).filter(function(x){ return x && x.protocol === page && x.slug; })[0];
+      if(!g || root.querySelector('.mg-cg')) return;
+      var href = pre + 'tools/clinic-guides/' + g.slug + '.html', hub = pre + 'tools/clinic-guides.html';
+      if(!document.getElementById('mgCgCss')){
+        var css = document.createElement('style'); css.id = 'mgCgCss';
+        css.textContent = '.mg-viewtabs{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0 16px}'+
+          '.mg-viewtabs button{font:inherit;font-size:14px;font-weight:700;padding:9px 16px;border-radius:999px;border:1px solid #d9d2c3;background:#fff;color:#15202b;cursor:pointer}'+
+          '.mg-viewtabs button[aria-selected="true"]{background:#0c4a47;border-color:#0c4a47;color:#fff}'+
+          '.mg-viewtabs .mg-cg-tag{font-size:10.5px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-left:6px;padding:2px 7px;border-radius:99px;background:#e3efed;color:#0c4a47;vertical-align:1px}'+
+          '.mg-viewtabs button[aria-selected="true"] .mg-cg-tag{background:rgba(255,255,255,.18);color:#fff}'+
+          '.mg-cg-bar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between;font-size:13px;color:#5d6673;margin-bottom:8px}'+
+          '.mg-cg-bar b{color:#15202b}'+
+          '.mg-cg-bar .mg-cg-act{display:flex;gap:8px;flex-wrap:wrap}'+
+          '.mg-cg .mg-cg-bar button,.mg-cg .mg-cg-bar a{font:inherit;font-size:13px;font-weight:700;padding:7px 13px;border-radius:8px;border:1px solid #0c4a47;background:#0c4a47;color:#fff;cursor:pointer;text-decoration:none}'+
+          '.mg-cg .mg-cg-bar a,.mg-cg .mg-cg-bar a:visited{background:#fff;color:#0c4a47}'+
+          '.mg-cg iframe{display:block;width:100%;border:0;min-height:1150px;background:transparent}'+
+          '@media print{.mg-viewtabs,.mg-cg{display:none!important}}';
+        document.head.appendChild(css);
+      }
+      var stem = root.querySelector('.mg-stem');
+      var tabs = root.querySelector('.mg-viewtabs'), own = !tabs;
+      if(own){
+        tabs = el('<div class="mg-viewtabs" role="tablist" aria-label="View"><button type="button" role="tab" data-v="full" aria-selected="true">Steps</button></div>');
+        if(stem && stem.nextSibling) root.insertBefore(tabs, stem.nextSibling); else root.insertBefore(tabs, root.firstChild);
+      }
+      var tab = el('<button type="button" role="tab" data-v="cg" aria-selected="false" title="2-page printable desk guide">Clinic Guide<span class="mg-cg-tag">2-page print</span></button>');
+      tabs.appendChild(tab);
+      var view = el('<div class="mg-cg" hidden><div class="mg-cg-bar"><span><b>Clinic Guide.</b> Page 1 diagnose and start, page 2 review and titrate, on two A4 sheets for the desk. The full protocol holds the detail and evidence.</span>'+
+        '<span class="mg-cg-act"><button type="button" class="mg-cg-print">Print 2 pages</button> <a href="'+href+'" target="_blank" rel="noopener">Open full screen ↗</a> <a href="'+hub+'">All Clinic Guides</a></span></div>'+
+        '<iframe title="Clinic Guide"></iframe></div>');
+      var snapView = root.querySelector('.mg-snap');
+      root.insertBefore(view, (snapView || tabs).nextSibling);
+      var frame = view.querySelector('iframe');
+      function fit(){ try{ frame.style.height = frame.contentDocument.documentElement.scrollHeight + 'px'; }catch(e){} }
+      frame.addEventListener('load', function(){ fit(); try{ new ResizeObserver(fit).observe(frame.contentDocument.body); }catch(e){} });
+      function load(){ if(!frame.getAttribute('src')) frame.setAttribute('src', href); }
+      view.querySelector('.mg-cg-print').addEventListener('click', function(){
+        load();
+        function go(){ try{ frame.contentWindow.focus(); frame.contentWindow.print(); }catch(e){ window.open(href + '#print', '_blank'); } }
+        try{ if(frame.contentDocument && frame.contentDocument.readyState === 'complete' && frame.contentDocument.querySelector('.page')) return go(); }catch(e){}
+        frame.addEventListener('load', function once(){ frame.removeEventListener('load', once); setTimeout(go, 150); });
+      });
+      function show(on){
+        Array.prototype.slice.call(root.children).forEach(function(k){
+          if(k === stem || k === tabs || k === view) return;
+          if(on) k.style.display = 'none'; else if(own) k.style.display = '';
+        });
+        view.hidden = !on;
+        if(on) load();
+      }
+      // registered after the Snapshot tab's own handler, so it has the last word for its tab
+      tabs.addEventListener('click', function(e){
+        var b = e.target.closest('button[data-v]'); if(!b) return;
+        var v = b.getAttribute('data-v');
+        show(v === 'cg');
+        tabs.querySelectorAll('button[data-v]').forEach(function(x){ x.setAttribute('aria-selected', String(x.getAttribute('data-v') === v)); });
+      });
+      if(/^#clinic-guide$/i.test(location.hash)) tab.click();
+    }).catch(function(){});
+  }
+
   function render(data){
     if(window.MG) window.MG._data = data;
     var root = document.getElementById('mgRoot');
@@ -320,7 +397,7 @@
         '@media print{.mg-stem .mg-stem-name{font-size:16px;margin:0 0 1px;color:#fff}.mg-stem .mg-stem-name+b{font-size:10px!important}}';
       document.head.appendChild(ncss);
     }
-    html += '<div class="mg-stem"><div class="mg-stem-ic">'+(data.icon||'🩺')+'</div><div>'+
+    html += '<div class="mg-stem"><div class="mg-stem-ic">'+(data.icon||'⚕️')+'</div><div>'+
             '<span class="mg-stem-eyebrow">'+(data.eyebrow||'Protocol · Already diagnosed')+'</span>'+
             (mgName ? '<h1 class="mg-stem-name">'+mgName+'</h1>' : '')+
             '<b class="mg-stem-title">'+data.stemTitle+'</b>'+
@@ -439,6 +516,10 @@
       root.insertBefore(snap, tabs.nextSibling);
       if(/^#snapshot$/i.test(location.hash)) setView('snap');
     }
+
+    // CLINIC GUIDE TAB — when a 2-page Clinic Guide exists for this page (looked up by the
+    // page's path in assets/clinic-guides.json), add it beside Steps / Snapshot. Not on print copies.
+    try{ mgClinicGuide(root); }catch(e){}
 
 
     // TABLE FIT PASS — every table in the rendered page gets a colgroup of

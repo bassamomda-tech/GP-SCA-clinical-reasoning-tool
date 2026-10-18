@@ -37,12 +37,12 @@ MedChooser.register('endometriosis', {
       name:'Combined hormonal contraception',
       examples:'Pill, patch or ring — continuous or tailored regimen',
       step:'Hormonal — first-line option (NG73)',
-      source:'NICE NG73 · FSRH · SPC',
+      source:'NICE NG73 · CoSRH · SPC',
       sourceUrl:'https://www.nice.org.uk/guidance/ng73',
       sideEffects:'VTE, BP rise, breakthrough bleeding',
       monitor:'UKMEC review; BP',
       counsel:'"Taking the pill back-to-back without breaks reduces the number of periods and the pain."',
-      detail:{ 'Key teaching':'Extended or continuous use is off-label for some products but supported by FSRH.' },
+      detail:{ 'Key teaching':'Extended or continuous use is off-label for some products but supported by CoSRH.' },
       conditions: [
         {"kind":"avoid","label":"Migraine with aura","text":"UKMEC 4"},
         {"kind":"caution","label":"BMI ≥35 / smoker 35+","text":"UKMEC 3"}

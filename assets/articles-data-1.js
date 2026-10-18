@@ -81,7 +81,7 @@
       'Progressive or severe neurological deficit → urgent',
       'Radiculopathy persisting/disabling beyond ~6 weeks despite conservative care → spinal/MSK service',
       'Red flags for malignancy/infection (systemic upset, night pain, immunosuppression, IVDU) → urgent investigation'],
-    source:'Clinical practice summary (no NICE guideline on neck pain); neuropathic analgesia per NICE CG173 / BNF' },
+    source:'Clinical practice summary (no NICE guideline on neck pain); neuropathic analgesia per NICE CG173' },
 
   { id:'me-cfs', title:'Chronic fatigue syndrome (ME/CFS)', category:'Neurology', icon:'🛌',
     overview:'A chronic, disabling, multi-system condition defined by debilitating fatigue, post-exertional malaise, unrefreshing sleep and cognitive dysfunction, persisting ≥3 months and not explained by another condition. NG206 (2021) reframed management — graded exercise therapy as a fixed cure is no longer recommended.',
@@ -424,7 +424,7 @@
       'Lithium level ≥1.5 mmol/L or features of toxicity → withhold dose and arrange emergency assessment',
       'Pregnancy or pregnancy planning on a mood stabiliser → perinatal mental-health service',
       'Rising creatinine, thyroid or calcium abnormality → discuss with mental-health team ± relevant specialty'],
-    source:'NICE CG185 (Bipolar disorder) / BNF (lithium monitoring)' },
+    source:'NICE CG185 (Bipolar disorder)' },
 
   { id:'diabetic-foot', title:'Diabetic foot disease', category:'Endocrine & metabolic', icon:'🦶',
     overview:'Foot complications of diabetes arising from peripheral neuropathy and/or peripheral arterial disease, leading to ulceration, infection, Charcot arthropathy and amputation. It is a leading cause of lower-limb amputation, and most amputations are preventable with structured risk assessment and rapid referral.',

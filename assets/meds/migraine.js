@@ -157,14 +157,14 @@ MedChooser.register('migraine', {
     {
       id:'menstrual_prophylaxis',
       name:'Perimenstrual triptan / NSAID (menstrual migraine)',
-      examples:'Frovatriptan 2.5 mg BD or naproxen around menstruation',
+      examples:'Frovatriptan 2.5 mg BD or zolmitriptan 2.5 mg BD/TDS on expected days',
       step:'Prophylaxis — targeted (menstrual)',
       source:'NICE CG150',
       sideEffects:'As for triptan/NSAID',
       monitor:'Use only around the predictable window',
       counsel:'"If your migraines cluster around your period, we can use a short preventive course just for those few days each month rather than a daily tablet."',
       detail:{
-        'Dose':'Frovatriptan 2.5 mg BD (or zolmitriptan) from 2 days before until 3 days after onset of menstruation; or naproxen perimenstrually.',
+        'Dose':'NICE CG150: frovatriptan 2.5 mg BD or zolmitriptan 2.5 mg BD or TDS on the days migraine is expected. Naratriptan 1 mg BD or perimenstrual naproxen are BASH options.',
         'Key teaching':'Mini-prophylaxis for predictable, pure menstrual migraine. Standard daily prophylaxis remains the option if attacks are not confined to menstruation.'
       },
       conditions: [

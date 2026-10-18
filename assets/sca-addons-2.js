@@ -25,7 +25,7 @@
    "reason": "Telephone call to discuss the ECG result."
   },
   "knowledge": {
-   "guideline": "NICE NG196 (atrial fibrillation) · BNF (direct-acting oral anticoagulants) · DVLA Assessing fitness to drive",
+   "guideline": "NICE NG196 (atrial fibrillation) · DVLA Assessing fitness to drive",
    "summary": "Asymptomatic AF found by a wearable and confirmed on ECG is a stroke-prevention decision. Her CHA₂DS₂-VASc is 3, so anticoagulation with a DOAC should be offered; aspirin is not an alternative.",
    "points": [
     {
@@ -7881,7 +7881,7 @@
    "reason": "Video appointment to discuss thyroid results."
   },
   "knowledge": {
-   "guideline": "NICE NG145 (thyroid disease) · BNF · MHRA Drug Safety Update (February 2019, carbimazole) · NICE NG196 (atrial fibrillation) · NICE NG69 (eating disorders)",
+   "guideline": "NICE NG145 (thyroid disease) · MHRA Drug Safety Update (February 2019, carbimazole) · NICE NG196 (atrial fibrillation) · NICE NG69 (eating disorders)",
    "summary": "Overt hyperthyroidism from Graves’ disease. The weight loss is part of the illness, not a bonus. Control symptoms, check the rhythm, arrange specialist treatment, and give the carbimazole safety rules.",
    "points": [
     {
@@ -8357,7 +8357,7 @@
    "reason": "Video appointment to discuss blood results."
   },
   "knowledge": {
-   "guideline": "NICE NG145 (thyroid disease) · RCOG Green-top Guideline: thyroid disorders in pregnancy (2025) · NICE NG247 (maternal and child nutrition) · NICE NG257 (fertility problems) · BNF",
+   "guideline": "NICE NG145 (thyroid disease) · RCOG Green-top Guideline: thyroid disorders in pregnancy (2025) · NICE NG247 (maternal and child nutrition) · NICE NG257 (fertility problems)",
    "summary": "Overt autoimmune hypothyroidism in a fit 31-year-old: start full weight-based levothyroxine. The consultation is really about 14 months of trying to conceive, so plan for pregnancy from day one.",
    "points": [
     {
@@ -9746,9 +9746,9 @@
    },
    {
     "ic": "💠",
-    "t": "HRT prescribing",
+    "t": "Menopause and HRT",
     "s": "Perimenopause · NICE NG23",
-    "href": "management/hrt-prescribing.html"
+    "href": "management/menopause.html"
    },
    {
     "ic": "💠",

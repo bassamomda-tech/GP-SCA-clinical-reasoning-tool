@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 32: V (remainder), W, Y, Z topics)
    NHS A–Z gaps. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Suspected Ménière’s disease, or recurrent/uncertain vertigo → ENT/audiovestibular',
       'Refractory BPPV or persistent vestibular symptoms → ENT/vestibular rehabilitation',
       'Unilateral hearing loss/tinnitus with vertigo → ENT + MRI (exclude acoustic neuroma)'],
-    source:'NICE NG12 (updated April 2026)8 (Stroke and TIA in over 16s) / BNF (prochlorperazine) / DVLA vestibular rules' },
+    source:'NICE NG12 (updated April 2026)8 (Stroke and TIA in over 16s) / DVLA vestibular rules' },
 
   { id:'vitiligo', title:'Vitiligo', category:'Dermatology', icon:'⚪',
     overview:'An autoimmune condition causing loss of melanocytes and well-defined depigmented (white) skin patches. It is harmless physically but can have a major psychological impact, especially in darker skin. It is associated with other autoimmune conditions (notably thyroid disease), so screening and holistic support matter.',
@@ -55,7 +55,7 @@
       'Diagnostic uncertainty → dermatology'],
     source:'BAD guideline for the management of vitiligo (2022)' },
 
-  { id:'vomiting-blood', title:'Vomiting blood (haematemesis)', category:'Gastroenterology', icon:'🩸',
+  { id:'vomiting-blood', title:'Vomiting blood (haematemesis)', category:'Gastroenterology', icon:'💉',
     overview:'Vomiting blood indicates upper-gastrointestinal bleeding (proximal to the duodenojejunal junction). It ranges from minor to life-threatening haemorrhage and is a medical emergency requiring rapid assessment, resuscitation and urgent endoscopy. The priorities are recognising the severity and arranging immediate admission.',
     features:[
       'Frank red blood, or "coffee-ground" vomit (altered blood); often accompanied by melaena (black, tarry stools)',
@@ -153,7 +153,7 @@
       'Extensive, resistant, or facial/genital warts → dermatology (genital warts → GUM)',
       'Immunocompromised patients with widespread/resistant warts → dermatology',
       'Diagnostic uncertainty → dermatology'],
-    source:'BAD guidelines for the management of cutaneous warts (2014) / BNF (salicylic acid)' },
+    source:'BAD guidelines for the management of cutaneous warts (2014)' },
 
   { id:'wernickes', title:'Wernicke’s encephalopathy', category:'Neurology', icon:'🧠',
     overview:'An acute, life-threatening neurological emergency caused by thiamine (vitamin B1) deficiency, most often in alcohol dependence but also in other causes of malnutrition. It is reversible if treated immediately with thiamine — but if missed, it progresses to irreversible Korsakoff’s syndrome (permanent amnesia). Treat on suspicion; never wait for confirmation.',
@@ -352,7 +352,7 @@
       'Complex medical comorbidity (e.g. VTE history, cardiac disease) → specialist contraception (CoSRH/SRH) clinic',
       'Requested sterilisation or complex IUD insertion (e.g. perforation risk, failed fitting) → SRH/gynaecology',
       'No cancer pathway link (NICE NG12 (updated April 2026)) for this topic'],
-    source:'CoSRH UKMEC 2025 (Dec 2025) / FSRH Contraception After Pregnancy / NICE CG30 (Long-acting reversible contraception)' }
+    source:'CoSRH UKMEC 2025 (Dec 2025) / CoSRH Contraception After Pregnancy / NICE CG30 (Long-acting reversible contraception)' }
 
   );
 })();

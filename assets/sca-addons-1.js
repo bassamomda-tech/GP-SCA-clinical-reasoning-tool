@@ -5316,7 +5316,7 @@
     },
     {
      "dom": "ro",
-     "fail": "Using jargon on the phone — “your qFIT is positive, I’m doing a suspected cancer referral (2WW) for a scope”.",
+     "fail": "Using jargon on the phone — “your qFIT is positive, I’m doing a suspected cancer referral for a scope”.",
      "why": "Unexplained terms leave him unsure what is happening and why; on the phone there are no visual cues to show confusion.",
      "fix": "Plain language: “a test for hidden blood”, “an urgent referral to the bowel specialists”, “a camera test with sedation”."
     },
@@ -6745,9 +6745,9 @@
    },
    {
     "ic": "💠",
-    "t": "Menopause and HRT prescribing",
+    "t": "Menopause and HRT",
     "s": "Protocol · NICE NG23",
-    "href": "management/hrt-prescribing.html"
+    "href": "management/menopause.html"
    },
    {
     "ic": "📋",
@@ -7794,7 +7794,7 @@
    "reason": "Telephone call from his wife Brenda: “The pain’s got on top of him.”"
   },
   "knowledge": {
-   "guideline": "NICE CG140 — Palliative care for adults: strong opioids · NICE NG234 — Spinal metastases and MSCC · BNF prescribing in palliative care",
+   "guideline": "NICE CG140 — Palliative care for adults: strong opioids · NICE NG234 — Spinal metastases and MSCC",
    "summary": "New severe weight-bearing pain in a femur with metastases is a pathological fracture until imaged. His breakthrough dose is below the BNF range for his background morphine, and frequent PRN use means the regular dose needs review.",
    "points": [
     {
@@ -9275,7 +9275,7 @@
    "reason": "Video consultation (set up by her daughter) to request her zopiclone repeat."
   },
   "knowledge": {
-   "guideline": "NICE TA77 (2004) — hypnotics for insomnia · NICE NG249 (2025) — falls · BNF zopiclone · NICE HTG624 (Sleepio, formerly MTG70)",
+   "guideline": "NICE TA77 (2004) — hypnotics for insomnia · NICE NG249 (2025) — falls · NICE HTG624 (Sleepio, formerly MTG70)",
    "summary": "Twelve years of nightly zopiclone means tolerance and dependence, not insomnia needing a stronger drug. After a night-time fall, the hypnotic is part of the falls review: taper it slowly by agreement, never stop it abruptly, never escalate to temazepam, and replace it with CBT-I principles.",
    "points": [
     {

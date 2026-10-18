@@ -284,3 +284,48 @@
     document.head.appendChild(s);
   }
 })();
+
+/* ── Clinic Guide entry point (pathway pages). When a 2-page printable Clinic Guide
+   exists for this pathway — looked up by the page's path in assets/clinic-guides.json,
+   written by governance/import_clinic_guides.py — a "Clinic Guide" button joins the
+   Steps / Snapshot toggle (or sits under the title on a page without one). It opens
+   the guide, whose own bar has "Print (2 pages)". Pathway pages are static HTML, so
+   adding or removing a guide needs no change to them. Not on print copies. ── */
+(function(){
+  if (window.__rgpCgEntry) return; window.__rgpCgEntry = true;
+  var m = location.pathname.match(/\/tools\/algorithms\/([a-z0-9-]+)\.html$/i);
+  if (!m || /-print$/i.test(m[1]) || !window.fetch) return;
+  if (document.querySelector('meta[name="omelette-print-source"]')) return;
+  var page = 'tools/algorithms/' + m[1].toLowerCase() + '.html';
+  var me = document.querySelector('script[src*="alg-nav.js"]');
+  var mm = me && (me.getAttribute('src') || '').match(/^(.*?)assets\/alg-nav\.js/);
+  var pre = mm ? mm[1] : '../../';
+  function ready(fn){ if (document.readyState !== 'loading') fn(); else document.addEventListener('DOMContentLoaded', fn); }
+  fetch(pre + 'assets/clinic-guides.json', { cache: 'no-cache' }).then(function(r){ return r.ok ? r.json() : null; }).then(function(j){
+    var g = j && (j.guides || []).filter(function(x){ return x && x.protocol === page && x.slug; })[0];
+    if (!g) return;
+    ready(function(){
+      if (document.querySelector('.cg-entry')) return;
+      var css = document.createElement('style'); css.id = 'cgEntryCss';
+      css.textContent = 'a.cg-entry{display:inline-flex;align-items:center;gap:6px;font-family:inherit;font-size:.78rem;font-weight:700;line-height:1.2;color:#0c4a47;background:#e3efed;border:1px solid #99c4bf;border-radius:6px;padding:4px 11px;text-decoration:none;white-space:nowrap;cursor:pointer}'
+        + 'a.cg-entry:hover{background:#0c4a47;border-color:#0c4a47;color:#fff}'
+        + 'a.cg-entry .cg-entry-tag{font-size:.62rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;opacity:.8}'
+        + '.view-toggle a.cg-entry{margin-left:2px}'
+        + '.cg-entry-row{margin:0 0 14px}'
+        + '@media (max-width:480px){a.cg-entry .cg-entry-tag{display:none}}'
+        + '@media print{a.cg-entry,.cg-entry-row{display:none!important}}';
+      document.head.appendChild(css);
+      var a = document.createElement('a');
+      a.className = 'cg-entry';
+      a.href = pre + 'tools/clinic-guides/' + g.slug + '.html';
+      a.title = 'Clinic Guide: ' + (g.title || '') + ' (2-page printable desk guide)';
+      a.innerHTML = 'Clinic Guide <span class="cg-entry-tag">2-page print</span>';
+      var tg = document.querySelector('.view-toggle');
+      if (tg) { tg.appendChild(a); return; }
+      var host = document.querySelector('.alg-progress') || document.querySelector('.stem-banner');
+      if (!host) return;
+      var row = document.createElement('div'); row.className = 'cg-entry-row'; row.appendChild(a);
+      host.parentNode.insertBefore(row, host.nextSibling);
+    });
+  }).catch(function(){});
+})();

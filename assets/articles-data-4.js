@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 4)
    Additional A-list topics. Each: {id,title,category,icon,overview,features[],management[],referral[],source}
-   Authored to RCGP/SCA examiner depth. NICE NG12 (updated April 2026) 2WW pathways stated explicitly where the
+   Authored to RCGP/SCA examiner depth. NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where the
    presentation maps to a suspected-cancer criterion. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
@@ -130,7 +130,7 @@
       'Comorbidity management (colonoscopy, OSA studies, cardiac assessment) as indicated'],
     source:'Society for Endocrinology guidance' },
 
-  { id:'all', title:'Acute lymphoblastic leukaemia (ALL)', category:'Haematology', icon:'🩸',
+  { id:'all', title:'Acute lymphoblastic leukaemia (ALL)', category:'Haematology', icon:'💉',
     overview:'A malignancy of immature lymphoid precursors with rapid marrow infiltration and failure. It is the commonest childhood cancer (peak 2–5 years) but also occurs in adults. Presentation reflects marrow failure (anaemia, infection, bleeding) plus infiltration; it is a haematological emergency requiring same-day action.',
     features:[
       'Marrow failure: pallor/fatigue (anaemia), recurrent or severe infections (neutropenia), and bruising, petechiae or bleeding (thrombocytopenia)',
@@ -155,7 +155,7 @@
       'Febrile/unwell patient on chemotherapy → emergency admission for neutropenic sepsis'],
     source:'NICE NG12 (updated April 2026) / BSH leukaemia guidance' },
 
-  { id:'aml', title:'Acute myeloid leukaemia (AML)', category:'Haematology', icon:'🩸',
+  { id:'aml', title:'Acute myeloid leukaemia (AML)', category:'Haematology', icon:'💉',
     overview:'A malignant clonal proliferation of immature myeloid cells causing rapid marrow failure. It is the commonest acute leukaemia of adults, with incidence rising sharply with age. As with ALL, presentation is dominated by anaemia, infection and bleeding, and it demands very urgent assessment.',
     features:[
       'Marrow failure features: fatigue/pallor (anaemia), infections (neutropenia), and bruising/bleeding, gum bleeding or petechiae (thrombocytopenia)',
@@ -356,7 +356,7 @@
       'Family/genetic implications → clinical genetics'],
     source:'Specialist DSD MDT guidance / Society for Endocrinology' },
 
-  { id:'aps', title:'Antiphospholipid syndrome (APS)', category:'Haematology', icon:'🩸',
+  { id:'aps', title:'Antiphospholipid syndrome (APS)', category:'Haematology', icon:'💉',
     overview:'An acquired autoimmune thrombophilia defined by vascular thrombosis and/or pregnancy morbidity together with persistent antiphospholipid antibodies. It may be primary or secondary to SLE. Recognition matters because appropriate anticoagulation and pregnancy management dramatically reduce recurrence.',
     features:[
       'Venous thrombosis (often DVT/PE) and/or arterial thrombosis (stroke/TIA at a young age) — recurrent or unprovoked events should prompt suspicion',

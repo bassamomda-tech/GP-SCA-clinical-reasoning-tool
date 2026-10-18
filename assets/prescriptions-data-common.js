@@ -118,7 +118,7 @@ Safety-net/FIT first (NICE NG12 (updated April 2026); NICE HTG690): new change i
     followUp: 'No routine review; repeat dose at 2 weeks. Persistent → recheck adherence/hygiene; consider re-treatment.',
     redFlags: ['Atypical/persistent symptoms → reconsider diagnosis.'],
     emisText: `Threadworm:
-- Mebendazole 100 mg PO stat (≥6 months; off-label <2 years), REPEAT after 2 weeks (Greater Manchester pathway) — treat WHOLE household same day.
+- Mebendazole 100 mg PO stat (≥6 months; off-label <2 years), REPEAT after 2 weeks (local pathway) — treat WHOLE household same day.
 - Pregnancy/<6 months: hygiene measures alone × 6 weeks.
 - Hygiene (2 wks): handwashing/short nails, morning shower, wash linen/nightwear, no scratching.`,
     sources: [

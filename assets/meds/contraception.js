@@ -44,12 +44,12 @@ MedChooser.register('contraception', {
     {
       id:'implant',
       name:'Etonogestrel implant',
-      examples:'Subdermal implant — 3 years',
+      examples:'Subdermal implant — 5 years (UK licence May 2026)',
       step:'LARC · most effective',
       source:'CoSRH · UKMEC 2025',
       sideEffects:'Unpredictable bleeding (main reason for removal); no VTE risk',
       monitor:'Palpable; reduced efficacy with enzyme inducers',
-      counsel:'"The most effective method there is — a tiny rod in the arm for three years. The main downside is unpredictable bleeding."',
+      counsel:'"The most effective method there is — a tiny rod in the arm for five years. The main downside is unpredictable bleeding."',
       detail:{ 'Key teaching':'Lowest failure rate of all methods. Progestogen-only — safe with oestrogen contraindications. Efficacy reduced by enzyme inducers.' },
       conditions: [
         {"kind":"avoid","label":"Current / past breast cancer","text":"Breast cancer — hormonal method UKMEC 4"},

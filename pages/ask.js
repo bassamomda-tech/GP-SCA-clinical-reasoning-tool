@@ -97,10 +97,10 @@
   const TOOLS = [
     { test:/\b(dose|doses|prescrib|prescription|regimen|mg |course|how much|titrat|stat|treat|treatment|replac|supplement|deficien|deplet|manage|management)\b/, ic:'📝', label:'Ready Prescriptions', href:'../tools/prescriptions.html' },
     { test:/\b(which drug|what drug|choose|choice of|first[- ]?line|second[- ]?line|switch to|add[- ]?on)\b/, ic:'💊', label:'Medication Chooser', href:'../tools/medication-chooser.html' },
-    { test:/\b(differential|present(s|ing)? with|work ?up|undifferentiated|triage|could it be|rule out)\b/, ic:'🩺', label:'Diagnostic Tool', href:'../tools/diagnostic.html' },
+    { test:/\b(differential|present(s|ing)? with|work ?up|undifferentiated|triage|could it be|rule out)\b/, ic:'⚕️', label:'Diagnostic Tool', href:'../tools/diagnostic.html' },
     { test:/\b(blood test|result|ferritin|hba1c|tft|lft|u&e|fbc|sodium|potassium|egfr|abnormal)\b/, ic:'🧪', label:'Lab Results Actioning', href:'../tools/lab-results.html' },
     { test:/\b(score|calculat|chads|qrisk|phq|gad|news2|frax|risk of)\b/, ic:'🧮', label:'Medical Calculators', href:'../tools/calculators.html' },
-    { test:/\b(examin|auscultat|palpat|technique|inspection)\b/, ic:'🩻', label:'Examinations', href:'../tools/examinations.html' },
+    { test:/\b(examin|auscultat|palpat|technique|inspection)\b/, ic:'🔬', label:'Examinations', href:'../tools/examinations.html' },
     { test:/\b(sca|examiner|station|marked|marking|scorecard|relating to others|data gathering|consultation skill)\b/, ic:'🎓', label:'The Hot Seat (SCA)', href:'../tools/sca-practice.html' },
     { test:/\b(pathway|flow ?chart|algorithm|decision tree)\b/, ic:'🗺️', label:'Pathways', href:'../tools/algorithms.html' },
     { test:/\b(leaflet|patient information|self[- ]?care advice|charity)\b/, ic:'📄', label:'Patient Leaflets', href:'../tools/leaflets.html' },
@@ -282,7 +282,7 @@
   function addUser(text){
     const el = document.createElement('div');
     el.className = 'msg user';
-    el.innerHTML = `<div class="msg-av">🩺</div><div class="msg-bubble">${esc(text)}</div>`;
+    el.innerHTML = `<div class="msg-av">⚕️</div><div class="msg-bubble">${esc(text)}</div>`;
     thread.appendChild(el);
     el.scrollIntoView({ behavior:'smooth', block:'start' });
   }
@@ -552,9 +552,9 @@
 
   /* ---------- suggestions ---------- */
   const SUGGESTIONS = [
-    { ic:'🩺', t:'What does NICE NG136 say about first-line treatment for hypertension under 55?' },
+    { ic:'⚕️', t:'What does NICE NG136 say about first-line treatment for hypertension under 55?' },
     { ic:'🧠', t:'What red flags for headache does UK guidance list?' },
-    { ic:'🩸', t:'What does NICE NG12 say about unexplained weight loss and iron-deficiency anaemia?' },
+    { ic:'💉', t:'What does NICE NG12 say about unexplained weight loss and iron-deficiency anaemia?' },
     { ic:'💊', t:'What does NICE say about inhaler steps in COPD with frequent exacerbations?' },
     { ic:'🌸', t:'What does NICE NG12 say about post-menopausal bleeding?' },
     { ic:'🎓', t:'How is the "Relating to others" domain marked in the SCA?' },

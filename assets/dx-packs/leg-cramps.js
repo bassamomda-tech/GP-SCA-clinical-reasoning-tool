@@ -50,7 +50,7 @@
         id: 'idiopathic', tier: 'routine',
         label: 'Idiopathic nocturnal cramps',
         action: 'Reassure; stretching, hydration; review drugs; quinine only if severe/refractory.',
-        source: 'MHRA (quinine) · BNF',
+        source: 'MHRA (quinine)',
         when: i => true,
       }
     ],

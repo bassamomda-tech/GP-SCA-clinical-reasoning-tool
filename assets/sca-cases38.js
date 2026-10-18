@@ -1,7 +1,7 @@
 /* ============================================================
    Reasoning GP — Case Library batch 38: "ENT: the one-sided rule & the can't-miss throat"
    Four ORIGINAL cases. Hidden agenda + full ICE in every case.
-   NG12 2WW stated explicitly where it maps (persistent hoarseness ->
+   NG12 suspected cancer pathway stated explicitly where it maps (persistent hoarseness ->
    laryngeal; unilateral nasal/aural signs; unexplained neck lump).
    The recurring lesson: UNILATERAL/persistent ENT symptoms are the flag.
    Pushes into SCA_CASES + SCA_EXTRAS. Load AFTER sca-cases37.js.

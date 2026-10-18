@@ -29,7 +29,7 @@ MedChooser.register('ckd', {
       detail:{
         'Indication':'Offer to CKD with ACR ≥30 (and diabetes), ACR ≥70 regardless, or ACR 3–29 with hypertension. Titrate to the maximum licensed tolerated dose.',
         'Sick-day rules':'Withhold during intercurrent illness with dehydration (D&V, sepsis) to reduce AKI risk.',
-        'Key teaching':'Do not combine an ACEi with an ARB. A small, stable creatinine rise (≤30%) or K⁺ ≤5.5 is expected and acceptable.'
+        'Key teaching':'An ACEi or an ARB (NICE states no preference). Do not normally start if K⁺ >5.0 mmol/L (NG203). Do not combine an ACEi with an ARB. A small, stable creatinine rise (≤30%) or K⁺ ≤5.5 is expected and acceptable.'
       },
       conditions: [
         {"kind":"avoid","label":"Pregnant / planning pregnancy","text":"Contraindicated in pregnancy (fetotoxicity) — switch to a pregnancy-safe antihypertensive"},

@@ -16,7 +16,7 @@
   const SYSTEM_ICON = {
     'Cardiovascular':'❤️','Respiratory':'🌬️','Endocrine & Metabolic':'🧬','Renal':'💧',
     'Gastrointestinal':'🤰','Neurology & Mental health':'🧠','Musculoskeletal':'🦴',
-    'Haematology':'🩸','Infection & Immunology':'🦠',
+    'Haematology':'💉','Infection & Immunology':'🦠',
   };
 
   const PRE = /\/(cases|tools|pages)\//.test(location.pathname) ? '../' : '';

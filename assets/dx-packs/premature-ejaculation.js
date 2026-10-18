@@ -39,7 +39,7 @@
         id: 'manage', tier: 'routine',
         label: 'Premature ejaculation — behavioural + pharmacological',
         action: 'Behavioural techniques (stop-start/squeeze), topical anaesthetic, SSRI (dapoxetine on-demand); psychosexual therapy if relationship/anxiety factors.',
-        source: 'EAU/ISSM (international) · BNF',
+        source: 'EAU/ISSM (international)',
         when: i => true,
       }
     ],

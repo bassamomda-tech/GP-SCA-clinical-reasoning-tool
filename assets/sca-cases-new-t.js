@@ -484,7 +484,7 @@
     links:[
       { ic:'📋', t:'UTI in women', s:'Case walkthrough', href:'../cases/uti-women.html' },
       { ic:'💠', t:'Recurrent UTI', s:'Management protocol', href:'management/recurrent-uti.html' },
-      { ic:'💠', t:'Menopause', s:'Management protocol', href:'management/menopause.html' }
+      { ic:'💠', t:'Menopause and HRT', s:'Management protocol', href:'management/menopause.html' }
     ],
     pitfalls:{
       intro:'Candidates either treat the infection and stop, or re-refer to urology because of the blood without finding the obvious modifiable causes.',

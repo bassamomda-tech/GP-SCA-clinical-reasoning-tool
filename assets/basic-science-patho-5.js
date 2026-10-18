@@ -3,7 +3,7 @@
 window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 
 /* ---------------- HAEMATOLOGY ---------------- */
-{ id:'patho-acd', domain:'Pathophysiology', system:'Haematology', icon:'🩸',
+{ id:'patho-acd', domain:'Pathophysiology', system:'Haematology', icon:'💉',
   title:'Anaemia of chronic disease', blurb:'Why chronic inflammation locks iron away from red-cell production.',
   mechanism:[
     'Chronic inflammation raises **hepcidin**, which traps iron in macrophages and blocks gut absorption — iron is present but unavailable for erythropoiesis.',
@@ -26,7 +26,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'Inflammation hoards iron via hepcidin, so the body is iron-replete yet can\u2019t use it — which is why ferritin stays normal and iron tablets disappoint.',
   links:{} },
 
-{ id:'patho-thrombocytopenia', domain:'Pathophysiology', system:'Haematology', icon:'🩸',
+{ id:'patho-thrombocytopenia', domain:'Pathophysiology', system:'Haematology', icon:'💉',
   title:'Thrombocytopenia & ITP', blurb:'Why low platelets cause bruising and how to reason about the cause.',
   mechanism:[
     'Low platelets arise from **reduced production** (marrow disease, drugs), **increased destruction** (immune — ITP, DIC) or **sequestration** (splenomegaly).',
@@ -49,7 +49,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'Always ask whether platelets are under-made, destroyed, or pooled in a big spleen — the answer points straight at the cause and the urgency.',
   links:{} },
 
-{ id:'patho-polycythaemia', domain:'Pathophysiology', system:'Haematology', icon:'🩸',
+{ id:'patho-polycythaemia', domain:'Pathophysiology', system:'Haematology', icon:'💉',
   title:'Polycythaemia', blurb:'Why too many red cells thicken blood and raise clot risk.',
   mechanism:[
     '**Primary** (polycythaemia vera) is a clonal marrow disorder (JAK2 mutation) overproducing red cells. **Secondary** is an appropriate EPO-driven response to hypoxia (COPD, smoking, altitude) or inappropriate EPO (tumours).',
@@ -141,7 +141,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'Malignant plasma cells eat bone, choke marrow and clog the kidney — remember CRAB and the diagnosis surfaces from routine bloods.',
   links:{} },
 
-{ id:'patho-sickle', domain:'Pathophysiology', system:'Haematology', icon:'🩸',
+{ id:'patho-sickle', domain:'Pathophysiology', system:'Haematology', icon:'💉',
   title:'Sickle cell disease', blurb:'Why a single mutation causes painful vaso-occlusive crises.',
   mechanism:[
     'A point mutation produces **HbS**, which polymerises when deoxygenated, deforming red cells into rigid sickles. These occlude small vessels (painful crises, organ infarction) and haemolyse early.',
@@ -164,7 +164,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'One amino-acid change makes haemoglobin clump without oxygen — the rigid sickled cells jam vessels and break down early, explaining both the pain and the anaemia.',
   links:{} },
 
-{ id:'patho-haemochromatosis', domain:'Pathophysiology', system:'Haematology', icon:'🩸',
+{ id:'patho-haemochromatosis', domain:'Pathophysiology', system:'Haematology', icon:'💉',
   title:'Haemochromatosis', blurb:'Why iron overload silently damages organs.',
   mechanism:[
     'Hereditary (HFE) haemochromatosis causes **excess intestinal iron absorption**; iron deposits in liver, pancreas, heart, joints and pituitary, generating tissue damage via oxidative stress.',

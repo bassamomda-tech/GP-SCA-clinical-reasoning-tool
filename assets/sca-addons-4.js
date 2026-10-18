@@ -24,7 +24,7 @@
    "reason": "Video appointment: “back pain for most of a year — wants physio or a scan”."
   },
   "knowledge": {
-   "guideline": "NICE NG65 (Spondyloarthritis in over 16s, 2017) · NICE QS170 (2018) · NICE NG59 (Low back pain and sciatica, 2016, updated July 2026) · GIRFT national suspected cauda equina syndrome pathway (2023) · NICE TA383 (2016) · BNF",
+   "guideline": "NICE NG65 (Spondyloarthritis in over 16s, 2017) · NICE QS170 (2018) · NICE NG59 (Low back pain and sciatica, 2016, updated July 2026) · GIRFT national suspected cauda equina syndrome pathway (2023) · NICE TA383 (2016)",
    "summary": "Nine months of back and buttock pain in a 28-year-old that is worse with rest, better with movement and wakes him in the second half of the night is inflammatory back pain. He meets NICE NG65 criteria for rheumatology referral for suspected axial spondyloarthritis — after a documented cauda equina screen.",
    "points": [
     {
@@ -1982,7 +1982,7 @@
    "reason": "Telephone appointment to discuss her bone scan result."
   },
   "knowledge": {
-   "guideline": "NICE NG259 Osteoporosis: risk assessment (July 2026) · NICE TA464 (2017) · NICE TA204 (2010) · NOGG 2024 · MHRA Drug Safety Update (June 2011; July 2015) · BNF",
+   "guideline": "NICE NG259 Osteoporosis: risk assessment (July 2026) · NICE TA464 (2017) · NICE TA204 (2010) · NOGG 2024 · MHRA Drug Safety Update (June 2011; July 2015)",
    "summary": "A T-score of −2.7 after a low-trauma wrist fracture is osteoporosis with a fragility fracture: treat to prevent the next, more serious fracture. Reframe “crumbling” accurately, give honest proportionate information on the rare side effects, and let her make an informed choice.",
    "points": [
     {
@@ -2461,7 +2461,7 @@
    "reason": "Telephone request for a diazepam prescription: “My old doctor always gave me a few.”"
   },
   "knowledge": {
-   "guideline": "NICE NG215 (medicines associated with dependence or withdrawal symptoms, 2022) · NICE CG113 (generalised anxiety disorder and panic disorder, 2011, updated 2020) · NICE CG115 (alcohol-use disorders, 2011) · BNF · MHRA Drug Safety Update March 2020 · DVLA Assessing fitness to drive",
+   "guideline": "NICE NG215 (medicines associated with dependence or withdrawal symptoms, 2022) · NICE CG113 (generalised anxiety disorder and panic disorder, 2011, updated 2020) · NICE CG115 (alcohol-use disorders, 2011) · MHRA Drug Safety Update March 2020 · DVLA Assessing fitness to drive",
    "summary": "Years of diazepam, a rising dose, withdrawal symptoms and online top-ups is benzodiazepine dependence. Do not stop it suddenly and do not simply continue it. Verify, bridge safely, address alcohol, plan a gradual taper, and treat the anxiety and what is driving it.",
    "points": [
     {
@@ -2934,7 +2934,7 @@
    "reason": "Telephone request to increase his omeprazole — “indigestion worse than usual”."
   },
   "knowledge": {
-   "guideline": "NICE CG184 (2014, updated 2019) — GORD and dyspepsia in adults · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · NICE CG141 (2012, updated 2016) — acute upper GI bleeding · NICE NG59 (2016, updated 2026) — low back pain · BNF (NSAIDs)",
+   "guideline": "NICE CG184 (2014, updated 2019) — GORD and dyspepsia in adults · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · NICE CG141 (2012, updated 2016) — acute upper GI bleeding · NICE NG59 (2016, updated 2026) — low back pain",
    "summary": "Dyspepsia that has changed and persists despite a PPI, with 5 kg weight loss, early satiety and black stools, in a 58-year-old on daily ibuprofen, needs same-day assessment for bleeding and a suspected cancer pathway referral (often straight to endoscopy) — not a bigger PPI dose over the phone.",
    "points": [
     {
@@ -3909,7 +3909,7 @@
    "reason": "Video appointment booked: “can’t sleep — wants something to help”."
   },
   "knowledge": {
-   "guideline": "NICE NG248 (2025) · NICE NG225 (2022) · NICE TA77 · NICE NG222 (2022, updated December 2025) · BNF",
+   "guideline": "NICE NG248 (2025) · NICE NG225 (2022) · NICE TA77 · NICE NG222 (2022, updated December 2025)",
    "summary": "“Give me something to sleep, I don’t want the why” is a request to look for the why. Here it is gambling harm with concealed debt and suicidal thinking. Ask about gambling and suicide directly, respond to risk the same day, and treat the gambling as a health problem with specialist help.",
    "points": [
     {
@@ -4410,7 +4410,7 @@
    "reason": "Telephone call: painful, swollen left big toe since the early hours; asking for “the strong anti-inflammatories”."
   },
   "knowledge": {
-   "guideline": "NICE NG219 (Gout, 2022) · MHRA Drug Safety Update (July 2019, febuxostat) · UK Chief Medical Officers’ low-risk drinking guidelines (2016) · NICE NG136 (2019, updated 2023) · BNF",
+   "guideline": "NICE NG219 (Gout, 2022) · MHRA Drug Safety Update (July 2019, febuxostat) · UK Chief Medical Officers’ low-risk drinking guidelines (2016) · NICE NG136 (2019, updated 2023)",
    "summary": "A second classic flare of first MTP gout in a year: treat the flare with a drug chosen for his risks, keep septic arthritis in mind, and offer treat-to-target urate-lowering therapy once it settles. Use the flare to check his cardiovascular and renal risk.",
    "points": [
     {
@@ -5366,7 +5366,7 @@
    "reason": "Video appointment: “worried about my X-ray result”."
   },
   "knowledge": {
-   "guideline": "Paget’s Association clinical guideline (Ralston et al., JBMR 2019) · MHRA Drug Safety Update (July 2015) · BNF · GMC Good Medical Practice (2024)",
+   "guideline": "Paget’s Association clinical guideline (Ralston et al., JBMR 2019) · MHRA Drug Safety Update (July 2015) · GMC Good Medical Practice (2024)",
    "summary": "Typical radiology with an isolated raised ALP and normal calcium is Paget’s disease of bone: common, benign and treatable. Answer “is it cancer?” clearly and early, explain his own symptoms with it, and plan confirmation, symptom-led treatment and monitoring.",
    "points": [
     {
@@ -5835,7 +5835,7 @@
    "reason": "Telephone call: about 6 weeks of shoulder and hip stiffness; asking for a course of steroids."
   },
   "knowledge": {
-   "guideline": "BSR GCA guideline (Mackie et al., 2020) · BSR/BHPR PMR guideline (Dasgupta et al., 2010) · NOGG 2024 · NatPSA/2020/005 Steroid Emergency Card · NICE NG243 (2024) · BNF",
+   "guideline": "BSR GCA guideline (Mackie et al., 2020) · BSR/BHPR PMR guideline (Dasgupta et al., 2010) · NOGG 2024 · NatPSA/2020/005 Steroid Emergency Card · NICE NG243 (2024)",
    "summary": "Girdle pain and long morning stiffness at 72 fits polymyalgia, but a new headache, scalp tenderness and jaw pain on chewing mean suspected giant cell arteritis. Start high-dose prednisolone today and refer on the GCA fast-track pathway; tests must not delay treatment.",
    "points": [
     {
@@ -7313,7 +7313,7 @@
    "reason": "Telephone appointment. Her daughter asked her to call about the falls."
   },
   "knowledge": {
-   "guideline": "NICE NG249 (2025) · NICE NG5 (2015) · NICE NG259 Osteoporosis: risk assessment (July 2026) · NICE NG136 (updated 2023) · NOGG 2024 · BNF",
+   "guideline": "NICE NG249 (2025) · NICE NG5 (2015) · NICE NG259 Osteoporosis: risk assessment (July 2026) · NICE NG136 (updated 2023) · NOGG 2024",
    "summary": "Three falls in three months with a long lie is not “the carpets”. It needs a comprehensive falls assessment in which the medication review is the highest-yield step, plus bone health and a plan for getting help after a fall — all framed around keeping her at home.",
    "points": [
     {
@@ -7812,7 +7812,7 @@
    "reason": "Telephone call: red, sore left eye since yesterday; asking for antibiotic drops for conjunctivitis."
   },
   "knowledge": {
-   "guideline": "College of Optometrists Clinical Management Guidelines: microbial keratitis (bacterial, fungal), Acanthamoeba keratitis, contact lens-associated infiltrative keratitis · RCOphth angle-closure glaucoma guideline (2022) · BNF",
+   "guideline": "College of Optometrists Clinical Management Guidelines: microbial keratitis (bacterial, fungal), Acanthamoeba keratitis, contact lens-associated infiltrative keratitis · RCOphth angle-closure glaucoma guideline (2022)",
    "summary": "A painful red eye with marked photophobia and blurred vision in a contact lens wearer who has slept in her lenses is microbial keratitis until proven otherwise. She needs same-day ophthalmology assessment, lenses out, and no drops prescribed over the phone.",
    "points": [
     {
@@ -8288,7 +8288,7 @@
    "reason": "Telephone request — “knee has blown up, wants stronger painkillers”."
   },
   "knowledge": {
-   "guideline": "BSR/BHPR, BOA, RCGP and BSAC guideline for the management of the hot swollen joint in adults (2006; BSR update in development, scope 2025) · NICE NG253 (2025) — suspected sepsis in people aged 16 or over · BNF (metformin, NSAIDs)",
+   "guideline": "BSR/BHPR, BOA, RCGP and BSAC guideline for the management of the hot swollen joint in adults (2006; BSR update in development, scope 2025) · NICE NG253 (2025) — suspected sepsis in people aged 16 or over",
    "summary": "A single hot, red, swollen knee he cannot bear weight on, developing over 36 hours, 10 days after a steroid injection, in a man with diabetes who feels shivery, is septic arthritis until proven otherwise. He needs same-day hospital assessment for joint aspiration before antibiotics — not stronger painkillers.",
    "points": [
     {

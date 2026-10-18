@@ -1,7 +1,7 @@
 /* ============================================================
    Reasoning GP — Case Library batch 32: "Abdominal & the cancers that hide"
    Four ORIGINAL cases. Hidden agenda + full ICE in every case.
-   NG12 2WW stated explicitly where it maps (ovarian -> CA-125/USS;
+   NG12 suspected cancer pathway stated explicitly where it maps (ovarian -> CA-125/USS;
    pancreatic -> painless jaundice/weight loss CT). Coeliac serology.
    Pushes into SCA_CASES + SCA_EXTRAS. Load AFTER sca-cases31.js.
    ============================================================ */

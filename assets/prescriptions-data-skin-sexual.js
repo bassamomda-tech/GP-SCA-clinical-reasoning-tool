@@ -18,7 +18,7 @@
     duration: '2 applications, 7 days apart',
     drugs: [
       { name: 'Permethrin 5% cream', dose: 'Whole body (neck-down; include scalp in young/elderly)', freq: '2 applications 7 days apart', route: 'Topical', days: 'Leave on 8–12 h (overnight)' },
-      { name: 'OR Ivermectin (oral; specialist-directed in GM; avoid in pregnancy; generally avoided when breastfeeding; under 15 kg specialist-directed only)', dose: '200 micrograms/kg', freq: '2 doses 7–14 days apart', route: 'PO', days: 'Single dose ×2', child:true },
+      { name: 'OR Ivermectin (oral; specialist-directed locally; avoid in pregnancy; generally avoided when breastfeeding; under 15 kg specialist-directed only)', dose: '200 micrograms/kg', freq: '2 doses 7–14 days apart', route: 'PO', days: 'Single dose ×2', child:true },
       { name: 'Alt: Malathion 0.5% aqueous', dose: 'Whole body', freq: '2 applications 7 days apart', route: 'Topical', days: 'Leave on 24 h' },
       { name: 'Itch relief: antihistamine ± crotamiton', dose: 'Standard', freq: 'PRN', route: 'PO/Topical', days: 'Itch may persist 2–4 weeks' },
     ],

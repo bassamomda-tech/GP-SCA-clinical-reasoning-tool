@@ -17,6 +17,7 @@
      protocols  tools/management/*.html      (the MG.render data, not the script shell)
      pathways   tools/algorithms/*.html      (the Steps, #flow — never the retired Diagram/Summary views)
      snapshots  tools/algorithms/one-page/*, tools/management/summaries/*
+     guides     tools/clinic-guides/*.html   (the 2-page Clinic Guides; noindex for Google, like Snapshots)
      articles   assets/articles-data-*.js    (one entry per article)
      cases      cases/*.html
      sca        tools/sca-*.html             (the static text of each SCA tool page)
@@ -59,12 +60,21 @@ vm.runInNewContext(coreSrc, coreCtx);
 const C = coreCtx.RGPSearchCore;
 
 /* ---------- paywall mirror (keep in step with bronzeReason() in assets/site.js) ---------- */
-const OPEN = ['articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html','privacy.html','terms.html','disclaimer.html','pricing.html','content-safety.html','ai-safety.html','accessibility.html','search.html','index.html'];
+const OPEN = ['articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html','clinic-guides.html','privacy.html','terms.html','disclaimer.html','pricing.html','content-safety.html','ai-safety.html','accessibility.html','search.html','index.html'];
 const FREE_CASES = ['chest-pain.html','hypertension.html','type-2-diabetes.html','headache.html','anaemia.html'];
 const FREE_ALGS = ['chest-pain.html','headache.html','abdominal-pain.html','back-pain.html','breathlessness.html'];
 const FREE_PROTOCOLS = ['hypertension.html','asthma.html','type-2-diabetes.html','gout.html','migraine.html'];
+// Clinic Guides free samples: read from THE list in assets/clinic-guides.js (RGP_CLINIC_GUIDES_FREE)
+const FREE_GUIDES = (() => {
+  try {
+    const src = fs.readFileSync(path.join(ROOT, 'assets', 'clinic-guides.js'), 'utf8');
+    const m = /var\s+RGP_CLINIC_GUIDES_FREE\s*=\s*\[([^\]]*)\]/.exec(src);
+    return m ? [...m[1].matchAll(/['"]([a-z0-9-]+)['"]/g)].map(x => x[1] + '.html') : [];
+  } catch (e) { return []; }
+})();
 function isGated(url){
   const base = url.split('/').pop();
+  if (/^tools\/clinic-guides\//.test(url)) return !FREE_GUIDES.includes(base);
   if (OPEN.includes(base)) return false;
   if (/^cases\//.test(url)) return !FREE_CASES.includes(base);
   if (/^tools\/algorithms\//.test(url)) return !FREE_ALGS.includes(base);
@@ -318,6 +328,19 @@ for (const dir of ['tools/algorithms/one-page', 'tools/management/summaries']){
     if (d) { d.title = d.title.replace(/\s+—\s+1-page summary$/i, ''); d.sections = [{ h: '', a: '', text: d.sections.map(s => s.text).join(' ') }]; addDoc(d); }
   }
 }
+// Clinic Guides (noindex for Google — they canonicalise to their protocol — but real pages people open and print).
+// Indexed section by section (each coloured block is a heading), titled without the "CLINIC GUIDE" tag.
+for (const f of glob(path.join(ROOT, 'tools/clinic-guides'), /^[a-z0-9].*\.html$/)){
+  const rel = path.relative(ROOT, f).split(path.sep).join('/');
+  const d = htmlDoc(rel, 'guide', { mode: MODE_CLINIC, allowNoindex: true });
+  if (d) {
+    d.title = d.title.replace(/\s*CLINIC GUIDE\s*$/i, '');
+    d.sections.forEach(s => { if (s.h && s.h.toLowerCase() === d.title.toLowerCase()) s.h = ''; });
+    // the lead section is the brand line; the scope sentence under the title reads better as the snippet
+    if (d.sections[1] && !d.sections[1].h) { d.sections[0].text = d.sections[1].text; d.sections.splice(1, 1); }
+    addDoc(d);
+  }
+}
 // Cases
 for (const f of glob(path.join(ROOT, 'cases'), /^[a-z0-9].*\.html$/)){
   const rel = path.relative(ROOT, f).split(path.sep).join('/');
@@ -405,6 +428,7 @@ const SHARDS = [
   { type: 'protocol', label: 'Protocol' },
   { type: 'pathway',  label: 'Pathway' },
   { type: 'snapshot', label: 'Snapshot' },
+  { type: 'guide',    label: 'Clinic Guide' },
   { type: 'article',  label: 'Article' },
   { type: 'case',     label: 'Case' },
   { type: 'sca',      label: 'SCA' },

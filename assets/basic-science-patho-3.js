@@ -3,7 +3,7 @@
 window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 
 /* ---------------- ENDOCRINE & METABOLIC ---------------- */
-{ id:'patho-t1dm', domain:'Pathophysiology', system:'Endocrine & Metabolic', icon:'🩸',
+{ id:'patho-t1dm', domain:'Pathophysiology', system:'Endocrine & Metabolic', icon:'💉',
   title:'Type 1 diabetes & DKA', blurb:'Why absolute insulin loss drives hyperglycaemia and ketoacidosis.',
   mechanism:[
     'Autoimmune destruction of pancreatic **β-cells** causes absolute insulin deficiency. Without insulin, glucose cannot enter cells — blood glucose rises while tissues starve.',
@@ -626,7 +626,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   note:'Cancer here grows from a removable polyp over years — which is exactly why finding occult blood and scoping early saves lives.',
   links:{} },
 
-{ id:'patho-haemorrhoids', domain:'Pathophysiology', system:'Gastrointestinal', icon:'🩸',
+{ id:'patho-haemorrhoids', domain:'Pathophysiology', system:'Gastrointestinal', icon:'💉',
   title:'Haemorrhoids', blurb:'Why anal cushions engorge and bleed bright red.',
   mechanism:[
     'Vascular **anal cushions** that aid continence become engorged and prolapse when venous pressure rises (straining, constipation, pregnancy).',

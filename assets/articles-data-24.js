@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 24: P topics, part 3)
    Remaining NHS A–Z (letter P) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -130,7 +130,7 @@
       'Diagnostic uncertainty (exclude other pathology) → urology'],
     source:'NICE NG110 (Prostatitis (acute): antimicrobial prescribing, 2018) / MHRA Drug Safety Update (fluoroquinolones, January 2024) / EAU urological infections guideline (chronic prostatitis, international)' },
 
-  { id:'psoriasis', title:'Psoriasis', category:'Dermatology', icon:'🩹',
+  { id:'psoriasis', title:'Psoriasis', category:'Dermatology', icon:'🤕',
     overview:'A common, chronic, immune-mediated inflammatory skin disease with well-defined scaly plaques, following a relapsing-remitting course. It is a systemic condition — associated with psoriatic arthritis, cardiovascular and metabolic disease, and significant psychological impact — so management addresses more than the skin.',
     features:[
       'Chronic plaque psoriasis (commonest): well-demarcated, red plaques with silvery scale on extensor surfaces (elbows, knees), the scalp, and the sacrum',
@@ -228,7 +228,7 @@
       'Full STI screen and partner notification → sexual-health (GUM) service',
       'Treatment failure/recurrence → review and re-treat / GUM',
       'Pubic lice in a child → consider safeguarding'],
-    source:'BASHH pubic lice guidance / BNF (permethrin, malathion)' },
+    source:'BASHH pubic lice guidance' },
 
   { id:'pulmonary-embolism', title:'Pulmonary embolism (PE)', category:'Cardiovascular & Renal', icon:'🌬️',
     overview:'Obstruction of the pulmonary arteries, usually by thrombus embolising from a deep vein thrombosis. It ranges from small subsegmental clots to massive PE causing haemodynamic collapse and death. It is common, frequently missed, and a time-critical diagnosis — so maintain a high index of suspicion.',

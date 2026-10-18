@@ -60,9 +60,9 @@ MedChooser.register('osteoporosis', {
       sideEffects:'Acute-phase flu-like reaction (first dose), rare ONJ/AFF',
       monitor:'Correct calcium/vit D and check renal function first',
       counsel:'"A once-a-year drip avoids the daily/weekly tablets and the gullet precautions. The first infusion can give a few days of flu-like aching — paracetamol helps."',
-      detail:{ 'Key teaching':'Good where oral bisphosphonates are not tolerated, GI contraindication, or adherence is poor. Avoid if eGFR <35. Pre-medicate/hydrate; warn re acute-phase reaction.' },
+      detail:{ 'Key teaching':'Good where oral bisphosphonates are not tolerated, GI contraindication, or adherence is poor. Contraindicated if creatinine clearance <35 mL/min (Cockcroft–Gault, not eGFR). Pre-medicate/hydrate; warn re acute-phase reaction.' },
       conditions: [
-        {"kind":"avoid","label":"eGFR <35","text":"eGFR <35 — zoledronate contraindicated; consider denosumab"},
+        {"kind":"avoid","label":"eGFR <35","text":"Creatinine clearance <35 mL/min (Cockcroft–Gault) — zoledronate contraindicated; seek renal/metabolic bone advice"},
         {"kind":"favoured","label":"Very high risk / multiple vertebral fractures","text":"Potent option in high fracture risk"},
         {"kind":"favoured","label":"GORD / oesophagitis / Barrett's","text":"Avoids oral/upper-GI route — suitable alternative"},
         {"kind":"favoured","label":"Cannot sit upright / swallowing difficulty","text":"Avoids oral/upper-GI route — suitable alternative"},

@@ -60,7 +60,7 @@
     'gout': 'gout',
     'hernia': 'hernia',
     'high-cholesterol': 'hypercholesterolaemia',
-    'hrt-menopause': 'hrt-prescribing',
+    'hrt-menopause': 'menopause',
     'hyperhidrosis': 'hyperhidrosis',
     'hypertension': 'hypertension',
     'hyperthyroidism': 'hyperthyroidism',

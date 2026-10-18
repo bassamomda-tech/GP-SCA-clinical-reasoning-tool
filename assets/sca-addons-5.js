@@ -1512,7 +1512,7 @@
    "reason": "Telephone request: “a tablet to help me stop drinking — disulfiram or whatever”."
   },
   "knowledge": {
-   "guideline": "DVLA Assessing fitness to drive · GMC Confidentiality: patients’ fitness to drive and reporting concerns to the DVLA (2017) · NICE CG115 Alcohol-use disorders (2011) · NICE CG100 Alcohol-use disorders: physical complications (2010) · BNF",
+   "guideline": "DVLA Assessing fitness to drive · GMC Confidentiality: patients’ fitness to drive and reporting concerns to the DVLA (2017) · NICE CG115 Alcohol-use disorders (2011) · NICE CG100 Alcohol-use disorders: physical complications (2010)",
    "summary": "A bus driver with physical alcohol dependence who drinks around shifts must stop driving and notify the DVLA. He needs a supported, medically assisted withdrawal, not a quiet disulfiram prescription, which his hypertension also rules out.",
    "points": [
     {
@@ -1990,7 +1990,7 @@
    "reason": "Telephoned the surgery upset after receiving the letter. Asking to speak to a doctor today."
   },
   "knowledge": {
-   "guideline": "NICE NG203 (2021) · NICE TA1075 (2025) · NICE NG238 (2023) · NICE NG136 (2019) · BNF · KDIGO (international)",
+   "guideline": "NICE NG203 (2021) · NICE TA1075 (2025) · NICE NG238 (2023) · NICE NG136 (2019) · KDIGO (international)",
    "summary": "A stable eGFR of 52 is CKD G3a. For most people at this stage it is a marker of cardiovascular risk to act on, not a path to dialysis. Classify by eGFR and ACR, protect the kidneys and the heart, and explain it without alarm.",
    "points": [
     {
@@ -2936,7 +2936,7 @@
    "reason": "Telephone request: swollen, sore left calf — asking for an anti-inflammatory gel or antibiotics."
   },
   "knowledge": {
-   "guideline": "NICE NG158 (venous thromboembolic diseases, updated 2023) · NICE NG23 (menopause) · BNF",
+   "guideline": "NICE NG158 (venous thromboembolic diseases, updated 2023) · NICE NG23 (menopause)",
    "summary": "A swollen, warm, tender calf after a long-haul flight in a woman on HRT is a DVT until proven otherwise. Her breathlessness and chest pain raise possible PE, so she needs same-day hospital assessment.",
    "points": [
     {
@@ -3364,9 +3364,9 @@
    },
    {
     "ic": "💠",
-    "t": "HRT prescribing",
+    "t": "Menopause and HRT",
     "s": "VTE risk · transdermal options",
-    "href": "management/hrt-prescribing.html"
+    "href": "management/menopause.html"
    },
    {
     "ic": "💠",
@@ -3433,7 +3433,7 @@
    "reason": "Urgent telephone request: “needs the morning-after pill”."
   },
   "knowledge": {
-   "guideline": "CoSRH (formerly FSRH) Emergency contraception guideline (2017, amended April 2026) · BNF · GMC 0–18 years guidance · Working Together to Safeguard Children (2023) · BASHH and Brook Spotting the Signs proforma (2014) · Mental Capacity Act 2005 · Sexual Offences Act 2003",
+   "guideline": "CoSRH (formerly FSRH) Emergency contraception guideline (2017, amended April 2026) · GMC 0–18 years guidance · Working Together to Safeguard Children (2023) · BASHH and Brook Spotting the Signs proforma (2014) · Mental Capacity Act 2005 · Sexual Offences Act 2003",
    "summary": "Aimee needs effective emergency contraception today: the copper IUD first, or ulipristal if she prefers a tablet. A 25-year-old partner she met online is a safeguarding cue that needs a gentle, honest exploration — without putting her off care.",
    "points": [
     {
@@ -5389,7 +5389,7 @@
    "reason": "GP telephone call to discuss the low sodium result."
   },
   "knowledge": {
-   "guideline": "Society for Endocrinology emergency guidance on hyponatraemia (2016, updated 2022) · European hyponatraemia guideline, ESE/ESICM/ERA-EDTA (2014) (international) · MHRA Drug Safety Update (December 2011) · NICE NG249 (2025) · BNF",
+   "guideline": "Society for Endocrinology emergency guidance on hyponatraemia (2016, updated 2022) · European hyponatraemia guideline, ESE/ESICM/ERA-EDTA (2014) (international) · MHRA Drug Safety Update (December 2011) · NICE NG249 (2025)",
    "summary": "Sodium 121 mmol/L with new confusion, unsteadiness and a near-fall is symptomatic hyponatraemia and needs same-day hospital assessment. A newly started thiazide, an SSRI and excess dilute fluid are the likely combination.",
    "points": [
     {
@@ -5880,7 +5880,7 @@
    "points": [
     {
      "h": "NICE NG12 oral cancer criteria",
-     "t": "NICE NG12: consider a suspected cancer pathway referral (appointment within 2 weeks) for oral cancer in people with unexplained ulceration in the oral cavity lasting more than 3 weeks, or a persistent and unexplained lump in the neck. Frank has both."
+     "t": "NICE NG12: consider a suspected cancer pathway referral for oral cancer in people with unexplained ulceration in the oral cavity lasting more than 3 weeks, or a persistent and unexplained lump in the neck. Frank has both."
     },
     {
      "h": "Laryngeal criterion too",
@@ -6833,7 +6833,7 @@
    "reason": "Telephone request: “another water infection — wants antibiotics”."
   },
   "knowledge": {
-   "guideline": "BASHH UK national guideline for the management of pelvic inflammatory disease (2018, 2019 update) · BASHH statement on partner notification (2012) · BNF · NICE NG253 (Sepsis, 16 and over) · GMC Confidentiality (2017)",
+   "guideline": "BASHH UK national guideline for the management of pelvic inflammatory disease (2018, 2019 update) · BASHH statement on partner notification (2012) · NICE NG253 (Sepsis, 16 and over) · GMC Confidentiality (2017)",
    "summary": "Bilateral lower abdominal pain, abnormal discharge, deep dyspareunia, abnormal bleeding and fever in a 23-year-old with a new partner is pelvic inflammatory disease until proven otherwise. Exclude pregnancy, examine, take swabs and start treatment the same day.",
    "points": [
     {
@@ -8288,7 +8288,7 @@
    "reason": "Video consultation to discuss her blood results."
   },
   "knowledge": {
-   "guideline": "Endocrine Society hyperprolactinaemia guideline 2011 (international) · Pituitary Society consensus 2023 (international) · BNF",
+   "guideline": "Endocrine Society hyperprolactinaemia guideline 2011 (international) · Pituitary Society consensus 2023 (international)",
    "summary": "Amenorrhoea, galactorrhoea and a raised prolactin with a negative pregnancy test is hyperprolactinaemia. Find the cause (drugs, thyroid, kidneys, pituitary) and act quickly on any visual symptoms.",
    "points": [
     {
@@ -9277,7 +9277,7 @@
     },
     {
      "h": "NICE NG12 criterion",
-     "t": "NICE NG12: consider a suspected cancer pathway referral (for an appointment within 2 weeks) for thyroid cancer in people with an unexplained thyroid lump. No red flag is needed to meet this criterion; red flags and risk factors make the referral clearly right."
+     "t": "NICE NG12: consider a suspected cancer pathway referral for thyroid cancer in people with an unexplained thyroid lump. No red flag is needed to meet this criterion; red flags and risk factors make the referral clearly right."
     },
     {
      "h": "Risk factors that raise concern",

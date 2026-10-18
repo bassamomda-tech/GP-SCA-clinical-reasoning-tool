@@ -82,7 +82,7 @@ window.SCA_LIBRARY = [
       { t:'Raised ALT in a non-drinker — NAFLD, fibrosis risk, the metabolic conversation', ty:'v', live:'nafld-result' },
     ]},
 
-  { f:'Vascular & circulation', ic:'🩸', sp:'cardio', ceg:['Urgent & unscheduled care'],
+  { f:'Vascular & circulation', ic:'💉', sp:'cardio', ceg:['Urgent & unscheduled care'],
     note:'Three of these are limb- or life-threatening emergencies hiding behind a benign-sounding request; the fourth is risk communication.',
     v:[
       { t:'Swollen painful calf — DVT vs cellulitis, and the PE screen', ty:'t', live:'dvt-calf' },
@@ -90,7 +90,7 @@ window.SCA_LIBRARY = [
       { t:'Incidental small AAA on a scan — surveillance, not panic', ty:'v', live:'aaa-incidental', ceg:['Investigations & results'] },
     ]},
 
-  { f:'Blood pressure', ic:'🩺', sp:'cardio', ceg:['Long-term conditions & cancer'],
+  { f:'Blood pressure', ic:'⚕️', sp:'cardio', ceg:['Long-term conditions & cancer'],
     note:'Confirm before treating; treat the person\u2019s fear before the number.',
     v:[
       { t:'New hypertension in a 32-year-old whose father stroked at 51', ty:'v', live:'htn-young-bp' },
@@ -470,7 +470,7 @@ window.SCA_LIBRARY = [
       { t:'Keep getting nosebleeds on blood thinners — first-aid, anticoagulation & when to worry', ty:'v', live:'recurrent-epistaxis', ceg:['Prescribing & pharmacology'] },
     ]},
 
-  { f:'Skin you must name correctly', ic:'🩹', sp:'derm', ceg:['New & undifferentiated presentations'],
+  { f:'Skin you must name correctly', ic:'🤕', sp:'derm', ceg:['New & undifferentiated presentations'],
     note:'Pattern-recognition stations: name it, treat it, and reassure — or refer.',
     v:[
       { t:'Painful red itchy ear with discharge — otitis externa & the malignant-OE flag', ty:'v', live:'otitis-externa' },

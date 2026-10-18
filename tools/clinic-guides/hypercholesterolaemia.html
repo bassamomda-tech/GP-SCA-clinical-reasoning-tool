@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="hypercholesterolaemia">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lipids and hypercholesterolaemia — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/hypercholesterolaemia.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/hypercholesterolaemia.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · chronic disease series</div>
+      <h1>Lipids and hypercholesterolaemia <small>CLINIC GUIDE</small></h1>
+      <div class="scope">For the new raised cholesterol, statin start and the annual review, including spotting familial hypercholesterolaemia (FH). Adults 18+. Not for children, pregnancy or acute coronary syndrome.</div>
+    </div>
+    <div class="meta">NICE <b>NG238</b> (2023) · <b>CG71</b> (FH) · TA385 · TA694 · TA733 · TA393/394<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full protocol: gpreasoning.uk/tools/management/hypercholesterolaemia.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Assess and start <span>raised lipids → frame the patient → right statin, right dose</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act today<small>NICE NG238 · CG71</small></h2><div class="body">
+    <ul>
+      <li><b>Acute, ongoing or recent chest pain</b> → <b>999</b> as possible ACS, whatever the cholesterol shows.</li>
+      <li><b>Triglycerides &gt;20 mmol/L</b> not explained by alcohol or poor glycaemic control → <b>urgent specialist review</b>. Very high triglycerides with abdominal pain or vomiting → <b>same-day assessment</b> (pancreatitis).</li>
+      <li><b>Suspected homozygous FH</b>: LDL-C <b>&gt;13 mmol/L</b> in an adult or <b>&gt;11</b> in a child → specialist FH centre without delay; do not wait to apply Simon Broome or DLCN criteria.</li>
+      <li>Heavy proteinuria, oedema and low albumin (<b>nephrotic syndrome</b>) → urgent medical assessment; do not just treat the cholesterol.</li>
+    </ul>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Frame the patient first<small>NG238</small></h2><div class="body">
+        <table>
+          <tr><th>Who</th><th>Pathway</th></tr>
+          <tr><td><b>Established CVD</b> (MI, angina, stroke/TIA, PAD, revascularisation)</td><td>Secondary prevention — <b>no risk score</b></td></tr>
+          <tr><td><b>Suspected FH</b></td><td>FH pathway (box 2) — QRISK3 underestimates FH risk</td></tr>
+          <tr><td>Type 1 diabetes, CKD</td><td>Disease-specific criteria (box 5), not QRISK3</td></tr>
+          <tr><td>Aged 85+</td><td>Individualise; consider statin (box 5)</td></tr>
+          <tr><td>Everyone else, aged 25–84</td><td><b>QRISK3</b> on a <b>non-fasting</b> full lipid profile</td></tr>
+        </table>
+        <p class="key">Non-HDL = total minus HDL cholesterol; needs no fasting sample.</p>
+      </div></div>
+
+      <div class="blk amber"><h2><span class="n">2</span>Is this FH?<small>CG71 · NG238</small></h2><div class="body">
+        <p><b>Suspect</b> FH: total cholesterol (TC) <b>&gt;7.5 mmol/L</b>, especially with CHD before 60 in the patient or a first-degree relative, or tendon xanthomata. <b>TC &gt;9.0 or non-HDL &gt;7.5</b> → specialist assessment even with no family history.</p>
+        <p><b>Search the records</b>: under 30 with TC &gt;7.5; aged 30+ with TC &gt;9.0.</p>
+        <table>
+          <tr><th>Simon Broome</th><th>Criteria (adult TC &gt;7.5 or LDL-C &gt;4.9 mmol/L, plus)</th></tr>
+          <tr><td><b>Definite</b></td><td>Tendon xanthomata in patient or 1st/2nd-degree relative, or a DNA-confirmed mutation</td></tr>
+          <tr><td><b>Possible</b></td><td>MI in a 1st-degree relative &lt;60 or 2nd-degree relative &lt;50, or TC &gt;7.5 in an adult 1st/2nd-degree relative</td></tr>
+        </table>
+        <p>Possible or definite Simon Broome, or <b>DLCN score &gt;5</b> → refer to the specialist FH service for <b>DNA testing</b> and <b>cascade testing</b> of 1st-, 2nd- and, where possible, 3rd-degree relatives.</p>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">3</span>Examination that changes the plan<small>targeted</small></h2><div class="body">
+        <table>
+          <tr><td><b>Tendon xanthomata</b></td><td>Achilles, hand extensors → FH (definite with TC &gt;7.5)</td></tr>
+          <tr><td><b>Corneal arcus</b>, xanthelasma</td><td>Significant when young → FH assessment</td></tr>
+          <tr><td><b>Pulses, bruits</b></td><td>Undiagnosed PAD or carotid disease → secondary prevention</td></tr>
+          <tr><td><b>Thyroid, oedema</b></td><td>Hypothyroidism, nephrotic syndrome</td></tr>
+          <tr><td><b>BP, BMI, waist</b></td><td>Whole-risk optimisation, metabolic syndrome</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">4</span>Work-up before a statin<small>NG238</small></h2><div class="body">
+        <ul class="tick">
+          <li>Full lipid profile: TC, HDL, non-HDL, triglycerides</li>
+          <li><b>ALT or AST</b> baseline</li>
+          <li><b>HbA1c</b></li>
+          <li><b>U&amp;E, eGFR</b>; urine ACR if CKD</li>
+          <li><b>TSH</b> if symptoms or signs of hypothyroidism</li>
+          <li><b>QRISK3</b> (primary prevention only)</li>
+          <li>Alcohol history and drug review</li>
+          <li><b>CK</b> only if unexplained muscle pain</li>
+        </ul>
+        <p style="margin-top:2px"><b>Treat secondary causes first</b>: hypothyroidism, diabetes, nephrotic syndrome, CKD, liver disease, alcohol excess, drugs (steroids, ciclosporin, retinoids, some antipsychotics and antiretrovirals) — without delaying a statin in established CVD.</p>
+        <p><b>Triglycerides 10–20 mmol/L</b> → repeat fasting (after 5 days, within 2 weeks) and look for secondary causes; still &gt;10 → specialist advice. <b>4.5–9.9</b> → QRISK3 may underestimate risk; non-HDL &gt;7.5 → specialist advice.</p>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">5</span>Who gets a statin, at what dose<small>NG238 · CG71</small></h2><div class="body">
+        <table>
+          <tr><th>Person</th><th>Start</th></tr>
+          <tr><td><b>Established CVD</b></td><td><b>Atorvastatin 80 mg</b>, whatever the cholesterol (lower if interactions, adverse-effect risk or preference)</td></tr>
+          <tr><td>QRISK3 <b>≥10%</b></td><td><b>Offer atorvastatin 20 mg</b> after an informed discussion</td></tr>
+          <tr><td>QRISK3 &lt;10%</td><td>Lifestyle; don't rule out a statin if they prefer one or risk is underestimated</td></tr>
+          <tr><td><b>CKD</b></td><td>Atorvastatin 20 mg, primary or secondary prevention</td></tr>
+          <tr><td><b>Type 1 diabetes</b>: over 40, diabetes &gt;10 years, nephropathy or other CVD risk factors</td><td>Offer atorvastatin 20 mg</td></tr>
+          <tr><td>Aged 85+</td><td>Consider atorvastatin 20 mg</td></tr>
+          <tr><td><b>FH</b></td><td>High-intensity statin at the maximum licensed or tolerated dose; lipid clinic</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk teal"><h2><span class="n">6</span>Start safely<small>NG238 · SPC</small></h2><div class="body">
+        <p><b>Transaminases</b> raised but <b>&lt;3× ULN</b> → not a reason to withhold a statin.</p>
+        <p><b>Baseline CK &gt;5× ULN</b> → re-measure after 7 days; still &gt;5× → do not start, find the cause. Raised but &lt;5× → start at a lower dose.</p>
+        <p><b>Interactions</b>: simvastatin with amlodipine, diltiazem, verapamil, macrolides or azole antifungals; check every new prescription.</p>
+        <p><b>Women who could become pregnant</b>: statins are contraindicated in pregnancy — discuss contraception (box 14).</p>
+      </div></div>
+    </div>
+
+    <div class="blk green span"><h2><span class="n">7</span>Lifestyle — alongside a statin, never instead<small>NG238</small></h2><div class="body">
+      <table>
+        <tr><th>Diet</th><th>Fats</th><th>Activity</th><th>Weight</th><th>Alcohol</th><th>Smoking</th></tr>
+        <tr><td>Cardioprotective (Mediterranean-style): oily fish, fruit, veg, wholegrains, pulses, nuts</td><td>Swap saturated fat for unsaturated; do not routinely recommend plant sterols/stanols</td><td>150 min/week moderate activity</td><td>Structured support if overweight</td><td>≤14 units/week; excess raises triglycerides</td><td>Very brief advice and referral to a stop-smoking service</td></tr>
+      </table>
+      <p class="say" style="margin-top:3px">"The statin does most of the work; the blood test in 2–3 months tells us it's working. If muscle aches bother you, tell us rather than stopping — there's almost always a version you can take."</p>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Lipids · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Review and titrate <span>the lipid review: target → adherence → step up → monitor</span></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk green"><h2><span class="n">8</span>Targets — check at 2–3 months<small>NG238 · CG71</small></h2><div class="body">
+        <table>
+          <tr><th>Person</th><th>Target</th></tr>
+          <tr><td>Primary prevention</td><td><b>&gt;40% fall in non-HDL</b> from baseline</td></tr>
+          <tr><td>Secondary prevention</td><td><b>LDL-C ≤2.0</b> or <b>non-HDL ≤2.6 mmol/L</b></td></tr>
+          <tr><td>FH</td><td><b>≥50% fall in LDL-C</b> from the untreated baseline</td></tr>
+        </table>
+        <p class="key">Recheck a full lipid profile and transaminases 2–3 months after starting or changing treatment.</p>
+      </div></div>
+
+      <div class="blk amber"><h2><span class="n">9</span>Before every step-up<small>NG238</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Adherence</b> — taken daily? Myalgia fears? Repeat-prescription record</li>
+          <li><b>Lifestyle</b> — diet, alcohol, weight: agree one change</li>
+          <li><b>Secondary cause</b> — TSH, HbA1c, eGFR, urine, alcohol, new drugs</li>
+          <li><b>Dose</b> — is the statin at the maximum tolerated dose?</li>
+          <li><b>Is it FH?</b> — very high baseline or family history (box 2)</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">10</span>Annual review checklist<small>every patient on lipid-lowering</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li>Medicines review: <b>adherence</b>, side effects, lifestyle</li>
+          <li>Consider a <b>non-fasting non-HDL</b> to inform the discussion</li>
+          <li>BP, HbA1c, eGFR, smoking — whole CVD risk, not just lipids</li>
+          <li>Still at target? If not → box 9, then box 11</li>
+          <li>FH: structured review at least yearly; <b>has cascade testing happened?</b></li>
+          <li>Women who could become pregnant: <b>plans and contraception</b></li>
+          <li>Not on a statin and QRISK3 &lt;10%: reassess risk periodically</li>
+        </ul>
+      </div></div>
+      <div class="blk blue"><h2><span class="n">13</span>When to refer<small>NG238 · CG71 · QS41</small></h2><div class="body">
+        <table>
+          <tr><td>Possible/definite FH, DLCN &gt;5</td><td>Specialist FH service: DNA and cascade testing</td></tr>
+          <tr><td>TC &gt;9.0 or non-HDL &gt;7.5</td><td>Specialist assessment</td></tr>
+          <tr><td>Triglycerides &gt;20 (or &gt;10 after repeat)</td><td>Urgent / specialist advice (box 4)</td></tr>
+          <tr><td>High risk and intolerant of 3 statins</td><td>Specialist advice</td></tr>
+          <tr><td>Not at target on max therapy</td><td>Lipid clinic: injectables</td></tr>
+          <tr><td>Children of a parent with FH</td><td>Testing offered by age 10</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="blk teal span"><h2><span class="n">11</span>The lipid ladder<small>NG238 · TA385 · TA694 · TA733 · TA393/394</small></h2><div class="body">
+      <div class="ladder">
+        <div><b class="h">Step 1 · statin</b>Dose by group (box 5). Atorvastatin 20 → 40 → 80 mg to the highest tolerated dose if not at target.</div>
+        <div><b class="h">Step 2 · switch or reduce</b>Not tolerated → stop, rechallenge when symptoms settle, lower dose or a different statin. Treat at the maximum tolerated dose.</div>
+        <div><b class="h">Step 3 · ezetimibe</b>10 mg OD added to the maximum tolerated statin when not at target (can be considered even at target in secondary prevention). Alone if statins can't be taken.</div>
+        <div class="s4"><b class="h">Step 4 · NICE TA options</b>Bempedoic acid + ezetimibe or inclisiran, only within the TA criteria below; PCSK9 inhibitors via the lipid clinic.</div>
+      </div>
+      <table style="margin-top:3px">
+        <tr><th>Drug</th><th>Usual dose</th><th>NICE criteria</th><th>Monitor / watch</th></tr>
+        <tr><td><b>Atorvastatin</b></td><td>20–80 mg OD</td><td>NG238 (box 5)</td><td>Lipids + ALT at 2–3 months; ALT at 12 months, then only if indicated</td></tr>
+        <tr><td><b>Ezetimibe</b></td><td>10 mg OD</td><td>TA385: statin not tolerated/contraindicated, or not controlled on a statin</td><td>Lipids at 2–3 months</td></tr>
+        <tr><td><b>Bempedoic acid</b></td><td>180 mg OD + ezetimibe 10 mg (or fixed-dose)</td><td>TA694: statins contraindicated or not tolerated AND ezetimibe alone not enough</td><td>Gout and raised urate (SPC)</td></tr>
+        <tr><td><b>Inclisiran</b></td><td>284 mg SC at 0 and 3 months, then 6-monthly</td><td>TA733: prior ACS, revascularisation, CHD, ischaemic stroke or PAD, and LDL-C persistently <b>≥2.6</b> despite max tolerated lipid-lowering</td><td>Local pathway for administration</td></tr>
+        <tr><td><b>PCSK9 inhibitor</b></td><td>Specialist-initiated</td><td>TA393/394 LDL-C thresholds (e.g. FH without CVD &gt;5.0; FH with CVD &gt;3.5)</td><td>Lipid clinic</td></tr>
+      </table>
+    </div></div>
+
+    <div class="col">
+      <div class="blk slate"><h2><span class="n">12</span>Side effects — adjust, don't abandon<small>NG238 · SPC</small></h2><div class="body">
+        <table>
+          <tr><td><b>Muscle aches</b></td><td>Check CK only if symptomatic; &lt;5× ULN → reassure, rechallenge or switch</td></tr>
+          <tr><td><b>Severe pain, weakness, dark urine</b></td><td>Stop; same-day CK and renal function (rhabdomyolysis)</td></tr>
+          <tr><td><b>ALT/AST ≥3× ULN</b></td><td>Stop or don't start; recheck. Below 3× → continue</td></tr>
+          <tr><td><b>Blood glucose</b></td><td>Small rise in diabetes risk; benefit outweighs it — monitor, don't withhold</td></tr>
+          <tr><td><b>Clarithromycin</b>, erythromycin, itraconazole, ketoconazole</td><td>Simvastatin contraindicated — pause it for the course; others per SPC</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="blk red"><h2><span class="n">14</span>Special groups and never-events<small>CG71 · NG238</small></h2><div class="body">
+        <ul>
+          <li><b>Pregnancy</b>: stop statins and other systemic lipid-lowering drugs <b>3 months before trying to conceive</b>; conceives on a statin → stop at once and refer urgently for fetal assessment.</li>
+          <li><b>FH</b>: diagnosing one person means testing the family — check the cascade at every review.</li>
+          <li><b>Never</b>: run QRISK3 in FH or established CVD · stop a statin for a mild ALT rise · leave a statin-intolerant high-risk patient on nothing · ignore chest pain because lipids are "fine".</li>
+        </ul>
+    </div></div>
+
+    <div class="blk purple span"><h2><span class="n">15</span>Monitoring at a glance — and the safety-net<small>NG238 · QS41</small></h2><div class="body">
+      <table>
+        <tr><th>When</th><th>Check</th><th>Act on</th></tr>
+        <tr><td><b>Baseline</b></td><td>Full lipids, ALT/AST, HbA1c, U&amp;E/eGFR; TSH and CK only if indicated</td><td>Secondary causes; ALT ≥3× ULN; CK &gt;5× ULN (box 6)</td></tr>
+        <tr><td><b>2–3 months</b> after start or change; <b>12 months</b></td><td>Full lipids + transaminases; transaminases again at 12 months, then only if indicated</td><td>Target missed → box 9, then next ladder step. No routine CK without symptoms</td></tr>
+        <tr><td><b>Every year</b></td><td>Medicines review ± non-fasting non-HDL; FH structured review</td><td>Adherence, side effects, cascade, pregnancy plans</td></tr>
+      </table>
+      <p class="say" style="margin-top:3px">Safety-net: "Severe muscle pain or weakness, or dark urine — stop the tablet and contact us the same day. Chest pain is 999, whatever your cholesterol. Planning a pregnancy — tell us first."</p>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Lipids · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG238 (2023), CG71, QS41, TA385, TA393, TA394, TA694, TA733</span><span>Full detail and evidence: gpreasoning.uk/tools/management/hypercholesterolaemia.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=1"></script>
+</body>
+</html>

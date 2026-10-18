@@ -1,5 +1,5 @@
 /* Reasoning GP — Articles data (batch 7: C topics)
-   RCGP/SCA examiner depth. NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   RCGP/SCA examiner depth. NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -153,7 +153,7 @@
       'Suspected ocular HSV (red painful eye, dendritic ulcer, visual change) → same-day ophthalmology',
       'Cold sores/HSV exposure in a neonate or significantly immunocompromised patient → urgent specialist assessment',
       'Severe, frequent, or treatment-resistant disease → dermatology'],
-    source:'Clinical practice summary / BNF (antivirals)' },
+    source:'Clinical practice summary' },
 
   { id:'infantile-colic', title:'Colic (infantile colic)', category:'Paediatrics', icon:'👶',
     overview:'Repeated, prolonged episodes of inconsolable crying in an otherwise healthy, thriving baby, typically in the first few months of life with no identifiable cause. It is benign and self-limiting but very distressing for parents — and the key task is excluding other causes and supporting the family.',
@@ -478,7 +478,7 @@
       'Suspected epiglottitis (toxic, drooling, sitting forward, soft stridor) or bacterial tracheitis → 999 / emergency airway management; do not examine the throat',
       'Suspected inhaled foreign body → urgent assessment',
       'Young infant, recurrent/atypical croup, or significant comorbidity → paediatric assessment'],
-    source:'BNFC (dexamethasone) / Clinical practice summary' },
+    source:'Clinical practice summary' },
 
   { id:'cystic-fibrosis', title:'Cystic fibrosis', category:'Respiratory', icon:'🌬️',
     overview:'An autosomal-recessive multisystem disease caused by CFTR gene mutations, producing thick secretions that damage the lungs, pancreas and other organs. Most UK cases are detected by newborn screening. Care is highly specialised; life expectancy has risen markedly, including with new CFTR-modulator drugs.',

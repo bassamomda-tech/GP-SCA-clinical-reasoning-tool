@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="infant-reflux">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reflux in infants — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/infant-reflux.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/infant-reflux.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · chronic disease series</div>
+      <h1>Reflux in infants (GOR and GORD) <small>CLINIC GUIDE</small></h1>
+      <div class="scope">For regurgitation in infants under 1 year. Not for older children and young people with GORD, acute vomiting illness (gastroenteritis) or neonates in hospital.</div>
+    </div>
+    <div class="meta">NICE <b>NG1</b> (2015, updated Oct 2019)<br><b>QS112</b> · CG116 · MHRA DSU Dec 2019<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full protocol: <span style="white-space:nowrap">gpreasoning.uk/tools/management/infant-reflux.html</span></div>
+  </div>
+
+  <div class="ptitle">Page 1 · Assess and start <span>red flags → GOR or GORD → reassure → feeding steps</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Red flags — this is not reflux<small>NICE NG1 red-flag table · QS112 statement 9</small></h2><div class="body">
+    <table>
+      <tr><th>Feature</th><th>May suggest</th><th>Action</th></tr>
+      <tr><td><b>Bile-stained (green or yellow-green) vomit</b></td><td>Intestinal obstruction (malrotation, volvulus)</td><td><b>Same day</b> — paediatric surgery; same-day upper GI contrast study</td></tr>
+      <tr><td><b>Frequent, forceful (projectile) vomiting</b>, up to 2 months old</td><td>Hypertrophic pyloric stenosis</td><td><b>Same day</b> — paediatric surgery</td></tr>
+      <tr><td><b>Haematemesis</b> (not swallowed blood) · blood in stool</td><td>Bleeding oesophagitis or other GI source; bacterial gastroenteritis, CMPA</td><td>Specialist referral; stool microbiology if blood in stool (same day if unwell)</td></tr>
+      <tr><td>Abdominal distension, tenderness or mass</td><td>Obstruction or other surgical cause</td><td>Paediatric surgery</td></tr>
+      <tr><td>Bulging fontanelle, rapidly rising head size, fits · lethargy, fever, unwell</td><td>Raised intracranial pressure · meningitis or other serious infection</td><td><b>Same day</b>; follow the feverish-child pathway</td></tr>
+      <tr><td>Onset <b>after 6 months</b> or persisting <b>after 1 year</b></td><td>Another cause, e.g. UTI</td><td>Urine microbiology; consider specialist referral</td></tr>
+    </table>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>GOR or GORD?<small>NICE NG1 §1.1</small></h2><div class="body">
+        <p><b>GOR</b> (physiological): effortless regurgitation in a well baby; usually starts <b>before 8 weeks</b>, may be frequent, and <b>resolves in 90% before age 1</b>. No investigation or treatment needed.</p>
+        <p><b>GORD</b>: reflux with marked, persistent distress, feeding difficulty or refusal, faltering growth, or another complication.</p>
+        <p>Do not investigate or treat as GORD for <b>one symptom without overt regurgitation</b> (crying, feeding difficulty, faltering growth, chronic cough or hoarseness alone).</p>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">2</span>Assess — every infant<small>NG1 · QS112</small></h2><div class="body">
+        <ul class="tick">
+          <li>Effortless or <b>forceful</b>? Colour (green, blood)?</li>
+          <li>Age at onset; getting worse?</li>
+          <li>Feeds: type, volume, frequency, technique</li>
+          <li>Intake in mL/kg/day against weight</li>
+          <li>Distress, back arching, feed refusal</li>
+          <li><b>Weight</b> plotted against the centiles</li>
+          <li>Hydration, wet nappies, general state</li>
+          <li>Abdomen, fontanelle, tone, temperature</li>
+          <li>Eczema, blood or mucus in stool, diarrhoea</li>
+          <li>Atopy in the family</li>
+        </ul>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">3</span>Who gets what<small>NG1 §1.3</small></h2><div class="body">
+        <table>
+          <tr><th>Picture</th><th>Plan</th></tr>
+          <tr><td>Well, thriving, posseting</td><td><b>Reassure</b> and safety-net; no medicine</td></tr>
+          <tr><td>Frequent regurgitation with marked distress</td><td><b>Feeding steps</b> (box 5)</td></tr>
+          <tr><td>Overt regurgitation + unexplained feeding difficulty, distress or faltering growth</td><td>Consider a <b>4-week PPI or H2RA trial</b></td></tr>
+          <tr><td>Eczema, blood or mucus in stools, diarrhoea, strong atopy</td><td>Consider <b>CMPA</b>: 2–6-week elimination then reintroduce (CG116)</td></tr>
+          <tr><td>Any red flag</td><td>Investigate or refer (red box)</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk green"><h2><span class="n">4</span>Reassurance is the treatment<small>NG1 §1.3</small></h2><div class="body">
+        <ul>
+          <li>Explain that reflux is <b>common, normal and gets better</b> without treatment, usually by the first birthday.</li>
+          <li>It is <b>not caused by the parents</b> and not a sign of illness in a growing baby.</li>
+          <li>Arrange review if new concerns: marked distress, feeding problems, faltering growth, or not settling by 1 year.</li>
+          <li>Holding upright after feeds is fine while the baby is awake and watched.</li>
+          <li><b>Sleep</b>: always on the back, flat, in a clear cot. No wedges, raised cot ends, side or front sleeping.</li>
+        </ul>
+        <p class="say" style="margin-top:3px">"Bringing up milk is really common in happy, growing babies. It's not something you're doing wrong, and it nearly always settles by their first birthday."</p>
+      </div></div>
+
+      <div class="blk teal"><h2><span class="n">5</span>Feeding steps — in order<small>NG1 §1.3 · QS112 statements 2–4</small></h2><div class="body">
+        <div class="flow" style="--c:var(--teal);grid-template-columns:repeat(2,1fr)">
+          <div><b class="h">1 · Review feeds</b>Feeding history, technique, teat flow. Reduce feed volumes <b>only if excessive for weight</b>.</div>
+          <div><b class="h">2 · Smaller, more often</b>Smaller, more frequent feeds while keeping an appropriate total daily amount.</div>
+          <div><b class="h">3 · Thickened formula</b>Thickened formula as a trial (thickened with rice starch, cornstarch, locust bean gum or carob bean gum).</div>
+          <div><b class="h">4 · Alginate</b>If unsuccessful, <b>stop the thickener</b> and try an alginate for <b>1–2 weeks</b>.</div>
+        </div>
+        <p style="margin-top:3px"><b>Breastfed</b>: a breastfeeding assessment by a trained person first; if distress continues, alginate trial for 1–2 weeks.</p>
+        <p>Alginate helped → continue, but <b>try stopping at intervals</b>. Never thickener and alginate together. Check the product's sodium content and instructions.</p>
+      </div></div>
+    </div>
+
+    <div class="blk slate span"><h2><span class="n">6</span>Acid suppression — only to NICE criteria<small>NG1 §1.3 · updated Oct 2019</small></h2><div class="body">
+      <table>
+        <tr><th>Do not offer</th><th>Consider</th><th>Then</th></tr>
+        <tr><td>A PPI or H2RA for <b>overt regurgitation alone</b>, or for crying or distress alone, in an otherwise well infant</td><td>A <b>4-week trial</b> of a PPI or H2RA if overt regurgitation <b>plus</b> unexplained feeding difficulty, distressed behaviour or faltering growth</td><td><b>Review at 4 weeks</b>: no clear benefit → stop. Symptoms persist or come back after stopping → consider specialist referral (possible endoscopy)</td></tr>
+      </table>
+      <p style="margin-top:2px">Before a trial: rule out overfeeding, finish the feeding steps, consider CMPA. A failed trial means <b>stop and rethink</b>, not a higher dose or a second drug. Crying, feeding difficulty or faltering growth without visible regurgitation needs another explanation, not a PPI.</p>
+      <p class="key">Dose by weight and age; licensing varies by product and formulation — check the SPC and your local formulary.</p>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Infant reflux · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Review and follow up <span>response → growth → stop what isn't working → refer if it doesn't settle</span></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk green"><h2><span class="n">7</span>What good looks like<small>NG1</small></h2><div class="body">
+        <table>
+          <tr><th>Goal</th><th>Sign it is met</th></tr>
+          <tr><td>Growth</td><td>Weight following the centile</td></tr>
+          <tr><td>Feeding</td><td>Feeds taken without marked distress or refusal</td></tr>
+          <tr><td>Parents</td><td>Understand it is self-limiting; know the red flags</td></tr>
+          <tr><td>Medicines</td><td>None, or a time-limited trial with a stop date</td></tr>
+          <tr><td>Natural history</td><td>Settling by the first birthday</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk amber"><h2><span class="n">8</span>Before any medicine<small>NG1 §1.3</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Red flags</b> rechecked — forceful, green or bloody vomit</li>
+          <li><b>Overfeeding</b> excluded: intake checked against weight</li>
+          <li><b>Feeding steps</b> done in order, one at a time</li>
+          <li><b>Overt regurgitation</b> present, not distress alone</li>
+          <li><b>CMPA</b> considered if allergic or GI features</li>
+          <li>Indication, trial length and <b>review date</b> recorded</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">9</span>Review checklist<small>at each review until settled</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Weight</b> plotted and compared with the last</li>
+          <li>Regurgitation: frequency, volume, effortless or forceful</li>
+          <li>Distress, feed refusal or aversion</li>
+          <li>Feeding step reached and whether it helped</li>
+          <li>Alginate: still needed? Try stopping</li>
+          <li>PPI/H2RA: <b>review at 4 weeks</b> — benefit, or stop</li>
+          <li>New allergic or GI features → think CMPA</li>
+          <li>Red flags and safe sleep reinforced with parents</li>
+          <li>Still regurgitating at 1 year → reconsider the diagnosis</li>
+        </ul>
+      </div></div>
+      <div class="blk blue"><h2><span class="n">10</span>Not settling? Re-check<small>NG1 · CG116</small></h2><div class="body">
+        <table>
+          <tr><td>Red flag missed?</td><td>Forceful, green or bloody vomit → same day</td></tr>
+          <tr><td>Overfeeding?</td><td>Recalculate intake for weight</td></tr>
+          <tr><td>CMPA?</td><td>Allergy-focused history; elimination then reintroduction</td></tr>
+          <tr><td>Drug trial failed?</td><td>Stop it; don't increase the dose; consider referral</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="blk teal span"><h2><span class="n">11</span>The treatment ladder<small>NICE NG1 §1.3 · QS112</small></h2><div class="body">
+      <div class="ladder">
+        <div><b class="h">Step 1 · reassure</b>Well, thriving baby: explanation, safe sleep, red-flag safety-net. Most need nothing else.</div>
+        <div><b class="h">Step 2 · feeds</b>Formula: review volumes, then smaller, more frequent feeds. Breastfed: breastfeeding assessment.</div>
+        <div><b class="h">Step 3 · thicken or alginate</b>Thickened formula; if not helping, stop it and try an alginate for 1–2 weeks. One at a time.</div>
+        <div class="s4"><b class="h">Step 4 · drug trial</b>Only to NICE criteria: PPI or H2RA for 4 weeks, then review. No benefit, or relapse on stopping → specialist.</div>
+      </div>
+      <table style="margin-top:3px">
+        <tr><th>Option</th><th>When</th><th>Monitor</th><th>Watch</th></tr>
+        <tr><td><b>Thickened formula</b></td><td>Formula-fed, frequent regurgitation with marked distress</td><td>Symptoms, weight</td><td>Never with an alginate</td></tr>
+        <tr><td><b>Alginate</b> (e.g. infant alginate sachets)</td><td>Thickener failed, or breastfed after assessment</td><td>Response at 1–2 weeks</td><td>Stop at intervals; sodium content; product instructions</td></tr>
+        <tr><td><b>PPI</b> (e.g. omeprazole) or <b>H2RA</b></td><td>Overt regurgitation + feeding difficulty, distress or faltering growth</td><td>Review at <b>4 weeks</b></td><td>Dose by weight per SPC; no indefinite repeats; stop if no clear benefit</td></tr>
+        <tr><td>Domperidone, metoclopramide, erythromycin</td><td><b>Not</b> in primary care</td><td>—</td><td>Only with specialist paediatric agreement (box 13)</td></tr>
+      </table>
+    </div></div>
+
+    <div class="col">
+      <div class="blk slate"><h2><span class="n">12</span>Problems and fixes<small>NG1 · SPC</small></h2><div class="body">
+        <table>
+          <tr><td><b>Thickener and alginate</b> both in use</td><td>Stop one: they are used one at a time</td></tr>
+          <tr><td><b>Feeds cut too far</b></td><td>Check total daily intake for weight; faltering growth risk</td></tr>
+          <tr><td><b>Alginate</b> continued for months</td><td>Try stopping; most reflux settles</td></tr>
+          <tr><td><b>PPI on repeat</b> with no review</td><td>Review the indication; stop if no clear benefit</td></tr>
+          <tr><td><b>Reflux medicine requested</b> for a thriving baby</td><td>Explain why it won't help posseting; agree the feeding plan</td></tr>
+          <tr><td><b>Parents exhausted</b></td><td>Acknowledge it; health visitor support; agree a review date</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="blk red"><h2><span class="n">13</span>Refer and never-events<small>NG1 · MHRA DSU Dec 2019</small></h2><div class="body">
+      <ul>
+        <li><b>Same day</b>: red-flag vomiting (green, projectile under 2 months, blood), dehydration, unwell or febrile infant.</li>
+        <li><b>Paediatrics</b>: persistent faltering growth with overt regurgitation; feeding aversion; no response to, or relapse after, a 4-week PPI/H2RA trial; still regurgitating after 1 year.</li>
+        <li><b>Specialist (possible endoscopy)</b>: haematemesis not explained by swallowed blood (same day if unwell).</li>
+        <li><b>Domperidone</b>: no longer licensed under 12 years or under 35 kg (MHRA 2019). <b>Metoclopramide</b> is contraindicated under 1 year (MHRA 2013). No prokinetic without specialist paediatric agreement (NG1).</li>
+        <li><b>Never</b>: acid suppression for posseting or crying alone · thickener plus alginate · cot tilting or wedges · indefinite PPI repeats.</li>
+      </ul>
+    </div></div>
+
+    <div class="blk green span"><h2><span class="n">14</span>When it might be cow's milk allergy<small>NICE CG116 1.1.11 · NG1 · iMAP/UK</small></h2><div class="body">
+      <table>
+        <tr><th>Think of it when</th><th>Formula-fed</th><th>Breastfed</th><th>Confirm</th></tr>
+        <tr><td>Reflux with eczema, urticaria, blood or mucus in stools, diarrhoea, constipation, faltering growth or strong atopy — <b>not</b> posseting alone in a thriving baby</td><td><b>Extensively hydrolysed formula</b> trial; amino-acid formula for severe or refractory cases with specialist or dietetic advice</td><td>Time-limited <b>maternal</b> cow's milk exclusion with calcium and vitamin D for the mother, and dietetic advice</td><td>Elimination normally <b>2–6 weeks</b>, then <b>reintroduce</b>: symptoms back = CMPA. A failed PPI trial is a prompt to think of this, not to raise the dose</td></tr>
+      </table>
+    </div></div>
+
+    <div class="blk blue span"><h2><span class="n">15</span>Safety-net — in the parents' words<small>NG1 red flags · QS112</small></h2><div class="body">
+      <div class="flow" style="--c:var(--blue)">
+        <div><b class="h">Sinister vomiting</b>"Green or yellow-green vomit, blood in the vomit, or forceful vomiting that is getting worse — get seen the same day."</div>
+        <div><b class="h">Not feeding or growing</b>"Refusing feeds, keeps vomiting, fewer wet nappies, or not gaining weight — contact us the same day."</div>
+        <div><b class="h">Unwell baby</b>"Floppy, very hard to wake, pauses in breathing, turning blue, a fit — call 999. Fever, a bulging soft spot or swollen tummy — same day."</div>
+        <div><b class="h">Expected course</b>"In a happy, growing baby this almost always settles by the first birthday. Come back if it hasn't."</div>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Infant reflux · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG1 (2015, updated Oct 2019); NICE QS112 (2016); NICE CG116 (2011); MHRA Drug Safety Update Dec 2019 (domperidone) and Aug 2013 (metoclopramide)</span><span style="white-space:nowrap">Full detail and evidence:<br>gpreasoning.uk/tools/management/infant-reflux.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=1"></script>
+</body>
+</html>

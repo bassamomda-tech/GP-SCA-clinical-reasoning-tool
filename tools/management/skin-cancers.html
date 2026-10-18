@@ -44,7 +44,7 @@ MG.render({snapshot:"summaries/skin-cancers.html",
   lead:'<div class="mg-layers"><a href="#severe"><b>Red flags</b><small>Melanoma · SCC</small></a><a href="#confirm"><b>7-point checklist</b><small>Score it</small></a><a href="#refer"><b>Which pathway</b><small>Melanoma · SCC · BCC</small></a><a href="#prevent"><b>Prevent</b><small>Sun · high risk</small></a><a href="../algorithms/pigmented-skin-lesions.html"><b>Pigmented lesions algorithm</b><small>Assessment →</small></a></div>',
   quickSub:"If you read nothing else on this page, read these cards. Every number traces to the source cited under <a href=\"#provenance\">Evidence</a>.",
   quick:[
-    {tone:"red", h:"⚠ Suspected melanoma → suspected cancer pathway", html:"Refer using a <b>suspected cancer pathway referral</b> (appointment within 2 weeks) for a suspicious pigmented lesion scoring <b>3 or more on the weighted 7-point checklist</b>, or where <b>dermoscopy suggests melanoma</b>. <b>Consider</b> it for a pigmented or non-pigmented lesion that suggests <b>nodular melanoma</b>. Strong clinical concern outweighs a low score."},
+    {tone:"red", h:"⚠ Suspected melanoma → suspected cancer pathway", html:"Refer using a <b>suspected cancer pathway referral</b> for a suspicious pigmented lesion scoring <b>3 or more on the weighted 7-point checklist</b>, or where <b>dermoscopy suggests melanoma</b>. <b>Consider</b> it for a pigmented or non-pigmented lesion that suggests <b>nodular melanoma</b>. Strong clinical concern outweighs a low score."},
     {tone:"red", h:"⚠ Suspected SCC → consider suspected cancer pathway", html:"<b>Consider</b> a suspected cancer pathway referral for a skin lesion that raises the suspicion of <b>squamous cell carcinoma</b>: a growing, keratotic or ulcerated nodule, tender or bleeding, especially on sun-exposed skin, lip or ear, or in an organ-transplant recipient."},
     {tone:"amber", h:"BCC — usually routine", html:"<b>Consider routine referral</b> for suspected basal cell carcinoma. Only <b>consider</b> a suspected cancer pathway referral if there is concern that a delay could have an unacceptable impact because of the lesion's <b>site or size</b> (for example near the eye or nose, or large)."},
     {tone:"blue", h:"Never excise a possible melanoma in the surgery", html:"Do not shave, curette or biopsy a lesion that might be melanoma — refer it intact. Only excise a suspected BCC in primary care if you are trained and accredited under the local skin cancer model of care."},
@@ -63,7 +63,7 @@ MG.render({snapshot:"summaries/skin-cancers.html",
 
     {id:"severe", nav:"Red flags", title:"Red flags — the lesions that cannot wait", sub:"Melanoma and SCC can metastasise; the commonest error is reassurance without scoring or without a dated review.",
      blocks:[
-       {b:"warn", html:"<b>Suspicious pigmented lesion with a weighted 7-point checklist score of 3 or more, or dermoscopy suggesting melanoma → suspected cancer pathway referral (appointment within 2 weeks).</b> Do not excise or biopsy in primary care. Palpable regional nodes or symptoms of metastasis with a skin lesion → suspected cancer pathway and note it in the referral."},
+       {b:"warn", html:"<b>Suspicious pigmented lesion with a weighted 7-point checklist score of 3 or more, or dermoscopy suggesting melanoma → suspected cancer pathway referral.</b> Do not excise or biopsy in primary care. Palpable regional nodes or symptoms of metastasis with a skin lesion → suspected cancer pathway and note it in the referral."},
        {b:"cards", items:[
          {tone:"red", h:"Nodular melanoma", html:"Firm, raised, rapidly growing nodule, often symmetrical and sometimes <b>amelanotic</b> (pink or red) — it fails ABCD. Use <b>EFG</b>: Elevated, Firm, Growing for more than a month. Consider suspected cancer pathway referral.", src:"NICE NG12"},
          {tone:"red", h:"Subungual and acral melanoma", html:"New or widening pigmented nail band, pigment spreading to the nail fold (Hutchinson's sign), or a changing pigmented lesion on the sole or palm — more common in people with darker skin.", src:"NG12 · BAD"},
@@ -156,19 +156,19 @@ MG.render({snapshot:"summaries/skin-cancers.html",
        ]},
        {b:"cards", items:[
          {tone:"amber", h:"🔍 Changing lesion", html:"“If this mark changes in size, shape or colour, bleeds, becomes itchy or crusted, or doesn't heal within a few weeks, contact us — don't wait for the review.”"},
-         {tone:"amber", h:"📅 Urgent referral", html:"“I'm referring you to be seen within two weeks. This doesn't mean it is cancer, but it needs a specialist look. If you haven't heard within a week, call us.”"},
+         {tone:"amber", h:"📅 Urgent referral", html:"“I'm referring you urgently so we can find out quickly. This doesn't mean it is cancer, but it needs a specialist look. If you haven't heard within a week, call us.”"},
          {tone:"green", h:"☀️ Sun sense", html:"“Shade, clothing and an SPF 30 sunscreen with high UVA stars, and no sunbeds — it's never too late to reduce your risk.”"}
        ]}
      ]},
 
-    {id:"refer", nav:"Refer", title:"Referral pathways — melanoma, SCC and BCC", sub:"Use NG12 wording: suspected cancer pathway referral means an appointment within 2 weeks.",
+    {id:"refer", nav:"Refer", title:"Referral pathways — melanoma, SCC and BCC", sub:"Use NG12 wording: suspected cancer pathway referral aims for cancer to be diagnosed or ruled out within 28 days (Faster Diagnosis Standard).",
      blocks:[
        {b:"cards", items:[
          {tone:"red", h:"Suspected cancer pathway — refer", html:"Suspicious pigmented lesion with weighted 7-point checklist score of 3 or more; dermoscopy suggests melanoma.", src:"NICE NG12"},
          {tone:"red", h:"Suspected cancer pathway — consider", html:"Pigmented or non-pigmented lesion suggesting nodular melanoma; skin lesion raising the suspicion of SCC; suspected BCC where delay could have an unacceptable impact because of site or size.", src:"NICE NG12"},
          {tone:"blue", h:"Routine — consider", html:"Suspected BCC (most cases). Many atypical moles or a strong family history for assessment. Uncertain benign lesion after review.", src:"NICE NG12"}
        ]},
-       {b:"say", html:"“This looks like it could be a skin cancer called [melanoma / a squamous cell cancer], so I'm referring you on the fast-track pathway to be seen within two weeks. Most of these referrals turn out not to be cancer, but if it is, finding it early makes treatment simpler and more successful.”"}
+       {b:"say", html:"“This looks like it could be a skin cancer called [melanoma / a squamous cell cancer], so I'm referring you on the fast-track pathway to be seen quickly. Most of these referrals turn out not to be cancer, but if it is, finding it early makes treatment simpler and more successful.”"}
      ]},
 
     {id:"provenance", nav:"Evidence", title:"Evidence and references", sub:"Every recommendation on this page is traceable to these sources.",
@@ -184,7 +184,7 @@ MG.render({snapshot:"summaries/skin-cancers.html",
          '</ul></div>'}
      ]}
   ],
-  foot:"Skin cancers — NICE NG12 (updated April 2026), NG14 (updated 2022), NG34 (2016) and BAD guidelines. Suspected cancer pathway referral means an appointment within 2 weeks. Verify any treatment against the current SPC, BNF and local skin cancer model of care."
+  foot:"Skin cancers — NICE NG12 (updated April 2026), NG14 (updated 2022), NG34 (2016) and BAD guidelines. suspected cancer pathway referral aims for cancer to be diagnosed or ruled out within 28 days (Faster Diagnosis Standard). Check any treatment in the current SPC, your local formulary and the local skin cancer model of care."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

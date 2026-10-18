@@ -46,7 +46,7 @@
 - Isolated hyperkeratotic: cryotherapy. Extensive/refractory \u2192 dermatology (PDT).
 - Induration/tender/rapid/ulcerated/bleeding \u2192 suspected SCC \u2192 suspected cancer pathway referral/biopsy.`,
     sources: [
-      { label:'PCDS — actinic keratosis', url:'https://www.pcds.org.uk/clinical-guidance/actinic-keratosis-syn.-solar-keratosis' },
+      { label:'PCDS — actinic keratosis', url:'https://www.pcds.org.uk/clinical-guidance/actinic-keratosis-syn-solar-keratosis' },
     ],
   },
 

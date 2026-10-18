@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 22: P topics, part 1)
    NHS conditions A–Z (letter P) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -103,7 +103,7 @@
       'Severe, spreading, or systemic infection → urgent assessment',
       'Chronic or recurrent paronychia not responding, or diagnostic uncertainty → dermatology/hand specialist',
       'Suspected herpetic whitlow → manage as HSV (do not incise)'],
-    source:'BNF (flucloxacillin; topical corticosteroids and antifungals) / hand-infection surgical practice' },
+    source:'Hand-infection surgical practice' },
 
   { id:'pid', title:'Pelvic inflammatory disease (PID)', category:'Women’s health', icon:'🌸',
     overview:'Infection of the upper female genital tract (uterus, tubes, ovaries), usually from ascending sexually transmitted infection (chlamydia, gonorrhoea) or other organisms. It is a major preventable cause of tubal infertility, ectopic pregnancy and chronic pelvic pain — so the threshold for empirical treatment is deliberately low.',
@@ -230,7 +230,7 @@
       'Diabetic foot with sensory loss/ulceration → diabetic foot service'],
     source:'NICE CG173 (Neuropathic pain in adults) / NICE NG19 (Diabetic foot problems)' },
 
-  { id:'pernicious-anaemia', title:'Pernicious anaemia (vitamin B12 deficiency)', category:'Haematology', icon:'🩸',
+  { id:'pernicious-anaemia', title:'Pernicious anaemia (vitamin B12 deficiency)', category:'Haematology', icon:'💉',
     overview:'An autoimmune cause of vitamin B12 deficiency, in which antibodies against intrinsic factor/gastric parietal cells prevent B12 absorption. B12 deficiency causes a macrocytic anaemia and, importantly, neurological damage that can be irreversible if treatment is delayed — so recognising and treating it promptly matters.',
     features:[
       'Anaemia symptoms: fatigue, breathlessness, pallor; with macrocytosis (raised MCV) on the blood count',
@@ -253,7 +253,7 @@
       'Diagnostic uncertainty, or failure to respond to treatment → haematology',
       'Suspected underlying malabsorption (coeliac, Crohn’s) → gastroenterology',
       'New upper-GI alarm symptoms in pernicious anaemia → investigate per NICE NG12 (updated April 2026)'],
-    source:'NICE NG239 (Vitamin B12 deficiency in over 16s, 2024) / BSH guidance / BNF (hydroxocobalamin)' }
+    source:'NICE NG239 (Vitamin B12 deficiency in over 16s, 2024) / BSH guidance' }
 
   );
 })();

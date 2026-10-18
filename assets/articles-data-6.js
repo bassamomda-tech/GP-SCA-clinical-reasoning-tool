@@ -1,5 +1,5 @@
 /* Reasoning GP — Articles data (batch 6: B–C topics)
-   RCGP/SCA examiner depth. NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   RCGP/SCA examiner depth. NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -403,7 +403,7 @@
       'Complications (pneumonia, encephalitis/cerebellitis, severe secondary infection, dehydration) → emergency admission',
       'Severe or atypical disease → infectious diseases',
       'Neonatal varicella → urgent paediatric/neonatal assessment'],
-    source:'UKHSA Green Book chapter 34 (varicella) / UKHSA MMRV programme (January 2026) / RCOG Green-top Guideline No. 13 (chickenpox in pregnancy) / BNF' },
+    source:'UKHSA Green Book chapter 34 (varicella) / UKHSA MMRV programme (January 2026) / RCOG Green-top Guideline No. 13 (chickenpox in pregnancy)' },
 
   { id:'chilblains', title:'Chilblains (pernio)', category:'Dermatology', icon:'❄️',
     overview:'An abnormal inflammatory skin reaction to cold (but non-freezing) exposure, causing itchy, painful, red-purple lesions on the extremities. They are common and benign, usually resolving spontaneously; the main task is reassurance, prevention, and recognising when an underlying condition is driving recurrent or atypical disease.',
@@ -505,7 +505,7 @@
       'Congenital cholesteatoma (white mass behind an intact drum in a child) → paediatric ENT'],
     source:'ENT UK guidance' },
 
-  { id:'cll', title:'Chronic lymphocytic leukaemia (CLL)', category:'Haematology', icon:'🩸',
+  { id:'cll', title:'Chronic lymphocytic leukaemia (CLL)', category:'Haematology', icon:'💉',
     overview:'A slowly progressive malignancy of mature B lymphocytes, and the commonest leukaemia in adults — predominantly older people. Many are diagnosed incidentally on a routine FBC showing a lymphocytosis, and many never need treatment ("watch and wait"). The GP role is recognition, monitoring and supporting infection risk.',
     features:[
       'Often asymptomatic — found incidentally as a persistent mature lymphocytosis on FBC',
@@ -530,7 +530,7 @@
       'Recurrent severe infections → haematology (consider immunoglobulin replacement)'],
     source:'NICE NG12 (updated April 2026) / BSH CLL guidance' },
 
-  { id:'cml', title:'Chronic myeloid leukaemia (CML)', category:'Haematology', icon:'🩸',
+  { id:'cml', title:'Chronic myeloid leukaemia (CML)', category:'Haematology', icon:'💉',
     overview:'A myeloproliferative malignancy driven by the BCR-ABL1 fusion gene (the Philadelphia chromosome). Its prognosis has been transformed by tyrosine kinase inhibitors, which now give many patients a near-normal life expectancy. It is often found on a routine FBC showing a markedly raised white-cell count.',
     features:[
       'Frequently detected incidentally on FBC: a high white-cell count with the full spectrum of maturing granulocytes (left shift), often with basophilia and thrombocytosis',

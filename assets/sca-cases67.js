@@ -126,7 +126,7 @@
     ],
     learning: 'STEVENS-JOHNSON SYNDROME / TOXIC EPIDERMAL NECROLYSIS (SJS/TEN) is a life-threatening severe cutaneous adverse drug reaction: a recent culprit DRUG plus a PAINFUL (not merely itchy) rash with dusky/target macules, BLISTERS and skin detachment (Nikolsky+), and crucially MUCOSAL erosions of \u22652 of mouth/eyes/genitals, with fever and systemic illness (SJS <10% body-surface detachment, SJS/TEN overlap 10\u201330%, TEN >30% \u2014 BAD UK guidelines 2016). The combination of mucosal involvement, skin detachment and a culprit drug is the alarm. Identify the culprit (antiepileptics \u2014 lamotrigine/carbamazepine/phenytoin; allopurinol; sulfonamide/other antibiotics; oxicam NSAIDs; nevirapine), typically started days-weeks before, and STOP it immediately (for an antiepileptic the hospital arranges safe seizure cover), documenting a severe drug allergy and reporting on a Yellow Card (MHRA), since re-exposure can be fatal and prompt withdrawal improves outcome. Recognise an EMERGENCY with significant mortality (skin failure causes fluid/electrolyte loss, thermoregulation failure, infection/sepsis, eye/mucosal complications) and arrange IMMEDIATE admission \u2014 dermatology with burns/ITU-level supportive care and EARLY ophthalmology, with a sepsis risk assessment (NICE NG253; observations cannot be taken on video) \u2014 not community management. Know the differential: erythema multiforme (milder, target lesions, often post-HSV, less mucosal/systemic), staphylococcal scalded skin (mostly young children, no mucosa), and DRESS (rash, fever, eosinophilia, organ involvement). Communicate the urgency clearly but calmly, arrange emergency transfer, and ensure the drug is stopped and documented. The skill is rapid pattern recognition, stopping the drug, and emergency admission \u2014 not a community antihistamine.',
     knowledge: {
-      guideline: '[1] UK guidelines for the management of Stevens\u2013Johnson syndrome/toxic epidermal necrolysis in adults (British Association of Dermatologists, 2016) \u00b7 [2] NICE NG253 (suspected sepsis in people aged 16 and over) \u00b7 [3] MHRA Yellow Card scheme \u00b7 [4] BNF monographs of the suspected drug (for example lamotrigine, carbamazepine, allopurinol, co-trimoxazole) \u00b7 stop culprit + emergency admission \u00b7 differential (EM/SSSS/DRESS)',
+      guideline: '[1] UK guidelines for the management of Stevens\u2013Johnson syndrome/toxic epidermal necrolysis in adults (British Association of Dermatologists, 2016) \u00b7 [2] NICE NG253 (suspected sepsis in people aged 16 and over) \u00b7 [3] MHRA Yellow Card scheme \u00b7 stop culprit + emergency admission \u00b7 differential (EM/SSSS/DRESS)',
       points: [
         {
           h: 'Recognise SJS/TEN',
@@ -134,7 +134,7 @@
         },
         {
           h: 'Stop the culprit',
-          t: 'Antiepileptics (lamotrigine/carbamazepine/phenytoin/phenobarbital), allopurinol, sulfonamides such as co-trimoxazole, oxicam NSAIDs, nevirapine [1][4]. Stop immediately; prompt withdrawal improves outcome. Antiepileptic culprit: hospital arranges seizure cover; never restart without specialist advice.'
+          t: 'Antiepileptics (lamotrigine/carbamazepine/phenytoin/phenobarbital), allopurinol, sulfonamides such as co-trimoxazole, oxicam NSAIDs, nevirapine [1]. Stop immediately; prompt withdrawal improves outcome. Antiepileptic culprit: hospital arranges seizure cover; never restart without specialist advice.'
         },
         {
           h: 'Emergency admission',
@@ -283,11 +283,11 @@
     ],
     learning: 'KAWASAKI DISEASE is a medium-vessel vasculitis of young children. NICE NG143: be aware of it in any child with FEVER lasting 5 DAYS or longer \u2014 4 features are not required (the "\u22654 of 5" rule is the AHA 2017 research definition, international); the features are bilateral NON-purulent conjunctivitis; mucosal changes (red/cracked lips, strawberry tongue); cervical lymphadenopathy; polymorphous rash; and extremity changes (palm/sole erythema-oedema, later peeling). It is a CLINICAL diagnosis with no single confirmatory test (inflammatory markers and later thrombocytosis support it), and clinicians must be alert to INCOMPLETE/ATYPICAL Kawasaki \u2014 especially in INFANTS, who present atypically and are at higher coronary risk \u2014 keeping a low referral threshold. The critical reason for early recognition is the risk of CORONARY ARTERY ANEURYSMS (a leading cause of acquired paediatric heart disease), substantially reduced by prompt treatment, so a prolonged-fever child with these features must not be dismissed as "just a virus". The action is an URGENT same-day paediatric referral/admission after an NG143 traffic-light and NICE NG254 sepsis assessment (on video, heart rate, capillary refill and hydration cannot be judged; any red or high-risk feature means emergency transfer): treatment is IV immunoglobulin plus aspirin, ideally within the first ~10 days, with echocardiography \u2014 primary care\u2019s role is recognition and urgent referral. Aspirin is a specialist exception to the under-16 rule (BNFC): parents must not give it at home; antipyretics are for distress only and not given together (NG143). Consider and exclude mimics (measles, scarlet fever, other viral exanthems, toxin-mediated illness, drug reactions), but persistent high fever \u22655 days with the mucocutaneous cluster warrants paediatric assessment regardless. Validate the worried parent repeatedly told "it\u2019s just a virus", recognise the pattern, and refer urgently the same day.',
     knowledge: {
-      guideline: '[1] NICE NG143 (Fever in under 5s: assessment and initial management, 2019) \u00b7 [2] NICE NG254 (Suspected sepsis in under 16s, 2025) \u00b7 [3] BNFC, aspirin (under-16 contraindication; Kawasaki disease exception) \u00b7 [4] Eleftheriou et al., Management of Kawasaki disease, Arch Dis Child 2014;99:74\u201383 (UK) \u00b7 [5] American Heart Association scientific statement on Kawasaki disease (McCrindle et al., Circulation 2017, international) \u00b7 think of it at 5 days of fever \u00b7 coronary aneurysm risk \u00b7 urgent paediatric referral, IVIG + aspirin',
+      guideline: '[1] NICE NG143 (Fever in under 5s: assessment and initial management, 2019) \u00b7 [2] NICE NG254 (Suspected sepsis in under 16s, 2025) \u00b7 [3] Eleftheriou et al., Management of Kawasaki disease, Arch Dis Child 2014;99:74\u201383 (UK) \u00b7 [4] American Heart Association scientific statement on Kawasaki disease (McCrindle et al., Circulation 2017, international) \u00b7 think of it at 5 days of fever \u00b7 coronary aneurysm risk \u00b7 urgent paediatric referral, IVIG + aspirin',
       points: [
         {
           h: 'Recognise Kawasaki',
-          t: 'NICE NG143 [1]: be aware at fever \u22655 days, without needing 4 features (the \u22654-of-5 rule is the AHA research definition [5], international). Features: bilateral non-purulent conjunctivitis; mucosal changes (cracked lips/strawberry tongue); cervical lymphadenopathy; polymorphous rash; extremity changes (palm/sole erythema-oedema, later peeling).'
+          t: 'NICE NG143 [1]: be aware at fever \u22655 days, without needing 4 features (the \u22654-of-5 rule is the AHA research definition [4], international). Features: bilateral non-purulent conjunctivitis; mucosal changes (cracked lips/strawberry tongue); cervical lymphadenopathy; polymorphous rash; extremity changes (palm/sole erythema-oedema, later peeling).'
         },
         {
           h: 'Clinical & incomplete',
@@ -299,7 +299,7 @@
         },
         {
           h: 'Urgent treatment',
-          t: 'Urgent same-day paediatric referral/admission; NG143 traffic-light and NG254 [2] sepsis assessment (emergency transfer if red/high-risk). IVIG + aspirin, ideally within ~10 days, with echocardiography [4]. BNFC [3]: no aspirin at home. Primary care = recognise and refer.'
+          t: 'Urgent same-day paediatric referral/admission; NG143 traffic-light and NG254 [2] sepsis assessment (emergency transfer if red/high-risk). IVIG + aspirin, ideally within ~10 days, with echocardiography [3]. BNFC: no aspirin at home. Primary care = recognise and refer.'
         },
         {
           h: 'Differential',
@@ -590,7 +590,7 @@
     ],
     learning: 'OTITIS EXTERNA (inflammation of the external ear CANAL) presents with ear PAIN, ITCH and DISCHARGE, PAIN ON MOVING the tragus/pinna, and a blocked/muffled-hearing sensation, with a red, swollen, debris-filled canal; it is provoked by WATER/SWIMMING ("swimmer\u2019s ear"), local TRAUMA (cotton buds), and skin conditions (eczema/seborrhoeic dermatitis/psoriasis). Distinguish it from otitis MEDIA (deeper pain, systemic/febrile especially in children, a bulging/red drum, no tragal tenderness; discharge if the drum perforates), and consider a foreign body, a furuncle, and FUNGAL OE/otomycosis (itch-predominant, fungal debris, may need antifungal drops). Manage uncomplicated OE: adequate ANALGESIA, AURAL TOILET (cleaning/microsuction improves drop delivery), analgesia and local heat first, then topical ACETIC ACID (over 12s) or a TOPICAL antibiotic +/- corticosteroid (similar cure rates at 7 days \u2014 UKHSA Summary of antimicrobial prescribing guidance 2025; choice per BNF) rather than systemic antibiotics, avoiding aminoglycoside drops if the drum is perforated or cannot be seen unless the ENT UK criteria are met, keeping the ear DRY (avoid water/swimming during treatment) and using an ear WICK (ENT) if the canal is very swollen; reserve oral flucloxacillin, with referral to exclude necrotising OE, for cellulitis spreading beyond the canal or systemic signs. Advise prevention and technique \u2014 STOP cotton buds (they cause trauma and push debris in), keep ears dry, treat underlying skin conditions, and use drops correctly. The critical RED FLAG is MALIGNANT (NECROTISING) OTITIS EXTERNA in a high-risk patient (elderly DIABETIC or immunocompromised): SEVERE, persistent pain (out of proportion, worse at night), copious discharge, GRANULATION tissue in the canal, and/or cranial-nerve involvement (e.g. facial palsy) \u2014 a skull-base osteomyelitis that is serious/potentially life-threatening and needs same-day ENT/hospital referral (UK consensus 2023), imaging and IV antibiotics, not routine OE treatment. The skill is correct topical management, advice/technique, and screening the malignant-OE red flags; otoscopy needs a face-to-face appointment.',
     knowledge: {
-      guideline: '[1] UKHSA Summary of antimicrobial prescribing guidance: managing common infections (2025), otitis externa \u00b7 [2] BNF, ear preparations (choice and doses) \u00b7 [3] ENT UK consensus on topical aminoglycosides with a perforated drum (Phillips et al., Clin Otolaryngol 2007;32:330\u2013336) \u00b7 [4] UK consensus definitions of necrotising otitis externa (Hodgson et al., BMJ Open 2023;13:e061349) \u00b7 [5] Kaushik et al., Cochrane 2010 CD004740 (interventions for acute otitis externa) \u00b7 [6] AAO-HNSF clinical practice guideline, acute otitis externa (Rosenfeld et al., 2014, international) \u00b7 topical drops + aural toilet \u00b7 keep dry / stop cotton buds \u00b7 malignant (necrotising) OE red flag',
+      guideline: '[1] UKHSA Summary of antimicrobial prescribing guidance: managing common infections (2025), otitis externa \u00b7 [2] ENT UK consensus on topical aminoglycosides with a perforated drum (Phillips et al., Clin Otolaryngol 2007;32:330\u2013336) \u00b7 [3] UK consensus definitions of necrotising otitis externa (Hodgson et al., BMJ Open 2023;13:e061349) \u00b7 [4] Kaushik et al., Cochrane 2010 CD004740 (interventions for acute otitis externa) \u00b7 [5] AAO-HNSF clinical practice guideline, acute otitis externa (Rosenfeld et al., 2014, international) \u00b7 topical drops + aural toilet \u00b7 keep dry / stop cotton buds \u00b7 malignant (necrotising) OE red flag',
       points: [
         {
           h: 'Recognise OE',
@@ -602,7 +602,7 @@
         },
         {
           h: 'Manage uncomplicated OE',
-          t: 'UKHSA [1]: analgesia and local heat; then topical acetic acid (over 12s) or antibiotic +/- steroid drops/spray (similar cure at 7 days [5]; choice per BNF [2]); not systemic in uncomplicated [1][6]. Aural toilet, keep dry, ear wick if very swollen. Drum perforated or unseen: avoid aminoglycosides unless ENT UK criteria met [3].'
+          t: 'UKHSA [1]: analgesia and local heat; then topical acetic acid (over 12s) or antibiotic +/- steroid drops/spray (similar cure at 7 days [4]; choice per BNF); not systemic in uncomplicated [1][5]. Aural toilet, keep dry, ear wick if very swollen. Drum perforated or unseen: avoid aminoglycosides unless ENT UK criteria met [2].'
         },
         {
           h: 'Advice & technique',
@@ -610,7 +610,7 @@
         },
         {
           h: 'Malignant (necrotising) OE',
-          t: 'Elderly diabetic/immunocompromised + severe persistent pain (out of proportion, worse at night), granulation tissue, facial palsy = skull-base osteomyelitis \u2192 same-day ENT/hospital [4], imaging, IV antibiotics.'
+          t: 'Elderly diabetic/immunocompromised + severe persistent pain (out of proportion, worse at night), granulation tissue, facial palsy = skull-base osteomyelitis \u2192 same-day ENT/hospital [3], imaging, IV antibiotics.'
         },
         {
           h: 'When to escalate',

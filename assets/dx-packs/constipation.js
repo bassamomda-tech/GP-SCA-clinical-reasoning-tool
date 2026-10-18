@@ -38,7 +38,7 @@
         label: 'Possible bowel obstruction — vomiting, distension, no flatus, severe pain',
         action: 'Same-day admission — examination, bloods, abdominal imaging.',
         patientPhrase: '"This pattern can mean the bowel is blocked — you need urgent assessment in hospital today."',
-        source: 'BNF · NICE NG12 (updated April 2026)',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.obstruction,
       },
       {
@@ -53,7 +53,7 @@
         id: 'metabolic', tier: 'urgent',
         label: 'Possible secondary cause — thyroid / calcium clues',
         action: 'Check TFT, calcium, U&E, glucose; treat underlying cause.',
-        source: 'BNF · NICE NG12 (updated April 2026)',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.hypothyroid_sx || i.hypercalc_sx,
       },
       {
@@ -67,14 +67,14 @@
         id: 'impaction', tier: 'urgent',
         label: 'Faecal impaction with overflow soiling',
         action: 'Disimpaction regimen (high-dose macrogol); review.',
-        source: 'BNF · NICE NG12 (updated April 2026)',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => i.overflow,
       },
       {
         id: 'primary', tier: 'routine',
         label: 'Primary constipation, no red flags',
         action: 'Lifestyle + laxative ladder; review meds; toileting advice.',
-        source: 'BNF · NICE NG12 (updated April 2026)',
+        source: 'NICE NG12 (updated April 2026)',
         when: i => true,
       }
     ],

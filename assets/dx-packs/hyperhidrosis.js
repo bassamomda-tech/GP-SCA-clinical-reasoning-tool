@@ -24,7 +24,6 @@
   if (window.RGPTriage) RGPTriage.register('hyperhidrosis-triage', {
     title: 'Hyperhidrosis — triage',
     subtitle: 'Tick features. Surfaces malignancy (B-symptoms) and secondary-cause pathways.',
-    guideline: 'BNF',
     inputs: INPUTS,
     defaultMessage: 'No red-flag rule fired. Distinguish primary focal (symmetrical, stops in sleep, onset young) from secondary; screen for secondary causes if generalised / nocturnal; treat primary with topical aluminium chloride → iontophoresis → referral.',
     rules: [
@@ -40,14 +39,12 @@
         id: 'secondary', tier: 'urgent',
         label: 'Likely secondary hyperhidrosis — generalised / nocturnal / systemic clues',
         action: 'Screen: TFT, glucose, FBC/CRP, consider infection/TB; treat the cause.',
-        source: 'BNF',
         when: i => i.generalised_night || i.thyroid_sx || i.infection || i.hypoglyc,
       },
       {
         id: 'primary', tier: 'routine',
         label: 'Primary focal hyperhidrosis',
         action: 'Topical aluminium chloride; iontophoresis; referral for botulinum toxin / further options if refractory.',
-        source: 'BNF',
         when: i => true,
       }
     ],
@@ -60,7 +57,6 @@
   if (window.RGPDiagnostic) RGPDiagnostic.register('hyperhidrosis-dx', {
     title: 'Hyperhidrosis — differential',
     subtitle: 'The engine separates primary focal hyperhidrosis from secondary causes (thyroid, menopause, infection, anxiety, drugs) and always surfaces lymphoma / phaeochromocytoma when triggered.',
-    guideline: 'BNF',
     patientPresenting: "I sweat far too much, doctor — it soaks through my clothes and it's ruining my confidence.",
     inputs: INPUTS,
     diagnoses: [

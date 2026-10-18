@@ -130,7 +130,7 @@
     ],
     learning: 'NARCOLEPSY is chronic EXCESSIVE DAYTIME SLEEPINESS with irresistible SLEEP attacks (falling asleep mid-activity, unrefreshing despite adequate night sleep) plus REM-intrusion phenomena \u2014 SLEEP PARALYSIS, HYPNAGOGIC/hypnopompic HALLUCINATIONS and fragmented night sleep. The highly specific clue is CATAPLEXY \u2014 sudden, transient loss of muscle tone (knees buckling, head drooping, facial slackening) triggered by strong EMOTION, classically LAUGHTER, with PRESERVED consciousness (distinguishing it from syncope/seizure) \u2014 which characterises narcolepsy type 1 (orexin/hypocretin deficiency). Distinguish narcolepsy from other causes of excessive daytime sleepiness: insufficient/poor sleep, obstructive sleep apnoea (snoring/witnessed apnoeas/obesity), depression, drugs/alcohol, shift work and other hypersomnias, using the Epworth Sleepiness Scale (above 10 suggests excessive sleepiness) and a two-week sleep diary. Patients are frequently mislabelled as lazy or depressed and endure years of diagnostic delay, so take the symptoms seriously and validate the impact on studies, mood and relationships rather than dismissing them. Refer to a sleep/neurology service for diagnosis (polysomnography and Multiple Sleep Latency Test, \u00b1 CSF orexin) and treatment \u2014 sleep hygiene with scheduled naps, wake-promoting agents (e.g. modafinil, specialist-initiated; it can harm an unborn baby and reduces the effect of hormonal contraception, so effective contraception is needed, MHRA Drug Safety Update November 2020; solriamfetol per NICE TA758) for sleepiness, and specific agents for cataplexy \u2014 and address the DVLA/DRIVING implications (under current DVLA standards a Group 1 driver with narcolepsy must stop driving and notify the DVLA, with relicensing considered after satisfactory symptom control for at least 3 months confirmed by the specialist; Group 2 is much stricter) and the psychosocial/educational impact (Equality Act 2010 reasonable adjustments; mood). The skill is recognising the sleepiness + cataplexy + REM-phenomena pattern, not mislabelling it laziness/depression, and referring appropriately.',
     knowledge: {
-      guideline: 'Narcolepsy \u00b7 excessive daytime sleepiness + cataplexy + REM phenomena \u00b7 sleep/neurology referral (PSG/MSLT) \u00b7 DVLA/driving \u00b7 [1] DVLA Assessing fitness to drive: a guide for medical professionals (current online version), primary/central hypersomnias including narcolepsy \u00b7 [2] NICE TA758 Solriamfetol for excessive daytime sleepiness caused by narcolepsy (2022) \u00b7 [3] BNF modafinil \u00b7 [4] MHRA Drug Safety Update (November 2020): modafinil and the risk of congenital malformations \u00b7 [5] GMC Confidentiality: patients\u2019 fitness to drive and reporting concerns to the DVLA (2017) \u00b7 [6] Equality Act 2010',
+      guideline: 'Narcolepsy \u00b7 excessive daytime sleepiness + cataplexy + REM phenomena \u00b7 sleep/neurology referral (PSG/MSLT) \u00b7 DVLA/driving \u00b7 [1] DVLA Assessing fitness to drive: a guide for medical professionals (current online version), primary/central hypersomnias including narcolepsy \u00b7 [2] NICE TA758 Solriamfetol for excessive daytime sleepiness caused by narcolepsy (2022) \u00b7 [3] MHRA Drug Safety Update (November 2020): modafinil and the risk of congenital malformations \u00b7 [4] GMC Confidentiality: patients\u2019 fitness to drive and reporting concerns to the DVLA (2017) \u00b7 [5] Equality Act 2010',
       points: [
         {
           h: 'Recognise narcolepsy',
@@ -150,11 +150,11 @@
         },
         {
           h: 'Refer & treat',
-          t: 'Sleep/neurology for PSG/MSLT (\u00b1 orexin); specialist-led treatment: sleep hygiene + scheduled naps, modafinil [3] (pregnancy harm and reduced hormonal contraceptive effect \u2014 effective contraception needed [4]) or other stimulants for sleepiness, solriamfetol [2], agents for cataplexy.'
+          t: 'Sleep/neurology for PSG/MSLT (\u00b1 orexin); specialist-led treatment: sleep hygiene + scheduled naps, modafinil (pregnancy harm and reduced hormonal contraceptive effect \u2014 effective contraception needed [3]) or other stimulants for sleepiness, solriamfetol [2], agents for cataplexy.'
         },
         {
           h: 'Driving',
-          t: 'Group 1: must stop driving and notify the DVLA; relicensing considered after satisfactory symptom control for at least 3 months, confirmed by the specialist; Group 2 much stricter [1]. If she drives against advice, the doctor may inform the DVLA after telling her [5]. Address explicitly.'
+          t: 'Group 1: must stop driving and notify the DVLA; relicensing considered after satisfactory symptom control for at least 3 months, confirmed by the specialist; Group 2 much stricter [1]. If she drives against advice, the doctor may inform the DVLA after telling her [4]. Address explicitly.'
         },
         {
           h: 'Never do',
@@ -162,7 +162,7 @@
         },
         {
           h: 'Safety-net & follow-up',
-          t: 'Sleep/neurology referral; driving/safety advice (cooking, bathing, swimming, heights); educational/psychosocial support (Equality Act 2010 [6]); mood; review.'
+          t: 'Sleep/neurology referral; driving/safety advice (cooking, bathing, swimming, heights); educational/psychosocial support (Equality Act 2010 [5]); mood; review.'
         }
       ]
     }
@@ -288,7 +288,7 @@
     ],
     learning: 'PHAEOCHROMOCYTOMA (a catecholamine-secreting tumour, usually of the adrenal medulla) classically causes PAROXYSMS of the triad \u2014 pounding HEADACHE, PALPITATIONS and drenching SWEATING \u2014 with pallor, tremor, anxiety/sense of doom, and HYPERTENSION that may be paroxysmal or sustained and is often labile/resistant; the episodic triad with labile BP, especially in a younger patient, should raise the possibility. Consider phaeochromocytoma (and other secondary causes of hypertension) in paroxysmal symptoms, RESISTANT hypertension, YOUNG-ONSET hypertension, hypertensive crises, or a hereditary syndrome, rather than assuming essential hypertension or anxiety \u2014 it is rare but important ("the zebra") because it is potentially curable and dangerous if missed. Distinguish the common mimics: anxiety/panic disorder (overlapping symptoms, but phaeochromocytoma has marked objective hypertension/pallor and a stereotyped triad), hyperthyroidism (check TFTs), arrhythmia (ECG), hypoglycaemia, drugs/stimulants and alcohol withdrawal. Investigate biochemically first \u2014 plasma free METANEPHRINES or 24-hour urinary fractionated metanephrines (Endocrine Society 2014, international) with TFTs, U&E, glucose/HbA1c and ECG \u2014 and, if positive, the specialist images (CT/MRI of the adrenals \u00b1 functional imaging) to localise the tumour, with referral to endocrinology (NICE NG136: specialist evaluation for secondary causes under 40; same-day referral if clinic BP is 180/120 mmHg or higher with suspected phaeochromocytoma). A key management principle (specialist-led) is that ALPHA-blockade must precede BETA-blockade, because giving a beta-blocker first or alone can cause unopposed alpha-mediated vasoconstriction and a hypertensive crisis; definitive treatment is surgical removal, which cures most people, though lifelong follow-up is needed because tumours can recur and a minority are malignant; hereditary associations (MEN2, von Hippel-Lindau, NF1, SDH genes) are common, so genetic testing is usually offered and relatives may need screening. The skill is to think of phaeochromocytoma in the paroxysmal-triad/secondary-hypertension patient, test metanephrines, screen mimics and refer \u2014 not just label it anxiety.',
     knowledge: {
-      guideline: 'Phaeochromocytoma \u00b7 paroxysmal triad + labile/resistant/young HTN \u00b7 metanephrines + imaging \u00b7 alpha-before-beta \u00b7 surgery cures most, lifelong follow-up \u00b7 MEN2/VHL/NF1/SDH \u00b7 [1] NICE NG136 Hypertension in adults (2019, current version) \u00b7 [2] Endocrine Society clinical practice guideline on phaeochromocytoma and paraganglioma (2014) (international) \u00b7 [3] BNF beta-blocker monographs (contraindications) \u00b7 [4] BNF phenoxybenzamine and doxazosin \u00b7 [5] British and Irish Hypertension Society position statement on young-onset hypertension (2024)',
+      guideline: 'Phaeochromocytoma \u00b7 paroxysmal triad + labile/resistant/young HTN \u00b7 metanephrines + imaging \u00b7 alpha-before-beta \u00b7 surgery cures most, lifelong follow-up \u00b7 MEN2/VHL/NF1/SDH \u00b7 [1] NICE NG136 Hypertension in adults (2019, current version) \u00b7 [2] Endocrine Society clinical practice guideline on phaeochromocytoma and paraganglioma (2014) (international) \u00b7 [3] British and Irish Hypertension Society position statement on young-onset hypertension (2024)',
       points: [
         {
           h: 'Recognise',
@@ -296,7 +296,7 @@
         },
         {
           h: 'When to consider',
-          t: 'Paroxysmal symptoms, resistant or young-onset hypertension, hypertensive crises, hereditary syndromes \u2014 think secondary hypertension, not just essential HTN/anxiety (NICE NG136 [1]: specialist evaluation under 40; BIHS 2024 [5]).'
+          t: 'Paroxysmal symptoms, resistant or young-onset hypertension, hypertensive crises, hereditary syndromes \u2014 think secondary hypertension, not just essential HTN/anxiety (NICE NG136 [1]: specialist evaluation under 40; BIHS 2024 [3]).'
         },
         {
           h: 'Mimics',
@@ -308,7 +308,7 @@
         },
         {
           h: 'Alpha before beta',
-          t: 'Specialist management: alpha-blockade (phenoxybenzamine/doxazosin [4]) before beta-blockade \u2014 beta first/alone risks a hypertensive crisis [3]. Surgery cures most; lifelong follow-up for recurrence and malignancy.'
+          t: 'Specialist management: alpha-blockade (phenoxybenzamine/doxazosin) before beta-blockade \u2014 beta first/alone risks a hypertensive crisis. Surgery cures most; lifelong follow-up for recurrence and malignancy.'
         },
         {
           h: 'Hereditary',
@@ -446,7 +446,7 @@
     ],
     learning: 'WILSON\u2019S DISEASE (an autosomal-recessive disorder of COPPER accumulation affecting liver and brain) should be CONSIDERED in anyone with unexplained LIVER disease \u2014 especially a YOUNG person under about 40 (EASL\u2013ERN 2025, international) \u2014 and/or NEUROLOGICAL (tremor, dystonia, dysarthria, parkinsonism, clumsiness) and PSYCHIATRIC/behavioural (mood/personality change, cognitive decline, falling grades) features \u2014 the COMBINATION of hepatic with neuropsychiatric features being the key prompt ("could it all be connected?"). It is rare but crucially TREATABLE, and devastating (progressive liver failure, irreversible neurological/psychiatric damage, death) if missed, so it must be considered and excluded rather than attributed to alcohol, "teenage moodiness" or primary psychiatric illness alone. Diagnostic clues include a low serum CAERULOPLASMIN (a normal level does not exclude it), raised 24-hour urinary copper (and raised hepatic copper on biopsy), and KAYSER-FLEISCHER rings (copper at the corneal margin) on slit-lamp examination (especially with neurological involvement); arrange/seek caeruloplasmin and a slit-lamp eye exam alongside LFTs with a liver aetiology screen (BSG 2018) and copper studies, with genetic testing (ATP7B) supporting the diagnosis. As an autosomal-recessive condition, siblings and family should be SCREENED, since early treatment of pre-symptomatic relatives prevents disease. Refer to hepatology/neurology/specialist services for confirmation and treatment \u2014 copper chelation (penicillamine or trientine) or zinc (reduces absorption) (EASL\u2013ERN 2025, AASLD 2022, international; BNF), with dietary copper advice only a minor supportive measure, lifelong treatment and monitoring (stopping can cause fatal liver failure), and liver transplant for acute or end-stage liver failure. Primary care\u2019s role is to think of it, arrange initial tests, refer urgently, and arrange same-day assessment for signs of acute liver failure (jaundice, confusion, drowsiness, bleeding/bruising, vomiting blood) or haemolysis. At 19, Adam is an adult: check his consent for the parent to be present, see him alone for part of the consultation, and assess mood and self-harm risk. The skill is recognising the combined liver + neuro/psychiatric pattern in a young person, doing/arranging caeruloplasmin and a slit-lamp exam, screening family, and referring \u2014 not dismissing it.',
     knowledge: {
-      guideline: 'Wilson\u2019s disease \u00b7 young + liver + neuro/psychiatric \u00b7 caeruloplasmin/urinary copper/Kayser-Fleischer rings \u00b7 chelation/zinc \u00b7 family screening \u00b7 [1] EASL\u2013ERN Clinical Practice Guidelines on Wilson\u2019s disease (2025) (international) \u00b7 [2] AASLD practice guidance on Wilson disease (2022) (international) \u00b7 [3] British Society of Gastroenterology guideline on the management of abnormal liver blood tests (2018) \u00b7 [4] BNF penicillamine, trientine and zinc acetate \u00b7 [5] GMC Confidentiality: good practice in handling patient information (2017)',
+      guideline: 'Wilson\u2019s disease \u00b7 young + liver + neuro/psychiatric \u00b7 caeruloplasmin/urinary copper/Kayser-Fleischer rings \u00b7 chelation/zinc \u00b7 family screening \u00b7 [1] EASL\u2013ERN Clinical Practice Guidelines on Wilson\u2019s disease (2025) (international) \u00b7 [2] AASLD practice guidance on Wilson disease (2022) (international) \u00b7 [3] British Society of Gastroenterology guideline on the management of abnormal liver blood tests (2018) \u00b7 [4] GMC Confidentiality: good practice in handling patient information (2017)',
       points: [
         {
           h: 'When to think Wilson\u2019s',
@@ -466,11 +466,11 @@
         },
         {
           h: 'Refer & treat',
-          t: 'Urgent hepatology/neurology/specialist: copper chelation (penicillamine/trientine) or zinc [1,2,4]; dietary copper advice only minor/supportive; lifelong treatment/monitoring; transplant for acute or end-stage liver failure.'
+          t: 'Urgent hepatology/neurology/specialist: copper chelation (penicillamine/trientine) or zinc [1,2]; dietary copper advice only minor/supportive; lifelong treatment/monitoring; transplant for acute or end-stage liver failure.'
         },
         {
           h: 'Primary care role',
-          t: 'Think of it, arrange initial tests (caeruloplasmin, LFTs with liver aetiology screen and ultrasound [3]) and slit-lamp via the specialist, and refer. See Adam alone for part of the consultation (he is an adult) [5].'
+          t: 'Think of it, arrange initial tests (caeruloplasmin, LFTs with liver aetiology screen and ultrasound [3]) and slit-lamp via the specialist, and refer. See Adam alone for part of the consultation (he is an adult) [4].'
         },
         {
           h: 'Never do',
@@ -600,7 +600,7 @@
     ],
     learning: 'TICS are sudden, repetitive, stereotyped MOTOR (blinking, grimacing, shrugging) or VOCAL (throat-clearing, sniffing, grunting) movements/sounds that characteristically WAX AND WANE, are briefly SUPPRESSIBLE, are worse with stress/excitement/tiredness, and are often preceded by a PREMONITORY URGE. Tics are COMMON in children and often TRANSIENT/self-limiting; TOURETTE SYNDROME is diagnosed when there are multiple motor tics plus at least one vocal tic for more than a year with onset before 18 (tics for under a year are a provisional tic disorder, as for Finn after a few months) \u2014 but many tic disorders are milder/transient, don\u2019t meet Tourette criteria, and most improve over time (often by late adolescence). Assess the IMPACT (school, social situations, self-esteem, bullying, physical discomfort) and screen the common COMORBIDITIES \u2014 ADHD, OCD and anxiety (and learning difficulties) \u2014 which often matter more than the tics themselves. Reassure (tics are common, usually not a sign of serious underlying disease, and most are mild and improve) and give psychoeducation: explain the premonitory urge and suppressibility, that drawing attention to or criticising tics can worsen them, and that managing stress/tiredness helps \u2014 for mild tics, reassurance and education are often sufficient. Refer/treat proportionately if tics are significantly impairing or comorbidities need treatment: behavioural therapy \u2014 habit-reversal training / Comprehensive Behavioural Intervention for Tics (CBIT) or exposure with response prevention \u2014 is first-line (ESSTS European clinical guidelines 2021, international), with medication specialist-only for severe tics (aripiprazole usually first choice; clonidine where ADHD co-exists; BNFC), ADHD and OCD managed per NICE NG87 and NICE CG31, school support via the SENCo (Equality Act 2010, SEND Code of Practice), and consider red flags warranting referral (sudden severe onset, abnormal neurological signs \u2014 checked face to face \u2014 developmental regression, non-tic movements, very disabling tics). The skill is recognising tics/Tourette\u2019s, reassuring appropriately, screening impact and comorbidities, and referring proportionately \u2014 not over-medicalising a common, often benign condition.',
     knowledge: {
-      guideline: 'Tics & Tourette syndrome \u00b7 common/often transient \u00b7 comorbidities (ADHD/OCD/anxiety) \u00b7 reassurance + psychoeducation \u00b7 habit-reversal/CBIT; refer if impairing \u00b7 [1] European clinical guidelines for Tourette syndrome and other tic disorders, version 2.0 (ESSTS, 2021) (international) \u00b7 [2] NICE NG87 Attention deficit hyperactivity disorder (2018) \u00b7 [3] NICE CG31 Obsessive-compulsive disorder and body dysmorphic disorder (2005) \u00b7 [4] BNFC (specialist-initiated medicines for tics) \u00b7 [5] Equality Act 2010 and the SEND Code of Practice (2015)',
+      guideline: 'Tics & Tourette syndrome \u00b7 common/often transient \u00b7 comorbidities (ADHD/OCD/anxiety) \u00b7 reassurance + psychoeducation \u00b7 habit-reversal/CBIT; refer if impairing \u00b7 [1] European clinical guidelines for Tourette syndrome and other tic disorders, version 2.0 (ESSTS, 2021) (international) \u00b7 [2] NICE NG87 Attention deficit hyperactivity disorder (2018) \u00b7 [3] NICE CG31 Obsessive-compulsive disorder and body dysmorphic disorder (2005) \u00b7 [4] Equality Act 2010 and the SEND Code of Practice (2015)',
       points: [
         {
           h: 'Recognise tics',
@@ -612,7 +612,7 @@
         },
         {
           h: 'Impact & comorbidities',
-          t: 'Assess school/social/self-esteem/bullying impact; screen ADHD, OCD, anxiety (often matter more than the tics; NICE NG87 [2], CG31 [3]); SENCo support [5].'
+          t: 'Assess school/social/self-esteem/bullying impact; screen ADHD, OCD, anxiety (often matter more than the tics; NICE NG87 [2], CG31 [3]); SENCo support [4].'
         },
         {
           h: 'Reassure & psychoeducate',
@@ -620,7 +620,7 @@
         },
         {
           h: 'When to refer/treat',
-          t: 'Significantly impairing tics or comorbidities \u2192 behavioural therapy (habit-reversal/CBIT or exposure with response prevention) first-line [1]; medication specialist-only for severe tics (aripiprazole usual first choice; clonidine if ADHD co-exists) [1,4].'
+          t: 'Significantly impairing tics or comorbidities \u2192 behavioural therapy (habit-reversal/CBIT or exposure with response prevention) first-line [1]; medication specialist-only for severe tics (aripiprazole usual first choice; clonidine if ADHD co-exists) [1].'
         },
         {
           h: 'Red flags',

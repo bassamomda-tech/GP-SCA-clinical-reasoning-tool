@@ -25,7 +25,7 @@
    "reason": "Video consultation to discuss his blood results and the donor letter."
   },
   "knowledge": {
-   "guideline": "NICE HTG690 (2023, formerly DG56) — FIT in primary care · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BSG iron-deficiency anaemia guideline (2021) · NICE NG20 (2015) — coeliac disease · BNF (NSAIDs, oral iron)",
+   "guideline": "NICE HTG690 (2023, formerly DG56) — FIT in primary care · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BSG iron-deficiency anaemia guideline (2021) · NICE NG20 (2015) — coeliac disease",
    "summary": "Iron-deficiency anaemia in a 61-year-old man is gastrointestinal blood loss until proven otherwise, however well he feels. The GP owns a result another service found: FIT, coeliac serology, lower and upper GI investigation, an NSAID review, and iron alongside — not instead of — investigation.",
    "points": [
     {
@@ -559,7 +559,7 @@
    "points": [
     {
      "h": "The NICE NG12 breast criteria",
-     "t": "NICE NG12: refer using a suspected cancer pathway referral (appointment within 2 weeks) for breast cancer if aged 30 and over with an unexplained breast lump, with or without pain; or aged 50 and over with discharge, retraction or other changes of concern in one nipple only."
+     "t": "NICE NG12: refer using a suspected cancer pathway referral for breast cancer if aged 30 and over with an unexplained breast lump, with or without pain; or aged 50 and over with discharge, retraction or other changes of concern in one nipple only."
     },
     {
      "h": "Consider criteria",
@@ -2509,7 +2509,7 @@
    "reason": "Mother calling: temperature 38.2°C, sleepier than usual, feeding less today."
   },
   "knowledge": {
-   "guideline": "NICE NG143 — Fever in under 5s (2019) · NICE NG254 — Suspected sepsis in under 16s (2025) · NICE NG224 — Urinary tract infection in under 16s (2022) · BNFC",
+   "guideline": "NICE NG143 — Fever in under 5s (2019) · NICE NG254 — Suspected sepsis in under 16s (2025) · NICE NG224 — Urinary tract infection in under 16s (2022)",
    "summary": "A temperature of 38°C or more in a baby under 3 months is a NICE NG143 red feature on its own. Lily needs urgent face-to-face paediatric assessment today, not paracetamol and watching at home.",
    "points": [
     {
@@ -3983,7 +3983,7 @@
    "reason": "Video consultation to discuss an abnormal blood count."
   },
   "knowledge": {
-   "guideline": "International consensus report on immune thrombocytopenia (Provan et al., Blood Advances 2019) (international) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · BNF (NSAIDs and bleeding risk) · GMC Good Medical Practice (2024)",
+   "guideline": "International consensus report on immune thrombocytopenia (Provan et al., Blood Advances 2019) (international) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · GMC Good Medical Practice (2024)",
    "summary": "A platelet count of 38 with a normal haemoglobin and white count, in a well 27-year-old, is an isolated thrombocytopenia — most often immune thrombocytopenia (ITP), not leukaemia. Confirm it with a film, screen for red flags, examine her in person, and get prompt haematology advice because she has mucosal bleeding.",
    "points": [
     {
@@ -4509,7 +4509,7 @@
    "points": [
     {
      "h": "Head and neck criteria",
-     "t": "NICE NG12: consider a suspected cancer pathway referral (appointment within 2 weeks) for laryngeal cancer in people aged 45 and over with persistent unexplained hoarseness or an unexplained lump in the neck. Consider one for oral cancer with a persistent and unexplained lump in the neck. He meets both on two counts."
+     "t": "NICE NG12: consider a suspected cancer pathway referral for laryngeal cancer in people aged 45 and over with persistent unexplained hoarseness or an unexplained lump in the neck. Consider one for oral cancer with a persistent and unexplained lump in the neck. He meets both on two counts."
     },
     {
      "h": "Thyroid",
@@ -8548,7 +8548,7 @@
     },
     {
      "h": "After the scan",
-     "t": "NICE NG12: consider a suspected cancer pathway referral (appointment within 2 weeks) for adults if the ultrasound suggests soft-tissue sarcoma, or if the findings are uncertain and clinical concern persists."
+     "t": "NICE NG12: consider a suspected cancer pathway referral for adults if the ultrasound suggests soft-tissue sarcoma, or if the findings are uncertain and clinical concern persists."
     },
     {
      "h": "Children are different",

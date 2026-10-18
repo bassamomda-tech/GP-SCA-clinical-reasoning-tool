@@ -47,7 +47,7 @@ MedChooser.register('adhd', {
       sideEffects:'As for stimulants — appetite loss, insomnia, raised pulse/BP, irritability',
       monitor:'As for methylphenidate',
       counsel:'"A once-a-day capsule that releases slowly through the day. Take it in the morning."',
-      detail:{ 'Key teaching':'Prodrug — lower misuse potential than immediate-release dexamfetamine.' },
+      detail:{ 'Key teaching':'Prodrug of dexamfetamine (must be metabolised to be active); the specialist may prefer it where misuse or diversion is a concern.' },
       conditions: [
         {"kind":"avoid","label":"Uncontrolled hypertension / significant cardiac disease","text":"Specialist and cardiology review"},
         {"kind":"caution","label":"On an MAOI","text":"Contraindicated within 14 days of an MAOI"}
@@ -81,7 +81,7 @@ MedChooser.register('adhd', {
       detail:{ 'Key teaching':'Not a controlled drug. CYP2D6 interactions (fluoxetine, paroxetine).' },
       conditions: [
         {"kind":"caution","label":"Depression / suicidal thoughts","text":"Warning in SPC — monitor closely"},
-        {"kind":"favoured","label":"Substance misuse risk","text":"Not a stimulant; no misuse potential"}
+        {"kind":"favoured","label":"Substance misuse risk","text":"Not a stimulant or a controlled drug; low misuse potential"}
       ]
     },
     {

@@ -38,6 +38,7 @@
     protocol: { label: 'Protocol',     w: 1.00 },
     pathway:  { label: 'Pathway',      w: 1.00 },
     snapshot: { label: 'Snapshot',     w: 0.72 },
+    guide:    { label: 'Clinic Guide', w: 0.74 },
     article:  { label: 'Article',      w: 0.92 },
     'case':   { label: 'Case',         w: 0.95 },
     sca:      { label: 'SCA',          w: 0.90 },
@@ -46,7 +47,7 @@
     audio:    { label: 'Audio',        w: 0.80 },
     page:     { label: 'Page',         w: 0.70 }
   };
-  var ORDER = ['protocol', 'pathway', 'case', 'article', 'snapshot', 'rx', 'calc', 'sca', 'audio', 'page'];
+  var ORDER = ['protocol', 'pathway', 'case', 'article', 'snapshot', 'guide', 'rx', 'calc', 'sca', 'audio', 'page'];
 
   var C = null;            // RGPSearchCore
   var manifest = null;
@@ -456,7 +457,7 @@
       '.rgp-fts-more{display:block;font-size:11px;color:var(--muted,#5d6673);margin-top:3px}' +
       '.rgp-fts-badge{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:4px;margin-right:6px;vertical-align:2px;background:#e8eef0;color:#24424a}' +
       '.rgp-fts-badge.t-protocol{background:#d5e6e4;color:#0c4a47}.rgp-fts-badge.t-pathway{background:#dbe7f7;color:#1e4f8f}' +
-      '.rgp-fts-badge.t-snapshot{background:#f6e9c8;color:#7a5512}.rgp-fts-badge.t-article{background:#ece6f7;color:#5b3596}' +
+      '.rgp-fts-badge.t-snapshot{background:#f6e9c8;color:#7a5512}.rgp-fts-badge.t-guide{background:#e3efed;color:#0c4a47}.rgp-fts-badge.t-article{background:#ece6f7;color:#5b3596}' +
       '.rgp-fts-badge.t-case{background:#f7e3da;color:#8f3a1f}.rgp-fts-badge.t-sca{background:#fbe1ee;color:#9d1d5a}' +
       '.rgp-fts-badge.t-rx{background:#dff2e5;color:#1d6b38}.rgp-fts-badge.t-calc{background:#fdecd2;color:#8a4b06}' +
       '.rgp-fts-badge.t-audio{background:#e6e9ee;color:#39424e}.rgp-fts-badge.t-page{background:#eceae4;color:#4a4740}' +

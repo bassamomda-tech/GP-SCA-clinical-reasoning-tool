@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="osteoporosis">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Osteoporosis and fracture risk — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/osteoporosis.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/osteoporosis.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · chronic disease series</div>
+      <h1>Osteoporosis and fracture risk <small>CLINIC GUIDE</small></h1>
+      <div class="scope">For case-finding, starting bone protection and the treatment review. Adults, mainly aged 50+ and postmenopausal women. Not for children, pregnancy-associated osteoporosis, osteomalacia, Paget's disease or advanced CKD bone disease.</div>
+    </div>
+    <div class="meta">NICE <b>NG259</b> (Jul 2026; replaced CG146) · <b>TA464</b> · <b>NOGG</b> 2024 · MHRA · NG12<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full protocol: gpreasoning.uk/tools/management/osteoporosis.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Assess and start <span>case-find → FRAX → NOGG band → DXA if needed → treat</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act today<small>NG12 · MHRA · NOGG</small></h2><div class="body">
+    <ul>
+      <li><b>Sudden severe back pain or height loss</b> → think vertebral fracture: image the spine. Aged <b>60+</b> with persistent bone pain (especially back) or an unexplained fracture → <b>myeloma tests</b> (FBC, calcium, ESR or plasma viscosity, serum protein electrophoresis, serum free light chains) per NG12.</li>
+      <li><b>New thigh, hip or groin pain</b> on long-term bisphosphonate or denosumab → X-ray <b>both femurs</b> (atypical femoral fracture).</li>
+      <li><b>Denosumab overdue or about to stop</b> → arrange the dose or a specialist-planned follow-on now: stopping or delaying raises the risk of <b>multiple vertebral fractures</b> (MHRA).</li>
+      <li><b>New dysphagia</b> on an oral bisphosphonate → stop it and investigate (NG12) — not just a switch.</li>
+    </ul>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Who to assess<small>NICE NG259</small></h2><div class="body">
+        <ul>
+          <li><b>Assess</b> at <b>50+</b> or postmenopausal with a previous fragility fracture or current or frequent systemic glucocorticoids.</li>
+        <li><b>Consider</b> assessing all <b>women 65+</b> and <b>men 75+</b>, and others 50+ or postmenopausal with: 2 or more falls in the last year · first-degree relative with a hip fracture · BMI &lt;18.5 · current smoker · alcohol &gt;14 units/week · another cause (e.g. RA, untreated early menopause, hypogonadism, malabsorption, aromatase inhibitors, androgen deprivation).</li>
+        <li><b>Under 50 and premenopausal</b>: assess after a hip or vertebral fragility fracture or 2 or more major osteoporotic fractures; consider with another major risk factor.</li>
+        </ul>
+        <p class="key">A fragility fracture = from standing height or less. Every one in an adult 50+ → fracture liaison service where available.</p>
+      </div></div>
+
+      <div class="blk amber"><h2><span class="n">2</span>Quantify — tool first, DXA selectively<small>NG259 · NOGG 2024</small></h2><div class="body">
+        <p><b>FRAX or QFracture</b> for ages 40–90; <b>QFracture</b> for 30–39. Use the same tool throughout one assessment.</p>
+        <p><b>Straight to DXA</b> (age 30+): previous hip or vertebral fragility fracture, a major osteoporotic fracture in the last 2 years, or 2 or more fragility fractures.</p>
+        <table>
+          <tr><th>NOGG band (FRAX)</th><th>Action</th></tr>
+          <tr><td><b>Low</b></td><td>Lifestyle advice; reassess if risk changes</td></tr>
+          <tr><td><b>Intermediate</b></td><td><b>DXA</b>, then recalculate FRAX with BMD</td></tr>
+          <tr><td><b>High</b></td><td><b>Treat</b>; DXA for a baseline should not delay treatment</td></tr>
+          <tr><td><b>Very high</b></td><td>Treat and consider specialist referral (anabolic drugs)</td></tr>
+        </table>
+        <p class="key">NG259: consider DXA if 10-year major osteoporotic fracture risk is ≥10%. NOGG thresholds are FRAX-based — don't plot QFracture onto them. T-score ≤−2.5 = osteoporosis.</p>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">3</span>Findings that change the plan<small>history · examination</small></h2><div class="body">
+        <table>
+          <tr><td><b>Height loss &gt;4 cm</b>, kyphosis</td><td>Silent vertebral fracture → lateral spine X-ray or VFA (NOGG)</td></tr>
+          <tr><td><b>Vertebral fracture on a report</b></td><td>Act on it — high risk of the next fracture</td></tr>
+          <tr><td><b>Falls</b></td><td>Gait, postural BP, vision, sedatives → falls work</td></tr>
+          <tr><td><b>Man, or young</b></td><td>Look harder for a secondary cause</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">4</span>Work-up before treatment<small>NOGG · secondary causes</small></h2><div class="body">
+        <ul class="tick">
+          <li>FBC, ESR or CRP</li>
+          <li><b>U&amp;E, eGFR</b></li>
+          <li><b>Bone profile</b>: Ca, PO₄, ALP</li>
+          <li>LFTs, TFTs</li>
+          <li><b>Vitamin D</b></li>
+          <li>Coeliac serology</li>
+          <li>Men: testosterone, LH, FSH</li>
+          <li><b>Dental check</b> before starting</li>
+        </ul>
+        <p style="margin-top:2px"><b>Selectively:</b> myeloma tests (red box) · PTH if calcium abnormal · cortisol tests if Cushingoid · spine imaging for height loss.</p>
+        <p>Correct <b>vitamin D and calcium</b> before zoledronate or denosumab (hypocalcaemia risk).</p>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">5</span>Who to treat<small>NOGG 2024 · TA464</small></h2><div class="body">
+        <table>
+          <tr><th>Person</th><th>Action</th></tr>
+          <tr><td>FRAX in NOGG <b>high</b> or <b>very high</b> band, or above the threshold after DXA</td><td><b>Offer</b> treatment</td></tr>
+          <tr><td>Postmenopausal or 50+, starting prednisolone <b>≥7.5 mg/day for 3+ months</b></td><td>Start bone protection <b>with the steroid</b>; DXA can follow</td></tr>
+          <tr><td>On glucocorticoids and women 70+ or a prior fragility fracture</td><td>Treat without waiting for DXA</td></tr>
+          <tr><td>Very high risk (e.g. multiple vertebral fractures)</td><td>Specialist: anabolic first</td></tr>
+        </table>
+        <p class="key">TA464: bisphosphonates for adults at higher risk, deciding case by case on fracture risk, adverse-effect risk and preference.</p>
+      </div></div>
+
+      <div class="blk teal"><h2><span class="n">6</span>First drug<small>TA464 · SPC</small></h2><div class="body">
+        <p><b>Alendronate 70 mg once weekly</b>: on waking, fasting, whole tablet with a full glass of plain water; stay upright; no food, drink or other medicines for at least 30 minutes. Risedronate 35 mg weekly is the oral alternative.</p>
+        <p>Oral unsuitable → <b>zoledronate 5 mg IV once yearly</b> (creatinine clearance ≥35 mL/min, well hydrated) or <b>denosumab 60 mg SC every 6 months</b>.</p>
+        <p><b>Calcium</b> 700–1200 mg/day, diet first; <b>vitamin D</b> 800 units/day if at risk (NOGG).</p>
+      </div></div>
+    </div>
+
+    <div class="blk green span"><h2><span class="n">7</span>Lifestyle and falls — co-treatment, not garnish<small>NOGG · NG259</small></h2><div class="body">
+      <table>
+        <tr><th>Exercise</th><th>Falls</th><th>Diet</th><th>Smoking</th><th>Alcohol</th><th>Weight</th></tr>
+        <tr><td>Weight-bearing, resistance and balance training</td><td>Strength-and-balance programme; review sedatives and postural drop</td><td>Calcium-rich food; vitamin D in winter or if housebound</td><td>Stop — an independent risk factor</td><td>≤14 units/week</td><td>BMI &lt;18.5 is a risk: find the cause</td></tr>
+      </table>
+      <p class="say" style="margin-top:3px">"You won't feel this tablet working — the win is the fracture that never happens. Take it exactly as we said, once a week, and we'll look again properly in about five years."</p>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Osteoporosis · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Review and titrate <span>the bone review: adherence → falls → safety → the 5-year decision</span></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk green"><h2><span class="n">8</span>Goals and the treatment review<small>NOGG 2024</small></h2><div class="body">
+        <table>
+          <tr><th>When</th><th>Decision</th></tr>
+          <tr><td>Oral bisphosphonate <b>5 years</b>; IV zoledronate <b>3 years</b></td><td>Reassess fracture risk: continue, or pause</td></tr>
+          <tr><td>Aged 70+, previous hip or vertebral fracture, fracture on treatment, prednisolone ≥7.5 mg/day</td><td>Usually <b>continue</b></td></tr>
+          <tr><td>Lower risk</td><td>Consider a <b>pause</b> (18 months–3 years), then reassess</td></tr>
+          <tr><td>Denosumab</td><td><b>No pause</b> — specialist-planned follow-on only</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk amber"><h2><span class="n">9</span>Fracture on treatment? Check first<small>NOGG</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Adherence</b> — many stop in the first year</li>
+          <li><b>Technique</b> — fasting, plain water, 30 minutes</li>
+          <li><b>Calcium and vitamin D</b> replete?</li>
+          <li><b>Secondary cause</b> missed — myeloma, PTH, coeliac</li>
+          <li><b>Falls</b> — new sedatives, vision, programme attended?</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">10</span>Annual review checklist<small>every patient, every year</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Adherence</b> and the weekly ritual; GI symptoms</li>
+          <li>Falls in the last year; falls programme</li>
+          <li>New fractures, back pain, <b>height</b></li>
+          <li>Calcium intake, vitamin D, <b>renal function</b></li>
+          <li><b>Dental</b> health, jaw pain; <b>ear</b> pain or discharge</li>
+          <li><b>Thigh or groin pain</b> (atypical fracture)</li>
+          <li>Denosumab: <b>next dose booked</b> before it is due</li>
+          <li>Glucocorticoid courses since last review</li>
+          <li>Is the 5-year (or 3-year IV) review due?</li>
+        </ul>
+      </div></div>
+      <div class="blk blue"><h2><span class="n">13</span>When to refer<small>NOGG · NG12</small></h2><div class="body">
+        <table>
+          <tr><td>Very high risk; fracture on treatment</td><td>Specialist: anabolic options</td></tr>
+          <tr><td>Young, unexplained, or a man without a cause</td><td>Metabolic bone / endocrinology</td></tr>
+          <tr><td>Creatinine clearance &lt;35, or CKD bone disease</td><td>Renal / metabolic bone advice</td></tr>
+          <tr><td>Atypical femoral fracture, jaw osteonecrosis</td><td>Orthopaedics / specialist</td></tr>
+          <tr><td>Stopping denosumab</td><td>Specialist-planned follow-on</td></tr>
+          <tr><td>Myeloma tests abnormal</td><td>Suspected cancer pathway</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="blk teal span"><h2><span class="n">11</span>The treatment ladder<small>TA464 · NOGG · SPC</small></h2><div class="body">
+      <div class="ladder">
+        <div><b class="h">Step 1 · oral</b>Alendronate 70 mg weekly (or risedronate 35 mg weekly). First-line for most people.</div>
+        <div><b class="h">Step 2 · IV</b>Zoledronate 5 mg yearly if oral is not tolerated, contraindicated or adherence is unrealistic.</div>
+        <div><b class="h">Step 3 · denosumab</b>60 mg SC every 6 months when bisphosphonates are unsuitable. Lifelong plan needed.</div>
+        <div class="s4"><b class="h">Specialist · anabolic</b>Very high risk: teriparatide or romosozumab first, then an antiresorptive.</div>
+      </div>
+      <table style="margin-top:3px">
+        <tr><th>Drug</th><th>Before each dose</th><th>Watch</th></tr>
+        <tr><td><b>Alendronate / risedronate</b></td><td>Renal function at start; technique</td><td>Reflux, dysphagia; review at 5 years</td></tr>
+        <tr><td><b>Zoledronate</b> 5 mg IV yearly</td><td>Creatinine clearance ≥35, calcium, vitamin D, hydration</td><td>Flu-like reaction after the first dose; review at 3 years</td></tr>
+        <tr><td><b>Denosumab</b> 60 mg SC 6-monthly</td><td>Calcium and vitamin D replete</td><td>Hypocalcaemia (especially CKD); <b>never stop or delay without a plan</b></td></tr>
+      </table>
+    </div></div>
+
+    <div class="col">
+      <div class="blk slate"><h2><span class="n">12</span>Side effects — keep protection going<small>MHRA · SPC</small></h2><div class="body">
+        <table>
+          <tr><td><b>Reflux</b></td><td>Check technique → risedronate → IV</td></tr>
+          <tr><td><b>Jaw osteonecrosis</b></td><td>Rare; dental check first, good oral hygiene; non-healing socket → review</td></tr>
+          <tr><td><b>Ear canal osteonecrosis</b></td><td>Ear pain, discharge or infection on long-term use → assess (MHRA)</td></tr>
+          <tr><td><b>Atypical femoral fracture</b></td><td>Thigh or groin pain → X-ray both femurs; stop if confirmed</td></tr>
+          <tr><td><b>Hypocalcaemia</b></td><td>Prevented by correcting vitamin D first</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="blk red"><h2><span class="n">14</span>Special groups and never-events<small>MHRA · NOGG</small></h2><div class="body">
+        <ul>
+          <li><b>Glucocorticoids</b>: assess risk when starting; bone protection with the steroid at ≥7.5 mg/day for 3+ months.</li>
+          <li><b>Denosumab</b>: rebound vertebral fractures after stopping or delaying — flag it like an anticoagulant.</li>
+          <li><b>Never</b>: just stop denosumab · take alendronate with food, tea or calcium · file a vertebral fracture on an X-ray report · plot QFracture on NOGG · give zoledronate with creatinine clearance &lt;35.</li>
+        </ul>
+    </div></div>
+
+    <div class="blk purple span"><h2><span class="n">15</span>Situations that change the review — and the safety-net<small>NG259 · NOGG · MHRA</small></h2><div class="body">
+      <table>
+        <tr><th>Situation</th><th>What to do</th></tr>
+        <tr><td><b>Systemic glucocorticoids</b></td><td>Prednisolone ≥5 mg/day (or equivalent) for more than 3 months, or intermittent higher doses, is a reason to assess risk (NG259); at ≥7.5 mg/day start bone protection with the steroid (NOGG)</td></tr>
+        <tr><td><b>Not treated</b> (low risk)</td><td>Reassess fracture risk when risk factors change — a new fracture, steroids, falls</td></tr>
+        <tr><td><b>New vertebral fracture on treatment</b></td><td>Re-check adherence (box 9), re-screen for myeloma if aged 60+ or features atypical, then specialist</td></tr>
+        <tr><td><b>Repeat DXA</b></td><td>Not routinely — only when the result will change management, e.g. at the 5-year review or during a pause</td></tr>
+        <tr><td><b>Men</b></td><td>Under-diagnosed: assess after any fragility fracture; check for hypogonadism and androgen deprivation therapy</td></tr>
+      </table>
+      <p class="say" style="margin-top:3px">Safety-net: "Sudden bad back pain or losing height — call us the same day. A new ache in the thigh or groin that won't settle — call us, we'll X-ray it. Food sticking when you swallow — stop the tablet and call. Your injection is due every 6 months — never let it slip."</p>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Osteoporosis · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG259 (July 2026), TA464, NG12; NOGG 2024; MHRA Drug Safety Updates on bisphosphonates and denosumab</span><span>Full detail and evidence: gpreasoning.uk/tools/management/osteoporosis.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=1"></script>
+</body>
+</html>

@@ -70,7 +70,7 @@ MedChooser.register('heart-failure', {
       sideEffects:'Hypotension, hyperkalaemia, angioedema',
       monitor:'Specialist; 36-h washout from ACEi before starting',
       counsel:'"A newer combined tablet that replaces the first one and works even better for the heart — started by the heart-failure team."',
-      detail:{ 'Key teaching':'For symptomatic HFrEF on optimal therapy. Replaces ACEi/ARB — needs 36-h ACEi washout to avoid angioedema. Specialist initiation.' },
+      detail:{ 'Key teaching':'For symptomatic HFrEF on optimal therapy with LVEF ≤35% (TA388); consider HF-specialist advice before starting in primary care. Replaces ACEi/ARB — needs 36-h ACEi washout to avoid angioedema. Specialist initiation.' },
       conditions: [
         {"kind":"note","label":"Ejection fraction: HFrEF (reduced EF ≤40%)","text":"Escalation when symptomatic despite ACEi + β-blocker + MRA"}
       ]
@@ -83,7 +83,7 @@ MedChooser.register('heart-failure', {
       step:'Pillar 2',
       source:'NICE NG106 §1.4',
       sideEffects:'Bradycardia, fatigue, transient worsening, bronchospasm',
-      monitor:'HR, BP; "start low, go slow"; do not start in decompensation',
+      monitor:'ECG before starting (NG106); HR, BP; titrate per SPC schedule; do not start in decompensation',
       counsel:'"This protects the heart over time. You may feel a bit more tired at first — that settles. Never stop it suddenly."',
       detail:{ 'Key teaching':'Only bisoprolol, carvedilol or nebivolol are licensed for HF. Start when stable/euvolaemic, titrate slowly.' },
       conditions: [
@@ -101,9 +101,9 @@ MedChooser.register('heart-failure', {
       step:'Pillar 3',
       source:'NICE NG106 §1.4',
       sideEffects:'Hyperkalaemia, gynaecomastia (spiro → eplerenone), AKI',
-      monitor:'U&E + K⁺ at 1 week, 1 month, then regularly',
+      monitor:'U&E + K⁺ before and after starting and after each dose increase, then monthly for 3 months, then at least 6-monthly (NICE)',
       counsel:'"A third tablet that adds extra protection. We watch your potassium closely; men sometimes get breast tenderness and we can switch."',
-      detail:{ 'Key teaching':'Add if still symptomatic on ACEi/ARB + β-blocker. Eplerenone if gynaecomastia. Avoid if K⁺ high or eGFR <30.' },
+      detail:{ 'Key teaching':'NG106 (Sept 2025): offer to everyone with HFrEF as one of the four pillars. Eplerenone if gynaecomastia. Avoid if K⁺ high or eGFR <30.' },
       conditions: [
         {"kind":"avoid","label":"K⁺ >5.0 mmol/L","text":"K⁺ >5.0 — contraindicated"},
         {"kind":"caution","label":"Spironolactone gynaecomastia","text":"Spiro gynaecomastia — switch to eplerenone"},

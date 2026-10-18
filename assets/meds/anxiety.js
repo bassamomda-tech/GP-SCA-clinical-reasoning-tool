@@ -99,13 +99,13 @@ MedChooser.register('anxiety', {
       detail:{
         'Dose': 'Pregabalin 150 mg/day → 600 mg; reduce in renal impairment',
         'Interactions': 'Opioids/CNS depressants — fatal respiratory depression reported',
-        'Key teaching': 'Now a controlled drug (Class C). Offer if SSRIs/SNRIs unsuitable. Avoid in substance misuse.'
+        'Key teaching': 'Now a controlled drug (Class C). Consider only if the person cannot tolerate SSRIs or SNRIs (CG113). Avoid in substance misuse.'
       },
       conditions: [
         {"kind":"avoid","label":"Substance / alcohol misuse history","text":"Substance misuse — high diversion/misuse potential"},
         {"kind":"caution","label":"Renal impairment (eGFR <60)","text":"Renal impairment — dose reduction required"},
         {"kind":"caution","label":"Opioids / CNS depressants","text":"Concurrent opioids — risk of respiratory depression"},
-        {"kind":"favoured","label":"Stepped-care stage: Step 3: SSRI + SNRI failed / refractory","text":"SSRI/SNRI not tolerated or failed — pregabalin is the NICE CG113 alternative"}
+        {"kind":"favoured","label":"Stepped-care stage: Step 3: SSRI + SNRI failed / refractory","text":"SSRIs and SNRIs cannot be tolerated — pregabalin is the NICE CG113 option"}
       ]
     },
 
@@ -132,16 +132,16 @@ MedChooser.register('anxiety', {
       id:'propranolol',
       name:'Propranolol (somatic symptoms)',
       examples:'Propranolol 10–40 mg PRN/BD',
-      step:'Adjunct',
-      source:'SPC',
+      step:'Not routine (outside NICE)',
+      source:'SPC · not a NICE CG113 treatment',
       sideEffects:'Bradycardia, fatigue, cold peripheries; bronchospasm',
       monitor:'HR, BP; avoid in asthma',
       counsel:'"This eases the physical side — racing heart, tremor, palpitations — but doesn\'t treat the worry itself."',
       detail:{
-        'Key teaching': 'Symptomatic relief of autonomic/somatic anxiety only. Not a substitute for SSRI/therapy.'
+        'Key teaching': 'Not a NICE treatment for GAD or panic disorder (CG113); dangerous in overdose. At most for selected performance-related autonomic symptoms. Not a substitute for SSRI/therapy.'
       },
       conditions: [
-        {"kind":"favoured","label":"Prominent panic disorder","text":"Prominent somatic / palpitation symptoms — useful adjunct"}
+        {"kind":"caution","label":"Prominent panic disorder","text":"Panic disorder — not a NICE treatment (CG113); does not treat panic. Use panic-focused CBT or an SSRI"}
       ]
     }
   ],

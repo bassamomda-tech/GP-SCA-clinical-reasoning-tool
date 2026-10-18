@@ -128,7 +128,7 @@
     ],
     learning: 'LICHEN PLANUS is recognised by the classic "6 Ps" \u2014 PRURITIC, PLANAR (flat-topped), POLYGONAL, PURPLE/violaceous PAPULES/plaques \u2014 with fine white surface lines (WICKHAM STRIAE), favouring the flexor wrists, ankles and shins, and often with ORAL involvement (white lacy/reticular, sometimes erosive streaks) and sometimes nail (ridging/pterygium), SCALP (scarring alopecia/lichen planopilaris) and GENITAL disease, with Koebner phenomenon at trauma sites. Consider a drug-induced LICHENOID eruption (thiazides, antimalarials, beta-blockers, ACE inhibitors, NSAIDs \u2014 review medications) and the recognised association of oral lichen planus with HEPATITIS C. Manage cutaneous LP with POTENT (or very potent) TOPICAL CORTICOSTEROIDS first-line (BAD 2024; PCDS) plus antihistamines/emollients for itch, and oral LP with topical steroids and oral hygiene; refer to dermatology for extensive, erosive, nail/scalp-scarring or refractory disease. Counsel that cutaneous lichen planus is usually SELF-LIMITING over months to ~1\u20132 years (may leave post-inflammatory pigmentation) but can recur, and note that ORAL lichen planus carries a SMALL risk of malignant transformation (SCC) \u2014 about 1% over 10 years (BAD) \u2014 and erosive genital disease also needs follow-up, warranting monitoring and dental/specialist review; NICE NG12: unexplained oral ulceration for more than 3 weeks, or a lump or red/red-and-white patch, needs referral. Reassure (not serious/not contagious), treat the itch, review drugs/associations, and arrange appropriate monitoring.',
     knowledge: {
-      guideline: '[1] British Association of Dermatologists, Lichen planus patient information leaflet (2024) \u00b7 [2] British Association of Dermatologists, Oral lichen planus patient information leaflet (2019) \u00b7 [3] Primary Care Dermatology Society, lichen planus clinical guidance (accessed 2026) \u00b7 [4] NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026), oral cancer recommendations \u00b7 [5] BNF, topical corticosteroids (potency and quantities) \u00b7 the 6 Ps + Wickham striae \u00b7 oral/nail/scalp involvement \u00b7 potent topical steroids \u00b7 mucosal malignancy monitoring',
+      guideline: '[1] British Association of Dermatologists, Lichen planus patient information leaflet (2024) \u00b7 [2] British Association of Dermatologists, Oral lichen planus patient information leaflet (2019) \u00b7 [3] Primary Care Dermatology Society, lichen planus clinical guidance (accessed 2026) \u00b7 [4] NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026), oral cancer recommendations \u00b7 the 6 Ps + Wickham striae \u00b7 oral/nail/scalp involvement \u00b7 potent topical steroids \u00b7 mucosal malignancy monitoring',
       points: [
         {
           h: 'Recognise LP',
@@ -144,7 +144,7 @@
         },
         {
           h: 'Management',
-          t: 'Potent or very potent topical corticosteroids first-line [1][3][5] + antihistamines/emollients; topical steroids for oral LP. Dermatology referral for extensive/erosive/nail-scalp-scarring/refractory disease.'
+          t: 'Potent or very potent topical corticosteroids first-line [1][3] + antihistamines/emollients; topical steroids for oral LP. Dermatology referral for extensive/erosive/nail-scalp-scarring/refractory disease.'
         },
         {
           h: 'Course',

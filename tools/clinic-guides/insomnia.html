@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="insomnia">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Insomnia in adults — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/insomnia.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/insomnia.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · chronic disease series</div>
+      <h1>Insomnia in adults <small>CLINIC GUIDE</small></h1>
+      <div class="scope">Short-term and chronic insomnia, and long-term hypnotic users. Adults 18+. Not for children (see the children's sleep pathway), or for treating sleep apnoea, narcolepsy or restless legs, which are routed here only.</div>
+    </div>
+    <div class="meta">NICE <b>TA922</b> (2023) · <b>HTG624</b> (was MTG70) · TA77 · NG202 · NG225 · MHRA DSU 2014, 2020<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full protocol: gpreasoning.uk/tools/algorithms/insomnia.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Assess and start <span>find the cause → classify → CBT-I first → drugs only if gated</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Not routine insomnia: act first<small>NG225 · NG202 · NG217 · DVLA</small></h2><div class="body">
+    <ul>
+      <li><b>Suicidal thoughts</b> with severe or persistent insomnia, depression or substance use → ask directly about intent, plan and means; active intent or cannot keep safe → same-day crisis assessment; immediate danger → <b>999</b>. Do not use risk tools or scales to predict suicide (NG225).</li>
+      <li><b>Reduced need for sleep</b> with elevated or irritable mood, grandiosity or psychosis → possible <b>mania</b>: same-day mental-health assessment.</li>
+      <li><b>Sleepy at the wheel or near misses</b> → must not drive until controlled (DVLA); suspected OSA in vocational drivers or safety-critical workers → rapid sleep-service assessment.</li>
+      <li><b>Nocturnal seizures</b> (tongue biting, injury, post-ictal confusion) → urgent first-seizure referral (NG217). Nocturnal chest pain or breathlessness → its own pathway. Alcohol or benzodiazepine <b>withdrawal</b> → manage the withdrawal, don't sedate over it.</li>
+    </ul>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Characterise it<small>TA922 · CKS</small></h2><div class="body">
+        <ul>
+          <li><b>Type</b>: getting to sleep (anxiety, delayed phase), staying asleep (pain, OSA, nocturia, alcohol, depression), early waking (mood, alcohol, circadian timing).</li>
+          <li><b>Short-term</b>: under 3 months, usually triggered. <b>Chronic</b>: <b>3 or more nights a week for 3 months or more</b>, with daytime impairment.</li>
+          <li><b>2-week sleep diary</b>: bedtime, time to fall asleep, time awake, rise time, naps, caffeine, alcohol.</li>
+          <li><b>Partner's account</b>: snoring, apnoeas, leg movements, dream enactment.</li>
+          <li><b>Expectations</b>: sleep need falls with age; brief night waking is normal.</li>
+        </ul>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">2</span>Find the cause<small>differentials</small></h2><div class="body">
+        <table>
+          <tr><th>Clue</th><th>Think</th><th>First step</th></tr>
+          <tr><td>Snoring, apnoeas, sleepiness</td><td>OSA</td><td>Assess per NG202; caution with sedatives</td></tr>
+          <tr><td>Evening urge to move legs</td><td>Restless legs</td><td>Ferritin and iron status</td></tr>
+          <tr><td>Low mood, worry, nightmares</td><td>Depression, anxiety, PTSD</td><td>Treat alongside CBT-I; assess risk</td></tr>
+          <tr><td>Normal sleep on own schedule</td><td>Circadian (delayed or advanced phase), shift work</td><td>Timing, not sedation</td></tr>
+          <tr><td>Pain, nocturia, reflux, flushes</td><td>Physical driver</td><td>Treat the driver; HRT discussion</td></tr>
+          <tr><td>Cataplexy, sleep paralysis</td><td>Narcolepsy</td><td>Neurology or sleep service; DVLA</td></tr>
+          <tr><td>Recently reduced sedative</td><td>Rebound insomnia</td><td>Review taper pace</td></tr>
+          <tr><td>Dream enactment, injury</td><td>REM sleep behaviour disorder</td><td>Sleep or neurology; bedroom safety</td></tr>
+          <tr><td>Heavy alcohol, opioid or sedative use</td><td>Substance-related insomnia</td><td>Treat the dependence first</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">3</span>Work-up checklist<small>targeted, no "insomnia panel"</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>Sleep diary</b>, 2 weeks</li>
+          <li><b>ISI</b> (severity, monitoring)</li>
+          <li><b>Epworth</b> score</li>
+          <li><b>STOP-BANG</b> if OSA possible</li>
+          <li>BMI, neck, upper airway</li>
+          <li>PHQ-9 and GAD-7</li>
+          <li>Caffeine, alcohol, nicotine, cannabis</li>
+          <li>Medicines: SSRIs, steroids, beta-blockers, diuretics, decongestants</li>
+          <li><b>Ferritin</b> if restless legs</li>
+          <li><b>TFTs</b> only if features</li>
+          <li>Driving and safety-critical work</li>
+          <li>Pregnancy, bipolar disorder, epilepsy</li>
+        </ul>
+        <p style="margin-top:2px">No routine polysomnography for insomnia alone. Insomnia itself has no NG12 criterion; drenching night sweats with lymphadenopathy or other features → assess on merit.</p>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">4</span>Classify, then act<small>TA922 · TA77</small></h2><div class="body">
+        <table>
+          <tr><th>Group</th><th>Plan</th></tr>
+          <tr><td><b>Short-term</b></td><td>Treat the trigger; targeted advice. Hypnotic only if distress is <b>severe</b>, for a few nights, with a stop date</td></tr>
+          <tr><td><b>Chronic</b></td><td>Exclude OSA, RLS, circadian and mood causes → <b>CBT-I</b>. Daridorexant only if TA922 criteria are met</td></tr>
+          <tr><td><b>Long-term hypnotic user</b></td><td>Agree a goal, patient-paced taper, CBT-I alongside (box 13)</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk teal"><h2><span class="n">5</span>CBT-I: the first-line treatment<small>TA922 · HTG624</small></h2><div class="body">
+        <div class="flow" style="--c:var(--teal);grid-template-columns:repeat(2,1fr)">
+          <div><b class="h">Sleep restriction</b>Window set from the diary; fixed wake time 7 days a week; widen as sleep consolidates. Compression if frail.</div>
+          <div><b class="h">Stimulus control</b>Bed for sleep and sex only; awake and frustrated → get up, dim light, return when sleepy.</div>
+          <div><b class="h">Cognitive work</b>Tackle catastrophic beliefs about sleep; teach one relaxation method.</div>
+          <div><b class="h">Delivery</b>Face-to-face where available. <b>Sleepio</b> (HTG624) instead of hygiene advice or pills; assess first if OSA possible.</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div class="blk green span"><h2><span class="n">6</span>Sleep hygiene: supportive, not a treatment on its own<small>HTG624</small></h2><div class="body">
+      <table>
+        <tr><th>Wake time</th><th>Caffeine</th><th>Alcohol</th><th>Light and activity</th><th>Bedroom</th><th>Naps</th></tr>
+        <tr><td>Fixed every day, weekends too</td><td>None later in the day (tea, cola, energy drinks)</td><td>Not near bedtime: fragments the night</td><td>Daylight and exercise in the day; screens down before bed</td><td>Cool, dark, quiet; no clock-watching</td><td>Avoid long or late naps</td></tr>
+      </table>
+      <p class="say" style="margin-top:3px">"Sleeping tablets can help for a short spell, but they tend to stop working if taken every night and can be hard to stop. The sleep programme is harder for the first week or two, but it's the treatment that keeps working after it ends."</p>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Insomnia · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Review and step down <span>review → gate any drug → stop date → deprescribe</span></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk green"><h2><span class="n">7</span>What success looks like<small>agree it at the start</small></h2><div class="body">
+        <ul>
+          <li>Better <b>daytime function</b> and less distress, not a set number of hours.</li>
+          <li>Sleep diary and <b>ISI</b> against the baseline.</li>
+          <li>Every hypnotic has a <b>stop date</b> agreed when it is started.</li>
+          <li>Long-term users: lower dose or stopped, with fewer falls and less next-day impairment.</li>
+        </ul>
+      </div></div>
+
+      <div class="blk amber"><h2><span class="n">8</span>Before any hypnotic<small>MHRA · SPC</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li>Distress or impairment is <b>severe</b>; non-drug measures considered</li>
+          <li><b>OSA</b>, COPD or respiratory disease assessed</li>
+          <li>No <b>opioids</b>, gabapentinoids or alcohol misuse (respiratory depression)</li>
+          <li>Older or frail: falls risk; lower dose</li>
+          <li><b>Driving</b> and safety-critical work discussed and recorded</li>
+          <li>Pregnancy, substance misuse history</li>
+          <li>Defined quantity, <b>no automatic repeat</b></li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">9</span>Review checklist<small>after CBT-I or any drug, and yearly for long-term users</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li>Diary and <b>ISI</b> vs baseline; daytime function</li>
+          <li>Real CBT-I, or only a leaflet? Engagement</li>
+          <li>Causes re-checked: OSA, RLS and iron, mood, nocturia, pain, menopause, thyroid</li>
+          <li>Substances honestly counted; medicine timing</li>
+          <li>Mood and suicidal thoughts asked about directly</li>
+          <li>Next-day impairment, falls, <b>driving</b></li>
+          <li>Z-drug: stopped at the agreed date, not repeated</li>
+          <li><b>Melatonin MR</b>: licensed for up to 13 weeks; stop if no benefit</li>
+          <li><b>Daridorexant</b>: assessed <b>within 3 months</b>; stop if inadequate</li>
+          <li>Long-term hypnotic: taper offered; co-prescribed opioid reviewed</li>
+        </ul>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">10</span>When to refer<small>urgency tiers</small></h2><div class="body">
+        <table>
+          <tr><td><b>Same day</b></td><td>Suicidal crisis, acute mania or psychosis, hypnotic overdose (999)</td></tr>
+          <tr><td><b>Urgent</b></td><td>First suspected seizure (NG217); OSA in vocational drivers</td></tr>
+          <tr><td><b>Sleep service</b></td><td>Suspected OSA (NG202), narcolepsy, REM sleep behaviour disorder, refractory insomnia</td></tr>
+          <tr><td><b>Drug service</b></td><td>High-dose or multiple sedatives, alcohol co-dependence, failed tapers</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="blk teal span"><h2><span class="n">11</span>Drug options: short, gated, with stop dates<small>TA77 · TA922 · SPC</small></h2><div class="body">
+      <div class="ladder">
+        <div><b class="h">Short-term, severe</b><b>Z-drug</b>, lowest dose, a few days, rarely beyond 2 weeks. Licence: <b>4 weeks maximum</b>, including any taper.</div>
+        <div><b class="h">Aged 55+</b><b>Melatonin MR 2 mg</b> (licensed product): short-term primary insomnia, up to <b>13 weeks</b>; check local formulary status.</div>
+        <div><b class="h">Chronic (TA922)</b><b>Daridorexant</b> if ≥3 nights a week for ≥3 months, considerable daytime impact, and <b>CBT-I tried and failed, unavailable or unsuitable</b>.</div>
+        <div class="s4"><b class="h">Not routine</b>Sedating antihistamines, amitriptyline, quetiapine. Mirtazapine only for depression. Benzodiazepines: no advantage over Z-drugs.</div>
+      </div>
+      <table style="margin-top:3px">
+        <tr><th>Drug</th><th>Usual adult dose</th><th>Monitor</th><th>Watch</th></tr>
+        <tr><td><b>Zopiclone</b></td><td>7.5 mg at bedtime; <b>3.75 mg</b> older or frail</td><td>Stop date; falls</td><td>Bitter taste, next-day sedation, dependence</td></tr>
+        <tr><td><b>Zolpidem</b></td><td>10 mg at bedtime; <b>5 mg</b> older or frail</td><td>Stop date; driving</td><td>No driving for <b>at least 8 hours</b> (MHRA); complex sleep behaviours</td></tr>
+        <tr><td><b>Melatonin MR</b></td><td>2 mg, 1–2 hours before bed, after food</td><td>Benefit by 13 weeks</td><td>Headache, dizziness, somnolence; not recommended in hepatic impairment</td></tr>
+        <tr><td><b>Daridorexant</b></td><td>50 mg within 30 minutes of bed; <b>25 mg</b> with moderate hepatic impairment or moderate CYP3A4 inhibitors</td><td>Response within 3 months</td><td>Not with strong CYP3A4 inhibitors or narcolepsy; next-day impairment; avoid evening grapefruit</td></tr>
+      </table>
+      <p class="key">TA77: no compelling difference between Z-drugs; choose on cost and patient factors, and don't switch for lack of effect alone.</p>
+    </div></div>
+
+    <div class="col">
+      <div class="blk slate"><h2><span class="n">12</span>Side effects and fixes<small>SPC · MHRA</small></h2><div class="body">
+        <table>
+          <tr><td><b>Next-day drowsiness</b></td><td>No driving if not fully alert; lower dose or stop</td></tr>
+          <tr><td><b>Falls, confusion</b> (older)</td><td>Stop or taper; compression rather than restriction</td></tr>
+          <tr><td><b>Tolerance, wearing off</b></td><td>Expected with nightly use: back to CBT-I, not a higher dose</td></tr>
+          <tr><td><b>Rebound on reducing</b></td><td>Slow the pace; rebound is not relapse</td></tr>
+          <tr><td><b>Sleepier in CBT-I week 1–2</b></td><td>Expected; extra care with driving</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">13</span>Deprescribing long-term users<small>MHRA · SPC</small></h2><div class="body">
+        <ul>
+          <li>An invitation, not an ambush: frame it as protecting memory, falls and driving.</li>
+          <li>Taper the current drug in small, patient-paced steps; slower after years of use. Diazepam switch only in selected patients.</li>
+          <li>CBT-I alongside; agree a plan for out-of-hours requests.</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk red"><h2><span class="n">14</span>Never-events and special groups<small>MHRA DSU Mar 2020 · DVLA</small></h2><div class="body">
+        <ul>
+          <li><b>Never</b> start a hypnotic with an <b>opioid</b> (or alcohol, gabapentinoids): potentially fatal respiratory depression · repeat hypnotics automatically · stop a long-term benzodiazepine abruptly (seizures, delirium) · let CBT-I delay urgent care for suicidality, mania or withdrawal.</li>
+          <li><b>Supervise or modify sleep restriction</b> in bipolar disorder, epilepsy, untreated OSA, pregnancy, frailty and safety-critical jobs.</li>
+          <li><b>Older adults</b>: lower doses, gentler taper; often the biggest gains from stopping.</li>
+          <li><b>Drivers</b>: next-day impairment and DVLA duties discussed and documented.</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Insomnia · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE TA922 (2023), HTG624 (formerly MTG70), TA77, NG202, NG217, NG225; MHRA DSU May 2014, Mar 2020; DVLA Assessing fitness to drive; SPCs</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/insomnia.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=1"></script>
+</body>
+</html>

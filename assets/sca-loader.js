@@ -26,7 +26,7 @@
 
   /* Since Upload 148 the case library is a pre-built bundle (governance/build_sca_bundle.js):
      a light index of every case, plus one JSON file per case loaded on demand by SCA_LOAD(id). */
-  var FILES = [ 'sca-enrich.js?v=17', 'sca-data/index.js?v=3dcd1eb22753', 'sca-blueprint.js?v=1' ];  /* enrich first: its load-time passes then skip */
+  var FILES = [ 'sca-enrich.js?v=17', 'sca-data/index.js?v=60b231a6522f', 'sca-blueprint.js?v=1' ];  /* enrich first: its load-time passes then skip */
 
   var me = document.currentScript;
 

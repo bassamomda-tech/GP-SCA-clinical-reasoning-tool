@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="copd">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>COPD — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/copd.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/copd.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · chronic disease series</div>
+      <h1>COPD <small>CLINIC GUIDE</small></h1>
+      <div class="scope">For the new diagnosis and the annual review. Adults over 16 with suspected or confirmed COPD. Not for asthma, bronchiectasis-led disease or hospital management of an exacerbation.</div>
+    </div>
+    <div class="meta">NICE <b>NG115</b> (2018, updated 2019) · <b>NG114</b> · NG12 · UKHSA Green Book (2026)<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full protocol: gpreasoning.uk/tools/management/copd.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Diagnose and start <span>risk factor + symptoms → spirometry → stop smoking, rehab, first inhaler</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act today<small>NG115 · NG114 · NG12</small></h2><div class="body">
+    <ul>
+      <li><b>999</b>: breathless at rest with confusion or drowsiness, cyanosis, exhaustion, or SpO₂ well below their usual baseline. Known CO₂ retainer or at risk → <b>controlled oxygen, target 88–92%</b>; say the target to the crew.</li>
+      <li>Sudden pleuritic pain and breathlessness → think <b>pneumothorax</b> or PE. New ankle oedema, raised JVP → cor pulmonale or heart failure: same-day assessment.</li>
+      <li><b>Exacerbation at home</b>: more bronchodilator; <b>prednisolone 30 mg daily for 5 days</b> if breathlessness interferes with daily activities; antibiotic only on the NG114 judgement — amoxicillin 500 mg three times a day, doxycycline 200 mg then 100 mg daily, or clarithromycin 500 mg twice a day, <b>5 days</b> in total.</li>
+      <li>Aged 40+ with <b>unexplained haemoptysis</b> → suspected cancer pathway (NG12). Aged 40+ with 2 or more unexplained cough, fatigue, breathlessness, chest pain, weight loss or appetite loss (1 or more if ever smoked) → <b>chest X-ray within 2 weeks</b>.</li>
+    </ul>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Confirm the diagnosis<small>NG115</small></h2><div class="body">
+        <p><b>Suspect</b>: over 35, a risk factor (usually smoking) and exertional breathlessness, chronic cough, regular sputum, frequent winter "bronchitis" or wheeze.</p>
+        <p><b>Confirm</b>: post-bronchodilator <b>FEV₁/FVC &lt;0.7</b> on quality-assured spirometry. A label without spirometry needs it now.</p>
+        <table>
+          <tr><th>Stage</th><th>FEV₁ % predicted (post-BD)</th></tr>
+          <tr><td><b>1</b> mild</td><td>≥80% — only with symptoms</td></tr>
+          <tr><td><b>2</b> moderate</td><td>50–79%</td></tr>
+          <tr><td><b>3</b> severe</td><td>30–49%</td></tr>
+          <tr><td><b>4</b> very severe</td><td>&lt;30%</td></tr>
+        </table>
+        <p class="key">FEV₁ is not the whole severity: weigh breathlessness (MRC), exacerbations, BMI, exercise capacity and comorbidity. GOLD groups and CAT bands are international context only, not NICE rules.</p>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">2</span>Work-up at diagnosis<small>NG115</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>Chest X-ray</b></li>
+          <li><b>FBC</b> (anaemia, polycythaemia, eosinophils)</li>
+          <li><b>BMI</b></li>
+          <li><b>MRC</b> dyspnoea grade</li>
+          <li>SpO₂ when stable</li>
+          <li>Smoking history (pack-years)</li>
+        </ul>
+        <p style="margin-top:2px"><b>Selectively:</b> alpha-1 antitrypsin if early onset, little smoking or family history · ECG, echo or natriuretic peptide if cor pulmonale or heart failure suspected · sputum culture if persistently purulent · CT if other lung disease suspected.</p>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">3</span>Asthmatic features?<small>NG115 · decides the ICS question</small></h2><div class="body">
+        <p>Asthmatic or steroid-responsive features = any of:</p>
+        <ul>
+          <li>previous secure diagnosis of <b>asthma or atopy</b>;</li>
+          <li>a <b>higher blood eosinophil count</b> (NICE sets no cut-off);</li>
+          <li>FEV₁ varying by <b>at least 400 ml</b> over time;</li>
+          <li>diurnal PEF variation of <b>at least 20%</b>.</li>
+        </ul>
+        <p style="margin-top:2px">None of these → ICS is not part of the first dual step. COPD with asthma → keep an ICS-containing regimen.</p>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk green"><h2><span class="n">4</span>The two treatments that change the course<small>NG115</small></h2><div class="body">
+        <ul>
+          <li><b>Stop smoking</b>: ask and offer support at every contact — behavioural support plus medicine (varenicline, NRT; e-cigarettes as a quit aid). The most effective way to slow decline.</li>
+          <li><b>Pulmonary rehabilitation</b>: offer to everyone functionally disabled by COPD — <b>usually MRC grade 3 and above</b> — and after a hospital admission for an exacerbation. Not suitable if unable to walk, unstable angina or recent MI.</li>
+        </ul>
+        <table style="margin-top:2px">
+          <tr><th>MRC</th><th>Breathless…</th></tr>
+          <tr><td>1</td><td>only on strenuous exercise</td></tr>
+          <tr><td>2</td><td>hurrying on the level or up a slight hill</td></tr>
+          <tr><td><b>3</b></td><td>walks slower than peers, or stops at own pace</td></tr>
+          <tr><td>4</td><td>stops after about 100 m or a few minutes</td></tr>
+          <tr><td>5</td><td>too breathless to leave the house, or when dressing</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">5</span>Vaccines<small>UKHSA Green Book · autumn 2026</small></h2><div class="body">
+        <table>
+          <tr><td><b>Flu</b></td><td>Every autumn — COPD is a clinical risk group</td></tr>
+          <tr><td><b>Pneumococcal</b></td><td>Once — clinical risk group; PCV20 replaced PPV23 in 2026</td></tr>
+          <tr><td><b>RSV</b></td><td>One dose (Abrysvo) if not had: <b>aged 75+</b> (80+ added 1 Apr 2026), older-adult care-home residents, or <b>65–74 with chronic respiratory disease incl. COPD</b> (from 1 Sep 2026)</td></tr>
+          <tr><td><b>COVID-19</b></td><td>Autumn 2026: aged 75+, care-home residents or immunosuppressed — COPD alone does not qualify</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk teal"><h2><span class="n">6</span>First inhalers<small>NG115</small></h2><div class="body">
+        <div class="flow" style="--c:var(--teal);grid-template-columns:repeat(3,1fr)">
+          <div><b class="h">Everyone</b>Short-acting reliever as needed: SABA or SAMA</div>
+          <div><b class="h">No asthmatic features</b>Still limited or exacerbating → <b>LABA + LAMA</b></div>
+          <div><b class="h">Asthmatic features</b>Still limited or exacerbating → consider <b>LABA + ICS</b></div>
+        </div>
+        <p style="margin-top:3px">Start once stop-smoking support, vaccines, rehab and a self-management plan have been offered. Watch technique before prescribing and at every review. One combined device where possible.</p>
+      </div></div>
+    </div>
+
+    <div class="blk green span"><h2><span class="n">7</span>Self-management — agree it at diagnosis<small>NG115</small></h2><div class="body">
+      <table>
+        <tr><th>Action plan</th><th>Breathlessness</th><th>Nutrition</th><th>Mood</th><th>Activity</th></tr>
+        <tr><td>Written plan: what a flare looks like, what to start, who to tell</td><td>Breathing control, pacing, a handheld fan</td><td>Weight loss or low BMI → dietetic support</td><td>Ask about anxiety and depression — common and treatable</td><td>Keep walking between rehab sessions</td></tr>
+      </table>
+      <p class="say" style="margin-top:3px">"The inhalers help you live with COPD, but stopping smoking and the exercise programme change where it's heading. Which one shall we start this month?"</p>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · COPD · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Review and step up <span>the annual review: symptoms → exacerbations → oxygen → the right inhaler</span></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk green"><h2><span class="n">8</span>Targets — what good looks like<small>NG115</small></h2><div class="body">
+        <ul>
+          <li><b>Not smoking</b> (or actively quitting).</li>
+          <li>Rehabilitation offered and completed if MRC 3+.</li>
+          <li>Fewest possible exacerbations; none needing admission.</li>
+          <li>Correct technique on every device; each drug earning its place.</li>
+          <li>A written plan the person can explain back.</li>
+        </ul>
+      </div></div>
+
+      <div class="blk amber"><h2><span class="n">9</span>Before every step-up<small>NG115</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Smoking</b> — still smoking? Everything else is secondary</li>
+          <li><b>Technique and adherence</b> — watched; device suits their breath</li>
+          <li><b>Rehab</b> — offered, attended, completed?</li>
+          <li><b>Second diagnosis</b> — heart failure, anaemia, lung cancer, bronchiectasis, anxiety</li>
+          <li><b>Asthmatic features</b> re-assessed (box 3)</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">10</span>Annual review checklist<small>yearly · stage 4 twice a year</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Smoking status</b> and motivation to quit</li>
+          <li><b>MRC grade</b> and symptom control</li>
+          <li><b>Exacerbations</b>, steroid and antibiotic courses, admissions</li>
+          <li><b>Inhaler technique observed</b>; effect of each drug</li>
+          <li>FEV₁ and FVC; <b>BMI</b></li>
+          <li><b>SpO₂ when stable</b> (≤92% → oxygen assessment)</li>
+          <li>Need for <b>pulmonary rehabilitation</b></li>
+          <li>Complications: cor pulmonale, anxiety, depression</li>
+          <li>Vaccines (box 5); action plan and rescue pack</li>
+          <li>Advance care planning when disease is advanced</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="blk teal span"><h2><span class="n">11</span>The inhaler ladder<small>NG115 · GOLD eosinophil cut-offs are international, not NICE</small></h2><div class="body">
+      <div class="ladder">
+        <div><b class="h">Step 1 · reliever</b>SABA or SAMA as needed. Stop a SAMA when a LAMA starts.</div>
+        <div><b class="h">Step 2 · dual</b>No asthmatic features → <b>LABA + LAMA</b>. Asthmatic features → <b>LABA + ICS</b>.</div>
+        <div><b class="h">Step 3 · triple</b>On LABA + LAMA: consider triple after <b>1 severe</b> (admitted) or <b>2 moderate</b> exacerbations in a year, or a <b>3-month trial</b> for symptoms harming quality of life — back to dual if no benefit. On LABA + ICS: offer triple for either.</div>
+        <div class="s4"><b class="h">Step 4 · specialist</b>Still exacerbating on optimised triple, with smoking and rehab addressed → respiratory review: azithromycin prophylaxis, roflumilast, or a biologic within its NICE TA (e.g. mepolizumab, TA1166).</div>
+      </div>
+      <table style="margin-top:3px">
+        <tr><th>Class</th><th>Examples (check SPC and formulary)</th><th>Monitor</th><th>Watch</th></tr>
+        <tr><td><b>SABA / SAMA</b></td><td>Salbutamol; ipratropium</td><td>How often used</td><td>Never SAMA with a LAMA</td></tr>
+        <tr><td><b>LAMA</b></td><td>Tiotropium, umeclidinium, glycopyrronium</td><td>Technique</td><td>Dry mouth, urinary retention, angle-closure glaucoma</td></tr>
+        <tr><td><b>LABA + LAMA</b></td><td>One combined device, usually once daily</td><td>Symptoms, exacerbations</td><td>Tremor, palpitations</td></tr>
+        <tr><td><b>+ ICS</b> (dual or triple)</td><td>Only with asthmatic features or step 3 criteria</td><td>Reason for ICS recorded; review yearly</td><td><b>Pneumonia</b>, oral thrush</td></tr>
+        <tr><td><b>Exacerbation</b></td><td>Prednisolone 30 mg daily for 5 days</td><td>Glucose in diabetes</td><td>Repeated courses: bone, adrenal</td></tr>
+      </table>
+    </div></div>
+
+    <div class="col">
+      <div class="blk teal"><h2><span class="n">12</span>Rescue packs<small>NG115</small></h2><div class="body">
+        <p>Oral steroid + antibiotic to keep at home if the person:</p>
+        <ul>
+          <li>has had an <b>exacerbation within the last year</b> and remains at risk;</li>
+          <li>understands when and how to take them, and the risks;</li>
+          <li>knows to <b>tell the practice each time</b> and ask for a replacement.</li>
+        </ul>
+        <p style="margin-top:2px"><b>3 or more</b> steroid and/or antibiotic courses in a year → find out why. Review after each use.</p>
+      </div></div>
+
+      <div class="blk slate"><h2><span class="n">13</span>Side effects<small>SPC</small></h2><div class="body">
+        <table>
+          <tr><td><b>Pneumonia</b> (ICS)</td><td>Warn; review whether ICS is earning its place</td></tr>
+          <tr><td><b>Urinary retention</b> (LAMA)</td><td>Caution in prostatism; keep nebulised ipratropium out of the eyes</td></tr>
+          <tr><td><b>Thrush, hoarse voice</b> (ICS)</td><td>Rinse and spit; spacer with MDIs</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">14</span>Oxygen — who to assess<small>NG115</small></h2><div class="body">
+        <p><b>Assess</b> when stable if: FEV₁ &lt;30% · cyanosis · polycythaemia · peripheral oedema · raised JVP · <b>SpO₂ ≤92% on air</b> (consider if FEV₁ 30–49%).</p>
+        <p><b>LTOT criteria</b> (non-smokers; two ABGs <b>at least 3 weeks apart</b>, stable, on optimal treatment): PaO₂ <b>&lt;7.3 kPa</b>, or <b>7.3–8 kPa</b> with polycythaemia, peripheral oedema or pulmonary hypertension. Used for <b>at least 15 hours a day</b>.</p>
+        <p class="key">No LTOT for people who keep smoking despite cessation support (fire risk); assess home fire risk for all. Oxygen does not help breathlessness without hypoxaemia.</p>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">15</span>When to refer<small>NG115</small></h2><div class="body">
+        <ul>
+          <li>Diagnostic doubt; onset under 40 or family history (alpha-1 antitrypsin).</li>
+          <li>Rapid decline in FEV₁; haemoptysis; suspected cor pulmonale.</li>
+          <li>Frequent exacerbations despite optimised triple therapy.</li>
+          <li>Oxygen assessment; rehabilitation; lung volume reduction assessment.</li>
+          <li>Palliative care when breathlessness and admissions dominate.</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="blk red span"><h2><span class="n">16</span>Special groups and never-events<small>NG115 · BTS emergency oxygen</small></h2><div class="body">
+      <ul>
+        <li><b>COPD with asthma</b>: treat the asthma too — keep an ICS-containing regimen; do not withdraw ICS because the obstruction is fixed.</li>
+        <li><b>Heart failure or ischaemic heart disease</b>: a cardioselective beta-blocker is not contraindicated by COPD.</li>
+        <li><b>Advanced disease</b>: plan ahead while well — preferred place of care, ceiling of treatment; opioids for refractory breathlessness, with palliative care input.</li>
+        <li><b>Never</b>: label COPD without post-bronchodilator spirometry · give uncontrolled high-flow oxygen to someone at risk of hypercapnia (target 88–92%) · add ICS without a recorded reason · prescribe a SAMA alongside a LAMA · assess for oxygen during or just after an exacerbation · prescribe 14-day steroid courses by habit.</li>
+      </ul>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · COPD · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG115 (2018, updated 2019), NG114, NG12, TA1166; UKHSA Green Book and RSV letter (1 Jul 2026); GOLD (international context only)</span><span>Full detail and evidence: gpreasoning.uk/tools/management/copd.html</span></div>
+</section>
+<script src="../../assets/clinic-guides.js?v=1"></script>
+</body>
+</html>

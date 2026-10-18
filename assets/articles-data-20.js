@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 20: N topics)
    NHS conditions A–Z (letter N) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -53,7 +53,7 @@
       'Suspected significant bacterial infection or systemic illness → assess/treat promptly',
       'Recurrent or unusually severe rash → review for underlying cause',
       'Safeguarding concern (e.g. neglect, unusual injury) → follow safeguarding procedures'],
-    source:'BNFC (barrier preparations, hydrocortisone 1%, clotrimazole)' },
+    source:'Product SPCs (barrier preparations, hydrocortisone 1%, clotrimazole)'},
 
   { id:'narcolepsy', title:'Narcolepsy', category:'Neurology', icon:'😴',
     overview:'A chronic neurological disorder of sleep-wake regulation causing excessive daytime sleepiness and, often, cataplexy. It results from loss of hypocretin (orexin) signalling and is frequently diagnosed years late, misattributed to laziness or psychiatric illness. Recognition allows effective treatment and crucial safety advice on driving.',
@@ -78,7 +78,7 @@
       'Diagnostic uncertainty or suspected coexisting sleep disorder (e.g. OSA) → sleep service',
       'Significant mood/psychosocial impact → appropriate support',
       'Driving: advise DVLA notification and abstaining from driving until controlled'],
-    source:'DVLA Assessing fitness to drive (narcolepsy and cataplexy) / BNF (modafinil, sodium oxybate) / sleep medicine guidance' },
+    source:'DVLA Assessing fitness to drive (narcolepsy and cataplexy) / sleep medicine guidance' },
 
   { id:'nasal-polyps', title:'Nasal polyps', category:'ENT', icon:'👃',
     overview:'Benign, oedematous swellings of the nasal/sinus lining causing obstruction, reduced smell and rhinorrhoea, usually in the context of chronic rhinosinusitis. They are benign but recurrent; the key safety point is that a UNILATERAL polyp/mass needs ENT assessment to exclude tumour, and that nasal polyps in a young child should prompt consideration of cystic fibrosis.',
@@ -278,7 +278,7 @@
       'Bleeding not controlled by first aid and anterior cautery/packing → ENT',
       'Recurrent unilateral epistaxis with nasal obstruction → urgent ENT to exclude sinonasal/nasopharyngeal tumour (a clinical red flag: NICE NG12 (updated April 2026) has no specific sinonasal criterion, so refer on clinical suspicion); adolescent boy with recurrent severe epistaxis + obstruction → ENT (?juvenile angiofibroma)',
       'Anticoagulated/bleeding-disorder patients with significant epistaxis → assess and manage urgently'],
-    source:'BNF (chlorhexidine–neomycin cream: contains arachis oil, avoid in peanut allergy) / ENT first-aid practice' }
+    source:'Product SPCs (chlorhexidine–neomycin cream: contains arachis oil, avoid in peanut allergy) / ENT first-aid practice' }
 
   );
 })();

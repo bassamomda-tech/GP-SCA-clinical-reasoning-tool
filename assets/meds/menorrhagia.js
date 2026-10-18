@@ -11,7 +11,7 @@ MedChooser.register('menorrhagia', {
 
 
   safety: [
-    {"tone":"amber","label":"Fibroids ≥3 cm / uterine distortion","text":"Fibroids ≥3 cm / distorted cavity — refer; LNG-IUS may not be retained; consider GnRH analogues / surgical options"},
+    {"tone":"amber","label":"Fibroids ≥3 cm / uterine distortion","text":"Fibroids ≥3 cm / distorted cavity — consider referral; LNG-IUS may not be retained; consider GnRH analogues / surgical options"},
     {"tone":"amber","label":"Iron-deficiency anaemia","text":"Iron-deficiency anaemia — start iron and treat HMB promptly; check ferritin"},
     {"tone":"red","label":"Postmenopausal bleeding","text":"NICE NG12 (updated April 2026) — postmenopausal bleeding (55+): refer on the suspected endometrial/gynae cancer pathway; direct-access TVUSS"},
     {"tone":"amber","label":"Persistent intermenstrual / postcoital bleeding","text":"Persistent IMB/PCB, or ≥45 with treatment failure/risk factors — investigate endometrium (TVUSS ± biopsy / refer) before assuming benign HMB"}

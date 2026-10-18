@@ -691,7 +691,6 @@ window.RGP_CALCULATORS = [
     },
     refs:[
       { label:'Cockcroft-Gault 1976', url:'https://pubmed.ncbi.nlm.nih.gov/1244564/' },
-      { label:'BNF \u2014 prescribing in renal impairment', url:'https://bnf.nice.org.uk/medicines-guidance/prescribing-in-renal-impairment/' },
       { label:'Prescribing hub \u2014 CKD and renal dosing', url:'prescribing.html#sec-ckd' },
     ],
   },

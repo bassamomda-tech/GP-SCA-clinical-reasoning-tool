@@ -53,7 +53,7 @@ window.SCA_PLAYBOOKS = [
     remember:'They will forget nearly everything you say after the news lands — but remember exactly HOW it felt forever. Optimise the feeling, write down the facts.'
   },
   {
-    id:'colleague', ic:'🩺', cat:'Professional dilemmas', t:'The colleague who books in as a patient',
+    id:'colleague', ic:'⚕️', cat:'Professional dilemmas', t:'The colleague who books in as a patient',
     when:'A practice nurse with back pain "just needing a quick sick note", a fellow GP wanting "a quiet word about some tablets", a trainee with low mood who fears the deanery finding out. A favourite SCA station because it tests boundaries and probity at once.',
     trap:'Treating them as a colleague instead of a patient: shorthand histories, corridor standards, prescribing without examining, colluding with secrecy. The whole station IS the boundary.',
     open:[

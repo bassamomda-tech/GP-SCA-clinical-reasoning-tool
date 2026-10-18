@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="stable-angina">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stable angina — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/management/stable-angina.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/stable-angina.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · chronic disease series</div>
+      <h1>Stable angina <small>CLINIC GUIDE</small></h1>
+      <div class="scope">For the new diagnosis and the annual review. Adults 18+ with angina due to coronary artery disease. Not for suspected ACS, heart failure management or after a recent MI or stent (follow the cardiology plan).</div>
+    </div>
+    <div class="meta">NICE <b>CG126</b> (2011, updated 2016) · <b>CG95</b> (updated 2016) · NG238 · MHRA · DVLA<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full protocol: gpreasoning.uk/tools/management/stable-angina.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Confirm and start <span>chest pain → is it stable angina? → CTCA → GTN + first drug + prevention</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act now — this is not stable angina<small>NICE CG95 · CG126</small></h2><div class="body">
+    <ul>
+      <li><b>Current chest pain</b>, pain with haemodynamic compromise, syncope, severe breathlessness or dynamic ECG changes → <b>999</b>. Do not delay transfer for an ECG or bloods.</li>
+      <li><b>New rest pain, crescendo pattern</b> (more often, longer, lower threshold) or rapidly worsening symptoms that have now settled → <b>same-day acute assessment</b>, not a dose change.</li>
+      <li>Pain still there <b>5 minutes after the second GTN dose</b> → 999. Chest pain with a <b>new murmur</b> → urgent echo and cardiology review (possible aortic stenosis).</li>
+      <li>Chest pain within <b>24 h of sildenafil or vardenafil</b> (<b>48 h tadalafil</b>) or after poppers → <b>no GTN</b>; sit down, 999 if it persists, tell the crew what was taken.</li>
+    </ul>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Is it angina?<small>NICE CG95</small></h2><div class="body">
+        <table>
+          <tr><th>Feature</th><th>Count it</th></tr>
+          <tr><td>1 · Constricting discomfort</td><td>Chest, neck, shoulder, jaw or arm</td></tr>
+          <tr><td>2 · Brought on by exertion</td><td>Or emotion; note triggers (cold, meals)</td></tr>
+          <tr><td>3 · Relieved by rest or GTN</td><td>Within about 5 minutes</td></tr>
+        </table>
+        <p style="margin-top:2px"><b>3 = typical</b> · <b>2 = atypical</b> · 0–1 = non-anginal. Confirm it is <b>stable</b>: predictable, exertional, relieved by rest. Do not "trial GTN" as a test — oesophageal spasm responds too.</p>
+        <p><b>Grade it (CCS):</b> I strenuous exertion only · II slight limitation · III marked limitation · IV any activity or at rest.</p>
+      </div></div>
+
+      <div class="blk amber"><h2><span class="n">2</span>Confirm the diagnosis<small>NICE CG95 (2016)</small></h2><div class="body">
+        <p>No known CAD → resting <b>12-lead ECG</b> and refer to the <b>rapid access chest pain clinic</b>.</p>
+        <table>
+          <tr><th>Clinical picture</th><th>First test</th></tr>
+          <tr><td>Typical or atypical angina</td><td><b>CTCA</b> (64-slice or above)</td></tr>
+          <tr><td>Non-anginal + ST–T changes or Q waves</td><td><b>CTCA</b></td></tr>
+          <tr><td>Non-anginal, normal ECG</td><td>No cardiac test; look elsewhere</td></tr>
+          <tr><td>CTCA non-diagnostic or uncertain</td><td>Functional imaging</td></tr>
+          <tr><td>Known CAD, recurrent symptoms</td><td>Cardiology or functional imaging, not a repeat CTCA</td></tr>
+        </table>
+        <p class="key">Start GTN and a first-line drug while waiting if symptoms need it; manage risk factors from day one.</p>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">3</span>Work-up — every new diagnosis<small>look for the amplifier</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>12-lead ECG</b> (old MI, AF, LVH)</li>
+          <li><b>FBC</b> — anaemia amplifies angina</li>
+          <li>TFTs, HbA1c, U&amp;E</li>
+          <li>Lipids (non-HDL)</li>
+          <li>BP, pulse, weight</li>
+          <li>Echo if murmur, HF signs, prior MI</li>
+        </ul>
+        <p style="margin-top:2px">Worse angina without new coronary disease? Look for <b>anaemia, thyrotoxicosis, new AF, uncontrolled BP, heart failure, infection</b> before assuming progression.</p>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk teal"><h2><span class="n">4</span>GTN — teach it, check recall<small>NICE CG126 §1.3</small></h2><div class="body">
+        <div class="flow" style="--c:var(--teal)">
+          <div><b class="h">Pain</b>Stop, <b>sit down</b>, GTN 1–2 sprays under the tongue</div>
+          <div><b class="h">5 minutes</b>Still there → second dose</div>
+          <div><b class="h">5 more</b>Still there → <b>999</b></div>
+          <div><b class="h">Before</b>Use before planned exertion (hills, sex)</div>
+        </div>
+        <p style="margin-top:3px">Headache and flushing are common and settle. Light-headed → sit or hold on to something. <b>Never with a PDE5 inhibitor or poppers</b>: no nitrate for 24 h after sildenafil or vardenafil, 48 h after tadalafil; avanafil per its SPC. Ask every patient.</p>
+      </div></div>
+
+      <div class="blk teal"><h2><span class="n">5</span>First drug — symptom control<small>NICE CG126 §1.3</small></h2><div class="body">
+        <p><b>Beta-blocker or calcium-channel blocker</b> — choose by comorbidity, contraindications, preference and cost. Do not routinely start other anti-anginals first.</p>
+        <table>
+          <tr><th>Choice</th><th>Suits</th><th>Avoid / caution</th></tr>
+          <tr><td><b>Bisoprolol</b> usually 5–10 mg OD</td><td>Post-MI, HFrEF, high resting rate</td><td>Bradycardia, heart block, asthma</td></tr>
+          <tr><td><b>Amlodipine</b> 5 → 10 mg OD</td><td>Coexisting hypertension</td><td>Ankle oedema</td></tr>
+          <tr><td>Diltiazem MR or verapamil</td><td>Beta-blocker unsuitable</td><td>HFrEF, bradycardia, conduction disease</td></tr>
+        </table>
+        <p>Review <b>2–4 weeks</b> after each change; titrate to symptoms, HR, BP and side effects. "Failed" at half dose is not failed. Not tolerated → switch class.</p>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">6</span>Secondary prevention — the second track<small>NICE CG126 · NG238</small></h2><div class="body">
+        <table>
+          <tr><td><b>Aspirin 75 mg</b> OD</td><td>Consider, weighing bleeding risk and comorbidities. Not routinely on top of an anticoagulant</td></tr>
+          <tr><td><b>Atorvastatin 80 mg</b></td><td>Lower dose if interactions, side-effect risk or preference (NG238)</td></tr>
+          <tr><td><b>ACEi</b></td><td>Consider with diabetes; offer or continue for its own indication — not for angina alone</td></tr>
+          <tr><td>BP, diabetes</td><td>To target on their own pathways</td></tr>
+        </table>
+        <p class="key">Anti-anginals ease symptoms; statin and antiplatelet reduce events. Every review checks both.</p>
+      </div></div>
+    </div>
+
+    <div class="blk green span"><h2><span class="n">7</span>Lifestyle and self-management — offer to everyone<small>NICE CG126 · NG238</small></h2><div class="body">
+      <table>
+        <tr><th>Smoking</th><th>Activity</th><th>Diet · weight</th><th>Triggers</th><th>Mood</th><th>Driving (DVLA)</th></tr>
+        <tr><td>Stop — the biggest modifiable risk; refer to stop-smoking service</td><td>Regular, within the safe limit; stop if angina comes; cardiac rehab if fearful</td><td>Mediterranean-style diet; weight management</td><td>GTN before cold, hills, heavy meals, sex</td><td>Ask about anxiety, low mood, activity avoidance</td><td>Car: stop if angina at rest, with emotion or at the wheel. Bus/lorry: must tell DVLA</td></tr>
+      </table>
+      <p class="say" style="margin-top:3px">"You have two kinds of medicine. The spray and heart tablets ease the pain. The statin and aspirin lower your risk of a heart attack — they only work if you keep taking them, even when you feel well. And pain still there five minutes after the second spray is a 999 call."</p>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Stable angina · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Review and titrate <span>the chronic disease review: pattern → both tracks → step up → refer</span></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk green"><h2><span class="n">8</span>Targets — both tracks<small>NG238 · NG136 · CG126</small></h2><div class="body">
+        <table>
+          <tr><th>Track</th><th>Aim</th></tr>
+          <tr><td><b>Symptoms</b></td><td>Fewest attacks on the fewest drugs; stable pattern; usual activities kept</td></tr>
+          <tr><td><b>Heart rate, BP</b></td><td>Titrate to symptoms and side effects — no fixed heart-rate target on its own</td></tr>
+          <tr><td><b>Lipids</b></td><td><b>LDL ≤2.0</b> or <b>non-HDL ≤2.6 mmol/L</b>; recheck 2–3 months after a change</td></tr>
+          <tr><td><b>BP, diabetes</b></td><td>To target on their own pathways (NG136, diabetes guidance)</td></tr>
+        </table>
+        <p class="key">Lipids above target → check adherence, dose, interactions and tolerance, then consider ezetimibe (NG238).</p>
+      </div></div>
+
+      <div class="blk amber"><h2><span class="n">9</span>Before every step-up<small>is it still stable?</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Pattern</b> — rest pain, crescendo or a lower threshold → red box, not titration</li>
+          <li><b>GTN use</b> — rising sprays, or avoiding activity to avoid pain</li>
+          <li><b>Dose</b> — is the first drug at its maximum tolerated dose?</li>
+          <li><b>Adherence</b> — taking it? Stopped because of side effects?</li>
+          <li><b>Amplifier</b> — FBC, TFTs, ECG for AF, BP</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">10</span>Annual review checklist<small>every patient, every year</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li>Symptom frequency, <b>CCS class</b>, GTN sprays per week, pattern change</li>
+          <li><b>GTN technique</b> and 5-5-999 recall; PDE5 inhibitor or poppers use</li>
+          <li>Pulse, <b>BP</b>, weight; side effects (fatigue, ankles, ED, dizziness)</li>
+          <li><b>Lipids</b>, HbA1c, U&amp;E; statin and aspirin <b>still taken</b></li>
+          <li>Smoking status, activity, mood, cardiac rehab offered if needed</li>
+          <li>Influenza vaccine if eligible; DVLA position if a Group 2 driver</li>
+          <li>Record CCS class, current step and next action</li>
+        </ul>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">13</span>When to refer<small>NICE CG95 · CG126 §1.4</small></h2><div class="body">
+        <table>
+          <tr><td><b>999 / same day</b></td><td>Red box: current pain, crescendo or new rest pain, syncope</td></tr>
+          <tr><td><b>Chest pain clinic</b></td><td>New suspected angina, no known CAD → CTCA</td></tr>
+          <tr><td><b>Cardiology</b></td><td><b>Symptoms not controlled on optimal medical treatment</b> (1 or 2 anti-anginals + secondary prevention) → consider PCI or CABG</td></tr>
+          <tr><td><b>Heart Team</b></td><td>Left main or complex three-vessel disease; PCI-versus-CABG uncertainty</td></tr>
+          <tr><td><b>Echo</b></td><td>Murmur, heart-failure signs, previous MI</td></tr>
+          <tr><td><b>Cardiac rehab</b></td><td>After MI or revascularisation; fear-driven inactivity</td></tr>
+        </table>
+        <p class="key">PCI and CABG relieve symptoms; for many stable patients they add no survival over optimal tablets, but some anatomy benefits — cardiology decides.</p>
+      </div></div>
+    </div>
+
+    <div class="blk teal span"><h2><span class="n">11</span>The anti-anginal ladder<small>NICE CG126 §1.3 · doses per SPC</small></h2><div class="body">
+      <div class="ladder">
+        <div><b class="h">Step 1 · one drug</b>Beta-blocker <i>or</i> CCB, titrated. Not tolerated → switch to the other class.</div>
+        <div><b class="h">Step 2 · two drugs</b>Beta-blocker + <b>dihydropyridine CCB</b>: amlodipine, felodipine or MR nifedipine.</div>
+        <div><b class="h">Step 3 · if both unsuitable</b>Monotherapy with a long-acting nitrate, ivabradine, nicorandil or ranolazine.</div>
+        <div class="s4"><b class="h">Third drug · only if</b>Uncontrolled on two <b>and</b> awaiting revascularisation, or it is not appropriate or acceptable. Never a third drug if controlled on two.</div>
+      </div>
+      <table style="margin-top:3px">
+        <tr><th>Drug</th><th>Usual dose</th><th>Monitor</th><th>Watch</th></tr>
+        <tr><td><b>Bisoprolol</b></td><td>Usually 5–10 mg OD</td><td>Pulse, BP at each titration</td><td>Never stop abruptly — taper (rebound angina)</td></tr>
+        <tr><td><b>Amlodipine</b></td><td>5–10 mg OD</td><td>BP, ankles</td><td>Safe partner for a beta-blocker</td></tr>
+        <tr><td>Diltiazem MR · verapamil</td><td>Per SPC; diltiazem MR by brand</td><td>Pulse, ECG if combined</td><td><b>Not routinely with a beta-blocker</b>; avoid in HFrEF</td></tr>
+        <tr><td>Isosorbide mononitrate</td><td>Per SPC</td><td>Headache</td><td>Needs a daily nitrate-low interval (tolerance)</td></tr>
+        <tr><td>Ivabradine</td><td>Per SPC</td><td>Sinus rhythm, heart rate</td><td>Start only if resting HR ≥70; not with verapamil or diltiazem (MHRA)</td></tr>
+        <tr><td>Nicorandil</td><td>Per SPC</td><td>Mouth, skin, GI, anal ulcers</td><td>Ulcers → stop it (MHRA); PDE5 ban applies</td></tr>
+        <tr><td>Ranolazine</td><td>Per SPC</td><td>QT, renal, liver tests</td><td>Little HR or BP effect; CYP3A4 interactions</td></tr>
+      </table>
+    </div></div>
+
+    <div class="col">
+      <div class="blk slate"><h2><span class="n">12</span>Side effects — fix, don't abandon<small>SPC · MHRA</small></h2><div class="body">
+        <table>
+          <tr><td><b>Fatigue, cold hands</b> (beta-blocker)</td><td>Lower dose or switch to a CCB; taper, never stop suddenly</td></tr>
+          <tr><td><b>Bradycardia, dizziness</b></td><td>Reduce dose; check for heart block on ECG</td></tr>
+          <tr><td><b>Ankle oedema</b> (amlodipine)</td><td>Lower dose or try another dihydropyridine</td></tr>
+          <tr><td><b>GTN headache</b></td><td>Paracetamol; usually settles; sit down</td></tr>
+          <tr><td><b>Any ulcer</b> on nicorandil</td><td>Stop nicorandil; ulcers heal only after withdrawal</td></tr>
+          <tr><td><b>Erectile dysfunction</b></td><td>Ask; PDE5 inhibitor only with no nitrate or nicorandil</td></tr>
+        </table>
+      </div></div>
+      <div class="blk green"><h2><span class="n">14</span>Safety-net — what they must know<small>CG126</small></h2><div class="body">
+        <ul>
+          <li>Pain still there 5 minutes after the second spray → <b>999</b>.</li>
+          <li>New pain at rest, or pain coming more often or more easily → <b>contact us the same day</b>.</li>
+          <li>Using the spray more than before → tell us early.</li>
+          <li>Never stop the heart-rate tablet suddenly; never use the spray after Viagra-type drugs or poppers.</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="blk red"><h2><span class="n">15</span>Special groups and never-events<small>MHRA · DVLA · CG126</small></h2><div class="body">
+        <ul>
+          <li><b>HFrEF</b>: beta-blocker; avoid verapamil, diltiazem. <b>Asthma</b>: usually no beta-blocker → CCB.</li>
+          <li><b>DVLA</b>: Group 2 drivers must notify; relicensing needs at least <b>6 weeks</b> free of angina plus functional test requirements.</li>
+          <li><b>Never</b>: nitrate or nicorandil with a PDE5 inhibitor · routine beta-blocker + verapamil/diltiazem · stop a beta-blocker abruptly · treat a crescendo pattern as a dose problem · let the statin quietly lapse.</li>
+          <li><b>After MI, PCI or CABG</b>: follow the cardiology antiplatelet plan and stop dates; reconcile every letter.</li>
+          <li><b>Rising GTN use</b> or shrinking activity may be deterioration even when the patient says "fewer attacks" — reassess the pattern.</li>
+          <li>Aspirin is not for primary prevention in people without CVD.</li>
+        </ul>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Stable angina · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE CG126 (2011, updated 2016), CG95 (2010, updated 2016), NG238 (2023), NG136; MHRA Drug Safety Updates (nicorandil, ivabradine); DVLA Assessing fitness to drive</span><span>Full detail and evidence: gpreasoning.uk/tools/management/stable-angina.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=1"></script>
+</body>
+</html>

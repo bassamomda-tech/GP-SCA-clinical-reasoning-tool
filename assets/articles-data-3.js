@@ -4,7 +4,7 @@
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
 
-  { id:'hypotension', title:'Hypotension', category:'Cardiovascular & Renal', icon:'🩺',
+  { id:'hypotension', title:'Hypotension', category:'Cardiovascular & Renal', icon:'⚕️',
     overview:'Low blood pressure (often quoted as <90/60 mmHg) that matters mainly when it is symptomatic or acute. The clinical task is to separate benign or chronic low BP from dangerous acute causes, and to identify reversible drug, volume and postural contributors.',
     features:[
       'Symptomatic: light-headedness, presyncope/syncope, fatigue, blurred vision, falls (especially in older people)',

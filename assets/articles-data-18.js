@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 18: M topics, part 1)
    NHS conditions A–Z (letter M) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -78,7 +78,7 @@
       'Asymmetric/unilateral sensorineural hearing loss → MRI to exclude acoustic neuroma (NICE NG98)',
       'Refractory or disabling disease → specialist (intratympanic/surgical options)',
       'Sudden sensorineural hearing loss → same-day ENT (a separate emergency)'],
-    source:'DVLA Assessing fitness to drive (vestibular disorders) / NICE NG98 (Hearing loss in adults, 2018) / BNF (betahistine, prochlorperazine)' },
+    source:'DVLA Assessing fitness to drive (vestibular disorders) / NICE NG98 (Hearing loss in adults, 2018)' },
 
   { id:'meningitis', title:'Meningitis', category:'Infectious diseases', icon:'🦠',
     overview:'Inflammation of the meninges, most dangerously from bacterial infection (meningococcal, pneumococcal, Hib). It is a time-critical emergency: bacterial meningitis and meningococcal septicaemia can kill within hours. Immediate recognition, pre-hospital benzylpenicillin, and emergency transfer save lives; viral meningitis is commoner and usually milder.',

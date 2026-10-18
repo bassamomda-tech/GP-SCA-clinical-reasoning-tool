@@ -12,7 +12,7 @@ MedChooser.register('dementia', {
     {"tone":"red","label":"Antipsychotics in dementia","text":"Only for severe distress or risk of harm when non-drug approaches have failed; increased stroke and mortality. Avoid in Lewy body and Parkinson's disease dementia (severe sensitivity reactions)."},
     {"tone":"amber","label":"Bradycardia, syncope, falls","text":"AChE inhibitors can cause bradycardia and heart block — check pulse before starting; ECG if slow or irregular pulse, syncope, or on rate-limiting drugs."},
     {"tone":"amber","label":"Anticholinergic burden","text":"Review medicines with anticholinergic effects (e.g. oxybutynin, amitriptyline, chlorphenamine) — they worsen cognition and oppose AChE inhibitors."},
-    {"tone":"amber","label":"Disease-modifying antibodies","text":"Lecanemab and donanemab have UK marketing authorisations but are not recommended by NICE for NHS use (2025 final guidance) — not prescribed in primary care."}
+    {"tone":"amber","label":"Disease-modifying antibodies","text":"Lecanemab and donanemab are MHRA-licensed (2024) but not recommended by NICE; after appeals NICE reconsulted in March 2026, and the reappraisal was paused in July 2026 for commercial discussions. Not routinely available on the NHS — check the current position; not prescribed in primary care."}
   ],
 
   drugs: [
@@ -77,7 +77,7 @@ MedChooser.register('dementia', {
       sideEffects:'Dizziness, headache, constipation, drowsiness, raised BP',
       monitor:'Renal function (reduce in renal impairment); BP',
       counsel:'"Increase the dose each week as shown on the starter pack."',
-      detail:{ 'Key teaching':'NG97: consider adding memantine to an AChE inhibitor in moderate disease and offer it in severe disease. Primary care can start it without a specialist if the diagnosis is established.' },
+      detail:{ 'Key teaching':'NG97: consider adding memantine to an AChE inhibitor in moderate disease and offer it in severe disease. For people with established Alzheimer\'s already taking an AChE inhibitor, primary care may start memantine as an add-on without specialist advice (NG97); otherwise initiate under memory-service or shared-care arrangements.' },
       conditions: [
         {"kind":"caution","label":"CKD","text":"Dose reduction by CrCl (SPC)"},
         {"kind":"caution","label":"Epilepsy","text":"Seizure threshold — caution"},

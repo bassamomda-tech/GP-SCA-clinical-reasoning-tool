@@ -75,7 +75,7 @@ Review function at each step; deprescribe if no benefit.`,
       { name: 'Soap substitute (use an emollient instead of soap)', dose: 'Wash with', freq: 'Each wash', route: 'Topical', days: 'Ongoing' },
     ],
     altRegimens: [
-      { label: 'Quantities (BNF; NICE CG57 for under-12s)', drugs: 'Prescribe 250\u2013500 g/week for widespread eczema. Apply in the direction of hair growth; wait ~15\u201330 min before/after a topical steroid.' },
+      { label: 'Quantities (NICE CG57 for under-12s)', drugs: 'Prescribe 250\u2013500 g/week for widespread eczema. Apply in the direction of hair growth; wait ~15\u201330 min before/after a topical steroid.' },
       { label: 'Itch / antimicrobial', drugs: 'Consider an emollient with an antipruritic or antimicrobial (e.g. for recurrent infection) per specialist advice; avoid aqueous cream as a leave-on (irritant).' },
       { label: 'Bath additives', drugs: 'Routine bath emollients are no longer recommended (BATHE trial showed no added benefit) \u2014 use leave-on + soap substitute.' },
     ],

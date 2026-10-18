@@ -1,5 +1,5 @@
 /* Reasoning GP — Articles data (batch 5: B topics)
-   RCGP/SCA examiner depth. NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   RCGP/SCA examiner depth. NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -303,7 +303,7 @@
       'Large carbuncle, severe/spreading infection, or sepsis → surgical/medical admission',
       'Recurrent PVL-Staph or treatment-resistant disease → microbiology/dermatology advice',
       'Recurrent flexural abscesses with sinuses/scarring → dermatology (hidradenitis suppurativa)'],
-    source:'UKHSA PVL-Staphylococcus aureus guidance / BNF' },
+    source:'UKHSA PVL-Staphylococcus aureus guidance' },
 
   { id:'bpd', title:'Borderline (emotionally unstable) personality disorder', category:'Mental health', icon:'🧠',
     overview:'A personality disorder characterised by pervasive instability of emotions, self-image and relationships with marked impulsivity, beginning by early adulthood. Self-harm and suicide risk are high. Care is built on a consistent, validating therapeutic relationship and structured psychological therapy — not medication.',
@@ -355,7 +355,7 @@
       'Positive screening FIT → colonoscopy via the screening programme'],
     source:'NICE NG12 (updated April 2026) / BSG polyp surveillance guidance' },
 
-  { id:'bowens-disease', title:'Bowen’s disease (squamous cell carcinoma in situ)', category:'Dermatology', icon:'🩹',
+  { id:'bowens-disease', title:'Bowen’s disease (squamous cell carcinoma in situ)', category:'Dermatology', icon:'🤕',
     overview:'An intra-epidermal (in-situ) squamous cell carcinoma presenting as a slow-growing, scaly erythematous patch. It is generally indolent, but a small proportion progress to invasive SCC — so the priorities are correct diagnosis, treatment, and recognising features of invasion.',
     features:[
       'A well-demarcated, slowly enlarging, erythematous scaly or crusted plaque, often on sun-exposed sites (lower legs in older women, head/neck)',

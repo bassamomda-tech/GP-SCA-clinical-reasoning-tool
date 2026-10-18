@@ -179,7 +179,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ algorithm:'tools/algorithms/nausea-vomiting-adults.html', algorithmLabel:'Nausea & vomiting' },
 },
 {
-  id:'pharma-aminosalicylates', domain:'Pharmacology', class:'Gastrointestinal', icon:'🩹',
+  id:'pharma-aminosalicylates', domain:'Pharmacology', class:'Gastrointestinal', icon:'🤕',
   title:'Aminosalicylates (mesalazine)', blurb:'Topical gut anti-inflammatories — the mainstay of mild–moderate ulcerative colitis.',
   examples:['Mesalazine, sulfasalazine'],
   moa:[
@@ -293,7 +293,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 
 /* ---------------- SUPPLEMENTS & REPLACEMENT ---------------- */
 {
-  id:'pharma-iron', domain:'Pharmacology', class:'Haematology', icon:'🩸',
+  id:'pharma-iron', domain:'Pharmacology', class:'Haematology', icon:'💉',
   title:'Iron replacement', blurb:'Replenish stores in iron-deficiency anaemia — absorption and tolerance dictate dosing.',
   examples:['Ferrous sulfate/fumarate/gluconate (oral)','IV iron (intolerance/malabsorption)'],
   moa:[
@@ -315,7 +315,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   links:{ patho:'patho-iron-anaemia', pathoLabel:'Iron-deficiency anaemia', case:'cases/anaemia.html', caseLabel:'IDA' },
 },
 {
-  id:'pharma-b12-folate', domain:'Pharmacology', class:'Haematology', icon:'🩸',
+  id:'pharma-b12-folate', domain:'Pharmacology', class:'Haematology', icon:'💉',
   title:'B12 & folate replacement', blurb:'Correct megaloblastic anaemia — but B12 first, and the route depends on the cause.',
   examples:['Hydroxocobalamin (IM)','Folic acid (oral)'],
   moa:[

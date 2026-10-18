@@ -124,7 +124,7 @@
     ],
     learning: 'PRIMARY FOCAL HYPERHIDROSIS is excessive LOCALISED sweating of the PALMS, SOLES, AXILLAE and/or face, typically BILATERAL and SYMMETRICAL, with onset in childhood/adolescence, occurring even when the person is not hot but characteristically STOPPING during SLEEP, often with a family history and worsened by stress \u2014 a benign, recognised condition. Distinguish it from SECONDARY (often generalised) hyperhidrosis, whose red flags warrant a work-up: generalised or asymmetric sweating, NIGHT sweats, weight loss, later-life onset, or systemic symptoms \u2014 prompting consideration of hyperthyroidism, infection (including TB), malignancy/lymphoma, menopause, diabetes/hypoglycaemia, anxiety, phaeochromocytoma and drugs. Manage primary focal hyperhidrosis STEPWISE: first-line topical ALUMINIUM CHLORIDE hexahydrate 20% (BNF), applied to completely dry skin at bedtime and washed off in the morning, then iontophoresis (especially palms/soles), topical anticholinergics (glycopyrronium \u2014 specialist or local formulary use only), oral anticholinergics (propantheline, dose per BNF; oxybutynin off-label \u2014 weighing side-effects), and BOTULINUM TOXIN A injections (effective for severe axillary hyperhidrosis; specialist), with practical advice (absorbent clothing, sweat shields) and severity scored with the HDSS (International Hyperhidrosis Society, international; 3 or 4 = severe). Refer to dermatology for severe/refractory cases or specialist treatments, and consider surgery (endoscopic thoracic sympathectomy, NICE HTG339, formerly IPG487) in carefully selected severe upper-limb cases after other treatments, with counselling that compensatory sweating is usual and can be severe; treat any identified secondary cause. Crucially, acknowledge the major psychosocial impact (confidence, work, social life, relationships, anxiety) and validate that this is a treatable medical condition, not a hygiene failing. The skill is recognising primary focal hyperhidrosis, excluding secondary red flags, stepwise treatment, referral if severe, and addressing the impact.',
     knowledge: {
-      guideline: 'Hyperhidrosis \u00b7 primary focal vs secondary (red flags) \u00b7 stepwise treatment (aluminium chloride \u2192 iontophoresis/anticholinergics \u2192 botulinum toxin) \u00b7 psychosocial impact \u00b7 [1] BNF aluminium chloride hexahydrate \u00b7 [2] BNF botulinum toxin type A (severe axillary hyperhidrosis, specialist use) \u00b7 [3] BNF propantheline bromide and other antimuscarinics \u00b7 [4] NICE HTG339 (formerly IPG487) Endoscopic thoracic sympathectomy for primary hyperhidrosis of the upper limb (2014) \u00b7 [5] International Hyperhidrosis Society: Hyperhidrosis Disease Severity Scale (international)',
+      guideline: 'Hyperhidrosis \u00b7 primary focal vs secondary (red flags) \u00b7 stepwise treatment (aluminium chloride \u2192 iontophoresis/anticholinergics \u2192 botulinum toxin) \u00b7 psychosocial impact \u00b7 [1] NICE HTG339 (formerly IPG487) Endoscopic thoracic sympathectomy for primary hyperhidrosis of the upper limb (2014) \u00b7 [2] International Hyperhidrosis Society: Hyperhidrosis Disease Severity Scale (international)',
       points: [
         {
           h: 'Primary focal',
@@ -136,11 +136,11 @@
         },
         {
           h: 'Stepwise treatment',
-          t: 'First-line topical aluminium chloride 20% on dry skin at bedtime, washed off in the morning [1]; then iontophoresis (palms/soles), oral antimuscarinics (propantheline [3]; oxybutynin off-label), topical glycopyrronium (specialist/local formulary only), botulinum toxin (axillae, specialist [2]). HDSS 3\u20134 = severe [5]. Practical clothing advice.'
+          t: 'First-line topical aluminium chloride 20% on dry skin at bedtime, washed off in the morning; then iontophoresis (palms/soles), oral antimuscarinics (propantheline; oxybutynin off-label), topical glycopyrronium (specialist/local formulary only), botulinum toxin (axillae, specialist). HDSS 3\u20134 = severe [2]. Practical clothing advice.'
         },
         {
           h: 'Refer/severe options',
-          t: 'Dermatology for severe/refractory or specialist treatments; selected surgery (endoscopic thoracic sympathectomy, NICE HTG339 [4]) with counselling that compensatory sweating is usual and can be severe.'
+          t: 'Dermatology for severe/refractory or specialist treatments; selected surgery (endoscopic thoracic sympathectomy, NICE HTG339 [1]) with counselling that compensatory sweating is usual and can be severe.'
         },
         {
           h: 'Acknowledge impact',
@@ -278,7 +278,7 @@
     ],
     learning: 'CHRONIC SPONTANEOUS URTICARIA is recurrent itchy WEALS (hives) occurring most days for MORE THAN 6 WEEKS, with each individual weal coming and going within 24 hours and leaving NO mark, often with ANGIOEDEMA (lip/eyelid/soft-tissue swelling) and frequently NO identifiable trigger (often idiopathic/autoimmune). If individual weals last LONGER than 24 hours, are painful/burning, or leave bruising/pigmentation, consider URTICARIAL VASCULITIS (refer dermatology for assessment/biopsy). Reassure that chronic spontaneous urticaria is usually NOT a dangerous food allergy and that extensive allergy testing is generally unrewarding \u2014 avoid fruitless elimination diets/allergy tests \u2014 while identifying aggravating (not causative) factors where relevant (NSAIDs/aspirin, opiates, heat, pressure, alcohol, stress, infection). Manage STEPWISE: regular (not just PRN) non-sedating ANTIHISTAMINES are first-line (BSACI 2015), up-titrated after 2\u20134 weeks to up to four times the standard dose if not controlled (international EAACI/GA\u00b2LEN/EuroGuiDerm/APAAACI guideline 2026; off-label above the licensed dose, so explain it; ask about pregnancy and breastfeeding first); limit tests to FBC and CRP or ESR; for refractory cases, refer to dermatology/immunology for add-on options (omalizumab preferred \u2014 NICE TA339 for severe disease with UAS7 of 28 or more despite antihistamine-based treatment \u2014 then ciclosporin; consider a montelukast add-on first if up-dosed antihistamine fails \u2014 BAD 2021, and a leukotriene receptor antagonist trial is required before omalizumab under TA339 \u2014 with an MHRA April 2024 neuropsychiatric warning), with short oral steroid courses only for severe flares (not long-term). Crucially counsel the angioedema/anaphylaxis safety-net \u2014 seek emergency help (999) for tongue/throat swelling or difficulty breathing/swallowing \u2014 and consider ACE-inhibitor-induced angioedema (stop the ACE inhibitor) and hereditary angioedema (C1-esterase inhibitor deficiency) in recurrent isolated angioedema without weals. The skill is recognising chronic urticaria, reassuring and stopping the trigger-hunt, starting regular up-titrated antihistamines, referring if refractory/vasculitis, and giving the angioedema red-flag advice.',
     knowledge: {
-      guideline: 'Chronic spontaneous urticaria \u00b7 regular up-titrated non-sedating antihistamines \u00b7 avoid unrewarding allergy testing \u00b7 omalizumab if refractory \u00b7 angioedema/anaphylaxis safety-net \u00b7 [1] BSACI guideline for the management of chronic urticaria and angioedema (Powell et al., Clin Exp Allergy 2015) \u00b7 [2] EAACI/GA\u00b2LEN/EuroGuiDerm/APAAACI urticaria guideline (2026 update, Allergy; international) \u00b7 [3] NICE TA339 (2015) Omalizumab for previously treated chronic spontaneous urticaria \u00b7 [4] BNF antihistamines \u00b7 [5] MHRA Drug Safety Update (April 2024): montelukast neuropsychiatric reactions \u00b7 [6] BAD guidelines for the management of people with chronic urticaria 2021 (Sabroe et al., Br J Dermatol 2022)',
+      guideline: 'Chronic spontaneous urticaria \u00b7 regular up-titrated non-sedating antihistamines \u00b7 avoid unrewarding allergy testing \u00b7 omalizumab if refractory \u00b7 angioedema/anaphylaxis safety-net \u00b7 [1] BSACI guideline for the management of chronic urticaria and angioedema (Powell et al., Clin Exp Allergy 2015) \u00b7 [2] EAACI/GA\u00b2LEN/EuroGuiDerm/APAAACI urticaria guideline (2026 update, Allergy; international) \u00b7 [3] NICE TA339 (2015) Omalizumab for previously treated chronic spontaneous urticaria \u00b7 [4] MHRA Drug Safety Update (April 2024): montelukast neuropsychiatric reactions \u00b7 [5] BAD guidelines for the management of people with chronic urticaria 2021 (Sabroe et al., Br J Dermatol 2022)',
       points: [
         {
           h: 'Recognise',
@@ -294,11 +294,11 @@
         },
         {
           h: 'Stepwise antihistamines',
-          t: 'Regular (not PRN) non-sedating antihistamine first-line; up-titrate after 2\u20134 weeks to up to four times the standard dose if uncontrolled [2] (off-label \u2014 explain [4]; check pregnancy/breastfeeding first [1]); short oral steroid only for severe flares.'
+          t: 'Regular (not PRN) non-sedating antihistamine first-line; up-titrate after 2\u20134 weeks to up to four times the standard dose if uncontrolled [2] (off-label \u2014 explain; check pregnancy/breastfeeding first [1]); short oral steroid only for severe flares.'
         },
         {
           h: 'Refractory',
-          t: 'Refer dermatology/immunology in refractory cases: omalizumab preferred add-on (NICE TA339 [3]: UAS7 28 or more despite H1 antihistamines and a leukotriene receptor antagonist), then ciclosporin [2]. Consider a montelukast add-on if up-dosed antihistamine fails [6] (omitted from the international algorithm [2]) \u2014 MHRA neuropsychiatric warning [5].'
+          t: 'Refer dermatology/immunology in refractory cases: omalizumab preferred add-on (NICE TA339 [3]: UAS7 28 or more despite H1 antihistamines and a leukotriene receptor antagonist), then ciclosporin [2]. Consider a montelukast add-on if up-dosed antihistamine fails [5] (omitted from the international algorithm [2]) \u2014 MHRA neuropsychiatric warning [4].'
         },
         {
           h: 'Angioedema safety-net',
@@ -439,7 +439,7 @@
     ],
     learning: 'EPISTAXIS management starts with correct FIRST-AID: sit up and lean FORWARD (not back), pinch the SOFT part of the nose (not the bony bridge) firmly and continuously for 10\u201315 minutes without releasing to check, breathe through the mouth and spit out blood (don\u2019t swallow), and a cold pack on the bridge of the nose may help \u2014 avoiding lying back, sniffing or blowing afterwards. Most nosebleeds are ANTERIOR (Little\u2019s area) and benign (nose-picking, dryness, trauma, URTIs), but in an anticoagulated/antiplatelet patient REVIEW the anticoagulation (which drug, indication, DOAC dose against weight and renal function, interacting drugs, control \u2014 INR if on warfarin, balance of risks; BNF), without stopping it on impulse (a shared decision with the prescriber), and the HYPERTENSION (optimise per NICE NG136). Know the ESCALATION/admission criteria: bleeding not controlled by 10\u201315 minutes of correct pressure repeated once, heavy or POSTERIOR bleeding (blood pouring down the throat, no visible anterior source), haemodynamic compromise (dizziness, tachycardia, hypotension), or significant bleeding while anticoagulated \u2014 posterior/uncontrolled bleeds need ENT/emergency care (packing). In primary care, examine face to face (pulse, BP, anterior rhinoscopy) and treat an anterior bleeding point with topical antiseptic cream (e.g. Naseptin, dose per BNF) and/or, by a trained clinician, nasal CAUTERY (silver nitrate) of a visible vessel, and refer to ENT for recurrent/refractory epistaxis. Keep RED FLAGS in mind: persistent UNILATERAL nasal bleeding/obstruction or a nasal MASS (possible sinonasal tumour \u2192 ENT), and features of a bleeding disorder (FBC and clotting) or hereditary haemorrhagic telangiectasia (recurrent epistaxis, telangiectasia, family history; Cura\u00e7ao criteria, international HHT guidelines 2020). Advise prevention (nasal humidification/saline/emollient, avoid picking/forceful blowing) and arrange anticoagulation/BP review. The skill is correct first-aid + anticoagulation/BP review + escalation criteria + red-flag awareness.',
     knowledge: {
-      guideline: 'Epistaxis \u00b7 correct first-aid \u00b7 anticoagulation/BP review \u00b7 escalation (posterior/uncontrolled) \u00b7 cautery/Naseptin + ENT \u00b7 unilateral-mass red flag \u00b7 [1] BNF anticoagulants (warfarin INR monitoring; DOACs) and chlorhexidine with neomycin nasal cream \u00b7 [2] NICE NG136 Hypertension in adults \u00b7 [3] Cura\u00e7ao criteria for hereditary haemorrhagic telangiectasia (Shovlin et al., 2000, international) \u00b7 [4] Second international HHT guidelines (Faughnan et al., Ann Intern Med 2020, international)',
+      guideline: 'Epistaxis \u00b7 correct first-aid \u00b7 anticoagulation/BP review \u00b7 escalation (posterior/uncontrolled) \u00b7 cautery/Naseptin + ENT \u00b7 unilateral-mass red flag \u00b7 [1] NICE NG136 Hypertension in adults \u00b7 [2] Cura\u00e7ao criteria for hereditary haemorrhagic telangiectasia (Shovlin et al., 2000, international) \u00b7 [3] Second international HHT guidelines (Faughnan et al., Ann Intern Med 2020, international)',
       points: [
         {
           h: 'First-aid',
@@ -447,7 +447,7 @@
         },
         {
           h: 'Review meds & BP',
-          t: 'Most anterior bleeds are benign; in anticoagulated patients review which drug, indication, dose/renal function, control (INR if warfarin) and antiplatelets/NSAIDs [1] \u2014 don\u2019t stop it on impulse \u2014 and optimise hypertension (NICE NG136 [2]).'
+          t: 'Most anterior bleeds are benign; in anticoagulated patients review which drug, indication, dose/renal function, control (INR if warfarin) and antiplatelets/NSAIDs \u2014 don\u2019t stop it on impulse \u2014 and optimise hypertension (NICE NG136 [1]).'
         },
         {
           h: 'Escalate/admit',
@@ -455,11 +455,11 @@
         },
         {
           h: 'Primary-care treatment',
-          t: 'Topical antiseptic cream (Naseptin, dose per BNF [1]) and, by a trained clinician, nasal cautery (silver nitrate) of a visible anterior vessel; ENT referral for recurrent/refractory epistaxis.'
+          t: 'Topical antiseptic cream (Naseptin, dose per BNF) and, by a trained clinician, nasal cautery (silver nitrate) of a visible anterior vessel; ENT referral for recurrent/refractory epistaxis.'
         },
         {
           h: 'Red flags',
-          t: 'Persistent unilateral bleeding/obstruction or nasal mass (sinonasal tumour \u2192 urgent ENT); bleeding disorder (FBC, clotting)/HHT (telangiectasia, family history [3,4]).'
+          t: 'Persistent unilateral bleeding/obstruction or nasal mass (sinonasal tumour \u2192 urgent ENT); bleeding disorder (FBC, clotting)/HHT (telangiectasia, family history [2,3]).'
         },
         {
           h: 'Prevention',

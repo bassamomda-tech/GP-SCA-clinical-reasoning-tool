@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 9: E topics)
    NHS conditions A–Z (letter E) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Suspected malignant otitis externa (severe pain, granulation, elderly diabetic/immunocompromised) → urgent ENT',
       'Persistent unilateral middle-ear effusion in an adult → urgent ENT to examine the postnasal space (NICE NG12 (updated April 2026) — exclude nasopharyngeal cancer)',
       'Persistent glue ear with hearing/developmental impact, or recurrent AOM → ENT/audiology'],
-    source:'NICE NG91 (Otitis media — acute) / BNF (otitis externa)' },
+    source:'NICE NG91 (Otitis media — acute)' },
 
   { id:'earwax', title:'Earwax build-up', category:'ENT', icon:'👂',
     overview:'Excessive or impacted cerumen is a very common, benign cause of hearing loss, blockage and discomfort. Management is simple, but it matters to exclude other causes of hearing loss and to remove wax safely — especially as it commonly prevents proper examination or hearing-aid use.',
@@ -228,7 +228,7 @@
       'Failure of, or contraindication to, oral therapy → urology (second-line treatments)',
       'Significant cardiovascular disease needing assessment before treatment → cardiology',
       'Predominantly psychogenic ED or relationship issues → psychosexual counselling'],
-    source:'BSSM guidance / BNF' },
+    source:'BSSM guidance' },
 
   { id:'erythema-multiforme', title:'Erythema multiforme', category:'Dermatology', icon:'🎯',
     overview:'An acute, usually self-limiting hypersensitivity reaction with characteristic "target" lesions, most often triggered by infection (classically herpes simplex) and sometimes drugs. The key is recognising it, identifying the trigger, and distinguishing it from the far more dangerous Stevens-Johnson syndrome/toxic epidermal necrolysis.',

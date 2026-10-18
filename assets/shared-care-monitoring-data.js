@@ -94,7 +94,7 @@ window.RGP_SHARED_CARE = [
     mon:'<b>Testosterone and haematocrit at 3, 6 and 12 months, then yearly.</b> PSA at 3–12 months, then yearly from 40. Symptoms review at each visit.',
     act:'Haematocrit above 0.54 → stop or reduce and recheck (polycythaemia, VTE). PSA rise or abnormal DRE → urology. Suppresses fertility. Testosterone for women (low libido) and gender-affirming care follow different, specialist-led schedules.',
     src:'BSSM adult testosterone deficiency guideline (2023); SPS testosterone monitoring; BMS testosterone for women',
-    links:[['algorithms/testosterone-deficiency.html','Testosterone deficiency'],['management/hrt-prescribing.html','HRT prescribing'],['management/gender-dysphoria.html','Gender dysphoria']] },
+    links:[['algorithms/testosterone-deficiency.html','Testosterone deficiency'],['management/menopause.html','Menopause and HRT'],['management/gender-dysphoria.html','Gender dysphoria']] },
   { grp:'Bone & endocrine', drug:'GnRH analogues (e.g. leuprorelin, goserelin, triptorelin)', spec:false,
     base:'Prostate cancer: PSA, testosterone, bone health (FRAX, DXA per NICE NG131), BP, HbA1c, lipids. Gynae use: pregnancy excluded, bone health if long-term.',
     mon:'Prostate cancer: <b>PSA every 3–6 months</b> as set by the specialist; testosterone if PSA rises; <b>yearly HbA1c, lipids, BP and weight</b> (metabolic effects); bone health and vitamin D. Endometriosis or fibroids: usually with add-back HRT; DXA if continued beyond 6–12 months.',

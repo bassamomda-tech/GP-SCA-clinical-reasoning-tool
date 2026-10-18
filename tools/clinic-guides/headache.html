@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="headache">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Headache: new or changed — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/headache.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/headache.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · chronic disease series</div>
+      <h1>Headache: new or changed <small>CLINIC GUIDE</small></h1>
+      <div class="scope">For the adult with a new or changed headache. Adults 18+. Not for children, head injury (NICE NG232) or the planned migraine review (see the Migraine guide).</div>
+    </div>
+    <div class="meta">NICE <b>CG150</b> (updated Jun 2025) · <b>NG12</b> · NG228 · NG240 · NG127 · NG133 · BSR GCA 2020<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full protocol: gpreasoning.uk/tools/algorithms/headache.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Assess <span>red flags first → history → examination → name the headache</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Red flags — act today<small>CG150 · NG228 · NG240 · BSR 2020 · NG12</small></h2><div class="body">
+    <table>
+      <tr><th style="width:34%">999 / emergency department</th><th style="width:38%">Same day</th><th>Urgent — suspected cancer (NG12)</th></tr>
+      <tr><td><b>Thunderclap</b>: sudden severe headache peaking within <b>1–5 minutes</b>, even if it has settled (SAH until proven otherwise; no outpatient CT or LP).<br><b>Fever with neck stiffness</b> → 999. <b>Suspected meningococcal disease</b> (e.g. non-blanching rash): benzylpenicillin <b>1.2 g</b> IM/IV (adults) unless it delays transfer or severe allergy.<br>New focal deficit, reduced consciousness, new seizure, new painful third nerve palsy.</td>
+      <td><b>Giant cell arteritis</b> (50+, new headache, jaw claudication, scalp tenderness): <b>prednisolone 40–60 mg</b> now, before tests. <b>Visual loss</b>: IV methylprednisolone <b>0.5–1 g daily for up to 3 days</b>, or <b>60 mg</b> oral prednisolone if IV is not immediately available, plus <b>same-day ophthalmology</b>.<br><b>Raised ICP</b> (papilloedema; worse lying down, coughing or straining; vomiting) · new headache in <b>pregnancy or after birth</b> (maternity) · immunosuppression or HIV · red painful eye with haloes (eye unit now).</td>
+      <td><b>Progressive, sub-acute loss of central neurological function</b> (for example personality or cognitive change, progressive weakness) → consider <b>urgent direct-access MRI brain</b> (CT if MRI contraindicated), done <b>within 2 weeks</b>.<br>Headache alone is <b>not</b> an NG12 criterion: the neurological sign is. Known cancer with a new headache → assess urgently.</td></tr>
+    </table>
+    <p class="key" style="margin-top:2px"><b>Carbon monoxide</b>: others at home affected, better away from home, a gas or solid-fuel appliance, no CO alarm → get everyone out, stop the appliance, ventilate; assess the same day.</p>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Focused history — questions that discriminate<small>CG150</small></h2><div class="body">
+        <ul>
+          <li><b>How fast did it peak?</b> Seconds to minutes = thunderclap. Gradual over weeks = think raised ICP or medication overuse.</li>
+          <li><b>Is it new or different</b> from the usual headaches? A changed pattern is a new presentation.</li>
+          <li><b>Position and straining</b>: worse lying down, on coughing or sneezing, or on standing (low pressure).</li>
+          <li><b>Aura</b>: gradual over at least 5 minutes, lasting 5–60 minutes, fully reversible? Motor weakness, double vision or one-eye loss is not typical aura.</li>
+          <li><b>Age 50+</b>: jaw pain on chewing, scalp tenderness, visual symptoms, weight loss.</li>
+          <li><b>Days counted</b>: headache days and acute-medicine days a month, including codeine bought over the counter.</li>
+          <li><b>Context</b>: pregnancy or recent birth, cancer, HIV or immunosuppression, anticoagulants, head injury, fever.</li>
+          <li><b>Carbon monoxide</b>: anyone else at home (or a pet) unwell, better away from home, appliances serviced, CO alarm fitted?</li>
+        </ul>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">2</span>Examination findings that change the plan<small>CG150</small></h2><div class="body">
+        <table>
+          <tr><td><b>Fundi</b></td><td>Papilloedema → same-day; if you cannot see the discs in a worrying story, arrange same-day assessment</td></tr>
+          <tr><td><b>Neurology</b></td><td>Any focal sign, ataxia, drift or cranial nerve palsy → emergency or same day</td></tr>
+          <tr><td><b>Temporal arteries</b> (50+)</td><td>Tender, thickened or pulseless → treat as GCA today</td></tr>
+          <tr><td><b>Temperature, neck</b></td><td>Fever with neck stiffness or rash → 999</td></tr>
+          <tr><td><b>Eyes</b></td><td>Acuity, fields, pupils; red eye, fixed mid-dilated pupil → eye unit now</td></tr>
+          <tr><td><b>BP</b> (and urine in pregnancy)</td><td>Very high BP with papilloedema, or pre-eclampsia features → same day</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">3</span>Key differentials<small>clue → think → first step</small></h2><div class="body">
+        <table>
+          <tr><th>Clue</th><th>Think</th><th>First step</th></tr>
+          <tr><td>Bilateral pressing band, mild to moderate, no nausea, not worse on activity</td><td><b>Tension-type</b></td><td>Diary; acute-day limit</td></tr>
+          <tr><td>4–72 h, pulsating, nausea or light and sound sensitivity, worse on activity</td><td><b>Migraine</b></td><td>Diary; triptan + NSAID</td></tr>
+          <tr><td>Headache ≥15 days a month and frequent analgesic or triptan use</td><td><b>Medication overuse</b></td><td>Count the days; withdraw</td></tr>
+          <tr><td>Severe one-sided orbital pain 15–180 min, watering eye, restless</td><td><b>Cluster</b></td><td>Refer to confirm; oxygen</td></tr>
+          <tr><td>50+, temple pain, jaw claudication, visual change</td><td><b>GCA</b></td><td>Steroids today; ESR, CRP</td></tr>
+          <tr><td>Worse lying or straining, vomiting, obesity, visual obscurations</td><td><b>Raised ICP / IIH</b></td><td>Fundi; same day</td></tr>
+          <tr><td>Household unwell, better away from home</td><td><b>Carbon monoxide</b></td><td>Remove from source</td></tr>
+          <tr><td>New headache after 20 weeks or postpartum, high BP</td><td><b>Pre-eclampsia</b></td><td>Same-day maternity</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">4</span>Investigations checklist<small>CG150 · BSR 2020</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>None</b> for typical migraine or tension-type headache with a normal examination</li>
+          <li><b>ESR, CRP, FBC</b> if GCA possible — but never wait for them to start steroids</li>
+          <li>Pregnancy: BP and urine protein; pregnancy test where relevant</li>
+          <li>Glucose if diabetes or hypoglycaemic symptoms</li>
+          <li><b>Headache diary</b> for at least <b>8 weeks</b> (CG150)</li>
+          <li><b>No imaging for reassurance</b>: MRI via NG12 criteria or the specialist</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="blk blue span"><h2><span class="n">5</span>Name the primary headache<small>NICE CG150 Table 1</small></h2><div class="body">
+      <table>
+        <tr><th style="width:15%">Feature</th><th>Tension-type</th><th>Migraine</th><th>Cluster</th></tr>
+        <tr><td><b>Site</b></td><td>Bilateral</td><td>Unilateral or bilateral</td><td>Unilateral: around or above the eye, side of the head</td></tr>
+        <tr><td><b>Pain</b></td><td>Pressing or tightening, not pulsating; mild or moderate</td><td>Pulsating; moderate or severe</td><td>Sharp, boring, burning or throbbing; severe or very severe</td></tr>
+        <tr><td><b>Activity</b></td><td>Not made worse by routine activity</td><td>Made worse by, or avoids, routine activity</td><td>Restless or agitated</td></tr>
+        <tr><td><b>With it</b></td><td>None</td><td>Nausea, or light and sound sensitivity; ± aura</td><td>Same side: red watering eye, blocked or runny nose, eyelid swelling, sweating, small pupil or drooping lid</td></tr>
+        <tr><td><b>Duration</b></td><td>30 minutes to continuous</td><td>4–72 hours</td><td>15–180 minutes; once every other day up to 8 a day</td></tr>
+      </table>
+      <p class="key" style="margin-top:2px">Episodic = fewer than 15 days a month; chronic = 15 or more for over 3 months. Also consider investigation or referral for new headache with compromised immunity, a cancer that spreads to the brain, age under 20 with a history of cancer, or vomiting without another cause (CG150).</p>
+    </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Headache · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Manage and refer <span>treat the commonest causes → refer at the right speed → safety-net</span></div>
+
+  <div class="grid">
+    <div class="blk teal span"><h2><span class="n">6</span>Manage the common causes<small>NICE CG150 · BSR 2020 · MHRA</small></h2><div class="body">
+      <table>
+        <tr><th style="width:17%">Cause</th><th>First line</th><th style="width:30%">Watch</th></tr>
+        <tr><td><b>Tension-type</b></td><td>Aspirin, paracetamol or an NSAID for attacks. <b>No opioids.</b> Chronic tension-type headache: consider up to <b>10 sessions of acupuncture over 5–8 weeks</b>.</td><td>Keep acute medicines below 15 days a month (simple analgesics)</td></tr>
+        <tr><td><b>Migraine</b></td><td>Oral triptan + NSAID, or triptan + paracetamol, early in the headache. Single-drug option: triptan, NSAID, <b>aspirin 900 mg</b> or paracetamol. Antiemetic even without nausea. Prevention: propranolol, topiramate or amitriptyline after discussion.</td><td>No opioids or ergots. Topiramate: MHRA Pregnancy Prevention Programme</td></tr>
+        <tr><td><b>Medication overuse</b></td><td><b>Stop all overused acute medicines abruptly for at least 1 month</b>; warn it gets worse first; consider starting prevention at the same time; review at <b>4–8 weeks</b>.</td><td>Strong opioids or failed withdrawal → specialist support</td></tr>
+        <tr><td><b>Cluster</b></td><td><b>100% oxygen at ≥12 L/min</b> via non-rebreather mask with reservoir bag (arrange home oxygen) and/or a <b>subcutaneous or nasal triptan</b>. Prevention (verapamil) with specialist advice, including ECG monitoring.</td><td>Not paracetamol, NSAIDs, opioids, ergots or oral triptans for attacks</td></tr>
+        <tr><td><b>GCA</b></td><td>Prednisolone <b>40–60 mg</b> daily started today; same-day specialist referral (fast-track pathway). Visual loss → see red box.</td><td>Bone, glucose and BP protection plan with the specialist</td></tr>
+        <tr><td><b>Carbon monoxide</b></td><td>Out of the property, appliance off, windows open; gas emergency service and a registered engineer; fit a CO alarm. Check the rest of the household.</td><td>Symptoms recur at home → think again</td></tr>
+      </table>
+    </div></div>
+
+
+    <div class="blk amber span"><h2><span class="n">7</span>Special groups — check before you treat<small>CG150 · UKMEC · MHRA · NG133</small></h2><div class="body">
+      <table>
+        <tr><td style="width:17%"><b>Pregnancy</b></td><td>Paracetamol first; a triptan or NSAID only after discussing the risks; no NSAID in the third trimester. New headache after 20 weeks or after birth → same-day maternity assessment.</td></tr>
+        <tr><td><b>Migraine with aura</b></td><td>Combined hormonal contraception is <b>UKMEC 4</b> (added stroke risk): switch method. Topiramate needs the MHRA Pregnancy Prevention Programme.</td></tr>
+        <tr><td><b>Age 50+</b></td><td>New headache: think GCA first; on an anticoagulant or after a fall, think subdural haematoma.</td></tr>
+        <tr><td><b>Immunosuppressed or cancer</b></td><td>Low threshold for same-day assessment, whatever the headache sounds like.</td></tr>
+      </table>
+    </div></div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">8</span>When and where to refer<small>CG150 · NG12 · NG127 · NG228</small></h2><div class="body">
+        <table>
+          <tr><th>Tier</th><th>Who</th></tr>
+          <tr><td><b>999 / ED</b></td><td>Thunderclap · meningism with fever or rash · focal deficit, reduced consciousness, seizure · painful third nerve palsy</td></tr>
+          <tr><td><b>Same day</b></td><td>GCA (rheumatology; ophthalmology if visual) · papilloedema or raised ICP · pregnancy or postpartum (maternity) · immunosuppressed · acute glaucoma (eye unit)</td></tr>
+          <tr><td><b>Within 2 weeks</b></td><td>NG12 direct-access MRI for progressive sub-acute neurological loss</td></tr>
+          <tr><td><b>Routine neurology</b></td><td>Diagnostic doubt · suspected cluster · atypical aura after acute assessment · MOH not settling · migraine meeting NICE TA criteria for specialist treatment</td></tr>
+          <tr><td><b>Keep in practice</b></td><td>Episodic migraine and tension-type headache · uncomplicated MOH withdrawal</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk red"><h2><span class="n">9</span>Never-events<small>CG150 · NG228 · BSR</small></h2><div class="body">
+        <ul>
+          <li>Reassure a thunderclap headache because it has settled.</li>
+          <li>Delay steroids in suspected GCA for an ESR, biopsy or scan; a normal ESR does not exclude GCA.</li>
+          <li>Label a new headache over 50, or a changed pattern, as "tension" without examining.</li>
+          <li>Offer opioids for migraine or tension-type headache, or escalate prevention while overuse continues.</li>
+          <li>Image a typical primary headache for reassurance alone.</li>
+          <li>Miss carbon monoxide: always ask who else at home is unwell.</li>
+          <li>Start a triptan for atypical aura (weakness, double vision, one-eye loss) before stroke and TIA are excluded.</li>
+          <li>Start or continue combined hormonal contraception in migraine with aura.</li>
+          <li>Arrange an outpatient scan for a thunderclap headache instead of same-day emergency assessment.</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">10</span>Safety-net and follow-up checklist<small>record it in the notes</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>999</b>: sudden worst headache, new weakness, numbness or speech change, confusion, fit, fever with stiff neck or rash</li>
+          <li><b>Same day</b>: jaw pain on chewing, scalp tenderness or visual change (50+); worse lying down or straining; new headache in pregnancy or after birth</li>
+          <li>Headache diary and medicine-day count given (8 weeks)</li>
+          <li>Acute-medicine limit stated and written: simple analgesics &lt;15, triptans or combinations &lt;10 days a month</li>
+          <li>CO question asked; CO alarm advice given</li>
+          <li>MOH withdrawal: review booked at <b>4–8 weeks</b></li>
+          <li>Diagnosis re-checked at review; a changed pattern = start again from the red box</li>
+          <li>Written information on the likely diagnosis</li>
+        </ul>
+      </div></div>
+
+      <div class="blk teal"><h2><span class="n">11</span>Prescribing pointers<small>SPC · MHRA · CG150</small></h2><div class="body">
+        <table>
+          <tr><td><b>Sumatriptan</b></td><td>50 mg (100 mg if needed) at headache onset; repeat only if it worked and recurred, ≥2 hours apart; max 300 mg in 24 hours</td></tr>
+          <tr><td><b>Metoclopramide</b></td><td>10 mg up to three times a day, max 5 days; dystonia risk in young people</td></tr>
+          <tr><td><b>Codeine, co-codamol</b></td><td>Not for migraine or tension-type headache; counts towards the 10-day limit</td></tr>
+          <tr><td><b>Steroids in GCA</b></td><td>Start before referral; agree bone, glucose and BP protection with the specialist</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk green"><h2><span class="n">12</span>Say it like this<small>after a normal assessment</small></h2><div class="body">
+        <p class="say">"Your examination is normal and the pattern fits a common headache rather than anything dangerous. A scan wouldn't add anything today. What will help is a diary of headache days and painkiller days — and if the headache ever comes on suddenly like a thunderclap, or you get weakness, confusion or a fever with a stiff neck, call 999."</p>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Headache · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE CG150 (2012, updated Jun 2025), NG12, NG228, NG240, NG127, NG133; BSR GCA guideline 2020; MHRA DSU Jun 2024 (topiramate)</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/headache.html</span></div>
+</section>
+<script src="../../assets/clinic-guides.js?v=1"></script>
+</body>
+</html>

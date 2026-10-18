@@ -32,7 +32,7 @@ MEDS_PROTOCOL = {
     'contraception': 'contraception', 'copd': 'copd', 'depression': 'depression', 'eczema': 'eczema',
     'erectile-dysfunction': 'erectile-dysfunction', 'gout': 'gout', 'heart-failure': 'heart-failure',
     'hypercholesterolaemia': 'hypercholesterolaemia', 'hypertension': 'hypertension', 'hyperthyroidism': 'hyperthyroidism',
-    'hypothyroidism': 'hypothyroidism', 'ibs': 'ibs', 'male-luts': 'male-luts', 'menopause': 'hrt-prescribing',
+    'hypothyroidism': 'hypothyroidism', 'ibs': 'ibs', 'male-luts': 'male-luts', 'menopause': 'menopause',
     'menorrhagia': 'menorrhagia', 'migraine': 'migraine', 'neuropathic-pain': 'neuropathic-pain',
     'osteoarthritis': 'osteoarthritis', 'osteoporosis': 'osteoporosis', 'psoriasis': 'psoriasis',
     'tia-stroke': 'tia-stroke', 'type-1-diabetes': 'type-1-diabetes', 'type-2-diabetes': 'type-2-diabetes',

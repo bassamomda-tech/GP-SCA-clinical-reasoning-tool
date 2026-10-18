@@ -54,7 +54,7 @@
         id: 'replace', tier: 'routine',
         label: 'Iron deficiency — replace & monitor',
         action: 'Oral ferrous salt OD/alternate-day; coeliac screen; recheck Hb in 2–4 weeks; consider IV iron if intolerant/malabsorbing.',
-        source: 'BSG 2021 · BNF',
+        source: 'BSG 2021',
         when: i => true,
       }
     ],

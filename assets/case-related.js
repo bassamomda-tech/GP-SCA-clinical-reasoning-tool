@@ -8,12 +8,12 @@
 (function(){
   // -------- Tool registry --------
   const TOOLS = {
-    workup:     { icon:'🩺', label:'Diagnostic work-up', path:'tools/diagnostic.html',      meta:'Red flags + differential' },
+    workup:     { icon:'⚕️', label:'Diagnostic work-up', path:'tools/diagnostic.html',      meta:'Red flags + differential' },
     rx:         { icon:'📝', label:'Ready Prescriptions',path:'tools/prescriptions.html',   meta:'Reference wording' },
     calc:       { icon:'🧮', label:'Scores',             path:'tools/calculators.html',     meta:'Published scores · bands' },
     labs:       { icon:'🧪', label:'Lab results reference', path:'tools/lab-results.html',  meta:'Threshold bands by test' },
     algorithms: { icon:'🗺️', label:'Algorithms',         path:'tools/algorithms.html',     meta:'Visual pathways' },
-    medchooser: { icon:'💊', label:'Medication options', path:'tools/medication-chooser.html', meta:'By condition · NICE · BNF' },
+    medchooser: { icon:'💊', label:'Medication options', path:'tools/medication-chooser.html', meta:'By condition · NICE' },
     leaflets:   { icon:'📄', label:'Patient Leaflets',   path:'tools/leaflets.html',        meta:'AccuRx copy-link' },
     sca:        { icon:'🎓', label:'SCA Practice',       path:'tools/sca-practice.html',    meta:'12-min mock + scorecard' },
   };

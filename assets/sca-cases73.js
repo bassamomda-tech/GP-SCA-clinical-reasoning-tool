@@ -6,7 +6,7 @@
    baby check: retractile vs true UDT, the orchidopexy referral/
    timing, the bilateral-impalpable DSD red flag, and fertility/
    cancer-risk counselling. No NG12 cancer pathway applies to the
-   infant (UDT is a future risk factor, not a 2WW pathway).
+   infant (UDT is a future risk factor, not a suspected cancer pathway).
    Load AFTER sca-cases72.js.
    ============================================================ */
 (function(){

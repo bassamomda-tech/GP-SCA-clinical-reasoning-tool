@@ -542,7 +542,7 @@
    "reason": "“My eye’s gone red and agony, I’m seeing haloes round lights and now I feel sick. Is it a migraine or a bug?”"
   },
   "knowledge": {
-   "guideline": "[1] RCOphth Management of angle-closure glaucoma (2022) · [2] College of Optometrists Clinical Management Guidelines: primary angle closure · [3] Khurana AK et al., J Curr Glaucoma Pract 2012;6(1):6–8 (drug-induced angle closure) · [4] Topiramate SPC, section 4.4 · [5] BNF (cautions for antimuscarinic and sympathomimetic drugs)",
+   "guideline": "[1] RCOphth Management of angle-closure glaucoma (2022) · [2] College of Optometrists Clinical Management Guidelines: primary angle closure · [3] Khurana AK et al., J Curr Glaucoma Pract 2012;6(1):6–8 (drug-induced angle closure) · [4] Topiramate SPC, section 4.4",
    "summary": "A painful red eye with blurred vision, haloes, headache and vomiting is acute angle-closure glaucoma until proved otherwise. It is a same-day emergency: the pressure must be lowered within hours. Do not label it migraine or gastroenteritis, and send her to eye casualty now.",
    "points": [
     {
@@ -563,7 +563,7 @@
     },
     {
      "h": "Who is at risk",
-     "t": "Hypermetropia (a short, crowded eye), increasing age, female sex and East or South Asian family origin [2]. Precipitants: dim light and pupil dilation, including drugs with antimuscarinic or sympathomimetic effects, some antidepressants and antihistamines [3][5], and mydriatic drops. Topiramate can cause acute myopia with secondary angle closure, usually within the first month [4]."
+     "t": "Hypermetropia (a short, crowded eye), increasing age, female sex and East or South Asian family origin [2]. Precipitants: dim light and pupil dilation, including drugs with antimuscarinic or sympathomimetic effects, some antidepressants and antihistamines [3], and mydriatic drops. Topiramate can cause acute myopia with secondary angle closure, usually within the first month [4]."
     },
     {
      "h": "Primary care role",
@@ -1543,7 +1543,7 @@
    "reason": "Post-A&E asthma review (video)."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG245 (asthma: diagnosis, monitoring and chronic asthma management, 2024, joint with BTS and SIGN) · [2] NICE QS25 (asthma, 2013, updated 2018) · [3] RCP National Review of Asthma Deaths, Why asthma still kills (2014) · [4] MHRA Drug Safety Update (April 2025): SABA overuse in asthma · [5] UKHSA Green Book chapter 19 (influenza) · [6] BNF",
+   "guideline": "[1] NICE NG245 (asthma: diagnosis, monitoring and chronic asthma management, 2024, joint with BTS and SIGN) · [2] NICE QS25 (asthma, 2013, updated 2018) · [3] RCP National Review of Asthma Deaths, Why asthma still kills (2014) · [4] MHRA Drug Safety Update (April 2025): SABA overuse in asthma · [5] UKHSA Green Book chapter 19 (influenza)",
    "summary": "An attack needing A&E and oral steroids is uncontrolled asthma and one of the strongest markers of future severe attacks. Find out why it happened — especially the preventer story — without blame, then optimise treatment, check technique, write an action plan and arrange proper follow-up. NICE QS25 expects GP follow-up within 2 working days of emergency care, so this review is already late.",
    "points": [
     {
@@ -1564,7 +1564,7 @@
     },
     {
      "h": "Steroid course",
-     "t": "Confirm the prednisolone course was completed as directed and ask about side effects. Doses per BNF [6]. More than one course a year is a marker for review and, with repeated courses, for bone health and specialist input."
+     "t": "Confirm the prednisolone course was completed as directed and ask about side effects. Doses per BNF. More than one course a year is a marker for review and, with repeated courses, for bone health and specialist input."
     },
     {
      "h": "Action plan",
@@ -2043,7 +2043,7 @@
    "reason": "Video consultation booked by the practice after a request for another blue inhaler."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG245 (asthma: diagnosis, monitoring and chronic asthma management, 2024, joint with BTS and SIGN) · [2] MHRA Drug Safety Update (April 2025): SABA overuse in asthma · [3] RCP National Review of Asthma Deaths, Why asthma still kills (2014) · [4] NICE QS25 (asthma, 2013, updated 2018) · [5] UKHSA Green Book chapter 19 (influenza) · [6] NICE NG209 (tobacco, 2021) · [7] BNF",
+   "guideline": "[1] NICE NG245 (asthma: diagnosis, monitoring and chronic asthma management, 2024, joint with BTS and SIGN) · [2] MHRA Drug Safety Update (April 2025): SABA overuse in asthma · [3] RCP National Review of Asthma Deaths, Why asthma still kills (2014) · [4] NICE QS25 (asthma, 2013, updated 2018) · [5] UKHSA Green Book chapter 19 (influenza) · [6] NICE NG209 (tobacco, 2021)",
    "summary": "Seven relievers in a year with little preventer is uncontrolled, high-risk asthma, not a repeat request. Assess control, find out why the preventer is not used, check technique, then move her to low-dose MART with ICS/formoterol so every reliever dose also treats inflammation. Never issue a SABA without an ICS.",
    "points": [
     {
@@ -2060,7 +2060,7 @@
     },
     {
      "h": "The regimen",
-     "t": "NICE NG245 [1]: for people aged 12 and over whose asthma is not controlled on regular low-dose ICS plus as-needed SABA, consider low-dose MART — one ICS/formoterol inhaler taken regularly and as the reliever, usually with no separate SABA. For newly diagnosed asthma, as-needed ICS/formoterol (AIR) is the starting point. Device, dose and maximum daily puffs per BNF [7]."
+     "t": "NICE NG245 [1]: for people aged 12 and over whose asthma is not controlled on regular low-dose ICS plus as-needed SABA, consider low-dose MART — one ICS/formoterol inhaler taken regularly and as the reliever, usually with no separate SABA. For newly diagnosed asthma, as-needed ICS/formoterol (AIR) is the starting point. Device, dose and maximum daily puffs per BNF."
     },
     {
      "h": "Self-management",
@@ -2539,7 +2539,7 @@
    "reason": "“I keep getting breathless and tingly — I think it’s panic, but what if it’s my heart?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG113 (generalised anxiety disorder and panic disorder in adults, 2011, updated 2020) · [2] NICE NG245 (asthma, 2024, joint with BTS and SIGN) · [3] NICE NG145 (thyroid disease, 2019) · [4] NICE NG158 (venous thromboembolic diseases, 2020, updated August 2023) · [5] NICE CG109 (transient loss of consciousness in over 16s, 2010) · [6] BNF",
+   "guideline": "[1] NICE CG113 (generalised anxiety disorder and panic disorder in adults, 2011, updated 2020) · [2] NICE NG245 (asthma, 2024, joint with BTS and SIGN) · [3] NICE NG145 (thyroid disease, 2019) · [4] NICE NG158 (venous thromboembolic diseases, 2020, updated August 2023) · [5] NICE CG109 (transient loss of consciousness in over 16s, 2010)",
    "summary": "Episodic breathlessness with perioral and finger tingling, palpitations and dread at stressful times fits panic with over-breathing, but that label comes after a proportionate check for asthma, arrhythmia, anaemia, thyroid disease and, if risk factors, PE. Then make a confident positive diagnosis, explain the physiology, and offer CBT-based treatment.",
    "points": [
     {
@@ -5073,7 +5073,7 @@
    "reason": "Video consultation: “I’m pregnant and I’m on sodium valproate. Should I stop it right now?”"
   },
   "knowledge": {
-   "guideline": "[1] MHRA National Patient Safety Alert NatPSA/2023/013/MHRA (November 2023) and MHRA Drug Safety Update (January 2024): valproate new safety measures · [2] MHRA Drug Safety Update (September 2024): valproate use in men · [3] MHRA Valproate Pregnancy Prevention Programme (Prevent) · [4] NICE NG217 (epilepsies, 2022, updated January 2025) · [5] NICE NG247 (maternal and child nutrition, 2025) · [6] BNF sodium valproate",
+   "guideline": "[1] MHRA National Patient Safety Alert NatPSA/2023/013/MHRA (November 2023) and MHRA Drug Safety Update (January 2024): valproate new safety measures · [2] MHRA Drug Safety Update (September 2024): valproate use in men · [3] MHRA Valproate Pregnancy Prevention Programme (Prevent) · [4] NICE NG217 (epilepsies, 2022, updated January 2025) · [5] NICE NG247 (maternal and child nutrition, 2025)",
    "summary": "A woman on valproate with a positive pregnancy test needs three things today: do not stop the valproate suddenly, start folic acid 5 mg daily, and an urgent referral to the epilepsy specialist team and the obstetric team. Give honest risk information, respect her choices about the pregnancy, and find out why the Pregnancy Prevention Programme did not prevent this.",
    "points": [
     {
@@ -6075,7 +6075,7 @@
    "reason": "Nurse asked him to discuss whether he needs blood-pressure tablets."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG136 (hypertension in adults, updated November 2023) · [2] NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · [3] DVLA Assessing fitness to drive (November 2025 edition) · [4] BNF antihypertensive monographs",
+   "guideline": "[1] NICE NG136 (hypertension in adults, updated November 2023) · [2] NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · [3] DVLA Assessing fitness to drive (November 2025 edition)",
    "summary": "An ABPM/HBPM average of about 142/88 is stage 1 hypertension. At 58, the drug decision rests on cardiovascular risk and target-organ damage, not the number alone — and NICE NG136 words it as a discussion, not an order. Lifestyle advice applies whatever he decides.",
    "points": [
     {
@@ -6092,7 +6092,7 @@
     },
     {
      "h": "If he chooses a tablet",
-     "t": "NICE NG136 [1]: aged 55 or over, or of Black African or African-Caribbean family origin — first-line calcium-channel blocker. Under 55 and not of that origin — ACE inhibitor or ARB. Target under 80: clinic below 140/90, ABPM/HBPM below 135/85. Doses per BNF [4]."
+     "t": "NICE NG136 [1]: aged 55 or over, or of Black African or African-Caribbean family origin — first-line calcium-channel blocker. Under 55 and not of that origin — ACE inhibitor or ARB. Target under 80: clinic below 140/90, ABPM/HBPM below 135/85. Doses per BNF."
     },
     {
      "h": "Lifestyle for everyone",
@@ -6548,7 +6548,7 @@
    "reason": "Video consultation: “My home machine gives me totally different numbers — I don’t know what to believe.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG136 (hypertension in adults, updated November 2023) · [2] NICE NG196 (atrial fibrillation, 2021) · [3] British and Irish Hypertension Society, validated BP monitor list · [4] BNF amlodipine monograph",
+   "guideline": "[1] NICE NG136 (hypertension in adults, updated November 2023) · [2] NICE NG196 (atrial fibrillation, 2021) · [3] British and Irish Hypertension Society, validated BP monitor list",
    "summary": "Scattered home readings are a measurement problem until proven otherwise. Standardise technique, check the pulse for an irregular rhythm, look for a postural drop if she has symptoms, and judge treatment on a proper average — never on the highest single number.",
    "points": [
     {
@@ -6573,7 +6573,7 @@
     },
     {
      "h": "No ‘extra’ doses",
-     "t": "Amlodipine is long-acting (BNF [4]); extra doses for a high reading do not act quickly and add to ankle swelling and postural symptoms. Change treatment only on a valid average."
+     "t": "Amlodipine is long-acting (BNF); extra doses for a high reading do not act quickly and add to ankle swelling and postural symptoms. Change treatment only on a valid average."
     },
     {
      "h": "When a reading is urgent",
@@ -7039,12 +7039,12 @@
    "reason": "Video consultation to discuss starting insulin."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG28 (type 2 diabetes in adults: management, updated February 2026) · [2] DVLA Assessing fitness to drive: a guide for medical professionals (November 2025 edition) · [3] DVLA INF294, A guide to insulin-treated diabetes and driving · [4] JBDS-IP, Hospital management of hypoglycaemia in adults with diabetes · [5] BNF insulin monographs",
+   "guideline": "[1] NICE NG28 (type 2 diabetes in adults: management, updated February 2026) · [2] DVLA Assessing fitness to drive: a guide for medical professionals (November 2025 edition) · [3] DVLA INF294, A guide to insulin-treated diabetes and driving · [4] JBDS-IP, Hospital management of hypoglycaemia in adults with diabetes",
    "summary": "Needing insulin reflects progressive loss of beta-cell function, not failure. Starting it safely means a structured programme: technique, self-monitoring, titration, hypoglycaemia and the DVLA rules. For a taxi driver the licensing conversation is part of the prescription, not an afterthought.",
    "points": [
     {
      "h": "When and what to start",
-     "t": "NICE NG28 [1] (insulin recommendations amended 2026 for product withdrawals and shortages): offer NPH insulin once or twice daily according to need, or a basal insulin intended for once- or twice-daily use, as initial insulin therapy. Consider basal plus short- or rapid-acting insulin from the start, especially if HbA1c is 75 mmol/mol or higher — his is 86. Continue metformin unless contraindicated and review the other agents, particularly a sulfonylurea (hypoglycaemia risk). Doses per BNF [5]."
+     "t": "NICE NG28 [1] (insulin recommendations amended 2026 for product withdrawals and shortages): offer NPH insulin once or twice daily according to need, or a basal insulin intended for once- or twice-daily use, as initial insulin therapy. Consider basal plus short- or rapid-acting insulin from the start, especially if HbA1c is 75 mmol/mol or higher — his is 86. Continue metformin unless contraindicated and review the other agents, particularly a sulfonylurea (hypoglycaemia risk). Doses per BNF."
     },
     {
      "h": "Structured programme",
@@ -9590,7 +9590,7 @@
    "reason": "Video consultation: “I’m knackered and my gym mate says it’s low testosterone. Can I just get a T boost?”"
   },
   "knowledge": {
-   "guideline": "[1] BSSM guideline on adult testosterone deficiency (Hackett et al., World J Mens Health 2023) · [2] NICE NG202 Obstructive sleep apnoea hypopnoea syndrome and obesity hypoventilation syndrome in over 16s (2021) · [3] NICE NG222 Depression in adults (2022, updated December 2025) · [4] NICE PH52 Needle and syringe programmes (2014) · [5] BNF testosterone monographs",
+   "guideline": "[1] BSSM guideline on adult testosterone deficiency (Hackett et al., World J Mens Health 2023) · [2] NICE NG202 Obstructive sleep apnoea hypopnoea syndrome and obesity hypoventilation syndrome in over 16s (2021) · [3] NICE NG222 Depression in adults (2022, updated December 2025) · [4] NICE PH52 Needle and syringe programmes (2014)",
    "summary": "Tiredness with low libido in a fit 32-year-old is usually sleep, mood, stress, alcohol, overtraining or a common blood abnormality. Work it up like any tiredness. Test testosterone only when symptoms suggest it, and then properly. Be clear that testosterone is not a tonic and can cause infertility.",
    "points": [
     {

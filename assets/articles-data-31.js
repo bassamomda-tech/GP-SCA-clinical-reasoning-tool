@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 31: U & V topics)
    NHS A–Z (letters U and V) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -105,7 +105,7 @@
       'Persistent symptoms despite conservative treatment → specialist'],
     source:'NICE NG12 (updated April 2026)3 (Urinary incontinence and pelvic organ prolapse)' },
 
-  { id:'haematuria', title:'Blood in urine (haematuria)', category:'Urology', icon:'🩸',
+  { id:'haematuria', title:'Blood in urine (haematuria)', category:'Urology', icon:'💉',
     overview:'Blood in the urine — visible (macroscopic) or non-visible (microscopic, detected on dipstick/microscopy). It is a key alarm symptom: although causes are often benign (e.g. UTI), painless visible haematuria is bladder or kidney cancer until proven otherwise, so risk-assessment and appropriate referral are essential.',
     features:[
       'VISIBLE (macroscopic) haematuria: red/brown urine — painless visible haematuria is a particular red flag for urological cancer (bladder, kidney)',
@@ -203,7 +203,7 @@
       'Suspected STI/PID, recurrent or treatment-resistant infection → sexual-health (GUM) service',
       'Persistent unexplained discharge despite treatment → gynaecology',
       'Pregnancy with significant infection → manage with specialist advice'],
-    source:'BASHH UK national guidelines / FSRH–BASHH Management of vaginal discharge in non-GUM settings (2012)' },
+    source:'BASHH UK national guidelines / CoSRH–BASHH Management of vaginal discharge in non-GUM settings (2012)' },
 
   { id:'varicose-veins', title:'Varicose veins', category:'Cardiovascular & Renal', icon:'🦵',
     overview:'Dilated, tortuous superficial leg veins from valvular incompetence and venous reflux. They are very common and often a cosmetic concern, but can cause symptoms and progress to skin changes and venous leg ulceration. Recognising the indications for referral (and the complications) guides management.',

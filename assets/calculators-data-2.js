@@ -209,7 +209,6 @@
         return         { label:'Normal', severity:'low', action:'No QTc concern.', detail:'' };
       },
       refs:[
-        { label:'BNF — QT-interval prolongation', url:'https://bnf.nice.org.uk/' },
         { label:'MHRA citalopram/escitalopram QT', url:'https://www.gov.uk/drug-safety-update' },
       ],
     },

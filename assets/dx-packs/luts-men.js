@@ -39,7 +39,7 @@
       {
         id: 'prostate_2ww', tier: 'cancer',
         label: 'Suspected prostate cancer — hard/nodular prostate or raised PSA, or bone pain/weight loss',
-        action: 'Urology suspected cancer pathway referral (NICE NG12 (updated April 2026)).',
+        action: 'Malignant-feeling prostate on DRE → suspected cancer pathway referral; PSA above the age-specific threshold → consider a suspected cancer pathway referral, taking into account preferences and comorbidities (NICE NG12 (updated April 2026)).',
         patientPhrase: '"The prostate findings mean I want a specialist to assess this quickly to be safe."',
         source: 'NICE NG12 (updated April 2026) §1.6', sourceUrl: 'https://www.nice.org.uk/guidance/ng12',
         when: i => i.hard_nodular || i.psa_raised || i.bone_pain_wl,

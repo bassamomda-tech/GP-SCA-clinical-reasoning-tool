@@ -1,7 +1,7 @@
 /* ============================================================
    Reasoning GP — Case Library batch 17: "Men's health below the belt"
    Four ORIGINAL cases. Hidden agenda + full ICE in every case.
-   NG12 2WW stated explicitly where it maps (testicular lump).
+   NG12 suspected cancer pathway stated explicitly where it maps (testicular lump).
    Torsion = surgical emergency. Pushes into SCA_CASES + SCA_EXTRAS.
    Load AFTER sca-cases16.js.
    ============================================================ */
@@ -211,7 +211,7 @@
     ],
     learning:"Erectile dysfunction in a middle-aged man is not just a plumbing problem to be met with a prescription — gradual-onset, organic-pattern ED is a recognised cardiovascular sentinel, because the small penile arteries reveal endothelial/vascular disease (and sometimes diabetes) before the larger coronary vessels. The skill is to honour the request (a PDE5 inhibitor is reasonable, with safety checks — no nitrates, fitness for sexual activity) while using a rare engagement opportunity with a man who hasn’t been seen in years to assess and modify cardiovascular/metabolic risk (BSSM 2017; BP, HbA1c, lipids, QRISK3 — NICE NG238 atorvastatin 20 mg if 10% or more — smoking, weight), to consider PSA and DRE (lists ED among the prostate symptoms), and to screen related conditions (OSA from snoring — NICE NG202, with DVLA implications for a lorry driver; low testosterone; depression). The examinable hidden agenda is the relationship strain and shame — his wife reads the ED as rejection or an affair, his self-esteem and mood are suffering — which must be surfaced sensitively, the misreading corrected (with consent to involve the partner), and mood screened. Handle the embarrassment so \"just the pills\" doesn’t shut down the conversation: the symptom AND the warning it carries both get addressed.",
     knowledge:{
-      guideline:"BSSM erectile dysfunction guideline (2017) · NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · NICE NG202 (obstructive sleep apnoea, 2021) · NICE NG209 (tobacco, 2021) · BNF (sildenafil) · DVLA Assessing fitness to drive",
+      guideline:"BSSM erectile dysfunction guideline (2017) · NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · NICE NG202 (obstructive sleep apnoea, 2021) · NICE NG209 (tobacco, 2021) · DVLA Assessing fitness to drive",
       points:[
         { h:'ED as a cardiovascular warning', t:'Gradual-onset organic ED is an independent marker of cardiovascular risk and often precedes coronary events by years (small-vessel theory). In a man with risk factors, treat ED as an opportunity to assess and reduce CV risk, not merely a symptom to medicate.' },
         { h:'Work-up', t:"Assess BP, HbA1c/fasting glucose, lipids and QRISK; review smoking, alcohol, weight, exercise and medications; examine as indicated; check morning testosterone (with LH/FSH/prolactin if low) if reduced libido/other features. Distinguish gradual organic ED (weaker or absent morning erections, as in his case) from sudden/situational psychogenic ED (preserved morning/nocturnal erections suggest psychogenic); many men have both. NICE NG238: offer atorvastatin 20 mg for primary prevention if QRISK3 is 10% or more, after lifestyle discussion. consider a PSA test and digital rectal examination in men with erectile dysfunction." },

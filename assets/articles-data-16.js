@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 16: L topics)
    NHS conditions A–Z (letter L) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Acute sensorineural hearing loss with vertigo → same-day ENT (consider stroke and treat as sudden SNHL)',
       'Persistent/recurrent vertigo or incomplete recovery → ENT/audiovestibular and vestibular rehabilitation',
       'Diagnostic uncertainty → urgent assessment'],
-    source:'Clinical practice summary / BNF' },
+    source:'Clinical practice summary' },
 
   { id:'laryngeal-cancer', title:'Laryngeal cancer', category:'ENT', icon:'🎗️',
     overview:'Cancer of the voice box, strongly linked to smoking and alcohol. It often presents early with persistent hoarseness, giving a real chance of voice-preserving cure if recognised promptly — so persistent voice change, especially in a smoker, must trigger urgent referral rather than repeated courses of treatment for "laryngitis".',
@@ -103,7 +103,7 @@
       'Suspected peripheral arterial disease/claudication → vascular assessment',
       'Persistent, severe, or atypical cramps, or suspected secondary cause → investigate ± relevant specialist',
       'Neurological features (weakness, sensory loss, fasciculation) → neurology'],
-    source:'MHRA Drug Safety Update (quinine, June 2010) / BNF' },
+    source:'MHRA Drug Safety Update (quinine, June 2010)' },
 
   { id:'lichen-planus', title:'Lichen planus', category:'Dermatology', icon:'🟣',
     overview:'A chronic inflammatory condition of the skin and mucous membranes, probably immune-mediated, with characteristic violaceous itchy papules. It is benign but can be persistent and uncomfortable; oral and genital (erosive) forms need attention, and long-standing erosive disease carries a small risk of malignant change.',

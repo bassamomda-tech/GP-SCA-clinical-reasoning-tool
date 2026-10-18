@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 23: P topics, part 2)
    NHS conditions A–Z (letter P) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -53,7 +53,7 @@
       'Extensive or recurrent disease not responding to topical treatment → consider oral antifungal ± dermatology',
       'Persistent depigmentation causing distress → reassurance ± dermatology advice',
       'Immunocompromised patients with widespread/atypical disease → dermatology'],
-    source:'BNF (ketoconazole shampoo, selenium sulfide, topical azoles, oral itraconazole)' },
+    source:'Product SPCs (ketoconazole shampoo, selenium sulfide, topical azoles, oral itraconazole)'},
 
   { id:'plantar-fasciitis', title:'Plantar fasciitis (heel pain)', category:'Musculoskeletal', icon:'🦶',
     overview:'The commonest cause of heel pain — a degenerative/overload condition of the plantar fascia at its attachment to the heel. It is benign and usually self-limiting (though often slow to settle), and responds to load management, stretching and footwear measures. The role is reassurance and excluding other causes of heel pain.',

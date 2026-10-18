@@ -414,7 +414,7 @@ RGPTriage.register('tiredness', {
       action:'Start IM hydroxocobalamin loading; urgent if neurological signs',
       patientPhrase:'"Your B12 is very low — that\'s a fixable cause of tiredness. We\'ll start an injection straight away."',
       referralTemplate:'B12 deficiency.\nB12 [value] ng/L, MCV [value], IF antibody pending.\nHydroxocobalamin 1 mg IM 3×/week for 2 weeks (if neurology: alternate days until no further improvement, then 2-monthly — BNF).\nIf neurology — refer same-week.',
-      source:'BSH B12/folate guidelines · BNF',
+      source:'BSH B12/folate guidelines',
       when: i => i.b12 != null && i.b12 < 100
     },
     {
@@ -457,7 +457,7 @@ RGPTriage.register('tiredness', {
       action:'Routine: oral cyanocobalamin trial OR IM if absorption concerns, recheck',
       patientPhrase:'"Your B12 is on the low side. We\'ll top it up and recheck."',
       referralTemplate:'Mild B12 deficiency.\nB12 [value]. Dietary review (vegan/vegetarian, alcohol).\nCyanocobalamin 50 mcg OD oral × 1 month or IM if absorption concern.',
-      source:'BSH B12 / BNF',
+      source:'BSH B12',
       when: i => i.b12 != null && i.b12 >= 100 && i.b12 < 200
     },
     {
@@ -467,7 +467,7 @@ RGPTriage.register('tiredness', {
       action:'Loading regimen + maintenance · check Ca²⁺',
       patientPhrase:'"Your vitamin D is low — we\'ll give you a loading dose, then a daily supplement to keep it topped up."',
       referralTemplate:'Vitamin D deficient — 25-OH [value] nmol/L.\nLoading: colecalciferol 50,000 IU weekly × 6 OR 20,000 IU twice weekly × 7. Maintenance 800–2000 IU OD.',
-      source:'NOS / BNF',
+      source:'NOS',
       when: i => i.vitd != null && i.vitd < 25
     },
     {

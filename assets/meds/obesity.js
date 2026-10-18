@@ -10,7 +10,7 @@ MedChooser.register('obesity', {
 
   safety: [
     {"tone":"red","label":"Pregnancy, conception and breastfeeding","text":"GLP-1 and GIP/GLP-1 medicines must not be used in pregnancy, when trying to conceive or breastfeeding; use effective contraception and stop before trying to conceive (washout per SPC — e.g. about 2 months for semaglutide, 1 month for tirzepatide) (MHRA, June 2025)."},
-    {"tone":"red","label":"Tirzepatide and oral contraception","text":"Tirzepatide may reduce the effect of oral contraceptives — switch to a non-oral method, or add a barrier method for 4 weeks after starting and for 4 weeks after each dose increase (MHRA/FSRH 2025)."},
+    {"tone":"red","label":"Tirzepatide and oral contraception","text":"Tirzepatide may reduce the effect of oral contraceptives — switch to a non-oral method, or add a barrier method for 4 weeks after starting and for 4 weeks after each dose increase (MHRA/CoSRH 2025)."},
     {"tone":"red","label":"Pancreatitis","text":"Severe, including necrotising and fatal, acute pancreatitis has been reported (MHRA, January 2026). Stop if suspected; do not restart if confirmed. Ask about privately bought GLP-1 medicines when someone presents with abdominal pain."},
     {"tone":"amber","label":"Anaesthesia and sedation","text":"Delayed gastric emptying — aspiration risk under general anaesthesia or deep sedation (MHRA, January 2025). Tell the anaesthetist/endoscopist."},
     {"tone":"amber","label":"Private prescriptions","text":"Record privately prescribed GLP-1s on the GP record; patients should not buy from unregulated sellers (MHRA). GPs are not obliged to take over private prescribing."},

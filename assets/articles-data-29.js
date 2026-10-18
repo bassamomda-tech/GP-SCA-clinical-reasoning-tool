@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 29: T topics, part 1)
    NHS A–Z (letter T) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -28,7 +28,7 @@
       'Suspected hydatid disease (liver/lung cysts) → infectious diseases/surgery',
       'Complex, imported, or tissue parasitic disease → infectious diseases/tropical medicine',
       'Uncomplicated intestinal tapeworm → treat in primary care'],
-    source:'UKHSA / BNF (antihelminthics) / tropical medicine guidance' },
+    source:'UKHSA / tropical medicine guidance' },
 
   { id:'tuberculosis', title:'Tuberculosis (TB)', category:'Infectious diseases', icon:'🦠',
     overview:'A bacterial infection (Mycobacterium tuberculosis), usually pulmonary but able to affect any organ. It may be active (infectious) or latent (dormant). It remains an important diagnosis — especially in higher-risk groups — and is a notifiable, public-health-managed disease requiring prolonged combination antibiotics and contact tracing.',
@@ -130,7 +130,7 @@
       'Uncertain immunisation status with a tetanus-prone wound → treat per the prophylaxis algorithm'],
     source:'Green Book / UKHSA — Tetanus' },
 
-  { id:'thalassaemia', title:'Thalassaemia', category:'Haematology', icon:'🩸',
+  { id:'thalassaemia', title:'Thalassaemia', category:'Haematology', icon:'💉',
     overview:'An inherited (autosomal-recessive) disorder of haemoglobin production (alpha or beta globin chains), causing anaemia of varying severity. It ranges from a silent carrier/trait to transfusion-dependent thalassaemia major. Detection (including via screening), avoiding inappropriate iron treatment, and genetic counselling are key roles.',
     features:[
       'A spectrum: thalassaemia trait/carrier (usually asymptomatic, mild microcytic anaemia), through intermedia, to thalassaemia MAJOR (severe, transfusion-dependent anaemia presenting in infancy)',
@@ -178,7 +178,7 @@
       'Persistent/recurrent infection despite correct treatment and hygiene → review (adherence, reinfection source)',
       'Diagnostic uncertainty or atypical symptoms → assessment',
       'Pregnancy/very young children → follow specific guidance on treatment'],
-    source:'BNF/BNFC (mebendazole)' },
+    source:'Product SPCs (mebendazole)'},
 
   { id:'thyroid-cancer', title:'Thyroid cancer', category:'Endocrine & metabolic', icon:'🎗️',
     overview:'An uncommon cancer usually presenting as a thyroid nodule/lump. Most (papillary/follicular) are differentiated and have an excellent prognosis; medullary and anaplastic types are less common. The key skill is recognising the features of a nodule (and the red flags) that warrant urgent referral and exclusion of malignancy.',

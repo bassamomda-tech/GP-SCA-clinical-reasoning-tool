@@ -134,7 +134,7 @@
       'Worsening weakness, infection, or before prescribing an interacting drug → specialist advice'],
     source:'ABN myasthenia guidance' },
 
-  { id:'haemochromatosis', title:'Haemochromatosis', category:'Endocrine & metabolic', icon:'🩸',
+  { id:'haemochromatosis', title:'Haemochromatosis', category:'Endocrine & metabolic', icon:'💉',
     overview:'Hereditary iron overload (most commonly HFE C282Y homozygosity) causing progressive iron deposition in the liver, pancreas, heart, joints, skin and pituitary. It is common, treatable, and important to catch before end-organ damage occurs.',
     features:[
       'Early and non-specific: fatigue, arthralgia (classically the 2nd and 3rd MCP joints — "iron fist"), erectile dysfunction, low mood',
@@ -157,7 +157,7 @@
       'Diagnostic uncertainty or secondary iron overload → gastroenterology/haematology'],
     source:'BSH haemochromatosis guideline (2018) / BSG' },
 
-  { id:'haemophilia', title:'Haemophilia', category:'Haematology', icon:'🩸',
+  { id:'haemophilia', title:'Haemophilia', category:'Haematology', icon:'💉',
     overview:'X-linked inherited deficiency of clotting factor VIII (haemophilia A) or IX (haemophilia B) causing a bleeding tendency. Care is led by specialist haemophilia comprehensive-care centres; the GP role is supportive, safety-focused and coordination of routine care.',
     features:[
       'Bleeding pattern: spontaneous haemarthroses and muscle bleeds, and prolonged bleeding after trauma, dental work or surgery',
@@ -459,7 +459,7 @@
       'Significant autonomic or GI symptoms → relevant specialty'],
     source:'EDS and hypermobility guidance' },
 
-  { id:'keloid', title:'Keloid scars', category:'Dermatology', icon:'🩹',
+  { id:'keloid', title:'Keloid scars', category:'Dermatology', icon:'🤕',
     overview:'An overgrowth of dense fibrous scar tissue that extends beyond the boundaries of the original wound (in contrast to hypertrophic scars, which remain within them). Keloids are commoner in darker skin types and at certain sites, and do not regress spontaneously.',
     features:[
       'Firm, raised, often itchy or tender scar that grows beyond the original wound margins and does not regress',

@@ -373,7 +373,7 @@
         panel.innerHTML = `
           ${this._renderPatientLine()}
           <div class="dx-empty">
-            <span class="dx-empty-ic">🩺</span>
+            <span class="dx-empty-ic">⚕️</span>
             <div><b>Tick symptoms on the left.</b><br/>The tool will rank the differential live — by % likelihood, in three buckets, or as a pros-and-cons breakdown per diagnosis.</div>
           </div>
         `;

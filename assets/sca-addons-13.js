@@ -24,7 +24,7 @@
    "reason": "“This is awkward, doctor. Can you sort it?”"
   },
   "knowledge": {
-   "guideline": "[1] BASHH UK national guideline on the management of balanoposthitis (2025) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] NICE PH38 Type 2 diabetes: prevention in people at high risk (2012, updated 2017) · [4] BAD guidelines for the management of lichen sclerosus (2018) · [5] BNF: clotrimazole, hydrocortisone, fluconazole · [6] GMC Intimate examinations and chaperones (2024)",
+   "guideline": "[1] BASHH UK national guideline on the management of balanoposthitis (2025) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [3] NICE PH38 Type 2 diabetes: prevention in people at high risk (2012, updated 2017) · [4] BAD guidelines for the management of lichen sclerosus (2018) · [5] GMC Intimate examinations and chaperones (2024)",
    "summary": "Balanitis describes inflammation of the glans; with the foreskin involved it is balanoposthitis. It has many causes. Irritant dermatitis and skin conditions are common, and Candida is only one cause, often linked to diabetes. Recurrent episodes with a tightening foreskin in a man in his fifties need an HbA1c, swabs and STI tests as indicated, a careful look for lichen sclerosus, cause-directed treatment and urology referral for progressive phimosis. Never forcibly retract the foreskin.",
    "points": [
     {
@@ -41,7 +41,7 @@
     },
     {
      "h": "Treatment",
-     "t": "Everyone: wash gently with water, use an emollient as a soap substitute, stop soaps and perfumed products, dry well. Suspected Candida: clotrimazole 1% cream twice daily for 7 to 14 days, adding hydrocortisone 1% for a short course if very inflamed; oral fluconazole 150 mg single dose only for severe symptoms, after checking interactions (BNF) [5]. Bacterial: by clinical syndrome and local guidance. Reassess rather than keep repeating creams."
+     "t": "Everyone: wash gently with water, use an emollient as a soap substitute, stop soaps and perfumed products, dry well. Suspected Candida: clotrimazole 1% cream twice daily for 7 to 14 days, adding hydrocortisone 1% for a short course if very inflamed; oral fluconazole 150 mg single dose only for severe symptoms, after checking interactions (BNF). Bacterial: by clinical syndrome and local guidance. Reassess rather than keep repeating creams."
     },
     {
      "h": "Lichen sclerosus",
@@ -1022,12 +1022,12 @@
    "reason": "“These headaches are destroying me — painkillers do nothing.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG150 (headaches in over 12s: diagnosis and management, 2012, updated June 2025) · [2] BNF sumatriptan and verapamil monographs · [3] NICE NG225 (self-harm: assessment, management and preventing recurrence, 2022) · [4] International Classification of Headache Disorders, 3rd edition (International Headache Society, 2018) (international)",
+   "guideline": "[1] NICE CG150 (headaches in over 12s: diagnosis and management, 2012, updated June 2025) · [2] NICE NG225 (self-harm: assessment, management and preventing recurrence, 2022) · [3] International Classification of Headache Disorders, 3rd edition (International Headache Society, 2018) (international)",
    "summary": "Strictly one-sided, severe pain around the eye lasting about an hour, at the same time each night for two weeks, with a red watering eye, a runny nostril on the same side and pacing restlessness, is cluster headache. Name it, explain why tablets fail, and give the acute plan NICE CG150 sets out: high-flow oxygen and/or a subcutaneous or nasal triptan. Consider verapamil for prevention with specialist advice and ECG monitoring, screen red flags and mood, and deal with the smoking and home-oxygen safety issue.",
    "points": [
     {
      "h": "Recognise it",
-     "t": "Attacks of severe unilateral orbital, supraorbital or temporal pain lasting roughly 15–180 minutes, from every other day up to several a day, with ipsilateral autonomic features (tearing, red eye, nasal blockage or discharge, lid swelling or drooping, small pupil) and/or restlessness or agitation [4]. Bouts often last weeks and recur at the same time of day. It is commoner in men and in smokers."
+     "t": "Attacks of severe unilateral orbital, supraorbital or temporal pain lasting roughly 15–180 minutes, from every other day up to several a day, with ipsilateral autonomic features (tearing, red eye, nasal blockage or discharge, lid swelling or drooping, small pupil) and/or restlessness or agitation [3]. Bouts often last weeks and recur at the same time of day. It is commoner in men and in smokers."
     },
     {
      "h": "Not migraine, not sinusitis",
@@ -1035,11 +1035,11 @@
     },
     {
      "h": "Acute treatment",
-     "t": "NICE CG150 [1]: offer oxygen and/or a subcutaneous or nasal triptan. Oxygen is 100% at a flow rate of at least 12 litres per minute through a non-rebreathing mask with a reservoir bag, with home and ambulatory oxygen arranged. Make sure the triptan supply is enough for the attack frequency. Do not offer paracetamol, NSAIDs, opioids, ergots or oral triptans for acute attacks [1]. Check triptan cautions such as ischaemic heart disease and uncontrolled hypertension (BNF [2])."
+     "t": "NICE CG150 [1]: offer oxygen and/or a subcutaneous or nasal triptan. Oxygen is 100% at a flow rate of at least 12 litres per minute through a non-rebreathing mask with a reservoir bag, with home and ambulatory oxygen arranged. Make sure the triptan supply is enough for the attack frequency. Do not offer paracetamol, NSAIDs, opioids, ergots or oral triptans for acute attacks [1]. Check triptan cautions such as ischaemic heart disease and uncontrolled hypertension (BNF)."
     },
     {
      "h": "Prevention",
-     "t": "NICE CG150 [1]: consider verapamil for prevention during a bout; if unfamiliar with its use for cluster headache, seek specialist advice first, including advice on ECG monitoring, because heart block can develop as the dose rises (BNF [2]). Seek specialist advice if verapamil does not work. Steroid courses and occipital nerve blocks are specialist options to break a bout."
+     "t": "NICE CG150 [1]: consider verapamil for prevention during a bout; if unfamiliar with its use for cluster headache, seek specialist advice first, including advice on ECG monitoring, because heart block can develop as the dose rises (BNF). Seek specialist advice if verapamil does not work. Steroid courses and occipital nerve blocks are specialist options to break a bout."
     },
     {
      "h": "Imaging and referral",
@@ -1051,7 +1051,7 @@
     },
     {
      "h": "Mood and risk",
-     "t": "The pain is among the most severe known and hopelessness during a bout is common. Ask directly about suicidal thoughts; NICE NG225 [3] advises against using risk scales to predict outcome — assess needs and agree a safety plan."
+     "t": "The pain is among the most severe known and hopelessness during a bout is common. Ask directly about suicidal thoughts; NICE NG225 [2] advises against using risk scales to predict outcome — assess needs and agree a safety plan."
     },
     {
      "h": "Triggers",
@@ -1547,7 +1547,7 @@
    "reason": "“It’s making looking after her hard. What’s going on?”"
   },
   "knowledge": {
-   "guideline": "[1] British Society for Surgery of the Hand (BSSH): de Quervain’s syndrome, patient information · [2] BNF: paracetamol, ibuprofen (breastfeeding sections), topical NSAIDs · [3] NICE NG194 Postnatal care (2021) · [4] NICE NG100 Rheumatoid arthritis in adults (2018, updated 2020)",
+   "guideline": "[1] British Society for Surgery of the Hand (BSSH): de Quervain’s syndrome, patient information · [2] NICE NG194 Postnatal care (2021) · [3] NICE NG100 Rheumatoid arthritis in adults (2018, updated 2020)",
    "summary": "Radial-sided wrist pain and swelling over the radial styloid, worse with thumb use and lifting, in a new mother is de Quervain’s tenosynovitis until proven otherwise. It is a clinical diagnosis. Start with a thumb-and-wrist splint, changes to how she lifts the baby and simple analgesia suited to the postnatal period. Offer a steroid injection if it does not settle, and refer for surgical release only if it persists.",
    "points": [
     {
@@ -1560,7 +1560,7 @@
     },
     {
      "h": "Differentials",
-     "t": "Base-of-thumb osteoarthritis (older, pain at the base of the thumb, grind test), scaphoid fracture (history of a fall, anatomical snuffbox tenderness), intersection syndrome (pain and crepitus a few centimetres further up the forearm), superficial radial nerve irritation (tingling over the back of the thumb), and inflammatory arthritis (several joints, early morning stiffness, swelling elsewhere) [4]."
+     "t": "Base-of-thumb osteoarthritis (older, pain at the base of the thumb, grind test), scaphoid fracture (history of a fall, anatomical snuffbox tenderness), intersection syndrome (pain and crepitus a few centimetres further up the forearm), superficial radial nerve irritation (tingling over the back of the thumb), and inflammatory arthritis (several joints, early morning stiffness, swelling elsewhere) [3]."
     },
     {
      "h": "First-line",
@@ -1568,7 +1568,7 @@
     },
     {
      "h": "Analgesia after birth",
-     "t": "Paracetamol and ibuprofen, dose per BNF. BNF [2]: for oral ibuprofen in breastfeeding, the amount in milk is too small to be harmful, although some manufacturers advise avoiding it. A topical NSAID is an option. Check contraindications before any NSAID."
+     "t": "Paracetamol and ibuprofen, dose per BNF. BNF: for oral ibuprofen in breastfeeding, the amount in milk is too small to be harmful, although some manufacturers advise avoiding it. A topical NSAID is an option. Check contraindications before any NSAID."
     },
     {
      "h": "Escalation",
@@ -1576,7 +1576,7 @@
     },
     {
      "h": "The new mother",
-     "t": "NICE NG194 [3]: at each postnatal contact ask about emotional wellbeing and support. Pain that stops her caring for the baby affects mood, sleep and confidence, so ask how she is managing."
+     "t": "NICE NG194 [2]: at each postnatal contact ask about emotional wellbeing and support. Pain that stops her caring for the baby affects mood, sleep and confidence, so ask how she is managing."
     }
    ]
   },
@@ -2041,7 +2041,7 @@
    "reason": "“What on earth are these lumps?”"
   },
   "knowledge": {
-   "guideline": "[1] BTS Clinical Statement on pulmonary sarcoidosis (British Thoracic Society, 2021) · [2] NICE NG33 (tuberculosis, 2016) · [3] NICE NG84 (sore throat (acute): antimicrobial prescribing, 2018) · [4] NICE NG129 (Crohn’s disease, 2019) and NICE NG130 (ulcerative colitis, 2019) · [5] NICE HTG320 (formerly DG11; faecal calprotectin testing, 2013) · [6] BNF naproxen and ibuprofen monographs",
+   "guideline": "[1] BTS Clinical Statement on pulmonary sarcoidosis (British Thoracic Society, 2021) · [2] NICE NG33 (tuberculosis, 2016) · [3] NICE NG84 (sore throat (acute): antimicrobial prescribing, 2018) · [4] NICE NG129 (Crohn’s disease, 2019) and NICE NG130 (ulcerative colitis, 2019) · [5] NICE HTG320 (formerly DG11; faecal calprotectin testing, 2013)",
    "summary": "Tender, warm, red-purple nodules on both shins that fade like bruises, with fever and aching joints two weeks after a sore throat, is erythema nodosum. The lumps settle on their own over weeks; the task is to look for the cause. Take a targeted history, check bloods including an ASO titre and a pregnancy test, and always request a chest X-ray for sarcoidosis and TB. Treat symptoms with rest, elevation and an NSAID once pregnancy is excluded.",
    "points": [
     {
@@ -2066,7 +2066,7 @@
     },
     {
      "h": "Treat symptoms",
-     "t": "Rest, leg elevation and support; an NSAID such as naproxen or ibuprofen for pain once pregnancy is excluded, with caution in suspected IBD, peptic ulcer or renal disease (BNF [6]). Stop a likely culprit drug."
+     "t": "Rest, leg elevation and support; an NSAID such as naproxen or ibuprofen for pain once pregnancy is excluded, with caution in suspected IBD, peptic ulcer or renal disease (BNF). Stop a likely culprit drug."
     },
     {
      "h": "When to refer",
@@ -2550,12 +2550,12 @@
    "reason": "“Is it the start of Parkinson’s?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG71 (Parkinson’s disease in adults, 2017) · [2] BNF propranolol and primidone monographs · [3] Consensus statement on the classification of tremors (International Parkinson and Movement Disorder Society, 2018) (international) · [4] NICE NG145 (thyroid disease: assessment and management, 2019) · [5] NICE HTG474 (unilateral MRI-guided focused ultrasound thalamotomy for treatment-resistant essential tremor; formerly IPG617)",
+   "guideline": "[1] NICE NG71 (Parkinson’s disease in adults, 2017) · [2] Consensus statement on the classification of tremors (International Parkinson and Movement Disorder Society, 2018) (international) · [3] NICE NG145 (thyroid disease: assessment and management, 2019) · [4] NICE HTG474 (unilateral MRI-guided focused ultrasound thalamotomy for treatment-resistant essential tremor; formerly IPG617)",
    "summary": "A slowly progressive, bilateral, fairly symmetrical action and postural tremor of the hands, eased by alcohol, with a father affected and no bradykinesia, rigidity or gait change, is essential tremor. Examine to prove the absence of parkinsonism, screen thyroid function and drugs, answer the Parkinson’s fear directly, and offer treatment only if the tremor limits him.",
    "points": [
     {
      "h": "Essential tremor",
-     "t": "A bilateral upper-limb action tremor present for at least 3 years, with or without tremor of the head, voice or legs, and without other neurological signs such as dystonia, ataxia or parkinsonism [3]. Often familial and often eased by a little alcohol."
+     "t": "A bilateral upper-limb action tremor present for at least 3 years, with or without tremor of the head, voice or legs, and without other neurological signs such as dystonia, ataxia or parkinsonism [2]. Often familial and often eased by a little alcohol."
     },
     {
      "h": "Parkinson’s disease",
@@ -2567,15 +2567,15 @@
     },
     {
      "h": "Other causes",
-     "t": "Enhanced physiological tremor (anxiety, caffeine, fatigue), hyperthyroidism (check TFTs, NICE NG145 [4]), drugs (beta-agonists, lithium, SSRIs, valproate, amiodarone, steroids), alcohol withdrawal, cerebellar and dystonic tremor."
+     "t": "Enhanced physiological tremor (anxiety, caffeine, fatigue), hyperthyroidism (check TFTs, NICE NG145 [3]), drugs (beta-agonists, lithium, SSRIs, valproate, amiodarone, steroids), alcohol withdrawal, cerebellar and dystonic tremor."
     },
     {
      "h": "Treatment",
-     "t": "Reassurance is enough if the tremor does not limit him. If it affects function or causes distress, propranolol is licensed for essential tremor and primidone is an alternative (BNF [2]); start low and titrate, dose per BNF. Check for asthma, heart block, bradycardia and heart failure before propranolol."
+     "t": "Reassurance is enough if the tremor does not limit him. If it affects function or causes distress, propranolol is licensed for essential tremor and primidone is an alternative (BNF); start low and titrate, dose per BNF. Check for asthma, heart block, bradycardia and heart failure before propranolol."
     },
     {
      "h": "Refer",
-     "t": "Neurology if the diagnosis is uncertain, features are asymmetric or atypical, parkinsonian or cerebellar signs are present, or the tremor is disabling despite treatment. Specialist options include deep brain stimulation and focused ultrasound thalamotomy under special arrangements (NICE HTG474 [5])."
+     "t": "Neurology if the diagnosis is uncertain, features are asymmetric or atypical, parkinsonian or cerebellar signs are present, or the tremor is disabling despite treatment. Specialist options include deep brain stimulation and focused ultrasound thalamotomy under special arrangements (NICE HTG474 [4])."
     },
     {
      "h": "Alcohol",
@@ -3054,7 +3054,7 @@
    "reason": "At the end of the consultation: “There’s something I’ve not told anyone…”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG49 (faecal incontinence in adults: management, 2007) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NICE NG210 (pelvic floor dysfunction: prevention and non-surgical management, 2021) · [4] NICE HTG690 (quantitative faecal immunochemical testing to guide colorectal cancer pathway referral in primary care; formerly DG56) · [5] GIRFT National suspected cauda equina syndrome pathway (2023) · [6] BNF loperamide monograph · [7] GMC Intimate examinations and chaperones (2013, updated 2024)",
+   "guideline": "[1] NICE CG49 (faecal incontinence in adults: management, 2007) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] NICE NG210 (pelvic floor dysfunction: prevention and non-surgical management, 2021) · [4] NICE HTG690 (quantitative faecal immunochemical testing to guide colorectal cancer pathway referral in primary care; formerly DG56) · [5] GIRFT National suspected cauda equina syndrome pathway (2023) · [6] GMC Intimate examinations and chaperones (2013, updated 2024)",
    "summary": "A 62-year-old woman with past obstetric trauma discloses months of urge and passive faecal incontinence, hidden out of shame. Receive the disclosure with warmth, make time, and assess properly: type, stool consistency, causes, red flags for colorectal cancer and cauda equina, and a chaperoned examination including DRE. Start first-line measures and refer to specialist continence services. Offer real hope — most people improve.",
    "points": [
     {
@@ -3075,11 +3075,11 @@
     },
     {
      "h": "Examine",
-     "t": "Abdomen; perianal inspection for soiling, scarring, a gaping anus, prolapse or haemorrhoids; DRE for resting and squeeze tone, impaction and masses. Offer a chaperone and record the discussion (GMC [7])."
+     "t": "Abdomen; perianal inspection for soiling, scarring, a gaping anus, prolapse or haemorrhoids; DRE for resting and squeeze tone, impaction and masses. Offer a chaperone and record the discussion (GMC [6])."
     },
     {
      "h": "Initial management",
-     "t": "NICE CG49 [1]: treat the cause, adjust diet and fluids to achieve a formed stool, review drugs, set a bowel routine, and offer loperamide for loose stool with no contraindication (dose per BNF [6]). Treat constipation or impaction. Pelvic floor muscle training is supervised (NICE NG210 [2]). Offer skin care, pads and practical coping products."
+     "t": "NICE CG49 [1]: treat the cause, adjust diet and fluids to achieve a formed stool, review drugs, set a bowel routine, and offer loperamide for loose stool with no contraindication (dose per BNF). Treat constipation or impaction. Pelvic floor muscle training is supervised (NICE NG210 [2]). Offer skin care, pads and practical coping products."
     },
     {
      "h": "Specialist management",
@@ -3584,7 +3584,7 @@
    "reason": "Same-day appointment: “Painful sores down below. Stings to pass urine.”"
   },
   "knowledge": {
-   "guideline": "[1] BASHH UK national guideline for the management of anogenital herpes (2024) · [2] BASHH/RCOG Management of genital herpes in pregnancy and the neonate (2024 update) · [3] BASHH summary guidance on testing for sexually transmitted infections (2023) · [4] BHIVA/BASHH/BIA Adult HIV testing guidelines (2020) · [5] BNF: aciclovir",
+   "guideline": "[1] BASHH UK national guideline for the management of anogenital herpes (2024) · [2] BASHH/RCOG Management of genital herpes in pregnancy and the neonate (2024 update) · [3] BASHH summary guidance on testing for sexually transmitted infections (2023) · [4] BHIVA/BASHH/BIA Adult HIV testing guidelines (2020)",
    "summary": "Painful grouped blisters and shallow ulcers on the vulva with dysuria, tender groin nodes and flu-like illness is a first episode of genital herpes until proven otherwise. The GP should examine, take a lesion swab for HSV PCR, start aciclovir without waiting for the result, give symptom relief and warn about urinary retention, arrange a full STI screen through sexual health services, and spend real time on the shame, the “forever” question, partners and future pregnancy.",
    "points": [
     {
@@ -3597,7 +3597,7 @@
     },
     {
      "h": "Antiviral",
-     "t": "BASHH [1]: start oral antiviral within 5 days of onset or while new lesions are still forming; do not wait for the swab result. Aciclovir 400 mg three times daily for 5 days is preferred; valaciclovir and famciclovir are alternatives (dose per BNF [5]). Review at 5 days and continue if new lesions are still appearing."
+     "t": "BASHH [1]: start oral antiviral within 5 days of onset or while new lesions are still forming; do not wait for the swab result. Aciclovir 400 mg three times daily for 5 days is preferred; valaciclovir and famciclovir are alternatives (dose per BNF). Review at 5 days and continue if new lesions are still appearing."
     },
     {
      "h": "Symptom relief",
@@ -4580,12 +4580,12 @@
    "reason": "Urgent video consultation: “Can’t keep anything down, not even water.”"
   },
   "knowledge": {
-   "guideline": "[1] RCOG Green-top Guideline No. 69 The management of nausea and vomiting in pregnancy and hyperemesis gravidarum (February 2024) · [2] MHRA Drug Safety Update: ondansetron and oral clefts (January 2020) · [3] MHRA Drug Safety Update: metoclopramide and neurological adverse effects (August 2013) · [4] RCOG Green-top Guideline No. 37a Reducing the risk of venous thromboembolism during pregnancy and the puerperium (2015) · [5] BNF: antiemetics in pregnancy · [6] Windsor definition of hyperemesis gravidarum (2021) (international)",
+   "guideline": "[1] RCOG Green-top Guideline No. 69 The management of nausea and vomiting in pregnancy and hyperemesis gravidarum (February 2024) · [2] MHRA Drug Safety Update: ondansetron and oral clefts (January 2020) · [3] MHRA Drug Safety Update: metoclopramide and neurological adverse effects (August 2013) · [4] RCOG Green-top Guideline No. 37a Reducing the risk of venous thromboembolism during pregnancy and the puerperium (2015) · [5] Windsor definition of hyperemesis gravidarum (2021) (international)",
    "summary": "At 9 weeks she cannot keep down food or water, is passing little urine, feels faint on standing and has lost weight. This is hyperemesis gravidarum, not “morning sickness”. RCOG GTG 69 (2024) is symptom-based: severity is judged on PUQE, whether fluids and oral antiemetics stay down, and clinical dehydration, not on urine ketones. Because she cannot tolerate fluids and cannot be examined on video, she needs same-day ambulatory care or admission for IV fluids, parenteral antiemetics, thiamine and bloods, with a clear follow-up plan and support.",
    "points": [
     {
      "h": "Definition",
-     "t": "RCOG GTG 69 (2024) [1] uses the Windsor consensus definition [6] (international): onset before 16 weeks, nausea and vomiting with at least one severe, inability to eat and/or drink normally, and strong limitation of daily activities; signs of dehydration contribute. It replaced the older triad of more than 5% weight loss, dehydration and electrolyte imbalance."
+     "t": "RCOG GTG 69 (2024) [1] uses the Windsor consensus definition [5] (international): onset before 16 weeks, nausea and vomiting with at least one severe, inability to eat and/or drink normally, and strong limitation of daily activities; signs of dehydration contribute. It replaced the older triad of more than 5% weight loss, dehydration and electrolyte imbalance."
     },
     {
      "h": "Severity",
@@ -4597,7 +4597,7 @@
     },
     {
      "h": "Antiemetics",
-     "t": "RCOG [1]: first line are doxylamine/pyridoxine, antihistamines and phenothiazines such as cyclizine, promethazine, prochlorperazine and chlorpromazine (dose per BNF [5]). Second line: ondansetron, whose use should not be discouraged if first line fails; MHRA [2] noted a very small increase in the absolute risk of oral clefts with first-trimester use, to be balanced against poorly managed HG. Metoclopramide is second line, limited to 5 days because of extrapyramidal effects (MHRA [3]). Use a non-oral route if tablets are not kept down."
+     "t": "RCOG [1]: first line are doxylamine/pyridoxine, antihistamines and phenothiazines such as cyclizine, promethazine, prochlorperazine and chlorpromazine (dose per BNF). Second line: ondansetron, whose use should not be discouraged if first line fails; MHRA [2] noted a very small increase in the absolute risk of oral clefts with first-trimester use, to be balanced against poorly managed HG. Metoclopramide is second line, limited to 5 days because of extrapyramidal effects (MHRA [3]). Use a non-oral route if tablets are not kept down."
     },
     {
      "h": "Thiamine and VTE",
@@ -5076,7 +5076,7 @@
    "reason": "Video consultation with her mother: fever for six days not settling with Calpol or Nurofen, now a rash, red eyes, cracked lips and puffy red hands."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG143 (Fever in under 5s: assessment and initial management, 2019) · [2] NICE NG254 (Suspected sepsis in under 16s) · [3] BNFC, aspirin (under-16 contraindication; Kawasaki disease exception) · [4] Eleftheriou et al., Management of Kawasaki disease, Arch Dis Child 2014;99:74–83 (UK) · [5] American Heart Association scientific statement on Kawasaki disease (McCrindle et al., Circulation 2017, international)",
+   "guideline": "[1] NICE NG143 (Fever in under 5s: assessment and initial management, 2019) · [2] NICE NG254 (Suspected sepsis in under 16s) · [3] Eleftheriou et al., Management of Kawasaki disease, Arch Dis Child 2014;99:74–83 (UK) · [4] American Heart Association scientific statement on Kawasaki disease (McCrindle et al., Circulation 2017, international)",
    "summary": "Fever lasting five days or more in a young child should make you think of Kawasaki disease. Ivy has the fever plus conjunctival injection, lip and tongue changes, a rash, hand changes and a neck node. She needs the paediatric team today, because early immunoglobulin treatment reduces the risk of coronary artery aneurysms.",
    "points": [
     {
@@ -5089,15 +5089,15 @@
     },
     {
      "h": "Classic and incomplete",
-     "t": "The classic research definition is fever of 5 days or more with at least 4 of the 5 principal features (AHA 2017 [5], international). Incomplete Kawasaki has fewer. NG143 [1]: children under 1 year may present with fewer features but may be at higher risk of coronary artery abnormalities."
+     "t": "The classic research definition is fever of 5 days or more with at least 4 of the 5 principal features (AHA 2017 [4], international). Incomplete Kawasaki has fewer. NG143 [1]: children under 1 year may present with fewer features but may be at higher risk of coronary artery abnormalities."
     },
     {
      "h": "Why speed matters",
-     "t": "Kawasaki disease is a medium-vessel vasculitis and the commonest cause of acquired heart disease in children in developed countries [4]. Untreated, it can cause coronary artery aneurysms. Intravenous immunoglobulin with aspirin, given early (ideally within the first 10 days of illness), reduces that risk [4][5]. Diagnosis, echocardiography and treatment belong to the paediatric team."
+     "t": "Kawasaki disease is a medium-vessel vasculitis and the commonest cause of acquired heart disease in children in developed countries [3]. Untreated, it can cause coronary artery aneurysms. Intravenous immunoglobulin with aspirin, given early (ideally within the first 10 days of illness), reduces that risk [3][4]. Diagnosis, echocardiography and treatment belong to the paediatric team."
     },
     {
      "h": "Aspirin is a specialist exception",
-     "t": "BNFC [3]: aspirin is not normally given to children under 16 because of Reye’s syndrome; Kawasaki disease is a recognised exception under specialist care. Parents must not start aspirin at home; doses and duration are set by the paediatric team."
+     "t": "BNFC: aspirin is not normally given to children under 16 because of Reye’s syndrome; Kawasaki disease is a recognised exception under specialist care. Parents must not start aspirin at home; doses and duration are set by the paediatric team."
     },
     {
      "h": "Mimics",
@@ -5609,7 +5609,7 @@
    "reason": "Very itchy purple bumps on the inner wrists and shins, and now sore white lacy streaks inside the cheeks."
   },
   "knowledge": {
-   "guideline": "[1] British Association of Dermatologists, Lichen planus patient information leaflet (2024) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] British Association of Dermatologists, Oral lichen planus patient information leaflet (2019) · [3] Primary Care Dermatology Society, lichen planus clinical guidance (accessed 2026) · [5] BNF, topical corticosteroids (potency and quantities)",
+   "guideline": "[1] British Association of Dermatologists, Lichen planus patient information leaflet (2024) · NICE NG12 Suspected cancer: recognition and referral (2015, last updated 15 April 2026) · [2] British Association of Dermatologists, Oral lichen planus patient information leaflet (2019) · [3] Primary Care Dermatology Society, lichen planus clinical guidance (accessed 2026)",
    "summary": "Intensely itchy, flat-topped, violet papules with fine white lines on the wrists and shins, together with white lacy streaks on the inner cheeks, is lichen planus. Treat the skin with a potent topical steroid, check her medicines for a lichenoid drug reaction, consider hepatitis C testing, and arrange dental or oral medicine follow-up because sore oral lichen planus carries a small long-term cancer risk.",
    "points": [
     {
@@ -5626,7 +5626,7 @@
     },
     {
      "h": "Treating the skin",
-     "t": "A potent or very potent topical steroid is usually needed, because lichen planus often does not respond to weaker ones [1][5]; use a moderate one in skin folds. Add emollients and a sedating antihistamine at night if itch disturbs sleep (doses per BNF). Widespread, severe or resistant disease needs dermatology (phototherapy or systemic treatment)."
+     "t": "A potent or very potent topical steroid is usually needed, because lichen planus often does not respond to weaker ones [1]; use a moderate one in skin folds. Add emollients and a sedating antihistamine at night if itch disturbs sleep (doses per BNF). Widespread, severe or resistant disease needs dermatology (phototherapy or systemic treatment)."
     },
     {
      "h": "Treating the mouth",
@@ -6601,7 +6601,7 @@
    "reason": "Booked appointment: “Something I’ve been struggling with for a long time. Hard to explain.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG31 Obsessive-compulsive disorder and body dysmorphic disorder: treatment (2005) · [2] NICE NG222 Depression in adults: treatment and management (2022, updated December 2025) · [3] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022) · [4] BNF: selective serotonin re-uptake inhibitors · [5] MHRA: SSRIs and SNRIs, use and safety",
+   "guideline": "[1] NICE CG31 Obsessive-compulsive disorder and body dysmorphic disorder: treatment (2005) · [2] NICE NG222 Depression in adults: treatment and management (2022, updated December 2025) · [3] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022) · [4] MHRA: SSRIs and SNRIs, use and safety",
    "summary": "Intrusive contamination and harm thoughts that drive hours of hand-washing and lock checking, which she knows are excessive and has hidden for years, is obsessive-compulsive disorder. The GP’s job is to name it without judgement, gauge the functional impairment (which sets the NICE CG31 treatment step), screen for depression and suicidal thoughts, reassure that intrusive thoughts are symptoms rather than intentions, and offer CBT including exposure and response prevention (ERP) and/or an SSRI with a clear review plan.",
    "points": [
     {
@@ -6618,11 +6618,11 @@
     },
     {
      "h": "SSRI use",
-     "t": "NICE CG31 [1]: SSRIs used for OCD in adults include fluoxetine, fluvoxamine, paroxetine, sertraline and citalopram (dose per BNF [4]). Response is often slower than in depression and higher doses may be needed. Warn about early anxiety and agitation. If effective, continue for at least 12 months, then reduce gradually. Clomipramine is considered after at least one adequate SSRI trial has failed or was not tolerated."
+     "t": "NICE CG31 [1]: SSRIs used for OCD in adults include fluoxetine, fluvoxamine, paroxetine, sertraline and citalopram (dose per BNF). Response is often slower than in depression and higher doses may be needed. Warn about early anxiety and agitation. If effective, continue for at least 12 months, then reduce gradually. Clomipramine is considered after at least one adequate SSRI trial has failed or was not tolerated."
     },
     {
      "h": "Mood and risk",
-     "t": "Depression often accompanies OCD. Ask about mood and suicidal thoughts directly. NICE NG225 [3] advises against risk tools and against labelling risk as low, medium or high: build a shared safety plan instead. NICE NG222 [2] and MHRA [5]: review within 1 week of starting an antidepressant in people aged 18 to 25 or at increased suicide risk."
+     "t": "Depression often accompanies OCD. Ask about mood and suicidal thoughts directly. NICE NG225 [3] advises against risk tools and against labelling risk as low, medium or high: build a shared safety plan instead. NICE NG222 [2] and MHRA [4]: review within 1 week of starting an antidepressant in people aged 18 to 25 or at increased suicide risk."
     },
     {
      "h": "Access",
@@ -7089,7 +7089,7 @@
    "reason": "A few days of a painful, itchy right ear with discharge and muffled hearing. Swam last week; uses cotton buds."
   },
   "knowledge": {
-   "guideline": "[1] UKHSA Summary of antimicrobial prescribing guidance: managing common infections (2025), otitis externa · [2] BNF, ear preparations (choice and doses) · [3] ENT UK consensus on topical aminoglycosides with a perforated drum (Phillips et al., Clin Otolaryngol 2007;32:330–336) · [4] UK consensus definitions of necrotising otitis externa (Hodgson et al., BMJ Open 2023;13:e061349) · [5] Kaushik et al., Cochrane 2010 CD004740 (interventions for acute otitis externa) · [6] AAO-HNSF clinical practice guideline, acute otitis externa (Rosenfeld et al., 2014, international)",
+   "guideline": "[1] UKHSA Summary of antimicrobial prescribing guidance: managing common infections (2025), otitis externa · [2] ENT UK consensus on topical aminoglycosides with a perforated drum (Phillips et al., Clin Otolaryngol 2007;32:330–336) · [3] UK consensus definitions of necrotising otitis externa (Hodgson et al., BMJ Open 2023;13:e061349) · [4] Kaushik et al., Cochrane 2010 CD004740 (interventions for acute otitis externa) · [5] AAO-HNSF clinical practice guideline, acute otitis externa (Rosenfeld et al., 2014, international)",
    "summary": "Pain on moving the tragus, itch, discharge and a swollen, debris-filled canal after swimming and cotton-bud use is acute otitis externa. Treat topically, clean the canal so the drops reach it, keep it dry and stop the cotton buds. Oral antibiotics are for spreading cellulitis or systemic illness, and severe persistent pain in a diabetic or immunocompromised person raises necrotising otitis externa.",
    "points": [
     {
@@ -7102,7 +7102,7 @@
     },
     {
      "h": "Treatment ladder",
-     "t": "UKHSA summary [1]: analgesia and local heat; then topical acetic acid (over 12s) or a topical antibiotic with or without a steroid, which have similar cure rates at 7 days. Cochrane [5]: acetic acid is comparable at 1 week but less effective when treatment is longer. Choice and dosing per BNF [2]. Do not give oral antibiotics for uncomplicated otitis externa [1][6]."
+     "t": "UKHSA summary [1]: analgesia and local heat; then topical acetic acid (over 12s) or a topical antibiotic with or without a steroid, which have similar cure rates at 7 days. Cochrane [4]: acetic acid is comparable at 1 week but less effective when treatment is longer. Choice and dosing per BNF. Do not give oral antibiotics for uncomplicated otitis externa [1][5]."
     },
     {
      "h": "Make the drops work",
@@ -7110,7 +7110,7 @@
     },
     {
      "h": "The eardrum matters",
-     "t": "If the drum is perforated or cannot be seen, avoid aminoglycoside drops unless ENT specifically advises them; the ENT UK consensus conditions (obvious infection, no more than 2 weeks, risks explained, ideally baseline audiometry) are a specialist exception [3]. Use a non-aminoglycoside preparation instead (per BNF and local formulary)."
+     "t": "If the drum is perforated or cannot be seen, avoid aminoglycoside drops unless ENT specifically advises them; the ENT UK consensus conditions (obvious infection, no more than 2 weeks, risks explained, ideally baseline audiometry) are a specialist exception [2]. Use a non-aminoglycoside preparation instead (per BNF and local formulary)."
     },
     {
      "h": "When oral antibiotics are needed",
@@ -7118,7 +7118,7 @@
     },
     {
      "h": "Necrotising otitis externa",
-     "t": "UK consensus [4]: suspect it in people with diabetes, immunosuppression or older age who have severe or persistent pain (often worse at night) out of proportion to the signs, granulation tissue in the canal, or cranial nerve palsy, especially facial. It is a skull-base osteomyelitis needing same-day ENT assessment."
+     "t": "UK consensus [3]: suspect it in people with diabetes, immunosuppression or older age who have severe or persistent pain (often worse at night) out of proportion to the signs, granulation tissue in the canal, or cranial nerve palsy, especially facial. It is a skull-base osteomyelitis needing same-day ENT assessment."
     },
     {
      "h": "Prevention",
@@ -8081,7 +8081,7 @@
    "reason": "“What is it?”"
   },
   "knowledge": {
-   "guideline": "[1] JOSPT/APTA Heel pain – plantar fasciitis clinical practice guideline (2023, international) · [2] NICE HTG200 Extracorporeal shockwave therapy for refractory plantar fasciitis (2009) · [3] NICE NG65 Spondyloarthritis in over 16s (2017) · [4] BNF: paracetamol, NSAIDs",
+   "guideline": "[1] JOSPT/APTA Heel pain – plantar fasciitis clinical practice guideline (2023, international) · [2] NICE HTG200 Extracorporeal shockwave therapy for refractory plantar fasciitis (2009) · [3] NICE NG65 Spondyloarthritis in over 16s (2017)",
    "summary": "First-step plantar heel pain with tenderness at the medial calcaneal tubercle is plantar heel pain from plantar fasciopathy, a clinical diagnosis. Educate, adjust load without stopping activity, stretch the calf and plantar fascia, strengthen, use supportive footwear and a cheap heel cushion. Recovery often takes months. Reconsider the diagnosis for red flags, focal bony tenderness after a rise in running, nerve symptoms or inflammatory features. Injection and shockwave are not first-line.",
    "points": [
     {
@@ -8098,7 +8098,7 @@
     },
     {
      "h": "Analgesia",
-     "t": "Paracetamol or a short topical or oral NSAID course only if suitable for the patient, dose per BNF [4]. Check renal, cardiovascular and gastrointestinal risk before an oral NSAID. Analgesia supports activity; it is not the treatment."
+     "t": "Paracetamol or a short topical or oral NSAID course only if suitable for the patient, dose per BNF. Check renal, cardiovascular and gastrointestinal risk before an oral NSAID. Analgesia supports activity; it is not the treatment."
     },
     {
      "h": "Weight",
@@ -8583,12 +8583,12 @@
    "reason": "Booked appointment: “My moods before my period are wrecking my life.”"
   },
   "knowledge": {
-   "guideline": "[1] RCOG Green-top Guideline No. 48 Management of premenstrual syndrome (December 2016; BJOG 2017) · [2] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022) · [3] NICE NG222 Depression in adults: treatment and management (2022, updated December 2025) · [4] UKMEC 2025 (FSRH/CoSRH) · [5] BNF: selective serotonin re-uptake inhibitors · [6] DSM-5-TR (APA 2022) (international)",
+   "guideline": "[1] RCOG Green-top Guideline No. 48 Management of premenstrual syndrome (December 2016; BJOG 2017) · [2] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022) · [3] NICE NG222 Depression in adults: treatment and management (2022, updated December 2025) · [4] UKMEC 2025 (CoSRH) · [5] DSM-5-TR (APA 2022) (international)",
    "summary": "Severe rage, despair and tearfulness in the week or two before each period, which lift within days of bleeding, with a symptom-free week and damage to relationships, is premenstrual dysphoric disorder (PMDD), the severe end of premenstrual syndrome. The GP should believe her, confirm the cyclical pattern prospectively, rule out a persistent mood disorder, ask directly about suicidal thoughts, and offer RCOG first-line options including an SSRI (continuous or luteal phase) or a new-generation combined pill.",
    "points": [
     {
      "h": "Definition",
-     "t": "The main UK guideline on premenstrual syndrome is RCOG Green-top Guideline No. 48 [1]. Symptoms occur in the luteal phase, resolve by the end of menstruation, and are absent for at least a week in the follicular phase. PMDD is the severe, predominantly psychological form; the formal criteria are in DSM-5-TR [6] (international)."
+     "t": "The main UK guideline on premenstrual syndrome is RCOG Green-top Guideline No. 48 [1]. Symptoms occur in the luteal phase, resolve by the end of menstruation, and are absent for at least a week in the follicular phase. PMDD is the severe, predominantly psychological form; the formal criteria are in DSM-5-TR [5] (international)."
     },
     {
      "h": "Symptom diary",
@@ -8600,7 +8600,7 @@
     },
     {
      "h": "First line",
-     "t": "RCOG [1] first-line options: exercise, CBT, vitamin B6, a new-generation combined oral contraceptive (drospirenone-containing pills usually more effective), taken cyclically or continuously, and low-dose SSRIs, given continuously or in the luteal phase only (days 15 to 28). SSRIs are unlicensed for PMS in the UK (dose per BNF [5]). Check UKMEC [4] before a combined pill: migraine with aura is UKMEC 4."
+     "t": "RCOG [1] first-line options: exercise, CBT, vitamin B6, a new-generation combined oral contraceptive (drospirenone-containing pills usually more effective), taken cyclically or continuously, and low-dose SSRIs, given continuously or in the luteal phase only (days 15 to 28). SSRIs are unlicensed for PMS in the UK (dose per BNF). Check UKMEC [4] before a combined pill: migraine with aura is UKMEC 4."
     },
     {
      "h": "SSRI review",
@@ -9078,7 +9078,7 @@
    "reason": "Urgent video call: “Is this the tablet?”"
   },
   "knowledge": {
-   "guideline": "[1] UK guidelines for the management of Stevens–Johnson syndrome/toxic epidermal necrolysis in adults (British Association of Dermatologists, 2016) · [2] NICE NG253 (suspected sepsis in people aged 16 and over) · [3] MHRA Yellow Card scheme · [4] BNF monographs of the suspected drug (for example lamotrigine, carbamazepine, allopurinol, co-trimoxazole)",
+   "guideline": "[1] UK guidelines for the management of Stevens–Johnson syndrome/toxic epidermal necrolysis in adults (British Association of Dermatologists, 2016) · [2] NICE NG253 (suspected sepsis in people aged 16 and over) · [3] MHRA Yellow Card scheme",
    "summary": "A painful spreading rash with dusky target-like patches, blisters and peeling skin, erosions of the mouth, eyes and genitals, and fever, about ten days after a new drug (here lamotrigine, started for epilepsy), is Stevens–Johnson syndrome or toxic epidermal necrolysis until proven otherwise. Stop the drug, send her to hospital by 999 ambulance with a call ahead, document a severe allergy, and report it on a Yellow Card.",
    "points": [
     {
@@ -9091,7 +9091,7 @@
     },
     {
      "h": "Culprit drugs",
-     "t": "High-risk drugs include allopurinol, carbamazepine, lamotrigine, phenytoin, phenobarbital, sulfonamide antibiotics such as co-trimoxazole, nevirapine and oxicam NSAIDs [1][4]. Identify every drug started in the past two months, including over-the-counter and herbal products."
+     "t": "High-risk drugs include allopurinol, carbamazepine, lamotrigine, phenytoin, phenobarbital, sulfonamide antibiotics such as co-trimoxazole, nevirapine and oxicam NSAIDs [1]. Identify every drug started in the past two months, including over-the-counter and herbal products."
     },
     {
      "h": "Act now",
@@ -9550,7 +9550,7 @@
    "reason": "Booked appointment: “Terrible pains in my face. Can’t eat properly.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG173 Neuropathic pain in adults: pharmacological management in non-specialist settings (2013, updated 2020) · [2] BNF: carbamazepine · [3] FSRH CEU Guidance: Drug interactions with hormonal contraception (May 2022) · [4] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022)",
+   "guideline": "[1] NICE CG173 Neuropathic pain in adults: pharmacological management in non-specialist settings (2013, updated 2020) · [2] CoSRH CEU Guidance: Drug interactions with hormonal contraception (May 2022) · [3] NICE NG225 Self-harm: assessment, management and preventing recurrence (2022)",
    "summary": "Seconds-long, electric-shock pains in the right cheek and jaw, set off by brushing, chewing, washing or a breeze, with normal periods in between, is trigeminal neuralgia. The GP must name it confidently, screen explicitly for features of a secondary cause, examine the cranial nerves, start carbamazepine (NICE CG173) with proper counselling and baseline bloods, and take the impact on eating and mood seriously.",
    "points": [
     {
@@ -9567,15 +9567,15 @@
     },
     {
      "h": "First line",
-     "t": "NICE CG173 [1]: offer carbamazepine as initial treatment for trigeminal neuralgia. It is the exception to the usual neuropathic pain drugs (amitriptyline, duloxetine, gabapentin, pregabalin). BNF [2]: start 100 mg once or twice daily and increase gradually to the lowest effective dose; the dose can often be reduced during remission. If carbamazepine fails, is not tolerated or is contraindicated, NICE CG173 advises seeking specialist advice and considering early referral."
+     "t": "NICE CG173 [1]: offer carbamazepine as initial treatment for trigeminal neuralgia. It is the exception to the usual neuropathic pain drugs (amitriptyline, duloxetine, gabapentin, pregabalin). BNF: start 100 mg once or twice daily and increase gradually to the lowest effective dose; the dose can often be reduced during remission. If carbamazepine fails, is not tolerated or is contraindicated, NICE CG173 advises seeking specialist advice and considering early referral."
     },
     {
      "h": "Carbamazepine safety",
-     "t": "BNF [2]: warn about blood, liver and skin disorders. Stop and seek help at once for rash, fever, sore throat, mouth ulcers, bruising or bleeding. Check FBC, U&E (sodium) and LFTs at baseline and periodically: hyponatraemia is a known effect. BNF [2]: HLA-B*1502 testing before starting in people of Han Chinese or Thai origin. Dizziness and unsteadiness are common early. It is a strong enzyme inducer: check every co-prescribed drug, and where contraception is still needed, FSRH [3] recommends a copper IUD, LNG-IUS or DMPA."
+     "t": "BNF: warn about blood, liver and skin disorders. Stop and seek help at once for rash, fever, sore throat, mouth ulcers, bruising or bleeding. Check FBC, U&E (sodium) and LFTs at baseline and periodically: hyponatraemia is a known effect. BNF: HLA-B*1502 testing before starting in people of Han Chinese or Thai origin. Dizziness and unsteadiness are common early. It is a strong enzyme inducer: check every co-prescribed drug, and where contraception is still needed, CoSRH [2] recommends a copper IUD, LNG-IUS or DMPA."
     },
     {
      "h": "Impact and referral",
-     "t": "Pain on eating causes weight loss and dehydration; severe trigeminal neuralgia carries a real risk of low mood and suicidal thoughts, so ask directly (NICE NG225 [4]: no risk scores, a shared safety plan). Refer to neurology for red flags, diagnostic doubt or poor response; neurosurgical options such as microvascular decompression exist for refractory pain."
+     "t": "Pain on eating causes weight loss and dehydration; severe trigeminal neuralgia carries a real risk of low mood and suicidal thoughts, so ask directly (NICE NG225 [3]: no risk scores, a shared safety plan). Refer to neurology for red flags, diagnostic doubt or poor response; neurosurgical options such as microvascular decompression exist for refractory pain."
     }
    ]
   },

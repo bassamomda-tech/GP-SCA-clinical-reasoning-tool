@@ -88,7 +88,7 @@ MedChooser.register('eczema', {
       monitor:'Second-line; sun protection advised',
       counsel:'"A non-steroid cream, useful for the face or for areas where we want to avoid steroids — it can sting for the first few days but won\'t thin the skin."',
       detail:{
-        'Dose': 'Tacrolimus 0.03% (children)/0.1% (adults) or pimecrolimus BD; also for proactive twice-weekly use',
+        'Dose': 'Tacrolimus 0.03% (2–15 years)/0.1% (16 years and over) or pimecrolimus BD (started by a clinician experienced in dermatology, TA82); also for proactive twice-weekly use',
         'Key teaching': 'Second-line for moderate–severe eczema not controlled by/intolerant of steroids, especially face and flexures and to reduce steroid load.'
       },
       conditions: [

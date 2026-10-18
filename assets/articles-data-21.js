@@ -1,6 +1,6 @@
 /* Reasoning GP — Articles data (batch 21: O topics)
    NHS conditions A–Z (letter O) not already covered. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
@@ -103,7 +103,7 @@
       'Immunocompromised patients with oral/oesophageal candidiasis (pain/difficulty swallowing) → urgent treatment ± specialist input',
       'Persistent oral white/red patches that do not resolve with treatment → urgent dental/oral assessment (exclude oral cancer/leukoplakia — NICE NG12 (updated April 2026))',
       'Severe or treatment-resistant disease → relevant specialist'],
-    source:'BNF (nystatin, miconazole, fluconazole) / MHRA Drug Safety Update (miconazole and warfarin, 2016) / BHIVA HIV testing guidelines' },
+    source:'MHRA Drug Safety Update (miconazole and warfarin, 2016) / BHIVA HIV testing guidelines' },
 
   { id:'orbital-cellulitis', title:'Orbital cellulitis', category:'Ophthalmology', icon:'👁️',
     overview:'A sight- and life-threatening infection of the tissues behind the orbital septum, usually spreading from the sinuses. It must be distinguished urgently from the much commoner and milder preseptal (periorbital) cellulitis. The danger signs — painful/restricted eye movements, proptosis and visual change — demand emergency referral.',

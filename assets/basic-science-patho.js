@@ -5,7 +5,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 
 /* ---------------- CARDIOVASCULAR ---------------- */
 {
-  id:'patho-hypertension', domain:'Pathophysiology', system:'Cardiovascular', icon:'🩸',
+  id:'patho-hypertension', domain:'Pathophysiology', system:'Cardiovascular', icon:'💉',
   title:'Hypertension', blurb:'Why a chronically raised pressure is usually “essential”, and why it silently damages arteries, heart, kidney, brain and eye.',
   mechanism:[
     'BP = cardiac output × systemic vascular resistance. In **essential hypertension** (>90% of cases) no single cause is found — it reflects a resetting of the balance between cardiac output, vascular tone, the renin–angiotensin–aldosterone system (RAAS), the sympathetic nervous system and renal sodium handling.',
@@ -381,7 +381,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
 
 /* ---------------- HAEMATOLOGY ---------------- */
 {
-  id:'patho-ida', domain:'Pathophysiology', system:'Haematology', icon:'🩸',
+  id:'patho-ida', domain:'Pathophysiology', system:'Haematology', icon:'💉',
   title:'Iron-deficiency anaemia', blurb:'Why iron lack makes small, pale cells — and why the priority is finding the cause.',
   mechanism:[
     'Iron is essential for haem synthesis. When iron supply (intake/absorption) cannot meet demand (growth, menstruation, blood loss), stores (ferritin) deplete first, then circulating iron, then erythropoiesis fails.',

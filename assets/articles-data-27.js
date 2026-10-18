@@ -1,11 +1,11 @@
 /* Reasoning GP — Articles data (batch 27: S topics, part 2)
    NHS A–Z (letter S) gaps. RCGP/SCA examiner depth.
-   NICE NG12 (updated April 2026) 2WW pathways stated explicitly where relevant. */
+   NICE NG12 (updated April 2026) suspected cancer pathways stated explicitly where relevant. */
 (function(){
   const A = (window.RGP_ARTICLES = window.RGP_ARTICLES || []);
   A.push(
 
-  { id:'sickle-cell', title:'Sickle cell disease', category:'Haematology', icon:'🩸',
+  { id:'sickle-cell', title:'Sickle cell disease', category:'Haematology', icon:'💉',
     overview:'An inherited (autosomal-recessive) haemoglobinopathy in which abnormal haemoglobin S polymerises, deforming red cells, causing chronic haemolytic anaemia and recurrent painful vaso-occlusive crises. It is multisystem and lifelong; the GP role includes recognising acute crises/emergencies, supporting prevention, and coordinating shared care.',
     features:[
       'Chronic haemolytic anaemia and recurrent acute pain crises (vaso-occlusion) affecting bones, chest, abdomen and other sites',
@@ -153,7 +153,7 @@
       'Newborn with an open spinal defect → urgent neonatal/neurosurgical care',
       'Skin markers suggesting tethered cord, or new neurological/urological deterioration → neurosurgery/urology',
       'Ongoing care → multidisciplinary spina bifida team (urology, orthopaedics, neurosurgery, continence)'],
-    source:'BNF (folic acid 400 micrograms / 5 mg) / NHS Fetal Anomaly Screening Programme / fetal medicine & neurosurgical guidance' },
+    source:'NHS Fetal Anomaly Screening Programme / fetal medicine & neurosurgical guidance' },
 
   { id:'squint', title:'Squint (strabismus)', category:'Ophthalmology', icon:'👁️',
     overview:'Misalignment of the eyes, common in childhood. In children the priority is early detection because a constant squint can cause amblyopia (lazy eye) and can occasionally signal serious pathology (e.g. retinoblastoma). A NEW squint at any age, or in an adult, needs careful assessment for a neurological cause.',

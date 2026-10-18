@@ -305,7 +305,7 @@
     plan:[['💊 Medication options','../tools/medication-chooser.html'],['📝 Ready Prescriptions','../tools/prescriptions.html'],['💉 Sick-day rules','../tools/management/sick-day-rules.html']],
     referral:[['🚗 DVLA fitness to drive','../tools/dvla.html'],['📄 Fit note (Med3)','../tools/fit-note.html']],
     safetynet:[['📄 Patient leaflets','../tools/leaflets.html']],
-    impression:[['🩺 Diagnostic reference','../tools/diagnostic.html']]
+    impression:[['⚕️ Diagnostic reference','../tools/diagnostic.html']]
   };
   const LV = { emergency:'🚨 Emergency', '2ww':'🟣 Suspected cancer pathway' };
 
@@ -383,7 +383,7 @@
     if(pwUrl) links.push(['🔀 '+cur.name+' pathway', pwUrl]);
     links.push(['📋 Management protocols','../tools/management.html']);
     links.push(['🔀 Clinical algorithms','../tools/algorithms.html']);
-    links.push(['🩺 Diagnostic reference','../tools/diagnostic.html']);
+    links.push(['⚕️ Diagnostic reference','../tools/diagnostic.html']);
     host.innerHTML = links.map(l=>`<a class="cs-toollink" style="margin:0 6px 6px 0" href="${l[1]}">${esc(l[0])}</a>`).join('');
   }
   function select(id, scroll){

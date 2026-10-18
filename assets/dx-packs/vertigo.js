@@ -48,7 +48,7 @@
         id: 'recurrent', tier: 'routine',
         label: 'Recurrent / positional vertigo',
         action: 'Dix-Hallpike + Epley for BPPV; assess for Ménière\u2019s / vestibular migraine; ENT referral if uncertain.',
-        source: 'NICE NG127',
+        source: 'NICE CKS (BPPV)',
         when: i => true,
       }
     ],

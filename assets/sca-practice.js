@@ -518,7 +518,7 @@
     // RCGP SCA Consultation Toolkit column (Global skills · Tasks · Relating to others).
     const TK = [
       { key:'gs',    title:'Global skills',      sub:'Structure, time, language, ethics, responsiveness', cls:'gs-domain',   ic:'🧭' },
-      { key:'tasks', title:'Tasks',              sub:'Explore, examine, diagnose, plan, safety-net',       cls:'task-domain', ic:'🩺' },
+      { key:'tasks', title:'Tasks',              sub:'Explore, examine, diagnose, plan, safety-net',       cls:'task-domain', ic:'⚕️' },
       { key:'rto',   title:'Relating to others', sub:'Rapport, questions, cues, ICE, shared decisions',    cls:'ro-domain',   ic:'🤝' }
     ];
     const cols = { gs:[], tasks:[], rto:[] };
@@ -845,7 +845,7 @@
       </div>` : '';
 
     const CATS = [
-      { key:'clinical',     ic:'🩺', label:'Clinical', sub:'NICE & UK clinical guidance — in consultation order', cls:'cat-clinical', items:(k.points||[]), html: clinHtml },
+      { key:'clinical',     ic:'⚕️', label:'Clinical', sub:'NICE & UK clinical guidance — in consultation order', cls:'cat-clinical', items:(k.points||[]), html: clinHtml },
       { key:'social',       ic:'🤝', label:'Social & holistic', sub:'Carer, psychosocial, occupational', cls:'cat-social', items:(kb.social||[]) },
       { key:'legal',        ic:'⚖️', label:'Legal', sub:'DVLA, statutory duties, safeguarding law', cls:'cat-legal', items:(kb.legal||[]) },
       { key:'professional', ic:'👔', label:'Professional', sub:'GMC: consent, confidentiality, capacity', cls:'cat-prof', items:(kb.professional||[]) },
@@ -1756,7 +1756,7 @@ Your one-sentence nudge:`;
         pbMount.innerHTML = `
           <div class="pb-stack">
             <div class="pb-card pb-history">
-              <div class="pb-hdr"><span class="pb-ic">🩺</span><div><div class="pb-t">History</div><div class="pb-s">What to ask — red flags, psychosocial &amp; ICE</div></div></div>
+              <div class="pb-hdr"><span class="pb-ic">⚕️</span><div><div class="pb-t">History</div><div class="pb-s">What to ask — red flags, psychosocial &amp; ICE</div></div></div>
               <div class="pb-body">${historyBody}</div>
             </div>
             <div class="pb-card pb-dx">

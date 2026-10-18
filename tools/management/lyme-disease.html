@@ -36,7 +36,7 @@ MG.render({ snapshot:"summaries/lyme-disease.html",
     {t:"NICE NG95 Lyme disease (2018)"},
     {t:"NICE QS186 quality standard (2019)"},
     {t:"UKHSA RIPL · national reference lab"},
-    {t:"Doses per NG95 · check BNF / BNFc"}
+    {t:"Doses per NG95 · check SPC / local formulary"}
   ],
   lead:'<div class="mg-layers"><a href="#diagnose"><b>Diagnosis</b><small>EM is clinical</small></a><a href="#test"><b>Testing</b><small>ELISA → immunoblot</small></a><a href="#treat"><b>Treat</b><small>Regimen by presentation</small></a><a href="#refer"><b>Refer</b><small>Neuro · cardiac · doubt</small></a></div>',
   glance:[
@@ -47,10 +47,10 @@ MG.render({ snapshot:"summaries/lyme-disease.html",
     {lbl:"Tick bite, well", val:"No antibiotics", sub:"advise and safety-net"},
     {lbl:"Disseminated", val:"Neuro / cardiac", sub:"specialist ± IV ceftriaxone"}
   ],
-  quickSub:"If you read nothing else, read these five cards. Every dose on this page is taken from NICE NG95 — check the current BNF/BNFc before prescribing.",
+  quickSub:"If you read nothing else, read these five cards. Every dose on this page is taken from NICE NG95 — check doses in the SPC and your local formulary before prescribing.",
   quick:[
     {tone:"green", h:"Erythema migrans = diagnose and treat now", html:"An expanding red rash appearing days to weeks after a (possible) tick bite is <b>erythema migrans</b>. Diagnose Lyme disease <b>clinically and start antibiotics without laboratory testing</b> (NICE NG95; QS186 statement 1). Serology is often negative this early and only delays treatment. <b>Do not exclude EM solely because it is smaller than 5 cm, lacks central clearing, or the patient does not recall a tick bite.</b>"},
-    {tone:"blue", h:"Adult first-line: doxycycline 21 days", html:"For EM and/or non-focal symptoms in adults and young people aged 12 and over: <b>oral doxycycline 100 mg twice daily or 200 mg once daily for 21 days</b>. First alternative: <b>amoxicillin 1 g three times daily for 21 days</b>; second alternative: <b>azithromycin 500 mg daily for 17 days</b> (NICE NG95). Avoid azithromycin with cardiac involvement (QT effect). Check the local (Greater Manchester) antimicrobial guidance before prescribing."},
+    {tone:"blue", h:"Adult first-line: doxycycline 21 days", html:"For EM and/or non-focal symptoms in adults and young people aged 12 and over: <b>oral doxycycline 100 mg twice daily or 200 mg once daily for 21 days</b>. First alternative: <b>amoxicillin 1 g three times daily for 21 days</b>; second alternative: <b>azithromycin 500 mg daily for 17 days</b> (NICE NG95). Avoid azithromycin with cardiac involvement (QT effect). Check the local antimicrobial guidance before prescribing."},
     {tone:"amber", h:"No typical EM? Test — and don’t trust an early negative", html:"Suspected Lyme without typical EM (or an uncertain diagnosis) → <b>ELISA</b>; positive or equivocal → <b>immunoblot</b>. Negative ELISA within 4 weeks of symptom onset and still suspected → <b>repeat ELISA 4–6 weeks later</b>. Symptoms for 12 weeks or more with a negative ELISA and still suspected → <b>immunoblot</b>. High suspicion → do not rule Lyme out on a negative result (NICE NG95; QS186 statement 2) — but if repeat or confirmatory testing is negative, reassess the diagnosis, actively consider alternative causes and seek specialist advice. Do not test solely for a tick bite, outdoor exposure or non-specific fatigue."},
     {tone:"red", h:"Red flags: face, meninges, heart", html:"Facial nerve palsy or other cranial neuropathy, radiculopathy, meningitis or encephalitis features, and <b>carditis</b> (heart block, syncope, breathlessness, chest pain). Follow usual emergency practice — e.g. suspected CNS infection or complete heart block → same-day emergency referral <b>even if Lyme disease is suspected</b> (NICE NG95). Do not delay emergency care for Lyme serology."},
     {tone:"green", h:"Well after a tick bite? No prophylaxis", html:"Do not give antibiotics to someone who is well after a tick bite. Explain tick removal, what EM looks like, and to return if a rash or flu-like illness develops over the following weeks. Most tick bites do not result in Lyme disease, but transmission risk varies with tick attachment, local prevalence and duration of attachment."}
@@ -130,7 +130,7 @@ MG.render({ snapshot:"summaries/lyme-disease.html",
        {b:"why", html:"Serology misses early infection because IgM and IgG take several weeks to rise; this is why EM is treated without testing and why an early negative ELISA is repeated. Immunocompromised people may not mount an antibody response, so specialist advice is sensible when suspicion stays high."}
      ]},
 
-    {id:"treat", nav:"Treat", title:"Antibiotic treatment by presentation (adults and ≥12 years)", sub:"The regimen, dose and duration depend on the presentation (NICE NG95; QS186 statement 3). Doses below are the NG95 adult/12+ doses — check the local (Greater Manchester) antimicrobial guidance before prescribing.",
+    {id:"treat", nav:"Treat", title:"Antibiotic treatment by presentation (adults and ≥12 years)", sub:"The regimen, dose and duration depend on the presentation (NICE NG95; QS186 statement 3). Doses below are the NG95 adult/12+ doses — check the local antimicrobial guidance before prescribing.",
      blocks:[
        {b:"ladder", steps:[
          {step:"EM / non-focal", title:"Doxycycline 21 days", when:"first-line",
@@ -167,7 +167,7 @@ MG.render({ snapshot:"summaries/lyme-disease.html",
          ["<b>Children with focal disease</b>","Specialist (paediatric/infection) care","CNS involvement: <span class='rx'>IV ceftriaxone 80 mg/kg (max 4 g) once daily for 21 days</span> for children under 50 kg, under specialist care"]
        ]},
        {b:"cards", cols:2, items:[
-         {tone:"cream", h:"Paediatric doses", html:"Amoxicillin 30 mg/kg three times daily (≤33 kg) and azithromycin 10 mg/kg daily (≤50 kg) are the NG95 weight-based regimens for EM/non-focal disease. For any presentation other than a single EM lesion with no other symptoms, discuss with a specialist first. Check BNFc for maximum doses.", src:"NICE NG95 (2018)"},
+         {tone:"cream", h:"Paediatric doses", html:"Amoxicillin 30 mg/kg three times daily (≤33 kg) and azithromycin 10 mg/kg daily (≤50 kg) are the NG95 weight-based regimens for EM/non-focal disease. For any presentation other than a single EM lesion with no other symptoms, discuss with a specialist first. Check maximum doses in the SPC and your local formulary.", src:"NICE NG95 (2018)"},
          {tone:"cream", h:"Pregnancy", html:"Treat pregnant women following usual practice, but with antibiotics that are suitable in pregnancy — commonly amoxicillin for uncomplicated EM. Discuss focal or disseminated disease with infection/obstetric specialists, and check current pregnancy and breastfeeding prescribing information.", src:"NICE NG95 (2018)"}
        ]}
      ]},
@@ -269,12 +269,11 @@ MG.render({ snapshot:"summaries/lyme-disease.html",
          '<li><b>NICE QS186 — Lyme disease quality standard (July 2019)</b><br><a href="https://www.nice.org.uk/guidance/qs186" rel="noopener">nice.org.uk/guidance/qs186</a><span class="rd"> — statement 1 EM treated without testing; 2 repeat ELISA at 4–6 weeks; 3 antibiotic by presentation; 4 public awareness</span></li>'+
          '<li><b>UKHSA — Lyme disease: sample testing advice; Rare and Imported Pathogens Laboratory (RIPL) user manual and Lyme request form (check the current version on gov.uk)</b><br><a href="https://www.gov.uk/guidance/lyme-disease-sample-testing-advice" rel="noopener">gov.uk — Lyme disease: sample testing advice</a><span class="rd"> — national reference laboratory, two-tier testing, antibody persistence after cure, clinical advice</span></li>'+
          '<li><b>NICE NG182 — Insect bites and stings: antimicrobial prescribing (2020)</b><br><a href="https://www.nice.org.uk/guidance/ng182" rel="noopener">nice.org.uk/guidance/ng182</a><span class="rd"> — no antibiotic for a bite without symptoms or signs of infection</span></li>'+
-         '<li><b>Greater Manchester Antimicrobial Guidelines (Greater Manchester Medicines Management Group)</b><br><a href="https://gmmmg.nhs.uk/guidance/clinical-guidance-and-pathways/antimicrobial-guidance-and-resources/" rel="noopener">gmmmg.nhs.uk — antimicrobial guidance</a><span class="rd"> — local primary-care approach: treat EM empirically, seek advice for suspected neuroborreliosis, doxycycline 100 mg twice daily for 21 days with amoxicillin as the alternative when appropriate</span></li>'+
-         '<li><b>BNF / BNFc</b><br><a href="https://bnf.nice.org.uk" rel="noopener">bnf.nice.org.uk</a><span class="rd"> — check all doses, maximum paediatric doses, pregnancy and breastfeeding</span></li>'+
+         '<li><b>Local Antimicrobial Guidelines (the local area prescribing committee (APC))</b><br>your local formulary / APC website<span class="rd"> — local primary-care approach: treat EM empirically, seek advice for suspected neuroborreliosis, doxycycline 100 mg twice daily for 21 days with amoxicillin as the alternative when appropriate</span></li>'+
          '</ul></div>'}
      ]}
   ],
-  foot:"Lyme disease — NICE NG95 (2018, updated October 2018) and NICE QS186 (2019); UKHSA RIPL for reference testing. Antibiotic doses and durations are those stated in NG95; verify all doses against the current BNF/BNFc before prescribing, seek specialist advice for CNS and cardiac disease and for all under-18s other than a single EM lesion with no other symptoms, and check the local Greater Manchester antimicrobial guidance."
+  foot:"Lyme disease — NICE NG95 (2018, updated October 2018) and NICE QS186 (2019); UKHSA RIPL for reference testing. Antibiotic doses and durations are those stated in NG95; check doses in the SPC and your local formulary before prescribing, seek specialist advice for CNS and cardiac disease and for all under-18s other than a single EM lesion with no other symptoms, and check the local antimicrobial guidance."
 });
 </script>
 <script src="../../assets/mgmt-nav.js"></script>

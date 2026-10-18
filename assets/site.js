@@ -63,7 +63,59 @@ window.RGP_CONFIG = window.RGP_CONFIG || {
   // local copies are never locked. Set to false to open the whole site again.
   paywall: true,
   paywallHosts: ['gpreasoning.uk', 'www.gpreasoning.uk', 'reasoninggp.com', 'www.reasoninggp.com']
+  // Clinic Guides free samples: RGP_CONFIG.clinicGuidesFree is set by
+  // assets/clinic-guides.js from its RGP_CLINIC_GUIDES_FREE list — the ONE list
+  // to edit (the guide pages load that file, not this one).
 };
+
+/* ---- SCA results days: the ONE list (results-day resit campaign) ----
+   ISO dates (YYYY-MM-DD) of RCGP SCA results days, taken from
+   sca/dates-and-fees.html. The RCGP publishes results at 17:00 UK time, so each
+   window runs from 17:00 (Europe/London) on the day for 7 days. Add future
+   results days here once the RCGP confirms them. The list drives:
+     - the "Got your result?" banner (injectResultsBanner, page init below);
+     - the free week on the Resit Clinic (paywall gate: allowed()).
+   ?resultsday=YYYY-MM-DD previews the banner and the Resit Clinic note for any
+   date. It deliberately does NOT open the paywall: the gate uses the real
+   clock only, so a shared link can't become a permanent free pass. */
+window.RGP_RESULTS_DAYS = window.RGP_RESULTS_DAYS || ['2026-12-08', '2027-02-16', '2027-03-16', '2027-04-13'];
+window.RGP_RESULTS = (function(){
+  const WINDOW_MS = 7 * 864e5;
+  const ISO = /^(\d{4})-(\d{2})-(\d{2})$/;
+  // 17:00 Europe/London on an ISO date, as epoch ms (handles GMT / BST).
+  function releaseAt(iso){
+    const m = ISO.exec(String(iso || '')); if (!m) return NaN;
+    const y = +m[1], mo = +m[2] - 1, d = +m[3];
+    const guess = Date.UTC(y, mo, d, 17);
+    const chk = new Date(guess);
+    if (chk.getUTCFullYear() !== y || chk.getUTCMonth() !== mo || chk.getUTCDate() !== d) return NaN;
+    let off = 0;
+    try {
+      const h = parseInt(new Intl.DateTimeFormat('en-GB', { timeZone:'Europe/London', hour:'2-digit', hourCycle:'h23' }).format(chk), 10);
+      if (!isNaN(h)) off = ((h - 17) + 24) % 24;
+    } catch(e){}
+    return guess - off * 36e5;
+  }
+  function win(iso){ const s = releaseAt(iso); return isNaN(s) ? null : { day:String(iso), start:s, end:s + WINDOW_MS }; }
+  // The live window (real clock), or null.
+  function current(now){
+    const t = (now == null) ? Date.now() : now;
+    const days = window.RGP_RESULTS_DAYS || [];
+    for (let i = 0; i < days.length; i++){ const w = win(days[i]); if (w && t >= w.start && t < w.end) return w; }
+    return null;
+  }
+  function override(){
+    try { const m = /[?&]resultsday=(\d{4}-\d{2}-\d{2})(?:&|#|$)/.exec(location.search); return m ? win(m[1]) : null; } catch(e){ return null; }
+  }
+  // For display only (banner, notes): honours ?resultsday=.
+  function preview(){ return override() || current(); }
+  // "17:00 on Tuesday 15 December 2026" (UK time) for the end of a window.
+  function endLabel(w){
+    try { return '17:00 on ' + new Intl.DateTimeFormat('en-GB', { timeZone:'Europe/London', weekday:'long', day:'numeric', month:'long', year:'numeric' }).format(new Date(w.end)); }
+    catch(e){ return new Date(w.end).toDateString(); }
+  }
+  return { current, preview, override, releaseAt, endLabel, windowMs:WINDOW_MS };
+})();
 
 /* ---- AI shim: make window.claude.complete() work on YOUR domain ----
    In this preview the host injects window.claude. On your own hosting it
@@ -387,7 +439,7 @@ window.RGP_CASES = [
       { id:"crohns",           title:"Crohn's Disease",               setting:"GP role in IBD",         status:"full",  path:"cases/crohns.html", guideline:"NICE NG129" },
       { id:"uc",               title:"Ulcerative Colitis",            setting:"GP role in IBD",         status:"full",  path:"cases/ulcerative-colitis.html", guideline:"NICE NG130" },
       { id:"diverticulosis",   title:"Diverticulosis & -itis",        setting:"Acute & chronic",        status:"full",  path:"cases/diverticulosis.html", guideline:"NICE NG147" },
-      { id:"constipation",     title:"Constipation",                  setting:"Chronic constipation",   status:"full",  path:"cases/constipation.html", guideline:"NICE NG12 · Rome IV · BNF" },
+      { id:"constipation",     title:"Constipation",                  setting:"Chronic constipation",   status:"full",  path:"cases/constipation.html", guideline:"NICE NG12 · Rome IV" },
       { id:"diarrhoea",        title:"Diarrhoea",                     setting:"Acute infective · chronic · FIT", status:"full", path:"cases/diarrhoea.html", guideline:"NICE / NG12" },
     ]
   },
@@ -413,7 +465,7 @@ window.RGP_CASES = [
     items: [
       { id:"menopause",        title:"Menopause & HRT",               setting:"Symptom-led review",     status:"full",  path:"cases/menopause.html", guideline:"NICE NG23" },
       { id:"cervical-screening", title:"Cervical Screening",          setting:"HPV primary · symptoms ≠ screening", status:"full", path:"cases/cervical-screening.html", guideline:"NHSCSP / NG12" },
-      { id:"contraception",    title:"Contraception consultation",    setting:"Choice & counselling",   status:"full",  path:"cases/contraception.html", guideline:"FSRH 2024 / UKMEC" },
+      { id:"contraception",    title:"Contraception consultation",    setting:"Choice & counselling",   status:"full",  path:"cases/contraception.html", guideline:"CoSRH 2024 / UKMEC" },
       { id:"pcos",             title:"PCOS",                          setting:"Diagnosis & long-term",  status:"full",  path:"cases/pcos.html", guideline:"Rotterdam · International PCOS guideline 2023" },
       { id:"infertility",      title:"Infertility",                   setting:"Couple assessment",      status:"full",  path:"cases/infertility.html", guideline:"NICE NG257" },
       { id:"premenstrual-disorder", title:"Premenstrual Disorder (PMDD)", setting:"PMS · PMDD · symptom diary", status:"full", path:"cases/premenstrual-disorder.html", guideline:"RCOG / NICE" },
@@ -496,7 +548,7 @@ window.RGP_CASES = [
       { id:"allergic-rhinitis", title:"Allergic Rhinitis",           setting:"INCS · united airways",  status:"full",  path:"cases/allergic-rhinitis.html", guideline:"NICE / BSACI" },
       { id:"eczema",           title:"Atopic Eczema",                 setting:"Emollients · steroid ladder · FTU", status:"full", path:"cases/eczema.html", guideline:"NICE NG190 / NICE" },
       { id:"acne",             title:"Acne Vulgaris",                 setting:"Severity-led · isotretinoin referral", status:"full", path:"cases/acne.html", guideline:"NICE NG198" },
-      { id:"fungal-infections", title:"Fungal Infections",            setting:"Tinea · candida · confirm before orals", status:"full", path:"cases/fungal-infections.html", guideline:"PCDS · GM antimicrobial guidelines" },
+      { id:"fungal-infections", title:"Fungal Infections",            setting:"Tinea · candida · confirm before orals", status:"full", path:"cases/fungal-infections.html", guideline:"PCDS · Local antimicrobial guidelines" },
       { id:"pruritus",         title:"Itch (Pruritus)",               setting:"Rash vs no rash · systemic", status:"full", path:"cases/pruritus.html", guideline:"NICE / NG12" },
     ]
   },
@@ -832,10 +884,11 @@ window.RGP_wireMobileToggle = wireMobileToggle;
 
 let RGP_TOOLS = [
   {id:'__tools-guide',     label:'How to use this site',   meta:'Start here · framework · the four layers · tools', path:'tools/clinic-guide.html', icon:'🧭'},
-  {id:'__tools-decision',  label:'Guidance Explorer',      meta:'Work-up · lab results · medication options — reference',  path:'tools/decision-support.html',   icon:'🩺'},
+  {id:'__tools-decision',  label:'Guidance Explorer',      meta:'Work-up · lab results · medication options — reference',  path:'tools/decision-support.html',   icon:'⚕️'},
   {id:'__tools-prescribing',label:'Prescribing',           meta:'Ready Rx · eligibility/FP10/RAG · sick-day rules', path:'tools/prescribing.html', icon:'💊'},
   {id:'__tools-admin',     label:'GP Admin',               meta:'Fit Note · DVLA · forms & certificates',  path:'tools/gp-admin.html',           icon:'📋'},
   {id:'__tools-clinicref', label:'Clinic Reference',      meta:'Pharmacy First · immunisations · NG12 · shared care · travel · QOF', path:'tools/clinic-reference.html', icon:'📚'},
+  {id:'__tools-clinicguides', label:'Clinic Guides',      meta:'2-page printable desk guides · common conditions', path:'tools/clinic-guides.html', icon:'🖨️'},
   {id:'__tools-spine',     label:'Consultation Spine',     meta:'Consultation structure by presentation — reference',  path:'tools/consultation-spine.html', icon:'🧬'},
   {id:'__tools-scribe',    label:'Consult Scribe',         meta:'Record → EMIS / SystmOne / SOAP note · AI', path:'tools/scribe.html',           icon:'🎙️'},
   {id:'__tools-calc',      label:'Medical Calculators',    meta:'55 scores · CV · VTE · MH · renal & more', path:'tools/calculators.html',        icon:'🧮'},
@@ -884,7 +937,7 @@ const RGP_ALG_SPECIALTIES = [
   {label:'Dermatology',              icon:'🧴', n:5},
   {label:'Ophthalmology',                icon:'👁️', n:9},
   {label:"Women's Health",               icon:'🌸', n:12},
-  {label:'Haematology',                  icon:'🩸', n:11},
+  {label:'Haematology',                  icon:'💉', n:11},
   {label:'Musculoskeletal',              icon:'🦴', n:17},
   {label:'General & Systemic',           icon:'⚖️', n:7},
   {label:'Paediatrics',                  icon:'🧒', n:17},
@@ -911,7 +964,7 @@ const RGP_MGMT_SPECIALTIES = [
   {label:'Ophthalmology',                   icon:'👁️', n:8},
   {label:'Lifestyle & Prevention',          icon:'🌱', n:4},
   {label:'Sexual Health',                   icon:'❤️', n:6},
-  {label:'Haematology',                     icon:'🩸', n:4},
+  {label:'Haematology',                     icon:'💉', n:4},
   {label:'Palliative & End of Life Care',   icon:'🕊️', n:10},
 ];
 // Shared slugify — MUST match the one used in tools/algorithms.html for ?cat= deep-linking.
@@ -1091,6 +1144,9 @@ function renderTopNav(activeId){
     <a class="rgp-mm-tool" href="${PRE}tools/management.html">
       <span class="rgp-mm-tool-ic">💠</span><span><b>Protocols</b><small>${mgmtDisp} protocols · manage the condition</small></span>
     </a>
+    <a class="rgp-mm-tool ${activeId==='__tools-clinicguides'?'is-active':''}" href="${PRE}tools/clinic-guides.html">
+      <span class="rgp-mm-tool-ic">🖨️</span><span><b>Clinic Guides</b><small>2-page printable desk guides</small></span>
+    </a>
     <a class="rgp-mm-tool ${activeId==='__tools-prescribing'?'is-active':''}" href="${PRE}tools/prescribing.html">
       <span class="rgp-mm-tool-ic">💊</span><span><b>Prescribing</b><small>Ready Rx · eligibility · RAG · sick-day</small></span>
     </a>`;
@@ -1110,7 +1166,7 @@ function renderTopNav(activeId){
 `;
 
   // Clinic Toolkit — single ordered list (clinical tools first, then reference).
-  const TOOLKIT_IDS = ['__updates','__tools-scribe','__tools-spine','__tools-decision','__tools-exam','__tools-admin','__tools-clinicref','__tools-calc','__leaflets','__tools-basicsci','__ebm','__resources'];
+  const TOOLKIT_IDS = ['__updates','__tools-scribe','__tools-spine','__tools-decision','__tools-clinicguides','__tools-exam','__tools-admin','__tools-clinicref','__tools-calc','__leaflets','__tools-basicsci','__ebm','__resources'];
   const toolkitMap = {};
   RGP_TOOLS.forEach(t => { toolkitMap[t.id] = t; });
   RGP_NAV_SECTIONS.forEach(s => { toolkitMap[s.id] = s; });
@@ -1181,7 +1237,7 @@ function renderTopNav(activeId){
           <span>The Hot Seat</span>
         </a>
         <button class="rgp-nav-btn rgp-clinic-only" data-menu="more" type="button" aria-expanded="false">
-          <span class="rgp-nav-sect-ic">🩺</span>
+          <span class="rgp-nav-sect-ic">⚕️</span>
           <span>Clinic Toolkit</span>
           <span class="rgp-pill rgp-clinic-only">${toolkitItems.length}</span>
           <svg class="rgp-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
@@ -1588,7 +1644,7 @@ const RGP_ALGORITHMS = [
   { slug:'vaginal-bleeding', label:"Vaginal Bleeding", sys:'Women’s Health', syn:"" },
   { slug:'vaginal-discharge', label:"Vaginal Discharge", sys:'Women’s Health', syn:"" },
   { mg:'contraception', slug:'contraception', label:"Contraception", sys:'Women’s Health', syn:"women requesting contraception pill coil implant larc emergency" },
-  { mg:'hrt-prescribing', slug:'hrt-menopause', label:"Menopause & HRT", sys:'Women’s Health', syn:"hormone replacement therapy perimenopause hrt request suspected menopause vasomotor flushes" },
+  { mg:'menopause', slug:'hrt-menopause', label:"Menopause and HRT", sys:'Women’s Health', syn:"hormone replacement therapy hrt prescribing perimenopause hrt request suspected menopause vasomotor flushes premature ovarian insufficiency" },
   { mg:'nausea-vomiting-pregnancy', slug:'nvp', label:"Nausea & Vomiting in Pregnancy", sys:'Women’s Health', syn:"nausea vomiting pregnancy morning sickness hyperemesis" },
   { slug:'pruritus-pregnancy', label:"Itchiness in Pregnancy", sys:'Women’s Health', syn:"" },
   { slug:'dyspareunia', label:"Dyspareunia (Painful Sex)", sys:'Women’s Health', syn:"painful sex superficial deep endometriosis vulvodynia gsm sti vaginismus" },
@@ -2077,6 +2133,7 @@ window.RGPAuth = RGPAuth;
     // their own plan, whatever their tier (a Gold member was locked out of
     // pricing.html because it counts as a Clinic page).
     /(pages\/)?(pricing|account-plan)\.html$/.test(p) ||
+    /\/tools\/clinic-guides\.html$/.test(p) ||   // Clinic Guides hub: public (each guide is gated)
     /offline\.html$/.test(p) ||
     /SETUP[^/]*\.html$/i.test(p) ||
     /Reasoning GP - Home\.html$/.test(decodeURIComponent(p));
@@ -2085,7 +2142,7 @@ window.RGPAuth = RGPAuth;
   function pre(){ // path prefix back to site root
     const m = location.pathname.match(/\/(cases|tools|pages|sca)\//);
     if (!m) return '';
-    return location.pathname.indexOf('/tools/algorithms/') > -1 || location.pathname.indexOf('/tools/management/') > -1 ? '../../' : '../';
+    return location.pathname.indexOf('/tools/algorithms/') > -1 || location.pathname.indexOf('/tools/management/') > -1 || location.pathname.indexOf('/tools/clinic-guides/') > -1 ? '../../' : '../';
   }
   function area(){ return /sca-/.test(location.pathname) ? 'sca' : 'clinic'; }
 
@@ -2186,7 +2243,7 @@ window.RGPAuth = RGPAuth;
     // Consult Scribe is NOT in this list: it is a paid feature, and it is also
     // withheld pending its legal/information-governance requirements (see
     // RGP_HIDDEN_TOOLS). Handled by its own branch below so the gate can say so.
-    const OPEN = ['search.html','articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html','privacy.html','terms.html','disclaimer.html','pricing.html','content-safety.html','ai-safety.html','how-we-fit.html','accessibility.html'];
+    const OPEN = ['search.html','articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html','clinic-guides.html','privacy.html','terms.html','disclaimer.html','pricing.html','content-safety.html','ai-safety.html','how-we-fit.html','accessibility.html'];
     if (OPEN.indexOf(base) > -1) return null;
     if (/scribe\.html$/.test(base)) return 'scribe';
     if (/\/cases\.html$/.test(path) || /\/tools\/algorithms\.html$/.test(path)) return null; // browse catalogue
@@ -2194,6 +2251,7 @@ window.RGPAuth = RGPAuth;
     if (/\/tools\/algorithms\//.test(path)) return FREE_ALGS.has(base) ? null : 'sample-alg';
     if (/\/tools\/management\.html$/.test(path)) return null;                 // protocols directory (browse)
     if (/\/tools\/management\//.test(path)) return FREE_PROTOCOLS.has(base) ? null : 'sample-protocol';
+    if (/\/tools\/clinic-guides\//.test(path)) return isFreeClinicGuide() ? null : 'clinic-guide';
     if (/sca-practice\.html$/.test(path))    return null;                      // Hot Seat: 5 sample cases (capped in-tool)
     if (/sca-simulator\.html$/.test(path)) return null;                       // AI trial (metered to 1 free run)
     if (/sca-/.test(path))                   return 'sca';                     // incl. sca-group + sca-circuit-ai: members only
@@ -2208,10 +2266,26 @@ window.RGPAuth = RGPAuth;
   // The admin keeps access so it can still be worked on.
   const WITHHELD = ['scribe.html'];
   function isWithheld(){ return WITHHELD.indexOf((location.pathname.split('/').pop()||'')) > -1; }
+  // Clinic Guides (tools/clinic-guides/<slug>.html) are Clinic content: Silver,
+  // Platinum, admin. A free sample (RGP_CONFIG.clinicGuidesFree, set by
+  // assets/clinic-guides.js) is open to everyone on any plan. The guide pages
+  // themselves are gated by assets/clinic-guides.js; this keeps site.js in step.
+  function clinicGuideSlug(){ const m = location.pathname.match(/\/tools\/clinic-guides\/([a-z0-9-]+)\.html$/i); return m ? m[1].toLowerCase() : null; }
+  function isFreeClinicGuide(){
+    const s = clinicGuideSlug(); if (!s) return false;
+    const list = (window.RGP_CONFIG && RGP_CONFIG.clinicGuidesFree) || window.RGP_CLINIC_GUIDES_FREE || [];
+    return list.indexOf(s) > -1;
+  }
   function allowed(){
     if (!window.RGPAuth) return true;
     if (RGPAuth.isAdmin && RGPAuth.isAdmin()) return true;
     if (isWithheld()) return false;
+    if (isFreeClinicGuide()) return true;
+    // Results-day free week: the Resit Clinic page opens to everyone (any tier,
+    // signed in or not) for 7 days from 17:00 on each RGP_RESULTS_DAYS date.
+    // Real clock only (RGP_RESULTS.current, not the ?resultsday= preview). The
+    // AI case-up on the page stays metered by the AI shim as usual.
+    if (/\/tools\/sca-resit(\.html)?$/.test(location.pathname) && window.RGP_RESULTS && RGP_RESULTS.current()) return true;
     const t = RGPAuth.tier();
     if (t === 'platinum') return true;
     if (t === 'silver') return area() === 'clinic';
@@ -2285,6 +2359,7 @@ window.RGPAuth = RGPAuth;
         'sample-case':'You\u2019ve opened a case beyond your 5 free samples.',
         'sample-alg':'You\u2019ve opened a pathway beyond your 5 free samples.',
         'sample-protocol':'You\u2019ve opened a protocol beyond your 5 free samples.',
+        'clinic-guide':'Clinic Guides are part of the Silver (Clinic) and Platinum plans.',
         'sca':'The SCA exam suite is for Gold or Platinum members.',
         'protocol':'The management protocols are a members feature.',
         'ask':'Ask the assistant is a members feature.',
@@ -2676,6 +2751,64 @@ window.RGP_markCurrentPlan = markCurrentPlan;
 window.RGP_renderAuthState = renderAuthState;
 
 /* ---------- AUTO-INIT (replaces legacy sidebar init) ---------- */
+/* ---- Results-day campaign: "Got your result?" banner ----
+   Shown on content pages for 7 days from 17:00 UK time on each results day in
+   window.RGP_RESULTS_DAYS (or with ?resultsday=YYYY-MM-DD to preview). Sits in
+   the page flow under the top nav, so it never covers content. Dismissal is
+   remembered per results day. Not shown on print pages, one-page Snapshots or
+   the Resit Clinic itself (which gets the free-week note instead). Styles:
+   .rgp-results* in assets/site.css. */
+function injectResultsBanner(){
+  const R = window.RGP_RESULTS; if (!R) return;
+  const path = location.pathname;
+  const isClinic = /\/tools\/sca-resit(\.html)?$/.test(path);
+  // Resit Clinic free-week note. On the armed live paywall it follows the real
+  // clock, exactly as the gate does; elsewhere it honours the preview override.
+  if (isClinic){
+    const armed = !!(window.RGP_PAYWALL && RGP_PAYWALL.armed);
+    const cw = armed ? R.current() : R.preview();
+    const head = document.querySelector('.tool-head');
+    if (cw && head && !document.querySelector('.rgp-resit-free')){
+      const n = document.createElement('div');
+      n.className = 'rgp-resit-free';
+      n.setAttribute('role', 'note');
+      n.innerHTML = '<b>Free this week for everyone who has just had their result — until ' + R.endLabel(cw) + '.</b> '
+        + 'The whole clinic (history, examination, diagnosis and your 8-week plan) is open, with or without an account. '
+        + 'Honestly, though: the AI-marked parts need a plan. The optional AI examiner case-up in step 4 needs you to be signed in, '
+        + 'and after one free trial run it needs a Gold or Platinum plan. The tools your plan links to keep their usual access.';
+      head.insertAdjacentElement('afterend', n);
+    }
+    return;
+  }
+  const w = R.preview(); if (!w) return;
+  if (document.querySelector('.rgp-results')) return;
+  // Print pages and one-page Snapshots: never.
+  if (/-print\.html$/.test(path) || /\/summaries\//.test(path) || /[?&]print=1/.test(location.search)) return;
+  if (document.body.classList.contains('summary-mode')) return;
+  const KEY = 'rgp-results-banner-dismissed:' + w.day;
+  try { if (localStorage.getItem(KEY)) return; } catch(e){}
+  const PRE = getPathPrefix();
+  const el = document.createElement('div');
+  el.className = 'rgp-results';
+  el.setAttribute('role', 'region');
+  el.setAttribute('aria-label', 'SCA results day');
+  el.innerHTML =
+    '<div class="rgp-results-body">'
+    + '<p class="rgp-results-msg"><b>Got your SCA result?</b> However it went, take a breath. You are not on your own, and there is a clear next step either way.</p>'
+    + '<div class="rgp-results-links">'
+    + '<a class="rgp-results-a rgp-results-pri" href="' + PRE + 'tools/sca-resit.html">Didn’t pass? Start the free Resit Clinic</a>'
+    + '<a class="rgp-results-a" href="' + PRE + 'sca/resit.html#passed">Passed? Well done — what next</a>'
+    + '</div></div>'
+    + '<button type="button" class="rgp-results-x" aria-label="Dismiss the results-day message"><span aria-hidden="true">×</span></button>';
+  el.querySelector('.rgp-results-x').addEventListener('click', function(){
+    try { localStorage.setItem(KEY, String(Date.now())); } catch(e){}
+    el.remove();
+  });
+  const nav = document.querySelector('header.rgp-nav');
+  if (nav && nav.parentNode === document.body) nav.insertAdjacentElement('afterend', el);
+  else document.body.insertBefore(el, document.body.firstChild);
+}
+
 function injectCookieBanner(){
   try { if (localStorage.getItem('rgp.cookie.consent.v1')) return; } catch(e){}
   if (document.querySelector('.rgp-cookie')) return;
@@ -3322,6 +3455,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Cookie / storage consent banner
   if (!RGP_EMBED) injectCookieBanner();
+
+  // Results-day campaign: "Got your result?" banner + Resit Clinic free-week note
+  if (!RGP_EMBED) { try { injectResultsBanner(); } catch(e){} }
 
   // Add subtle shadow on scroll
   let lastY = 0;
