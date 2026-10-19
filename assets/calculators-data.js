@@ -655,7 +655,7 @@ window.RGP_CALCULATORS = [
       if (s >= 60) return { label:'G2 \u2014 Mild',   severity:'low',  action:'No CKD unless markers.', detail:'Annual review if other risk factors.' };
       if (s >= 45) return { label:'G3a',              severity:'med',  action:'CKD \u2014 annual review, BP/ACR/cardio-renal optimisation.', detail:'NICE NG203 management.' };
       if (s >= 30) return { label:'G3b',              severity:'high', action:'CKD \u2014 6-monthly review; refer renal if ACR \u2265 70.', detail:'NICE NG203.' };
-      if (s >= 15) return { label:'G4',               severity:'severe', action:'Refer renal team.', detail:'Plan for renal replacement therapy discussion.' };
+      if (s >= 15) return { label:'G4',               severity:'severe', action:'Refer renal team if not already known (commonly used locally; not an NG203 criterion) \u2014 check the KFRE.', detail:'Plan for renal replacement therapy discussion.' };
       return         { label:'G5 \u2014 Kidney failure', severity:'severe', action:'Urgent renal referral.', detail:'Renal replacement therapy.' };
     },
     refs:[

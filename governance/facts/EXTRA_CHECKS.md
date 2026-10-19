@@ -1,0 +1,9 @@
+- cases/crohns.html: "folic acid 5mg OD (not on methotrexate day)". Check against SPS / BSG (5 mg once weekly, or 1 mg daily). Likely wrong.
+- PAD page: "NICE NG136 (2019, updated 2026)". Verify the update date.
+- Bismuth quadruple H. pylori: site says metronidazole 400 mg BD. CKS/NICE: PPI + bismuth + metronidazole 400 mg TDS + tetracycline 500 mg QDS for 10 days? Verify and fix site-wide.
+- Infant omeprazole 0.7–1.4 mg/kg/day (cases/cmpa-reflux.html): verify against BNFc/SPC.
+- hypercholesterolaemia case "62 to <53 (target per NG28)" on metformin alone → 48; abnormal-lfts MASLD table "<53".
+- FIX-PASS RULE: tools/clinic-guides/*.html are generated. Fix the source in scratchpad/cg/ or lab/ (and cg_all), then re-import. Never hand-edit assets/search/idx-*.json; rebuild them.
+- GTN: assets/triage/breathlessness.js 'GTN if SBP>110' vs cases/breathlessness.html SBP >90. Verify (NICE acute HF / SPC) and align.
+- cases/headache.html GCA: "visual symptoms → 60 mg" throughout, with no owner-verified IV methylprednisolone 0.5–1 g ×3 days for established visual loss (60 mg oral only if IV not immediately available). b03 says the page gives the IV regimen somewhere; check every instance is consistent.
+- NOTE: b06 and b09 overlap on the statin CK fixes. Dedupe; apply once.

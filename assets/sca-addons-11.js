@@ -4055,7 +4055,7 @@
    "reason": "Video consultation, booked by her mother: “Every time I stand up I go dizzy — school think I’m making it up.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE CG109 (transient loss of consciousness in over-16s) · [2] Heart Rhythm Society expert consensus statement on POTS, 2015 (international) · [3] NICE NG136 (postural BP measurement, updated November 2023) · [4] Children and Families Act 2014 s100 and DfE Supporting pupils at school with medical conditions (2015) · [5] Equality Act 2010 · [6] GMC 0–18 years (2018)",
+   "guideline": "[1] NICE CG109 (transient loss of consciousness in over-16s) · [2] Heart Rhythm Society expert consensus statement on POTS, 2015 (international) · [3] NICE NG136 (postural BP measurement, updated 2026) · [4] Children and Families Act 2014 s100 and DfE Supporting pupils at school with medical conditions (2015) · [5] Equality Act 2010 · [6] GMC 0–18 years (2018)",
    "summary": "Standing-triggered dizziness, palpitations and brain fog that settle on lying down deserve a proper work-up. Exclude cardiac and other causes, do an active stand test, and if PoTS is likely, start non-drug measures and advocate for her at school. Anxiety may coexist, but it is never a default diagnosis.",
    "points": [
     {
@@ -6075,7 +6075,7 @@
    "reason": "Nurse asked him to discuss whether he needs blood-pressure tablets."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG136 (hypertension in adults, updated November 2023) · [2] NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · [3] DVLA Assessing fitness to drive (November 2025 edition)",
+   "guideline": "[1] NICE NG136 (hypertension in adults, updated 2026) · [2] NICE NG238 (cardiovascular disease: risk assessment and reduction, 2023) · [3] DVLA Assessing fitness to drive (November 2025 edition)",
    "summary": "An ABPM/HBPM average of about 142/88 is stage 1 hypertension. At 58, the drug decision rests on cardiovascular risk and target-organ damage, not the number alone — and NICE NG136 words it as a discussion, not an order. Lifestyle advice applies whatever he decides.",
    "points": [
     {
@@ -6548,7 +6548,7 @@
    "reason": "Video consultation: “My home machine gives me totally different numbers — I don’t know what to believe.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG136 (hypertension in adults, updated November 2023) · [2] NICE NG196 (atrial fibrillation, 2021) · [3] British and Irish Hypertension Society, validated BP monitor list",
+   "guideline": "[1] NICE NG136 (hypertension in adults, updated 2026) · [2] NICE NG196 (atrial fibrillation, 2021) · [3] British and Irish Hypertension Society, validated BP monitor list",
    "summary": "Scattered home readings are a measurement problem until proven otherwise. Standardise technique, check the pulse for an irregular rhythm, look for a postural drop if she has symptoms, and judge treatment on a proper average — never on the highest single number.",
    "points": [
     {
@@ -6565,7 +6565,7 @@
     },
     {
      "h": "Postural hypotension",
-     "t": "NICE NG136 [1] (updated 2023): measure BP seated or lying, then after standing for at least 1 minute, in people with symptoms of postural hypotension (falls or postural dizziness), type 2 diabetes, or aged 80 and over. A systolic fall of 20 mmHg or more is significant: review medicines, measure subsequent readings standing. (A diastolic fall of 10 mmHg or more is part of the international consensus definition — international.)"
+     "t": "NICE NG136 [1] (updated 2026): measure BP seated or lying, then after standing for at least 1 minute, in people with symptoms of postural hypotension (falls or postural dizziness), type 2 diabetes, or aged 80 and over. A systolic fall of 20 mmHg or more is significant: review medicines, measure subsequent readings standing. (A diastolic fall of 10 mmHg or more is part of the international consensus definition — international.)"
     },
     {
      "h": "Targets and monitoring",
@@ -7557,7 +7557,7 @@
    "reason": "Video consultation: “My wife says my snoring’s terrible — can you give me something for it?”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG202 (obstructive sleep apnoea/hypopnoea syndrome and obesity hypoventilation syndrome in over 16s, 2021) · [2] DVLA Assessing fitness to drive: a guide for medical professionals (respiratory and sleep conditions) · [3] GMC Confidentiality: patients’ fitness to drive and reporting concerns to the DVLA or DVA (2017) · [4] NICE NG136 (hypertension in adults, 2019, updated 2023) · [5] NICE NG28 (type 2 diabetes in adults) · [6] NICE NG196 (atrial fibrillation, 2021)",
+   "guideline": "[1] NICE NG202 (obstructive sleep apnoea/hypopnoea syndrome and obesity hypoventilation syndrome in over 16s, 2021) · [2] DVLA Assessing fitness to drive: a guide for medical professionals (respiratory and sleep conditions) · [3] GMC Confidentiality: patients’ fitness to drive and reporting concerns to the DVLA or DVA (2017) · [4] NICE NG136 (hypertension in adults, 2019, updated 2026) · [5] NICE NG28 (type 2 diabetes in adults) · [6] NICE NG196 (atrial fibrillation, 2021)",
    "summary": "Snoring with witnessed apnoeas, daytime sleepiness, obesity and a near-miss at the wheel is suspected OSA, not simple snoring. Assess with the Epworth score and STOP-Bang, refer for rapid sleep assessment because he is a vocational driver, and tell him clearly that he must not drive while sleepy. Explain the DVLA rules honestly and supportively, and document the advice.",
    "points": [
     {

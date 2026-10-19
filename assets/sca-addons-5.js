@@ -4407,7 +4407,7 @@
    "reason": "Telephone appointment booked by the practice to discuss results."
   },
   "knowledge": {
-   "guideline": "[1] NICE NG132 Hyperparathyroidism (primary): diagnosis, assessment and initial management (2019) · [2] NICE NG136 Hypertension in adults: diagnosis and management (2019, updated 2023) · [3] NICE CKS Hypercalcaemia (check current version) · [4] NICE NG222 Depression in adults: treatment and management (2022) · [5] Product SPCs for bendroflumethiazide and vitamin D preparations · [6] GMC Decision making and consent (2020)",
+   "guideline": "[1] NICE NG132 Hyperparathyroidism (primary): diagnosis, assessment and initial management (2019) · [2] NICE NG136 Hypertension in adults: diagnosis and management (2019, updated 2026) · [3] NICE CKS Hypercalcaemia (check current version) · [4] NICE NG222 Depression in adults: treatment and management (2022) · [5] Product SPCs for bendroflumethiazide and vitamin D preparations · [6] GMC Decision making and consent (2020)",
    "summary": "Two raised calcium results with a raised PTH: primary hyperparathyroidism, with a previous kidney stone and calcium above 2.85 mmol/L, so NICE NG132 recommends referral to a parathyroid surgery specialist. He is on a thiazide and vitamin D insufficient. He refuses surgery because his wife died after a ‘routine’ operation. Explain, change the medicines, replace vitamin D, explore the fear, agree to hear the specialist’s options, check mood and safety-net.",
    "points": [
     {
@@ -4903,7 +4903,7 @@
    "points": [
     {
      "h": "Grade the result",
-     "t": "UK Kidney Association bands: mild 5.5–5.9, moderate 6.0–6.4, severe 6.5 mmol/L or more. Severe hyperkalaemia found in the community needs urgent hospital assessment for an ECG, repeat potassium and treatment. Moderate hyperkalaemia (6.0–6.4) needs an ECG and same-day clinical assessment, with a repeat within 24 hours if stable; admission depends on the ECG, the trend, renal function and how he is."
+     "t": "UK Kidney Association bands: mild 5.5–5.9, moderate 6.0–6.4, severe 6.5 mmol/L or more. Severe hyperkalaemia found in the community needs urgent hospital assessment for an ECG, repeat potassium and treatment. Moderate hyperkalaemia (6.0–6.4) needs an ECG; same-day hospital assessment if acutely unwell or with AKI; if well, repeat within 1 day after discussing with the renal/medical team."
     },
     {
      "h": "Symptoms do not reassure",
@@ -4919,7 +4919,7 @@
     },
     {
      "h": "After the emergency",
-     "t": "Medication review with the heart-failure plan (NICE NG106 advises checking potassium and renal function after starting or changing these drugs). Reintroduce with monitoring. Low-potassium dietary advice; paracetamol or a non-NSAID plan for the knee. Potassium binders are options if RAAS therapy must continue: sodium zirconium cyclosilicate from a confirmed potassium of 5.5 mmol/L or more (NICE TA1148, April 2026, which updated and replaced TA599), or patiromer from 6.0 mmol/L or more (NICE TA623, 2020); follow local shared-care arrangements."
+     "t": "Medication review with the heart-failure plan (NICE NG106 advises checking potassium and renal function after starting or changing these drugs). Reintroduce with monitoring. Low-potassium dietary advice; paracetamol or a non-NSAID plan for the knee. Potassium binders are options if RAAS therapy must continue: sodium zirconium cyclosilicate from a confirmed potassium of 5.5 mmol/L or more (NICE TA1148, April 2026, which updated and replaced TA599), or patiromer from 6.0 mmol/L or more (NICE TA623, 2020); sodium zirconium cyclosilicate may be started in primary care (UKKA July 2026), and neither replaces emergency treatment."
     },
     {
      "h": "The recall call",
@@ -5410,7 +5410,7 @@
     },
     {
      "h": "Citalopram in older adults",
-     "t": "MHRA Drug Safety Update (December 2011): citalopram causes dose-dependent QT prolongation; maximum 20 mg daily in people over 60, and correct hypokalaemia (a thiazide effect) before use. Check her dose and potassium."
+     "t": "MHRA Drug Safety Update (December 2011): citalopram causes dose-dependent QT prolongation; maximum 20 mg daily in people over 65, and correct hypokalaemia (a thiazide effect) before use. Check her dose and potassium."
     },
     {
      "h": "After the acute episode",

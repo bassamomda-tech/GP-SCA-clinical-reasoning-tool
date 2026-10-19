@@ -31,7 +31,7 @@
    "reason": "Telephone call about “dizzy spells” on standing, made at her daughter’s request."
   },
   "knowledge": {
-   "guideline": "NICE NG249 (2025) · NICE NG136 (updated 2023) · NICE NG5 · NICE NG259 (July 2026; replaced CG146)",
+   "guideline": "NICE NG249 (2025) · NICE NG136 (updated 2026) · NICE NG5 · NICE NG259 (July 2026; replaced CG146)",
    "summary": "Light-headedness on standing in an 82-year-old on five blood-pressure-lowering drugs is postural hypotension until proven otherwise. The medication review is the treatment, and the hidden falls change the whole plan.",
    "points": [
     {
@@ -7873,13 +7873,13 @@
    },
    {
     "who": "dr",
-    "text": "I think it needs ruling out properly, and fast. I need to examine you in person — I can see you here in the next day or two, with a chaperone if you’d like. Then there’s a national urgent pathway for exactly this: a scan of the testicle and a specialist appointment, usually within two weeks.",
+    "text": "I think it needs ruling out properly, and fast. I need to examine you in person — I can see you here in the next day or two, with a chaperone if you’d like. Then there’s a national urgent pathway for exactly this: a scan of the testicle and a specialist appointment — you should be seen quickly and get an answer within 4 weeks (28 days).",
     "dom": "cm",
     "why": "Arranges face-to-face examination and the NICE NG12 suspected cancer pathway"
    },
    {
     "who": "pt",
-    "text": "Two weeks. Right. And if it is?"
+    "text": "Four weeks at most. Right. And if it is?"
    },
    {
     "who": "dr",
@@ -8056,7 +8056,7 @@
      "why": "Painless reassurance is the exact error that delays diagnosis of testicular cancer."
     },
     {
-     "dont": "“It could be cancer, so I’m referring you on the suspected cancer pathway (two-week wait).”",
+     "dont": "“It could be cancer, so I’m referring you on the suspected cancer pathway.”",
      "instead": "“This needs ruling out quickly. I’ll examine you this week and arrange an urgent scan and specialist review.”",
      "why": "Blunt labelling without context frightens a young man who is already minimising, and he may not turn up."
     },

@@ -64,7 +64,7 @@
       { name: 'Hydroxocobalamin (no neuro features): loading', dose: '1 mg IM', freq: '3\u00d7/week', route: 'IM', days: '2 weeks' },
       { name: 'Hydroxocobalamin: maintenance', dose: '1 mg IM', freq: 'Every 2–3 months', route: 'IM', days: 'Lifelong (if irreversible cause)' },
       { name: 'Neurological involvement: loading', dose: '1 mg IM', freq: 'Alternate days', route: 'IM', days: 'Until no further improvement' },
-      { name: 'Dietary deficiency (vegan): oral cyanocobalamin', dose: '50\u20131000 micrograms', freq: 'OD', route: 'PO', days: 'Ongoing / correct diet' },
+      { name: 'Dietary deficiency (vegan): oral cyanocobalamin', dose: '50\u2013150 micrograms', freq: 'OD', route: 'PO', days: 'Ongoing / correct diet' },
     ],
     altRegimens: [
       { label: 'Pernicious anaemia / malabsorption', drugs: 'Lifelong IM hydroxocobalamin maintenance every 2–3 months (neuro: 2-monthly) (NICE/SPC).' },
@@ -87,7 +87,7 @@
 - Combined with folate \u2192 treat B12 FIRST.
 - No neuro: hydroxocobalamin 1 mg IM 3x/week for 2 weeks, then 1 mg IM every 2-3 months (lifelong if PA/malabsorption) (NICE/SPC).
 - Neuro involvement: 1 mg IM alternate days until no further improvement, then 2-monthly.
-- Dietary/vegan: oral cyanocobalamin 50-1000 mcg OD / fortified foods.
+- Dietary/vegan: oral cyanocobalamin 50-150 micrograms OD (national guidance) / fortified foods.
 - Check PA antibodies; recheck FBC; watch K+ early; check ferritin.`,
     sources: [
       { label:'NICE NG239 — Vitamin B12 deficiency', url:'https://www.nice.org.uk/guidance/ng239' },

@@ -80,7 +80,7 @@ tr:last-child td{border-bottom:0}
   a{color:var(--ink);text-decoration:none}
 }
 </style>
-<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
 </head>
 <body>
 <div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/dyspepsia.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
@@ -124,7 +124,6 @@ tr:last-child td{border-bottom:0}
           <tr><td>Bowel change, diarrhoea, family history</td><td>Coeliac, IBS overlap; GI cancer risk</td></tr>
         </table>
       </div></div>
-
       <div class="blk purple"><h2><span class="n">2</span>Examination findings that change the plan<small>NG12</small></h2><div class="body">
         <table>
           <tr><td><b>Pulse, BP, pallor</b></td><td>Bleeding or anaemia → FBC; unstable = 999</td></tr>
@@ -136,9 +135,19 @@ tr:last-child td{border-bottom:0}
         </table>
       </div></div>
     </div>
-
     <div class="col">
-      <div class="blk blue"><h2><span class="n">3</span>Key differentials<small>clue → think → first test</small></h2><div class="body">
+      <div class="blk purple"><h2><span class="n">3</span>Investigations checklist<small>CG184 · QS96</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>H. pylori</b>: urea breath test or stool antigen</li>
+          <li><b>PPI stopped 2 weeks</b> before the test</li>
+          <li>No antibiotics for <b>4 weeks</b> before</li>
+          <li>FBC if pallor, anaemia or 55+</li>
+          <li>Coeliac serology if indicated</li>
+          <li>LFTs if biliary; ECG if cardiac</li>
+        </ul>
+        <p style="margin-top:2px"><b>Do not:</b> request OGD for typical reflux without alarm features · test for H. pylori while on a PPI · use office-based serology. Uninvestigated "reflux-like" symptoms are managed as uninvestigated dyspepsia (CG184).</p>
+      </div></div>
+      <div class="blk blue"><h2><span class="n">4</span>Key differentials<small>clue → think → first test</small></h2><div class="body">
         <table>
           <tr><th>Clue</th><th>Think</th><th>First test</th></tr>
           <tr><td>Typical heartburn, regurgitation</td><td><b>GORD</b></td><td>None: clinical; PPI course</td></tr>
@@ -151,18 +160,6 @@ tr:last-child td{border-bottom:0}
           <tr><td>Diabetes, vomiting, early satiety</td><td><b>Gastroparesis</b></td><td>HbA1c; refer</td></tr>
           <tr><td>Dysphagia, 55+ with weight loss</td><td><b>Upper GI cancer</b></td><td>Referral, not a test</td></tr>
         </table>
-      </div></div>
-
-      <div class="blk purple"><h2><span class="n">4</span>Investigations checklist<small>CG184 · QS96</small></h2><div class="body">
-        <ul class="tick">
-          <li><b>H. pylori</b>: urea breath test or stool antigen</li>
-          <li><b>PPI stopped 2 weeks</b> before the test</li>
-          <li>No antibiotics for <b>4 weeks</b> before</li>
-          <li>FBC if pallor, anaemia or 55+</li>
-          <li>Coeliac serology if indicated</li>
-          <li>LFTs if biliary; ECG if cardiac</li>
-        </ul>
-        <p style="margin-top:2px"><b>Do not:</b> request OGD for typical reflux without alarm features · test for H. pylori while on a PPI · use office-based serology. Uninvestigated "reflux-like" symptoms are managed as uninvestigated dyspepsia (CG184).</p>
       </div></div>
     </div>
 
@@ -185,6 +182,7 @@ tr:last-child td{border-bottom:0}
   <div class="ptitle">Page 2 · Manage and refer <span>lifestyle and drugs → test-and-treat or PPI → step down → refer if it fails</span></div>
 
   <div class="grid">
+
     <div class="blk teal span"><h2><span class="n">6</span>Uninvestigated dyspepsia — the CG184 sequence<small>either test-and-treat or a PPI first, then the other</small></h2><div class="body">
       <div class="ladder">
         <div><b class="h">Step 1 · causes</b>Review drugs (stop NSAIDs where possible); lifestyle; antacid or alginate for mild symptoms.</div>
@@ -205,23 +203,16 @@ tr:last-child td{border-bottom:0}
       <table>
         <tr><th>Situation</th><th>PPI</th><th>Plus</th></tr>
         <tr><td><b>First line</b></td><td rowspan="3">Omeprazole 20 mg BD (or another PPI at its eradication dose)</td><td>Amoxicillin 1 g BD + clarithromycin 500 mg BD <i>or</i> metronidazole 400 mg BD</td></tr>
-        <tr><td><b>Penicillin allergy</b></td><td>Clarithromycin <b>250 mg</b> BD + metronidazole 400 mg BD</td></tr>
-        <tr><td>Penicillin allergy + previous clarithromycin</td><td>Bismuth subsalicylate 525 mg QDS + metronidazole 400 mg BD + tetracycline 500 mg QDS</td></tr>
+        <tr><td><b>Penicillin allergy</b></td><td>Clarithromycin <b>500 mg</b> BD + metronidazole 400 mg BD</td></tr>
+        <tr><td>Penicillin allergy + previous clarithromycin</td><td>Bismuth + tetracycline 500 mg QDS + metronidazole 400 mg BD (NICE). Pylera®: 3 capsules QDS for 10 days with PPI BD; do not mix the schedules</td></tr>
         <tr><td><b>Second line</b></td><td colspan="2">PPI + amoxicillin + whichever of clarithromycin or metronidazole was not used (CG184); further failure → gastroenterology, not more empirical courses</td></tr>
       </table>
     </div></div>
-
     <div class="col">
-      <div class="blk blue"><h2><span class="n">8</span>When and where to refer<small>NG12 · CG184</small></h2><div class="body">
-        <table>
-          <tr><td><b>999</b></td><td>Unstable bleed, perforation, ACS</td></tr>
-          <tr><td><b>Same day</b></td><td>Stable haematemesis or melaena; vomiting with dehydration</td></tr>
-          <tr><td><b>Suspected cancer pathway</b></td><td>Dysphagia (any age); 55+ with weight loss and dyspepsia, reflux or upper abdominal pain; jaundice 40+</td></tr>
-          <tr><td><b>Non-urgent OGD</b></td><td>NG12 "consider" criteria (red box)</td></tr>
-          <tr><td><b>Routine gastro</b></td><td>Symptoms after test-and-treat and a PPI course; refractory reflux; second-line eradication failed</td></tr>
-        </table>
+      <div class="blk green"><h2><span class="n">8</span>Lifestyle — offer to everyone<small>CG184</small></h2><div class="body">
+        <p>Lose weight if overweight · stop smoking · cut alcohol and trigger foods · smaller meals, none late at night · raise the head of the bed for night symptoms.</p>
+        <p class="say" style="margin-top:3px">"This is a course, not a forever tablet. Once you're settled we'll step it down to the lowest dose that works — and if you ever have trouble swallowing, vomit blood or lose weight, come back straight away."</p>
       </div></div>
-
       <div class="blk slate"><h2><span class="n">9</span>Long-term PPI — watch for<small>MHRA · CG184</small></h2><div class="body">
         <table>
           <tr><td><b>Low magnesium</b></td><td>Check if long-term, with digoxin or diuretics, or symptoms (MHRA)</td></tr>
@@ -231,7 +222,6 @@ tr:last-child td{border-bottom:0}
         </table>
       </div></div>
     </div>
-
     <div class="col">
       <div class="blk purple"><h2><span class="n">10</span>Safety-net and follow-up checklist<small>CG184 · NG12</small></h2><div class="body">
         <ul class="tick" style="grid-template-columns:1fr">
@@ -245,10 +235,14 @@ tr:last-child td{border-bottom:0}
           <li>Written information given (NHS, Guts UK)</li>
         </ul>
       </div></div>
-
-      <div class="blk green"><h2><span class="n">11</span>Lifestyle — offer to everyone<small>CG184</small></h2><div class="body">
-        <p>Lose weight if overweight · stop smoking · cut alcohol and trigger foods · smaller meals, none late at night · raise the head of the bed for night symptoms.</p>
-        <p class="say" style="margin-top:3px">"This is a course, not a forever tablet. Once you're settled we'll step it down to the lowest dose that works — and if you ever have trouble swallowing, vomit blood or lose weight, come back straight away."</p>
+      <div class="blk blue"><h2><span class="n">11</span>When and where to refer<small>NG12 · CG184</small></h2><div class="body">
+        <table>
+          <tr><td><b>999</b></td><td>Unstable bleed, perforation, ACS</td></tr>
+          <tr><td><b>Same day</b></td><td>Stable haematemesis or melaena; vomiting with dehydration</td></tr>
+          <tr><td><b>Suspected cancer pathway</b></td><td>Dysphagia (any age); 55+ with weight loss and dyspepsia, reflux or upper abdominal pain; jaundice 40+</td></tr>
+          <tr><td><b>Non-urgent OGD</b></td><td>NG12 "consider" criteria (red box)</td></tr>
+          <tr><td><b>Routine gastro</b></td><td>Symptoms after test-and-treat and a PPI course; refractory reflux; second-line eradication failed</td></tr>
+        </table>
       </div></div>
     </div>
 
@@ -264,6 +258,6 @@ tr:last-child td{border-bottom:0}
   <div class="foot"><span>Reasoning GP Clinic Guide · Dyspepsia and reflux · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE CG184 (2014, updated 2019), NG12 (upper GI amended 2025), QS96, HTG690, NG20; NICE CKS (H. pylori); MHRA DSU (PPIs, domperidone, metoclopramide)</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/dyspepsia.html</span></div>
 </section>
 
-<script src="../../assets/clinic-guides.js?v=1"></script>
+<script src="../../assets/clinic-guides.js?v=4"></script>
 </body>
 </html>

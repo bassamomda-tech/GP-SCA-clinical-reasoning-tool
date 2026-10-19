@@ -4,7 +4,7 @@
    Four ORIGINAL cases. Hidden agenda + full ICE in every case.
    The recurring lesson: a lump / petechiae / enlarging swelling is
    taken seriously, examined, and routed down the correct NICE NG12
-   suspected-cancer (2WW / direct-access) pathway — never reassured
+   suspected-cancer (referral / direct-access) pathway — never reassured
    away from a photo, a phone call, or a wish for it to be nothing.
    Each case names the precise NG12 threshold and the action.
    Pushes into SCA_CASES + SCA_EXTRAS. Load AFTER sca-cases41.js.
@@ -12,7 +12,7 @@
 
 (function(){
 
-  /* ============ 161. VIDEO — Breast lump in a woman of 34 (NG12 breast 2WW) ============ */
+  /* ============ 161. VIDEO — Breast lump in a woman of 34 (NG12 breast suspected cancer pathway) ============ */
   const c161 = {
     id:'breast-lump-2ww', title:'"It\u2019s probably just a cyst \u2014 I\u2019m too young for anything bad, aren\u2019t I?"', type:'video', duration:12,
     meta:{ age:34, sex:'F', setting:'Video consultation \u2014 a breast lump she found herself.', system:'Breast / Suspected breast cancer', checked:'October 2026' },
@@ -49,13 +49,13 @@
       { dom:'ro', text:'Explains triple assessment (clinical exam + mammogram/ultrasound \u00b1 biopsy) and the realistic message that MOST referred lumps prove benign \u2014 referral is precautionary, not a cancer diagnosis' },
       { dom:'ro',   text:'Recognises the reassurance-seeking as fear, surfaces the worry about cancer/hospitals/her children gently, and does NOT collude with the wish to be told it is nothing' },
       { dom:'ro',   text:'Handles the examination sensitively (consent, dignity, chaperone) and balances honesty (this needs urgent checking) with calm reassurance so she engages rather than avoids' },
-      { dom:'cm',    text:'Safety-nets and follows up: the suspected cancer pathway timeframe (seen within about 2 weeks; NHS England Faster Diagnosis Standard of 28 days to diagnosis or ruling out) and what to expect at the breast clinic, what change would warrant sooner contact, ensures she will attend, acknowledges the fear, and arranges to review the outcome \u2014 examination + correct NICE NG12 referral, not collusive reassurance' },
+      { dom:'cm',    text:'Safety-nets and follows up: the suspected cancer pathway timeframe (NHS England Faster Diagnosis Standard: diagnosis or ruling out within 28 days) and what to expect at the breast clinic, what change would warrant sooner contact, ensures she will attend, acknowledges the fear, and arranges to review the outcome \u2014 examination + correct NICE NG12 referral, not collusive reassurance' },
     ],
     worked:[
       { lbl:'Take it seriously, kindly', txt:'"I\u2019m really glad you came \u2014 and I\u2019m not going to just reassure you and wave you off, because that wouldn\u2019t be fair to you. A new lump deserves to be taken properly seriously, whatever your age. Let me ask a few things, and then I need to examine you carefully in person — I can’t do that over video, so I’d like you to come in to the surgery today."' },
       { lbl:'Gently correct the myths', txt:'"Two things I want to be honest about, because they\u2019re common and they matter: being 34 doesn\u2019t mean you can\u2019t have something that needs checking, and a lump being painless isn\u2019t reassuring \u2014 in fact most breast lumps that turn out to be important don\u2019t hurt. So \u2018it doesn\u2019t hurt\u2019 doesn\u2019t let us off looking."' },
       { lbl:'Examine with dignity', txt:'"When you come in, I’d like to examine both breasts and under your arms. I’ll have a chaperone in with us, you can stop me at any point, and I\u2019ll talk you through it. Is that okay?"' },
-      { lbl:'Name the pathway honestly', txt:'"Here\u2019s the plan, and I want to be straight with you. Because you\u2019re over 30 with a new lump, the right and safe thing — whatever it feels like to me — is to refer you to the breast clinic on the suspected cancer pathway, to be seen within two weeks. I’ll send that today; it doesn’t wait for the examination. They do what\u2019s called triple assessment: an examination, a scan or mammogram, and a tiny sample if needed, all usually in one visit."' },
+      { lbl:'Name the pathway honestly', txt:'"Here\u2019s the plan, and I want to be straight with you. Because you\u2019re over 30 with a new lump, the right and safe thing — whatever it feels like to me — is to refer you to the breast clinic on the suspected cancer pathway — you should be seen quickly and get an answer within 4 weeks (28 days). I’ll send that today; it doesn’t wait for the examination. They do what\u2019s called triple assessment: an examination, a scan or mammogram, and a tiny sample if needed, all usually in one visit."' },
       { lbl:'Reassure with reasons', txt:'"This is NOT me telling you it\u2019s cancer \u2014 the large majority of lumps sent this way turn out to be completely benign, often a cyst exactly as you hoped. But the only way to KNOW is to have it properly looked at, and going quickly is what keeps you safe and gets you your answer fastest."' },
       { lbl:'Surface the fear + safety-net', txt:'"Can I gently ask \u2014 what\u2019s the worry underneath this for you? \u2026 Your little ones. Of course. That fear makes complete sense, and it\u2019s exactly why we get a clear answer rather than guess. If anything changes \u2014 the lump grows, skin or nipple changes, you feel unwell \u2014 come back sooner. I\u2019ll make sure the referral goes today and I\u2019ll follow up the result with you."' },
     ],
@@ -75,7 +75,7 @@
     }
   };
 
-  /* ============ 162. VIDEO — Persistent neck lump in an adult of 49 (NG12 head & neck 2WW) ============ */
+  /* ============ 162. VIDEO — Persistent neck lump in an adult of 49 (NG12 head & neck suspected cancer pathway) ============ */
   const c162 = {
     id:'neck-lump-2ww', title:'"It\u2019s just a gland up from a cold \u2014 it\u2019ll go down, won\u2019t it?"', type:'video', duration:12,
     meta:{ age:49, sex:'M', setting:'Video consultation \u2014 a lump in the side of the neck.', system:'Head & neck / Suspected cancer', checked:'October 2026' },

@@ -96,23 +96,23 @@ RGPTriage.register('tiredness', {
     {
       id:'severe_hyperk',
       tier:'emergency',
-      label:'Severe hyperkalaemia (K⁺ >6.5)',
+      label:'Severe hyperkalaemia (K⁺ ≥6.5)',
       action:'Call 999 — risk of arrhythmia',
       patientPhrase:'"Your potassium is dangerously high — I need to send you to hospital straight away for an ECG and treatment."',
       referralTemplate:'Severe hyperkalaemia: K⁺ [value] mmol/L\nAction: ECG immediately if available; admit for IV calcium gluconate + insulin/dextrose.\nReview ACEi/ARB/spiro/K-sparing meds + NSAIDs.',
       source:'Renal Association hyperkalaemia (2023)',
       sourceUrl:'https://ukkidney.org/health-professionals/guidelines',
-      when: i => i.k != null && i.k > 6.5
+      when: i => i.k != null && i.k >= 6.5
     },
     {
       id:'mod_hyperk',
-      tier:'emergency',
-      label:'Moderate hyperkalaemia (K⁺ 6.0–6.5)',
-      action:'Same-day admission or urgent renal advice',
+      tier:'urgent',
+      label:'Moderate hyperkalaemia (K⁺ 6.0–6.4)',
+      action:'ECG today; same-day hospital assessment if acutely unwell or with AKI; if well, repeat within 1 day after discussing with the renal/medical team',
       patientPhrase:'"Your potassium is high enough to be dangerous. I need to act on this today."',
       referralTemplate:'Hyperkalaemia: K⁺ [value] mmol/L\nECG required. Hold ACEi/ARB/spiro/K-sparing.',
       source:'Renal Association hyperkalaemia',
-      when: i => i.k != null && i.k > 6.0 && i.k <= 6.5
+      when: i => i.k != null && i.k >= 6.0 && i.k < 6.5
     },
     {
       id:'severe_hypoNa',
@@ -256,7 +256,7 @@ RGPTriage.register('tiredness', {
       id:'cancer_dysphagia',
       tier:'cancer',
       label:'Progressive dysphagia — upper GI suspected cancer pathway referral',
-      action:'Upper GI suspected cancer pathway referral (≤2 weeks)',
+      action:'Upper GI suspected cancer pathway referral (NG12)',
       patientPhrase:'"Difficulty swallowing always needs an urgent referral to look at the food pipe."',
       referralTemplate:'Suspected cancer pathway referral — upper GI cancer (NICE NG12 (updated April 2026) §1.2.1).\nProgressive dysphagia.\nWeight loss: [Y/N], reflux: [Y/N].',
       source:'NICE NG12 (updated April 2026) §1.2 upper GI',
@@ -266,7 +266,7 @@ RGPTriage.register('tiredness', {
       id:'cancer_pmb',
       tier:'cancer',
       label:'Post-menopausal bleeding — endometrial suspected cancer pathway referral',
-      action:'Gynae suspected cancer pathway referral (TVUSS in 2 weeks) if aged 55+ and not attributable to HRT (NICE NG12 (updated April 2026) §1.5.12); under 55 — assess, low threshold for referral',
+      action:'Gynae suspected cancer pathway referral (NG12) if aged 55+ and not attributable to HRT (NICE NG12 (updated April 2026) §1.5.12); under 55 — assess, low threshold for referral',
       patientPhrase:'"Any bleeding after the menopause has to be referred urgently — even though most causes turn out to be benign."',
       referralTemplate:'Suspected cancer pathway referral — endometrial cancer (NICE NG12 (updated April 2026) §1.5.12).\nPMB, on HRT: [Y/N], anticoagulant: [Y/N].',
       source:'NICE NG12 (updated April 2026) §1.5 gynaecological',
@@ -413,7 +413,7 @@ RGPTriage.register('tiredness', {
       label:'Severe B12 deficiency (B12 <100 ng/L) or B12 + neurology',
       action:'Start IM hydroxocobalamin loading; urgent if neurological signs',
       patientPhrase:'"Your B12 is very low — that\'s a fixable cause of tiredness. We\'ll start an injection straight away."',
-      referralTemplate:'B12 deficiency.\nB12 [value] ng/L, MCV [value], IF antibody pending.\nHydroxocobalamin 1 mg IM 3×/week for 2 weeks (if neurology: alternate days until no further improvement, then 2-monthly — BNF).\nIf neurology — refer same-week.',
+      referralTemplate:'B12 deficiency.\nB12 [value] ng/L, MCV [value], IF antibody pending.\nHydroxocobalamin 1 mg IM 3×/week for 2 weeks (if neurology: alternate days until no further improvement, then 2-monthly — SPC).\nIf neurology — refer same-week.',
       source:'BSH B12/folate guidelines',
       when: i => i.b12 != null && i.b12 < 100
     },
@@ -453,12 +453,23 @@ RGPTriage.register('tiredness', {
     {
       id:'low_b12',
       tier:'routine',
-      label:'Mild B12 deficiency (100–200 ng/L)',
+      label:'B12 deficiency (100–179 ng/L; NICE NG239 <180)',
       action:'Routine: oral cyanocobalamin trial OR IM if absorption concerns, recheck',
       patientPhrase:'"Your B12 is on the low side. We\'ll top it up and recheck."',
-      referralTemplate:'Mild B12 deficiency.\nB12 [value]. Dietary review (vegan/vegetarian, alcohol).\nCyanocobalamin 50 mcg OD oral × 1 month or IM if absorption concern.',
-      source:'BSH B12',
-      when: i => i.b12 != null && i.b12 >= 100 && i.b12 < 200
+      referralTemplate:'B12 deficiency.\nB12 [value]. Dietary review (vegan/vegetarian, alcohol).\nTreat by cause (NICE NG239): diet-related → oral cyanocobalamin 50–150 micrograms daily; autoimmune gastritis, malabsorption or neurological features → IM hydroxocobalamin. Total B12 180–350 ng/L is indeterminate: consider active B12/MMA.',
+      source:'NICE NG239; BSH B12',
+      when: i => i.b12 != null && i.b12 >= 100 && i.b12 < 180
+    },
+    {
+      id:'indeterminate_b12',
+      tier:'routine',
+      label:'B12 indeterminate (180–350 ng/L; NICE NG239)',
+      action:'Routine: check MMA or active B12 if available · consider treatment if symptomatic',
+      patientPhrase:'"Your B12 is in a borderline range. We\'ll do a further test if it\'s available, and we may treat it if you have symptoms that fit."',
+      referralTemplate:'B12 indeterminate (NICE NG239).\nTotal B12 [value] ng/L (180–350 = indeterminate).\nCheck MMA or active B12 (holotranscobalamin) if available. Consider treatment if symptoms fit B12 deficiency; treat by cause as for deficiency.\nNeurological features → treat as deficiency (IM hydroxocobalamin) and seek advice.',
+      source:'NICE NG239',
+      sourceUrl:'https://www.nice.org.uk/guidance/ng239',
+      when: i => i.b12 != null && i.b12 >= 180 && i.b12 <= 350
     },
     {
       id:'low_vitd',

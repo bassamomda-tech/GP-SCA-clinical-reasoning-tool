@@ -44,7 +44,10 @@ import argparse, html, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_SRC = os.environ.get(
     'CLINIC_GUIDES_SRC',
-    '/tmp/claude-0/-home-user-GP-SCA-clinical-reasoning-tool/db1fda5d-4448-5a27-9996-ec762174568a/scratchpad/cg')
+    # cg_all = the original Clinic Guides (cg/) plus the lab results series (lab/) in ONE
+    # folder. A run removes imported guides missing from the source, so always point
+    # it at the combined folder.
+    '/tmp/claude-0/-home-user-GP-SCA-clinical-reasoning-tool/db1fda5d-4448-5a27-9996-ec762174568a/scratchpad/cg_all')
 DEST_DIR = os.path.join(ROOT, 'tools', 'clinic-guides')
 MANIFEST = os.path.join(ROOT, 'assets', 'clinic-guides.json')
 HUB = os.path.join(ROOT, 'tools', 'clinic-guides.html')
@@ -63,8 +66,56 @@ CATEGORIES = [
     ('Gut', '\U0001f37d️', ['dyspepsia', 'ulcerative-colitis', 'crohns-disease']),
     ('Musculoskeletal', '\U0001f9b4', ['osteoarthritis', 'sciatica']),
     ('Children and skin', '\U0001f9d2', ['cmpa', 'infant-reflux', 'eczema', 'acne']),
+    # Lab results series: one guide per abnormal-result pathway (tools/algorithms/<slug>.html),
+    # in the same order as the Lab Results Handbook PDF (GROUP_EXTRA below).
+    ('Lab results', '\U0001f9ea', [
+        'raised-creatinine', 'hyponatraemia', 'hypernatraemia', 'hyperkalaemia', 'hypokalaemia', 'magnesium-deficiency',
+        'hypercalcaemia', 'hypocalcaemia', 'abnormal-bone-profile', 'vitamin-d-deficiency',
+        'hyperglycaemia', 'hypoglycaemia', 'abnormal-lipid-profile', 'high-triglycerides',
+        'abnormal-tfts', 'hyperprolactinaemia', 'testosterone-deficiency', 'female-hormone-abnormalities',
+        'microcytosis', 'macrocytosis', 'normocytic-anaemia', 'low-ferritin', 'high-ferritin',
+        'vitamin-b12-deficiency', 'low-folate', 'polycythaemia',
+        'leucocytosis', 'leucopenia', 'lymphocytosis', 'lymphopenia', 'eosinophilia',
+        'thrombocytosis', 'thrombocytopenia', 'pancytopenia',
+        'abnormal-lfts', 'jaundice', 'raised-creatine-kinase',
+        'high-crp-esr', 'abnormal-immunoglobulin', 'abnormal-cancer-markers', 'high-psa', 'allergy-test-abnormalities',
+    ]),
 ]
 OTHER = ('Other', '\U0001f4c4')
+
+# Optional static block shown at the top of a category's section on the hub,
+# above its cards (kept here so a re-run never drops it). Not a .cg-card, so
+# it is not counted as a guide; it hides with its section when a search empties it.
+# The Lab Results Handbook is a SEPARATE one-off purchase (£20 via PayPal), NOT
+# part of any plan. data-cg-product="<id>" must be a product in PRODUCTS in
+# backend/worker.js; assets/clinic-guides.js fills .cg-hb-buy with the right
+# state (Sign in to buy / PayPal button / Download / Coming soon) and the Worker
+# checks the purchase server-side (/api/shop/*, /api/download/<id>).
+# data-cg-local is used ONLY on previews/local copies and for the admin account;
+# buyers never get the public file. Delete assets/downloads/*.pdf once the shop
+# is live (backend/README.md, "Handbook shop").
+GROUP_EXTRA = {
+    'Lab results': (
+        '        <div class="cg-handbook" data-cg-product="lab-handbook" data-cg-price="20" '
+        'data-cg-title="Lab Results Handbook" data-cg-local="../assets/downloads/Lab_Results_Handbook_v1.pdf">\n'
+        '          <div class="cg-hb-icon" aria-hidden="true">PDF</div>\n'
+        '          <div class="cg-hb-body">\n'
+        '            <h3 class="cg-hb-t">Lab Results Handbook <span class="cg-hb-fmt">(PDF, 89 pages)</span></h3>\n'
+        '            <p class="cg-hb-price"><b>£20</b> · one-off purchase · not included in subscription plans</p>\n'
+        '            <p class="cg-hb-d">Every lab results guide below, plus the Anaemia guide, in one printable A4 book with a contents page: '
+        '43 guides, 89 pages. Version 1.1, October 2026 · next review April 2027. Yours to keep: buy once, download any time.</p>\n'
+        '            <p class="cg-hb-note" hidden></p>\n'
+        '          </div>\n'
+        '          <div class="cg-hb-buy" aria-live="polite">\n'
+        '            <a class="cg-btn pri cg-hb-btn" href="mailto:bassamomda@gmail.com?subject=Lab%20Results%20Handbook%20(%C2%A320)">Buy · £20</a>\n'
+        '          </div>\n'
+        '        </div>\n'
+    ),
+}
+# Cache-buster for assets/clinic-guides.js on the guide pages AND the hub.
+# Bump it whenever that script changes; a re-run rewrites every reference.
+CG_JS_V = 4
+
 CAT_OF = {s: c for c, _, slugs in CATEGORIES for s in slugs}
 ORDER = {s: i for i, s in enumerate(s for _, _, slugs in CATEGORIES for s in slugs)}
 
@@ -122,25 +173,28 @@ def parse_guide(slug, src):
     if not m:
         raise ValueError('no "Full protocol: gpreasoning.uk/tools/..." address in the header')
     proto = m.group(1)
-    foot = re.findall(r'<div class="foot">(.*?)</div>', src, re.S)
+    foot = re.findall(r'<div class="foot"[^>]*>(.*?)</div>', src, re.S)
     foot_protos = set(PROTO_RE.findall(' '.join(foot)))
     if foot_protos and foot_protos != {proto}:
         warn(f'{slug}: footer names {", ".join(sorted(foot_protos))} but the header names {proto} (header used)')
     h1 = re.search(r'<h1>(.*?)</h1>', src, re.S)
     title = one_line(text(re.sub(r'<small>.*?</small>', '', h1.group(1), flags=re.S))) if h1 else slug
-    scope_m = re.search(r'<div class="scope">(.*?)</div>', src, re.S)
+    scope_m = re.search(r'<div class="scope"[^>]*>(.*?)</div>', src, re.S)
     scope = one_line(text(scope_m.group(1))) if scope_m else ''
-    meta_m = re.search(r'<div class="meta">(.*?)</div>', src, re.S)
+    meta_m = re.search(r'<div class="meta"[^>]*>(.*?)</div>', src, re.S)
     guidance, reviewed, next_review = [], '', ''
     if meta_m:
-        for line in text(meta_m.group(1)).split('\n'):
-            line = one_line(line)
-            if not line:
-                continue
-            r = re.match(r'Reviewed\s+(.+?)\s*·\s*next review\s+(.+)$', line, re.I)
-            if r:
-                reviewed, next_review = r.group(1), r.group(2)
-            elif not line.lower().startswith('full protocol'):
+        mt = text(meta_m.group(1))
+        # the protocol / pathway address (may wrap onto its own line) is not guidance
+        mt = re.sub(r'Full (?:protocol|pathway):?\s*(?:gpreasoning\.uk/\S+)?', '', mt, flags=re.I)
+        # "Reviewed <Mon YYYY> · next [review] <Mon YYYY>", on its own line or run on after the sources
+        r = re.search(r'Reviewed\s+(.+?)[\s·]+next(?:\s+review)?\s+([A-Za-z]+\s+\d{4})', mt, re.I)
+        if r:
+            reviewed, next_review = one_line(r.group(1)), one_line(r.group(2))
+            mt = mt[:r.start()] + mt[r.end():]
+        for line in mt.split('\n'):
+            line = one_line(line).strip(' ·')
+            if line:
                 guidance.append(line)
     pages = len(re.findall(r'<section class="page"', src))
     if pages != 2:
@@ -186,13 +240,18 @@ def rewrite(slug, src, g):
 
     # 4. screen-only style for the back link (print output untouched)
     style = ('<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;'
-             'background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>')
+             'background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}'
+             # phones: let the header wrap and long words/addresses break, so nothing scrolls sideways
+             '@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}'
+             '.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>')
     out = re.sub(r'<style id="cg-site">.*?</style>\s*', '', out, flags=re.S)
+    if '</head>' not in out:   # some guides omit the optional </head>; put it before <body>
+        out = re.sub(r'<body', '</head>\n<body', out, count=1)
     out = out.replace('</head>', style + '\n</head>', 1)
 
     # 5. shared script: access check, #print, framed view
     out = re.sub(r'<script src="[^"]*assets/clinic-guides\.js[^"]*"></script>\s*', '', out)
-    out = out.replace('</body>', '<script src="../../assets/clinic-guides.js?v=1"></script>\n</body>', 1)
+    out = out.replace('</body>', f'<script src="../../assets/clinic-guides.js?v={CG_JS_V}"></script>\n</body>', 1)
 
     # 6. mark as imported (lets a re-run tidy up guides whose source has gone)
     out = re.sub(r'<html\b([^>]*)>', lambda m: '<html' + re.sub(r'\s' + MARK + r'="[^"]*"', '', m.group(1)) + f' {MARK}="{esc(slug)}">', out, count=1)
@@ -230,7 +289,8 @@ def hub_cards(guides):
             f'      <section class="cg-group" id="{slugify(cat)}" data-group="{slugify(cat)}">\n'
             f'        <div class="alg-group-head"><span class="agh-icon" aria-hidden="true">{icon}</span><h2>{esc(cat)}</h2>'
             f'<span class="agh-count">{n} guide{"s" if n != 1 else ""}</span></div>\n'
-            '        <div class="cg-grid">\n' + '\n'.join(card(g) for g in gs) + '\n        </div>\n      </section>')
+            + GROUP_EXTRA.get(cat, '')
+            + '        <div class="cg-grid">\n' + '\n'.join(card(g) for g in gs) + '\n        </div>\n      </section>')
     return '\n'.join(groups)
 
 def update_hub(guides, check):
@@ -247,6 +307,7 @@ def update_hub(guides, check):
     new = hub[:i + len(a)] + '\n' + hub_cards(guides) + '\n      ' + hub[j:]
     # guide counts shown in the hub copy: <span data-cg-count>N</span>
     new = re.sub(r'(<span data-cg-count>)\d+(</span>)', lambda m: m.group(1) + str(len(guides)) + m.group(2), new)
+    new = re.sub(r'(assets/clinic-guides\.js)(?:\?v=\d+)?(")', lambda m: f'{m.group(1)}?v={CG_JS_V}{m.group(2)}', new)
     new = re.sub(r'(<span data-cg-cats>)\d+(</span>)', lambda m: m.group(1) + str(len({g["category"] for g in guides})) + m.group(2), new)
     if new != hub and not check:
         with open(HUB, 'w', encoding='utf-8') as f:

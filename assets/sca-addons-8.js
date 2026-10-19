@@ -696,7 +696,7 @@
    },
    {
     "who": "dr",
-    "text": "It’s a very common belief. So here’s the plan: for anyone aged 30 or over with a new lump like this, the NICE NG12 cancer-referral guideline is to refer to the breast clinic on the urgent cancer pathway, with an appointment within two weeks. That’s true however it feels to me.",
+    "text": "It’s a very common belief. So here’s the plan: for anyone aged 30 or over with a new lump like this, the NICE NG12 cancer-referral guideline is to refer to the breast clinic on the urgent cancer pathway, aiming for an answer within 28 days. That’s true however it feels to me.",
     "dom": "dg",
     "why": "Applies the NICE NG12 threshold; exam will not override it"
    },
@@ -2040,7 +2040,7 @@
    "reason": "“Go through my private blood results.”"
   },
   "knowledge": {
-   "guideline": "[1] NICE NG238 Cardiovascular disease: risk assessment and reduction, including lipid modification (2023) · [2] NICE NG136 Hypertension in adults: diagnosis and management (2019, updated 2023) · [3] NICE NG49 Non-alcoholic fatty liver disease (NAFLD): assessment and management (2016) and NICE CKS NAFLD/MASLD (check current) · [4] NICE PH38 Type 2 diabetes: prevention in people at high risk (2012, updated 2017) · [5] GMC Good medical practice (2024) and BMA guidance on the NHS–private interface · [6] UK NSC / NHS Prostate Cancer Risk Management Programme (PSA counselling)",
+   "guideline": "[1] NICE NG238 Cardiovascular disease: risk assessment and reduction, including lipid modification (2023) · [2] NICE NG136 Hypertension in adults: diagnosis and management (2019, updated 2026) · [3] NICE NG49 Non-alcoholic fatty liver disease (NAFLD): assessment and management (2016) and NICE CKS NAFLD/MASLD (check current) · [4] NICE PH38 Type 2 diabetes: prevention in people at high risk (2012, updated 2017) · [5] GMC Good medical practice (2024) and BMA guidance on the NHS–private interface · [6] UK NSC / NHS Prostate Cancer Risk Management Programme (PSA counselling)",
    "summary": "A private finger-prick panel with nine flags. What matters: a high cardiovascular risk profile with premature CVD in his brother, raised BP, likely fatty liver, non-diabetic hyperglycaemia and a raised ferritin needing transferrin saturation. What does not: afternoon testosterone, isolated hs-CRP, routine repeat panels. Vitamin D is self-care; the uncounselled PSA is normal. His brother’s heart attack is the hidden driver.",
    "points": [
     {
@@ -4660,7 +4660,7 @@
    },
    {
     "who": "dr",
-    "text": "I don’t know that, and you don’t either. There are other causes — infections, the thyroid gland, harmless lumps. But the guidance for someone your age with these symptoms is an urgent referral to the ear, nose and throat team, seen within two weeks.",
+    "text": "I don’t know that, and you don’t either. There are other causes — infections, the thyroid gland, harmless lumps. But the guidance for someone your age with these symptoms is an urgent suspected cancer pathway referral to the ear, nose and throat team — you should be seen quickly and get an answer within 4 weeks (28 days).",
     "dom": "dg",
     "why": "Holds the differential; applies NICE NG12"
    },
@@ -5721,7 +5721,7 @@
    },
    {
     "who": "dr",
-    "text": "Because of the lump with these symptoms, I’m going to refer you on the urgent suspected cancer pathway so a specialist sees you quickly, usually within two weeks. Most people referred this way don’t have cancer, but it’s the fastest route to an answer.",
+    "text": "Because of the lump with these symptoms, I’m going to refer you on the urgent suspected cancer pathway so a specialist sees you quickly — you should be seen quickly and get an answer within 4 weeks (28 days). Most people referred this way don’t have cancer, but it’s the fastest route to an answer.",
     "dom": "cm",
     "why": "Suspected cancer pathway referral per NICE NG12"
    },
@@ -6687,7 +6687,7 @@
     "phase": "Shared management",
     "clock": "7–10 min",
     "who": "dr",
-    "text": "Here’s the plan. I’m referring you urgently to the chest specialists today, to be seen within two weeks. They’ll usually do an ultrasound of the chest, take a sample of the fluid with a needle, and arrange a detailed CT scan. Draining some fluid often eases the breathing too.",
+    "text": "Here’s the plan. I’m referring you urgently to the chest specialists today on the suspected cancer pathway — you should be seen quickly and get an answer within 4 weeks (28 days). They’ll usually do an ultrasound of the chest, take a sample of the fluid with a needle, and arrange a detailed CT scan. Draining some fluid often eases the breathing too.",
     "dom": "cm",
     "why": "NICE NG12 suspected cancer pathway referral; explains the next steps"
    },
@@ -8063,7 +8063,7 @@
     },
     {
      "h": "What the pathway means",
-     "t": "Suspected cancer pathway referral (still widely called the two-week wait). The NHS England Faster Diagnosis Standard (October 2023) aims for cancer to be diagnosed or ruled out within 28 days of referral."
+     "t": "Suspected cancer pathway referral (NG12). The NHS England Faster Diagnosis Standard (October 2023) aims for cancer to be diagnosed or ruled out within 28 days of referral."
     }
    ]
   },

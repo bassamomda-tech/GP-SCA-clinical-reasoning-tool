@@ -80,7 +80,7 @@ tr:last-child td{border-bottom:0}
   a{color:var(--ink);text-decoration:none}
 }
 </style>
-<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
 </head>
 <body>
 <div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/cmpa.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
@@ -96,7 +96,6 @@ tr:last-child td{border-bottom:0}
   </div>
 
   <div class="ptitle">Page 1 · Assess and start <span>exclude emergencies → classify → elimination trial → right feed</span></div>
-
   <div class="blk red"><h2><span class="n">!</span>Act today<small>Resuscitation Council UK · NICE CG116 · iMAP/UK</small></h2><div class="body">
     <ul>
       <li><b>Anaphylaxis</b> after milk (airway swelling, wheeze, stridor, collapse) → <b>IM adrenaline</b> now: under 6 months 100–150 micrograms, 6 months–6 years 150 micrograms; <b>999</b>; repeat after 5 min if no better. Don't wait for antihistamine or steroid.</li>
@@ -107,19 +106,7 @@ tr:last-child td{border-bottom:0}
 
   <div class="grid">
     <div class="col">
-      <div class="blk amber"><h2><span class="n">1</span>Classify from the history<small>CG116 §1.1 · iMAP/UK</small></h2><div class="body">
-        <table>
-          <tr><th>Type</th><th>Timing and features</th><th>Next step</th></tr>
-          <tr><td><b>IgE</b></td><td>Minutes to 2 h: urticaria, angioedema, vomiting, wheeze, anaphylaxis</td><td>Strict avoidance; <b>allergy referral</b>; targeted tests</td></tr>
-          <tr><td><b>Non-IgE</b></td><td>Hours to days: eczema flare, reflux-type symptoms, colic, loose or bloody stools, constipation, poor growth with GI symptoms</td><td><b>Elimination then reintroduction</b> in primary care</td></tr>
-          <tr><td><b>Mixed</b></td><td>Both patterns in one child</td><td>Manage as IgE (higher risk)</td></tr>
-          <tr><td><b>Proctocolitis</b></td><td>Blood-streaked mucousy stools, well, thriving, often breastfed</td><td>Benign; maternal exclusion trial</td></tr>
-          <tr><td><b>FPIES</b></td><td>Delayed repetitive vomiting, pallor, lethargy</td><td>Specialist; no home reintroduction</td></tr>
-        </table>
-        <p class="key">Timing is a guide, not a cut-off: read it with the whole history.</p>
-      </div></div>
-
-      <div class="blk purple"><h2><span class="n">2</span>Allergy-focused history and exam<small>CG116 §1.1</small></h2><div class="body">
+      <div class="blk purple"><h2><span class="n">1</span>Allergy-focused history and exam<small>CG116 §1.1</small></h2><div class="body">
         <ul class="tick">
           <li>Symptoms by system, <b>timing</b>, reproducibility</li>
           <li>Feeding: breast, formula type, volume</li>
@@ -133,6 +120,18 @@ tr:last-child td{border-bottom:0}
         <p style="margin-top:2px">Look in the nappy (or a photo): "blood" may be food dye, urates or a fissure.</p>
       </div></div>
 
+      <div class="blk amber"><h2><span class="n">2</span>Classify from the history<small>CG116 §1.1 · iMAP/UK</small></h2><div class="body">
+        <table>
+          <tr><th>Type</th><th>Timing and features</th><th>Next step</th></tr>
+          <tr><td><b>IgE</b></td><td>Minutes to 2 h: urticaria, angioedema, vomiting, wheeze, anaphylaxis</td><td>Strict avoidance; <b>allergy referral</b>; targeted tests</td></tr>
+          <tr><td><b>Non-IgE</b></td><td>Hours to days: eczema flare, reflux-type symptoms, colic, loose or bloody stools, constipation, poor growth with GI symptoms</td><td><b>Elimination then reintroduction</b> in primary care</td></tr>
+          <tr><td><b>Mixed</b></td><td>Both patterns in one child</td><td>Manage as IgE (higher risk)</td></tr>
+          <tr><td><b>Proctocolitis</b></td><td>Blood-streaked mucousy stools, well, thriving, often breastfed</td><td>Benign; maternal exclusion trial</td></tr>
+          <tr><td><b>FPIES</b></td><td>Delayed repetitive vomiting, pallor, lethargy</td><td>Specialist; no home reintroduction</td></tr>
+        </table>
+        <p class="key">Timing is a guide, not a cut-off: read it with the whole history.</p>
+      </div></div>
+
       <div class="blk blue"><h2><span class="n">3</span>Tests — order and refuse<small>CG116 §1.1 · BSACI</small></h2><div class="body">
         <p><b>IgE suspected</b> → skin prick and/or specific IgE to milk only, by a competent clinician with anaphylaxis cover. Sensitisation ≠ allergy.</p>
         <p><b>Non-IgE</b> → no test diagnoses it: eliminate cow's milk protein, <b>normally 2–6 weeks</b>, then reintroduce (CG116 1.1.11). Symptoms back = confirmed.</p>
@@ -141,18 +140,7 @@ tr:last-child td{border-bottom:0}
     </div>
 
     <div class="col">
-      <div class="blk teal"><h2><span class="n">4</span>First-line feed<small>CKS · iMAP/UK · CG116</small></h2><div class="body">
-        <div class="flow" style="--c:var(--teal);grid-template-columns:repeat(2,1fr)">
-          <div><b class="h">Breastfed</b>Keep breastfeeding. <b>Maternal</b> exclusion of all cow's milk protein for the trial, with dietetic support and a <b>calcium and vitamin D supplement for the mother</b>.</div>
-          <div><b class="h">Formula · non-IgE</b>Mild to moderate → <b>extensively hydrolysed formula (eHF)</b> for the trial. Bitter taste: give transition advice before switching.</div>
-          <div><b class="h">Amino-acid formula</b>Severe or IgE reactions with anaphylaxis risk, FPIES, significant faltering growth, multiple food allergy, or eHF failed — with paediatric or dietetic advice.</div>
-          <div><b class="h">Not treatments</b><b>Soya</b> under 6 months · <b>"lactose-free"</b> formula · goat's or sheep's milk · plant drinks as the main milk under 1 year.</div>
-        </div>
-        <p style="margin-top:3px"><b>IgE allergy</b>: if an adrenaline auto-injector is prescribed, give <b>two</b> and train parents (MHRA 2023), with a written plan.</p>
-        <p><b>Vitamin D</b> for baby: breastfed → 8.5–10 micrograms a day; formula-fed on more than 500 mL a day → none extra (check the eHF/AAF content).</p>
-      </div></div>
-
-      <div class="blk green"><h2><span class="n">5</span>Avoid over-diagnosis<small>iMAP/UK 2019 · CG116</small></h2><div class="body">
+      <div class="blk green"><h2><span class="n">4</span>Avoid over-diagnosis<small>iMAP/UK 2019 · CG116</small></h2><div class="body">
         <ul>
           <li>Colic, possetting, eczema and odd stools are <b>common in well babies</b>: one symptom in a thriving infant is not CMPA.</li>
           <li>Improvement off milk alone proves nothing: symptoms fluctuate. <b>Reintroduction is the diagnosis.</b></li>
@@ -163,12 +151,23 @@ tr:last-child td{border-bottom:0}
         </ul>
       </div></div>
 
-      <div class="blk blue"><h2><span class="n">6</span>Who goes straight to a specialist<small>CG116 §1.1</small></h2><div class="body">
+      <div class="blk blue"><h2><span class="n">5</span>Who goes straight to a specialist<small>CG116 §1.1</small></h2><div class="body">
         <ul>
           <li><b>Allergy</b>: suspected IgE or mixed CMPA, FPIES, one or more systemic reactions, multiple food allergy.</li>
           <li><b>Paediatrics</b>: faltering growth with GI symptoms; severe delayed reactions; significant eczema with suspected multiple food allergy.</li>
           <li>Start the safe feed while waiting; don't leave the baby on standard formula.</li>
         </ul>
+      </div></div>
+
+      <div class="blk teal"><h2><span class="n">6</span>First-line feed<small>CKS · iMAP/UK · CG116</small></h2><div class="body">
+        <div class="flow" style="--c:var(--teal);grid-template-columns:repeat(2,1fr)">
+          <div><b class="h">Breastfed</b>Keep breastfeeding. <b>Maternal</b> exclusion of all cow's milk protein for the trial, with dietetic support and a <b>calcium and vitamin D supplement for the mother</b>.</div>
+          <div><b class="h">Formula · non-IgE</b>Mild to moderate → <b>extensively hydrolysed formula (eHF)</b> for the trial. Bitter taste: give transition advice before switching.</div>
+          <div><b class="h">Amino-acid formula</b>Severe or IgE reactions with anaphylaxis risk, FPIES, significant faltering growth, multiple food allergy, or eHF failed — with paediatric or dietetic advice.</div>
+          <div><b class="h">Not treatments</b><b>Soya</b> under 6 months · <b>"lactose-free"</b> formula · goat's or sheep's milk · plant drinks as the main milk under 1 year.</div>
+        </div>
+        <p style="margin-top:3px"><b>IgE allergy</b>: if an adrenaline auto-injector is prescribed, give <b>two</b> and train parents (MHRA 2023), with a written plan.</p>
+        <p><b>Vitamin D</b> for baby: breastfed → 8.5–10 micrograms a day; formula-fed on more than 500 mL a day → none extra (check the eHF/AAF content).</p>
       </div></div>
     </div>
 
@@ -179,6 +178,7 @@ tr:last-child td{border-bottom:0}
       </table>
       <p class="say" style="margin-top:3px">"We take milk out properly for a few weeks, then put it back to check it really was the cause. If nothing changes off milk, milk wasn't the problem and we stop the diet."</p>
     </div></div>
+
   </div>
 
   <div class="foot"><span>Reasoning GP Clinic Guide · CMPA · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
@@ -187,44 +187,9 @@ tr:last-child td{border-bottom:0}
 <!-- ============ PAGE 2 ============ -->
 <section class="page">
   <div class="ptitle">Page 2 · Review and reintroduce <span>the follow-up: confirm → protect growth → reintroduce → tolerance</span></div>
-
   <div class="grid">
     <div class="col">
-      <div class="blk green"><h2><span class="n">8</span>What good looks like<small>CG116 · iMAP/UK</small></h2><div class="body">
-        <table>
-          <tr><th>Goal</th><th>Sign it is met</th></tr>
-          <tr><td>Diagnosis proven</td><td>Better on elimination <b>and</b> symptoms back on reintroduction</td></tr>
-          <tr><td>Growth protected</td><td>Weight and length following the centile</td></tr>
-          <tr><td>Nutrition complete</td><td>Right formula volume; mother's calcium and vitamin D; dietitian involved</td></tr>
-          <tr><td>Back on milk</td><td>Planned reintroduction, not a diet left to drift</td></tr>
-        </table>
-      </div></div>
-
-      <div class="blk amber"><h2><span class="n">9</span>Before escalating eHF → AAF<small>CKS · iMAP/UK</small></h2><div class="body">
-        <ul class="tick" style="grid-template-columns:1fr">
-          <li><b>Complete exclusion?</b> Hidden milk in the mother's diet, weaning foods or a top-up formula</li>
-          <li><b>Long enough?</b> 2–6 weeks, not 2–6 days</li>
-          <li><b>Taken properly?</b> Volume, preparation, taste refusal</li>
-          <li><b>Right diagnosis?</b> Reflux, constipation, infection, fissure, another food</li>
-          <li><b>Growth</b> faltering → AAF with paediatric and dietetic advice</li>
-        </ul>
-      </div></div>
-    </div>
-
-    <div class="col">
-      <div class="blk purple"><h2><span class="n">10</span>Follow-up checklist<small>every review until back on milk</small></h2><div class="body">
-        <ul class="tick" style="grid-template-columns:1fr">
-          <li><b>Weight, length, head</b> plotted and compared with the last</li>
-          <li>Symptom response; date the trial ends and reintroduction starts</li>
-          <li>Formula: accepted, volume right for age and weight, prescription updated</li>
-          <li>Breastfeeding mother: diet sustainable, <b>calcium + vitamin D</b> taken</li>
-          <li>Baby's vitamin D as UK advice (not duplicating formula)</li>
-          <li>Weaning milk-free and varied; label reading; dietitian seen</li>
-          <li>IgE: two auto-injectors in date, plan with nursery</li>
-          <li>Next step agreed: ladder, supervised challenge or tolerance review</li>
-        </ul>
-      </div></div>
-      <div class="blk blue"><h2><span class="n">11</span>Decide the next step<small>iMAP/UK · CG116</small></h2><div class="body">
+      <div class="blk blue"><h2><span class="n">8</span>Decide the next step<small>iMAP/UK · CG116</small></h2><div class="body">
         <table>
           <tr><th>At the end of the trial</th><th>Then</th></tr>
           <tr><td>Better off milk, back on reintroduction</td><td>CMPA confirmed: exclude, dietitian, plan the ladder</td></tr>
@@ -235,7 +200,19 @@ tr:last-child td{border-bottom:0}
       </div></div>
     </div>
 
-    <div class="blk teal span"><h2><span class="n">12</span>Feeds and the milk ladder<small>iMAP/UK 2019 · CKS · CG116</small></h2><div class="body">
+    <div class="col">
+      <div class="blk green"><h2><span class="n">9</span>What good looks like<small>CG116 · iMAP/UK</small></h2><div class="body">
+        <table>
+          <tr><th>Goal</th><th>Sign it is met</th></tr>
+          <tr><td>Diagnosis proven</td><td>Better on elimination <b>and</b> symptoms back on reintroduction</td></tr>
+          <tr><td>Growth protected</td><td>Weight and length following the centile</td></tr>
+          <tr><td>Nutrition complete</td><td>Right formula volume; mother's calcium and vitamin D; dietitian involved</td></tr>
+          <tr><td>Back on milk</td><td>Planned reintroduction, not a diet left to drift</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="blk teal span"><h2><span class="n">10</span>Feeds and the milk ladder<small>iMAP/UK 2019 · CKS · CG116</small></h2><div class="body">
       <div class="ladder">
         <div><b class="h">Step 1 · diagnose</b>Eliminate 2–6 weeks (maternal diet or eHF), then reintroduce. Symptoms back → confirmed; resume exclusion.</div>
         <div><b class="h">Step 2 · exclude</b>Maintain exclusion with dietitian support. Breastfed: maternal exclusion while breastfeeding. Formula: eHF, or AAF for its indications.</div>
@@ -246,20 +223,23 @@ tr:last-child td{border-bottom:0}
         <tr><th>Option</th><th>When</th><th>Monitor</th><th>Watch</th></tr>
         <tr><td><b>Maternal exclusion</b></td><td>Breastfed infant, non-IgE suspected</td><td>Mother's diet, calcium, vitamin D</td><td>Don't advise casually or indefinitely; reintroduce after the trial unless confirmed</td></tr>
         <tr><td><b>eHF</b></td><td>First line, formula-fed, mild to moderate</td><td>Acceptance, volume, growth</td><td>Taste refusal → transition advice, not automatic AAF</td></tr>
-        <tr><td><b>AAF</b></td><td>Defined indications (box 4) or eHF failed</td><td>Growth; review need</td><td>Not first line; avoid indefinite escalation</td></tr>
+        <tr><td><b>AAF</b></td><td>Defined indications (box 6) or eHF failed</td><td>Growth; review need</td><td>Not first line; avoid indefinite escalation</td></tr>
         <tr><td><b>Milk ladder</b></td><td>Non-IgE, controlled, growing well</td><td>Symptoms at each step</td><td>iMAP order: malted milk biscuit → muffin → pancake → cheese → yoghurt → milk. Reaction → back a step</td></tr>
       </table>
     </div></div>
 
-    <div class="blk blue span"><h2><span class="n">13</span>Overlaps and older children<small>NICE NG1 · CG116 · iMAP/UK</small></h2><div class="body">
-      <table>
-        <tr><th>Reflux-type symptoms</th><th>Eczema</th><th>Constipation or colic</th><th>Age 1 and over</th><th>Tolerance</th></tr>
-        <tr><td>Think CMPA when reflux comes with eczema, blood or mucus in stools, diarrhoea or faltering growth — not for posseting alone (NG1)</td><td>Optimise emollient and steroid first; trial exclusion only if moderate to severe and uncontrolled, or a clear food history</td><td>Can be non-IgE CMPA, but common without it: same trial-and-reintroduce rule</td><td>Calcium-fortified unsweetened alternative with dietetic advice; some under-2s still need prescribed formula</td><td>Most children become tolerant: review regularly and move up the ladder or arrange a challenge</td></tr>
-      </table>
-    </div></div>
-
     <div class="col">
-      <div class="blk slate"><h2><span class="n">14</span>Problems and fixes<small>CKS · iMAP/UK</small></h2><div class="body">
+      <div class="blk amber"><h2><span class="n">11</span>Before escalating eHF → AAF<small>CKS · iMAP/UK</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Complete exclusion?</b> Hidden milk in the mother's diet, weaning foods or a top-up formula</li>
+          <li><b>Long enough?</b> 2–6 weeks, not 2–6 days</li>
+          <li><b>Taken properly?</b> Volume, preparation, taste refusal</li>
+          <li><b>Right diagnosis?</b> Reflux, constipation, infection, fissure, another food</li>
+          <li><b>Growth</b> faltering → AAF with paediatric and dietetic advice</li>
+        </ul>
+      </div></div>
+
+      <div class="blk slate"><h2><span class="n">12</span>Problems and fixes<small>CKS · iMAP/UK</small></h2><div class="body">
         <table>
           <tr><td><b>Refuses eHF</b></td><td>Gradual mix with usual feed, cup or flavour advice; AAF only if an indication applies</td></tr>
           <tr><td><b>Reaction on the ladder</b></td><td>Stop, go back to the last tolerated step, retry later</td></tr>
@@ -271,7 +251,21 @@ tr:last-child td{border-bottom:0}
       </div></div>
     </div>
 
-    <div class="blk red"><h2><span class="n">15</span>Refer and never-events<small>CG116 §1.1 · iMAP/UK · MHRA</small></h2><div class="body">
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">13</span>Follow-up checklist<small>every review until back on milk</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Weight, length, head</b> plotted and compared with the last</li>
+          <li>Symptom response; date the trial ends and reintroduction starts</li>
+          <li>Formula: accepted, volume right for age and weight, prescription updated</li>
+          <li>Breastfeeding mother: diet sustainable, <b>calcium + vitamin D</b> taken</li>
+          <li>Baby's vitamin D as UK advice (not duplicating formula)</li>
+          <li>Weaning milk-free and varied; label reading; dietitian seen</li>
+          <li>IgE: two auto-injectors in date, plan with nursery</li>
+          <li>Next step agreed: ladder, supervised challenge or tolerance review</li>
+        </ul>
+      </div></div>
+
+      <div class="blk red"><h2><span class="n">14</span>Refer and never-events<small>CG116 §1.1 · iMAP/UK · MHRA</small></h2><div class="body">
       <ul>
         <li><b>Allergy service</b>: any IgE-mediated or mixed CMPA, FPIES, previous systemic reaction, multiple food allergies, severe eczema with suspected food allergy, any supervised challenge.</li>
         <li><b>Paediatrics / dietitian</b>: faltering growth with GI symptoms, no response to a correct single-allergen elimination, persisting parental concern, complex exclusions. Dietitian for every family where possible.</li>
@@ -279,12 +273,20 @@ tr:last-child td{border-bottom:0}
         <li><b>Never</b>: diagnose on an IgG or high-street test · leave a child milk-free with no reintroduction plan · home ladder for IgE, mixed or FPIES · soya under 6 months · "lactose-free" for CMPA · AAF first without an indication.</li>
       </ul>
     </div></div>
+    </div>
+
+    <div class="blk blue span"><h2><span class="n">15</span>Overlaps and older children<small>NICE NG1 · CG116 · iMAP/UK</small></h2><div class="body">
+      <table>
+        <tr><th>Reflux-type symptoms</th><th>Eczema</th><th>Constipation or colic</th><th>Age 1 and over</th><th>Tolerance</th></tr>
+        <tr><td>Think CMPA when reflux comes with eczema, blood or mucus in stools, diarrhoea or faltering growth — not for posseting alone (NG1)</td><td>Optimise emollient and steroid first; trial exclusion only if moderate to severe and uncontrolled, or a clear food history</td><td>Can be non-IgE CMPA, but common without it: same trial-and-reintroduce rule</td><td>Calcium-fortified unsweetened alternative with dietetic advice; some under-2s still need prescribed formula</td><td>Most children become tolerant: review regularly and move up the ladder or arrange a challenge</td></tr>
+      </table>
+    </div></div>
 
   </div>
 
   <div class="foot"><span>Reasoning GP Clinic Guide · CMPA · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE CKS cow's milk allergy in children; NICE CG116 (2011) and QS118; iMAP/UK 2019 (Fox et al., Clin Transl Allergy); BSACI; Resuscitation Council UK; MHRA DSU June 2023; SACN vitamin D</span><span>Full detail and evidence: gpreasoning.uk/tools/management/cmpa.html</span></div>
 </section>
 
-<script src="../../assets/clinic-guides.js?v=1"></script>
+<script src="../../assets/clinic-guides.js?v=4"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
    Reasoning GP — Case Library batch 37: "Skin: the surface and what's under it"
    Four ORIGINAL cases. Hidden agenda + full ICE in every case.
    NG12 suspected cancer pathway stated where it maps (non-healing lesion -> skin-cancer
-   2WW; widespread itch -> consider haematological malignancy).
+   suspected cancer pathway; widespread itch -> consider haematological malignancy).
    Shingles antiviral window + ophthalmic emergency. Acne + mental health.
    Pushes into SCA_CASES + SCA_EXTRAS. Load AFTER sca-cases36.js.
    ============================================================ */
@@ -193,7 +193,7 @@
     }
   };
 
-  /* ============ 143. VIDEO — The non-healing lesion: skin-cancer 2WW behind "just a sore" ============ */
+  /* ============ 143. VIDEO — The non-healing lesion: skin-cancer suspected cancer pathway behind "just a sore" ============ */
   const c143 = {
     "id": "non-healing-lesion",
     "title": "“It’s only a little spot on my nose that bleeds when I wash — I can’t be going to the hospital, I look after my husband”",

@@ -1,0 +1,71 @@
+[
+ {
+  "subject": "carbimazole",
+  "group": "PTU dose in first trimester | mg",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "In pregnancy PTU is given at the lowest effective dose to keep FT4 in the upper half of the reference range, specialist-led (SPC; RCOG GTG76 2025). 200–400 mg/day is the general adult starting dose, not a pregnancy dose.",
+  "source": "https://www.medicines.org.uk/emc/product/3123/smpc ; https://doi.org/10.1111/1471-0528.18088",
+  "fixes": [
+   {
+    "file": "cases/hyperthyroidism.html",
+    "old": "<li><strong>T1 (&lt;14 wks):</strong> PTU 200–400mg/day — carbimazole embryopathy risk in organogenesis</li>",
+    "new": "<li><strong>T1 (&lt;14 wks):</strong> PTU at the lowest effective dose, specialist-led (switch from carbimazole as early as possible, before 10 weeks) — carbimazole embryopathy risk in organogenesis</li>"
+   }
+  ],
+  "note": "The pregnancy bullet gives the non-pregnant adult starting range (200–400 mg/day) as the first-trimester dose. Over-treatment in pregnancy causes fetal hypothyroidism and goitre, and the SPC and RCOG say to use the lowest effective dose. The fix also adds RCOG's switch-before-10-weeks point. The 'around 20 weeks' switch back to carbimazole matches RCOG GTG76 2025 (as quoted by Wiles et al. 2025), so it is left unchanged."
+ },
+ {
+  "subject": "anaemia in pregnancy",
+  "group": "escalation | g/L",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "BSH 2020: Hb <110 g/L (T1) or <105 g/L (T2/T3) → oral iron and recheck in 2–3 weeks, under midwife/primary care. Refer to secondary care if Hb <70 g/L, significant symptoms, advanced gestation (>34 weeks) or no response.",
+  "source": "https://doi.org/10.1111/bjh.16221",
+  "fixes": [
+   {
+    "file": "tools/algorithms/one-page/anaemia.html",
+    "old": "<li><b>Pregnancy:</b> Hb &lt;110 g/L (1st trimester), &lt;105 (later) → <span class=\"when wsd\">Same-day maternity</span>; bleeding or compromise → <span class=\"when w999\">999</span></li>",
+    "new": "<li><b>Pregnancy:</b> Hb &lt;110 g/L (1st trimester), &lt;105 (later) → start oral iron and inform the midwife; Hb &lt;70 g/L, significant symptoms, rapid fall or late gestation (&gt;34 weeks) → <span class=\"when wsd\">Same-day maternity</span>; bleeding or compromise → <span class=\"when w999\">999</span></li>"
+   }
+  ],
+  "note": "Read literally, the one-page sends every pregnant woman whose Hb is below the anaemia threshold for same-day maternity assessment. That conflicts with BSH 2020 and with the site's own normocytic-anaemia and microcytosis pages, which escalate only severe, symptomatic, late or unresponsive anaemia."
+ },
+ {
+  "subject": "magnesium",
+  "group": "PPI hypomagnesaemia onset | duration",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "MHRA (2012): hypomagnesaemia reported after at least 3 months of PPI use, and in most cases after about 1 year",
+  "source": "https://www.gov.uk/drug-safety-update/proton-pump-inhibitors-in-long-term-use-reports-of-hypomagnesaemia",
+  "fixes": [
+   {
+    "file": "tools/algorithms/magnesium-deficiency.html",
+    "old": "duration (risk appears after approximately 1 year)",
+    "new": "duration (reported after as little as 3 months, most cases after about 1 year — MHRA)"
+   }
+  ],
+  "note": "The current wording suggests there is no risk before 1 year. The MHRA says cases occur from 3 months."
+ },
+ {
+  "subject": "magnesium",
+  "group": "dietary content | mg/100g",
+  "verdict": "wrong",
+  "tier": 3,
+  "correct": "Spinach about 80 mg magnesium per 100 g (raw 79; cooked about 87). 157 mg is per cooked cup (about 180 g).",
+  "source": "https://fdc.nal.usda.gov/",
+  "fixes": [
+   {
+    "file": "tools/algorithms/magnesium-deficiency.html",
+    "old": "spinach 157 mg/100g",
+    "new": "spinach about 80 mg/100g"
+   },
+   {
+    "file": "assets/search/idx-pathway.json",
+    "old": "spinach 157 mg/100g",
+    "new": "spinach about 80 mg/100g"
+   }
+  ],
+  "note": "A per-cup figure is labelled as per 100 g. This is low risk; fix it for accuracy."
+ }
+]

@@ -80,7 +80,7 @@ tr:last-child td{border-bottom:0}
   a{color:var(--ink);text-decoration:none}
 }
 </style>
-<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
 </head>
 <body>
 <div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/chest-pain.html">Full algorithm</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
@@ -130,17 +130,10 @@ tr:last-child td{border-bottom:0}
         <p class="key">Women, older people and people with diabetes often present with breathlessness, epigastric pain or "indigestion" alone.</p>
       </div></div>
 
-      <div class="blk amber"><h2><span class="n">3</span>Suspected PE — two-level Wells<small>NICE NG158</small></h2><div class="body">
-        <table>
-          <tr><td><b>Wells &gt;4</b> (likely)</td><td>Immediate CTPA via the acute route; interim anticoagulation if imaging is delayed. <b>No D-dimer.</b></td></tr>
-          <tr><td><b>Wells ≤4</b> (unlikely)</td><td>D-dimer; interim anticoagulation if the result will take over 4 h; positive → imaging. Consider an age-adjusted threshold over 50.</td></tr>
-          <tr><td>Pregnant or post-partum</td><td>Wells and D-dimer not validated → acute/maternity pathway</td></tr>
-        </table>
-      </div></div>
     </div>
 
     <div class="col">
-      <div class="blk purple"><h2><span class="n">4</span>Examination findings that change the plan<small>3–5 minutes</small></h2><div class="body">
+      <div class="blk purple"><h2><span class="n">3</span>Examination findings that change the plan<small>3–5 minutes</small></h2><div class="body">
         <table>
           <tr><td><b>Observations</b></td><td>Pulse, BP, RR, SpO₂, temp; low BP, high or low pulse, hypoxia → escalate (warning signs, not rules)</td></tr>
           <tr><td><b>BP both arms, pulses</b></td><td>Difference or pulse deficit supports dissection; normal does not exclude it</td></tr>
@@ -151,12 +144,23 @@ tr:last-child td{border-bottom:0}
         </table>
       </div></div>
 
+      <div class="blk amber"><h2><span class="n">4</span>Suspected PE — two-level Wells<small>NICE NG158</small></h2><div class="body">
+        <table>
+          <tr><td><b>Wells &gt;4</b> (likely)</td><td>Immediate CTPA via the acute route; interim anticoagulation if imaging is delayed. <b>No D-dimer.</b></td></tr>
+          <tr><td><b>Wells ≤4</b> (unlikely)</td><td>D-dimer; interim anticoagulation if the result will take over 4 h; positive → imaging. Consider an age-adjusted threshold over 50.</td></tr>
+          <tr><td>Pregnant or post-partum</td><td>Wells and D-dimer not validated → acute/maternity pathway</td></tr>
+        </table>
+      </div></div>
+
+    </div>
+
+    <div class="col">
       <div class="blk blue"><h2><span class="n">5</span>Key differentials<small>clue → think → first test</small></h2><div class="body">
         <table>
           <tr><th>Clue</th><th>Think</th><th>First step</th></tr>
           <tr><td>Exertional, eases with rest in ~5 min</td><td>Stable angina</td><td>ECG; local RACPC → CTCA</td></tr>
           <tr><td>Rest or crescendo pain, &gt;20 min</td><td>ACS</td><td>Timing table (box 1)</td></tr>
-          <tr><td>Pleuritic, breathless, DVT risk</td><td>PE</td><td>Wells (box 3)</td></tr>
+          <tr><td>Pleuritic, breathless, DVT risk</td><td>PE</td><td>Wells (box 4)</td></tr>
           <tr><td>Sharp, worse lying, better forward</td><td>Pericarditis</td><td>Same-day ECG, troponin, echo</td></tr>
           <tr><td>Fever, cough, focal signs</td><td>Pneumonia</td><td>CRB65; CXR</td></tr>
           <tr><td>Burning, post-prandial, lying down</td><td>GORD</td><td>Full-dose PPI trial</td></tr>
@@ -168,7 +172,8 @@ tr:last-child td{border-bottom:0}
 
     </div>
 
-    <div class="blk purple span"><h2><span class="n">6</span>Investigations checklist<small>order what changes management</small></h2><div class="body">
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">6</span>Investigations checklist<small>order what changes management</small></h2><div class="body">
       <ul class="tick" style="grid-template-columns:repeat(3,1fr)">
         <li><b>12-lead ECG</b> — but never ahead of a time-critical transfer</li>
         <li>Compare with an old ECG</li>
@@ -179,6 +184,9 @@ tr:last-child td{border-bottom:0}
       </ul>
       <p style="margin-top:2px"><b>Not in primary care:</b> a single GP troponin as a rule-out · exercise ECG to diagnose or exclude angina (CG95) · CTCA (via RACPC). A normal ECG does not exclude ACS.</p>
     </div></div>
+
+    </div>
+
   </div>
 
   <div class="foot"><span>Reasoning GP Clinic Guide · Chest pain · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
@@ -211,7 +219,31 @@ tr:last-child td{border-bottom:0}
         </table>
       </div></div>
 
-      <div class="blk purple"><h2><span class="n">10</span>Safety-net and follow-up checklist<small>record it in the notes</small></h2><div class="body">
+    </div>
+
+    <div class="col">
+      <div class="blk slate"><h2><span class="n">9</span>Drug cautions — the first-line treatments<small>SPC · CG126 · CG184</small></h2><div class="body">
+      <table>
+        <tr><th>Drug</th><th>Use</th><th>Watch</th></tr>
+        <tr><td><b>GTN spray</b></td><td>Sit down first; also before predictable exertion</td><td>Headache, flushing, dizziness; avoid with hypotension or severe aortic stenosis; never within 24 h of sildenafil or vardenafil (48 h tadalafil)</td></tr>
+        <tr><td><b>Aspirin</b></td><td>300 mg chewed for suspected ACS; 75 mg considered in stable angina</td><td>Allergy, active peptic ulcer, bleeding risk; withhold if dissection possible</td></tr>
+        <tr><td><b>PPI</b></td><td>Full dose 4 or 8 weeks, then lowest effective dose or as needed</td><td>Review long-term need every year</td></tr>
+        <tr><td><b>Oral NSAID</b></td><td>Only if paracetamol or topical NSAID fail</td><td>CV disease, heart failure, renal impairment, GI bleeding, anticoagulants, frailty</td></tr>
+      </table>
+    </div></div>
+
+    </div>
+
+    <div class="blk green span"><h2><span class="n">10</span>Once the acute issue is settled — risk and lifestyle<small>NICE NG238 · CG126</small></h2><div class="body">
+      <table>
+        <tr><th>Risk</th><th>Smoking</th><th>Activity</th><th>Alcohol</th><th>After ACS</th></tr>
+        <tr><td>QRISK3 if not already on a statin or with known CVD</td><td>Refer to the NHS Stop Smoking Service; the biggest single change</td><td>150 min/week moderate activity</td><td>Within 14 units/week, spread over 3 or more days</td><td>Cardiac rehabilitation for everyone after ACS or revascularisation</td></tr>
+      </table>
+      <p class="say" style="margin-top:3px">"Your heart tracing is reassuring today, but it can't rule everything out on its own. If the pain comes back at rest, lasts more than a few minutes, or comes with sweating, sickness or breathlessness, call 999 straight away — don't drive yourself."</p>
+    </div></div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">11</span>Safety-net and follow-up checklist<small>record it in the notes</small></h2><div class="body">
         <ul class="tick" style="grid-template-columns:1fr">
           <li>999 if pain at rest, lasting, with sweating, breathlessness or collapse — <b>don't wait to see if GTN works</b></li>
           <li>Same day if pain now comes at rest, GTN stops working, new leg swelling, fever, black stools</li>
@@ -222,10 +254,11 @@ tr:last-child td{border-bottom:0}
           <li>QRISK3 and lifestyle (smoking, activity) once the acute issue is settled</li>
         </ul>
       </div></div>
+
     </div>
 
     <div class="col">
-      <div class="blk blue"><h2><span class="n">9</span>When and where to refer<small>urgency tiers</small></h2><div class="body">
+      <div class="blk blue"><h2><span class="n">12</span>When and where to refer<small>urgency tiers</small></h2><div class="body">
         <table>
           <tr><th>Tier</th><th>Who</th></tr>
           <tr><td><b>999</b></td><td>Possible ACS pain now · aortic syndrome · unstable PE · tamponade · tension pneumothorax · oesophageal rupture · shock</td></tr>
@@ -236,7 +269,9 @@ tr:last-child td{border-bottom:0}
         </table>
       </div></div>
 
-      <div class="blk red"><h2><span class="n">11</span>Never-events<small>CG95 · NG185 · NG158</small></h2><div class="body">
+    </div>
+
+    <div class="blk red span"><h2><span class="n">13</span>Never-events<small>CG95 · NG185 · NG158</small></h2><div class="body">
         <ul>
           <li><b>Never</b> delay a 999 transfer for an ECG, bloods, D-dimer or imaging.</li>
           <li><b>Never</b> let a normal ECG, a normal SpO₂, chest-wall tenderness or relief after GTN reassure you on their own.</li>
@@ -247,29 +282,10 @@ tr:last-child td{border-bottom:0}
         </ul>
       </div></div>
 
-    </div>
-
-    <div class="blk slate span"><h2><span class="n">12</span>Drug cautions — the first-line treatments<small>SPC · CG126 · CG184</small></h2><div class="body">
-      <table>
-        <tr><th>Drug</th><th>Use</th><th>Watch</th></tr>
-        <tr><td><b>GTN spray</b></td><td>Sit down first; also before predictable exertion</td><td>Headache, flushing, dizziness; avoid with hypotension or severe aortic stenosis; never within 24 h of sildenafil or vardenafil (48 h tadalafil)</td></tr>
-        <tr><td><b>Aspirin</b></td><td>300 mg chewed for suspected ACS; 75 mg considered in stable angina</td><td>Allergy, active peptic ulcer, bleeding risk; withhold if dissection possible</td></tr>
-        <tr><td><b>PPI</b></td><td>Full dose 4 or 8 weeks, then lowest effective dose or as needed</td><td>Review long-term need every year</td></tr>
-        <tr><td><b>Oral NSAID</b></td><td>Only if paracetamol or topical NSAID fail</td><td>CV disease, heart failure, renal impairment, GI bleeding, anticoagulants, frailty</td></tr>
-      </table>
-    </div></div>
-
-    <div class="blk green span"><h2><span class="n">13</span>Once the acute issue is settled — risk and lifestyle<small>NICE NG238 · CG126</small></h2><div class="body">
-      <table>
-        <tr><th>Risk</th><th>Smoking</th><th>Activity</th><th>Alcohol</th><th>After ACS</th></tr>
-        <tr><td>QRISK3 if not already on a statin or with known CVD</td><td>Refer to the NHS Stop Smoking Service; the biggest single change</td><td>150 min/week moderate activity</td><td>Within 14 units/week, spread over 3 or more days</td><td>Cardiac rehabilitation for everyone after ACS or revascularisation</td></tr>
-      </table>
-      <p class="say" style="margin-top:3px">"Your heart tracing is reassuring today, but it can't rule everything out on its own. If the pain comes back at rest, lasts more than a few minutes, or comes with sweating, sickness or breathlessness, call 999 straight away — don't drive yourself."</p>
-    </div></div>
   </div>
 
   <div class="foot"><span>Reasoning GP Clinic Guide · Chest pain · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE CG95 (2010, updated 2016), NG185, NG158, CG126, CG184, CG113, NG250, NG106, NG12; ESC peripheral arterial and aortic diseases 2024 (international); BTS oxygen 2017</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/chest-pain.html</span></div>
 </section>
-<script src="../../assets/clinic-guides.js?v=1"></script>
+<script src="../../assets/clinic-guides.js?v=4"></script>
 </body>
 </html>

@@ -52,7 +52,7 @@
   { id:'gilberts', title:'Gilbert\u2019s syndrome', category:'Gastroenterology', icon:'🟡',
     overview:'A common, benign inherited cause of mild unconjugated hyperbilirubinaemia (reduced UGT1A1 activity). It produces intermittent mild jaundice during fasting, illness, exertion or stress, with otherwise normal liver tests and no liver disease.',
     features:[
-      'Mild, isolated rise in unconjugated (indirect) bilirubin, typically <100 µmol/L, with normal ALT/ALP/GGT',
+      'Mild, isolated rise in unconjugated (indirect) bilirubin, usually below about 40 µmol/L (occasionally up to about 80 µmol/L during illness or fasting), with normal ALT/ALP/GGT',
       'Jaundice precipitated by fasting, intercurrent illness, dehydration, vigorous exercise, sleep deprivation or stress',
       'No haemolysis (normal FBC, reticulocytes, blood film, haptoglobin) and no dark urine/pale stools',
       'Affects up to ~5% of the population; often discovered incidentally on routine bloods',

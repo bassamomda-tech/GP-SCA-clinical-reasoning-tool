@@ -16,7 +16,7 @@
     { group: 'Severity / onset', id: 'rapid_virilisation', kind: 'check', label: 'Rapid onset + virilisation (deep voice, clitoromegaly, balding)' },
     { group: 'Severity / onset', id: 'cushing', kind: 'check', label: 'Cushingoid (striae, central obesity, easy bruising, hypertension)' },
 
-    { group: 'Bloods (if done)', id: 'high_testosterone', kind: 'check', label: 'Total testosterone markedly raised (>5 nmol/L)' },
+    { group: 'Bloods (if done)', id: 'high_testosterone', kind: 'check', label: 'Total testosterone very high (about 6\u20137 nmol/L or higher)' },
     { group: 'Bloods (if done)', id: 'high_17ohp', kind: 'check', label: '17-OH-progesterone raised (CAH)' }
   ];
 

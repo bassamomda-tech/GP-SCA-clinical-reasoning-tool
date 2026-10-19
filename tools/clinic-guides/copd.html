@@ -80,7 +80,7 @@ tr:last-child td{border-bottom:0}
   a{color:var(--ink);text-decoration:none}
 }
 </style>
-<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
 </head>
 <body>
 <div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/copd.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
@@ -208,7 +208,9 @@ tr:last-child td{border-bottom:0}
           <li>A written plan the person can explain back.</li>
         </ul>
       </div></div>
+    </div>
 
+    <div class="col">
       <div class="blk amber"><h2><span class="n">9</span>Before every step-up<small>NG115</small></h2><div class="body">
         <ul class="tick" style="grid-template-columns:1fr">
           <li><b>Smoking</b> — still smoking? Everything else is secondary</li>
@@ -220,24 +222,7 @@ tr:last-child td{border-bottom:0}
       </div></div>
     </div>
 
-    <div class="col">
-      <div class="blk purple"><h2><span class="n">10</span>Annual review checklist<small>yearly · stage 4 twice a year</small></h2><div class="body">
-        <ul class="tick" style="grid-template-columns:1fr">
-          <li><b>Smoking status</b> and motivation to quit</li>
-          <li><b>MRC grade</b> and symptom control</li>
-          <li><b>Exacerbations</b>, steroid and antibiotic courses, admissions</li>
-          <li><b>Inhaler technique observed</b>; effect of each drug</li>
-          <li>FEV₁ and FVC; <b>BMI</b></li>
-          <li><b>SpO₂ when stable</b> (≤92% → oxygen assessment)</li>
-          <li>Need for <b>pulmonary rehabilitation</b></li>
-          <li>Complications: cor pulmonale, anxiety, depression</li>
-          <li>Vaccines (box 5); action plan and rescue pack</li>
-          <li>Advance care planning when disease is advanced</li>
-        </ul>
-      </div></div>
-    </div>
-
-    <div class="blk teal span"><h2><span class="n">11</span>The inhaler ladder<small>NG115 · GOLD eosinophil cut-offs are international, not NICE</small></h2><div class="body">
+    <div class="blk teal span"><h2><span class="n">10</span>The inhaler ladder<small>NG115 · GOLD eosinophil cut-offs are international, not NICE</small></h2><div class="body">
       <div class="ladder">
         <div><b class="h">Step 1 · reliever</b>SABA or SAMA as needed. Stop a SAMA when a LAMA starts.</div>
         <div><b class="h">Step 2 · dual</b>No asthmatic features → <b>LABA + LAMA</b>. Asthmatic features → <b>LABA + ICS</b>.</div>
@@ -255,7 +240,7 @@ tr:last-child td{border-bottom:0}
     </div></div>
 
     <div class="col">
-      <div class="blk teal"><h2><span class="n">12</span>Rescue packs<small>NG115</small></h2><div class="body">
+      <div class="blk teal"><h2><span class="n">11</span>Rescue packs<small>NG115</small></h2><div class="body">
         <p>Oral steroid + antibiotic to keep at home if the person:</p>
         <ul>
           <li>has had an <b>exacerbation within the last year</b> and remains at risk;</li>
@@ -265,7 +250,7 @@ tr:last-child td{border-bottom:0}
         <p style="margin-top:2px"><b>3 or more</b> steroid and/or antibiotic courses in a year → find out why. Review after each use.</p>
       </div></div>
 
-      <div class="blk slate"><h2><span class="n">13</span>Side effects<small>SPC</small></h2><div class="body">
+      <div class="blk slate"><h2><span class="n">12</span>Side effects<small>SPC</small></h2><div class="body">
         <table>
           <tr><td><b>Pneumonia</b> (ICS)</td><td>Warn; review whether ICS is earning its place</td></tr>
           <tr><td><b>Urinary retention</b> (LAMA)</td><td>Caution in prostatism; keep nebulised ipratropium out of the eyes</td></tr>
@@ -275,12 +260,31 @@ tr:last-child td{border-bottom:0}
     </div>
 
     <div class="col">
+      <div class="blk purple"><h2><span class="n">13</span>Annual review checklist<small>yearly · stage 4 twice a year</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Smoking status</b> and motivation to quit</li>
+          <li><b>MRC grade</b> and symptom control</li>
+          <li><b>Exacerbations</b>, steroid and antibiotic courses, admissions</li>
+          <li><b>Inhaler technique observed</b>; effect of each drug</li>
+          <li>FEV₁ and FVC; <b>BMI</b></li>
+          <li><b>SpO₂ when stable</b> (≤92% → oxygen assessment)</li>
+          <li>Need for <b>pulmonary rehabilitation</b></li>
+          <li>Complications: cor pulmonale, anxiety, depression</li>
+          <li>Vaccines (box 5); action plan and rescue pack</li>
+          <li>Advance care planning when disease is advanced</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
       <div class="blk purple"><h2><span class="n">14</span>Oxygen — who to assess<small>NG115</small></h2><div class="body">
         <p><b>Assess</b> when stable if: FEV₁ &lt;30% · cyanosis · polycythaemia · peripheral oedema · raised JVP · <b>SpO₂ ≤92% on air</b> (consider if FEV₁ 30–49%).</p>
         <p><b>LTOT criteria</b> (non-smokers; two ABGs <b>at least 3 weeks apart</b>, stable, on optimal treatment): PaO₂ <b>&lt;7.3 kPa</b>, or <b>7.3–8 kPa</b> with polycythaemia, peripheral oedema or pulmonary hypertension. Used for <b>at least 15 hours a day</b>.</p>
         <p class="key">No LTOT for people who keep smoking despite cessation support (fire risk); assess home fire risk for all. Oxygen does not help breathlessness without hypoxaemia.</p>
       </div></div>
+    </div>
 
+    <div class="col">
       <div class="blk blue"><h2><span class="n">15</span>When to refer<small>NG115</small></h2><div class="body">
         <ul>
           <li>Diagnostic doubt; onset under 40 or family history (alpha-1 antitrypsin).</li>
@@ -304,6 +308,6 @@ tr:last-child td{border-bottom:0}
 
   <div class="foot"><span>Reasoning GP Clinic Guide · COPD · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG115 (2018, updated 2019), NG114, NG12, TA1166; UKHSA Green Book and RSV letter (1 Jul 2026); GOLD (international context only)</span><span>Full detail and evidence: gpreasoning.uk/tools/management/copd.html</span></div>
 </section>
-<script src="../../assets/clinic-guides.js?v=1"></script>
+<script src="../../assets/clinic-guides.js?v=4"></script>
 </body>
 </html>

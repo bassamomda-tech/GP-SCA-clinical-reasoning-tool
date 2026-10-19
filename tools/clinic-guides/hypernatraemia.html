@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="hypernatraemia">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hypernatraemia in adults — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/hypernatraemia.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/hypernatraemia.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · lab results series</div>
+      <h1>Hypernatraemia: the high sodium <small>CLINIC GUIDE</small></h1>
+      <div class="scope">Interpreting a serum sodium above 145 mmol/L in adults 18+. Not for infants and children (hypernatraemic dehydration → 999 or urgent paediatric admission), or hospital fluid and desmopressin treatment.</div>
+    </div>
+    <div class="meta"><b>NICE CG174</b> (IV fluids) · <b>CG185</b> (lithium)<br>JBDS-IP HHS 2022 · SfE cranial DI 2018<br>CQC regulation 14 (hydration)<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full pathway: gpreasoning.uk/tools/algorithms/hypernatraemia.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Interpret <span>is it dangerous? → is it real? → how high, how fast → why can't this person get or keep water?</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act today — symptoms, tempo and access to water outrank the number<small>CG174 · JBDS · SfE</small></h2><div class="body">
+    <table>
+      <tr><th>Tier</th><th>Result or feature</th><th>Action</th></tr>
+      <tr><td><b>999</b></td><td>Raised sodium with <b>confusion, drowsiness, seizure, shock or severe dehydration</b> · high sodium and <b>unable to drink</b> or deteriorating · polyuria after head injury, neurosurgery, pituitary surgery, meningitis or encephalitis (acute central DI) · suspected <b>HHS</b> (high glucose, dehydration, drowsy) · focal neurology (intracranial cause until proven otherwise)</td><td>Emergency transfer; correction is a hospital task</td></tr>
+      <tr><td><b>Same day</b></td><td>Na⁺ <b>150–154 mmol/L</b> · 146–149 if new, rising, unexplained, polyuric, frail, confused, or cannot ensure intake · polyuria with dilute urine (possible DI) · on <b>lithium</b> and dehydrated · dehydration with AKI</td><td>Same-day acute medical assessment; DI → urgent endocrinology</td></tr>
+      <tr><td><b>Admit</b></td><td>Na⁺ <b>≥155 mmol/L</b> (CG174), or sooner if symptomatic, acutely rising, hypovolaemic, unable to take oral fluids or clinically unstable · <b>≥160</b> = severe</td><td>Urgent admission; ≥160: <b>immediate senior/specialist input</b></td></tr>
+      <tr><td><b>Safeguarding</b></td><td>Dependent adult with poor intake, recurrent, or with weight loss, pressure ulcers or poor care · suspected salt poisoning</td><td>Same-day safeguarding concern (Care Act 2014)</td></tr>
+    </table>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Confirm it is real<small>repeat urgently, examine in person</small></h2><div class="body">
+        <ul>
+          <li><b>Repeat U&amp;E urgently</b> if unexpected, with glucose and paired serum and urine osmolality. A spurious high sodium is uncommon: <b>believe it if the patient is dry, drowsy or not drinking</b>.</li>
+          <li><b>Sample error</b>: drawn above a saline or sodium bicarbonate drip; evaporation from a delayed or uncapped sample. Resample from the other arm.</li>
+          <li><b>Sodium gain</b>: saline, bicarbonate, hypertonic feeds, salt enemas, sodium-containing effervescent or soluble medicines.</li>
+          <li><b>Hyperglycaemia</b> dilutes sodium: in <b>HHS</b> it may look normal, then rise as glucose falls. Check capillary glucose and ketones in every dehydrated patient.</li>
+          <li><b>Duration unknown? Treat it as chronic</b>: most community cases have built up over days.</li>
+          <li><b>Not by phone</b>: hydration, cognition and access to drinks cannot be judged remotely.</li>
+        </ul>
+      </div></div>
+    </div>
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">2</span>Severity bands<small>use local laboratory ranges</small></h2><div class="body">
+        <table>
+          <tr><th>Na⁺ mmol/L</th><th>Means</th><th>Action and timing</th></tr>
+          <tr><td><b>146–149</b>, well</td><td>Mild; often fever, heat or poor intake</td><td>Home only if well, cognitively intact, cause clear and a <b>named person gives measured drinks</b>; urgent repeat U&amp;E</td></tr>
+          <tr><td><b>146–149</b>, at risk</td><td>Frail, confused, polyuric, unclear or rising</td><td><b>Same-day</b> medical review</td></tr>
+          <tr><td><b>150–154</b></td><td>Significant water deficit</td><td><b>Same-day acute medical assessment</b> in most; immediate if symptomatic, not drinking, or DI/HHS possible</td></tr>
+          <tr><td><b>155–159</b></td><td>Oral correction often impractical</td><td><b>Urgent admission</b> (CG174); 999 if drowsy, confused or not drinking</td></tr>
+          <tr><td><b>≥160</b></td><td>Severe</td><td><b>Admit</b>; immediate senior/specialist input</td></tr>
+        </table>
+        <p class="key">Unknown duration = chronic. In hospital, sodium should fall no faster than about <b>0.5 mmol/L per hour</b> and <b>10–12 mmol/L in 24 h</b>: too fast a fall causes cerebral oedema.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="blk purple"><h2><span class="n">3</span>Read the urine — the key discriminator<small>paired with serum osmolality</small></h2><div class="body">
+    <div class="flow" style="--c:var(--purple)">
+      <div><b class="h">Concentrated urine</b>For example <b>&gt;600 mOsm/kg</b>: the kidney is saving water appropriately. Think intake, insensible or GI loss.</div>
+      <div><b class="h">Inappropriately dilute</b>Dilute urine despite a high sodium: <b>DI</b>, central or nephrogenic. Same-day assessment; urgent endocrinology discussion.</div>
+      <div><b class="h">Large volume, not dilute</b>Osmotic diuresis: glucose (HHS) or urea. Check glucose and ketones first.</div>
+      <div><b class="h">Interpret with care</b>Suggestive, not diagnostic: allow for diuretics, recent intake, renal function and hyperglycaemia.</div>
+    </div>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">4</span>Causes<small>clue → think → first test</small></h2><div class="body">
+        <table>
+          <tr><th>Clue</th><th>Think</th><th>First test</th></tr>
+          <tr><td>Frail, dementia, dysphagia, care home</td><td><b>Inadequate intake</b> (commonest)</td><td>Urine osm: concentrated (&gt;600 mOsm/kg)</td></tr>
+          <tr><td>Fever, sweating, heat, burns</td><td><b>Insensible loss</b></td><td>Temperature, CRP; source</td></tr>
+          <tr><td>Diarrhoea, lactulose, vomiting</td><td><b>GI water loss</b></td><td>U&amp;E, urea</td></tr>
+          <tr><td>Lithium, polyuria, thirst</td><td><b>Nephrogenic DI</b></td><td>Lithium level, calcium, urine osm</td></tr>
+          <tr><td>Head injury, pituitary surgery</td><td><b>Central DI</b></td><td>Urine osm (dilute); endocrinology</td></tr>
+          <tr><td>High glucose, drowsy</td><td><b>HHS</b></td><td>Glucose, ketones → 999</td></tr>
+          <tr><td>Loop diuretic, laxatives, osmotic agents</td><td><b>Drug-induced water loss</b></td><td>Drug review; U&amp;E</td></tr>
+          <tr><td>Saline, feeds, effervescent tablets</td><td><b>Sodium gain</b></td><td>Drug and feed review</td></tr>
+        </table>
+        <p class="key">Polyuria: more than about <b>50 mL/kg/day</b> (about 3 L/day). Dilute urine with high sodium → DI or osmotic diuresis, not "poor intake".</p>
+      </div></div>
+    </div>
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">5</span>Work-up checklist<small>bloods, urine and the drinks</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>U&amp;E</b>, creatinine: AKI?</li>
+          <li><b>Glucose</b>, HbA1c, ketones</li>
+          <li><b>Serum osmolality</b></li>
+          <li><b>Urine osmolality</b> and urine Na⁺</li>
+          <li><b>Calcium</b>: hypercalcaemia → NDI</li>
+          <li>Potassium: low K⁺ → NDI</li>
+          <li><b>12-hour lithium level</b> if on lithium</li>
+          <li>Urine volume if polyuric</li>
+          <li>GCS, orientation, focal neurology</li>
+          <li>Lying and standing BP, weight, temperature</li>
+          <li><b>Swallow</b>; who gives the drinks?</li>
+          <li><b>Drugs</b>: diuretics, lactulose</li>
+        </ul>
+        <table style="margin-top:3px">
+          <tr><th>Result</th><th>Means</th></tr>
+          <tr><td>Rising creatinine</td><td>Dehydration with AKI: same day</td></tr>
+          <tr><td>High calcium, low K⁺</td><td>Reversible causes of nephrogenic DI</td></tr>
+          <tr><td>High glucose, ketones</td><td>HHS or DKA: 999</td></tr>
+          <tr><td>Lithium level high, or symptoms</td><td>Toxicity: same-day advice; toxicity can occur in range</td></tr>
+        </table>
+        <p class="key">Not in primary care: water-deprivation or copeptin testing, IV fluids, starting desmopressin.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Hypernatraemia · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary. Use your laboratory's reference ranges.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Manage and refer <span>replace water slowly → remove the cause → recheck → protect the vulnerable</span></div>
+
+  <div class="grid">
+
+    <div class="blk blue span"><h2><span class="n">6</span>Safe to manage at home only if — every box ticked and documented<small>CG174 · CQC reg 14</small></h2><div class="body">
+      <ul class="tick" style="grid-template-columns:repeat(3,1fr)">
+        <li>Na⁺ 146–149, not rising; no Act-today feature</li>
+        <li>Clinically well, cognitively intact, not polyuric</li>
+        <li>Can drink; a named person gives measured drinks</li>
+        <li>Glucose, calcium and U&amp;E checked; drugs reviewed</li>
+        <li>Urgent repeat booked; safety-net given</li>
+        <li>Safeguarding considered for any dependent adult</li>
+      </ul>
+    </div></div>
+
+    <div class="blk teal span"><h2><span class="n">7</span>Management of the commonest causes<small>CG174 · CG185 · JBDS · SfE · SPC</small></h2><div class="body">
+      <table>
+        <tr><th>Cause</th><th>First line</th><th>Check and continue</th></tr>
+        <tr><td><b>Poor intake, mild (146–149)</b></td><td><b>Plain water</b> by mouth, not sports drinks or saline; measured drinks given by a named person. <b>Never fluid-restrict</b></td><td>Urgent repeat U&amp;E. Nobody to give drinks → same-day assessment</td></tr>
+        <tr><td><b>Fever, heat</b></td><td>Extra plain water; treat the fever and its cause</td><td>Care home: check the fluid target and who is giving drinks</td></tr>
+        <tr><td><b>Diarrhoea, vomiting</b></td><td>Oral rehydration solution plus free water; review diuretics and lactulose</td><td>Not keeping fluids down → same-day assessment</td></tr>
+        <tr><td><b>Sodium gain</b></td><td>Stop sodium-containing effervescent or soluble medicines where possible; review feeds</td><td>Recheck after the change</td></tr>
+        <tr><td><b>Lithium nephrogenic DI</b></td><td>Keep hydrated; <b>do not stop lithium abruptly</b> without urgent specialist advice unless toxic. Amiloride, thiazide or dose change only with psychiatry, endocrinology or nephrology</td><td>Thiazides raise lithium levels. If amiloride is started: U&amp;E and K⁺ after starting and each dose change</td></tr>
+        <tr><td><b>Central DI</b></td><td>Desmopressin to the written endocrinology plan only; no community start for a new case</td><td>Do not over-drink on desmopressin (hyponatraemia). Vomiting or no water access is an emergency</td></tr>
+        <tr><td><b>Hypercalcaemia</b></td><td>Treat the calcium (hypercalcaemia pathway)</td><td>DI usually settles as calcium normalises</td></tr>
+        <tr><td><b>HHS</b></td><td>999. Hospital JBDS pathway: 0.9% sodium chloride first, despite the high sodium</td><td>Sodium may rise as glucose falls: follow osmolality</td></tr>
+      </table>
+    </div></div>
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">8</span>Follow-up and monitoring checklist<small>CG185 · SfE · CG174</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Urgent repeat U&amp;E</b> for mild cases at home; booked before the patient leaves</li>
+          <li><b>Target</b>: sodium back in range, falling slowly, with the cause removed</li>
+          <li>Named person, measured drinks and fluid chart in place</li>
+          <li><b>Lithium</b>: level every <b>3 months</b> in year 1, then every <b>6 months</b> (3-monthly if higher risk); U&amp;E/eGFR, calcium and TFTs at least every <b>6 months</b> (CG185)</li>
+          <li>Lithium with polyuria: urine volume and osmolality, then specialist advice</li>
+          <li><b>Desmopressin</b>: sodium after every dose change or illness, per the endocrinology plan</li>
+          <li>Diuretics and laxatives reviewed against intake</li>
+          <li>Safeguarding question answered and recorded</li>
+          <li>Cause recorded in the problem list</li>
+        </ul>
+      </div></div>
+      <div class="blk blue"><h2><span class="n">9</span>When and where to refer<small>CG174 · JBDS · SfE 2018</small></h2><div class="body">
+        <table>
+          <tr><td><b>999</b></td><td>Confusion, drowsiness, seizure, shock, severe dehydration, unable to drink; acute central DI; HHS</td></tr>
+          <tr><td><b>Same day</b></td><td>Na⁺ 150–154; 146–149 at risk; dehydration with AKI; lithium and dehydrated</td></tr>
+          <tr><td><b>Admit</b></td><td>Urgent hospital assessment/admission: Na⁺ ≥155 (CG174), or sooner if symptomatic, acutely rising, hypovolaemic, unable to take oral fluids or clinically unstable. ≥160 is severe → immediate senior/specialist input</td></tr>
+          <tr><td><b>Endocrinology</b></td><td>Suspected DI (urgent discussion); pituitary or hypothalamic cause; recurrent or chronic DI</td></tr>
+          <tr><td><b>Nephrology</b></td><td>Nephrogenic DI from CKD; lithium DI with renal impairment</td></tr>
+          <tr><td><b>Safeguarding</b></td><td>Neglect in a dependent adult; salt poisoning: same day</td></tr>
+        </table>
+      </div></div>
+    </div>
+    <div class="col">
+      <div class="blk red"><h2><span class="n">10</span>Special groups<small>CQC reg 14 · CG185 · SfE</small></h2><div class="body">
+        <ul>
+          <li><b>Care home residents</b>: a documented daily fluid target, monitored intake and thickened fluids where needed for dysphagia; hydration is a legal standard (CQC regulation 14).</li>
+          <li><b>Central DI</b>: medical alert and written sick-day plan; unconscious patients given only isotonic fluid can become severely hypernatraemic.</li>
+          <li><b>After pituitary surgery</b>: DI, then a low-sodium phase, then possibly permanent DI; sodium in either direction needs the specialist team.</li>
+        </ul>
+      </div></div>
+      <div class="blk slate"><h2><span class="n">11</span>Pitfalls and never-events<small>JBDS · SfE · CG174</small></h2><div class="body">
+        <ul>
+          <li>"Not thirsty": thirst fails in older people and with reduced consciousness.</li>
+          <li>"Encourage fluids" when nobody can bring, hold or help with a drink.</li>
+          <li>"Poor intake" when the urine is <b>dilute</b>: think DI or osmotic diuresis.</li>
+          <li>A normal-looking sodium with high glucose: <b>HHS</b>.</li>
+          <li><b>Never</b> fluid-restrict, never drop sodium fast, never arrange water-deprivation testing from primary care.</li>
+          <li>A sodium that settles in a dependent adult: the safeguarding question remains.</li>
+          <li><b>Never</b> stop lithium abruptly, or start amiloride or a thiazide, without specialist advice.</li>
+        </ul>
+      </div></div>
+      <div class="blk green"><h2><span class="n">12</span>Safety-net and self-care — say it to the patient and carer, then document it<small>CG174 · SfE</small></h2><div class="body">
+      <div class="flow" style="--c:var(--green);grid-template-columns:repeat(2,1fr)">
+        <div><b class="h">Call 999</b>New confusion, drowsiness, a fit, collapse, or being unable to drink.</div>
+        <div><b class="h">Practice or 111 today</b>Vomiting, drinking less, passing much less urine, or large volumes of urine with thirst.</div>
+        <div><b class="h">Drinks</b>Plain water little and often, offered by a named person; keep a simple chart if a carer helps.</div>
+        <div><b class="h">On desmopressin</b>Follow the written plan; do not over-drink; vomiting or no water access → urgent help.</div>
+      </div>
+    </div></div>
+    </div>
+
+    <div class="blk green span"><h2><span class="n">13</span>Say it like this<small>plain English</small></h2><div class="body">
+        <p class="say">"Your blood is too salty, which almost always means your body is short of water rather than that you've eaten too much salt. We'll put the water back slowly, because doing it too fast can be harmful, and find out why it happened. If you become confused, very sleepy or can't drink, call 999."</p>
+      </div></div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Hypernatraemia · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE CG174 (IV fluids in adults), CG185 (bipolar disorder, lithium monitoring); JBDS-IP HHS in adults (2022); Society for Endocrinology inpatient cranial DI guidance (2018); CQC regulation 14; Care Act 2014; SPCs</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/hypernatraemia.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=4"></script>
+</body>
+</html>

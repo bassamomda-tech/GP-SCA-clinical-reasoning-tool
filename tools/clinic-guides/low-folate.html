@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="low-folate">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Low folate in adults — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/low-folate.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/low-folate.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · lab results series</div>
+      <h1>Low folate in adults <small>CLINIC GUIDE</small></h1>
+      <div class="scope">Interpreting a low serum folate in adults 18+, including pregnancy planning. Not for children, inpatient refeeding or specialist haemolytic anaemia and dialysis protocols.</div>
+    </div>
+    <div class="meta">NICE CKS · BSH 2014 · SPS<br>NICE <b>NG247</b> (2025) · <b>NG239</b> (2024)<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full pathway: gpreasoning.uk/tools/algorithms/low-folate.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Interpret <span>is it dangerous? → is B12 low too? → why is folate low</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act today<small>NG239 · CG100 · NG12</small></h2><div class="body">
+    <table>
+      <tr><th>Tier</th><th>Result + picture</th><th>Action</th></tr>
+      <tr><td><b>999</b></td><td>Low folate with confusion, ataxia or eye-movement problems in alcohol misuse or vomiting (Wernicke) · unstable, septic, bleeding</td><td>Emergency transfer; parenteral thiamine if available, without delaying transfer</td></tr>
+      <tr><td><b>Same day</b></td><td><b>Neurological features</b> (unsteady gait, loss of proprioception, weakness, cognitive or visual change) — may be <b>B12</b> deficiency</td><td>Take B12 and folate bloods, start <b>B12 today</b>, urgent specialist advice. Never folic acid alone</td></tr>
+      <tr><td><b>Same day</b></td><td>Pancytopenia with infection or bleeding · severe symptomatic anaemia · film suggesting leukaemia or MDS · rapidly falling counts</td><td>Same-day haematology or hospital assessment</td></tr>
+      <tr><td><b>Same day</b></td><td>On <b>methotrexate</b> with mouth ulcers, cytopenias, sepsis or rising creatinine</td><td>Withhold methotrexate; urgent FBC, LFTs, U&amp;E; specialist the same day</td></tr>
+    </table>
+  </div></div>
+
+  <div class="grid">
+    <div class="blk amber span"><h2><span class="n">1</span>Is the result real?<small>BSH 2014 · CKS</small></h2><div class="body">
+        <table>
+          <tr><td><b>Recent meal or supplement</b></td><td>Serum folate reflects the last few days' intake: a normal level can hide chronic deficiency, and a low one may follow a few poor days</td></tr>
+          <tr><td><b>Haemolysed sample</b></td><td>Red cells are rich in folate: haemolysis can falsely raise serum folate. Repeat if the result does not fit</td></tr>
+          <tr><td><b>Already on folic acid</b></td><td>The level means little: do not use it to monitor</td></tr>
+          <tr><td><b>B12 deficiency</b></td><td>Can distort folate results: always read B12 and folate together</td></tr>
+          <tr><td><b>Red-cell folate</b></td><td>Not routinely needed in primary care</td></tr>
+        </table>
+        <p class="key">A mildly low folate in a well person with a normal FBC: dietary advice and a repeat test is reasonable; treat if the cause persists or there is anaemia.</p>
+      </div></div>
+
+    <div class="col">
+      <div class="blk green"><h2><span class="n">2</span>Severity bands<small>use your laboratory's lower limit</small></h2><div class="body">
+        <table>
+          <tr><th>Result + picture</th><th>Means</th><th>Action and timing</th></tr>
+          <tr><td>Low folate, normal FBC, well</td><td>Early or dietary deficiency</td><td>Check B12; diet advice; treat if cause persists, risk group or pregnant</td></tr>
+          <tr><td>Low folate + <b>MCV &gt;100</b> or anaemia</td><td>Megaloblastic picture</td><td>B12 result first, then folic acid; FBC response</td></tr>
+          <tr><td>Low folate + <b>low B12</b></td><td>Combined deficiency</td><td>Treat <b>B12 first or at the same time</b></td></tr>
+          <tr><td>Low folate + other cytopenias or abnormal film</td><td>Severe deficiency or marrow disease</td><td>Urgent haematology advice; same day if unwell</td></tr>
+          <tr><td>Low folate + neurological features</td><td>Possible B12 neuropathy</td><td>Same day: B12 now, specialist advice</td></tr>
+          <tr><td>Planning pregnancy or first 12 weeks</td><td>Neural tube risk</td><td>Start folic acid now; do not wait for results</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">3</span>Read the folate with the rest of the count<small>BSH 2014 · CKS</small></h2><div class="body">
+    <table>
+      <tr><th>Pattern</th><th>Think</th><th>Next</th></tr>
+      <tr><td>MCV <b>&gt;100</b>, hypersegmented neutrophils</td><td>Megaloblastic: folate or B12</td><td>B12 result before folic acid where feasible</td></tr>
+      <tr><td>Normal MCV, low folate and low ferritin</td><td>Mixed deficiency can cancel out the MCV — think coeliac</td><td>tTG IgA; treat both</td></tr>
+      <tr><td>Macrocytosis, normal folate and B12</td><td>Alcohol, liver, thyroid, drugs, MDS</td><td>LFTs, GGT, TFTs; film; haematology if unexplained</td></tr>
+      <tr><td>Low folate, high retics, jaundice</td><td>Haemolysis using up folate</td><td>Film, LDH, bilirubin; haematology</td></tr>
+    </table>
+  </div></div>
+
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">4</span>Why is it low?<small>clue → think → first test</small></h2><div class="body">
+        <table>
+          <tr><th>Clue</th><th>Think</th><th>First test</th></tr>
+          <tr><td>Poor diet, frailty, eating disorder</td><td><b>Low intake</b> (commonest)</td><td>Diet history; MUST</td></tr>
+          <tr><td>Alcohol, raised GGT</td><td><b>Alcohol</b></td><td>AUDIT-C; LFTs, GGT</td></tr>
+          <tr><td>Diarrhoea, weight loss, low iron too</td><td><b>Coeliac</b>, small-bowel Crohn's</td><td>tTG IgA + total IgA (on gluten)</td></tr>
+          <tr><td>Methotrexate, phenytoin, carbamazepine, trimethoprim, sulfasalazine</td><td><b>Drug-related</b></td><td>Medication review</td></tr>
+          <tr><td>Jaundice, high retics, known sickle or spherocytosis</td><td><b>Haemolysis</b> (high demand)</td><td>Film, retics, bilirubin, LDH</td></tr>
+          <tr><td>Pregnancy, breastfeeding, exfoliative skin disease</td><td><b>Increased demand</b></td><td>Context</td></tr>
+          <tr><td>Other cytopenias, odd film</td><td><b>Marrow disease</b></td><td>Film; haematology</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">5</span>Work-up checklist<small>CKS · NG239 · NG20</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>B12 (total or active)</b>: before folic acid where feasible</li>
+          <li><b>FBC + MCV</b>, reticulocytes</li>
+          <li><b>Blood film</b> if macrocytosis or cytopenias</li>
+          <li><b>Ferritin</b>: coeliac and diet cause both</li>
+          <li><b>tTG IgA + total IgA</b> while eating gluten</li>
+          <li><b>LFTs + GGT</b>: alcohol, liver</li>
+          <li>TFTs if macrocytosis unexplained</li>
+          <li>U&amp;E; CRP if inflammation suspected</li>
+        </ul>
+        <p class="key" style="margin-top:3px">Ask about diet, alcohol, bowel symptoms, medicines, pregnancy plans and haemolytic disease. Examine mouth (glossitis, angular cheilitis), nodes, liver and spleen, and vibration and joint position sense.</p>
+      </div></div>
+
+    </div>
+
+  </div>
+
+  <div class="blk blue"><h2><span class="n">6</span>Reading the result in four steps<small>CKS · NG239</small></h2><div class="body">
+    <div class="flow" style="--c:var(--blue)">
+      <div><b class="h">1 · Unwell or neurological?</b>Neurology, pancytopenia, sepsis or Wernicke features → same day or 999 first.</div>
+      <div><b class="h">2 · What is the B12?</b>Low or unknown with neurology → treat B12 first. Never start folic acid alone in a macrocytic patient with an unknown B12.</div>
+      <div><b class="h">3 · Why?</b>Diet and alcohol are commonest; always consider coeliac disease and medicines, especially methotrexate.</div>
+      <div><b class="h">4 · Who else needs folic acid?</b>Pregnancy planning, high neural tube risk, chronic haemolysis, methotrexate.</div>
+    </div>
+  </div></div>
+
+<div class="foot"><span>Reasoning GP Clinic Guide · Low folate · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary. Use your laboratory's reference ranges.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Manage and refer <span>B12 first → replace and fix the cause → recheck the FBC → stop</span></div>
+
+  <div class="grid">
+    <div class="blk teal span"><h2><span class="n">7</span>Treatment by cause<small>NICE CKS · NG247 · SPS · SPC</small></h2><div class="body">
+      <table>
+        <tr><th>Situation</th><th>Replacement regimen</th><th>Duration and notes</th></tr>
+        <tr><td><b>Folate deficiency</b> (diet, alcohol)</td><td><b>Folic acid 5 mg daily</b> — once B12 is known to be normal or is being replaced</td><td>Usually <b>4 months</b>; longer if the cause persists. Treat the cause</td></tr>
+        <tr><td><b>Combined B12 + folate</b></td><td>IM hydroxocobalamin first (see B12 guide), with or after folic acid 5 mg daily</td><td>Never folic acid alone</td></tr>
+        <tr><td><b>Coeliac, malabsorption</b></td><td>Folic acid 5 mg daily, plus iron and B12 as needed; gluten-free diet</td><td>Until folate normal and absorption recovered (often &gt;4 months)</td></tr>
+        <tr><td><b>Methotrexate</b></td><td><b>Folic acid 5 mg once weekly</b>, on a different day from methotrexate</td><td>Throughout methotrexate; any increase is specialist-led</td></tr>
+        <tr><td><b>Planning pregnancy</b>, standard risk</td><td><b>Folic acid 400 micrograms daily</b></td><td>Before conception until <b>12 weeks</b></td></tr>
+        <tr><td><b>Planning pregnancy, high risk</b></td><td><b>Folic acid 5 mg daily</b>: previous or family NTD, type 1 or 2 diabetes, sickle cell or thalassaemia, antiepileptic or HIV medicines</td><td>Before conception until <b>12 weeks</b>; BMI alone is not an indication</td></tr>
+        <tr><td><b>Chronic haemolysis, dialysis</b></td><td>Long-term folic acid per haematology or renal protocol</td><td>Specialist-led dose</td></tr>
+      </table>
+    </div></div>
+
+    <div class="col">
+      <div class="blk green"><h2><span class="n">8</span>Self-care and the conversation<small>CKS · NG247</small></h2><div class="body">
+        <p>Eat leafy greens, broccoli, pulses and fortified cereals; steam rather than boil · cut down alcohol · anyone who could become pregnant: take folic acid before conception · come back the <b>same day</b> with tingling, numbness, unsteadiness, fever or bleeding.</p>
+        <p class="say" style="margin-top:3px">"Your folate — a B vitamin your body needs to make blood cells — is low. We've checked your B12 too, because the two go together and the order of treatment matters. A course of tablets for a few months usually sorts it, but we also need to find out why it dropped."</p>
+      </div></div>
+
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">9</span>Follow-up and monitoring checklist<small>CKS · SPS</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>B12 result</b> seen before or alongside the first folic acid prescription</li>
+          <li><b>Recheck FBC within about 8 weeks</b> if there was anaemia or macrocytosis</li>
+          <li><b>Target</b>: Hb and MCV back to normal, symptoms gone</li>
+          <li><b>Do not recheck serum folate</b> while on folic acid</li>
+          <li>No response → B12, iron, haemolysis, alcohol, thyroid, MDS, adherence, malabsorption</li>
+          <li><b>Stop</b> after the course once corrected and the cause is fixed; continue if the cause persists</li>
+          <li>Methotrexate: folic acid on every repeat; FBC, LFTs, U&amp;E per shared-care protocol</li>
+          <li>Coeliac: annual review with FBC, ferritin, B12, folate</li>
+        </ul>
+      </div></div>
+
+    </div>
+
+    <div class="blk amber span"><h2><span class="n">10</span>Who to test, and when to think again<small>CKS · NG20 · NG247</small></h2><div class="body">
+      <div class="flow" style="--c:var(--amber)">
+        <div><b class="h">Test when</b>Macrocytosis or anaemia, sore tongue or mouth, unexplained fatigue with poor diet, alcohol misuse, malabsorption.</div>
+        <div><b class="h">Do not test to decide</b>pregnancy folic acid: everyone planning pregnancy needs it, whatever the level. No routine folate test at booking.</div>
+        <div><b class="h">Coeliac</b>Low folate with low iron is a classic pattern: test tTG IgA while still eating gluten; refer if positive.</div>
+        <div><b class="h">No response</b>FBC not improving → recheck B12, iron and adherence; consider haemolysis, hypothyroidism, MDS; haematology advice.</div>
+      </div>
+    </div></div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">11</span>When and where to refer<small>CKS · NG12 · NG20</small></h2><div class="body">
+        <table>
+          <tr><td><b>999</b></td><td>Unstable, septic, bleeding, or Wernicke features</td></tr>
+          <tr><td><b>Same day</b></td><td>Neurological features; pancytopenia with infection or bleeding; suspected leukaemia; methotrexate toxicity</td></tr>
+          <tr><td><b>Urgent haematology</b></td><td>Other cytopenias, abnormal film, no FBC response despite adherence</td></tr>
+          <tr><td><b>Gastroenterology</b></td><td>Positive coeliac serology; suspected malabsorption or IBD</td></tr>
+          <tr><td><b>Maternity</b></td><td>Low folate in pregnancy with severe anaemia, vomiting or another concern</td></tr>
+          <tr><td><b>Dietitian</b></td><td>Severe or multiple deficiencies, eating disorder, bariatric surgery</td></tr>
+        </table>
+      </div></div>
+
+    </div>
+
+    <div class="col">
+      <div class="blk slate"><h2><span class="n">12</span>Pitfalls and never-events<small>NG239 · NG247 · MHRA</small></h2><div class="body">
+        <ul>
+          <li><b>Never</b> give folic acid alone to a macrocytic or neurologically symptomatic patient before B12 is known: it can mask B12 deficiency while nerve damage progresses.</li>
+          <li><b>Never</b> prescribe methotrexate without weekly folic acid.</li>
+          <li><b>Never</b> wait for a folate result before starting pregnancy folic acid.</li>
+          <li>Folic acid does not remove the teratogenic risk of valproate: follow the MHRA pregnancy prevention programme.</li>
+          <li>Do not stop antiepileptics abruptly; plan pregnancy with neurology.</li>
+          <li>Severe malnutrition: thiamine before refeeding.</li>
+        </ul>
+      </div></div>
+
+    </div>
+
+    <div class="blk red span"><h2><span class="n">13</span>Special groups<small>NG247 · SPS · MHRA · CG100</small></h2><div class="body">
+      <div class="flow" style="--c:var(--red)">
+        <div><b class="h">Pregnancy</b>Low folate alone can be managed in primary care if well: supplement and check B12, diet, coeliac and adherence. Same-day maternity review if severe anaemia, vomiting or another concern.</div>
+        <div><b class="h">Methotrexate</b>Check folic acid at every repeat. Toxicity (ulcers, cytopenias, sepsis, renal decline) → withhold, urgent bloods, specialist today. Folinic acid rescue is specialist-led.</div>
+        <div><b class="h">Antiepileptics</b>Review folate in those on phenytoin, carbamazepine, phenobarbital or primidone, especially if planning pregnancy. Valproate: pregnancy prevention programme.</div>
+        <div><b class="h">Alcohol, malnutrition</b>AUDIT-C and brief intervention. Wernicke features → 999 with parenteral thiamine. Severe malnutrition → thiamine before refeeding; dietitian.</div>
+      </div>
+    </div></div>
+
+  </div>
+
+<div class="foot"><span>Reasoning GP Clinic Guide · Low folate · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE CKS Anaemia – B12 and folate deficiency; BSH cobalamin and folate guideline (2014); NICE NG247 (2025), NG239 (2024), NG20, NG12, CG100, CG32; SPS folic acid with methotrexate; MHRA valproate PPP; SPCs</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/low-folate.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=4"></script>
+</body>
+</html>

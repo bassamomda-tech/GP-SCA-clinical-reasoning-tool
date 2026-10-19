@@ -1,0 +1,65 @@
+[
+ {
+  "subject": "aspirin",
+  "group": "TIA loading dose (cases/tia-stroke.html referral table)",
+  "verdict": "inconsistent",
+  "tier": 1,
+  "correct": "Resolved suspected TIA: aspirin 300 mg immediately unless contraindicated (bleeding disorder, anticoagulant); no brain imaging needed first (NICE NG128). Ongoing deficit = stroke pathway, no aspirin before imaging.",
+  "source": "https://www.nice.org.uk/guidance/ng128/chapter/Recommendations#transient-ischaemic-attack",
+  "fixes": [
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "Give aspirin 300mg now (if haemorrhage unlikely clinically and no CT available).",
+    "new": "Give aspirin 300mg now unless contraindicated (NICE NG128: no brain imaging needed first for resolved suspected TIA; anticoagulated or bleeding disorder → specialist advice)."
+   },
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "Do NOT give aspirin without excluding haemorrhage if clinically uncertain.",
+    "new": "Do NOT give aspirin if symptoms are ongoing (stroke pathway: imaging first), or if anticoagulated or with a bleeding disorder, without specialist advice."
+   }
+  ],
+  "note": "The qualifier 'if haemorrhage unlikely clinically and no CT available' and 'do not give without excluding haemorrhage if uncertain' implies imaging gating for resolved TIA, contradicting NG128 and ~40 other statements on the site (including elsewhere on the same page). Risk: GP withholds the loading dose."
+ },
+ {
+  "subject": "platelets",
+  "group": "LMWH in pregnancy (APS) — platelet monitoring",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "Routine platelet-count monitoring is not required in obstetric patients receiving LMWH only (BSH HIT guideline, Watson et al 2012; RCOG GTG37a). Monitor only if UFH was given first or per specialist plan.",
+  "source": "https://www.aast.org/Assets/c81bf886-ad20-48b6-b3cb-964960017fe5/636077287085800000/watson-hit-bjh-hit-2012-pdf",
+  "fixes": [
+   {
+    "file": "tools/algorithms/vaginal-bleeding-pregnancy.html",
+    "old": "Platelet count at baseline and monthly on LMWH.",
+    "new": "Routine platelet monitoring is not needed on LMWH alone in pregnancy (BSH/RCOG); follow the specialist monitoring plan."
+   }
+  ],
+  "note": "Pregnancy item. Monthly platelet counts on LMWH alone are not UK guidance and push unnecessary monitoring into primary care."
+ },
+ {
+  "subject": "aspirin",
+  "group": "APS pregnancy — when to stop aspirin",
+  "verdict": "owner",
+  "tier": 1,
+  "correct": "No single UK national stop date. NICE NG133 (pre-eclampsia) says aspirin until birth; for APS, RCOG GTG17 / local obstetric-haematology protocols vary (stop at about 34–36 weeks or continue to delivery).",
+  "source": "https://www.iatrox.com/q/6a8599ae315580e8d64db68c/obstetric-antiphospholipid-syndrome-in-pregnancy",
+  "fixes": [],
+  "note": "tools/algorithms/vaginal-bleeding-pregnancy.html states flatly 'Stop aspirin at 36 weeks (haemorrhage risk at delivery).' Everywhere else the site says aspirin 75–150 mg 'from 12 weeks until birth' (NG133). Owner: replace with 'Stop timing per the obstetric/haematology plan (local protocols vary, commonly about 36 weeks; NICE NG133 continues aspirin until birth for pre-eclampsia risk)'? Suggested old string: 'Stop aspirin at 36 weeks (haemorrhage risk at delivery).'"
+ },
+ {
+  "subject": "platelets",
+  "group": "Liver disease — platelet threshold for portal hypertension",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "Baveno VII: in compensated advanced chronic liver disease, platelets ≤150 × 10⁹/L (or LSM ≥20 kPa) means variceal screening is needed; LSM <15 kPa with platelets ≥150 rules out CSPH. <100 is too low a trigger.",
+  "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8713224/",
+  "fixes": [
+   {
+    "file": "cases/abnormal-lfts.html",
+    "old": "Platelets &lt;100 &times; 10&#8313;/L = portal hypertension indicator &rarr; hepatology referral plus OGD for varices",
+    "new": "Platelets &le;150 &times; 10&#8313;/L in suspected advanced liver disease = possible portal hypertension &rarr; hepatology referral; variceal screening (OGD) if platelets &le;150 or liver stiffness &ge;20 kPa (Baveno VII)"
+   }
+  ],
+  "note": "The <100 cut-off under-triggers referral and screening for varices. Low clinical-severity error, but the threshold is wrong."
+ }
+]

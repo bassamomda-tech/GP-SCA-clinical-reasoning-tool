@@ -1,0 +1,100 @@
+[
+ {
+  "subject": "blood pressure",
+  "group": "dose | mg / recheck/monitor | mg (venlafaxine BP monitoring)",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "Venlafaxine SPC: measure BP before starting and monitor regularly during treatment at all doses (dose-related increases; control pre-existing hypertension first; reduce dose or stop if sustained rise). tools/management/depression.html already says 'check BP at each titration step'.",
+  "source": "https://www.medicines.org.uk/emc/search?q=venlafaxine (SPC section 4.4); https://medlibrary.org/lib/rx/meds/venlafaxine/page/3/",
+  "fixes": [
+   {
+    "file": "cases/anxiety.html",
+    "old": "Blood pressure monitoring with venlafaxine above 150mg: noradrenergic effect raises BP",
+    "new": "Blood pressure monitoring with venlafaxine at all doses (before starting and regularly during treatment; the rise is dose-related): noradrenergic effect raises BP"
+   },
+   {
+    "file": "cases/anxiety.html",
+    "old": "Venlafaxine: monitor BP above 150mg.",
+    "new": "Venlafaxine: check BP before starting and regularly during treatment (dose-related rise)."
+   },
+   {
+    "file": "cases/depression.html",
+    "old": "Blood pressure at baseline, 1 month, then every 3 months on venlafaxine ≥150mg",
+    "new": "Blood pressure at baseline, 1 month, then every 3 months on venlafaxine (any dose; the rise is dose-related)"
+   },
+   {
+    "file": "cases/depression.html",
+    "old": "<td class=\"q\">Venlafaxine ≥150mg/day</td>",
+    "new": "<td class=\"q\">Venlafaxine (all doses; rise is dose-related)</td>"
+   },
+   {
+    "file": "cases/depression.html",
+    "old": "<strong>Venlafaxine ≥150mg</strong>",
+    "new": "<strong>Venlafaxine (all doses)</strong>"
+   },
+   {
+    "file": "cases/depression.html",
+    "old": "venlafaxine raises diastolic blood pressure at doses ≥150mg/day; measure BP at baseline, 1 month, then 3-monthly",
+    "new": "venlafaxine causes a dose-related rise in blood pressure (more likely at higher doses); control BP first and measure it at baseline, 1 month, then 3-monthly at any dose"
+   },
+   {
+    "file": "cases/ptsd.html",
+    "old": "Elevated BP at doses ≥225mg (monitor BP)",
+    "new": "Dose-related rise in BP (monitor BP before starting and regularly)"
+   },
+   {
+    "file": "cases/ptsd.html",
+    "old": "BP monitoring at higher doses (&gt;225mg).",
+    "new": "BP monitoring before starting and regularly during treatment (dose-related rise)."
+   }
+  ],
+  "note": "Pages restrict venlafaxine BP monitoring to >=150 mg (depression), >150 mg (anxiety) or >225 mg (PTSD), and disagree with each other. The SPC asks for BP monitoring in all patients. Statements that BP rises more at higher doses can stay. Venlafaxine was picked up under the blood-pressure dossier, so a venlafaxine batch may overlap with this."
+ },
+ {
+  "subject": "sertraline",
+  "group": "recheck/monitor | weeks",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "NICE NG222 rec 1.4.11 (clarified Apr 2023): first review after starting an antidepressant within 1 week for people aged 18 to 25, or if there is particular concern about suicide risk; otherwise within 2 weeks. The old CG90 'under 30' rule no longer applies to depression. CG113 'under 30' for GAD stays correct on the anxiety pages.",
+  "source": "https://www.nice.org.uk/guidance/NG222/chapter/update-information",
+  "fixes": [
+   {
+    "file": "assets/consult-templates.js",
+    "old": "review at 1–2 weeks (sooner if <30y or higher risk)",
+    "new": "review within 2 weeks (within 1 week if aged 18–25 or at increased suicide risk — NICE NG222)"
+   }
+  ],
+  "note": "This is the depression consult template (low mood HPC). tools/management/depression.html already states the NG222 18–25 rule. Anxiety/GAD pages using 'under 30' (CG113) are legitimate and were left unchanged."
+ },
+ {
+  "subject": "blood pressure",
+  "group": "refer | mmhg (>15 mmHg inter-arm difference)",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "NICE NG136 1.1.2: if the arm difference is >15 mmHg, repeat the measurements; if it stays >15 mmHg, measure subsequent BP in the arm with the higher reading. A persistent difference may suggest PVD or coarctation, but referral is not automatic (tools/management/hypertension.html already says this).",
+  "source": "https://www.nice.org.uk/guidance/ng136/chapter/recommendations",
+  "fixes": [
+   {
+    "file": "cases/hypertension.html",
+    "old": "Difference &gt;15 mmHg = investigate.",
+    "new": "Difference &gt;15 mmHg = repeat; if it persists, use the higher-reading arm from then on."
+   },
+   {
+    "file": "cases/hypertension.html",
+    "old": "&gt;15 mmHg → investigate coarctation / PVD → cardiovascular referral",
+    "new": "&gt;15 mmHg persisting → use the higher arm; consider PVD / coarctation and refer only if clinically suspected"
+   }
+  ],
+  "note": "cases/hypertension.html makes every >15 mmHg difference an investigation and referral, which disagrees with the management page and NG136."
+ },
+ {
+  "subject": "methotrexate",
+  "group": "do not start | months (pre-conception washout)",
+  "verdict": "owner",
+  "tier": 1,
+  "correct": "",
+  "source": "https://rheumnow.com/news/methotrexate-old-trusted-friend-who-deserves-better ; https://www.medicinesinpregnancy.org/leaflets-a-z/methotrexate-paternal",
+  "fixes": [],
+  "note": "cases/ulcerative-colitis.html: 'absolutely contraindicated in pregnancy and for 6 months before conception in both men and women'. tools/management/rheumatoid-arthritis.html: BSR says stop 1 month before conception (women), and men on low-dose (<=25 mg/week) need not stop (BSR GRADE 1B). The SPC/label and some IBD guidance (ECCO) still advise 3 months (men) to 6 months (women). Question for the owner: should the UC page keep the SPC/IBD 6-month wording, labelled 'SPC/IBD guidance; rheumatology (BSR) uses 1 month for women and no routine stop for men; follow the specialist team', or should it align with BSR? The 'both men and women' wording is the part that conflicts most."
+ }
+]

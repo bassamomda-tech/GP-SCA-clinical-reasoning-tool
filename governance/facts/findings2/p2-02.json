@@ -1,0 +1,59 @@
+[
+ {
+  "subject": "neutrophils",
+  "group": "suspected neutropenic sepsis | urgency",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "Suspected neutropenic sepsis (unwell or febrile during/after systemic anticancer treatment) = IMMEDIATE referral/emergency assessment via the 24-hour acute oncology hotline or 999/A&E; antibiotics within 1 hour in hospital; do not wait for FBC (NICE CG151 1.2.1; NG253; UKONS triage uses ≥37.5°C)",
+  "source": "https://www.nice.org.uk/guidance/cg151/chapter/Recommendations",
+  "fixes": [
+   {
+    "file": "tools/algorithms/acute-diarrhoea.html",
+    "old": "Chemotherapy within 6 weeks with fever → <span class=\"pill pill-red\">Same-day</span> neutropenic sepsis pathway.",
+    "new": "Recent chemotherapy (within 6 weeks) with fever or feeling unwell → <span class=\"pill pill-red\">Immediate</span> neutropenic sepsis pathway (acute oncology hotline / 999; do not wait for FBC)."
+   },
+   {
+    "file": "tools/algorithms/one-page/acute-diarrhoea.html",
+    "old": "<li><b>Neutropenic risk</b> (chemotherapy within 6 weeks + fever) → <span class=\"when wsd\">Same-day</span></li>",
+    "new": "<li><b>Neutropenic risk</b> (chemotherapy within 6 weeks + fever or unwell) → <span class=\"when wsd\">Immediate</span> acute oncology hotline / 999</li>"
+   },
+   {
+    "file": "tools/algorithms/one-page/recurrent-infections.html",
+    "old": "or on neutropenia-causing drugs → <span class=\"when wsd\">Same-day</span> acute oncology; do not wait for FBC.",
+    "new": "or on neutropenia-causing drugs → <span class=\"when wsd\">Immediate</span> acute oncology hotline / 999; do not wait for FBC."
+   },
+   {
+    "file": "cases/breast-cancer.html",
+    "old": "FEBRILE NEUTROPENIA: temperature ≥38°C or feeling unwell during chemotherapy = SAME-DAY oncology/haematology assessment (A&amp;E if out of hours).",
+    "new": "FEBRILE NEUTROPENIA: temperature ≥37.5°C or feeling unwell during chemotherapy = IMMEDIATE assessment via the 24-hour acute oncology/chemotherapy hotline (999/A&amp;E if very unwell or the hotline cannot be reached)."
+   }
+  ],
+  "note": "CG151 says refer suspected neutropenic sepsis immediately; 'same-day' understates a 1-hour-to-antibiotics emergency and conflicts with the site's own neutropenic-sepsis, leucopenia, pancytopenia and summaries/breast-cancer pages ('Immediately', 999/hotline, ≥37.5°C). The 6-week window is wider than NG253's 30 days, so it is safe and is kept. Search index JSON (assets/search/idx-pathway.json) may carry the old snippet; regenerate it rather than hand-editing."
+ },
+ {
+  "subject": "neutrophils",
+  "group": "neutropenic sepsis | empirical antibiotic dose",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "NICE CG151: piperacillin with tazobactam monotherapy as initial empirical therapy; the BNF/SPC dose in neutropenic patients is 4.5 g IV every 6 hours (adjust for renal function); local protocol applies. UKONS's triage tool does not specify an antibiotic.",
+  "source": "https://labeling.pfizer.com/ShowLabeling.aspx?id=1046 ; https://www.nice.org.uk/guidance/cg151/chapter/Recommendations",
+  "fixes": [
+   {
+    "file": "tools/algorithms/pancytopenia.html",
+    "old": "The UK Oncology Nursing Society (UKONS) neutropenic sepsis pathway specifies piperacillin-tazobactam (Tazocin) 4.5 g IV every 8 hours as first-line in most centres.",
+    "new": "NICE CG151 recommends piperacillin-tazobactam (Tazocin) monotherapy as initial empirical treatment, given in hospital within 1 hour; the dose follows the hospital protocol and BNF (commonly 4.5 g IV every 6 hours in neutropenic patients, adjusted for renal function)."
+   }
+  ],
+  "note": "Wrong frequency (every 8 h is the general-infection dose; the neutropenic dose is every 6 h) and wrong attribution (UKONS triage tool gives no antibiotic regimen; CG151 sets the drug choice). Hospital-only fact, but it is a dose statement."
+ },
+ {
+  "subject": "prednisolone",
+  "group": "exogenous steroid sick-day rules | no-extra-dose threshold",
+  "verdict": "owner",
+  "tier": 1,
+  "correct": "NICE NG243 (2024): during intercurrent illness give at least 10 mg prednisolone a day (in 1–2 doses), so a patient already on ≥10 mg needs no increase (the site's sick-day-rules page, its print twin and NHS Scotland use this). The Society for Endocrinology leaflet 'Oral steroids for lung disease' uses ≥15 mg (and steps doses >5 to <15 mg up to 15 mg).",
+  "source": "https://www.endocrinology.org/media/4167/oral-steroids-for-lung-disease.pdf ; https://www.rightdecisions.scot.nhs.uk/diabetes-endocrinology/endocrinology/how-to-care-for-the-unwell-patient-with-known-adrenal-insufficiency-or-on-long-term-steroids",
+  "fixes": [],
+  "note": "OWNER: cases/addisons-disease.html (line ~557 table row 'already on prednisolone ≥15 mg/day', and line ~625 'if already on ≥15 mg/day, no extra steroid is needed') uses 15 mg, while tools/management/sick-day-rules.html, sick-day-rules-print.html and summaries/sick-day-rules.html use 10 mg (NG243). Both have a UK source. Suggest aligning the Addison's case to NG243 (≥10 mg: no extra, split into 2 doses), with a note that some SfE patient materials use 15 mg. The two thresholds differ only for patients on 10–14 mg/day."
+ }
+]

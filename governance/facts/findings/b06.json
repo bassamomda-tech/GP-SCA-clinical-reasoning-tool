@@ -1,0 +1,60 @@
+[
+ {"subject":"citalopram","group":"max dose | mg (age cut-off)","verdict":"wrong","tier":1,
+  "correct":"Citalopram max 40 mg/day in adults; 20 mg/day in patients OVER 65 or with hepatic impairment (MHRA Drug Safety Update, Dec 2011). 'Over 60' is the US FDA cut-off, not UK.",
+  "source":"https://www.gov.uk/drug-safety-update/citalopram-and-escitalopram-qt-interval-prolongation",
+  "fixes":[
+   {"file":"assets/sca-cases26.js","old":"maximum 20 mg daily over 60, QT","new":"maximum 20 mg daily over 65, QT"},
+   {"file":"assets/sca-cases26.js","old":"limit of 20 mg over 60)","new":"limit of 20 mg over 65)"},
+   {"file":"assets/sca-cases26.js","old":"citalopram maximum 20 mg daily over 60 (QT","new":"citalopram maximum 20 mg daily over 65 (QT"},
+   {"file":"assets/sca-cases26.js","old":"dose per MHRA over 60)","new":"dose per MHRA over 65)"},
+   {"file":"assets/sca-cases26.js","old":"max 20 mg over 60 — MHRA 2011","new":"max 20 mg over 65 — MHRA 2011"},
+   {"file":"assets/sca-data/c/hyponatraemia-diuretic.json","old":"maximum 20 mg daily over 60, QT","new":"maximum 20 mg daily over 65, QT"},
+   {"file":"assets/sca-data/c/hyponatraemia-diuretic.json","old":"limit of 20 mg over 60)","new":"limit of 20 mg over 65)"},
+   {"file":"assets/sca-data/c/hyponatraemia-diuretic.json","old":"maximum 20 mg daily in people over 60","new":"maximum 20 mg daily in people over 65"},
+   {"file":"assets/sca-addons-5.js","old":"maximum 20 mg daily in people over 60","new":"maximum 20 mg daily in people over 65"},
+   {"file":"sca/case-hyponatraemia-diuretic.html","old":"limit of 20 mg over 60)","new":"limit of 20 mg over 65)"}
+  ],
+  "note":"Every other page (cases/depression, management/depression, clinic guide, palliative pages) correctly says 65. The 'maximum 20 mg daily in people over 60' string occurs TWICE in hyponatraemia-diuretic.json: replace both. Check whether the case's Ready-Prescriptions/other derived files hold the same text (the grep found only these 4 files)."},
+
+ {"subject":"statin","group":"stop/withhold | ×uln (on-treatment CK thresholds)","verdict":"inconsistent","tier":2,
+  "correct":"On a statin (NHS England statin intolerance pathway): CK <4× ULN with tolerable symptoms → continue/review; CK 4–10× ULN or intolerable symptoms → stop for 4–6 weeks, then rechallenge (lower dose/different statin) once resolved; CK >10× ULN → stop, urgent assessment (check renal function). NICE NG238's 5× ULN rule applies only BEFORE starting. The site's lab guides, angina, tia-stroke and management/hypercholesterolaemia already use 4–10× / 4–6 weeks.",
+  "source":"https://www.england.nhs.uk/aac/wp-content/uploads/sites/50/2020/04/statin-intolerance-pathway-v2.pdf",
+  "fixes":[
+   {"file":"cases/hypercholesterolaemia.html","old":"CK 5-10&#215; ULN: stop statin; confirm resolution; rechallenge with different statin after 4 weeks; monitor CK","new":"CK 4&#8211;10&#215; ULN or intolerable symptoms: stop statin for 4&#8211;6 weeks; confirm resolution; then rechallenge at a lower dose or with a different statin; monitor CK (NHS England statin intolerance pathway)"},
+   {"file":"cases/hypercholesterolaemia.html","old":"Myopathy (CK &gt;5&#215; ULN): 1-3 per 100,000 patient-years; stop statin; usually resolves.","new":"Myopathy: 1-3 per 100,000 patient-years; if CK 4&#8211;10&#215; ULN or symptoms intolerable, stop the statin for 4&#8211;6 weeks then reassess (NHS England pathway); usually resolves."},
+   {"file":"cases/hypercholesterolaemia.html","old":"Myopathy: CK &gt;5&#215; ULN = stop;","new":"On a statin: CK 4&#8211;10&#215; ULN or intolerable symptoms = stop for 4&#8211;6 weeks, then reassess;"},
+   {"file":"cases/mi-secondary-prevention.html","old":"CK &lt;5&#215; ULN = usually reassure and assess other causes","new":"CK &lt;4&#215; ULN with tolerable symptoms = usually reassure and assess other causes"},
+   {"file":"cases/mi-secondary-prevention.html","old":"CK 5&#8211;10&#215; ULN = stop and seek clinical advice (rechallenge at lower dose or different statin depending on symptoms and trend)","new":"CK 4&#8211;10&#215; ULN or intolerable symptoms = stop the statin for 4&#8211;6 weeks, then rechallenge at a lower dose or with a different statin (NHS England statin intolerance pathway)"},
+   {"file":"cases/mi-secondary-prevention.html","old":"CK 5&#8211;10&#215; ULN: stop and seek clinical advice; rechallenge or switch by symptoms and trend.","new":"CK 4&#8211;10&#215; ULN or intolerable symptoms: stop for 4&#8211;6 weeks, then rechallenge or switch (NHS England pathway)."},
+   {"file":"cases/mi-secondary-prevention.html","old":"Mild myalgia (CK normal or &lt;5&#215; ULN): continue","new":"Mild, tolerable myalgia (CK normal or &lt;4&#215; ULN): continue"},
+   {"file":"assets/labs/generic.js","old":"label:'CK 1000–5000 — statin myopathy / cause; stop statin if >5× ULN + symptoms'","new":"label:'CK 1000–5000 — statin myopathy / cause; on a statin, stop for 4–6 weeks if CK 4–10× ULN or symptoms intolerable'"},
+   {"file":"tools/clinic-guides/hypercholesterolaemia.html","old":"Check CK only if symptomatic; &lt;5× ULN → reassure, rechallenge or switch","new":"Check CK only if symptomatic; &lt;4× ULN and tolerable → reassure, continue or switch; 4–10× ULN or intolerable → stop 4–6 weeks"},
+   {"file":"assets/search/idx-guide.json","old":"Check CK only if symptomatic; <5× ULN → reassure, rechallenge or switch","new":"Check CK only if symptomatic; <4× ULN and tolerable → reassure, continue or switch; 4–10× ULN or intolerable → stop 4–6 weeks"},
+   {"file":"tools/management/summaries/hypercholesterolaemia.html","old":"stop 2–4 weeks → rechallenge lower, switch or alternate-day","new":"if intolerable, stop 4–6 weeks → rechallenge lower, switch or alternate-day"}
+  ],
+  "note":"Same issue the lab pass fixed in raised-creatine-kinase. Definitional labels 'Myopathy (CK &gt;5&#215; ULN)' at cases/hypercholesterolaemia.html lines ~357/582/768 describe myopathy rather than a stop rule; optional to align. The search index (idx-guide.json) is probably generated: regenerate rather than hand-edit if a build step exists."},
+
+ {"subject":"CRP","group":"state | mg/l (GCA red flag)","verdict":"wrong","tier":2,
+  "correct":"GCA: CRP/ESR are usually raised (often markedly) but there is no >200 mg/L criterion; a normal or moderately raised CRP does not exclude GCA (BSR 2020).",
+  "source":"https://academic.oup.com/rheumatology/article/59/3/e1/5714024",
+  "fixes":[
+   {"file":"assets/pathways-redflags.js","old":"\"chip\":\"Very high CRP (>200 mg/L)\"","new":"\"chip\":\"Raised CRP/ESR + GCA features\""},
+   {"file":"assets/pathways-redflags.js","old":"No Very high CRP (>200 mg/L) + severe headache","new":"No Raised CRP/ESR (often markedly; normal does not exclude) + severe headache"}
+  ],
+  "note":"Gating the GCA red flag on CRP >200 would miss most GCA. Separately: cases/headache.html GCA lines say 'visual symptoms → 60 mg' throughout and never mention the owner-verified IV methylprednisolone 0.5–1 g (up to 3 days) for established visual loss. Outside this batch's subjects; flag for the prednisolone/GCA reviewer (same gap as the high-crp-esr lab fix)."},
+
+ {"subject":"CRP","group":"diagnose/threshold | mg/l (UC severity)","verdict":"wrong","tier":2,
+  "correct":"Truelove & Witts acute severe UC: ≥6 bloody stools/day plus ≥1 of HR >90, temp >37.8 °C, Hb <105 g/L, ESR >30 mm/h (CRP >30 mg/L in modified versions). CRP >45 mg/L is the Oxford DAY-3 IV-steroid rescue criterion, not a severity criterion combined with Hb.",
+  "source":"https://www.bsg.org.uk/clinical-resource/british-society-of-gastroenterology-consensus-guidelines-on-the-management-of-inflammatory-bowel-disease-in-adults",
+  "fixes":[
+   {"file":"tools/management/ulcerative-colitis.html","old":"Hb &lt;105 g/L with CRP &gt;45 mg/L indicates severe disease.","new":"Hb &lt;105 g/L (with ≥6 bloody stools a day) is a Truelove and Witts severe criterion; CRP &gt;45 mg/L matters on day 3 of IV steroids (Oxford rescue criterion)."},
+   {"file":"tools/management/ulcerative-colitis-print.html","old":"Hb &lt;105 g/L with CRP &gt;45 mg/L indicates severe disease.","new":"Hb &lt;105 g/L (with ≥6 bloody stools a day) is a Truelove and Witts severe criterion; CRP &gt;45 mg/L matters on day 3 of IV steroids (Oxford rescue criterion)."}
+  ],
+  "note":"The same page's own Truelove and Witts box (line ~82) is correct; this sentence conflates two scores."},
+
+ {"subject":"paracetamol","group":"max dose | g (heavy drinkers / hepatic risk)","verdict":"owner","tier":2,
+  "correct":"Sources differ: several UK SPCs cap chronic alcohol use at 2 g/day; the site elsewhere cites 'SPS: max 3 g/day for adults >51 kg with risk factors'; BASL 2022 position statement allows 1 g QDS short-term >50 kg.",
+  "source":"https://basl.org.uk/uploads/BHPG/Paracetamol%20Position%20Statement_Mar%202022.pdf",
+  "fixes":[],
+  "note":"cases/alcohol.html says 'max 2g/day in heavy drinkers'; cases/abnormal-lfts.html and assets/prescriptions-data-batch6.js say max 3 g/day with risk factors. Owner: choose one wording site-wide, e.g. 'reduce the dose (commonly max 3 g/day; 2 g/day per some SPCs in chronic alcohol excess) — check the SPC'."}
+]

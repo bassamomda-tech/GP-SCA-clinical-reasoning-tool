@@ -88,7 +88,7 @@ MedChooser.register('pcos', {
       sideEffects:'Multiple pregnancy, ovarian hyperstimulation',
       monitor:'Specialist follow-up scans',
       counsel:'"If you are trying for a baby we will refer you — start folic acid now."',
-      detail:{ 'Key teaching':'Letrozole is first-line in the international guideline but off-label in the UK. NICE NG257 (2026) no longer makes recommendations on ovulation induction in PCOS (a separate NICE PCOS guideline is in development); it still guides fertility assessment and referral. Folic acid before conception (5 mg if BMI ≥30).' },
+      detail:{ 'Key teaching':'Letrozole is first-line in the international guideline but off-label in the UK. NICE NG257 (2026) no longer makes recommendations on ovulation induction in PCOS (a separate NICE PCOS guideline is in development); it still guides fertility assessment and referral. Folic acid 400 micrograms before conception (5 mg only for a recognised higher-risk indication — BMI alone does not need 5 mg, NICE NG247).' },
       conditions: [
         {"kind":"note","label":"Trying to conceive","text":"Refer; check rubella, smear, folic acid, BMI"}
       ]

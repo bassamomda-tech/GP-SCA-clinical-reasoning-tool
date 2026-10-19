@@ -193,7 +193,7 @@
       'Use a cardiovascular risk assessment (QRISK) to guide primary prevention; everyone benefits from lifestyle measures',
       'Lifestyle: a heart-healthy diet (reduce saturated fat, increase fibre), weight management, physical activity, reduce alcohol, and stop smoking',
       'Offer a statin (atorvastatin 20 mg) for primary prevention where 10-year cardiovascular risk is ≥10%, and high-intensity statins (atorvastatin 80 mg) for secondary prevention (established cardiovascular disease)',
-      'Check baseline lipids, liver function and (per guidance) reassess lipid response, aiming for a ≥40% reduction in non-HDL cholesterol; add ezetimibe and consider further agents (e.g. PCSK9 inhibitors, specialist-led) if targets are not met',
+      'Check baseline lipids, liver function and (per guidance) reassess lipid response, aiming for a more than 40% reduction in non-HDL cholesterol; add ezetimibe and consider further agents (e.g. PCSK9 inhibitors, specialist-led) if targets are not met',
       'Identify and refer suspected familial hypercholesterolaemia for diagnosis, specialist treatment, and cascade testing of relatives',
       'Treat secondary causes (e.g. hypothyroidism) and manage very high triglycerides (lifestyle, fibrates, reduce alcohol) to prevent pancreatitis',
       'Address the whole cardiovascular risk profile (BP, diabetes) and support adherence',
@@ -442,7 +442,7 @@
     management:[
       'Confirm with TFTs (raised TSH, low free T4); check TPO antibodies to confirm autoimmune disease',
       'Treat overt hypothyroidism with levothyroxine, starting at an age/comorbidity-appropriate dose (lower and cautious in older patients/ischaemic heart disease), and titrate to symptoms and TSH',
-      'Recheck TFTs about 6–8 weeks after starting/adjusting the dose, then periodically once stable (e.g. annually)',
+      'Recheck TSH from about 6 weeks after starting/adjusting the dose, then about every 3 months until stable and annually once stable (NICE NG145)',
       'Advise on taking levothyroxine consistently (on an empty stomach, separated from interfering drugs/supplements such as iron, calcium, PPIs)',
       'Subclinical hypothyroidism: consider treatment based on TSH level, symptoms, antibodies, age, and especially pregnancy/planning pregnancy; otherwise monitor',
       'Optimise thyroid status before and during pregnancy — requirements increase, and prompt dose adjustment with specialist input is important',

@@ -1,7 +1,7 @@
 /* Reasoning GP — Presenting-complaint red-flag library.
    Keyed by presenting complaint. Each flag is written as a NEGATED screening
    line (what a GP documents having checked and excluded). level: 'emergency'
-   or '2ww' tags the ones that map to a 999/same-day or NICE NG12 (updated April 2026) two-week-wait
+   or '2ww' tags the ones that map to a 999/same-day or NICE NG12 (updated April 2026) suspected cancer pathway
    pathway. Used by the Consultation Spine to pre-fill the Red flags section the
    moment a complaint is entered, and to offer tappable chips to add more.
    Educational scaffold — verify against NICE NG12 (updated April 2026) and the other guidelines cited.

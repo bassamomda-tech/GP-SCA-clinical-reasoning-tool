@@ -58,7 +58,7 @@ window.RGP_SHARED_CARE = [
     src:'NICE CG178 psychosis and schizophrenia in adults (2014); SPS antipsychotic monitoring',
     links:[['management/psychosis-schizophrenia.html','Psychosis and schizophrenia'],['qof.html','QOF mental health']] },
   { grp:'Mental health & ADHD', drug:'Clozapine', spec:true,
-    base:'Specialist only — registration with a clozapine monitoring service.',
+    base:'Specialist only — registration with the relevant brand monitoring service (CPMS, DMS or ZTAS), which uses WBC and neutrophil results (green/amber/red); do not apply EMA/US ANC-only thresholds unless agreed with the service and specialist team.',
     mon:'FBC <b>weekly for 18 weeks, fortnightly to 1 year, then every 4 weeks</b> via the monitoring service (prescribed and supplied by the mental health trust — not the GP).',
     act:'<b>Record it on the GP system</b> as a hospital-only drug. Fever, sore throat or infection → urgent FBC (neutropenia) and contact the team. <b>Constipation can be fatal</b> — ask every time, treat early. Stopping smoking (or starting) changes levels — tell the team. Myocarditis in the first 2 months (chest pain, tachycardia, breathlessness).',
     src:'MHRA Drug Safety Update (clozapine constipation, 2020; plasma levels, 2020); SPC; NICE CG178',

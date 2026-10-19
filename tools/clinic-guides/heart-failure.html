@@ -80,6 +80,8 @@ tr:last-child td{border-bottom:0}
   a{color:var(--ink);text-decoration:none}
 }
 </style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
+</head>
 <body>
 <div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/heart-failure.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
 
@@ -95,7 +97,6 @@ tr:last-child td{border-bottom:0}
   </div>
 
   <div class="ptitle">Page 1 · Diagnose and start <span>suspected HF → NT-proBNP → echo → phenotype → four pillars</span></div>
-
   <div class="blk red"><h2><span class="n">!</span>Act today<small>NICE NG106 · local acute-HF pathway</small></h2><div class="body">
     <ul>
       <li><b>Breathless at rest, pulmonary oedema, hypoxia, hypotension or poor perfusion, new confusion</b> → same-day emergency assessment — not an NT-proBNP and a 6-week echo.</li>
@@ -181,6 +182,7 @@ tr:last-child td{border-bottom:0}
       </table>
       <p class="say" style="margin-top:3px">"You have four different tablets because each one protects your heart in a different way. The water tablet is different — it just controls the fluid. The most useful thing you can do is weigh yourself every morning."</p>
     </div></div>
+
   </div>
 
   <div class="foot"><span>Reasoning GP Clinic Guide · Heart failure · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
@@ -189,7 +191,6 @@ tr:last-child td{border-bottom:0}
 <!-- ============ PAGE 2 ============ -->
 <section class="page">
   <div class="ptitle">Page 2 · Review and titrate <span>the chronic disease review: all four on → titrate → fix obstacles → monitor</span></div>
-
   <div class="grid">
     <div class="col">
       <div class="blk green"><h2><span class="n">9</span>Targets — what "optimised" means<small>NG106 · QS9 · SPC</small></h2><div class="body">
@@ -202,7 +203,9 @@ tr:last-child td{border-bottom:0}
           <tr><td>Routine review</td><td><b>At least every 6 months</b> (QS9)</td></tr>
         </table>
       </div></div>
+    </div>
 
+    <div class="col">
       <div class="blk amber"><h2><span class="n">10</span>Before every step-up<small>NG106 · SPC</small></h2><div class="body">
         <ul class="tick" style="grid-template-columns:1fr">
           <li><b>Stable?</b> — not congested, no recent decompensation</li>
@@ -215,33 +218,7 @@ tr:last-child td{border-bottom:0}
       </div></div>
     </div>
 
-    <div class="col">
-      <div class="blk purple"><h2><span class="n">11</span>Review checklist<small>at least 6-monthly · NG106 · QS9</small></h2><div class="body">
-        <ul class="tick" style="grid-template-columns:1fr">
-          <li><b>Functional capacity</b>: NYHA class, symptoms, exercise tolerance</li>
-          <li><b>Fluid status</b>: weight trend, oedema, JVP, chest</li>
-          <li><b>Rhythm</b>: pulse; ECG if irregular (AF → stroke risk)</li>
-          <li><b>U&amp;E, K⁺, eGFR</b>; FBC; <b>ferritin + TSAT</b></li>
-          <li><b>Medicines</b>: all four on? at target? adherence, side effects</li>
-          <li>Cognition, nutrition, mood; smoking and alcohol</li>
-          <li>Cardiac rehab done? Vaccines up to date?</li>
-          <li>Written plan, weight trigger, sick-day rules</li>
-          <li>Future care: devices discussed? advance care planning started?</li>
-        </ul>
-      </div></div>
-      <div class="blk blue"><h2><span class="n">15</span>When to refer<small>NG106 · TA267</small></h2><div class="body">
-        <table>
-          <tr><td>Every new diagnosis</td><td>Specialist + echo (2 or 6 weeks by NT-proBNP); HF nurse</td></tr>
-          <tr><td>Symptomatic on all four at max tolerated</td><td>HF team: ARNI switch, ivabradine, digoxin</td></tr>
-          <tr><td>EF ≤35% despite optimal therapy</td><td>Device assessment (ICD / CRT)</td></tr>
-          <tr><td>Iron deficiency (box 13)</td><td>IV iron</td></tr>
-          <tr><td>K⁺ or kidneys blocking the pillars</td><td>HF team</td></tr>
-          <tr><td>Advanced HF, repeated admissions</td><td>HF team and palliative care, alongside</td></tr>
-        </table>
-      </div></div>
-    </div>
-
-    <div class="blk teal span"><h2><span class="n">12</span>Titrate to target<small>introduce all four early at low dose · titrate one at a time · U&amp;E 1–2 weeks after RAAS changes</small></h2><div class="body">
+    <div class="blk teal span"><h2><span class="n">11</span>Titrate to target<small>introduce all four early at low dose · titrate one at a time · U&amp;E 1–2 weeks after RAAS changes</small></h2><div class="body">
       <div class="ladder">
         <div><b class="h">Step 1 · start all four</b>ACEi, beta-blocker, MRA and SGLT2i at low doses over a few weeks. Diuretic alongside if congested.</div>
         <div><b class="h">Step 2 · titrate</b>Increase one drug at a time; beta-blocker in slow steps per the SPC schedule. Review within 2 weeks of each change.</div>
@@ -259,7 +236,7 @@ tr:last-child td{border-bottom:0}
     </div></div>
 
     <div class="col">
-      <div class="blk slate"><h2><span class="n">13</span>Obstacles — fix, don't stop<small>NG106 · SPC</small></h2><div class="body">
+      <div class="blk slate"><h2><span class="n">12</span>Obstacles — fix, don't stop<small>NG106 · SPC</small></h2><div class="body">
         <table>
           <tr><td><b>Dizzy, low BP</b></td><td>If dry: reduce the <b>diuretic</b> first; stop nitrates, alpha-blockers, CCBs; stagger doses</td></tr>
           <tr><td><b>Creatinine up</b></td><td>≤30% rise on ACEi/ARB/ARNI acceptable if stable; look for over-diuresis, NSAIDs</td></tr>
@@ -270,9 +247,35 @@ tr:last-child td{border-bottom:0}
           <tr><td><b>Iron deficiency</b></td><td>HFrEF, Hb &lt;150 g/L with ferritin &lt;100 µg/L or TSAT &lt;20% → consider IV iron</td></tr>
         </table>
       </div></div>
+
+      <div class="blk purple"><h2><span class="n">13</span>Review checklist<small>at least 6-monthly · NG106 · QS9</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Functional capacity</b>: NYHA class, symptoms, exercise tolerance</li>
+          <li><b>Fluid status</b>: weight trend, oedema, JVP, chest</li>
+          <li><b>Rhythm</b>: pulse; ECG if irregular (AF → stroke risk)</li>
+          <li><b>U&amp;E, K⁺, eGFR</b>; FBC; <b>ferritin + TSAT</b></li>
+          <li><b>Medicines</b>: all four on? at target? adherence, side effects</li>
+          <li>Cognition, nutrition, mood; smoking and alcohol</li>
+          <li>Cardiac rehab done? Vaccines up to date?</li>
+          <li>Written plan, weight trigger, sick-day rules</li>
+          <li>Future care: devices discussed? advance care planning started?</li>
+        </ul>
+      </div></div>
     </div>
 
-    <div class="blk red"><h2><span class="n">14</span>Red flags and never-events<small>NG106 · MHRA · SPC</small></h2><div class="body">
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">14</span>When to refer<small>NG106 · TA267</small></h2><div class="body">
+        <table>
+          <tr><td>Every new diagnosis</td><td>Specialist + echo (2 or 6 weeks by NT-proBNP); HF nurse</td></tr>
+          <tr><td>Symptomatic on all four at max tolerated</td><td>HF team: ARNI switch, ivabradine, digoxin</td></tr>
+          <tr><td>EF ≤35% despite optimal therapy</td><td>Device assessment (ICD / CRT)</td></tr>
+          <tr><td>Iron deficiency (box 12)</td><td>IV iron</td></tr>
+          <tr><td>K⁺ or kidneys blocking the pillars</td><td>HF team</td></tr>
+          <tr><td>Advanced HF, repeated admissions</td><td>HF team and palliative care, alongside</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk red"><h2><span class="n">15</span>Red flags and never-events<small>NG106 · MHRA · SPC</small></h2><div class="body">
         <ul>
           <li><b>Decompensating but well</b> (weight up, ankles, orthopnoea; SpO₂ fine): increase the loop diuretic per the agreed plan, recheck U&amp;E, review within days; keep the beta-blocker going.</li>
           <li><b>AF found</b>: rate control with the beta-blocker; stroke and bleeding risk on the AF pathway; rhythm strategy is a specialist decision.</li>
@@ -280,10 +283,12 @@ tr:last-child td{border-bottom:0}
           <li><b>Never</b>: ACEi + ARNI together · ACEi + ARB + MRA together · verapamil or diltiazem in HFrEF · NSAIDs · stop the pillars because the EF has improved.</li>
         </ul>
     </div></div>
+    </div>
+
   </div>
 
   <div class="foot"><span>Reasoning GP Clinic Guide · Heart failure · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG106 (2018, updated Sept 2025; rationale clarifications Oct and Dec 2025), QS9 (2011, updated 2025), TA388, TA267, NG12; SPCs</span><span>Full detail and evidence: gpreasoning.uk/tools/management/heart-failure.html</span></div>
 </section>
-<script src="../../assets/clinic-guides.js?v=1"></script>
+<script src="../../assets/clinic-guides.js?v=4"></script>
 </body>
 </html>

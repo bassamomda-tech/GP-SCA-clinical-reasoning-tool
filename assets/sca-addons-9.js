@@ -2109,7 +2109,7 @@
     "phase": "Shared management",
     "clock": "8–11 min",
     "who": "dr",
-    "text": "I’m going to refer you today on the urgent suspected cancer pathway to the skin team, so you’re seen within two weeks. I also want to see you in person this week, to feel the glands around your ear and neck — I can’t do that over video — and to look at your knee properly at the same visit.",
+    "text": "I’m going to refer you today on the urgent suspected cancer pathway to the skin team, so you should be seen quickly and get an answer within 4 weeks (28 days). I also want to see you in person this week, to feel the glands around your ear and neck — I can’t do that over video — and to look at your knee properly at the same visit.",
     "dom": "cm",
     "why": "Suspected cancer pathway referral per NICE NG12, plus face-to-face node examination"
    },
@@ -2157,7 +2157,7 @@
    },
    {
     "who": "pt",
-    "text": "That she was right. It might be a skin cancer, probably the treatable sort, and I’m being seen urgently in two weeks. I’m coming in this week for you to feel my neck and look at my knee. Hat and sun cream."
+    "text": "That she was right. It might be a skin cancer, probably the treatable sort, and I’m being seen urgently by the skin team. I’m coming in this week for you to feel my neck and look at my knee. Hat and sun cream."
    },
    {
     "who": "dr",

@@ -1,0 +1,86 @@
+[
+ {
+  "subject": "neutrophils",
+  "group": "state | ×10⁹/l",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "Neutropenic sepsis (NICE CG151): neutrophil count ≤0.5 × 10⁹/L with temperature >38°C or other signs of clinically significant sepsis. The test is the neutrophil count, not the WBC.",
+  "source": "https://www.nice.org.uk/guidance/cg151",
+  "fixes": [
+   {
+    "file": "cases/breast-cancer.html",
+    "old": "Neutropenia (WBC &lt;0.5×10⁹/L) + fever = risk of fatal sepsis.",
+    "new": "Neutropenia (neutrophils ≤0.5×10⁹/L) + fever = risk of fatal sepsis."
+   }
+  ],
+  "note": "The page uses the total white cell count where the neutrophil count is meant. The threshold should be ≤0.5 (CG151), matching tools/management/neutropenic-sepsis.html and the leucopenia pages."
+ },
+ {
+  "subject": "neutrophils",
+  "group": "999/admit | hours",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "Neutropenic sepsis guidance is NICE CG151; NG143 is fever in under-5s.",
+  "source": "https://www.nice.org.uk/guidance/cg151",
+  "fixes": [
+   {
+    "file": "assets/labs/generic.js",
+    "old": "source:'NICE NG143 neutropenic sepsis',",
+    "new": "source:'NICE CG151 neutropenic sepsis',"
+   },
+   {
+    "file": "assets/labs/generic.js",
+    "old": "sourceUrl:'https://www.nice.org.uk/guidance/ng143',",
+    "new": "sourceUrl:'https://www.nice.org.uk/guidance/cg151',"
+   },
+   {
+    "file": "assets/labs/generic.js",
+    "old": "admit per NICE NG143 neutropenic sepsis (pip-tazo within 1h)",
+    "new": "admit per NICE CG151 neutropenic sepsis (empirical piperacillin-tazobactam within 1h)"
+   }
+  ],
+  "note": "The adult neutrophil lab rule cites the wrong guideline. Before applying, confirm that the sourceUrl ng143 line (it occurs once in the file) belongs to the 'neut' rule; grep shows it sits right after source:'NICE NG143 neutropenic sepsis'."
+ },
+ {
+  "subject": "B12",
+  "group": "state | ng/l",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "NICE NG239 (2024): total B12 <180 ng/L (or active B12 <25 pmol/L) = deficiency; 180–350 ng/L = indeterminate. Treat by cause: diet-related → oral cyanocobalamin 50–150 micrograms daily (BNF); autoimmune gastritis, malabsorption or neurological features → IM hydroxocobalamin.",
+  "source": "https://www.nice.org.uk/guidance/ng239",
+  "fixes": [
+   {
+    "file": "assets/triage/tiredness.js",
+    "old": "label:'Mild B12 deficiency (100–200 ng/L)',",
+    "new": "label:'B12 deficiency (100–179 ng/L; NICE NG239 <180)',"
+   },
+   {
+    "file": "assets/triage/tiredness.js",
+    "old": "when: i => i.b12 != null && i.b12 >= 100 && i.b12 < 200",
+    "new": "when: i => i.b12 != null && i.b12 >= 100 && i.b12 < 180"
+   },
+   {
+    "file": "assets/triage/tiredness.js",
+    "old": "Cyanocobalamin 50 mcg OD oral × 1 month or IM if absorption concern.",
+    "new": "Treat by cause (NICE NG239): diet-related → oral cyanocobalamin 50–150 micrograms daily; autoimmune gastritis, malabsorption or neurological features → IM hydroxocobalamin. Total B12 180–350 ng/L is indeterminate: consider active B12/MMA."
+   }
+  ],
+  "note": "The triage tool uses non-NICE bands (<100 'severe', 100–200 'mild'). 180–199 ng/L is indeterminate under NG239, not deficiency, and the 1-month oral course does not match the BNF/NG239 approach used by every other page. The 'source' fields say 'BSH B12'; the owner may also want them changed to 'NICE NG239'. The <100 'severe' tier can stay as a site triage band."
+ },
+ {
+  "subject": "B12",
+  "group": "dose | micrograms",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "Diet-related B12 deficiency: oral cyanocobalamin 50–150 micrograms daily (BNF), as stated on 13 other pages.",
+  "source": "https://bnf.nice.org.uk/drugs/cyanocobalamin/",
+  "fixes": [
+   {
+    "file": "assets/prescriptions-data-batch7.js",
+    "old": "- Dietary/vegan: oral cyanocobalamin 50-1000 mcg OD / fortified foods.",
+    "new": "- Dietary/vegan: oral cyanocobalamin 50-150 micrograms OD (BNF) / fortified foods."
+   }
+  ],
+  "note": "The Ready Prescription range of 50–1000 mcg disagrees with the BNF dose stated across the site. The 1 mg oral dose on other pages applies to the medicine-induced or malabsorptive context (NG239), not to diet-related deficiency."
+ }
+]

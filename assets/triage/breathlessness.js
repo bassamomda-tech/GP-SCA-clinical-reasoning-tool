@@ -47,7 +47,7 @@ RGPTriage.register('breathlessness-triage', {
       source:'NICE NG158',
       when:(i)=>(!!i.pleuritic_calf || !!i.recent_immobility || !!i.haemoptysis) && ((i.spo2 && i.spo2<92) || (i.hr && i.hr>120) || (i.sbp && i.sbp<90)) },
     { id:'acute_hf', tier:'emergency', label:'?Acute pulmonary oedema',
-      action:'Call 999 — sit upright, oxygen, IV furosemide 40-80mg, GTN if SBP>110.',
+      action:'Call 999 — sit upright, oxygen, IV furosemide 40-80mg, sublingual GTN unless systolic BP <90 mmHg.',
       source:'NICE NG106', sourceUrl:'https://www.nice.org.uk/guidance/ng106',
       when:(i)=>!!i.orthopnoea_oedema && (i.spo2 && i.spo2<92) },
     { id:'shock_resp_failure', tier:'emergency', label:'Respiratory failure — SpO₂ <90 / RR ≥30',

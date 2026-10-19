@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="pancytopenia">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pancytopenia in adults — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/pancytopenia.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/pancytopenia.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · lab results series</div>
+      <h1>Pancytopenia in adults <small>CLINIC GUIDE</small></h1>
+      <div class="scope">Low Hb, low white cells and low platelets together, in adults 18+. Not for children and young people (paediatric pathway), patients on chemotherapy (use the oncology hotline) or established aplastic anaemia or MDS care.</div>
+    </div>
+    <div class="meta">NICE <b>NG12</b> · CG151 · <b>NG239</b> (2024)<br><b>BSH</b> aplastic anaemia 2024 · MHRA<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full pathway: gpreasoning.uk/tools/algorithms/pancytopenia.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Interpret <span>is it dangerous? → is it real? → marrow, nutrition, drugs or spleen</span></div>
+  <div class="blk red"><h2><span class="n">!</span>Act today — never a benign finding<small>NG12 · CG151 · BSH</small></h2><div class="body">
+    <table>
+      <tr><th>Tier</th><th>Result + picture</th><th>Action</th></tr>
+      <tr><td><b>999</b></td><td>Neutrophils <b>≤0.5 × 10⁹/L</b> with fever, rigors or feeling unwell (neutropenic sepsis) · major bleeding</td><td>Emergency admission for immediate IV antibiotics; do not wait for cultures</td></tr>
+      <tr><td><b>Same day</b></td><td><b>Blasts</b> or a film or count reported as <b>acute leukaemia</b> · platelets <b>&lt;20 × 10⁹/L</b> or any bleeding, petechiae, gum bleeding · rapidly falling counts</td><td>Immediate (same-day) haematology assessment</td></tr>
+      <tr><td><b>Same day</b></td><td>On <b>methotrexate, carbimazole, clozapine</b> or another marrow-toxic drug</td><td>Stop the drug (clozapine: per the monitoring service), urgent FBC; same-day specialist advice</td></tr>
+      <tr><td><b>Suspected cancer pathway</b></td><td>Pancytopenia with unexplained <b>lymphadenopathy or splenomegaly</b>, especially with night sweats, fever or weight loss</td><td>Consider NG12 lymphoma referral, plus urgent haematology for the count</td></tr>
+    </table>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Is it real?<small>repeat within days if well</small></h2><div class="body">
+        <table>
+          <tr><td><b>Low platelets only on analyser</b></td><td>EDTA clumping gives false thrombocytopenia: check the film or repeat in a citrate tube</td></tr>
+          <tr><td><b>Clotted or delayed sample</b></td><td>Can lower platelets and distort the count: repeat</td></tr>
+          <tr><td><b>Recent viral illness</b></td><td>Transient falls are common: repeat FBC and film once well</td></tr>
+          <tr><td><b>Low neutrophils, Black or Middle Eastern heritage</b></td><td>Constitutionally lower neutrophils are common, but explain only an isolated mild neutropenia, not pancytopenia</td></tr>
+          <tr><td><b>Alcohol, liver disease</b></td><td>Direct marrow toxicity and splenic pooling: still investigate</td></tr>
+        </table>
+        <p class="key">A blood film reviewed by the laboratory is mandatory: the analyser cannot see blasts, dysplasia or hypersegmented neutrophils. Refer in parallel — do not wait for every result.</p>
+      </div></div>
+
+      <div class="blk green"><h2><span class="n">2</span>Severity bands<small>per cell line · NG12 · CG151 · BSH</small></h2><div class="body">
+        <table>
+          <tr><th>Result</th><th>Means</th><th>Action and timing</th></tr>
+          <tr><td>Neutrophils <b>≤0.5</b> + fever</td><td>Neutropenic sepsis until proved otherwise</td><td><b>999</b></td></tr>
+          <tr><td>Platelets <b>&lt;20</b>, or any bleeding</td><td>Spontaneous bleeding risk</td><td>Same-day haematology</td></tr>
+          <tr><td>Blasts on film</td><td>Acute leukaemia</td><td>Same-day haematology</td></tr>
+          <tr><td>Two or more lines falling on serial FBCs</td><td>Progressive marrow problem</td><td>Urgent haematology</td></tr>
+          <tr><td>Unexplained stable pancytopenia, normal film</td><td>Cause not yet found</td><td>Urgent haematology referral while first-line bloods run</td></tr>
+          <tr><td>Mild, macrocytic, low B12 or folate, no blasts or nodes</td><td>Megaloblastic pancytopenia</td><td>Replace; recheck FBC; refer if not recovering</td></tr>
+        </table>
+        <p class="key">Neutrophils and platelets × 10⁹/L. Severe aplastic anaemia is defined by haematology (Camitta criteria) — any neutrophils &lt;0.5 or platelets &lt;20 needs same-day discussion.</p>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">3</span>Causes<small>clue → think → first test</small></h2><div class="body">
+        <table>
+          <tr><th>Clue</th><th>Think</th><th>First test</th></tr>
+          <tr><td>High MCV, hypersegmented neutrophils, neuropathy</td><td><b>B12 or folate</b></td><td>B12, folate, anti-IF antibody</td></tr>
+          <tr><td>Blasts, fast onset, bone pain</td><td><b>Acute leukaemia</b></td><td>Film; same-day haematology</td></tr>
+          <tr><td>Older, macrocytic, dysplasia</td><td><b>MDS</b></td><td>Film; urgent haematology</td></tr>
+          <tr><td>Nodes, spleen, B symptoms</td><td><b>Lymphoma, CLL, myeloma</b></td><td>LDH; NG12 pathway</td></tr>
+          <tr><td>New drug</td><td><b>Drug-induced</b></td><td>Drug history; stop it</td></tr>
+          <tr><td>Hypocellular picture, young, low retics</td><td><b>Aplastic anaemia</b></td><td>Retics; urgent haematology</td></tr>
+          <tr><td>Big spleen, cirrhosis</td><td><b>Hypersplenism</b></td><td>LFTs; ultrasound</td></tr>
+          <tr><td>Viral illness, risk factors, rash, joints</td><td><b>HIV, hepatitis, EBV, SLE</b></td><td>Serology; ANA</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">4</span>Work-up checklist<small>send in parallel with referral</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>FBC + differential</b>, reticulocytes</li>
+          <li><b>Blood film</b> (laboratory review)</li>
+          <li><b>B12 + folate</b>; ferritin</li>
+          <li>LFTs, bilirubin, <b>LDH</b>, urate</li>
+          <li>U&amp;E, calcium, TFTs</li>
+          <li>CRP, ESR</li>
+          <li><b>HIV</b>, hepatitis B and C, EBV, CMV</li>
+          <li>DAT if haemolysis possible</li>
+          <li>Blood cultures if febrile (hospital)</li>
+          <li>Coagulation if bleeding</li>
+        </ul>
+        <p class="key" style="margin-top:3px">Ask about onset, bleeding, infections, B symptoms, drugs, alcohol and travel. Examine for pallor, petechiae, nodes, liver, spleen, mouth ulcers and jaundice. Marrow biopsy is a hospital test.</p>
+      </div></div>
+    </div>
+
+  </div>
+
+  <div class="blk purple"><h2><span class="n">5</span>What the film tells you<small>laboratory film review</small></h2><div class="body">
+    <table>
+      <tr><th>Film finding</th><th>Think</th><th>Film finding</th><th>Think</th></tr>
+      <tr><td><b>Blasts</b></td><td>Acute leukaemia: same day</td><td><b>Tear-drop cells</b></td><td>Myelofibrosis, marrow infiltration</td></tr>
+      <tr><td><b>Hypersegmented neutrophils</b></td><td>B12 or folate deficiency</td><td><b>Smear cells</b></td><td>CLL</td></tr>
+      <tr><td><b>Dysplastic cells</b></td><td>MDS</td><td><b>Spherocytes</b></td><td>Haemolysis</td></tr>
+      <tr><td><b>Schistocytes</b></td><td>TTP or DIC: same day</td><td><b>Parasites</b></td><td>Malaria (travel): same day</td></tr>
+    </table>
+  </div></div>
+
+  <div class="blk blue"><h2><span class="n">6</span>Reading the result in four steps<small>NG12 · CG151</small></h2><div class="body">
+    <div class="flow" style="--c:var(--blue)">
+      <div><b class="h">1 · Septic or bleeding?</b>Fever with low neutrophils → 999. Bleeding or platelets &lt;20 → same day.</div>
+      <div><b class="h">2 · What does the film show?</b>Blasts or schistocytes → same day. Dysplasia → urgent haematology.</div>
+      <div><b class="h">3 · Simple cause?</b>B12, folate, drugs, alcohol, viral illness. Only a clear cause with a reassuring film stays GP-led.</div>
+      <div><b class="h">4 · Nodes or spleen?</b>Examine. Unexplained lymphadenopathy or splenomegaly → suspected cancer pathway referral.</div>
+    </div>
+  </div></div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Pancytopenia · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary. Use your laboratory's reference ranges.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Manage and refer <span>protect from sepsis and bleeding → refer → treat what primary care can</span></div>
+  <div class="grid">
+    <div class="blk teal span"><h2><span class="n">7</span>Management of the commonest causes<small>NG239 · CKS · BSH · MHRA · SPC</small></h2><div class="body">
+      <table>
+        <tr><th>Cause</th><th>First line</th><th>Then</th></tr>
+        <tr><td><b>B12 deficiency</b></td><td><b>Hydroxocobalamin 1 mg IM three times a week for 2 weeks</b>, then every 2–3 months; neurological features: <b>1 mg on alternate days until no further improvement</b>, then every 2 months, with specialist advice</td><td>Recheck FBC; all three lines should recover. No recovery → haematology</td></tr>
+        <tr><td><b>Folate deficiency</b></td><td><b>Folic acid 5 mg daily</b>, usually for 4 months — only once B12 is normal or being replaced</td><td>Find the cause: diet, alcohol, coeliac</td></tr>
+        <tr><td><b>Drug-induced</b></td><td><b>Stop the drug now.</b> Carbimazole: same-day advice; do not switch to propylthiouracil. Clozapine: act today with the monitoring service and mental health team (a red result means stop). Methotrexate: folinic acid rescue is specialist-led</td><td>Serial FBC with haematology; record the reaction; Yellow Card</td></tr>
+        <tr><td><b>Alcohol</b></td><td>Stop alcohol; replace B12 and folate if low; thiamine where indicated</td><td>Recheck FBC; refer if not recovering or spleen enlarged</td></tr>
+        <tr><td><b>Marrow failure, leukaemia, MDS</b></td><td>Haematology-led: transfusion, growth factors, immunosuppression, chemotherapy or transplant</td><td>GP: sepsis safety-net, vaccines, shared-care drugs</td></tr>
+      </table>
+    </div></div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">8</span>Follow-up and monitoring checklist<small>BSH · CG151</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Film result</b> read and actioned the same day</li>
+          <li><b>Referral sent in parallel</b>; result chased; patient knows the plan</li>
+          <li>B12 or folate cause: <b>recheck FBC</b>; target all three lines normal; no recovery → refer</li>
+          <li>Drug stopped: serial FBC until recovery; allergy or adverse reaction recorded</li>
+          <li><b>Neutropenic patients</b>: written safety-net and 24-hour haematology number recorded</li>
+          <li>Under haematology: shared-care drug monitoring per protocol</li>
+          <li><b>No live vaccines</b> when immunocompromised; inactivated vaccines are fine</li>
+          <li>Mood, fatigue and fertility questions addressed</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">9</span>When and where to refer<small>NG12 · CG151</small></h2><div class="body">
+        <table>
+          <tr><td><b>999</b></td><td>Neutropenic sepsis; major bleeding; confusion or focal neurology with low platelets</td></tr>
+          <tr><td><b>Same-day haematology</b></td><td>Blasts or count suggesting acute leukaemia; platelets &lt;20 or bleeding; rapidly falling counts; drug-induced with neutropenia</td></tr>
+          <tr><td><b>Suspected cancer pathway</b></td><td>Unexplained lymphadenopathy or splenomegaly (NG12)</td></tr>
+          <tr><td><b>Urgent haematology</b></td><td>Any unexplained pancytopenia · dysplasia or unexplained macrocytosis on film · suspected MDS · progressive fall · splenomegaly without malignancy features</td></tr>
+          <tr><td><b>GP-led</b></td><td>Clear B12 or folate cause, normal film apart from megaloblastic change, no nodes or spleen — with a recheck</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="blk amber span"><h2><span class="n">10</span>Who needs an FBC — and who needs it fast<small>NICE NG12</small></h2><div class="body">
+      <div class="flow" style="--c:var(--amber)">
+        <div><b class="h">Adults: very urgent FBC</b>Within <b>48 hours</b> for pallor, persistent fatigue, unexplained fever, persistent or recurrent infection, generalised lymphadenopathy, unexplained bruising, bleeding or petechiae, hepatosplenomegaly.</div>
+        <div><b class="h">Count says leukaemia</b>FBC or film reported as acute leukaemia, at any age → immediate specialist assessment (standard practice, not an NG12 criterion).</div>
+        <div><b class="h">Children and young people</b>Under 25 with unexplained petechiae or hepatosplenomegaly → immediate specialist assessment (paediatric or young adult pathway).</div>
+        <div><b class="h">Lymphoma</b>Adults with unexplained lymphadenopathy or splenomegaly → consider a suspected cancer pathway referral.</div>
+      </div>
+    </div></div>
+
+    <div class="blk red span"><h2><span class="n">11</span>Special groups<small>CG151 · MHRA · SPC</small></h2><div class="body">
+      <div class="flow" style="--c:var(--red)">
+        <div><b class="h">On chemotherapy</b>Expected low counts: any fever or feeling unwell → the 24-hour oncology or haematology hotline or 999, not GP telephone advice alone.</div>
+        <div><b class="h">Antithyroid drugs</b>Counsel on carbimazole to report sore throat, mouth ulcers or fever: urgent FBC, stop if neutropenic.</div>
+        <div><b class="h">Clozapine</b>Mandatory monitoring via the brand service (CPMS, DMS or ZTAS; WBC and neutrophils, not ANC-only); low counts → act today on its instructions (red → stop).</div>
+        <div><b class="h">Travel</b>Fever after malaria-area travel → same-day malaria testing. Jaundice, big liver and spleen after travel → think leishmaniasis; specialist advice.</div>
+      </div>
+    </div></div>
+
+    <div class="blk slate span"><h2><span class="n">12</span>Pitfalls and never-events<small>NG12 · NG239 · CG151</small></h2><div class="body">
+        <ul>
+          <li><b>Never</b> treat a febrile neutropenic patient with oral antibiotics at home.</li>
+          <li><b>Never</b> attribute pancytopenia to B12 or folate without a film, or give folic acid alone.</li>
+          <li><b>Never</b> continue carbimazole or methotrexate, or leave a clozapine count unactioned, while the cause is unclear.</li>
+          <li>Do not wait for all first-line bloods before referring unexplained pancytopenia.</li>
+          <li>A "mild" stable pancytopenia in an older person can still be MDS.</li>
+          <li>Avoid NSAIDs and aspirin while platelets are low; plan dental extractions with haematology.</li>
+        </ul>
+      </div></div>
+
+    <div class="blk green span"><h2><span class="n">13</span>Self-care and the conversation<small>CG151 · BSH</small></h2><div class="body">
+        <p>Fever, shivering or feeling very unwell → <b>999 or straight to hospital</b> · new bruises, spots, bleeding gums or breathlessness → contact us the <b>same day</b> · avoid NSAIDs, aspirin and contact sports · good food hygiene and handwashing.</p>
+        <p class="say" style="margin-top:3px">"All three types of blood cell are lower than they should be. That can come from something simple, like a vitamin shortage, but it can also mean the bone marrow — the body's blood factory — isn't working properly, so I'm asking the blood specialists to look at it quickly. Until we know, a temperature or feeling shivery means hospital straight away."</p>
+      </div></div>
+
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Pancytopenia · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG12 suspected cancer; NICE CG151 neutropenic sepsis; BSH guideline, adult aplastic anaemia (2024); NICE NG239 (2024); NICE CKS anaemia – B12 and folate deficiency; MHRA; SPCs</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/pancytopenia.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=4"></script>
+</body>
+</html>

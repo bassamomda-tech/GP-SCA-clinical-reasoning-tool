@@ -1,0 +1,175 @@
+[
+ {
+  "subject": "CK",
+  "group": "stop/withhold | ×uln",
+  "verdict": "inconsistent",
+  "tier": 1,
+  "correct": "On a statin with muscle symptoms: CK <4× ULN → explore other causes, continue if tolerable (or pause 2–4 weeks and rechallenge); CK 4–10× ULN or intolerable symptoms → stop statin for 4–6 weeks, then reassess/rechallenge; CK ≥10× ULN → urgent same-day assessment (rhabdomyolysis is a clinical diagnosis: dark urine, AKI, severe weakness). The NICE NG238 5× ULN rule applies only BEFORE starting a statin (NHS England statin intolerance pathway; already adopted site-wide in LAB_SITE_FIXES batch 7).",
+  "source": "https://www.england.nhs.uk/aac/wp-content/uploads/sites/50/2020/04/statin-intolerance-pathway-v2.pdf",
+  "fixes": [
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "<h4>Myopathy (CK &gt;5&#215; ULN)</h4><p>Rare (1-3 per 100,000 patient-years); stop statin; CK monitoring; usually resolves after cessation.",
+    "new": "<h4>Statin myopathy (CK 4&#8211;10&#215; ULN or intolerable symptoms)</h4><p>Severe myopathy is rare (1-3 per 100,000 patient-years); stop the statin for 4&#8211;6 weeks, then reassess and rechallenge (NHS England statin intolerance pathway); usually resolves after cessation."
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "<li>CK 5-10&#215; ULN: stop statin; confirm resolution; rechallenge with different statin after 4 weeks; monitor CK</li><li>CK &gt;10&#215; ULN (rhabdomyolysis): STOP IMMEDIATELY; IV fluids; monitor renal function; urgent medical review</li>",
+    "new": "<li>CK 4&#8211;10&#215; ULN or intolerable symptoms: stop statin for 4&#8211;6 weeks; confirm resolution; rechallenge at a lower dose or with a different statin; monitor CK</li><li>CK &#8805;10&#215; ULN: STOP the statin; urgent same-day assessment; rhabdomyolysis (dark urine, AKI): hospital, IV fluids, monitor renal function</li>"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "Myopathy (CK &gt;5&#215; ULN): 1-3 per 100,000 patient-years; stop statin; usually resolves.",
+    "new": "Statin myopathy (CK 4&#8211;10&#215; ULN or intolerable symptoms): stop statin for 4&#8211;6 weeks, then rechallenge; severe myopathy 1-3 per 100,000 patient-years; usually resolves."
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "whether the symptom represents myopathy (CK &gt;5&#215; ULN) or benign myalgia (normal CK)",
+    "new": "whether the symptom represents myopathy (CK 4&#8211;10&#215; ULN: stop statin 4&#8211;6 weeks; &#8805;10&#215; ULN: same-day assessment) or benign myalgia (normal CK)"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "<div class=\"num-val\">Myopathy: CK &gt;5&#215; ULN</div><div class=\"num-lbl\">Stop statin.",
+    "new": "<div class=\"num-val\">On statin: CK 4&#8211;10&#215; ULN</div><div class=\"num-lbl\">Stop statin for 4&#8211;6 weeks, then rechallenge (NHS England pathway; NG238 5&#215; rule is pre-start only)."
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "Myopathy: CK only if symptomatic; &gt;5&#215; ULN = stop; &gt;10&#215; ULN = rhabdomyolysis emergency",
+    "new": "Myopathy: CK only if symptomatic; 4&#8211;10&#215; ULN or intolerable = stop 4&#8211;6 weeks then rechallenge; &#8805;10&#215; ULN = urgent same-day assessment (rhabdomyolysis if dark urine/AKI)"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "Myopathy: CK &gt;5&#215; ULN = stop; &gt;10&#215; ULN = rhabdomyolysis emergency;",
+    "new": "Myopathy: CK 4&#8211;10&#215; ULN or intolerable = stop 4&#8211;6 weeks then rechallenge; &#8805;10&#215; ULN = urgent same-day assessment (rhabdomyolysis if dark urine/AKI);"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "CK: 3× ULN (below the NICE NG238 threshold of 5×).",
+    "new": "CK: 3× ULN (below the 4× ULN stop threshold in the NHS England statin intolerance pathway; the NG238 5× rule applies before starting)."
+   },
+   {
+    "file": "cases/mi-secondary-prevention.html",
+    "old": "CK &lt;5&#215; ULN = usually reassure and assess other causes (continue with monitoring; lower dose; consider alternative); CK 5&#8211;10&#215; ULN = stop and seek clinical advice (rechallenge at lower dose or different statin depending on symptoms and trend); CK &gt;10&#215; ULN = rhabdomyolysis (stop immediately; IV fluids; hospital; monitor renal function).",
+    "new": "CK &lt;4&#215; ULN = usually reassure and assess other causes (continue if tolerable; otherwise pause and rechallenge at a lower dose or alternative statin); CK 4&#8211;10&#215; ULN or intolerable symptoms = stop the statin for 4&#8211;6 weeks, then rechallenge at a lower dose or different statin (NHS England statin intolerance pathway); CK &#8805;10&#215; ULN = stop and urgent same-day assessment (rhabdomyolysis if dark urine/AKI: hospital, IV fluids, monitor renal function). Here CK 2400 U/L is 12&#215; ULN."
+   },
+   {
+    "file": "cases/mi-secondary-prevention.html",
+    "old": "Mild myalgia (CK normal or &lt;5&#215; ULN): continue;",
+    "new": "Mild myalgia (CK normal or &lt;4&#215; ULN) and tolerable: continue;"
+   },
+   {
+    "file": "cases/mi-secondary-prevention.html",
+    "old": "CK 5&#8211;10&#215; ULN: stop and seek clinical advice; rechallenge or switch by symptoms and trend.",
+    "new": "CK 4&#8211;10&#215; ULN or intolerable symptoms: stop for 4&#8211;6 weeks, then rechallenge or switch (NHS England pathway); &#8805;10&#215; ULN: same-day assessment."
+   },
+   {
+    "file": "tools/clinic-guides/hypercholesterolaemia.html",
+    "old": "Check CK only if symptomatic; &lt;5× ULN → reassure, rechallenge or switch",
+    "new": "Check CK only if symptomatic; &lt;4× ULN → explore other causes, continue if tolerable or pause and rechallenge/switch; 4–10× ULN or intolerable → stop 4–6 weeks then rechallenge; ≥10× ULN → same-day assessment"
+   },
+   {
+    "file": "assets/search/idx-guide.json",
+    "old": "CK only if symptomatic; <5× ULN → reassure, rechallenge or switch",
+    "new": "CK only if symptomatic; <4× ULN → explore other causes, continue if tolerable or pause and rechallenge/switch; 4–10× ULN or intolerable → stop 4–6 weeks then rechallenge; ≥10× ULN → same-day assessment"
+   },
+   {
+    "file": "assets/labs/generic.js",
+    "old": "label:'CK 1000–5000 — statin myopathy / cause; stop statin if >5× ULN + symptoms',",
+    "new": "label:'CK 1000–5000 — statin myopathy / cause; on a statin stop for 4–6 weeks if 4–10× ULN or intolerable symptoms; ≥10× ULN same-day assessment',"
+   }
+  ],
+  "note": "The site's own corrected pages (raised-creatine-kinase algorithm, tia-stroke, angina, PAD, SCA post-TIA case, hypercholesterolaemia summary, the case's own 'On statin: CK 4–10× ULN' card) use the NHS England 4–10×/4–6 weeks rule; cases/hypercholesterolaemia, cases/mi-secondary-prevention, the hypercholesterolaemia Clinic Guide and generic.js still use a legacy on-treatment 5× ULN stop rule (and label >10× as rhabdomyolysis per se). generic.js 'source: NICE NG238' for that rule should also become 'NHS England statin intolerance pathway'. The idx-guide.json fix is a search index; regenerate if the index is built from the Clinic Guide. Legitimate (no action): ≥10 vs >10 same-day; 7-day exercise repeat; pre-start 5×/7-day NG238 rule; >50× admit bands. Could not fetch the NHSE PDF (DNS blocked); relied on the owner-accepted batch-7 correction."
+ },
+ {
+  "subject": "HbA1c",
+  "group": "target | mmol/mol",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "NICE NG28: individualised target; usually 48 mmol/mol (lifestyle or a single drug not causing hypoglycaemia), 53 mmol/mol on a drug that can cause hypoglycaemia; intensify if it rises to 58 mmol/mol; relax for frailty/limited life expectancy.",
+  "source": "https://www.nice.org.uk/guidance/ng28/chapter/Recommendations",
+  "fixes": [
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "<strong>HbA1c &lt;48 mmol/mol</strong> if diabetic",
+    "new": "<strong>HbA1c individualised (usually 48 mmol/mol; 53 on a hypo-causing drug, NICE NG28)</strong> if diabetic"
+   },
+   {
+    "file": "cases/type-2-diabetes.html",
+    "old": "<span class=\"tx-goal tg1\">HbA1c &lt;48 mmol/mol</span>",
+    "new": "<span class=\"tx-goal tg1\">HbA1c 48 mmol/mol (53 if on a hypo-causing drug; individualise)</span>"
+   },
+   {
+    "file": "cases/chest-pain.html",
+    "old": "HbA1c &lt;53 mmol/mol (if DM)",
+    "new": "HbA1c individualised per NICE NG28 (usually 48 mmol/mol; 53 on a hypo-causing drug) (if DM)"
+   },
+   {
+    "file": "cases/mi-secondary-prevention.html",
+    "old": "HbA1c target: &lt;53 mmol/mol generally; individualise.",
+    "new": "HbA1c target: individualise per NICE NG28 (usually 48 mmol/mol; 53 on a drug that can cause hypoglycaemia)."
+   },
+   {
+    "file": "cases/mi-secondary-prevention.html",
+    "old": "<td class=\"why\">&lt;53 mmol/mol (if T2DM)</td>",
+    "new": "<td class=\"why\">Individualised: usually 48 mmol/mol, 53 on a hypo-causing drug (if T2DM; NICE NG28)</td>"
+   },
+   {
+    "file": "cases/abnormal-lfts.html",
+    "old": "<span class=\"life-target\">HbA1c &lt;53 mmol/mol;",
+    "new": "<span class=\"life-target\">HbA1c individualised (usually 48 mmol/mol; 53 on a hypo-causing drug, NICE NG28);"
+   }
+  ],
+  "note": "Generic diabetes targets are given as <48 on some pages and <53 on others for the same (unspecified-drug) situation. The 53 values in tools/management/ckd.html, tools/algorithms/hypoglycaemia.html and cases/neuropathic-pain.html already state the drug condition and are correct. cases/hypercholesterolaemia.html ('62 to <53 mmol/mol (target per NICE NG28)') is in a patient on metformin alone, where NG28's target would be 48 — optional fix to 'towards the individually agreed target (48 mmol/mol on metformin alone, NICE NG28)'. cases/abnormal-lfts.html line 1840 'HbA1c &lt;53 mmol/mol' (MASLD table) could be aligned the same way."
+ },
+ {
+  "subject": "HbA1c",
+  "group": "target | mmol/mol (dementia)",
+  "verdict": "owner",
+  "tier": 2,
+  "correct": "NG28 gives no fixed relaxed target; it advises relaxing targets for frailty/dementia individually.",
+  "source": "https://www.nice.org.uk/guidance/ng28/chapter/Recommendations",
+  "fixes": [],
+  "note": "cases/dementia.html states 'HbA1c target 58 mmol/mol (relaxed to 64 mmol/mol in frail elderly)' (lines 336, 763, 1702). 58 is NG28's intensification threshold, not a target, and 64 is not a national figure (some local/ADA/TREND guidance uses 58–70 for frail). Owner: keep as an example 'relaxed individual target (e.g. 58–64 mmol/mol, local/TREND-UK)' or reword to 'individualised relaxed target agreed with the patient/carer (NG28)'."
+ },
+ {
+  "subject": "HbA1c",
+  "group": "stop/withhold | % (GLP-1 continuation)",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "NICE NG28: continue a GLP-1 mimetic only if HbA1c falls by at least 11 mmol/mol (1.0%) AND weight falls by at least 3% of initial body weight at 6 months.",
+  "source": "https://www.nice.org.uk/guidance/ng28/chapter/Recommendations",
+  "fixes": [
+   {
+    "file": "cases/type-2-diabetes.html",
+    "old": "HbA1c + weight at 3 months — stop if no ≥1% HbA1c reduction or ≥3% weight loss at 6 months (NICE NG28 criterion)",
+    "new": "HbA1c + weight at 3 months — continue beyond 6 months only if HbA1c has fallen ≥11 mmol/mol (1%) AND weight ≥3% (NICE NG28 criterion; when used for glucose/weight rather than CV benefit)"
+   },
+   {
+    "file": "cases/type-2-diabetes.html",
+    "old": "Stop if &lt;1% (11 mmol/mol) HbA1c reduction at 6 months.",
+    "new": "Continue at 6 months only if HbA1c has fallen ≥11 mmol/mol (1%) AND weight ≥3% (NICE NG28)."
+   }
+  ],
+  "note": "'stop if no ≥1% reduction or ≥3% weight loss' reads as either criterion being enough; NICE requires both. The second card omits the weight criterion. assets/meds/type-2-diabetes.js and tools/prescribing.html already state it correctly."
+ },
+ {
+  "subject": "HbA1c",
+  "group": "stop/withhold | mmol/mol (gliptins ≥5.5)",
+  "verdict": "owner",
+  "tier": 3,
+  "correct": "",
+  "source": "https://www.nice.org.uk/guidance/ng28",
+  "fixes": [],
+  "note": "tools/prescribing.html gliptin row: 'stop if not reduced ≥5.5 mmol/mol within 6 months' is the old NICE CG87 (2009) DPP-4 rule; NG28 contains no gliptin stopping threshold. Owner: delete, or label as legacy/local formulary practice ('review and stop if no meaningful HbA1c response')."
+ },
+ {
+  "subject": "clarithromycin",
+  "group": "dose | mg",
+  "verdict": "legitimate",
+  "tier": 1,
+  "correct": "",
+  "source": "",
+  "fixes": [],
+  "note": "500 mg BD (H. pylori, CAP, cellulitis near eyes with metronidazole), 250 mg BD (impetigo/infected eczema NG153/NG190, 500 mg if severe), 250–500 mg BD (sore throat NG84). Indication-specific; consistent."
+ }
+]

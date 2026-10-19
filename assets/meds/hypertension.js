@@ -137,7 +137,7 @@ MedChooser.register('hypertension', {
       examples:'25 mg OD (Step 4 add-on)',
       step:'Step 4',
       source:'NICE NG136 §1.4.27',
-      sideEffects:'Hyperkalaemia (STOP if K⁺ >5.5), gynaecomastia (10% men → eplerenone), menstrual irregularity',
+      sideEffects:'Hyperkalaemia (K⁺ 5.5–5.9 → reduce dose or review and recheck within a week; ≥6.0 → STOP), gynaecomastia (10% men → eplerenone), menstrual irregularity',
       monitor:'U&E + K⁺ within 1 month, then 3-monthly × 1 year',
       counsel:'"Men sometimes notice breast tenderness — if so, we\'ll switch to a similar tablet. Don\'t stop without calling us."',
       detail:{

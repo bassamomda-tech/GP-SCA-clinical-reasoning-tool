@@ -434,7 +434,7 @@
       },
       {
         lbl: 'Initiate management',
-        txt: '"For type 2, we start with diet and lifestyle and usually two tablets that work as a pair: a slow-release tablet called metformin first, then a second called an SGLT2 inhibitor added within a few weeks, look after your heart risk, arrange eye, foot and kidney checks, and get you proper diabetes education. With those tablets you don\u2019t need to tell the DVLA for a normal car licence. We\u2019ll do this step by step."'
+        txt: '"For type 2, we start with diet and lifestyle and usually two tablets that work as a pair: a slow-release tablet called metformin first, then a second called an SGLT2 inhibitor added once the metformin suits you, look after your heart risk, arrange eye, foot and kidney checks, and get you proper diabetes education. With those tablets you don\u2019t need to tell the DVLA for a normal car licence. We\u2019ll do this step by step."'
       },
       {
         lbl: 'Safety-net',
@@ -836,7 +836,7 @@
         },
         {
           dont: '(No management) diagnosing without a plan.',
-          instead: '"For type 2 we start lifestyle and usually slow-release metformin, with a second tablet added within weeks, manage heart risk, and arrange eye/foot/kidney checks."',
+          instead: '"For type 2 we start lifestyle and usually slow-release metformin, with a second tablet added once the metformin suits you, manage heart risk, and arrange eye/foot/kidney checks."',
           why: 'Initiate management and complication screening.'
         }
       ]

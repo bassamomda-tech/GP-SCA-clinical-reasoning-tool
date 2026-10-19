@@ -80,7 +80,7 @@ tr:last-child td{border-bottom:0}
   a{color:var(--ink);text-decoration:none}
 }
 </style>
-<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
 </head>
 <body>
 <div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/hypertension.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
@@ -96,7 +96,7 @@ tr:last-child td{border-bottom:0}
     <div class="meta">NICE <b>NG136</b> (updated Feb 2026) · <b>NG203</b> (CKD) · NG133 · NG238 · NG12<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full protocol: gpreasoning.uk/tools/management/hypertension.html</div>
   </div>
 
-  <div class="ptitle">Page 1 · Diagnose and start <span>new raised reading → confirmed diagnosis → first drug</span></div>
+  <div class="ptitle">Page 1 · Diagnose and decide <span>raised reading → confirm → work-up → who to treat → lifestyle</span></div>
 
   <div class="blk red"><h2><span class="n">!</span>Act today<small>NICE NG136 §1.5 · NG133</small></h2><div class="body">
     <ul>
@@ -122,7 +122,7 @@ tr:last-child td{border-bottom:0}
       <div class="blk amber"><h2><span class="n">2</span>Confirm out of office<small>NG136 §1.2</small></h2><div class="body">
         <p>Clinic <b>140/90–179/119</b> → <b>ABPM</b>: ≥2 readings/hour while awake, use the average of ≥14.</p>
         <p>ABPM unsuitable or declined → <b>HBPM</b>: 2 seated readings 1 min apart, twice daily, 4–7 days; <b>discard day 1</b>, average the rest.</p>
-        <p><b>Diagnosis</b> = clinic ≥140/90 <b>and</b> ABPM daytime / HBPM average ≥135/85. Start the work-up (box 4) while waiting.</p>
+        <p><b>Diagnosis</b> = clinic ≥140/90 <b>and</b> ABPM daytime / HBPM average ≥135/85. Start the work-up (box 3) while waiting.</p>
         <table>
           <tr><th>Stage</th><th>Clinic</th><th>ABPM / HBPM</th></tr>
           <tr><td><b>1</b></td><td>140/90–159/99</td><td>135/85–149/94</td></tr>
@@ -132,20 +132,7 @@ tr:last-child td{border-bottom:0}
         <p class="key">Not diagnosed (clinic &lt;140/90 or ABPM/HBPM &lt;135/85) → healthy-living advice; recheck at least every 5 years, sooner if close to 140/90.</p>
       </div></div>
 
-      <div class="blk blue"><h2><span class="n">3</span>Who gets drug treatment<small>NG136 §1.4</small></h2><div class="body">
-        <table>
-          <tr><th>Person</th><th>Action</th></tr>
-          <tr><td><b>Stage 2</b>, any age</td><td><b>Offer</b> drugs (adjust for frailty, multimorbidity)</td></tr>
-          <tr><td>Stage 1, under 80, with TOD, CVD, renal disease, diabetes or <b>QRISK ≥10%</b></td><td><b>Discuss</b> drugs, with the person's preferences</td></tr>
-          <tr><td>Stage 1, under 60, QRISK &lt;10%</td><td><b>Consider</b> drugs as well as lifestyle (10-year risk understates lifetime risk)</td></tr>
-          <tr><td>Stage 1, aged 80+</td><td>Consider if clinic BP &gt;150/90</td></tr>
-          <tr><td>Under 40, confirmed</td><td>Consider specialist referral (secondary causes)</td></tr>
-        </table>
-      </div></div>
-    </div>
-
-    <div class="col">
-      <div class="blk purple"><h2><span class="n">4</span>Work-up — every new diagnosis<small>NG136 §1.3</small></h2><div class="body">
+      <div class="blk purple"><h2><span class="n">3</span>Work-up — every new diagnosis<small>NG136 §1.3</small></h2><div class="body">
         <ul class="tick">
           <li>Urine <b>ACR</b> + dipstick haematuria</li>
           <li>HbA1c, U&amp;E, creatinine, eGFR</li>
@@ -158,7 +145,10 @@ tr:last-child td{border-bottom:0}
         <p><b>Haematuria is not "part of the BP work-up":</b> visible haematuria aged 45+ without UTI, or non-visible aged 60+ with dysuria or raised WCC → suspected cancer pathway (NG12).</p>
       </div></div>
 
-      <div class="blk purple"><h2><span class="n">5</span>Six findings that change the plan<small>examination</small></h2><div class="body">
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">4</span>Six findings that change the plan<small>examination</small></h2><div class="body">
         <table>
           <tr><td><b>Arm difference</b> &gt;15</td><td>PVD or coarctation; with tearing pain → 999</td></tr>
           <tr><td><b>Postural drop</b></td><td>Treat to the standing BP; go gently</td></tr>
@@ -169,7 +159,49 @@ tr:last-child td{border-bottom:0}
         </table>
       </div></div>
 
-      <div class="blk teal"><h2><span class="n">6</span>First drug<small>NG136 §1.4 · NG203 §1.6</small></h2><div class="body">
+      <div class="blk blue"><h2><span class="n">5</span>Secondary causes — test, then refer<small>never delay a same-day referral</small></h2><div class="body">
+        <table>
+          <tr><td>Low K⁺, resistant</td><td>Conn's → aldosterone:renin ratio (local protocol)</td></tr>
+          <tr><td>Abrupt, flash oedema, creatinine ↑ on A</td><td>Renovascular → discuss imaging</td></tr>
+          <tr><td>Headache, sweats, palpitations</td><td>Phaeo → same-day specialist</td></tr>
+          <tr><td>Snoring, sleepy, resistant</td><td>OSA → STOP-BANG, sleep assessment</td></tr>
+          <tr><td>Young, radio-femoral delay</td><td>Coarctation → echo / CT aorta</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">6</span>Who gets drug treatment<small>NG136 §1.4</small></h2><div class="body">
+        <table>
+          <tr><th>Person</th><th>Action</th></tr>
+          <tr><td><b>Stage 2</b>, any age</td><td><b>Offer</b> drugs (adjust for frailty, multimorbidity)</td></tr>
+          <tr><td>Stage 1, under 80, with TOD, CVD, renal disease, diabetes or <b>QRISK ≥10%</b></td><td><b>Discuss</b> drugs, with the person's preferences</td></tr>
+          <tr><td>Stage 1, under 60, QRISK &lt;10%</td><td><b>Consider</b> drugs as well as lifestyle (10-year risk understates lifetime risk)</td></tr>
+          <tr><td>Stage 1, aged 80+</td><td>Consider if clinic BP &gt;150/90</td></tr>
+          <tr><td>Under 40, confirmed</td><td>Consider specialist referral (secondary causes)</td></tr>
+        </table>
+      </div></div>
+
+    </div>
+
+    <div class="blk green span"><h2><span class="n">7</span>Lifestyle — offer to everyone, at every stage<small>NG136 §1.4 · effect sizes are averages</small></h2><div class="body">
+      <table>
+        <tr><th>Salt</th><th>Diet</th><th>Activity</th><th>Weight</th><th>Alcohol</th><th>Smoking · sleep</th></tr>
+        <tr><td>≤6 g/day · ~5 mmHg less</td><td>DASH / Mediterranean · 8–14 mmHg</td><td>150 min/week · 4–9 mmHg</td><td>~1 mmHg per kg lost</td><td>≤14 units/week · 2–4 mmHg</td><td>Stop smoking (biggest CV risk) · snoring + resistant BP → OSA</td></tr>
+      </table>
+      <p class="say" style="margin-top:3px">"Lifestyle changes can lower your blood pressure as much as a tablet would. Let's pick one to start — which feels most doable?" Avoid potassium salt substitutes with ACEi/ARB/spironolactone, CKD, diabetes or in older people.</p>
+    </div></div>
+
+  </div>
+
+<div class="foot"><span>Reasoning GP Clinic Guide · Hypertension · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Treat and review <span>first drug → target → step up → side effects → annual review</span></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk teal"><h2><span class="n">8</span>First drug<small>NG136 §1.4 · NG203 §1.6</small></h2><div class="body">
         <div class="flow" style="--c:var(--teal)">
           <div><b class="h">Type 2 diabetes</b>any age → <b>A</b> (ACEi or ARB)</div>
           <div><b class="h">Under 55</b>no T2DM → <b>A</b></div>
@@ -180,27 +212,11 @@ tr:last-child td{border-bottom:0}
         <p><b>CKD:</b> diabetes + ACR &gt;3, or hypertension + ACR &gt;30, or any ACR ≥70 mg/mmol → <b>A</b> titrated to the highest tolerated licensed dose (ACR ≥70 without diabetes → also refer). SGLT2 inhibitor per NICE TA / local CKD pathway.</p>
         <p>Usual starts: <b>ramipril</b> 2.5 mg (1.25 mg if on a diuretic) → up to 10 mg OD · <b>amlodipine</b> 5 → 10 mg OD. ACEi cough → ARB. <b>Never ACEi + ARB.</b></p>
       </div></div>
+
     </div>
 
-    <div class="blk green span"><h2><span class="n">7</span>Lifestyle — offer to everyone, at every stage<small>NG136 §1.4 · effect sizes are averages</small></h2><div class="body">
-      <table>
-        <tr><th>Salt</th><th>Diet</th><th>Activity</th><th>Weight</th><th>Alcohol</th><th>Smoking · sleep</th></tr>
-        <tr><td>≤6 g/day · ~5 mmHg less</td><td>DASH / Mediterranean · 8–14 mmHg</td><td>150 min/week · 4–9 mmHg</td><td>~1 mmHg per kg lost</td><td>≤14 units/week · 2–4 mmHg</td><td>Stop smoking (biggest CV risk) · snoring + resistant BP → OSA</td></tr>
-      </table>
-      <p class="say" style="margin-top:3px">"Lifestyle changes can lower your blood pressure as much as a tablet would. Let's pick one to start — which feels most doable?" Avoid potassium salt substitutes with ACEi/ARB/spironolactone, CKD, diabetes or in older people.</p>
-    </div></div>
-  </div>
-
-  <div class="foot"><span>Reasoning GP Clinic Guide · Hypertension · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary.</span></div>
-</section>
-
-<!-- ============ PAGE 2 ============ -->
-<section class="page">
-  <div class="ptitle">Page 2 · Review and titrate <span>the chronic disease review: target → adherence → step up → monitor</span></div>
-
-  <div class="grid">
     <div class="col">
-      <div class="blk green"><h2><span class="n">8</span>Targets — pick the right row<small>NG136 §1.4 · NG203 §1.6</small></h2><div class="body">
+      <div class="blk green"><h2><span class="n">9</span>Targets — pick the right row<small>NG136 §1.4 · NG203 §1.6</small></h2><div class="body">
         <table>
           <tr><th>Person</th><th>Clinic</th><th>Home / ABPM</th></tr>
           <tr><td>Under 80 (incl. T2DM without CKD)</td><td><b>&lt;140/90</b></td><td>&lt;135/85</td></tr>
@@ -212,43 +228,9 @@ tr:last-child td{border-bottom:0}
         <p class="key">Home readings run ~5 mmHg below clinic — never judge a home diary against the clinic number.</p>
       </div></div>
 
-      <div class="blk amber"><h2><span class="n">9</span>Before every step-up<small>NG136 §1.4</small></h2><div class="body">
-        <ul class="tick" style="grid-template-columns:1fr">
-          <li><b>Adherence</b> — ask openly; check repeat-prescription record; once-daily or combination tablet</li>
-          <li><b>Measurement</b> — cuff, both arms; re-confirm with ABPM/HBPM if white-coat likely</li>
-          <li><b>BP-raising drugs</b> — NSAIDs, steroids, COCP, venlafaxine, decongestants, liquorice, stimulants, alcohol</li>
-          <li><b>Lifestyle drift</b> — salt, weight, alcohol, activity: agree one target</li>
-          <li><b>Doses</b> — is every drug at its maximum tolerated dose?</li>
-          <li><b>Secondary cause</b> — &lt;40, abrupt onset, low K⁺, resistant (box 13)</li>
-        </ul>
-      </div></div>
     </div>
 
-    <div class="col">
-      <div class="blk purple"><h2><span class="n">10</span>Annual review checklist<small>every patient, every year</small></h2><div class="body">
-        <ul class="tick" style="grid-template-columns:1fr">
-          <li>Clinic BP <b>+ home readings</b>; standing BP if 80+, T2DM or dizzy</li>
-          <li>Adherence and side effects (cough, ankles, gout, erectile dysfunction, dizziness)</li>
-          <li><b>U&amp;E/eGFR</b>, <b>urine ACR</b>, HbA1c, lipids</li>
-          <li><b>QRISK3</b> and statin conversation if not already treated (NG238)</li>
-          <li>Lifestyle: one agreed change, smoking status, alcohol</li>
-          <li>Women who could become pregnant: <b>plans and contraception</b> (no ACEi/ARB in pregnancy)</li>
-          <li>Frailty, falls, postural symptoms → relax target, review the whole drug list</li>
-          <li>Record target, current step and next action in the notes</li>
-        </ul>
-      </div></div>
-      <div class="blk blue"><h2><span class="n">13</span>Secondary causes — test, then refer<small>never delay a same-day referral</small></h2><div class="body">
-        <table>
-          <tr><td>Low K⁺, resistant</td><td>Conn's → aldosterone:renin ratio (local protocol)</td></tr>
-          <tr><td>Abrupt, flash oedema, creatinine ↑ on A</td><td>Renovascular → discuss imaging</td></tr>
-          <tr><td>Headache, sweats, palpitations</td><td>Phaeo → same-day specialist</td></tr>
-          <tr><td>Snoring, sleepy, resistant</td><td>OSA → STOP-BANG, sleep assessment</td></tr>
-          <tr><td>Young, radio-femoral delay</td><td>Coarctation → echo / CT aorta</td></tr>
-        </table>
-      </div></div>
-    </div>
-
-    <div class="blk teal span"><h2><span class="n">11</span>The A → C → D ladder<small>A = ACEi/ARB · C = CCB · D = thiazide-like diuretic · NG136 §1.4</small></h2><div class="body">
+    <div class="blk teal span"><h2><span class="n">10</span>The A → C → D ladder<small>A = ACEi/ARB · C = CCB · D = thiazide-like diuretic · NG136 §1.4</small></h2><div class="body">
       <div class="ladder">
         <div><b class="h">Step 1 · one drug</b>A (T2DM, or under 55) <i>or</i> C (55+, or Black African / African–Caribbean, no T2DM).</div>
         <div><b class="h">Step 2 · two drugs</b>On A → add C or D. On C → add A (ARB preferred in Black African / African–Caribbean origin) or D. Consider a fixed-dose combination.</div>
@@ -266,6 +248,17 @@ tr:last-child td{border-bottom:0}
     </div></div>
 
     <div class="col">
+      <div class="blk amber"><h2><span class="n">11</span>Before every step-up<small>NG136 §1.4</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Adherence</b> — ask openly; check repeat-prescription record; once-daily or combination tablet</li>
+          <li><b>Measurement</b> — cuff, both arms; re-confirm with ABPM/HBPM if white-coat likely</li>
+          <li><b>BP-raising drugs</b> — NSAIDs, steroids, COCP, venlafaxine, decongestants, liquorice, stimulants, alcohol</li>
+          <li><b>Lifestyle drift</b> — salt, weight, alcohol, activity: agree one target</li>
+          <li><b>Doses</b> — is every drug at its maximum tolerated dose?</li>
+          <li><b>Secondary cause</b> — &lt;40, abrupt onset, low K⁺, resistant (box 5)</li>
+        </ul>
+      </div></div>
+
       <div class="blk slate"><h2><span class="n">12</span>Side effects — fix the symptom, keep the class<small>SPC · NG136</small></h2><div class="body">
         <table>
           <tr><td><b>Dry cough</b> (ACEi)</td><td>Switch to an ARB; don't let them just stop</td></tr>
@@ -276,9 +269,24 @@ tr:last-child td{border-bottom:0}
           <tr><td><b>Erectile dysfunction</b></td><td>Ask — a silent cause of non-adherence; PDE5i never with nitrates</td></tr>
         </table>
       </div></div>
+
     </div>
 
-    <div class="blk red"><h2><span class="n">14</span>Special groups and never-events<small>MHRA DSU · NG133 · NG106</small></h2><div class="body">
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">13</span>Annual review checklist<small>every patient, every year</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li>Clinic BP <b>+ home readings</b>; standing BP if 80+, T2DM or dizzy</li>
+          <li>Adherence and side effects (cough, ankles, gout, erectile dysfunction, dizziness)</li>
+          <li><b>U&amp;E/eGFR</b>, <b>urine ACR</b>, HbA1c, lipids</li>
+          <li><b>QRISK3</b> and statin conversation if not already treated (NG238)</li>
+          <li>Lifestyle: one agreed change, smoking status, alcohol</li>
+          <li>Women who could become pregnant: <b>plans and contraception</b> (no ACEi/ARB in pregnancy)</li>
+          <li>Frailty, falls, postural symptoms → relax target, review the whole drug list</li>
+          <li>Record target, current step and next action in the notes</li>
+        </ul>
+      </div></div>
+
+      <div class="blk red"><h2><span class="n">14</span>Special groups and never-events<small>MHRA DSU · NG133 · NG106</small></h2><div class="body">
         <ul>
           <li><b>Planning pregnancy</b>: switch ACEi/ARB (and review thiazides) before conception; stop as soon as pregnancy is confirmed. In pregnancy: labetalol → nifedipine → methyldopa, aim ~135/85. Postpartum: enalapril (monitor U&amp;E, K⁺).</li>
           <li><b>Known HFrEF</b>: not this ladder — prognostic therapy on the heart-failure pathway (ACEi/ARNI/ARB, beta-blocker, MRA, SGLT2i). Avoid verapamil and diltiazem.</li>
@@ -286,10 +294,13 @@ tr:last-child td{border-bottom:0}
           <li><b>AF found</b> on pulse or ECG → manage on the AF pathway (stroke risk, rate).</li>
         </ul>
     </div></div>
+
+    </div>
+
   </div>
 
-  <div class="foot"><span>Reasoning GP Clinic Guide · Hypertension · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG136 (2019, updated Feb 2026), NG203, NG133, NG238, NG106, NG12; MHRA DSU Dec 2007 (ACEi/ARB in pregnancy) and Jun 2014 (dual RAS blockade)</span><span>Full detail and evidence: gpreasoning.uk/tools/management/hypertension.html</span></div>
+<div class="foot"><span>Reasoning GP Clinic Guide · Hypertension · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG136 (2019, updated Feb 2026), NG203, NG133, NG238, NG106, NG12; MHRA DSU Dec 2007 (ACEi/ARB in pregnancy) and Jun 2014 (dual RAS blockade)</span><span>Full detail and evidence: gpreasoning.uk/tools/management/hypertension.html</span></div>
 </section>
-<script src="../../assets/clinic-guides.js?v=1"></script>
+<script src="../../assets/clinic-guides.js?v=4"></script>
 </body>
 </html>

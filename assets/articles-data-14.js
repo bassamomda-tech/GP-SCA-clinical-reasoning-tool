@@ -24,7 +24,7 @@
       'Fulminant or sight-threatening disease (rapidly worsening vision/severe papilloedema) needs urgent surgery — CSF diversion (shunt) or optic-nerve-sheath fenestration',
       'Arrange ongoing monitoring of visual fields and discs, coordinate neurology/ophthalmology follow-up, and counsel on the importance of weight management and reporting visual change'],
     referral:[
-      'Suspected IIH with papilloedema → urgent neurology + same-week ophthalmology; arrange urgent MRI/MR venography to exclude a brain tumour or venous sinus thrombosis (consider the NICE NG12 (updated April 2026) brain/CNS tumour pathway where a tumour is suspected)',
+      'Suspected IIH with papilloedema → same-day assessment (neurology/ophthalmology); arrange urgent MRI/MR venography to exclude a brain tumour or venous sinus thrombosis (consider the NICE NG12 (updated April 2026) brain/CNS tumour pathway where a tumour is suspected)',
       'Rapidly deteriorating vision or fulminant papilloedema → emergency referral (sight-threatening; may need urgent surgery)',
       'Confirmed IIH → joint neurology/ophthalmology follow-up with visual-field monitoring',
       'Pregnancy with IIH, or diagnostic uncertainty → specialist (neurology/obstetric) input'],

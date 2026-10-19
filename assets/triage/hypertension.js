@@ -66,11 +66,11 @@ RGPTriage.register('hypertension-triage', {
     },
     {
       tier:'emergency',
-      label:'Severe hyperkalaemia (K⁺ >6.5)',
+      label:'Severe hyperkalaemia (K⁺ ≥6.5)',
       action:'Call 999 — ECG immediately',
       source:'Renal Association',
       patientPhrase:'"Your potassium is dangerously high and that affects the heart\'s rhythm. I\'m sending you straight to hospital."',
-      when: i => i.k != null && i.k > 6.5
+      when: i => i.k != null && i.k >= 6.5
     },
 
     // SUSPECTED CANCER PATHWAY

@@ -75,6 +75,29 @@
 .cg-proto:hover{ text-decoration:underline; }
 .cg-free{ position:absolute; top:12px; right:12px; font-size:9px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:#fff; background:#0c4a47; border-radius:999px; padding:3px 9px; line-height:1; }
 
+/* Handbook shop card: one-off £20 purchase (block written by the importer, GROUP_EXTRA; filled by assets/clinic-guides.js) */
+.cg-handbook{ display:flex; align-items:center; gap:14px; margin:0 0 14px; padding:15px 18px; background:#ecf5f3; border:1px solid #99c4bf; border-left:5px solid var(--teal); border-radius:12px; min-width:0; }
+.cg-hb-icon{ flex:0 0 auto; display:grid; place-items:center; width:46px; height:56px; border-radius:6px; background:var(--teal); color:#fff; font-size:12px; font-weight:800; letter-spacing:.06em; }
+.cg-hb-body{ flex:1; min-width:0; }
+.cg-hb-t{ margin:0 0 3px; font-family:'Source Serif 4',Georgia,serif; font-size:19px; font-weight:600; line-height:1.2; color:var(--ink); }
+.cg-hb-fmt{ font-family:'DM Sans',system-ui,sans-serif; font-size:13px; font-weight:600; color:var(--muted); white-space:nowrap; }
+.cg-hb-d{ margin:0; font-size:13px; line-height:1.5; color:var(--ink-2); }
+.cg-hb-note{ margin:6px 0 0; font-size:12.5px; line-height:1.5; color:#0c4a47; font-weight:600; }
+.cg-hb-note a{ color:#0c4a47; }
+.cg-hb-price{ margin:0 0 4px; font-size:13px; font-weight:600; color:#0c4a47; }
+.cg-hb-price b{ font-size:15px; }
+.cg-hb-buy{ flex:0 0 240px; min-width:0; display:flex; flex-direction:column; gap:6px; }
+.cg-hb-btn{ gap:8px; padding:10px 16px; font-size:14px; justify-content:center; text-align:center; cursor:pointer; font-family:inherit; }
+button.cg-hb-btn{ width:100%; }
+.cg-hb-btn[aria-busy="true"]{ opacity:.7; cursor:progress; }
+.cg-hb-size{ font-size:11.5px; font-weight:600; opacity:.85; }
+.cg-hb-pp{ min-height:0; }
+.cg-hb-msg{ margin:0; font-size:12.5px; line-height:1.5; color:#8a3a20; }
+.cg-hb-msg a{ color:#0c4a47; font-weight:700; }
+.cg-hb-small{ margin:0; font-size:12px; line-height:1.45; color:var(--muted); text-align:center; }
+.cg-hb-small a{ color:#0c4a47; }
+@media (max-width:640px){ .cg-handbook{ flex-wrap:wrap; } .cg-hb-icon{ width:38px; height:46px; font-size:11px; } .cg-hb-body{ flex-basis:calc(100% - 52px); } .cg-hb-buy{ flex:1 1 100%; } .cg-hb-btn{ width:100%; } }
+
 .alg-foot{ margin-top:36px; padding:14px 18px; background:var(--bg-soft); border:1px solid var(--line); border-radius:10px; font-size:12.5px; color:var(--muted); line-height:1.6; }
 .alg-foot strong{ color:var(--ink-2); }
 .alg-foot p{ margin:0 0 6px; }
@@ -108,14 +131,14 @@
         <li><b>Two A4 pages</b>Prints on two A4 sheets exactly. Each guide links to its full protocol or pathway.</li>
       </ul>
 
-      <div class="cg-access"><b>Access:</b> Clinic Guides are part of the Silver (Clinic) and Platinum plans. Guides marked <b>Free</b> are open to everyone, no sign-up needed. <a href="../pages/pricing.html">See the plans</a></div>
+      <div class="cg-access"><b>Access:</b> Clinic Guides are part of the Silver (Clinic) and Platinum plans. Guides marked <b>Free</b> are open to everyone, no sign-up needed. The <a href="#lab-results">Lab Results Handbook</a> PDF is not part of any plan: it is a separate one-off purchase (£20). <a href="../pages/pricing.html">See the plans</a></div>
 
       <div class="alg-controls">
         <div class="alg-search">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="search" id="cgSearch" placeholder="Find a guide, e.g. asthma, statin, HRT" autocomplete="off" aria-label="Find a Clinic Guide" />
         </div>
-        <span class="alg-count-pill"><b id="cgShown"><span data-cg-count>39</span></b> guides · <span data-cg-cats>8</span> areas</span>
+        <span class="alg-count-pill"><b id="cgShown"><span data-cg-count>81</span></b> guides · <span data-cg-cats>9</span> areas</span>
       </div>
       <nav class="cg-jump" aria-label="Jump to an area"></nav>
 
@@ -474,6 +497,359 @@
           </article>
         </div>
       </section>
+      <section class="cg-group" id="lab-results" data-group="lab-results">
+        <div class="alg-group-head"><span class="agh-icon" aria-hidden="true">🧪</span><h2>Lab results</h2><span class="agh-count">42 guides</span></div>
+        <div class="cg-handbook" data-cg-product="lab-handbook" data-cg-price="20" data-cg-title="Lab Results Handbook" data-cg-local="../assets/downloads/Lab_Results_Handbook_v1.pdf">
+          <div class="cg-hb-icon" aria-hidden="true">PDF</div>
+          <div class="cg-hb-body">
+            <h3 class="cg-hb-t">Lab Results Handbook <span class="cg-hb-fmt">(PDF, 89 pages)</span></h3>
+            <p class="cg-hb-price"><b>£20</b> · one-off purchase · not included in subscription plans</p>
+            <p class="cg-hb-d">Every lab results guide below, plus the Anaemia guide, in one printable A4 book with a contents page: 43 guides, 89 pages. Version 1.1, October 2026 · next review April 2027. Yours to keep: buy once, download any time.</p>
+            <p class="cg-hb-note" hidden></p>
+          </div>
+          <div class="cg-hb-buy" aria-live="polite">
+            <a class="cg-btn pri cg-hb-btn" href="mailto:bassamomda@gmail.com?subject=Lab%20Results%20Handbook%20(%C2%A320)">Buy · £20</a>
+          </div>
+        </div>
+        <div class="cg-grid">
+          <article class="cg-card" data-cg-slug="raised-creatinine" data-search="raised creatinine or falling egfr a raised serum creatinine, or a low or falling egfr, in adults 18+. not for children, pregnancy, or people on dialysis or with a kidney transplant (renal team). nice ng148 · kdigo 2012 · ng203 · ukka 2023 · ta1075 · ng12 · mhra raised creatinine or falling egfr raised creatinine">
+            <h3 class="cg-card-t"><a href="clinic-guides/raised-creatinine.html">Raised creatinine or falling eGFR</a></h3>
+            <p class="cg-scope">A raised serum creatinine, or a low or falling eGFR, in adults 18+.</p>
+            <p class="cg-src">NICE NG148 · KDIGO 2012 · NG203 · UKKA 2023 · TA1075 · NG12 · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/raised-creatinine.html">Open</a><a class="cg-btn" href="clinic-guides/raised-creatinine.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/raised-creatinine.html">Full pathway: Raised Creatinine or Falling eGFR →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hyponatraemia" data-search="hyponatraemia: the low sodium interpreting a serum sodium below 135 mmol/l in adults 18+. not for pregnancy or the peripartum period (obstetric guidance, nice ng235), children, or hospital correction with hypertonic saline. sfe emergency guidance 2022 · nice cks · european guideline 2014 · nice ng243 · ng12 hyponatraemia hyponatraemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/hyponatraemia.html">Hyponatraemia: the low sodium</a></h3>
+            <p class="cg-scope">Interpreting a serum sodium below 135 mmol/L in adults 18+.</p>
+            <p class="cg-src">SfE emergency guidance 2022 · NICE CKS · European guideline 2014 · NICE NG243 · NG12</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hyponatraemia.html">Open</a><a class="cg-btn" href="clinic-guides/hyponatraemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/hyponatraemia.html">Full pathway: Hyponatraemia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hypernatraemia" data-search="hypernatraemia: the high sodium interpreting a serum sodium above 145 mmol/l in adults 18+. not for infants and children (hypernatraemic dehydration → 999 or urgent paediatric admission), or hospital fluid and desmopressin treatment. nice cg174 (iv fluids) · cg185 (lithium) · jbds-ip hhs 2022 · sfe cranial di 2018 · cqc regulation 14 (hydration) hypernatraemia — assessment &amp; management hypernatraemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/hypernatraemia.html">Hypernatraemia: the high sodium</a></h3>
+            <p class="cg-scope">Interpreting a serum sodium above 145 mmol/L in adults 18+.</p>
+            <p class="cg-src">NICE CG174 (IV fluids) · CG185 (lithium) · JBDS-IP HHS 2022 · SfE cranial DI 2018 · CQC regulation 14 (hydration)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hypernatraemia.html">Open</a><a class="cg-btn" href="clinic-guides/hypernatraemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/hypernatraemia.html">Full pathway: Hypernatraemia — Assessment &amp; Management →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hyperkalaemia" data-search="hyperkalaemia: the high potassium interpreting a raised potassium result in adults 18+. not for children, dka (hospital protocol), patients on dialysis (renal unit) or hospital iv treatment. ukka hyperkalaemia guideline 2023 (upd. 2026) · nice ng203 (ckd) · ng106 · ng136 · nice ta1148 (2026) · ta623 · mhra hyperkalaemia hyperkalaemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/hyperkalaemia.html">Hyperkalaemia: the high potassium</a></h3>
+            <p class="cg-scope">Interpreting a raised potassium result in adults 18+.</p>
+            <p class="cg-src">UKKA hyperkalaemia guideline 2023 (upd. 2026) · NICE NG203 (CKD) · NG106 · NG136 · NICE TA1148 (2026) · TA623 · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hyperkalaemia.html">Open</a><a class="cg-btn" href="clinic-guides/hyperkalaemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/hyperkalaemia.html">Full pathway: Hyperkalaemia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hypokalaemia" data-search="hypokalaemia: the low potassium interpreting a potassium below 3.5 mmol/l in adults 18+. not for children, dka, hospital iv replacement, or specialist eating-disorder care. nhs sps treating acute hypokalaemia 2024 · nice ng136 · ng69 · ng12 · cg32 · rcpsych cr233 (meed) · sando-k spc hypokalaemia hypokalaemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/hypokalaemia.html">Hypokalaemia: the low potassium</a></h3>
+            <p class="cg-scope">Interpreting a potassium below 3.5 mmol/L in adults 18+.</p>
+            <p class="cg-src">NHS SPS treating acute hypokalaemia 2024 · NICE NG136 · NG69 · NG12 · CG32 · RCPsych CR233 (MEED) · Sando-K SPC</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hypokalaemia.html">Open</a><a class="cg-btn" href="clinic-guides/hypokalaemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/hypokalaemia.html">Full pathway: Hypokalaemia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="magnesium-deficiency" data-search="hypomagnesaemia: the low magnesium serum mg below 0.7 mmol/l, or a low k⁺ or ca²⁺ that will not correct, in adults 18+. not for children, hospital iv treatment, obstetric magnesium sulfate or refeeding. nhs sps treating acute hypomagnesaemia 2024 · mhra drug safety update, ppis (2012) · nice cg184 · cg32 magnesium deficiency magnesium deficiency">
+            <h3 class="cg-card-t"><a href="clinic-guides/magnesium-deficiency.html">Hypomagnesaemia: the low magnesium</a></h3>
+            <p class="cg-scope">Serum Mg below 0.7 mmol/L, or a low K⁺ or Ca²⁺ that will not correct, in adults 18+.</p>
+            <p class="cg-src">NHS SPS treating acute hypomagnesaemia 2024 · MHRA Drug Safety Update, PPIs (2012) · NICE CG184 · CG32</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/magnesium-deficiency.html">Open</a><a class="cg-btn" href="clinic-guides/magnesium-deficiency.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/magnesium-deficiency.html">Full pathway: Magnesium Deficiency →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hypercalcaemia" data-search="hypercalcaemia: the raised calcium albumin-adjusted calcium above 2.6 mmol/l in adults 18+. not for children (paediatric or endocrine advice), pregnancy (specialist mdt) or the acute hospital treatment itself. nice ng132 (2019) · nice ng12 (myeloma) · society for endocrinology emergency guidance (2016) hypercalcaemia hypercalcaemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/hypercalcaemia.html">Hypercalcaemia: the raised calcium</a></h3>
+            <p class="cg-scope">Albumin-adjusted calcium above 2.6 mmol/L in adults 18+.</p>
+            <p class="cg-src">NICE NG132 (2019) · NICE NG12 (myeloma) · Society for Endocrinology emergency guidance (2016)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hypercalcaemia.html">Open</a><a class="cg-btn" href="clinic-guides/hypercalcaemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/hypercalcaemia.html">Full pathway: Hypercalcaemia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hypocalcaemia" data-search="hypocalcaemia: the low calcium albumin-adjusted calcium below the reference range in adults 18+. not for children or neonates, pregnancy (specialist advice), dialysis (renal team) or hospital iv treatment. society for endocrinology emergency (2016) · mhra · spc (denosumab) · nice ng203 · ng12 hypocalcaemia hypocalcaemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/hypocalcaemia.html">Hypocalcaemia: the low calcium</a></h3>
+            <p class="cg-scope">Albumin-adjusted calcium below the reference range in adults 18+.</p>
+            <p class="cg-src">Society for Endocrinology emergency (2016) · MHRA · SPC (denosumab) · NICE NG203 · NG12</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hypocalcaemia.html">Open</a><a class="cg-btn" href="clinic-guides/hypocalcaemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/hypocalcaemia.html">Full pathway: Hypocalcaemia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="abnormal-bone-profile" data-search="abnormal bone profile calcium, phosphate, alp and pth read together, in adults 18+. not for children (alp is physiologically high while growing), pregnancy (placental alp) or dialysis (renal team). nice ng132 (2019) · ng12 · ng234 · society for endocrinology (2016) · ros (2020) abnormal bone profile abnormal bone profile">
+            <h3 class="cg-card-t"><a href="clinic-guides/abnormal-bone-profile.html">Abnormal bone profile</a></h3>
+            <p class="cg-scope">Calcium, phosphate, ALP and PTH read together, in adults 18+.</p>
+            <p class="cg-src">NICE NG132 (2019) · NG12 · NG234 · Society for Endocrinology (2016) · ROS (2020)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/abnormal-bone-profile.html">Open</a><a class="cg-btn" href="clinic-guides/abnormal-bone-profile.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/abnormal-bone-profile.html">Full pathway: Abnormal Bone Profile →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="vitamin-d-deficiency" data-search="vitamin d deficiency a low 25-hydroxyvitamin d in adults 18+. not for children or rickets, treatment in pregnancy, ckd g4–g5 or dialysis, or after bariatric surgery: use those specialist pathways. ros vitamin d (2020) · sacn (2016) · nice ng203 · ng247 · cks vitamin d deficiency vitamin d deficiency">
+            <h3 class="cg-card-t"><a href="clinic-guides/vitamin-d-deficiency.html">Vitamin D deficiency</a></h3>
+            <p class="cg-scope">A low 25-hydroxyvitamin D in adults 18+.</p>
+            <p class="cg-src">ROS vitamin D (2020) · SACN (2016) · NICE NG203 · NG247 · CKS</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/vitamin-d-deficiency.html">Open</a><a class="cg-btn" href="clinic-guides/vitamin-d-deficiency.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/vitamin-d-deficiency.html">Full pathway: Vitamin D Deficiency →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hyperglycaemia" data-search="raised hba1c or glucose a raised hba1c or plasma glucose in adults 18+. not for children (same-day paediatric referral), pregnancy or gestational diabetes (antenatal pathway, nice ng3), or review of known diabetes. nice ng28 (feb 2026) · ng17 · ph38 · ng12 · jbds dka/hhs · mhra · who 2011 raised hba1c or high blood glucose hyperglycaemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/hyperglycaemia.html">Raised HbA1c or glucose</a></h3>
+            <p class="cg-scope">A raised HbA1c or plasma glucose in adults 18+.</p>
+            <p class="cg-src">NICE NG28 (Feb 2026) · NG17 · PH38 · NG12 · JBDS DKA/HHS · MHRA · WHO 2011</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hyperglycaemia.html">Open</a><a class="cg-btn" href="clinic-guides/hyperglycaemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/hyperglycaemia.html">Full pathway: Raised HbA1c or High Blood Glucose →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hypoglycaemia" data-search="hypoglycaemia: the low glucose low glucose in adults 18+, with or without diabetes. not for children, pregnancy (maternity diabetes team), neonates or hospital inpatient protocols. jbds hypoglycaemia (2023) · nice ng17 · ng28 · dvla fitness to drive · nice cks · mhra hypoglycaemia — assessment &amp; management hypoglycaemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/hypoglycaemia.html">Hypoglycaemia: the low glucose</a></h3>
+            <p class="cg-scope">Low glucose in adults 18+, with or without diabetes.</p>
+            <p class="cg-src">JBDS hypoglycaemia (2023) · NICE NG17 · NG28 · DVLA fitness to drive · NICE CKS · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hypoglycaemia.html">Open</a><a class="cg-btn" href="clinic-guides/hypoglycaemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/hypoglycaemia.html">Full pathway: Hypoglycaemia — Assessment &amp; Management →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="abnormal-lipid-profile" data-search="abnormal lipid profile interpreting an abnormal cholesterol, hdl or triglyceride result in adults 18+. not for children (paediatric fh pathways) or acute coronary syndrome. very high triglycerides: the high triglycerides guide. nice ng238 (2023) · cg71 fh (updated 2019) · nice qs100 · qrisk3 · heart uk abnormal lipid profile abnormal lipid profile">
+            <h3 class="cg-card-t"><a href="clinic-guides/abnormal-lipid-profile.html">Abnormal lipid profile</a></h3>
+            <p class="cg-scope">Interpreting an abnormal cholesterol, HDL or triglyceride result in adults 18+.</p>
+            <p class="cg-src">NICE NG238 (2023) · CG71 FH (updated 2019) · NICE QS100 · QRISK3 · HEART UK</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/abnormal-lipid-profile.html">Open</a><a class="cg-btn" href="clinic-guides/abnormal-lipid-profile.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/abnormal-lipid-profile.html">Full pathway: Abnormal Lipid Profile →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="high-triglycerides" data-search="raised triglycerides interpreting a raised triglyceride (tg) in adults 18+. not for children, pregnancy (obstetric and lipid co-management) or acute pancreatitis care (hospital). cholesterol-led lipid management: the lipids pathway. nice ng238 (2023) · ng104 pancreatitis · nice ta805 (2022) · hst13 · mhra · spcs high triglycerides high triglycerides">
+            <h3 class="cg-card-t"><a href="clinic-guides/high-triglycerides.html">Raised triglycerides</a></h3>
+            <p class="cg-scope">Interpreting a raised triglyceride (TG) in adults 18+.</p>
+            <p class="cg-src">NICE NG238 (2023) · NG104 pancreatitis · NICE TA805 (2022) · HST13 · MHRA · SPCs</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/high-triglycerides.html">Open</a><a class="cg-btn" href="clinic-guides/high-triglycerides.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/high-triglycerides.html">Full pathway: High Triglycerides →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="abnormal-tfts" data-search="abnormal thyroid function tests reading tsh, ft4 and ft3 in adults 18+. not for pregnancy (trimester ranges, rcog gtg76), children, thyroid cancer follow-up or known pituitary disease. treatment detail: hypothyroidism and hyperthyroidism clinic guides. nice ng145 (2019, updated 2023) · ng12 · rcog gtg76 (2025) · mhra · sps abnormal tfts abnormal tfts">
+            <h3 class="cg-card-t"><a href="clinic-guides/abnormal-tfts.html">Abnormal thyroid function tests</a></h3>
+            <p class="cg-scope">Reading TSH, FT4 and FT3 in adults 18+.</p>
+            <p class="cg-src">NICE NG145 (2019, updated 2023) · NG12 · RCOG GTG76 (2025) · MHRA · SPS</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/abnormal-tfts.html">Open</a><a class="cg-btn" href="clinic-guides/abnormal-tfts.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/abnormal-tfts.html">Full pathway: Abnormal TFTs →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hyperprolactinaemia" data-search="raised prolactin interpreting a raised prolactin in adults 18+. not for pregnancy or breastfeeding (physiological rise), children, or known pituitary tumours already under endocrinology. society for endocrinology · pituitary society 2023 · sfe/bse/bhvs echo statement 2019 · nice ng12 · cabergoline spc · mhra hyperprolactinaemia hyperprolactinaemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/hyperprolactinaemia.html">Raised prolactin</a></h3>
+            <p class="cg-scope">Interpreting a raised prolactin in adults 18+.</p>
+            <p class="cg-src">Society for Endocrinology · Pituitary Society 2023 · SfE/BSE/BHVS echo statement 2019 · NICE NG12 · Cabergoline SPC · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hyperprolactinaemia.html">Open</a><a class="cg-btn" href="clinic-guides/hyperprolactinaemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/hyperprolactinaemia.html">Full pathway: Hyperprolactinaemia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="testosterone-deficiency" data-search="low testosterone in men interpreting a low testosterone in men 18+. not for boys or delayed puberty, women, gender-affirming hormone care, or men on androgen deprivation for prostate cancer. bssm testosterone deficiency guide 2023 · nice ng12 (prostate) · product spcs testosterone deficiency testosterone deficiency">
+            <h3 class="cg-card-t"><a href="clinic-guides/testosterone-deficiency.html">Low testosterone in men</a></h3>
+            <p class="cg-scope">Interpreting a low testosterone in men 18+.</p>
+            <p class="cg-src">BSSM testosterone deficiency guide 2023 · NICE NG12 (prostate) · product SPCs</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/testosterone-deficiency.html">Open</a><a class="cg-btn" href="clinic-guides/testosterone-deficiency.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/testosterone-deficiency.html">Full pathway: Testosterone Deficiency →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="female-hormone-abnormalities" data-search="female hormone results interpreting fsh, lh, oestradiol, progesterone, prolactin and androgens in women 18+. not for pregnancy, primary amenorrhoea or puberty (paediatrics), fertility-treatment monitoring or gender-affirming care. nice ng23 menopause (updated 2026) · ng243 · ng12 · pcos guideline 2023 · eshre poi 2024 · sfe androgen excess 2025 female hormone abnormalities — assessment &amp; management female hormone abnormalities">
+            <h3 class="cg-card-t"><a href="clinic-guides/female-hormone-abnormalities.html">Female hormone results</a></h3>
+            <p class="cg-scope">Interpreting FSH, LH, oestradiol, progesterone, prolactin and androgens in women 18+.</p>
+            <p class="cg-src">NICE NG23 menopause (updated 2026) · NG243 · NG12 · PCOS guideline 2023 · ESHRE POI 2024 · SfE androgen excess 2025</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/female-hormone-abnormalities.html">Open</a><a class="cg-btn" href="clinic-guides/female-hormone-abnormalities.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/female-hormone-abnormalities.html">Full pathway: Female Hormone Abnormalities — Assessment &amp; Management →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="microcytosis" data-search="microcytosis: the low mcv interpreting an mcv below the reference range (usually &lt;80 fl) in adults 18+. not for pregnancy (maternity thresholds), children, known transfusion-dependent thalassaemia or ckd on dialysis (renal team). bsg ida 2021 · nice ng12 · htg690 · ng20 · bsh iron deficiency 2021 · nhs sct microcytosis microcytosis">
+            <h3 class="cg-card-t"><a href="clinic-guides/microcytosis.html">Microcytosis: the low MCV</a></h3>
+            <p class="cg-scope">Interpreting an MCV below the reference range (usually &lt;80 fL) in adults 18+.</p>
+            <p class="cg-src">BSG IDA 2021 · NICE NG12 · HTG690 · NG20 · BSH iron deficiency 2021 · NHS SCT</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/microcytosis.html">Open</a><a class="cg-btn" href="clinic-guides/microcytosis.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/microcytosis.html">Full pathway: Microcytosis →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="macrocytosis" data-search="macrocytosis: the high mcv interpreting an mcv above the reference range (usually &gt;100 fl) in adults 18+. not for pregnancy (physiological rise; maternity pathway), children or patients under active haematology care. nice ng239 (b12, 2024) · ng12 · bsh cobalamin/folate 2014 · sps macrocytosis macrocytosis">
+            <h3 class="cg-card-t"><a href="clinic-guides/macrocytosis.html">Macrocytosis: the high MCV</a></h3>
+            <p class="cg-scope">Interpreting an MCV above the reference range (usually &gt;100 fL) in adults 18+.</p>
+            <p class="cg-src">NICE NG239 (B12, 2024) · NG12 · BSH cobalamin/folate 2014 · SPS</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/macrocytosis.html">Open</a><a class="cg-btn" href="clinic-guides/macrocytosis.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/macrocytosis.html">Full pathway: Macrocytosis →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="normocytic-anaemia" data-search="normocytic anaemia interpreting a low hb with a normal mcv (usually 80–100 fl) in adults 18+. not for pregnancy, children, dialysis or esa care (renal team) or known sickle cell disease (hospital pathway). nice ng203 · ng12 · htg690 · ng239 · bsg ida 2021 · bsh normocytic anaemia — assessment &amp; management normocytic anaemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/normocytic-anaemia.html">Normocytic anaemia</a></h3>
+            <p class="cg-scope">Interpreting a low Hb with a normal MCV (usually 80–100 fL) in adults 18+.</p>
+            <p class="cg-src">NICE NG203 · NG12 · HTG690 · NG239 · BSG IDA 2021 · BSH</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/normocytic-anaemia.html">Open</a><a class="cg-btn" href="clinic-guides/normocytic-anaemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/normocytic-anaemia.html">Full pathway: Normocytic Anaemia — Assessment &amp; Management →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="low-ferritin" data-search="low ferritin: iron deficiency a low serum ferritin, with or without anaemia, in adults 18+. not for pregnancy, children, dialysis or esa care (renal team) or ibd under specialist care. bsg ida 2021 · nice ng12 · htg690 · ng88 · ng20 · ng24 · mhra low ferritin low ferritin">
+            <h3 class="cg-card-t"><a href="clinic-guides/low-ferritin.html">Low ferritin: iron deficiency</a></h3>
+            <p class="cg-scope">A low serum ferritin, with or without anaemia, in adults 18+.</p>
+            <p class="cg-src">BSG IDA 2021 · NICE NG12 · HTG690 · NG88 · NG20 · NG24 · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/low-ferritin.html">Open</a><a class="cg-btn" href="clinic-guides/low-ferritin.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/low-ferritin.html">Full pathway: Low Ferritin →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="high-ferritin" data-search="high ferritin interpreting a raised serum ferritin in adults 18+. not for children, pregnancy, or patients with transfusional iron overload already under haematology. bsh ferritin 2018 · haemochromatosis 2018 · easl 2022 · nice ng50 · ng12 high ferritin — assessment &amp; management high ferritin">
+            <h3 class="cg-card-t"><a href="clinic-guides/high-ferritin.html">High ferritin</a></h3>
+            <p class="cg-scope">Interpreting a raised serum ferritin in adults 18+.</p>
+            <p class="cg-src">BSH ferritin 2018 · haemochromatosis 2018 · EASL 2022 · NICE NG50 · NG12</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/high-ferritin.html">Open</a><a class="cg-btn" href="clinic-guides/high-ferritin.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/high-ferritin.html">Full pathway: High Ferritin — Assessment &amp; Management →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="vitamin-b12-deficiency" data-search="low vitamin b12 in adults interpreting a low or borderline b12 in people aged 16+. not for children under 16, infants of deficient mothers (paediatrics) or inpatient severe megaloblastic anaemia. nice ng239 (2024) · nice ng12 · mhra dsu metformin (jun 2022) · bsh 2014 vitamin b12 deficiency vitamin b12 deficiency">
+            <h3 class="cg-card-t"><a href="clinic-guides/vitamin-b12-deficiency.html">Low vitamin B12 in adults</a></h3>
+            <p class="cg-scope">Interpreting a low or borderline B12 in people aged 16+.</p>
+            <p class="cg-src">NICE NG239 (2024) · NICE NG12 · MHRA DSU metformin (Jun 2022) · BSH 2014</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/vitamin-b12-deficiency.html">Open</a><a class="cg-btn" href="clinic-guides/vitamin-b12-deficiency.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/vitamin-b12-deficiency.html">Full pathway: Vitamin B12 Deficiency →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="low-folate" data-search="low folate in adults interpreting a low serum folate in adults 18+, including pregnancy planning. not for children, inpatient refeeding or specialist haemolytic anaemia and dialysis protocols. nice cks · bsh 2014 · sps · nice ng247 (2025) · ng239 (2024) low folate — assessment &amp; management low folate">
+            <h3 class="cg-card-t"><a href="clinic-guides/low-folate.html">Low folate in adults</a></h3>
+            <p class="cg-scope">Interpreting a low serum folate in adults 18+, including pregnancy planning.</p>
+            <p class="cg-src">NICE CKS · BSH 2014 · SPS · NICE NG247 (2025) · NG239 (2024)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/low-folate.html">Open</a><a class="cg-btn" href="clinic-guides/low-folate.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/low-folate.html">Full pathway: Low Folate — Assessment &amp; Management →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="polycythaemia" data-search="raised haematocrit in adults interpreting a high hb or haematocrit (erythrocytosis) in adults 18+. not for neonates, children, pregnancy (joint specialist care) or established pv care, which haematology leads. bsh pv and erythrocytosis guidelines 2019 · nice ta921 · ng158 · ng209 polycythaemia polycythaemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/polycythaemia.html">Raised haematocrit in adults</a></h3>
+            <p class="cg-scope">Interpreting a high Hb or haematocrit (erythrocytosis) in adults 18+.</p>
+            <p class="cg-src">BSH PV and erythrocytosis guidelines 2019 · NICE TA921 · NG158 · NG209</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/polycythaemia.html">Open</a><a class="cg-btn" href="clinic-guides/polycythaemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/polycythaemia.html">Full pathway: Polycythaemia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="leucocytosis" data-search="leucocytosis: the high white cell count a raised total white cell count in adults 18+. not for children, pregnancy (counts rise normally), or known leukaemia, lymphoma or mpn under haematology (follow the specialist plan). nice ng12 (suspected cancer, updated 2026) · bsh eosinophilia 2017 · bsh cll 2025 · iwcll 2018 leucocytosis leucocytosis">
+            <h3 class="cg-card-t"><a href="clinic-guides/leucocytosis.html">Leucocytosis: the high white cell count</a></h3>
+            <p class="cg-scope">A raised total white cell count in adults 18+.</p>
+            <p class="cg-src">NICE NG12 (suspected cancer, updated 2026) · BSH eosinophilia 2017 · BSH CLL 2025 · iwCLL 2018</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/leucocytosis.html">Open</a><a class="cg-btn" href="clinic-guides/leucocytosis.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/leucocytosis.html">Full pathway: Leucocytosis →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="leucopenia" data-search="leucopenia: the low white cell count a low white cell or neutrophil count in adults 18+. not for children, or for counts expected during chemotherapy (follow the acute oncology plan). low lymphocytes alone: see the lymphopenia guide. nice cg151 neutropenic sepsis · ng12 (2026) · bsh neutropenia bands · ng239 · spcs leucopenia leucopenia">
+            <h3 class="cg-card-t"><a href="clinic-guides/leucopenia.html">Leucopenia: the low white cell count</a></h3>
+            <p class="cg-scope">A low white cell or neutrophil count in adults 18+.</p>
+            <p class="cg-src">NICE CG151 neutropenic sepsis · NG12 (2026) · BSH neutropenia bands · NG239 · SPCs</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/leucopenia.html">Open</a><a class="cg-btn" href="clinic-guides/leucopenia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/leucopenia.html">Full pathway: Leucopenia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="lymphocytosis" data-search="lymphocytosis: the high lymphocyte count a raised absolute lymphocyte count in adults 18+. not for children (use age-specific ranges and the paediatric pathway), or known cll or lymphoma under active haematology treatment. nice ng12 (suspected cancer, updated 2026) · bsh cll guidelines · iwcll 2018 · nice cks lymphocytosis lymphocytosis">
+            <h3 class="cg-card-t"><a href="clinic-guides/lymphocytosis.html">Lymphocytosis: the high lymphocyte count</a></h3>
+            <p class="cg-scope">A raised absolute lymphocyte count in adults 18+.</p>
+            <p class="cg-src">NICE NG12 (suspected cancer, updated 2026) · BSH CLL guidelines · iwCLL 2018 · NICE CKS</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/lymphocytosis.html">Open</a><a class="cg-btn" href="clinic-guides/lymphocytosis.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/lymphocytosis.html">Full pathway: Lymphocytosis →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="lymphopenia" data-search="lymphopenia: the low lymphocyte count a low absolute lymphocyte count in adults 18+. not for children or infants (age-specific ranges; suspected scid → paediatric immunology), or people under active hiv, transplant or chemotherapy care (follow that team&#x27;s plan). nice ng60 hiv testing · ng12 (2026) · ng243 · bhiva testing and standards · green book lymphopenia lymphopenia">
+            <h3 class="cg-card-t"><a href="clinic-guides/lymphopenia.html">Lymphopenia: the low lymphocyte count</a></h3>
+            <p class="cg-scope">A low absolute lymphocyte count in adults 18+.</p>
+            <p class="cg-src">NICE NG60 HIV testing · NG12 (2026) · NG243 · BHIVA testing and standards · Green Book</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/lymphopenia.html">Open</a><a class="cg-btn" href="clinic-guides/lymphopenia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/lymphopenia.html">Full pathway: Lymphopenia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="eosinophilia" data-search="eosinophilia a raised eosinophil count in adults 18+. not for children, or known hes, egpa or eosinophilic leukaemia under specialist care. bsh eosinophilia guideline (butt et al., 2017) · bia eosinophilia in travellers and migrants (2024) · ukhsa migrant health guide · nice ng12 · mhra eosinophilia eosinophilia">
+            <h3 class="cg-card-t"><a href="clinic-guides/eosinophilia.html">Eosinophilia</a></h3>
+            <p class="cg-scope">A raised eosinophil count in adults 18+.</p>
+            <p class="cg-src">BSH eosinophilia guideline (Butt et al., 2017) · BIA eosinophilia in travellers and migrants (2024) · UKHSA migrant health guide · NICE NG12 · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/eosinophilia.html">Open</a><a class="cg-btn" href="clinic-guides/eosinophilia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/eosinophilia.html">Full pathway: Eosinophilia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="thrombocytosis" data-search="thrombocytosis: the high platelet count platelets above the laboratory range (usually &gt;450 × 10⁹/l) in adults 18+. not for children, pregnancy, or known et, pv or myelofibrosis already under haematology (follow the specialist plan). nice ng12 (suspected cancer, updated 2026) · bsh thrombocytosis 2010 · bsh mutation-negative thrombocytosis 2025 thrombocytosis thrombocytosis">
+            <h3 class="cg-card-t"><a href="clinic-guides/thrombocytosis.html">Thrombocytosis: the high platelet count</a></h3>
+            <p class="cg-scope">Platelets above the laboratory range (usually &gt;450 × 10⁹/L) in adults 18+.</p>
+            <p class="cg-src">NICE NG12 (suspected cancer, updated 2026) · BSH thrombocytosis 2010 · BSH mutation-negative thrombocytosis 2025</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/thrombocytosis.html">Open</a><a class="cg-btn" href="clinic-guides/thrombocytosis.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/thrombocytosis.html">Full pathway: Thrombocytosis →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="thrombocytopenia" data-search="low platelets in adults interpreting a platelet count below 150 × 10⁹/l in adults 18+. not for children and young people (paediatric pathway), patients on chemotherapy (oncology hotline) or inpatient hit management. bsh ttp 2023 · bsh hit 2023 · itp consensus 2019 · nice ng24 · ng12 · ng240 · green book ch. 7 thrombocytopenia thrombocytopenia">
+            <h3 class="cg-card-t"><a href="clinic-guides/thrombocytopenia.html">Low platelets in adults</a></h3>
+            <p class="cg-scope">Interpreting a platelet count below 150 × 10⁹/L in adults 18+.</p>
+            <p class="cg-src">BSH TTP 2023 · BSH HIT 2023 · ITP consensus 2019 · NICE NG24 · NG12 · NG240 · Green Book ch. 7</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/thrombocytopenia.html">Open</a><a class="cg-btn" href="clinic-guides/thrombocytopenia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/thrombocytopenia.html">Full pathway: Thrombocytopenia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="pancytopenia" data-search="pancytopenia in adults low hb, low white cells and low platelets together, in adults 18+. not for children and young people (paediatric pathway), patients on chemotherapy (use the oncology hotline) or established aplastic anaemia or mds care. nice ng12 · cg151 · ng239 (2024) · bsh aplastic anaemia 2024 · mhra pancytopenia pancytopenia">
+            <h3 class="cg-card-t"><a href="clinic-guides/pancytopenia.html">Pancytopenia in adults</a></h3>
+            <p class="cg-scope">Low Hb, low white cells and low platelets together, in adults 18+.</p>
+            <p class="cg-src">NICE NG12 · CG151 · NG239 (2024) · BSH aplastic anaemia 2024 · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/pancytopenia.html">Open</a><a class="cg-btn" href="clinic-guides/pancytopenia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/pancytopenia.html">Full pathway: Pancytopenia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="abnormal-lfts" data-search="abnormal liver blood tests abnormal alt, ast, alp, ggt, bilirubin or albumin in adults 18+. not for children, pregnancy or post-partum (maternity pathway), or liver disease already under specialist care. bsg liver blood tests 2017 · nice ng49 · nice ng50 · ng12 · cg165 · ng238 abnormal liver blood tests (lfts) abnormal lfts">
+            <h3 class="cg-card-t"><a href="clinic-guides/abnormal-lfts.html">Abnormal liver blood tests</a></h3>
+            <p class="cg-scope">Abnormal ALT, AST, ALP, GGT, bilirubin or albumin in adults 18+.</p>
+            <p class="cg-src">BSG liver blood tests 2017 · NICE NG49 · NICE NG50 · NG12 · CG165 · NG238</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/abnormal-lfts.html">Open</a><a class="cg-btn" href="clinic-guides/abnormal-lfts.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/abnormal-lfts.html">Full pathway: Abnormal Liver Blood Tests (LFTs) →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="jaundice" data-search="jaundice and raised bilirubin new jaundice or a raised bilirubin in adults 18+. not for neonates or children, or known liver disease under specialist care. pregnancy: same-day obstetric assessment. nice ng12 · ng85 · bsg liver blood tests 2017 · nice ng49 · ng50 · cg165 · spc jaundice in adults jaundice">
+            <h3 class="cg-card-t"><a href="clinic-guides/jaundice.html">Jaundice and raised bilirubin</a></h3>
+            <p class="cg-scope">New jaundice or a raised bilirubin in adults 18+.</p>
+            <p class="cg-src">NICE NG12 · NG85 · BSG liver blood tests 2017 · NICE NG49 · NG50 · CG165 · SPC</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/jaundice.html">Open</a><a class="cg-btn" href="clinic-guides/jaundice.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/jaundice.html">Full pathway: Jaundice in Adults →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="raised-creatine-kinase" data-search="raised creatine kinase (ck) a raised ck in adults 18+, including on a statin. not for children, suspected acute coronary syndrome (use troponin) or known neuromuscular disease under specialist care. nice ng238 (2023) · spc · nhs england statin intolerance pathway · mhra drug safety update (2012) raised creatine kinase (ck) raised creatine kinase">
+            <h3 class="cg-card-t"><a href="clinic-guides/raised-creatine-kinase.html">Raised creatine kinase (CK)</a></h3>
+            <p class="cg-scope">A raised CK in adults 18+, including on a statin.</p>
+            <p class="cg-src">NICE NG238 (2023) · SPC · NHS England statin intolerance pathway · MHRA Drug Safety Update (2012)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/raised-creatine-kinase.html">Open</a><a class="cg-btn" href="clinic-guides/raised-creatine-kinase.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/raised-creatine-kinase.html">Full pathway: Raised Creatine Kinase (CK) →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="high-crp-esr" data-search="raised crp or esr raised crp, esr or plasma viscosity in adults 18+. not for children, pregnancy, or monitoring an established rheumatic disease (use its own pathway). nice ng253 · ng12 · ng237 · ng250 · bsr gca 2020 · pmr 2010 · ta518 high crp/esr high crp esr">
+            <h3 class="cg-card-t"><a href="clinic-guides/high-crp-esr.html">Raised CRP or ESR</a></h3>
+            <p class="cg-scope">Raised CRP, ESR or plasma viscosity in adults 18+.</p>
+            <p class="cg-src">NICE NG253 · NG12 · NG237 · NG250 · BSR GCA 2020 · PMR 2010 · TA518</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/high-crp-esr.html">Open</a><a class="cg-btn" href="clinic-guides/high-crp-esr.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/high-crp-esr.html">Full pathway: High CRP/ESR →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="abnormal-immunoglobulin" data-search="abnormal immunoglobulins adults 18+ with a paraprotein, abnormal serum free light chains (flc), polyclonal rise or low immunoglobulins. not for children, known myeloma under active treatment (haematology-led) or established cvid care (immunology-led). nice ng12 (2026) · ng35 · ng234 (2023) · bsh mgus 2023 · imwg 2014 · myeloma uk abnormal immunoglobulin abnormal immunoglobulin">
+            <h3 class="cg-card-t"><a href="clinic-guides/abnormal-immunoglobulin.html">Abnormal immunoglobulins</a></h3>
+            <p class="cg-scope">Adults 18+ with a paraprotein, abnormal serum free light chains (FLC), polyclonal rise or low immunoglobulins.</p>
+            <p class="cg-src">NICE NG12 (2026) · NG35 · NG234 (2023) · BSH MGUS 2023 · IMWG 2014 · Myeloma UK</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/abnormal-immunoglobulin.html">Open</a><a class="cg-btn" href="clinic-guides/abnormal-immunoglobulin.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/abnormal-immunoglobulin.html">Full pathway: Abnormal Immunoglobulin →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="abnormal-cancer-markers" data-search="raised tumour markers adults 18+ with a raised psa, ca125, cea, afp, hcg or other tumour marker in primary care. not for children, population screening programmes or specialist surveillance decisions (follow the written oncology plan). nice ng12 (updated 2026) · htg690 (fit) · nice cg122 · ng151 · ng50 · cg165 · ng131 · pcrmp · rcog gtg 38 · ng110 tumour markers in primary care abnormal cancer markers">
+            <h3 class="cg-card-t"><a href="clinic-guides/abnormal-cancer-markers.html">Raised tumour markers</a></h3>
+            <p class="cg-scope">Adults 18+ with a raised PSA, CA125, CEA, AFP, hCG or other tumour marker in primary care.</p>
+            <p class="cg-src">NICE NG12 (updated 2026) · HTG690 (FIT) · NICE CG122 · NG151 · NG50 · CG165 · NG131 · PCRMP · RCOG GTG 38 · NG110</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/abnormal-cancer-markers.html">Open</a><a class="cg-btn" href="clinic-guides/abnormal-cancer-markers.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/abnormal-cancer-markers.html">Full pathway: Tumour Markers in Primary Care →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="high-psa" data-search="raised psa men and people with a prostate aged 18+ with a raised or rising psa. not for men under active surveillance or on adt (follow the urology or oncology plan), or acute retention and sepsis (emergency pathways). nice ng12 (updated 2026) · ng131 (2019) · pcrmp (2016) · girft urology (2024) · nice ng110 · cg97 · ng234 · mhra (2024) high psa — assessment &amp; management high psa">
+            <h3 class="cg-card-t"><a href="clinic-guides/high-psa.html">Raised PSA</a></h3>
+            <p class="cg-scope">Men and people with a prostate aged 18+ with a raised or rising PSA.</p>
+            <p class="cg-src">NICE NG12 (updated 2026) · NG131 (2019) · PCRMP (2016) · GIRFT urology (2024) · NICE NG110 · CG97 · NG234 · MHRA (2024)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/high-psa.html">Open</a><a class="cg-btn" href="clinic-guides/high-psa.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/high-psa.html">Full pathway: High PSA — Assessment &amp; Management →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="allergy-test-abnormalities" data-search="allergy test results adults and children with a positive specific ige or skin prick test, raised total ige or tryptase. not for acute anaphylaxis care beyond first treatment, patch testing (dermatology) or immunotherapy decisions (specialist). nice ng258 anaphylaxis (2026, replaced cg134) · nice cg116 · cg183 · htg413 · rcuk 2021 · bsaci · mhra allergy test abnormalities — assessment &amp; management allergy test abnormalities">
+            <h3 class="cg-card-t"><a href="clinic-guides/allergy-test-abnormalities.html">Allergy test results</a></h3>
+            <p class="cg-scope">Adults and children with a positive specific IgE or skin prick test, raised total IgE or tryptase.</p>
+            <p class="cg-src">NICE NG258 anaphylaxis (2026, replaced CG134) · NICE CG116 · CG183 · HTG413 · RCUK 2021 · BSACI · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/allergy-test-abnormalities.html">Open</a><a class="cg-btn" href="clinic-guides/allergy-test-abnormalities.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/allergy-test-abnormalities.html">Full pathway: Allergy Test Abnormalities — Assessment &amp; Management →</a>
+          </article>
+        </div>
+      </section>
       <!-- CG:CARDS:END -->
 
       <div class="alg-foot">
@@ -486,7 +862,7 @@
 </div>
 
 <script src="../assets/site.js?v=105"></script>
-<script src="../assets/clinic-guides.js?v=1"></script>
+<script src="../assets/clinic-guides.js?v=4"></script>
 <script src="../assets/nav-back.js?v=1"></script>
 <script>
 /* Clinic Guides hub: search filter and area jump links (cards are written by governance/import_clinic_guides.py). */

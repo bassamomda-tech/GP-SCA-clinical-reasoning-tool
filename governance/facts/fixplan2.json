@@ -1,0 +1,466 @@
+{
+ "findings": [
+  {
+   "subject": "carbimazole",
+   "group": "PTU dose in first trimester | mg",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "In pregnancy PTU is given at the lowest effective dose to keep FT4 in the upper half of the reference range, specialist-led (SPC; RCOG GTG76 2025). 200–400 mg/day is the general adult starting dose, not a pregnancy dose.",
+   "source": "https://www.medicines.org.uk/emc/product/3123/smpc ; https://doi.org/10.1111/1471-0528.18088",
+   "fixes": [
+    {
+     "file": "cases/hyperthyroidism.html",
+     "old": "<li><strong>T1 (&lt;14 wks):</strong> PTU 200–400mg/day — carbimazole embryopathy risk in organogenesis</li>",
+     "new": "<li><strong>T1 (&lt;14 wks):</strong> PTU at the lowest effective dose, specialist-led (switch from carbimazole as early as possible, before 10 weeks) — carbimazole embryopathy risk in organogenesis</li>"
+    }
+   ],
+   "note": "The pregnancy bullet gives the non-pregnant adult starting range (200–400 mg/day) as the first-trimester dose. Over-treatment in pregnancy causes fetal hypothyroidism and goitre, and the SPC and RCOG say to use the lowest effective dose. The fix also adds RCOG's switch-before-10-weeks point. The 'around 20 weeks' switch back to carbimazole matches RCOG GTG76 2025 (as quoted by Wiles et al. 2025), so it is left unchanged.",
+   "id": "-01.j-0"
+  },
+  {
+   "subject": "anaemia in pregnancy",
+   "group": "escalation | g/L",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "BSH 2020: Hb <110 g/L (T1) or <105 g/L (T2/T3) → oral iron and recheck in 2–3 weeks, under midwife/primary care. Refer to secondary care if Hb <70 g/L, significant symptoms, advanced gestation (>34 weeks) or no response.",
+   "source": "https://doi.org/10.1111/bjh.16221",
+   "fixes": [
+    {
+     "file": "tools/algorithms/one-page/anaemia.html",
+     "old": "<li><b>Pregnancy:</b> Hb &lt;110 g/L (1st trimester), &lt;105 (later) → <span class=\"when wsd\">Same-day maternity</span>; bleeding or compromise → <span class=\"when w999\">999</span></li>",
+     "new": "<li><b>Pregnancy:</b> Hb &lt;110 g/L (1st trimester), &lt;105 (later) → start oral iron and inform the midwife; Hb &lt;70 g/L, significant symptoms, rapid fall or late gestation (&gt;34 weeks) → <span class=\"when wsd\">Same-day maternity</span>; bleeding or compromise → <span class=\"when w999\">999</span></li>"
+    }
+   ],
+   "note": "Read literally, the one-page sends every pregnant woman whose Hb is below the anaemia threshold for same-day maternity assessment. That conflicts with BSH 2020 and with the site's own normocytic-anaemia and microcytosis pages, which escalate only severe, symptomatic, late or unresponsive anaemia.",
+   "id": "-01.j-1"
+  },
+  {
+   "subject": "magnesium",
+   "group": "PPI hypomagnesaemia onset | duration",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "MHRA (2012): hypomagnesaemia reported after at least 3 months of PPI use, and in most cases after about 1 year",
+   "source": "https://www.gov.uk/drug-safety-update/proton-pump-inhibitors-in-long-term-use-reports-of-hypomagnesaemia",
+   "fixes": [
+    {
+     "file": "tools/algorithms/magnesium-deficiency.html",
+     "old": "duration (risk appears after approximately 1 year)",
+     "new": "duration (reported after as little as 3 months, most cases after about 1 year — MHRA)"
+    }
+   ],
+   "note": "The current wording suggests there is no risk before 1 year. The MHRA says cases occur from 3 months.",
+   "id": "-01.j-2"
+  },
+  {
+   "subject": "magnesium",
+   "group": "dietary content | mg/100g",
+   "verdict": "wrong",
+   "tier": 3,
+   "correct": "Spinach about 80 mg magnesium per 100 g (raw 79; cooked about 87). 157 mg is per cooked cup (about 180 g).",
+   "source": "https://fdc.nal.usda.gov/",
+   "fixes": [
+    {
+     "file": "tools/algorithms/magnesium-deficiency.html",
+     "old": "spinach 157 mg/100g",
+     "new": "spinach about 80 mg/100g"
+    },
+    {
+     "file": "assets/search/idx-pathway.json",
+     "old": "spinach 157 mg/100g",
+     "new": "spinach about 80 mg/100g"
+    }
+   ],
+   "note": "A per-cup figure is labelled as per 100 g. This is low risk; fix it for accuracy.",
+   "id": "-01.j-3"
+  },
+  {
+   "subject": "neutrophils",
+   "group": "suspected neutropenic sepsis | urgency",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Suspected neutropenic sepsis (unwell or febrile during/after systemic anticancer treatment) = IMMEDIATE referral/emergency assessment via the 24-hour acute oncology hotline or 999/A&E; antibiotics within 1 hour in hospital; do not wait for FBC (NICE CG151 1.2.1; NG253; UKONS triage uses ≥37.5°C)",
+   "source": "https://www.nice.org.uk/guidance/cg151/chapter/Recommendations",
+   "fixes": [
+    {
+     "file": "tools/algorithms/acute-diarrhoea.html",
+     "old": "Chemotherapy within 6 weeks with fever → <span class=\"pill pill-red\">Same-day</span> neutropenic sepsis pathway.",
+     "new": "Recent chemotherapy (within 6 weeks) with fever or feeling unwell → <span class=\"pill pill-red\">Immediate</span> neutropenic sepsis pathway (acute oncology hotline / 999; do not wait for FBC)."
+    },
+    {
+     "file": "tools/algorithms/one-page/acute-diarrhoea.html",
+     "old": "<li><b>Neutropenic risk</b> (chemotherapy within 6 weeks + fever) → <span class=\"when wsd\">Same-day</span></li>",
+     "new": "<li><b>Neutropenic risk</b> (chemotherapy within 6 weeks + fever or unwell) → <span class=\"when wsd\">Immediate</span> acute oncology hotline / 999</li>"
+    },
+    {
+     "file": "tools/algorithms/one-page/recurrent-infections.html",
+     "old": "or on neutropenia-causing drugs → <span class=\"when wsd\">Same-day</span> acute oncology; do not wait for FBC.",
+     "new": "or on neutropenia-causing drugs → <span class=\"when wsd\">Immediate</span> acute oncology hotline / 999; do not wait for FBC."
+    },
+    {
+     "file": "cases/breast-cancer.html",
+     "old": "FEBRILE NEUTROPENIA: temperature ≥38°C or feeling unwell during chemotherapy = SAME-DAY oncology/haematology assessment (A&amp;E if out of hours).",
+     "new": "FEBRILE NEUTROPENIA: temperature ≥37.5°C or feeling unwell during chemotherapy = IMMEDIATE assessment via the 24-hour acute oncology/chemotherapy hotline (999/A&amp;E if very unwell or the hotline cannot be reached)."
+    }
+   ],
+   "note": "CG151 says refer suspected neutropenic sepsis immediately; 'same-day' understates a 1-hour-to-antibiotics emergency and conflicts with the site's own neutropenic-sepsis, leucopenia, pancytopenia and summaries/breast-cancer pages ('Immediately', 999/hotline, ≥37.5°C). The 6-week window is wider than NG253's 30 days, so it is safe and is kept. Search index JSON (assets/search/idx-pathway.json) may carry the old snippet; regenerate it rather than hand-editing.",
+   "id": "-02.j-0"
+  },
+  {
+   "subject": "neutrophils",
+   "group": "neutropenic sepsis | empirical antibiotic dose",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "NICE CG151: piperacillin with tazobactam monotherapy as initial empirical therapy; the BNF/SPC dose in neutropenic patients is 4.5 g IV every 6 hours (adjust for renal function); local protocol applies. UKONS's triage tool does not specify an antibiotic.",
+   "source": "https://labeling.pfizer.com/ShowLabeling.aspx?id=1046 ; https://www.nice.org.uk/guidance/cg151/chapter/Recommendations",
+   "fixes": [
+    {
+     "file": "tools/algorithms/pancytopenia.html",
+     "old": "The UK Oncology Nursing Society (UKONS) neutropenic sepsis pathway specifies piperacillin-tazobactam (Tazocin) 4.5 g IV every 8 hours as first-line in most centres.",
+     "new": "NICE CG151 recommends piperacillin-tazobactam (Tazocin) monotherapy as initial empirical treatment, given in hospital within 1 hour; the dose follows the hospital protocol and BNF (commonly 4.5 g IV every 6 hours in neutropenic patients, adjusted for renal function)."
+    }
+   ],
+   "note": "Wrong frequency (every 8 h is the general-infection dose; the neutropenic dose is every 6 h) and wrong attribution (UKONS triage tool gives no antibiotic regimen; CG151 sets the drug choice). Hospital-only fact, but it is a dose statement.",
+   "id": "-02.j-1"
+  },
+  {
+   "subject": "children-pregnancy",
+   "group": "PERC rule – oxygen saturation",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "PERC is negative only if SpO2 is 95% or more on air (criterion fails if SaO2 <95%)",
+   "source": "https://www.msdmanuals.com/iframe/manual/medical-calculators/perc-uk.htm",
+   "fixes": [
+    {
+     "file": "assets/sca-addons-15.js",
+     "old": "oxygen saturation 94% or more",
+     "new": "oxygen saturation 95% or more"
+    },
+    {
+     "file": "assets/sca-data/c/costochondritis.json",
+     "old": "oxygen saturation 94% or more",
+     "new": "oxygen saturation 95% or more",
+     "replace_all": true
+    }
+   ],
+   "note": "Site lets a patient with SpO2 94% pass PERC; the original Kline criteria require SaO2 >=95%. String occurs twice in costochondritis.json (replace both). No other PERC lists on the site carry a saturation figure.",
+   "id": "-03.j-0"
+  },
+  {
+   "subject": "children-pregnancy",
+   "group": "severe headache in pregnancy ≥20 weeks",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Pre-eclampsia (not eclampsia): check BP and urine; any new hypertension (≥140/90) or proteinuria with headache → same-day maternity assessment (NICE NG133); ≥160/110, seizure or severe features → emergency (999)",
+   "source": "https://www.nice.org.uk/guidance/ng133/chapter/Recommendations",
+   "fixes": [
+    {
+     "file": "cases/migraine.html",
+     "old": "Severe headache in pregnancy ≥20 weeks: eclampsia — BP check + 999 if ≥160/110",
+     "new": "Severe headache in pregnancy ≥20 weeks: pre-eclampsia — check BP and urine; same-day maternity assessment if BP ≥140/90 or proteinuria (NG133); 999 if ≥160/110, seizure or severe features"
+    }
+   ],
+   "note": "Mislabels pre-eclampsia as eclampsia and implies a woman with severe headache and BP 140–159/90–109 needs no urgent action. Other site pages (articles-data-3, pathways-redflags) already give same-day maternity wording.",
+   "id": "-03.j-1"
+  },
+  {
+   "subject": "children-pregnancy",
+   "group": "NSAIDs in pregnancy (gout)",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "MHRA DSU June 2023: avoid systemic NSAIDs from 20 weeks unless clinically necessary (oligohydramnios, fetal renal dysfunction); contraindicated from 28 weeks (premature closure of ductus arteriosus)",
+   "source": "https://www.gov.uk/drug-safety-update/non-steroidal-anti-inflammatory-drugs-nsaids-potential-risks-following-prolonged-use-after-20-weeks-of-pregnancy",
+   "fixes": [
+    {
+     "file": "cases/gout.html",
+     "old": "NSAIDs are contraindicated after 20 weeks (risk of premature closure of ductus arteriosus).",
+     "new": "NSAIDs should be avoided from 20 weeks unless clinically necessary (oligohydramnios, fetal renal dysfunction) and are contraindicated from 28 weeks (premature closure of the ductus arteriosus) — MHRA 2023."
+    },
+    {
+     "file": "cases/gout.html",
+     "old": "Do NOT prescribe NSAIDs in pregnancy (&gt;20 weeks) or colchicine without specialist oversight.",
+     "new": "Do NOT prescribe NSAIDs in pregnancy (avoid from 20 weeks, contraindicated from 28 weeks) or colchicine without specialist oversight."
+    }
+   ],
+   "note": "Gout page attributes the 20-week rule to ductus closure (a third-trimester/28-week risk) and calls it a contraindication; align with the MHRA wording already used on osteoarthritis and ankylosing-spondylitis pages. Other pages saying 'avoid NSAIDs from 20 weeks' are acceptable.",
+   "id": "-03.j-2"
+  },
+  {
+   "subject": "lithium",
+   "group": "quetiapine augmentation dose (depression page)",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Quetiapine XL add-on in MDD (SPC): 50 mg at bedtime days 1–2, 150 mg days 3–4; effective at 150–300 mg/day",
+   "source": "https://www.medicines.org.uk/emc/product/3616/smpc",
+   "fixes": [
+    {
+     "file": "tools/management/depression.html",
+     "old": "quetiapine 50–150 mg nocte (licensed add-on as quetiapine XL;",
+     "new": "quetiapine (licensed add-on as quetiapine XL, 50 mg at bedtime titrated to 150–300 mg/day per SPC;"
+    },
+    {
+     "file": "tools/management/depression-print.html",
+     "old": "quetiapine 50–150 mg nocte (licensed add-on as quetiapine XL;",
+     "new": "quetiapine (licensed add-on as quetiapine XL, 50 mg at bedtime titrated to 150–300 mg/day per SPC;"
+    }
+   ],
+   "note": "Found within the lithium statement set. 50 mg is only the day 1–2 starting dose; the licensed effective add-on range is 150–300 mg/day.",
+   "id": "-03.j-3"
+  },
+  {
+   "subject": "glucagon",
+   "group": "glucagon dose – children",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "GlucaGen 1 mg IM for adults and children >25 kg or older than 6–8 years; 0.5 mg for children <25 kg or younger than 6–8 years. Baqsimi 3 mg nasal licensed from age 4",
+   "source": "https://www.ema.europa.eu/documents/product-information/baqsimi-epar-product-information_fi.pdf",
+   "fixes": [
+    {
+     "file": "tools/algorithms/hypoglycaemia.html",
+     "old": "Prescribe glucagon (GlucaGen HypoKit 1 mg IM or Baqsimi 3 mg nasal) in a quantity",
+     "new": "Prescribe glucagon (GlucaGen HypoKit 1 mg IM — 0.5 mg if child under 25 kg or under 6–8 years; or Baqsimi 3 mg nasal, age 4+) in a quantity"
+    }
+   ],
+   "note": "Missing weight/age band. Page is adult-focused (JBDS) but recommends kits at school and training teachers; add the paediatric band where prescribing is described. Other glucagon 1 mg statements are in adult contexts and are correct.",
+   "id": "-03.j-4"
+  },
+  {
+   "subject": "lithium",
+   "group": "monitoring interval (articles)",
+   "verdict": "inconsistent",
+   "tier": 1,
+   "correct": "NICE CG185: level every 3 months for the first year, then every 6 months (3-monthly if older, interacting drugs, renal/thyroid impairment, raised calcium, poor adherence or last level ≥0.8)",
+   "source": "https://www.nice.org.uk/guidance/cg185/chapter/1-Recommendations",
+   "fixes": [
+    {
+     "file": "assets/articles-data-1.js",
+     "old": "then every 3 months (6-monthly if very stable, per local protocol)",
+     "new": "then every 3 months for the first year, then every 6 months (stay 3-monthly if higher risk — NICE CG185)"
+    }
+   ],
+   "note": "Aligns with tools/management/bipolar-lithium.html and shared-care-monitoring-data.js; the 6-monthly step is NICE, not local protocol.",
+   "id": "-03.j-5"
+  },
+  {
+   "subject": "aspirin",
+   "group": "TIA loading dose (cases/tia-stroke.html referral table)",
+   "verdict": "inconsistent",
+   "tier": 1,
+   "correct": "Resolved suspected TIA: aspirin 300 mg immediately unless contraindicated (bleeding disorder, anticoagulant); no brain imaging needed first (NICE NG128). Ongoing deficit = stroke pathway, no aspirin before imaging.",
+   "source": "https://www.nice.org.uk/guidance/ng128/chapter/Recommendations#transient-ischaemic-attack",
+   "fixes": [
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "Give aspirin 300mg now (if haemorrhage unlikely clinically and no CT available).",
+     "new": "Give aspirin 300mg now unless contraindicated (NICE NG128: no brain imaging needed first for resolved suspected TIA; anticoagulated or bleeding disorder → specialist advice)."
+    },
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "Do NOT give aspirin without excluding haemorrhage if clinically uncertain.",
+     "new": "Do NOT give aspirin if symptoms are ongoing (stroke pathway: imaging first), or if anticoagulated or with a bleeding disorder, without specialist advice."
+    }
+   ],
+   "note": "The qualifier 'if haemorrhage unlikely clinically and no CT available' and 'do not give without excluding haemorrhage if uncertain' implies imaging gating for resolved TIA, contradicting NG128 and ~40 other statements on the site (including elsewhere on the same page). Risk: GP withholds the loading dose.",
+   "id": "-04.j-0"
+  },
+  {
+   "subject": "platelets",
+   "group": "LMWH in pregnancy (APS) — platelet monitoring",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Routine platelet-count monitoring is not required in obstetric patients receiving LMWH only (BSH HIT guideline, Watson et al 2012; RCOG GTG37a). Monitor only if UFH was given first or per specialist plan.",
+   "source": "https://www.aast.org/Assets/c81bf886-ad20-48b6-b3cb-964960017fe5/636077287085800000/watson-hit-bjh-hit-2012-pdf",
+   "fixes": [
+    {
+     "file": "tools/algorithms/vaginal-bleeding-pregnancy.html",
+     "old": "Platelet count at baseline and monthly on LMWH.",
+     "new": "Routine platelet monitoring is not needed on LMWH alone in pregnancy (BSH/RCOG); follow the specialist monitoring plan."
+    }
+   ],
+   "note": "Pregnancy item. Monthly platelet counts on LMWH alone are not UK guidance and push unnecessary monitoring into primary care.",
+   "id": "-04.j-1"
+  },
+  {
+   "subject": "platelets",
+   "group": "Liver disease — platelet threshold for portal hypertension",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Baveno VII: in compensated advanced chronic liver disease, platelets ≤150 × 10⁹/L (or LSM ≥20 kPa) means variceal screening is needed; LSM <15 kPa with platelets ≥150 rules out CSPH. <100 is too low a trigger.",
+   "source": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8713224/",
+   "fixes": [
+    {
+     "file": "cases/abnormal-lfts.html",
+     "old": "Platelets &lt;100 &times; 10&#8313;/L = portal hypertension indicator &rarr; hepatology referral plus OGD for varices",
+     "new": "Platelets &le;150 &times; 10&#8313;/L in suspected advanced liver disease = possible portal hypertension &rarr; hepatology referral; variceal screening (OGD) if platelets &le;150 or liver stiffness &ge;20 kPa (Baveno VII)"
+    }
+   ],
+   "note": "The <100 cut-off under-triggers referral and screening for varices. Low clinical-severity error, but the threshold is wrong.",
+   "id": "-04.j-3"
+  },
+  {
+   "subject": "doxycycline",
+   "group": "blepharitis/MGD sub-antimicrobial dose",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Periostat is doxycycline 20 mg twice daily; 40 mg once daily is the modified-release product (Efracea)",
+   "source": "https://www.medicines.org.uk/emc/search?q=doxycycline%2040mg%20modified-release",
+   "fixes": [
+    {
+     "file": "tools/algorithms/itchy-eye.html",
+     "old": "(40 mg OD — Periostat dosing)",
+     "new": "(e.g. 40 mg modified-release once daily, or the older 20 mg twice-daily Periostat regimen)"
+    }
+   ],
+   "note": "A minor factual error. The page names Periostat but gives the 40 mg modified-release once-daily dose. The total daily dose is the same, so the risk is low.",
+   "id": "-05.j-1"
+  },
+  {
+   "subject": "salbutamol",
+   "group": "acute asthma children | pMDI+spacer puffs",
+   "verdict": "inconsistent",
+   "tier": 1,
+   "correct": "Salbutamol 100 micrograms by pMDI + spacer, one puff at a time, 2–10 puffs titrated to response; 10 puffs if severe (BTS/SIGN 158; owner decision 1, 19 Oct 2026)",
+   "source": "https://www.brit-thoracic.org.uk/quality-improvement/guidelines/asthma/ (BTS/SIGN 158, 2019) — per OWNER_DECISIONS_2.md item 1",
+   "fixes": [
+    {
+     "file": "tools/management/asthma-children.html",
+     "old": "salbutamol 100 micrograms by pMDI and spacer, one puff at a time, is effective and often preferred",
+     "new": "salbutamol 100 micrograms by pMDI and spacer, one puff at a time (2–10 puffs titrated to response; 10 puffs if severe — BTS/SIGN 158), is effective and often preferred"
+    },
+    {
+     "file": "tools/management/asthma-children.html",
+     "old": "Salbutamol 100 micrograms by pMDI and spacer, one puff at a time; reassess after treatment",
+     "new": "Salbutamol 100 micrograms by pMDI and spacer, one puff at a time, 2–10 puffs titrated to response (BTS/SIGN 158); reassess after treatment"
+    },
+    {
+     "file": "tools/management/asthma-children-print.html",
+     "old": "salbutamol 100 micrograms by pMDI and spacer, one puff at a time, is effective and often preferred",
+     "new": "salbutamol 100 micrograms by pMDI and spacer, one puff at a time (2–10 puffs titrated to response; 10 puffs if severe — BTS/SIGN 158), is effective and often preferred"
+    },
+    {
+     "file": "tools/management/asthma-children-print.html",
+     "old": "Salbutamol 100 micrograms by pMDI and spacer, one puff at a time; reassess after treatment",
+     "new": "Salbutamol 100 micrograms by pMDI and spacer, one puff at a time, 2–10 puffs titrated to response (BTS/SIGN 158); reassess after treatment"
+    },
+    {
+     "file": "tools/management/summaries/asthma-children.html",
+     "old": "salbutamol 100 micrograms by pMDI + spacer, one puff at a time; reassess and repeat",
+     "new": "salbutamol 100 micrograms by pMDI + spacer, one puff at a time, 2–10 puffs titrated to response (BTS/SIGN 158); reassess and repeat"
+    }
+   ],
+   "note": "The children's asthma protocol, its print twin and summary give no puff number for acute attacks (only 'repeat according to the local acute pathway'), whereas wheeze-children, wheeze-child algorithm and preschool-wheeze now use the owner-approved BTS/SIGN 158 wording (2–10 puffs, 10 if severe). Not unsafe, but a missing dose on a Tier 1 paediatric acute step; align with owner decision 1.",
+   "id": "-06.j-0"
+  },
+  {
+   "subject": "metronidazole",
+   "group": "vaginal gel | trichomonas",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Metronidazole 0.75% vaginal gel is a first-line option for BV only. It is not effective for Trichomonas vaginalis, which needs systemic (oral) metronidazole 400–500 mg BD for 7 days (BASHH TV 2021).",
+   "source": "https://www.bashh.org/resources/86/trichomonas_vaginalis_2021",
+   "fixes": [
+    {
+     "file": "cases/vaginal-discharge.html",
+     "old": "<div class=\"dc-rec-badge\">✓ First-line for BV and trichomonas</div>",
+     "new": "<div class=\"dc-rec-badge\">✓ First-line for BV (oral or vaginal gel) and trichomonas (oral only — vaginal gel is not effective for TV)</div>"
+    }
+   ],
+   "note": "The drug card is headed 'Metronidazole (oral / vaginal gel)' and its badge says 'First-line for BV and trichomonas'. Read that way, it implies the gel treats TV. Intravaginal metronidazole does not reach therapeutic levels in the urethra or periurethral glands, so BASHH recommends oral treatment only. The dose line on the same card already gives TV as oral 400–500 mg BD for 7 days, so this changes only the badge wording. Grep found this one occurrence on the site.",
+   "id": "-07.j-0"
+  },
+  {
+   "subject": "morphine",
+   "group": "renal impairment / CKD stage (palliative case)",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "eGFR 28 mL/min/1.73m² is CKD category G4 (15–29), not G3b (30–44). The opioid teaching point (avoid morphine, eGFR <30) stays correct.",
+   "source": "https://www.nice.org.uk/guidance/ng203 (NG203 GFR categories: G3b 30–44, G4 15–29)",
+   "fixes": [
+    {
+     "file": "cases/palliative-care.html",
+     "old": "Mrs. Patel&#8217;s eGFR 28 is confirmed CKD 3b:",
+     "new": "Mrs. Patel&#8217;s eGFR 28 is CKD G4 (eGFR 15&#8211;29):"
+    },
+    {
+     "file": "cases/palliative-care.html",
+     "old": "Mrs. Patel&#8217;s eGFR 28 = CKD 3b;",
+     "new": "Mrs. Patel&#8217;s eGFR 28 = CKD G4;"
+    },
+    {
+     "file": "cases/palliative-care.html",
+     "old": "eGFR 28 &#8212; CKD 3b &#8212; CRITICAL for opioid choice",
+     "new": "eGFR 28 &#8212; CKD G4 &#8212; CRITICAL for opioid choice"
+    }
+   ],
+   "note": "Three places in the palliative case label eGFR 28 as CKD 3b. It is G4. The renal-opioid advice (avoid morphine below eGFR 30; specialist advice; oxycodone/alfentanil) is unaffected. The first fix also drops 'confirmed', because a single eGFR from 3 weeks ago in a vomiting, dehydrated patient does not confirm a CKD stage (the same sentence goes on to suggest a pre-renal element). Grep found no other site file that stages eGFR 28 as 3b.",
+   "id": "-08.j-0"
+  },
+  {
+   "subject": "glucose",
+   "group": "suspected type 1 diabetes in a child (secondary enuresis)",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "In a child with polyuria/polydipsia/weight loss, a random glucose ≥11.1 mmol/L (not >11.1) supports diabetes, and a capillary reading is not by itself a formal diagnosis. NICE NG18 says refer immediately (same day) to the paediatric diabetes team and do not wait for confirmatory tests.",
+   "source": "https://www.nice.org.uk/guidance/ng18 (rec 1.1.1–1.1.2: suspected T1D → same-day referral to multidisciplinary paediatric diabetes team); WHO diagnostic threshold random plasma glucose ≥11.1 mmol/L with symptoms",
+   "fixes": [
+    {
+     "file": "cases/enuresis.html",
+     "old": "Random glucose &gt;11.1 mmol/L = diabetes diagnosis.",
+     "new": "A random glucose of 11.1 mmol/L or more with these symptoms strongly suggests diabetes; do not wait for confirmatory tests: refer the same day to the paediatric diabetes team (NICE NG18)."
+    }
+   ],
+   "note": "The threshold sign is wrong (> instead of ≥). Calling a capillary reading a 'diagnosis' could also encourage the GP to confirm it in primary care before referring, which NG18 advises against. The adjacent cell ('&gt;11.1 → same-day paediatric diabetes team') is acceptable in context.",
+   "id": "-08.j-1"
+  },
+  {
+   "subject": "glucose",
+   "group": "insulinoma / 72-h fast diagnostic criteria",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "Endocrine Society (Cryer 2009) criteria: plasma glucose <3.0 mmol/L (55 mg/dL) with insulin ≥3 µU/mL (≥18 pmol/L), C-peptide ≥0.6 ng/mL (≥0.2 nmol/L) and proinsulin ≥5 pmol/L. <2.2 mmol/L (40 mg/dL) is an older criterion.",
+   "source": "https://academic.oup.com/jcem/article/94/3/709/2596186 (Endocrine Society Clinical Practice Guideline: Evaluation and management of adult hypoglycemic disorders, 2009)",
+   "fixes": [
+    {
+     "file": "tools/algorithms/hypoglycaemia.html",
+     "old": "(blood glucose <2.2 mmol/L)",
+     "new": "(plasma glucose <3.0 mmol/L)"
+    }
+   ],
+   "note": "The insulin, C-peptide and proinsulin cut-offs in the same sentence already match the Endocrine Society criteria. Only the glucose threshold is out of date. This is a secondary-care teaching point, so it is low priority.",
+   "id": "-08.j-2"
+  }
+ ],
+ "bins": [
+  [
+   "cases/abnormal-lfts.html",
+   "cases/enuresis.html",
+   "cases/gout.html",
+   "cases/migraine.html",
+   "cases/tia-stroke.html",
+   "tools/management/asthma-children-print.html",
+   "tools/management/asthma-children.html",
+   "tools/management/summaries/asthma-children.html"
+  ],
+  [
+   "assets/articles-data-1.js",
+   "assets/sca-addons-15.js",
+   "assets/sca-data/c/costochondritis.json",
+   "cases/breast-cancer.html",
+   "tools/algorithms/acute-diarrhoea.html",
+   "tools/algorithms/hypoglycaemia.html",
+   "tools/algorithms/itchy-eye.html",
+   "tools/algorithms/one-page/acute-diarrhoea.html",
+   "tools/algorithms/one-page/anaemia.html",
+   "tools/algorithms/one-page/recurrent-infections.html"
+  ],
+  [
+   "cases/hyperthyroidism.html",
+   "cases/palliative-care.html",
+   "cases/vaginal-discharge.html",
+   "tools/algorithms/magnesium-deficiency.html",
+   "tools/algorithms/pancytopenia.html",
+   "tools/algorithms/vaginal-bleeding-pregnancy.html",
+   "tools/management/depression-print.html",
+   "tools/management/depression.html"
+  ]
+ ]
+}

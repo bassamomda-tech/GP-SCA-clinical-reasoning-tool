@@ -1,0 +1,9 @@
+[
+ {"subject":"metronidazole","group":"vaginal gel | trichomonas","verdict":"wrong","tier":1,
+  "correct":"Metronidazole 0.75% vaginal gel is a first-line option for BV only. It is not effective for Trichomonas vaginalis, which needs systemic (oral) metronidazole 400–500 mg BD for 7 days (BASHH TV 2021).",
+  "source":"https://www.bashh.org/resources/86/trichomonas_vaginalis_2021",
+  "fixes":[{"file":"cases/vaginal-discharge.html",
+    "old":"<div class=\"dc-rec-badge\">✓ First-line for BV and trichomonas</div>",
+    "new":"<div class=\"dc-rec-badge\">✓ First-line for BV (oral or vaginal gel) and trichomonas (oral only — vaginal gel is not effective for TV)</div>"}],
+  "note":"The drug card is headed 'Metronidazole (oral / vaginal gel)' and its badge says 'First-line for BV and trichomonas'. Read that way, it implies the gel treats TV. Intravaginal metronidazole does not reach therapeutic levels in the urethra or periurethral glands, so BASHH recommends oral treatment only. The dose line on the same card already gives TV as oral 400–500 mg BD for 7 days, so this changes only the badge wording. Grep found this one occurrence on the site."}
+]

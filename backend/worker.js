@@ -15,6 +15,11 @@
        member's PayPal subscription. See the block at the end.
      • Searches with no results (/api/search-miss, owner view
        /api/search-misses) — anonymous monthly counts of search words.
+     • Handbook shop (/api/shop/order|capture|purchases) and paid
+       downloads (/api/download/<id>, e.g. the Lab Results Handbook PDF)
+       — one-off £20 PayPal purchases, NOT part of any plan; the file is
+       streamed from a private R2 bucket (binding DOWNLOADS) to its buyer.
+       See the block before the webhook.
 
    DEPLOY: see backend/README.md. You need two KV namespaces
    (USERS, TOKENS) and a handful of secrets/vars (below).
@@ -69,6 +74,10 @@ export default {
       if (url.pathname === '/api/updates/archive') return await updatesArchive(request, env, cors);
       if (url.pathname === '/api/search-miss')    return await searchMiss(request, env, cors);
       if (url.pathname === '/api/search-misses')  return await searchMisses(request, env, cors);
+      if (url.pathname === '/api/shop/order')     return await shopOrder(request, env, cors);
+      if (url.pathname === '/api/shop/capture')   return await shopCapture(request, env, cors);
+      if (url.pathname === '/api/shop/purchases') return await shopPurchases(request, env, cors);
+      if (url.pathname.startsWith('/api/download/')) return await paidDownload(request, env, cors, url.pathname.slice('/api/download/'.length));
       if (url.pathname === '/api/paypal/webhook') return await paypalWebhook(request, env);
       if (url.pathname === '/api/health')         return json({ ok: true }, 200, cors);
       return json({ error: 'Not found' }, 404, cors);
@@ -1104,6 +1113,283 @@ async function embedProxy(request, env, cors) {
   }
 }
 
+/* ---------------- Handbook shop: one-off purchases (PayPal Orders v2) ----------------
+   Handbooks are SEPARATE one-off purchases (£20 each). They are NOT part of any
+   plan: a Silver or Platinum subscription does not include them. The individual
+   Clinic Guides stay in the Clinic plans (assets/clinic-guides.js).
+
+   PRODUCTS is THE catalogue and THE download allow-list: only ids listed here can
+   be bought or downloaded, the browser never names an R2 key, and the price is
+   always taken from here (never from the browser). To add a handbook (e.g. an SCA
+   handbook): upload the PDF to the R2 bucket and add ONE line below
+   (backend/README.md, "Handbook shop").
+
+     POST /api/shop/order   {product}   signed in -> { orderId } | { owned:true }
+          Creates a PayPal order server-side: intent CAPTURE, the catalogue price
+          in GBP, custom_id "<account email>|<product>", no shipping.
+     POST /api/shop/capture {orderId}   signed in -> { ok:true, product }
+          Captures the order and records the purchase only if PayPal says
+          COMPLETED, in GBP, for exactly the catalogue price, and the order's
+          custom_id is this account and a real product. Repeating it is harmless.
+          A capture PayPal holds as PENDING answers 202 { pending:true }: the
+          PAYMENT.CAPTURE.COMPLETED webhook records it when it clears.
+     GET  /api/shop/purchases          signed in -> { purchases:[ids], products:{…} }
+     GET  /api/download/<id>   (Authorization: Bearer <token>, like every other call)
+       200  the file, streamed from the private R2 bucket bound as DOWNLOADS
+       401  not signed in / session expired
+       402  { error:'purchase_required', reason:'purchase_required', price:'20.00' }
+            not bought (whatever the plan); the admin account is always allowed
+       404  unknown id, or the file is not uploaded to R2 yet
+       503  the DOWNLOADS binding is missing (R2 not set up yet)
+   Webhook (/api/paypal/webhook, signature-verified as before):
+     PAYMENT.CAPTURE.COMPLETED  records the purchase if the browser's capture call
+                                was lost (closed tab, network drop)
+     PAYMENT.CAPTURE.REFUNDED / PAYMENT.CAPTURE.REVERSED  remove it (a partial
+                                refund keeps it; see shopWebhook)
+   Stored on the user record: purchases[<id>] = { orderId, captureId, amount,
+   currency, date, via }. Index purchase:<captureId> = "<email>|<id>" (for refunds).
+   Counts, a number only (no account, no IP), in USERS KV:
+     buy:<id>:YYYY-MM  purchases per month      dl:<id>:YYYY-MM  downloads per month */
+const PRODUCTS = {
+  'lab-handbook': { title: 'Lab Results Handbook', price: '20.00', currency: 'GBP', r2Key: 'lab-results-handbook-v1.1.pdf', filename: 'Reasoning-GP-Lab-Results-Handbook-v1.1.pdf', type: 'application/pdf' }
+};
+const SHOP_BRAND = 'Reasoning GP';
+function productId(raw) { return String(raw || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 64); }
+function productOf(id) { return Object.prototype.hasOwnProperty.call(PRODUCTS, id) ? PRODUCTS[id] : null; }
+function isAdminUser(user, env) {
+  const admin = String((env && env.ADMIN_EMAIL) || '').trim().toLowerCase();
+  return !!admin && user.email === admin;
+}
+function ownsProduct(user, id) { return !!(user && user.purchases && user.purchases[id] && user.purchases[id].captureId); }
+function ownedIds(user) { return Object.keys((user && user.purchases) || {}).filter(id => productOf(id) && ownsProduct(user, id)); }
+function sameMoney(a, b) { const x = Number(a), y = Number(b); return isFinite(x) && isFinite(y) && x.toFixed(2) === y.toFixed(2); }
+// custom_id = "<email>|<product>". Split on the LAST bar so an odd email can't confuse it.
+function parseShopCustom(c) {
+  const s = String(c || ''); const i = s.lastIndexOf('|');
+  if (i <= 0) return null;
+  const email = s.slice(0, i).trim().toLowerCase(), product = productId(s.slice(i + 1));
+  if (!email || !productOf(product) || s.slice(i + 1) !== product) return null;
+  return { email, product };
+}
+async function bumpCount(env, key) {
+  try { const n = parseInt((await env.USERS.get(key)) || '0', 10) || 0; await env.USERS.put(key, String(n + 1)); } catch (e) {}
+}
+async function paypalCall(env, access, method, path, body) {
+  const r = await fetch(`${ppBase(env)}${path}`, {
+    method,
+    headers: Object.assign({ 'Authorization': `Bearer ${access}`, 'Content-Type': 'application/json' }, method === 'POST' ? { 'Prefer': 'return=representation' } : {}),
+    body: body === undefined ? undefined : JSON.stringify(body)
+  });
+  const data = await r.json().catch(() => ({}));
+  return { ok: r.ok, status: r.status, data };
+}
+/* Record a verified, completed capture on the account. Idempotent: a second call
+   for the same purchase (client + webhook) changes nothing. A capture that was
+   refunded is never recorded again by a late or replayed event. */
+async function recordPurchase(env, email, product, rec) {
+  const raw = await env.USERS.get(email);
+  if (!raw) return { ok: false, why: 'unknown-user' };
+  const user = JSON.parse(raw);
+  if (ownsProduct(user, product)) return { ok: true, already: true, user };
+  const gone = user.refundedPurchases && user.refundedPurchases[product];
+  if (gone && gone.captureId === rec.captureId) return { ok: false, why: 'refunded' };
+  user.purchases = user.purchases || {};
+  user.purchases[product] = { orderId: rec.orderId || '', captureId: rec.captureId, amount: rec.amount, currency: rec.currency, date: Date.now(), via: rec.via };
+  await env.USERS.put(email, JSON.stringify(user));
+  try { await env.USERS.put('purchase:' + rec.captureId, email + '|' + product); } catch (e) {}
+  await bumpCount(env, 'buy:' + product + ':' + missMonth());
+  await logPlan(env, { email, action: 'purchase ' + product, by: rec.via === 'webhook' ? 'paypal' : 'member', sub: rec.captureId, result: 'recorded £' + rec.amount });
+  return { ok: true, user };
+}
+
+async function shopOrder(request, env, cors) {
+  if (request.method !== 'POST') return json({ error: 'method' }, 405, cors);
+  let user;
+  try { user = await userFromToken(request, env); }
+  catch (e) { return json({ error: 'sign_in_required', message: e.message }, 401, cors); }
+  const body = await request.json().catch(() => ({}));
+  const id = productId(body.product);
+  const p = productOf(id);
+  if (!p) return json({ error: 'Unknown product' }, 404, cors);
+  if (ownsProduct(user, id)) return json({ owned: true, product: id }, 200, cors);
+  const custom = user.email + '|' + id;
+  if (custom.length > 127) return json({ error: 'Your email address is too long for PayPal. Please email bassamomda@gmail.com to buy.' }, 400, cors);
+  const access = await paypalAccessToken(env);
+  if (!access) return json({ error: 'Couldn’t reach PayPal just now. Please try again in a few minutes.' }, 502, cors);
+  const money = { currency_code: p.currency, value: p.price };
+  const r = await paypalCall(env, access, 'POST', '/v2/checkout/orders', {
+    intent: 'CAPTURE',
+    purchase_units: [{
+      reference_id: id,
+      description: p.title + ' (PDF, one-off purchase)',
+      custom_id: custom,
+      amount: Object.assign({}, money, { breakdown: { item_total: money } }),
+      items: [{ name: p.title, quantity: '1', unit_amount: money, category: 'DIGITAL_GOODS' }]
+    }],
+    application_context: { brand_name: SHOP_BRAND, shipping_preference: 'NO_SHIPPING', user_action: 'PAY_NOW' }
+  });
+  if (!r.ok || !r.data.id) {
+    await logPayIssue(env, 'shop-order-failed:' + r.status, 'shop/order', { id: id });
+    return json({ error: 'PayPal didn’t accept the order. Please try again, or email bassamomda@gmail.com.' }, 502, cors);
+  }
+  return json({ orderId: r.data.id }, 200, cors);
+}
+
+/* Pull the first capture out of an order (a capture response or GET order). */
+function captureOfOrder(order) {
+  const pu = (order && order.purchase_units && order.purchase_units[0]) || {};
+  const cap = (pu.payments && pu.payments.captures && pu.payments.captures[0]) || null;
+  return { pu, cap };
+}
+
+async function shopCapture(request, env, cors) {
+  if (request.method !== 'POST') return json({ error: 'method' }, 405, cors);
+  let user;
+  try { user = await userFromToken(request, env); }
+  catch (e) { return json({ error: 'sign_in_required', message: e.message }, 401, cors); }
+  const body = await request.json().catch(() => ({}));
+  const orderId = String(body.orderId || '').replace(/[^A-Za-z0-9-]/g, '').slice(0, 64);
+  if (!orderId) return json({ error: 'Missing orderId' }, 400, cors);
+  const access = await paypalAccessToken(env);
+  if (!access) return json({ error: 'Couldn’t reach PayPal just now. Please try again in a few minutes.' }, 502, cors);
+
+  // 1. Read the order first: it must have been made for THIS account and a real product.
+  const got = await paypalCall(env, access, 'GET', '/v2/checkout/orders/' + encodeURIComponent(orderId));
+  if (!got.ok) return json({ error: 'Order not found' }, 404, cors);
+  const want = parseShopCustom(captureOfOrder(got.data).pu.custom_id);
+  if (!want || want.email !== user.email) return json({ error: 'This order belongs to a different account.' }, 403, cors);
+  const p = productOf(want.product);
+  if (ownsProduct(user, want.product)) return json({ ok: true, product: want.product, already: true }, 200, cors);
+
+  // 2. Capture (or, if it was already captured, read the existing capture back).
+  let order = got.data;
+  if (String(order.status).toUpperCase() !== 'COMPLETED') {
+    const cr = await paypalCall(env, access, 'POST', '/v2/checkout/orders/' + encodeURIComponent(orderId) + '/capture', {});
+    if (cr.ok) order = cr.data;
+    else {
+      const again = await paypalCall(env, access, 'GET', '/v2/checkout/orders/' + encodeURIComponent(orderId));
+      if (again.ok && String(again.data.status).toUpperCase() === 'COMPLETED') order = again.data;
+      else {
+        const issue = (cr.data && cr.data.details && cr.data.details[0] && cr.data.details[0].issue) || cr.status;
+        await logPayIssue(env, 'shop-capture-failed:' + issue + ':' + user.email, 'shop/capture', { id: orderId });
+        const declined = issue === 'INSTRUMENT_DECLINED';
+        return json({ error: declined ? 'instrument_declined' : 'capture_failed',
+                      message: declined ? 'Your card or bank declined the payment. Please try another way to pay.' : 'The payment didn’t go through. Nothing has been charged. Please try again.' }, declined ? 402 : 502, cors);
+      }
+    }
+  }
+
+  // 3. Verify what PayPal says was actually paid.
+  const { pu, cap } = captureOfOrder(order);
+  const custom = parseShopCustom((cap && cap.custom_id) || pu.custom_id || captureOfOrder(got.data).pu.custom_id);
+  const amt = (cap && cap.amount) || {};
+  const problems = [];
+  if (!cap) problems.push('no capture');
+  if (!custom || custom.email !== user.email || custom.product !== want.product) problems.push('custom_id');
+  if (String(amt.currency_code || '').toUpperCase() !== p.currency) problems.push('currency ' + amt.currency_code);
+  if (!sameMoney(amt.value, p.price)) problems.push('amount ' + amt.value);
+  if (problems.length) {
+    await logPayIssue(env, 'shop-capture-mismatch:' + problems.join(',') + ':' + user.email, 'shop/capture', { id: orderId });
+    return json({ error: 'payment_mismatch', message: 'The payment didn’t match the price. Please email bassamomda@gmail.com with your PayPal receipt and it will be sorted.' }, 409, cors);
+  }
+  const st = String(cap.status || '').toUpperCase();
+  if (st === 'PENDING') return json({ pending: true, product: want.product, message: 'PayPal is still processing the payment. Your download unlocks as soon as it clears.' }, 202, cors);
+  if (st !== 'COMPLETED') {
+    await logPayIssue(env, 'shop-capture-status:' + st + ':' + user.email, 'shop/capture', { id: orderId });
+    return json({ error: 'capture_failed', message: 'The payment didn’t complete (' + st.toLowerCase() + '). Please try again.' }, 402, cors);
+  }
+  const rec = await recordPurchase(env, user.email, want.product, { orderId, captureId: cap.id, amount: p.price, currency: p.currency, via: 'client' });
+  if (!rec.ok) return json({ error: 'not_recorded', message: rec.why === 'refunded' ? 'This payment was refunded.' : 'Could not record the purchase. Please email bassamomda@gmail.com.' }, 409, cors);
+  return json({ ok: true, product: want.product }, 200, cors);
+}
+
+async function shopPurchases(request, env, cors) {
+  if (request.method !== 'GET') return json({ error: 'method' }, 405, cors);
+  let user;
+  try { user = await userFromToken(request, env); }
+  catch (e) { return json({ error: 'sign_in_required', message: e.message }, 401, cors); }
+  const products = {};
+  for (const id of Object.keys(PRODUCTS)) products[id] = { title: PRODUCTS[id].title, price: PRODUCTS[id].price, currency: PRODUCTS[id].currency };
+  return json({ purchases: ownedIds(user), admin: isAdminUser(user, env), products }, 200, cors);
+}
+
+/* Webhook part of the shop (called from paypalWebhook AFTER the signature check). */
+const SHOP_EVENTS = ['PAYMENT.CAPTURE.COMPLETED', 'PAYMENT.CAPTURE.REFUNDED', 'PAYMENT.CAPTURE.REVERSED'];
+async function shopWebhook(env, type, res, access) {
+  if (type === 'PAYMENT.CAPTURE.COMPLETED') {
+    const c = parseShopCustom(res.custom_id);
+    if (!c) { await logPayIssue(env, 'shop-webhook-no-custom', type, res); return new Response('ignored', { status: 200 }); }
+    const p = productOf(c.product);
+    const amt = res.amount || {};
+    if (String(amt.currency_code || '').toUpperCase() !== p.currency || !sameMoney(amt.value, p.price) || String(res.status || '').toUpperCase() !== 'COMPLETED') {
+      await logPayIssue(env, 'shop-webhook-mismatch:' + c.email, type, res);
+      return new Response('mismatch', { status: 200 });
+    }
+    const orderId = (res.supplementary_data && res.supplementary_data.related_ids && res.supplementary_data.related_ids.order_id) || '';
+    const rec = await recordPurchase(env, c.email, c.product, { orderId, captureId: res.id, amount: p.price, currency: p.currency, via: 'webhook' });
+    if (!rec.ok) await logPayIssue(env, 'shop-webhook-' + rec.why + ':' + c.email, type, res);
+    return new Response('ok', { status: 200 });
+  }
+  // REFUNDED: the resource is the refund; its "up" link names the capture.
+  // REVERSED: usually the capture itself. Accept either.
+  let captureId = null;
+  const up = (res.links || []).find(l => l && l.rel === 'up' && /\/captures\//.test(String(l.href || '')));
+  if (up) captureId = String(up.href).split('/captures/')[1].split(/[/?#]/)[0];
+  if (!captureId && res.id && /^(REFUNDED|REVERSED|PARTIALLY_REFUNDED)$/i.test(String(res.status || ''))) captureId = res.id;
+  if (!captureId) { await logPayIssue(env, 'shop-refund-no-capture', type, res); return new Response('ignored', { status: 200 }); }
+  // Who bought it: our own index first, then PayPal's copy of the capture.
+  let owner = parseShopCustom(await env.USERS.get('purchase:' + captureId));
+  let capStatus = '';
+  const cr = await paypalCall(env, access, 'GET', '/v2/payments/captures/' + encodeURIComponent(captureId));
+  if (cr.ok) { capStatus = String(cr.data.status || '').toUpperCase(); if (!owner) owner = parseShopCustom(cr.data.custom_id); }
+  if (!owner) owner = parseShopCustom(res.custom_id);
+  if (!owner) { await logPayIssue(env, 'shop-refund-unknown:' + captureId, type, res); return new Response('ignored', { status: 200 }); }
+  // A partial refund (a goodwill discount) keeps the handbook; a full refund or a
+  // reversal (chargeback) removes it.
+  if (type === 'PAYMENT.CAPTURE.REFUNDED' && capStatus === 'PARTIALLY_REFUNDED') {
+    await logPlan(env, { email: owner.email, action: 'partial refund ' + owner.product, by: 'paypal', sub: captureId, result: 'kept' });
+    return new Response('ok', { status: 200 });
+  }
+  const raw = await env.USERS.get(owner.email);
+  if (!raw) { await logPayIssue(env, 'unknown-user:' + owner.email, type, res); return new Response('unknown user', { status: 200 }); }
+  const user = JSON.parse(raw);
+  const cur = user.purchases && user.purchases[owner.product];
+  user.refundedPurchases = user.refundedPurchases || {};
+  user.refundedPurchases[owner.product] = Object.assign({}, cur || {}, { captureId, refunded: Date.now(), event: type });
+  if (cur && (!cur.captureId || cur.captureId === captureId)) delete user.purchases[owner.product];
+  await env.USERS.put(owner.email, JSON.stringify(user));
+  await logPlan(env, { email: owner.email, action: (type === 'PAYMENT.CAPTURE.REVERSED' ? 'reversal ' : 'refund ') + owner.product, by: 'paypal', sub: captureId, result: cur ? 'access removed' : 'no purchase on record' });
+  return new Response('ok', { status: 200 });
+}
+
+/* GET /api/download/<id>: the product's file, for its buyer or the admin account. */
+async function paidDownload(request, env, cors, rawId) {
+  if (request.method !== 'GET') return json({ error: 'method' }, 405, cors);
+  const id = productId(rawId);
+  const item = productOf(id);
+  if (!item) return json({ error: 'Unknown download' }, 404, cors);
+  let user;
+  try { user = await userFromToken(request, env); }
+  catch (e) { return json({ error: 'sign_in_required', message: e.message }, 401, cors); }
+  if (!ownsProduct(user, id) && !isAdminUser(user, env)) {
+    return json({ error: 'purchase_required', reason: 'purchase_required', product: id, price: item.price, currency: item.currency,
+                  message: 'The ' + item.title + ' is a separate one-off purchase (£' + item.price + '). It is not included in any plan.' }, 402, cors);
+  }
+  if (!env.DOWNLOADS) return json({ error: 'downloads_not_configured' }, 503, cors);
+  const obj = await env.DOWNLOADS.get(item.r2Key);
+  if (!obj) return json({ error: 'File not uploaded yet' }, 404, cors);
+  await bumpCount(env, 'dl:' + id + ':' + missMonth());
+  const headers = Object.assign({}, cors, {
+    'Content-Type': item.type || 'application/octet-stream',
+    'Content-Disposition': 'attachment; filename="' + item.filename + '"',
+    'Cache-Control': 'private, no-store',
+    'X-Content-Type-Options': 'nosniff',
+    'Access-Control-Expose-Headers': 'Content-Disposition, Content-Length'
+  });
+  if (obj.size != null) headers['Content-Length'] = String(obj.size);
+  return new Response(obj.body, { status: 200, headers });
+}
+
 /* ---------------- PayPal subscription webhook ---------------- */
 async function paypalAccessToken(env) {
   const basic = btoa(`${env.PAYPAL_CLIENT_ID}:${env.PAYPAL_SECRET}`);
@@ -1147,6 +1433,10 @@ async function paypalWebhook(request, env) {
   const event = JSON.parse(bodyText);
   const type = event.event_type || '';
   let res = event.resource || {};
+
+  // One-off handbook purchases (the shop block above). Subscriptions never send
+  // PAYMENT.CAPTURE.* events (they use PAYMENT.SALE.*), so the two never mix.
+  if (SHOP_EVENTS.indexOf(type) !== -1) return await shopWebhook(env, type, res, access);
 
   const GRANT = ['BILLING.SUBSCRIPTION.ACTIVATED', 'BILLING.SUBSCRIPTION.UPDATED', 'BILLING.SUBSCRIPTION.RE-ACTIVATED', 'PAYMENT.SALE.COMPLETED'];
   const REVOKE = ['BILLING.SUBSCRIPTION.CANCELLED', 'BILLING.SUBSCRIPTION.EXPIRED', 'BILLING.SUBSCRIPTION.SUSPENDED'];

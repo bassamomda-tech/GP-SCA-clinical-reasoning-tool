@@ -1526,7 +1526,7 @@
     },
     {
      "h": "Pulmonary embolism",
-     "t": "Pleuritic pain can be PE. NICE NG158 [2] uses the two-level Wells score, and where clinical suspicion is low the PERC rule. PERC is negative only if all apply: age under 50, heart rate under 100, oxygen saturation 94% or more, no haemoptysis, no oestrogen use, no previous DVT or PE, no unilateral leg swelling, and no surgery or trauma needing hospital treatment in the past 4 weeks."
+     "t": "Pleuritic pain can be PE. NICE NG158 [2] uses the two-level Wells score, and where clinical suspicion is low the PERC rule. PERC is negative only if all apply: age under 50, heart rate under 100, oxygen saturation 95% or more, no haemoptysis, no oestrogen use, no previous DVT or PE, no unilateral leg swelling, and no surgery or trauma needing hospital treatment in the past 4 weeks."
     },
     {
      "h": "The positive diagnosis",
@@ -7555,7 +7555,7 @@
     },
     {
      "h": "Initial management of type 2",
-     "t": "NG28 (February 2026) [2]: offer structured education and lifestyle support; for most adults needing medication, offer dual first-line therapy: modified-release metformin (in preference to standard release unless swallowing needs dictate, titrated to the tolerated dose) plus an SGLT2 inhibitor, introduced stepwise with the SGLT2 inhibitor added within weeks, unless contraindicated and with caution in frailty. Before an SGLT2 inhibitor, check DKA risk factors and counsel on ketoacidosis and sick-day rules [8]. Doses per BNF. Typical HbA1c target 48 mmol/mol on lifestyle or drugs without hypoglycaemia risk, individualised."
+     "t": "NG28 (February 2026) [2]: offer structured education and lifestyle support; for most adults needing medication, offer dual first-line therapy: modified-release metformin (in preference to standard release unless swallowing needs dictate, titrated to the tolerated dose) plus an SGLT2 inhibitor, introduced stepwise with the SGLT2 inhibitor added once metformin is tolerated, unless contraindicated and with caution in frailty. Before an SGLT2 inhibitor, check DKA risk factors and counsel on ketoacidosis and sick-day rules [8]. Doses per BNF. Typical HbA1c target 48 mmol/mol on lifestyle or drugs without hypoglycaemia risk, individualised."
     },
     {
      "h": "Risk and complications",
@@ -7710,7 +7710,7 @@
    },
    {
     "who": "dr",
-    "text": "If it’s type 2, the usual start is a slow-release metformin tablet, increased gradually, and then a second tablet called an SGLT2 inhibitor added within a few weeks — the two together are now the usual first treatment — along with a course on living with diabetes. We’ll arrange eye screening, foot and kidney checks, and look at your heart risk.",
+    "text": "If it’s type 2, the usual start is a slow-release metformin tablet, increased gradually, and then a second tablet called an SGLT2 inhibitor added once the metformin suits you — the two together are now the usual first treatment — along with a course on living with diabetes. We’ll arrange eye screening, foot and kidney checks, and look at your heart risk.",
     "dom": "cm",
     "why": "NG28 February 2026 initial treatment and care processes"
    },
@@ -7802,7 +7802,7 @@
    },
    {
     "t": "Offers a safe, patient-centred plan",
-    "d": "NG28 (Feb 2026) dual first-line: MR metformin, then SGLT2 inhibitor within weeks; education; lifestyle agreed with him.",
+    "d": "NG28 (Feb 2026) dual first-line: MR metformin, then SGLT2 inhibitor once metformin is tolerated; education; lifestyle agreed with him.",
     "pts": 2, "dom": "cm"
    },
    {
@@ -7950,7 +7950,7 @@
     "psychosocial": "Build on his own chosen change; address driving; offer education rather than a lecture.",
     "sharedPlan": [
      "Lab plasma glucose; HbA1c baseline, U&E, lipids, TFT, LFT, urine ACR",
-     "If type 2: NG28 (Feb 2026) dual first-line — MR metformin, with an SGLT2 inhibitor added within weeks; doses per BNF",
+     "If type 2: NG28 (Feb 2026) dual first-line — MR metformin, with an SGLT2 inhibitor added once metformin is tolerated; doses per the SPC",
      "Structured education; switch sugary drinks to water",
      "QRISK and statin per NG238; retinal, foot and kidney checks",
      "Same-day diabetes team if ketones rise or type 1 suspected"

@@ -12,7 +12,10 @@
        (the hub's "Print" button);
      - inside a frame (the "Clinic Guide" tab on a protocol page) the guide's
        own top bar is hidden, because the host page shows its own.
-   On the hub: marks the free samples with a "Free" badge.
+   On the hub: marks the free samples with a "Free" badge, and runs the
+   handbook shop (div.cg-handbook[data-cg-product], e.g. the Lab Results
+   Handbook): a separate one-off £20 PayPal purchase, NOT part of any plan,
+   checked server-side by the Worker (see the block below).
 
    Access: Clinic Guides are Clinic content — Silver, Platinum and the admin
    account. The free samples below open to everyone, signed in or not, on any
@@ -48,6 +51,227 @@
         var b = document.createElement('span'); b.className = 'cg-free'; b.textContent = 'Free';
         c.appendChild(b);
       });
+      /* ---- Handbook shop (div.cg-handbook[data-cg-product], e.g. the Lab Results Handbook) ----
+         Handbooks are SEPARATE one-off purchases (£20 each via PayPal). They are
+         NOT part of any plan: Silver/Platinum do not include them. The Worker
+         (backend/worker.js, "Handbook shop") sets the price, creates and captures
+         the PayPal order, records the purchase and streams the PDF from a private
+         R2 bucket to its buyer only. States of .cg-hb-buy:
+           signed out             -> "Sign in to buy" (opens the site's sign-in box)
+           signed in, not bought  -> PayPal button (JS SDK, intent=capture, GBP):
+                                     createOrder -> POST /api/shop/order,
+                                     onApprove   -> POST /api/shop/capture -> Download
+           bought (or admin)      -> "Download PDF" (GET /api/download/<id>)
+           no workerUrl / paypalClientId, an old Worker without the shop, or the
+           PayPal SDK blocked     -> a plain message + an email fallback.
+         The public file in data-cg-local is NEVER the sales channel: it is used
+         only on previews/local copies and for the admin account (until it is
+         deleted from the site, backend/README.md, "Handbook shop"). */
+      var SUPPORT = 'bassamomda@gmail.com';
+      var LIVE = HOSTS.indexOf(location.hostname) !== -1;
+      function token(){ try { return localStorage.getItem('rgp.auth.token.v1'); } catch(e){ return null; } }
+      function cachedUser(){
+        var u = null;
+        try {
+          if (token()) {
+            u = JSON.parse(localStorage.getItem('rgp.auth.me.v1') || 'null');
+            u = u && (u.user || u);
+          }
+        } catch(e){ u = null; }
+        return u;
+      }
+      function api(){ var c = window.RGP_CONFIG || {}; return c.workerUrl ? String(c.workerUrl).replace(/\/$/, '') : ''; }
+      function call(method, p, body){
+        var h = { 'Authorization': 'Bearer ' + (token() || '') };
+        if (body) h['Content-Type'] = 'application/json';
+        return fetch(api() + p, { method: method, headers: h, body: body ? JSON.stringify(body) : undefined, cache: 'no-store' })
+          .then(function(res){ return res.json().catch(function(){ return {}; }).then(function(j){ j = j || {}; j._status = res.status; return j; }); });
+      }
+      function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+      function mailto(title){ return 'mailto:' + SUPPORT + '?subject=' + encodeURIComponent(title + ' (£20)'); }
+      function localOK(){ var u = cachedUser(); return !LIVE || !!(u && u.admin); }
+
+      /* PayPal JS SDK: loaded once, only when a buy button is needed. */
+      var sdkP = null;
+      function loadSdk(){
+        if (window.paypal && window.paypal.Buttons) return Promise.resolve(window.paypal);
+        if (sdkP) return sdkP;
+        var cfg = window.RGP_CONFIG || {};
+        sdkP = new Promise(function(resolve, reject){
+          var t = setTimeout(function(){ reject(new Error('timeout')); }, 12000);  // blocked silently (NHS networks, blockers)
+          var s = document.createElement('script');
+          s.src = 'https://www.paypal.com/sdk/js?client-id=' + encodeURIComponent(cfg.paypalClientId) +
+                  '&currency=GBP&intent=capture&components=buttons';
+          s.onload = function(){ clearTimeout(t); (window.paypal && window.paypal.Buttons) ? resolve(window.paypal) : reject(new Error('no-buttons')); };
+          s.onerror = function(){ clearTimeout(t); reject(new Error('blocked')); };
+          document.head.appendChild(s);
+        });
+        sdkP.catch(function(){ sdkP = null; });                               // allow a retry on the next render
+        return sdkP;
+      }
+
+      function setupShop(card){
+        var id = card.getAttribute('data-cg-product');
+        var title = card.getAttribute('data-cg-title') || 'Handbook';
+        var local = card.getAttribute('data-cg-local') || '';
+        var box = card.querySelector('.cg-hb-buy');
+        var noteEl = card.querySelector('.cg-hb-note');
+        if (!id || !box) return;
+        var seenTok = token(), poll = null;
+
+        function note(msg, html){
+          if (!noteEl) return;
+          if (!msg){ noteEl.hidden = true; noteEl.textContent = ''; return; }
+          noteEl.textContent = msg;
+          if (html) noteEl.appendChild(html);
+          noteEl.hidden = false;
+        }
+        function clear(){ box.innerHTML = ''; box.removeAttribute('data-state'); }
+        function emailLine(lead){
+          var p = el('p', 'cg-hb-msg', lead + ' ');
+          var a = el('a', null, 'Email ' + SUPPORT); a.href = mailto(title);
+          p.appendChild(a); p.appendChild(document.createTextNode(' and I’ll send you a payment link.'));
+          return p;
+        }
+        function localLink(){
+          if (!local || !localOK()) return null;
+          var p = el('p', 'cg-hb-small', '');
+          var a = el('a', null, LIVE ? 'Admin copy (site file)' : 'Preview copy (local file)');
+          a.href = local; a.setAttribute('download', ''); a.rel = 'nofollow';
+          p.appendChild(a); return p;
+        }
+        function watchSignIn(){
+          if (poll) return;
+          poll = setInterval(function(){
+            var t = token();
+            if (t !== seenTok){ seenTok = t; if (t){ clearInterval(poll); poll = null; render(); } }
+          }, 1000);
+        }
+
+        function stateSoon(why){
+          clear(); box.setAttribute('data-state', 'soon');
+          var b = el('a', 'cg-btn pri cg-hb-btn', 'Coming soon — £20'); b.href = mailto(title);
+          box.appendChild(b);
+          box.appendChild(emailLine(why || 'Online checkout for the handbook opens soon.'));
+          var l = localLink(); if (l) box.appendChild(l);
+        }
+        function stateSignIn(){
+          clear(); box.setAttribute('data-state', 'signin');
+          var b = el('button', 'cg-btn pri cg-hb-btn', 'Sign in to buy · £20'); b.type = 'button';
+          b.addEventListener('click', function(){
+            if (window.RGP_openAuth) window.RGP_openAuth('signin');
+            else location.href = '../index.html';
+          });
+          box.appendChild(b);
+          var p = el('p', 'cg-hb-small', 'A free account links the purchase to you, so you can download it again on any device. ');
+          var a = el('a', null, 'Create one'); a.href = '#';
+          a.addEventListener('click', function(e){ e.preventDefault(); if (window.RGP_openAuth) window.RGP_openAuth('signup'); });
+          p.appendChild(a); box.appendChild(p);
+          watchSignIn();
+        }
+        function stateOwned(fresh){
+          clear(); box.setAttribute('data-state', 'owned');
+          var b = el('button', 'cg-btn pri cg-hb-btn', null); b.type = 'button';
+          b.appendChild(document.createTextNode('Download PDF '));
+          b.appendChild(el('span', 'cg-hb-size', '2.6 MB'));
+          b.addEventListener('click', function(){ download(b); });
+          box.appendChild(b);
+          box.appendChild(el('p', 'cg-hb-small', fresh ? '✓ Purchased — thank you. Download it any time from this page.' : '✓ You own this handbook.'));
+        }
+        function stateBuy(){
+          clear(); box.setAttribute('data-state', 'buy');
+          var host = el('div', 'cg-hb-pp'); box.appendChild(host);
+          var wait = el('p', 'cg-hb-small', 'Loading secure checkout…'); box.appendChild(wait);
+          loadSdk().then(function(pp){
+            var btns = pp.Buttons({
+              style: { layout: 'vertical', shape: 'pill', label: 'pay', height: 40 },
+              createOrder: function(){
+                note('');
+                return call('POST', '/api/shop/order', { product: id }).then(function(j){
+                  if (j.owned){ stateOwned(false); throw new Error('owned'); }
+                  if (j._status === 401){ stateSignIn(); throw new Error('signin'); }
+                  if (!j.orderId) throw new Error(j.error || 'order_failed');
+                  return j.orderId;
+                });
+              },
+              onApprove: function(data, actions){
+                return call('POST', '/api/shop/capture', { orderId: data.orderID }).then(function(j){
+                  if (j.ok){ note(''); stateOwned(true); return; }
+                  if (j.error === 'instrument_declined' && actions && actions.restart) return actions.restart();
+                  if (j.pending){ note(j.message || 'PayPal is still processing the payment. Your download unlocks as soon as it clears.'); return; }
+                  note((j.message || 'The payment didn’t go through.') + ' ');
+                });
+              },
+              onCancel: function(){ note('Payment cancelled — nothing was charged.'); },
+              onError: function(err){
+                var m = String((err && err.message) || err || '');
+                if (m === 'owned' || m === 'signin') return;
+                note('That didn’t go through. Please try again, or email ' + SUPPORT + ' and I’ll sort it out.');
+              }
+            });
+            var done = btns.render(host);
+            if (done && typeof done.then === 'function'){
+              done.then(function(){ wait.remove(); }).catch(function(){ wait.remove(); sdkFail(); });
+            } else wait.remove();
+          }).catch(function(){ sdkFail(); });
+        }
+        function sdkFail(){
+          clear(); box.setAttribute('data-state', 'blocked');
+          var b = el('a', 'cg-btn pri cg-hb-btn', 'Buy by email · £20'); b.href = mailto(title);
+          box.appendChild(b);
+          box.appendChild(emailLine('Card checkout couldn’t load (some work networks block it). Try a personal phone or Wi-Fi — or'));
+        }
+
+        function saveBlob(blob, name){
+          var href = URL.createObjectURL(blob);
+          var s = document.createElement('a');
+          s.href = href; s.download = name; s.style.display = 'none';
+          document.body.appendChild(s); s.click(); s.remove();
+          setTimeout(function(){ URL.revokeObjectURL(href); }, 60000);
+        }
+        function download(b){
+          if (b.getAttribute('aria-busy') === 'true') return;
+          var label = b.firstChild, was = label.nodeValue;
+          b.setAttribute('aria-busy', 'true'); label.nodeValue = 'Preparing… ';
+          function done(){ b.removeAttribute('aria-busy'); label.nodeValue = was; }
+          fetch(api() + '/api/download/' + encodeURIComponent(id), {
+            method: 'GET', headers: { 'Authorization': 'Bearer ' + (token() || '') }, cache: 'no-store'
+          }).then(function(res){
+            if (res.ok) return res.blob().then(function(blob){
+              done();
+              var m = (res.headers.get('Content-Disposition') || '').match(/filename="?([^";]+)"?/i);
+              saveBlob(blob, (m && m[1]) || 'handbook.pdf');
+            });
+            return res.json().catch(function(){ return {}; }).then(function(j){
+              done();
+              if (res.status === 401){ stateSignIn(); return; }
+              if (res.status === 402){ render(); return; }
+              if (localOK() && local && (res.status === 503 || res.status === 404)){ location.href = local; return; }
+              note('The download didn’t start. Please try again in a minute, or email ' + SUPPORT + '.');
+            });
+          }).catch(function(){ done(); note('Couldn’t reach the server. Check your connection and try again.'); });
+        }
+
+        function render(){
+          var cfg = window.RGP_CONFIG || {};
+          if (!cfg.workerUrl || !cfg.paypalClientId){ stateSoon(); return; }
+          seenTok = token();
+          if (!seenTok){ stateSignIn(); return; }
+          box.setAttribute('aria-busy', 'true');
+          call('GET', '/api/shop/purchases').then(function(j){
+            box.removeAttribute('aria-busy');
+            if (j._status === 401){ stateSignIn(); return; }
+            if (j._status !== 200 || !Array.isArray(j.purchases)){ stateSoon(); return; }   // old Worker without the shop
+            if (j.purchases.indexOf(id) !== -1 || j.admin) stateOwned(false);
+            else stateBuy();
+          }).catch(function(){
+            box.removeAttribute('aria-busy');
+            stateSoon('Couldn’t reach the shop just now.');
+          });
+        }
+        render();
+      }
+      document.querySelectorAll('.cg-handbook[data-cg-product]').forEach(setupShop);
     });
     return;
   }

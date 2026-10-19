@@ -7535,7 +7535,7 @@
     "who": "dr",
     "text": "Then here’s what I suggest, and tell me what fits. A tablet called metformin, the slow-release kind, starting now; once it’s settled, a second tablet that also protects the heart and kidneys. A cholesterol check with your heart-risk score, and a home blood pressure monitor for a week, because today’s reading is borderline.",
     "dom": "cm",
-    "why": "Dual first-line therapy introduced stepwise: MR metformin, then the SGLT2 inhibitor within weeks (NICE NG28 2026); QRISK3 and BP confirmation"
+    "why": "Dual first-line therapy introduced stepwise: MR metformin, then the SGLT2 inhibitor once metformin is tolerated (NICE NG28 2026); QRISK3 and BP confirmation"
    },
    {
     "who": "pt",
@@ -7782,7 +7782,7 @@
     "reflectIce": "“You’ve told me you’ve made your peace with your dad’s ending. I don’t think it’s yours. And your licence is safe with these tablets.”",
     "psychosocial": "Build every step around the van: one chosen swap (water for energy drinks), walking at drops, appointments he can make; smoking support when he’s ready.",
     "sharedPlan": [
-     "Dual first-line (NICE NG28, February 2026): MR metformin now, SGLT2 inhibitor added within weeks once metformin is tolerated; structured education",
+     "Dual first-line (NICE NG28, February 2026): MR metformin now, SGLT2 inhibitor added once metformin is tolerated; structured education",
      "QRISK3 and statin discussion (NICE NG238); home BP readings (NICE NG136); smoking cessation referral (NICE NG209)",
      "Path to Remission Programme referral; eye screening and foot check booked (NICE NG19)"
     ],
@@ -8378,7 +8378,7 @@
     },
     {
      "h": "Pregnancy planning",
-     "t": "NICE NG145 does not cover pregnancy. RCOG 2025: a TSH of 0.5–2.5 mU/L is a reasonable target for women with hypothyroidism on levothyroxine; on a positive pregnancy test, increase the dose by about 25–30% (or double the dose on two days each week) and check thyroid function promptly. Untreated hypothyroidism reduces fertility and harms pregnancy, so finding it is good news."
+     "t": "NICE NG145 does not cover pregnancy. RCOG 2025: for women with hypothyroidism on levothyroxine, aim for a TSH ≤2.5 mU/L pre-conception, then within the trimester-specific reference range; on a positive pregnancy test, increase the dose by about 25–30% (double the dose on two days each week, or increase by 25 micrograms/day if the pre-pregnancy dose is 100 micrograms/day or less, or 50 micrograms/day if more than 100) and check thyroid function promptly. Untreated hypothyroidism reduces fertility and harms pregnancy, so finding it is good news."
     },
     {
      "h": "Pre-conception care",
@@ -8735,7 +8735,7 @@
     "psychosocial": "Encourage her to share the worry with her husband; offer fertility assessment for both partners; check mood at review.",
     "sharedPlan": [
      "Levothyroxine 1.6 micrograms/kg/day rounded to 25 micrograms (NICE NG145), taken fasting, apart from iron and calcium",
-     "Folic acid 400 micrograms daily (NICE NG247); positive test: increase dose 20–30% and urgent TFTs (RCOG 2025)",
+     "Folic acid 400 micrograms daily (NICE NG247); positive test: increase dose 25–30% (e.g. two extra doses a week) and urgent TFTs (RCOG 2025)",
      "Fertility assessment and investigation for both partners (NICE NG257)"
     ],
     "safetyNet": [
@@ -8837,7 +8837,7 @@
     },
     {
      "h": "Confirm, then consider treatment",
-     "t": "RCOG GTG 76 (2025): for mild subclinical hypothyroidism found in the first trimester, repeat TFTs within 3 weeks, because many results normalise. If it is confirmed, levothyroxine can be considered, especially when TPO antibodies are positive, aiming for TSH 2.5 mU/L or less. TSH above 10 mU/L in pregnancy is a clear indication to treat."
+     "t": "RCOG GTG 76 (2025): for mild subclinical hypothyroidism found in the first trimester, repeat TFTs within 3 weeks, because many results normalise. If it is confirmed, levothyroxine can be considered, especially when TPO antibodies are positive, aiming for TSH within the trimester-specific reference range. TSH above 10 mU/L in pregnancy is a clear indication to treat."
     },
     {
      "h": "Monitoring",
@@ -9252,7 +9252,7 @@
     "psychosocial": "Encourage her to share the fear with her husband; mood screen (Whooley and GAD-2); link to the midwife and Miscarriage Association; a named person to call.",
     "sharedPlan": [
      "Repeat TFTs this week; same-day advice from the antenatal endocrine or obstetric medicine team (RCOG GTG 76, 2025)",
-     "Levothyroxine if confirmed, aiming for TSH 2.5 mU/L or less; TFTs every 4–6 weeks to 20 weeks; take apart from the iron-containing vitamin",
+     "Levothyroxine if confirmed, aiming for TSH within the trimester-specific reference range; TFTs every 4–6 weeks to 20 weeks; take apart from the iron-containing vitamin",
      "Early pregnancy support and referral for assessment of the previous losses (RCOG GTG 17, 2023)"
     ],
     "safetyNet": [

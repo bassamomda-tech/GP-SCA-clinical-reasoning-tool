@@ -7716,7 +7716,7 @@
     "phase": "Shared plan",
     "clock": "9–11 min",
     "who": "dr",
-    "text": "So I’m referring you today on the urgent pathway to the ear, nose and throat team, to be seen within two weeks. They’ll look at your voice box with a thin camera through the nose, which takes a few minutes in clinic, and examine the lump. I’d also like you to come in this week so I can examine your neck, mouth and ears, and I’ll arrange a chest X-ray.",
+    "text": "So I’m referring you today on the urgent suspected cancer pathway to the ear, nose and throat team — you should be seen quickly and get an answer within 4 weeks (28 days). They’ll look at your voice box with a thin camera through the nose, which takes a few minutes in clinic, and examine the lump. I’d also like you to come in this week so I can examine your neck, mouth and ears, and I’ll arrange a chest X-ray.",
     "dom": "dg",
     "why": "Suspected cancer referral, examination and chest X-ray"
    },
@@ -7993,7 +7993,7 @@
      "dom": "cm",
      "fail": "Prescribing antibiotics or a throat spray and reviewing in two weeks.",
      "why": "\"Management not in line with current UK best practice.\" NICE NG12 refers persistent unexplained hoarseness at 45 and over on the suspected cancer pathway.",
-     "fix": "\"A spray won’t fix this. I’m referring you today to be seen within two weeks.\""
+     "fix": "\"A spray won’t fix this. I’m referring you today on the suspected cancer pathway.\""
     },
     {
      "dom": "dg",
@@ -9703,7 +9703,7 @@
     "phase": "Shared management",
     "clock": "8–11 min",
     "who": "dr",
-    "text": "Here’s the plan. I’m sending an urgent referral today to the head and neck specialists, which means an appointment within two weeks. They’ll pass a thin camera into the nose to look at the back of it and examine your neck, and they may arrange a scan or a sample.",
+    "text": "Here’s the plan. I’m sending an urgent referral today to the head and neck specialists, which means you should be seen quickly, aiming for an answer within 28 days. They’ll pass a thin camera into the nose to look at the back of it and examine your neck, and they may arrange a scan or a sample.",
     "dom": "cm",
     "why": "Makes the suspected cancer pathway referral and explains nasendoscopy"
    },

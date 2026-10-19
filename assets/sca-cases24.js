@@ -3,14 +3,14 @@
    Four ORIGINAL cases. Hidden agenda + full ICE in every case.
    NG12 suspected cancer pathways stated explicitly where they map
    (suspected melanoma — weighted 7-point checklist >=3;
-   unexplained oral ulceration >3 weeks -> oral cancer 2WW).
+   unexplained oral ulceration >3 weeks -> oral cancer suspected cancer pathway).
    Emergencies: acute red eye (angle-closure/keratitis); sudden SNHL.
    Pushes into SCA_CASES + SCA_EXTRAS. Load AFTER sca-cases23.js.
    ============================================================ */
 
 (function(){
 
-  /* ============ 89. VIDEO — Changing mole (melanoma 2WW) ============ */
+  /* ============ 89. VIDEO — Changing mole (melanoma suspected cancer pathway) ============ */
   const c89 = {
     id:'melanoma-2ww', title:'"My wife nagged me to get this mole looked at"', type:'video', duration:12,
     meta:{ age:54, sex:'M', setting:'Video consultation — a changing pigmented lesion on the back.', system:'Dermatology / Suspected melanoma', checked:'October 2026' },
@@ -241,7 +241,7 @@
     }
   };
 
-  /* ============ 92. VIDEO — Persistent mouth ulcer (oral cancer 2WW) ============ */
+  /* ============ 92. VIDEO — Persistent mouth ulcer (oral cancer suspected cancer pathway) ============ */
   const c92 = {
     id:'mouth-ulcer-2ww', title:'"It\u2019s just an ulcer from my denture rubbing"', type:'video', duration:12,
     meta:{ age:63, sex:'M', setting:'Video consultation — a mouth ulcer that won\u2019t heal.', system:'ENT / Oral cancer (suspected cancer pathway)', checked:'October 2026' },
@@ -270,12 +270,12 @@
       { dom:'dg', text:'Elicits and weights the risk factors (smoking, alcohol, betel/areca-nut/paan) and addresses them \u2014 recognising betel as an independent carcinogen \u2014 and recognises the denture as a distractor (a denture ulcer should heal in ~2\u20133 weeks once adjusted)' },
       { dom:'ro',   text:'Hears the denial as fear, surfaces the brother\u2019s cancer gently, and treats the wife\u2019s prompting as the reliable signal rather than colluding with "just the denture"; handles betel-chewing without cultural judgement' },
       { dom:'ro',   text:'Balances honesty with reassurance (many mouth ulcers are benign, but a non-healing one needs urgent checking), and addresses the fear of treatment/disfigurement with compassion' },
-      { dom:'cm',    text:'Safety-nets and follows up: explains the suspected cancer pathway timeframe (appointment within 2 weeks; NHS England Faster Diagnosis Standard: cancer diagnosed or ruled out within 28 days of referral) and what to expect (specialist examination, likely biopsy), what would warrant sooner review, smoking/alcohol/betel cessation support, ensures he attends, documents, and tracks the result' },
+      { dom:'cm',    text:'Safety-nets and follows up: explains the suspected cancer pathway timeframe (NHS England Faster Diagnosis Standard: cancer diagnosed or ruled out within 28 days of referral) and what to expect (specialist examination, likely biopsy), what would warrant sooner review, smoking/alcohol/betel cessation support, ensures he attends, documents, and tracks the result' },
     ],
     worked:[
       { lbl:'Refuse the denture story', txt:'"I\u2019m really glad your wife got you to ring. I\u2019m not going to just send a gel, though, and I\u2019ll tell you why honestly. A denture rub does cause ulcers \u2014 but those heal within a couple of weeks once we ease the denture. An ulcer that\u2019s been there six weeks, isn\u2019t healing, has firm raised edges and bleeds, especially with a lump in the neck \u2014 that\u2019s a different situation and we have to check it properly."' },
       { lbl:'Examine, don\u2019t guess', txt:'"I need to see and feel it in person, not just on a photo \u2014 I\u2019ll look at the whole mouth, feel the ulcer itself, and feel that lump in your neck. A photo\u2019s a start, but feeling whether something\u2019s firm is exactly the bit that matters here. The neck lump isn\u2019t something I want to write off as \u2018just a gland\u2019 either."' },
-      { lbl:'Name the pathway',      txt:"\"Based on this, you meet the criteria for an urgent referral to the mouth/throat specialists — an appointment within two weeks, aiming for an answer within 28 days — who’ll examine you and almost certainly take a small sample. That’s what the NICE suspected cancer guideline, NICE NG12, says to consider for a mouth ulcer that hasn’t healed in three weeks, and even more so with the neck lump. It is NOT me saying it’s cancer; it’s making sure, quickly.\"" },
+      { lbl:'Name the pathway',      txt:"\"Based on this, you meet the criteria for an urgent referral to the mouth/throat specialists — seen quickly, aiming for an answer within 28 days — who’ll examine you and almost certainly take a small sample. That’s what the NICE suspected cancer guideline, NICE NG12, says to consider for a mouth ulcer that hasn’t healed in three weeks, and even more so with the neck lump. It is NOT me saying it’s cancer; it’s making sure, quickly.\"" },
       { lbl:'Surface the real fear', txt:'"Can I gently ask \u2014 is there a reason this has worried you more than you\u2019re letting on? \u2026 Your brother, and what he went through. I\u2019m so sorry. That makes total sense of wanting it to be just the denture. But that fear is exactly why we look now, early \u2014 because if anything IS there, catching it early changes everything about how treatable and how manageable it is."' },
       { lbl:'Risk factors, no shame',txt:'"You mentioned smoking, a daily drink, and the paan. No judgement \u2014 but those together are the main things that irritate the mouth lining, and the betel especially. Stopping or cutting down really matters now, and I\u2019ll help you with all of it, gently, whenever you\u2019re ready. Today\u2019s priority is getting you seen."' },
       { lbl:'Safety-net',            txt:'"So: I\u2019ll examine you and get the urgent referral in today. If it bleeds a lot, you struggle to swallow or speak, or the lump grows, come back sooner. I\u2019ll note exactly how things look and follow up the result with you. You came in for a gel; what I\u2019m doing is making sure that if there\u2019s something to find, we find it early \u2014 that\u2019s what gives you the best outcome."' },

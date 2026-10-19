@@ -105,7 +105,7 @@
     hpc:'[X] history of a changing [pigmented] skin lesion. Changes: [size, shape, colour, itch, bleeding, crusting]. Site [X], duration [X]. Sun exposure/sunburn history, skin type, FH/PH skin cancer [X]. ICE: worried about [skin cancer].',
     exam:'Lesion site [X], [size] mm, [asymmetry, irregular border, colour variation, diameter >7mm, evolution]. 7-point weighted checklist score [X]. [Dermatoscopy if available.] Regional nodes [not enlarged]. [Photograph for record.]',
     ix:'Clinical assessment ± dermoscopy using the weighted 7-point checklist; photograph for monitoring. Do not biopsy in primary care if melanoma suspected — refer on the suspected cancer pathway.',
-    safetynet:'Return promptly if the lesion changes further — grows, changes colour or shape, itches, bleeds or crusts. If a suspected cancer pathway referral is made (appointment within 2 weeks), please attend the appointment; it is to check the lesion quickly, not because cancer is confirmed.'
+    safetynet:'Return promptly if the lesion changes further — grows, changes colour or shape, itches, bleeds or crusts. If a suspected cancer pathway referral is made, please attend the appointment promptly; it is to check the lesion quickly, not because cancer is confirmed.'
   });
 
   add(['joint pain'],{

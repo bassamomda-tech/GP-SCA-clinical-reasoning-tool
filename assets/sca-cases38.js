@@ -9,7 +9,7 @@
 
 (function(){
 
-  /* ============ 145. VIDEO — Persistent hoarseness: the laryngeal-cancer 2WW ============ */
+  /* ============ 145. VIDEO — Persistent hoarseness: the laryngeal-cancer suspected cancer pathway ============ */
   const c145 = {
     id:'persistent-hoarseness', title:'"My voice has gone husky \u2014 it\u2019s just a smoker\u2019s throat"', type:'video', duration:12,
     meta:{ age:63, sex:'M', setting:'Video consultation \u2014 hoarseness for weeks.', system:'ENT / Laryngeal cancer', checked:'October 2026' },
@@ -79,7 +79,7 @@
       { lbl:'Reframe \"smoker\u2019s throat\"', txt:'"I\u2019m glad you came. Here\u2019s the important rule though: a voice that stays husky for more than about three weeks — especially over the age of 45, and more so in someone who smokes and drinks — we never just put down to a smoker\u2019s throat or an old cold. It needs looking at properly, because occasionally a persistent hoarse voice is the first sign of something in the voice box we\u2019d want to catch early. So a spray isn\u2019t the answer here."' },
       { lbl:'Elicit the red flags', txt:'"Can I ask a few things? Any ache in your throat or one ear? Any trouble swallowing? And \u2014 have you noticed any lumps in your neck? \u2026 You have, on one side. Thank you for telling me \u2014 that\u2019s important, and it\u2019s exactly why I want this checked rather than treated blind."' },
       { lbl:'Name it honestly + reassure', txt:'"I want to be straight with you: a husky voice this long, with that neck lump, in a smoker, is something I need to refer urgently to rule out a cancer of the voice box or throat. Before that frightens you \u2014 the genuinely reassuring part is that caught early, these are very treatable, often keeping your voice. Getting seen now is how we keep it simple."' },
-      { lbl:'The urgent suspected cancer pathway referral',     txt:'"So I’m referring you urgently to the ear-nose-throat specialists on the suspected cancer pathway — usually seen within about two weeks. I’d also like to see you in person to check your neck and throat, but that won’t hold up the referral. They\u2019ll look at your voice box with a tiny camera and check your neck. That\u2019s the right, safe step, and it\u2019s why antibiotics wouldn\u2019t have done anything."' },
+      { lbl:'The urgent suspected cancer pathway referral',     txt:'"So I’m referring you urgently to the ear-nose-throat specialists on the suspected cancer pathway — you should be seen quickly and get an answer within 4 weeks (28 days). I’d also like to see you in person to check your neck and throat, but that won’t hold up the referral. They\u2019ll look at your voice box with a tiny camera and check your neck. That\u2019s the right, safe step, and it\u2019s why antibiotics wouldn\u2019t have done anything."' },
       { lbl:'Smoking + alcohol, supportively', txt:'"I\u2019m not going to lecture you behind your own bar \u2014 but the smoking and the drink are the two biggest things behind throat problems, and cutting them is the best thing you could do for your voice AND your recovery. When you\u2019re ready, I\u2019ll help you with both, properly. No judgement."' },
       { lbl:'Safety-net',           txt:'"If your swallowing gets worse, the lump grows, or you get any trouble breathing, tell us sooner. I\u2019ll get the urgent referral done and follow it up with you. You came in for a spray for your voice; what you actually needed was to get this looked at properly \u2014 and most likely sorted while it\u2019s early."' },
     ],

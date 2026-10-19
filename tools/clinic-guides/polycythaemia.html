@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="polycythaemia">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raised haematocrit in adults — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/polycythaemia.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/polycythaemia.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · lab results series</div>
+      <h1>Raised haematocrit in adults <small>CLINIC GUIDE</small></h1>
+      <div class="scope">Interpreting a high Hb or haematocrit (erythrocytosis) in adults 18+. Not for neonates, children, pregnancy (joint specialist care) or established PV care, which haematology leads.</div>
+    </div>
+    <div class="meta"><b>BSH</b> PV and erythrocytosis guidelines 2019<br>NICE <b>TA921</b> · NG158 · NG209<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full pathway: gpreasoning.uk/tools/algorithms/polycythaemia.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Interpret <span>is it dangerous? → is it real and persistent? → primary or secondary</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act today<small>BSH 2019 · NG158</small></h2><div class="body">
+    <table>
+      <tr><th>Tier</th><th>Result + picture</th><th>Action</th></tr>
+      <tr><td><b>999</b></td><td>Raised Hct with stroke or focal neurology, confusion, seizure, chest pain or significant breathlessness (ACS, PE), or severe abdominal pain with ascites (Budd–Chiari)</td><td>Emergency pathway</td></tr>
+      <tr><td><b>Same day</b></td><td>Hct <b>≥0.60 (men) / ≥0.56 (women)</b> with headache, visual disturbance or dizziness (hyperviscosity), thrombosis, bleeding, pregnancy or other major count abnormality · suspected DVT</td><td>Same-day specialist discussion; same-day DVT assessment</td></tr>
+      <tr><td><b>Prompt</b></td><td>Hct ≥0.60 / ≥0.56 in a well patient</td><td>Prompt clinical review and haematology advice; not an automatic emergency</td></tr>
+      <tr><td><b>Urgent</b></td><td>JAK2 positive · erythrocytosis with splenomegaly, high platelets or high WCC · unusual-site thrombosis</td><td>Urgent haematology referral</td></tr>
+    </table>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Is it real and persistent?<small>BSH 2019</small></h2><div class="body">
+        <table>
+          <tr><td><b>Single high result</b></td><td>Repeat a <b>venous</b> FBC to confirm persistence (interval per local pathway); review Hb, Hct, WCC, platelets, MCV and film</td></tr>
+          <tr><td><b>Dehydration, acute illness</b></td><td>Low plasma volume: repeat when well and hydrated</td></tr>
+          <tr><td><b>Diuretics</b></td><td>Relative erythrocytosis: review the need</td></tr>
+          <tr><td><b>Smoking, CO exposure</b></td><td>Carboxyhaemoglobin raises Hb and makes pulse oximetry misleading: consider a carboxyhaemoglobin level</td></tr>
+          <tr><td><b>Testosterone, anabolic steroids, EPO</b></td><td>Drug-driven: ask directly</td></tr>
+          <tr><td><b>Altitude</b></td><td>Hct is higher at altitude</td></tr>
+        </table>
+        <p class="key">Haematocrit is better than Hb for identifying raised red-cell mass. Persistent erythrocytosis should be investigated, not repeatedly re-tested.</p>
+      </div></div>
+
+      <div class="blk green"><h2><span class="n">2</span>Severity bands (venous Hct)<small>BSH 2019</small></h2><div class="body">
+        <table>
+          <tr><th>Result</th><th>Means</th><th>Action and timing</th></tr>
+          <tr><td>Single raised Hct</td><td>Possible erythrocytosis</td><td>Repeat venous FBC after correcting reversible factors</td></tr>
+          <tr><td>Persistent Hct <b>&gt;0.52 men</b> / <b>&gt;0.48 women</b></td><td>Erythrocytosis: investigate (not a diagnosis of PV)</td><td><b>JAK2 V617F + serum EPO</b> per local pathway; look for secondary causes</td></tr>
+          <tr><td>Hct <b>≥0.60 men</b> / <b>≥0.56 women</b></td><td>True erythrocytosis can be assumed; higher viscosity and thrombosis risk</td><td>Prompt clinical assessment; same day if symptoms, thrombosis or pregnancy</td></tr>
+          <tr><td>+ high platelets, WCC or splenomegaly</td><td>Suggests myeloproliferative neoplasm</td><td>Urgent haematology</td></tr>
+        </table>
+        <table style="margin-top:3px">
+          <tr><th>JAK2 and EPO</th><th>Means</th></tr>
+          <tr><td><b>JAK2 positive</b></td><td>Clonal MPN likely (present in about 95% of PV): urgent haematology</td></tr>
+          <tr><td>JAK2 negative, <b>low EPO</b></td><td>Still possible PV: haematology (exon 12 is specialist)</td></tr>
+          <tr><td>JAK2 negative, raised EPO</td><td>Supports secondary cause; find it</td></tr>
+        </table>
+      </div></div>
+
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">3</span>Examination that changes the plan<small>BSH 2019</small></h2><div class="body">
+    <table>
+      <tr><td><b>Spleen</b></td><td>Palpable → favours PV or another MPN: urgent haematology</td><td><b>Cyanosis, clubbing, crackles</b></td><td>Hypoxic lung or heart disease</td></tr>
+      <tr><td><b>Plethora, scratch marks</b></td><td>Supportive of PV, never diagnostic</td><td><b>BP, renal bruit, palpable kidneys</b></td><td>Renal cause; vascular risk</td></tr>
+      <tr><td><b>Calf swelling, focal signs</b></td><td>Thrombosis: same day or 999</td><td><b>Hepatomegaly, ascites</b></td><td>Budd–Chiari: emergency</td></tr>
+    </table>
+  </div></div>
+
+      <div class="blk blue"><h2><span class="n">4</span>Primary or secondary?<small>clue → think → first test</small></h2><div class="body">
+        <table>
+          <tr><th>Clue</th><th>Think</th><th>First test</th></tr>
+          <tr><td>Itch after bathing, splenomegaly, high platelets or WCC, gout, erythromelalgia</td><td><b>Polycythaemia vera</b></td><td>JAK2 V617F + EPO</td></tr>
+          <tr><td>COPD, cyanosis, low SpO₂</td><td><b>Hypoxic lung disease</b></td><td>SpO₂, spirometry</td></tr>
+          <tr><td>Snoring, apnoeas, sleepiness</td><td><b>Sleep apnoea</b></td><td>Sleep pathway</td></tr>
+          <tr><td>Heavy smoker</td><td><b>Smoking, CO</b></td><td>Carboxyhaemoglobin</td></tr>
+          <tr><td>Testosterone or steroid use</td><td><b>Drug-induced</b></td><td>Drug history</td></tr>
+          <tr><td>Kidneys palpable, haematuria, transplant</td><td><b>Renal</b> (cysts, RCC)</td><td>Urinalysis; renal ultrasound</td></tr>
+          <tr><td>Obese, hypertensive, on diuretics</td><td><b>Relative</b></td><td>Repeat after addressing factors</td></tr>
+          <tr><td>Young or lifelong, family history</td><td><b>Congenital</b></td><td>Haematology advice</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">5</span>Work-up checklist<small>BSH 2019</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>Repeat venous FBC</b> + film</li>
+          <li><b>JAK2 V617F</b> + <b>serum EPO</b></li>
+          <li>U&amp;E, LFTs, calcium</li>
+          <li><b>Ferritin</b>: iron deficiency can mask PV</li>
+          <li><b>SpO₂</b> at rest; spirometry if COPD suspected</li>
+          <li><b>Carboxyhaemoglobin</b> in smokers or CO exposure</li>
+          <li>Urinalysis; renal ultrasound if indicated</li>
+          <li>Sleep assessment if OSA suspected</li>
+        </ul>
+        <p class="key" style="margin-top:3px">Normal daytime SpO₂ does not exclude nocturnal hypoxia. No routine CT, AFP or marrow in primary care.</p>
+      </div></div>
+
+    </div>
+
+  </div>
+
+  <div class="blk blue"><h2><span class="n">6</span>Reading the result in four steps<small>BSH 2019</small></h2><div class="body">
+    <div class="flow" style="--c:var(--blue)">
+      <div><b class="h">1 · Symptoms or clot?</b>Headache, visual change, chest pain, breathlessness, focal neurology, leg swelling → 999 or same day before anything else.</div>
+      <div><b class="h">2 · Real and persistent?</b>Repeat venous FBC after correcting dehydration, diuretics and smoking. Above 0.52 / 0.48 on repeat → investigate.</div>
+      <div><b class="h">3 · Clonal?</b>JAK2 with EPO. Positive JAK2, or high platelets, WCC or a spleen → urgent haematology.</div>
+      <div><b class="h">4 · Which secondary cause?</b>Lungs, sleep, smoking, testosterone, kidneys. Unexplained, young or lifelong → haematology advice.</div>
+    </div>
+  </div></div>
+
+<div class="foot"><span>Reasoning GP Clinic Guide · Raised haematocrit · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary. Use your laboratory's reference ranges.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Manage and refer <span>treat the cause → control the vascular risk → refer the clonal</span></div>
+
+  <div class="grid">
+    <div class="blk teal span"><h2><span class="n">7</span>Management by cause<small>BSH 2019 · NICE TA921 · NG209</small></h2><div class="body">
+      <table>
+        <tr><th>Cause</th><th>First line</th><th>Who leads, and the target</th></tr>
+        <tr><td><b>Polycythaemia vera</b> (confirmed)</td><td>Venesection to <b>Hct &lt;0.45</b> (men and women); <b>low-dose aspirin</b> unless contraindicated; cytoreduction (e.g. hydroxycarbamide, interferon) for high-risk disease (age, previous thrombosis) or poor control; ruxolitinib if hydroxycarbamide fails or is not tolerated (TA921)</td><td><b>Haematology-led.</b> GP prescribes hydroxycarbamide only under formal shared care. Do not start aspirin in suspected PV before specialist advice</td></tr>
+        <tr><td><b>Secondary</b> (hypoxia, OSA, drugs, renal)</td><td>Treat the cause: COPD care, sleep pathway and CPAP, stop smoking, review testosterone or steroids, renal or cardiac referral</td><td>Primary care if asymptomatic with a known cause. <b>No routine venesection</b>; no aspirin for the Hct alone. The PV target does not apply</td></tr>
+        <tr><td><b>Relative</b></td><td>Address hydration, diuretics, smoking, alcohol, weight; control BP and cardiovascular risk</td><td>Primary care; no venesection. Persistent and unexplained → JAK2/EPO or haematology advice</td></tr>
+        <tr><td><b>Smoking-related</b></td><td>Behavioural support plus varenicline, cytisinicline, combination NRT or a nicotine vape (NG209)</td><td>Quitting may lower the Hct</td></tr>
+      </table>
+    </div></div>
+
+    <div class="blk amber span"><h2><span class="n">8</span>Cardiovascular risk — always part of the plan<small>BSH 2019 · NG209</small></h2><div class="body">
+      <div class="flow" style="--c:var(--amber)">
+        <div><b class="h">Smoking</b>The biggest modifiable driver in both PV and secondary erythrocytosis. Offer support and medication at every contact.</div>
+        <div><b class="h">BP and lipids</b>Treat per NICE. QRISK does not include polycythaemia, so it may underestimate risk in PV.</div>
+        <div><b class="h">Weight and sleep</b>Weight loss can improve OSA and relative erythrocytosis; refer suspected OSA to the sleep pathway.</div>
+        <div><b class="h">Diuretics and fluids</b>Review diuretics; avoid dehydration, but no fixed fluid volume in heart failure, CKD or fluid restriction.</div>
+      </div>
+    </div></div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">9</span>Follow-up and monitoring checklist<small>BSH 2019</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Repeat Hct</b> after correcting dehydration, diuretics, smoking</li>
+          <li><b>JAK2 and EPO</b> results actioned; positive → urgent referral</li>
+          <li><b>PV target</b>: Hct <b>&lt;0.45</b> — set and monitored by haematology</li>
+          <li>Rising Hct, platelets or WCC on treatment → inform haematology</li>
+          <li>Hydroxycarbamide: FBC and hold thresholds per shared-care protocol only</li>
+          <li>Low ferritin after venesection is expected: <b>no iron</b> in PV without haematology advice</li>
+          <li>Annual: thrombosis, bleeding, spleen, itch, BP, lipids, smoking</li>
+          <li>Secondary: recheck Hct once the cause is treated; refer if rising or symptomatic</li>
+        </ul>
+      </div></div>
+
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">10</span>When and where to refer<small>BSH 2019</small></h2><div class="body">
+        <table>
+          <tr><td><b>999</b></td><td>Stroke, ACS, PE with instability, confusion or seizure, Budd–Chiari picture</td></tr>
+          <tr><td><b>Same-day haematology</b></td><td>Hyperviscosity symptoms; Hct ≥0.60/≥0.56 with symptoms, thrombosis or pregnancy; suspected leukaemia or transformation; pregnancy with PV</td></tr>
+          <tr><td><b>Urgent haematology</b></td><td>JAK2 positive · JAK2 negative with low EPO · persistent unexplained erythrocytosis · with splenomegaly, high platelets or WCC · with thrombosis · young or lifelong · B symptoms</td></tr>
+          <tr><td><b>Advice and guidance</b></td><td>Borderline persistent Hct with normal EPO and negative JAK2; family history</td></tr>
+          <tr><td><b>Respiratory, renal</b></td><td>Hypoxic lung disease or OSA; polycystic kidneys, transplant, renal mass</td></tr>
+        </table>
+      </div></div>
+
+    </div>
+
+    <div class="blk red span"><h2><span class="n">11</span>Special situations in known or suspected PV<small>BSH 2019 · NG158</small></h2><div class="body">
+      <div class="flow" style="--c:var(--red)">
+        <div><b class="h">Pregnancy</b>Known or suspected PV, or planning pregnancy → early joint haematology and obstetric care. Do not start or stop hydroxycarbamide or ruxolitinib without specialist advice.</div>
+        <div><b class="h">Surgery, travel</b>Tell the surgical team and haematology. Long journeys: keep mobile and hydrated; drug prophylaxis only after individual risk assessment.</div>
+        <div><b class="h">Clot on treatment</b>Stroke, MI, PE or DVT despite treatment → emergency care, then haematology review of control and escalation.</div>
+        <div><b class="h">Transformation</b>Growing spleen, falling Hb or platelets, tear-drop cells or blasts on the film → urgent haematology (same day if blasts).</div>
+      </div>
+    </div></div>
+
+    <div class="col">
+      <div class="blk slate"><h2><span class="n">12</span>Pitfalls and never-events<small>BSH 2019</small></h2><div class="body">
+        <ul>
+          <li><b>Never</b> diagnose PV from a raised Hct alone, or exclude it on a negative JAK2.</li>
+          <li><b>Never</b> venesect secondary erythrocytosis in primary care, or aim for a normal Hct in hypoxic lung disease.</li>
+          <li><b>Never</b> give iron in PV without haematology advice.</li>
+          <li>Do not label persistent unexplained erythrocytosis "relative" without EPO and JAK2.</li>
+          <li>Normal SpO₂ in a smoker does not exclude carboxyhaemoglobin or nocturnal hypoxia.</li>
+          <li>Do not adjust cytoreduction outside the agreed shared-care pathway.</li>
+        </ul>
+      </div></div>
+
+    </div>
+
+    <div class="col">
+      <div class="blk green"><h2><span class="n">13</span>Self-care and the conversation<small>BSH 2019 · NG209</small></h2><div class="body">
+        <p>Stop smoking · avoid dehydration, especially in heat, illness and travel · keep moving on long journeys · control BP and weight · avoid high altitude if possible.</p>
+        <p class="say" style="margin-top:3px">"Your blood is thicker than it should be — there are more red cells than normal. Often that's from something like smoking, a lung or sleep problem, or being a bit dry, and we'll check for those. Sometimes the bone marrow makes too many on its own, so I'm also sending a blood test for that. Thick blood can clot, so tell us straight away about headaches, sight changes, chest pain or a swollen leg."</p>
+      </div></div>
+
+    </div>
+
+  </div>
+
+<div class="foot"><span>Reasoning GP Clinic Guide · Raised haematocrit · page 2 of 2 · v1.0 · Oct 2026 · sources: BSH guideline, diagnosis and management of polycythaemia vera (McMullin et al., Br J Haematol 2019); BSH guideline, specific situations in PV and secondary erythrocytosis (2019); NICE TA921, NG158, NG209; SPCs</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/polycythaemia.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=4"></script>
+</body>
+</html>

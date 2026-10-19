@@ -8,7 +8,7 @@
 
 (function(){
 
-  /* ============ 57. VIDEO — Postmenopausal bleeding (NG12 2WW) ============ */
+  /* ============ 57. VIDEO — Postmenopausal bleeding (NG12 suspected cancer pathway) ============ */
   const c57 = {
     id:'pmb-endometrial', title:'"It was only a tiny bit, probably nothing"', type:'video', duration:12,
     meta:{ age:61, sex:'F', setting:'Video consultation — one episode of vaginal bleeding, postmenopausal.', system:'Gynae / Postmenopausal bleeding', checked:'October 2026' },
@@ -37,7 +37,7 @@
       { dom:'dg', text:'Screens for other relevant features and safety: any heavier/ongoing bleeding, blood-stained discharge, weight loss, and considers cervical screening history (the NHS Cervical Screening Programme invites to age 64); arranges baseline as appropriate without delaying the suspected cancer pathway referral' },
       { dom:'ro',   text:'Hears the fear beneath the minimising and names it gently — does not collude with "it\u2019s nothing", but does not frighten her into disengagement either; explains that urgent referral is precautionary and most PMB is benign (commonly atrophy)' },
       { dom:'ro',   text:'Acknowledges and accommodates the examination dread (the previous bad smear), offering choice, a chaperone, and control, so she accepts the in-person assessment' },
-      { dom:'cm',    text:'Safety-nets and follows up: explains the suspected cancer pathway timeframe (appointment within 2 weeks) and what to expect (TVUSS ± biopsy/hysteroscopy), what to do if heavier bleeding/pain occurs meanwhile, ensures she will attend, documents, and arranges to follow up the result — does not leave a frightened patient to navigate it alone' },
+      { dom:'cm',    text:'Safety-nets and follows up: explains the suspected cancer pathway timeframe (diagnosis or exclusion within 28 days; no promise of an appointment within 2 weeks) and what to expect (TVUSS ± biopsy/hysteroscopy), what to do if heavier bleeding/pain occurs meanwhile, ensures she will attend, documents, and arranges to follow up the result — does not leave a frightened patient to navigate it alone' },
     ],
     worked:[
       { lbl:'Refuse the dismissal, kindly', txt:'"I\u2019m really glad you didn\u2019t cancel — and I want to be honest with you rather than just reassure you, because you matter too much for that. Any bleeding after the menopause, even a tiny one-off ten years on, is something we always check properly. It\u2019s not silly at all; it\u2019s exactly the kind of thing we want to see."' },
@@ -255,7 +255,7 @@
       avoid: [
         { dont:'"A one-off little bleed after the menopause is usually just dryness — try not to worry."', instead:"\"Any bleeding after the menopause, even once, needs an urgent check — the NICE suspected cancer guideline, NICE NG12, says a suspected cancer pathway referral, usually starting with a scan of the womb lining. Most turn out benign, but we make sure quickly.\"", why:"Reassuring PMB away as \"dryness\" misses a mandatory NICE NG12 suspected cancer pathway for endometrial cancer." },
         { dont:'"Since you\u2019re on video and it\u2019s stopped, we probably don\u2019t need to examine you."', instead:'"I do need to examine you in person to look for a local cause — I know exams have been hard for you before, so you\u2019re in control, with a chaperone, and we stop whenever you say."', why:'A video booking and a settled symptom don\u2019t remove the need for examination; skipping it is unsafe.' },
-        { dont:'"Let\u2019s do some blood tests first and see how things go before referring."', instead:'"This goes straight onto the urgent two-week pathway today — that takes priority; we don\u2019t wait on other tests for postmenopausal bleeding."', why:"Delaying the suspected cancer pathway referral for baseline tests is exactly the dawdling NICE NG12 is designed to prevent." }
+        { dont:'"Let\u2019s do some blood tests first and see how things go before referring."', instead:'"This goes straight onto the urgent suspected cancer pathway today — that takes priority; we don\u2019t wait on other tests for postmenopausal bleeding."', why:"Delaying the suspected cancer pathway referral for baseline tests is exactly the dawdling NICE NG12 is designed to prevent." }
       ]
     },
 

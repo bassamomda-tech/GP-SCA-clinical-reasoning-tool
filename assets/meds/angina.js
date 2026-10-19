@@ -198,7 +198,7 @@ MedChooser.register('angina', {
       detail:{
         'Dose': 'Atorvastatin 80 mg OD (secondary prevention dose); reduce to 20–40 mg if interactions/intolerance',
         'Interactions': 'Diltiazem/verapamil and amlodipine ↑ statin levels (avoid simvastatin), macrolides, grapefruit',
-        'Key teaching': 'Aim for ≥40% reduction in non-HDL cholesterol. Try a lower dose / alternative statin before abandoning.'
+        'Key teaching': 'Aim for more than 40% reduction in non-HDL cholesterol. Try a lower dose / alternative statin before abandoning.'
       },
       conditions: [
         {"kind":"caution","label":"Statin myalgia / prior intolerance","text":"Prior myalgia — try lower dose / alternate-day / rosuvastatin before stopping"},

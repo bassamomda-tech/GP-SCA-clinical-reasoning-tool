@@ -30,7 +30,7 @@ RGPTriage.register('chest-pain-triage', {
   ],
   rules: [
     { id:'stemi', tier:'emergency', label:'?STEMI / ACS ongoing — 999 NOW',
-      action:'Call 999. Aspirin 300mg PO (chew). Sublingual GTN if SBP >100. Do NOT delay transfer.',
+      action:'Call 999. Aspirin 300mg PO (chew). Sublingual GTN unless systolic BP <90 mmHg. Do NOT delay transfer.',
       patientPhrase:"I'm worried this could be a heart attack — I'm calling an ambulance now.",
       source:'NICE NG185', sourceUrl:'https://www.nice.org.uk/guidance/ng185',
       when:(i)=>(!!i.central_crushing && !!i.severe_now) || !!i.ecg_st_changes },

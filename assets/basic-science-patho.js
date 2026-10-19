@@ -206,7 +206,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   implications:[
     { clue:'TSH is the primary test', why:'In primary disease it rises before T4 falls below range — the most sensitive screen; check T4 to confirm.' },
     { clue:'Levothyroxine (T4) once daily replaces the hormone', why:'T4 has a long half-life (~7 days) → stable levels and once-daily dosing; the body converts T4→active T3 peripherally.' },
-    { clue:'Recheck TSH ~6–8 weeks after dose change', why:'It takes that long for levels and pituitary feedback to re-equilibrate.' },
+    { clue:'Recheck TSH from ~6 weeks after a dose change, then about every 3 months until stable (NICE NG145)', why:'It takes that long for levels and pituitary feedback to re-equilibrate.' },
     { clue:'Start low in elderly/cardiac patients', why:'Restoring metabolic rate increases myocardial oxygen demand — too fast can precipitate angina/arrhythmia.' },
   ],
   pearls:[
@@ -285,12 +285,12 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
   ],
   implications:[
     { clue:'We stage by eGFR and ACR', why:'Both filtration (eGFR) and damage (albuminuria) independently predict progression and CV risk.' },
-    { clue:'ACEi/ARB are renoprotective despite a small eGFR dip', why:'They dilate the efferent arteriole → lower intraglomerular pressure and proteinuria. A ≤25% creatinine rise is expected and acceptable.' },
+    { clue:'ACEi/ARB are renoprotective despite a small eGFR dip', why:'They dilate the efferent arteriole → lower intraglomerular pressure and proteinuria. A creatinine rise of less than 30% (eGFR fall of less than 25%) is expected and acceptable.' },
     { clue:'SGLT2 inhibitors slow progression', why:'They restore tubuloglomerular feedback, reducing hyperfiltration — now used even in non-diabetic proteinuric CKD.' },
     { clue:'Watch potassium and nephrotoxins', why:'Reduced excretion → hyperkalaemia risk; avoid NSAIDs and dose-adjust renally-cleared drugs.' },
   ],
   pearls:[
-    'A small expected creatinine rise on starting ACEi is renoprotective — don’t stop unless >25–30%.',
+    'A small expected creatinine rise on starting ACEi is renoprotective — don’t stop for a rise of less than 30% (NICE NG203).',
     '“Sick day rules”: hold ACEi/ARB, SGLT2i, metformin, diuretics, NSAIDs during acute dehydrating illness.',
   ],
   note:'CKD progresses because the compensation (hyperfiltration) is itself injurious. Our key drugs work by relieving that intraglomerular pressure, not by boosting filtration.',

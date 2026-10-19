@@ -76,7 +76,7 @@ RGPLabs.register('generic', {
             {
               action:'urgent', label:'Unexplained anaemia ≥60 — offer FIT (colorectal, NICE NG12 updated April 2026)',
               rule:'Hb <120 ♀ / <130 ♂ + age ≥60, even without iron deficiency — offer FIT; FIT ≥10 µg Hb/g → colorectal suspected cancer pathway referral (refer despite a lower FIT if clinical concern remains strong)',
-              timeframe:'FIT now; refer within 2 weeks if FIT ≥10',
+              timeframe:'FIT now; suspected cancer pathway referral (NG12) if FIT ≥10',
               source:'NICE NG12 (updated April 2026) colorectal · NICE HTG690 (formerly DG56)',
               sourceUrl:'https://www.nice.org.uk/guidance/ng12',
               patientPhrase:'"At your age, a low blood count needs a quick bowel check — a simple home stool test first, and a faster specialist look if it is positive. This is standard and doesn\'t mean anything is definitely wrong."',
@@ -97,7 +97,7 @@ RGPLabs.register('generic', {
             {
               action:'urgent', label:'Iron-deficient anaemia ≥50 — FIT + GI investigation',
               rule:'Hb <120 ♀ / <130 ♂ + ferritin <30 + age ≥50 — offer FIT (≥10 µg Hb/g → colorectal suspected cancer pathway referral); men and postmenopausal women with IDA → bidirectional endoscopy (BSG 2021)',
-              timeframe:'FIT now; refer within 2 weeks if FIT ≥10',
+              timeframe:'FIT now; suspected cancer pathway referral (NG12) if FIT ≥10',
               source:'NICE NG12 (updated April 2026) colorectal · NICE HTG690 · BSG 2021 IDA',
               sourceUrl:'https://www.nice.org.uk/guidance/ng12',
               patientPhrase:'"Your blood test shows iron-deficient anaemia. In your age group, the safest thing is to rule out a bowel cause quickly — we\'ll start with a stool test and arrange a camera test of the gut."',
@@ -202,10 +202,10 @@ RGPLabs.register('generic', {
               action:'emergency', label:'Severe neutropenia / neutropenic sepsis risk',
               rule:'Neutrophils <1.0 — esp with fever or immunosuppression',
               timeframe:'Call 999 if febrile',
-              source:'NICE NG143 neutropenic sepsis',
-              sourceUrl:'https://www.nice.org.uk/guidance/ng143',
+              source:'NICE CG151 neutropenic sepsis',
+              sourceUrl:'https://www.nice.org.uk/guidance/cg151',
               patientPhrase:'"Your immune cells are very low — if you get any fever you need to call 111 / come in immediately. We\'re also going to repeat this blood test today."',
-              noteTemplate:'Severe neutropenia. Neut [value].\nIf febrile / immunosuppressed → admit per NICE NG143 neutropenic sepsis (pip-tazo within 1h).\nIf stable → urgent repeat + haematology phone advice.',
+              noteTemplate:'Severe neutropenia. Neut [value].\nIf febrile / immunosuppressed → admit per NICE CG151 neutropenic sepsis (empirical piperacillin-tazobactam within 1h).\nIf stable → urgent repeat + haematology phone advice.',
               handoff:{ tool:'triage', topic:'tiredness', label:'Triage — neutropenic sepsis' },
               when:(v) => v < 1.0
             },
@@ -333,37 +333,37 @@ RGPLabs.register('generic', {
           rules:[
             {
               action:'emergency', label:'Severe hyperkalaemia — arrhythmia risk',
-              rule:'K⁺ >6.5',
+              rule:'K⁺ ≥6.5',
               timeframe:'Call 999 · ECG now',
               source:'Renal Association hyperkalaemia 2023',
               sourceUrl:'https://ukkidney.org/health-professionals/guidelines',
               patientPhrase:'"Your potassium is dangerously high — that affects the heart\'s rhythm. I need to send you to hospital straight away for an ECG and treatment."',
               noteTemplate:'Severe hyperkalaemia.\nK⁺ [value] mmol/L. ECG: [findings].\nAdmit for IV calcium gluconate + insulin/dextrose ± dialysis.\nStop ACEi/ARB/spironolactone/K-sparing/NSAID/trimethoprim.',
               handoff:{ tool:'triage', topic:'tiredness', label:'Triage Tool — hyperkalaemia rule' },
-              when:(v) => v > 6.5
+              when:(v) => v >= 6.5
             },
             {
-              action:'urgent', label:'Moderate hyperkalaemia — same-day repeat + ECG',
-              rule:'K⁺ 6.0–6.5',
-              timeframe:'Same day',
-              source:'Renal Association',
-              patientPhrase:'"Your potassium is high. Please come in today — we\'ll do an ECG and decide whether you need to go to hospital."',
-              noteTemplate:'Hyperkalaemia: K⁺ [value]. ECG required same day.\nReview ACEi/ARB/spiro/K-sparing/NSAID/trimethoprim. Dietary review (banana, dried fruit, salt substitute).',
-              when:(v) => v > 6.0 && v <= 6.5
+              action:'urgent', label:'Moderate hyperkalaemia — ECG; same-day hospital if unwell or AKI',
+              rule:'K⁺ 6.0–6.4',
+              timeframe:'Same day if acutely unwell or AKI; if well, repeat within 1 day after renal/medical discussion',
+              source:'UK Kidney Association hyperkalaemia guideline 2023',
+              patientPhrase:'"Your potassium is high. We need an ECG today; if you are unwell you will need hospital assessment today, otherwise we will repeat the test within a day after speaking to the kidney or medical team."',
+              noteTemplate:'Hyperkalaemia: K⁺ [value]. ECG required same day.\nAcutely unwell or AKI → same-day hospital assessment. Well → discussed with renal/medical team; repeat K⁺ within 1 day.\nReview ACEi/ARB/spiro/K-sparing/NSAID/trimethoprim. Dietary review (banana, dried fruit, salt substitute).',
+              when:(v) => v >= 6.0 && v < 6.5
             },
             {
               action:'review', label:'Mild hyperkalaemia + on ACEi/ARB/spiro — drug review',
-              rule:'K⁺ 5.5–6.0 in patient on RAAS-blocker',
+              rule:'K⁺ 5.5–5.9 in patient on RAAS-blocker',
               timeframe:'Within days',
               source:'NICE NG136 · Renal Association',
               patientPhrase:'"Your potassium is slightly raised — one of your blood pressure tablets is partly responsible. We\'ll review the dose."',
               noteTemplate:'Drug review — K⁺ [value] on ACEi/ARB/spiro.\nHold or halve dose if appropriate. Repeat U&E in 1 week.\nReview NSAIDs, salt substitutes, supplements.',
               handoff:{ tool:'medchooser', topic:'hypertension', label:'MedChooser — ACEi/ARB context' },
-              when:(v, ctx) => v >= 5.5 && v <= 6.0 && ctx.on_acei
+              when:(v, ctx) => v >= 5.5 && v < 6.0 && ctx.on_acei
             },
             {
               action:'repeat', label:'Mild hyperkalaemia — repeat avoiding haemolysis',
-              rule:'K⁺ 5.1–5.5 incidental',
+              rule:'K⁺ 5.1–5.4 incidental',
               timeframe:'1 week',
               source:'NHS SPS 2024 hypokalaemia',
               when:(v) => v > 5.0 && v < 5.5
@@ -468,8 +468,8 @@ RGPLabs.register('generic', {
           pathways:[{slug:'ckd',label:'CKD'},{slug:'aki',label:'AKI'}],
           rules:[
             {
-              action:'urgent', label:'eGFR <30 — discuss with / refer to nephrology, drug review',
-              rule:'CKD stage 4–5 — check KFRE (refer if 5-year risk >5%) and the other NG203 referral criteria',
+              action:'urgent', label:'eGFR <30 — refer to nephrology if not already known (commonly used locally), drug review',
+              rule:'CKD stage 4–5 — check KFRE (refer if 5-year risk >5%) and the other NG203 referral criteria; eGFR <30 itself is not an NG203 criterion',
               timeframe:'2–4 weeks',
               source:'NICE NG203 CKD',
               sourceUrl:'https://www.nice.org.uk/guidance/ng203',
@@ -542,22 +542,22 @@ RGPLabs.register('generic', {
           pathways:[{slug:'magnesium-deficiency',label:'Hypomagnesaemia'}],
           rules:[
             {
-              action:'urgent', label:'Severe hypomagnesaemia <0.4 — risk of arrhythmia / tetany / seizures',
-              rule:'Mg <0.4 (or symptomatic) — same-day, consider IV replacement',
+              action:'urgent', label:'Severe hypomagnesaemia <0.5 — risk of arrhythmia / tetany / seizures',
+              rule:'Mg <0.5 (or symptomatic) — same-day hospital assessment; IV replacement in hospital',
               timeframe:'Same day',
-              source:'Renal Association',
+              source:'NHS SPS',
               patientPhrase:'"Your magnesium is very low — that can upset the heart rhythm, so we need to act on it today."',
-              noteTemplate:'Severe hypomagnesaemia. Mg [value].\nECG (QT, torsades risk). IV MgSO4 if <0.4 / symptomatic / arrhythmia. Correct alongside K⁺ and Ca²⁺ (often co-deplete). Stop/review PPI.',
-              when:(v) => v < 0.4
+              noteTemplate:'Severe hypomagnesaemia. Mg [value].\nECG (QT, torsades risk). IV MgSO4 in hospital if <0.5 / symptomatic / arrhythmia. Correct alongside K⁺ and Ca²⁺ (often co-deplete). Stop/review PPI.',
+              when:(v) => v < 0.5
             },
             {
               action:'treat', label:'Hypomagnesaemia — replace + review PPI / cause',
-              rule:'Mg 0.4–0.69 — oral replacement; explains refractory hypokalaemia/hypocalcaemia',
+              rule:'Mg 0.5–0.69 — oral replacement; explains refractory hypokalaemia/hypocalcaemia',
               timeframe:'1–2 weeks',
               source:'MHRA PPI',
               patientPhrase:'"Your magnesium is low — often from acid-reducing tablets or gut losses. We\u2019ll top it up and check the cause."',
               noteTemplate:'Hypomagnesaemia. Mg [value].\nOral magnesium (e.g. Mg aspartate). Review PPI (long-term), diuretics, alcohol, GI losses. Recheck K⁺/Ca²⁺ (refractory until Mg corrected). Repeat in 1–2 weeks.',
-              when:(v) => v >= 0.4 && v < 0.7
+              when:(v) => v >= 0.5 && v < 0.7
             }
           ]
         }
@@ -656,7 +656,7 @@ RGPLabs.register('generic', {
             {
               action:'cancer', label:'Jaundice ≥40 — pancreatic suspected cancer pathway',
               rule:'Bilirubin >25 + age ≥40 + painless',
-              timeframe:'2 weeks',
+              timeframe:'Suspected cancer pathway (NG12)',
               source:'NICE NG12 (updated April 2026) pancreatic (age 40+ with jaundice)',
               patientPhrase:'"Painless jaundice in your age group has to be checked quickly to look at the pancreas."',
               when:(v, ctx) => v > 25 && ctx.age != null && ctx.age >= 40 && !ctx.symptoms
@@ -907,8 +907,8 @@ RGPLabs.register('generic', {
             {
               action:'cancer', label:'Moderate hypercalcaemia — myeloma / bone mets screen',
               rule:'Adj Ca²⁺ 2.8–3.0',
-              timeframe:'2 weeks',
-              source:'NICE NG12 (updated April 2026) myeloma (age 60+ with hypercalcaemia → very urgent protein electrophoresis + Bence-Jones)',
+              timeframe:'Within 48 hours if myeloma suspected (NG12 very urgent tests)',
+              source:'NICE NG12 (updated April 2026) myeloma (age 60+ with hypercalcaemia → very urgent protein electrophoresis + serum free light chains)',
               patientPhrase:'"Your calcium is high — there are several causes and we need to investigate all of them quickly."',
               noteTemplate:'Hypercalcaemia. Adj Ca²⁺ [value].\nPTH, vit D, U&E, myeloma screen (SPEP, immunoglobulins, Bence-Jones), CXR, urinary calcium.\nUrgent endo referral if PTH inappropriately normal/raised.',
               when:(v) => v > 2.7 && v <= 3.0
@@ -968,7 +968,7 @@ RGPLabs.register('generic', {
             {
               action:'urgent', label:'Iron-deficiency anaemia + age ≥50 — FIT + GI investigation',
               rule:'Ferritin <30 + age ≥50 + low Hb — offer FIT (≥10 µg Hb/g → colorectal suspected cancer pathway referral); men / postmenopausal women → bidirectional endoscopy (BSG 2021)',
-              timeframe:'FIT now; refer within 2 weeks if FIT ≥10',
+              timeframe:'FIT now; suspected cancer pathway referral (NG12) if FIT ≥10',
               source:'NICE NG12 (updated April 2026) · NICE HTG690 · BSG 2021 IDA',
               patientPhrase:'"Your iron is low. At your age we want to rule out a bowel cause quickly — starting with a stool test."',
               handoff:{ tool:'triage', topic:'tiredness', label:'Triage — IDA rule' },
@@ -1050,7 +1050,7 @@ RGPLabs.register('generic', {
               when:(v, ctx) => v > 8 && ctx.on_warfarin
             },
             {
-              action:'urgent', label:'INR 5–8 — withhold warfarin + oral vit K',
+              action:'urgent', label:'INR 5–8 — withhold 1–2 doses of warfarin, reduce dose (vit K only if bleeding)',
               rule:'INR 5–8 on warfarin',
               timeframe:'Same day',
               source:'BSH warfarin reversal',
@@ -1149,7 +1149,7 @@ RGPLabs.register('generic', {
             {
               action:'cancer', label:'Raised PSA — prostate suspected cancer pathway',
               rule:'PSA above age-specific threshold (>2.5 if 40–49, >3.5 if 50–59, >4.5 if 60–69, >6.5 if 70–79; clinical judgement under 40 and 80+) — see NICE NG12 (updated April 2026)',
-              timeframe:'2 weeks',
+              timeframe:'Suspected cancer pathway (NG12)',
               source:'NICE NG12 (updated April 2026) urological / Macmillan',
               sourceUrl:'https://www.nice.org.uk/guidance/ng12',
               patientPhrase:'"Your PSA is raised for your age. The next step is a specialist assessment — that\'s standard, not a sign anything is definitely wrong."',
@@ -1169,7 +1169,7 @@ RGPLabs.register('generic', {
             {
               action:'cancer', label:'FIT ≥10 — colorectal suspected cancer pathway',
               rule:'FIT ≥10 µg Hb/g',
-              timeframe:'2 weeks',
+              timeframe:'Suspected cancer pathway (NG12)',
               source:'NICE NG12 (updated April 2026) / NICE HTG690 (formerly DG56) / BSG–ACPGBI FIT 2022',
               patientPhrase:'"Your bowel test is positive enough to warrant an urgent specialist look. This is standard — most people referred this way turn out fine."',
               noteTemplate:'Suspected cancer pathway — colorectal (NICE NG12, updated April 2026).\nFIT [value]. Symptoms [bowel habit / bleeding / weight loss].\nDRE done.',
@@ -1397,12 +1397,12 @@ RGPLabs.register('generic', {
               when:(v, ctx, all) => v > 5000 || (v > 1000 && all.cr != null && all.cr > 150)
             },
             {
-              action:'review', label:'CK 1000–5000 — statin myopathy / cause; stop statin if >5× ULN + symptoms',
+              action:'review', label:'CK 1000–5000 — statin myopathy / cause; on a statin stop for 4–6 weeks if 4–10× ULN or intolerable symptoms; ≥10× ULN same-day assessment',
               rule:'CK markedly raised on statin or with myalgia/weakness',
               timeframe:'Within days',
-              source:'NICE NG238',
+              source:'NHS England statin intolerance pathway',
               patientPhrase:'"Your muscle enzyme is up — one of your tablets can do this. We\'ll pause it and recheck."',
-              noteTemplate:'Raised CK. CK [value].\nIf on statin and CK >5× ULN with symptoms → stop statin, recheck CK + renal. Review exertion, drugs, hypothyroidism (TSH), alcohol. If proximal weakness/persistent → ?inflammatory myositis → rheumatology.',
+              noteTemplate:'Raised CK. CK [value].\nIf on statin and CK 4–10× ULN or intolerable symptoms → stop statin for 4–6 weeks, recheck CK + renal (NHS England statin intolerance pathway). Review exertion, drugs, hypothyroidism (TSH), alcohol. If proximal weakness/persistent → ?inflammatory myositis → rheumatology.',
               when:(v) => v > 1000 && v <= 5000
             },
             {
@@ -1427,7 +1427,7 @@ RGPLabs.register('generic', {
     { label:'NICE NG145 — Thyroid disease', url:'https://www.nice.org.uk/guidance/ng145' },
     { label:'NICE NG28 — Type 2 diabetes', url:'https://www.nice.org.uk/guidance/ng28' },
     { label:'NICE NG17 — Type 1 diabetes / DKA', url:'https://www.nice.org.uk/guidance/ng17' },
-    { label:'NICE NG143 — Neutropenic sepsis', url:'https://www.nice.org.uk/guidance/ng143' },
+    { label:'NICE CG151 — Neutropenic sepsis', url:'https://www.nice.org.uk/guidance/cg151' },
     { label:'NICE NG238 — Lipid modification', url:'https://www.nice.org.uk/guidance/ng238' },
     { label:'NICE NG148 — Acute kidney injury', url:'https://www.nice.org.uk/guidance/ng148' },
     { label:'NICE NG185 — Acute coronary syndromes', url:'https://www.nice.org.uk/guidance/ng185' },

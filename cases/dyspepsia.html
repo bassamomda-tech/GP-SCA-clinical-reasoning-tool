@@ -1044,7 +1044,7 @@ body.mode-clinic .sca-only{display:none!important}
           <li class="tc-item"><strong>Haematemesis</strong><em>Any volume, any episode — upper GI bleed. 999 if haemodynamically unstable. If stable, same-day hospital admission for urgent OGD.</em></li>
           <li class="tc-item"><strong>Perforated peptic ulcer</strong><em>Sudden-onset catastrophic epigastric pain, peritonism, board-like abdomen, haemodynamic compromise — 999 immediately. Do not prescribe PPI and review.</em></li>
           <li class="tc-item"><strong>Melaena (black tarry stool) with haemodynamic instability</strong><em>Upper GI bleed with haemodynamic compromise — emergency. Stable melaena = same-day hospital assessment.</em></li>
-          <li class="tc-item"><strong>Suspected cardiac cause of epigastric pain</strong><em>Pain radiating to jaw, arm, or interscapular region; associated diaphoresis, breathlessness — 12-lead ECG immediately; 999 if ACS confirmed or suspected.</em></li>
+          <li class="tc-item"><strong>Suspected cardiac cause of epigastric pain</strong><em>Pain radiating to jaw, arm, or interscapular region; associated diaphoresis, breathlessness — 12-lead ECG immediately; 999 if ACS confirmed or suspected; aspirin 300 mg unless allergic, contraindicated or actively GI bleeding.</em></li>
         </ul>
       </div>
       <div class="tc tc-u">
@@ -1077,7 +1077,7 @@ body.mode-clinic .sca-only{display:none!important}
       <div class="sca-grid">
         <div class="sca-block sca-say">
           <div class="sca-block-t">Triage communication phrases</div>
-          <div class="sca-phrase">"I'd like to refer you urgently — this is a suspected cancer pathway referral, which means the hospital should contact you within two weeks to arrange a camera test to look at the inside of your food pipe and stomach."</div>
+          <div class="sca-phrase">"I'd like to refer you urgently — this is a suspected cancer pathway referral, which means you should be seen quickly and get an answer within 4 weeks (28 days); the hospital will contact you to arrange a camera test to look at the inside of your food pipe and stomach."</div>
           <div class="sca-phrase">"The symptoms you're describing don't suggest anything needing hospital treatment urgently today — but I do want to arrange some tests first before I start any treatment."</div>
           <div class="sca-phrase">"The reason I'm not starting treatment immediately is that I want to check for a bug called H. pylori first — treating that, if it's there, is actually much more effective than just taking a tablet to suppress the acid."</div>
         </div>
@@ -1304,7 +1304,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="sca-block sca-say">
           <div class="sca-block-t">Referral communication phrases</div>
           <div class="sca-phrase">"I'd like to refer you for a camera test — this is called an endoscopy, where a thin flexible tube with a camera is passed into your stomach through your mouth while you're awake, often with some sedation. It's uncomfortable rather than painful, and it takes about 15 minutes."</div>
-          <div class="sca-phrase">"I'm referring you under the suspected cancer pathway — the hospital should contact you within two weeks to arrange it. While you're waiting, if you notice any vomiting of blood, black tarry stools, or sudden severe pain, please go to A&amp;E rather than waiting for the appointment."</div>
+          <div class="sca-phrase">"I'm referring you under the suspected cancer pathway — you should be seen quickly and get an answer within 4 weeks (28 days); the hospital will contact you to arrange it. While you're waiting, if you notice any vomiting of blood, black tarry stools, or sudden severe pain, please go to A&amp;E rather than waiting for the appointment."</div>
           <div class="sca-phrase">"I want to be clear about why I'm doing this — it's not because I'm certain something serious is wrong, but because we have a responsibility to check carefully given your symptoms and the weight loss."</div>
         </div>
         <div class="sca-block sca-avoid">
@@ -1712,7 +1712,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="sn-scenario sns-m">
           <div class="sn-scenario-lbl">💊 New symptoms during treatment — weight loss, dysphagia, worsening</div>
           <div class="sn-phrase">"While you're taking the treatment and waiting for results, I'd like you to come back straight away — not wait for your review appointment — if you notice difficulty swallowing, any further unexplained weight loss, or if the pain becomes significantly worse or changes character. These things need to be checked promptly regardless of how things stand with the current treatment."</div>
-          <div class="sn-why">Dysphagia as a new symptom during dyspepsia treatment must never be attributed to treatment failure — it is an alarm feature that mandates immediate suspected cancer pathway referral. Specifically naming it in the safety-net conversation protects against the common scenario where new dysphagia develops between consultations and is not reported until a routine review weeks later.</div>
+          <div class="sn-why">Dysphagia as a new symptom during dyspepsia treatment must never be attributed to treatment failure — it is an alarm feature that mandates a suspected cancer pathway referral (urgent direct-access endoscopy, NICE NG12) without delay. Specifically naming it in the safety-net conversation protects against the common scenario where new dysphagia develops between consultations and is not reported until a routine review weeks later.</div>
         </div>
         <div class="sn-scenario sns-a">
           <div class="sn-scenario-lbl">🟠 Suspected cancer pathway referral context — awaiting OGD appointment</div>
@@ -1744,7 +1744,7 @@ body.mode-clinic .sca-only{display:none!important}
         <div class="sca-block sca-say">
           <div class="sca-block-t">Closing the consultation</div>
           <div class="sca-phrase">"So to summarise what we've agreed today: I'm arranging a stool test for H. pylori, a blood count, and a coeliac screen. In the meantime, Gaviscon after meals should help with the burning. I'd like to see you in two to three weeks to go over the results together."</div>
-          <div class="sca-phrase">"Before you go — if you notice any difficulty swallowing, vomiting blood, black stools, or significant further weight loss, please come back straight away, don't wait for your appointment."</div>
+          <div class="sca-phrase">"Before you go — if you vomit blood or pass black, tarry stools, call 999 or go to A&amp;E straight away. If you notice any difficulty swallowing or significant further weight loss, contact us the same day — don't wait for your appointment."</div>
           <div class="sca-phrase">"Is there anything we've talked about today that doesn't feel quite right, or anything you'd like me to go over again?"</div>
           <div class="sca-phrase">"I want you to know that I've taken the weight loss seriously — that's exactly why I'm making sure we do these tests carefully before starting any long-term treatment."</div>
         </div>
@@ -2353,7 +2353,7 @@ function resetScorecard(){
 
 <script src="../assets/topic-links.js?v=8"></script>
 
-<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: July 2026</b> · citations verified against the primary sources listed</div>
+<div class="rgp-reviewed" style="max-width:1180px;margin:14px auto 26px;padding:0 20px;font-size:12px;color:#6b7280"><b style="color:#0f766e">Reviewed: October 2026</b> · citations verified against the primary sources listed</div>
 <script src="../assets/provenance.js?v=15"></script>
 <script src="chooser-guard.js?v=1"></script>
 </body>

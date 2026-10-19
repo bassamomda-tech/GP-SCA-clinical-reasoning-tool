@@ -38,7 +38,7 @@ MG.render({ snapshot:"summaries/aki.html",
     {t:"KDIGO AKI 2012 \u00b7 staging"},
     {t:"NICE QS76 \u00b7 3-month review"},
     {t:"Think Kidneys \u00b7 sick-day rules"},
-    {t:"NG12 myeloma: very urgent tests", tone:"tw"},
+    {t:"NG12 myeloma tests", tone:"tw"},
     {t:"v2.0 · reviewed Sep 2026", tone:"ok"}
   ],
   lead:'<div class="mg-layers"><a href="#confirm"><b>Stage it</b><small>KDIGO vs baseline</small></a><a href="#severe"><b>The killers</b><small>K\u207a \u00b7 overload \u00b7 uraemia</small></a><a href="#cause"><b>Find the cause</b><small>Pre \u00b7 intrinsic \u00b7 post</small></a><a href="#refer"><b>Refer</b><small>Who can stay at home</small></a></div>',
@@ -92,7 +92,7 @@ MG.render({ snapshot:"summaries/aki.html",
          {tone:"red", h:"Rapidly rising creatinine", html:"Creatinine <b>doubled within 24\u201348 hours</b>, or <b>\u2265354 \u00b5mol/L with an acute rise</b> \u2192 <b>same-day medical</b>."},
          {tone:"amber", h:"Obstructive uropathy", html:"Bilateral flank pain, bladder distension, unable to pass urine despite the urge \u2192 <b>same-day urology</b>."},
          {tone:"amber", h:"Nephrotoxin exposure with AKI", html:"Recent high-dose NSAID, contrast or aminoglycoside with a rising creatinine in an unwell patient \u2192 <b>same-day</b>."},
-         {tone:"purple", h:"Very urgent tests \u00b7 NICE NG12 \u2014 myeloma", html:"Aged 60 and over with AKI and a raised calcium or leukopenia, or with persistent bone pain (particularly back pain) or an unexplained fracture \u2192 FBC, calcium, ESR or plasma viscosity, serum protein electrophoresis and serum free light chains together (urine Bence Jones if free light chain testing is not available), and refer on a suspected cancer pathway if the results suggest myeloma. Myeloma is an intrinsic-renal cause that is repeatedly missed because each abnormality looks explicable on its own."}
+         {tone:"purple", h:"Myeloma tests \u00b7 NICE NG12", html:"Aged 60 and over with persistent bone pain (particularly back pain) or an unexplained fracture \u2192 FBC, calcium, ESR or plasma viscosity, serum protein electrophoresis and serum free light chains together (urine Bence Jones if free light chain testing is not available). Aged 60 and over with a raised calcium or leukopenia and a picture consistent with myeloma \u2192 the same tests <b>very urgently (within 48 hours)</b>. Refer on a suspected cancer pathway if the results suggest myeloma. Myeloma is an intrinsic-renal cause that is repeatedly missed because each abnormality looks explicable on its own."}
        ]},
        {b:"why", html:"AKI kills by three mechanisms. <b>(1) Hyperkalaemia</b> causes fatal arrhythmias \u2014 K\u207a \u22656.5 warrants emergency hospital treatment per the local/UKKA protocol. <b>(2) Fluid overload</b> causes pulmonary oedema. <b>(3) Uraemia</b> accumulates toxins causing pericarditis, encephalopathy and coagulopathy. NG148 asks for discussion with a nephrologist as soon as possible and within 24 hours for stage 3 AKI, and stage 2 usually needs same-day hospital assessment. Transport route depends on physiology and the local pathway, not creatinine stage alone."}
      ]},
@@ -153,7 +153,7 @@ MG.render({ snapshot:"summaries/aki.html",
          {step:"2", title:"Dietary potassium advice", when:"persistent hyperkalaemia only",
           fromLabel:"first non-drug step",
           html:"Not a general AKI measure. Advise avoiding <b>salt substitutes (LoSalt, NoSalt)</b>; individual dietary potassium advice for persistent hyperkalaemia comes from a renal dietitian. It supports, but does not replace, medicine review."},
-         {step:"3", title:"Potassium binders — not for acute AKI", when:"persistent hyperkalaemia in CKD 3b–5 or heart failure only", fromLabel:"secondary-care initiated", html:"<b>Do not start patiromer or sodium zirconium cyclosilicate in primary care</b> as an alternative to emergency assessment of acute hyperkalaemia or AKI. For persistent hyperkalaemia in CKD or heart failure (NICE TA623; TA1148), discuss with renal/cardiology and follow the local shared-care protocol."},
+         {step:"3", title:"Potassium binders — not for acute AKI", when:"persistent hyperkalaemia in CKD 3b–5 or heart failure only", fromLabel:"never instead of emergency care", html:"<b>Never use patiromer or sodium zirconium cyclosilicate as an alternative to emergency assessment</b> of acute hyperkalaemia or AKI. For persistent hyperkalaemia in CKD 3b–5 or heart failure (not on dialysis): sodium zirconium cyclosilicate from a confirmed K⁺ ≥5.5 mmol/L may be started in primary care (NICE TA1148; UKKA July 2026); patiromer from a confirmed K⁺ ≥6.0 mmol/L (NICE TA623) via the local renal/cardiology pathway."},
          {step:"4", title:"Recheck and escalate", when:"24\u201348 hours",
           fromLabel:"mandatory",
           html:"Repeat U&amp;E. <b>K\u207a \u22656.0, or failing to respond \u2192 same-day hospital.</b>"}

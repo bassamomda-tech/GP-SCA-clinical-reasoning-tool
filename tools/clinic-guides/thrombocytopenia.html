@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="thrombocytopenia">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Low platelets in adults — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/thrombocytopenia.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/thrombocytopenia.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · lab results series</div>
+      <h1>Low platelets in adults <small>CLINIC GUIDE</small></h1>
+      <div class="scope">Interpreting a platelet count below 150 × 10⁹/L in adults 18+. Not for children and young people (paediatric pathway), patients on chemotherapy (oncology hotline) or inpatient HIT management.</div>
+    </div>
+    <div class="meta"><b>BSH</b> TTP 2023 · BSH HIT 2023 · ITP consensus 2019<br>NICE <b>NG24</b> · <b>NG12</b> · NG240 · Green Book ch. 7<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full pathway: gpreasoning.uk/tools/algorithms/thrombocytopenia.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Interpret <span>is it dangerous? → is it real? → how low, how fast → why → work it up</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act today<small>BSH 2023 · NG24 · NG240 · NG12</small></h2><div class="body">
+    <table>
+      <tr><th>Tier</th><th>Result + picture</th><th>Action</th></tr>
+      <tr><td><b>999</b></td><td>Any low count with <b>major bleeding</b>, severe headache, confusion, focal signs or seizure (intracranial bleed, TTP) · <b>non-blanching rash with fever</b> or unwell (meningococcal, sepsis, DIC) · bleeding from several sites</td><td>Emergency transfer</td></tr>
+      <tr><td><b>999</b></td><td>Low platelets + <b>schistocytes</b>, raised LDH, low haptoglobin (<b>TTP</b>/TMA) · pregnancy with hypertension, headache, visual change or epigastric pain (HELLP)</td><td>Immediate TTP or obstetric emergency care; do not wait for ADAMTS13</td></tr>
+      <tr><td><b>Same day</b></td><td>Platelets <b>&lt;20 × 10⁹/L</b> or falling rapidly, even without bleeding (especially &lt;10) · blasts or pancytopenia · mucosal bleeding or widespread petechiae</td><td>Same-day haematology assessment</td></tr>
+      <tr><td><b>Same day</b></td><td>Platelet fall on <b>heparin</b> (suspected <b>HIT</b>), or after quinine, antibiotics or a new drug</td><td>Stop all heparin; 4Ts score; haematology today; non-heparin anticoagulant per specialist</td></tr>
+    </table>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Is it real?<small>repeat FBC + film</small></h2><div class="body">
+        <table>
+          <tr><td><b>Unexpected low count, well, no bleeding</b></td><td>EDTA can make platelets <b>clump</b> (pseudothrombocytopenia): repeat FBC with a film; if clumps, send a <b>citrate</b> sample as the laboratory advises</td></tr>
+          <tr><td><b>Clotted or difficult sample</b></td><td>Falsely low: repeat</td></tr>
+          <tr><td><b>Recent viral illness</b></td><td>Transient falls are common: repeat once recovered</td></tr>
+          <tr><td><b>Compare</b></td><td>Previous counts: new, falling or long-standing and stable?</td></tr>
+        </table>
+        <p class="key">Assume artefact only in a well patient without bleeding, other cytopenias or film abnormalities. Never delay an urgent referral to exclude clumping.</p>
+      </div></div>
+
+      <div class="blk green"><h2><span class="n">2</span>Severity bands<small>platelets × 10⁹/L</small></h2><div class="body">
+        <table>
+          <tr><th>Count</th><th>Means</th><th>Action and timing</th></tr>
+          <tr><td><b>100–150</b></td><td>Mild</td><td>Isolated, stable, well: review drugs, alcohol, liver, infection; repeat FBC and film; safety-net</td></tr>
+          <tr><td><b>50–100</b></td><td>Moderate</td><td>Investigate; discuss or refer per local haematology pathway, especially if new, falling or symptomatic</td></tr>
+          <tr><td><b>&lt;50</b></td><td>Severe</td><td>Unexplained → same-day haematology discussion</td></tr>
+          <tr><td><b>&lt;20</b></td><td>Very severe</td><td>Same-day haematology assessment, even if no bleeding</td></tr>
+          <tr><td><b>&lt;10</b></td><td>Critical</td><td>Same-day assessment; specialist decides on treatment</td></tr>
+          <tr><td>Any count + bleeding, schistocytes, blasts</td><td>Count does not set the risk</td><td>999 or same day as above</td></tr>
+        </table>
+        <p class="key">The rate of fall, other cell lines, clotting, anticoagulants and planned procedures matter as much as the number.</p>
+      </div></div>
+
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">3</span>Causes<small>clue → think → first test</small></h2><div class="body">
+        <table>
+          <tr><th>Clue</th><th>Think</th><th>First test</th></tr>
+          <tr><td>Isolated, well, large platelets on film</td><td><b>ITP</b> (exclusion)</td><td>HIV, hepatitis B/C; film</td></tr>
+          <tr><td>New drug, heparin</td><td><b>Drug-induced, HIT</b></td><td>Drug history; 4Ts</td></tr>
+          <tr><td>Alcohol, spleen, stigmata of liver disease</td><td><b>Liver disease, hypersplenism</b></td><td>LFTs, albumin, PT; ultrasound</td></tr>
+          <tr><td>Recent viral illness</td><td><b>Post-viral</b></td><td>Repeat when recovered</td></tr>
+          <tr><td>Late pregnancy, mild, isolated</td><td><b>Gestational</b></td><td>BP, urine, LFTs</td></tr>
+          <tr><td>Rash, joints, mouth ulcers</td><td><b>SLE</b>, antiphospholipid</td><td>ANA</td></tr>
+          <tr><td>Other cytopenias, blasts, nodes</td><td><b>Marrow disease</b>, lymphoma</td><td>Film; same-day haematology</td></tr>
+          <tr><td>Fever, hypotension, oozing</td><td><b>Sepsis, DIC</b></td><td>999; clotting, fibrinogen</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">4</span>Work-up checklist<small>send and why</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>Repeat FBC + film</b>: clumps, schistocytes, blasts</li>
+          <li><b>Clotting, fibrinogen</b> if bleeding, liver disease or DIC possible</li>
+          <li><b>LFTs</b>, albumin: liver disease</li>
+          <li>U&amp;E; <b>LDH</b>, reticulocytes if haemolysis possible</li>
+          <li><b>HIV, hepatitis B and C</b> if ITP suspected</li>
+          <li>B12, folate</li>
+          <li>ANA if features of SLE</li>
+          <li>Immunoglobulins if suspected ITP</li>
+        </ul>
+        <p class="key" style="margin-top:3px">Examine skin and mouth for petechiae and purpura, nodes, liver and spleen, BP and fundi if severe. No routine antiplatelet antibody tests; no marrow in primary care.</p>
+      </div></div>
+
+    </div>
+
+    <div class="blk purple span"><h2><span class="n">5</span>What the film tells you<small>laboratory film review</small></h2><div class="body">
+    <table>
+      <tr><th>Film finding</th><th>Think</th><th>Film finding</th><th>Think</th></tr>
+      <tr><td><b>Platelet clumps</b></td><td>Pseudothrombocytopenia: citrate sample</td><td><b>Schistocytes</b></td><td>TTP, HUS or DIC: emergency</td></tr>
+      <tr><td><b>Large platelets</b>, otherwise normal</td><td>Consistent with ITP</td><td><b>Blasts or dysplasia</b></td><td>Leukaemia or MDS: same day</td></tr>
+    </table>
+  </div></div>
+
+    <div class="blk blue span"><h2><span class="n">6</span>Reading the result in four steps<small>BSH · NG24 · NG12</small></h2><div class="body">
+    <div class="flow" style="--c:var(--blue)">
+      <div><b class="h">1 · Bleeding or unwell?</b>Major bleeding, neurology, fever with a rash, schistocytes or pregnancy symptoms → 999.</div>
+      <div><b class="h">2 · Real?</b>Repeat FBC with a film; clumps → citrate sample. Never let this delay an urgent referral.</div>
+      <div><b class="h">3 · How low, how fast?</b>&lt;20 or falling fast → same day · unexplained &lt;50 → same-day discussion · &lt;100 → discuss or refer.</div>
+      <div><b class="h">4 · Isolated or not?</b>Other cytopenias, nodes or spleen point away from ITP towards marrow, liver or lymphoma.</div>
+    </div>
+  </div></div>
+
+  </div>
+
+<div class="foot"><span>Reasoning GP Clinic Guide · Low platelets · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary. Use your laboratory's reference ranges.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Manage and refer <span>treat the cause → protect from bleeding → refer by count and trend</span></div>
+
+  <div class="grid">
+    <div class="blk teal span"><h2><span class="n">7</span>Management by cause<small>BSH 2023 · ITP consensus · NG24 · Green Book</small></h2><div class="body">
+      <table>
+        <tr><th>Cause</th><th>First line</th><th>Who leads, and what next</th></tr>
+        <tr><td><b>ITP</b></td><td>Observe or treat is a <b>haematology decision</b>: corticosteroids or IVIg (IVIg when a fast rise is needed); later TPO receptor agonists, rituximab or splenectomy</td><td>Haematology-led. GP: avoid NSAIDs and aspirin, manage bleeding emergencies, prescribe only under shared care. <b>No routine prophylactic platelet transfusion</b></td></tr>
+        <tr><td><b>Suspected HIT</b></td><td><b>Stop all heparin</b>, including flushes; 4Ts score; non-heparin anticoagulant (e.g. argatroban, fondaparinux, a DOAC in selected patients) per specialist</td><td>Same-day haematology. Do not wait for lab confirmation if probability is intermediate or high. HIT is prothrombotic: never just stop and leave</td></tr>
+        <tr><td><b>Other drug-induced</b></td><td>Stop the likely culprit if safe; consider alternatives for essential drugs</td><td>Repeat FBC per advice; still falling → same day. Record the reaction; Yellow Card</td></tr>
+        <tr><td><b>Liver disease, alcohol</b></td><td>Reduce or stop alcohol; assess cirrhosis and portal hypertension</td><td>Hepatology per liver pathway</td></tr>
+        <tr><td><b>Splenectomy planned</b></td><td>Vaccinate at least <b>2 weeks</b> before: pneumococcal, MenACWY, MenB; annual influenza</td><td>Green Book chapters 7 and 25; lifelong infection advice</td></tr>
+      </table>
+      <p class="key">Platelet transfusion (NICE NG24): prophylaxis below 10 is not routine in ITP, HIT, TTP or chronic marrow failure; procedures usually need above 50, and above 100 for brain or posterior eye surgery — specialist decision.</p>
+    </div></div>
+
+    <div class="col">
+      <div class="blk green"><h2><span class="n">8</span>Self-care and the conversation<small>BSH · NG24</small></h2><div class="body">
+        <p>Use paracetamol, not ibuprofen or aspirin, unless haematology advises · electric razor, soft toothbrush · tell your dentist · nosebleed: lean forward and pinch the soft part for 10–15 minutes · do not stop blood thinners without advice.</p>
+        <p class="say" style="margin-top:3px">"Platelets are the tiny cells that help your blood clot. Yours are lower than normal. Often that's from a virus, a medicine or the immune system, and it can settle by itself, but we need to find the reason. Any bleeding that won't stop, a bad headache, or a rash with a temperature — call 999."</p>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">9</span>Follow-up checklist<small>local pathway · haematology plan</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Repeat FBC + film</b> per local pathway; plot the <b>trend</b></li>
+          <li><b>Mild, stable, isolated</b>: recheck; refer if persistent, falling or &lt;100</li>
+          <li><b>Post-viral</b>: should normalise; persistent → discuss</li>
+          <li><b>Drug stopped</b>: count should rise; still falling → same day</li>
+          <li><b>Known ITP</b>: FBC at intervals set by haematology; falling or bleeding → re-refer</li>
+          <li>Steroids: glucose, mood; bone protection on long courses</li>
+          <li>Splenectomy: vaccines up to date; standby antibiotics as advised</li>
+          <li>Before any procedure, agree a platelet threshold with haematology</li>
+        </ul>
+      </div></div>
+
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">10</span>When and where to refer<small>NG12 · local pathway</small></h2><div class="body">
+        <table>
+          <tr><td><b>999</b></td><td>Major bleeding, suspected intracranial bleed, TTP, DIC, HIT with thrombosis, HELLP, non-blanching rash with fever</td></tr>
+          <tr><td><b>Same-day haematology</b></td><td>Platelets &lt;20 or falling fast; significant unexplained &lt;50; schistocytes or blasts; pancytopenia; suspected HIT or drug-induced immune thrombocytopenia</td></tr>
+          <tr><td><b>Discuss or refer</b></td><td>&lt;100, especially if new, falling or symptomatic; splenomegaly; abnormal film</td></tr>
+          <tr><td><b>Suspected cancer pathway</b></td><td>Unexplained lymphadenopathy or splenomegaly (NG12)</td></tr>
+          <tr><td><b>Routine haematology</b></td><td>Suspected or known ITP; persistent unexplained thrombocytopenia</td></tr>
+          <tr><td><b>Obstetrics</b></td><td>New, falling or moderate thrombocytopenia in pregnancy</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk slate"><h2><span class="n">11</span>Pitfalls and never-events<small>BSH 2023 · NG24</small></h2><div class="body">
+        <ul>
+          <li><b>Never</b> continue any heparin, including flushes, when HIT is suspected.</li>
+          <li><b>Never</b> wait for the full pentad or ADAMTS13 to act on suspected TTP.</li>
+          <li><b>Never</b> stop anticoagulants or antiplatelets without discussing the clot risk.</li>
+          <li>Do not call it ITP without a film and a search for secondary causes.</li>
+          <li>Low platelets alone in pregnancy is not HELLP — but check BP, urine and LFTs.</li>
+          <li>Splenomegaly argues against simple ITP.</li>
+        </ul>
+      </div></div>
+
+    </div>
+
+    <div class="blk red span"><h2><span class="n">12</span>Special groups<small>BSH 2023 · NG24 · NG133</small></h2><div class="body">
+      <div class="flow" style="--c:var(--red)">
+        <div><b class="h">Pregnancy</b>Mild, isolated, late and well: likely gestational. New, falling or moderate → obstetric and haematology assessment. Hypertension or symptoms → emergency.</div>
+        <div><b class="h">On anticoagulants</b>Do not stop automatically: discuss the same day, weighing bleeding against clot risk (valves, recent VTE, AF).</div>
+        <div><b class="h">Before procedures</b>Dental work, injections, surgery: agree a platelet threshold with haematology; usually above 50 for invasive procedures (NG24).</div>
+        <div><b class="h">Heavy periods</b>Tranexamic acid or hormonal options with haematology advice; avoid tranexamic acid in TTP, HIT or DIC. Iron if anaemic.</div>
+      </div>
+    </div></div>
+
+    <div class="blk amber span"><h2><span class="n">13</span>Who needs an FBC fast<small>NICE NG12</small></h2><div class="body">
+      <div class="flow" style="--c:var(--amber)">
+        <div><b class="h">Adults: very urgent FBC</b>Within <b>48 hours</b> for unexplained bruising, bleeding or petechiae, pallor, persistent fatigue, fever, recurrent infection, generalised lymphadenopathy or hepatosplenomegaly.</div>
+        <div><b class="h">Count says leukaemia</b>FBC or film reported as acute leukaemia → immediate specialist assessment (standard practice, not an NG12 criterion).</div>
+        <div><b class="h">Children and young people</b>Under 25 with unexplained petechiae or hepatosplenomegaly → immediate specialist assessment.</div>
+        <div><b class="h">Non-blanching rash</b>With fever or unwell, at any age → 999 (meningococcal disease, NG240).</div>
+      </div>
+    </div></div>
+
+  </div>
+
+<div class="foot"><span>Reasoning GP Clinic Guide · Low platelets · page 2 of 2 · v1.0 · Oct 2026 · sources: BSH guidelines on TTP and other thrombotic microangiopathies (2023) and on HIT (2023); International Consensus Report on ITP (2019); NICE NG24, NG12, NG240; UKHSA Green Book chapters 7 and 25; SPCs</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/thrombocytopenia.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=4"></script>
+</body>
+</html>

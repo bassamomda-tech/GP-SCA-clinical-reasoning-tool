@@ -93,10 +93,10 @@
       exam:'Kempt, [reactive affect], rapport [good]. No psychomotor retardation/agitation. Speech normal. No psychotic phenomena. Cognition grossly intact. Risk assessed — [low].',
       impression:'[Mild / moderate / severe] depressive episode (PHQ-9 [X]). Risk [low]. No bipolar/psychotic features.',
       ix:'Consider bloods to exclude organic contributors: [FBC, TFT, ferritin, B12/folate, U&E, LFT, HbA1c, calcium, vitamin D]. PHQ-9 / GAD-7 documented.',
-      plan:'Less severe: guided self-help, [digital CBT (NICE NG222)], exercise, sleep hygiene; active monitoring. More severe / persistent: offer psychological therapy (CBT) and/or an antidepressant — [sertraline 50mg OD], review at 1–2 weeks (sooner if <30y or higher risk), warn of initial side-effects/anxiety and delayed onset (~4 weeks). Signpost [self-referral to NHS Talking Therapies]. Safety plan agreed.',
+      plan:'Less severe: guided self-help, [digital CBT (NICE NG222)], exercise, sleep hygiene; active monitoring. More severe / persistent: offer psychological therapy (CBT) and/or an antidepressant — [sertraline 50mg OD], review within 2 weeks (within 1 week if aged 18–25 or at increased suicide risk — NICE NG222), warn of initial side-effects/anxiety and delayed onset (~4 weeks). Signpost [self-referral to NHS Talking Therapies]. Safety plan agreed.',
       referral:'Self-referral / refer to NHS Talking Therapies (IAPT). Urgent CMHT / crisis team if significant suicide risk, psychosis, or severe functional impairment. Consider perinatal MH service if pregnant/postnatal.',
       safetynet:'Seek urgent help (GP same-day, 111, crisis line, or A&E) if thoughts of harming self worsen, you feel unable to stay safe, or symptoms deteriorate. Crisis numbers given. Return if no improvement or side-effect concerns.',
-      followup:'Review in [1–2 weeks] (within 1 week if <30 or higher risk) to reassess mood, risk and tolerability; then regularly. Continue antidepressant ≥6 months after remission.'
+      followup:'Review within [2 weeks] (within 1 week if aged 18–25 or at increased suicide risk — NICE NG222) to reassess mood, risk and tolerability; then regularly. Continue antidepressant ≥6 months after remission.'
     }
   };
 
@@ -197,7 +197,7 @@
       redflags:'Exclude septic arthritis: no fever/systemic upset, monoarthritis not rapidly worsening, no immunosuppression — if in doubt, urgent joint aspiration/assessment. No CKD/GI/cardiac contraindication missed when choosing therapy.',
       exam:'Afebrile. [1st MTP] hot, swollen, exquisitely tender, erythematous; markedly reduced movement. [No other joints / tophi.] [No portal of infection.]',
       impression:'Acute gout (clinical) affecting [1st MTP]. Septic arthritis considered and unlikely. [Recurrent.]',
-      ix:'Usually clinical. Consider serum urate (may be normal acutely — recheck ≥4–6 weeks later), U&E, glucose/HbA1c, lipids. Joint aspiration if septic arthritis cannot be excluded (urate crystals, negatively birefringent).',
+      ix:'Usually clinical. Consider serum urate (may be normal acutely — recheck at least 2 weeks after the flare settles), U&E, glucose/HbA1c, lipids. Joint aspiration if septic arthritis cannot be excluded (urate crystals, negatively birefringent).',
       plan:'Acute: first-line [NSAID with PPI] OR [colchicine 500mcg BD–QDS] OR short oral [prednisolone] — choose by comorbidity (avoid NSAID in CKD/CVD/GI risk; reduce colchicine in renal impairment). Rest, ice, elevate. Continue any existing urate-lowering therapy. Lifestyle: reduce alcohol/purine intake, hydrate, weight loss, review diuretic.',
       referral:'No referral usually. Rheumatology if diagnostic doubt, refractory, recurrent despite ULT, or complications. Urgent assessment if septic arthritis possible.',
       safetynet:'Seek urgent help if fever/rigors, the joint becomes increasingly hot/painful, or spreads — to exclude joint infection. Return if attacks recur.',
@@ -276,7 +276,7 @@
       plan:'Overt: start levothyroxine [1.6 mcg/kg/day], lower start [25–50 mcg] in elderly/IHD, titrate by TSH. Take on empty stomach, separate from calcium/iron/PPI. Subclinical: treat if TSH ≥10, or symptomatic/antibody-positive/planning pregnancy — otherwise monitor. Counsel on lifelong treatment and adherence.',
       referral:'Endocrinology if: pregnancy/preconception, age <16, secondary (pituitary) hypothyroidism, drug-induced (amiodarone/lithium), goitre/nodule, or difficult control. Urgent if myxoedema coma.',
       safetynet:'Seek urgent help if marked drowsiness, cold and unwell (myxoedema), or palpitations/chest pain on treatment. Report pregnancy promptly — dose will need increasing.',
-      followup:'Recheck TSH [6–8 weeks] after starting/changing dose; once stable, [annual] TFTs. Aim TSH within reference range (lower half).'
+      followup:'Recheck TSH [from about 6 weeks] after starting/changing dose, then [about 3-monthly] until stable (NICE NG145); once stable, [annual] TFTs. Aim for TSH within the reference range; do not routinely target the lower half.'
     }
   };
 

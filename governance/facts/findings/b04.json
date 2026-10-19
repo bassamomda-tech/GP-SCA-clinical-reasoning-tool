@@ -1,0 +1,266 @@
+[
+ {
+  "subject": "creatinine",
+  "group": "stop/withhold | % (ACEi/ARB creatinine rise)",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "After starting/increasing an ACEi/ARB: do not change the dose if eGFR falls <25% or creatinine rises <30%; if eGFR falls >=25% or creatinine rises >=30%, look for other causes (volume depletion, NSAIDs) and reduce or stop if none (NICE NG203 1.6; NG136). The site's tools/prescribing, CKD, hypertension and proteinuria pages already use 30%/25%.",
+  "source": "https://www.nice.org.uk/guidance/ng203/chapter/Recommendations",
+  "fixes": [
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "Creatinine rise &gt;25% or eGFR fall &gt;25% → hold ACEi/ARB",
+    "new": "Creatinine rise ≥30% or eGFR fall ≥25% → look for other causes; reduce or stop ACEi/ARB if none"
+   },
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "Creatinine rise &gt;25% → hold ACEi; check dehydration.",
+    "new": "Creatinine rise ≥30% (or eGFR fall ≥25%) → check dehydration and other causes; reduce or stop ACEi if none."
+   },
+   {
+    "file": "cases/angina.html",
+    "old": "Creatinine ↑ &gt;25% → hold; investigate RAS.",
+    "new": "Creatinine ↑ ≥30% (or eGFR ↓ ≥25%) → look for other causes; reduce or stop if none; consider RAS."
+   },
+   {
+    "file": "cases/peripheral-arterial-disease.html",
+    "old": "nephrology input if creatinine rises &gt;25% or K⁺ &gt;5.5",
+    "new": "nephrology input if creatinine rises ≥30% (or eGFR falls ≥25%) or K⁺ &gt;5.5"
+   },
+   {
+    "file": "cases/peripheral-arterial-disease.html",
+    "old": "stop if K⁺ &gt;6.0 or creatinine rises &gt;25%",
+    "new": "stop if K⁺ ≥6.0; if creatinine rises ≥30% (or eGFR falls ≥25%), look for other causes and reduce or stop if none"
+   },
+   {
+    "file": "cases/peripheral-arterial-disease.html",
+    "old": "Creatinine ↑ &gt;25% → hold ACEi; investigate renal artery stenosis.",
+    "new": "Creatinine ↑ ≥30% (or eGFR ↓ ≥25%) → look for other causes; reduce or stop ACEi if none; consider renal artery stenosis."
+   },
+   {
+    "file": "cases/mi-secondary-prevention.html",
+    "old": "(&lt;20&#8211;25% from baseline = acceptable; &gt;30%: investigate; stop if severe)",
+    "new": "(rise &lt;30% from baseline, or eGFR fall &lt;25%, = acceptable; ≥30%: investigate other causes; reduce or stop if none)"
+   },
+   {
+    "file": "tools/management/ckd.html",
+    "old": "suspect if creatinine jumps &gt;25% on an ACEi",
+    "new": "suspect if creatinine rises ≥30% on an ACEi"
+   },
+   {
+    "file": "tools/management/ckd-print.html",
+    "old": "suspect if creatinine jumps &gt;25% on an ACEi",
+    "new": "suspect if creatinine rises ≥30% on an ACEi"
+   },
+   {
+    "file": "assets/basic-science-patho.js",
+    "old": "A ≤25% creatinine rise is expected and acceptable.",
+    "new": "A creatinine rise of less than 30% (eGFR fall of less than 25%) is expected and acceptable."
+   },
+   {
+    "file": "assets/basic-science-patho.js",
+    "old": "don’t stop unless >25–30%.",
+    "new": "don’t stop for a rise of less than 30% (NICE NG203)."
+   },
+   {
+    "file": "assets/basic-science-pharma.js",
+    "old": "Expect a small creatinine rise (≤25–30%)",
+    "new": "Expect a small creatinine rise (less than 30%; eGFR fall less than 25%)"
+   }
+  ],
+  "note": "Several cases use '>25% creatinine rise -> hold', mixing up the NG203 eGFR (25%) and creatinine (30%) thresholds. Legitimate and left unchanged: cases/eczema.html (ciclosporin, >25% above baseline -> reduce dose, per BAD/SPC) and cases/heart-failure.html (>50% on ACEi, the HF practical-guidance tolerance). The owner may still want to align the HF page with its own '>30% -> stop + specialist' wording."
+ },
+ {
+  "subject": "gabapentin",
+  "group": "max dose | mg (renal)",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "Gabapentin SPC renal dosing uses creatinine clearance: CrCl 50–79 = 600–1,800 mg/day; 30–49 = 300–900 mg/day; 15–29 = 150–600 mg/day; <15 = 150–300 mg/day. Reduce from CrCl <80. Pregabalin is reduced from CrCl <60.",
+  "source": "https://www.medicines.org.uk/emc/product/4122/smpc",
+  "fixes": [
+   {
+    "file": "cases/neuropathic-pain.html",
+    "old": "gabapentin maximum 900mg/day at eGFR 30&#8211;59",
+    "new": "gabapentin maximum 1,800mg/day at CrCl 50&#8211;79 and 900mg/day at CrCl 30&#8211;49 (SPC)"
+   },
+   {
+    "file": "cases/ckd.html",
+    "old": "Gabapentin/pregabalin: reduce at eGFR &lt;30",
+    "new": "Gabapentin: reduce at CrCl &lt;80; pregabalin: reduce at CrCl &lt;60 (SPC)"
+   }
+  ],
+  "note": "The 900 mg cap applies only at CrCl 30–49. At 50–59 the maximum is 1,800 mg/day, so the case under-states the dose for part of the band. The CKD case says gabapentinoids need reducing only below eGFR 30, which is unsafe: dose reduction starts much earlier. The pregabalin band table in cases/neuropathic-pain.html matches its SPC and is left unchanged."
+ },
+ {
+  "subject": "morphine",
+  "group": "recheck/monitor | mg (Opioids Aware threshold)",
+  "verdict": "inconsistent",
+  "tier": 1,
+  "correct": "Opioids Aware (FPM, updated): threshold lowered from 120 to 90 mg/day oral morphine equivalent, with about 50 mg/day as the ideal/heightened-review level. Seek specialist advice above 90 mg/day.",
+  "source": "https://www.fpm.ac.uk/node/96",
+  "fixes": [
+   {
+    "file": "tools/prescribing.html",
+    "old": "Review regularly; above about 120 mg oral morphine equivalent a day, harms rise without added benefit (Opioids Aware, FPM)",
+    "new": "Review regularly; treat about 50 mg/day oral morphine equivalent as a prompt for heightened review and seek specialist advice before exceeding 90 mg/day: above this, harms rise without added benefit (Opioids Aware, FPM 2026)"
+   }
+  ],
+  "note": "Every other page (hip-pain, neck-pain, analgesia-primary-care, opioid-prescribing, sca-addons-7) already uses 50/90. tools/prescribing.html still has the superseded 120 mg figure."
+ },
+ {
+  "subject": "morphine",
+  "group": "dose | mg (IM morphine in suspected ACS)",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "Suspected ACS/MI: offer pain relief as soon as possible with GTN, and offer IV opioids such as morphine, particularly if MI is suspected (NICE CG95). Avoid IM injections in suspected MI: absorption is erratic and haematoma risk is high with antithrombotic or thrombolytic treatment. In primary care without IV access, leave opioid analgesia to the ambulance crew.",
+  "source": "https://www.nice.org.uk/guidance/cg95/chapter/Recommendations",
+  "fixes": [
+   {
+    "file": "cases/chest-pain.html",
+    "old": "<li>Morphine 5–10mg IM for severe pain pending ambulance (caution: reduces clopidogrel absorption).</li>",
+    "new": "<li>Severe pain not relieved by GTN: IV opioid (e.g. morphine, titrated) with an antiemetic if IV access is available; avoid IM injections in suspected MI (NICE CG95). Otherwise leave analgesia to the ambulance crew (caution: opioids delay oral P2Y12 absorption).</li>"
+   },
+   {
+    "file": "cases/chest-pain.html",
+    "old": "Morphine sulphate 5–10mg IM/IV / Diamorphine 2.5–5mg IV (hospital)",
+    "new": "Morphine sulphate 5–10mg IV, slow and titrated (avoid IM in suspected MI) / Diamorphine 2.5–5mg IV (hospital)"
+   },
+   {
+    "file": "cases/chest-pain.html",
+    "old": "<span class=\"dc-dose\">5–10mg IM titrated</span>",
+    "new": "<span class=\"dc-dose\">5–10mg IV titrated</span>"
+   },
+   {
+    "file": "cases/chest-pain.html",
+    "old": "Morphine IM for severe pain + antiemetic",
+    "new": "IV opioid (not IM) + antiemetic for severe pain if IV access; otherwise leave to the ambulance crew"
+   },
+   {
+    "file": "cases/chest-pain.html",
+    "old": "Morphine IM for pain relief is appropriate.",
+    "new": "IV opioid for pain relief if IV access is available (avoid IM injections)."
+   }
+  ],
+  "note": "CG95 wording comes from established guidance. nice.org.uk could not be opened directly in this pass, so the fixing pass should spot-check it. The last fix (suspected aortic dissection row) is the same principle: avoid IM injections when anticoagulation or surgery may follow."
+ },
+ {
+  "subject": "levothyroxine",
+  "group": "state | % (pregnancy dose increase)",
+  "verdict": "inconsistent",
+  "tier": 1,
+  "correct": "On a positive pregnancy test, empirically increase levothyroxine by about 25–30%, e.g. two extra doses a week (~29%). Then titrate to TSH/FT4; some women eventually need 30–50% more. The 20–30% wording (ATA/THERAPY trial) is the same practical rule.",
+  "source": "https://jamanetwork.com/journals/jama/fullarticle/2733078",
+  "fixes": [
+   {
+    "file": "assets/diagnostic-cases.js",
+    "old": "levothyroxine ↑30–50% early · ptu",
+    "new": "levothyroxine ↑25–30% at positive test · ptu"
+   },
+   {
+    "file": "assets/diagnostic-cases.js",
+    "old": "levothyroxine ↑30–50% early · PTU",
+    "new": "levothyroxine ↑25–30% at positive test · PTU"
+   },
+   {
+    "file": "tools/algorithms/_meta.json",
+    "old": "levothyroxine ↑30–50% early · PTU",
+    "new": "levothyroxine ↑25–30% at positive test · PTU"
+   },
+   {
+    "file": "tools/algorithms/lab-results.html",
+    "old": "levothyroxine ↑30–50% early · PTU",
+    "new": "levothyroxine ↑25–30% at positive test · PTU"
+   },
+   {
+    "file": "assets/meds/hypothyroidism.js",
+    "old": "Increase dose ~25–50% as soon as pregnancy confirmed",
+    "new": "Increase dose ~25–30% as soon as pregnancy confirmed"
+   },
+   {
+    "file": "assets/meds/hypothyroidism.js",
+    "old": "commonly by ~25–50%",
+    "new": "commonly by ~25–30%"
+   }
+  ],
+  "note": "The dedicated thyroid-pregnancy page, the hypothyroidism case and the summaries give 25–30% as the immediate step, and say only that 'some women need 30–50%' later. The search-card taglines and the meds file present 30–50% / 25–50% as the immediate increase. The RCOG 2025 GTG text could not be opened. The 20–30% wording in abnormal-tfts.html, one-page/abnormal-tfts.html, sca-cases11.js and thyroid-hypo-young.json is clinically equivalent ('two extra doses a week'). The owner may optionally standardise it to 25–30%, but no change is required."
+ },
+ {
+  "subject": "levothyroxine",
+  "group": "start/initiate | weeks (elderly titration)",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "In older people, start 25–50 micrograms and titrate in 25 microgram steps. Recheck TSH no sooner than 6–8 weeks after each change (NG145: about every 3 months until stable). Aim for TSH within the reference range; a higher target is often appropriate in older adults. There is no NG145 target of 0.5–2.5.",
+  "source": "https://www.nice.org.uk/guidance/ng145/chapter/Recommendations",
+  "fixes": [
+   {
+    "file": "cases/dementia.html",
+    "old": "titrate to TSH 0.5–2.5)",
+    "new": "titrate to a TSH within the reference range; a higher target may suit older people)"
+   },
+   {
+    "file": "cases/dementia.html",
+    "old": "titrate up by 25mcg every 4 weeks to TSH 0.5–2.5)",
+    "new": "titrate in 25mcg steps, rechecking TSH no sooner than 6–8 weeks after each change, aiming for TSH within the reference range)"
+   }
+  ],
+  "note": "Titrating every 4 weeks is faster than TSH can equilibrate. A 0.5–2.5 target risks over-replacement in older people with dementia. 0.5–2.5 is a pre-conception/pregnancy target used elsewhere on the site."
+ },
+ {
+  "subject": "rivaroxaban",
+  "group": "diagnose/threshold | mg (renal dosing)",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "Rivaroxaban AF: 20 mg OD with food; 15 mg OD if CrCl 15–49; not recommended if CrCl <15. Rivaroxaban 2.5 mg BD (COMPASS): no dose adjustment; caution at CrCl 15–29; not recommended <15. Apixaban AF reduction applies at CrCl 15–29 or with 2 of age/weight/creatinine. Edoxaban reduction applies at CrCl 15–50.",
+  "source": "https://www.medicines.org.uk/emc/product/2793/smpc",
+  "fixes": [
+   {
+    "file": "tools/algorithms/palpitations.html",
+    "old": "Rivaroxaban 20 mg OD with food (15 mg at the CrCl threshold)",
+    "new": "Rivaroxaban 20 mg OD with food (15 mg OD if CrCl 15–49)"
+   },
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "CrCl &lt;30 → dose adjustment or switch.",
+    "new": "CrCl &lt;50 → check product-specific dose reduction (rivaroxaban 15 mg if CrCl 15–49; edoxaban 30 mg if 15–50; apixaban per SPC criteria)."
+   },
+   {
+    "file": "cases/peripheral-arterial-disease.html",
+    "old": "Annual renal function (rivaroxaban dose-adjustment at CrCl &lt;15)",
+    "new": "Annual renal function (rivaroxaban 2.5 mg BD: no dose change, use with caution at CrCl 15–29, avoid below 15)"
+   }
+  ],
+  "note": "The tia-stroke monitoring table implies no DOAC change until CrCl <30, which misses rivaroxaban/edoxaban reductions from CrCl <50. The PAD page wrongly describes a 'dose adjustment at CrCl <15' for the COMPASS dose. The site's AF and anticoagulant management pages already use the correct values."
+ },
+ {
+  "subject": "emollient/steroid cream",
+  "group": "refer | % (infant facial steroid)",
+  "verdict": "inconsistent",
+  "tier": 1,
+  "correct": "On an infant's face use mild potency only (hydrocortisone). Moderate-potency betamethasone valerate 0.025% is for the body, not the face, without specialist advice (NICE CG57). The same page already says '(body; avoid face)'.",
+  "source": "https://www.nice.org.uk/guidance/cg57/chapter/Recommendations",
+  "fixes": [
+   {
+    "file": "cases/cmpa-reflux.html",
+    "old": "stronger topical CS (HC 2.5% or betamethasone 0.025% face)",
+    "new": "stronger topical CS (HC 2.5% for the face; betamethasone valerate 0.025% for the body only, not the face)"
+   }
+  ],
+  "note": "Line 278 of cases/cmpa-reflux.html suggests betamethasone 0.025% on the face of an infant. Lines 534/538 of the same page say avoid face."
+ },
+ {
+  "subject": "prednisolone",
+  "group": "recheck/monitor | mg (PMR start dose attribution)",
+  "verdict": "wrong",
+  "tier": 3,
+  "correct": "The 12.5–25 mg PMR starting range is from the 2015 EULAR/ACR recommendations. BSR/BHPR 2010 suggests 15 mg daily.",
+  "source": "https://the-rheumatologist.org/?p=58839",
+  "fixes": [
+   {
+    "file": "assets/ask-testbank.js",
+    "old": "within the BSR 2015 range of 12.5–25 mg",
+    "new": "within the EULAR/ACR 2015 range of 12.5–25 mg"
+   }
+  ],
+  "note": "Attribution only; the dose is fine. There is no 'BSR 2015' PMR guideline."
+ }
+]

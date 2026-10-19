@@ -1,0 +1,2122 @@
+{
+ "findings": [
+  {
+   "subject": "eGFR",
+   "group": "max dose | mg",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Gabapentin by creatinine clearance (SPC): ≥80 mL/min 900–3,600 mg/day; 50–79: 600–1,800; 30–49: 300–900; 15–29: 150–600; <15: 150–300 mg/day",
+   "source": "https://www.medicines.org.uk/emc/product/4122/smpc",
+   "fixes": [
+    {
+     "file": "cases/neuropathic-pain.html",
+     "old": "eGFR &gt;60: standard (max 3600mg/day). eGFR 30&#8211;59: max ~1800mg/day. eGFR 15&#8211;29: max ~900mg/day. eGFR &lt;15 / dialysis: specialist.",
+     "new": "Gabapentin by creatinine clearance (SPC): &#8805;80 mL/min up to 3600mg/day; 50&#8211;79: up to 1800mg/day; 30&#8211;49: up to 900mg/day; 15&#8211;29: 150&#8211;600mg/day; &lt;15: 150&#8211;300mg/day; dialysis: specialist."
+    },
+    {
+     "file": "cases/neuropathic-pain.html",
+     "old": "Calculate dose reduction: gabapentin maximum 900mg/day at eGFR 30&#8211;59.",
+     "new": "Calculate dose reduction: gabapentin maximum 1800mg/day at creatinine clearance 50&#8211;79 and 900mg/day at 30&#8211;49 (SPC)."
+    }
+   ],
+   "note": "The page contradicts itself: line 470 gives 1800 mg/day at eGFR 30–59 and 900 mg/day at 15–29, but line 93 gives 900 mg/day at 30–59. The SPC limits are 900 mg/day at CrCl 30–49 and 600 mg/day at 15–29, so line 470 allows up to twice the licensed dose. The pregabalin maxima (600/300/150/75) on the same page are correct.",
+   "id": "b01-0"
+  },
+  {
+   "subject": "eGFR",
+   "group": "do not start | mg",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Duloxetine: no dose adjustment at CrCl 30–80 mL/min; contraindicated at CrCl <30 (SPC)",
+   "source": "https://www.medicines.org.uk/emc (duloxetine SPC section 4.2/4.3)",
+   "fixes": [
+    {
+     "file": "cases/depression.html",
+     "old": "Renal function for duloxetine — contraindicated if eGFR &lt;30; dose-reduce to 30mg if eGFR 30–60",
+     "new": "Renal function for duloxetine — contraindicated if creatinine clearance &lt;30 mL/min; no dose adjustment needed at 30–80 (SPC)"
+    }
+   ],
+   "note": "The SPC has no 30 mg renal dose reduction. The statement also contradicts cases/neuropathic-pain.html ('no dose adjustment needed for standard duloxetine').",
+   "id": "b01-1"
+  },
+  {
+   "subject": "eGFR",
+   "group": "dose | mg",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "Mirabegron: 25 mg if CrCl 15–29 or moderate hepatic impairment (Child-Pugh B); not recommended in severe hepatic impairment (Child-Pugh C) or eGFR <15",
+   "source": "https://www.geneesmiddeleninformatiebank.nl/smpc/h132822_smpc_en.pdf (mirabegron SPC 4.2; same as UK Betmiga SPC)",
+   "fixes": [
+    {
+     "file": "cases/male-luts.html",
+     "old": "Mirabegron 50mg OD (25mg if eGFR &lt;30 or severe hepatic impairment)",
+     "new": "Mirabegron 50mg OD (25mg if eGFR 15&#8211;29 or moderate hepatic impairment; not recommended in severe hepatic impairment)"
+    },
+    {
+     "file": "cases/male-luts.html",
+     "old": "eGFR &lt;30 or severe hepatic impairment: reduce to 25mg OD",
+     "new": "eGFR 15&#8211;29 or moderate hepatic impairment: reduce to 25mg OD; avoid in severe hepatic impairment (SPC)"
+    }
+   ],
+   "note": "The SPC says severe hepatic impairment is 'not recommended', not '25 mg'. tools/clinic-guides/male-luts.html ('25 mg if eGFR 15–29') is already correct.",
+   "id": "b01-2"
+  },
+  {
+   "subject": "eGFR",
+   "group": "max dose | mg",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Rosuvastatin is contraindicated at CrCl <30 mL/min (SPC). It cannot be continued at 20 mg.",
+   "source": "https://www.medicines.org.uk/emc (rosuvastatin SPC 4.3)",
+   "fixes": [
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "If eGFR declines to &lt;30: reduce to maximum 20mg.",
+     "new": "If creatinine clearance falls below 30 mL/min: rosuvastatin is contraindicated &#8212; switch to atorvastatin (agree any dose increase with renal team, NG238)."
+    }
+   ],
+   "note": "This contradicts the same drug card ('eGFR <30: contraindicated') and cases/ckd.html.",
+   "id": "b01-3"
+  },
+  {
+   "subject": "eGFR",
+   "group": "start/initiate | mg",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "Dapagliflozin: not initiated if eGFR <15 (current SPC). Empagliflozin: not initiated if eGFR <20; dose 10 mg if eGFR <60.",
+   "source": "https://www.medicines.org.uk/emc/product/5441/smpc ; https://www.medicines.org.uk/emc/product/101539/smpc",
+   "fixes": [
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "dapagliflozin avoid if eGFR &lt;25; empagliflozin reduce to 10mg if eGFR 30-45.",
+     "new": "do not initiate dapagliflozin if eGFR &lt;15 or empagliflozin if eGFR &lt;20; empagliflozin dose is 10mg if eGFR &lt;60 (SPC; glucose-lowering effect falls below eGFR 45)."
+    }
+   ],
+   "note": "These are outdated SPC thresholds.",
+   "id": "b01-4"
+  },
+  {
+   "subject": "eGFR",
+   "group": "start/initiate | weeks",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "The SGLT2i SPCs set initiation limits (dapagliflozin <15, empagliflozin <20), and treatment is usually continued as eGFR declines, until dialysis. They give no stop rule at eGFR <20.",
+   "source": "https://www.medicines.org.uk/emc/product/5441/smpc ; https://www.medicines.org.uk/emc/product/101539/smpc",
+   "fixes": [
+    {
+     "file": "cases/heart-failure.html",
+     "old": "eGFR &lt;20 → stop (insufficient benefit, AKI risk).",
+     "new": "Do not stop for eGFR decline alone (expected early dip); initiation limits per SPC (dapagliflozin eGFR &lt;15, empagliflozin &lt;20); seek advice if eGFR &lt;15 or on dialysis."
+    },
+    {
+     "file": "cases/heart-failure.html",
+     "old": "eGFR &lt;20 → stop. Withhold on sick days",
+     "new": "Do not stop for eGFR decline alone; seek advice if eGFR &lt;15 or on dialysis. Withhold on sick days"
+    }
+   ],
+   "note": "'eGFR <20 → stop' is not in either SPC. It contradicts the site's own advice to accept the eGFR dip (tools/clinic-guides/ckd.html: 'expect a small early eGFR dip — don't stop'). Owner may prefer to soften to 'seek advice' if a local rule exists.",
+   "id": "b01-5"
+  },
+  {
+   "subject": "eGFR",
+   "group": "stop/withhold | %",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "NICE NG203: do not modify ACEi/ARB if eGFR falls <25% or creatinine rises <30%; at ≥25% / ≥30% look for other causes, then stop or reduce. Stop if K⁺ ≥6.0.",
+   "source": "https://www.nice.org.uk/guidance/ng203 (rec 1.6.x, quoted on site tools/management/hypertension.html)",
+   "fixes": [
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "Creatinine rise &gt;25% or eGFR fall &gt;25% → hold ACEi/ARB",
+     "new": "Creatinine rise &#8805;30% or eGFR fall &#8805;25% → look for other causes (e.g. dehydration, NSAIDs), then reduce or stop ACEi/ARB"
+    },
+    {
+     "file": "cases/peripheral-arterial-disease.html",
+     "old": "nephrology input if creatinine rises &gt;25% or K⁺ &gt;5.5",
+     "new": "look for causes and seek advice if creatinine rises &#8805;30% (eGFR fall &#8805;25%) or K⁺ &gt;5.5"
+    },
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "Monitor: eGFR rise &lt;25% acceptable",
+     "new": "Monitor: eGFR fall &lt;25% (creatinine rise &lt;30%) acceptable"
+    },
+    {
+     "file": "cases/ckd.html",
+     "old": "do not stop unless K⁺ &gt;6 or eGFR falls &gt;25% on initiation",
+     "new": "do not stop unless K⁺ &#8805;6.0, or eGFR falls &#8805;25% with no other cause found"
+    },
+    {
+     "file": "cases/ckd.html",
+     "old": "Do NOT stop ACEi/ARB unless K⁺ &gt;6.0 or eGFR drop &gt;25% on initiation",
+     "new": "Do NOT stop ACEi/ARB unless K⁺ &#8805;6.0, or eGFR drop &#8805;25% with no other cause found"
+    }
+   ],
+   "note": "The site standard is 25% eGFR / 30% creatinine (tools/management/ckd.html, tools/prescribing.html, tools/management/hypertension.html). Two cases use a 25% creatinine threshold. One case says 'eGFR rise' where it means 'fall'. NSAID '>25% → stop' lines (chest-pain, axial-spa, low-back-pain) are a different drug context and were left alone.",
+   "id": "b01-6"
+  },
+  {
+   "subject": "cabergoline",
+   "group": "start/initiate | mg",
+   "verdict": "inconsistent",
+   "tier": 1,
+   "correct": "Hyperprolactinaemia: start 0.5 mg per week (one dose or two 0.25 mg doses), increase by 0.5 mg/week at monthly intervals; usual 1 mg/week (SPC)",
+   "source": "https://www.medicines.org.uk/emc/product/101124/smpc",
+   "fixes": [
+    {
+     "file": "cases/breast-disorders.html",
+     "old": "Cabergoline 0.5mg twice weekly (first-line)",
+     "new": "Cabergoline 0.5mg a week, as one dose or two divided doses (first-line; SPC)"
+    },
+    {
+     "file": "cases/breast-disorders.html",
+     "old": "Cabergoline 0.5mg twice weekly (start; titrate up over weeks; endocrinology-guided)",
+     "new": "Cabergoline 0.5mg a week (one dose or two; increase by 0.5mg/week at monthly intervals; usual 1mg/week; endocrinology-guided)"
+    }
+   ],
+   "note": "'0.5 mg twice weekly' (1 mg/week) is double the SPC starting dose. It disagrees with tools/algorithms/hyperprolactinaemia.html and the Clinic Guide. The same file also says 'twice-weekly dosing (compliance)', which is acceptable.",
+   "id": "b01-7"
+  },
+  {
+   "subject": "urate",
+   "group": "target | µmol/l",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "NICE NG219: target serum urate below 360 µmol/L. CONSIDER below 300 µmol/L with tophi, chronic gouty arthritis or continued flares.",
+   "source": "https://www.nice.org.uk/guidance/ng219 (via medthority summary: https://prep.medthority.com/nice/conditions-and-diseases/musculoskeletal-conditions/arthritis/ng219)",
+   "fixes": [
+    {
+     "file": "cases/gout.html",
+     "old": "Tophi present → NICE NG219: ULT must be offered; target urate is 300 µmol/L (not 360 µmol/L).",
+     "new": "Tophi present → NICE NG219: offer ULT; consider a lower target below 300 µmol/L (rather than below 360 µmol/L)."
+    },
+    {
+     "file": "cases/gout.html",
+     "old": "with a lower target urate (300 µmol/L to dissolve crystals)",
+     "new": "with consideration of a lower target urate (below 300 µmol/L) to dissolve crystals"
+    },
+    {
+     "file": "cases/gout.html",
+     "old": "NICE NG219 target urate ≤300 µmol/L.",
+     "new": "NICE NG219: consider target urate below 300 µmol/L."
+    },
+    {
+     "file": "cases/gout.html",
+     "old": "≤360",
+     "new": "<360",
+     "replace_all": true
+    },
+    {
+     "file": "cases/gout.html",
+     "old": "≤300",
+     "new": "<300",
+     "replace_all": true
+    },
+    {
+     "file": "assets/search/idx-case.json",
+     "old": "≤360",
+     "new": "<360",
+     "replace_all": true
+    },
+    {
+     "file": "assets/search/idx-case.json",
+     "old": "≤300",
+     "new": "<300",
+     "replace_all": true
+    }
+   ],
+   "note": "cases/gout.html uses '≤360/≤300' (23 + 13 occurrences) where NG219 and every other page say 'below'. Replace all in that file only. Check after the first three edits, because they remove some ≤300s first. Also 'target urate 300 µmol/L;' in the tophi rows at lines 1139/1144: change to 'consider target <300 µmol/L;'. That string occurs twice, so replace it in both places.",
+   "id": "b01-8"
+  },
+  {
+   "subject": "urate",
+   "group": "state | µmol/l",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "NICE NG219 offer ULT: multiple or troublesome flares, CKD stages 3–5, diuretic therapy, tophi, chronic gouty arthritis; discuss ULT with anyone after a flare. NG219 has no 'urate >600' or '≥2 attacks/year' criterion.",
+   "source": "https://prep.medthority.com/nice/conditions-and-diseases/musculoskeletal-conditions/arthritis/ng219",
+   "fixes": [
+    {
+     "file": "assets/prescriptions-data.js",
+     "old": "Recurrent gout (≥ 2 attacks/year), tophi, urate stones, CKD ≥ stage 3, urate > 600 µmol/L, or one severe flare.",
+     "new": "Offer ULT (NICE NG219) for multiple or troublesome flares, CKD stages 3–5, diuretic therapy, tophi or chronic gouty arthritis; discuss ULT with anyone after a flare."
+    },
+    {
+     "file": "assets/search/idx-rx.json",
+     "old": "Recurrent gout (≥ 2 attacks/year), tophi, urate stones, CKD ≥ stage 3, urate > 600 µmol/L, or one severe flare.",
+     "new": "Offer ULT (NICE NG219) for multiple or troublesome flares, CKD stages 3–5, diuretic therapy, tophi or chronic gouty arthritis; discuss ULT with anyone after a flare."
+    },
+    {
+     "file": "assets/prescriptions-data.js",
+     "old": "Initiate / titrate allopurinol if recurrent / tophi / urate stones / CKD / urate > 600.",
+     "new": "Offer allopurinol (NG219) if multiple/troublesome flares, CKD 3–5, diuretics, tophi or chronic gouty arthritis."
+    }
+   ],
+   "note": "These are outdated pre-NG219 (BSR/EULAR-era) indications in Ready Prescriptions.",
+   "id": "b01-9"
+  },
+  {
+   "subject": "allopurinol",
+   "group": "dose | mg",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "Febuxostat comes as 80 mg and 120 mg in the UK; start 80 mg. There is limited data in severe renal impairment (CrCl <30), so get specialist advice.",
+   "source": "https://www.medicines.org.uk/emc (febuxostat/Adenuric SPC 4.2)",
+   "fixes": [
+    {
+     "file": "assets/prescriptions-data.js",
+     "old": "Reduced allopurinol doses; febuxostat 40 mg OD with caution.",
+     "new": "Reduced allopurinol doses; febuxostat 80 mg OD with caution (limited data if CrCl < 30)."
+    }
+   ],
+   "note": "40 mg is a US strength and is not a UK SPC dose.",
+   "id": "b01-10"
+  },
+  {
+   "subject": "urate",
+   "group": "recheck/monitor | weeks",
+   "verdict": "inconsistent",
+   "tier": 3,
+   "correct": "If urate is low during a flare, repeat at least 2 weeks after the flare settles (NICE NG219)",
+   "source": "https://www.nice.org.uk/guidance/ng219",
+   "fixes": [
+    {
+     "file": "assets/consult-templates.js",
+     "old": "Consider serum urate (may be normal acutely — recheck ≥4–6 weeks later)",
+     "new": "Consider serum urate (may be normal acutely — recheck at least 2 weeks after the flare settles)"
+    }
+   ],
+   "note": "Every other page says ≥2 weeks.",
+   "id": "b01-11"
+  },
+  {
+   "subject": "bilirubin",
+   "group": "state | µmol/l",
+   "verdict": "inconsistent",
+   "tier": 3,
+   "correct": "Jaundice usually becomes clinically detectable above about 40 µmol/L (sclerae first, in good natural light). Detection is unreliable near that level.",
+   "source": "https://gpnotebook.com/pages/gastroenterology/jaundice",
+   "fixes": [
+    {
+     "file": "tools/algorithms/jaundice.html",
+     "old": "scleral icterus visible when bilirubin &gt;35 µmol/L",
+     "new": "scleral icterus usually visible when bilirubin is above about 40 µmol/L"
+    },
+    {
+     "file": "assets/search/idx-pathway.json",
+     "old": "scleral icterus visible when bilirubin >35 µmol/L",
+     "new": "scleral icterus usually visible when bilirubin is above about 40 µmol/L"
+    },
+    {
+     "file": "cases/abnormal-lfts.html",
+     "old": "Clinically detectable jaundice requires bilirubin &gt;50 &mu;mol/L.",
+     "new": "Jaundice usually becomes clinically detectable above about 40 &mu;mol/L."
+    }
+   ],
+   "note": "One page says 35 µmol/L and another says 50 µmol/L. Harmonise to about 40 µmol/L. Low clinical impact.",
+   "id": "b01-12"
+  },
+  {
+   "subject": "bilirubin",
+   "group": "state | µmol/l",
+   "verdict": "inconsistent",
+   "tier": 3,
+   "correct": "Gilbert's: mild unconjugated rise, occasionally up to about 80–85 µmol/L with illness/fasting; unconjugated >40 µmol/L → consider rarer causes (site Gilbert's page, BSG)",
+   "source": "https://patient.info/doctor/gilberts-syndrome-pro",
+   "fixes": [
+    {
+     "file": "assets/articles-data-2.js",
+     "old": "typically <100 µmol/L, with normal ALT/ALP/GGT",
+     "new": "usually below about 40 µmol/L (occasionally up to about 80 µmol/L during illness or fasting), with normal ALT/ALP/GGT"
+    },
+    {
+     "file": "assets/search/idx-article.json",
+     "old": "typically <100 µmol/L, with nor",
+     "new": "usually below about 40 µmol/L (occasionally up to about 80 µmol/L during illness or fasting), with nor"
+    }
+   ],
+   "note": "The article's 'typically <100' does not match tools/management/gilberts-syndrome.html, which says '>40 consider rarer causes; occasionally 80–85'. For the index file, the replacement assumes the index is regenerated. If it is, skip that fix.",
+   "id": "b01-13"
+  },
+  {
+   "subject": "INR",
+   "group": "lab rule INR 5–8 (assets/labs/generic.js)",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "INR 5–8 without bleeding: withhold 1–2 doses of warfarin and reduce the maintenance dose; vitamin K is for INR >8 (oral 1–5 mg) or for bleeding (BNF / BSH warfarin reversal)",
+   "source": "https://bnf.nice.org.uk/treatment-summaries/oral-anticoagulants/ (BNF warfarin high INR table); consistent with site tools/algorithms/bruising.html",
+   "fixes": [
+    {
+     "file": "assets/labs/generic.js",
+     "old": "label:'INR 5–8 — withhold warfarin + oral vit K'",
+     "new": "label:'INR 5–8 — withhold 1–2 doses of warfarin, reduce dose (vit K only if bleeding)'"
+    }
+   ],
+   "note": "The lab interpreter tells users to give oral vitamin K at INR 5–8 with no bleeding. BNF/BSH and the site's own bruising algorithm say to omit 1–2 doses and reduce the dose; vitamin K applies at INR >8 or with bleeding. High-risk drug.",
+   "id": "b02-0"
+  },
+  {
+   "subject": "eosinophils",
+   "group": "state | ×10⁹/l (hypereosinophilia definition)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "Hypereosinophilia = eosinophils ≥1.5 × 10⁹/L on two occasions at least 4 weeks apart; >5.0 × 10⁹/L is 'severe' eosinophilia (BSH 2017)",
+   "source": "https://b-s-h.org.uk/guidelines/guidelines/investigation-and-management-of-eosinophilia (BSH 2017)",
+   "fixes": [
+    {
+     "file": "assets/pathways-redflags.js",
+     "old": "{\"chip\":\"Eosinophils >5.0 × 10⁹/L (\",\"text\":\"No Eosinophils >5.0 × 10⁹/L (hypereosinophilia) on two readings 4 weeks apart",
+     "new": "{\"chip\":\"Eosinophils ≥1.5 × 10⁹/L (\",\"text\":\"No Eosinophils ≥1.5 × 10⁹/L (hypereosinophilia) on two readings 4 weeks apart"
+    },
+    {
+     "file": "tools/algorithms/eosinophilia.html",
+     "old": "<div>High eosinophilia / hypereosinophilia (&gt;5.0 × 10⁹/L)</div>",
+     "new": "<div>Severe eosinophilia (&gt;5.0 × 10⁹/L)</div>"
+    }
+   ],
+   "note": "Elsewhere the site (eosinophilia.html, leucocytosis.html, clinic guide) defines hypereosinophilia as ≥1.5. The red-flag entry gives the HES threshold as >5.0 while its own explanation says >1.5. The eosinophilia algorithm labels >5.0 as 'hypereosinophilia'; the same page already calls this band 'severe'.",
+   "id": "b02-1"
+  },
+  {
+   "subject": "respiratory rate",
+   "group": "state | % (acute severe asthma criteria)",
+   "verdict": "inconsistent",
+   "tier": 1,
+   "correct": "Acute severe asthma = ANY ONE of: PEF 33–50% best/predicted, RR ≥25/min, HR ≥110/min, inability to complete sentences (BTS/SIGN/NICE)",
+   "source": "https://www.brit-thoracic.org.uk/quality-improvement/guidelines/asthma/ (BTS/SIGN 158; retained in NG245 acute section)",
+   "fixes": [
+    {
+     "file": "assets/pathways-redflags.js",
+     "old": "\"text\":\"No Acute severe asthma: PEF 33-50% best/predicted + RR >25 + HR >110 + unable to complete sentences",
+     "new": "\"text\":\"No Acute severe asthma: any one of PEF 33–50% best/predicted, RR ≥25, HR ≥110 or unable to complete sentences"
+    }
+   ],
+   "note": "This red flag requires all four features ('+') and uses strict '>' thresholds. Every other page (asthma management, summaries, triage, AKT) uses 'any one of' with ≥25 and ≥110. As written, the flag under-triages an emergency.",
+   "id": "b02-2"
+  },
+  {
+   "subject": "glucose",
+   "group": "state | mmol/l (DVLA driving threshold <5 vs <4.0)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "DVLA (INF294, all groups): test within 2 h before driving and every 2 h; if 5.0 mmol/L or less, eat a snack first; do not drive if below 4.0 mmol/L or hypo symptoms; after a hypo wait 45 min after glucose returns to normal",
+   "source": "https://www.gov.uk/government/publications/inf294-a-guide-to-insulin-treated-diabetes-and-driving (INF294); see also https://www.knowdiabetes.org.uk/media/8335/inf294-a-guide-to-insulin-treated-diabetes-and-driving.pdf",
+   "fixes": [
+    {
+     "file": "cases/type-2-diabetes.html",
+     "old": "do not drive if glucose &lt;5 mmol/L; wait 45 min after hypo before driving",
+     "new": "if glucose 5.0 mmol/L or less eat a snack first, and do not drive if below 4.0 mmol/L; wait 45 min after a hypo has been treated and glucose has recovered before driving"
+    },
+    {
+     "file": "cases/type-2-diabetes.html",
+     "old": "<strong>Must not drive if glucose &lt;5 mmol/L</strong>",
+     "new": "<strong>Must not drive if glucose &lt;4.0 mmol/L (5.0 or less: eat a snack first — “five to drive”)</strong>"
+    }
+   ],
+   "note": "Only cases/type-2-diabetes.html gives a hard no-drive threshold of <5. Every other page (dvla.html, driving-diseases, insulin-type-2-diabetes, sca-addons-2, sca-cases56, sca-enrich) uses <4.0 no-drive and ≤5.0 snack. 'Five to drive' remains correct as advice.",
+   "id": "b02-3"
+  },
+  {
+   "subject": "BMI",
+   "group": "diagnose/threshold | years (eating-disorder DEXA timing)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "NICE NG69: consider a bone mineral density scan after 2 years of underweight in adults, or 1 year in children and young people (earlier if bone pain or recurrent fractures)",
+   "source": "https://www.nice.org.uk/guidance/ng69 (recs 1.3.18–1.3.19); the same file already quotes this rule in 6 places",
+   "fixes": [
+    {
+     "file": "cases/eating-disorders.html",
+     "old": "DEXA if BMI below threshold for 1 year",
+     "new": "DEXA after 2 years of underweight in adults (1 year in children and young people), or earlier if bone pain or recurrent fractures (NICE NG69)"
+    },
+    {
+     "file": "cases/eating-disorders.html",
+     "old": "DEXA bone density scan if amenorrhoea persists beyond 6 months",
+     "new": "DEXA per NICE NG69 (after 2 years of underweight in adults, 1 year in children and young people, or earlier if bone pain or recurrent fractures)"
+    },
+    {
+     "file": "cases/eating-disorders.html",
+     "old": "DEXA if amenorrhoea &gt;6 months",
+     "new": "DEXA per NICE NG69 timing"
+    }
+   ],
+   "note": "Emma is 19, so the adult rule applies. The follow-up timeline (1 year) and the amenorrhoea row (>6 months) contradict the page's own repeated NG69 statement.",
+   "id": "b02-4"
+  },
+  {
+   "subject": "BMI",
+   "group": "state | % (semaglutide weight loss in T2DM)",
+   "verdict": "wrong",
+   "tier": 3,
+   "correct": "Semaglutide 1 mg weekly in T2DM: about 5–7% body weight loss (SUSTAIN trials, ~4.5–6.5 kg). 10–15% applies to the 2.4 mg obesity dose (STEP) in people without diabetes",
+   "source": "https://www.thelancet.com/journals/landia/article/PIIS2213-8587(18)30024-X/fulltext (SUSTAIN 7)",
+   "fixes": [
+    {
+     "file": "cases/type-2-diabetes.html",
+     "old": "Semaglutide (GLP-1 RA): 10–15% body weight loss; remission potential",
+     "new": "Semaglutide (GLP-1 RA): about 5–7% body weight loss at diabetes doses (more with obesity-dose regimens); remission potential"
+    },
+    {
+     "file": "cases/type-2-diabetes.html",
+     "old": "BMI ≥35: GLP-1 RA preferred — 10–15% body weight loss with semaglutide",
+     "new": "BMI ≥35: GLP-1 RA preferred — about 5–7% body weight loss with semaglutide 1 mg"
+    },
+    {
+     "file": "cases/type-2-diabetes.html",
+     "old": "BMI ≥35 — superior weight loss (10–15% body weight with semaglutide)",
+     "new": "BMI ≥35 — superior weight loss (about 5–7% body weight with semaglutide 1 mg)"
+    }
+   ],
+   "note": "The case doses semaglutide at 0.25 mg rising to 1 mg (the diabetes dose) but quotes obesity-trial weight loss. assets/meds/type-2-diabetes.js says 5–15%, which is broadly acceptable.",
+   "id": "b02-5"
+  },
+  {
+   "subject": "BMI",
+   "group": "target | % (OSA case wording)",
+   "verdict": "wrong",
+   "tier": 3,
+   "correct": "Morbid (class III) obesity is BMI ≥40 kg/m²; BMI 36 is class II obesity",
+   "source": "https://www.nice.org.uk/guidance/ng246 (BMI classification)",
+   "fixes": [
+    {
+     "file": "cases/osa.html",
+     "old": "BMI 36 (morbid obesity threshold)",
+     "new": "BMI 36 (obesity class II)"
+    }
+   ],
+   "note": "Labelling error.",
+   "id": "b02-6"
+  },
+  {
+   "subject": "blood pressure",
+   "group": "dose | mg / recheck/monitor | mg (venlafaxine BP monitoring)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "Venlafaxine SPC: measure BP before starting and monitor regularly during treatment at all doses (dose-related increases; control pre-existing hypertension first; reduce dose or stop if sustained rise). tools/management/depression.html already says 'check BP at each titration step'.",
+   "source": "https://www.medicines.org.uk/emc/search?q=venlafaxine (SPC section 4.4); https://medlibrary.org/lib/rx/meds/venlafaxine/page/3/",
+   "fixes": [
+    {
+     "file": "cases/anxiety.html",
+     "old": "Blood pressure monitoring with venlafaxine above 150mg: noradrenergic effect raises BP",
+     "new": "Blood pressure monitoring with venlafaxine at all doses (before starting and regularly during treatment; the rise is dose-related): noradrenergic effect raises BP"
+    },
+    {
+     "file": "cases/anxiety.html",
+     "old": "Venlafaxine: monitor BP above 150mg.",
+     "new": "Venlafaxine: check BP before starting and regularly during treatment (dose-related rise)."
+    },
+    {
+     "file": "cases/depression.html",
+     "old": "Blood pressure at baseline, 1 month, then every 3 months on venlafaxine ≥150mg",
+     "new": "Blood pressure at baseline, 1 month, then every 3 months on venlafaxine (any dose; the rise is dose-related)"
+    },
+    {
+     "file": "cases/depression.html",
+     "old": "<td class=\"q\">Venlafaxine ≥150mg/day</td>",
+     "new": "<td class=\"q\">Venlafaxine (all doses; rise is dose-related)</td>"
+    },
+    {
+     "file": "cases/depression.html",
+     "old": "<strong>Venlafaxine ≥150mg</strong>",
+     "new": "<strong>Venlafaxine (all doses)</strong>"
+    },
+    {
+     "file": "cases/depression.html",
+     "old": "venlafaxine raises diastolic blood pressure at doses ≥150mg/day; measure BP at baseline, 1 month, then 3-monthly",
+     "new": "venlafaxine causes a dose-related rise in blood pressure (more likely at higher doses); control BP first and measure it at baseline, 1 month, then 3-monthly at any dose"
+    },
+    {
+     "file": "cases/ptsd.html",
+     "old": "Elevated BP at doses ≥225mg (monitor BP)",
+     "new": "Dose-related rise in BP (monitor BP before starting and regularly)"
+    },
+    {
+     "file": "cases/ptsd.html",
+     "old": "BP monitoring at higher doses (&gt;225mg).",
+     "new": "BP monitoring before starting and regularly during treatment (dose-related rise)."
+    }
+   ],
+   "note": "Pages restrict venlafaxine BP monitoring to >=150 mg (depression), >150 mg (anxiety) or >225 mg (PTSD), and disagree with each other. The SPC asks for BP monitoring in all patients. Statements that BP rises more at higher doses can stay. Venlafaxine was picked up under the blood-pressure dossier, so a venlafaxine batch may overlap with this.",
+   "id": "b03-0"
+  },
+  {
+   "subject": "sertraline",
+   "group": "recheck/monitor | weeks",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "NICE NG222 rec 1.4.11 (clarified Apr 2023): first review after starting an antidepressant within 1 week for people aged 18 to 25, or if there is particular concern about suicide risk; otherwise within 2 weeks. The old CG90 'under 30' rule no longer applies to depression. CG113 'under 30' for GAD stays correct on the anxiety pages.",
+   "source": "https://www.nice.org.uk/guidance/NG222/chapter/update-information",
+   "fixes": [
+    {
+     "file": "assets/consult-templates.js",
+     "old": "review at 1–2 weeks (sooner if <30y or higher risk)",
+     "new": "review within 2 weeks (within 1 week if aged 18–25 or at increased suicide risk — NICE NG222)"
+    }
+   ],
+   "note": "This is the depression consult template (low mood HPC). tools/management/depression.html already states the NG222 18–25 rule. Anxiety/GAD pages using 'under 30' (CG113) are legitimate and were left unchanged.",
+   "id": "b03-1"
+  },
+  {
+   "subject": "blood pressure",
+   "group": "refer | mmhg (>15 mmHg inter-arm difference)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "NICE NG136 1.1.2: if the arm difference is >15 mmHg, repeat the measurements; if it stays >15 mmHg, measure subsequent BP in the arm with the higher reading. A persistent difference may suggest PVD or coarctation, but referral is not automatic (tools/management/hypertension.html already says this).",
+   "source": "https://www.nice.org.uk/guidance/ng136/chapter/recommendations",
+   "fixes": [
+    {
+     "file": "cases/hypertension.html",
+     "old": "Difference &gt;15 mmHg = investigate.",
+     "new": "Difference &gt;15 mmHg = repeat; if it persists, use the higher-reading arm from then on."
+    },
+    {
+     "file": "cases/hypertension.html",
+     "old": "&gt;15 mmHg → investigate coarctation / PVD → cardiovascular referral",
+     "new": "&gt;15 mmHg persisting → use the higher arm; consider PVD / coarctation and refer only if clinically suspected"
+    }
+   ],
+   "note": "cases/hypertension.html makes every >15 mmHg difference an investigation and referral, which disagrees with the management page and NG136.",
+   "id": "b03-2"
+  },
+  {
+   "subject": "creatinine",
+   "group": "stop/withhold | % (ACEi/ARB creatinine rise)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "After starting/increasing an ACEi/ARB: do not change the dose if eGFR falls <25% or creatinine rises <30%; if eGFR falls >=25% or creatinine rises >=30%, look for other causes (volume depletion, NSAIDs) and reduce or stop if none (NICE NG203 1.6; NG136). The site's tools/prescribing, CKD, hypertension and proteinuria pages already use 30%/25%.",
+   "source": "https://www.nice.org.uk/guidance/ng203/chapter/Recommendations",
+   "fixes": [
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "Creatinine rise &gt;25% or eGFR fall &gt;25% → hold ACEi/ARB",
+     "new": "Creatinine rise ≥30% or eGFR fall ≥25% → look for other causes; reduce or stop ACEi/ARB if none"
+    },
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "Creatinine rise &gt;25% → hold ACEi; check dehydration.",
+     "new": "Creatinine rise ≥30% (or eGFR fall ≥25%) → check dehydration and other causes; reduce or stop ACEi if none."
+    },
+    {
+     "file": "cases/angina.html",
+     "old": "Creatinine ↑ &gt;25% → hold; investigate RAS.",
+     "new": "Creatinine ↑ ≥30% (or eGFR ↓ ≥25%) → look for other causes; reduce or stop if none; consider RAS."
+    },
+    {
+     "file": "cases/peripheral-arterial-disease.html",
+     "old": "nephrology input if creatinine rises &gt;25% or K⁺ &gt;5.5",
+     "new": "nephrology input if creatinine rises ≥30% (or eGFR falls ≥25%) or K⁺ &gt;5.5"
+    },
+    {
+     "file": "cases/peripheral-arterial-disease.html",
+     "old": "stop if K⁺ &gt;6.0 or creatinine rises &gt;25%",
+     "new": "stop if K⁺ ≥6.0; if creatinine rises ≥30% (or eGFR falls ≥25%), look for other causes and reduce or stop if none"
+    },
+    {
+     "file": "cases/peripheral-arterial-disease.html",
+     "old": "Creatinine ↑ &gt;25% → hold ACEi; investigate renal artery stenosis.",
+     "new": "Creatinine ↑ ≥30% (or eGFR ↓ ≥25%) → look for other causes; reduce or stop ACEi if none; consider renal artery stenosis."
+    },
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "(&lt;20&#8211;25% from baseline = acceptable; &gt;30%: investigate; stop if severe)",
+     "new": "(rise &lt;30% from baseline, or eGFR fall &lt;25%, = acceptable; ≥30%: investigate other causes; reduce or stop if none)"
+    },
+    {
+     "file": "tools/management/ckd.html",
+     "old": "suspect if creatinine jumps &gt;25% on an ACEi",
+     "new": "suspect if creatinine rises ≥30% on an ACEi"
+    },
+    {
+     "file": "tools/management/ckd-print.html",
+     "old": "suspect if creatinine jumps &gt;25% on an ACEi",
+     "new": "suspect if creatinine rises ≥30% on an ACEi"
+    },
+    {
+     "file": "assets/basic-science-patho.js",
+     "old": "A ≤25% creatinine rise is expected and acceptable.",
+     "new": "A creatinine rise of less than 30% (eGFR fall of less than 25%) is expected and acceptable."
+    },
+    {
+     "file": "assets/basic-science-patho.js",
+     "old": "don’t stop unless >25–30%.",
+     "new": "don’t stop for a rise of less than 30% (NICE NG203)."
+    },
+    {
+     "file": "assets/basic-science-pharma.js",
+     "old": "Expect a small creatinine rise (≤25–30%)",
+     "new": "Expect a small creatinine rise (less than 30%; eGFR fall less than 25%)"
+    }
+   ],
+   "note": "Several cases use '>25% creatinine rise -> hold', mixing up the NG203 eGFR (25%) and creatinine (30%) thresholds. Legitimate and left unchanged: cases/eczema.html (ciclosporin, >25% above baseline -> reduce dose, per BAD/SPC) and cases/heart-failure.html (>50% on ACEi, the HF practical-guidance tolerance). The owner may still want to align the HF page with its own '>30% -> stop + specialist' wording.",
+   "id": "b04-0"
+  },
+  {
+   "subject": "gabapentin",
+   "group": "max dose | mg (renal)",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Gabapentin SPC renal dosing uses creatinine clearance: CrCl 50–79 = 600–1,800 mg/day; 30–49 = 300–900 mg/day; 15–29 = 150–600 mg/day; <15 = 150–300 mg/day. Reduce from CrCl <80. Pregabalin is reduced from CrCl <60.",
+   "source": "https://www.medicines.org.uk/emc/product/4122/smpc",
+   "fixes": [
+    {
+     "file": "cases/neuropathic-pain.html",
+     "old": "gabapentin maximum 900mg/day at eGFR 30&#8211;59",
+     "new": "gabapentin maximum 1,800mg/day at CrCl 50&#8211;79 and 900mg/day at CrCl 30&#8211;49 (SPC)"
+    },
+    {
+     "file": "cases/ckd.html",
+     "old": "Gabapentin/pregabalin: reduce at eGFR &lt;30",
+     "new": "Gabapentin: reduce at CrCl &lt;80; pregabalin: reduce at CrCl &lt;60 (SPC)"
+    }
+   ],
+   "note": "The 900 mg cap applies only at CrCl 30–49. At 50–59 the maximum is 1,800 mg/day, so the case under-states the dose for part of the band. The CKD case says gabapentinoids need reducing only below eGFR 30, which is unsafe: dose reduction starts much earlier. The pregabalin band table in cases/neuropathic-pain.html matches its SPC and is left unchanged.",
+   "id": "b04-1"
+  },
+  {
+   "subject": "morphine",
+   "group": "recheck/monitor | mg (Opioids Aware threshold)",
+   "verdict": "inconsistent",
+   "tier": 1,
+   "correct": "Opioids Aware (FPM, updated): threshold lowered from 120 to 90 mg/day oral morphine equivalent, with about 50 mg/day as the ideal/heightened-review level. Seek specialist advice above 90 mg/day.",
+   "source": "https://www.fpm.ac.uk/node/96",
+   "fixes": [
+    {
+     "file": "tools/prescribing.html",
+     "old": "Review regularly; above about 120 mg oral morphine equivalent a day, harms rise without added benefit (Opioids Aware, FPM)",
+     "new": "Review regularly; treat about 50 mg/day oral morphine equivalent as a prompt for heightened review and seek specialist advice before exceeding 90 mg/day: above this, harms rise without added benefit (Opioids Aware, FPM 2026)"
+    }
+   ],
+   "note": "Every other page (hip-pain, neck-pain, analgesia-primary-care, opioid-prescribing, sca-addons-7) already uses 50/90. tools/prescribing.html still has the superseded 120 mg figure.",
+   "id": "b04-2"
+  },
+  {
+   "subject": "morphine",
+   "group": "dose | mg (IM morphine in suspected ACS)",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Suspected ACS/MI: offer pain relief as soon as possible with GTN, and offer IV opioids such as morphine, particularly if MI is suspected (NICE CG95). Avoid IM injections in suspected MI: absorption is erratic and haematoma risk is high with antithrombotic or thrombolytic treatment. In primary care without IV access, leave opioid analgesia to the ambulance crew.",
+   "source": "https://www.nice.org.uk/guidance/cg95/chapter/Recommendations",
+   "fixes": [
+    {
+     "file": "cases/chest-pain.html",
+     "old": "<li>Morphine 5–10mg IM for severe pain pending ambulance (caution: reduces clopidogrel absorption).</li>",
+     "new": "<li>Severe pain not relieved by GTN: IV opioid (e.g. morphine, titrated) with an antiemetic if IV access is available; avoid IM injections in suspected MI (NICE CG95). Otherwise leave analgesia to the ambulance crew (caution: opioids delay oral P2Y12 absorption).</li>"
+    },
+    {
+     "file": "cases/chest-pain.html",
+     "old": "Morphine sulphate 5–10mg IM/IV / Diamorphine 2.5–5mg IV (hospital)",
+     "new": "Morphine sulphate 5–10mg IV, slow and titrated (avoid IM in suspected MI) / Diamorphine 2.5–5mg IV (hospital)"
+    },
+    {
+     "file": "cases/chest-pain.html",
+     "old": "<span class=\"dc-dose\">5–10mg IM titrated</span>",
+     "new": "<span class=\"dc-dose\">5–10mg IV titrated</span>"
+    },
+    {
+     "file": "cases/chest-pain.html",
+     "old": "Morphine IM for severe pain + antiemetic",
+     "new": "IV opioid (not IM) + antiemetic for severe pain if IV access; otherwise leave to the ambulance crew"
+    },
+    {
+     "file": "cases/chest-pain.html",
+     "old": "Morphine IM for pain relief is appropriate.",
+     "new": "IV opioid for pain relief if IV access is available (avoid IM injections)."
+    }
+   ],
+   "note": "CG95 wording comes from established guidance. nice.org.uk could not be opened directly in this pass, so the fixing pass should spot-check it. The last fix (suspected aortic dissection row) is the same principle: avoid IM injections when anticoagulation or surgery may follow.",
+   "id": "b04-3"
+  },
+  {
+   "subject": "levothyroxine",
+   "group": "state | % (pregnancy dose increase)",
+   "verdict": "inconsistent",
+   "tier": 1,
+   "correct": "On a positive pregnancy test, empirically increase levothyroxine by about 25–30%, e.g. two extra doses a week (~29%). Then titrate to TSH/FT4; some women eventually need 30–50% more. The 20–30% wording (ATA/THERAPY trial) is the same practical rule.",
+   "source": "https://jamanetwork.com/journals/jama/fullarticle/2733078",
+   "fixes": [
+    {
+     "file": "assets/diagnostic-cases.js",
+     "old": "levothyroxine ↑30–50% early · ptu",
+     "new": "levothyroxine ↑25–30% at positive test · ptu"
+    },
+    {
+     "file": "assets/diagnostic-cases.js",
+     "old": "levothyroxine ↑30–50% early · PTU",
+     "new": "levothyroxine ↑25–30% at positive test · PTU"
+    },
+    {
+     "file": "tools/algorithms/_meta.json",
+     "old": "levothyroxine ↑30–50% early · PTU",
+     "new": "levothyroxine ↑25–30% at positive test · PTU"
+    },
+    {
+     "file": "tools/algorithms/lab-results.html",
+     "old": "levothyroxine ↑30–50% early · PTU",
+     "new": "levothyroxine ↑25–30% at positive test · PTU"
+    },
+    {
+     "file": "assets/meds/hypothyroidism.js",
+     "old": "Increase dose ~25–50% as soon as pregnancy confirmed",
+     "new": "Increase dose ~25–30% as soon as pregnancy confirmed"
+    },
+    {
+     "file": "assets/meds/hypothyroidism.js",
+     "old": "commonly by ~25–50%",
+     "new": "commonly by ~25–30%"
+    }
+   ],
+   "note": "The dedicated thyroid-pregnancy page, the hypothyroidism case and the summaries give 25–30% as the immediate step, and say only that 'some women need 30–50%' later. The search-card taglines and the meds file present 30–50% / 25–50% as the immediate increase. The RCOG 2025 GTG text could not be opened. The 20–30% wording in abnormal-tfts.html, one-page/abnormal-tfts.html, sca-cases11.js and thyroid-hypo-young.json is clinically equivalent ('two extra doses a week'). The owner may optionally standardise it to 25–30%, but no change is required.",
+   "id": "b04-4"
+  },
+  {
+   "subject": "levothyroxine",
+   "group": "start/initiate | weeks (elderly titration)",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "In older people, start 25–50 micrograms and titrate in 25 microgram steps. Recheck TSH no sooner than 6–8 weeks after each change (NG145: about every 3 months until stable). Aim for TSH within the reference range; a higher target is often appropriate in older adults. There is no NG145 target of 0.5–2.5.",
+   "source": "https://www.nice.org.uk/guidance/ng145/chapter/Recommendations",
+   "fixes": [
+    {
+     "file": "cases/dementia.html",
+     "old": "titrate to TSH 0.5–2.5)",
+     "new": "titrate to a TSH within the reference range; a higher target may suit older people)"
+    },
+    {
+     "file": "cases/dementia.html",
+     "old": "titrate up by 25mcg every 4 weeks to TSH 0.5–2.5)",
+     "new": "titrate in 25mcg steps, rechecking TSH no sooner than 6–8 weeks after each change, aiming for TSH within the reference range)"
+    }
+   ],
+   "note": "Titrating every 4 weeks is faster than TSH can equilibrate. A 0.5–2.5 target risks over-replacement in older people with dementia. 0.5–2.5 is a pre-conception/pregnancy target used elsewhere on the site.",
+   "id": "b04-5"
+  },
+  {
+   "subject": "rivaroxaban",
+   "group": "diagnose/threshold | mg (renal dosing)",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Rivaroxaban AF: 20 mg OD with food; 15 mg OD if CrCl 15–49; not recommended if CrCl <15. Rivaroxaban 2.5 mg BD (COMPASS): no dose adjustment; caution at CrCl 15–29; not recommended <15. Apixaban AF reduction applies at CrCl 15–29 or with 2 of age/weight/creatinine. Edoxaban reduction applies at CrCl 15–50.",
+   "source": "https://www.medicines.org.uk/emc/product/2793/smpc",
+   "fixes": [
+    {
+     "file": "tools/algorithms/palpitations.html",
+     "old": "Rivaroxaban 20 mg OD with food (15 mg at the CrCl threshold)",
+     "new": "Rivaroxaban 20 mg OD with food (15 mg OD if CrCl 15–49)"
+    },
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "CrCl &lt;30 → dose adjustment or switch.",
+     "new": "CrCl &lt;50 → check product-specific dose reduction (rivaroxaban 15 mg if CrCl 15–49; edoxaban 30 mg if 15–50; apixaban per SPC criteria)."
+    },
+    {
+     "file": "cases/peripheral-arterial-disease.html",
+     "old": "Annual renal function (rivaroxaban dose-adjustment at CrCl &lt;15)",
+     "new": "Annual renal function (rivaroxaban 2.5 mg BD: no dose change, use with caution at CrCl 15–29, avoid below 15)"
+    }
+   ],
+   "note": "The tia-stroke monitoring table implies no DOAC change until CrCl <30, which misses rivaroxaban/edoxaban reductions from CrCl <50. The PAD page wrongly describes a 'dose adjustment at CrCl <15' for the COMPASS dose. The site's AF and anticoagulant management pages already use the correct values.",
+   "id": "b04-6"
+  },
+  {
+   "subject": "emollient/steroid cream",
+   "group": "refer | % (infant facial steroid)",
+   "verdict": "inconsistent",
+   "tier": 1,
+   "correct": "On an infant's face use mild potency only (hydrocortisone). Moderate-potency betamethasone valerate 0.025% is for the body, not the face, without specialist advice (NICE CG57). The same page already says '(body; avoid face)'.",
+   "source": "https://www.nice.org.uk/guidance/cg57/chapter/Recommendations",
+   "fixes": [
+    {
+     "file": "cases/cmpa-reflux.html",
+     "old": "stronger topical CS (HC 2.5% or betamethasone 0.025% face)",
+     "new": "stronger topical CS (HC 2.5% for the face; betamethasone valerate 0.025% for the body only, not the face)"
+    }
+   ],
+   "note": "Line 278 of cases/cmpa-reflux.html suggests betamethasone 0.025% on the face of an infant. Lines 534/538 of the same page say avoid face.",
+   "id": "b04-7"
+  },
+  {
+   "subject": "prednisolone",
+   "group": "recheck/monitor | mg (PMR start dose attribution)",
+   "verdict": "wrong",
+   "tier": 3,
+   "correct": "The 12.5–25 mg PMR starting range is from the 2015 EULAR/ACR recommendations. BSR/BHPR 2010 suggests 15 mg daily.",
+   "source": "https://the-rheumatologist.org/?p=58839",
+   "fixes": [
+    {
+     "file": "assets/ask-testbank.js",
+     "old": "within the BSR 2015 range of 12.5–25 mg",
+     "new": "within the EULAR/ACR 2015 range of 12.5–25 mg"
+    }
+   ],
+   "note": "Attribution only; the dose is fine. There is no 'BSR 2015' PMR guideline.",
+   "id": "b04-8"
+  },
+  {
+   "subject": "warfarin",
+   "group": "(single values) INR action thresholds",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "BNF/BSH: INR 5–8 no bleeding: withhold 1–2 doses and reduce maintenance; INR >8 no bleeding: stop warfarin, oral vitamin K 1–5 mg, repeat if INR still high at 24 h; minor bleeding with INR >5: IV vitamin K 1–3 mg; major bleeding at ANY INR: stop, IV vitamin K 5 mg + prothrombin complex concentrate (hospital)",
+   "source": "https://medibuddy.co.uk/?p=21057 (BNF/BSH warfarin reversal summary); BNF 'Coumarins and phenindione' treatment summary",
+   "fixes": [
+    {
+     "file": "cases/atrial-fibrillation.html",
+     "old": "INR &gt;5.0 + bleeding → vitamin K + hospital.",
+     "new": "INR 5–8, no bleeding → withhold 1–2 doses and reduce dose; INR &gt;8 → oral vitamin K 1–5 mg; major bleeding at any INR → hospital (IV vitamin K + PCC) (BNF/BSH)."
+    },
+    {
+     "file": "cases/atrial-fibrillation.html",
+     "old": "INR &gt;4.0 → hold + recheck. INR &gt;5 + bleeding → Vit K + hospital.",
+     "new": "INR &gt;4.0 → hold + recheck. INR 5–8 (no bleeding) → withhold 1–2 doses; INR &gt;8 → oral vit K 1–5 mg; major bleeding at any INR → hospital (IV vit K + PCC)."
+    },
+    {
+     "file": "cases/atrial-fibrillation.html",
+     "old": "INR &gt;4 → hold + recheck 24h. INR &gt;5 + bleeding → Vit K + hospital.",
+     "new": "INR &gt;4 → hold + recheck 24h. INR 5–8 (no bleeding) → withhold 1–2 doses; INR &gt;8 → oral vit K 1–5 mg; major bleeding at any INR → hospital (IV vit K + PCC)."
+    }
+   ],
+   "note": "'INR >5 + bleeding → vitamin K + hospital' implies a bleeding patient with INR <5 needs no escalation (major bleeding needs hospital at any INR) and omits the INR >8 no-bleeding oral vitamin K step. The 'INR >4 hold' local rule is left in place. TTR <65% (NICE NG196 poor control) vs TTR <60% (HAS-BLED labile INR) is legitimate.",
+   "id": "b05-0"
+  },
+  {
+   "subject": "potassium",
+   "group": "state / 999/admit | mmol/l (≥6.5 vs >6.5 + ECG changes)",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "UKKA 2023: K+ ≥6.5 mmol/L is severe hyperkalaemia needing emergency assessment whatever the ECG; hyperkalaemic ECG changes at ANY K+ are an emergency",
+   "source": "https://ukkidney.org/health-professionals/guidelines/treatment-acute-hyperkalaemia-adults",
+   "fixes": [
+    {
+     "file": "cases/ckd.html",
+     "old": "Hyperkalaemia: K⁺ &gt;6.5 mmol/L or K⁺ 5.5–6.5 with ECG changes (tall T waves, wide QRS, sine wave)",
+     "new": "Hyperkalaemia: K⁺ ≥6.5 mmol/L, or hyperkalaemic ECG changes at any K⁺ (tall T waves, wide QRS, sine wave)"
+    },
+    {
+     "file": "cases/ckd.html",
+     "old": "Any K⁺ &gt;6.5 = emergency; K⁺ 6.0–6.5 = urgent same-day review.",
+     "new": "Any K⁺ ≥6.5 = emergency; K⁺ 6.0–6.4 = urgent same-day review."
+    },
+    {
+     "file": "cases/ckd.html",
+     "old": "<strong>K⁺ &gt;6.5 mmol/L or ECG changes</strong>",
+     "new": "<strong>K⁺ ≥6.5 mmol/L or ECG changes</strong>"
+    },
+    {
+     "file": "cases/ckd.html",
+     "old": "Hyperkalaemia: K⁺ &gt;6.5 with ECG changes</td>",
+     "new": "Hyperkalaemia: K⁺ ≥6.5, or ECG changes at any K⁺</td>"
+    },
+    {
+     "file": "cases/ckd.html",
+     "old": "<strong>Emergency:</strong> K⁺ &gt;6.5 + ECG changes · Uraemic pericarditis · AKI on CKD",
+     "new": "<strong>Emergency:</strong> K⁺ ≥6.5 or hyperkalaemic ECG changes · Uraemic pericarditis · AKI on CKD"
+    },
+    {
+     "file": "cases/ckd.html",
+     "old": "<strong>Emergency:</strong> K⁺ &gt;6.5 + ECG changes · Uraemic pericarditis · AKI oliguric",
+     "new": "<strong>Emergency:</strong> K⁺ ≥6.5 or hyperkalaemic ECG changes · Uraemic pericarditis · AKI oliguric"
+    },
+    {
+     "file": "cases/ckd.html",
+     "old": "<li>K⁺ &gt;6.5 + ECG changes (arrhythmia)</li>",
+     "new": "<li>K⁺ ≥6.5, or ECG changes at any K⁺ (arrhythmia)</li>"
+    },
+    {
+     "file": "cases/ckd.html",
+     "old": "&gt;6.5 mmol/L + ECG changes</td>",
+     "new": "≥6.5 mmol/L, or ECG changes at any level</td>"
+    },
+    {
+     "file": "cases/ckd.html",
+     "old": "<span class=\"ns-val\">K⁺ &lt;6.0 mmol/L</span><span class=\"ns-lbl\">Hyperkalaemia threshold — review ACEi/ARB</span>",
+     "new": "<span class=\"ns-val\">K⁺ ≥6.0 mmol/L</span><span class=\"ns-lbl\">Stop ACEi/ARB after reviewing other causes (NICE NG203)</span>"
+    }
+   ],
+   "note": "cases/ckd.html repeatedly makes the emergency conditional on K+ >6.5 AND ECG changes (an asymptomatic 6.6 would not trigger 999), and one tile says 'K+ <6.0 hyperkalaemia threshold'. Rest of site (aki, hyperkalaemia algorithm, SCA hyperkalaemia-recall) uses ≥6.5 or any ECG change. assets/search/idx-case.json mirrors the first string; regenerate the search index after fixing. Simple '>6.5' labels in assets/triage/*.js, assets/labs/generic.js and pathways-redflags.js are cosmetic (≥ vs >) and optional.",
+   "id": "b05-1"
+  },
+  {
+   "subject": "potassium",
+   "group": "stop/withhold | mmol/l (eplerenone/ACEi)",
+   "verdict": "inconsistent",
+   "tier": 1,
+   "correct": "Eplerenone SPC: K+ 5.5–5.9 reduce dose; K+ ≥6.0 withhold. NICE NG203: stop ACEi/ARB if K+ ≥6.0 after other contributors reviewed. Acceptable renal change on ACEi: eGFR fall <25% or creatinine rise <30%",
+   "source": "https://www.medicines.org.uk/emc/product/1588/smpc (Inspra SPC section 4.2); NICE NG203 rec 1.6.13-1.6.14",
+   "fixes": [
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "Hyperkalaemia (&gt;5.5 mmol/L): reduce ACEi; stop eplerenone if prescribed.",
+     "new": "Hyperkalaemia: K+ 5.5–5.9 mmol/L → reduce eplerenone dose and review ACEi; K+ ≥6.0 → stop eplerenone and review/stop ACEi (NICE NG203)."
+    },
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "Monitor: eGFR rise &lt;25% acceptable;",
+     "new": "Monitor: eGFR fall &lt;25% (or creatinine rise &lt;30%) acceptable;"
+    }
+   ],
+   "note": "Same page elsewhere says K+ 5.5–6.0 reduce eplerenone to 25 mg, >6.0 stop; line 310 says stop at >5.5. Also 'eGFR rise <25%' has the direction wrong.",
+   "id": "b05-2"
+  },
+  {
+   "subject": "potassium",
+   "group": "stop/withhold (ACEi creatinine rise)",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "NICE NG203: after starting/increasing ACEi/ARB, if eGFR falls by ≥25% or creatinine rises by ≥30%, investigate other causes; if none, stop or reduce the dose",
+   "source": "https://www.nice.org.uk/guidance/ng203/chapter/Recommendations (1.6.6-1.6.8)",
+   "fixes": [
+    {
+     "file": "cases/peripheral-arterial-disease.html",
+     "old": "stop if K⁺ &gt;6.0 or creatinine rises &gt;25%",
+     "new": "stop if K⁺ ≥6.0; if creatinine rises ≥30% (or eGFR falls ≥25%), look for other causes and stop or reduce if none (NICE NG203)"
+    },
+    {
+     "file": "cases/peripheral-arterial-disease.html",
+     "old": "nephrology input if creatinine rises &gt;25% or K⁺ &gt;5.5",
+     "new": "specialist advice if creatinine rises ≥30% (eGFR falls ≥25%) or K⁺ &gt;5.5"
+    }
+   ],
+   "note": "tools/prescribing.html already uses '>30%'.",
+   "id": "b05-3"
+  },
+  {
+   "subject": "potassium",
+   "group": "recheck/monitor | weeks (ARB start)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "CKS/NICE NG203: check U&E/K+ before starting and 1–2 weeks after starting an ACEi/ARB and after each dose increase",
+   "source": "https://cks.nice.org.uk/topics/hypertension/prescribing-information/angiotensin-ii-receptor-blockers/",
+   "fixes": [
+    {
+     "file": "cases/gout.html",
+     "old": "Hyperkalaemia — especially in CKD; monitor K+ 4–6 weeks after starting",
+     "new": "Hyperkalaemia — especially in CKD; check U&amp;E/K+ 1–2 weeks after starting and after each dose increase"
+    },
+    {
+     "file": "cases/gout.html",
+     "old": "I'll check your kidney function and potassium levels about 6 weeks after we switch",
+     "new": "I'll check your kidney function and potassium levels 1 to 2 weeks after we switch"
+    },
+    {
+     "file": "cases/gout.html",
+     "old": "<td class=\"mon-green\">4–6 weeks after switch; then 6-monthly</td>",
+     "new": "<td class=\"mon-green\">1–2 weeks after switch (and after dose increases); then 6-monthly</td>"
+    }
+   ],
+   "note": "Losartan switch for gout. Rest of site (heart-failure, ckd, mi-secondary-prevention, hyperkalaemia algorithm) uses 1–2 weeks. Check the 'mon-green' cell text is exact (it is in cases/gout.html line ~2212).",
+   "id": "b05-4"
+  },
+  {
+   "subject": "calcium",
+   "group": "state | mmol/l (<1.75 vs <1.9 emergency)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "Society for Endocrinology emergency guidance: severe/acute hypocalcaemia = adjusted Ca <1.9 mmol/L or symptomatic → emergency treatment",
+   "source": "https://www.endocrinology.org/media/ojiew4m2/sfe-emergency-guidance-acute-hypocalcaemia.pdf",
+   "fixes": [
+    {
+     "file": "assets/pathways-redflags.js",
+     "old": "No Acute severe hypocalcaemia (corrected Ca <1.75 mmol/L) — Any corrected calcium <1.75 mmol/L, even asymptomatic",
+     "new": "No Acute severe hypocalcaemia (corrected Ca <1.9 mmol/L) — Any adjusted calcium <1.9 mmol/L, even asymptomatic (Society for Endocrinology)"
+    }
+   ],
+   "note": "Every other site page (hypocalcaemia algorithm, clinic guide, abnormal-bone-profile, vitamin-d) uses <1.90; the same redflags file also has a '<1.9' tetany flag. Chip label 'Acute severe hypocalcaemia' unchanged.",
+   "id": "b05-5"
+  },
+  {
+   "subject": "calcium",
+   "group": "stop/withhold / state | mmol/l (dementia case)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "Site/SfE-consistent triage: adjusted Ca ≥3.5, or symptomatic → emergency; 3.0–3.4 → same-day; 2.6–3.0 asymptomatic → repeat and investigate (PTH; NICE NG132)",
+   "source": "https://www.endocrinology.org/media/ft4jq1rh/sfe-emergency-guidance-acute-hypercalcaemia.pdf ; NICE NG132",
+   "fixes": [
+    {
+     "file": "cases/dementia.html",
+     "old": "Hypercalcaemia >2.8 or symptomatic → IV fluids (0.9% saline 3–6 L/24h), stop thiazide diuretics, bisphosphonates if malignancy-related (zoledronic acid 4mg IV), investigate cause (PTH, vitamin D, myeloma screen, CXR). Mild hypercalcaemia (<2.8) → recheck in 1 week, stop vitamin D supplements, hydrate.",
+     "new": "Hypercalcaemia ≥3.5, or symptomatic (confusion, vomiting, dehydration) at any level → same-day hospital assessment for IV fluids ± bisphosphonate. 3.0–3.4 → same-day discussion. Asymptomatic 2.6–3.0 → repeat, check PTH (NICE NG132), review thiazides/calcium/vitamin D, myeloma screen and CXR as indicated."
+    },
+    {
+     "file": "cases/depression.html",
+     "old": "Corrected Ca &gt;2.65 mmol/L: check PTH, renal function, vitamin D;",
+     "new": "Adjusted Ca ≥2.6 mmol/L (repeat to confirm): check PTH, renal function, vitamin D (NICE NG132);"
+    }
+   ],
+   "note": "'>2.8 → IV fluids 3–6 L/24h' gives a hospital regimen at a threshold used nowhere else on the site. Also cases/depression.html 'Corrected Ca >2.65 mmol/L: check PTH' could become '≥2.6 mmol/L (on two occasions, NICE NG132)' — included below.",
+   "id": "b05-6"
+  },
+  {
+   "subject": "calcium",
+   "group": "(vitamin D maintenance in eating-disorders)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "ROS 2020: maintenance colecalciferol 800–2,000 IU daily (site-wide correction already accepted)",
+   "source": "https://theros.org.uk/media/ef2ideu2/ros-vitamin-d-and-bone-health-in-adults-february-2020.pdf",
+   "fixes": [
+    {
+     "file": "cases/eating-disorders.html",
+     "old": "vitamin D 800&#8211;1000 IU/day. DEXA",
+     "new": "vitamin D 800&#8211;2,000 IU/day. DEXA"
+    },
+    {
+     "file": "cases/eating-disorders.html",
+     "old": "vitamin D 800&#8211;1000IU/day</span>",
+     "new": "vitamin D 800&#8211;2,000 IU/day</span>"
+    },
+    {
+     "file": "cases/eating-disorders.html",
+     "old": "Vitamin D 800&#8211;1000IU/day &#183;",
+     "new": "Vitamin D 800&#8211;2,000 IU/day &#183;"
+    },
+    {
+     "file": "cases/eating-disorders.html",
+     "old": "cholecalciferol (D3) 800&#8211;1000IU OD",
+     "new": "cholecalciferol (D3) 800&#8211;2,000 IU OD"
+    },
+    {
+     "file": "cases/eating-disorders.html",
+     "old": "Cholecalciferol (vitamin D3): 800&#8211;1000IU daily",
+     "new": "Cholecalciferol (vitamin D3): 800&#8211;2,000 IU daily"
+    }
+   ],
+   "note": "The LAB_SITE_FIXES ROS correction was applied to hypocalcaemia/vitamin-d/amenorrhoea but missed cases/eating-disorders.html (5 occurrences).",
+   "id": "b05-7"
+  },
+  {
+   "subject": "triglycerides",
+   "group": "refer | mmol/l (>10 vs >20 urgent)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "NICE NG238: TG >20 mmol/L not due to alcohol/poor glycaemic control → urgent specialist referral; TG 10–20 → repeat fasting (after 5 days, within 2 weeks), review secondary causes, specialist advice if still >10",
+   "source": "https://www.nice.org.uk/guidance/ng238 (rec 1.3.x, triglycerides)",
+   "fixes": [
+    {
+     "file": "assets/meds/hypercholesterolaemia.js",
+     "old": "TG >10 mmol/L — urgent specialist (pancreatitis risk).",
+     "new": "TG >20 mmol/L (not due to alcohol or poor glycaemic control) — urgent specialist referral; TG 10–20 — fasting repeat within 2 weeks and specialist advice if still >10 (NICE NG238)."
+    }
+   ],
+   "note": "All other pages (high-triglycerides algorithm, dx-pack, T2DM, hypercholesterolaemia) follow NG238.",
+   "id": "b05-8"
+  },
+  {
+   "subject": "triglycerides",
+   "group": "stop/withhold / 999 | mmol/l (isotretinoin >8)",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "Isotretinoin SPC: TG above 800 mg/dL (~9 mmol/L) are sometimes associated with acute pancreatitis; stop if hypertriglyceridaemia cannot be controlled or pancreatitis symptoms occur. Lipids checked before, 1 month after starting, then 3-monthly unless more often indicated",
+   "source": "https://www.medicines.org.uk/emc/search?q=isotretinoin (SPC 4.4); https://medlibrary.org/lib/rx/meds/isotretinoin-4/page/2/",
+   "fixes": [
+    {
+     "file": "cases/acne.html",
+     "old": "Elevated fasting triglycerides (&gt;8 mmol/L): significant risk of pancreatitis",
+     "new": "Elevated fasting triglycerides (above about 9 mmol/L [800 mg/dL], SPC): pancreatitis risk"
+    },
+    {
+     "file": "cases/acne.html",
+     "old": "if &gt;8mmol/L: pancreatitis risk; discuss with dermatology",
+     "new": "if above about 9 mmol/L or uncontrolled: pancreatitis risk; discuss with dermatology"
+    },
+    {
+     "file": "cases/acne.html",
+     "old": "Refer immediately: triglycerides &gt;8mmol/L;",
+     "new": "Contact dermatology urgently: triglycerides above about 9 mmol/L or uncontrolled, or pancreatitis symptoms;"
+    },
+    {
+     "file": "cases/acne.html",
+     "old": "Stop if: triglycerides &gt;8mmol/L;",
+     "new": "Stop if: uncontrolled hypertriglyceridaemia (above about 9 mmol/L) or pancreatitis symptoms;"
+    }
+   ],
+   "note": "Owner may also wish to check the 'fasting triglycerides monthly; LFTs monthly; FBC monthly' schedule: SPC says lipids/LFTs before, at 1 month, then 3-monthly; FBC not routinely required. Not changed here.",
+   "id": "b05-9"
+  },
+  {
+   "subject": "ALP",
+   "group": "state/recheck | % (PBC UDCA response >25%)",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "BSG/UK-PBC 2018 and EASL 2017: assess UDCA response at 12 months; inadequate response = ALP >1.67× ULN and/or bilirubin above ULN (Paris I also acceptable). An ALP fall of '>25%' is not a recognised response criterion",
+   "source": "https://pubmed.ncbi.nlm.nih.gov/30017646/ (Hirschfield, BSG/UK-PBC Gut 2018); https://www.uk-pbc.com/resources/tools/udca-treatment-response-score-urs/",
+   "fixes": [
+    {
+     "file": "cases/abnormal-lfts.html",
+     "old": "LFTs at 3, 6, 12 months &mdash; ALP should fall by &gt;25% (biochemical response)",
+     "new": "LFTs at 3, 6, 12 months &mdash; at 12 months, ALP &gt;1.67&times; ULN or raised bilirubin = inadequate response (BSG 2018)"
+    },
+    {
+     "file": "cases/abnormal-lfts.html",
+     "old": "<td>ALP reduction &gt;25% at 12 months = biochemical response</td>",
+     "new": "<td>At 12 months: ALP &le;1.67&times; ULN with normal bilirubin = adequate response (BSG/UK-PBC 2018)</td>"
+    },
+    {
+     "file": "cases/abnormal-lfts.html",
+     "old": "Check ALP reduction &gt;25% at 12 months (biochemical response).",
+     "new": "Specialist assesses response at 12 months (ALP &le;1.67&times; ULN and normal bilirubin)."
+    }
+   ],
+   "note": "Paris I criteria on the same row (ALP ≤3× ULN, AST ≤2× ULN, bilirubin ≤17) are correct and can stay.",
+   "id": "b05-10"
+  },
+  {
+   "subject": "folate",
+   "group": "state | nmol/l (<3 vs ≥7)",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "BSH 2014 (Devalia): serum folate <7 nmol/L (<3 µg/L) indicates deficiency; local laboratory ranges apply",
+   "source": "https://b-s-h.org.uk/guidelines/guidelines/diagnosis-and-treatment-of-cobalamin-and-folate-disorders",
+   "fixes": [
+    {
+     "file": "cases/anaemia.html",
+     "old": "Folate &lt;3 nmol/L is deficient.",
+     "new": "Serum folate &lt;7 nmol/L (&lt;3 µg/L) suggests deficiency (BSH; local ranges apply)."
+    },
+    {
+     "file": "cases/anaemia.html",
+     "old": "B12 ≥2.4 µg/day; folate ≥200 µg/day",
+     "new": "B12 ≥1.5 µg/day; folate ≥200 µg/day"
+    }
+   ],
+   "note": "'3' is the µg/L figure mislabelled as nmol/L; the same page uses folate ≥7 nmol/L as the normal target. Also B12 '2.4 µg/day' is the US RDA; UK RNI is 1.5 µg/day (tier 3).",
+   "id": "b05-11"
+  },
+  {
+   "subject": "folate",
+   "group": "dose | mg (5 mg if BMI ≥30)",
+   "verdict": "inconsistent",
+   "tier": 1,
+   "correct": "NICE NG247 (2025): 400 micrograms for most; 5 mg for recognised higher NTD-risk groups (previous NTD/family history, diabetes, some antiseizure drugs, sickle cell/thalassaemia etc.) — BMI alone does not need 5 mg",
+   "source": "https://gpnotebook.com/en-GB/pages/gynaecology/folic-acid-and-prophylaxis-against-neural-tube-defects ; https://www.nice.org.uk/guidance/ng247/documents/evidence-review-2",
+   "fixes": [
+    {
+     "file": "assets/meds/pcos.js",
+     "old": "Folic acid before conception (5 mg if BMI ≥30).",
+     "new": "Folic acid 400 micrograms before conception (5 mg only for a recognised higher-risk indication — BMI alone does not need 5 mg, NICE NG247)."
+    }
+   ],
+   "note": "Pregnancy fact. Every other site page (cases/pcos, infertility, updates, triage, SCA data) already says BMI alone does not need 5 mg.",
+   "id": "b05-12"
+  },
+  {
+   "subject": "citalopram",
+   "group": "max dose | mg (age cut-off)",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Citalopram max 40 mg/day in adults; 20 mg/day in patients OVER 65 or with hepatic impairment (MHRA Drug Safety Update, Dec 2011). 'Over 60' is the US FDA cut-off, not UK.",
+   "source": "https://www.gov.uk/drug-safety-update/citalopram-and-escitalopram-qt-interval-prolongation",
+   "fixes": [
+    {
+     "file": "assets/sca-cases26.js",
+     "old": "maximum 20 mg daily over 60, QT",
+     "new": "maximum 20 mg daily over 65, QT"
+    },
+    {
+     "file": "assets/sca-cases26.js",
+     "old": "limit of 20 mg over 60)",
+     "new": "limit of 20 mg over 65)"
+    },
+    {
+     "file": "assets/sca-cases26.js",
+     "old": "citalopram maximum 20 mg daily over 60 (QT",
+     "new": "citalopram maximum 20 mg daily over 65 (QT"
+    },
+    {
+     "file": "assets/sca-cases26.js",
+     "old": "dose per MHRA over 60)",
+     "new": "dose per MHRA over 65)"
+    },
+    {
+     "file": "assets/sca-cases26.js",
+     "old": "max 20 mg over 60 — MHRA 2011",
+     "new": "max 20 mg over 65 — MHRA 2011"
+    },
+    {
+     "file": "assets/sca-data/c/hyponatraemia-diuretic.json",
+     "old": "maximum 20 mg daily over 60, QT",
+     "new": "maximum 20 mg daily over 65, QT"
+    },
+    {
+     "file": "assets/sca-data/c/hyponatraemia-diuretic.json",
+     "old": "limit of 20 mg over 60)",
+     "new": "limit of 20 mg over 65)"
+    },
+    {
+     "file": "assets/sca-data/c/hyponatraemia-diuretic.json",
+     "old": "maximum 20 mg daily in people over 60",
+     "new": "maximum 20 mg daily in people over 65"
+    },
+    {
+     "file": "assets/sca-addons-5.js",
+     "old": "maximum 20 mg daily in people over 60",
+     "new": "maximum 20 mg daily in people over 65"
+    },
+    {
+     "file": "sca/case-hyponatraemia-diuretic.html",
+     "old": "limit of 20 mg over 60)",
+     "new": "limit of 20 mg over 65)"
+    }
+   ],
+   "note": "Every other page (cases/depression, management/depression, clinic guide, palliative pages) correctly says 65. The 'maximum 20 mg daily in people over 60' string occurs TWICE in hyponatraemia-diuretic.json: replace both. Check whether the case's Ready-Prescriptions/other derived files hold the same text (the grep found only these 4 files).",
+   "id": "b06-0"
+  },
+  {
+   "subject": "statin",
+   "group": "stop/withhold | ×uln (on-treatment CK thresholds)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "On a statin (NHS England statin intolerance pathway): CK <4× ULN with tolerable symptoms → continue/review; CK 4–10× ULN or intolerable symptoms → stop for 4–6 weeks, then rechallenge (lower dose/different statin) once resolved; CK >10× ULN → stop, urgent assessment (check renal function). NICE NG238's 5× ULN rule applies only BEFORE starting. The site's lab guides, angina, tia-stroke and management/hypercholesterolaemia already use 4–10× / 4–6 weeks.",
+   "source": "https://www.england.nhs.uk/aac/wp-content/uploads/sites/50/2020/04/statin-intolerance-pathway-v2.pdf",
+   "fixes": [
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "CK 5-10&#215; ULN: stop statin; confirm resolution; rechallenge with different statin after 4 weeks; monitor CK",
+     "new": "CK 4&#8211;10&#215; ULN or intolerable symptoms: stop statin for 4&#8211;6 weeks; confirm resolution; then rechallenge at a lower dose or with a different statin; monitor CK (NHS England statin intolerance pathway)"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "Myopathy (CK &gt;5&#215; ULN): 1-3 per 100,000 patient-years; stop statin; usually resolves.",
+     "new": "Myopathy: 1-3 per 100,000 patient-years; if CK 4&#8211;10&#215; ULN or symptoms intolerable, stop the statin for 4&#8211;6 weeks then reassess (NHS England pathway); usually resolves."
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "Myopathy: CK &gt;5&#215; ULN = stop;",
+     "new": "On a statin: CK 4&#8211;10&#215; ULN or intolerable symptoms = stop for 4&#8211;6 weeks, then reassess;"
+    },
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "CK &lt;5&#215; ULN = usually reassure and assess other causes",
+     "new": "CK &lt;4&#215; ULN with tolerable symptoms = usually reassure and assess other causes"
+    },
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "CK 5&#8211;10&#215; ULN = stop and seek clinical advice (rechallenge at lower dose or different statin depending on symptoms and trend)",
+     "new": "CK 4&#8211;10&#215; ULN or intolerable symptoms = stop the statin for 4&#8211;6 weeks, then rechallenge at a lower dose or with a different statin (NHS England statin intolerance pathway)"
+    },
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "CK 5&#8211;10&#215; ULN: stop and seek clinical advice; rechallenge or switch by symptoms and trend.",
+     "new": "CK 4&#8211;10&#215; ULN or intolerable symptoms: stop for 4&#8211;6 weeks, then rechallenge or switch (NHS England pathway)."
+    },
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "Mild myalgia (CK normal or &lt;5&#215; ULN): continue",
+     "new": "Mild, tolerable myalgia (CK normal or &lt;4&#215; ULN): continue"
+    },
+    {
+     "file": "assets/labs/generic.js",
+     "old": "label:'CK 1000–5000 — statin myopathy / cause; stop statin if >5× ULN + symptoms'",
+     "new": "label:'CK 1000–5000 — statin myopathy / cause; on a statin, stop for 4–6 weeks if CK 4–10× ULN or symptoms intolerable'"
+    },
+    {
+     "file": "tools/clinic-guides/hypercholesterolaemia.html",
+     "old": "Check CK only if symptomatic; &lt;5× ULN → reassure, rechallenge or switch",
+     "new": "Check CK only if symptomatic; &lt;4× ULN and tolerable → reassure, continue or switch; 4–10× ULN or intolerable → stop 4–6 weeks"
+    },
+    {
+     "file": "assets/search/idx-guide.json",
+     "old": "Check CK only if symptomatic; <5× ULN → reassure, rechallenge or switch",
+     "new": "Check CK only if symptomatic; <4× ULN and tolerable → reassure, continue or switch; 4–10× ULN or intolerable → stop 4–6 weeks"
+    },
+    {
+     "file": "tools/management/summaries/hypercholesterolaemia.html",
+     "old": "stop 2–4 weeks → rechallenge lower, switch or alternate-day",
+     "new": "if intolerable, stop 4–6 weeks → rechallenge lower, switch or alternate-day"
+    }
+   ],
+   "note": "Same issue the lab pass fixed in raised-creatine-kinase. Definitional labels 'Myopathy (CK &gt;5&#215; ULN)' at cases/hypercholesterolaemia.html lines ~357/582/768 describe myopathy rather than a stop rule; optional to align. The search index (idx-guide.json) is probably generated: regenerate rather than hand-edit if a build step exists.",
+   "id": "b06-1"
+  },
+  {
+   "subject": "CRP",
+   "group": "state | mg/l (GCA red flag)",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "GCA: CRP/ESR are usually raised (often markedly) but there is no >200 mg/L criterion; a normal or moderately raised CRP does not exclude GCA (BSR 2020).",
+   "source": "https://academic.oup.com/rheumatology/article/59/3/e1/5714024",
+   "fixes": [
+    {
+     "file": "assets/pathways-redflags.js",
+     "old": "\"chip\":\"Very high CRP (>200 mg/L)\"",
+     "new": "\"chip\":\"Raised CRP/ESR + GCA features\""
+    },
+    {
+     "file": "assets/pathways-redflags.js",
+     "old": "No Very high CRP (>200 mg/L) + severe headache",
+     "new": "No Raised CRP/ESR (often markedly; normal does not exclude) + severe headache"
+    }
+   ],
+   "note": "Gating the GCA red flag on CRP >200 would miss most GCA. Separately: cases/headache.html GCA lines say 'visual symptoms → 60 mg' throughout and never mention the owner-verified IV methylprednisolone 0.5–1 g (up to 3 days) for established visual loss. Outside this batch's subjects; flag for the prednisolone/GCA reviewer (same gap as the high-crp-esr lab fix).",
+   "id": "b06-2"
+  },
+  {
+   "subject": "CRP",
+   "group": "diagnose/threshold | mg/l (UC severity)",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "Truelove & Witts acute severe UC: ≥6 bloody stools/day plus ≥1 of HR >90, temp >37.8 °C, Hb <105 g/L, ESR >30 mm/h (CRP >30 mg/L in modified versions). CRP >45 mg/L is the Oxford DAY-3 IV-steroid rescue criterion, not a severity criterion combined with Hb.",
+   "source": "https://www.bsg.org.uk/clinical-resource/british-society-of-gastroenterology-consensus-guidelines-on-the-management-of-inflammatory-bowel-disease-in-adults",
+   "fixes": [
+    {
+     "file": "tools/management/ulcerative-colitis.html",
+     "old": "Hb &lt;105 g/L with CRP &gt;45 mg/L indicates severe disease.",
+     "new": "Hb &lt;105 g/L (with ≥6 bloody stools a day) is a Truelove and Witts severe criterion; CRP &gt;45 mg/L matters on day 3 of IV steroids (Oxford rescue criterion)."
+    },
+    {
+     "file": "tools/management/ulcerative-colitis-print.html",
+     "old": "Hb &lt;105 g/L with CRP &gt;45 mg/L indicates severe disease.",
+     "new": "Hb &lt;105 g/L (with ≥6 bloody stools a day) is a Truelove and Witts severe criterion; CRP &gt;45 mg/L matters on day 3 of IV steroids (Oxford rescue criterion)."
+    }
+   ],
+   "note": "The same page's own Truelove and Witts box (line ~82) is correct; this sentence conflates two scores.",
+   "id": "b06-3"
+  },
+  {
+   "subject": "metformin",
+   "group": "max dose | g",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "eGFR 30–44: maximum 1,000 mg/day (start no more than half the maximum); eGFR 45–59: maximum 2,000 mg/day; contraindicated <30 (metformin SPC, emc)",
+   "source": "https://www.medicines.org.uk/emc/product/13165/smpc",
+   "fixes": [
+    {
+     "file": "cases/aki.html",
+     "old": "(metformin 500mg BD or 500mg TDS &#8212; maximum 1g/day at this eGFR)",
+     "new": "(metformin 500mg BD &#8212; maximum 1g/day at this eGFR)"
+    },
+    {
+     "file": "cases/aki.html",
+     "old": "Restart metformin 1g BD when eGFR &gt;30 and fully recovered",
+     "new": "Restart metformin when eGFR &gt;30 and fully recovered, at a dose for the new eGFR (maximum 1g/day if eGFR 30&#8211;44)"
+    }
+   ],
+   "note": "500 mg TDS = 1.5 g/day, which contradicts the 1 g/day maximum stated in the same sentence. Restarting 1 g BD (2 g/day) at an eGFR just above 30 exceeds the SPC maximum for eGFR 30–44.",
+   "id": "b07-0"
+  },
+  {
+   "subject": "metformin",
+   "group": "maintenance | %",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "Reduced B12 / B12 deficiency is a common side effect of metformin, affecting up to 1 in 10 people (MHRA Drug Safety Update, June 2022)",
+   "source": "https://www.gov.uk/drug-safety-update/metformin-and-reduced-vitamin-b12-levels-new-advice-for-monitoring-patients-at-risk",
+   "fixes": [
+    {
+     "file": "cases/anaemia.html",
+     "old": "Up to 30% of long-term metformin users develop biochemical B12 deficiency.",
+     "new": "B12 deficiency is a common side effect of metformin, affecting up to 1 in 10 users (MHRA 2022); the risk rises with dose and duration."
+    }
+   ],
+   "note": "This is the same error the lab pass already fixed on vitamin-b12-deficiency (10–30% → up to 1 in 10). It survives in cases/anaemia.html.",
+   "id": "b07-1"
+  },
+  {
+   "subject": "ACR",
+   "group": "refer | mg",
+   "verdict": "inconsistent",
+   "tier": 3,
+   "correct": "NG203 referral: ACR 70 mg/mmol or more (unless known diabetic albuminuria already appropriately treated)",
+   "source": "https://gpnotebook.com/pages/renal-medicine/referral-criteria-from-primary-care-chronic-kidney-disease-ckd",
+   "fixes": [
+    {
+     "file": "cases/aki.html",
+     "old": "nephrology referral if ACR &gt;70 mg/mmol new post-AKI",
+     "new": "nephrology referral if ACR ≥70 mg/mmol new post-AKI"
+    },
+    {
+     "file": "cases/aki.html",
+     "old": "nephrology if ACR &gt;70 mg/mmol.",
+     "new": "nephrology if ACR ≥70 mg/mmol."
+    }
+   ],
+   "note": "Every other page uses ≥70 (NG203 '70 or more').",
+   "id": "b07-3"
+  },
+  {
+   "subject": "ACR",
+   "group": "dose | mg",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "NG203: offer ACEi/ARB if diabetes and ACR >3; hypertension and ACR >30; or any ACR ≥70 (regardless of hypertension)",
+   "source": "https://labmed.org.uk/our-resources/news/nice-ckd-assessment-and-guidelines.html",
+   "fixes": [
+    {
+     "file": "cases/ckd.html",
+     "old": "&gt;30 mg/mmol → ACEi/ARB mandatory",
+     "new": "&gt;30 mg/mmol with hypertension, or any ACR ≥70 → offer ACEi/ARB (NG203)"
+    }
+   ],
+   "note": "The page says ACR >30 makes an ACEi/ARB 'mandatory' with no qualifier. Without diabetes, NG203 makes ACR 30–70 an indication only when hypertension is present. The rest of the same page and cases/hypertension.html state the correct rule.",
+   "id": "b07-4"
+  },
+  {
+   "subject": "ACR",
+   "group": "diagnose/threshold | mg (nephrotic range)",
+   "verdict": "inconsistent",
+   "tier": 3,
+   "correct": "Nephrotic-range albuminuria is ACR >2,200 mg/g ≈ >220 mg/mmol (KDIGO, rounded; exact conversion ≈250). PCR nephrotic range ≈ >300–350 mg/mmol.",
+   "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10200071/table/T14",
+   "fixes": [
+    {
+     "file": "tools/management/ckd.html",
+     "old": "<b>ACR &gt;300 mg/mmol is the nephrotic-range threshold</b>",
+     "new": "<b>Nephrotic-range albuminuria (ACR above about 220–250 mg/mmol)</b>"
+    },
+    {
+     "file": "tools/management/ckd-print.html",
+     "old": "<b>ACR &gt;300 mg/mmol is the nephrotic-range threshold</b>",
+     "new": "<b>Nephrotic-range albuminuria (ACR above about 220–250 mg/mmol)</b>"
+    }
+   ],
+   "note": "The same ckd page also says nephrotic syndrome is 'ACR >220'. proteinuria.html says ~ACR >250 / PCR >300. ACR >300 is the outlier; it is a PCR-scale number. Check the grammar of the rest of the sentence ('that often indicates primary glomerular disease requiring biopsy') after replacement.",
+   "id": "b07-6"
+  },
+  {
+   "subject": "FIT",
+   "group": "start/initiate | weeks",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "NICE HTG690 / NG12: offer FIT to adults of any age with a change in bowel habit. The age-40 / 6-week criterion is from the pre-2023 NG12.",
+   "source": "https://hse.ie/eng/about/who/acute-hospitals-division/clinical-programmes/endoscopy-programme/programme-documents/hse-endoscopy-programme-fit-in-primary-care-position-paper.pdf",
+   "fixes": [
+    {
+     "file": "assets/pathways-redflags.js",
+     "old": "No Rectal bleeding + change in bowel habit, age ≥40 — Especially if persisting ≥6 weeks — offer FIT first",
+     "new": "No Rectal bleeding + change in bowel habit (adult, any age) — offer FIT first"
+    },
+    {
+     "file": "assets/pathways-redflags.js",
+     "old": "No Rectal bleeding + change in bowel habit + age ≥40 — Colorectal cancer — offer FIT first",
+     "new": "No Rectal bleeding + change in bowel habit (adult, any age) — Colorectal cancer — offer FIT first"
+    }
+   ],
+   "note": "These are legacy age/duration qualifiers. The rest of the site says 'Offer FIT for any adult with a change in bowel habit'. A '≥40' label could deter FIT in younger adults.",
+   "id": "b07-7"
+  },
+  {
+   "subject": "FT4",
+   "group": "recheck/monitor | weeks (pregnancy, levothyroxine)",
+   "verdict": "inconsistent",
+   "tier": 1,
+   "correct": "RCOG GTG76 (2025): on a positive pregnancy test, increase levothyroxine by about 25–30% (two extra doses a week, or +25/+50 micrograms); TSH and FT4 every 4–6 weeks until 20 weeks, then at about 28 weeks, and 4–6 weeks after any dose change; aim TSH <2.5",
+   "source": "https://obgyn.onlinelibrary.wiley.com/doi/10.1111/1471-0528.18088",
+   "fixes": [
+    {
+     "file": "assets/meds/hypothyroidism.js",
+     "old": "monitor:'TSH every trimester (and 4–6 weeks after dose change); aim TSH <2.5 mU/L',",
+     "new": "monitor:'TSH and FT4 every 4–6 weeks until 20 weeks, then at about 28 weeks, and 4–6 weeks after any dose change; aim TSH <2.5 mU/L (RCOG GTG76, 2025)',"
+    },
+    {
+     "file": "assets/meds/hypothyroidism.js",
+     "old": "examples:'Increase dose ~25–50% as soon as pregnancy confirmed',",
+     "new": "examples:'Increase dose ~25–30% as soon as pregnancy confirmed',"
+    },
+    {
+     "file": "assets/meds/hypothyroidism.js",
+     "old": "increase levothyroxine (commonly by ~25–50%, e.g. two extra doses per week as an interim step)",
+     "new": "increase levothyroxine (commonly by ~25–30%, e.g. two extra doses per week as an interim step; RCOG GTG76, 2025)"
+    }
+   ],
+   "note": "'Every trimester' is too infrequent and conflicts with every other site page (4–6 weekly to 20 weeks, then 28 weeks). The 25–50% increase conflicts with the RCOG 25–30%. Also consider updating source:'NICE NG145 · Endocrine guidance' → 'RCOG GTG76 (2025)', since NG145 excludes pregnancy.",
+   "id": "b07-8"
+  },
+  {
+   "subject": "TSH",
+   "group": "recheck/monitor | months (subclinical, untreated)",
+   "verdict": "inconsistent",
+   "tier": 3,
+   "correct": "NG145: if TSH is raised with normal FT4, consider repeating both after 3 months; consider levothyroxine if TSH ≥10 on 2 tests 3 months apart",
+   "source": "https://gpnotebook.com/pages/ear-nose-and-throat/monitoring-thyroxine-levothyroxine-therapy",
+   "fixes": [
+    {
+     "file": "assets/meds/hypothyroidism.js",
+     "old": "examples:'Repeat TSH/FT4 in 3–6 months',",
+     "new": "examples:'Repeat TSH/FT4 after 3 months',"
+    },
+    {
+     "file": "assets/meds/hypothyroidism.js",
+     "old": "repeat testing (e.g. 3–6 months) rather than treat. Consider a time-limited levothyroxine trial only if symptomatic and <65; stop if no benefit. Always treat if TSH ≥10 or pregnant/planning pregnancy.",
+     "new": "repeat TSH and FT4 after 3 months (NICE NG145) rather than treat. Consider a time-limited levothyroxine trial only if symptomatic and <65; stop if no benefit. Consider levothyroxine if TSH ≥10 on 2 tests 3 months apart; pregnancy or planning pregnancy → follow RCOG GTG76 / specialist advice."
+    }
+   ],
+   "note": "Every other site page uses NG145's 3-month repeat. 'Always treat if TSH ≥10' overstates NG145, which says 'consider' and requires two tests.",
+   "id": "b07-9"
+  },
+  {
+   "subject": "haemoglobin",
+   "group": "state | g/l (polycythaemia threshold)",
+   "verdict": "inconsistent",
+   "tier": 3,
+   "correct": "WHO 2016 PV: Hb >165 g/L men, >160 g/L women (Hct >0.49 / >0.48); the site's polycythaemia pages already use this",
+   "source": "https://www.thebloodproject.com/cases-archive/polycythemia-diagnostic-criteria/polycythemia-vera-diagnostic-criteria/",
+   "fixes": [
+    {
+     "file": "assets/kb-index.js",
+     "old": "Hb >165 g/L (M) or >155 g/L (F)",
+     "new": "Hb >165 g/L (M) or >160 g/L (F)"
+    },
+    {
+     "file": "tools/algorithms.html",
+     "old": "Hb &gt;165 g/L (M) or &gt;155 g/L (F)",
+     "new": "Hb &gt;165 g/L (M) or &gt;160 g/L (F)"
+    },
+    {
+     "file": "tools/algorithms/_meta.json",
+     "old": "Hb >165 g/L (M) or >155 g/L (F)",
+     "new": "Hb >165 g/L (M) or >160 g/L (F)"
+    },
+    {
+     "file": "assets/diagnostic-cases.js",
+     "old": "Hb &gt;165 g/L (M) or &gt;155 g/L (F)",
+     "new": "Hb &gt;165 g/L (M) or &gt;160 g/L (F)"
+    }
+   ],
+   "note": "The index/card description disagrees with tools/algorithms/polycythaemia.html and its one-page twin (WHO >160 g/L women). Check the assets/search/idx-*.json indices too if they are generated from these.",
+   "id": "b07-11"
+  },
+  {
+   "subject": "aspirin",
+   "group": "start/initiate | weeks (pre-eclampsia prophylaxis)",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Aspirin 75–150 mg daily from 12 weeks until birth if ONE high-risk factor or MORE THAN ONE moderate-risk factor (NICE NG133 1.1.2–1.1.3)",
+   "source": "https://www.nice.org.uk/guidance/qs35/chapter/quality-statement-2-antenatal-assessment-of-pre-eclampsia-risk",
+   "fixes": [
+    {
+     "file": "assets/articles-data-3.js",
+     "old": "Offer low-dose aspirin from 12 weeks until birth to women at high or moderate risk (preventive role)",
+     "new": "Offer aspirin 75–150 mg daily from 12 weeks until birth to women with one high-risk factor or more than one moderate-risk factor for pre-eclampsia (NICE NG133)"
+    }
+   ],
+   "note": "Article implies a single moderate risk factor qualifies; NG133 requires two or more moderate factors (or any one high-risk factor).",
+   "id": "b08-0"
+  },
+  {
+   "subject": "ibuprofen",
+   "group": "dose | mg",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Ibuprofen 400 mg (adult) — 500–1000 mg is the paracetamol dose; zoledronate SPC: acute-phase symptoms reduced by paracetamol or ibuprofen shortly after the infusion",
+   "source": "https://www.ccjm.org/content/85/9/675",
+   "fixes": [
+    {
+     "file": "tools/algorithms/abnormal-bone-profile.html",
+     "old": "Prophylactic paracetamol or ibuprofen 500–1000 mg 6-hourly for 24–48 hours significantly reduces this reaction.",
+     "new": "Prophylactic paracetamol (1 g 6-hourly) or ibuprofen (400 mg 8-hourly, if no contraindication) for 24–48 hours reduces this reaction."
+    }
+   ],
+   "note": "Ibuprofen 500–1000 mg 6-hourly would be up to 4 g/day — far above the 2.4 g/day maximum. Only file with this sentence.",
+   "id": "b08-1"
+  },
+  {
+   "subject": "amlodipine",
+   "group": "dose | mg (statin interaction)",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "No atorvastatin 50 mg strength exists and the SPC/BNF set no atorvastatin dose cap with amlodipine; the MHRA (2012) 20 mg cap applies to simvastatin only",
+   "source": "https://www.gov.uk/drug-safety-update/simvastatin-updated-advice-on-drug-interactions",
+   "fixes": [
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "(50mg atorvastatin with amlodipine: acceptable; 80mg: caution but generally used)",
+     "new": "(no atorvastatin dose restriction with amlodipine in the SPC; the MHRA 20 mg cap applies to simvastatin)"
+    }
+   ],
+   "note": "Invented dose (atorvastatin comes as 10/20/30/40/60/80 mg) and an invented 80 mg caution.",
+   "id": "b08-2"
+  },
+  {
+   "subject": "LDL/non-HDL",
+   "group": "target | mmol/l (secondary prevention after TIA/stroke)",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "NICE NG238 1.7.1: LDL ≤2.0 mmol/L or non-HDL ≤2.6 mmol/L (no '≥50% reduction' criterion); the National Clinical Guideline for Stroke (<1.8 / <2.5) is quoted separately on tools/management/tia-stroke.html",
+   "source": "https://nice.org.uk/indicators/ind268-cardiovascular-disease-prevention-cholesterol-treatment-target-secondary-prevention/chapter/indicator",
+   "fixes": [
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "LDL &lt;2.0 mmol/L on atorvastatin 80mg</span>",
+     "new": "LDL ≤2.0 mmol/L (or non-HDL ≤2.6) on atorvastatin 80mg</span>"
+    },
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "Target LDL &lt;2.0 mmol/L (or ≥50% reduction from baseline)",
+     "new": "Target LDL ≤2.0 mmol/L or non-HDL ≤2.6 mmol/L (NICE NG238)"
+    },
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "(LDL target &lt;2.0 mmol/L)",
+     "new": "(LDL target ≤2.0 mmol/L or non-HDL ≤2.6)"
+    },
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "LDL check: target &lt;2.0 mmol/L",
+     "new": "LDL check: target ≤2.0 mmol/L (non-HDL ≤2.6)"
+    },
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "<strong>LDL &lt;2.0 mmol/L</strong>",
+     "new": "<strong>LDL ≤2.0 mmol/L</strong>"
+    },
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "<td>LDL &lt;2.0 mmol/L on atorvastatin 80mg</td>",
+     "new": "<td>LDL ≤2.0 mmol/L (or non-HDL ≤2.6) on atorvastatin 80mg</td>"
+    },
+    {
+     "file": "cases/peripheral-arterial-disease.html",
+     "old": "A post-treatment LDL &gt;2.0 mmol/L (or &lt;50% reduction) indicates",
+     "new": "A post-treatment LDL &gt;2.0 mmol/L (or non-HDL &gt;2.6 mmol/L) indicates"
+    }
+   ],
+   "note": "Every other page uses ≤2.0/≤2.6 (NG238). The TIA case uses <2.0 and adds a ≥50% criterion; the PAD case adds '<50% reduction'. Neither is in NG238.",
+   "id": "b08-3"
+  },
+  {
+   "subject": "LDL/non-HDL",
+   "group": "target | % (FH)",
+   "verdict": "wrong",
+   "tier": 3,
+   "correct": "FH (NICE CG71): aim for at least a 50% LDL-C reduction from the untreated baseline; there is no NICE absolute LDL target of <2.5 mmol/L",
+   "source": "https://www.nice.org.uk/guidance/cg71",
+   "fixes": [
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "Target: ≥50% reduction in LDL-C from untreated baseline (or LDL-C &lt;2.5 mmol/L in adults)",
+     "new": "Target: ≥50% reduction in LDL-C from untreated baseline (NICE CG71)"
+    }
+   ],
+   "note": "The '<2.5 mmol/L' is not NICE and appears nowhere else on the site (the FH protocol uses ≥50% only).",
+   "id": "b08-4"
+  },
+  {
+   "subject": "LDL/non-HDL",
+   "group": "target | % (primary prevention)",
+   "verdict": "inconsistent",
+   "tier": 3,
+   "correct": "NICE NG238: aim for a reduction in non-HDL cholesterol of MORE THAN 40% (most pages already say >40%)",
+   "source": "https://www.medicinesresources.nhs.uk/cardiovascular-disease-risk-assessment-and-reduction-including-lipid-modification-updated-guidance-ng238.html",
+   "fixes": [
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "irst-line). Target: ≥40% reduction",
+     "new": "irst-line). Target: more than 40% reduction"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "tin 20mg: ≥40% reduction",
+     "new": "tin 20mg: more than 40% reduction"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "o confirm ≥40% non-HDL r",
+     "new": "o confirm more than 40% non-HDL r"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "in 20mg OD. Target: ≥40% reduction",
+     "new": "in 20mg OD. Target: more than 40% reduction"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "efore starting. 3-month non-HDL target (≥40% reduction",
+     "new": "efore starting. 3-month non-HDL target (more than 40% reduction"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "L target: ≥40% reduction",
+     "new": "L target: more than 40% reduction"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": " profile; ≥40% reduction",
+     "new": " profile; more than 40% reduction"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "efore starting; 3-month non-HDL target (≥40% reduction",
+     "new": "efore starting; 3-month non-HDL target (more than 40% reduction"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": ": confirm ≥40% non-HDL r",
+     "new": ": confirm more than 40% non-HDL r"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "ptomatic. ≥40% non-HDL r",
+     "new": "ptomatic. more than 40% non-HDL r"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "t 3 months (confirm ≥40% non-HDL r",
+     "new": "t 3 months (confirm more than 40% non-HDL r"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "≥40% from base",
+     "new": "more than 40% from base"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "s</strong> (confirm ≥40% non-HDL r",
+     "new": "s</strong> (confirm more than 40% non-HDL r"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "; non-HDL ≥40% reduction",
+     "new": "; non-HDL more than 40% reduction"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "xplained (≥40% non-HDL r",
+     "new": "xplained (more than 40% non-HDL r"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "d &#8212; ≥40% non-HDL r",
+     "new": "d &#8212; more than 40% non-HDL r"
+    },
+    {
+     "file": "assets/meds/hypercholesterolaemia.js",
+     "old": "≥40% reduction",
+     "new": "more than 40% reduction"
+    },
+    {
+     "file": "assets/meds/angina.js",
+     "old": "≥40% reduction",
+     "new": "more than 40% reduction"
+    },
+    {
+     "file": "assets/articles-data-13.js",
+     "old": "≥40% reduction",
+     "new": "more than 40% reduction"
+    },
+    {
+     "file": "tools/prescribing.html",
+     "old": "≥40% non-HDL-C",
+     "new": "more than 40% non-HDL-C"
+    },
+    {
+     "file": "tools/management/hypercholesterolaemia.html",
+     "old": "≥40%? If not o",
+     "new": "more than 40%? If not o"
+    },
+    {
+     "file": "tools/management/hypercholesterolaemia-print.html",
+     "old": "≥40%? If not o",
+     "new": "more than 40%? If not o"
+    }
+   ],
+   "note": "Low clinical impact wording fix: '≥40%' → 'more than 40%' to match NG238 and the rest of the site. Plain words are used to avoid >/&gt; entity issues. assets/search/idx-protocol.json also holds the '≥40%' snippet; regenerate the index rather than hand-edit.",
+   "id": "b08-5"
+  },
+  {
+   "subject": "CK",
+   "group": "stop/withhold | ×uln",
+   "verdict": "inconsistent",
+   "tier": 1,
+   "correct": "On a statin with muscle symptoms: CK <4× ULN → explore other causes, continue if tolerable (or pause 2–4 weeks and rechallenge); CK 4–10× ULN or intolerable symptoms → stop statin for 4–6 weeks, then reassess/rechallenge; CK ≥10× ULN → urgent same-day assessment (rhabdomyolysis is a clinical diagnosis: dark urine, AKI, severe weakness). The NICE NG238 5× ULN rule applies only BEFORE starting a statin (NHS England statin intolerance pathway; already adopted site-wide in LAB_SITE_FIXES batch 7).",
+   "source": "https://www.england.nhs.uk/aac/wp-content/uploads/sites/50/2020/04/statin-intolerance-pathway-v2.pdf",
+   "fixes": [
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "<h4>Myopathy (CK &gt;5&#215; ULN)</h4><p>Rare (1-3 per 100,000 patient-years); stop statin; CK monitoring; usually resolves after cessation.",
+     "new": "<h4>Statin myopathy (CK 4&#8211;10&#215; ULN or intolerable symptoms)</h4><p>Severe myopathy is rare (1-3 per 100,000 patient-years); stop the statin for 4&#8211;6 weeks, then reassess and rechallenge (NHS England statin intolerance pathway); usually resolves after cessation."
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "<li>CK 5-10&#215; ULN: stop statin; confirm resolution; rechallenge with different statin after 4 weeks; monitor CK</li><li>CK &gt;10&#215; ULN (rhabdomyolysis): STOP IMMEDIATELY; IV fluids; monitor renal function; urgent medical review</li>",
+     "new": "<li>CK 4&#8211;10&#215; ULN or intolerable symptoms: stop statin for 4&#8211;6 weeks; confirm resolution; rechallenge at a lower dose or with a different statin; monitor CK</li><li>CK &#8805;10&#215; ULN: STOP the statin; urgent same-day assessment; rhabdomyolysis (dark urine, AKI): hospital, IV fluids, monitor renal function</li>"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "Myopathy (CK &gt;5&#215; ULN): 1-3 per 100,000 patient-years; stop statin; usually resolves.",
+     "new": "Statin myopathy (CK 4&#8211;10&#215; ULN or intolerable symptoms): stop statin for 4&#8211;6 weeks, then rechallenge; severe myopathy 1-3 per 100,000 patient-years; usually resolves."
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "whether the symptom represents myopathy (CK &gt;5&#215; ULN) or benign myalgia (normal CK)",
+     "new": "whether the symptom represents myopathy (CK 4&#8211;10&#215; ULN: stop statin 4&#8211;6 weeks; &#8805;10&#215; ULN: same-day assessment) or benign myalgia (normal CK)"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "<div class=\"num-val\">Myopathy: CK &gt;5&#215; ULN</div><div class=\"num-lbl\">Stop statin.",
+     "new": "<div class=\"num-val\">On statin: CK 4&#8211;10&#215; ULN</div><div class=\"num-lbl\">Stop statin for 4&#8211;6 weeks, then rechallenge (NHS England pathway; NG238 5&#215; rule is pre-start only)."
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "Myopathy: CK only if symptomatic; &gt;5&#215; ULN = stop; &gt;10&#215; ULN = rhabdomyolysis emergency",
+     "new": "Myopathy: CK only if symptomatic; 4&#8211;10&#215; ULN or intolerable = stop 4&#8211;6 weeks then rechallenge; &#8805;10&#215; ULN = urgent same-day assessment (rhabdomyolysis if dark urine/AKI)"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "Myopathy: CK &gt;5&#215; ULN = stop; &gt;10&#215; ULN = rhabdomyolysis emergency;",
+     "new": "Myopathy: CK 4&#8211;10&#215; ULN or intolerable = stop 4&#8211;6 weeks then rechallenge; &#8805;10&#215; ULN = urgent same-day assessment (rhabdomyolysis if dark urine/AKI);"
+    },
+    {
+     "file": "cases/hypercholesterolaemia.html",
+     "old": "CK: 3× ULN (below the NICE NG238 threshold of 5×).",
+     "new": "CK: 3× ULN (below the 4× ULN stop threshold in the NHS England statin intolerance pathway; the NG238 5× rule applies before starting)."
+    },
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "CK &lt;5&#215; ULN = usually reassure and assess other causes (continue with monitoring; lower dose; consider alternative); CK 5&#8211;10&#215; ULN = stop and seek clinical advice (rechallenge at lower dose or different statin depending on symptoms and trend); CK &gt;10&#215; ULN = rhabdomyolysis (stop immediately; IV fluids; hospital; monitor renal function).",
+     "new": "CK &lt;4&#215; ULN = usually reassure and assess other causes (continue if tolerable; otherwise pause and rechallenge at a lower dose or alternative statin); CK 4&#8211;10&#215; ULN or intolerable symptoms = stop the statin for 4&#8211;6 weeks, then rechallenge at a lower dose or different statin (NHS England statin intolerance pathway); CK &#8805;10&#215; ULN = stop and urgent same-day assessment (rhabdomyolysis if dark urine/AKI: hospital, IV fluids, monitor renal function). Here CK 2400 U/L is 12&#215; ULN."
+    },
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "Mild myalgia (CK normal or &lt;5&#215; ULN): continue;",
+     "new": "Mild myalgia (CK normal or &lt;4&#215; ULN) and tolerable: continue;"
+    },
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "CK 5&#8211;10&#215; ULN: stop and seek clinical advice; rechallenge or switch by symptoms and trend.",
+     "new": "CK 4&#8211;10&#215; ULN or intolerable symptoms: stop for 4&#8211;6 weeks, then rechallenge or switch (NHS England pathway); &#8805;10&#215; ULN: same-day assessment."
+    },
+    {
+     "file": "tools/clinic-guides/hypercholesterolaemia.html",
+     "old": "Check CK only if symptomatic; &lt;5× ULN → reassure, rechallenge or switch",
+     "new": "Check CK only if symptomatic; &lt;4× ULN → explore other causes, continue if tolerable or pause and rechallenge/switch; 4–10× ULN or intolerable → stop 4–6 weeks then rechallenge; ≥10× ULN → same-day assessment"
+    },
+    {
+     "file": "assets/search/idx-guide.json",
+     "old": "CK only if symptomatic; <5× ULN → reassure, rechallenge or switch",
+     "new": "CK only if symptomatic; <4× ULN → explore other causes, continue if tolerable or pause and rechallenge/switch; 4–10× ULN or intolerable → stop 4–6 weeks then rechallenge; ≥10× ULN → same-day assessment"
+    },
+    {
+     "file": "assets/labs/generic.js",
+     "old": "label:'CK 1000–5000 — statin myopathy / cause; stop statin if >5× ULN + symptoms',",
+     "new": "label:'CK 1000–5000 — statin myopathy / cause; on a statin stop for 4–6 weeks if 4–10× ULN or intolerable symptoms; ≥10× ULN same-day assessment',"
+    }
+   ],
+   "note": "The site's own corrected pages (raised-creatine-kinase algorithm, tia-stroke, angina, PAD, SCA post-TIA case, hypercholesterolaemia summary, the case's own 'On statin: CK 4–10× ULN' card) use the NHS England 4–10×/4–6 weeks rule; cases/hypercholesterolaemia, cases/mi-secondary-prevention, the hypercholesterolaemia Clinic Guide and generic.js still use a legacy on-treatment 5× ULN stop rule (and label >10× as rhabdomyolysis per se). generic.js 'source: NICE NG238' for that rule should also become 'NHS England statin intolerance pathway'. The idx-guide.json fix is a search index; regenerate if the index is built from the Clinic Guide. Legitimate (no action): ≥10 vs >10 same-day; 7-day exercise repeat; pre-start 5×/7-day NG238 rule; >50× admit bands. Could not fetch the NHSE PDF (DNS blocked); relied on the owner-accepted batch-7 correction.",
+   "id": "b09-0"
+  },
+  {
+   "subject": "HbA1c",
+   "group": "target | mmol/mol",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "NICE NG28: individualised target; usually 48 mmol/mol (lifestyle or a single drug not causing hypoglycaemia), 53 mmol/mol on a drug that can cause hypoglycaemia; intensify if it rises to 58 mmol/mol; relax for frailty/limited life expectancy.",
+   "source": "https://www.nice.org.uk/guidance/ng28/chapter/Recommendations",
+   "fixes": [
+    {
+     "file": "cases/tia-stroke.html",
+     "old": "<strong>HbA1c &lt;48 mmol/mol</strong> if diabetic",
+     "new": "<strong>HbA1c individualised (usually 48 mmol/mol; 53 on a hypo-causing drug, NICE NG28)</strong> if diabetic"
+    },
+    {
+     "file": "cases/type-2-diabetes.html",
+     "old": "<span class=\"tx-goal tg1\">HbA1c &lt;48 mmol/mol</span>",
+     "new": "<span class=\"tx-goal tg1\">HbA1c 48 mmol/mol (53 if on a hypo-causing drug; individualise)</span>"
+    },
+    {
+     "file": "cases/chest-pain.html",
+     "old": "HbA1c &lt;53 mmol/mol (if DM)",
+     "new": "HbA1c individualised per NICE NG28 (usually 48 mmol/mol; 53 on a hypo-causing drug) (if DM)"
+    },
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "HbA1c target: &lt;53 mmol/mol generally; individualise.",
+     "new": "HbA1c target: individualise per NICE NG28 (usually 48 mmol/mol; 53 on a drug that can cause hypoglycaemia)."
+    },
+    {
+     "file": "cases/mi-secondary-prevention.html",
+     "old": "<td class=\"why\">&lt;53 mmol/mol (if T2DM)</td>",
+     "new": "<td class=\"why\">Individualised: usually 48 mmol/mol, 53 on a hypo-causing drug (if T2DM; NICE NG28)</td>"
+    },
+    {
+     "file": "cases/abnormal-lfts.html",
+     "old": "<span class=\"life-target\">HbA1c &lt;53 mmol/mol;",
+     "new": "<span class=\"life-target\">HbA1c individualised (usually 48 mmol/mol; 53 on a hypo-causing drug, NICE NG28);"
+    }
+   ],
+   "note": "Generic diabetes targets are given as <48 on some pages and <53 on others for the same (unspecified-drug) situation. The 53 values in tools/management/ckd.html, tools/algorithms/hypoglycaemia.html and cases/neuropathic-pain.html already state the drug condition and are correct. cases/hypercholesterolaemia.html ('62 to <53 mmol/mol (target per NICE NG28)') is in a patient on metformin alone, where NG28's target would be 48 — optional fix to 'towards the individually agreed target (48 mmol/mol on metformin alone, NICE NG28)'. cases/abnormal-lfts.html line 1840 'HbA1c &lt;53 mmol/mol' (MASLD table) could be aligned the same way.",
+   "id": "b09-1"
+  },
+  {
+   "subject": "HbA1c",
+   "group": "stop/withhold | % (GLP-1 continuation)",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "NICE NG28: continue a GLP-1 mimetic only if HbA1c falls by at least 11 mmol/mol (1.0%) AND weight falls by at least 3% of initial body weight at 6 months.",
+   "source": "https://www.nice.org.uk/guidance/ng28/chapter/Recommendations",
+   "fixes": [
+    {
+     "file": "cases/type-2-diabetes.html",
+     "old": "HbA1c + weight at 3 months — stop if no ≥1% HbA1c reduction or ≥3% weight loss at 6 months (NICE NG28 criterion)",
+     "new": "HbA1c + weight at 3 months — continue beyond 6 months only if HbA1c has fallen ≥11 mmol/mol (1%) AND weight ≥3% (NICE NG28 criterion; when used for glucose/weight rather than CV benefit)"
+    },
+    {
+     "file": "cases/type-2-diabetes.html",
+     "old": "Stop if &lt;1% (11 mmol/mol) HbA1c reduction at 6 months.",
+     "new": "Continue at 6 months only if HbA1c has fallen ≥11 mmol/mol (1%) AND weight ≥3% (NICE NG28)."
+    }
+   ],
+   "note": "'stop if no ≥1% reduction or ≥3% weight loss' reads as either criterion being enough; NICE requires both. The second card omits the weight criterion. assets/meds/type-2-diabetes.js and tools/prescribing.html already state it correctly.",
+   "id": "b09-3"
+  },
+  {
+   "subject": "neutrophils",
+   "group": "state | ×10⁹/l",
+   "verdict": "wrong",
+   "tier": 1,
+   "correct": "Neutropenic sepsis (NICE CG151): neutrophil count ≤0.5 × 10⁹/L with temperature >38°C or other signs of clinically significant sepsis. The test is the neutrophil count, not the WBC.",
+   "source": "https://www.nice.org.uk/guidance/cg151",
+   "fixes": [
+    {
+     "file": "cases/breast-cancer.html",
+     "old": "Neutropenia (WBC &lt;0.5×10⁹/L) + fever = risk of fatal sepsis.",
+     "new": "Neutropenia (neutrophils ≤0.5×10⁹/L) + fever = risk of fatal sepsis."
+    }
+   ],
+   "note": "The page uses the total white cell count where the neutrophil count is meant. The threshold should be ≤0.5 (CG151), matching tools/management/neutropenic-sepsis.html and the leucopenia pages.",
+   "id": "b10-0"
+  },
+  {
+   "subject": "neutrophils",
+   "group": "999/admit | hours",
+   "verdict": "wrong",
+   "tier": 2,
+   "correct": "Neutropenic sepsis guidance is NICE CG151; NG143 is fever in under-5s.",
+   "source": "https://www.nice.org.uk/guidance/cg151",
+   "fixes": [
+    {
+     "file": "assets/labs/generic.js",
+     "old": "source:'NICE NG143 neutropenic sepsis',",
+     "new": "source:'NICE CG151 neutropenic sepsis',"
+    },
+    {
+     "file": "assets/labs/generic.js",
+     "old": "sourceUrl:'https://www.nice.org.uk/guidance/ng143',",
+     "new": "sourceUrl:'https://www.nice.org.uk/guidance/cg151',"
+    },
+    {
+     "file": "assets/labs/generic.js",
+     "old": "admit per NICE NG143 neutropenic sepsis (pip-tazo within 1h)",
+     "new": "admit per NICE CG151 neutropenic sepsis (empirical piperacillin-tazobactam within 1h)"
+    }
+   ],
+   "note": "The adult neutrophil lab rule cites the wrong guideline. Before applying, confirm that the sourceUrl ng143 line (it occurs once in the file) belongs to the 'neut' rule; grep shows it sits right after source:'NICE NG143 neutropenic sepsis'.",
+   "id": "b10-1"
+  },
+  {
+   "subject": "B12",
+   "group": "state | ng/l",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "NICE NG239 (2024): total B12 <180 ng/L (or active B12 <25 pmol/L) = deficiency; 180–350 ng/L = indeterminate. Treat by cause: diet-related → oral cyanocobalamin 50–150 micrograms daily (BNF); autoimmune gastritis, malabsorption or neurological features → IM hydroxocobalamin.",
+   "source": "https://www.nice.org.uk/guidance/ng239",
+   "fixes": [
+    {
+     "file": "assets/triage/tiredness.js",
+     "old": "label:'Mild B12 deficiency (100–200 ng/L)',",
+     "new": "label:'B12 deficiency (100–179 ng/L; NICE NG239 <180)',"
+    },
+    {
+     "file": "assets/triage/tiredness.js",
+     "old": "when: i => i.b12 != null && i.b12 >= 100 && i.b12 < 200",
+     "new": "when: i => i.b12 != null && i.b12 >= 100 && i.b12 < 180"
+    },
+    {
+     "file": "assets/triage/tiredness.js",
+     "old": "Cyanocobalamin 50 mcg OD oral × 1 month or IM if absorption concern.",
+     "new": "Treat by cause (NICE NG239): diet-related → oral cyanocobalamin 50–150 micrograms daily; autoimmune gastritis, malabsorption or neurological features → IM hydroxocobalamin. Total B12 180–350 ng/L is indeterminate: consider active B12/MMA."
+    }
+   ],
+   "note": "The triage tool uses non-NICE bands (<100 'severe', 100–200 'mild'). 180–199 ng/L is indeterminate under NG239, not deficiency, and the 1-month oral course does not match the BNF/NG239 approach used by every other page. The 'source' fields say 'BSH B12'; the owner may also want them changed to 'NICE NG239'. The <100 'severe' tier can stay as a site triage band.",
+   "id": "b10-2"
+  },
+  {
+   "subject": "B12",
+   "group": "dose | micrograms",
+   "verdict": "inconsistent",
+   "tier": 2,
+   "correct": "Diet-related B12 deficiency: oral cyanocobalamin 50–150 micrograms daily (BNF), as stated on 13 other pages.",
+   "source": "https://bnf.nice.org.uk/drugs/cyanocobalamin/",
+   "fixes": [
+    {
+     "file": "assets/prescriptions-data-batch7.js",
+     "old": "- Dietary/vegan: oral cyanocobalamin 50-1000 mcg OD / fortified foods.",
+     "new": "- Dietary/vegan: oral cyanocobalamin 50-150 micrograms OD (BNF) / fortified foods."
+    }
+   ],
+   "note": "The Ready Prescription range of 50–1000 mcg disagrees with the BNF dose stated across the site. The 1 mg oral dose on other pages applies to the medicine-induced or malabsorptive context (NG239), not to diet-related deficiency.",
+   "id": "b10-3"
+  }
+ ],
+ "bins": [
+  [
+   "assets/articles-data-13.js",
+   "assets/basic-science-patho.js",
+   "assets/basic-science-pharma.js",
+   "assets/labs/generic.js",
+   "assets/meds/angina.js",
+   "assets/meds/hypercholesterolaemia.js",
+   "cases/abnormal-lfts.html",
+   "cases/angina.html",
+   "cases/chest-pain.html",
+   "cases/ckd.html",
+   "cases/hypercholesterolaemia.html",
+   "cases/mi-secondary-prevention.html",
+   "cases/neuropathic-pain.html",
+   "cases/peripheral-arterial-disease.html",
+   "cases/tia-stroke.html",
+   "cases/type-2-diabetes.html",
+   "tools/algorithms/jaundice.html",
+   "tools/algorithms/palpitations.html",
+   "tools/clinic-guides/hypercholesterolaemia.html",
+   "tools/management/ckd-print.html",
+   "tools/management/ckd.html",
+   "tools/management/hypercholesterolaemia-print.html",
+   "tools/management/hypercholesterolaemia.html",
+   "tools/management/summaries/hypercholesterolaemia.html",
+   "tools/prescribing.html"
+  ],
+  [
+   "assets/articles-data-3.js",
+   "assets/diagnostic-cases.js",
+   "assets/kb-index.js",
+   "assets/meds/hypothyroidism.js",
+   "assets/prescriptions-data-batch7.js",
+   "cases/atrial-fibrillation.html",
+   "cases/cmpa-reflux.html",
+   "cases/eating-disorders.html",
+   "cases/heart-failure.html",
+   "cases/hypertension.html",
+   "cases/male-luts.html",
+   "tools/algorithms.html",
+   "tools/algorithms/_meta.json",
+   "tools/algorithms/lab-results.html"
+  ],
+  [
+   "assets/ask-testbank.js",
+   "assets/pathways-redflags.js",
+   "cases/aki.html",
+   "cases/anaemia.html",
+   "cases/anxiety.html",
+   "cases/breast-disorders.html",
+   "cases/dementia.html",
+   "cases/depression.html",
+   "cases/ptsd.html",
+   "tools/algorithms/abnormal-bone-profile.html",
+   "tools/algorithms/eosinophilia.html",
+   "tools/management/ulcerative-colitis-print.html",
+   "tools/management/ulcerative-colitis.html"
+  ],
+  [
+   "assets/articles-data-2.js",
+   "assets/consult-templates.js",
+   "assets/meds/pcos.js",
+   "assets/prescriptions-data.js",
+   "assets/sca-addons-5.js",
+   "assets/sca-cases26.js",
+   "assets/sca-data/c/hyponatraemia-diuretic.json",
+   "assets/triage/tiredness.js",
+   "cases/acne.html",
+   "cases/breast-cancer.html",
+   "cases/gout.html",
+   "cases/osa.html",
+   "sca/case-hyponatraemia-diuretic.html"
+  ]
+ ]
+}

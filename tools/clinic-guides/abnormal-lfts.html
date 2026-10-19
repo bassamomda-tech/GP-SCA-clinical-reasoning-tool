@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="abnormal-lfts">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abnormal liver blood tests — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/abnormal-lfts.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/abnormal-lfts.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · lab results series</div>
+      <h1>Abnormal liver blood tests <small>CLINIC GUIDE</small></h1>
+      <div class="scope">Abnormal ALT, AST, ALP, GGT, bilirubin or albumin in adults 18+. Not for children, pregnancy or post-partum (maternity pathway), or liver disease already under specialist care.</div>
+    </div>
+    <div class="meta"><b>BSG</b> liver blood tests 2017 · NICE <b>NG49</b><br>NICE <b>NG50</b> · <b>NG12</b> · CG165 · NG238<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full pathway:<br>gpreasoning.uk/tools/algorithms/abnormal-lfts.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Interpret <span>is it dangerous? → is it real? → which pattern? → find the cause</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act today — red flags<small>NICE NG12 · BSG 2017</small></h2><div class="body">
+    <table>
+      <tr><th>Tier</th><th>Result or picture</th><th>Action</th></tr>
+      <tr><td><b>999</b></td><td>Confusion or drowsiness (encephalopathy) · haematemesis or melaena · shock or severe sepsis · suspected acute liver failure: acute liver injury, <b>INR typically ≥1.5</b> and new encephalopathy, without known cirrhosis · paracetamol overdose, including staggered</td><td>Emergency transfer; paracetamol → immediate hospital assessment</td></tr>
+      <tr><td><b>Same day</b></td><td>Jaundice + fever + RUQ pain (cholangitis) · new ascites · marked or rapidly rising transaminases with jaundice, raised INR, hypoglycaemia or renal impairment · suspected severe drug-induced liver injury</td><td>Same-day hospital assessment; stop a suspected non-essential drug</td></tr>
+      <tr><td><b>Suspected cancer pathway</b></td><td><b>Jaundice aged 40+</b> → pancreatic cancer referral · aged <b>60+</b> with weight loss and diarrhoea, back or abdominal pain, nausea, vomiting, constipation or new diabetes → urgent direct-access CT (ultrasound if CT unavailable) · liver mass on imaging</td><td>NG12 referral; not a 999 transfer unless other emergency features</td></tr>
+    </table>
+    <p class="key">The size of the ALT rise does not predict how serious the disease is (BSG 2017): bilirubin, INR, albumin, glucose, renal function and the patient decide urgency. Isolated raised INR: think warfarin, vitamin K deficiency or malabsorption first.</p>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Confirm it is real — and liver<small>BSG 2017</small></h2><div class="body">
+        <table>
+          <tr><td><b>Haemolysed sample</b></td><td>Raises AST (and potassium, LDH) but not ALT: repeat if AST rises alone</td></tr>
+          <tr><td><b>Muscle</b></td><td>Exercise, injury, myositis raise AST more than ALT: check <b>CK</b></td></tr>
+          <tr><td><b>Bone ALP</b></td><td>Raised ALP with normal GGT: bone, vitamin D deficiency, Paget's, metastases</td></tr>
+          <tr><td><b>Fasting, illness</b></td><td>Raise unconjugated bilirubin in Gilbert's</td></tr>
+          <tr><td><b>Previous results</b></td><td>Compare first: a long-standing stable result changes the pace</td></tr>
+        </table>
+        <p class="key"><b>Do not simply repeat.</b> Most abnormal results are still abnormal a month later. Repeat in <b>4–6 weeks</b> only after a clear transient cause (stopped drug or alcohol, acute illness) — and send the aetiology screen alongside.</p>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">2</span>Severity bands — what the pattern means<small>BSG 2017 · NG238</small></h2><div class="body">
+        <table>
+          <tr><th>Result</th><th>Means</th><th>Action · timing</th></tr>
+          <tr><td>Synthetic failure: INR up, albumin down, low platelets</td><td>Advanced disease or acute failure</td><td>Same day if acute; else urgent hepatology</td></tr>
+          <tr><td>Jaundice, conjugated bilirubin up</td><td>Obstruction or hepatic disease</td><td>USS urgently; 40+ suspected cancer pathway</td></tr>
+          <tr><td>Cholestatic: ALP + GGT up</td><td>Biliary obstruction, PBC, PSC, drugs</td><td>USS + AMA; ducts dilated → urgent</td></tr>
+          <tr><td>Hepatocellular: ALT/AST up, well</td><td>MASLD, alcohol, drugs, viral, autoimmune</td><td>Full aetiology screen now, whatever the level</td></tr>
+          <tr><td>On a statin: transaminases <b>&lt;3× ULN</b></td><td>Not a reason to stop</td><td>Continue; screen if persistent</td></tr>
+          <tr><td>Transaminases <b>≥3× ULN</b> on a statin</td><td>Possible drug effect</td><td>Withhold, investigate, recheck</td></tr>
+          <tr><td>Isolated ALP up, GGT normal</td><td>Probably bone</td><td>Bone profile, vitamin D</td></tr>
+          <tr><td>Isolated GGT up</td><td>Alcohol, MASLD, enzyme inducers</td><td>History and risk review; do not dismiss</td></tr>
+          <tr><td>Isolated unconjugated bilirubin, others normal</td><td>Gilbert's once haemolysis excluded</td><td>FBC, retics, LDH, haptoglobin; reassure</td></tr>
+        </table>
+      </div></div>
+
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">3</span>Causes<small>clue → think → first test</small></h2><div class="body">
+        <table>
+          <tr><th>Clue</th><th>Think</th><th>First test</th></tr>
+          <tr><td>BMI, diabetes, BP, lipids</td><td><b>MASLD</b> (commonest)</td><td>USS; FIB-4, then local pathway</td></tr>
+          <tr><td>Men &gt;50, women &gt;35 units/week</td><td><b>Alcohol-related</b></td><td>AUDIT; elastography (NG50)</td></tr>
+          <tr><td>New drug, herbal, bodybuilding product in 6 months</td><td><b>Drug-induced</b></td><td>Stop if safe; trend</td></tr>
+          <tr><td>Injecting, transfusion, born abroad, sexual risk</td><td><b>Hepatitis B or C</b></td><td>HBsAg; HCV antibody → RNA</td></tr>
+          <tr><td>Other autoimmune disease, female</td><td><b>Autoimmune hepatitis, PBC</b></td><td>ANA, SMA, AMA, immunoglobulins</td></tr>
+          <tr><td>Cholestasis with IBD</td><td><b>PSC</b></td><td>USS; specialist MRCP</td></tr>
+          <tr><td>Diabetes, arthralgia, family history</td><td><b>Haemochromatosis</b></td><td>Ferritin + TSAT (&gt;45%)</td></tr>
+          <tr><td>Under 40, neuropsychiatric signs</td><td><b>Wilson's</b></td><td>Caeruloplasmin</td></tr>
+          <tr><td>Pain, pale stools, dark urine</td><td><b>Gallstones, obstruction</b></td><td>USS</td></tr>
+          <tr><td>All tests up, unwell or septic</td><td><b>Sepsis, drugs, infiltration</b></td><td>FBC, CRP, USS</td></tr>
+          <tr><td>Weight loss, sweats, nodes</td><td><b>Malignancy, lymphoma</b></td><td>USS; urgent route</td></tr>
+        </table>
+        <p class="key">AST:ALT &gt;2 supports advanced alcohol-related disease but never diagnoses it alone.</p>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">4</span>Work-up checklist — the aetiology screen<small>BSG 2017 · NG49</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>Liver ultrasound</b></li>
+          <li><b>HBsAg</b> (hepatitis B)</li>
+          <li><b>HCV antibody</b>, reflex RNA</li>
+          <li><b>Ferritin + TSAT</b> together</li>
+          <li><b>AMA, ANA, SMA</b></li>
+          <li><b>Immunoglobulins</b></li>
+          <li>FBC: low platelets = portal hypertension</li>
+          <li>INR, albumin, U&amp;E</li>
+          <li>HbA1c, lipids: metabolic risk</li>
+          <li>Caeruloplasmin if under 40 (Wilson's)</li>
+        </ul>
+        <p class="key">Screen whatever the level or duration of the abnormality (BSG). MASLD: <b>FIB-4 &lt;1.3</b> = low risk of advanced fibrosis (aged under 65); ≥1.3 → second-line test via the local pathway. NICE NG49: <b>ELF ≥10.51</b> = advanced fibrosis → refer.</p>
+      </div></div>
+
+    </div>
+
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Abnormal liver blood tests · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary. Use your laboratory's reference ranges.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Manage and refer <span>treat the cause → stage the fibrosis → close the loop → refer the right ones</span></div>
+
+  <div class="grid">
+    <div class="blk teal span"><h2><span class="n">5</span>Management by the commonest causes<small>NG49 · NG50 · CG165 · NG238 · CG115</small></h2><div class="body">
+      <table>
+        <tr><th>Cause</th><th>First line</th><th>Check and continue</th></tr>
+        <tr><td><b>MASLD</b></td><td>Gradual, sustained weight loss: around <b>7–10%</b> improves liver fat and inflammation; 150 min/week activity; treat diabetes, BP and lipids. No liver-specific drug in primary care</td><td>Stage fibrosis (FIB-4 then local pathway). ELF &lt;10.51 → retest every <b>3 years</b> (NG49)</td></tr>
+        <tr><td><b>Alcohol-related</b></td><td>Abstinence goal; brief intervention; alcohol service if dependent. Plan withdrawal — no abrupt stop in dependence. Thiamine where indicated</td><td>Elastography for men &gt;50, women &gt;35 units/week (NG50). Relapse prevention via the alcohol service</td></tr>
+        <tr><td><b>Drug-induced</b></td><td>Stop the suspected drug where safe; record all supplements and timing</td><td>Recheck in 4–6 weeks; jaundice or raised INR → same day</td></tr>
+        <tr><td><b>Statin, transaminases raised</b></td><td>Do not stop for MASLD or a rise <b>&lt;3× ULN</b> (NG238). ≥3× ULN → withhold and investigate</td><td>Restart cautiously once resolved and explained</td></tr>
+        <tr><td><b>Hepatitis B or C</b></td><td>HBsAg positive → refer all adults (CG165). HCV antibody → RNA; positive → treatment pathway (curable)</td><td>Antivirals are specialist-chosen. Offer HIV test</td></tr>
+        <tr><td><b>Autoimmune, PBC</b></td><td>Refer: autoimmune hepatitis is treatable; PBC (cholestatic pattern + AMA) is treated with ursodeoxycholic acid by the specialist</td><td>A positive antibody alone is read with the pattern, IgG and imaging</td></tr>
+        <tr><td><b>Haemochromatosis</b></td><td>Ferritin + TSAT &gt;45% → confirm overload and genotype; refer. Avoid iron supplements</td><td>Venesection targets set by the specialist</td></tr>
+        <tr><td><b>Gilbert's syndrome</b></td><td><b>No treatment</b>; explain it is harmless</td><td>Discharge once haemolysis excluded</td></tr>
+      </table>
+    </div></div>
+    <div class="blk blue span"><h2><span class="n">6</span>MASLD — staging the fibrosis<small>BSG 2017 · NICE NG49 · local pathway</small></h2><div class="body">
+      <div class="flow" style="--c:var(--blue)">
+        <div><b class="h">1 · Confirm MASLD</b>Fatty liver on USS or metabolic risk, alcohol within lower-risk limits, negative aetiology screen.</div>
+        <div><b class="h">2 · FIB-4 first</b>(age × AST) ÷ (platelets × √ALT). <b>&lt;1.3</b> = low risk (under 65): lifestyle, recheck per local pathway.</div>
+        <div><b class="h">3 · FIB-4 ≥1.3</b>Second-line test: ELF or elastography via the local pathway. Do not mix thresholds from different pathways.</div>
+        <div><b class="h">4 · ELF ≥10.51</b>Advanced fibrosis → hepatology. ELF &lt;10.51 → retest every 3 years (NG49).</div>
+      </div>
+      <p class="key">A low FIB-4 makes advanced fibrosis unlikely but does not exclude it; FIB-4 is less reliable in younger adults, over 65 and during acute illness.</p>
+    </div></div>
+
+    <div class="col">
+      <div class="blk green"><h2><span class="n">7</span>Advice and the conversation<small>NG49 · NG50</small></h2><div class="body">
+        <ul>
+          <li>Alcohol: no more than <b>14 units/week</b>, spread over 3 or more days; none at all with alcohol-related disease or cirrhosis</li>
+          <li>Gradual weight loss, 150 min/week of activity, stop smoking</li>
+          <li>Stop unnecessary supplements and herbal remedies</li>
+          <li>Hepatitis A and B vaccination if chronic liver disease or at risk (Green Book)</li>
+        </ul>
+        <p class="say" style="margin-top:3px">"Your liver test is a little off. On its own that doesn't tell us much, so rather than just repeating it I'm checking the common causes — fat in the liver, alcohol, medicines and viruses — and whether there is any scarring. Most people with a result like this can be looked after here."</p>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">8</span>Follow-up and monitoring<small>BSG 2017 · NG49 · NG50</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>4–6 weeks</b> after stopping a drug or alcohol, or after a transient illness</li>
+          <li>MASLD: weight, metabolic and alcohol review at <b>3–6 months</b></li>
+          <li>Low-risk MASLD: reassess fibrosis per local pathway (ELF every 3 years)</li>
+          <li>Cirrhosis: <b>6-monthly ultrasound</b> ± AFP for liver cancer (NG50)</li>
+          <li>Statin: transaminases within <b>3 months</b> of starting and at <b>12 months</b>, then only if indicated</li>
+          <li>Hepatitis B: liver cancer surveillance as set by the specialist (CG165)</li>
+          <li>Discharge only when the cause is found or serious disease and advanced fibrosis are excluded</li>
+          <li>Return the <b>same day</b>: yellow eyes, fever with pain, swelling tummy, bruising, confusion</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">9</span>When and where to refer<small>BSG 2017 · NG12 · NG50</small></h2><div class="body">
+        <table>
+          <tr><td><b>999</b></td><td>Encephalopathy, GI bleed, shock, acute liver failure, severe paracetamol poisoning</td></tr>
+          <tr><td><b>Same day</b></td><td>Cholangitis, new ascites, rising tests with jaundice or raised INR, severe DILI</td></tr>
+          <tr><td><b>Suspected cancer</b></td><td>Jaundice 40+; 60+ weight loss + qualifying symptom (CT); liver mass</td></tr>
+          <tr><td><b>Urgent hepatology</b></td><td>HBsAg or HCV RNA positive, suspected autoimmune hepatitis, cirrhosis, iron overload, suspected Wilson's</td></tr>
+          <tr><td><b>Routine</b></td><td>Advanced fibrosis (ELF ≥10.51 or high-risk local test), suspected PBC or PSC, persistent abnormality after a negative screen</td></tr>
+          <tr><td><b>Keep in practice</b></td><td>Low-risk MASLD, explained isolated GGT, Gilbert's</td></tr>
+        </table>
+        <p class="key">HBsAg positive: with the referral send HBeAg/anti-HBe, HBV DNA, anti-HCV and anti-HDV where appropriate, and offer an HIV test (CG165).</p>
+      </div></div>
+
+      <div class="blk slate"><h2><span class="n">10</span>Pitfalls and never-events<small>BSG 2017 · NG238 · NG12</small></h2><div class="body">
+        <ul>
+          <li><b>Never</b> just repeat an unexplained result without the aetiology screen.</li>
+          <li><b>Never</b> stop a statin for transaminases below 3× ULN.</li>
+          <li>Normal LFTs do <b>not</b> exclude cirrhosis, hepatitis B or C.</li>
+          <li>Do not label Gilbert's from one bilirubin or without excluding haemolysis.</li>
+          <li>Jaundice at 40+ is a suspected cancer pathway referral, not a wait-and-see.</li>
+          <li>Ask about herbal, over-the-counter and bodybuilding products.</li>
+          <li>Do not wait for an ALT threshold: the extent of the rise does not grade the disease.</li>
+          <li>Cirrhosis from any cause: advise complete abstinence from alcohol (NG50).</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Abnormal liver blood tests · page 2 of 2 · v1.0 · Oct 2026 · sources: BSG guidelines on the management of abnormal liver blood tests (Newsome et al., Gut 2018;67:6–19, published 2017); NICE NG49 (MASLD); NICE NG50 (cirrhosis, 2016); NICE NG12 (suspected cancer); NICE CG165 (hepatitis B); NICE NG238 (2023); NICE CG115; SPCs</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/abnormal-lfts.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=4"></script>
+</body>
+</html>

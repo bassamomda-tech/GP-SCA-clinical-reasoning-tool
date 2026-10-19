@@ -3,7 +3,7 @@
    Four ORIGINAL cases. Hidden agenda + full ICE in every case.
    Emergencies: septic arthritis; GCA (sight-threatening); cauda equina.
    No NG12 cancer link applies to these presentations (correctly omitted;
-   the myeloma/back-pain 2WW picture is covered separately in Results).
+   the myeloma/back-pain suspected cancer picture is covered separately in Results).
    Pushes into SCA_CASES + SCA_EXTRAS. Load AFTER sca-cases22.js.
    ============================================================ */
 
@@ -160,7 +160,7 @@
     ],
     learning:'Acute gout (sudden severe red, hot, swollen first-MTP monoarthritis, allodynia to bedsheets) is treated promptly with an NSAID + gastroprotection, colchicine, or a short steroid course — tailored to comorbidities (BP, renal, GI) rather than handing over generic "strong ones" — while staying alert to septic arthritis if the picture is atypical or systemic. The examinable move is the PREVENTION PIVOT: a second attack within a year is an indication to OFFER urate-lowering therapy (NICE NG219: allopurinol or febuxostat first line, started at least 2–4 weeks after the flare settles, titrated to serum urate below 360 µmol/L, with colchicine cover), and to use gout as a cardiometabolic flag (BP, lipids/QRISK, HbA1c, renal function, alcohol, weight). The hidden agenda is that "just the tablets, no lecture" masks livelihood fear and shame about drinking, and a dread of "becoming his father" who was disabled by gout. Surface that gently, frame urate-lowering therapy and lifestyle change as the route to staying on the tools, address alcohol and weight without moralising (NICE NG219: no specific diet has evidence for preventing flares), and safety-net (including the septic-joint caveat) with follow-up to start prevention and do the metabolic checks.',
     knowledge:{
-      guideline:'NICE NG219 (gout: diagnosis and management, 2022) · MHRA Drug Safety Update (July 2019: febuxostat) · UK Chief Medical Officers’ low-risk drinking guidelines (2016) · NICE NG136 (hypertension in adults, 2019, updated 2023)',
+      guideline:'NICE NG219 (gout: diagnosis and management, 2022) · MHRA Drug Safety Update (July 2019: febuxostat) · UK Chief Medical Officers’ low-risk drinking guidelines (2016) · NICE NG136 (hypertension in adults, 2019, updated 2026)',
       points:[
         { h:'Treat the acute attack', t:'NICE NG219 first-line acute options: an NSAID (consider adding a PPI), colchicine (lower-dose regimens reduce toxicity), or a short course of oral corticosteroid — choose by comorbidity (avoid NSAIDs in CKD/PUD/heart failure; colchicine caution in renal impairment). If these are contraindicated or ineffective, consider an intra-articular or intramuscular corticosteroid; doses per BNF. Rest, elevate and cool the joint. Treat early; continue urate-lowering therapy through a flare if already established.' },
         { h:'Exclude septic arthritis', t:'A single hot, acutely painful joint can be septic arthritis. With systemic upset, atypical features or diagnostic doubt, arrange urgent aspiration rather than assuming gout — especially in the immunosuppressed or those with prosthetic joints.' },

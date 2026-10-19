@@ -217,7 +217,7 @@
     management:[
       'Provide supportive care: rest, fluids, and paracetamol/ibuprofen for fever and sore throat — most recover over 2–4 weeks (fatigue may linger longer)',
       'Avoid amoxicillin/ampicillin for the sore throat (rash); if a bacterial throat infection genuinely needs treatment, use an alternative such as penicillin V',
-      'Advise avoiding contact/collision sports and vigorous activity for at least the first 3–4 weeks (and until recovered/splenomegaly resolved) to reduce the risk of splenic rupture',
+      'Advise avoiding contact/collision sports and vigorous activity for at least 4 weeks (NICE CKS), and until recovered/splenomegaly resolved, to reduce the risk of splenic rupture',
       'Confirm with Monospot/FBC where helpful; reassure about the usually benign, self-limiting course',
       'Manage significant tonsillar swelling/airway concern urgently; a short corticosteroid course may be considered for airway compromise (specialist advice)',
       'Address prolonged fatigue with graded return to activity and reassurance; exclude other causes if it is very prolonged',

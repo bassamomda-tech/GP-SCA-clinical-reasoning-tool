@@ -1,0 +1,233 @@
+[
+ {
+  "subject": "aspirin",
+  "group": "start/initiate | weeks (pre-eclampsia prophylaxis)",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "Aspirin 75–150 mg daily from 12 weeks until birth if ONE high-risk factor or MORE THAN ONE moderate-risk factor (NICE NG133 1.1.2–1.1.3)",
+  "source": "https://www.nice.org.uk/guidance/qs35/chapter/quality-statement-2-antenatal-assessment-of-pre-eclampsia-risk",
+  "fixes": [
+   {
+    "file": "assets/articles-data-3.js",
+    "old": "Offer low-dose aspirin from 12 weeks until birth to women at high or moderate risk (preventive role)",
+    "new": "Offer aspirin 75–150 mg daily from 12 weeks until birth to women with one high-risk factor or more than one moderate-risk factor for pre-eclampsia (NICE NG133)"
+   }
+  ],
+  "note": "Article implies a single moderate risk factor qualifies; NG133 requires two or more moderate factors (or any one high-risk factor)."
+ },
+ {
+  "subject": "ibuprofen",
+  "group": "dose | mg",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "Ibuprofen 400 mg (adult) — 500–1000 mg is the paracetamol dose; zoledronate SPC: acute-phase symptoms reduced by paracetamol or ibuprofen shortly after the infusion",
+  "source": "https://www.ccjm.org/content/85/9/675",
+  "fixes": [
+   {
+    "file": "tools/algorithms/abnormal-bone-profile.html",
+    "old": "Prophylactic paracetamol or ibuprofen 500–1000 mg 6-hourly for 24–48 hours significantly reduces this reaction.",
+    "new": "Prophylactic paracetamol (1 g 6-hourly) or ibuprofen (400 mg 8-hourly, if no contraindication) for 24–48 hours reduces this reaction."
+   }
+  ],
+  "note": "Ibuprofen 500–1000 mg 6-hourly would be up to 4 g/day — far above the 2.4 g/day maximum. Only file with this sentence."
+ },
+ {
+  "subject": "amlodipine",
+  "group": "dose | mg (statin interaction)",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "No atorvastatin 50 mg strength exists and the SPC/BNF set no atorvastatin dose cap with amlodipine; the MHRA (2012) 20 mg cap applies to simvastatin only",
+  "source": "https://www.gov.uk/drug-safety-update/simvastatin-updated-advice-on-drug-interactions",
+  "fixes": [
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "(50mg atorvastatin with amlodipine: acceptable; 80mg: caution but generally used)",
+    "new": "(no atorvastatin dose restriction with amlodipine in the SPC; the MHRA 20 mg cap applies to simvastatin)"
+   }
+  ],
+  "note": "Invented dose (atorvastatin comes as 10/20/30/40/60/80 mg) and an invented 80 mg caution."
+ },
+ {
+  "subject": "LDL/non-HDL",
+  "group": "target | mmol/l (secondary prevention after TIA/stroke)",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "NICE NG238 1.7.1: LDL ≤2.0 mmol/L or non-HDL ≤2.6 mmol/L (no '≥50% reduction' criterion); the National Clinical Guideline for Stroke (<1.8 / <2.5) is quoted separately on tools/management/tia-stroke.html",
+  "source": "https://nice.org.uk/indicators/ind268-cardiovascular-disease-prevention-cholesterol-treatment-target-secondary-prevention/chapter/indicator",
+  "fixes": [
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "LDL &lt;2.0 mmol/L on atorvastatin 80mg</span>",
+    "new": "LDL ≤2.0 mmol/L (or non-HDL ≤2.6) on atorvastatin 80mg</span>"
+   },
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "Target LDL &lt;2.0 mmol/L (or ≥50% reduction from baseline)",
+    "new": "Target LDL ≤2.0 mmol/L or non-HDL ≤2.6 mmol/L (NICE NG238)"
+   },
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "(LDL target &lt;2.0 mmol/L)",
+    "new": "(LDL target ≤2.0 mmol/L or non-HDL ≤2.6)"
+   },
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "LDL check: target &lt;2.0 mmol/L",
+    "new": "LDL check: target ≤2.0 mmol/L (non-HDL ≤2.6)"
+   },
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "<strong>LDL &lt;2.0 mmol/L</strong>",
+    "new": "<strong>LDL ≤2.0 mmol/L</strong>"
+   },
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "<td>LDL &lt;2.0 mmol/L on atorvastatin 80mg</td>",
+    "new": "<td>LDL ≤2.0 mmol/L (or non-HDL ≤2.6) on atorvastatin 80mg</td>"
+   },
+   {
+    "file": "cases/peripheral-arterial-disease.html",
+    "old": "A post-treatment LDL &gt;2.0 mmol/L (or &lt;50% reduction) indicates",
+    "new": "A post-treatment LDL &gt;2.0 mmol/L (or non-HDL &gt;2.6 mmol/L) indicates"
+   }
+  ],
+  "note": "Every other page uses ≤2.0/≤2.6 (NG238). The TIA case uses <2.0 and adds a ≥50% criterion; the PAD case adds '<50% reduction'. Neither is in NG238."
+ },
+ {
+  "subject": "LDL/non-HDL",
+  "group": "target | % (FH)",
+  "verdict": "wrong",
+  "tier": 3,
+  "correct": "FH (NICE CG71): aim for at least a 50% LDL-C reduction from the untreated baseline; there is no NICE absolute LDL target of <2.5 mmol/L",
+  "source": "https://www.nice.org.uk/guidance/cg71",
+  "fixes": [
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "Target: ≥50% reduction in LDL-C from untreated baseline (or LDL-C &lt;2.5 mmol/L in adults)",
+    "new": "Target: ≥50% reduction in LDL-C from untreated baseline (NICE CG71)"
+   }
+  ],
+  "note": "The '<2.5 mmol/L' is not NICE and appears nowhere else on the site (the FH protocol uses ≥50% only)."
+ },
+ {
+  "subject": "LDL/non-HDL",
+  "group": "target | % (primary prevention)",
+  "verdict": "inconsistent",
+  "tier": 3,
+  "correct": "NICE NG238: aim for a reduction in non-HDL cholesterol of MORE THAN 40% (most pages already say >40%)",
+  "source": "https://www.medicinesresources.nhs.uk/cardiovascular-disease-risk-assessment-and-reduction-including-lipid-modification-updated-guidance-ng238.html",
+  "fixes": [
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "irst-line). Target: ≥40% reduction",
+    "new": "irst-line). Target: more than 40% reduction"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "tin 20mg: ≥40% reduction",
+    "new": "tin 20mg: more than 40% reduction"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "o confirm ≥40% non-HDL r",
+    "new": "o confirm more than 40% non-HDL r"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "in 20mg OD. Target: ≥40% reduction",
+    "new": "in 20mg OD. Target: more than 40% reduction"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "efore starting. 3-month non-HDL target (≥40% reduction",
+    "new": "efore starting. 3-month non-HDL target (more than 40% reduction"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "L target: ≥40% reduction",
+    "new": "L target: more than 40% reduction"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": " profile; ≥40% reduction",
+    "new": " profile; more than 40% reduction"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "efore starting; 3-month non-HDL target (≥40% reduction",
+    "new": "efore starting; 3-month non-HDL target (more than 40% reduction"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": ": confirm ≥40% non-HDL r",
+    "new": ": confirm more than 40% non-HDL r"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "ptomatic. ≥40% non-HDL r",
+    "new": "ptomatic. more than 40% non-HDL r"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "t 3 months (confirm ≥40% non-HDL r",
+    "new": "t 3 months (confirm more than 40% non-HDL r"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "≥40% from base",
+    "new": "more than 40% from base"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "s</strong> (confirm ≥40% non-HDL r",
+    "new": "s</strong> (confirm more than 40% non-HDL r"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "; non-HDL ≥40% reduction",
+    "new": "; non-HDL more than 40% reduction"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "xplained (≥40% non-HDL r",
+    "new": "xplained (more than 40% non-HDL r"
+   },
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "d &#8212; ≥40% non-HDL r",
+    "new": "d &#8212; more than 40% non-HDL r"
+   },
+   {
+    "file": "assets/meds/hypercholesterolaemia.js",
+    "old": "≥40% reduction",
+    "new": "more than 40% reduction"
+   },
+   {
+    "file": "assets/meds/angina.js",
+    "old": "≥40% reduction",
+    "new": "more than 40% reduction"
+   },
+   {
+    "file": "assets/articles-data-13.js",
+    "old": "≥40% reduction",
+    "new": "more than 40% reduction"
+   },
+   {
+    "file": "tools/prescribing.html",
+    "old": "≥40% non-HDL-C",
+    "new": "more than 40% non-HDL-C"
+   },
+   {
+    "file": "tools/management/hypercholesterolaemia.html",
+    "old": "≥40%? If not o",
+    "new": "more than 40%? If not o"
+   },
+   {
+    "file": "tools/management/hypercholesterolaemia-print.html",
+    "old": "≥40%? If not o",
+    "new": "more than 40%? If not o"
+   }
+  ],
+  "note": "Low clinical impact wording fix: '≥40%' → 'more than 40%' to match NG238 and the rest of the site. Plain words are used to avoid >/&gt; entity issues. assets/search/idx-protocol.json also holds the '≥40%' snippet; regenerate the index rather than hand-edit."
+ }
+]

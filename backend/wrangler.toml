@@ -17,6 +17,18 @@ kv_namespaces = [
   { binding = "UPDATES", id = "PASTE_UPDATES_KV_ID" }
 ]
 
+# --- R2 bucket: handbook shop files (e.g. the Lab Results Handbook PDF) ---
+# A PRIVATE bucket: no public access, no custom domain. The Worker's
+# /api/download/<id> route checks the member BOUGHT the handbook (one-off
+# £20 PayPal purchase, not part of any plan) and streams the file.
+# Create it once with:   wrangler r2 bucket create rgp-downloads
+# If you named your bucket differently, change bucket_name to match.
+# A deploy fails if this bucket does not exist yet — create it first
+# (backend/README.md, "Handbook shop (one-off £20 purchases)").
+[[r2_buckets]]
+binding = "DOWNLOADS"
+bucket_name = "rgp-downloads"
+
 # Daily 07:00 cron warms the live feed AND appends new items to the 12-month archive.
 # Hourly :15 cron restarts paused plans whose pause has ended (Manage my plan);
 # the 07:00 run does that too. Both are free-tier friendly.

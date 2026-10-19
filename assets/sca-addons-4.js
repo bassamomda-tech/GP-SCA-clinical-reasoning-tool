@@ -537,7 +537,7 @@
     },
     {
      "h": "What the pathway means",
-     "t": "Suspected cancer pathway referral is still often called the two-week wait. The NHS England Faster Diagnosis Standard (October 2023) aims for cancer to be diagnosed or ruled out within 28 days of referral; colonoscopy is usually one morning."
+     "t": "Suspected cancer pathway referral (NG12). The NHS England Faster Diagnosis Standard (October 2023) aims for cancer to be diagnosed or ruled out within 28 days of referral; colonoscopy is usually one morning."
     }
    ]
   },
@@ -2963,7 +2963,7 @@
     },
     {
      "h": "What the pathway means",
-     "t": "Suspected cancer pathway (still called the two-week wait) endoscopy is usually one morning. The NHS England Faster Diagnosis Standard (October 2023) aims for cancer to be diagnosed or ruled out within 28 days of referral."
+     "t": "Suspected cancer pathway (NG12) endoscopy is usually one morning. The NHS England Faster Diagnosis Standard (October 2023) aims for cancer to be diagnosed or ruled out within 28 days of referral."
     }
    ]
   },
@@ -3439,7 +3439,7 @@
     },
     {
      "h": "When it becomes an emergency",
-     "t": "Unable to swallow saliva, food stuck and not passing, vomiting blood or significant dehydration — same-day emergency assessment, not the 2-week pathway."
+     "t": "Unable to swallow saliva, food stuck and not passing, vomiting blood or significant dehydration — same-day emergency assessment, not the suspected cancer pathway."
     },
     {
      "h": "Alcohol without shaming",
@@ -4410,7 +4410,7 @@
    "reason": "Telephone call: painful, swollen left big toe since the early hours; asking for “the strong anti-inflammatories”."
   },
   "knowledge": {
-   "guideline": "NICE NG219 (Gout, 2022) · MHRA Drug Safety Update (July 2019, febuxostat) · UK Chief Medical Officers’ low-risk drinking guidelines (2016) · NICE NG136 (2019, updated 2023)",
+   "guideline": "NICE NG219 (Gout, 2022) · MHRA Drug Safety Update (July 2019, febuxostat) · UK Chief Medical Officers’ low-risk drinking guidelines (2016) · NICE NG136 (2019, updated 2026)",
    "summary": "A second classic flare of first MTP gout in a year: treat the flare with a drug chosen for his risks, keep septic arthritis in mind, and offer treat-to-target urate-lowering therapy once it settles. Use the flare to check his cardiovascular and renal risk.",
    "points": [
     {
@@ -6839,7 +6839,7 @@
     },
     {
      "h": "What the pathway means",
-     "t": "Suspected cancer pathway referral is still widely called the two-week wait. The NHS England Faster Diagnosis Standard (October 2023) aims for cancer to be diagnosed or ruled out within 28 days of referral. Usually colonoscopy or CT colonography."
+     "t": "Suspected cancer pathway referral (NG12). The NHS England Faster Diagnosis Standard (October 2023) aims for cancer to be diagnosed or ruled out within 28 days of referral. Usually colonoscopy or CT colonography."
     }
    ]
   },
@@ -7313,7 +7313,7 @@
    "reason": "Telephone appointment. Her daughter asked her to call about the falls."
   },
   "knowledge": {
-   "guideline": "NICE NG249 (2025) · NICE NG5 (2015) · NICE NG259 Osteoporosis: risk assessment (July 2026) · NICE NG136 (updated 2023) · NOGG 2024",
+   "guideline": "NICE NG249 (2025) · NICE NG5 (2015) · NICE NG259 Osteoporosis: risk assessment (July 2026) · NICE NG136 (updated 2026) · NOGG 2024",
    "summary": "Three falls in three months with a long lie is not “the carpets”. It needs a comprehensive falls assessment in which the medication review is the highest-yield step, plus bone health and a plan for getting help after a fall — all framed around keeping her at home.",
    "points": [
     {

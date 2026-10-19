@@ -72,7 +72,7 @@ Re-upload the site to Cloudflare Pages. **Logins + AI are now live.** (Bump the 
 
 ## Step 7 — PayPal: the webhook (this is what unlocks access)
 1. In your Live app, add a **Webhook**. URL: `https://reasoning-gp-api.YOURNAME.workers.dev/api/paypal/webhook`.
-2. Subscribe to these events: **BILLING.SUBSCRIPTION.ACTIVATED, UPDATED, RE-ACTIVATED, CANCELLED, EXPIRED, SUSPENDED** and **PAYMENT.SALE.COMPLETED** (the worker handles all seven; without RE-ACTIVATED / SALE.COMPLETED a member whose retry succeeds after a suspension loses access when the grace period ends).
+2. Subscribe to these events: **BILLING.SUBSCRIPTION.ACTIVATED, UPDATED, RE-ACTIVATED, CANCELLED, EXPIRED, SUSPENDED** and **PAYMENT.SALE.COMPLETED** (the worker handles all seven; without RE-ACTIVATED / SALE.COMPLETED a member whose retry succeeds after a suspension loses access when the grace period ends). For the handbook shop also add **PAYMENT.CAPTURE.COMPLETED, PAYMENT.CAPTURE.REFUNDED and PAYMENT.CAPTURE.REVERSED** (see "Handbook shop").
 3. Copy the **Webhook ID** → that's the `PAYPAL_WEBHOOK_ID` secret (Step 3). Re-deploy if you set it after first deploy.
 
 ## Step 8 — Apple Pay
@@ -162,6 +162,136 @@ Nothing to configure: it uses the existing **USERS** KV.
   endpoint always answers `204`.
 - **KV cost:** each reported search is about two KV reads and two writes. The free tier allows 1,000
   writes a day, which is far more than no-result searches on a site this size.
+
+## Handbook shop (one-off £20 purchases)
+Handbooks such as the **Lab Results Handbook PDF** are sold **separately, £20 each, as a
+one-off PayPal payment**. They are **not part of any plan**: Silver and Platinum members
+buy them like everyone else. (The individual Clinic Guides stay in the Silver and
+Platinum plans; nothing changes there.)
+
+How it works for a member, on Clinic Guides → Lab results:
+- **Signed out** → a **Sign in to buy · £20** button (opens the usual sign-in box). An
+  account is needed so the purchase is linked to them and they can download it again on
+  any device.
+- **Signed in, not bought** → a **PayPal** button (PayPal, card, Apple Pay where offered).
+  The Worker sets the price (£20, in pounds) and checks with PayPal that exactly £20 was
+  paid before it unlocks anything. Nothing the browser sends can change the price.
+- **Bought** → a **Download PDF** button, from then on, on any device they sign in on.
+- **Your admin account** can always download (no purchase needed).
+- **If PayPal's checkout is blocked** (some NHS networks) or the shop isn't switched on
+  yet, the card says so and offers your email address, so you can send a payment link
+  by hand.
+
+The PDF lives in a **private Cloudflare R2 bucket** (file storage). There is no public
+link to it: the Worker sends it only to someone who bought it. The PDF you upload is the
+watermarked one we build (gpreasoning.uk watermark, copyright strip on every page,
+"Copyright and licence" page). Its name in R2 must be **`lab-results-handbook-v1.1.pdf`**.
+
+### One-off setup
+Run the commands from the `backend` folder, logged in to Wrangler (Step 1).
+
+**A. PayPal (5 minutes).** You don't need a new plan or new app: the Live app whose client
+id and secret are already in the Worker (`PAYPAL_CLIENT_ID`, `PAYPAL_SECRET`) can take
+one-off payments too, and the site already has `paypalClientId` in `assets/site.js`.
+1. Go to developer.paypal.com → **Apps & Credentials** → make sure **Live** is selected →
+   open your app.
+2. Under **Features**, check **Accept payments** is ticked (it normally is). Save if you
+   changed anything.
+3. Scroll to **Webhooks** → click your existing webhook (the one ending
+   `/api/paypal/webhook`) → **Edit**. **Add** these three events and keep all the
+   ones already ticked:
+   - **Payment capture completed** (`PAYMENT.CAPTURE.COMPLETED`): a backup that unlocks
+     the handbook if the buyer closed the page straight after paying.
+   - **Payment capture refunded** (`PAYMENT.CAPTURE.REFUNDED`): a full refund removes
+     the handbook from their account. (A partial refund keeps it.)
+   - **Payment capture reversed** (`PAYMENT.CAPTURE.REVERSED`): a chargeback removes it.
+4. Save. The **Webhook ID does not change**, so the `PAYPAL_WEBHOOK_ID` secret stays as
+   it is.
+
+**B. Cloudflare R2 (10 minutes, skip any step you've already done).**
+1. **Turn on R2** in the Cloudflare dashboard (left menu → **R2 Object Storage** →
+   enable). The free tier (10 GB, free downloads) is far more than a few PDFs need.
+   Cloudflare may ask for a card, even on the free tier.
+2. **Create the bucket** (private by default; leave it that way):
+   ```bash
+   wrangler r2 bucket create rgp-downloads
+   ```
+3. **Upload the handbook** under exactly this name (the Worker looks for it):
+   ```bash
+   wrangler r2 object put rgp-downloads/lab-results-handbook-v1.1.pdf --file=../assets/downloads/Lab_Results_Handbook_v1.pdf --content-type=application/pdf --remote
+   ```
+   `--remote` sends it to Cloudflare rather than a local test copy. Point `--file=` at
+   wherever the latest watermarked PDF is. Uploading again under the same name replaces it.
+4. **Check `wrangler.toml`** has the `[[r2_buckets]]` block with `binding = "DOWNLOADS"`
+   and `bucket_name = "rgp-downloads"` (already there).
+
+**C. Deploy.**
+1. `wrangler deploy` (from the `backend` folder).
+2. Re-upload the site to Cloudflare Pages (the new Clinic Guides page, `assets/clinic-guides.js`,
+   the Lab results page and the pricing page).
+
+**D. Test with a real purchase (10 minutes, costs nothing in the end).**
+1. On the live site, sign in with an ordinary account (**not** your admin account, which
+   can always download). Open Clinic Guides → Lab results. You should see the PayPal
+   button and "£20 · one-off purchase · not included in subscription plans".
+2. Pay the £20 with a real card or PayPal account. The button turns into **Download PDF**
+   and the file downloads.
+3. Sign out: the card shows **Sign in to buy**. Sign in again: **Download PDF** is back.
+4. In PayPal (paypal.com → **Activity**), open the £20 payment → **Refund** → full amount.
+   Within a minute or two, reload the page while signed in: the PayPal button is back
+   and the download is refused. That proves the webhook works.
+5. If the download did not unlock in step 2, or the refund did not remove it, see
+   "If something goes wrong" below before going further.
+
+**E. Remove the public copy (do not skip).** Once D works, **delete
+`assets/downloads/*.pdf` from the site** and re-upload the site. Until you do, the old
+file is still reachable at `/assets/downloads/Lab_Results_Handbook_v1.pdf` by anyone who
+knows the address. The shop never sends buyers there; the file is used only on preview
+and local copies and by your admin account. Never put paid files in the site folder
+again: put them in R2. Keep the master copy of each PDF somewhere safe off the site.
+
+### If something goes wrong
+- **Paid, but no download:** the owner lookup (`/api/admin/user` with no email) lists
+  recent `payissue:` rows, e.g. `shop-capture-mismatch` or `signature-failed`. A
+  signature failure means the webhook ID or app doesn't match (Step 7). The purchase is on
+  the member's record as `purchases.lab-handbook` (owner lookup with their email). In an
+  emergency you can refund them in PayPal and they buy again.
+- **The card says "Coming soon":** either `workerUrl` or `paypalClientId` is empty in
+  `assets/site.js`, or the deployed Worker is an older version without the shop
+  (run `wrangler deploy`).
+- **"Card checkout couldn't load":** PayPal's script was blocked by the network or a
+  browser extension. The member can use a phone on mobile data, or email you.
+
+### Updating the handbook to a new version
+Buyers keep access to the newest version. Upload the new PDF under a **new name** (e.g.
+`lab-results-handbook-v1.2.pdf`), then in `worker.js` find `const PRODUCTS = {` and change
+`r2Key` (the R2 file name) and `filename` (the name the member's computer saves it as) on
+the `lab-handbook` line. Run `wrangler deploy`. Update the page count and version in the
+card text in `governance/import_clinic_guides.py` (`GROUP_EXTRA`) and re-run the importer.
+Delete the old file when you're happy:
+`wrangler r2 object delete rgp-downloads/lab-results-handbook-v1.1.pdf --remote`.
+
+### Adding another handbook (e.g. an SCA handbook)
+1. Upload it: `wrangler r2 object put rgp-downloads/<file-name>.pdf --file=<path> --content-type=application/pdf --remote`
+2. In `worker.js`, add **one line** inside `const PRODUCTS = { … }`, for example:
+   ```js
+   'sca-handbook': { title: 'SCA Handbook', price: '20.00', currency: 'GBP', r2Key: 'sca-handbook-v1.pdf', filename: 'Reasoning-GP-SCA-Handbook-v1.pdf', type: 'application/pdf' },
+   ```
+   The first word (`sca-handbook`) is the product **id**. Only ids in this list can ever be
+   bought or downloaded, and the price here is the price PayPal is asked for and checked
+   against. Keep `currency: 'GBP'`.
+3. `wrangler deploy`.
+4. On the site, copy the Lab Results Handbook card (`GROUP_EXTRA` in
+   `governance/import_clinic_guides.py`) and change `data-cg-product`, `data-cg-title` and
+   the text. `assets/clinic-guides.js` does the rest. (For a page outside Clinic Guides,
+   the same card markup works on any page that loads `site.js` and `clinic-guides.js`.)
+
+### Counts
+Monthly numbers in the USERS KV (a number only: no account, no IP):
+`buy:<id>:YYYY-MM` = purchases, `dl:<id>:YYYY-MM` = downloads, e.g.
+`wrangler kv key get --binding USERS "buy:lab-handbook:2026-10" --remote`.
+Each purchase and refund is also in the owner's plan log (`planlog:`), as
+"purchase lab-handbook" / "refund lab-handbook".
 
 ## Collecting your signups / users
 All users live in the **USERS** KV namespace. View them in the Cloudflare dashboard (Workers & Pages → KV), or `wrangler kv key list --binding USERS`.

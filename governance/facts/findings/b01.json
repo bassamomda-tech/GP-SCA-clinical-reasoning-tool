@@ -1,0 +1,335 @@
+[
+ {
+  "subject": "eGFR",
+  "group": "max dose | mg",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "Gabapentin by creatinine clearance (SPC): ≥80 mL/min 900–3,600 mg/day; 50–79: 600–1,800; 30–49: 300–900; 15–29: 150–600; <15: 150–300 mg/day",
+  "source": "https://www.medicines.org.uk/emc/product/4122/smpc",
+  "fixes": [
+   {
+    "file": "cases/neuropathic-pain.html",
+    "old": "eGFR &gt;60: standard (max 3600mg/day). eGFR 30&#8211;59: max ~1800mg/day. eGFR 15&#8211;29: max ~900mg/day. eGFR &lt;15 / dialysis: specialist.",
+    "new": "Gabapentin by creatinine clearance (SPC): &#8805;80 mL/min up to 3600mg/day; 50&#8211;79: up to 1800mg/day; 30&#8211;49: up to 900mg/day; 15&#8211;29: 150&#8211;600mg/day; &lt;15: 150&#8211;300mg/day; dialysis: specialist."
+   },
+   {
+    "file": "cases/neuropathic-pain.html",
+    "old": "Calculate dose reduction: gabapentin maximum 900mg/day at eGFR 30&#8211;59.",
+    "new": "Calculate dose reduction: gabapentin maximum 1800mg/day at creatinine clearance 50&#8211;79 and 900mg/day at 30&#8211;49 (SPC)."
+   }
+  ],
+  "note": "The page contradicts itself: line 470 gives 1800 mg/day at eGFR 30–59 and 900 mg/day at 15–29, but line 93 gives 900 mg/day at 30–59. The SPC limits are 900 mg/day at CrCl 30–49 and 600 mg/day at 15–29, so line 470 allows up to twice the licensed dose. The pregabalin maxima (600/300/150/75) on the same page are correct."
+ },
+ {
+  "subject": "eGFR",
+  "group": "do not start | mg",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "Duloxetine: no dose adjustment at CrCl 30–80 mL/min; contraindicated at CrCl <30 (SPC)",
+  "source": "https://www.medicines.org.uk/emc (duloxetine SPC section 4.2/4.3)",
+  "fixes": [
+   {
+    "file": "cases/depression.html",
+    "old": "Renal function for duloxetine — contraindicated if eGFR &lt;30; dose-reduce to 30mg if eGFR 30–60",
+    "new": "Renal function for duloxetine — contraindicated if creatinine clearance &lt;30 mL/min; no dose adjustment needed at 30–80 (SPC)"
+   }
+  ],
+  "note": "The SPC has no 30 mg renal dose reduction. The statement also contradicts cases/neuropathic-pain.html ('no dose adjustment needed for standard duloxetine')."
+ },
+ {
+  "subject": "eGFR",
+  "group": "dose | mg",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "Mirabegron: 25 mg if CrCl 15–29 or moderate hepatic impairment (Child-Pugh B); not recommended in severe hepatic impairment (Child-Pugh C) or eGFR <15",
+  "source": "https://www.geneesmiddeleninformatiebank.nl/smpc/h132822_smpc_en.pdf (mirabegron SPC 4.2; same as UK Betmiga SPC)",
+  "fixes": [
+   {
+    "file": "cases/male-luts.html",
+    "old": "Mirabegron 50mg OD (25mg if eGFR &lt;30 or severe hepatic impairment)",
+    "new": "Mirabegron 50mg OD (25mg if eGFR 15&#8211;29 or moderate hepatic impairment; not recommended in severe hepatic impairment)"
+   },
+   {
+    "file": "cases/male-luts.html",
+    "old": "eGFR &lt;30 or severe hepatic impairment: reduce to 25mg OD",
+    "new": "eGFR 15&#8211;29 or moderate hepatic impairment: reduce to 25mg OD; avoid in severe hepatic impairment (SPC)"
+   }
+  ],
+  "note": "The SPC says severe hepatic impairment is 'not recommended', not '25 mg'. tools/clinic-guides/male-luts.html ('25 mg if eGFR 15–29') is already correct."
+ },
+ {
+  "subject": "eGFR",
+  "group": "max dose | mg",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "Rosuvastatin is contraindicated at CrCl <30 mL/min (SPC). It cannot be continued at 20 mg.",
+  "source": "https://www.medicines.org.uk/emc (rosuvastatin SPC 4.3)",
+  "fixes": [
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "If eGFR declines to &lt;30: reduce to maximum 20mg.",
+    "new": "If creatinine clearance falls below 30 mL/min: rosuvastatin is contraindicated &#8212; switch to atorvastatin (agree any dose increase with renal team, NG238)."
+   }
+  ],
+  "note": "This contradicts the same drug card ('eGFR <30: contraindicated') and cases/ckd.html."
+ },
+ {
+  "subject": "eGFR",
+  "group": "start/initiate | mg",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "Dapagliflozin: not initiated if eGFR <15 (current SPC). Empagliflozin: not initiated if eGFR <20; dose 10 mg if eGFR <60.",
+  "source": "https://www.medicines.org.uk/emc/product/5441/smpc ; https://www.medicines.org.uk/emc/product/101539/smpc",
+  "fixes": [
+   {
+    "file": "cases/hypercholesterolaemia.html",
+    "old": "dapagliflozin avoid if eGFR &lt;25; empagliflozin reduce to 10mg if eGFR 30-45.",
+    "new": "do not initiate dapagliflozin if eGFR &lt;15 or empagliflozin if eGFR &lt;20; empagliflozin dose is 10mg if eGFR &lt;60 (SPC; glucose-lowering effect falls below eGFR 45)."
+   }
+  ],
+  "note": "These are outdated SPC thresholds."
+ },
+ {
+  "subject": "eGFR",
+  "group": "start/initiate | weeks",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "The SGLT2i SPCs set initiation limits (dapagliflozin <15, empagliflozin <20), and treatment is usually continued as eGFR declines, until dialysis. They give no stop rule at eGFR <20.",
+  "source": "https://www.medicines.org.uk/emc/product/5441/smpc ; https://www.medicines.org.uk/emc/product/101539/smpc",
+  "fixes": [
+   {
+    "file": "cases/heart-failure.html",
+    "old": "eGFR &lt;20 → stop (insufficient benefit, AKI risk).",
+    "new": "Do not stop for eGFR decline alone (expected early dip); initiation limits per SPC (dapagliflozin eGFR &lt;15, empagliflozin &lt;20); seek advice if eGFR &lt;15 or on dialysis."
+   },
+   {
+    "file": "cases/heart-failure.html",
+    "old": "eGFR &lt;20 → stop. Withhold on sick days",
+    "new": "Do not stop for eGFR decline alone; seek advice if eGFR &lt;15 or on dialysis. Withhold on sick days"
+   }
+  ],
+  "note": "'eGFR <20 → stop' is not in either SPC. It contradicts the site's own advice to accept the eGFR dip (tools/clinic-guides/ckd.html: 'expect a small early eGFR dip — don't stop'). Owner may prefer to soften to 'seek advice' if a local rule exists."
+ },
+ {
+  "subject": "eGFR",
+  "group": "stop/withhold | %",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "NICE NG203: do not modify ACEi/ARB if eGFR falls <25% or creatinine rises <30%; at ≥25% / ≥30% look for other causes, then stop or reduce. Stop if K⁺ ≥6.0.",
+  "source": "https://www.nice.org.uk/guidance/ng203 (rec 1.6.x, quoted on site tools/management/hypertension.html)",
+  "fixes": [
+   {
+    "file": "cases/tia-stroke.html",
+    "old": "Creatinine rise &gt;25% or eGFR fall &gt;25% → hold ACEi/ARB",
+    "new": "Creatinine rise &#8805;30% or eGFR fall &#8805;25% → look for other causes (e.g. dehydration, NSAIDs), then reduce or stop ACEi/ARB"
+   },
+   {
+    "file": "cases/peripheral-arterial-disease.html",
+    "old": "nephrology input if creatinine rises &gt;25% or K⁺ &gt;5.5",
+    "new": "look for causes and seek advice if creatinine rises &#8805;30% (eGFR fall &#8805;25%) or K⁺ &gt;5.5"
+   },
+   {
+    "file": "cases/mi-secondary-prevention.html",
+    "old": "Monitor: eGFR rise &lt;25% acceptable",
+    "new": "Monitor: eGFR fall &lt;25% (creatinine rise &lt;30%) acceptable"
+   },
+   {
+    "file": "cases/ckd.html",
+    "old": "do not stop unless K⁺ &gt;6 or eGFR falls &gt;25% on initiation",
+    "new": "do not stop unless K⁺ &#8805;6.0, or eGFR falls &#8805;25% with no other cause found"
+   },
+   {
+    "file": "cases/ckd.html",
+    "old": "Do NOT stop ACEi/ARB unless K⁺ &gt;6.0 or eGFR drop &gt;25% on initiation",
+    "new": "Do NOT stop ACEi/ARB unless K⁺ &#8805;6.0, or eGFR drop &#8805;25% with no other cause found"
+   }
+  ],
+  "note": "The site standard is 25% eGFR / 30% creatinine (tools/management/ckd.html, tools/prescribing.html, tools/management/hypertension.html). Two cases use a 25% creatinine threshold. One case says 'eGFR rise' where it means 'fall'. NSAID '>25% → stop' lines (chest-pain, axial-spa, low-back-pain) are a different drug context and were left alone."
+ },
+ {
+  "subject": "cabergoline",
+  "group": "start/initiate | mg",
+  "verdict": "inconsistent",
+  "tier": 1,
+  "correct": "Hyperprolactinaemia: start 0.5 mg per week (one dose or two 0.25 mg doses), increase by 0.5 mg/week at monthly intervals; usual 1 mg/week (SPC)",
+  "source": "https://www.medicines.org.uk/emc/product/101124/smpc",
+  "fixes": [
+   {
+    "file": "cases/breast-disorders.html",
+    "old": "Cabergoline 0.5mg twice weekly (first-line)",
+    "new": "Cabergoline 0.5mg a week, as one dose or two divided doses (first-line; SPC)"
+   },
+   {
+    "file": "cases/breast-disorders.html",
+    "old": "Cabergoline 0.5mg twice weekly (start; titrate up over weeks; endocrinology-guided)",
+    "new": "Cabergoline 0.5mg a week (one dose or two; increase by 0.5mg/week at monthly intervals; usual 1mg/week; endocrinology-guided)"
+   }
+  ],
+  "note": "'0.5 mg twice weekly' (1 mg/week) is double the SPC starting dose. It disagrees with tools/algorithms/hyperprolactinaemia.html and the Clinic Guide. The same file also says 'twice-weekly dosing (compliance)', which is acceptable."
+ },
+ {
+  "subject": "urate",
+  "group": "target | µmol/l",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "NICE NG219: target serum urate below 360 µmol/L. CONSIDER below 300 µmol/L with tophi, chronic gouty arthritis or continued flares.",
+  "source": "https://www.nice.org.uk/guidance/ng219 (via medthority summary: https://prep.medthority.com/nice/conditions-and-diseases/musculoskeletal-conditions/arthritis/ng219)",
+  "fixes": [
+   {
+    "file": "cases/gout.html",
+    "old": "Tophi present → NICE NG219: ULT must be offered; target urate is 300 µmol/L (not 360 µmol/L).",
+    "new": "Tophi present → NICE NG219: offer ULT; consider a lower target below 300 µmol/L (rather than below 360 µmol/L)."
+   },
+   {
+    "file": "cases/gout.html",
+    "old": "with a lower target urate (300 µmol/L to dissolve crystals)",
+    "new": "with consideration of a lower target urate (below 300 µmol/L) to dissolve crystals"
+   },
+   {
+    "file": "cases/gout.html",
+    "old": "NICE NG219 target urate ≤300 µmol/L.",
+    "new": "NICE NG219: consider target urate below 300 µmol/L."
+   },
+   {
+    "file": "cases/gout.html",
+    "old": "≤360",
+    "new": "<360",
+    "replace_all": true
+   },
+   {
+    "file": "cases/gout.html",
+    "old": "≤300",
+    "new": "<300",
+    "replace_all": true
+   },
+   {
+    "file": "assets/search/idx-case.json",
+    "old": "≤360",
+    "new": "<360",
+    "replace_all": true
+   },
+   {
+    "file": "assets/search/idx-case.json",
+    "old": "≤300",
+    "new": "<300",
+    "replace_all": true
+   }
+  ],
+  "note": "cases/gout.html uses '≤360/≤300' (23 + 13 occurrences) where NG219 and every other page say 'below'. Replace all in that file only. Check after the first three edits, because they remove some ≤300s first. Also 'target urate 300 µmol/L;' in the tophi rows at lines 1139/1144: change to 'consider target <300 µmol/L;'. That string occurs twice, so replace it in both places."
+ },
+ {
+  "subject": "urate",
+  "group": "state | µmol/l",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "NICE NG219 offer ULT: multiple or troublesome flares, CKD stages 3–5, diuretic therapy, tophi, chronic gouty arthritis; discuss ULT with anyone after a flare. NG219 has no 'urate >600' or '≥2 attacks/year' criterion.",
+  "source": "https://prep.medthority.com/nice/conditions-and-diseases/musculoskeletal-conditions/arthritis/ng219",
+  "fixes": [
+   {
+    "file": "assets/prescriptions-data.js",
+    "old": "Recurrent gout (≥ 2 attacks/year), tophi, urate stones, CKD ≥ stage 3, urate > 600 µmol/L, or one severe flare.",
+    "new": "Offer ULT (NICE NG219) for multiple or troublesome flares, CKD stages 3–5, diuretic therapy, tophi or chronic gouty arthritis; discuss ULT with anyone after a flare."
+   },
+   {
+    "file": "assets/search/idx-rx.json",
+    "old": "Recurrent gout (≥ 2 attacks/year), tophi, urate stones, CKD ≥ stage 3, urate > 600 µmol/L, or one severe flare.",
+    "new": "Offer ULT (NICE NG219) for multiple or troublesome flares, CKD stages 3–5, diuretic therapy, tophi or chronic gouty arthritis; discuss ULT with anyone after a flare."
+   },
+   {
+    "file": "assets/prescriptions-data.js",
+    "old": "Initiate / titrate allopurinol if recurrent / tophi / urate stones / CKD / urate > 600.",
+    "new": "Offer allopurinol (NG219) if multiple/troublesome flares, CKD 3–5, diuretics, tophi or chronic gouty arthritis."
+   }
+  ],
+  "note": "These are outdated pre-NG219 (BSR/EULAR-era) indications in Ready Prescriptions."
+ },
+ {
+  "subject": "allopurinol",
+  "group": "dose | mg",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "Febuxostat comes as 80 mg and 120 mg in the UK; start 80 mg. There is limited data in severe renal impairment (CrCl <30), so get specialist advice.",
+  "source": "https://www.medicines.org.uk/emc (febuxostat/Adenuric SPC 4.2)",
+  "fixes": [
+   {
+    "file": "assets/prescriptions-data.js",
+    "old": "Reduced allopurinol doses; febuxostat 40 mg OD with caution.",
+    "new": "Reduced allopurinol doses; febuxostat 80 mg OD with caution (limited data if CrCl < 30)."
+   }
+  ],
+  "note": "40 mg is a US strength and is not a UK SPC dose."
+ },
+ {
+  "subject": "urate",
+  "group": "recheck/monitor | weeks",
+  "verdict": "inconsistent",
+  "tier": 3,
+  "correct": "If urate is low during a flare, repeat at least 2 weeks after the flare settles (NICE NG219)",
+  "source": "https://www.nice.org.uk/guidance/ng219",
+  "fixes": [
+   {
+    "file": "assets/consult-templates.js",
+    "old": "Consider serum urate (may be normal acutely — recheck ≥4–6 weeks later)",
+    "new": "Consider serum urate (may be normal acutely — recheck at least 2 weeks after the flare settles)"
+   }
+  ],
+  "note": "Every other page says ≥2 weeks."
+ },
+ {
+  "subject": "bilirubin",
+  "group": "state | µmol/l",
+  "verdict": "inconsistent",
+  "tier": 3,
+  "correct": "Jaundice usually becomes clinically detectable above about 40 µmol/L (sclerae first, in good natural light). Detection is unreliable near that level.",
+  "source": "https://gpnotebook.com/pages/gastroenterology/jaundice",
+  "fixes": [
+   {
+    "file": "tools/algorithms/jaundice.html",
+    "old": "scleral icterus visible when bilirubin &gt;35 µmol/L",
+    "new": "scleral icterus usually visible when bilirubin is above about 40 µmol/L"
+   },
+   {
+    "file": "assets/search/idx-pathway.json",
+    "old": "scleral icterus visible when bilirubin >35 µmol/L",
+    "new": "scleral icterus usually visible when bilirubin is above about 40 µmol/L"
+   },
+   {
+    "file": "cases/abnormal-lfts.html",
+    "old": "Clinically detectable jaundice requires bilirubin &gt;50 &mu;mol/L.",
+    "new": "Jaundice usually becomes clinically detectable above about 40 &mu;mol/L."
+   }
+  ],
+  "note": "One page says 35 µmol/L and another says 50 µmol/L. Harmonise to about 40 µmol/L. Low clinical impact."
+ },
+ {
+  "subject": "bilirubin",
+  "group": "state | µmol/l",
+  "verdict": "inconsistent",
+  "tier": 3,
+  "correct": "Gilbert's: mild unconjugated rise, occasionally up to about 80–85 µmol/L with illness/fasting; unconjugated >40 µmol/L → consider rarer causes (site Gilbert's page, BSG)",
+  "source": "https://patient.info/doctor/gilberts-syndrome-pro",
+  "fixes": [
+   {
+    "file": "assets/articles-data-2.js",
+    "old": "typically <100 µmol/L, with normal ALT/ALP/GGT",
+    "new": "usually below about 40 µmol/L (occasionally up to about 80 µmol/L during illness or fasting), with normal ALT/ALP/GGT"
+   },
+   {
+    "file": "assets/search/idx-article.json",
+    "old": "typically <100 µmol/L, with nor",
+    "new": "usually below about 40 µmol/L (occasionally up to about 80 µmol/L during illness or fasting), with nor"
+   }
+  ],
+  "note": "The article's 'typically <100' does not match tools/management/gilberts-syndrome.html, which says '>40 consider rarer causes; occasionally 80–85'. For the index file, the replacement assumes the index is regenerated. If it is, skip that fix."
+ },
+ {
+  "subject": "salbutamol",
+  "group": "dose | micrograms",
+  "verdict": "owner",
+  "tier": 1,
+  "correct": "BTS/SIGN 158: 2–10 puffs via spacer, titrated, repeated every 20–30 min (all ages). tools/algorithms/wheeze-child.html instead uses a fixed regimen for ≤5 years (4 puffs ×3 at 20–30 min, plus ipratropium) labelled 'local acute paediatric protocol'.",
+  "source": "BTS/SIGN 158 (2019) acute asthma in children",
+  "fixes": [],
+  "note": "OWNER: under-5 acute salbutamol dosing differs across pages. wheeze-child.html gives 4 puffs repeated up to 3 times. cases/wheeze-children.html gives 2–10 puffs titrated. preschool-wheeze.html gives 10 puffs for severe. Keep the local fixed regimen labelled as local, or align it with BTS/SIGN 2–10 puffs (10 puffs for severe)?"
+ }
+]

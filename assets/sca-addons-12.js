@@ -3513,7 +3513,7 @@
     },
     {
      "h": "The spleen and sport",
-     "t": "Splenic rupture is rare (often quoted as about 0.1 to 0.5%, though exact estimates are uncertain) but potentially fatal; most reported cases occur in the first month, although late rupture can occur [4]. Advise no contact or collision sport and no heavy lifting for at least 4 weeks from the start of symptoms, and longer while the spleen is enlarged or he is unwell. Many UK NHS services advise about 8 weeks before full contact sport. Agree the return at review, not by guesswork."
+     "t": "Splenic rupture is rare (often quoted as about 0.1 to 0.5%, though exact estimates are uncertain) but potentially fatal; most reported cases occur in the first month, although late rupture can occur [4]. Advise no contact or collision sport and no heavy lifting for at least 4 weeks from the start of symptoms, and longer while the spleen is enlarged or he is unwell. Agree the return at review, not by guesswork."
     },
     {
      "h": "Red flags",

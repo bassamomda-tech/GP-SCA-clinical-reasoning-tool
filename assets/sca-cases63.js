@@ -8,7 +8,7 @@
    (validation, risk, boundaries); and chronic plaque psoriasis (more
    than skin \u2014 the treatment ladder, comorbidity & PsA). No NG12
    cancer pathway is the driver; none invented (cervical-screening
-   pathway is screening, not 2WW).
+   pathway is screening, not the suspected cancer pathway).
    Pushes into SCA_CASES + SCA_EXTRAS. Load AFTER sca-cases62.js.
    ============================================================ */
 

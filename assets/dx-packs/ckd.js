@@ -40,8 +40,8 @@
       },
       {
         id: 'refer', tier: 'urgent',
-        label: 'Nephrology referral criteria — 5-year kidney failure risk >5% (4-variable KFRE), ACR ≥70, rapid decline, haematuria+proteinuria, or suspected GN; eGFR <30 → calculate the KFRE',
-        action: 'Refer nephrology (NICE NG203): refer if the 5-year risk of needing kidney replacement therapy is above 5% on the 4-variable Kidney Failure Risk Equation (kidneyfailurerisk.co.uk), which replaced the old eGFR <30 trigger. ACR, urine dip, renal USS; review meds.',
+        label: 'Nephrology referral criteria (NG203) — 5-year kidney failure risk >5% (4-variable KFRE), ACR ≥70 (unless known diabetes and appropriately treated), sustained eGFR fall ≥25% with category change or ≥15 mL/min/1.73m² in 12 months, BP uncontrolled on 4+ drugs, rare/genetic cause, suspected renal artery stenosis, haematuria+proteinuria, or suspected GN; eGFR <30 not known to nephrology → refer (commonly used locally) and calculate the KFRE',
+        action: 'Refer nephrology (NICE NG203): refer if the 5-year risk of needing kidney replacement therapy is above 5% on the 4-variable Kidney Failure Risk Equation (kidneyfailurerisk.co.uk). eGFR <30 not known to nephrology is a trigger commonly used locally, not an NG203 criterion. ACR, urine dip, renal USS; review meds.',
         source: 'NICE NG203', sourceUrl: 'https://www.nice.org.uk/guidance/ng203',
         when: i => (i.egfr != null && i.egfr < 30) || (i.acr != null && i.acr >= 70) || i.rapid_decline || (i.haematuria && i.acr != null && i.acr >= 3) || i.systemic,
       },

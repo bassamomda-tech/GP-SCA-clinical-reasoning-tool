@@ -1,0 +1,226 @@
+[
+ {
+  "subject": "metformin",
+  "group": "max dose | g",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "eGFR 30–44: maximum 1,000 mg/day (start no more than half the maximum); eGFR 45–59: maximum 2,000 mg/day; contraindicated <30 (metformin SPC, emc)",
+  "source": "https://www.medicines.org.uk/emc/product/13165/smpc",
+  "fixes": [
+   {
+    "file": "cases/aki.html",
+    "old": "(metformin 500mg BD or 500mg TDS &#8212; maximum 1g/day at this eGFR)",
+    "new": "(metformin 500mg BD &#8212; maximum 1g/day at this eGFR)"
+   },
+   {
+    "file": "cases/aki.html",
+    "old": "Restart metformin 1g BD when eGFR &gt;30 and fully recovered",
+    "new": "Restart metformin when eGFR &gt;30 and fully recovered, at a dose for the new eGFR (maximum 1g/day if eGFR 30&#8211;44)"
+   }
+  ],
+  "note": "500 mg TDS = 1.5 g/day, which contradicts the 1 g/day maximum stated in the same sentence. Restarting 1 g BD (2 g/day) at an eGFR just above 30 exceeds the SPC maximum for eGFR 30–44."
+ },
+ {
+  "subject": "metformin",
+  "group": "maintenance | %",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "Reduced B12 / B12 deficiency is a common side effect of metformin, affecting up to 1 in 10 people (MHRA Drug Safety Update, June 2022)",
+  "source": "https://www.gov.uk/drug-safety-update/metformin-and-reduced-vitamin-b12-levels-new-advice-for-monitoring-patients-at-risk",
+  "fixes": [
+   {
+    "file": "cases/anaemia.html",
+    "old": "Up to 30% of long-term metformin users develop biochemical B12 deficiency.",
+    "new": "B12 deficiency is a common side effect of metformin, affecting up to 1 in 10 users (MHRA 2022); the risk rises with dose and duration."
+   }
+  ],
+  "note": "This is the same error the lab pass already fixed on vitamin-b12-deficiency (10–30% → up to 1 in 10). It survives in cases/anaemia.html."
+ },
+ {
+  "subject": "metformin",
+  "group": "maintenance | years",
+  "verdict": "owner",
+  "tier": 3,
+  "correct": "MHRA 2022: check B12 if symptoms suggest deficiency (e.g. neuropathy, megaloblastic anaemia); consider periodic monitoring if risk factors. It sets no duration threshold.",
+  "source": "https://www.gov.uk/drug-safety-update/metformin-and-reduced-vitamin-b12-levels-new-advice-for-monitoring-patients-at-risk",
+  "fixes": [],
+  "note": "Owner question: several pages say 'B12 if on metformin >4 years': cases/fatigue.html (lines ~1988, 1994, 2139, 2150), tools/management/type-2-diabetes.html and -print (lines ~144/140, 228/224), tools/management/summaries/type-2-diabetes.html. cases/fatigue.html line 1988 attributes this to MHRA 2022, but the MHRA advice has no duration cut-off. Keep '>4 years' labelled as a local/practical rule, or replace it with the MHRA wording ('symptoms, or periodic monitoring if risk factors such as higher dose, longer duration or low-normal baseline')? At minimum, remove the '(MHRA 2022)' attribution from the >4-year rule."
+ },
+ {
+  "subject": "ACR",
+  "group": "refer | mg",
+  "verdict": "inconsistent",
+  "tier": 3,
+  "correct": "NG203 referral: ACR 70 mg/mmol or more (unless known diabetic albuminuria already appropriately treated)",
+  "source": "https://gpnotebook.com/pages/renal-medicine/referral-criteria-from-primary-care-chronic-kidney-disease-ckd",
+  "fixes": [
+   {
+    "file": "cases/aki.html",
+    "old": "nephrology referral if ACR &gt;70 mg/mmol new post-AKI",
+    "new": "nephrology referral if ACR ≥70 mg/mmol new post-AKI"
+   },
+   {
+    "file": "cases/aki.html",
+    "old": "nephrology if ACR &gt;70 mg/mmol.",
+    "new": "nephrology if ACR ≥70 mg/mmol."
+   }
+  ],
+  "note": "Every other page uses ≥70 (NG203 '70 or more')."
+ },
+ {
+  "subject": "ACR",
+  "group": "dose | mg",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "NG203: offer ACEi/ARB if diabetes and ACR >3; hypertension and ACR >30; or any ACR ≥70 (regardless of hypertension)",
+  "source": "https://labmed.org.uk/our-resources/news/nice-ckd-assessment-and-guidelines.html",
+  "fixes": [
+   {
+    "file": "cases/ckd.html",
+    "old": "&gt;30 mg/mmol → ACEi/ARB mandatory",
+    "new": "&gt;30 mg/mmol with hypertension, or any ACR ≥70 → offer ACEi/ARB (NG203)"
+   }
+  ],
+  "note": "The page says ACR >30 makes an ACEi/ARB 'mandatory' with no qualifier. Without diabetes, NG203 makes ACR 30–70 an indication only when hypertension is present. The rest of the same page and cases/hypertension.html state the correct rule."
+ },
+ {
+  "subject": "ACR",
+  "group": "refer | % (nephrology referral criteria)",
+  "verdict": "owner",
+  "tier": 2,
+  "correct": "NG203 referral criteria: KFRE 5-year risk >5%; ACR ≥70 (unless treated diabetic); ACR >30 with haematuria; sustained eGFR fall ≥25% with category change or ≥15/yr; uncontrolled BP on ≥4 drugs; rare/genetic causes; suspected renal artery stenosis. eGFR <30 by itself is not an NG203 criterion (it was in CG182).",
+  "source": "https://ckw-icb-files.this.nhs.uk/CKD%20Kidney/West-Yorkshire-Guideline-for-Management-of-CKD-in-adults-July-2025.pdf",
+  "fixes": [],
+  "note": "Owner question: cases/ckd.html presents 'eGFR <30 → nephrology referral' in many places (lines ~577, 875, 956, 1065, 1072, 1394, 1395, 1421, 1615, 1660, 1796). Line 1615 attributes it to NG203 ('eGFR &lt;30, accelerated decline, ACR ≥70, or KFRE 5-year risk &gt;5% (NG203)'). tools/management/ckd.html frames it as 'G4 not previously known to nephrology' (local practice). Keep eGFR <30 as a labelled practical/local trigger and drop the NG203 attribution, or remove it in favour of the KFRE?"
+ },
+ {
+  "subject": "ACR",
+  "group": "diagnose/threshold | mg (nephrotic range)",
+  "verdict": "inconsistent",
+  "tier": 3,
+  "correct": "Nephrotic-range albuminuria is ACR >2,200 mg/g ≈ >220 mg/mmol (KDIGO, rounded; exact conversion ≈250). PCR nephrotic range ≈ >300–350 mg/mmol.",
+  "source": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10200071/table/T14",
+  "fixes": [
+   {
+    "file": "tools/management/ckd.html",
+    "old": "<b>ACR &gt;300 mg/mmol is the nephrotic-range threshold</b>",
+    "new": "<b>Nephrotic-range albuminuria (ACR above about 220–250 mg/mmol)</b>"
+   },
+   {
+    "file": "tools/management/ckd-print.html",
+    "old": "<b>ACR &gt;300 mg/mmol is the nephrotic-range threshold</b>",
+    "new": "<b>Nephrotic-range albuminuria (ACR above about 220–250 mg/mmol)</b>"
+   }
+  ],
+  "note": "The same ckd page also says nephrotic syndrome is 'ACR >220'. proteinuria.html says ~ACR >250 / PCR >300. ACR >300 is the outlier; it is a PCR-scale number. Check the grammar of the rest of the sentence ('that often indicates primary glomerular disease requiring biopsy') after replacement."
+ },
+ {
+  "subject": "FIT",
+  "group": "start/initiate | weeks",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "NICE HTG690 / NG12: offer FIT to adults of any age with a change in bowel habit. The age-40 / 6-week criterion is from the pre-2023 NG12.",
+  "source": "https://hse.ie/eng/about/who/acute-hospitals-division/clinical-programmes/endoscopy-programme/programme-documents/hse-endoscopy-programme-fit-in-primary-care-position-paper.pdf",
+  "fixes": [
+   {
+    "file": "assets/pathways-redflags.js",
+    "old": "No Rectal bleeding + change in bowel habit, age ≥40 — Especially if persisting ≥6 weeks — offer FIT first",
+    "new": "No Rectal bleeding + change in bowel habit (adult, any age) — offer FIT first"
+   },
+   {
+    "file": "assets/pathways-redflags.js",
+    "old": "No Rectal bleeding + change in bowel habit + age ≥40 — Colorectal cancer — offer FIT first",
+    "new": "No Rectal bleeding + change in bowel habit (adult, any age) — Colorectal cancer — offer FIT first"
+   }
+  ],
+  "note": "These are legacy age/duration qualifiers. The rest of the site says 'Offer FIT for any adult with a change in bowel habit'. A '≥40' label could deter FIT in younger adults."
+ },
+ {
+  "subject": "FT4",
+  "group": "recheck/monitor | weeks (pregnancy, levothyroxine)",
+  "verdict": "inconsistent",
+  "tier": 1,
+  "correct": "RCOG GTG76 (2025): on a positive pregnancy test, increase levothyroxine by about 25–30% (two extra doses a week, or +25/+50 micrograms); TSH and FT4 every 4–6 weeks until 20 weeks, then at about 28 weeks, and 4–6 weeks after any dose change; aim TSH <2.5",
+  "source": "https://obgyn.onlinelibrary.wiley.com/doi/10.1111/1471-0528.18088",
+  "fixes": [
+   {
+    "file": "assets/meds/hypothyroidism.js",
+    "old": "monitor:'TSH every trimester (and 4–6 weeks after dose change); aim TSH <2.5 mU/L',",
+    "new": "monitor:'TSH and FT4 every 4–6 weeks until 20 weeks, then at about 28 weeks, and 4–6 weeks after any dose change; aim TSH <2.5 mU/L (RCOG GTG76, 2025)',"
+   },
+   {
+    "file": "assets/meds/hypothyroidism.js",
+    "old": "examples:'Increase dose ~25–50% as soon as pregnancy confirmed',",
+    "new": "examples:'Increase dose ~25–30% as soon as pregnancy confirmed',"
+   },
+   {
+    "file": "assets/meds/hypothyroidism.js",
+    "old": "increase levothyroxine (commonly by ~25–50%, e.g. two extra doses per week as an interim step)",
+    "new": "increase levothyroxine (commonly by ~25–30%, e.g. two extra doses per week as an interim step; RCOG GTG76, 2025)"
+   }
+  ],
+  "note": "'Every trimester' is too infrequent and conflicts with every other site page (4–6 weekly to 20 weeks, then 28 weeks). The 25–50% increase conflicts with the RCOG 25–30%. Also consider updating source:'NICE NG145 · Endocrine guidance' → 'RCOG GTG76 (2025)', since NG145 excludes pregnancy."
+ },
+ {
+  "subject": "TSH",
+  "group": "recheck/monitor | months (subclinical, untreated)",
+  "verdict": "inconsistent",
+  "tier": 3,
+  "correct": "NG145: if TSH is raised with normal FT4, consider repeating both after 3 months; consider levothyroxine if TSH ≥10 on 2 tests 3 months apart",
+  "source": "https://gpnotebook.com/pages/ear-nose-and-throat/monitoring-thyroxine-levothyroxine-therapy",
+  "fixes": [
+   {
+    "file": "assets/meds/hypothyroidism.js",
+    "old": "examples:'Repeat TSH/FT4 in 3–6 months',",
+    "new": "examples:'Repeat TSH/FT4 after 3 months',"
+   },
+   {
+    "file": "assets/meds/hypothyroidism.js",
+    "old": "repeat testing (e.g. 3–6 months) rather than treat. Consider a time-limited levothyroxine trial only if symptomatic and <65; stop if no benefit. Always treat if TSH ≥10 or pregnant/planning pregnancy.",
+    "new": "repeat TSH and FT4 after 3 months (NICE NG145) rather than treat. Consider a time-limited levothyroxine trial only if symptomatic and <65; stop if no benefit. Consider levothyroxine if TSH ≥10 on 2 tests 3 months apart; pregnancy or planning pregnancy → follow RCOG GTG76 / specialist advice."
+   }
+  ],
+  "note": "Every other site page uses NG145's 3-month repeat. 'Always treat if TSH ≥10' overstates NG145, which says 'consider' and requires two tests."
+ },
+ {
+  "subject": "TSH",
+  "group": "target | mu/l and state | % (pre-conception / pregnancy)",
+  "verdict": "owner",
+  "tier": 2,
+  "correct": "RCOG GTG76 (2025) is reported (secondary sources) to give a pre-conception TSH target of 0.1–2.5 mU/L for overt hypothyroidism and an empirical increase of about 25–30% on a positive test",
+  "source": "https://nbmedical.com/blog/planning-ahead-hypothyroidism-and-pregnancy",
+  "fixes": [],
+  "note": "Owner/Medwise check against the GTG76 full text. (1) The site says 'pre-conception TSH 0.5–2.5 mU/L (RCOG 2025)' in assets/sca-cases11.js (lines ~50, 246), assets/sca-addons-2.js, assets/sca-data/c/thyroid-hypo-young.json and sca/case-thyroid-hypo-young.html; secondary sources quote 0.1–2.5. (2) The site says the dose increase is '20–30%' in sca-cases11.js (lines 35, 37, 50, 56, 60, 246), sca-addons-2.js:8738, thyroid-hypo-young.json, sca/case-thyroid-hypo-young.html, tools/algorithms/abnormal-tfts.html (137–138) and one-page/abnormal-tfts.html (256); sca-addons-2.js and cases/hypothyroidism.html say 25–30%. The BJOG GTG76 text, as summarised, says 25–30%. If confirmed, align everything to 25–30% and 0.1–2.5."
+ },
+ {
+  "subject": "haemoglobin",
+  "group": "state | g/l (polycythaemia threshold)",
+  "verdict": "inconsistent",
+  "tier": 3,
+  "correct": "WHO 2016 PV: Hb >165 g/L men, >160 g/L women (Hct >0.49 / >0.48); the site's polycythaemia pages already use this",
+  "source": "https://www.thebloodproject.com/cases-archive/polycythemia-diagnostic-criteria/polycythemia-vera-diagnostic-criteria/",
+  "fixes": [
+   {
+    "file": "assets/kb-index.js",
+    "old": "Hb >165 g/L (M) or >155 g/L (F)",
+    "new": "Hb >165 g/L (M) or >160 g/L (F)"
+   },
+   {
+    "file": "tools/algorithms.html",
+    "old": "Hb &gt;165 g/L (M) or &gt;155 g/L (F)",
+    "new": "Hb &gt;165 g/L (M) or &gt;160 g/L (F)"
+   },
+   {
+    "file": "tools/algorithms/_meta.json",
+    "old": "Hb >165 g/L (M) or >155 g/L (F)",
+    "new": "Hb >165 g/L (M) or >160 g/L (F)"
+   },
+   {
+    "file": "assets/diagnostic-cases.js",
+    "old": "Hb &gt;165 g/L (M) or &gt;155 g/L (F)",
+    "new": "Hb &gt;165 g/L (M) or &gt;160 g/L (F)"
+   }
+  ],
+  "note": "The index/card description disagrees with tools/algorithms/polycythaemia.html and its one-page twin (WHO >160 g/L women). Check the assets/search/idx-*.json indices too if they are generated from these."
+ }
+]

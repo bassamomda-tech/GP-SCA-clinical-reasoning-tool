@@ -32,7 +32,7 @@ MedChooser.register('hypercholesterolaemia', {
       detail:{
         'Dose': 'Primary prevention: atorvastatin 20 mg OD. Secondary prevention/FH: atorvastatin 80 mg OD (reduce if interactions/intolerance)',
         'Interactions': 'Amlodipine/diltiazem and macrolides ↑ levels (avoid simvastatin 80); grapefruit; ciclosporin',
-        'Key teaching': 'Aim for ≥40% reduction in non-HDL cholesterol at 3 months. Atorvastatin/rosuvastatin are the high-intensity statins of choice.'
+        'Key teaching': 'Aim for more than 40% reduction in non-HDL cholesterol at 3 months. Atorvastatin/rosuvastatin are the high-intensity statins of choice.'
       },
       conditions: [
         {"kind":"avoid","label":"Pregnant / planning / breastfeeding","text":"Pregnancy — contraindicated"},
@@ -126,10 +126,10 @@ MedChooser.register('hypercholesterolaemia', {
       counsel:'"Your triglyceride fat is high — first we\'ll look at alcohol, weight and diabetes control. Occasionally a specific tablet is needed to prevent pancreas inflammation."',
       detail:{
         'Dose': 'Address alcohol, weight, glycaemic control first; fenofibrate usually specialist-guided',
-        'Key teaching': 'Statins are NOT primarily for isolated high TG. TG >10 mmol/L — urgent specialist (pancreatitis risk). Routine omega-3/fibrates not recommended for CVD prevention.'
+        'Key teaching': 'Statins are NOT primarily for isolated high TG. TG >20 mmol/L (not due to alcohol or poor glycaemic control) — urgent specialist referral; TG 10–20 — fasting repeat within 2 weeks and specialist advice if still >10 (NICE NG238). Routine omega-3/fibrates not recommended for CVD prevention.'
       },
       conditions: [
-        {"kind":"favoured","label":"Triglycerides markedly raised (>4.5)","text":"Markedly raised TG — address secondary causes; consider specialist therapy · If TG >10 — urgent referral for pancreatitis risk"}
+        {"kind":"favoured","label":"Triglycerides markedly raised (>4.5)","text":"Markedly raised TG — address secondary causes; consider specialist therapy · If TG >20 (not due to alcohol or poor glycaemic control) — urgent specialist referral; TG 10–20 — fasting repeat and specialist advice if still >10 (NICE NG238)"}
       ]
     }
   ],

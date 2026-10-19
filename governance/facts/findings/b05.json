@@ -1,0 +1,345 @@
+[
+ {
+  "subject": "warfarin",
+  "group": "(single values) INR action thresholds",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "BNF/BSH: INR 5–8 no bleeding: withhold 1–2 doses and reduce maintenance; INR >8 no bleeding: stop warfarin, oral vitamin K 1–5 mg, repeat if INR still high at 24 h; minor bleeding with INR >5: IV vitamin K 1–3 mg; major bleeding at ANY INR: stop, IV vitamin K 5 mg + prothrombin complex concentrate (hospital)",
+  "source": "https://medibuddy.co.uk/?p=21057 (BNF/BSH warfarin reversal summary); BNF 'Coumarins and phenindione' treatment summary",
+  "fixes": [
+   {
+    "file": "cases/atrial-fibrillation.html",
+    "old": "INR &gt;5.0 + bleeding → vitamin K + hospital.",
+    "new": "INR 5–8, no bleeding → withhold 1–2 doses and reduce dose; INR &gt;8 → oral vitamin K 1–5 mg; major bleeding at any INR → hospital (IV vitamin K + PCC) (BNF/BSH)."
+   },
+   {
+    "file": "cases/atrial-fibrillation.html",
+    "old": "INR &gt;4.0 → hold + recheck. INR &gt;5 + bleeding → Vit K + hospital.",
+    "new": "INR &gt;4.0 → hold + recheck. INR 5–8 (no bleeding) → withhold 1–2 doses; INR &gt;8 → oral vit K 1–5 mg; major bleeding at any INR → hospital (IV vit K + PCC)."
+   },
+   {
+    "file": "cases/atrial-fibrillation.html",
+    "old": "INR &gt;4 → hold + recheck 24h. INR &gt;5 + bleeding → Vit K + hospital.",
+    "new": "INR &gt;4 → hold + recheck 24h. INR 5–8 (no bleeding) → withhold 1–2 doses; INR &gt;8 → oral vit K 1–5 mg; major bleeding at any INR → hospital (IV vit K + PCC)."
+   }
+  ],
+  "note": "'INR >5 + bleeding → vitamin K + hospital' implies a bleeding patient with INR <5 needs no escalation (major bleeding needs hospital at any INR) and omits the INR >8 no-bleeding oral vitamin K step. The 'INR >4 hold' local rule is left in place. TTR <65% (NICE NG196 poor control) vs TTR <60% (HAS-BLED labile INR) is legitimate."
+ },
+ {
+  "subject": "potassium",
+  "group": "state / 999/admit | mmol/l (≥6.5 vs >6.5 + ECG changes)",
+  "verdict": "wrong",
+  "tier": 1,
+  "correct": "UKKA 2023: K+ ≥6.5 mmol/L is severe hyperkalaemia needing emergency assessment whatever the ECG; hyperkalaemic ECG changes at ANY K+ are an emergency",
+  "source": "https://ukkidney.org/health-professionals/guidelines/treatment-acute-hyperkalaemia-adults",
+  "fixes": [
+   {
+    "file": "cases/ckd.html",
+    "old": "Hyperkalaemia: K⁺ &gt;6.5 mmol/L or K⁺ 5.5–6.5 with ECG changes (tall T waves, wide QRS, sine wave)",
+    "new": "Hyperkalaemia: K⁺ ≥6.5 mmol/L, or hyperkalaemic ECG changes at any K⁺ (tall T waves, wide QRS, sine wave)"
+   },
+   {
+    "file": "cases/ckd.html",
+    "old": "Any K⁺ &gt;6.5 = emergency; K⁺ 6.0–6.5 = urgent same-day review.",
+    "new": "Any K⁺ ≥6.5 = emergency; K⁺ 6.0–6.4 = urgent same-day review."
+   },
+   {
+    "file": "cases/ckd.html",
+    "old": "<strong>K⁺ &gt;6.5 mmol/L or ECG changes</strong>",
+    "new": "<strong>K⁺ ≥6.5 mmol/L or ECG changes</strong>"
+   },
+   {
+    "file": "cases/ckd.html",
+    "old": "Hyperkalaemia: K⁺ &gt;6.5 with ECG changes</td>",
+    "new": "Hyperkalaemia: K⁺ ≥6.5, or ECG changes at any K⁺</td>"
+   },
+   {
+    "file": "cases/ckd.html",
+    "old": "<strong>Emergency:</strong> K⁺ &gt;6.5 + ECG changes · Uraemic pericarditis · AKI on CKD",
+    "new": "<strong>Emergency:</strong> K⁺ ≥6.5 or hyperkalaemic ECG changes · Uraemic pericarditis · AKI on CKD"
+   },
+   {
+    "file": "cases/ckd.html",
+    "old": "<strong>Emergency:</strong> K⁺ &gt;6.5 + ECG changes · Uraemic pericarditis · AKI oliguric",
+    "new": "<strong>Emergency:</strong> K⁺ ≥6.5 or hyperkalaemic ECG changes · Uraemic pericarditis · AKI oliguric"
+   },
+   {
+    "file": "cases/ckd.html",
+    "old": "<li>K⁺ &gt;6.5 + ECG changes (arrhythmia)</li>",
+    "new": "<li>K⁺ ≥6.5, or ECG changes at any K⁺ (arrhythmia)</li>"
+   },
+   {
+    "file": "cases/ckd.html",
+    "old": "&gt;6.5 mmol/L + ECG changes</td>",
+    "new": "≥6.5 mmol/L, or ECG changes at any level</td>"
+   },
+   {
+    "file": "cases/ckd.html",
+    "old": "<span class=\"ns-val\">K⁺ &lt;6.0 mmol/L</span><span class=\"ns-lbl\">Hyperkalaemia threshold — review ACEi/ARB</span>",
+    "new": "<span class=\"ns-val\">K⁺ ≥6.0 mmol/L</span><span class=\"ns-lbl\">Stop ACEi/ARB after reviewing other causes (NICE NG203)</span>"
+   }
+  ],
+  "note": "cases/ckd.html repeatedly makes the emergency conditional on K+ >6.5 AND ECG changes (an asymptomatic 6.6 would not trigger 999), and one tile says 'K+ <6.0 hyperkalaemia threshold'. Rest of site (aki, hyperkalaemia algorithm, SCA hyperkalaemia-recall) uses ≥6.5 or any ECG change. assets/search/idx-case.json mirrors the first string; regenerate the search index after fixing. Simple '>6.5' labels in assets/triage/*.js, assets/labs/generic.js and pathways-redflags.js are cosmetic (≥ vs >) and optional."
+ },
+ {
+  "subject": "potassium",
+  "group": "stop/withhold | mmol/l (eplerenone/ACEi)",
+  "verdict": "inconsistent",
+  "tier": 1,
+  "correct": "Eplerenone SPC: K+ 5.5–5.9 reduce dose; K+ ≥6.0 withhold. NICE NG203: stop ACEi/ARB if K+ ≥6.0 after other contributors reviewed. Acceptable renal change on ACEi: eGFR fall <25% or creatinine rise <30%",
+  "source": "https://www.medicines.org.uk/emc/product/1588/smpc (Inspra SPC section 4.2); NICE NG203 rec 1.6.13-1.6.14",
+  "fixes": [
+   {
+    "file": "cases/mi-secondary-prevention.html",
+    "old": "Hyperkalaemia (&gt;5.5 mmol/L): reduce ACEi; stop eplerenone if prescribed.",
+    "new": "Hyperkalaemia: K+ 5.5–5.9 mmol/L → reduce eplerenone dose and review ACEi; K+ ≥6.0 → stop eplerenone and review/stop ACEi (NICE NG203)."
+   },
+   {
+    "file": "cases/mi-secondary-prevention.html",
+    "old": "Monitor: eGFR rise &lt;25% acceptable;",
+    "new": "Monitor: eGFR fall &lt;25% (or creatinine rise &lt;30%) acceptable;"
+   }
+  ],
+  "note": "Same page elsewhere says K+ 5.5–6.0 reduce eplerenone to 25 mg, >6.0 stop; line 310 says stop at >5.5. Also 'eGFR rise <25%' has the direction wrong."
+ },
+ {
+  "subject": "potassium",
+  "group": "stop/withhold (ACEi creatinine rise)",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "NICE NG203: after starting/increasing ACEi/ARB, if eGFR falls by ≥25% or creatinine rises by ≥30%, investigate other causes; if none, stop or reduce the dose",
+  "source": "https://www.nice.org.uk/guidance/ng203/chapter/Recommendations (1.6.6-1.6.8)",
+  "fixes": [
+   {
+    "file": "cases/peripheral-arterial-disease.html",
+    "old": "stop if K⁺ &gt;6.0 or creatinine rises &gt;25%",
+    "new": "stop if K⁺ ≥6.0; if creatinine rises ≥30% (or eGFR falls ≥25%), look for other causes and stop or reduce if none (NICE NG203)"
+   },
+   {
+    "file": "cases/peripheral-arterial-disease.html",
+    "old": "nephrology input if creatinine rises &gt;25% or K⁺ &gt;5.5",
+    "new": "specialist advice if creatinine rises ≥30% (eGFR falls ≥25%) or K⁺ &gt;5.5"
+   }
+  ],
+  "note": "tools/prescribing.html already uses '>30%'."
+ },
+ {
+  "subject": "potassium",
+  "group": "recheck/monitor | weeks (ARB start)",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "CKS/NICE NG203: check U&E/K+ before starting and 1–2 weeks after starting an ACEi/ARB and after each dose increase",
+  "source": "https://cks.nice.org.uk/topics/hypertension/prescribing-information/angiotensin-ii-receptor-blockers/",
+  "fixes": [
+   {
+    "file": "cases/gout.html",
+    "old": "Hyperkalaemia — especially in CKD; monitor K+ 4–6 weeks after starting",
+    "new": "Hyperkalaemia — especially in CKD; check U&amp;E/K+ 1–2 weeks after starting and after each dose increase"
+   },
+   {
+    "file": "cases/gout.html",
+    "old": "I'll check your kidney function and potassium levels about 6 weeks after we switch",
+    "new": "I'll check your kidney function and potassium levels 1 to 2 weeks after we switch"
+   },
+   {
+    "file": "cases/gout.html",
+    "old": "<td class=\"mon-green\">4–6 weeks after switch; then 6-monthly</td>",
+    "new": "<td class=\"mon-green\">1–2 weeks after switch (and after dose increases); then 6-monthly</td>"
+   }
+  ],
+  "note": "Losartan switch for gout. Rest of site (heart-failure, ckd, mi-secondary-prevention, hyperkalaemia algorithm) uses 1–2 weeks. Check the 'mon-green' cell text is exact (it is in cases/gout.html line ~2212)."
+ },
+ {
+  "subject": "calcium",
+  "group": "state | mmol/l (<1.75 vs <1.9 emergency)",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "Society for Endocrinology emergency guidance: severe/acute hypocalcaemia = adjusted Ca <1.9 mmol/L or symptomatic → emergency treatment",
+  "source": "https://www.endocrinology.org/media/ojiew4m2/sfe-emergency-guidance-acute-hypocalcaemia.pdf",
+  "fixes": [
+   {
+    "file": "assets/pathways-redflags.js",
+    "old": "No Acute severe hypocalcaemia (corrected Ca <1.75 mmol/L) — Any corrected calcium <1.75 mmol/L, even asymptomatic",
+    "new": "No Acute severe hypocalcaemia (corrected Ca <1.9 mmol/L) — Any adjusted calcium <1.9 mmol/L, even asymptomatic (Society for Endocrinology)"
+   }
+  ],
+  "note": "Every other site page (hypocalcaemia algorithm, clinic guide, abnormal-bone-profile, vitamin-d) uses <1.90; the same redflags file also has a '<1.9' tetany flag. Chip label 'Acute severe hypocalcaemia' unchanged."
+ },
+ {
+  "subject": "calcium",
+  "group": "stop/withhold / state | mmol/l (dementia case)",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "Site/SfE-consistent triage: adjusted Ca ≥3.5, or symptomatic → emergency; 3.0–3.4 → same-day; 2.6–3.0 asymptomatic → repeat and investigate (PTH; NICE NG132)",
+  "source": "https://www.endocrinology.org/media/ft4jq1rh/sfe-emergency-guidance-acute-hypercalcaemia.pdf ; NICE NG132",
+  "fixes": [
+   {
+    "file": "cases/dementia.html",
+    "old": "Hypercalcaemia >2.8 or symptomatic → IV fluids (0.9% saline 3–6 L/24h), stop thiazide diuretics, bisphosphonates if malignancy-related (zoledronic acid 4mg IV), investigate cause (PTH, vitamin D, myeloma screen, CXR). Mild hypercalcaemia (<2.8) → recheck in 1 week, stop vitamin D supplements, hydrate.",
+    "new": "Hypercalcaemia ≥3.5, or symptomatic (confusion, vomiting, dehydration) at any level → same-day hospital assessment for IV fluids ± bisphosphonate. 3.0–3.4 → same-day discussion. Asymptomatic 2.6–3.0 → repeat, check PTH (NICE NG132), review thiazides/calcium/vitamin D, myeloma screen and CXR as indicated."
+   },
+   {
+    "file": "cases/depression.html",
+    "old": "Corrected Ca &gt;2.65 mmol/L: check PTH, renal function, vitamin D;",
+    "new": "Adjusted Ca ≥2.6 mmol/L (repeat to confirm): check PTH, renal function, vitamin D (NICE NG132);"
+   }
+  ],
+  "note": "'>2.8 → IV fluids 3–6 L/24h' gives a hospital regimen at a threshold used nowhere else on the site. Also cases/depression.html 'Corrected Ca >2.65 mmol/L: check PTH' could become '≥2.6 mmol/L (on two occasions, NICE NG132)' — included below."
+ },
+ {
+  "subject": "calcium",
+  "group": "(vitamin D maintenance in eating-disorders)",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "ROS 2020: maintenance colecalciferol 800–2,000 IU daily (site-wide correction already accepted)",
+  "source": "https://theros.org.uk/media/ef2ideu2/ros-vitamin-d-and-bone-health-in-adults-february-2020.pdf",
+  "fixes": [
+   {
+    "file": "cases/eating-disorders.html",
+    "old": "vitamin D 800&#8211;1000 IU/day. DEXA",
+    "new": "vitamin D 800&#8211;2,000 IU/day. DEXA"
+   },
+   {
+    "file": "cases/eating-disorders.html",
+    "old": "vitamin D 800&#8211;1000IU/day</span>",
+    "new": "vitamin D 800&#8211;2,000 IU/day</span>"
+   },
+   {
+    "file": "cases/eating-disorders.html",
+    "old": "Vitamin D 800&#8211;1000IU/day &#183;",
+    "new": "Vitamin D 800&#8211;2,000 IU/day &#183;"
+   },
+   {
+    "file": "cases/eating-disorders.html",
+    "old": "cholecalciferol (D3) 800&#8211;1000IU OD",
+    "new": "cholecalciferol (D3) 800&#8211;2,000 IU OD"
+   },
+   {
+    "file": "cases/eating-disorders.html",
+    "old": "Cholecalciferol (vitamin D3): 800&#8211;1000IU daily",
+    "new": "Cholecalciferol (vitamin D3): 800&#8211;2,000 IU daily"
+   }
+  ],
+  "note": "The LAB_SITE_FIXES ROS correction was applied to hypocalcaemia/vitamin-d/amenorrhoea but missed cases/eating-disorders.html (5 occurrences)."
+ },
+ {
+  "subject": "triglycerides",
+  "group": "refer | mmol/l (>10 vs >20 urgent)",
+  "verdict": "inconsistent",
+  "tier": 2,
+  "correct": "NICE NG238: TG >20 mmol/L not due to alcohol/poor glycaemic control → urgent specialist referral; TG 10–20 → repeat fasting (after 5 days, within 2 weeks), review secondary causes, specialist advice if still >10",
+  "source": "https://www.nice.org.uk/guidance/ng238 (rec 1.3.x, triglycerides)",
+  "fixes": [
+   {
+    "file": "assets/meds/hypercholesterolaemia.js",
+    "old": "TG >10 mmol/L — urgent specialist (pancreatitis risk).",
+    "new": "TG >20 mmol/L (not due to alcohol or poor glycaemic control) — urgent specialist referral; TG 10–20 — fasting repeat within 2 weeks and specialist advice if still >10 (NICE NG238)."
+   }
+  ],
+  "note": "All other pages (high-triglycerides algorithm, dx-pack, T2DM, hypercholesterolaemia) follow NG238."
+ },
+ {
+  "subject": "triglycerides",
+  "group": "stop/withhold / 999 | mmol/l (isotretinoin >8)",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "Isotretinoin SPC: TG above 800 mg/dL (~9 mmol/L) are sometimes associated with acute pancreatitis; stop if hypertriglyceridaemia cannot be controlled or pancreatitis symptoms occur. Lipids checked before, 1 month after starting, then 3-monthly unless more often indicated",
+  "source": "https://www.medicines.org.uk/emc/search?q=isotretinoin (SPC 4.4); https://medlibrary.org/lib/rx/meds/isotretinoin-4/page/2/",
+  "fixes": [
+   {
+    "file": "cases/acne.html",
+    "old": "Elevated fasting triglycerides (&gt;8 mmol/L): significant risk of pancreatitis",
+    "new": "Elevated fasting triglycerides (above about 9 mmol/L [800 mg/dL], SPC): pancreatitis risk"
+   },
+   {
+    "file": "cases/acne.html",
+    "old": "if &gt;8mmol/L: pancreatitis risk; discuss with dermatology",
+    "new": "if above about 9 mmol/L or uncontrolled: pancreatitis risk; discuss with dermatology"
+   },
+   {
+    "file": "cases/acne.html",
+    "old": "Refer immediately: triglycerides &gt;8mmol/L;",
+    "new": "Contact dermatology urgently: triglycerides above about 9 mmol/L or uncontrolled, or pancreatitis symptoms;"
+   },
+   {
+    "file": "cases/acne.html",
+    "old": "Stop if: triglycerides &gt;8mmol/L;",
+    "new": "Stop if: uncontrolled hypertriglyceridaemia (above about 9 mmol/L) or pancreatitis symptoms;"
+   }
+  ],
+  "note": "Owner may also wish to check the 'fasting triglycerides monthly; LFTs monthly; FBC monthly' schedule: SPC says lipids/LFTs before, at 1 month, then 3-monthly; FBC not routinely required. Not changed here."
+ },
+ {
+  "subject": "ALP",
+  "group": "state/recheck | % (PBC UDCA response >25%)",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "BSG/UK-PBC 2018 and EASL 2017: assess UDCA response at 12 months; inadequate response = ALP >1.67× ULN and/or bilirubin above ULN (Paris I also acceptable). An ALP fall of '>25%' is not a recognised response criterion",
+  "source": "https://pubmed.ncbi.nlm.nih.gov/30017646/ (Hirschfield, BSG/UK-PBC Gut 2018); https://www.uk-pbc.com/resources/tools/udca-treatment-response-score-urs/",
+  "fixes": [
+   {
+    "file": "cases/abnormal-lfts.html",
+    "old": "LFTs at 3, 6, 12 months &mdash; ALP should fall by &gt;25% (biochemical response)",
+    "new": "LFTs at 3, 6, 12 months &mdash; at 12 months, ALP &gt;1.67&times; ULN or raised bilirubin = inadequate response (BSG 2018)"
+   },
+   {
+    "file": "cases/abnormal-lfts.html",
+    "old": "<td>ALP reduction &gt;25% at 12 months = biochemical response</td>",
+    "new": "<td>At 12 months: ALP &le;1.67&times; ULN with normal bilirubin = adequate response (BSG/UK-PBC 2018)</td>"
+   },
+   {
+    "file": "cases/abnormal-lfts.html",
+    "old": "Check ALP reduction &gt;25% at 12 months (biochemical response).",
+    "new": "Specialist assesses response at 12 months (ALP &le;1.67&times; ULN and normal bilirubin)."
+   }
+  ],
+  "note": "Paris I criteria on the same row (ALP ≤3× ULN, AST ≤2× ULN, bilirubin ≤17) are correct and can stay."
+ },
+ {
+  "subject": "folate",
+  "group": "state | nmol/l (<3 vs ≥7)",
+  "verdict": "wrong",
+  "tier": 2,
+  "correct": "BSH 2014 (Devalia): serum folate <7 nmol/L (<3 µg/L) indicates deficiency; local laboratory ranges apply",
+  "source": "https://b-s-h.org.uk/guidelines/guidelines/diagnosis-and-treatment-of-cobalamin-and-folate-disorders",
+  "fixes": [
+   {
+    "file": "cases/anaemia.html",
+    "old": "Folate &lt;3 nmol/L is deficient.",
+    "new": "Serum folate &lt;7 nmol/L (&lt;3 µg/L) suggests deficiency (BSH; local ranges apply)."
+   },
+   {
+    "file": "cases/anaemia.html",
+    "old": "B12 ≥2.4 µg/day; folate ≥200 µg/day",
+    "new": "B12 ≥1.5 µg/day; folate ≥200 µg/day"
+   }
+  ],
+  "note": "'3' is the µg/L figure mislabelled as nmol/L; the same page uses folate ≥7 nmol/L as the normal target. Also B12 '2.4 µg/day' is the US RDA; UK RNI is 1.5 µg/day (tier 3)."
+ },
+ {
+  "subject": "folate",
+  "group": "dose | mg (5 mg if BMI ≥30)",
+  "verdict": "inconsistent",
+  "tier": 1,
+  "correct": "NICE NG247 (2025): 400 micrograms for most; 5 mg for recognised higher NTD-risk groups (previous NTD/family history, diabetes, some antiseizure drugs, sickle cell/thalassaemia etc.) — BMI alone does not need 5 mg",
+  "source": "https://gpnotebook.com/en-GB/pages/gynaecology/folic-acid-and-prophylaxis-against-neural-tube-defects ; https://www.nice.org.uk/guidance/ng247/documents/evidence-review-2",
+  "fixes": [
+   {
+    "file": "assets/meds/pcos.js",
+    "old": "Folic acid before conception (5 mg if BMI ≥30).",
+    "new": "Folic acid 400 micrograms before conception (5 mg only for a recognised higher-risk indication — BMI alone does not need 5 mg, NICE NG247)."
+   }
+  ],
+  "note": "Pregnancy fact. Every other site page (cases/pcos, infertility, updates, triage, SCA data) already says BMI alone does not need 5 mg."
+ },
+ {
+  "subject": "insulin",
+  "group": "dose | units (>54 units sick-day cut-off)",
+  "verdict": "owner",
+  "tier": 2,
+  "correct": "",
+  "source": "",
+  "fixes": [],
+  "note": "tools/management/sick-day-rules.html (+ summary) says a total daily dose >54 units means contacting the specialist team, and also refers to a 'doubling rule above 50 units a day'. I could not confirm a UK source for 54 (TREND-UK sick-day leaflet tables?). Owner: confirm the source of the 54-unit cut-off and the 50-unit doubling rule, and make sure they match."
+ }
+]

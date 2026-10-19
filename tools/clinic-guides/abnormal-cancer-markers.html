@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="abnormal-cancer-markers">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raised tumour markers — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/abnormal-cancer-markers.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/abnormal-cancer-markers.html">Full pathway</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · lab results series</div>
+      <h1>Raised tumour markers <small>CLINIC GUIDE</small></h1>
+      <div class="scope">Adults 18+ with a raised PSA, CA125, CEA, AFP, hCG or other tumour marker in primary care. Not for children, population screening programmes or specialist surveillance decisions (follow the written oncology plan).</div>
+    </div>
+    <div class="meta" style="flex:none">NICE <b>NG12</b> (updated 2026) · HTG690 (FIT)<br>NICE CG122 · NG151 · NG50 · CG165 · NG131<br>PCRMP · RCOG GTG 38 · NG110<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full pathway:<br>gpreasoning.uk/tools/algorithms/abnormal-cancer-markers.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Interpret <span>symptoms first → is it real? → which pathway? → what else raises it?</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act today — red flags<small>NG12 · RCOG GTG 38 · HTG690</small></h2><div class="body">
+    <table>
+      <tr><th>Tier</th><th>Result or combination</th><th>Action</th></tr>
+      <tr><td><b>999 / same day</b></td><td><b>Positive pregnancy test + bleeding</b> or pain (ectopic, molar pregnancy) · collapse or heavy bleeding · abnormal film, blasts, severe cytopenias or acutely unwell</td><td>Assess stability; early pregnancy unit or gynaecology; same-day haematology discussion</td></tr>
+      <tr><td><b>Suspected cancer pathway</b></td><td>Prostate feels malignant on DRE, any PSA · <b>ascites or pelvic/abdominal mass</b> (no CA125 needed) · CA125 at or above the NG12 age threshold <b>and</b> ultrasound suggests ovarian cancer · <b>FIT ≥10 µg Hb/g</b>, or rectal or anal mass or anal ulceration</td><td>Suspected cancer pathway referral (28-day Faster Diagnosis Standard)</td></tr>
+      <tr><td><b>Consider</b> suspected cancer</td><td>PSA above the NG12 age threshold in a man with possible symptoms · unexplained lymphadenopathy or splenomegaly</td><td>Discuss preferences and comorbidities, then refer</td></tr>
+      <tr><td><b>Urgent specialist</b></td><td>New liver lesion, suspicious ultrasound or <b>progressive AFP rise</b> in chronic liver disease · persistent hCG after a pregnancy event</td><td>Hepatology via local liver pathway · GTD centre</td></tr>
+    </table>
+    <p class="key">Isolated CEA, AFP, CA19-9 or LDH values are not referral criteria. Markers rarely diagnose cancer alone: symptoms, examination, FIT and imaging drive the decision.</p>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Confirm it is real<small>NG12 · local laboratory</small></h2><div class="body">
+        <table>
+          <tr><th>Marker</th><th>Benign or spurious rises</th></tr>
+          <tr><td><b>PSA</b></td><td>UTI or prostatitis (do not test while active) · recent ejaculation, vigorous exercise · retention, catheter, instrumentation · take blood before DRE. <b>5-alpha-reductase inhibitors lower PSA</b></td></tr>
+          <tr><td><b>CA125</b></td><td>Menstruation, pregnancy, endometriosis, fibroids, PID · ascites of any cause, liver disease, heart failure</td></tr>
+          <tr><td><b>CEA</b></td><td><b>Smoking</b>, COPD, IBD, liver disease, pancreatitis</td></tr>
+          <tr><td><b>AFP</b></td><td>Pregnancy, active hepatitis, liver regeneration</td></tr>
+          <tr><td><b>CA19-9</b></td><td>Biliary obstruction, cholangitis, pancreatitis; absent in Lewis-negative people</td></tr>
+          <tr><td><b>Chromogranin A</b></td><td>PPIs, renal impairment</td></tr>
+        </table>
+        <p class="key">Repeat PSA only when infection or a pre-test factor may explain it, once resolved (local laboratory advice). Use the same laboratory for trends.</p>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">2</span>Result bands<small>NG12 (2026) · PCRMP</small></h2><div class="body">
+        <table>
+          <tr><th>Result</th><th>Means</th><th>Action · timing</th></tr>
+          <tr><td>PSA above age threshold: <b>40–49 &gt;2.5 · 50–59 &gt;3.5 · 60–69 &gt;4.5 · 70–79 &gt;6.5</b> µg/L (ng/mL)</td><td>Raised for age (symptomatic men)</td><td><b>Consider</b> suspected cancer pathway referral; &lt;40 or 80+: clinical judgement</td></tr>
+          <tr><td>CA125 at or above age threshold (NG12 2026): 40–49 ≥35 · 50–59 ≥31 · 60–69 ≥24 · 70–79 ≥25 · 80+ ≥31 IU/mL</td><td>Possible ovarian cancer</td><td><b>Urgent direct-access USS</b> abdomen and pelvis</td></tr>
+          <tr><td>CA125 raised, aged <b>39 or under</b></td><td>Often benign</td><td>Not used alone: consider urgent USS if symptoms persist</td></tr>
+          <tr><td>FIT <b>≥10 µg Hb/g</b></td><td>Possible colorectal cancer</td><td><b>Suspected cancer pathway</b></td></tr>
+          <tr><td>Isolated raised CEA, CA19-9 or LDH</td><td>Non-specific</td><td>Not a referral criterion: assess symptoms, smoking, liver</td></tr>
+          <tr><td>AFP rising in cirrhosis or hepatitis B</td><td>Possible HCC</td><td><b>Urgent</b> hepatology discussion</td></tr>
+          <tr><td>hCG persistent after a pregnancy</td><td>Possible GTD</td><td>GTD centre via local service</td></tr>
+        </table>
+        <p class="key">The old single CA125 cut-off of 35 IU/mL now applies only at 40–49: lower thresholds apply from age 50.</p>
+      </div></div>
+
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">3</span>Causes<small>clue → think → first test</small></h2><div class="body">
+        <table>
+          <tr><th>Clue</th><th>Think</th><th>First test</th></tr>
+          <tr><td>LUTS, hard nodular prostate</td><td><b>Prostate cancer</b></td><td>PSA + DRE</td></tr>
+          <tr><td>Smooth enlarged prostate, LUTS</td><td><b>BPH</b></td><td>PSA vs age threshold</td></tr>
+          <tr><td>Fever, perineal pain, dysuria</td><td><b>Prostatitis</b></td><td>MSU; treat, then repeat</td></tr>
+          <tr><td>Bloating, early satiety, 50+</td><td><b>Ovarian cancer</b></td><td>CA125, USS</td></tr>
+          <tr><td>Cyclical pelvic pain, under 40</td><td><b>Endometriosis</b></td><td>USS; gynaecology</td></tr>
+          <tr><td>Smoker, no bowel symptoms</td><td><b>Smoking-related CEA</b></td><td>Stop retesting; FIT if symptoms</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk purple"><h2><span class="n">4</span>Work-up checklist<small>NG12 · NG131 · CG122</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>Why was it sent?</b> Symptoms, history</li>
+          <li><b>Examination</b>: abdomen, pelvis, DRE</li>
+          <li><b>Urine dip ± MSU</b> before PSA</li>
+          <li><b>Repeat PSA</b> only if confounded</li>
+          <li><b>Urgent USS</b> abdomen and pelvis if CA125 at or above threshold</li>
+          <li><b>FIT</b> for bowel symptoms</li>
+          <li><b>LFTs</b> with CEA, AFP or CA19-9</li>
+          <li><b>Pregnancy test</b> with hCG</li>
+          <li>FBC, film if haematological</li>
+          <li>Family history; BRCA, Lynch</li>
+        </ul>
+      </div></div>
+
+      <div class="blk green"><h2><span class="n">5</span>Which marker, when<small>NG12 · NG50 · RCOG</small></h2><div class="body">
+        <table>
+          <tr><td style="width:30%"><b>Use, with a pathway</b></td><td><b>PSA</b>: possible symptoms, or informed request · <b>CA125</b>: persistent symptoms, aged 40+ · <b>FIT</b>: bowel symptoms · <b>AFP</b>: hepatology surveillance · <b>hCG</b>: pregnancy, GTD</td></tr>
+          <tr><td><b>Specialist only</b></td><td>CEA, CA19-9, CA15-3, chromogranin A, NSE, CYFRA 21-1, S100, calcitonin, thyroglobulin (with anti-Tg antibodies) · isolated LDH</td></tr>
+          <tr><td><b>Never</b></td><td>A "tumour marker screen" for vague symptoms or reassurance</td></tr>
+        </table>
+      </div></div>
+
+    </div>
+
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Raised tumour markers · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary. Use your laboratory's reference ranges.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Manage and refer <span>act on the pathway → document the plan → close the loop</span></div>
+  <div class="grid">
+    <div class="blk teal span"><h2><span class="n">6</span>Management of the commonest situations<small>NG12 · NG110 · NG151 · NG50 · CG165</small></h2><div class="body">
+      <table>
+        <tr><th>Situation</th><th>First line</th><th>Check and continue</th></tr>
+        <tr><td><b>Raised PSA, possible prostatitis</b></td><td>MSU first; antibiotic for <b>14 days</b>, then review (NG110)</td><td>Repeat PSA once settled; still above the age threshold → suspected cancer pathway referral</td></tr>
+        <tr><td><b>Raised PSA, LUTS awaiting urology</b></td><td>Tamsulosin <b>400 micrograms once daily</b> for bothersome LUTS</td><td>Note any 5-ARI in the referral; MRI and biopsy are urology decisions (NG131)</td></tr>
+        <tr><td><b>CA125 raised, USS normal</b></td><td>Look for other causes: endometriosis, fibroids, liver disease, heart failure</td><td>Safety-net; new ascites, mass or worse symptoms → suspected cancer pathway</td></tr>
+        <tr><td><b>Incidental raised CEA</b></td><td>Ask about bowel symptoms; FIT if present. Smoking, liver disease, IBD</td><td>No referral on CEA alone; do not keep retesting without a plan</td></tr>
+        <tr><td><b>Known colorectal cancer</b></td><td>CEA at least <b>every 6 months</b> for the first <b>3 years</b> per the oncology plan (NG151)</td><td>Rising trend → contact the colorectal team; no universal percentage rule</td></tr>
+        <tr><td><b>Cirrhosis, hepatitis B</b></td><td>HCC surveillance: <b>6-monthly ultrasound</b> ± AFP via hepatology (NG50, CG165)</td><td>Progressive AFP rise or new lesion → urgent hepatology</td></tr>
+      </table>
+    </div></div>
+
+    <div class="blk blue span"><h2><span class="n">7</span>Suspected ovarian cancer — the NG12 route<small>NG12 (2026) · CG122</small></h2><div class="body">
+      <div class="flow" style="--c:var(--blue)">
+        <div><b class="h">Examine first</b>Ascites or a pelvic or abdominal mass → suspected cancer pathway now; do not wait for CA125.</div>
+        <div><b class="h">Aged 40+</b>Persistent or frequent symptoms → CA125. At or above the NG12 (2026) age threshold → urgent direct-access USS.</div>
+        <div><b class="h">Aged 39 or under</b>Do not use CA125 alone; consider urgent USS of abdomen and pelvis for persistent symptoms.</div>
+        <div><b class="h">USS result</b>Suggests cancer → suspected cancer pathway. Normal → other causes, safety-net, review date.</div>
+      </div>
+    </div></div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">8</span>Follow-up and documentation checklist<small>NG12 · specialist plans</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li>Result, units and range recorded with the <b>reason for testing</b></li>
+          <li>Benign causes and confounders considered</li>
+          <li>Action, destination, urgency and <b>who reviews</b> the result</li>
+          <li>Referral seen and outcome received; system flag for review</li>
+          <li>Planned review within a time frame agreed with the person (NG12)</li>
+          <li>Surveillance follows the <b>written specialist plan</b>; tests happen</li>
+          <li>Stop repeat markers that have no indication or plan</li>
+          <li>Safety-net: return if symptoms persist, change or worsen</li>
+        </ul>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">9</span>When and where to refer<small>NG12 · CG122 · RCOG</small></h2><div class="body">
+        <table>
+          <tr><td><b>Same day</b></td><td>Pregnancy with bleeding or pain · abnormal film or blasts · acutely unwell</td></tr>
+          <tr><td><b>Suspected cancer</b></td><td>Malignant prostate · PSA above age threshold with symptoms (consider) · ascites or mass · CA125 + suggestive USS · FIT ≥10, rectal or anal mass</td></tr>
+          <tr><td><b>Urgent specialist</b></td><td>Hepatology: rising AFP, new liver lesion · GTD centre: persistent hCG</td></tr>
+          <tr><td><b>Routine</b></td><td>Gynaecology: persistent symptoms, normal USS, likely benign cause</td></tr>
+          <tr><td><b>Secondary care only</b></td><td>RMI I after USS; refer if ≥250 (CG122)</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk teal"><h2><span class="n">10</span>PSA in men without symptoms<small>PCRMP · UK NSC</small></h2><div class="body">
+        <ul>
+          <li>No national PSA screening programme. Offer an <b>informed discussion</b>: false positives, overdiagnosis, MRI or biopsy may follow.</li>
+          <li>A man <b>aged 50+</b> who still wants a test after counselling may have one.</li>
+          <li>Weigh age, ethnicity, family history, <b>BRCA2</b>, comorbidity and life expectancy. Known BRCA2 or strong family history → specialist or clinical genetics advice.</li>
+        </ul>
+      </div></div>
+
+      <div class="blk teal"><h2><span class="n">11</span>Markers in known cancer — follow the written plan<small>NG131 · NG151 · OV05 · specialist plans</small></h2><div class="body">
+      <table>
+        <tr><th>Cancer</th><th>Marker and plan</th><th>GP role</th></tr>
+        <tr><td><b>Prostate</b></td><td>PSA per urology or oncology plan; after radical prostatectomy usually undetectable or very low</td><td>Any rise outside the plan → discuss with urology</td></tr>
+        <tr><td><b>Colorectal</b></td><td>CEA at least every 6 months, plus CT, for the first 3 years (NG151)</td><td>Check tests happen; rising CEA → colorectal team</td></tr>
+        <tr><td><b>Ovarian</b></td><td>CA125 per gynae-oncology plan; early retreatment on CA125 alone gave no benefit</td><td>Record and pass on; avoid alarm</td></tr>
+        <tr><td><b>Thyroid</b></td><td>Thyroglobulin only with anti-Tg antibodies (antibodies falsely lower Tg)</td><td>Specialist follow-up only</td></tr>
+      </table>
+    </div></div>
+    </div>
+
+    <div class="blk slate span"><h2><span class="n">12</span>Pitfalls and never-events<small>NG12 · CG122 · NG131 · OV05</small></h2><div class="body">
+      <ul>
+        <li><b>Never</b> use tumour markers to screen people without symptoms (except informed PSA) · <b>never</b> refer, or reassure, on an isolated CEA, CA19-9, AFP or LDH.</li>
+        <li><b>Never</b> wait for CA125 when there is ascites or a mass · <b>never</b> let a normal CA125 or negative FIT override persistent symptoms · <b>never</b> use CA125 alone under 40.</li>
+        <li><b>Never</b> test PSA during active UTI or prostatitis · do not arrange a bone scan just because PSA is above 10 · PSA velocity, density and free-to-total ratio are secondary-care tools.</li>
+        <li>After ovarian cancer, a CA125 rise alone does not trigger retreatment (MRC OV05): pass it to oncology without alarm.</li>
+      </ul>
+    </div></div>
+
+    <div class="blk green span"><h2><span class="n">13</span>Say it like this<small>raised marker</small></h2><div class="body">
+        <p class="say">"This blood test can be raised for lots of reasons, and most of them are not cancer. On its own it can't tell us what is going on, so I'd like to arrange the right scan or referral to find out properly, and I'll make sure we follow it up."</p>
+      </div></div>
+
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Raised tumour markers · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG12 (updated 2026), HTG690 (FIT), CG122, NG151, NG50, CG165, NG131, NG110; QS18 (2026); Prostate Cancer Risk Management Programme; UK NSC; RCOG Green-top Guideline 38; MRC OV05/EORTC 55955</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/abnormal-cancer-markers.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=4"></script>
+</body>
+</html>

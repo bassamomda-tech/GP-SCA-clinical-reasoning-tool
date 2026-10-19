@@ -888,7 +888,7 @@ let RGP_TOOLS = [
   {id:'__tools-prescribing',label:'Prescribing',           meta:'Ready Rx · eligibility/FP10/RAG · sick-day rules', path:'tools/prescribing.html', icon:'💊'},
   {id:'__tools-admin',     label:'GP Admin',               meta:'Fit Note · DVLA · forms & certificates',  path:'tools/gp-admin.html',           icon:'📋'},
   {id:'__tools-clinicref', label:'Clinic Reference',      meta:'Pharmacy First · immunisations · NG12 · shared care · travel · QOF', path:'tools/clinic-reference.html', icon:'📚'},
-  {id:'__tools-clinicguides', label:'Clinic Guides',      meta:'2-page printable desk guides · common conditions', path:'tools/clinic-guides.html', icon:'🖨️'},
+  {id:'__tools-clinicguides', label:'Clinic Guides',      meta:'2-page printable desk guides · common conditions & lab results', path:'tools/clinic-guides.html', icon:'🖨️'},
   {id:'__tools-spine',     label:'Consultation Spine',     meta:'Consultation structure by presentation — reference',  path:'tools/consultation-spine.html', icon:'🧬'},
   {id:'__tools-scribe',    label:'Consult Scribe',         meta:'Record → EMIS / SystmOne / SOAP note · AI', path:'tools/scribe.html',           icon:'🎙️'},
   {id:'__tools-calc',      label:'Medical Calculators',    meta:'55 scores · CV · VTE · MH · renal & more', path:'tools/calculators.html',        icon:'🧮'},

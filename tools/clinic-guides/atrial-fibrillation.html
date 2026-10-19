@@ -80,7 +80,7 @@ tr:last-child td{border-bottom:0}
   a{color:var(--ink);text-decoration:none}
 }
 </style>
-<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
 </head>
 <body>
 <div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/atrial-fibrillation.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
@@ -204,7 +204,9 @@ tr:last-child td{border-bottom:0}
           <tr><td><b>Rhythm</b></td><td>Symptoms controlled; referred early if rate control fails</td></tr>
         </table>
       </div></div>
+    </div>
 
+    <div class="col">
       <div class="blk amber"><h2><span class="n">9</span>Before stepping up<small>check these first</small></h2><div class="body">
         <ul class="tick" style="grid-template-columns:1fr">
           <li><b>Adherence</b> — DOAC taken every day? Missed doses are unprotected days</li>
@@ -217,24 +219,7 @@ tr:last-child td{border-bottom:0}
       </div></div>
     </div>
 
-    <div class="col">
-      <div class="blk purple"><h2><span class="n">10</span>Annual review checklist<small>every patient, every year</small></h2><div class="body">
-        <ul class="tick" style="grid-template-columns:1fr">
-          <li><b>Re-score CHA₂DS₂-VASc</b> (birthdays, new diagnoses) — esp. if not anticoagulated</li>
-          <li><b>Weight</b>, U&amp;E, <b>CrCl</b> → is the DOAC dose still right?</li>
-          <li>FBC, LFTs; falling Hb = find the bleed</li>
-          <li><b>Bleeding</b> since last review; modifiable bleeding risks</li>
-          <li><b>Adherence</b>, missed-dose pattern, side effects</li>
-          <li>Interactions: NSAIDs, OTC and herbal, new prescriptions</li>
-          <li>Antiplatelet still indicated? Stent stop dates passed?</li>
-          <li>Pulse, BP, symptoms; alcohol, weight, OSA</li>
-          <li>Alert card carried; record score, dose, CrCl, next action</li>
-        </ul>
-        <p class="key">More often if CrCl is falling, the patient is frail, or after acute illness or AKI (SPC, local DOAC protocol).</p>
-      </div></div>
-    </div>
-
-    <div class="blk teal span"><h2><span class="n">11</span>The rate-control ladder and what to monitor<small>NICE NG196 · doses per SPC</small></h2><div class="body">
+    <div class="blk teal span"><h2><span class="n">10</span>The rate-control ladder and what to monitor<small>NICE NG196 · doses per SPC</small></h2><div class="body">
       <div class="ladder">
         <div><b class="h">Step 1 · one drug</b>Beta-blocker (not sotalol) <i>or</i> diltiazem/verapamil, titrated to symptoms and rate.</div>
         <div><b class="h">Step 2 · two drugs</b>Consider any 2 of: beta-blocker, diltiazem, digoxin. Never beta-blocker + verapamil.</div>
@@ -252,7 +237,7 @@ tr:last-child td{border-bottom:0}
     </div></div>
 
     <div class="col">
-      <div class="blk slate"><h2><span class="n">12</span>Side effects and bleeds — fix, keep protection<small>SPC · NG196</small></h2><div class="body">
+      <div class="blk slate"><h2><span class="n">11</span>Side effects and bleeds — fix, keep protection<small>SPC · NG196</small></h2><div class="body">
         <table>
           <tr><td><b>Bruising, brief nosebleeds</b></td><td>Reassure, do not stop; fix modifiables; check FBC, ferritin</td></tr>
           <tr><td><b>Recurrent minor bleeding</b></td><td>Find the source; check the dose against the criteria</td></tr>
@@ -262,6 +247,24 @@ tr:last-child td{border-bottom:0}
           <tr><td><b>Nausea, visual change</b> (digoxin)</td><td>Digoxin level, U&amp;E, K⁺; hold and seek advice</td></tr>
         </table>
       </div></div>
+
+      <div class="blk purple"><h2><span class="n">12</span>Annual review checklist<small>every patient, every year</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li><b>Re-score CHA₂DS₂-VASc</b> (birthdays, new diagnoses) — esp. if not anticoagulated</li>
+          <li><b>Weight</b>, U&amp;E, <b>CrCl</b> → is the DOAC dose still right?</li>
+          <li>FBC, LFTs; falling Hb = find the bleed</li>
+          <li><b>Bleeding</b> since last review; modifiable bleeding risks</li>
+          <li><b>Adherence</b>, missed-dose pattern, side effects</li>
+          <li>Interactions: NSAIDs, OTC and herbal, new prescriptions</li>
+          <li>Antiplatelet still indicated? Stent stop dates passed?</li>
+          <li>Pulse, BP, symptoms; alcohol, weight, OSA</li>
+          <li>Alert card carried; record score, dose, CrCl, next action</li>
+        </ul>
+        <p class="key">More often if CrCl is falling, the patient is frail, or after acute illness or AKI (SPC, local DOAC protocol).</p>
+      </div></div>
+    </div>
+
+    <div class="col">
       <div class="blk blue"><h2><span class="n">13</span>When to refer<small>NG196 · NG12</small></h2><div class="body">
         <ul>
           <li><b>Same day</b>: reliably new onset (&lt;48 h), poorly tolerated fast AF, AF with decompensated heart failure.</li>
@@ -271,9 +274,7 @@ tr:last-child td{border-bottom:0}
           <li><b>Specialist</b>: antiphospholipid syndrome (DOAC not recommended, MHRA), CrCl &lt;15. Unexplained murmur → echo.</li>
         </ul>
       </div></div>
-    </div>
 
-    <div class="col">
       <div class="blk red"><h2><span class="n">14</span>Special groups and never-events<small>NG196 · SPC</small></h2><div class="body">
         <ul>
           <li><b>Mechanical valve or moderate–severe mitral stenosis</b> → warfarin, not a DOAC. <b>Pregnancy</b> → no DOAC; specialist.</li>
@@ -282,6 +283,7 @@ tr:last-child td{border-bottom:0}
           <li><b>Never</b>: stop anticoagulation because the rate is controlled or after "successful" ablation or cardioversion · dose on eGFR · give aspirin "for the AF" · withhold for age or falls alone · under-dose "to be kind".</li>
         </ul>
     </div></div>
+
       <div class="blk green"><h2><span class="n">15</span>Safety-net — what they must know<small>every review</small></h2><div class="body">
         <ul>
           <li><b>Stroke (FAST)</b>: face, arm, speech → 999, even if it passes off in minutes.</li>
@@ -298,6 +300,6 @@ tr:last-child td{border-bottom:0}
   <div class="foot"><span>Reasoning GP Clinic Guide · Atrial fibrillation · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG196 (2021, updated Jun 2021), NG12; apixaban, rivaroxaban, edoxaban and dabigatran SPCs; ESC 2024 (international, for CHA₂DS₂-VA only)</span><span>Full detail and evidence: gpreasoning.uk/tools/management/atrial-fibrillation.html</span></div>
 </section>
 
-<script src="../../assets/clinic-guides.js?v=1"></script>
+<script src="../../assets/clinic-guides.js?v=4"></script>
 </body>
 </html>

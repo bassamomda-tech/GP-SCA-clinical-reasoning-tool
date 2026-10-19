@@ -4350,7 +4350,7 @@
     },
     {
      "h": "Complications",
-     "t": "Testicular pain or swelling suggests epididymo-orchitis — same-day assessment; typical STI-related treatment is ceftriaxone 1 g IM plus doxycycline 100 mg twice daily for 14 days (BASHH epididymo-orchitis 2020)."
+     "t": "Testicular pain or swelling suggests epididymo-orchitis — same-day assessment; typical STI-related treatment is ceftriaxone 1 g IM plus doxycycline 100 mg twice daily for 10–14 days (BASHH epididymo-orchitis 2020)."
     }
    ]
   },
@@ -4868,7 +4868,7 @@
     },
     {
      "h": "What the pathway means",
-     "t": "Suspected cancer pathway referral (still widely called the two-week wait). Since October 2023 the NHS England Faster Diagnosis Standard aims for cancer to be diagnosed or ruled out within 28 days of referral. Usually colonoscopy (bowel preparation, sedation offered, a morning out) or CT colonography."
+     "t": "Suspected cancer pathway referral (NG12). Since October 2023 the NHS England Faster Diagnosis Standard aims for cancer to be diagnosed or ruled out within 28 days of referral. Usually colonoscopy (bowel preparation, sedation offered, a morning out) or CT colonography."
     },
     {
      "h": "Honest hope",
@@ -4999,7 +4999,7 @@
    },
    {
     "who": "dr",
-    "text": "So I’d like to refer you today on the urgent suspected cancer pathway — what people call the two-week wait. The hospital will contact you, usually within a couple of weeks, and the aim is an answer within about four weeks. The test is usually a camera examination of the bowel: you take a bowel-clearing drink the day before, you’re offered sedation, and it takes a morning.",
+    "text": "So I’d like to refer you today on the urgent suspected cancer pathway — you should be seen quickly and get an answer within 4 weeks (28 days). The hospital will contact you to arrange the test. The test is usually a camera examination of the bowel: you take a bowel-clearing drink the day before, you’re offered sedation, and it takes a morning.",
     "dom": "cm",
     "why": "Urgent NICE NG12 referral on the call, with the test explained honestly"
    },

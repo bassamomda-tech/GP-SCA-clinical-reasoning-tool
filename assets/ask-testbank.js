@@ -86,7 +86,7 @@ window.ASK_TESTBANK = [
   { t:'Gout — allopurinol start', q:'How do I start allopurinol after a gout flare has settled?',
     must:[ ['100 mg','100mg'], ['urate'] ], why:'Start 100 mg od, titrate to serum urate target (NG219)' },
   { t:'PMR', q:'Starting treatment for polymyalgia rheumatica?',
-    must:[ ['prednisolone'], ['15 mg','15mg'] ], why:'Prednisolone 15 mg od (within the BSR 2015 range of 12.5–25 mg) with dramatic-response review (BSR PMR guideline)' },
+    must:[ ['prednisolone'], ['15 mg','15mg'] ], why:'Prednisolone 15 mg od (within the EULAR/ACR 2015 range of 12.5–25 mg) with dramatic-response review (BSR PMR guideline)' },
   { t:'GCA — urgent', q:'72-year-old with new temporal headache and jaw claudication — what do I do today?',
     must:[ ['prednisolone'], ['urgent','same day','same-day','immediate'] ], why:'Start high-dose pred + urgent specialist referral (GCA)' },
   { t:'Hyperkalaemia — severe', q:'Routine bloods show potassium 6.7 — what do I do?',

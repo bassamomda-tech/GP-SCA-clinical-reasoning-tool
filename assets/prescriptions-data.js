@@ -63,7 +63,7 @@ Counsel: take all 3 together, complete full course, avoid alcohol. Re-test only 
       { label:'If clarithromycin not used 1st line', drugs:'PPI + amoxicillin 1 g BD + clarithromycin 500 mg BD × 7 days' },
       { label:'Previously had clarithromycin AND metronidazole', drugs:'PPI + amoxicillin 1 g BD + tetracycline 500 mg QDS (or levofloxacin 250 mg BD if tetracycline unsuitable) × 7 days' },
       { label:'Penicillin allergy, no previous quinolone', drugs:'PPI + metronidazole 400 mg BD + levofloxacin 250 mg BD × 7 days (MHRA: fluoroquinolones only when other antibiotics are inappropriate — counsel on tendon, aortic and neuropsychiatric effects)' },
-      { label:'Penicillin allergy, previous quinolone', drugs:'PPI + bismuth subsalicylate 525 mg QDS + metronidazole 400 mg BD + tetracycline 500 mg QDS × 7 days' },
+      { label:'Penicillin allergy, previous quinolone', drugs:'Bismuth quadruple therapy: PPI twice daily + bismuth + tetracycline 500 mg four times daily + metronidazole 400 mg twice daily for 7 days (NICE). If using Pylera®, follow the product-specific regimen: three capsules four times daily for 10 days, with a PPI twice daily. Do not substitute the Pylera schedule for the conventional component regimen.' },
     ],
     counselling: [
       'Avoid alcohol for the whole course AND 48 hours after (metronidazole — disulfiram reaction).',
@@ -247,7 +247,7 @@ COUNSEL: review at 3 months; aim ≥ 50% reduction; keep diary; lifestyle measur
       'Hydration: aim 2 L/day water.',
       'If on allopurinol/febuxostat: DO NOT STOP during flare.',
     ],
-    followUp: '4–6 weeks after flare settles → check urate (target < 360 µmol/L; < 300 if tophi). Initiate / titrate allopurinol if recurrent / tophi / urate stones / CKD / urate > 600.',
+    followUp: '4–6 weeks after flare settles → check urate (target < 360 µmol/L; < 300 if tophi). Offer allopurinol (NG219) if multiple/troublesome flares, CKD 3–5, diuretics, tophi or chronic gouty arthritis.',
     redFlags: [
       'Fever + hot joint + raised inflammatory markers → ?septic arthritis. Same-day orthopaedic referral, aspirate before starting antibiotics.',
       'Bilateral / migratory joint involvement → consider pseudogout / reactive arthritis / RA.',
@@ -272,7 +272,7 @@ DO NOT STOP allopurinol if established. Check urate 4–6 wks after flare.`,
     title: 'Gout — urate-lowering prophylaxis',
     category: 'Musculoskeletal & Rheumatology',
     eyebrow: 'Allopurinol (1st line); febuxostat (2nd)',
-    indication: 'Recurrent gout (≥ 2 attacks/year), tophi, urate stones, CKD ≥ stage 3, urate > 600 µmol/L, or one severe flare. Start 2–4 weeks AFTER acute flare settles.',
+    indication: 'Offer ULT (NICE NG219) for multiple or troublesome flares, CKD stages 3–5, diuretic therapy, tophi or chronic gouty arthritis; discuss ULT with anyone after a flare. Start 2–4 weeks AFTER acute flare settles.',
     contraindications: 'Allopurinol: HLA-B*5801 positive (Chinese / Thai / Korean — test before starting) → high risk SCAR. Avoid azathioprine concurrent.',
     duration: 'Lifelong once started (urate-lowering therapy is for life).',
     drugs: [
@@ -283,7 +283,7 @@ DO NOT STOP allopurinol if established. Check urate 4–6 wks after flare.`,
     altRegimens: [
       { label:'Allopurinol intolerance / failure', drugs:'Febuxostat 80 mg OD; titrate to 120 mg OD after 4 weeks if urate not at target. AVOID in IHD / HF.' },
       { label:'CKD eGFR 30–60', drugs:'Allopurinol start 50 mg OD; titrate slowly; reduce max dose. Monitor U&E + LFTs.' },
-      { label:'CKD eGFR < 30', drugs:'Specialist input. Reduced allopurinol doses; febuxostat 40 mg OD with caution.' },
+      { label:'CKD eGFR < 30', drugs:'Specialist input. Reduced allopurinol doses; febuxostat 80 mg OD with caution (limited data if CrCl < 30).' },
     ],
     counselling: [
       'Continue allopurinol DURING gout flares — never stop.',

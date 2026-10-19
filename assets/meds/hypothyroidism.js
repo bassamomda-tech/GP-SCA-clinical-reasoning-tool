@@ -13,7 +13,7 @@ MedChooser.register('hypothyroidism', {
   safety: [
     {"tone":"amber","label":"Subclinical (TSH high, FT4 normal)","text":"Subclinical with TSH <10: treatment is optional — a 6-month trial if symptomatic and <65; otherwise watch-and-repeat. Avoid over-treatment."},
     {"tone":"amber","label":"Ischaemic heart disease / angina","text":"IHD/angina: start at 25 mcg and titrate slowly (4–6 weekly) — too-rapid replacement can precipitate angina, arrhythmia or MI."},
-    {"tone":"red","label":"Pregnant","text":"Pregnancy: levothyroxine requirements rise early — increase the dose as soon as pregnancy is confirmed and check TSH each trimester (aim trimester-specific / TSH <2.5 mU/L)."},
+    {"tone":"red","label":"Pregnant","text":"Pregnancy: levothyroxine requirements rise early — increase the dose as soon as pregnancy is confirmed and check TSH and FT4 every 4–6 weeks until 20 weeks, then at about 28 weeks (TSH within the trimester-specific reference range; aim for ≤2.5 mU/L pre-conception)."},
     {"tone":"red","label":"Secondary / central (pituitary)","text":"Central hypothyroidism: titrate to FT4 (TSH is unreliable) and exclude/treat adrenal insufficiency BEFORE starting levothyroxine — replacing thyroxine first can precipitate an adrenal crisis."},
     {"tone":"amber","label":"Malabsorption / interacting drugs","text":"Separate levothyroxine from iron, calcium and antacids by ≥4 h; PPIs and coeliac disease reduce absorption — recheck TSH after any change."}
   ],
@@ -27,12 +27,12 @@ MedChooser.register('hypothyroidism', {
       step:'First-line — young, fit, overt',
       source:'NICE NG145 · SPC',
       sideEffects:'Usually only if over-replaced: palpitations, tremor, weight loss, AF, ↓bone density',
-      monitor:'TSH 6–8 weeks after start/change; then annually once stable',
+      monitor:'TSH from about 6 weeks after start/change; about every 3 months until stable, then annually (NICE NG145)',
       counsel:'"Take one tablet every morning on an empty stomach, 30–60 minutes before food or other tablets. It takes a few weeks to work; we\'ll recheck a blood test in about 8 weeks and fine-tune the dose."',
       detail:{
         'Dose':'Healthy adults <65 with no cardiac disease: start at full replacement ~1.6 mcg/kg/day (commonly 50–100 mcg). Adjust in 25–50 mcg steps by TSH every 6–8 weeks.',
         'Target':'Primary hypothyroidism: TSH within reference range (often 0.5–2.5 mU/L if symptoms persist at the upper end). Take levothyroxine consistently relative to food.',
-        'Key teaching':'Same time daily, empty stomach. Lifelong in most. Recheck TSH 6–8 weeks after any dose change — not sooner.'
+        'Key teaching':'Same time daily, empty stomach. Lifelong in most. Recheck TSH from about 6 weeks after any dose change — not sooner — then about every 3 months until stable.'
       },
       conditions: [
         {"kind":"caution","label":"Age ≥65 / frail","text":"Older / cardiac — do NOT start at full replacement; use the low-and-slow start instead"},
@@ -69,19 +69,19 @@ MedChooser.register('hypothyroidism', {
     {
       id:'lt4_pregnancy',
       name:'Levothyroxine — pregnancy dosing',
-      examples:'Increase dose ~25–50% as soon as pregnancy confirmed',
+      examples:'Increase dose ~25–30% as soon as pregnancy confirmed',
       step:'First-line in pregnancy / preconception',
-      source:'NICE NG145 · Endocrine guidance',
+      source:'RCOG GTG76 (2025) · NICE NG145',
       sideEffects:'Under-replacement risks fetal neurodevelopment; over-replacement maternal thyrotoxic symptoms',
-      monitor:'TSH every trimester (and 4–6 weeks after dose change); aim TSH <2.5 mU/L',
+      monitor:'TSH and FT4 every 4–6 weeks until 20 weeks, then at about 28 weeks, and 4–6 weeks after any dose change; TSH within the trimester-specific reference range (RCOG GTG76, 2025)',
       counsel:'"Pregnancy increases how much thyroxine you need. As soon as you know you\'re pregnant, increase the dose as we\'ve agreed and let us know so we can check your levels — your baby\'s development depends on it."',
       detail:{
-        'Dose':'On confirmation of pregnancy, increase levothyroxine (commonly by ~25–50%, e.g. two extra doses per week as an interim step) and check TSH. Aim for trimester-specific range / TSH <2.5 mU/L. Optimise BEFORE conception if planning.',
+        'Dose':'On confirmation of pregnancy, increase levothyroxine by about 25–30% immediately (double the dose on 2 days each week, or increase by 25 micrograms/day if the pre-pregnancy dose is ≤100 micrograms/day, or 50 micrograms/day if more than 100; RCOG GTG76, 2025) and check TSH and FT4. Aim for TSH within the trimester-specific reference range. Optimise BEFORE conception if planning (aim for TSH ≤2.5 mU/L in overt or severe subclinical hypothyroidism; consider the same target in subclinical hypothyroidism, particularly if TPO-antibody positive).',
         'Key teaching':'Requirements rise from early in the first trimester. Do not stop levothyroxine in pregnancy. Refer/seek specialist advice for overt disease in pregnancy.'
       },
       conditions: [
-        {"kind":"favoured","label":"Pregnant","text":"Pregnant — increase dose promptly and check TSH each trimester, aim <2.5 mU/L"},
-        {"kind":"favoured","label":"Trying to conceive","text":"Planning pregnancy — optimise TSH (<2.5) before conception and plan an early dose increase"}
+        {"kind":"favoured","label":"Pregnant","text":"Pregnant — increase dose promptly (~25–30%) and check TSH and FT4 every 4–6 weeks until 20 weeks, then at about 28 weeks; TSH within the trimester-specific reference range"},
+        {"kind":"favoured","label":"Trying to conceive","text":"Planning pregnancy — optimise TSH (≤2.5 mU/L) before conception and plan an early dose increase"}
       ]
     },
 
@@ -107,14 +107,14 @@ MedChooser.register('hypothyroidism', {
     {
       id:'monitor',
       name:'Monitor without treatment (subclinical)',
-      examples:'Repeat TSH/FT4 in 3–6 months',
+      examples:'Repeat TSH/FT4 after 3 months',
       step:'Option — asymptomatic subclinical, TSH <10',
       source:'NICE NG145',
       sideEffects:'None',
       monitor:'Repeat thyroid function; check TPO antibodies (higher progression risk)',
       counsel:'"Your thyroid is only mildly underactive and you feel well, so the safest plan is to recheck the blood test rather than start a lifelong tablet now."',
       detail:{
-        'Key teaching':'For asymptomatic subclinical hypothyroidism with TSH <10 mU/L, repeat testing (e.g. 3–6 months) rather than treat. Consider a time-limited levothyroxine trial only if symptomatic and <65; stop if no benefit. Always treat if TSH ≥10 or pregnant/planning pregnancy.'
+        'Key teaching':'For asymptomatic subclinical hypothyroidism with TSH <10 mU/L, repeat TSH and FT4 after 3 months (NICE NG145) rather than treat. Consider a time-limited levothyroxine trial only if symptomatic and <65; stop if no benefit. Consider levothyroxine if TSH ≥10 on 2 tests 3 months apart; pregnancy or planning pregnancy → follow RCOG GTG76 / specialist advice.'
       },
       conditions: [
         {"kind":"avoid","label":"Overt (TSH high + low FT4)","text":"Overt disease, TSH ≥10, or pregnancy — treat, do not just monitor"},

@@ -26,7 +26,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     { ae:'Angio-oedema (rare)', mechanism:'Bradykinin-mediated; can be delayed and dangerous.' },
   ],
   practical:[
-    { point:'Check U&E ~1–2 weeks after starting/up-titrating', detail:'Expect a small creatinine rise (≤25–30%) and watch potassium — this is acceptable and renoprotective.' },
+    { point:'Check U&E ~1–2 weeks after starting/up-titrating', detail:'Expect a small creatinine rise (less than 30%; eGFR fall less than 25%) and watch potassium — this is acceptable and renoprotective.' },
     { point:'Avoid in pregnancy', detail:'Teratogenic / fetotoxic — use alternatives in women who may conceive.' },
     { point:'Hold during dehydrating illness (sick-day rules)', detail:'Reduces AKI risk when renal perfusion falls.' },
     { point:'Caution with K⁺-raising drugs', detail:'MRAs, potassium supplements, trimethoprim, NSAIDs compound hyperkalaemia.' },
@@ -236,7 +236,7 @@ window.RGP_BASICSCIENCE = (window.RGP_BASICSCIENCE || []).concat([
     { ae:'Over-replacement → thyrotoxic features (AF, osteoporosis, palpitations)', mechanism:'Excess hormone — especially risky in elderly/cardiac patients.' },
   ],
   practical:[
-    { point:'Recheck TSH ~6–8 weeks after any dose change', detail:'Long T4 half-life (~7 days) means levels and feedback take weeks to stabilise.' },
+    { point:'Recheck TSH from ~6 weeks after any dose change, then about every 3 months until stable (NICE NG145)', detail:'Long T4 half-life (~7 days) means levels and feedback take weeks to stabilise.' },
     { point:'Take on an empty stomach, separated from interacting drugs', detail:'Calcium, iron, PPIs and food impair absorption.' },
     { point:'Start low in elderly/IHD', detail:'Raising metabolic rate increases cardiac oxygen demand.' },
   ],

@@ -12,7 +12,7 @@ MedChooser.register('low-back-pain', {
 
   safety: [
     {"tone":"red","label":"Cauda equina features","text":"Cauda equina syndrome — EMERGENCY same-day spinal referral + urgent MRI. Do not manage as simple back pain."},
-    {"tone":"red","label":"?Myeloma (older, bone pain, ↑ESR, anaemia, ↑Ca, renal)","text":"NICE NG12 (updated April 2026) — ?myeloma: FBC, ESR/plasma viscosity, calcium, renal + serum protein electrophoresis / Bence-Jones protein (urine). Very urgent if hypercalcaemia/renal failure."},
+    {"tone":"red","label":"?Myeloma (older, bone pain, ↑ESR, anaemia, ↑Ca, renal)","text":"NICE NG12 (updated April 2026) — ?myeloma: FBC, ESR/plasma viscosity, calcium, renal + serum protein electrophoresis and serum free light chains (urine Bence-Jones if free light chains are unavailable). Very urgent (within 48 hours) if hypercalcaemia or leukopenia."},
     {"tone":"red","label":"Cancer history / ?spinal metastasis","text":"Cancer history with new back pain — consider spinal metastasis / MSCC; urgent imaging + MSCC pathway if neurology"},
     {"tone":"amber","label":"?Spinal infection (fever, IVDU, immunosuppressed)","text":"?Spinal infection (discitis/abscess) — inflammatory markers, blood cultures, urgent imaging/referral"},
     {"tone":"amber","label":"?Vertebral fracture (trauma, osteoporosis, steroids)","text":"?Vertebral fragility fracture — imaging; assess osteoporosis (FRAX, DXA)"},

@@ -80,7 +80,7 @@ tr:last-child td{border-bottom:0}
   a{color:var(--ink);text-decoration:none}
 }
 </style>
-<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
 </head>
 <body>
 <div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../management/stable-angina.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
@@ -206,7 +206,9 @@ tr:last-child td{border-bottom:0}
         </table>
         <p class="key">Lipids above target → check adherence, dose, interactions and tolerance, then consider ezetimibe (NG238).</p>
       </div></div>
+    </div>
 
+    <div class="col">
       <div class="blk amber"><h2><span class="n">9</span>Before every step-up<small>is it still stable?</small></h2><div class="body">
         <ul class="tick" style="grid-template-columns:1fr">
           <li><b>Pattern</b> — rest pain, crescendo or a lower threshold → red box, not titration</li>
@@ -218,33 +220,7 @@ tr:last-child td{border-bottom:0}
       </div></div>
     </div>
 
-    <div class="col">
-      <div class="blk purple"><h2><span class="n">10</span>Annual review checklist<small>every patient, every year</small></h2><div class="body">
-        <ul class="tick" style="grid-template-columns:1fr">
-          <li>Symptom frequency, <b>CCS class</b>, GTN sprays per week, pattern change</li>
-          <li><b>GTN technique</b> and 5-5-999 recall; PDE5 inhibitor or poppers use</li>
-          <li>Pulse, <b>BP</b>, weight; side effects (fatigue, ankles, ED, dizziness)</li>
-          <li><b>Lipids</b>, HbA1c, U&amp;E; statin and aspirin <b>still taken</b></li>
-          <li>Smoking status, activity, mood, cardiac rehab offered if needed</li>
-          <li>Influenza vaccine if eligible; DVLA position if a Group 2 driver</li>
-          <li>Record CCS class, current step and next action</li>
-        </ul>
-      </div></div>
-
-      <div class="blk blue"><h2><span class="n">13</span>When to refer<small>NICE CG95 · CG126 §1.4</small></h2><div class="body">
-        <table>
-          <tr><td><b>999 / same day</b></td><td>Red box: current pain, crescendo or new rest pain, syncope</td></tr>
-          <tr><td><b>Chest pain clinic</b></td><td>New suspected angina, no known CAD → CTCA</td></tr>
-          <tr><td><b>Cardiology</b></td><td><b>Symptoms not controlled on optimal medical treatment</b> (1 or 2 anti-anginals + secondary prevention) → consider PCI or CABG</td></tr>
-          <tr><td><b>Heart Team</b></td><td>Left main or complex three-vessel disease; PCI-versus-CABG uncertainty</td></tr>
-          <tr><td><b>Echo</b></td><td>Murmur, heart-failure signs, previous MI</td></tr>
-          <tr><td><b>Cardiac rehab</b></td><td>After MI or revascularisation; fear-driven inactivity</td></tr>
-        </table>
-        <p class="key">PCI and CABG relieve symptoms; for many stable patients they add no survival over optimal tablets, but some anatomy benefits — cardiology decides.</p>
-      </div></div>
-    </div>
-
-    <div class="blk teal span"><h2><span class="n">11</span>The anti-anginal ladder<small>NICE CG126 §1.3 · doses per SPC</small></h2><div class="body">
+    <div class="blk teal span"><h2><span class="n">10</span>The anti-anginal ladder<small>NICE CG126 §1.3 · doses per SPC</small></h2><div class="body">
       <div class="ladder">
         <div><b class="h">Step 1 · one drug</b>Beta-blocker <i>or</i> CCB, titrated. Not tolerated → switch to the other class.</div>
         <div><b class="h">Step 2 · two drugs</b>Beta-blocker + <b>dihydropyridine CCB</b>: amlodipine, felodipine or MR nifedipine.</div>
@@ -264,7 +240,7 @@ tr:last-child td{border-bottom:0}
     </div></div>
 
     <div class="col">
-      <div class="blk slate"><h2><span class="n">12</span>Side effects — fix, don't abandon<small>SPC · MHRA</small></h2><div class="body">
+      <div class="blk slate"><h2><span class="n">11</span>Side effects — fix, don't abandon<small>SPC · MHRA</small></h2><div class="body">
         <table>
           <tr><td><b>Fatigue, cold hands</b> (beta-blocker)</td><td>Lower dose or switch to a CCB; taper, never stop suddenly</td></tr>
           <tr><td><b>Bradycardia, dizziness</b></td><td>Reduce dose; check for heart block on ECG</td></tr>
@@ -274,6 +250,33 @@ tr:last-child td{border-bottom:0}
           <tr><td><b>Erectile dysfunction</b></td><td>Ask; PDE5 inhibitor only with no nitrate or nicorandil</td></tr>
         </table>
       </div></div>
+
+      <div class="blk purple"><h2><span class="n">12</span>Annual review checklist<small>every patient, every year</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li>Symptom frequency, <b>CCS class</b>, GTN sprays per week, pattern change</li>
+          <li><b>GTN technique</b> and 5-5-999 recall; PDE5 inhibitor or poppers use</li>
+          <li>Pulse, <b>BP</b>, weight; side effects (fatigue, ankles, ED, dizziness)</li>
+          <li><b>Lipids</b>, HbA1c, U&amp;E; statin and aspirin <b>still taken</b></li>
+          <li>Smoking status, activity, mood, cardiac rehab offered if needed</li>
+          <li>Influenza vaccine if eligible; DVLA position if a Group 2 driver</li>
+          <li>Record CCS class, current step and next action</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">13</span>When to refer<small>NICE CG95 · CG126 §1.4</small></h2><div class="body">
+        <table>
+          <tr><td><b>999 / same day</b></td><td>Red box: current pain, crescendo or new rest pain, syncope</td></tr>
+          <tr><td><b>Chest pain clinic</b></td><td>New suspected angina, no known CAD → CTCA</td></tr>
+          <tr><td><b>Cardiology</b></td><td><b>Symptoms not controlled on optimal medical treatment</b> (1 or 2 anti-anginals + secondary prevention) → consider PCI or CABG</td></tr>
+          <tr><td><b>Heart Team</b></td><td>Left main or complex three-vessel disease; PCI-versus-CABG uncertainty</td></tr>
+          <tr><td><b>Echo</b></td><td>Murmur, heart-failure signs, previous MI</td></tr>
+          <tr><td><b>Cardiac rehab</b></td><td>After MI or revascularisation; fear-driven inactivity</td></tr>
+        </table>
+        <p class="key">PCI and CABG relieve symptoms; for many stable patients they add no survival over optimal tablets, but some anatomy benefits — cardiology decides.</p>
+      </div></div>
+
       <div class="blk green"><h2><span class="n">14</span>Safety-net — what they must know<small>CG126</small></h2><div class="body">
         <ul>
           <li>Pain still there 5 minutes after the second spray → <b>999</b>.</li>
@@ -284,7 +287,7 @@ tr:last-child td{border-bottom:0}
       </div></div>
     </div>
 
-    <div class="blk red"><h2><span class="n">15</span>Special groups and never-events<small>MHRA · DVLA · CG126</small></h2><div class="body">
+    <div class="blk red span"><h2><span class="n">15</span>Special groups and never-events<small>MHRA · DVLA · CG126</small></h2><div class="body">
         <ul>
           <li><b>HFrEF</b>: beta-blocker; avoid verapamil, diltiazem. <b>Asthma</b>: usually no beta-blocker → CCB.</li>
           <li><b>DVLA</b>: Group 2 drivers must notify; relicensing needs at least <b>6 weeks</b> free of angina plus functional test requirements.</li>
@@ -299,6 +302,6 @@ tr:last-child td{border-bottom:0}
   <div class="foot"><span>Reasoning GP Clinic Guide · Stable angina · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE CG126 (2011, updated 2016), CG95 (2010, updated 2016), NG238 (2023), NG136; MHRA Drug Safety Updates (nicorandil, ivabradine); DVLA Assessing fitness to drive</span><span>Full detail and evidence: gpreasoning.uk/tools/management/stable-angina.html</span></div>
 </section>
 
-<script src="../../assets/clinic-guides.js?v=1"></script>
+<script src="../../assets/clinic-guides.js?v=4"></script>
 </body>
 </html>

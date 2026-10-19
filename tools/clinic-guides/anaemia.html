@@ -80,7 +80,7 @@ tr:last-child td{border-bottom:0}
   a{color:var(--ink);text-decoration:none}
 }
 </style>
-<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
 </head>
 <body>
 <div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/anaemia.html">Full protocol</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
@@ -212,19 +212,18 @@ tr:last-child td{border-bottom:0}
     </div></div>
 
     <div class="col">
-      <div class="blk blue"><h2><span class="n">8</span>When and where to refer<small>NG12 · BSG 2021 · NG239</small></h2><div class="body">
-        <table>
-          <tr><td><b>999</b></td><td>Shock, major bleeding, ACS</td></tr>
-          <tr><td><b>Same day</b></td><td>Severe symptoms, falling Hb, haemolysis, suspected leukaemia, B12 neurology</td></tr>
-          <tr><td><b>Suspected cancer</b></td><td>FIT ≥10; rectal mass; dysphagia; 55+ weight loss with upper GI symptoms; lymphadenopathy</td></tr>
-          <tr><td><b>Urgent GI</b></td><td>Unexplained IDA in men and post-menopausal women, FIT negative</td></tr>
-          <tr><td><b>Haematology</b></td><td>Unexplained macrocytosis or normocytic anaemia with other cytopenias; no response to oral iron after review</td></tr>
-        </table>
-      </div></div>
-
-      <div class="blk green"><h2><span class="n">9</span>Self-care and the conversation<small>BSG 2021 · NG239</small></h2><div class="body">
+      <div class="blk green"><h2><span class="n">8</span>Self-care and the conversation<small>BSG 2021 · NG239</small></h2><div class="body">
         <p>Take iron away from tea, coffee, calcium and antacids · black stools on iron are expected, but tarry, sticky stools with dizziness are not · vegans need a B12 supplement or fortified foods.</p>
         <p class="say" style="margin-top:3px">"The iron tablets will build you back up, but they don't tell us why you were low. Finding where the iron went is the important part, so the tests I'm arranging matter even when you feel better."</p>
+      </div></div>
+
+      <div class="blk slate"><h2><span class="n">9</span>Iron treatment problems — and the fix<small>BSG 2021 · SPC · MHRA</small></h2><div class="body">
+        <table>
+          <tr><td><b>Nausea, constipation</b></td><td>Alternate days, a different salt, or take with food (absorbs less)</td></tr>
+          <tr><td><b>No Hb rise</b></td><td>Adherence, tea with meals, ongoing loss, coeliac, wrong diagnosis</td></tr>
+          <tr><td><b>IV iron</b></td><td>Only where anaphylaxis can be managed; observe afterwards</td></tr>
+          <tr><td><b>Ferric carboxymaltose</b></td><td>Check phosphate if repeated or high doses or risk factors (MHRA)</td></tr>
+        </table>
       </div></div>
     </div>
 
@@ -242,12 +241,13 @@ tr:last-child td{border-bottom:0}
         </ul>
       </div></div>
 
-      <div class="blk slate"><h2><span class="n">11</span>Iron treatment problems — and the fix<small>BSG 2021 · SPC · MHRA</small></h2><div class="body">
+      <div class="blk blue"><h2><span class="n">11</span>When and where to refer<small>NG12 · BSG 2021 · NG239</small></h2><div class="body">
         <table>
-          <tr><td><b>Nausea, constipation</b></td><td>Alternate days, a different salt, or take with food (absorbs less)</td></tr>
-          <tr><td><b>No Hb rise</b></td><td>Adherence, tea with meals, ongoing loss, coeliac, wrong diagnosis</td></tr>
-          <tr><td><b>IV iron</b></td><td>Only where anaphylaxis can be managed; observe afterwards</td></tr>
-          <tr><td><b>Ferric carboxymaltose</b></td><td>Check phosphate if repeated or high doses or risk factors (MHRA)</td></tr>
+          <tr><td><b>999</b></td><td>Shock, major bleeding, ACS</td></tr>
+          <tr><td><b>Same day</b></td><td>Severe symptoms, falling Hb, haemolysis, suspected leukaemia, B12 neurology</td></tr>
+          <tr><td><b>Suspected cancer</b></td><td>FIT ≥10; rectal mass; dysphagia; 55+ weight loss with upper GI symptoms; lymphadenopathy</td></tr>
+          <tr><td><b>Urgent GI</b></td><td>Unexplained IDA in men and post-menopausal women, FIT negative</td></tr>
+          <tr><td><b>Haematology</b></td><td>Unexplained macrocytosis or normocytic anaemia with other cytopenias; no response to oral iron after review</td></tr>
         </table>
       </div></div>
     </div>
@@ -264,6 +264,6 @@ tr:last-child td{border-bottom:0}
   <div class="foot"><span>Reasoning GP Clinic Guide · Anaemia · page 2 of 2 · v1.0 · Oct 2026 · sources: BSG IDA guideline 2021 (Snook et al., Gut); NICE NG12, HTG690, NG239 (2024), NG20, NG203; NICE CKS anaemia – iron deficiency; MHRA DSU (ferric carboxymaltose); SPCs</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/anaemia.html</span></div>
 </section>
 
-<script src="../../assets/clinic-guides.js?v=1"></script>
+<script src="../../assets/clinic-guides.js?v=4"></script>
 </body>
 </html>

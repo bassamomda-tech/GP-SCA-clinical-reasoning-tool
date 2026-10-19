@@ -229,7 +229,7 @@
     management:[
       'Check blood pressure and urine (proteinuria) at every antenatal contact and act urgently on symptoms',
       'Suspected pre-eclampsia → arrange same-day obstetric assessment; do not attempt to manage in primary care',
-      'Offer low-dose aspirin from 12 weeks until birth to women at high or moderate risk (preventive role)',
+      'Offer aspirin 75–150 mg daily from 12 weeks until birth to women with one high-risk factor or more than one moderate-risk factor for pre-eclampsia (NICE NG133)',
       'Understand the hospital pathway: antihypertensives (e.g. labetalol, nifedipine), magnesium sulfate for seizure prevention/treatment, fetal monitoring, and timing of delivery as definitive treatment',
       'Counsel about recurrence risk and longer-term cardiovascular risk at postnatal review',
       'Check BP + urine at every antenatal contact; new headache/visual symptoms/epigastric pain or BP ≥160/110 = same-day maternity (emergency); offer aspirin 75–150 mg from 12 weeks to at-risk women'],

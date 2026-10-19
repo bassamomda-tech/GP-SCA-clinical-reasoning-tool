@@ -1,0 +1,30 @@
+[
+ {"subject":"morphine","group":"renal impairment / CKD stage (palliative case)","verdict":"wrong","tier":1,
+  "correct":"eGFR 28 mL/min/1.73m² is CKD category G4 (15–29), not G3b (30–44). The opioid teaching point (avoid morphine, eGFR <30) stays correct.",
+  "source":"https://www.nice.org.uk/guidance/ng203 (NG203 GFR categories: G3b 30–44, G4 15–29)",
+  "fixes":[
+   {"file":"cases/palliative-care.html","old":"Mrs. Patel&#8217;s eGFR 28 is confirmed CKD 3b:","new":"Mrs. Patel&#8217;s eGFR 28 is CKD G4 (eGFR 15&#8211;29):"},
+   {"file":"cases/palliative-care.html","old":"Mrs. Patel&#8217;s eGFR 28 = CKD 3b;","new":"Mrs. Patel&#8217;s eGFR 28 = CKD G4;"},
+   {"file":"cases/palliative-care.html","old":"eGFR 28 &#8212; CKD 3b &#8212; CRITICAL for opioid choice","new":"eGFR 28 &#8212; CKD G4 &#8212; CRITICAL for opioid choice"}
+  ],
+  "note":"Three places in the palliative case label eGFR 28 as CKD 3b. It is G4. The renal-opioid advice (avoid morphine below eGFR 30; specialist advice; oxycodone/alfentanil) is unaffected. The first fix also drops 'confirmed', because a single eGFR from 3 weeks ago in a vomiting, dehydrated patient does not confirm a CKD stage (the same sentence goes on to suggest a pre-renal element). Grep found no other site file that stages eGFR 28 as 3b."},
+ {"subject":"glucose","group":"suspected type 1 diabetes in a child (secondary enuresis)","verdict":"wrong","tier":1,
+  "correct":"In a child with polyuria/polydipsia/weight loss, a random glucose ≥11.1 mmol/L (not >11.1) supports diabetes, and a capillary reading is not by itself a formal diagnosis. NICE NG18 says refer immediately (same day) to the paediatric diabetes team and do not wait for confirmatory tests.",
+  "source":"https://www.nice.org.uk/guidance/ng18 (rec 1.1.1–1.1.2: suspected T1D → same-day referral to multidisciplinary paediatric diabetes team); WHO diagnostic threshold random plasma glucose ≥11.1 mmol/L with symptoms",
+  "fixes":[
+   {"file":"cases/enuresis.html","old":"Random glucose &gt;11.1 mmol/L = diabetes diagnosis.","new":"A random glucose of 11.1 mmol/L or more with these symptoms strongly suggests diabetes; do not wait for confirmatory tests: refer the same day to the paediatric diabetes team (NICE NG18)."}
+  ],
+  "note":"The threshold sign is wrong (> instead of ≥). Calling a capillary reading a 'diagnosis' could also encourage the GP to confirm it in primary care before referring, which NG18 advises against. The adjacent cell ('&gt;11.1 → same-day paediatric diabetes team') is acceptable in context."},
+ {"subject":"glucose","group":"insulinoma / 72-h fast diagnostic criteria","verdict":"wrong","tier":2,
+  "correct":"Endocrine Society (Cryer 2009) criteria: plasma glucose <3.0 mmol/L (55 mg/dL) with insulin ≥3 µU/mL (≥18 pmol/L), C-peptide ≥0.6 ng/mL (≥0.2 nmol/L) and proinsulin ≥5 pmol/L. <2.2 mmol/L (40 mg/dL) is an older criterion.",
+  "source":"https://academic.oup.com/jcem/article/94/3/709/2596186 (Endocrine Society Clinical Practice Guideline: Evaluation and management of adult hypoglycemic disorders, 2009)",
+  "fixes":[
+   {"file":"tools/algorithms/hypoglycaemia.html","old":"(blood glucose <2.2 mmol/L)","new":"(plasma glucose <3.0 mmol/L)"}
+  ],
+  "note":"The insulin, C-peptide and proinsulin cut-offs in the same sentence already match the Endocrine Society criteria. Only the glucose threshold is out of date. This is a secondary-care teaching point, so it is low priority."},
+ {"subject":"glucose","group":"type 2 diabetes safety-net: same-day contact threshold","verdict":"owner","tier":1,
+  "correct":"No national figure. Typical sick-day / safety-net advice is to contact the team if glucose stays high (commonly >15 mmol/L) despite usual treatment or extra measures, or at once with ketones, vomiting or dehydration.",
+  "source":"https://trend-uk.org/ (TREND-UK 'What to do when you are ill' type 2 leaflet); https://www.diabetes.org.uk/guide-to-diabetes/life-with-diabetes/illness",
+  "fixes":[],
+  "note":"OWNER: tools/management/type-2-diabetes.html, type-2-diabetes-print.html and summaries/type-2-diabetes.html (and assets/search/idx-protocol.json) say 'Same-day if… glucose persistently &gt;20 for 48 hours'. Waiting 48 h at >20 mmol/L may delay recognition of HHS or DKA (on an SGLT2i), especially in older or unwell patients. Consider a lower or shorter trigger in line with the local sick-day leaflet, e.g. 'glucose persistently above 15 mmol/L (or your agreed level) for 24 hours, or any high reading with vomiting, dehydration, drowsiness or ketones'. This is not a national threshold, so it is the owner's choice."}
+]

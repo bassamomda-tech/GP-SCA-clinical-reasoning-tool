@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en-GB" data-cg-import="raised-creatinine">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Raised creatinine or falling eGFR in adults — Clinic Guide · Reasoning GP</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://gpreasoning.uk/tools/algorithms/raised-creatinine.html">
+<style>
+/* ==== Reasoning GP · Clinic Guide (2-page printable desk guide) · template v1.0 ====
+   Page 1 = diagnose & start · Page 2 = review & titrate (the chronic-disease review).
+   Same colour meanings as the 1-page Snapshot: red act now · amber confirm · blue decide · green target · teal treat · purple monitor · slate never/safety. */
+:root{
+  --ink:#15202b; --ink2:#2a3744; --muted:#5d6673; --line:#d9d2c3; --paper:#fffdf8; --bg:#f6f2e9;
+  --teal:#0c4a47; --teal-soft:#e3efed;
+  --red:#b3261e; --red-soft:#fbeceb;
+  --amber:#a35f00; --amber-soft:#fdf3e2;
+  --blue:#1f5fa8; --blue-soft:#e9f0f9;
+  --purple:#6a3fa0; --purple-soft:#f1ebf8;
+  --green:#2b7a3e; --green-soft:#e8f4eb;
+  --slate:#39424e; --slate-soft:#eef0f3;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:10.4px/1.36 "DM Sans","Helvetica Neue",Helvetica,Arial,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--teal)}
+.bar{position:sticky;top:0;z-index:5;display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:8px 16px;background:var(--teal);color:#fff;font-size:13px}
+.bar a,.bar button{font:600 13px/1 inherit;font-family:inherit;color:#fff;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;text-decoration:none;cursor:pointer}
+/* A4 sheets: 210 x 297 mm, 9 mm margins */
+.page{width:210mm;min-height:297mm;margin:12px auto;background:var(--paper);border:1px solid var(--line);padding:8mm 9mm 7mm;display:flex;flex-direction:column;gap:5px}
+@media screen and (max-width:820px){.page{width:auto;min-height:0;margin:10px;padding:12px}}
+.hdr{display:flex;gap:10px;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:4px}
+.brand{font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.brand b{color:var(--teal)}
+h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:21px;line-height:1.05;margin:1px 0}
+h1 small{font-family:"DM Sans",Arial,sans-serif;font-size:11px;font-weight:700;color:#fff;background:var(--teal);border-radius:4px;padding:2px 6px;vertical-align:4px;margin-left:6px;letter-spacing:.03em}
+.scope{font-size:10px;color:var(--ink2)}
+.meta{text-align:right;font-size:9.4px;color:var(--muted);line-height:1.35}
+.meta b{color:var(--ink)}
+.ptitle{display:flex;justify-content:space-between;align-items:center;background:var(--teal);color:#fff;border-radius:5px;padding:3px 9px;font-size:11px;font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ptitle span{font-weight:500;text-transform:none;letter-spacing:0;opacity:.9}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 7px;align-items:start}
+.col{display:flex;flex-direction:column;gap:5px}
+.span{grid-column:1/-1}
+@media screen and (max-width:820px){.grid{grid-template-columns:1fr}.meta{text-align:left}}
+.blk{border:1px solid var(--line);border-left:4px solid var(--c);border-radius:5px;background:#fff;overflow:hidden;break-inside:avoid}
+.blk h2{display:flex;align-items:center;gap:6px;margin:0;padding:2px 7px;background:var(--cs);font-size:10.6px;line-height:1.3;color:var(--c);text-transform:uppercase;letter-spacing:.04em}
+.blk h2 .n{display:inline-grid;place-items:center;min-width:16px;height:16px;border-radius:3px;background:var(--c);color:#fff;font-size:9.5px}
+.blk h2 small{font-weight:500;text-transform:none;letter-spacing:0;color:var(--ink2);font-size:9.6px;margin-left:auto}
+.body{padding:3px 7px 4px}
+.red{--c:var(--red);--cs:var(--red-soft)} .amber{--c:var(--amber);--cs:var(--amber-soft)} .blue{--c:var(--blue);--cs:var(--blue-soft)}
+.teal{--c:var(--teal);--cs:var(--teal-soft)} .purple{--c:var(--purple);--cs:var(--purple-soft)} .green{--c:var(--green);--cs:var(--green-soft)} .slate{--c:var(--slate);--cs:var(--slate-soft)}
+ul{margin:0;padding-left:13px} li{margin:0.5px 0}
+p{margin:1px 0}
+table{width:100%;border-collapse:collapse;font-size:9.9px}
+th,td{border-bottom:1px solid #ebe5d8;padding:1.6px 4px;text-align:left;vertical-align:top}
+th{background:#faf7f0;font-size:9.3px;color:var(--ink2);text-transform:uppercase;letter-spacing:.03em}
+tr:last-child td{border-bottom:0}
+.src{color:var(--muted);font-size:8.6px;white-space:nowrap}
+.tick{display:grid;grid-template-columns:repeat(2,1fr);gap:1px 10px;list-style:none;padding:0}
+.tick li{padding-left:15px;position:relative}
+.tick li::before{content:"";position:absolute;left:0;top:2px;width:9px;height:9px;border:1.3px solid var(--ink2);border-radius:2px}
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.flow div{border:1px solid var(--line);border-radius:4px;padding:3px 5px;background:#fff}
+.flow b.h{display:block;color:var(--c);font-size:9.5px;text-transform:uppercase;letter-spacing:.03em}
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.ladder div{border:1px solid var(--line);border-top:3px solid var(--teal);border-radius:4px;padding:3px 5px;background:#fff}
+.ladder div.s4{border-top-color:var(--amber)}
+.ladder b.h{display:block;font-size:9.6px;text-transform:uppercase;color:var(--teal)}
+.ladder div.s4 b.h{color:var(--amber)}
+.say{background:var(--teal-soft);border-radius:4px;padding:3px 6px;font-style:italic}
+.foot{margin-top:auto;border-top:1px solid var(--line);padding-top:3px;font-size:8.4px;color:var(--muted);display:flex;justify-content:space-between;gap:8px}
+.key{font-size:8.6px;color:var(--muted)}
+@page{size:A4;margin:0}
+@media print{
+  body{background:#fff}
+  .bar{display:none}
+  .page{margin:0;border:0;width:210mm;height:297mm;min-height:0;page-break-after:always;break-after:page;overflow:hidden}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  a{color:var(--ink);text-decoration:none}
+}
+</style>
+<style id="cg-site">@media screen{.bar a.cg-back{font-size:12px;font-weight:600;padding:6px 10px;background:transparent;border-color:rgba(255,255,255,.28);margin-right:8px}}@media screen and (max-width:820px){.hdr{flex-wrap:wrap}.hdr .meta{flex:1 1 100%!important;white-space:normal!important}.page,.page *{overflow-wrap:anywhere}.page table{width:100%;table-layout:fixed}}</style>
+</head>
+<body>
+<div class="bar"><span><a class="cg-back" href="../clinic-guides.html" title="All Clinic Guides">← Clinic Guides</a> <b>Clinic Guide</b> · 2-page printable desk guide</span><span><a href="../algorithms/raised-creatinine.html">Full pathway</a> <button onclick="window.print()">Print (2 pages)</button></span></div>
+
+<!-- ============ PAGE 1 ============ -->
+<section class="page">
+  <div class="hdr">
+    <div>
+      <div class="brand"><b>Reasoning GP</b> · Clinic Guide · lab results series</div>
+      <h1>Raised creatinine or falling eGFR <small>CLINIC GUIDE</small></h1>
+      <div class="scope">A raised serum creatinine, or a low or falling eGFR, in adults 18+. Not for children, pregnancy, or people on dialysis or with a kidney transplant (renal team).</div>
+    </div>
+    <div class="meta">NICE <b>NG148</b> · KDIGO 2012 · <b>NG203</b><br>UKKA 2023 · TA1075 · NG12 · MHRA<br>Reviewed <b>Oct 2026</b> · next review <b>Apr 2027</b><br>Full pathway: gpreasoning.uk/tools/algorithms/raised-creatinine.html</div>
+  </div>
+
+  <div class="ptitle">Page 1 · Interpret <span>is it dangerous? → acute or chronic? → how bad? → what is the cause?</span></div>
+
+  <div class="blk red"><h2><span class="n">!</span>Act today — potassium, overload, obstruction, sepsis<small>NG148 · UKKA 2023 · NG12</small></h2><div class="body">
+    <table>
+      <tr><th>Tier</th><th>Result or combination</th><th>Action</th></tr>
+      <tr><td><b>999</b></td><td>K⁺ <b>≥6.5 mmol/L</b>, or hyperkalaemic ECG change at any K⁺ · pulmonary oedema · uraemia (drowsy, asterixis, pericardial rub) · anuria with deterioration · sepsis with high-risk features · fever, loin pain, obstruction (pyonephrosis)</td><td>Emergency admission; never give fluid to an overloaded patient</td></tr>
+      <tr><td><b>Same day</b></td><td><b>AKI stage 2–3</b> · K⁺ <b>6.0–6.4</b> if acutely unwell or with AKI (if well: see 11) · AKI with <b>blood + protein on dipstick</b> (vasculitis, glomerulonephritis) · retention with AKI · AKI with no clear cause or unable to drink · myeloma with high calcium or suspected cord compression · a new eGFR <b>&lt;15</b></td><td>Same-day hospital; nephritic urine → same-day nephrology; new eGFR &lt;15 → urgent renal discussion</td></tr>
+      <tr><td><b>Suspected cancer pathway</b></td><td>Electrophoresis or free light chains suggesting <b>myeloma</b> · unexplained visible haematuria aged <b>45+</b></td><td>NG12 referral: haematology or urology</td></tr>
+    </table>
+  </div></div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk amber"><h2><span class="n">1</span>Is it real — and is it new?<small>NG148 · NG203</small></h2><div class="body">
+        <ul>
+          <li><b>Find the baseline</b>: a recent stable pre-illness creatinine, or a representative value from the previous 7–365 days. Old results are the most useful test.</li>
+          <li><b>Stage on creatinine, not eGFR</b>: eGFR assumes a steady state and lags in AKI.</li>
+          <li><b>New low eGFR, well, no baseline</b>: repeat U&amp;E <b>within 2 weeks</b> to exclude AKI; CKD only if it persists for <b>&gt;3 months</b>.</li>
+          <li><b>Falsely raised</b>: meat meal before the test, creatine supplements, high muscle mass, heavy exercise; trimethoprim or cimetidine block secretion (creatinine rises, GFR does not fall).</li>
+          <li><b>Falsely reassuring</b>: low muscle mass in frail, amputee or wasted patients. Consider <b>cystatin C</b> when muscle mass makes eGFR unreliable (NG203).</li>
+          <li><b>Step change on known CKD</b> = AKI on CKD until proven otherwise.</li>
+        </ul>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk blue"><h2><span class="n">2</span>Result bands and action<small>NG148 · KDIGO · NG203</small></h2><div class="body">
+        <table>
+          <tr><th>Result (vs baseline)</th><th>Means</th><th>Action · timing</th></tr>
+          <tr><td>Rise <b>≥26 µmol/L in 48 h</b>, or <b>1.5–1.9×</b> in 7 days</td><td>AKI stage 1</td><td>Home only if well, reversible cause, drinking: U&amp;E <b>24–48 h</b></td></tr>
+          <tr><td><b>2.0–2.9×</b></td><td>AKI stage 2</td><td><b>Same-day</b> hospital</td></tr>
+          <tr><td><b>≥3×</b>, or <b>≥354</b> with an acute rise</td><td>AKI stage 3</td><td>Same day; nephrology within 24 h</td></tr>
+          <tr><td>New low eGFR, well</td><td>AKI or CKD?</td><td>Repeat <b>within 2 weeks</b></td></tr>
+          <tr><td>eGFR &lt;60 or ACR &gt;3 for <b>&gt;3 months</b></td><td>CKD</td><td>Stage G and A (6); CKD bundle (8)</td></tr>
+          <tr><td>ACEi/ARB start: eGFR fall <b>≥25%</b> or creatinine rise <b>≥30%</b></td><td>Beyond the expected dip</td><td>Look for volume loss, NSAIDs; smaller rises: continue</td></tr>
+        </table>
+        <p class="key">AKI also: urine output &lt;0.5 mL/kg/h for &gt;6 h. A stable 354 in CKD is not stage 3.</p>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">3</span>Clinical clues<small>history → where is the problem?</small></h2><div class="body">
+        <table>
+          <tr><td><b>Pre-renal</b></td><td>Vomiting, diarrhoea, poor intake, sepsis, bleeding, heart failure; postural drop; urea disproportionately high</td></tr>
+          <tr><td><b>Drugs</b></td><td>NSAIDs (including OTC), ACEi/ARB, diuretics, SGLT2i, lithium, trimethoprim, PPIs, contrast; the "triple whammy"</td></tr>
+          <tr><td><b>Post-renal</b></td><td>Poor stream, retention, constipation, pelvic cancer, single kidney; palpable bladder</td></tr>
+          <tr><td><b>Intrinsic</b></td><td>Rash, joint pain, haemoptysis, sinus symptoms; frothy urine, oedema; new PPI or antibiotic with rash; bloody diarrhoea</td></tr>
+        </table>
+      </div></div>
+      <div class="blk blue"><h2><span class="n">4</span>Causes<small>clue → think → first test</small></h2><div class="body">
+        <table>
+          <tr><th>Clue</th><th>Think</th><th>First test</th></tr>
+          <tr><td>Dry, on "sick-day" drugs</td><td><b>Pre-renal, drug</b></td><td>Obs, volume; drug review</td></tr>
+          <tr><td>LUTS, palpable bladder</td><td><b>Obstruction</b></td><td>Bladder scan, USS</td></tr>
+          <tr><td>Blood + protein on dipstick</td><td><b>Glomerulonephritis</b>, vasculitis</td><td>Same-day nephrology</td></tr>
+          <tr><td>60+, bone pain, anaemia, high Ca²⁺</td><td><b>Myeloma</b></td><td>Electrophoresis, light chains</td></tr>
+          <tr><td>Long lie, myalgia, dark urine</td><td><b>Rhabdomyolysis</b></td><td>CK</td></tr>
+          <tr><td>Bloody diarrhoea, low platelets</td><td><b>HUS</b></td><td>FBC, film; same day</td></tr>
+          <tr><td>New PPI or antibiotic, rash</td><td><b>Interstitial nephritis</b></td><td>Dipstick; stop the drug</td></tr>
+          <tr><td>Diabetes, BP, slow decline</td><td><b>CKD</b></td><td>ACR; old results</td></tr>
+        </table>
+        <p class="key">Causes often combine: a dehydrating illness on an ACEi, a diuretic and an NSAID is the classic community AKI.</p>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">5</span>Work-up checklist<small>NG148 · NG203 · NG12</small></h2><div class="body">
+        <ul class="tick">
+          <li><b>U&amp;E + K⁺</b>; previous results</li>
+          <li><b>Urine dipstick</b> before any catheter</li>
+          <li><b>Urine ACR</b></li>
+          <li>FBC, CRP, bicarbonate</li>
+          <li>Calcium, LFTs, glucose</li>
+          <li><b>ECG</b> if K⁺ ≥6.0</li>
+          <li>Myeloma screen if 60+ with clues</li>
+          <li>CK if long lie</li>
+          <li><b>Renal USS</b> (indications below)</li>
+          <li><b>KFRE</b> in CKD G3–G5</li>
+        </ul>
+        <p class="key"><b>USS:</b> AKI with possible obstruction or no clear cause within 24 h (6 h if pyonephrosis). CKD: accelerated progression, haematuria, obstructive symptoms, family history of polycystic kidneys (over 20), eGFR &lt;30. Never use the KFRE during AKI.</p>
+      </div></div>
+      <div class="blk purple"><h2><span class="n">6</span>Stage CKD: G and A<small>NG203 · KDIGO</small></h2><div class="body">
+        <table>
+          <tr><th>eGFR</th><th>G</th><th>ACR mg/mmol</th><th>A</th></tr>
+          <tr><td>≥90</td><td>G1</td><td>&lt;3</td><td>A1</td></tr>
+          <tr><td>60–89</td><td>G2</td><td>3–30</td><td>A2</td></tr>
+          <tr><td>45–59 · 30–44</td><td>G3a · G3b</td><td>&gt;30</td><td>A3</td></tr>
+          <tr><td>15–29 · &lt;15</td><td>G4 · G5</td><td colspan="2">G1–G2: CKD only with another marker</td></tr>
+        </table>
+        <p class="key">Confirm an ACR of 3–70 with an early-morning sample; ≥70 needs no repeat. Risk rises with both G and A.</p>
+      </div></div>
+      <div class="blk purple"><h2><span class="n">7</span>Read the urine<small>dipstick before any catheter</small></h2><div class="body">
+        <table>
+          <tr><td><b>Blood + protein</b></td><td>No UTI or catheter trauma: glomerulonephritis or vasculitis → same-day nephrology with AKI</td></tr>
+          <tr><td><b>Leucocytes, nitrites</b></td><td>With fever or loin pain and a rising creatinine: think infected obstruction</td></tr>
+          <tr><td><b>Negative</b></td><td>Typical of pre-renal and drug causes; does not exclude myeloma (dipstick misses light chains)</td></tr>
+        </table>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Raised creatinine · page 1 of 2 · v1.0 · Oct 2026</span><span>Decision support, not a substitute for clinical judgement. Check doses in the SPC and your local formulary. Use your laboratory's reference ranges.</span></div>
+</section>
+
+<!-- ============ PAGE 2 ============ -->
+<section class="page">
+  <div class="ptitle">Page 2 · Manage and refer <span>stop the harm → treat the cause → restart safely → protect the kidney</span></div>
+
+  <div class="grid">
+    <div class="blk teal span"><h2><span class="n">8</span>Management of the commonest causes<small>NG148 · NG203 · UKKA · SPC</small></h2><div class="body">
+      <table>
+        <tr><th>Cause</th><th>First line</th><th>Check and continue</th></tr>
+        <tr><td><b>Any AKI</b> · sick-day drug review</td><td>Stop NSAIDs. Hold metformin. Review ACEi/ARB, diuretics and SGLT2i individually — stopping a diuretic in heart failure can cause overload. Review renally cleared drugs (lithium, DOACs, gabapentinoids, opioids)</td><td>Write the restart plan: usually 24–48 h after eating and drinking normally, with a repeat U&amp;E. Restart renoprotective drugs once recovered</td></tr>
+        <tr><td><b>Pre-renal, stage 1, at home</b></td><td>Oral fluids if dry and not overloaded; treat the cause; antibiotics dosed to renal function</td><td>U&amp;E within <b>24–48 h</b> and until back to baseline</td></tr>
+        <tr><td><b>Retention, obstruction</b></td><td>Catheterise (record residual volume); treat constipation; stop anticholinergics</td><td>Same-day review; post-obstructive diuresis usually needs hospital</td></tr>
+        <tr><td><b>K⁺ 5.5–5.9</b>, well</td><td>Repeat on a fresh, promptly processed sample; review ACEi/ARB, spironolactone, trimethoprim, supplements, salt substitutes</td><td>See the hyperkalaemia guide</td></tr>
+        <tr><td><b>Confirmed CKD</b></td><td><b>ACEi or ARB</b>, titrated to the maximum tolerated dose, if ACR ≥70 (any BP), ACR &gt;30 with hypertension, or ACR &gt;3 with diabetes; not normally started if K⁺ &gt;5.0. <b>Dapagliflozin 10 mg</b> per TA1075. <b>Atorvastatin 20 mg</b></td><td>U&amp;E and K⁺ <b>1–2 weeks</b> after each start or dose change. BP: &lt;140/90 if ACR &lt;70; &lt;130/80 if ACR ≥70. Never combine an ACEi with an ARB</td></tr>
+        <tr><td><b>Suspected myeloma</b>, stable</td><td>FBC, calcium, ESR or plasma viscosity, serum protein electrophoresis, serum free light chains</td><td>Results suggest myeloma → suspected cancer pathway referral; avoid NSAIDs</td></tr>
+      </table>
+      <p class="key"><b>Dapagliflozin (TA1075):</b> added to an optimised ACEi/ARB when eGFR is 20 to &lt;45, or 45–90 with ACR ≥22.6 mg/mmol or type 2 diabetes. Expect a small early eGFR dip; do not stop for it.</p>
+    </div></div>
+
+    <div class="blk teal span"><h2><span class="n">9</span>Dose by the right number<small>MHRA · SPC</small></h2><div class="body">
+      <div class="flow" style="--c:var(--teal)">
+        <div><b class="h">Creatinine clearance</b>Cockcroft–Gault for DOACs, and for aged 75+, BMI &lt;18 or &gt;40, and narrow-margin renally cleared drugs (digoxin, sotalol) — not eGFR.</div>
+        <div><b class="h">Metformin</b>eGFR 45–59: maximum 2 g a day. 30–44: maximum 1 g a day, review. <b>&lt;30: stop.</b> Hold in AKI or dehydration.</div>
+        <div><b class="h">Nitrofurantoin</b>Avoid if eGFR &lt;45; a short course only with caution at 30–44. Trimethoprim raises K⁺ and creatinine.</div>
+        <div><b class="h">Others</b>Gabapentinoids, opioids, lithium, aciclovir, LMWH: renal dosing per the SPC. Check eGFR before contrast.</div>
+      </div>
+    </div></div>
+
+    <div class="col">
+      <div class="blk purple"><h2><span class="n">10</span>Follow-up and monitoring checklist<small>NG148 · NG203</small></h2><div class="body">
+        <ul class="tick" style="grid-template-columns:1fr">
+          <li>AKI at home: U&amp;E <b>24–48 h</b>, then until back to baseline</li>
+          <li>New low eGFR: repeat <b>within 2 weeks</b>, then confirm at 3 months</li>
+          <li>Held drugs restarted with a U&amp;E; renoprotective drugs not left off</li>
+          <li>After AKI: U&amp;E, ACR and BP at about 3 months; watch for CKD for at least 3 years</li>
+          <li>ACEi/ARB start or increase: U&amp;E and K⁺ at <b>1–2 weeks</b></li>
+          <li>CKD: eGFR and ACR at least yearly, more often by G and A category</li>
+          <li><b>KFRE</b> in G3–G5; plot the eGFR trend, not the snapshot</li>
+          <li>Code the AKI or CKD; written sick-day advice; NSAID warning on the record</li>
+          <li>Chase USS, myeloma screen, ACR — named clinician responsible</li>
+          <li>Annual: BP to target, statin, NSAID and dose review, vaccinations</li>
+        </ul>
+      </div></div>
+
+      <div class="blk blue"><h2><span class="n">11</span>When and where to refer<small>NG148 · NG203 · NG12</small></h2><div class="body">
+        <table>
+          <tr><td><b>999</b></td><td>K⁺ ≥6.5 or ECG change; pulmonary oedema; uraemia; anuria with deterioration; sepsis; pyonephrosis</td></tr>
+          <tr><td><b>Same day</b></td><td>AKI stage 2–3; K⁺ 6.0–6.4 if acutely unwell or with AKI (if well, repeat within 1 day after discussing with the renal/medical team); nephritic urine; retention with AKI; no clear cause</td></tr>
+          <tr><td><b>Suspected cancer</b></td><td>Myeloma on electrophoresis or light chains; visible haematuria 45+</td></tr>
+          <tr><td><b>Nephrology (NG203)</b></td><td>5-year KFRE &gt;5% · ACR ≥70 (unless diabetes, appropriately treated) · ACR ≥30 with haematuria · sustained eGFR fall ≥25% with a category change, or ≥15 mL/min/1.73m² within 12 months · BP poorly controlled on 4+ drugs · rare or genetic cause · suspected renal artery stenosis</td></tr>
+          <tr><td><b>Local practice</b></td><td>eGFR &lt;30 not known to nephrology: commonly used locally, not an NG203 criterion</td></tr>
+          <tr><td><b>Urology</b></td><td>Obstruction needing specialist care; chronic retention</td></tr>
+        </table>
+      </div></div>
+    </div>
+
+    <div class="col">
+      <div class="blk red"><h2><span class="n">12</span>Special groups<small>NG203 · NG148 · SPC</small></h2><div class="body">
+        <ul>
+          <li><b>Heart failure</b>: review diuretics with care — stopping can cause overload; restart the ACEi/ARB early.</li>
+          <li><b>Frail or low muscle mass</b>: a "normal" creatinine may hide poor function; consider cystatin C.</li>
+          <li><b>Could become pregnant</b>: ACE inhibitors and ARBs are teratogenic — discuss contraception and plans before starting.</li>
+          <li><b>Lithium</b>: AKI → hold and check an urgent level; psychiatry plan before restarting.</li>
+          <li><b>Diabetes</b>: hold metformin and the SGLT2i when unwell; restart when eating and drinking.</li>
+        </ul>
+      </div></div>
+
+      <div class="blk slate"><h2><span class="n">13</span>Pitfalls and never-events<small>NG148 · NG203</small></h2><div class="body">
+        <ul>
+          <li><b>Never</b> label CKD on one eGFR, or use the KFRE during an AKI.</li>
+          <li><b>Never</b> stop an ACEi/ARB for the expected rise (&lt;30% creatinine).</li>
+          <li><b>Never</b> give fluid to an overloaded patient.</li>
+          <li><b>Never</b> combine an ACEi with an ARB.</li>
+          <li>A held ACEi/ARB never restarted is a common, silent harm.</li>
+          <li>An AKI alert is acted on the same day, not filed.</li>
+        </ul>
+      </div></div>
+
+      <div class="blk green"><h2><span class="n">14</span>Safety-net — say it, then document it<small>NG148</small></h2><div class="body">
+        <table>
+          <tr><td><b>Call 999</b></td><td>Collapse, chest pain, severe breathlessness, a racing or irregular heart, new confusion</td></tr>
+          <tr><td><b>Same day</b></td><td>Passing much less urine; cannot keep fluids down; very drowsy; new swelling or breathlessness</td></tr>
+          <tr><td><b>Sick days</b></td><td>Vomiting, diarrhoea or fever with poor intake: pause the named tablets; restart when eating and drinking normally for 24–48 h</td></tr>
+        </table>
+      </div></div>
+
+      <div class="blk green"><h2><span class="n">15</span>Say it like this<small>plain English</small></h2><div class="body">
+        <p class="say">"Your kidney blood test has changed. Often this is from being dehydrated or from a medicine, and it usually recovers. Stop the ibuprofen and pause [tablets] until we recheck on [date]; we'll tell you when to restart them."</p>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="foot"><span>Reasoning GP Clinic Guide · Raised creatinine · page 2 of 2 · v1.0 · Oct 2026 · sources: NICE NG148 (AKI, 2019, updated 2023), NG203 (CKD), TA1075, NG12, NG238; KDIGO AKI 2012; UK Kidney Association hyperkalaemia guideline 2023; MHRA DSU (renal function estimates; nitrofurantoin); Think Kidneys; SPCs</span><span>Full detail and evidence: gpreasoning.uk/tools/algorithms/raised-creatinine.html</span></div>
+</section>
+
+<script src="../../assets/clinic-guides.js?v=4"></script>
+</body>
+</html>

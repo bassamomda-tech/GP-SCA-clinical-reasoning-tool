@@ -1,0 +1,17 @@
+[
+{"subject":"salbutamol","group":"acute asthma children | pMDI+spacer puffs","verdict":"inconsistent","tier":1,
+ "correct":"Salbutamol 100 micrograms by pMDI + spacer, one puff at a time, 2–10 puffs titrated to response; 10 puffs if severe (BTS/SIGN 158; owner decision 1, 19 Oct 2026)",
+ "source":"https://www.brit-thoracic.org.uk/quality-improvement/guidelines/asthma/ (BTS/SIGN 158, 2019) — per OWNER_DECISIONS_2.md item 1",
+ "fixes":[
+  {"file":"tools/management/asthma-children.html","old":"salbutamol 100 micrograms by pMDI and spacer, one puff at a time, is effective and often preferred","new":"salbutamol 100 micrograms by pMDI and spacer, one puff at a time (2–10 puffs titrated to response; 10 puffs if severe — BTS/SIGN 158), is effective and often preferred"},
+  {"file":"tools/management/asthma-children.html","old":"Salbutamol 100 micrograms by pMDI and spacer, one puff at a time; reassess after treatment","new":"Salbutamol 100 micrograms by pMDI and spacer, one puff at a time, 2–10 puffs titrated to response (BTS/SIGN 158); reassess after treatment"},
+  {"file":"tools/management/asthma-children-print.html","old":"salbutamol 100 micrograms by pMDI and spacer, one puff at a time, is effective and often preferred","new":"salbutamol 100 micrograms by pMDI and spacer, one puff at a time (2–10 puffs titrated to response; 10 puffs if severe — BTS/SIGN 158), is effective and often preferred"},
+  {"file":"tools/management/asthma-children-print.html","old":"Salbutamol 100 micrograms by pMDI and spacer, one puff at a time; reassess after treatment","new":"Salbutamol 100 micrograms by pMDI and spacer, one puff at a time, 2–10 puffs titrated to response (BTS/SIGN 158); reassess after treatment"},
+  {"file":"tools/management/summaries/asthma-children.html","old":"salbutamol 100 micrograms by pMDI + spacer, one puff at a time; reassess and repeat","new":"salbutamol 100 micrograms by pMDI + spacer, one puff at a time, 2–10 puffs titrated to response (BTS/SIGN 158); reassess and repeat"}],
+ "note":"The children's asthma protocol, its print twin and summary give no puff number for acute attacks (only 'repeat according to the local acute pathway'), whereas wheeze-children, wheeze-child algorithm and preschool-wheeze now use the owner-approved BTS/SIGN 158 wording (2–10 puffs, 10 if severe). Not unsafe, but a missing dose on a Tier 1 paediatric acute step; align with owner decision 1."},
+{"subject":"potassium","group":"DKA | K+ <3.5 handling","verdict":"owner","tier":1,
+ "correct":"JBDS-IP DKA guideline: K+ >5.5 no KCl; 3.5–5.5 add 40 mmol/L; <3.5 senior/critical-care review — additional potassium required. JBDS does not clearly instruct GPs/teams to 'hold the insulin' (the ADA uses <3.3 mmol/L as an insulin-hold threshold).",
+ "source":"https://pmc.ncbi.nlm.nih.gov/articles/PMC5871863/ (tabulates JBDS bands); JBDS-IP DKA guideline 2023 (abcd.care) — primary text not retrievable this pass",
+ "fixes":[],
+ "note":"tools/management/dka.html and dka-print.html say 'if K⁺ is <3.5, hold the insulin, give IV KCl and recheck before restarting'. This is the ADA approach (threshold 3.3), not clearly the JBDS one (senior review + more potassium; FRIII continues). Hospital-phase detail, low primary-care impact. Owner: keep, or replace with 'if K⁺ is <3.5, seek senior/critical-care review — additional potassium is needed (JBDS)'? Also note the raw '<3.5' sits inside a JS html string — check it renders (should be &lt;)."}
+]

@@ -413,7 +413,7 @@
       'Long-term effects: hypothyroidism, hyperparathyroidism/hypercalcaemia, nephrogenic diabetes insipidus, chronic kidney disease'],
     management:[
       'Diagnosis and initiation are specialist; primary care provides shared-care monitoring, relapse vigilance and physical-health care',
-      'Check lithium level 12 hours post-dose: weekly after starting/any dose change until stable, then every 3 months (6-monthly if very stable, per local protocol)',
+      'Check lithium level 12 hours post-dose: weekly after starting/any dose change until stable, then every 3 months for the first year, then every 6 months (stay 3-monthly if higher risk — NICE CG185)',
       'Monitor U&E/eGFR, TFTs and calcium at baseline and every 6 months; weight/BMI and ECG where indicated',
       'Give every patient a lithium record book/alert card; counsel on consistent fluid/salt intake, signs of toxicity, and avoiding NSAIDs',
       'Never stop lithium abruptly (rebound mania) — reduce gradually over at least 4 weeks if stopping',

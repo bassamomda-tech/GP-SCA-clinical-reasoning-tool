@@ -8,7 +8,7 @@
 
 (function(){
 
-  /* ============ 61. VIDEO — Testicular lump (NG12 2WW) ============ */
+  /* ============ 61. VIDEO — Testicular lump (NG12 suspected cancer pathway) ============ */
   const c61 = {
     id:'testicular-lump', title:'"It\u2019s probably nothing, my girlfriend made me come"', type:'video', duration:12,
     meta:{ age:28, sex:'M', setting:'Video consultation — a lump he found on one testicle.', system:'Urology / Testicular cancer', checked:'October 2026' },
@@ -41,7 +41,7 @@
     ],
     worked:[
       { lbl:'Reframe painlessness',  txt:'"I\u2019m really glad you came, even if it took some persuading — and I want to be straight with you, because that respects you more than empty reassurance: the fact it DOESN\u2019T hurt is actually the reason I take a hard lump on the testicle seriously. The harmless ones often ache or come and go; a firm, painless lump that\u2019s part of the testicle is the kind we always check properly."' },
-      { lbl:'Name the pathway',      txt:"\"So here’s what needs to happen. I need to examine you in person, and then arrange an urgent ultrasound scan of the testicle and a referral to the specialists — usually seen within two weeks. The NICE suspected cancer guideline, NICE NG12, covers exactly this. It isn’t me saying it’s cancer; it’s me making sure that if there’s anything to find, we find it fast.\"" },
+      { lbl:'Name the pathway',      txt:"\"So here’s what needs to happen. I need to examine you in person, and then arrange an urgent ultrasound scan of the testicle and a referral to the specialists on the suspected cancer pathway — you should be seen quickly and get an answer within 4 weeks (28 days). The NICE suspected cancer guideline, NICE NG12, covers exactly this. It isn’t me saying it’s cancer; it’s me making sure that if there’s anything to find, we find it fast.\"" },
       { lbl:'The risk factor',       txt:'"One thing from your history matters: you had an undescended testicle as a baby that was fixed with surgery. That slightly raises the chance of problems in that testicle later, which is another reason I want this looked at properly rather than over a video call."' },
       { lbl:'Meet the real fear',    txt:'"Can I gently say — I suspect you\u2019ve already looked this up and scared yourself, and that the \u2018girlfriend made me\u2019 is partly cover for being worried. That\u2019s completely human. And I\u2019d guess part of the fear is what it might mean for you as a man — fertility, surgery, all of that. Let\u2019s put those on the table, because the news there is genuinely good."' },
       { lbl:'The good news',         txt:'"If this did turn out to be cancer — and we don\u2019t know that — testicular cancer is one of the most curable cancers there is, with very high success rates. If a testicle needs removing, the other one almost always keeps your hormones and fertility normal, and we can store sperm beforehand as a safety net, and even fit a natural-looking prosthesis. You would not be \u2018half a man\u2019. Far from it."' },

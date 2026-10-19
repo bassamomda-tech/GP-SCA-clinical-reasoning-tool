@@ -81,11 +81,11 @@ RGPTriage.register('type-2-diabetes-triage', {
     },
     {
       tier:'emergency',
-      label:'Severe hyperkalaemia (K⁺ >6.5)',
+      label:'Severe hyperkalaemia (K⁺ ≥6.5)',
       action:'Call 999',
       source:'Renal Association',
       patientPhrase:'"Potassium is dangerously high — straight to hospital for an ECG."',
-      when: i => i.k != null && i.k > 6.5
+      when: i => i.k != null && i.k >= 6.5
     },
 
     // SUSPECTED CANCER PATHWAY
