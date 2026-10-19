@@ -177,6 +177,7 @@ individual Clinic Guides stay in the Silver and Platinum plans; nothing changes 
 | `lab-handbook` | Lab Results Handbook | **`lab-results-handbook-v2.0.pdf`** | `Reasoning-GP-Lab-Results-Handbook-v2.0.pdf` |
 | `sca-casebook-1` | SCA Casebook Vol 1 | **`sca-casebook-vol1-v1.0.pdf`** | `Reasoning-GP-SCA-Casebook-Vol1-v1.0.pdf` |
 | `sca-communication` | SCA Communication Book | **`sca-communication-book-v1.0.pdf`** | `Reasoning-GP-SCA-Communication-Book-v1.0.pdf` |
+| `chronic-disease` | Chronic Disease Handbook | **`chronic-disease-handbook-v1.0.pdf`** | `Reasoning-GP-Chronic-Disease-Handbook-v1.0.pdf` |
 
 **Where they are sold:** all three on the **Shop** page (`pages/shop.html`, "Shop" in the
 top bar next to Plans); the Lab Results Handbook also on Clinic Guides → Lab results.

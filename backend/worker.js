@@ -1174,6 +1174,7 @@ const PRODUCTS = {
   'lab-handbook': { title: 'Lab Results Handbook', price: '20.00', currency: 'GBP', r2Key: 'lab-results-handbook-v2.0.pdf', filename: 'Reasoning-GP-Lab-Results-Handbook-v2.0.pdf', type: 'application/pdf' },
   'sca-casebook-1':    { title: 'SCA Casebook Vol 1',     price: '20.00', currency: 'GBP', r2Key: 'sca-casebook-vol1-v1.0.pdf',      filename: 'Reasoning-GP-SCA-Casebook-Vol1-v1.0.pdf',      type: 'application/pdf' },
   'sca-communication': { title: 'SCA Communication Book', price: '20.00', currency: 'GBP', r2Key: 'sca-communication-book-v1.0.pdf', filename: 'Reasoning-GP-SCA-Communication-Book-v1.0.pdf', type: 'application/pdf' },
+  'chronic-disease':   { title: 'Chronic Disease Handbook', price: '20.00', currency: 'GBP', r2Key: 'chronic-disease-handbook-v1.0.pdf', filename: 'Reasoning-GP-Chronic-Disease-Handbook-v1.0.pdf', type: 'application/pdf' },
 };
 const SHOP_BRAND = 'Reasoning GP';
 // Version of the tick-box wording the buyer agreed to (assets/clinic-guides.js,
