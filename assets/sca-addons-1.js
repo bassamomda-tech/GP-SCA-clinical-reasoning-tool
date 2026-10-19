@@ -4860,7 +4860,7 @@
     },
     {
      "h": "Iron deficiency anaemia in a man",
-     "t": "Hb 128 g/L with ferritin 18 µg/L is iron deficiency anaemia. BSG (2021): men with iron deficiency anaemia need lower and upper GI investigation — the endoscopists will plan this. Start oral iron (dose per BNF) and recheck the FBC."
+     "t": "Hb 128 g/L with ferritin 18 µg/L is iron deficiency anaemia. BSG (2021): men with iron deficiency anaemia need lower and upper GI investigation — the endoscopists will plan this. Start oral iron (dose per SPC) and recheck the FBC."
     },
     {
      "h": "Piles are not the explanation",
@@ -8249,7 +8249,7 @@
     {
      "dom": "cm",
      "fail": "Not noticing that the breakthrough dose is too small.",
-     "why": "The BNF range is one-tenth to one-sixth of the 24-hour dose (6–10 mg on MST 30 mg twice daily). 5 mg is below it, which explains the poor response.",
+     "why": "The recommended range is one-tenth to one-sixth of the 24-hour dose (6–10 mg on MST 30 mg twice daily). 5 mg is below it, which explains the poor response.",
      "fix": "Do the arithmetic aloud, agree the new dose with the hospice team, and put it in writing."
     },
     {
@@ -9292,7 +9292,7 @@
     },
     {
      "h": "Taper, never stop abruptly",
-     "t": "Withdraw gradually after long-term use; abrupt withdrawal risks rebound insomnia, anxiety and withdrawal symptoms. A natural first step is 3.75 mg — the BNF starting dose for older people — on alternate nights, then nightly, with further steps agreed with her every few weeks. Expect the process to take months."
+     "t": "Withdraw gradually after long-term use; abrupt withdrawal risks rebound insomnia, anxiety and withdrawal symptoms. A natural first step is 3.75 mg — the recommended starting dose for older people — on alternate nights, then nightly, with further steps agreed with her every few weeks. Expect the process to take months."
     },
     {
      "h": "Replace the tablet with something",

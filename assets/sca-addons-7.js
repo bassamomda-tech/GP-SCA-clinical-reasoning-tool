@@ -987,7 +987,7 @@
     {
      "dom": "cm",
      "fail": "Issuing a week of zopiclone “just to help him settle”, or refusing any help and ending the call.",
-     "why": "Either response misses probable PTSD. Hypnotics do not treat it and carry dependence risk (NICE TA77; BNF); a bare refusal leaves him with nothing.",
+     "why": "Either response misses probable PTSD. Hypnotics do not treat it and carry dependence risk (NICE TA77); a bare refusal leaves him with nothing.",
      "fix": "Decline the tablet by offering something better: “Strong sleeping tablets don’t treat what’s keeping you awake — there’s a treatment that does.”"
     },
     {

@@ -165,7 +165,7 @@
       { dom:'cm', text:'Arranges the WORK-UP: urgent referral to a first-seizure clinic / clinician with expertise in first seizures and diagnosing epilepsy, to be seen within 2 weeks (NICE NG217), a 12-lead ECG (to exclude a cardiac/arrhythmic cause of collapse; NICE CG109), bloods, and consideration of imaging/EEG per pathway; gives interim safety advice' },
       { dom:'cm', text:'Gives SAFETY advice meanwhile: avoid swimming/baths alone, working at heights/with dangerous machinery, and other situations where a seizure would be dangerous; address alcohol and sleep; what to do if another seizure occurs (and prolonged seizure >5 min \u2192 999)' },
       { dom:'ro',   text:'Handles the minimisation and the livelihood terror with honesty AND compassion: is firm and clear about the driving/DVLA duty while genuinely acknowledging the devastating impact on his job and income, and does not collude to keep him onside' },
-      { dom:'ro',   text:'Supports him through the blow \u2014 sick note, exploring work options/finances, the possibility of returning to driving after the relevant seizure-free period \u2014 so honesty doesn\u2019t feel like abandonment' },
+      { dom:'cm',   text:'Supports him through the blow \u2014 sick note, exploring work options/finances, the possibility of returning to driving after the relevant seizure-free period \u2014 so honesty doesn\u2019t feel like abandonment' },
       { dom:'cm',    text:'Safety-nets and documents: the explicit stop-driving/notify-DVLA advice given, first-seizure-clinic referral and ECG, interim safety advice, what to do if another/prolonged seizure occurs (999), and follow-up \u2014 the honest, supported plan, not false clearance' },
     ],
     worked:[

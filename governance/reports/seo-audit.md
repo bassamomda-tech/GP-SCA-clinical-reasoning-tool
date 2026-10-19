@@ -1,46 +1,40 @@
 # Search-engine (SEO) check
 
-Built by `node governance/build-seo.mjs` on 2026-10-14. sitemap.xml rebuilt: 563 pages (0 added, 2 removed).
+Built by `node governance/build-seo.mjs --check` on 2026-10-19. sitemap.xml was not changed.
 
-| Check | Before | Now |
-|---|---:|---:|
-| HTML files scanned | 1311 | 1312 |
-| public pages | 563 | 563 |
-| print copies | 210 | 210 |
-| owner / noindex pages | 401 | 402 |
-| redirect stubs | 137 | 137 |
-| title missing | 0 | 0 |
-| title duplicated | 0 | 0 |
-| title over 60 characters (advisory) | 49 | 49 |
-| description missing | 353 | 0 |
-| description duplicated | 0 | 0 |
-| description under 70 characters | 0 | 0 |
-| description over 160 characters (advisory) | 208 | 208 |
-| canonical missing | 0 | 0 |
-| canonical points elsewhere | 0 | 0 |
-| Open Graph basics missing | 562 | 0 |
-| lang is not en-GB | 563 | 0 |
-| no <h1> in the HTML (drawn by script? check in a browser) | 367 | 367 |
-| more than one <h1> | 2 | 2 |
-| owner page without noindex | 1 | 0 |
-| print copy canonical not the main page | 0 | 0 |
-| robots.txt names the sitemap | yes | yes |
-| sitemap.xml: public pages missing from it | 0 | 0 |
-| sitemap.xml: entries that should not be there | 2 | 0 |
-| sitemap.xml: entries without lastmod | 565 | 58 |
+| Check | Count |
+|---|---:|
+| HTML files scanned | 1922 |
+| public pages | 1011 |
+| print copies | 239 |
+| owner / noindex pages | 533 |
+| redirect stubs | 139 |
+| title missing | 0 |
+| title duplicated | 0 |
+| title over 60 characters (advisory) | 403 |
+| description missing | 0 |
+| description duplicated | 0 |
+| description under 70 characters | 0 |
+| description over 160 characters (advisory) | 630 |
+| canonical missing | 0 |
+| canonical points elsewhere | 0 |
+| Open Graph basics missing | 0 |
+| lang is not en-GB | 0 |
+| no <h1> in the HTML (drawn by script? check in a browser) | 401 |
+| more than one <h1> | 2 |
+| owner page without noindex | 0 |
+| print copy canonical not the main page | 0 |
+| robots.txt names the sitemap | yes |
+| sitemap.xml: public pages missing from it | 0 |
+| sitemap.xml: entries that should not be there | 1 |
+| sitemap.xml: entries without lastmod | 0 |
 
 Advisory rows are worth fixing when a page is next edited; they do not stop a page being indexed.
 Pages whose heading is drawn by a script (protocols, many pathways) have a rendered <h1> in the browser; the structured data script (assets/seo-jsonld.js) adds MedicalWebPage data at run time.
 
-## sitemap.xml changes
-
-Removed (redirect, print copy, owner or noindex page):
-- https://gpreasoning.uk/tools/sca-progress.html
-- https://gpreasoning.uk/tools/management/menopause.html
-
 ## Details
 
-### title over 60 characters (advisory) (49)
+### title over 60 characters (advisory) (403)
 
 - cases/alcohol.html — 63
 - cases/analgesia-primary-care.html — 62
@@ -58,8 +52,355 @@ Removed (redirect, print copy, owner or noindex page):
 - cases/type-1-diabetes.html — 70
 - cases/urinary-incontinence.html — 66
 - cases/vaginal-discharge.html — 67
+- sca/case-aaa-incidental.html — 94
+- sca/case-abdominal-migraine.html — 165
+- sca/case-abnormal-cervical-screening.html — 131
+- sca/case-abnormal-semen-analysis.html — 128
+- sca/case-ace-cough-post-mi.html — 117
+- sca/case-achilles-tendinopathy.html — 168
+- sca/case-acne-psychological.html — 102
+- sca/case-acute-glaucoma.html — 115
+- sca/case-acute-limb-ischaemia.html — 90
+- sca/case-adhd-pathway.html — 110
+- sca/case-adult-eating-disorder.html — 133
+- sca/case-ae-bp-alcohol.html — 111
+- sca/case-af-anticoag-decision.html — 125
+- sca/case-af-incidental.html — 66
+- sca/case-aki-sick-day.html — 126
+- sca/case-alcohol-dvla-driver.html — 87
+- sca/case-amd-vision-loss.html — 136
+- sca/case-amend-medical-record.html — 121
+- sca/case-anaemia-ida.html — 136
+- sca/case-anal-fissure.html — 146
+- sca/case-anaphylaxis-epipen.html — 117
+- sca/case-angina-builder.html — 66
+- sca/case-angry-apology.html — 62
+- sca/case-angry-complaint.html — 63
+- sca/case-angry-frequent.html — 69
+- sca/case-antipsychotic-restart.html — 127
+- sca/case-assisted-dying-request.html — 144
+- sca/case-asthma-post-attack.html — 121
+- sca/case-asthma-saba-overuse.html — 111
+- sca/case-asylum-destitution.html — 100
+- sca/case-asymmetric-hearing-loss.html — 90
+- sca/case-b12-deficiency.html — 115
+- sca/case-back-inflammatory.html — 66
+- sca/case-back-pain-myeloma.html — 67
+- sca/case-balanitis-phimosis.html — 133
+- sca/case-bereaved-relative-mccd.html — 113
+- sca/case-biliary-colic.html — 97
+- sca/case-blood-donor-anaemia.html — 110
+- sca/case-bowel-habit-fit.html — 77
+- sca/case-breaking-cancer-diagnosis.html — 107
+- sca/case-breast-lump-2ww.html — 105
+- sca/case-breathless-anxiety.html — 121
+- sca/case-bronchiolitis-phone.html — 104
+- sca/case-bsl-patient.html — 95
+- sca/case-cannabis-hyperemesis.html — 152
+- sca/case-carbon-monoxide.html — 154
+- sca/case-carehome-delirium.html — 117
+- sca/case-carehome-staff-call.html — 127
+- sca/case-carer-strain.html — 77
+- sca/case-carpal-tunnel.html — 96
+- sca/case-chest-acute-hgv.html — 62
+- sca/case-child-constipation.html — 112
+- sca/case-child-ear-discharge.html — 104
+- sca/case-child-enuresis.html — 104
+- sca/case-child-obesity.html — 113
+- sca/case-child-petechiae-leukaemia.html — 104
+- sca/case-childhood-squint-leukocoria.html — 141
+- sca/case-chlamydia-positive.html — 87
+- sca/case-chronic-plaque-psoriasis.html — 124
+- sca/case-chronic-urticaria.html — 160
+- sca/case-ckd3-result.html — 101
+- sca/case-cll-lymphocytosis.html — 152
+- sca/case-cluster-headache.html — 134
+- sca/case-coeliac-disease.html — 89
+- sca/case-coil-counselling.html — 93
+- sca/case-cold-sore-child.html — 83
+- sca/case-community-pneumonia.html — 110
+- sca/case-copd-advanced-ceiling.html — 127
+- sca/case-copd-flare-smoker.html — 125
+- sca/case-copd-phone-breathless.html — 132
+- sca/case-copd-poor-control.html — 104
+- sca/case-costochondritis.html — 146
+- sca/case-cough-smoker-2ww.html — 64
+- sca/case-cough-young-asthma.html — 63
+- sca/case-covert-medication.html — 97
+- sca/case-de-quervains.html — 130
+- sca/case-dementia-aggression-carer.html — 95
+- sca/case-dementia-night.html — 63
+- sca/case-dengue-fever.html — 150
+- sca/case-depression-firearms.html — 76
+- sca/case-depression-first-risk.html — 68
+- sca/case-desogestrel-amenorrhoea.html — 112
+- sca/case-developmental-delay.html — 124
+- sca/case-dexa-bisphosphonate.html — 98
+- sca/case-diazepam-request.html — 79
+- sca/case-diplopia-ms-myasthenia.html — 123
+- sca/case-diverticular-disease.html — 166
+- sca/case-diverticulitis-discharge.html — 126
+- sca/case-dizzy-older-postural.html — 64
+- sca/case-dizzy-teen-pots.html — 119
+- sca/case-dont-record-this.html — 97
+- sca/case-dvt-calf.html — 93
+- sca/case-dyspepsia-alarm.html — 74
+- sca/case-dysphagia-2ww.html — 87
+- sca/case-ear-scaly-lump-scc.html — 123
+- sca/case-early-preg-bleed.html — 82
+- sca/case-early-rheumatoid.html — 98
+- sca/case-eczema-steroid-phobia.html — 103
+- sca/case-ed-after-mi-online-tablets.html — 141
+- sca/case-ed-cardiovascular.html — 67
+- sca/case-elder-financial-abuse.html — 97
+- sca/case-emergency-contraception.html — 83
+- sca/case-endometriosis.html — 119
+- sca/case-epilepsy-driving.html — 139
+- sca/case-epilepsy-pregnancy-valproate.html — 122
+- sca/case-erythema-nodosum.html — 128
+- sca/case-essential-tremor.html — 123
+- sca/case-eupd-crisis.html — 143
+- sca/case-facial-palsy-bell-stroke.html — 92
+- sca/case-faecal-incontinence.html — 140
+- sca/case-faltering-growth.html — 106
+- sca/case-familial-adenomatous-polyposis.html — 145
+- sca/case-familial-hypercholesterolaemia.html — 109
+- sca/case-fatigue-lfts-vitd.html — 143
+- sca/case-febrile-child-rash.html — 74
+- sca/case-febrile-convulsion.html — 69
+- sca/case-febrile-young-infant.html — 108
+- sca/case-fgm-abroad.html — 111
+- sca/case-fgm-at-smear.html — 107
+- sca/case-fibromyalgia.html — 122
+- sca/case-first-seizure-dvla.html — 91
+- sca/case-flight-anxiety-diazepam.html — 145
+- sca/case-forced-marriage.html — 197
+- sca/case-frontotemporal-dementia.html — 155
+- sca/case-frozen-shoulder.html — 133
+- sca/case-functional-symptoms.html — 100
+- sca/case-gambling-insomnia.html — 76
+- sca/case-generalised-itch.html — 94
+- sca/case-genital-herpes-first.html — 140
+- sca/case-gestational-diabetes.html — 112
+- sca/case-glandular-fever.html — 123
+- sca/case-globus-sensation.html — 86
+- sca/case-gout-flare.html — 79
+- sca/case-haematospermia.html — 105
+- sca/case-hair-loss-young-woman.html — 89
+- sca/case-halitosis.html — 136
+- sca/case-head-lice.html — 133
+- sca/case-headache-aura-pill.html — 68
+- sca/case-headache-coital.html — 68
+- sca/case-headache-thunderclap.html — 61
+- sca/case-health-anxiety-gad.html — 77
+- sca/case-hf-four-pillars.html — 69
+- sca/case-hiv-test-teen.html — 118
+- sca/case-hmb-fibroids.html — 76
+- sca/case-home-visit-confusion.html — 78
+- sca/case-homeless-patient.html — 97
+- sca/case-hrt-breast-cancer-numbers.html — 105
+- sca/case-hrt-counselling.html — 156
+- sca/case-hrt-unscheduled-bleed.html — 65
+- sca/case-htn-borderline-tablets.html — 130
+- sca/case-htn-variable-readings.html — 128
+- sca/case-htn-young-bp.html — 65
+- sca/case-hypercalcaemia-ca.html — 63
+- sca/case-hypercalcaemia-workup.html — 128
+- sca/case-hyperemesis-gravidarum.html — 132
+- sca/case-hyperhidrosis-primary.html — 135
+- sca/case-hyperkalaemia-recall.html — 80
+- sca/case-hypermobility-eds.html — 163
+- sca/case-hyponatraemia-diuretic.html — 84
+- sca/case-iatrogenic-anticholinergic.html — 106
+- sca/case-iatrogenic-dyspepsia.html — 152
+- sca/case-impaired-colleague.html — 104
+- sca/case-index.html — 61
+- sca/case-infant-reflux.html — 112
+- sca/case-infantile-colic.html — 155
+- sca/case-insulin-ramadan.html — 90
+- sca/case-insulin-start-beliefs.html — 127
+- sca/case-interpreter-consultation.html — 89
+- sca/case-itchy-rash-systemic.html — 135
+- sca/case-kawasaki-disease.html — 148
+- sca/case-keloid-scar.html — 123
+- sca/case-knee-pain-walker.html — 65
+- sca/case-knee-xray-degenerative.html — 86
+- sca/case-latex-allergy.html — 145
+- sca/case-learning-disability-check.html — 106
+- sca/case-leg-ulcer.html — 136
+- sca/case-lft-alcohol.html — 67
+- sca/case-lichen-planus.html — 136
+- sca/case-limping-child.html — 73
+- sca/case-lithium-toxicity.html — 106
+- sca/case-liver-deteriorating-drinker.html — 69
+- sca/case-liver-haemochromatosis.html — 67
+- sca/case-liver-jaundice-traveller.html — 61
+- sca/case-living-with-hiv.html — 143
+- sca/case-loin-pain-away-from-home.html — 130
+- sca/case-low-platelets-young.html — 118
+- sca/case-lpa-best-interests.html — 110
+- sca/case-lyme-disease.html — 122
+- sca/case-macrocytosis-result.html — 86
+- sca/case-male-pattern-hair-loss.html — 119
+- sca/case-medication-error-candour.html — 88
+- sca/case-melaena-declines-admission.html — 117
+- sca/case-melanoma-2ww.html — 80
+- sca/case-memory-self.html — 70
+- sca/case-memory-son-call.html — 64
+- sca/case-meniscal-injury.html — 158
+- sca/case-methadone-bridging.html — 110
+- sca/case-methotrexate-early-request.html — 119
+- sca/case-migraine-moh.html — 131
+- sca/case-miscarriage-follow-up.html — 104
+- sca/case-missed-immunisations.html — 126
+- sca/case-mnd-choking-planning-ahead.html — 139
+- sca/case-modern-slavery.html — 102
+- sca/case-molluscum-contagiosum.html — 128
+- sca/case-motor-neurone-disease.html — 127
+- sca/case-mouth-ulcer-2ww.html — 78
+- sca/case-ms-work-disclosure.html — 115
+- sca/case-nafld-result.html — 102
+- sca/case-narcolepsy.html — 134
+- sca/case-neck-lump-2ww.html — 95
+- sca/case-needlestick-injury.html — 145
+- sca/case-neonatal-jaundice.html — 104
+- sca/case-neonatal-sticky-eye.html — 104
+- sca/case-new-t1dm-child.html — 128
+- sca/case-night-sweats-young.html — 97
+- sca/case-non-binary-patient.html — 136
+- sca/case-non-healing-lesion.html — 154
+- sca/case-nonvisible-haematuria.html — 88
+- sca/case-normal-pressure-hydrocephalus.html — 138
+- sca/case-obstetric-cholestasis.html — 104
+- sca/case-ocd-recognition.html — 136
+- sca/case-opioid-escalation.html — 94
+- sca/case-optic-neuritis-ms.html — 98
+- sca/case-osa-epworth-dvla.html — 121
+- sca/case-otitis-externa.html — 142
+- sca/case-ovarian-bloating.html — 89
+- sca/case-ovarian-results-moving-on.html — 114
+- sca/case-overactive-bladder.html — 136
+- sca/case-pagets-incidental.html — 88
+- sca/case-painless-jaundice.html — 87
+- sca/case-pall-confusion.html — 62
+- sca/case-pall-pain.html — 61
+- sca/case-pcos-named.html — 82
+- sca/case-peripheral-neuropathy.html — 112
+- sca/case-persistent-fatigue-young.html — 101
+- sca/case-persistent-hoarseness.html — 89
+- sca/case-peyronies-curvature.html — 123
+- sca/case-phaeochromocytoma.html — 170
+- sca/case-picky-eating.html — 176
+- sca/case-pid-young-woman.html — 78
+- sca/case-pilonidal-sinus.html — 139
+- sca/case-pityriasis-rosea.html — 123
+- sca/case-pkd-young.html — 128
+- sca/case-plantar-fasciitis.html — 121
+- sca/case-pleural-effusion-cxr.html — 98
+- sca/case-pmb-endometrial.html — 76
+- sca/case-pmdd.html — 146
+- sca/case-pmr-gca.html — 79
+- sca/case-polyphagia-diabetes.html — 145
+- sca/case-polypharmacy-frailty-review.html — 109
+- sca/case-post-covid-syndrome.html — 149
+- sca/case-post-icu-syndrome.html — 117
+- sca/case-post-tia-medicine-side-effects.html — 125
+- sca/case-postherpetic-neuralgia.html — 117
+- sca/case-postnatal-depression.html — 79
+- sca/case-postnatal-isolation-new-arrival.html — 124
+- sca/case-postpartum-hair-loss.html — 100
+- sca/case-precocious-puberty.html — 127
+- sca/case-prediabetes-fork.html — 78
+- sca/case-pregnant-at-15.html — 105
+- sca/case-premature-ejaculation.html — 176
+- sca/case-prison-release-continuity.html — 103
+- sca/case-private-care-request.html — 109
+- sca/case-prostatitis.html — 132
+- sca/case-psa-brca2-brother.html — 99
+- sca/case-psa-result-conversation.html — 77
+- sca/case-ptsd-veteran.html — 83
+- sca/case-raised-inflammatory-markers.html — 144
+- sca/case-raised-prolactin.html — 92
+- sca/case-raynauds-young-girl.html — 114
+- sca/case-reactive-arthritis.html — 94
+- sca/case-rectal-bleed-learning-disability.html — 115
+- sca/case-rectal-bleeding-2ww.html — 71
+- sca/case-recurrent-epistaxis.html — 128
+- sca/case-recurrent-falls-review.html — 82
+- sca/case-recurrent-uti-letrozole.html — 134
+- sca/case-recurrent-uti-woman.html — 109
+- sca/case-red-eye-triage.html — 86
+- sca/case-red-s-stress-fractures.html — 120
+- sca/case-reflux-ppi-exit.html — 113
+- sca/case-renal-colic.html — 124
+- sca/case-restless-legs-pregnancy.html — 143
+- sca/case-results-bloods-panel.html — 132
+- sca/case-results-ecg-af.html — 109
+- sca/case-results-ra-fertility.html — 135
+- sca/case-results-spirometry.html — 109
+- sca/case-rhinitis-ladder.html — 121
+- sca/case-septic-arthritis.html — 79
+- sca/case-sex-after-assault.html — 108
+- sca/case-sex-selective-termination.html — 109
+- sca/case-sex-worker-health.html — 111
+- sca/case-shingles-ophthalmic.html — 84
+- sca/case-sicknote-unsupported.html — 83
+- sca/case-sjs-ten.html — 129
+- sca/case-sleep-paeds.html — 66
+- sca/case-smi-health-check.html — 121
+- sca/case-soft-tissue-sarcoma-lump.html — 97
+- sca/case-sore-throat-stewardship.html — 124
+- sca/case-staff-as-patient.html — 206
+- sca/case-steroid-fracture-osteoporosis.html — 169
+- sca/case-sudden-hearing-loss.html — 76
+- sca/case-sudden-visual-loss.html — 135
+- sca/case-syncope-cardiac-fh.html — 63
+- sca/case-syncope-vasovagal.html — 64
+- sca/case-t2dm-complications.html — 80
+- sca/case-t2dm-lada.html — 78
+- sca/case-t2dm-new-diagnosis.html — 63
+- sca/case-t2dm-traveller.html — 117
+- sca/case-teen-abortion-gillick.html — 108
+- sca/case-teen-contraception-fraser.html — 82
+- sca/case-teen-eating-disorder.html — 83
+- sca/case-teen-first-psychosis.html — 83
+- sca/case-teen-selfharm.html — 72
+- sca/case-teen-substance-misuse.html — 158
+- sca/case-teen-thirdparty-cannabis.html — 79
+- sca/case-telephone-interpreter.html — 104
+- sca/case-tennis-elbow.html — 138
+- sca/case-testicular-lump.html — 85
+- sca/case-testicular-torsion.html — 72
+- sca/case-third-party-meno.html — 69
+- sca/case-threadworm.html — 121
+- sca/case-thyroid-hyper.html — 73
+- sca/case-thyroid-hypo-young.html — 61
+- sca/case-thyroid-nodule.html — 87
+- sca/case-thyroid-subclin-preg.html — 78
+- sca/case-tia-resolved.html — 139
+- sca/case-tics-tourettes.html — 170
+- sca/case-tinea-pedis.html — 129
+- sca/case-tiredness-testosterone-myths.html — 120
+- sca/case-toddler-gastro-phone.html — 126
+- sca/case-trans-bridging.html — 122
+- sca/case-transgender-health.html — 144
+- sca/case-traveller-bloody-diarrhoea.html — 133
+- sca/case-trigeminal-neuralgia.html — 137
+- sca/case-uc-flare-phone.html — 117
+- sca/case-undescended-testis.html — 140
+- sca/case-unilateral-nasal.html — 101
+- sca/case-uti-elderly.html — 61
+- sca/case-vaccine-hesitancy-mmr.html — 111
+- sca/case-vertigo-bppv-stroke.html — 64
+- sca/case-viral-wheeze-child.html — 72
+- sca/case-vitiligo-meaning.html — 94
+- sca/case-weight-loss-normal-tests.html — 101
+- sca/case-weight-management-2026.html — 131
+- sca/case-wilsons-disease.html — 145
+- sca/case-zopiclone-fall.html — 62
 - tools/algorithms/abnormal-semen-analysis.html — 64
 - tools/algorithms/allergy-test-abnormalities.html — 67
+- tools/algorithms/blistering-rash.html — 64
 - tools/algorithms/confusion.html — 65
 - tools/algorithms/daytime-urinary-incontinence-children.html — 65
 - tools/algorithms/developmental-delay.html — 67
@@ -70,12 +411,14 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/algorithms/paediatric-cancer-referral.html — 67
 - tools/algorithms/pigmented-skin-lesions.html — 63
 - tools/algorithms/taste-disorders.html — 74
+- tools/algorithms/urinary-frequency.html — 64
 - tools/algorithms/watery-eye.html — 62
 - tools/management/addisons-disease.html — 67
 - tools/management/alcohol-problem-drinking.html — 63
 - tools/management/ankylosing-spondylitis.html — 74
 - tools/management/antiplatelets-anticoagulants.html — 64
 - tools/management/chest-infections.html — 70
+- tools/management/childhood-rashes-exclusion.html — 63
 - tools/management/cholecystitis.html — 61
 - tools/management/diverticular-disease.html — 63
 - tools/management/driving-diseases.html — 70
@@ -84,232 +427,429 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/hypothyroidism.html — 69
 - tools/management/insulin-type-2-diabetes.html — 80
 - tools/management/iron-deficiency-anaemia.html — 67
+- tools/management/long-covid.html — 61
+- tools/management/non-diabetic-hyperglycaemia.html — 67
 - tools/management/osa.html — 62
 - tools/management/otitis-media-effusion.html — 63
 - tools/management/palliative-delirium-agitation.html — 65
 - tools/management/palliative-respiratory-secretions.html — 67
+- tools/management/pots.html — 62
 - tools/management/sick-day-rules.html — 73
-- tools/management/terminal-haemorrhage.html — 63
-- tools/management/tia-stroke.html — 83
+- tools/management/skin-cancers.html — 62
+- …and 3 more
 
-### description over 160 characters (advisory) (208)
+### description over 160 characters (advisory) (630)
 
 - index.html — 277
 - pages/accessibility.html — 181
-- pages/how-we-fit.html — 185
+- pages/how-we-fit.html — 190
+- pages/intended-purpose.html — 177
 - pages/pricing.html — 191
+- sca/case-aaa-incidental.html — 259
+- sca/case-abdominal-migraine.html — 299
+- sca/case-abnormal-cervical-screening.html — 300
+- sca/case-abnormal-semen-analysis.html — 300
+- sca/case-ace-cough-post-mi.html — 287
+- sca/case-achilles-tendinopathy.html — 299
+- sca/case-acne-psychological.html — 268
+- sca/case-acne-teen.html — 221
+- sca/case-acute-glaucoma.html — 281
+- sca/case-acute-limb-ischaemia.html — 260
+- sca/case-adhd-pathway.html — 274
+- sca/case-adult-eating-disorder.html — 299
+- sca/case-ae-bp-alcohol.html — 289
+- sca/case-af-anticoag-decision.html — 278
+- sca/case-af-incidental.html — 223
+- sca/case-aki-sick-day.html — 292
+- sca/case-alcohol-dvla-driver.html — 257
+- sca/case-amd-vision-loss.html — 289
+- sca/case-amend-medical-record.html — 293
+- sca/case-anaemia-ida.html — 289
+- sca/case-anal-fissure.html — 300
+- sca/case-anaphylaxis-epipen.html — 283
+- sca/case-angina-builder.html — 243
+- sca/case-angry-apology.html — 234
+- sca/case-angry-complaint.html — 239
+- sca/case-angry-frequent.html — 239
+- sca/case-antipsychotic-restart.html — 293
+- sca/case-assisted-dying-request.html — 300
+- sca/case-asthma-post-attack.html — 291
+- sca/case-asthma-saba-overuse.html — 281
+- sca/case-asylum-destitution.html — 278
+- sca/case-asymmetric-hearing-loss.html — 271
+- sca/case-b12-deficiency.html — 280
+- sca/case-back-inflammatory.html — 243
+- sca/case-back-pain-myeloma.html — 224
+- sca/case-balanitis-phimosis.html — 300
+- sca/case-bereaved-relative-mccd.html — 289
+- sca/case-biliary-colic.html — 267
+- sca/case-blood-donor-anaemia.html — 275
+- sca/case-bowel-habit-fit.html — 251
+- sca/case-breaking-cancer-diagnosis.html — 277
+- sca/case-breast-lump-2ww.html — 275
+- sca/case-breathless-anxiety.html — 298
+- sca/case-bronchiolitis-phone.html — 272
+- sca/case-bruising-da.html — 237
+- sca/case-bsl-patient.html — 266
+- sca/case-cannabis-hyperemesis.html — 300
+- sca/case-carbon-monoxide.html — 300
+- sca/case-carehome-delirium.html — 274
+- sca/case-carehome-staff-call.html — 284
+- sca/case-carer-neglect.html — 214
+- sca/case-carer-strain.html — 230
+- sca/case-carpal-tunnel.html — 277
+- sca/case-chest-acute-hgv.html — 232
+- sca/case-child-constipation.html — 276
+- sca/case-child-ear-discharge.html — 268
+- sca/case-child-enuresis.html — 268
+- sca/case-child-obesity.html — 277
+- sca/case-child-petechiae-leukaemia.html — 268
+- sca/case-childhood-squint-leukocoria.html — 300
+- sca/case-chlamydia-positive.html — 268
+- sca/case-chronic-plaque-psoriasis.html — 294
+- sca/case-chronic-urticaria.html — 300
+- sca/case-ckd3-result.html — 275
+- sca/case-cll-lymphocytosis.html — 300
+- sca/case-cluster-headache.html — 300
+- sca/case-coeliac-disease.html — 266
+- sca/case-coil-counselling.html — 274
+- sca/case-cold-sore-child.html — 251
+- sca/case-community-pneumonia.html — 263
+- sca/case-copd-advanced-ceiling.html — 297
+- sca/case-copd-flare-smoker.html — 295
+- sca/case-copd-phone-breathless.html — 300
+- sca/case-copd-poor-control.html — 274
+- sca/case-costochondritis.html — 300
+- sca/case-cough-older-cxr.html — 233
+- sca/case-cough-smoker-2ww.html — 234
+- sca/case-cough-young-asthma.html — 240
+- sca/case-covert-medication.html — 273
+- sca/case-de-quervains.html — 300
+- sca/case-dementia-aggression-carer.html — 252
+- sca/case-dementia-night.html — 220
+- sca/case-dengue-fever.html — 300
+- sca/case-depression-firearms.html — 242
+- sca/case-depression-first-risk.html — 234
+- sca/case-desogestrel-amenorrhoea.html — 289
+- sca/case-developmental-delay.html — 288
+- sca/case-dexa-bisphosphonate.html — 255
+- sca/case-diazepam-request.html — 249
+- sca/case-diplopia-ms-myasthenia.html — 300
+- sca/case-diverticular-disease.html — 300
+- sca/case-diverticulitis-discharge.html — 296
+- sca/case-dizzy-older-postural.html — 221
+- sca/case-dizzy-teen-pots.html — 283
+- sca/case-dnacpr-request.html — 216
+- sca/case-dont-record-this.html — 273
+- sca/case-dvt-calf.html — 263
+- sca/case-dyspepsia-alarm.html — 248
+- sca/case-dysphagia-2ww.html — 257
+- sca/case-dysuria-sti.html — 241
+- sca/case-ear-scaly-lump-scc.html — 276
+- sca/case-early-preg-bleed.html — 259
+- sca/case-early-rheumatoid.html — 268
+- sca/case-eczema-steroid-phobia.html — 267
+- sca/case-ed-after-mi-online-tablets.html — 300
+- sca/case-ed-cardiovascular.html — 244
+- sca/case-elder-financial-abuse.html — 250
+- sca/case-emergency-contraception.html — 251
+- sca/case-endometriosis.html — 296
+- sca/case-epilepsy-driving.html — 300
+- sca/case-epilepsy-pregnancy-valproate.html — 299
+- sca/case-erythema-nodosum.html — 300
+- sca/case-essential-tremor.html — 300
+- sca/case-eupd-crisis.html — 300
+- sca/case-facial-palsy-bell-stroke.html — 262
+- sca/case-faecal-incontinence.html — 300
+- sca/case-faltering-growth.html — 270
+- sca/case-familial-adenomatous-polyposis.html — 300
+- sca/case-familial-hypercholesterolaemia.html — 279
+- sca/case-fatigue-lfts-vitd.html — 300
+- sca/case-febrile-child-rash.html — 242
+- sca/case-febrile-convulsion.html — 233
+- sca/case-febrile-young-infant.html — 276
+- sca/case-fgm-abroad.html — 282
+- sca/case-fgm-at-smear.html — 284
+- sca/case-fibromyalgia.html — 299
+- sca/case-first-seizure-dvla.html — 272
+- sca/case-fit-positive.html — 233
+- sca/case-flight-anxiety-diazepam.html — 300
+- sca/case-forced-marriage.html — 300
+- sca/case-frontotemporal-dementia.html — 300
+- sca/case-frozen-shoulder.html — 300
+- sca/case-functional-symptoms.html — 266
+- sca/case-gambling-insomnia.html — 242
+- sca/case-generalised-itch.html — 264
+- sca/case-genital-herpes-first.html — 300
+- sca/case-gestational-diabetes.html — 289
+- sca/case-glandular-fever.html — 287
+- sca/case-globus-sensation.html — 267
+- sca/case-gout-flare.html — 253
+- sca/case-haematospermia.html — 282
+- sca/case-haematuria-2ww.html — 233
+- sca/case-haemoptysis-palliative.html — 209
+- sca/case-hair-loss-young-woman.html — 266
+- sca/case-halitosis.html — 299
+- sca/case-head-lice.html — 297
+- sca/case-headache-aura-pill.html — 249
+- sca/case-headache-coital.html — 245
+- sca/case-headache-preeclampsia.html — 226
+- sca/case-headache-thunderclap.html — 231
+- sca/case-health-anxiety-gad.html — 243
+- sca/case-hf-four-pillars.html — 239
+- sca/case-hiv-test-teen.html — 295
+- sca/case-hmb-fibroids.html — 257
+- sca/case-home-visit-confusion.html — 231
+- sca/case-homeless-patient.html — 275
+- sca/case-hrt-breast-cancer-numbers.html — 282
+- sca/case-hrt-counselling.html — 299
+- sca/case-hrt-unscheduled-bleed.html — 246
+- sca/case-htn-borderline-tablets.html — 300
+- sca/case-htn-variable-readings.html — 298
+- sca/case-htn-young-bp.html — 235
+- sca/case-hypercalcaemia-ca.html — 233
+- sca/case-hypercalcaemia-workup.html — 297
+- sca/case-hyperemesis-gravidarum.html — 300
+- sca/case-hyperhidrosis-primary.html — 300
+- sca/case-hyperkalaemia-recall.html — 250
+- sca/case-hypermobility-eds.html — 299
+- sca/case-hyponatraemia-diuretic.html — 241
+- sca/case-iatrogenic-anticholinergic.html — 259
+- sca/case-iatrogenic-dyspepsia.html — 300
+- sca/case-impaired-colleague.html — 276
+- sca/case-index.html — 164
+- sca/case-infant-reflux.html — 276
+- sca/case-infantile-colic.html — 299
+- sca/case-insulin-ramadan.html — 261
+- sca/case-insulin-start-beliefs.html — 297
+- sca/case-interpreter-consultation.html — 264
+- sca/case-itchy-rash-systemic.html — 292
+- sca/case-kawasaki-disease.html — 300
+- sca/case-keloid-scar.html — 294
+- sca/case-knee-pain-walker.html — 218
+- sca/case-knee-xray-degenerative.html — 256
+- sca/case-latex-allergy.html — 300
+- sca/case-learning-disability-check.html — 284
+- sca/case-leg-ulcer.html — 289
+- sca/case-lft-alcohol.html — 232
+- sca/case-lichen-planus.html — 299
+- sca/case-limping-child.html — 237
+- sca/case-lithium-toxicity.html — 272
+- sca/case-liver-deteriorating-drinker.html — 235
+- sca/case-liver-haemochromatosis.html — 232
+- sca/case-liver-jaundice-traveller.html — 238
+- sca/case-living-with-hiv.html — 299
+- sca/case-loin-pain-away-from-home.html — 296
+- sca/case-low-platelets-young.html — 283
+- sca/case-lpa-best-interests.html — 267
+- sca/case-lyme-disease.html — 299
+- sca/case-macrocytosis-result.html — 255
+- sca/case-male-pattern-hair-loss.html — 296
+- sca/case-medication-error-candour.html — 264
+- sca/case-melaena-declines-admission.html — 286
+- sca/case-melanoma-2ww.html — 250
+- sca/case-memory-self.html — 236
+- sca/case-memory-son-call.html — 221
+- sca/case-meniscal-injury.html — 300
+- sca/case-methadone-bridging.html — 280
+- sca/case-methotrexate-early-request.html — 289
+- sca/case-migraine-moh.html — 300
+- sca/case-miscarriage-follow-up.html — 285
+- sca/case-missed-immunisations.html — 290
+- sca/case-mnd-choking-planning-ahead.html — 300
+- sca/case-modern-slavery.html — 280
+- sca/case-molluscum-contagiosum.html — 292
+- sca/case-motor-neurone-disease.html — 300
+- sca/case-mouth-ulcer-2ww.html — 248
+- sca/case-ms-work-disclosure.html — 289
+- sca/case-nafld-result.html — 267
+- sca/case-narcolepsy.html — 300
+- sca/case-neck-lump-2ww.html — 265
+- sca/case-needlestick-injury.html — 300
+- sca/case-neonatal-jaundice.html — 272
+- sca/case-neonatal-sticky-eye.html — 272
+- sca/case-new-t1dm-child.html — 292
+- sca/case-night-sweats-young.html — 267
+- sca/case-non-binary-patient.html — 300
+- sca/case-non-healing-lesion.html — 300
+- sca/case-nonvisible-haematuria.html — 258
+- sca/case-normal-pressure-hydrocephalus.html — 291
+- sca/case-obstetric-cholestasis.html — 285
+- sca/case-ocd-recognition.html — 300
+- sca/case-opioid-escalation.html — 264
+- sca/case-optic-neuritis-ms.html — 275
+- sca/case-osa-epworth-dvla.html — 293
+- sca/case-otitis-externa.html — 299
+- sca/case-ovarian-bloating.html — 266
+- sca/case-ovarian-results-moving-on.html — 279
+- sca/case-overactive-bladder.html — 300
+- sca/case-pagets-incidental.html — 241
+- sca/case-painless-jaundice.html — 257
+- sca/case-pall-confusion.html — 219
+- sca/case-pall-pain.html — 235
+- sca/case-pcos-named.html — 259
+- sca/case-peripheral-neuropathy.html — 289
+- sca/case-persistent-fatigue-young.html — 278
+- sca/case-persistent-hoarseness.html — 259
+- sca/case-peyronies-curvature.html — 300
+- sca/case-phaeochromocytoma.html — 300
+- sca/case-picky-eating.html — 300
+- sca/case-pid-young-woman.html — 259
+- sca/case-pilonidal-sinus.html — 300
+- sca/case-pityriasis-rosea.html — 300
+- sca/case-pkd-young.html — 300
+- sca/case-plantar-fasciitis.html — 298
+- sca/case-pleural-effusion-cxr.html — 268
+- sca/case-pmb-endometrial.html — 246
+- sca/case-pmdd.html — 300
+- sca/case-pmr-gca.html — 236
+- sca/case-polyphagia-diabetes.html — 300
+- sca/case-polypharmacy-frailty-review.html — 262
+- sca/case-post-covid-syndrome.html — 300
+- sca/case-post-icu-syndrome.html — 283
+- sca/case-post-tia-medicine-side-effects.html — 299
+- sca/case-postherpetic-neuralgia.html — 270
+- sca/case-postnatal-depression.html — 245
+- sca/case-postnatal-isolation-new-arrival.html — 294
+- sca/case-postpartum-hair-loss.html — 266
+- sca/case-precocious-puberty.html — 291
+- sca/case-prediabetes-fork.html — 252
+- sca/case-pregnant-at-15.html — 269
+- sca/case-premature-ejaculation.html — 299
+- sca/case-prison-release-continuity.html — 285
+- sca/case-private-care-request.html — 285
+- sca/case-prostatitis.html — 298
+- sca/case-psa-brca2-brother.html — 269
+- sca/case-psa-result-conversation.html — 242
+- sca/case-ptsd-veteran.html — 253
+- sca/case-raised-inflammatory-markers.html — 300
+- sca/case-raised-prolactin.html — 269
+- sca/case-raynauds-young-girl.html — 278
+- sca/case-reactive-arthritis.html — 271
+- sca/case-rectal-bleed-learning-disability.html — 293
+- sca/case-rectal-bleeding-2ww.html — 241
+- sca/case-recurrent-epistaxis.html — 281
+- sca/case-recurrent-falls-review.html — 239
+- sca/case-recurrent-uti-letrozole.html — 300
+- sca/case-recurrent-uti-woman.html — 290
+- sca/case-red-eye-triage.html — 256
+- sca/case-red-s-stress-fractures.html — 297
+- sca/case-reflux-ppi-exit.html — 283
+- sca/case-renal-colic.html — 290
+- sca/case-restless-legs-pregnancy.html — 300
+- sca/case-results-bloods-panel.html — 300
+- sca/case-results-ecg-af.html — 278
+- sca/case-results-ra-fertility.html — 300
+- sca/case-results-spirometry.html — 274
+- sca/case-rhinitis-ladder.html — 291
+- sca/case-rif-pain-young-female.html — 228
+- sca/case-septic-arthritis.html — 249
+- sca/case-sex-after-assault.html — 285
+- sca/case-sex-selective-termination.html — 281
+- sca/case-sex-worker-health.html — 288
+- sca/case-shingles-ophthalmic.html — 250
+- sca/case-sicknote-unsupported.html — 255
+- sca/case-sjs-ten.html — 295
+- sca/case-sleep-paeds.html — 230
+- sca/case-smi-health-check.html — 287
+- sca/case-soft-tissue-sarcoma-lump.html — 267
+- sca/case-sore-throat-stewardship.html — 300
+- sca/case-staff-as-patient.html — 300
+- sca/case-steroid-fracture-osteoporosis.html — 300
+- sca/case-sudden-hearing-loss.html — 246
+- sca/case-sudden-visual-loss.html — 300
+- sca/case-syncope-cardiac-fh.html — 229
+- sca/case-syncope-vasovagal.html — 241
+- sca/case-t2dm-complications.html — 250
+- sca/case-t2dm-foot.html — 229
+- sca/case-t2dm-lada.html — 252
+- sca/case-t2dm-new-diagnosis.html — 233
+- sca/case-t2dm-traveller.html — 295
+- sca/case-teacher-call.html — 228
+- sca/case-teen-abortion-gillick.html — 285
+- sca/case-teen-contraception-fraser.html — 246
+- sca/case-teen-eating-disorder.html — 247
+- sca/case-teen-first-psychosis.html — 251
+- sca/case-teen-selfharm.html — 236
+- sca/case-teen-substance-misuse.html — 300
+- sca/case-teen-thirdparty-cannabis.html — 247
+- sca/case-telephone-interpreter.html — 279
+- sca/case-tennis-elbow.html — 300
+- sca/case-testicular-lump.html — 255
+- sca/case-testicular-torsion.html — 242
+- sca/case-third-party-meno.html — 250
+- sca/case-threadworm.html — 285
+- sca/case-thyroid-hyper.html — 238
+- sca/case-thyroid-hypo-young.html — 226
+- sca/case-thyroid-nodule.html — 257
+- sca/case-thyroid-subclin-preg.html — 259
+- sca/case-thyroid-subclinical.html — 229
+- sca/case-tia-resolved.html — 300
+- sca/case-tics-tourettes.html — 300
+- sca/case-tinea-pedis.html — 293
+- sca/case-tiredness-testosterone-myths.html — 297
+- sca/case-toddler-gastro-phone.html — 294
+- sca/case-trans-bridging.html — 300
+- sca/case-transgender-health.html — 299
+- sca/case-traveller-bloody-diarrhoea.html — 299
+- sca/case-trigeminal-neuralgia.html — 300
+- sca/case-uc-flare-phone.html — 287
+- sca/case-undescended-testis.html — 300
+- sca/case-unilateral-nasal.html — 271
+- sca/case-uti-elderly.html — 214
+- sca/case-vaccine-hesitancy-mmr.html — 275
+- sca/case-vertigo-bppv-stroke.html — 234
+- sca/case-viral-wheeze-child.html — 240
+- sca/case-vitiligo-meaning.html — 265
+- sca/case-weight-loss-normal-tests.html — 271
+- sca/case-weight-management-2026.html — 300
+- sca/case-wilsons-disease.html — 300
+- sca/case-zopiclone-fall.html — 215
+- tools/algorithms/abnormal-lipid-profile.html — 218
+- tools/algorithms/acute-diarrhoea.html — 183
+- tools/algorithms/anxiety.html — 238
 - tools/algorithms/back-pain.html — 319
+- tools/algorithms/behaviour-children.html — 288
+- tools/algorithms/blistering-rash.html — 282
+- tools/algorithms/breast-symptoms.html — 225
 - tools/algorithms/confusion.html — 188
+- tools/algorithms/daytime-sleepiness.html — 311
 - tools/algorithms/developmental-delay.html — 333
+- tools/algorithms/ear-discharge.html — 218
+- tools/algorithms/fever-rash-child.html — 254
+- tools/algorithms/haemoptysis.html — 193
+- tools/algorithms/headache-children.html — 227
+- tools/algorithms/hyperglycaemia.html — 204
+- tools/algorithms/insomnia.html — 306
+- tools/algorithms/low-mood.html — 229
+- tools/algorithms/menorrhagia.html — 188
+- tools/algorithms/raised-creatinine.html — 176
+- tools/algorithms/recurrent-infections.html — 205
 - tools/algorithms/scrotal-pain.html — 227
 - tools/algorithms/taste-disorders.html — 251
+- tools/algorithms/unilateral-leg-swelling.html — 240
+- tools/algorithms/unwell-older-adult.html — 218
+- tools/algorithms/urinary-frequency.html — 253
+- tools/clinic-reference.html — 171
+- tools/consultation-spine.html — 209
+- tools/diagnostic.html — 214
+- tools/immunisation-schedule.html — 232
 - tools/management/achilles-tendinopathy.html — 399
 - tools/management/acne.html — 385
 - tools/management/actinic-keratosis.html — 402
 - tools/management/addisons-disease.html — 397
 - tools/management/adhd.html — 380
 - tools/management/aki.html — 267
-- tools/management/alcohol-problem-drinking.html — 357
-- tools/management/allergic-conjunctivitis.html — 317
-- tools/management/allergic-rhinitis.html — 335
-- tools/management/anal-fissure.html — 387
-- tools/management/anaphylaxis.html — 380
-- tools/management/angioedema.html — 335
-- tools/management/ankylosing-spondylitis.html — 356
-- tools/management/anogenital-warts.html — 413
-- tools/management/antiplatelets-anticoagulants.html — 481
-- tools/management/anxiety.html — 316
-- tools/management/aphthous-ulcer.html — 353
-- tools/management/asthma-children.html — 389
-- tools/management/asthma.html — 252
-- tools/management/atrial-fibrillation.html — 320
-- tools/management/autism.html — 340
-- tools/management/bacterial-vaginosis.html — 308
-- tools/management/bells-palsy.html — 231
-- tools/management/benign-prostate-enlargement.html — 466
-- tools/management/benzodiazepines-z-drugs.html — 400
-- tools/management/blepharitis.html — 274
-- tools/management/bppv.html — 333
-- tools/management/breast-cancer.html — 323
-- tools/management/breast-disorders.html — 349
-- tools/management/bronchiectasis.html — 296
-- tools/management/bullous-pemphigoid.html — 343
-- tools/management/care-of-the-dying.html — 341
-- tools/management/carpal-tunnel-syndrome.html — 391
-- tools/management/cauda-equina.html — 381
-- tools/management/cellulitis.html — 411
-- tools/management/chalazion.html — 426
-- tools/management/chest-infections.html — 402
-- tools/management/chilblains.html — 422
-- tools/management/chlamydia.html — 473
-- tools/management/cholecystitis.html — 318
-- tools/management/chronic-pain.html — 418
-- tools/management/ckd.html — 246
-- tools/management/cmpa.html — 357
-- tools/management/coeliac-disease.html — 328
-- tools/management/constipation-adult.html — 403
-- tools/management/constipation-child.html — 355
-- tools/management/contraception.html — 369
-- tools/management/copd.html — 273
-- tools/management/crohns-disease.html — 422
-- tools/management/dementia.html — 318
-- tools/management/depression.html — 331
-- tools/management/diverticular-disease.html — 397
-- tools/management/dka.html — 253
-- tools/management/driving-diseases.html — 363
-- tools/management/dry-eye-disease.html — 374
-- tools/management/dvt.html — 371
-- tools/management/dysmenorrhoea.html — 345
-- tools/management/eating-disorders.html — 401
-- tools/management/epilepsy.html — 386
-- tools/management/erectile-dysfunction.html — 368
-- tools/management/essential-tremor.html — 351
-- tools/management/familial-hypercholesterolaemia.html — 350
-- tools/management/fatty-liver.html — 327
-- tools/management/female-pattern-hair-loss.html — 338
-- tools/management/female-urinary-incontinence.html — 378
-- tools/management/gastroenteritis.html — 338
-- tools/management/gender-dysphoria.html — 509
-- tools/management/genital-herpes.html — 334
-- tools/management/gestational-diabetes.html — 327
-- tools/management/giant-cell-arteritis.html — 537
-- tools/management/gilberts-syndrome.html — 271
-- tools/management/gonorrhoea.html — 303
-- tools/management/gord.html — 437
-- tools/management/gout.html — 246
-- tools/management/greater-trochanteric-pain-syndrome.html — 247
-- tools/management/haematological-cancers.html — 502
-- tools/management/haemorrhoids.html — 384
-- tools/management/heart-failure.html — 325
-- tools/management/hepatitis-a.html — 386
-- tools/management/hernia.html — 558
-- tools/management/hirsutism.html — 405
-- tools/management/hiv.html — 365
-- tools/management/hrt-prescribing.html — 310
-- tools/management/hypercholesterolaemia.html — 293
-- tools/management/hyperhidrosis.html — 444
-- tools/management/hypertension-pregnancy.html — 386
-- tools/management/hypertension.html — 241
-- tools/management/hyperthyroidism.html — 388
-- tools/management/hypothyroidism.html — 307
-- tools/management/ibs.html — 335
-- tools/management/impetigo.html — 339
-- tools/management/infant-reflux.html — 268
-- tools/management/infertility.html — 374
-- tools/management/insomnia.html — 404
-- tools/management/insulin-type-2-diabetes.html — 410
-- tools/management/iron-deficiency-anaemia.html — 245
-- tools/management/leg-cramps.html — 377
-- tools/management/lyme-disease.html — 313
-- tools/management/macular-degeneration.html — 460
-- tools/management/malaria-prophylaxis.html — 382
-- tools/management/male-luts.html — 370
-- tools/management/male-pattern-hair-loss.html — 284
-- tools/management/malignant-hypercalcaemia.html — 360
-- tools/management/malnutrition.html — 337
-- tools/management/me-cfs.html — 322
-- tools/management/menieres.html — 345
-- tools/management/menorrhagia.html — 486
-- tools/management/metabolic-syndrome.html — 403
-- tools/management/mi-secondary-prevention.html — 335
-- tools/management/migraine.html — 404
-- tools/management/mortons-neuroma.html — 291
-- tools/management/mscc.html — 466
-- tools/management/nail-disorders.html — 328
-- tools/management/nappy-rash.html — 333
-- tools/management/nausea-vomiting-pregnancy.html — 348
-- tools/management/neuropathic-pain.html — 397
-- tools/management/neutropenic-sepsis.html — 366
-- tools/management/nocturnal-enuresis.html — 329
-- tools/management/obesity.html — 441
-- tools/management/ocd.html — 433
-- tools/management/opioid-dependence.html — 351
-- tools/management/opioid-prescribing.html — 392
-- tools/management/osa.html — 341
-- tools/management/osteoarthritis.html — 354
-- tools/management/osteoporosis.html — 282
-- tools/management/otitis-media-effusion.html — 321
-- tools/management/otitis-media-externa.html — 333
-- tools/management/palliative-anxiety-depression.html — 360
-- tools/management/palliative-breathlessness.html — 327
-- tools/management/palliative-constipation.html — 303
-- tools/management/palliative-corticosteroids.html — 284
-- tools/management/palliative-delirium-agitation.html — 325
-- tools/management/palliative-nausea-vomiting.html — 360
-- tools/management/palliative-pain.html — 414
-- tools/management/palliative-respiratory-secretions.html — 378
-- tools/management/parkinsons.html — 369
-- tools/management/pcos.html — 318
-- tools/management/pelvic-inflammatory-disease.html — 350
-- tools/management/pelvic-organ-prolapse.html — 384
-- tools/management/penile-disorders.html — 346
-- tools/management/peripheral-arterial-disease.html — 331
-- tools/management/plantar-fasciitis.html — 335
-- tools/management/polymyalgia-rheumatica.html — 328
-- tools/management/post-herpetic-neuralgia.html — 376
-- tools/management/postnatal-depression.html — 443
-- tools/management/postnatal-disorders.html — 404
-- tools/management/ppi-prescribing.html — 300
-- tools/management/precocious-puberty.html — 389
-- tools/management/premature-ejaculation.html — 490
-- tools/management/premenstrual-syndrome.html — 549
-- tools/management/preschool-wheeze.html — 363
-- tools/management/prostatitis.html — 457
-- tools/management/psoriasis.html — 453
-- tools/management/psychosis-schizophrenia.html — 349
-- tools/management/ptsd.html — 328
-- tools/management/pulmonary-embolism.html — 381
-- tools/management/raynauds.html — 270
-- tools/management/recurrent-thrush.html — 303
-- tools/management/recurrent-uti.html — 326
-- tools/management/restless-legs.html — 441
-- tools/management/rheumatoid-arthritis.html — 363
-- tools/management/rosacea.html — 242
-- tools/management/sciatica.html — 412
-- tools/management/screening-programmes.html — 315
-- tools/management/shingles.html — 319
-- tools/management/sick-day-rules.html — 450
-- tools/management/sickle-cell-disease.html — 420
-- tools/management/sinusitis.html — 333
-- tools/management/smoking-cessation.html — 441
-- tools/management/stable-angina.html — 386
-- tools/management/subconjunctival-haemorrhage.html — 337
-- tools/management/surgical-problems-children.html — 382
-- tools/management/svco.html — 362
-- tools/management/t2dm-ramadan.html — 350
-- tools/management/tennis-elbow.html — 353
-- tools/management/tension-headache.html — 401
-- tools/management/terminal-haemorrhage.html — 296
-- tools/management/threadworm.html — 222
-- tools/management/thyroid-pregnancy.html — 421
-- tools/management/tia-stroke.html — 309
-- tools/management/tmd.html — 211
-- tools/management/trichomoniasis.html — 389
-- tools/management/trigeminal-neuralgia.html — 367
-- tools/management/type-1-diabetes.html — 348
-- tools/management/type-2-diabetes.html — 270
-- tools/management/ulcerative-colitis.html — 390
-- tools/management/undescended-testis.html — 347
-- tools/management/urethritis-male.html — 380
-- tools/management/urticaria.html — 397
-- tools/management/uti-children.html — 325
-- tools/management/uti-men.html — 371
-- tools/management/uti-women.html — 279
-- tools/management/uveitis.html — 352
-- tools/management/varicocele.html — 313
-- tools/management/varicose-veins.html — 302
-- tools/management/vasovagal-syncope.html — 376
-- tools/management/vestibular-neuronitis.html — 269
-- tools/management/vulvar-disorders.html — 374
-- tools/sca-group.html — 163
+- …and 230 more
 
 ### more than one <h1> (2)
 
 - index.html — 2
 - pages/cpd.html — 2
 
-### no <h1> in the HTML (drawn by script? check in a browser) (367)
+### no <h1> in the HTML (drawn by script? check in a browser) (401)
 
+- tools/algorithms/abnormal-lipid-profile.html
 - tools/algorithms/acute-cough.html
 - tools/algorithms/breathlessness.html
 - tools/algorithms/bruising.html
@@ -367,6 +907,7 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/algorithms/hip-pain.html
 - tools/algorithms/hoarseness.html
 - tools/algorithms/hypercalcaemia.html
+- tools/algorithms/hyperglycaemia.html
 - tools/algorithms/hyperkalaemia.html
 - tools/algorithms/hypernatraemia.html
 - tools/algorithms/hyperprolactinaemia.html
@@ -426,7 +967,9 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/algorithms/psychosis.html
 - tools/algorithms/purpura-petechiae.html
 - tools/algorithms/raised-creatine-kinase.html
+- tools/algorithms/raised-creatinine.html
 - tools/algorithms/rectal-bleeding.html
+- tools/algorithms/recurrent-infections.html
 - tools/algorithms/red-eye.html
 - tools/algorithms/renal-colic.html
 - tools/algorithms/scrotal-pain.html
@@ -451,6 +994,7 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/algorithms/tongue-problems.html
 - tools/algorithms/tremors.html
 - tools/algorithms/unsettled-baby.html
+- tools/algorithms/unwell-older-adult.html
 - tools/algorithms/vaginal-bleeding-pregnancy.html
 - tools/algorithms/vaginal-bleeding.html
 - tools/algorithms/vaginal-discharge.html
@@ -493,12 +1037,16 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/bells-palsy.html
 - tools/management/benign-prostate-enlargement.html
 - tools/management/benzodiazepines-z-drugs.html
+- tools/management/bipolar-lithium.html
+- tools/management/bites.html
 - tools/management/blepharitis.html
 - tools/management/bppv.html
 - tools/management/breast-cancer.html
 - tools/management/breast-disorders.html
 - tools/management/bronchiectasis.html
+- tools/management/bronchiolitis.html
 - tools/management/bullous-pemphigoid.html
+- tools/management/burns.html
 - tools/management/care-of-the-dying.html
 - tools/management/carpal-tunnel-syndrome.html
 - tools/management/cauda-equina.html
@@ -506,6 +1054,7 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/chalazion.html
 - tools/management/chest-infections.html
 - tools/management/chilblains.html
+- tools/management/childhood-rashes-exclusion.html
 - tools/management/chlamydia.html
 - tools/management/cholecystitis.html
 - tools/management/chronic-pain.html
@@ -517,6 +1066,7 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/contraception.html
 - tools/management/copd.html
 - tools/management/crohns-disease.html
+- tools/management/croup.html
 - tools/management/dementia.html
 - tools/management/depression.html
 - tools/management/diverticular-disease.html
@@ -527,13 +1077,17 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/dysmenorrhoea.html
 - tools/management/eating-disorders.html
 - tools/management/eczema.html
+- tools/management/endometriosis.html
 - tools/management/epilepsy.html
 - tools/management/erectile-dysfunction.html
 - tools/management/essential-tremor.html
 - tools/management/familial-hypercholesterolaemia.html
 - tools/management/fatty-liver.html
+- tools/management/febrile-seizures.html
 - tools/management/female-pattern-hair-loss.html
 - tools/management/female-urinary-incontinence.html
+- tools/management/fibromyalgia.html
+- tools/management/frailty-medication-review.html
 - tools/management/fungal-skin-infection.html
 - tools/management/gastroenteritis.html
 - tools/management/gender-dysphoria.html
@@ -548,15 +1102,19 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/gout.html
 - tools/management/greater-trochanteric-pain-syndrome.html
 - tools/management/haematological-cancers.html
+- tools/management/haemochromatosis.html
 - tools/management/haemorrhoids.html
+- tools/management/head-injury-concussion.html
 - tools/management/heart-failure.html
 - tools/management/hepatitis-a.html
+- tools/management/hepatitis-b-c.html
 - tools/management/hernia.html
+- tools/management/hidradenitis-suppurativa.html
 - tools/management/hirsutism.html
 - tools/management/hiv.html
-- tools/management/hrt-prescribing.html
 - tools/management/hypercholesterolaemia.html
 - tools/management/hyperhidrosis.html
+- tools/management/hyperparathyroidism.html
 - tools/management/hypertension-pregnancy.html
 - tools/management/hypertension.html
 - tools/management/hyperthyroidism.html
@@ -564,11 +1122,14 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/ibs.html
 - tools/management/impetigo.html
 - tools/management/infant-reflux.html
+- tools/management/infective-conjunctivitis.html
 - tools/management/infertility.html
-- tools/management/insomnia.html
+- tools/management/influenza-covid-antivirals.html
 - tools/management/insulin-type-2-diabetes.html
 - tools/management/iron-deficiency-anaemia.html
+- tools/management/learning-disability-autism.html
 - tools/management/leg-cramps.html
+- tools/management/long-covid.html
 - tools/management/lyme-disease.html
 - tools/management/macular-degeneration.html
 - tools/management/malaria-prophylaxis.html
@@ -579,18 +1140,21 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/mastitis-breast-abscess.html
 - tools/management/me-cfs.html
 - tools/management/menieres.html
+- tools/management/menopause.html
 - tools/management/menorrhagia.html
 - tools/management/metabolic-syndrome.html
 - tools/management/mi-secondary-prevention.html
 - tools/management/migraine.html
 - tools/management/mortons-neuroma.html
 - tools/management/mscc.html
+- tools/management/multiple-sclerosis.html
 - tools/management/nail-disorders.html
 - tools/management/nappy-rash.html
 - tools/management/nausea-vomiting-pregnancy.html
 - tools/management/neuropathic-pain.html
 - tools/management/neutropenic-sepsis.html
 - tools/management/nocturnal-enuresis.html
+- tools/management/non-diabetic-hyperglycaemia.html
 - tools/management/obesity.html
 - tools/management/ocd.html
 - tools/management/opioid-dependence.html
@@ -615,6 +1179,7 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/pelvic-organ-prolapse.html
 - tools/management/penile-disorders.html
 - tools/management/peripheral-arterial-disease.html
+- tools/management/personality-disorder.html
 - tools/management/pityriasis-rosea.html
 - tools/management/pityriasis-versicolor.html
 - tools/management/plantar-fasciitis.html
@@ -622,6 +1187,7 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/post-herpetic-neuralgia.html
 - tools/management/postnatal-depression.html
 - tools/management/postnatal-disorders.html
+- tools/management/pots.html
 - tools/management/ppi-prescribing.html
 - tools/management/precocious-puberty.html
 - tools/management/premature-ejaculation.html
@@ -633,24 +1199,29 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/ptsd.html
 - tools/management/pulmonary-embolism.html
 - tools/management/raynauds.html
+- tools/management/recurrent-miscarriage.html
 - tools/management/recurrent-thrush.html
 - tools/management/recurrent-uti.html
 - tools/management/restless-legs.html
 - tools/management/rheumatoid-arthritis.html
 - tools/management/rosacea.html
+- tools/management/safeguarding.html
 - tools/management/scabies.html
 - tools/management/sciatica.html
 - tools/management/screening-programmes.html
 - tools/management/seborrhoeic-dermatitis.html
+- tools/management/self-harm-suicide-risk.html
 - tools/management/shingles.html
 - tools/management/sick-day-rules.html
 - tools/management/sickle-cell-disease.html
 - tools/management/sinusitis.html
+- tools/management/skin-cancers.html
 - tools/management/smoking-cessation.html
 - tools/management/stable-angina.html
 - tools/management/subconjunctival-haemorrhage.html
 - tools/management/surgical-problems-children.html
 - tools/management/svco.html
+- tools/management/syphilis.html
 - tools/management/t2dm-ramadan.html
 - tools/management/tennis-elbow.html
 - tools/management/tension-headache.html
@@ -661,6 +1232,7 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/tmd.html
 - tools/management/trichomoniasis.html
 - tools/management/trigeminal-neuralgia.html
+- tools/management/tuberculosis.html
 - tools/management/type-1-diabetes.html
 - tools/management/type-2-diabetes.html
 - tools/management/ulcerative-colitis.html
@@ -674,6 +1246,7 @@ Removed (redirect, print copy, owner or noindex page):
 - tools/management/varicocele.html
 - tools/management/varicose-veins.html
 - tools/management/vasovagal-syncope.html
+- tools/management/venous-leg-ulcer.html
 - tools/management/vestibular-neuronitis.html
 - tools/management/vulvar-disorders.html
-- tools/management/whooping-cough.html
+- …and 1 more

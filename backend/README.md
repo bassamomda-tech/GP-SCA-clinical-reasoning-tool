@@ -164,31 +164,84 @@ Nothing to configure: it uses the existing **USERS** KV.
   writes a day, which is far more than no-result searches on a site this size.
 
 ## Handbook shop (one-off £20 purchases)
-Handbooks such as the **Lab Results Handbook PDF** are sold **separately, £20 each, as a
-one-off PayPal payment**. They are **not part of any plan**: Silver and Platinum members
-buy them like everyone else. (The individual Clinic Guides stay in the Silver and
-Platinum plans; nothing changes there.)
+Handbooks are sold **separately, £20 each, as a one-off PayPal payment**. They are **not
+part of any plan**: Silver, Gold and Platinum members buy them like everyone else. (The
+individual Clinic Guides stay in the Silver and Platinum plans; nothing changes there.)
 
-How it works for a member, on Clinic Guides → Lab results:
+**The products** (`const PRODUCTS` in `worker.js`). The R2 name must match exactly:
+
+| Product id (`data-cg-product`) | Title | Exact file name in R2 | Saved on the buyer's computer as |
+|---|---|---|---|
+| `lab-handbook` | Lab Results Handbook | **`lab-results-handbook-v1.1.pdf`** | `Reasoning-GP-Lab-Results-Handbook-v1.1.pdf` |
+| `sca-casebook-1` | SCA Casebook Vol 1 | **`sca-casebook-vol1-v1.0.pdf`** | `Reasoning-GP-SCA-Casebook-Vol1-v1.0.pdf` |
+| `sca-communication` | SCA Communication Book | **`sca-communication-book-v1.0.pdf`** | `Reasoning-GP-SCA-Communication-Book-v1.0.pdf` |
+
+**Where they are sold:** all three on the **Shop** page (`pages/shop.html`, "Shop" in the
+top bar next to Plans); the Lab Results Handbook also on Clinic Guides → Lab results.
+Any page with a `div.cg-handbook[data-cg-product]` card that loads `site.js` and
+`assets/clinic-guides.js` sells that handbook.
+
+How it works for a member:
 - **Signed out** → a **Sign in to buy · £20** button (opens the usual sign-in box). An
   account is needed so the purchase is linked to them and they can download it again on
   any device.
-- **Signed in, not bought** → a **PayPal** button (PayPal, card, Apple Pay where offered).
-  The Worker sets the price (£20, in pounds) and checks with PayPal that exactly £20 was
-  paid before it unlocks anything. Nothing the browser sends can change the price.
+- **Signed in, not bought** → a **tick box** and, under it, the **PayPal** button (PayPal,
+  card, Apple Pay where offered). The PayPal button stays disabled until the box is ticked
+  (see "Tick box" below). The Worker sets the price (£20, in pounds) and checks with PayPal
+  that exactly £20 was paid before it unlocks anything. Nothing the browser sends can
+  change the price.
 - **Bought** → a **Download PDF** button, from then on, on any device they sign in on.
+  Re-downloads are free and always give the newest version of the same edition.
 - **Your admin account** can always download (no purchase needed).
 - **If PayPal's checkout is blocked** (some NHS networks) or the shop isn't switched on
   yet, the card says so and offers your email address, so you can send a payment link
   by hand.
 
-The PDF lives in a **private Cloudflare R2 bucket** (file storage). There is no public
-link to it: the Worker sends it only to someone who bought it. The PDF you upload is the
-watermarked one we build (gpreasoning.uk watermark, copyright strip on every page,
-"Copyright and licence" page). Its name in R2 must be **`lab-results-handbook-v1.1.pdf`**.
+The PDFs live in a **private Cloudflare R2 bucket** (file storage) called
+`rgp-downloads`. There is no public link to them: the Worker sends a file only to someone
+who bought it. Upload the watermarked PDFs we build (gpreasoning.uk watermark, copyright
+strip on every page, "Copyright and licence" page; copyright holder "Reasoning GP").
+
+**Tick box (no 14-day cancellation for downloads).** Under the Consumer Contracts
+Regulations 2013 a buyer of digital content (not on a tangible medium) loses the 14-day
+right to cancel only if they give **express consent** to immediate supply **and
+acknowledge** they lose that right. So before the PayPal button works the buyer must tick:
+> "I want the download now. I understand that once it is available I lose my 14-day right to cancel, and that this purchase is not refundable unless the file is faulty."
+
+with a link to `pages/terms.html#downloads` (Terms, section 7 "Digital downloads").
+- The browser sends `waiver: true` with `POST /api/shop/order`. The Worker refuses to make
+  a PayPal order without it (400 `waiver_required`).
+- **The consent is recorded:** the Worker stores `waiver:<PayPal order id>` in the USERS KV
+  = `{ email, product, at (time), text: "v1-2026-10" }` for 90 days, and when the purchase
+  is recorded (by the browser's capture call or by the webhook) copies `waiverAt` and
+  `waiverText` onto the member's `purchases.<id>` record, where it stays.
+- `text` is `WAIVER_TEXT_VERSION` in `worker.js`. If you ever change the tick-box wording
+  (in `assets/clinic-guides.js`, `WAIVER`), change that version too, so each record says
+  which wording the buyer agreed to.
+
+**Order number on every copy.** Each download is stamped with its order number: the
+buyer's PayPal transaction ID (the capture id, which is also on their PayPal receipt), or
+`ADMIN-COPY` for your admin account. No name or email goes in the file.
+- The Worker sends the number in the `X-Order-Ref` header of `/api/download/<id>`.
+- **The stamp is done in the buyer's browser** (pdf-lib, loaded from cdnjs only when
+  needed): top right of every page, 6 pt grey, "Licensed copy · Order <number> ·
+  gpreasoning.uk · Not for redistribution", plus the PDF's Subject, Keywords and Author
+  (Reasoning GP). **The file in R2 stays the clean master**: upload it unstamped by order.
+- If pdf-lib can't load (blocked network) or fails, the buyer still gets the unstamped
+  file: the download is never blocked.
+- `GET /api/shop/purchases` also returns `orders: { <id>: <capture id> }`, and the card
+  shows "Order <number>" under the Download button.
+
+**Refund policy.** Downloads are **not refundable once they are available** (the buyer
+consented to immediate supply), **except for a faulty file**: their rights under the
+Consumer Rights Act 2015 are not affected, and for a faulty file or one not as described
+you repair, replace or refund. You can still refund by hand in PayPal at any time (e.g.
+for a faulty file). The webhook handles it: a **full refund or a chargeback (reversal)
+removes** the handbook from their account; a **partial refund keeps** it.
 
 ### One-off setup
-Run the commands from the `backend` folder, logged in to Wrangler (Step 1).
+Everything below can be done in the Cloudflare and PayPal dashboards, with no command
+line. (Wrangler commands are given as an alternative at the end.)
 
 **A. PayPal (5 minutes).** You don't need a new plan or new app: the Live app whose client
 id and secret are already in the Worker (`PAYPAL_CLIENT_ID`, `PAYPAL_SECRET`) can take
@@ -208,39 +261,46 @@ one-off payments too, and the site already has `paypalClientId` in `assets/site.
 4. Save. The **Webhook ID does not change**, so the `PAYPAL_WEBHOOK_ID` secret stays as
    it is.
 
-**B. Cloudflare R2 (10 minutes, skip any step you've already done).**
+**B. Cloudflare R2: the bucket and the files (10 minutes, skip any step already done).**
 1. **Turn on R2** in the Cloudflare dashboard (left menu → **R2 Object Storage** →
    enable). The free tier (10 GB, free downloads) is far more than a few PDFs need.
    Cloudflare may ask for a card, even on the free tier.
-2. **Create the bucket** (private by default; leave it that way):
-   ```bash
-   wrangler r2 bucket create rgp-downloads
-   ```
-3. **Upload the handbook** under exactly this name (the Worker looks for it):
-   ```bash
-   wrangler r2 object put rgp-downloads/lab-results-handbook-v1.1.pdf --file=../assets/downloads/Lab_Results_Handbook_v1.pdf --content-type=application/pdf --remote
-   ```
-   `--remote` sends it to Cloudflare rather than a local test copy. Point `--file=` at
-   wherever the latest watermarked PDF is. Uploading again under the same name replaces it.
-4. **Check `wrangler.toml`** has the `[[r2_buckets]]` block with `binding = "DOWNLOADS"`
-   and `bucket_name = "rgp-downloads"` (already there).
+2. **Create the bucket**: R2 → **Create bucket** → name **`rgp-downloads`** → Create.
+   It is private by default; leave it that way (no public access, no custom domain).
+3. **Rename each PDF on your computer first** to its exact R2 name from the table above
+   (e.g. `sca-casebook-vol1-v1.0.pdf`). The Worker looks for that exact name, so a
+   different name means "File not uploaded yet" for buyers.
+4. **Upload**: R2 → **`rgp-downloads`** → **Upload** → choose the renamed files → Upload.
+   Uploading again under the same name replaces a file.
 
-**C. Deploy.**
-1. `wrangler deploy` (from the `backend` folder).
-2. Re-upload the site to Cloudflare Pages (the new Clinic Guides page, `assets/clinic-guides.js`,
-   the Lab results page and the pricing page).
+**C. The Worker: paste the code and bind the bucket.**
+1. Cloudflare dashboard → **Workers & Pages** → **shy-voice-2225** → **Edit code**.
+2. Select all the code in the editor, delete it, **paste the whole of `backend/worker.js`**
+   from this folder, then click **Deploy**. Your secrets, variables, KV bindings and cron
+   triggers are kept: only the code changes.
+3. Bind the bucket (once): **shy-voice-2225** → **Settings** → **Bindings** → **Add** →
+   **R2 bucket** → Variable name **`DOWNLOADS`** (exactly, capitals) → bucket
+   **`rgp-downloads`** → Save/Deploy. Without it downloads answer "downloads not
+   configured" (503).
+4. Re-upload the site to Cloudflare Pages (the new `pages/shop.html` and `assets/shop/`
+   images, `assets/clinic-guides.js`, `assets/site.js`, the Clinic Guides pages, the Lab
+   results page, the pricing and terms pages, `sitemap.xml` and the search index).
 
 **D. Test with a real purchase (10 minutes, costs nothing in the end).**
 1. On the live site, sign in with an ordinary account (**not** your admin account, which
-   can always download). Open Clinic Guides → Lab results. You should see the PayPal
-   button and "£20 · one-off purchase · not included in subscription plans".
-2. Pay the £20 with a real card or PayPal account. The button turns into **Download PDF**
-   and the file downloads.
-3. Sign out: the card shows **Sign in to buy**. Sign in again: **Download PDF** is back.
-4. In PayPal (paypal.com → **Activity**), open the £20 payment → **Refund** → full amount.
+   can always download). Open **Shop**. You should see the tick box and the PayPal
+   button, greyed out.
+2. Try the PayPal button without ticking: a note asks you to tick the box. Tick it: the
+   button becomes active.
+3. Pay the £20 with a real card or PayPal account. The button turns into **Download PDF**.
+   Download: the button says "Preparing your copy…", then the file saves. Open it: the
+   top right of every page reads "Licensed copy · Order <number> · …", and the number is
+   the transaction ID on your PayPal receipt.
+4. Sign out: the card shows **Sign in to buy**. Sign in again: **Download PDF** is back.
+5. In PayPal (paypal.com → **Activity**), open the £20 payment → **Refund** → full amount.
    Within a minute or two, reload the page while signed in: the PayPal button is back
    and the download is refused. That proves the webhook works.
-5. If the download did not unlock in step 2, or the refund did not remove it, see
+6. If the download did not unlock in step 3, or the refund did not remove it, see
    "If something goes wrong" below before going further.
 
 **E. Remove the public copy (do not skip).** Once D works, **delete
@@ -250,48 +310,68 @@ knows the address. The shop never sends buyers there; the file is used only on p
 and local copies and by your admin account. Never put paid files in the site folder
 again: put them in R2. Keep the master copy of each PDF somewhere safe off the site.
 
+**Alternative: Wrangler (command line).** Only if you deploy from this folder.
+> ⚠️ `wrangler.toml` **still has placeholder KV ids** (`PASTE_USERS_KV_ID`, …). Paste the
+> real ids first (`wrangler kv namespace list`), or a `wrangler deploy` fails or, worse,
+> binds the wrong namespaces. The dashboard paste in C does not have this problem.
+```bash
+wrangler r2 bucket create rgp-downloads
+wrangler r2 object put rgp-downloads/lab-results-handbook-v1.1.pdf --file=<path to the PDF> --content-type=application/pdf --remote
+wrangler r2 object put rgp-downloads/sca-casebook-vol1-v1.0.pdf --file=<path to the PDF> --content-type=application/pdf --remote
+wrangler r2 object put rgp-downloads/sca-communication-book-v1.0.pdf --file=<path to the PDF> --content-type=application/pdf --remote
+wrangler deploy
+```
+`--remote` sends a file to Cloudflare rather than a local test copy. `wrangler.toml`
+already has the `[[r2_buckets]]` block (`binding = "DOWNLOADS"`, `bucket_name = "rgp-downloads"`).
+
 ### If something goes wrong
 - **Paid, but no download:** the owner lookup (`/api/admin/user` with no email) lists
   recent `payissue:` rows, e.g. `shop-capture-mismatch` or `signature-failed`. A
   signature failure means the webhook ID or app doesn't match (Step 7). The purchase is on
-  the member's record as `purchases.lab-handbook` (owner lookup with their email). In an
+  the member's record as `purchases.<product id>` (owner lookup with their email). In an
   emergency you can refund them in PayPal and they buy again.
+- **"File not uploaded yet" / 404:** the file in R2 is missing or its name is not exactly
+  the R2 name in the table above.
+- **"downloads not configured" / 503:** the `DOWNLOADS` R2 binding is missing (C.3).
+- **The PayPal button stays grey:** the tick box is not ticked; that is by design.
 - **The card says "Coming soon":** either `workerUrl` or `paypalClientId` is empty in
   `assets/site.js`, or the deployed Worker is an older version without the shop
-  (run `wrangler deploy`).
+  (paste and deploy `worker.js` again, C.2).
 - **"Card checkout couldn't load":** PayPal's script was blocked by the network or a
   browser extension. The member can use a phone on mobile data, or email you.
+- **A copy without the order number:** the buyer's network blocked cdnjs (pdf-lib), so
+  they got the unstamped file. Nothing to fix; they can download again elsewhere.
 
-### Updating the handbook to a new version
-Buyers keep access to the newest version. Upload the new PDF under a **new name** (e.g.
-`lab-results-handbook-v1.2.pdf`), then in `worker.js` find `const PRODUCTS = {` and change
-`r2Key` (the R2 file name) and `filename` (the name the member's computer saves it as) on
-the `lab-handbook` line. Run `wrangler deploy`. Update the page count and version in the
-card text in `governance/import_clinic_guides.py` (`GROUP_EXTRA`) and re-run the importer.
-Delete the old file when you're happy:
-`wrangler r2 object delete rgp-downloads/lab-results-handbook-v1.1.pdf --remote`.
+### Updating a handbook to a new version
+Buyers keep access to the newest version of the same edition. Upload the new PDF under a
+**new name** (e.g. `lab-results-handbook-v1.2.pdf`), then in `worker.js` find
+`const PRODUCTS = {` and change `r2Key` (the R2 file name) and `filename` (the name the
+member's computer saves it as) on that product's line. Paste and deploy the Worker (C.2).
+Update the page count and version on the Shop page (`pages/shop.html`) and, for the Lab
+Results Handbook, in `governance/import_clinic_guides.py` (`GROUP_EXTRA`, then re-run the
+importer). Delete the old file in R2 when you're happy.
 
-### Adding another handbook (e.g. an SCA handbook)
-1. Upload it: `wrangler r2 object put rgp-downloads/<file-name>.pdf --file=<path> --content-type=application/pdf --remote`
+### Adding another handbook
+1. Rename the PDF to its R2 name and upload it to `rgp-downloads` (B.3–B.4).
 2. In `worker.js`, add **one line** inside `const PRODUCTS = { … }`, for example:
    ```js
-   'sca-handbook': { title: 'SCA Handbook', price: '20.00', currency: 'GBP', r2Key: 'sca-handbook-v1.pdf', filename: 'Reasoning-GP-SCA-Handbook-v1.pdf', type: 'application/pdf' },
+   'sca-casebook-2': { title: 'SCA Casebook Vol 2', price: '20.00', currency: 'GBP', r2Key: 'sca-casebook-vol2-v1.0.pdf', filename: 'Reasoning-GP-SCA-Casebook-Vol2-v1.0.pdf', type: 'application/pdf' },
    ```
-   The first word (`sca-handbook`) is the product **id**. Only ids in this list can ever be
+   The first word (`sca-casebook-2`) is the product **id**. Only ids in this list can ever be
    bought or downloaded, and the price here is the price PayPal is asked for and checked
    against. Keep `currency: 'GBP'`.
-3. `wrangler deploy`.
-4. On the site, copy the Lab Results Handbook card (`GROUP_EXTRA` in
-   `governance/import_clinic_guides.py`) and change `data-cg-product`, `data-cg-title` and
-   the text. `assets/clinic-guides.js` does the rest. (For a page outside Clinic Guides,
-   the same card markup works on any page that loads `site.js` and `clinic-guides.js`.)
+3. Paste and deploy the Worker (C.2).
+4. On `pages/shop.html`, copy a product card and change `data-cg-product`, `data-cg-title`,
+   the images (in `assets/shop/`) and the text; move it out of "Coming soon".
+   `assets/clinic-guides.js` does the rest. (`data-cg-size`, e.g. "2.6 MB", is optional.)
 
 ### Counts
 Monthly numbers in the USERS KV (a number only: no account, no IP):
 `buy:<id>:YYYY-MM` = purchases, `dl:<id>:YYYY-MM` = downloads, e.g.
-`wrangler kv key get --binding USERS "buy:lab-handbook:2026-10" --remote`.
+`wrangler kv key get --binding USERS "buy:lab-handbook:2026-10" --remote`
+(or Cloudflare dashboard → Storage & Databases → KV → the USERS namespace → search the key).
 Each purchase and refund is also in the owner's plan log (`planlog:`), as
-"purchase lab-handbook" / "refund lab-handbook".
+"purchase <id>" / "refund <id>".
 
 ## Collecting your signups / users
 All users live in the **USERS** KV namespace. View them in the Cloudflare dashboard (Workers & Pages → KV), or `wrangler kv key list --binding USERS`.

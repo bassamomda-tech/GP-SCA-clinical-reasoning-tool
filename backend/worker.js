@@ -1124,18 +1124,26 @@ async function embedProxy(request, env, cors) {
    handbook): upload the PDF to the R2 bucket and add ONE line below
    (backend/README.md, "Handbook shop").
 
-     POST /api/shop/order   {product}   signed in -> { orderId } | { owned:true }
+     POST /api/shop/order   {product, waiver:true}   signed in -> { orderId } | { owned:true }
           Creates a PayPal order server-side: intent CAPTURE, the catalogue price
           in GBP, custom_id "<account email>|<product>", no shipping.
+          waiver must be exactly true (400 waiver_required otherwise): the buyer
+          ticked the box consenting to immediate supply and acknowledging the loss
+          of the 14-day right to cancel (Consumer Contracts Regulations 2013,
+          digital content). The consent is kept as waiver:<orderId> (90 days) and
+          copied onto the purchase when it is recorded (see recordPurchase).
      POST /api/shop/capture {orderId}   signed in -> { ok:true, product }
           Captures the order and records the purchase only if PayPal says
           COMPLETED, in GBP, for exactly the catalogue price, and the order's
           custom_id is this account and a real product. Repeating it is harmless.
           A capture PayPal holds as PENDING answers 202 { pending:true }: the
           PAYMENT.CAPTURE.COMPLETED webhook records it when it clears.
-     GET  /api/shop/purchases          signed in -> { purchases:[ids], products:{…} }
+     GET  /api/shop/purchases          signed in -> { purchases:[ids], orders:{id:captureId}, products:{…} }
      GET  /api/download/<id>   (Authorization: Bearer <token>, like every other call)
-       200  the file, streamed from the private R2 bucket bound as DOWNLOADS
+       200  the file, streamed from the private R2 bucket bound as DOWNLOADS, with
+            header X-Order-Ref = the buyer's captureId (PayPal's transaction ID, also
+            on their PayPal receipt) or 'ADMIN-COPY'. The browser stamps it on every
+            page of its copy (assets/clinic-guides.js); the R2 file stays the clean master.
        401  not signed in / session expired
        402  { error:'purchase_required', reason:'purchase_required', price:'20.00' }
             not bought (whatever the plan); the admin account is always allowed
@@ -1146,14 +1154,27 @@ async function embedProxy(request, env, cors) {
                                 was lost (closed tab, network drop)
      PAYMENT.CAPTURE.REFUNDED / PAYMENT.CAPTURE.REVERSED  remove it (a partial
                                 refund keeps it; see shopWebhook)
+   Refund policy: downloads are NOT refundable once available (the buyer consented
+   to immediate supply), except for a faulty file (Consumer Rights Act 2015). The
+   owner can still refund by hand in PayPal, e.g. for a faulty file; a full refund
+   or a chargeback removes access, a partial refund keeps it.
    Stored on the user record: purchases[<id>] = { orderId, captureId, amount,
-   currency, date, via }. Index purchase:<captureId> = "<email>|<id>" (for refunds).
+   currency, date, via, waiverAt, waiverText }. Index purchase:<captureId> =
+   "<email>|<id>" (for refunds). Consent record: waiver:<orderId> = { email,
+   product, at, text: WAIVER_TEXT_VERSION } (USERS KV, expires after 90 days; the
+   copy on the purchase is kept).
    Counts, a number only (no account, no IP), in USERS KV:
      buy:<id>:YYYY-MM  purchases per month      dl:<id>:YYYY-MM  downloads per month */
 const PRODUCTS = {
-  'lab-handbook': { title: 'Lab Results Handbook', price: '20.00', currency: 'GBP', r2Key: 'lab-results-handbook-v1.1.pdf', filename: 'Reasoning-GP-Lab-Results-Handbook-v1.1.pdf', type: 'application/pdf' }
+  'lab-handbook': { title: 'Lab Results Handbook', price: '20.00', currency: 'GBP', r2Key: 'lab-results-handbook-v1.1.pdf', filename: 'Reasoning-GP-Lab-Results-Handbook-v1.1.pdf', type: 'application/pdf' },
+  'sca-casebook-1':    { title: 'SCA Casebook Vol 1',     price: '20.00', currency: 'GBP', r2Key: 'sca-casebook-vol1-v1.0.pdf',      filename: 'Reasoning-GP-SCA-Casebook-Vol1-v1.0.pdf',      type: 'application/pdf' },
+  'sca-communication': { title: 'SCA Communication Book', price: '20.00', currency: 'GBP', r2Key: 'sca-communication-book-v1.0.pdf', filename: 'Reasoning-GP-SCA-Communication-Book-v1.0.pdf', type: 'application/pdf' },
 };
 const SHOP_BRAND = 'Reasoning GP';
+// Version of the tick-box wording the buyer agreed to (assets/clinic-guides.js,
+// stateBuy). Change it whenever that wording changes, so each record says which text.
+const WAIVER_TEXT_VERSION = 'v1-2026-10';
+const WAIVER_TTL = 60 * 60 * 24 * 90;   // waiver:<orderId> kept 90 days (copied onto the purchase)
 function productId(raw) { return String(raw || '').toLowerCase().replace(/[^a-z0-9-]/g, '').slice(0, 64); }
 function productOf(id) { return Object.prototype.hasOwnProperty.call(PRODUCTS, id) ? PRODUCTS[id] : null; }
 function isAdminUser(user, env) {
@@ -1193,8 +1214,14 @@ async function recordPurchase(env, email, product, rec) {
   if (ownsProduct(user, product)) return { ok: true, already: true, user };
   const gone = user.refundedPurchases && user.refundedPurchases[product];
   if (gone && gone.captureId === rec.captureId) return { ok: false, why: 'refunded' };
+  // The buyer's tick-box consent (stored by shopOrder under the PayPal order id).
+  // Read for both paths: the client capture and the webhook (which knows the
+  // order id from supplementary_data when PayPal sends it).
+  let waiver = null;
+  if (rec.orderId) { try { waiver = JSON.parse((await env.USERS.get('waiver:' + rec.orderId)) || 'null'); } catch (e) { waiver = null; } }
   user.purchases = user.purchases || {};
-  user.purchases[product] = { orderId: rec.orderId || '', captureId: rec.captureId, amount: rec.amount, currency: rec.currency, date: Date.now(), via: rec.via };
+  user.purchases[product] = { orderId: rec.orderId || '', captureId: rec.captureId, amount: rec.amount, currency: rec.currency, date: Date.now(), via: rec.via,
+                              waiverAt: (waiver && waiver.at) || null, waiverText: (waiver && waiver.text) || null };
   await env.USERS.put(email, JSON.stringify(user));
   try { await env.USERS.put('purchase:' + rec.captureId, email + '|' + product); } catch (e) {}
   await bumpCount(env, 'buy:' + product + ':' + missMonth());
@@ -1212,6 +1239,9 @@ async function shopOrder(request, env, cors) {
   const p = productOf(id);
   if (!p) return json({ error: 'Unknown product' }, 404, cors);
   if (ownsProduct(user, id)) return json({ owned: true, product: id }, 200, cors);
+  // Express consent to immediate supply + acknowledgement of losing the 14-day
+  // right to cancel: required before any PayPal order is made.
+  if (body.waiver !== true) return json({ error: 'waiver_required', message: 'Please tick the box to confirm you want the download now and understand it is then not refundable unless the file is faulty.' }, 400, cors);
   const custom = user.email + '|' + id;
   if (custom.length > 127) return json({ error: 'Your email address is too long for PayPal. Please email bassamomda@gmail.com to buy.' }, 400, cors);
   const access = await paypalAccessToken(env);
@@ -1232,6 +1262,10 @@ async function shopOrder(request, env, cors) {
     await logPayIssue(env, 'shop-order-failed:' + r.status, 'shop/order', { id: id });
     return json({ error: 'PayPal didn’t accept the order. Please try again, or email bassamomda@gmail.com.' }, 502, cors);
   }
+  // Record the consent against this order (recordPurchase copies it onto the purchase).
+  try {
+    await env.USERS.put('waiver:' + r.data.id, JSON.stringify({ email: user.email, product: id, at: Date.now(), text: WAIVER_TEXT_VERSION }), { expirationTtl: WAIVER_TTL });
+  } catch (e) { await logPayIssue(env, 'shop-waiver-not-stored:' + user.email, 'shop/order', { id: r.data.id }); }
   return json({ orderId: r.data.id }, 200, cors);
 }
 
@@ -1310,7 +1344,10 @@ async function shopPurchases(request, env, cors) {
   catch (e) { return json({ error: 'sign_in_required', message: e.message }, 401, cors); }
   const products = {};
   for (const id of Object.keys(PRODUCTS)) products[id] = { title: PRODUCTS[id].title, price: PRODUCTS[id].price, currency: PRODUCTS[id].currency };
-  return json({ purchases: ownedIds(user), admin: isAdminUser(user, env), products }, 200, cors);
+  // Order number per owned handbook = the PayPal capture id (on the buyer's PayPal receipt).
+  const owned = ownedIds(user), orders = {};
+  for (const id of owned) orders[id] = user.purchases[id].captureId;
+  return json({ purchases: owned, orders, admin: isAdminUser(user, env), products }, 200, cors);
 }
 
 /* Webhook part of the shop (called from paypalWebhook AFTER the signature check). */
@@ -1344,8 +1381,10 @@ async function shopWebhook(env, type, res, access) {
   if (cr.ok) { capStatus = String(cr.data.status || '').toUpperCase(); if (!owner) owner = parseShopCustom(cr.data.custom_id); }
   if (!owner) owner = parseShopCustom(res.custom_id);
   if (!owner) { await logPayIssue(env, 'shop-refund-unknown:' + captureId, type, res); return new Response('ignored', { status: 200 }); }
-  // A partial refund (a goodwill discount) keeps the handbook; a full refund or a
-  // reversal (chargeback) removes it.
+  // Policy: no refunds once the download is available, except for a faulty file.
+  // The owner can still refund by hand in PayPal (e.g. a faulty file): a full
+  // refund or a reversal (chargeback) removes the handbook; a partial refund (a
+  // goodwill discount) keeps it.
   if (type === 'PAYMENT.CAPTURE.REFUNDED' && capStatus === 'PARTIALLY_REFUNDED') {
     await logPlan(env, { email: owner.email, action: 'partial refund ' + owner.product, by: 'paypal', sub: captureId, result: 'kept' });
     return new Response('ok', { status: 200 });
@@ -1371,7 +1410,8 @@ async function paidDownload(request, env, cors, rawId) {
   let user;
   try { user = await userFromToken(request, env); }
   catch (e) { return json({ error: 'sign_in_required', message: e.message }, 401, cors); }
-  if (!ownsProduct(user, id) && !isAdminUser(user, env)) {
+  const owns = ownsProduct(user, id);
+  if (!owns && !isAdminUser(user, env)) {
     return json({ error: 'purchase_required', reason: 'purchase_required', product: id, price: item.price, currency: item.currency,
                   message: 'The ' + item.title + ' is a separate one-off purchase (£' + item.price + '). It is not included in any plan.' }, 402, cors);
   }
@@ -1379,12 +1419,16 @@ async function paidDownload(request, env, cors, rawId) {
   const obj = await env.DOWNLOADS.get(item.r2Key);
   if (!obj) return json({ error: 'File not uploaded yet' }, 404, cors);
   await bumpCount(env, 'dl:' + id + ':' + missMonth());
+  // Order number the browser stamps on every page: the buyer's PayPal capture id
+  // (their PayPal receipt shows the same transaction ID), or ADMIN-COPY.
+  const orderRef = owns ? String(user.purchases[id].captureId) : 'ADMIN-COPY';
   const headers = Object.assign({}, cors, {
     'Content-Type': item.type || 'application/octet-stream',
     'Content-Disposition': 'attachment; filename="' + item.filename + '"',
     'Cache-Control': 'private, no-store',
     'X-Content-Type-Options': 'nosniff',
-    'Access-Control-Expose-Headers': 'Content-Disposition, Content-Length'
+    'X-Order-Ref': orderRef,
+    'Access-Control-Expose-Headers': 'Content-Disposition, Content-Length, X-Order-Ref'
   });
   if (obj.size != null) headers['Content-Length'] = String(obj.size);
   return new Response(obj.body, { status: 200, headers });

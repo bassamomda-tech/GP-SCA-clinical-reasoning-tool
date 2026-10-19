@@ -884,7 +884,7 @@
    "avoid": [
     {
      "dont": "“It sounds like a cyst — let’s see if it goes after your next period.”",
-     "instead": "“At 30 or over, any new lump goes to the breast clinic within two weeks — most turn out to be harmless, but that’s how we know.”",
+     "instead": "“At 30 or over, any new lump goes to the breast clinic on the urgent suspected cancer pathway — most turn out to be harmless, but that’s how we know.”",
      "why": "Watchful waiting for an unexplained lump at 34 is outside NICE NG12 and is the key Tasks fail."
     },
     {

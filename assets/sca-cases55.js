@@ -238,7 +238,7 @@
       { dom:'cm', text:'Refers for a SLEEP STUDY/sleep-service assessment to confirm and grade OSA, flagged for rapid assessment as a vocational driver (NICE NG202), and advises lifestyle measures (weight loss, avoid alcohol/sedatives, side-sleeping, smoking) and that CPAP is highly effective for moderate-severe OSA (and considered for mild OSA with symptoms affecting daily life)' },
       { dom:'cm', text:'Addresses the DVLA DUTY clearly: advises NOT to drive while sleepy, explains the LEGAL obligation to notify the DVLA if the sleepiness is not controlled within 3 months or once moderate/severe OSA with sleepiness is confirmed (same medical standard for GROUP 2/HGV, with at least annual licence review), that it is the patient’s responsibility, and documents the advice' },
       { dom:'ro',   text:'Recognises the minimisation driven by fear for his livelihood, takes the snoring complaint seriously while conveying the genuine danger, and does NOT collude with "just give me a spray"' },
-      { dom:'ro',   text:'Handles the driving/DVLA conversation honestly but supportively \u2014 explaining that effective treatment usually allows a return to driving \u2014 and checks understanding' },
+      { dom:'cm',   text:'Handles the driving/DVLA conversation honestly but supportively \u2014 explaining that effective treatment usually allows a return to driving \u2014 and checks understanding' },
       { dom:'cm',    text:'Safety-nets and follows up: sleep-study referral and timeline, the driving advice documented (and GMC route if he continues to drive against advice), lifestyle plan, comorbidity review, and follow-up \u2014 OSA assessment + DVLA duty, not a snoring remedy and a wave-off' },
     ],
     worked:[

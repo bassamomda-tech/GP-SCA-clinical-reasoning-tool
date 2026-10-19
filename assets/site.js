@@ -1193,6 +1193,7 @@ function renderTopNav(activeId){
         </div>
         <div class="rgp-navend">
           <a class="rgp-nav-plans" href="${PRE}pages/pricing.html">Plans</a>
+          <a class="rgp-nav-plans rgp-nav-shop" href="${PRE}pages/shop.html">Shop</a>
           <div class="rgp-auth">
             <button class="rgp-auth-btn rgp-auth-signin" data-open-auth="signin" type="button" data-i18n="nav.signin">Sign in</button>
             <button class="rgp-auth-btn rgp-auth-signup" data-open-auth="signup" type="button" data-i18n="nav.signup">Sign up</button>
@@ -2133,6 +2134,7 @@ window.RGPAuth = RGPAuth;
     // their own plan, whatever their tier (a Gold member was locked out of
     // pricing.html because it counts as a Clinic page).
     /(pages\/)?(pricing|account-plan)\.html$/.test(p) ||
+    /(pages\/)?shop\.html$/.test(p) ||   // Shop: public (handbooks are bought separately, by anyone signed in)
     /\/tools\/clinic-guides\.html$/.test(p) ||   // Clinic Guides hub: public (each guide is gated)
     /offline\.html$/.test(p) ||
     /SETUP[^/]*\.html$/i.test(p) ||
@@ -2243,7 +2245,7 @@ window.RGPAuth = RGPAuth;
     // Consult Scribe is NOT in this list: it is a paid feature, and it is also
     // withheld pending its legal/information-governance requirements (see
     // RGP_HIDDEN_TOOLS). Handled by its own branch below so the gate can say so.
-    const OPEN = ['search.html','articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html','clinic-guides.html','privacy.html','terms.html','disclaimer.html','pricing.html','content-safety.html','ai-safety.html','how-we-fit.html','accessibility.html'];
+    const OPEN = ['search.html','articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html','clinic-guides.html','privacy.html','terms.html','disclaimer.html','pricing.html','shop.html','content-safety.html','ai-safety.html','how-we-fit.html','accessibility.html'];
     if (OPEN.indexOf(base) > -1) return null;
     if (/scribe\.html$/.test(base)) return 'scribe';
     if (/\/cases\.html$/.test(path) || /\/tools\/algorithms\.html$/.test(path)) return null; // browse catalogue
@@ -2942,6 +2944,9 @@ function injectAuthModal(){
       .rgp-iface-inner:has(.rgp-acct) .rgp-iface-spacer,
       .rgp-iface-inner:has(.rgp-acct) .rgp-nav-plans{ display:none; }
     }
+    /* The Shop link (next to Plans) only where the band has room; below that it
+       would push Sign up off the edge. Shop stays in the footer (Account). */
+    @media (max-width: 880px){ .rgp-nav-shop{ display:none; } }
   `;
   document.body.appendChild(el);
 
@@ -3237,6 +3242,7 @@ function injectFooter(){
         <summary><h5>Account</h5></summary>
         <ul>
           <li><a href="${PRE}pages/pricing.html">Plans and pricing</a></li>
+          <li><a href="${PRE}pages/shop.html">Shop: handbooks</a></li>
           <li><a href="${PRE}pages/account-plan.html">Manage or cancel your plan</a></li>
           <li><a href="${PRE}pages/cpd.html">CPD</a></li>
           <li><a href="${PRE}index.html#about">About us</a></li>

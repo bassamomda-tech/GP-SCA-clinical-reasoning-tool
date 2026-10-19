@@ -174,7 +174,7 @@
       { dom:'cm', text:'Knows the driving rules — Group 1: 12 months free of any seizure for established epilepsy (the 6-month first-seizure period does not apply to him; the medication-change route applies only to changes made on medical advice); Group 2: 10 years seizure-free without medication (DVLA, November 2025 edition) — and frames that meeting the criteria allows relicensing' },
       { dom:'cm', text:'Understands the DOCTOR\u2019S professional duty: advise clearly, document, and \u2014 per GMC \u2014 if the patient continues to drive against advice and cannot be persuaded, make every effort and then contact the DVLA medical adviser promptly (telling the patient first and confirming in writing afterwards; GMC 2017)' },
       { dom:'ro',   text:'Empathises with the livelihood impact and handles the non-adherence supportively (not blaming), while being clear and honest about the driving duty WITHOUT colluding with "I can keep driving"' },
-      { dom:'ro',   text:'Explains the rules and reasoning so he understands, frames regaining control as the route back to driving, signposts work/practical support, and checks understanding' },
+      { dom:'cm',   text:'Explains the rules and reasoning so he understands, frames regaining control as the route back to driving, signposts work/practical support, and checks understanding' },
       { dom:'cm',    text:'Safety-nets and follows up: documents the driving advice, supports adherence (reminders/supply), arranges neurology review as needed, seizure-safety advice, fit note/Access to Work signposting, and review \u2014 honest DVLA duty handled supportively, not colluding with continued driving' },
     ],
     worked:[

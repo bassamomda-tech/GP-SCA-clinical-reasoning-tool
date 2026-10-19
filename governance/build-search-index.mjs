@@ -60,7 +60,7 @@ vm.runInNewContext(coreSrc, coreCtx);
 const C = coreCtx.RGPSearchCore;
 
 /* ---------- paywall mirror (keep in step with bronzeReason() in assets/site.js) ---------- */
-const OPEN = ['articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html','clinic-guides.html','privacy.html','terms.html','disclaimer.html','pricing.html','content-safety.html','ai-safety.html','accessibility.html','search.html','index.html'];
+const OPEN = ['articles.html','resources.html','leaflets.html','consultation-spine.html','sca-guide.html','sca-group.html','clinic-guide.html','clinic-guides.html','privacy.html','terms.html','disclaimer.html','pricing.html','shop.html','content-safety.html','ai-safety.html','accessibility.html','search.html','index.html'];
 const FREE_CASES = ['chest-pain.html','hypertension.html','type-2-diabetes.html','headache.html','anaemia.html'];
 const FREE_ALGS = ['chest-pain.html','headache.html','abdominal-pain.html','back-pain.html','breathlessness.html'];
 const FREE_PROTOCOLS = ['hypertension.html','asthma.html','type-2-diabetes.html','gout.html','migraine.html'];
