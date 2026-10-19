@@ -99,13 +99,13 @@ OTHER = ('Other', '\U0001f4c4')
 GROUP_EXTRA = {
     'Lab results': (
         '        <div class="cg-handbook" data-cg-product="lab-handbook" data-cg-price="20" '
-        'data-cg-title="Lab Results Handbook" data-cg-size="2.6 MB" data-cg-local="../assets/downloads/Lab_Results_Handbook_v1.pdf">\n'
+        'data-cg-title="Lab Results Handbook" data-cg-size="4.0 MB" data-cg-local="../assets/downloads/Lab_Results_Handbook_v1.pdf">\n'
         '          <div class="cg-hb-icon" aria-hidden="true">PDF</div>\n'
         '          <div class="cg-hb-body">\n'
         '            <h3 class="cg-hb-t">Lab Results Handbook <span class="cg-hb-fmt">(PDF, 89 pages)</span></h3>\n'
         '            <p class="cg-hb-price"><b>£20</b> · one-off purchase · not included in subscription plans</p>\n'
-        '            <p class="cg-hb-d">The lab results guides are available only in this handbook: 42 two-page guides to abnormal blood results, plus the Anaemia guide, in one printable A4 book with clickable contents: '
-        '43 guides, 89 pages. Version 1.1, October 2026 · next review April 2027. Yours to keep: buy once, download any time.</p>\n'
+        '            <p class="cg-hb-d">The lab results guides are available only in this handbook: 43 two-page algorithms for abnormal blood results in one printable A4 book with clickable contents: '
+        '43 guides, 89 pages. Version 2.0, October 2026 · next review April 2027. Yours to keep: buy once, download any time.</p>\n'
         '            <p class="cg-hb-d cg-hb-shop"><a href="../pages/shop.html">See all handbooks in the Shop →</a></p>\n'
         '            <p class="cg-hb-note" hidden></p>\n'
         '          </div>\n'

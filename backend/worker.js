@@ -1166,7 +1166,7 @@ async function embedProxy(request, env, cors) {
    Counts, a number only (no account, no IP), in USERS KV:
      buy:<id>:YYYY-MM  purchases per month      dl:<id>:YYYY-MM  downloads per month */
 const PRODUCTS = {
-  'lab-handbook': { title: 'Lab Results Handbook', price: '20.00', currency: 'GBP', r2Key: 'lab-results-handbook-v1.1.pdf', filename: 'Reasoning-GP-Lab-Results-Handbook-v1.1.pdf', type: 'application/pdf' },
+  'lab-handbook': { title: 'Lab Results Handbook', price: '20.00', currency: 'GBP', r2Key: 'lab-results-handbook-v2.0.pdf', filename: 'Reasoning-GP-Lab-Results-Handbook-v2.0.pdf', type: 'application/pdf' },
   'sca-casebook-1':    { title: 'SCA Casebook Vol 1',     price: '20.00', currency: 'GBP', r2Key: 'sca-casebook-vol1-v1.0.pdf',      filename: 'Reasoning-GP-SCA-Casebook-Vol1-v1.0.pdf',      type: 'application/pdf' },
   'sca-communication': { title: 'SCA Communication Book', price: '20.00', currency: 'GBP', r2Key: 'sca-communication-book-v1.0.pdf', filename: 'Reasoning-GP-SCA-Communication-Book-v1.0.pdf', type: 'application/pdf' },
 };

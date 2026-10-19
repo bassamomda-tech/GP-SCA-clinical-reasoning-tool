@@ -172,7 +172,7 @@ individual Clinic Guides stay in the Silver and Platinum plans; nothing changes 
 
 | Product id (`data-cg-product`) | Title | Exact file name in R2 | Saved on the buyer's computer as |
 |---|---|---|---|
-| `lab-handbook` | Lab Results Handbook | **`lab-results-handbook-v1.1.pdf`** | `Reasoning-GP-Lab-Results-Handbook-v1.1.pdf` |
+| `lab-handbook` | Lab Results Handbook | **`lab-results-handbook-v2.0.pdf`** | `Reasoning-GP-Lab-Results-Handbook-v2.0.pdf` |
 | `sca-casebook-1` | SCA Casebook Vol 1 | **`sca-casebook-vol1-v1.0.pdf`** | `Reasoning-GP-SCA-Casebook-Vol1-v1.0.pdf` |
 | `sca-communication` | SCA Communication Book | **`sca-communication-book-v1.0.pdf`** | `Reasoning-GP-SCA-Communication-Book-v1.0.pdf` |
 
@@ -316,7 +316,7 @@ again: put them in R2. Keep the master copy of each PDF somewhere safe off the s
 > binds the wrong namespaces. The dashboard paste in C does not have this problem.
 ```bash
 wrangler r2 bucket create rgp-downloads
-wrangler r2 object put rgp-downloads/lab-results-handbook-v1.1.pdf --file=<path to the PDF> --content-type=application/pdf --remote
+wrangler r2 object put rgp-downloads/lab-results-handbook-v2.0.pdf --file=<path to the PDF> --content-type=application/pdf --remote
 wrangler r2 object put rgp-downloads/sca-casebook-vol1-v1.0.pdf --file=<path to the PDF> --content-type=application/pdf --remote
 wrangler r2 object put rgp-downloads/sca-communication-book-v1.0.pdf --file=<path to the PDF> --content-type=application/pdf --remote
 wrangler deploy
@@ -344,7 +344,7 @@ already has the `[[r2_buckets]]` block (`binding = "DOWNLOADS"`, `bucket_name = 
 
 ### Updating a handbook to a new version
 Buyers keep access to the newest version of the same edition. Upload the new PDF under a
-**new name** (e.g. `lab-results-handbook-v1.2.pdf`), then in `worker.js` find
+**new name** (e.g. `lab-results-handbook-v2.1.pdf`), then in `worker.js` find
 `const PRODUCTS = {` and change `r2Key` (the R2 file name) and `filename` (the name the
 member's computer saves it as) on that product's line. Paste and deploy the Worker (C.2).
 Update the page count and version on the Shop page (`pages/shop.html`) and, for the Lab

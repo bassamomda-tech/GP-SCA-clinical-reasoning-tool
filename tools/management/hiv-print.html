@@ -34,7 +34,7 @@ MG.render({
     {t:"BHIVA ART 2022 · 2025 interim update"},
     {t:"UK PEP 2021 · BASHH/BHIVA PrEP 2025 · NICE TA1106", tone:"tw"},
     {t:"Green Book ch.7 · BHIVA vaccines 2015"},
-    {t:"Doses: check the SPC and BNF · interactions: Liverpool checker"}
+    {t:"Doses: check the SPC and local formulary · interactions: Liverpool checker"}
   ],
   lead:'<div class="mg-layers"><a href="#test"><b>Who to test</b><small>Indicator conditions, prevalence</small></a><a href="#diagnose"><b>Test &amp; result</b><small>Window periods, giving a positive</small></a><a href="#prevent"><b>PEP / PrEP</b><small>72 hours, where to send</small></a><a href="#interactions"><b>Interactions</b><small>Check before every script</small></a></div>',
   glance:[
@@ -66,10 +66,10 @@ MG.render({
     {id:"test", nav:"Who to test", title:"Who to test — normalise the offer", sub:"Late diagnosis drives illness, death and onward transmission, and many late diagnoses follow earlier healthcare contacts where no one offered a test.",
      blocks:[
        {b:"cards", cols:2, items:[
-         {tone:"blue", h:"Local prevalence decides the routine offer", html:"Diagnosed prevalence among people aged 15–59: <b>high = 2–5 per 1,000</b>, <b>extremely high = ≥5 per 1,000</b>. In these areas, offer an HIV test to everyone <b>registering with a GP</b>. Also offer one to anyone having blood taken who has not had an HIV test in the past 12 months. Use current UKHSA or local-authority surveillance data for the practice locality; do not assume the whole of Greater Manchester has the same prevalence category. Test for indicator conditions everywhere.", src:"NICE NG60 (upd. 2025) · NICE QS157"},
+         {tone:"blue", h:"Local prevalence decides the routine offer", html:"Diagnosed prevalence among people aged 15–59: <b>high = 2–5 per 1,000</b>, <b>extremely high = ≥5 per 1,000</b>. In these areas, offer an HIV test to everyone <b>registering with a GP</b>. Also offer one to anyone having blood taken who has not had an HIV test in the past 12 months. Use current UKHSA or local-authority surveillance data for the practice locality; prevalence can differ between neighbouring localities. Test for indicator conditions everywhere.", src:"NICE NG60 (upd. 2025) · NICE QS157"},
          {tone:"blue", h:"Test anyone, at any prevalence, with", html:"An <b>indicator condition</b> (table below); symptoms of seroconversion; a diagnosis of any STI; a partner with HIV; injecting drug use; sex between men, including their female partners; people from, or whose partners are from, countries of high prevalence; sex workers; and anyone who asks. Offer testing again for people with ongoing risk.", src:"BHIVA/BASHH/BIA 2020 testing guideline"},
          {tone:"blue", h:"Antenatal and other settings", html:"HIV is screened for in every pregnancy (NHS Infectious Diseases in Pregnancy Screening), and testing is routine for everyone attending sexual health (GUM) services. Emergency departments in high-prevalence areas of England run <b>opt-out blood-borne virus testing</b> (HIV, hepatitis B and C) on anyone who has blood taken. GPs will receive results and referrals from this programme.", src:"NHS England ED opt-out BBV testing · BHIVA pregnancy 2025"},
-         {tone:"amber", h:"Local pathway (Bolton / Greater Manchester)", html:"Record in the practice version of this protocol: the <b>local diagnosed HIV prevalence category</b>, the <b>named HIV testing service</b>, the <b>direct referral route to the local HIV clinic</b>, the <b>sexual health and PEP telephone route</b>, the <b>out-of-hours ED pathway</b> for PEP, and the <b>local HIV pharmacist</b> contact.", src:"NICE NG60 (upd. 2025) · UK PEP guideline 2021"},
+         {tone:"amber", h:"Local pathway", html:"Record in the practice version of this protocol: the <b>local diagnosed HIV prevalence category</b>, the <b>named HIV testing service</b>, the <b>direct referral route to the local HIV clinic</b>, the <b>sexual health and PEP telephone route</b>, the <b>out-of-hours ED pathway</b> for PEP, and the <b>local HIV pharmacist</b> contact.", src:"NICE NG60 (upd. 2025) · UK PEP guideline 2021"},
          {tone:"green", h:"Consent and approach", html:"Lengthy pre-test counselling is <b>not required</b>. Explain the test and how the result will reach them, then check they are happy to go ahead. Record the offer and whether it was declined. Normalising the offer (“we offer this test to everyone”) removes the implied judgement.", src:"BHIVA/BASHH/BIA 2020 testing guideline"}
        ]},
        {b:"table", head:["Indicator condition group","Examples — offer an HIV test"], rows:[
@@ -142,7 +142,7 @@ MG.render({
        {b:"why", html:"ART does not cure HIV, but continuous treatment keeps the virus undetectable. The GP's most important ART task is <b>not prescribing a drug that knocks ART levels down</b>, which causes treatment failure and resistance, or one that ART pushes to toxic levels. That is why the interaction section below matters more than knowing the regimens (BHIVA ART 2022, 2025 interim update)."}
      ]},
 
-    {id:"interactions", nav:"Interactions", title:"Drug interactions the GP must check", sub:"Check every new prescription, OTC purchase and supplement. Use the University of Liverpool HIV Drug Interactions checker (hiv-druginteractions.org, free app) and the BNF. If in doubt, phone the HIV pharmacist.",
+    {id:"interactions", nav:"Interactions", title:"Drug interactions the GP must check", sub:"Check every new prescription, OTC purchase and supplement. Use the University of Liverpool HIV Drug Interactions checker (hiv-druginteractions.org, free app) and the SPC. If in doubt, phone the HIV pharmacist.",
      blocks:[
        {b:"table", head:["Drug / class","Problem ART","What to do"], rows:[
          ["<b>Statins</b>","Boosted regimens (ritonavir, cobicistat) raise statin levels; risk of myopathy and rhabdomyolysis","<b>Simvastatin is contraindicated</b> with ritonavir or cobicistat. Atorvastatin and rosuvastatin have regimen-specific dose limits; pitavastatin or pravastatin may be preferred in some boosted regimens. Check the exact ART combination in the Liverpool checker before prescribing"],
@@ -282,7 +282,7 @@ MG.render({
          '</ul></div>'}
      ]}
   ],
-  foot:"HIV in adults in primary care: BHIVA/BASHH/BIA testing 2020, NICE NG60, BHIVA ART 2022 (2025 interim update), UK PEP 2021, BASHH/BHIVA PrEP 2025, NICE TA1106, BHIVA monitoring and vaccine guidelines, UKHSA Green Book, CoSRH CEU and BHIVA pregnancy 2025. Diagnosis confirmation and ART are specialist-led; monitoring responsibilities are shared and set out in the clinic letter. Check every co-prescription with the Liverpool HIV interactions checker, and verify all doses against the current BNF."
+  foot:"HIV in adults in primary care: BHIVA/BASHH/BIA testing 2020, NICE NG60, BHIVA ART 2022 (2025 interim update), UK PEP 2021, BASHH/BHIVA PrEP 2025, NICE TA1106, BHIVA monitoring and vaccine guidelines, UKHSA Green Book, CoSRH CEU and BHIVA pregnancy 2025. Diagnosis confirmation and ART are specialist-led; monitoring responsibilities are shared and set out in the clinic letter. Check every co-prescription with the Liverpool HIV interactions checker, and check doses in the SPC and your local formulary."
 });
 </script>
 <script src="../../assets/doc-page.js"></script>

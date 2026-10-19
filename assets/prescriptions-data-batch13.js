@@ -519,12 +519,12 @@
     eyebrow: 'Self-care · buy over the counter · no prescription',
     aka: 'coryza, URTI, runny nose, blocked nose, cold and flu remedies',
     indication: 'Viral upper respiratory infection — runny/blocked nose, sore throat, cough, mild fever. Lasts about 7–10 days (cough up to 3 weeks). NHS England OTC guidance: coughs, colds and nasal congestion are suitable for self-care — products should not routinely be prescribed.',
-    contraindications: 'OTC cough and cold medicines: not under 6 years; 6–12 years only on pharmacist advice (MHRA). Decongestants: caution in hypertension, heart disease, glaucoma, prostatism, MAOIs; nasal decongestant sprays no longer than 7 days. Check combination products for paracetamol (avoid double dosing).',
+    contraindications: 'OTC cough and cold medicines: not under 6 years; 6–12 years only on pharmacist advice (MHRA). Decongestants: caution in hypertension, heart disease, glaucoma, prostatism, MAOIs; nasal decongestant sprays no longer than 5 consecutive days (MHRA, April 2026). Check combination products for paracetamol (avoid double dosing).',
     duration: '7–10 days',
     drugs: [
       { name: 'Paracetamol or ibuprofen (buy OTC) for fever/aches', dose: 'Per pack / age', freq: 'PRN', route: 'PO', days: 'While needed' },
       { name: 'Saline nasal drops/spray (all ages)', dose: 'Per pack', freq: 'PRN', route: 'Nasal', days: 'While needed' },
-      { name: 'Decongestant spray (adults; max 7 days)', dose: 'Per pack', freq: 'Per pack', route: 'Nasal', days: 'Up to 7 days' },
+      { name: 'Decongestant spray (adults; max 5 days)', dose: 'Per pack', freq: 'Per pack', route: 'Nasal', days: 'Up to 5 consecutive days (MHRA 2026)' },
       { name: 'Honey and lemon drink (1 year and over)', dose: '—', freq: 'PRN', route: 'PO', days: 'While needed' },
     ],
     altRegimens: [

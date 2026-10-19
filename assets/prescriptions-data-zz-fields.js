@@ -175,7 +175,7 @@
       children: 'Children: same principles (most viral). Doxycycline not under 12. ' + BNFC,
       pregnancy: 'Penicillin safe; avoid doxycycline. Nasal steroid acceptable if needed.',
       breastfeeding: 'Penicillin compatible; nasal steroids compatible; avoid doxycycline courses where possible (' + SPEC + ').',
-      selfCare: 'Paracetamol/ibuprofen, nasal saline, decongestant sprays for up to 7 days in adults (pharmacy). Usually lasts 2–3 weeks.',
+      selfCare: 'Paracetamol/ibuprofen, nasal saline, decongestant sprays for no more than 5 consecutive days in adults (pharmacy; MHRA 2026). Usually lasts 2–3 weeks.',
       leaflets: [C('sinusitis-sinus-infection', 'Sinusitis (sinus infection)'), TARGET_RTI],
       pharmacyFirst: PF('adults and children aged 12 and over'),
     },

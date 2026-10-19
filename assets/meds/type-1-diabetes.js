@@ -29,7 +29,7 @@ MedChooser.register('type-1-diabetes', {
       monitor:'HbA1c, glucose/CGM time-in-range, injection sites, hypo frequency',
       counsel:'"You\'ll take a background insulin to cover the day and a quick one with meals — this flexible approach lets you match insulin to what you eat."',
       detail:{
-        'Components': 'Basal (detemir BD first-line in NICE NG17 — Levemir (insulin detemir) is being discontinued in the UK — supply ends ~Dec 2026; glargine/degludec alternatives) + rapid-acting analogue (aspart/lispro/glulisine) with meals',
+        'Components': 'Basal (detemir BD first-line in NICE NG17 — Levemir (insulin detemir) is being discontinued in the UK — no new starts; switch existing users by 30 Nov 2026 (National Patient Safety Alert, Oct 2026); glargine/degludec alternatives) + rapid-acting analogue (aspart/lispro/glulisine) with meals',
         'Key teaching': 'NICE NG17: MDI basal–bolus is the regimen of choice for adults. Pair with carbohydrate counting + structured education.'
       },
       conditions: [
