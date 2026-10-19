@@ -1124,18 +1124,22 @@ async function embedProxy(request, env, cors) {
    handbook): upload the PDF to the R2 bucket and add ONE line below
    (backend/README.md, "Handbook shop").
 
-     POST /api/shop/order   {product, waiver:true}   signed in -> { orderId } | { owned:true }
-          Creates a PayPal order server-side: intent CAPTURE, the catalogue price
-          in GBP, custom_id "<account email>|<product>", no shipping.
+     POST /api/shop/order   {products:[ids], waiver:true}   signed in -> { orderId, products } | { owned:true }
+          (the older {product:id} form still works: a basket of one)
+          Creates ONE PayPal order server-side for the whole basket: intent CAPTURE,
+          one line item per handbook at its catalogue price, the total in GBP,
+          custom_id "<account email>|<id>,<id>…", no shipping. Handbooks the account
+          already owns are left out; if every one is owned -> { owned:true }.
           waiver must be exactly true (400 waiver_required otherwise): the buyer
           ticked the box consenting to immediate supply and acknowledging the loss
           of the 14-day right to cancel (Consumer Contracts Regulations 2013,
           digital content). The consent is kept as waiver:<orderId> (90 days) and
           copied onto the purchase when it is recorded (see recordPurchase).
-     POST /api/shop/capture {orderId}   signed in -> { ok:true, product }
-          Captures the order and records the purchase only if PayPal says
-          COMPLETED, in GBP, for exactly the catalogue price, and the order's
-          custom_id is this account and a real product. Repeating it is harmless.
+     POST /api/shop/capture {orderId}   signed in -> { ok:true, products:[ids], product }
+          Captures the order and records every handbook in it only if PayPal says
+          COMPLETED, in GBP, for exactly the sum of their catalogue prices, and the
+          order's custom_id is this account and real products. Every handbook bought
+          together shares one order number (the capture id). Repeating it is harmless.
           A capture PayPal holds as PENDING answers 202 { pending:true }: the
           PAYMENT.CAPTURE.COMPLETED webhook records it when it clears.
      GET  /api/shop/purchases          signed in -> { purchases:[ids], orders:{id:captureId}, products:{…} }
@@ -1158,9 +1162,10 @@ async function embedProxy(request, env, cors) {
    to immediate supply), except for a faulty file (Consumer Rights Act 2015). The
    owner can still refund by hand in PayPal, e.g. for a faulty file; a full refund
    or a chargeback removes access, a partial refund keeps it.
+   A full refund or reversal of a basket order removes every handbook in it.
    Stored on the user record: purchases[<id>] = { orderId, captureId, amount,
-   currency, date, via, waiverAt, waiverText }. Index purchase:<captureId> =
-   "<email>|<id>" (for refunds). Consent record: waiver:<orderId> = { email,
+   currency, date, via, waiverAt, waiverText } (amount = that handbook's price).
+   Index purchase:<captureId> = "<email>|<id>,<id>…" (for refunds). Consent record: waiver:<orderId> = { email,
    product, at, text: WAIVER_TEXT_VERSION } (USERS KV, expires after 90 days; the
    copy on the purchase is kept).
    Counts, a number only (no account, no IP), in USERS KV:
@@ -1184,14 +1189,23 @@ function isAdminUser(user, env) {
 function ownsProduct(user, id) { return !!(user && user.purchases && user.purchases[id] && user.purchases[id].captureId); }
 function ownedIds(user) { return Object.keys((user && user.purchases) || {}).filter(id => productOf(id) && ownsProduct(user, id)); }
 function sameMoney(a, b) { const x = Number(a), y = Number(b); return isFinite(x) && isFinite(y) && x.toFixed(2) === y.toFixed(2); }
-// custom_id = "<email>|<product>". Split on the LAST bar so an odd email can't confuse it.
+// custom_id = "<email>|<id>" or, for a basket, "<email>|<id>,<id>,…". Split on the
+// LAST bar so an odd email can't confuse it. Every id must be a real product, once.
 function parseShopCustom(c) {
   const s = String(c || ''); const i = s.lastIndexOf('|');
   if (i <= 0) return null;
-  const email = s.slice(0, i).trim().toLowerCase(), product = productId(s.slice(i + 1));
-  if (!email || !productOf(product) || s.slice(i + 1) !== product) return null;
-  return { email, product };
+  const email = s.slice(0, i).trim().toLowerCase();
+  const raw = s.slice(i + 1).split(',');
+  const products = raw.map(productId);
+  if (!email || !products.length) return null;
+  for (let k = 0; k < products.length; k++) {
+    if (!productOf(products[k]) || raw[k] !== products[k] || products.indexOf(products[k]) !== k) return null;
+  }
+  return { email, products, product: products[0] };
 }
+// Total catalogue price of a list of products, as a 2-dp string (all GBP).
+function priceOf(ids) { return ids.reduce((t, id) => t + Number(PRODUCTS[id].price), 0).toFixed(2); }
+const SHOP_CURRENCY = 'GBP';
 async function bumpCount(env, key) {
   try { const n = parseInt((await env.USERS.get(key)) || '0', 10) || 0; await env.USERS.put(key, String(n + 1)); } catch (e) {}
 }
@@ -1223,7 +1237,7 @@ async function recordPurchase(env, email, product, rec) {
   user.purchases[product] = { orderId: rec.orderId || '', captureId: rec.captureId, amount: rec.amount, currency: rec.currency, date: Date.now(), via: rec.via,
                               waiverAt: (waiver && waiver.at) || null, waiverText: (waiver && waiver.text) || null };
   await env.USERS.put(email, JSON.stringify(user));
-  try { await env.USERS.put('purchase:' + rec.captureId, email + '|' + product); } catch (e) {}
+  try { await env.USERS.put('purchase:' + rec.captureId, email + '|' + ((rec.allProducts && rec.allProducts.join(',')) || product)); } catch (e) {}
   await bumpCount(env, 'buy:' + product + ':' + missMonth());
   await logPlan(env, { email, action: 'purchase ' + product, by: rec.via === 'webhook' ? 'paypal' : 'member', sub: rec.captureId, result: 'recorded £' + rec.amount });
   return { ok: true, user };
@@ -1235,38 +1249,46 @@ async function shopOrder(request, env, cors) {
   try { user = await userFromToken(request, env); }
   catch (e) { return json({ error: 'sign_in_required', message: e.message }, 401, cors); }
   const body = await request.json().catch(() => ({}));
-  const id = productId(body.product);
-  const p = productOf(id);
-  if (!p) return json({ error: 'Unknown product' }, 404, cors);
-  if (ownsProduct(user, id)) return json({ owned: true, product: id }, 200, cors);
+  // A basket: {products:[…]}; the older single form {product} is a basket of one.
+  const asked = Array.isArray(body.products) ? body.products : [body.product];
+  if (!asked.length || asked.length > 20) return json({ error: 'Unknown product' }, 404, cors);
+  const ids = [];
+  for (const raw of asked) {
+    const id = productId(raw);
+    if (!productOf(id)) return json({ error: 'Unknown product' }, 404, cors);
+    if (ids.indexOf(id) === -1) ids.push(id);
+  }
+  const want = ids.filter(id => !ownsProduct(user, id));
+  if (!want.length) return json({ owned: true, product: ids[0], products: ids }, 200, cors);
   // Express consent to immediate supply + acknowledgement of losing the 14-day
   // right to cancel: required before any PayPal order is made.
   if (body.waiver !== true) return json({ error: 'waiver_required', message: 'Please tick the box to confirm you want the download now and understand it is then not refundable unless the file is faulty.' }, 400, cors);
-  const custom = user.email + '|' + id;
+  const custom = user.email + '|' + want.join(',');
   if (custom.length > 127) return json({ error: 'Your email address is too long for PayPal. Please email bassamomda@gmail.com to buy.' }, 400, cors);
   const access = await paypalAccessToken(env);
   if (!access) return json({ error: 'Couldn’t reach PayPal just now. Please try again in a few minutes.' }, 502, cors);
-  const money = { currency_code: p.currency, value: p.price };
+  const total = { currency_code: SHOP_CURRENCY, value: priceOf(want) };
   const r = await paypalCall(env, access, 'POST', '/v2/checkout/orders', {
     intent: 'CAPTURE',
     purchase_units: [{
-      reference_id: id,
-      description: p.title + ' (PDF, one-off purchase)',
+      reference_id: want.length === 1 ? want[0] : 'basket',
+      description: (want.length === 1 ? PRODUCTS[want[0]].title : want.length + ' handbooks') + ' (PDF, one-off purchase)',
       custom_id: custom,
-      amount: Object.assign({}, money, { breakdown: { item_total: money } }),
-      items: [{ name: p.title, quantity: '1', unit_amount: money, category: 'DIGITAL_GOODS' }]
+      amount: Object.assign({}, total, { breakdown: { item_total: total } }),
+      items: want.map(id => ({ name: PRODUCTS[id].title, quantity: '1', sku: id, category: 'DIGITAL_GOODS',
+                               unit_amount: { currency_code: SHOP_CURRENCY, value: PRODUCTS[id].price } }))
     }],
     application_context: { brand_name: SHOP_BRAND, shipping_preference: 'NO_SHIPPING', user_action: 'PAY_NOW' }
   });
   if (!r.ok || !r.data.id) {
-    await logPayIssue(env, 'shop-order-failed:' + r.status, 'shop/order', { id: id });
+    await logPayIssue(env, 'shop-order-failed:' + r.status, 'shop/order', { id: want.join(',') });
     return json({ error: 'PayPal didn’t accept the order. Please try again, or email bassamomda@gmail.com.' }, 502, cors);
   }
-  // Record the consent against this order (recordPurchase copies it onto the purchase).
+  // Record the consent against this order (recordPurchase copies it onto each purchase).
   try {
-    await env.USERS.put('waiver:' + r.data.id, JSON.stringify({ email: user.email, product: id, at: Date.now(), text: WAIVER_TEXT_VERSION }), { expirationTtl: WAIVER_TTL });
+    await env.USERS.put('waiver:' + r.data.id, JSON.stringify({ email: user.email, product: want.join(','), at: Date.now(), text: WAIVER_TEXT_VERSION }), { expirationTtl: WAIVER_TTL });
   } catch (e) { await logPayIssue(env, 'shop-waiver-not-stored:' + user.email, 'shop/order', { id: r.data.id }); }
-  return json({ orderId: r.data.id }, 200, cors);
+  return json({ orderId: r.data.id, products: want }, 200, cors);
 }
 
 /* Pull the first capture out of an order (a capture response or GET order). */
@@ -1292,8 +1314,7 @@ async function shopCapture(request, env, cors) {
   if (!got.ok) return json({ error: 'Order not found' }, 404, cors);
   const want = parseShopCustom(captureOfOrder(got.data).pu.custom_id);
   if (!want || want.email !== user.email) return json({ error: 'This order belongs to a different account.' }, 403, cors);
-  const p = productOf(want.product);
-  if (ownsProduct(user, want.product)) return json({ ok: true, product: want.product, already: true }, 200, cors);
+  if (want.products.every(id => ownsProduct(user, id))) return json({ ok: true, product: want.product, products: want.products, already: true }, 200, cors);
 
   // 2. Capture (or, if it was already captured, read the existing capture back).
   let order = got.data;
@@ -1319,22 +1340,24 @@ async function shopCapture(request, env, cors) {
   const amt = (cap && cap.amount) || {};
   const problems = [];
   if (!cap) problems.push('no capture');
-  if (!custom || custom.email !== user.email || custom.product !== want.product) problems.push('custom_id');
-  if (String(amt.currency_code || '').toUpperCase() !== p.currency) problems.push('currency ' + amt.currency_code);
-  if (!sameMoney(amt.value, p.price)) problems.push('amount ' + amt.value);
+  if (!custom || custom.email !== user.email || custom.products.join(',') !== want.products.join(',')) problems.push('custom_id');
+  if (String(amt.currency_code || '').toUpperCase() !== SHOP_CURRENCY) problems.push('currency ' + amt.currency_code);
+  if (!sameMoney(amt.value, priceOf(want.products))) problems.push('amount ' + amt.value);
   if (problems.length) {
     await logPayIssue(env, 'shop-capture-mismatch:' + problems.join(',') + ':' + user.email, 'shop/capture', { id: orderId });
     return json({ error: 'payment_mismatch', message: 'The payment didn’t match the price. Please email bassamomda@gmail.com with your PayPal receipt and it will be sorted.' }, 409, cors);
   }
   const st = String(cap.status || '').toUpperCase();
-  if (st === 'PENDING') return json({ pending: true, product: want.product, message: 'PayPal is still processing the payment. Your download unlocks as soon as it clears.' }, 202, cors);
+  if (st === 'PENDING') return json({ pending: true, product: want.product, products: want.products, message: 'PayPal is still processing the payment. Your download unlocks as soon as it clears.' }, 202, cors);
   if (st !== 'COMPLETED') {
     await logPayIssue(env, 'shop-capture-status:' + st + ':' + user.email, 'shop/capture', { id: orderId });
     return json({ error: 'capture_failed', message: 'The payment didn’t complete (' + st.toLowerCase() + '). Please try again.' }, 402, cors);
   }
-  const rec = await recordPurchase(env, user.email, want.product, { orderId, captureId: cap.id, amount: p.price, currency: p.currency, via: 'client' });
-  if (!rec.ok) return json({ error: 'not_recorded', message: rec.why === 'refunded' ? 'This payment was refunded.' : 'Could not record the purchase. Please email bassamomda@gmail.com.' }, 409, cors);
-  return json({ ok: true, product: want.product }, 200, cors);
+  for (const id of want.products) {
+    const rec = await recordPurchase(env, user.email, id, { orderId, captureId: cap.id, amount: PRODUCTS[id].price, currency: SHOP_CURRENCY, via: 'client', allProducts: want.products });
+    if (!rec.ok) return json({ error: 'not_recorded', message: rec.why === 'refunded' ? 'This payment was refunded.' : 'Could not record the purchase. Please email bassamomda@gmail.com.' }, 409, cors);
+  }
+  return json({ ok: true, product: want.product, products: want.products }, 200, cors);
 }
 
 async function shopPurchases(request, env, cors) {
@@ -1356,15 +1379,16 @@ async function shopWebhook(env, type, res, access) {
   if (type === 'PAYMENT.CAPTURE.COMPLETED') {
     const c = parseShopCustom(res.custom_id);
     if (!c) { await logPayIssue(env, 'shop-webhook-no-custom', type, res); return new Response('ignored', { status: 200 }); }
-    const p = productOf(c.product);
     const amt = res.amount || {};
-    if (String(amt.currency_code || '').toUpperCase() !== p.currency || !sameMoney(amt.value, p.price) || String(res.status || '').toUpperCase() !== 'COMPLETED') {
+    if (String(amt.currency_code || '').toUpperCase() !== SHOP_CURRENCY || !sameMoney(amt.value, priceOf(c.products)) || String(res.status || '').toUpperCase() !== 'COMPLETED') {
       await logPayIssue(env, 'shop-webhook-mismatch:' + c.email, type, res);
       return new Response('mismatch', { status: 200 });
     }
     const orderId = (res.supplementary_data && res.supplementary_data.related_ids && res.supplementary_data.related_ids.order_id) || '';
-    const rec = await recordPurchase(env, c.email, c.product, { orderId, captureId: res.id, amount: p.price, currency: p.currency, via: 'webhook' });
-    if (!rec.ok) await logPayIssue(env, 'shop-webhook-' + rec.why + ':' + c.email, type, res);
+    for (const id of c.products) {
+      const rec = await recordPurchase(env, c.email, id, { orderId, captureId: res.id, amount: PRODUCTS[id].price, currency: SHOP_CURRENCY, via: 'webhook', allProducts: c.products });
+      if (!rec.ok) await logPayIssue(env, 'shop-webhook-' + rec.why + ':' + c.email, type, res);
+    }
     return new Response('ok', { status: 200 });
   }
   // REFUNDED: the resource is the refund; its "up" link names the capture.
@@ -1386,18 +1410,22 @@ async function shopWebhook(env, type, res, access) {
   // refund or a reversal (chargeback) removes the handbook; a partial refund (a
   // goodwill discount) keeps it.
   if (type === 'PAYMENT.CAPTURE.REFUNDED' && capStatus === 'PARTIALLY_REFUNDED') {
-    await logPlan(env, { email: owner.email, action: 'partial refund ' + owner.product, by: 'paypal', sub: captureId, result: 'kept' });
+    await logPlan(env, { email: owner.email, action: 'partial refund ' + owner.products.join(','), by: 'paypal', sub: captureId, result: 'kept' });
     return new Response('ok', { status: 200 });
   }
   const raw = await env.USERS.get(owner.email);
   if (!raw) { await logPayIssue(env, 'unknown-user:' + owner.email, type, res); return new Response('unknown user', { status: 200 }); }
   const user = JSON.parse(raw);
-  const cur = user.purchases && user.purchases[owner.product];
   user.refundedPurchases = user.refundedPurchases || {};
-  user.refundedPurchases[owner.product] = Object.assign({}, cur || {}, { captureId, refunded: Date.now(), event: type });
-  if (cur && (!cur.captureId || cur.captureId === captureId)) delete user.purchases[owner.product];
+  let removed = 0;
+  // Every handbook bought in this order (a basket shares one capture) loses access.
+  for (const id of owner.products) {
+    const cur = user.purchases && user.purchases[id];
+    user.refundedPurchases[id] = Object.assign({}, cur || {}, { captureId, refunded: Date.now(), event: type });
+    if (cur && (!cur.captureId || cur.captureId === captureId)) { delete user.purchases[id]; removed++; }
+  }
   await env.USERS.put(owner.email, JSON.stringify(user));
-  await logPlan(env, { email: owner.email, action: (type === 'PAYMENT.CAPTURE.REVERSED' ? 'reversal ' : 'refund ') + owner.product, by: 'paypal', sub: captureId, result: cur ? 'access removed' : 'no purchase on record' });
+  await logPlan(env, { email: owner.email, action: (type === 'PAYMENT.CAPTURE.REVERSED' ? 'reversal ' : 'refund ') + owner.products.join(','), by: 'paypal', sub: captureId, result: removed ? 'access removed' : 'no purchase on record' });
   return new Response('ok', { status: 200 });
 }
 

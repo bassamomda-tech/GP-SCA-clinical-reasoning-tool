@@ -164,7 +164,9 @@ Nothing to configure: it uses the existing **USERS** KV.
   writes a day, which is far more than no-result searches on a site this size.
 
 ## Handbook shop (one-off £20 purchases)
-Handbooks are sold **separately, £20 each, as a one-off PayPal payment**. They are **not
+Handbooks are sold **separately, £20 each, as a one-off PayPal payment**. Buyers can put several
+in a **basket** on the Shop page and pay for them in one PayPal payment; every handbook in that
+payment shares one order number, and a full refund of that payment removes all of them. They are **not
 part of any plan**: Silver, Gold and Platinum members buy them like everyone else. (The
 individual Clinic Guides stay in the Silver and Platinum plans; nothing changes there.)
 
