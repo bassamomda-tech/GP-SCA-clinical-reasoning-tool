@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Clinic Guides · Reasoning GP</title>
+<meta name="description" content="Clinic Guides: 2-page printable A4 desk guides for the conditions you see every day in UK general practice, checked against current NICE and MHRA guidance.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reasoning GP">
+<meta property="og:locale" content="en_GB">
+<meta property="og:title" content="Clinic Guides">
+<meta property="og:description" content="Clinic Guides: 2-page printable A4 desk guides for the conditions you see every day in UK general practice, checked against current NICE and MHRA guidance.">
+<meta property="og:url" content="https://gpreasoning.uk/tools/clinic-guides.html">
+<meta property="og:image" content="https://gpreasoning.uk/assets/icons/icon-512.png">
+<link rel="canonical" href="https://gpreasoning.uk/tools/clinic-guides.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/site.css?v=14">
+<style>
+.tool-page{ padding:28px 32px 80px; max-width:1180px; margin:0 auto; }
+@media (max-width:760px){ .tool-page{ padding:18px 14px 60px; } }
+
+.tool-head{ padding-bottom:14px; border-bottom:1px solid var(--line); margin-bottom:20px; }
+.tool-eyebrow{ font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); font-weight:600; }
+.tool-head h1{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:34px; line-height:1.1; margin-top:6px; }
+.tool-head h1 em{ font-style:italic; color:var(--teal); font-weight:500; }
+.tool-head p{ font-size:14.5px; color:var(--ink-2); margin-top:8px; max-width:70ch; }
+.tool-head .cg-lede{ font-size:17px; color:var(--ink); font-family:'Source Serif 4',Georgia,serif; }
+
+/* What a guide is — four short facts */
+.cg-facts{ display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:10px; margin:0 0 18px; padding:0; list-style:none; }
+@media(max-width:980px){ .cg-facts{ grid-template-columns:repeat(2,minmax(0,1fr)); } }
+@media(max-width:560px){ .cg-facts{ grid-template-columns:1fr; } }
+.cg-facts li{ background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--teal); border-radius:10px; padding:11px 13px; font-size:13px; line-height:1.5; color:var(--ink-2); }
+.cg-facts li b{ display:block; color:var(--ink); font-size:13.5px; margin-bottom:2px; }
+
+.cg-access{ margin:0 0 18px; padding:11px 16px; border:1px solid #99c4bf; background:#ecf5f3; border-radius:11px; font-size:13px; line-height:1.55; color:#1c1917; }
+.cg-access b{ color:#0c4a47; }
+.cg-access a{ color:#0c4a47; font-weight:700; }
+
+.alg-controls{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-bottom:6px; }
+.alg-search{ position:relative; flex:1; min-width:0; }
+.alg-search svg{ position:absolute; left:14px; top:50%; transform:translateY(-50%); color:var(--muted); pointer-events:none; }
+.alg-search input{ width:100%; font:inherit; font-size:15px; padding:12px 14px 12px 42px; border:1px solid var(--line-2); border-radius:10px; background:#fff; color:var(--ink); box-sizing:border-box; }
+.alg-search input:focus{ outline:none; border-color:var(--teal); box-shadow:0 0 0 4px var(--teal-soft); }
+.alg-count-pill{ font-size:13px; color:var(--muted); font-weight:500; white-space:nowrap; }
+.alg-count-pill b{ color:var(--ink); }
+.cg-jump{ display:flex; flex-wrap:wrap; gap:6px; margin:10px 0 0; }
+.cg-jump a{ font-size:12.5px; font-weight:600; color:var(--teal); text-decoration:none; background:var(--surface); border:1px solid var(--line); border-radius:99px; padding:5px 11px; }
+.cg-jump a:hover{ border-color:var(--teal); }
+.alg-empty{ display:none; padding:48px 20px; text-align:center; color:var(--muted); font-size:15px; }
+.alg-empty.show{ display:block; }
+
+.cg-group{ margin-top:30px; scroll-margin-top:140px; }
+.alg-group-head{ display:flex; align-items:center; gap:10px; margin-bottom:14px; padding:0 0 8px 4px; border-bottom:1px solid var(--line); }
+.agh-icon{ font-size:18px; }
+.alg-group-head h2{ font-family:'Source Serif 4',Georgia,serif; font-weight:500; font-size:21px; color:var(--ink); }
+.agh-count{ font-size:11px; font-weight:700; color:var(--muted); background:var(--bg-soft); border:1px solid var(--line); border-radius:99px; padding:2px 9px; }
+
+.cg-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr)); gap:12px; }
+.cg-card{ position:relative; display:flex; flex-direction:column; gap:6px; padding:15px 16px 13px; background:#fff; border:1px solid var(--line); border-radius:12px; transition:border-color .15s ease, box-shadow .15s ease; min-width:0; }
+.cg-card:hover{ border-color:var(--teal); box-shadow:var(--shadow-2); }
+.cg-card-t{ margin:0; padding-right:64px; font-size:15.5px; font-weight:600; line-height:1.25; }
+.cg-card-t a{ color:var(--ink); text-decoration:none; }
+.cg-card-t a:hover{ color:var(--teal); text-decoration:underline; }
+.cg-scope{ margin:0; font-size:13px; line-height:1.45; color:var(--ink-2); }
+.cg-src{ margin:0; font-size:11.5px; line-height:1.45; color:var(--muted); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; overflow-wrap:anywhere; }
+.cg-rev{ margin:0; font-size:11.5px; color:var(--muted); }
+.cg-actions{ display:flex; gap:8px; flex-wrap:wrap; margin-top:4px; }
+.cg-btn{ display:inline-flex; align-items:center; font-size:13px; font-weight:700; padding:7px 14px; border-radius:8px; border:1px solid var(--teal); background:#fff; color:var(--teal); text-decoration:none; line-height:1.2; }
+.cg-btn.pri{ background:var(--teal); color:#fff; }
+.cg-btn:hover{ background:var(--teal-2); border-color:var(--teal-2); color:#fff; }
+.cg-proto{ font-size:12.5px; font-weight:600; color:var(--teal); text-decoration:none; margin-top:2px; overflow-wrap:anywhere; }
+.cg-proto:hover{ text-decoration:underline; }
+.cg-free{ position:absolute; top:12px; right:12px; font-size:9px; font-weight:800; letter-spacing:.05em; text-transform:uppercase; color:#fff; background:#0c4a47; border-radius:999px; padding:3px 9px; line-height:1; }
+
+/* Handbook shop card: one-off £20 purchase (block written by the importer, GROUP_EXTRA; filled by assets/clinic-guides.js) */
+.cg-handbook{ display:flex; align-items:center; gap:14px; margin:0 0 14px; padding:15px 18px; background:#ecf5f3; border:1px solid #99c4bf; border-left:5px solid var(--teal); border-radius:12px; min-width:0; }
+.cg-hb-icon{ flex:0 0 auto; display:grid; place-items:center; width:46px; height:56px; border-radius:6px; background:var(--teal); color:#fff; font-size:12px; font-weight:800; letter-spacing:.06em; }
+.cg-hb-body{ flex:1; min-width:0; }
+.cg-hb-t{ margin:0 0 3px; font-family:'Source Serif 4',Georgia,serif; font-size:19px; font-weight:600; line-height:1.2; color:var(--ink); }
+.cg-hb-fmt{ font-family:'DM Sans',system-ui,sans-serif; font-size:13px; font-weight:600; color:var(--muted); white-space:nowrap; }
+.cg-hb-d{ margin:0; font-size:13px; line-height:1.5; color:var(--ink-2); }
+.cg-hb-note{ margin:6px 0 0; font-size:12.5px; line-height:1.5; color:#0c4a47; font-weight:600; }
+.cg-hb-shop{ margin-top:5px; }
+.cg-hb-shop a{ color:#0c4a47; font-weight:700; }
+.cg-hb-note a{ color:#0c4a47; }
+.cg-hb-price{ margin:0 0 4px; font-size:13px; font-weight:600; color:#0c4a47; }
+.cg-hb-price b{ font-size:15px; }
+.cg-hb-buy{ flex:0 0 240px; min-width:0; display:flex; flex-direction:column; gap:6px; }
+.cg-hb-btn{ gap:8px; padding:10px 16px; font-size:14px; justify-content:center; text-align:center; cursor:pointer; font-family:inherit; }
+button.cg-hb-btn{ width:100%; }
+.cg-hb-btn[aria-busy="true"]{ opacity:.7; cursor:progress; }
+.cg-hb-size{ font-size:11.5px; font-weight:600; opacity:.85; }
+.cg-hb-pp{ min-height:0; }
+.cg-hb-msg{ margin:0; font-size:12.5px; line-height:1.5; color:#8a3a20; }
+.cg-hb-msg a{ color:#0c4a47; font-weight:700; }
+.cg-hb-small{ margin:0; font-size:12px; line-height:1.45; color:var(--muted); text-align:center; }
+.cg-hb-small a{ color:#0c4a47; }
+@media (max-width:640px){ .cg-handbook{ flex-wrap:wrap; } .cg-hb-icon{ width:38px; height:46px; font-size:11px; } .cg-hb-body{ flex-basis:calc(100% - 52px); } .cg-hb-buy{ flex:1 1 100%; } .cg-hb-btn{ width:100%; } }
+
+.alg-foot{ margin-top:36px; padding:14px 18px; background:var(--bg-soft); border:1px solid var(--line); border-radius:10px; font-size:12.5px; color:var(--muted); line-height:1.6; }
+.alg-foot strong{ color:var(--ink-2); }
+.alg-foot p{ margin:0 0 6px; }
+.alg-foot p:last-child{ margin:0; }
+</style>
+</head>
+<body data-screen-label="Clinic Guides hub">
+
+<button class="sb-toggle" aria-label="Open menu">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+</button>
+<div class="sb-overlay"></div>
+
+<div class="app">
+  <aside class="sidebar" data-active-id="__tools-clinicguides"></aside>
+  <main class="main">
+
+    <div class="tool-page">
+
+      <div class="tool-head">
+        <div class="tool-eyebrow">Reasoning GP · Clinic toolkit</div>
+        <h1>Clinic <em>Guides</em></h1>
+        <p class="cg-lede">2-page printable desk guides for the conditions you see every day.</p>
+        <p>Page 1 takes you from the first raised reading, result or symptom to a confirmed diagnosis and the first treatment. Page 2 is the review: targets, the next step up, monitoring and when to refer. Print them, keep them on the desk, and open the full protocol when you need the detail and the evidence.</p>
+      </div>
+
+      <ul class="cg-facts">
+        <li><b>Checked</b>Every figure checked against current NICE/MHRA guidance (October 2026).</li>
+        <li><b>National guidance</b>Built on NICE, MHRA and the UK national and society guidance they point to. Each guide names its sources.</li>
+        <li><b>Review dates</b>Each guide shows when it was reviewed and when its next review is due.</li>
+        <li><b>Two A4 pages</b>Prints on two A4 sheets exactly. Each guide links to its full protocol or pathway.</li>
+      </ul>
+
+      <div class="cg-access"><b>Access:</b> Clinic Guides are part of the Silver (Clinic) and Platinum plans. Guides marked <b>Free</b> are open to everyone, no sign-up needed. The <a href="#lab-results">Lab Results Handbook</a> PDF is not part of any plan: it is a separate one-off purchase (£20). <a href="../pages/pricing.html">See the plans</a></div>
+
+      <div class="alg-controls">
+        <div class="alg-search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="search" id="cgSearch" placeholder="Find a guide, e.g. asthma, statin, HRT" autocomplete="off" aria-label="Find a Clinic Guide" />
+        </div>
+        <span class="alg-count-pill"><b id="cgShown"><span data-cg-count>39</span></b> guides · <span data-cg-cats>8</span> areas</span>
+      </div>
+      <nav class="cg-jump" aria-label="Jump to an area"></nav>
+
+      <div class="alg-empty" id="cgEmpty">No Clinic Guide matches that search. Try the <a href="management.html">protocols</a>.</div>
+
+      <!-- CG:CARDS:START -->
+      <section class="cg-group" id="cardiovascular" data-group="cardiovascular">
+        <div class="alg-group-head"><span class="agh-icon" aria-hidden="true">❤️</span><h2>Cardiovascular</h2><span class="agh-count">6 guides</span></div>
+        <div class="cg-grid">
+          <article class="cg-card" data-cg-slug="hypertension" data-search="hypertension in adults for the new diagnosis and the annual review. adults 18+. not for pregnancy (nice ng133), children or hypertensive emergency. nice ng136 (updated feb 2026) · ng203 (ckd) · ng133 · ng238 · ng12 hypertension in adults hypertension">
+            <h3 class="cg-card-t"><a href="clinic-guides/hypertension.html">Hypertension in adults</a></h3>
+            <p class="cg-scope">For the new diagnosis and the annual review.</p>
+            <p class="cg-src">NICE NG136 (updated Feb 2026) · NG203 (CKD) · NG133 · NG238 · NG12</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hypertension.html">Open</a><a class="cg-btn" href="clinic-guides/hypertension.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/hypertension.html">Full protocol: Hypertension in adults →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hypercholesterolaemia" data-search="lipids and hypercholesterolaemia for the new raised cholesterol, statin start and the annual review, including spotting familial hypercholesterolaemia (fh). adults 18+. not for children, pregnancy or acute coronary syndrome. nice ng238 (2023) · cg71 (fh) · ta385 · ta694 · ta733 · ta393/394 lipids &amp; hypercholesterolaemia hypercholesterolaemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/hypercholesterolaemia.html">Lipids and hypercholesterolaemia</a></h3>
+            <p class="cg-scope">For the new raised cholesterol, statin start and the annual review, including spotting familial hypercholesterolaemia (FH).</p>
+            <p class="cg-src">NICE NG238 (2023) · CG71 (FH) · TA385 · TA694 · TA733 · TA393/394</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hypercholesterolaemia.html">Open</a><a class="cg-btn" href="clinic-guides/hypercholesterolaemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/hypercholesterolaemia.html">Full protocol: Lipids &amp; hypercholesterolaemia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="stable-angina" data-search="stable angina for the new diagnosis and the annual review. adults 18+ with angina due to coronary artery disease. not for suspected acs, heart failure management or after a recent mi or stent (follow the cardiology plan). nice cg126 (2011, updated 2016) · cg95 (updated 2016) · ng238 · mhra · dvla stable angina stable angina">
+            <h3 class="cg-card-t"><a href="clinic-guides/stable-angina.html">Stable angina</a></h3>
+            <p class="cg-scope">For the new diagnosis and the annual review.</p>
+            <p class="cg-src">NICE CG126 (2011, updated 2016) · CG95 (updated 2016) · NG238 · MHRA · DVLA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/stable-angina.html">Open</a><a class="cg-btn" href="clinic-guides/stable-angina.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/stable-angina.html">Full protocol: Stable angina →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="atrial-fibrillation" data-search="atrial fibrillation for the new diagnosis and the annual review. adults 18+ with af or atrial flutter. not for haemodynamically unstable af, mechanical valves or moderate–severe mitral stenosis (warfarin), pregnancy or children. nice ng196 (2021, updated jun 2021) · doac spcs · ng12 · esc 2024 (international) atrial fibrillation atrial fibrillation">
+            <h3 class="cg-card-t"><a href="clinic-guides/atrial-fibrillation.html">Atrial fibrillation</a></h3>
+            <p class="cg-scope">For the new diagnosis and the annual review.</p>
+            <p class="cg-src">NICE NG196 (2021, updated Jun 2021) · DOAC SPCs · NG12 · ESC 2024 (international)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/atrial-fibrillation.html">Open</a><a class="cg-btn" href="clinic-guides/atrial-fibrillation.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/atrial-fibrillation.html">Full protocol: Atrial Fibrillation →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="heart-failure" data-search="chronic heart failure for suspected new heart failure and the regular review. adults 18+. not for acute decompensated heart failure, heart failure in pregnancy, or children. nice ng106 (updated sept 2025) · qs9 · ta388 · ta267 · ng12 heart failure heart failure">
+            <h3 class="cg-card-t"><a href="clinic-guides/heart-failure.html">Chronic heart failure</a></h3>
+            <p class="cg-scope">For suspected new heart failure and the regular review.</p>
+            <p class="cg-src">NICE NG106 (updated Sept 2025) · QS9 · TA388 · TA267 · NG12</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/heart-failure.html">Open</a><a class="cg-btn" href="clinic-guides/heart-failure.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/heart-failure.html">Full protocol: Heart Failure →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="chest-pain" data-search="chest pain in adults for undifferentiated chest pain in adults in general practice. not for children, pregnancy or post-partum, major trauma, active cancer treatment or sickle cell disease (separate pathways). nice cg95 (2010, updated 2016) · ng185 · ng158 · cg126 · cg184 · ng12 · esc aortic diseases 2024 (international) chest pain chest pain">
+            <h3 class="cg-card-t"><a href="clinic-guides/chest-pain.html">Chest pain in adults</a></h3>
+            <p class="cg-scope">For undifferentiated chest pain in adults in general practice.</p>
+            <p class="cg-src">NICE CG95 (2010, updated 2016) · NG185 · NG158 · CG126 · CG184 · NG12 · ESC aortic diseases 2024 (international)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/chest-pain.html">Open</a><a class="cg-btn" href="clinic-guides/chest-pain.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/chest-pain.html">Full pathway: Chest Pain →</a>
+          </article>
+        </div>
+      </section>
+      <section class="cg-group" id="respiratory" data-group="respiratory">
+        <div class="alg-group-head"><span class="agh-icon" aria-hidden="true">🌬️</span><h2>Respiratory</h2><span class="agh-count">4 guides</span></div>
+        <div class="cg-grid">
+          <article class="cg-card" data-cg-slug="asthma" data-search="asthma, aged 12 and over for the new diagnosis and the annual review. adults and young people aged 12+. not for children aged 5–11 (different pathway), severe asthma under specialist care or hospital management of an attack. bts/nice/sign ng245 (nov 2024) · bts/sign 158 (acute asthma) · mhra dsu apr 2025 · ukhsa green book asthma (adults &amp; 12+) asthma">
+            <h3 class="cg-card-t"><a href="clinic-guides/asthma.html">Asthma, aged 12 and over</a></h3>
+            <p class="cg-scope">For the new diagnosis and the annual review.</p>
+            <p class="cg-src">BTS/NICE/SIGN NG245 (Nov 2024) · BTS/SIGN 158 (acute asthma) · MHRA DSU Apr 2025 · UKHSA Green Book</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/asthma.html">Open</a><a class="cg-btn" href="clinic-guides/asthma.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/asthma.html">Full protocol: Asthma (adults &amp; 12+) →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="copd" data-search="copd for the new diagnosis and the annual review. adults over 16 with suspected or confirmed copd. not for asthma, bronchiectasis-led disease or hospital management of an exacerbation. nice ng115 (2018, updated 2019) · ng114 · ng12 · ukhsa green book (2026) copd copd">
+            <h3 class="cg-card-t"><a href="clinic-guides/copd.html">COPD</a></h3>
+            <p class="cg-scope">For the new diagnosis and the annual review.</p>
+            <p class="cg-src">NICE NG115 (2018, updated 2019) · NG114 · NG12 · UKHSA Green Book (2026)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/copd.html">Open</a><a class="cg-btn" href="clinic-guides/copd.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/copd.html">Full protocol: COPD →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="breathlessness" data-search="breathlessness in adults for new or worsening breathlessness in adults in general practice. not for children, pregnancy or post-partum (separate vte pathway), major trauma or palliative breathlessness. nice cks · ng106 · ng115 · ng245 (bts/nice/sign 2024) · ng12 · ng158 · ng250 · bts/sign 158 (acute asthma) · bts emergency oxygen 2017 breathlessness breathlessness">
+            <h3 class="cg-card-t"><a href="clinic-guides/breathlessness.html">Breathlessness in adults</a></h3>
+            <p class="cg-scope">For new or worsening breathlessness in adults in general practice.</p>
+            <p class="cg-src">NICE CKS · NG106 · NG115 · NG245 (BTS/NICE/SIGN 2024) · NG12 · NG158 · NG250 · BTS/SIGN 158 (acute asthma) · BTS emergency oxygen 2017</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/breathlessness.html">Open</a><a class="cg-btn" href="clinic-guides/breathlessness.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/breathlessness.html">Full pathway: Breathlessness →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="allergic-rhinitis" data-search="allergic rhinitis for the first consultation and the seasonal review. adults and young people 12+. not for chronic rhinosinusitis with polyps, non-allergic rhinitis or children under 12 (doses differ). bsaci rhinitis guideline 2017 · nice cks · mhra (montelukast dsu sep 2019, apr 2024; decongestants apr 2026) · ng245 · ng12 allergic rhinitis allergic rhinitis">
+            <h3 class="cg-card-t"><a href="clinic-guides/allergic-rhinitis.html">Allergic rhinitis</a></h3>
+            <p class="cg-scope">For the first consultation and the seasonal review.</p>
+            <p class="cg-src">BSACI rhinitis guideline 2017 · NICE CKS · MHRA (montelukast DSU Sep 2019, Apr 2024; decongestants Apr 2026) · NG245 · NG12</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/allergic-rhinitis.html">Open</a><a class="cg-btn" href="clinic-guides/allergic-rhinitis.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/allergic-rhinitis.html">Full protocol: Allergic Rhinitis →</a>
+          </article>
+        </div>
+      </section>
+      <section class="cg-group" id="metabolic-and-endocrine" data-group="metabolic-and-endocrine">
+        <div class="alg-group-head"><span class="agh-icon" aria-hidden="true">🦋</span><h2>Metabolic and endocrine</h2><span class="agh-count">7 guides</span></div>
+        <div class="cg-grid">
+          <article class="cg-card" data-cg-slug="type-2-diabetes" data-search="type 2 diabetes in adults for the new diagnosis and the annual review. adults 18+ with type 2 diabetes. not for type 1 diabetes, pregnancy, children, or dka/hhs management. nice ng28 (updated feb 2026) · ng136 · ng203 · ng238 · ng19 · ng12 · mhra dsu (sglt2i) · dvla type 2 diabetes type 2 diabetes">
+            <h3 class="cg-card-t"><a href="clinic-guides/type-2-diabetes.html">Type 2 diabetes in adults</a></h3>
+            <p class="cg-scope">For the new diagnosis and the annual review.</p>
+            <p class="cg-src">NICE NG28 (updated Feb 2026) · NG136 · NG203 · NG238 · NG19 · NG12 · MHRA DSU (SGLT2i) · DVLA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/type-2-diabetes.html">Open</a><a class="cg-btn" href="clinic-guides/type-2-diabetes.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/type-2-diabetes.html">Full protocol: Type 2 diabetes →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="ckd" data-search="chronic kidney disease for the new finding of a low egfr or raised acr, and the annual review. adults 18+. not for aki management, dialysis or transplant care, pregnancy or children. nice ng203 (2021) · ta1075 dapagliflozin · ta942 empagliflozin · ta877 finerenone · ng136 · ng238 · ng148 · ng12 · mhra chronic kidney disease ckd">
+            <h3 class="cg-card-t"><a href="clinic-guides/ckd.html">Chronic kidney disease</a></h3>
+            <p class="cg-scope">For the new finding of a low eGFR or raised ACR, and the annual review.</p>
+            <p class="cg-src">NICE NG203 (2021) · TA1075 dapagliflozin · TA942 empagliflozin · TA877 finerenone · NG136 · NG238 · NG148 · NG12 · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/ckd.html">Open</a><a class="cg-btn" href="clinic-guides/ckd.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/ckd.html">Full protocol: Chronic kidney disease →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hypothyroidism" data-search="hypothyroidism in adults for overt and subclinical primary hypothyroidism: the new result, the levothyroxine start and the annual review. adults 18+. not for pregnancy or preconception (specialist care, rcog gtg76), children, central hypothyroidism or thyroid cancer. nice ng145 (2019) · ng12 · rcog gtg76 (2025) · sps · mhra hypothyroidism &amp; subclinical hypothyroidism hypothyroidism">
+            <h3 class="cg-card-t"><a href="clinic-guides/hypothyroidism.html">Hypothyroidism in adults</a></h3>
+            <p class="cg-scope">For overt and subclinical primary hypothyroidism: the new result, the levothyroxine start and the annual review.</p>
+            <p class="cg-src">NICE NG145 (2019) · NG12 · RCOG GTG76 (2025) · SPS · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hypothyroidism.html">Open</a><a class="cg-btn" href="clinic-guides/hypothyroidism.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/hypothyroidism.html">Full protocol: Hypothyroidism &amp; subclinical hypothyroidism →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hyperthyroidism" data-search="hyperthyroidism in adults for the new low tsh, symptom control while awaiting the specialist, and shared monitoring of antithyroid drugs. adults 18+. not for pregnancy (joint specialist care), children, thyroid eye disease treatment or thyroid cancer. nice ng145 (2019) · mhra dsu feb 2019 · ng12 · rcog gtg76 (2025) hyperthyroidism hyperthyroidism">
+            <h3 class="cg-card-t"><a href="clinic-guides/hyperthyroidism.html">Hyperthyroidism in adults</a></h3>
+            <p class="cg-scope">For the new low TSH, symptom control while awaiting the specialist, and shared monitoring of antithyroid drugs.</p>
+            <p class="cg-src">NICE NG145 (2019) · MHRA DSU Feb 2019 · NG12 · RCOG GTG76 (2025)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hyperthyroidism.html">Open</a><a class="cg-btn" href="clinic-guides/hyperthyroidism.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/hyperthyroidism.html">Full protocol: Hyperthyroidism →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="osteoporosis" data-search="osteoporosis and fracture risk for case-finding, starting bone protection and the treatment review. adults, mainly aged 50+ and postmenopausal women. not for children, pregnancy-associated osteoporosis, osteomalacia, paget&#x27;s disease or advanced ckd bone disease. nice ng259 (jul 2026; replaced cg146) · ta464 · nogg 2024 · mhra · ng12 osteoporosis and fracture risk osteoporosis">
+            <h3 class="cg-card-t"><a href="clinic-guides/osteoporosis.html">Osteoporosis and fracture risk</a></h3>
+            <p class="cg-scope">For case-finding, starting bone protection and the treatment review.</p>
+            <p class="cg-src">NICE NG259 (Jul 2026; replaced CG146) · TA464 · NOGG 2024 · MHRA · NG12</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/osteoporosis.html">Open</a><a class="cg-btn" href="clinic-guides/osteoporosis.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/osteoporosis.html">Full protocol: Osteoporosis and fracture risk →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="gout" data-search="gout in adults for the flare, starting urate-lowering therapy (ult) and the annual review. adults. not for suspected septic arthritis, calcium pyrophosphate disease (pseudogout) or children. nice ng219 (2022) · mhra dsu may 2023 (febuxostat) · ng12 gout gout">
+            <h3 class="cg-card-t"><a href="clinic-guides/gout.html">Gout in adults</a></h3>
+            <p class="cg-scope">For the flare, starting urate-lowering therapy (ULT) and the annual review.</p>
+            <p class="cg-src">NICE NG219 (2022) · MHRA DSU May 2023 (febuxostat) · NG12</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/gout.html">Open</a><a class="cg-btn" href="clinic-guides/gout.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/gout.html">Full protocol: Gout →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="anaemia" data-search="anaemia in adults: the low hb interpreting a low haemoglobin in adults 18+. not for pregnancy (use maternity thresholds), children, ckd on esa (renal team), haemoglobinopathy care or active major bleeding (emergency). bsg ida guideline 2021 · nice ng12 · htg690 · nice ng239 (b12, 2024) · ng20 · nice cks (iron deficiency) anaemia (low hb) anaemia">
+            <h3 class="cg-card-t"><a href="clinic-guides/anaemia.html">Anaemia in adults: the low Hb</a></h3>
+            <p class="cg-scope">Interpreting a low haemoglobin in adults 18+.</p>
+            <p class="cg-src">BSG IDA guideline 2021 · NICE NG12 · HTG690 · NICE NG239 (B12, 2024) · NG20 · NICE CKS (iron deficiency)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/anaemia.html">Open</a><a class="cg-btn" href="clinic-guides/anaemia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/anaemia.html">Full pathway: Anaemia (Low Hb) →</a>
+          </article>
+        </div>
+      </section>
+      <section class="cg-group" id="mental-health-and-neurology" data-group="mental-health-and-neurology">
+        <div class="alg-group-head"><span class="agh-icon" aria-hidden="true">🧠</span><h2>Mental health and neurology</h2><span class="agh-count">9 guides</span></div>
+        <div class="cg-grid">
+          <article class="cg-card" data-cg-slug="depression" data-search="depression in adults for the new episode and the medication and relapse review. adults 18+. not for under-18s (camhs), bipolar disorder (nice cg185), the perinatal period (cg192) or psychotic depression. nice ng222 (upd. dec 2025) · ng225 (self-harm) · cg185 · cg192 · ng12 · mhra dsu dec 2011 (qt) · jan 2021 (bleeding) depression depression">
+            <h3 class="cg-card-t"><a href="clinic-guides/depression.html">Depression in adults</a></h3>
+            <p class="cg-scope">For the new episode and the medication and relapse review.</p>
+            <p class="cg-src">NICE NG222 (upd. Dec 2025) · NG225 (self-harm) · CG185 · CG192 · NG12 · MHRA DSU Dec 2011 (QT) · Jan 2021 (bleeding)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/depression.html">Open</a><a class="cg-btn" href="clinic-guides/depression.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/depression.html">Full protocol: Depression →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="anxiety" data-search="generalised anxiety and panic disorder for the first presentation and the follow-up reviews. adults 18+. under-18s go through camhs. ptsd, ocd and social anxiety are named here only to route them; they have their own nice guidelines. nice cg113 (2011, updated 2020) · ng116 · cg159 · cg31 · ng225 · mhra dsu 2019–2022 anxiety disorders anxiety">
+            <h3 class="cg-card-t"><a href="clinic-guides/anxiety.html">Generalised anxiety and panic disorder</a></h3>
+            <p class="cg-scope">For the first presentation and the follow-up reviews.</p>
+            <p class="cg-src">NICE CG113 (2011, updated 2020) · NG116 · CG159 · CG31 · NG225 · MHRA DSU 2019–2022</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/anxiety.html">Open</a><a class="cg-btn" href="clinic-guides/anxiety.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/anxiety.html">Full protocol: Anxiety disorders →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="adhd" data-search="adhd in children and adults the primary care role: recognise, refer well, support, then shared-care prescribing and monitoring. children 5+, young people and adults (under-5s: parent training). diagnosis and starting drugs are specialist tasks. nice ng87 (2018, updated 2019) · mhra dsu sep 2022 (methylphenidate mr) · jan 2012 (atomoxetine) · national supply alerts 2023–24 adhd adhd">
+            <h3 class="cg-card-t"><a href="clinic-guides/adhd.html">ADHD in children and adults</a></h3>
+            <p class="cg-scope">The primary care role: recognise, refer well, support, then shared-care prescribing and monitoring.</p>
+            <p class="cg-src">NICE NG87 (2018, updated 2019) · MHRA DSU Sep 2022 (methylphenidate MR) · Jan 2012 (atomoxetine) · national supply alerts 2023–24</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/adhd.html">Open</a><a class="cg-btn" href="clinic-guides/adhd.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/adhd.html">Full protocol: ADHD →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="dementia" data-search="dementia recognition, diagnosis, referral and post-diagnostic care in primary care. adults with suspected or diagnosed dementia, and their carers. not for delirium management alone or for mild cognitive impairment without dementia. nice ng97 (2018) · ta217 · cg103 · ng71 · ng225 · mhra · dvla dementia dementia">
+            <h3 class="cg-card-t"><a href="clinic-guides/dementia.html">Dementia</a></h3>
+            <p class="cg-scope">Recognition, diagnosis, referral and post-diagnostic care in primary care.</p>
+            <p class="cg-src">NICE NG97 (2018) · TA217 · CG103 · NG71 · NG225 · MHRA · DVLA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/dementia.html">Open</a><a class="cg-btn" href="clinic-guides/dementia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/dementia.html">Full protocol: Dementia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="insomnia" data-search="insomnia in adults short-term and chronic insomnia, and long-term hypnotic users. adults 18+. not for children (see the children&#x27;s sleep pathway), or for treating sleep apnoea, narcolepsy or restless legs, which are routed here only. nice ta922 (2023) · htg624 (was mtg70) · ta77 · ng202 · ng225 · mhra dsu 2014, 2020 insomnia and sleep problems insomnia">
+            <h3 class="cg-card-t"><a href="clinic-guides/insomnia.html">Insomnia in adults</a></h3>
+            <p class="cg-scope">Short-term and chronic insomnia, and long-term hypnotic users.</p>
+            <p class="cg-src">NICE TA922 (2023) · HTG624 (was MTG70) · TA77 · NG202 · NG225 · MHRA DSU 2014, 2020</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/insomnia.html">Open</a><a class="cg-btn" href="clinic-guides/insomnia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/insomnia.html">Full pathway: Insomnia and Sleep Problems →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="migraine" data-search="migraine in adults for the new diagnosis and the migraine review. adults 18+. not for children, cluster headache, or a new or changed headache that has not yet been assessed (see the headache guide). nice cg150 (updated jun 2025) · ta260 · ta659 · ta682 · ta764 · ta871 · ta906 · ta919 · ta973 · mhra (topiramate jun 2024; valproate) · ukmec migraine migraine">
+            <h3 class="cg-card-t"><a href="clinic-guides/migraine.html">Migraine in adults</a></h3>
+            <p class="cg-scope">For the new diagnosis and the migraine review.</p>
+            <p class="cg-src">NICE CG150 (updated Jun 2025) · TA260 · TA659 · TA682 · TA764 · TA871 · TA906 · TA919 · TA973 · MHRA (topiramate Jun 2024; valproate) · UKMEC</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/migraine.html">Open</a><a class="cg-btn" href="clinic-guides/migraine.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/migraine.html">Full protocol: Migraine →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="headache" data-search="headache: new or changed for the adult with a new or changed headache. adults 18+. not for children, head injury (nice ng232) or the planned migraine review (see the migraine guide). nice cg150 (updated jun 2025) · ng12 · ng228 · ng240 · ng127 · ng133 · bsr gca 2020 headache headache">
+            <h3 class="cg-card-t"><a href="clinic-guides/headache.html">Headache: new or changed</a></h3>
+            <p class="cg-scope">For the adult with a new or changed headache.</p>
+            <p class="cg-src">NICE CG150 (updated Jun 2025) · NG12 · NG228 · NG240 · NG127 · NG133 · BSR GCA 2020</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/headache.html">Open</a><a class="cg-btn" href="clinic-guides/headache.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/headache.html">Full pathway: Headache →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="dizziness" data-search="dizziness and vertigo for the adult presenting with dizziness or vertigo. adults 18+. not for children, a blackout already on the transient loss of consciousness pathway (nice cg109) or head injury (ng232). nice ng127 · cks vertigo, bppv, vestibular neuronitis · ng98 · cg109 · dvla assessing fitness to drive dizziness dizziness">
+            <h3 class="cg-card-t"><a href="clinic-guides/dizziness.html">Dizziness and vertigo</a></h3>
+            <p class="cg-scope">For the adult presenting with dizziness or vertigo.</p>
+            <p class="cg-src">NICE NG127 · CKS vertigo, BPPV, vestibular neuronitis · NG98 · CG109 · DVLA Assessing fitness to drive</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/dizziness.html">Open</a><a class="cg-btn" href="clinic-guides/dizziness.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/dizziness.html">Full pathway: Dizziness →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="hearing-loss" data-search="hearing loss in adults for the adult presenting with hearing loss. adults 18+. not for children (all suspected hearing loss → paediatric audiology or ent) or tinnitus alone (nice ng155). nice ng98 (hearing loss in adults) · qs185 · ng155 · ta566 · ng127 · nice cks (otitis media, otitis externa) hearing loss hearing loss">
+            <h3 class="cg-card-t"><a href="clinic-guides/hearing-loss.html">Hearing loss in adults</a></h3>
+            <p class="cg-scope">For the adult presenting with hearing loss.</p>
+            <p class="cg-src">NICE NG98 (hearing loss in adults) · QS185 · NG155 · TA566 · NG127 · NICE CKS (otitis media, otitis externa)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/hearing-loss.html">Open</a><a class="cg-btn" href="clinic-guides/hearing-loss.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/hearing-loss.html">Full pathway: Hearing Loss →</a>
+          </article>
+        </div>
+      </section>
+      <section class="cg-group" id="womens-and-mens-health" data-group="womens-and-mens-health">
+        <div class="alg-group-head"><span class="agh-icon" aria-hidden="true">🌸</span><h2>Women&#x27;s and men&#x27;s health</h2><span class="agh-count">4 guides</span></div>
+        <div class="cg-grid">
+          <article class="cg-card" data-cg-slug="menopause-hrt" data-search="menopause and hrt for the menopause consultation and the annual hrt review. women and people with menopausal symptoms; poi under 40 with specialist input. not for hrt after breast cancer (specialist), gender-affirming hormones or children. nice ng23 (updated nov 2024, amended apr 2026) · ng12 · mhra · bms · cosrh menopause and hrt menopause hrt">
+            <h3 class="cg-card-t"><a href="clinic-guides/menopause-hrt.html">Menopause and HRT</a></h3>
+            <p class="cg-scope">For the menopause consultation and the annual HRT review.</p>
+            <p class="cg-src">NICE NG23 (updated Nov 2024, amended Apr 2026) · NG12 · MHRA · BMS · CoSRH</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/menopause-hrt.html">Open</a><a class="cg-btn" href="clinic-guides/menopause-hrt.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/menopause.html">Full protocol: Menopause and HRT →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="contraception" data-search="contraception for the first request, emergency contraception and the annual review in general practice. not for complex medical conditions needing specialist advice, sterilisation or contraception for men. cosrh (formerly fsrh) ukmec 2025 · ec (amended apr 2026) · chc · pop · iuc · quick start · drug interactions · over-40s · nice cg30 (larc) · mhra valproate / topiramate ppp contraception contraception">
+            <h3 class="cg-card-t"><a href="clinic-guides/contraception.html">Contraception</a></h3>
+            <p class="cg-scope">For the first request, emergency contraception and the annual review in general practice.</p>
+            <p class="cg-src">CoSRH (formerly FSRH) UKMEC 2025 · EC (amended Apr 2026) · CHC · POP · IUC · Quick Start · drug interactions · over-40s · NICE CG30 (LARC) · MHRA valproate / topiramate PPP</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/contraception.html">Open</a><a class="cg-btn" href="clinic-guides/contraception.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/contraception.html">Full protocol: Contraception →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="heavy-menstrual-bleeding" data-search="heavy menstrual bleeding for women with heavy periods in primary care, from first consultation to review. not for post-menopausal bleeding, bleeding in pregnancy or bleeding on hrt (separate pathways). nice ng88 (2018, updated jul 2026) · ng12 (updated apr 2026) · nice cks · cosrh ukmec heavy menstrual bleeding heavy menstrual bleeding">
+            <h3 class="cg-card-t"><a href="clinic-guides/heavy-menstrual-bleeding.html">Heavy menstrual bleeding</a></h3>
+            <p class="cg-scope">For women with heavy periods in primary care, from first consultation to review.</p>
+            <p class="cg-src">NICE NG88 (2018, updated Jul 2026) · NG12 (updated Apr 2026) · NICE CKS · CoSRH UKMEC</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/heavy-menstrual-bleeding.html">Open</a><a class="cg-btn" href="clinic-guides/heavy-menstrual-bleeding.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/menorrhagia.html">Full protocol: Heavy menstrual bleeding →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="male-luts" data-search="luts in men lower urinary tract symptoms: first assessment and drug review. men and others with a prostate. not for prostatitis, neurogenic bladder, incontinence after prostate surgery, or children. nice cg97 (2010, updated 2015) · ng12 (psa, haematuria) · qs45 · ta290 · prostate cancer risk management programme · mhra dsu male luts male luts">
+            <h3 class="cg-card-t"><a href="clinic-guides/male-luts.html">LUTS in men</a></h3>
+            <p class="cg-scope">Lower urinary tract symptoms: first assessment and drug review.</p>
+            <p class="cg-src">NICE CG97 (2010, updated 2015) · NG12 (PSA, haematuria) · QS45 · TA290 · Prostate Cancer Risk Management Programme · MHRA DSU</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/male-luts.html">Open</a><a class="cg-btn" href="clinic-guides/male-luts.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/male-luts.html">Full protocol: Male LUTS →</a>
+          </article>
+        </div>
+      </section>
+      <section class="cg-group" id="gut" data-group="gut">
+        <div class="alg-group-head"><span class="agh-icon" aria-hidden="true">🍽️</span><h2>Gut</h2><span class="agh-count">3 guides</span></div>
+        <div class="cg-grid">
+          <article class="cg-card" data-cg-slug="dyspepsia" data-search="dyspepsia and reflux in adults for adults 18+ with indigestion, epigastric pain or heartburn and reflux. not for children, pregnancy-specific care, active gi bleeding (emergency) or known barrett&#x27;s surveillance (ng231). nice cg184 (2014, updated 2019) · ng12 (upper gi amended 2025) · qs96 · htg690 · ng20 · mhra dyspepsia dyspepsia">
+            <h3 class="cg-card-t"><a href="clinic-guides/dyspepsia.html">Dyspepsia and reflux in adults</a></h3>
+            <p class="cg-scope">For adults 18+ with indigestion, epigastric pain or heartburn and reflux.</p>
+            <p class="cg-src">NICE CG184 (2014, updated 2019) · NG12 (upper GI amended 2025) · QS96 · HTG690 · NG20 · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/dyspepsia.html">Open</a><a class="cg-btn" href="clinic-guides/dyspepsia.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="algorithms/dyspepsia.html">Full pathway: Dyspepsia →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="ulcerative-colitis" data-search="ulcerative colitis in adults the primary care role in known uc: flares, maintenance, monitoring and shared care. adults 18+. not for the first diagnosis (refer), children, or inpatient care of acute severe colitis. nice ng130 (2019) · cg118 · ng199 · ng12 · htg690 · bsg ibd in adults 2025 · bsg ibd surveillance 2025 · mhra ulcerative colitis ulcerative colitis">
+            <h3 class="cg-card-t"><a href="clinic-guides/ulcerative-colitis.html">Ulcerative colitis in adults</a></h3>
+            <p class="cg-scope">The primary care role in known UC: flares, maintenance, monitoring and shared care.</p>
+            <p class="cg-src">NICE NG130 (2019) · CG118 · NG199 · NG12 · HTG690 · BSG IBD in adults 2025 · BSG IBD surveillance 2025 · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/ulcerative-colitis.html">Open</a><a class="cg-btn" href="clinic-guides/ulcerative-colitis.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/ulcerative-colitis.html">Full protocol: Ulcerative Colitis →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="crohns-disease" data-search="crohn&#x27;s disease in adults primary care triage, monitoring and shared care in known crohn&#x27;s. adults 18+. not for the first diagnosis (refer), children (paediatric ibd team) or inpatient care. nice ng129 (2019) · cg118 · ng12 · htg690 · qs81 · bsg ibd in adults 2025 · bsg ibd surveillance 2025 · mhra crohn&#x27;s disease crohns disease">
+            <h3 class="cg-card-t"><a href="clinic-guides/crohns-disease.html">Crohn&#x27;s disease in adults</a></h3>
+            <p class="cg-scope">Primary care triage, monitoring and shared care in known Crohn&#x27;s.</p>
+            <p class="cg-src">NICE NG129 (2019) · CG118 · NG12 · HTG690 · QS81 · BSG IBD in adults 2025 · BSG IBD surveillance 2025 · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/crohns-disease.html">Open</a><a class="cg-btn" href="clinic-guides/crohns-disease.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/crohns-disease.html">Full protocol: Crohn&#x27;s Disease →</a>
+          </article>
+        </div>
+      </section>
+      <section class="cg-group" id="musculoskeletal" data-group="musculoskeletal">
+        <div class="alg-group-head"><span class="agh-icon" aria-hidden="true">🦴</span><h2>Musculoskeletal</h2><span class="agh-count">2 guides</span></div>
+        <div class="cg-grid">
+          <article class="cg-card" data-cg-slug="osteoarthritis" data-search="osteoarthritis for the new diagnosis and the review. adults with hip, knee, hand and other peripheral joint osteoarthritis. not for the hot swollen joint, inflammatory arthritis (nice ng100), spinal pain or care after joint replacement. nice ng226 (2022) · qs87 · ng100 · ng12 · mhra dsu jun 2013 · jun 2015 osteoarthritis osteoarthritis">
+            <h3 class="cg-card-t"><a href="clinic-guides/osteoarthritis.html">Osteoarthritis</a></h3>
+            <p class="cg-scope">For the new diagnosis and the review.</p>
+            <p class="cg-src">NICE NG226 (2022) · QS87 · NG100 · NG12 · MHRA DSU Jun 2013 · Jun 2015</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/osteoarthritis.html">Open</a><a class="cg-btn" href="clinic-guides/osteoarthritis.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/osteoarthritis.html">Full protocol: Osteoarthritis →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="sciatica" data-search="sciatica low back pain with radiating leg pain (lumbar radiculopathy): assess, manage and refer. over 16s. not for spinal stenosis surgery decisions, children, or pain after spinal surgery. nice ng59 (jul 2026) · ng234 · ng12 · girft cauda equina pathway (2023) sciatica sciatica">
+            <h3 class="cg-card-t"><a href="clinic-guides/sciatica.html">Sciatica</a></h3>
+            <p class="cg-scope">Low back pain with radiating leg pain (lumbar radiculopathy): assess, manage and refer.</p>
+            <p class="cg-src">NICE NG59 (Jul 2026) · NG234 · NG12 · GIRFT cauda equina pathway (2023)</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/sciatica.html">Open</a><a class="cg-btn" href="clinic-guides/sciatica.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/sciatica.html">Full protocol: Sciatica →</a>
+          </article>
+        </div>
+      </section>
+      <section class="cg-group" id="children-and-skin" data-group="children-and-skin">
+        <div class="alg-group-head"><span class="agh-icon" aria-hidden="true">🧒</span><h2>Children and skin</h2><span class="agh-count">4 guides</span></div>
+        <div class="cg-grid">
+          <article class="cg-card" data-cg-slug="cmpa" data-search="cow&#x27;s milk protein allergy in infants for suspected cmpa in infants and children under 2, breastfed or formula-fed. not for food allergy in older children, lactose intolerance or the treatment of anaphylaxis itself (resuscitation council uk). nice cks (cow&#x27;s milk allergy in children) · cg116 (2011) · qs118 · imap/uk (2019) · resuscitation council uk · mhra cow&#x27;s milk protein allergy (cmpa) cmpa">
+            <h3 class="cg-card-t"><a href="clinic-guides/cmpa.html">Cow&#x27;s milk protein allergy in infants</a></h3>
+            <p class="cg-scope">For suspected CMPA in infants and children under 2, breastfed or formula-fed.</p>
+            <p class="cg-src">NICE CKS (cow&#x27;s milk allergy in children) · CG116 (2011) · QS118 · iMAP/UK (2019) · Resuscitation Council UK · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/cmpa.html">Open</a><a class="cg-btn" href="clinic-guides/cmpa.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/cmpa.html">Full protocol: Cow&#x27;s milk protein allergy (CMPA) →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="infant-reflux" data-search="reflux in infants (gor and gord) for regurgitation in infants under 1 year. not for older children and young people with gord, acute vomiting illness (gastroenteritis) or neonates in hospital. nice ng1 (2015, updated oct 2019) · qs112 · cg116 · mhra dsu dec 2019 reflux in infants infant reflux">
+            <h3 class="cg-card-t"><a href="clinic-guides/infant-reflux.html">Reflux in infants (GOR and GORD)</a></h3>
+            <p class="cg-scope">For regurgitation in infants under 1 year.</p>
+            <p class="cg-src">NICE NG1 (2015, updated Oct 2019) · QS112 · CG116 · MHRA DSU Dec 2019</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/infant-reflux.html">Open</a><a class="cg-btn" href="clinic-guides/infant-reflux.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/infant-reflux.html">Full protocol: Reflux in infants →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="eczema" data-search="atopic eczema for children and adults in primary care. nice cg57 applies to children under 12; adolescents and adults follow nice cks. not for contact, seborrhoeic or venous eczema, or chronic hand eczema. nice cg57 (updated sep 2025) · cks · ng190 · ta81 · ta82 · ta534 · ng12 · mhra atopic eczema eczema">
+            <h3 class="cg-card-t"><a href="clinic-guides/eczema.html">Atopic eczema</a></h3>
+            <p class="cg-scope">For children and adults in primary care.</p>
+            <p class="cg-src">NICE CG57 (updated Sep 2025) · CKS · NG190 · TA81 · TA82 · TA534 · NG12 · MHRA</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/eczema.html">Open</a><a class="cg-btn" href="clinic-guides/eczema.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/eczema.html">Full protocol: Atopic Eczema →</a>
+          </article>
+          <article class="cg-card" data-cg-slug="acne" data-search="acne vulgaris for adolescents and adults with acne vulgaris in primary care. not for rosacea, perioral dermatitis, hidradenitis suppurativa or the specialist management of acne fulminans. nice ng198 (2021, updated apr 2026) · mhra isotretinoin oct 2025 · 22 jan 2026 acne vulgaris acne">
+            <h3 class="cg-card-t"><a href="clinic-guides/acne.html">Acne vulgaris</a></h3>
+            <p class="cg-scope">For adolescents and adults with acne vulgaris in primary care.</p>
+            <p class="cg-src">NICE NG198 (2021, updated Apr 2026) · MHRA isotretinoin Oct 2025 · 22 Jan 2026</p>
+            <p class="cg-rev">Reviewed Oct 2026 · next review Apr 2027</p>
+            <div class="cg-actions"><a class="cg-btn pri" href="clinic-guides/acne.html">Open</a><a class="cg-btn" href="clinic-guides/acne.html#print" title="Opens the guide and its print dialogue: 2 A4 pages">Print</a></div>
+            <a class="cg-proto" href="management/acne.html">Full protocol: Acne Vulgaris →</a>
+          </article>
+        </div>
+      </section>
+      <section class="cg-group cg-group-hb" id="lab-results" data-group="lab-results">
+        <div class="alg-group-head"><span class="agh-icon" aria-hidden="true">🧪</span><h2>Lab results</h2><span class="agh-count">in the handbook</span></div>
+        <div class="cg-handbook" data-cg-product="lab-handbook" data-cg-price="20" data-cg-title="Lab Results Handbook" data-cg-size="2.6 MB" data-cg-local="../assets/downloads/Lab_Results_Handbook_v1.pdf">
+          <div class="cg-hb-icon" aria-hidden="true">PDF</div>
+          <div class="cg-hb-body">
+            <h3 class="cg-hb-t">Lab Results Handbook <span class="cg-hb-fmt">(PDF, 89 pages)</span></h3>
+            <p class="cg-hb-price"><b>£20</b> · one-off purchase · not included in subscription plans</p>
+            <p class="cg-hb-d">The lab results guides are available only in this handbook: 42 two-page guides to abnormal blood results, plus the Anaemia guide, in one printable A4 book with clickable contents: 43 guides, 89 pages. Version 1.1, October 2026 · next review April 2027. Yours to keep: buy once, download any time.</p>
+            <p class="cg-hb-d cg-hb-shop"><a href="../pages/shop.html">See all handbooks in the Shop →</a></p>
+            <p class="cg-hb-note" hidden></p>
+          </div>
+          <div class="cg-hb-buy" aria-live="polite">
+            <a class="cg-btn pri cg-hb-btn" href="mailto:bassamomda@gmail.com?subject=Lab%20Results%20Handbook%20(%C2%A320)">Buy · £20</a>
+          </div>
+        </div>
+        <details class="cg-hb-list"><summary>What is inside: 42 guides</summary>
+          <ul><li>Raised creatinine or falling eGFR</li><li>Hyponatraemia: the low sodium</li><li>Hypernatraemia: the high sodium</li><li>Hyperkalaemia: the high potassium</li><li>Hypokalaemia: the low potassium</li><li>Hypomagnesaemia: the low magnesium</li><li>Hypercalcaemia: the raised calcium</li><li>Hypocalcaemia: the low calcium</li><li>Abnormal bone profile</li><li>Vitamin D deficiency</li><li>Raised HbA1c or glucose</li><li>Hypoglycaemia: the low glucose</li><li>Abnormal lipid profile</li><li>Raised triglycerides</li><li>Abnormal thyroid function tests</li><li>Raised prolactin</li><li>Low testosterone in men</li><li>Female hormone results</li><li>Microcytosis: the low MCV</li><li>Macrocytosis: the high MCV</li><li>Normocytic anaemia</li><li>Low ferritin: iron deficiency</li><li>High ferritin</li><li>Low vitamin B12 in adults</li><li>Low folate in adults</li><li>Raised haematocrit in adults</li><li>Leucocytosis: the high white cell count</li><li>Leucopenia: the low white cell count</li><li>Lymphocytosis: the high lymphocyte count</li><li>Lymphopenia: the low lymphocyte count</li><li>Eosinophilia</li><li>Thrombocytosis: the high platelet count</li><li>Low platelets in adults</li><li>Pancytopenia in adults</li><li>Abnormal liver blood tests</li><li>Jaundice and raised bilirubin</li><li>Raised creatine kinase (CK)</li><li>Raised CRP or ESR</li><li>Abnormal immunoglobulins</li><li>Raised tumour markers</li><li>Raised PSA</li><li>Allergy test results</li></ul>
+        </details>
+      </section>
+      <!-- CG:CARDS:END -->
+
+      <div class="alg-foot">
+        <p><strong>Printing.</strong> Use A4, scale 100% (or "Actual size") and switch off the browser's own headers and footers. Each guide prints as exactly two pages; the coloured blocks print best with background graphics on.</p>
+        <p><strong>Decision support, not a substitute for clinical judgement.</strong> Check doses in the SPC and your local formulary. Each guide shows its sources and review dates; the full protocol holds the detail and the evidence. Last reviewed 18 October 2026.</p>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../assets/site.js?v=108"></script>
+<script src="../assets/clinic-guides.js?v=5"></script>
+<script src="../assets/nav-back.js?v=1"></script>
+<script>
+/* Clinic Guides hub: search filter and area jump links (cards are written by governance/import_clinic_guides.py). */
+(function(){
+  var input = document.getElementById('cgSearch'), shown = document.getElementById('cgShown'), empty = document.getElementById('cgEmpty');
+  var groups = [].slice.call(document.querySelectorAll('.cg-group'));
+  var jump = document.querySelector('.cg-jump');
+  groups.forEach(function(g){
+    var h = g.querySelector('h2'); if (!h || !jump) return;
+    var a = document.createElement('a'); a.href = '#' + g.id; a.textContent = h.textContent; jump.appendChild(a);
+  });
+  function run(){
+    var q = (input.value || '').trim().toLowerCase(), n = 0;
+    var words = q.split(/\s+/).filter(Boolean);
+    groups.forEach(function(g){
+      var any = 0;
+      g.querySelectorAll('.cg-card').forEach(function(c){
+        var hay = c.getAttribute('data-search') || '';
+        var ok = words.every(function(w){ return hay.indexOf(w) > -1; });
+        c.hidden = !ok; if (ok) { any++; n++; }
+      });
+      g.hidden = !any;
+    });
+    shown.textContent = n;
+    empty.classList.toggle('show', n === 0);
+  }
+  if (input) input.addEventListener('input', run);
+})();
+</script>
+</body>
+</html>

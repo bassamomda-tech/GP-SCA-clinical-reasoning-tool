@@ -43,7 +43,8 @@
 .case-filters .cf-count{ font-size:13px; color:var(--ink-2); font-weight:600; margin-left:auto; align-self:center; }
 .case-filters .cf-reset{ font:inherit; font-size:12.5px; font-weight:600; padding:8px 15px; border-radius:8px; border:1px solid var(--line-2); background:#f8fafc; color:var(--ink-2); cursor:pointer; align-self:center; }
 .case-filters .cf-reset:hover{ border-color:var(--ink-2); }
-.case-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:14px; }
+.case-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr)); gap:14px; }
+@media (max-width:400px){ .case-filters{ padding:12px; } .case-filters .cf-group{ flex:1 1 100%; } .case-filters select{ min-width:0; width:100%; max-width:none; } }
 .case-tile{
   background:#fff; border:1px solid var(--line); border-left:4px solid var(--line-2);
   border-radius:14px; padding:16px 18px; cursor:pointer; text-align:left;

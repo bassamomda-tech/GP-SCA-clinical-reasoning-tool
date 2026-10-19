@@ -888,7 +888,7 @@ let RGP_TOOLS = [
   {id:'__tools-prescribing',label:'Prescribing',           meta:'Ready Rx · eligibility/FP10/RAG · sick-day rules', path:'tools/prescribing.html', icon:'💊'},
   {id:'__tools-admin',     label:'GP Admin',               meta:'Fit Note · DVLA · forms & certificates',  path:'tools/gp-admin.html',           icon:'📋'},
   {id:'__tools-clinicref', label:'Clinic Reference',      meta:'Pharmacy First · immunisations · NG12 · shared care · travel · QOF', path:'tools/clinic-reference.html', icon:'📚'},
-  {id:'__tools-clinicguides', label:'Clinic Guides',      meta:'2-page printable desk guides · common conditions & lab results', path:'tools/clinic-guides.html', icon:'🖨️'},
+  // Clinic Guides hidden (Oct 2026, owner): the 2-page guides are kept for future handbooks, not shown on the site.
   {id:'__tools-spine',     label:'Consultation Spine',     meta:'Consultation structure by presentation — reference',  path:'tools/consultation-spine.html', icon:'🧬'},
   {id:'__tools-scribe',    label:'Consult Scribe',         meta:'Record → EMIS / SystmOne / SOAP note · AI', path:'tools/scribe.html',           icon:'🎙️'},
   {id:'__tools-calc',      label:'Medical Calculators',    meta:'55 scores · CV · VTE · MH · renal & more', path:'tools/calculators.html',        icon:'🧮'},
@@ -1144,9 +1144,6 @@ function renderTopNav(activeId){
     <a class="rgp-mm-tool" href="${PRE}tools/management.html">
       <span class="rgp-mm-tool-ic">💠</span><span><b>Protocols</b><small>${mgmtDisp} protocols · manage the condition</small></span>
     </a>
-    <a class="rgp-mm-tool ${activeId==='__tools-clinicguides'?'is-active':''}" href="${PRE}tools/clinic-guides.html">
-      <span class="rgp-mm-tool-ic">🖨️</span><span><b>Clinic Guides</b><small>2-page printable desk guides</small></span>
-    </a>
     <a class="rgp-mm-tool ${activeId==='__tools-prescribing'?'is-active':''}" href="${PRE}tools/prescribing.html">
       <span class="rgp-mm-tool-ic">💊</span><span><b>Prescribing</b><small>Ready Rx · eligibility · RAG · sick-day</small></span>
     </a>`;
@@ -1189,7 +1186,7 @@ function renderTopNav(activeId){
           <button data-mode="clinic" class="${mode!=='sca'?'active':''}" title="Switch to the Clinic interface"><span class="rgp-iface-ic">🏥</span><span class="rgp-iface-lbl">Clinic</span></button>
           <button data-mode="sca" class="${mode==='sca'?'active':''}" title="Switch to the SCA exam interface"><span class="rgp-iface-ic">🎓</span><span class="rgp-iface-lbl">SCA</span></button>
           <span class="rgp-iface-hint">— tap to switch the whole site</span>
-          <button type="button" class="rgp-iface-install" onclick="window.RGPInstall&&window.RGPInstall()" style="font:inherit;font-size:11.5px;font-weight:700;color:var(--teal);background:none;border:none;cursor:pointer;padding:8px 6px;margin:-4px 0;white-space:nowrap;">📲 Install app</button>
+          <button type="button" class="rgp-iface-install" onclick="window.RGPInstall&&window.RGPInstall()" style="font:inherit;font-size:11.5px;font-weight:700;color:var(--teal);background:none;border:none;cursor:pointer;padding:8px 6px;margin:-4px 0;white-space:nowrap;" aria-label="Install app">📲<span class="rgp-iface-install-t"> Install app</span></button>
         </div>
         <div class="rgp-navend">
           <a class="rgp-nav-plans" href="${PRE}pages/pricing.html">Plans</a>
@@ -2947,6 +2944,30 @@ function injectAuthModal(){
     /* The Shop link (next to Plans) only where the band has room; below that it
        would push Sign up off the edge. Shop stays in the footer (Account). */
     @media (max-width: 880px){ .rgp-nav-shop{ display:none; } }
+    /* Phones, signed out: the centred switch pill pushed Plans and Sign up past
+       the right edge (below about 600 px). Left-align the switch, tighten it,
+       show Install app as its icon only, and drop Plans on the narrowest
+       screens (it is also in the footer). */
+    /* Small tablets: the "tap to switch" hint alone pushed Sign up off the edge. */
+    @media (max-width: 800px){ .rgp-iface-hint{ display:none; } }
+    .rgp-auth-btn{ white-space:nowrap; }
+    @media (max-width: 600px){
+      .rgp-iface-inner{ grid-template-columns:auto 1fr; gap:8px; padding:0 10px; }
+      .rgp-iface-inner .rgp-iface-spacer{ display:none; }
+      .rgp-iface-inner .rgp-iface{ justify-self:start; }
+      .rgp-iface button{ padding:7px 10px; gap:5px; }
+      .rgp-iface .rgp-iface-install{ padding:8px 5px !important; }
+      .rgp-iface-install-t{ display:none; }
+      .rgp-iface-inner .rgp-navend{ gap:4px; }
+      .rgp-auth{ margin-left:0; }
+      .rgp-auth-btn{ padding:7px 10px; }
+    }
+    @media (max-width: 400px){
+      .rgp-iface-inner .rgp-nav-plans{ display:none; }
+    }
+    @media (max-width: 340px){
+      .rgp-iface .rgp-iface-ic{ display:none; }
+    }
   `;
   document.body.appendChild(el);
 

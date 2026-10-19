@@ -104,7 +104,7 @@ GROUP_EXTRA = {
         '          <div class="cg-hb-body">\n'
         '            <h3 class="cg-hb-t">Lab Results Handbook <span class="cg-hb-fmt">(PDF, 89 pages)</span></h3>\n'
         '            <p class="cg-hb-price"><b>£20</b> · one-off purchase · not included in subscription plans</p>\n'
-        '            <p class="cg-hb-d">Every lab results guide below, plus the Anaemia guide, in one printable A4 book with a contents page: '
+        '            <p class="cg-hb-d">The lab results guides are available only in this handbook: 42 two-page guides to abnormal blood results, plus the Anaemia guide, in one printable A4 book with clickable contents: '
         '43 guides, 89 pages. Version 1.1, October 2026 · next review April 2027. Yours to keep: buy once, download any time.</p>\n'
         '            <p class="cg-hb-d cg-hb-shop"><a href="../pages/shop.html">See all handbooks in the Shop →</a></p>\n'
         '            <p class="cg-hb-note" hidden></p>\n'
@@ -115,6 +115,21 @@ GROUP_EXTRA = {
         '        </div>\n'
     ),
 }
+# Categories sold ONLY as a handbook (shop.html, £20): their guides are NOT published as
+# pages, NOT in the manifest (so pathway pages show no "Clinic Guide" entry point) and the
+# hub shows the handbook card plus a titles-only contents list. Re-publishing would give
+# the handbook away inside the plans.
+HANDBOOK_ONLY = {'Lab results'}
+
+# The whole Clinic Guides section is HIDDEN (owner, Oct 2026): no guide pages are
+# published, the manifest lists no guides (so protocol and pathway pages show no
+# "Clinic Guide" button), and tools/clinic-guides.html is a static redirect to the
+# Shop, left alone by this script. The sources stay in the source folder for future
+# handbooks. To bring the section back: set HIDE_ALL = False, restore the hub page
+# from governance/clinic-guides-hub.html.txt, add the menu entries back in assets/site.js,
+# re-run this script and rebuild the search index.
+HIDE_ALL = True
+
 # Cache-buster for assets/clinic-guides.js on the guide pages AND the hub.
 # Bump it whenever that script changes; a re-run rewrites every reference.
 CG_JS_V = 5
@@ -280,10 +295,23 @@ def card(g):
           '          </article>'
     )
 
-def hub_cards(guides):
+def hub_cards(guides, sold=()):
     groups = []
     cats = [(c, ic) for c, ic, _ in CATEGORIES] + [OTHER]
     for cat, icon in cats:
+        if cat in HANDBOOK_ONLY:
+            ts = [g for g in sold if g['category'] == cat]
+            if not ts:
+                continue
+            groups.append(
+                f'      <section class="cg-group cg-group-hb" id="{slugify(cat)}" data-group="{slugify(cat)}">\n'
+                f'        <div class="alg-group-head"><span class="agh-icon" aria-hidden="true">{icon}</span><h2>{esc(cat)}</h2>'
+                f'<span class="agh-count">in the handbook</span></div>\n'
+                + GROUP_EXTRA.get(cat, '')
+                + '        <details class="cg-hb-list"><summary>What is inside: ' + str(len(ts)) + ' guides</summary>\n'
+                + '          <ul>' + ''.join(f'<li>{esc(g["title"])}</li>' for g in ts) + '</ul>\n'
+                + '        </details>\n      </section>')
+            continue
         gs = [g for g in guides if g['category'] == cat]
         if not gs:
             continue
@@ -296,7 +324,7 @@ def hub_cards(guides):
             + '        <div class="cg-grid">\n' + '\n'.join(card(g) for g in gs) + '\n        </div>\n      </section>')
     return '\n'.join(groups)
 
-def update_hub(guides, check):
+def update_hub(guides, check, sold=()):
     if not os.path.exists(HUB):
         warn('tools/clinic-guides.html not found: hub cards not written')
         return False
@@ -307,7 +335,7 @@ def update_hub(guides, check):
     if i < 0 or j < i:
         warn('tools/clinic-guides.html has no CG:CARDS markers: hub cards not written')
         return False
-    new = hub[:i + len(a)] + '\n' + hub_cards(guides) + '\n      ' + hub[j:]
+    new = hub[:i + len(a)] + '\n' + hub_cards(guides, sold) + '\n      ' + hub[j:]
     # guide counts shown in the hub copy: <span data-cg-count>N</span>
     new = re.sub(r'(<span data-cg-count>)\d+(</span>)', lambda m: m.group(1) + str(len(guides)) + m.group(2), new)
     new = re.sub(r'(assets/clinic-guides\.js)(?:\?v=\d+)?(")', lambda m: f'{m.group(1)}?v={CG_JS_V}{m.group(2)}', new)
@@ -355,13 +383,17 @@ def main():
         guides.append(g)
 
     guides.sort(key=lambda g: (ORDER.get(g['slug'], 10**6), g['slug']))
+    sold = [g for g in guides if g['category'] in HANDBOOK_ONLY]
+    guides = [g for g in guides if g['category'] not in HANDBOOK_ONLY]
+    if HIDE_ALL:
+        sold, guides = sold + guides, []
     dup = {}
     for g in guides:
         dup.setdefault(g['protocol'], []).append(g['slug'])
     for p, s in dup.items():
         if len(s) > 1:
             warn(f'{p} has more than one guide ({", ".join(s)}): its page shows the first')
-    missing = [s for s in ORDER if s not in {g['slug'] for g in guides}]
+    missing = [s for s in ORDER if s not in {g['slug'] for g in guides + sold}]
     for s in missing:
         warn(f'{s}: listed in CATEGORIES but no source guide found')
 
@@ -414,10 +446,10 @@ def main():
         if not args.check:
             with open(MANIFEST, 'w', encoding='utf-8') as f:
                 f.write(mjson)
-    if update_hub(guides, args.check):
+    if not HIDE_ALL and update_hub(guides, args.check, sold):
         changed.append('tools/clinic-guides.html')
 
-    print(f'Clinic Guides: {len(guides)} guides from {src_dir}')
+    print(f'Clinic Guides: {len(guides)} guides published, {len(sold)} handbook-only (not published) from {src_dir}')
     for cat in manifest['categories']:
         print(f'  {cat}: ' + ', '.join(g['slug'] for g in guides if g['category'] == cat))
     verb = 'would change' if args.check else 'changed'
