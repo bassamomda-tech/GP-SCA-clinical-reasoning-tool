@@ -448,3 +448,9 @@ li > .pxa-drug{margin:2px 0 4px}
 @keyframes pxRouteFlash{0%{box-shadow:0 0 0 4px rgba(240,180,41,.75)}100%{box-shadow:0 0 0 0 rgba(240,180,41,0)}}
 @media (max-width:760px){ .px-route-all{margin-left:0} .px-route-chip{font-size:13px} }
 @media print{ .px-route-all{display:none} .px-route-body[hidden]{display:block!important} }
+
+/* Wider reading column on large screens (19 Oct 2026): the protocol used to stop at 1180px
+   however wide the monitor, leaving wide empty margins on 1920px desktops. */
+@media screen and (min-width:1500px){
+.pa .mg-wrap{max-width:1400px}
+}

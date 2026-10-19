@@ -7,6 +7,39 @@
    no dependency on site.js or the app shell.
    ============================================ */
 (function(){
+  /* Reading width (19 Oct 2026). Many older pathway pages cap their own width in inline CSS
+     (body 860px, .alg-wrap 800px, .alg-flow 720px). The compact header card used to widen
+     them, but it was switched off on 15 Oct 2026, so they fell back to a narrow column on
+     desktop screens. One rule for every algorithm page: a 1140px reading column on screens
+     wider than 900px. Screen only (print untouched); not inside frames (Snapshot, one-page). */
+  (function(){
+    var inFrame = false; try { inFrame = window.self !== window.top; } catch(e){ inFrame = true; }
+    if (inFrame || !/\/tools\/algorithms\/[^\/]+\.html$/.test(location.pathname) || /-print\.html$/.test(location.pathname)) return;
+    var st = document.createElement('style'); st.id = 'alg-width';
+    st.textContent = '@media screen and (min-width:900px){'
+      + 'html.alg-w body{max-width:1172px!important}'
+      + 'html body .alg-wrap{max-width:1180px!important}'
+      + 'html body .alg-flow,html body .alg-foot,html body .stem-banner,html body .alg-progress,html body .page-header,html body .au-refs{max-width:1140px!important;margin-left:auto!important;margin-right:auto!important}'
+      + '}'
+      /* Label/value rows (.kv): labels were set never to wrap, so in a narrow column a long label
+         ("Tendon and pulley disorders") ran over its text. Labels now wrap inside their own column. */
+      + '@media screen{'
+      + '.kv>div{min-width:0}'
+      + '.kv>div:nth-child(odd){white-space:normal!important;overflow-wrap:break-word;hyphens:auto}'
+      + '}'
+      + '@media screen and (min-width:761px){.kv{grid-template-columns:minmax(130px,24%) minmax(0,1fr)!important}}'
+      /* Large monitors (1500px+): a wider column, in step with the protocols (1400px). */
+      + '@media screen and (min-width:1500px){html.alg-w body{max-width:1392px!important}html body .alg-wrap{max-width:1400px!important}'
+      + 'html body .alg-flow,html.au body .alg-flow,html body .alg-foot,html body .stem-banner,html body .alg-progress,html body .page-header,html body .au-refs{max-width:1360px!important}}';
+    (document.head || document.documentElement).appendChild(st);
+    function bodyCap(){
+      // Only widen a body that the page itself capped; an uncapped body stays as it is.
+      var mw = parseFloat(getComputedStyle(document.body).maxWidth);
+      if (mw && mw < 1100) document.documentElement.classList.add('alg-w');
+    }
+    if (document.body) bodyCap(); else document.addEventListener('DOMContentLoaded', bodyCap);
+  })();
+
   function build(){
     // Avoid double-inject
     if (document.querySelector('.alg-topbar')) return;

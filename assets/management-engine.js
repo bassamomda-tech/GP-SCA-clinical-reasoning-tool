@@ -703,7 +703,7 @@
     var me = document.currentScript && document.currentScript.src;
     if(!me) return;
     if(document.querySelector('meta[name="omelette-print-source"]') || /-print\.html$/i.test(location.pathname)) return;
-    var base = me.replace(/[^\/]*$/, ''), V = '?v=6';
+    var base = me.replace(/[^\/]*$/, ''), V = '?v=7';
     var head = document.head || document.documentElement;
     /* No flicker: keep the page hidden until protocol-ui.js has laid it out, so the
        old layout never shows for a moment. protocol-ui.js calls __pxReveal when done;
